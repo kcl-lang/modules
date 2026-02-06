@@ -4,21 +4,20 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.17.1
-  name: apiportals.hub.traefik.io
+  name: apiplans.hub.traefik.io
 spec:
   group: hub.traefik.io
   names:
-    kind: APIPortal
-    listKind: APIPortalList
-    plural: apiportals
-    singular: apiportal
+    kind: APIPlan
+    listKind: APIPlanList
+    plural: apiplans
+    singular: apiplan
   scope: Namespaced
   versions:
   - name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: APIPortal defines a developer portal for accessing the documentation
-          of APIs.
+        description: APIPlan defines API Plan policy.
         properties:
           apiVersion:
             description: |-
@@ -38,48 +37,78 @@ spec:
           metadata:
             type: object
           spec:
-            description: The desired behavior of this APIPortal.
+            description: The desired behavior of this APIPlan.
             properties:
-              auth:
-                description: Auth references the APIPortalAuth resource for authentication
-                  configuration.
-                properties:
-                  name:
-                    description: Name is the name of the APIPortalAuth resource.
-                    maxLength: 253
-                    type: string
-                required:
-                - name
-                type: object
               description:
-                description: Description of the APIPortal.
+                description: Description describes the plan.
                 type: string
-              title:
-                description: Title is the public facing name of the APIPortal.
-                type: string
-              trustedUrls:
-                description: TrustedURLs are the urls that are trusted by the OAuth
-                  2.0 authorization server.
-                items:
-                  type: string
-                maxItems: 1
-                minItems: 1
-                type: array
-                x-kubernetes-validations:
-                - message: must be a valid URLs
-                  rule: self.all(x, isURL(x))
-              ui:
-                description: UI holds the UI customization options.
+              quota:
+                description: Quota defines the quota policy.
                 properties:
-                  logoUrl:
-                    description: LogoURL is the public URL of the logo.
+                  bucket:
+                    default: subscription
+                    description: Bucket defines the bucket strategy for the quota.
+                    enum:
+                    - subscription
+                    - application-api
+                    - application
                     type: string
+                  limit:
+                    description: Limit is the maximum number of requests per sliding
+                      Period.
+                    type: integer
+                    x-kubernetes-validations:
+                    - message: must be a positive number
+                      rule: self >= 0
+                  period:
+                    description: Period is the unit of time for the Limit.
+                    format: duration
+                    type: string
+                    x-kubernetes-validations:
+                    - message: must be between 1s and 9999h
+                      rule: self >= duration('1s') && self <= duration('9999h')
+                required:
+                - limit
                 type: object
+              rateLimit:
+                description: RateLimit defines the rate limit policy.
+                properties:
+                  bucket:
+                    default: subscription
+                    description: Bucket defines the bucket strategy for the rate limit.
+                    enum:
+                    - subscription
+                    - application-api
+                    - application
+                    type: string
+                  limit:
+                    description: |-
+                      Limit is the number of requests per Period used to calculate the regeneration rate.
+                      Traffic will converge to this rate over time by delaying requests when possible, and dropping them when throttling alone is not enough.
+                    type: integer
+                    x-kubernetes-validations:
+                    - message: must be a positive number
+                      rule: self >= 0
+                  period:
+                    description: |-
+                      Period is the time unit used to express the rate.
+                      Combined with Limit, it defines the rate at which request capacity regenerates (Limit ÷ Period).
+                    format: duration
+                    type: string
+                    x-kubernetes-validations:
+                    - message: must be between 1s and 1h
+                      rule: self >= duration('1s') && self <= duration('1h')
+                required:
+                - limit
+                type: object
+              title:
+                description: Title is the human-readable name of the plan.
+                type: string
             required:
-            - trustedUrls
+            - title
             type: object
           status:
-            description: The current status of this APIPortal.
+            description: The current status of this APIPlan.
             properties:
               conditions:
                 items:
@@ -138,63 +167,8 @@ spec:
                   type: object
                 type: array
               hash:
-                description: Hash is a hash representing the APIPortal.
+                description: Hash is a hash representing the APIPlan.
                 type: string
-              oidc:
-                description: OIDC is the OIDC configuration for accessing the exposed
-                  APIPortal WebUI.
-                properties:
-                  clientId:
-                    description: ClientID is the OIDC ClientID for accessing the exposed
-                      APIPortal WebUI.
-                    type: string
-                  companyClaim:
-                    description: CompanyClaim is the name of the JWT claim containing
-                      the user company.
-                    type: string
-                  emailClaim:
-                    description: EmailClaim is the name of the JWT claim containing
-                      the user email.
-                    type: string
-                  firstnameClaim:
-                    description: FirstnameClaim is the name of the JWT claim containing
-                      the user firstname.
-                    type: string
-                  generic:
-                    description: Generic indicates whether or not the APIPortal authentication
-                      relies on Generic OIDC.
-                    type: boolean
-                  groupsClaim:
-                    description: GroupsClaim is the name of the JWT claim containing
-                      the user groups.
-                    type: string
-                  issuer:
-                    description: Issuer is the OIDC issuer for accessing the exposed
-                      APIPortal WebUI.
-                    type: string
-                  lastnameClaim:
-                    description: LastnameClaim is the name of the JWT claim containing
-                      the user lastname.
-                    type: string
-                  scopes:
-                    description: Scopes is the OIDC scopes for getting user attributes
-                      during the authentication to the exposed APIPortal WebUI.
-                    type: string
-                  secretName:
-                    description: SecretName is the name of the secret containing the
-                      OIDC ClientSecret for accessing the exposed APIPortal WebUI.
-                    type: string
-                  syncedAttributes:
-                    description: SyncedAttributes configure the user attributes to
-                      sync.
-                    items:
-                      type: string
-                    type: array
-                  userIdClaim:
-                    description: UserIDClaim is the name of the JWT claim containing
-                      the user ID.
-                    type: string
-                type: object
               syncedAt:
                 format: date-time
                 type: string

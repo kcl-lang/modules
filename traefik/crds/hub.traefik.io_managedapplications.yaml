@@ -4,21 +4,20 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.17.1
-  name: apiportals.hub.traefik.io
+  name: managedapplications.hub.traefik.io
 spec:
   group: hub.traefik.io
   names:
-    kind: APIPortal
-    listKind: APIPortalList
-    plural: apiportals
-    singular: apiportal
+    kind: ManagedApplication
+    listKind: ManagedApplicationList
+    plural: managedapplications
+    singular: managedapplication
   scope: Namespaced
   versions:
   - name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: APIPortal defines a developer portal for accessing the documentation
-          of APIs.
+        description: ManagedApplication represents a managed application.
         properties:
           apiVersion:
             description: |-
@@ -38,49 +37,63 @@ spec:
           metadata:
             type: object
           spec:
-            description: The desired behavior of this APIPortal.
+            description: ManagedApplicationSpec describes the ManagedApplication.
             properties:
-              auth:
-                description: Auth references the APIPortalAuth resource for authentication
-                  configuration.
-                properties:
-                  name:
-                    description: Name is the name of the APIPortalAuth resource.
-                    maxLength: 253
-                    type: string
-                required:
-                - name
-                type: object
-              description:
-                description: Description of the APIPortal.
-                type: string
-              title:
-                description: Title is the public facing name of the APIPortal.
-                type: string
-              trustedUrls:
-                description: TrustedURLs are the urls that are trusted by the OAuth
-                  2.0 authorization server.
+              apiKeys:
+                description: APIKeys references the API keys used to authenticate
+                  the application when calling APIs.
                 items:
-                  type: string
-                maxItems: 1
-                minItems: 1
+                  description: APIKey describes an API key used to authenticate the
+                    application when calling APIs.
+                  properties:
+                    secretName:
+                      description: SecretName references the name of the secret containing
+                        the API key.
+                      maxLength: 253
+                      type: string
+                    suspended:
+                      type: boolean
+                    title:
+                      type: string
+                    value:
+                      description: Value is the API key value.
+                      maxLength: 4096
+                      type: string
+                  type: object
+                  x-kubernetes-validations:
+                  - message: secretName and value are mutually exclusive
+                    rule: '[has(self.secretName), has(self.value)].filter(x, x).size()
+                      <= 1'
+                maxItems: 100
                 type: array
-                x-kubernetes-validations:
-                - message: must be a valid URLs
-                  rule: self.all(x, isURL(x))
-              ui:
-                description: UI holds the UI customization options.
-                properties:
-                  logoUrl:
-                    description: LogoURL is the public URL of the logo.
-                    type: string
-                type: object
+              appId:
+                description: |-
+                  AppID is the identifier of the ManagedApplication.
+                  It should be unique.
+                maxLength: 253
+                type: string
+              notes:
+                description: Notes contains notes about application.
+                type: string
+              owner:
+                description: |-
+                  Owner represents the owner of the ManagedApplication.
+                  It should be:
+                  - `sub` when using OIDC
+                  - `externalID` when using external IDP
+                maxLength: 253
+                type: string
             required:
-            - trustedUrls
+            - appId
+            - owner
             type: object
           status:
-            description: The current status of this APIPortal.
+            description: The current status of this ManagedApplication.
             properties:
+              apiKeyVersions:
+                additionalProperties:
+                  type: string
+                type: object
               conditions:
                 items:
                   description: Condition contains details for one aspect of the current
@@ -138,63 +151,8 @@ spec:
                   type: object
                 type: array
               hash:
-                description: Hash is a hash representing the APIPortal.
+                description: Hash is a hash representing the ManagedApplication.
                 type: string
-              oidc:
-                description: OIDC is the OIDC configuration for accessing the exposed
-                  APIPortal WebUI.
-                properties:
-                  clientId:
-                    description: ClientID is the OIDC ClientID for accessing the exposed
-                      APIPortal WebUI.
-                    type: string
-                  companyClaim:
-                    description: CompanyClaim is the name of the JWT claim containing
-                      the user company.
-                    type: string
-                  emailClaim:
-                    description: EmailClaim is the name of the JWT claim containing
-                      the user email.
-                    type: string
-                  firstnameClaim:
-                    description: FirstnameClaim is the name of the JWT claim containing
-                      the user firstname.
-                    type: string
-                  generic:
-                    description: Generic indicates whether or not the APIPortal authentication
-                      relies on Generic OIDC.
-                    type: boolean
-                  groupsClaim:
-                    description: GroupsClaim is the name of the JWT claim containing
-                      the user groups.
-                    type: string
-                  issuer:
-                    description: Issuer is the OIDC issuer for accessing the exposed
-                      APIPortal WebUI.
-                    type: string
-                  lastnameClaim:
-                    description: LastnameClaim is the name of the JWT claim containing
-                      the user lastname.
-                    type: string
-                  scopes:
-                    description: Scopes is the OIDC scopes for getting user attributes
-                      during the authentication to the exposed APIPortal WebUI.
-                    type: string
-                  secretName:
-                    description: SecretName is the name of the secret containing the
-                      OIDC ClientSecret for accessing the exposed APIPortal WebUI.
-                    type: string
-                  syncedAttributes:
-                    description: SyncedAttributes configure the user attributes to
-                      sync.
-                    items:
-                      type: string
-                    type: array
-                  userIdClaim:
-                    description: UserIDClaim is the name of the JWT claim containing
-                      the user ID.
-                    type: string
-                type: object
               syncedAt:
                 format: date-time
                 type: string

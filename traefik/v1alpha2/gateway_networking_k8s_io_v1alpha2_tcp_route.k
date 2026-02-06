@@ -4,10 +4,11 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
 
 
 schema TCPRoute:
-    """
+    r"""
     TCPRoute provides a way to route TCP requests. When combined with a Gateway listener, it can be used to forward connections on the port specified by the listener to a set of backends specified by the TCPRoute.
 
     Attributes
@@ -37,7 +38,7 @@ schema TCPRoute:
 
 
 schema GatewayNetworkingK8sIoV1alpha2TCPRouteSpec:
-    """
+    r"""
     Spec defines the desired state of TCPRoute.
 
     Attributes
@@ -66,13 +67,13 @@ schema GatewayNetworkingK8sIoV1alpha2TCPRouteSpec:
 
 
     check:
-        len(parentRefs) <= 32
+        len(parentRefs) <= 32 if parentRefs
         len(rules) >= 1
         len(rules) <= 16
 
 
 schema GatewayNetworkingK8sIoV1alpha2TCPRouteSpecParentRefsItems0:
-    """
+    r"""
     ParentReference identifies an API object (usually a Gateway) that can be considered a parent of this resource (usually a route). There are two kinds of parent resources with "Core" support: 
      * Gateway (Gateway conformance profile) * Service (Mesh conformance profile, experimental, ClusterIP Services only) 
      This API may be extended in the future to support additional kinds of parent resources. 
@@ -128,25 +129,25 @@ schema GatewayNetworkingK8sIoV1alpha2TCPRouteSpecParentRefsItems0:
 
 
     check:
-        len(group) <= 253
-        regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63
-        len(kind) >= 1
-        regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
+        len(group) <= 253 if group
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
+        len(kind) <= 63 if kind
+        len(kind) >= 1 if kind
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63
-        len(namespace) >= 1
-        regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
-        port <= 65535
-        port >= 1
-        len(sectionName) <= 253
-        len(sectionName) >= 1
-        regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
+        len(namespace) <= 63 if namespace
+        len(namespace) >= 1 if namespace
+        _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
+        port <= 65535 if port not in [None, Undefined]
+        port >= 1 if port not in [None, Undefined]
+        len(sectionName) <= 253 if sectionName
+        len(sectionName) >= 1 if sectionName
+        _regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
 
 
 schema GatewayNetworkingK8sIoV1alpha2TCPRouteSpecRulesItems0:
-    """
+    r"""
     TCPRouteRule is the configuration for a given rule.
 
     Attributes
@@ -164,12 +165,12 @@ schema GatewayNetworkingK8sIoV1alpha2TCPRouteSpecRulesItems0:
 
 
     check:
-        len(backendRefs) >= 1
-        len(backendRefs) <= 16
+        len(backendRefs) >= 1 if backendRefs
+        len(backendRefs) <= 16 if backendRefs
 
 
 schema GatewayNetworkingK8sIoV1alpha2TCPRouteSpecRulesItems0BackendRefsItems0:
-    """
+    r"""
     BackendRef defines how a Route should forward a request to a Kubernetes resource. 
      Note that when a namespace different than the local namespace is specified, a ReferenceGrant object is required in the referent namespace to allow that namespace's owner to accept the reference. See the ReferenceGrant documentation for details. 
      <gateway:experimental:description> 
@@ -219,24 +220,24 @@ schema GatewayNetworkingK8sIoV1alpha2TCPRouteSpecRulesItems0BackendRefsItems0:
 
 
     check:
-        len(group) <= 253
-        regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63
-        len(kind) >= 1
-        regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
+        len(group) <= 253 if group
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
+        len(kind) <= 63 if kind
+        len(kind) >= 1 if kind
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63
-        len(namespace) >= 1
-        regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
-        port <= 65535
-        port >= 1
-        weight <= 1e+06
-        weight >= 0
+        len(namespace) <= 63 if namespace
+        len(namespace) >= 1 if namespace
+        _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
+        port <= 65535 if port not in [None, Undefined]
+        port >= 1 if port not in [None, Undefined]
+        weight <= 1e+06 if weight not in [None, Undefined]
+        weight >= 0 if weight not in [None, Undefined]
 
 
 schema GatewayNetworkingK8sIoV1alpha2TCPRouteStatus:
-    """
+    r"""
     Status defines the current state of TCPRoute.
 
     Attributes
@@ -256,7 +257,7 @@ schema GatewayNetworkingK8sIoV1alpha2TCPRouteStatus:
 
 
 schema GatewayNetworkingK8sIoV1alpha2TCPRouteStatusParentsItems0:
-    """
+    r"""
     RouteParentStatus describes the status of a route with respect to an associated Parent.
 
     Attributes
@@ -285,15 +286,15 @@ schema GatewayNetworkingK8sIoV1alpha2TCPRouteStatusParentsItems0:
 
 
     check:
-        len(conditions) >= 1
-        len(conditions) <= 8
+        len(conditions) >= 1 if conditions
+        len(conditions) <= 8 if conditions
         len(controllerName) <= 253
         len(controllerName) >= 1
-        regex_match(str(controllerName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$")
+        _regex_match(str(controllerName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$")
 
 
 schema GatewayNetworkingK8sIoV1alpha2TCPRouteStatusParentsItems0ConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, 
      type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"` 
      // other fields }
@@ -330,16 +331,16 @@ schema GatewayNetworkingK8sIoV1alpha2TCPRouteStatusParentsItems0ConditionsItems0
 
     check:
         len(message) <= 32768
-        observedGeneration >= 0
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
         len(reason) <= 1024
         len(reason) >= 1
-        regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
+        _regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
         len($type) <= 316
-        regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+        _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
 
 
 schema GatewayNetworkingK8sIoV1alpha2TCPRouteStatusParentsItems0ParentRef:
-    """
+    r"""
     ParentRef corresponds with a ParentRef in the spec that this RouteParentStatus struct describes the status of.
 
     Attributes
@@ -392,20 +393,20 @@ schema GatewayNetworkingK8sIoV1alpha2TCPRouteStatusParentsItems0ParentRef:
 
 
     check:
-        len(group) <= 253
-        regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63
-        len(kind) >= 1
-        regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
+        len(group) <= 253 if group
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
+        len(kind) <= 63 if kind
+        len(kind) >= 1 if kind
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63
-        len(namespace) >= 1
-        regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
-        port <= 65535
-        port >= 1
-        len(sectionName) <= 253
-        len(sectionName) >= 1
-        regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
+        len(namespace) <= 63 if namespace
+        len(namespace) >= 1 if namespace
+        _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
+        port <= 65535 if port not in [None, Undefined]
+        port >= 1 if port not in [None, Undefined]
+        len(sectionName) <= 253 if sectionName
+        len(sectionName) >= 1 if sectionName
+        _regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
 
 

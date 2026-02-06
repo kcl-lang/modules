@@ -4,5 +4,5 @@
 
 ## Resource
 
-+ Code sources are [here](https://github.com/kcl-lang/artifacthub/tree/main/traefik)
-+ Reference documents are [here][https://github.com/kcl-lang/artifacthub/tree/main/traefik/docs]
++ Code sources are [here](https://github.com/kcl-lang/modules/tree/main/traefik)
++ Reference documents are [here][https://github.com/kcl-lang/modules/tree/main/traefik/docs]

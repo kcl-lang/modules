@@ -6,12 +6,12 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema TraefikService:
-    """
+    r"""
     TraefikService is the CRD implementation of a Traefik Service.
     TraefikService object allows to:
     - Apply weight to Services on load-balancing
     - Mirror traffic on services
-    More info: https://doc.traefik.io/traefik/v3.0/routing/providers/kubernetes-crd/#kind-traefikservice
+    More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/kubernetes/crd/http/traefikservice/
 
     Attributes
     ----------
@@ -36,11 +36,13 @@ schema TraefikService:
 
 
 schema TraefikIoV1alpha1TraefikServiceSpec:
-    """
+    r"""
     TraefikServiceSpec defines the desired state of a TraefikService.
 
     Attributes
     ----------
+    highestRandomWeight : TraefikIoV1alpha1TraefikServiceSpecHighestRandomWeight, default is Undefined, optional
+        highest random weight
     mirroring : TraefikIoV1alpha1TraefikServiceSpecMirroring, default is Undefined, optional
         mirroring
     weighted : TraefikIoV1alpha1TraefikServiceSpecWeighted, default is Undefined, optional
@@ -48,27 +50,37 @@ schema TraefikIoV1alpha1TraefikServiceSpec:
     """
 
 
+    highestRandomWeight?: TraefikIoV1alpha1TraefikServiceSpecHighestRandomWeight
+
     mirroring?: TraefikIoV1alpha1TraefikServiceSpecMirroring
 
     weighted?: TraefikIoV1alpha1TraefikServiceSpecWeighted
 
 
-schema TraefikIoV1alpha1TraefikServiceSpecMirroring:
-    """
-    Mirroring defines the Mirroring service configuration.
+schema TraefikIoV1alpha1TraefikServiceSpecHighestRandomWeight:
+    r"""
+    HighestRandomWeight defines the highest random weight service configuration.
 
     Attributes
     ----------
-    healthCheck : TraefikIoV1alpha1TraefikServiceSpecMirroringHealthCheck, default is Undefined, optional
+    services : [TraefikIoV1alpha1TraefikServiceSpecHighestRandomWeightServicesItems0], default is Undefined, optional
+        Services defines the list of Kubernetes Service and/or TraefikService to load-balance, with weight.
+    """
+
+
+    services?: [TraefikIoV1alpha1TraefikServiceSpecHighestRandomWeightServicesItems0]
+
+
+schema TraefikIoV1alpha1TraefikServiceSpecHighestRandomWeightServicesItems0:
+    r"""
+    Service defines an upstream HTTP service to proxy traffic to.
+
+    Attributes
+    ----------
+    healthCheck : TraefikIoV1alpha1TraefikServiceSpecHighestRandomWeightServicesItems0HealthCheck, default is Undefined, optional
         health check
     kind : str, default is Undefined, optional
         Kind defines the kind of the Service.
-    maxBodySize : int, default is Undefined, optional
-        MaxBodySize defines the maximum size allowed for the body of the request.
-        If the body is larger, the request is not mirrored.
-        Default value is -1, which means unlimited size.
-    mirrors : [TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0], default is Undefined, optional
-        Mirrors defines the list of mirrors where Traefik will duplicate the traffic.
     name : str, default is Undefined, required
         Name defines the name of the referenced Kubernetes Service or TraefikService.
         The differentiation between the two is specified in the Kind field.
@@ -87,10 +99,12 @@ schema TraefikIoV1alpha1TraefikServiceSpecMirroring:
     passHostHeader : bool, default is Undefined, optional
         PassHostHeader defines whether the client Host header is forwarded to the upstream Kubernetes Service.
         By default, passHostHeader is true.
+    passiveHealthCheck : TraefikIoV1alpha1TraefikServiceSpecHighestRandomWeightServicesItems0PassiveHealthCheck, default is Undefined, optional
+        passive health check
     port : int | str, default is Undefined, optional
         Port defines the port of a Kubernetes Service.
         This can be a reference to a named port.
-    responseForwarding : TraefikIoV1alpha1TraefikServiceSpecMirroringResponseForwarding, default is Undefined, optional
+    responseForwarding : TraefikIoV1alpha1TraefikServiceSpecHighestRandomWeightServicesItems0ResponseForwarding, default is Undefined, optional
         response forwarding
     scheme : str, default is Undefined, optional
         Scheme defines the scheme to use for the request to the upstream Kubernetes Service.
@@ -99,24 +113,21 @@ schema TraefikIoV1alpha1TraefikServiceSpecMirroring:
         ServersTransport defines the name of ServersTransport resource to use.
         It allows to configure the transport between Traefik and your servers.
         Can only be used on a Kubernetes Service.
-    sticky : TraefikIoV1alpha1TraefikServiceSpecMirroringSticky, default is Undefined, optional
+    sticky : TraefikIoV1alpha1TraefikServiceSpecHighestRandomWeightServicesItems0Sticky, default is Undefined, optional
         sticky
     strategy : str, default is Undefined, optional
         Strategy defines the load balancing strategy between the servers.
-        RoundRobin is the only supported value at the moment.
+        Supported values are: wrr (Weighed round-robin), p2c (Power of two choices), hrw (Highest Random Weight), and leasttime (Least-Time).
+        RoundRobin value is deprecated and supported for backward compatibility.
     weight : int, default is Undefined, optional
         Weight defines the weight and should only be specified when Name references a TraefikService object
         (and to be precise, one that embeds a Weighted Round Robin).
     """
 
 
-    healthCheck?: TraefikIoV1alpha1TraefikServiceSpecMirroringHealthCheck
+    healthCheck?: TraefikIoV1alpha1TraefikServiceSpecHighestRandomWeightServicesItems0HealthCheck
 
     kind?: "Service" | "TraefikService"
-
-    maxBodySize?: int
-
-    mirrors?: [TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0]
 
     name: str
 
@@ -128,23 +139,29 @@ schema TraefikIoV1alpha1TraefikServiceSpecMirroring:
 
     passHostHeader?: bool
 
+    passiveHealthCheck?: TraefikIoV1alpha1TraefikServiceSpecHighestRandomWeightServicesItems0PassiveHealthCheck
+
     port?: int | str
 
-    responseForwarding?: TraefikIoV1alpha1TraefikServiceSpecMirroringResponseForwarding
+    responseForwarding?: TraefikIoV1alpha1TraefikServiceSpecHighestRandomWeightServicesItems0ResponseForwarding
 
     scheme?: str
 
     serversTransport?: str
 
-    sticky?: TraefikIoV1alpha1TraefikServiceSpecMirroringSticky
+    sticky?: TraefikIoV1alpha1TraefikServiceSpecHighestRandomWeightServicesItems0Sticky
 
-    strategy?: str
+    strategy?: "wrr" | "p2c" | "hrw" | "leasttime" | "RoundRobin"
 
     weight?: int
 
 
-schema TraefikIoV1alpha1TraefikServiceSpecMirroringHealthCheck:
-    """
+    check:
+        weight >= 0 if weight not in [None, Undefined]
+
+
+schema TraefikIoV1alpha1TraefikServiceSpecHighestRandomWeightServicesItems0HealthCheck:
+    r"""
     Healthcheck defines health checks for ExternalName services.
 
     Attributes
@@ -157,7 +174,7 @@ schema TraefikIoV1alpha1TraefikServiceSpecMirroringHealthCheck:
     hostname : str, default is Undefined, optional
         Hostname defines the value of hostname in the Host header of the health check request.
     interval : int | str, default is Undefined, optional
-        Interval defines the frequency of the health check calls.
+        Interval defines the frequency of the health check calls for healthy targets.
         Default: 30s
     method : str, default is Undefined, optional
         Method defines the healthcheck method.
@@ -176,6 +193,10 @@ schema TraefikIoV1alpha1TraefikServiceSpecMirroringHealthCheck:
     timeout : int | str, default is Undefined, optional
         Timeout defines the maximum duration Traefik will wait for a health check request before considering the server unhealthy.
         Default: 5s
+    unhealthyInterval : int | str, default is Undefined, optional
+        UnhealthyInterval defines the frequency of the health check calls for unhealthy targets.
+        When UnhealthyInterval is not defined, it defaults to the Interval value.
+        Default: 30s
     """
 
 
@@ -201,9 +222,275 @@ schema TraefikIoV1alpha1TraefikServiceSpecMirroringHealthCheck:
 
     timeout?: int | str
 
+    unhealthyInterval?: int | str
+
+
+schema TraefikIoV1alpha1TraefikServiceSpecHighestRandomWeightServicesItems0PassiveHealthCheck:
+    r"""
+    PassiveHealthCheck defines passive health checks for ExternalName services.
+
+    Attributes
+    ----------
+    failureWindow : int | str, default is Undefined, optional
+        FailureWindow defines the time window during which the failed attempts must occur for the server to be marked as unhealthy. It also defines for how long the server will be considered unhealthy.
+    maxFailedAttempts : int, default is Undefined, optional
+        MaxFailedAttempts is the number of consecutive failed attempts allowed within the failure window before marking the server as unhealthy.
+    """
+
+
+    failureWindow?: int | str
+
+    maxFailedAttempts?: int
+
+
+schema TraefikIoV1alpha1TraefikServiceSpecHighestRandomWeightServicesItems0ResponseForwarding:
+    r"""
+    ResponseForwarding defines how Traefik forwards the response from the upstream Kubernetes Service to the client.
+
+    Attributes
+    ----------
+    flushInterval : str, default is Undefined, optional
+        FlushInterval defines the interval, in milliseconds, in between flushes to the client while copying the response body.
+        A negative value means to flush immediately after each write to the client.
+        This configuration is ignored when ReverseProxy recognizes a response as a streaming response;
+        for such responses, writes are flushed to the client immediately.
+        Default: 100ms
+    """
+
+
+    flushInterval?: str
+
+
+schema TraefikIoV1alpha1TraefikServiceSpecHighestRandomWeightServicesItems0Sticky:
+    r"""
+    Sticky defines the sticky sessions configuration.
+    More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/http/load-balancing/service/#sticky-sessions
+
+    Attributes
+    ----------
+    cookie : TraefikIoV1alpha1TraefikServiceSpecHighestRandomWeightServicesItems0StickyCookie, default is Undefined, optional
+        cookie
+    """
+
+
+    cookie?: TraefikIoV1alpha1TraefikServiceSpecHighestRandomWeightServicesItems0StickyCookie
+
+
+schema TraefikIoV1alpha1TraefikServiceSpecHighestRandomWeightServicesItems0StickyCookie:
+    r"""
+    Cookie defines the sticky cookie configuration.
+
+    Attributes
+    ----------
+    domain : str, default is Undefined, optional
+        Domain defines the host to which the cookie will be sent.
+        More info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#domaindomain-value
+    httpOnly : bool, default is Undefined, optional
+        HTTPOnly defines whether the cookie can be accessed by client-side APIs, such as JavaScript.
+    maxAge : int, default is Undefined, optional
+        MaxAge defines the number of seconds until the cookie expires.
+        When set to a negative number, the cookie expires immediately.
+        When set to zero, the cookie never expires.
+    name : str, default is Undefined, optional
+        Name defines the Cookie name.
+    path : str, default is Undefined, optional
+        Path defines the path that must exist in the requested URL for the browser to send the Cookie header.
+        When not provided the cookie will be sent on every request to the domain.
+        More info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#pathpath-value
+    sameSite : str, default is Undefined, optional
+        SameSite defines the same site policy.
+        More info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite
+    secure : bool, default is Undefined, optional
+        Secure defines whether the cookie can only be transmitted over an encrypted connection (i.e. HTTPS).
+    """
+
+
+    domain?: str
+
+    httpOnly?: bool
+
+    maxAge?: int
+
+    name?: str
+
+    path?: str
+
+    sameSite?: "none" | "lax" | "strict"
+
+    secure?: bool
+
+
+schema TraefikIoV1alpha1TraefikServiceSpecMirroring:
+    r"""
+    Mirroring defines the Mirroring service configuration.
+
+    Attributes
+    ----------
+    healthCheck : TraefikIoV1alpha1TraefikServiceSpecMirroringHealthCheck, default is Undefined, optional
+        health check
+    kind : str, default is Undefined, optional
+        Kind defines the kind of the Service.
+    maxBodySize : int, default is Undefined, optional
+        MaxBodySize defines the maximum size allowed for the body of the request.
+        If the body is larger, the request is not mirrored.
+        Default value is -1, which means unlimited size.
+    mirrorBody : bool, default is Undefined, optional
+        MirrorBody defines whether the body of the request should be mirrored.
+        Default value is true.
+    mirrors : [TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0], default is Undefined, optional
+        Mirrors defines the list of mirrors where Traefik will duplicate the traffic.
+    name : str, default is Undefined, required
+        Name defines the name of the referenced Kubernetes Service or TraefikService.
+        The differentiation between the two is specified in the Kind field.
+    namespace : str, default is Undefined, optional
+        Namespace defines the namespace of the referenced Kubernetes Service or TraefikService.
+    nativeLB : bool, default is Undefined, optional
+        NativeLB controls, when creating the load-balancer,
+        whether the LB's children are directly the pods IPs or if the only child is the Kubernetes Service clusterIP.
+        The Kubernetes Service itself does load-balance to the pods.
+        By default, NativeLB is false.
+    nodePortLB : bool, default is Undefined, optional
+        NodePortLB controls, when creating the load-balancer,
+        whether the LB's children are directly the nodes internal IPs using the nodePort when the service type is NodePort.
+        It allows services to be reachable when Traefik runs externally from the Kubernetes cluster but within the same network of the nodes.
+        By default, NodePortLB is false.
+    passHostHeader : bool, default is Undefined, optional
+        PassHostHeader defines whether the client Host header is forwarded to the upstream Kubernetes Service.
+        By default, passHostHeader is true.
+    passiveHealthCheck : TraefikIoV1alpha1TraefikServiceSpecMirroringPassiveHealthCheck, default is Undefined, optional
+        passive health check
+    port : int | str, default is Undefined, optional
+        Port defines the port of a Kubernetes Service.
+        This can be a reference to a named port.
+    responseForwarding : TraefikIoV1alpha1TraefikServiceSpecMirroringResponseForwarding, default is Undefined, optional
+        response forwarding
+    scheme : str, default is Undefined, optional
+        Scheme defines the scheme to use for the request to the upstream Kubernetes Service.
+        It defaults to https when Kubernetes Service port is 443, http otherwise.
+    serversTransport : str, default is Undefined, optional
+        ServersTransport defines the name of ServersTransport resource to use.
+        It allows to configure the transport between Traefik and your servers.
+        Can only be used on a Kubernetes Service.
+    sticky : TraefikIoV1alpha1TraefikServiceSpecMirroringSticky, default is Undefined, optional
+        sticky
+    strategy : str, default is Undefined, optional
+        Strategy defines the load balancing strategy between the servers.
+        Supported values are: wrr (Weighed round-robin), p2c (Power of two choices), hrw (Highest Random Weight), and leasttime (Least-Time).
+        RoundRobin value is deprecated and supported for backward compatibility.
+    weight : int, default is Undefined, optional
+        Weight defines the weight and should only be specified when Name references a TraefikService object
+        (and to be precise, one that embeds a Weighted Round Robin).
+    """
+
+
+    healthCheck?: TraefikIoV1alpha1TraefikServiceSpecMirroringHealthCheck
+
+    kind?: "Service" | "TraefikService"
+
+    maxBodySize?: int
+
+    mirrorBody?: bool
+
+    mirrors?: [TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0]
+
+    name: str
+
+    namespace?: str
+
+    nativeLB?: bool
+
+    nodePortLB?: bool
+
+    passHostHeader?: bool
+
+    passiveHealthCheck?: TraefikIoV1alpha1TraefikServiceSpecMirroringPassiveHealthCheck
+
+    port?: int | str
+
+    responseForwarding?: TraefikIoV1alpha1TraefikServiceSpecMirroringResponseForwarding
+
+    scheme?: str
+
+    serversTransport?: str
+
+    sticky?: TraefikIoV1alpha1TraefikServiceSpecMirroringSticky
+
+    strategy?: "wrr" | "p2c" | "hrw" | "leasttime" | "RoundRobin"
+
+    weight?: int
+
+
+    check:
+        weight >= 0 if weight not in [None, Undefined]
+
+
+schema TraefikIoV1alpha1TraefikServiceSpecMirroringHealthCheck:
+    r"""
+    Healthcheck defines health checks for ExternalName services.
+
+    Attributes
+    ----------
+    followRedirects : bool, default is Undefined, optional
+        FollowRedirects defines whether redirects should be followed during the health check calls.
+        Default: true
+    headers : {str:str}, default is Undefined, optional
+        Headers defines custom headers to be sent to the health check endpoint.
+    hostname : str, default is Undefined, optional
+        Hostname defines the value of hostname in the Host header of the health check request.
+    interval : int | str, default is Undefined, optional
+        Interval defines the frequency of the health check calls for healthy targets.
+        Default: 30s
+    method : str, default is Undefined, optional
+        Method defines the healthcheck method.
+    mode : str, default is Undefined, optional
+        Mode defines the health check mode.
+        If defined to grpc, will use the gRPC health check protocol to probe the server.
+        Default: http
+    path : str, default is Undefined, optional
+        Path defines the server URL path for the health check endpoint.
+    port : int, default is Undefined, optional
+        Port defines the server URL port for the health check endpoint.
+    scheme : str, default is Undefined, optional
+        Scheme replaces the server URL scheme for the health check endpoint.
+    status : int, default is Undefined, optional
+        Status defines the expected HTTP status code of the response to the health check request.
+    timeout : int | str, default is Undefined, optional
+        Timeout defines the maximum duration Traefik will wait for a health check request before considering the server unhealthy.
+        Default: 5s
+    unhealthyInterval : int | str, default is Undefined, optional
+        UnhealthyInterval defines the frequency of the health check calls for unhealthy targets.
+        When UnhealthyInterval is not defined, it defaults to the Interval value.
+        Default: 30s
+    """
+
+
+    followRedirects?: bool
+
+    headers?: {str:str}
+
+    hostname?: str
+
+    interval?: int | str
+
+    method?: str
+
+    mode?: str
+
+    path?: str
+
+    port?: int
+
+    scheme?: str
+
+    status?: int
+
+    timeout?: int | str
+
+    unhealthyInterval?: int | str
+
 
 schema TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0:
-    """
+    r"""
     MirrorService holds the mirror configuration.
 
     Attributes
@@ -230,6 +517,8 @@ schema TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0:
     passHostHeader : bool, default is Undefined, optional
         PassHostHeader defines whether the client Host header is forwarded to the upstream Kubernetes Service.
         By default, passHostHeader is true.
+    passiveHealthCheck : TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0PassiveHealthCheck, default is Undefined, optional
+        passive health check
     percent : int, default is Undefined, optional
         Percent defines the part of the traffic to mirror.
         Supported values: 0 to 100.
@@ -249,7 +538,8 @@ schema TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0:
         sticky
     strategy : str, default is Undefined, optional
         Strategy defines the load balancing strategy between the servers.
-        RoundRobin is the only supported value at the moment.
+        Supported values are: wrr (Weighed round-robin), p2c (Power of two choices), hrw (Highest Random Weight), and leasttime (Least-Time).
+        RoundRobin value is deprecated and supported for backward compatibility.
     weight : int, default is Undefined, optional
         Weight defines the weight and should only be specified when Name references a TraefikService object
         (and to be precise, one that embeds a Weighted Round Robin).
@@ -270,6 +560,8 @@ schema TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0:
 
     passHostHeader?: bool
 
+    passiveHealthCheck?: TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0PassiveHealthCheck
+
     percent?: int
 
     port?: int | str
@@ -282,13 +574,17 @@ schema TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0:
 
     sticky?: TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0Sticky
 
-    strategy?: str
+    strategy?: "wrr" | "p2c" | "hrw" | "leasttime" | "RoundRobin"
 
     weight?: int
 
 
+    check:
+        weight >= 0 if weight not in [None, Undefined]
+
+
 schema TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0HealthCheck:
-    """
+    r"""
     Healthcheck defines health checks for ExternalName services.
 
     Attributes
@@ -301,7 +597,7 @@ schema TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0HealthCheck:
     hostname : str, default is Undefined, optional
         Hostname defines the value of hostname in the Host header of the health check request.
     interval : int | str, default is Undefined, optional
-        Interval defines the frequency of the health check calls.
+        Interval defines the frequency of the health check calls for healthy targets.
         Default: 30s
     method : str, default is Undefined, optional
         Method defines the healthcheck method.
@@ -320,6 +616,10 @@ schema TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0HealthCheck:
     timeout : int | str, default is Undefined, optional
         Timeout defines the maximum duration Traefik will wait for a health check request before considering the server unhealthy.
         Default: 5s
+    unhealthyInterval : int | str, default is Undefined, optional
+        UnhealthyInterval defines the frequency of the health check calls for unhealthy targets.
+        When UnhealthyInterval is not defined, it defaults to the Interval value.
+        Default: 30s
     """
 
 
@@ -345,9 +645,29 @@ schema TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0HealthCheck:
 
     timeout?: int | str
 
+    unhealthyInterval?: int | str
+
+
+schema TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0PassiveHealthCheck:
+    r"""
+    PassiveHealthCheck defines passive health checks for ExternalName services.
+
+    Attributes
+    ----------
+    failureWindow : int | str, default is Undefined, optional
+        FailureWindow defines the time window during which the failed attempts must occur for the server to be marked as unhealthy. It also defines for how long the server will be considered unhealthy.
+    maxFailedAttempts : int, default is Undefined, optional
+        MaxFailedAttempts is the number of consecutive failed attempts allowed within the failure window before marking the server as unhealthy.
+    """
+
+
+    failureWindow?: int | str
+
+    maxFailedAttempts?: int
+
 
 schema TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0ResponseForwarding:
-    """
+    r"""
     ResponseForwarding defines how Traefik forwards the response from the upstream Kubernetes Service to the client.
 
     Attributes
@@ -365,9 +685,9 @@ schema TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0ResponseForwardi
 
 
 schema TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0Sticky:
-    """
+    r"""
     Sticky defines the sticky sessions configuration.
-    More info: https://doc.traefik.io/traefik/v3.0/routing/services/#sticky-sessions
+    More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/http/load-balancing/service/#sticky-sessions
 
     Attributes
     ----------
@@ -380,19 +700,26 @@ schema TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0Sticky:
 
 
 schema TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0StickyCookie:
-    """
+    r"""
     Cookie defines the sticky cookie configuration.
 
     Attributes
     ----------
+    domain : str, default is Undefined, optional
+        Domain defines the host to which the cookie will be sent.
+        More info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#domaindomain-value
     httpOnly : bool, default is Undefined, optional
         HTTPOnly defines whether the cookie can be accessed by client-side APIs, such as JavaScript.
     maxAge : int, default is Undefined, optional
-        MaxAge indicates the number of seconds until the cookie expires.
+        MaxAge defines the number of seconds until the cookie expires.
         When set to a negative number, the cookie expires immediately.
         When set to zero, the cookie never expires.
     name : str, default is Undefined, optional
         Name defines the Cookie name.
+    path : str, default is Undefined, optional
+        Path defines the path that must exist in the requested URL for the browser to send the Cookie header.
+        When not provided the cookie will be sent on every request to the domain.
+        More info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#pathpath-value
     sameSite : str, default is Undefined, optional
         SameSite defines the same site policy.
         More info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite
@@ -401,19 +728,41 @@ schema TraefikIoV1alpha1TraefikServiceSpecMirroringMirrorsItems0StickyCookie:
     """
 
 
+    domain?: str
+
     httpOnly?: bool
 
     maxAge?: int
 
     name?: str
 
-    sameSite?: str
+    path?: str
+
+    sameSite?: "none" | "lax" | "strict"
 
     secure?: bool
 
 
-schema TraefikIoV1alpha1TraefikServiceSpecMirroringResponseForwarding:
+schema TraefikIoV1alpha1TraefikServiceSpecMirroringPassiveHealthCheck:
+    r"""
+    PassiveHealthCheck defines passive health checks for ExternalName services.
+
+    Attributes
+    ----------
+    failureWindow : int | str, default is Undefined, optional
+        FailureWindow defines the time window during which the failed attempts must occur for the server to be marked as unhealthy. It also defines for how long the server will be considered unhealthy.
+    maxFailedAttempts : int, default is Undefined, optional
+        MaxFailedAttempts is the number of consecutive failed attempts allowed within the failure window before marking the server as unhealthy.
     """
+
+
+    failureWindow?: int | str
+
+    maxFailedAttempts?: int
+
+
+schema TraefikIoV1alpha1TraefikServiceSpecMirroringResponseForwarding:
+    r"""
     ResponseForwarding defines how Traefik forwards the response from the upstream Kubernetes Service to the client.
 
     Attributes
@@ -431,9 +780,9 @@ schema TraefikIoV1alpha1TraefikServiceSpecMirroringResponseForwarding:
 
 
 schema TraefikIoV1alpha1TraefikServiceSpecMirroringSticky:
-    """
+    r"""
     Sticky defines the sticky sessions configuration.
-    More info: https://doc.traefik.io/traefik/v3.0/routing/services/#sticky-sessions
+    More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/http/load-balancing/service/#sticky-sessions
 
     Attributes
     ----------
@@ -446,19 +795,26 @@ schema TraefikIoV1alpha1TraefikServiceSpecMirroringSticky:
 
 
 schema TraefikIoV1alpha1TraefikServiceSpecMirroringStickyCookie:
-    """
+    r"""
     Cookie defines the sticky cookie configuration.
 
     Attributes
     ----------
+    domain : str, default is Undefined, optional
+        Domain defines the host to which the cookie will be sent.
+        More info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#domaindomain-value
     httpOnly : bool, default is Undefined, optional
         HTTPOnly defines whether the cookie can be accessed by client-side APIs, such as JavaScript.
     maxAge : int, default is Undefined, optional
-        MaxAge indicates the number of seconds until the cookie expires.
+        MaxAge defines the number of seconds until the cookie expires.
         When set to a negative number, the cookie expires immediately.
         When set to zero, the cookie never expires.
     name : str, default is Undefined, optional
         Name defines the Cookie name.
+    path : str, default is Undefined, optional
+        Path defines the path that must exist in the requested URL for the browser to send the Cookie header.
+        When not provided the cookie will be sent on every request to the domain.
+        More info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#pathpath-value
     sameSite : str, default is Undefined, optional
         SameSite defines the same site policy.
         More info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite
@@ -467,19 +823,23 @@ schema TraefikIoV1alpha1TraefikServiceSpecMirroringStickyCookie:
     """
 
 
+    domain?: str
+
     httpOnly?: bool
 
     maxAge?: int
 
     name?: str
 
-    sameSite?: str
+    path?: str
+
+    sameSite?: "none" | "lax" | "strict"
 
     secure?: bool
 
 
 schema TraefikIoV1alpha1TraefikServiceSpecWeighted:
-    """
+    r"""
     Weighted defines the Weighted Round Robin configuration.
 
     Attributes
@@ -497,7 +857,7 @@ schema TraefikIoV1alpha1TraefikServiceSpecWeighted:
 
 
 schema TraefikIoV1alpha1TraefikServiceSpecWeightedServicesItems0:
-    """
+    r"""
     Service defines an upstream HTTP service to proxy traffic to.
 
     Attributes
@@ -524,6 +884,8 @@ schema TraefikIoV1alpha1TraefikServiceSpecWeightedServicesItems0:
     passHostHeader : bool, default is Undefined, optional
         PassHostHeader defines whether the client Host header is forwarded to the upstream Kubernetes Service.
         By default, passHostHeader is true.
+    passiveHealthCheck : TraefikIoV1alpha1TraefikServiceSpecWeightedServicesItems0PassiveHealthCheck, default is Undefined, optional
+        passive health check
     port : int | str, default is Undefined, optional
         Port defines the port of a Kubernetes Service.
         This can be a reference to a named port.
@@ -540,7 +902,8 @@ schema TraefikIoV1alpha1TraefikServiceSpecWeightedServicesItems0:
         sticky
     strategy : str, default is Undefined, optional
         Strategy defines the load balancing strategy between the servers.
-        RoundRobin is the only supported value at the moment.
+        Supported values are: wrr (Weighed round-robin), p2c (Power of two choices), hrw (Highest Random Weight), and leasttime (Least-Time).
+        RoundRobin value is deprecated and supported for backward compatibility.
     weight : int, default is Undefined, optional
         Weight defines the weight and should only be specified when Name references a TraefikService object
         (and to be precise, one that embeds a Weighted Round Robin).
@@ -561,6 +924,8 @@ schema TraefikIoV1alpha1TraefikServiceSpecWeightedServicesItems0:
 
     passHostHeader?: bool
 
+    passiveHealthCheck?: TraefikIoV1alpha1TraefikServiceSpecWeightedServicesItems0PassiveHealthCheck
+
     port?: int | str
 
     responseForwarding?: TraefikIoV1alpha1TraefikServiceSpecWeightedServicesItems0ResponseForwarding
@@ -571,13 +936,17 @@ schema TraefikIoV1alpha1TraefikServiceSpecWeightedServicesItems0:
 
     sticky?: TraefikIoV1alpha1TraefikServiceSpecWeightedServicesItems0Sticky
 
-    strategy?: str
+    strategy?: "wrr" | "p2c" | "hrw" | "leasttime" | "RoundRobin"
 
     weight?: int
 
 
+    check:
+        weight >= 0 if weight not in [None, Undefined]
+
+
 schema TraefikIoV1alpha1TraefikServiceSpecWeightedServicesItems0HealthCheck:
-    """
+    r"""
     Healthcheck defines health checks for ExternalName services.
 
     Attributes
@@ -590,7 +959,7 @@ schema TraefikIoV1alpha1TraefikServiceSpecWeightedServicesItems0HealthCheck:
     hostname : str, default is Undefined, optional
         Hostname defines the value of hostname in the Host header of the health check request.
     interval : int | str, default is Undefined, optional
-        Interval defines the frequency of the health check calls.
+        Interval defines the frequency of the health check calls for healthy targets.
         Default: 30s
     method : str, default is Undefined, optional
         Method defines the healthcheck method.
@@ -609,6 +978,10 @@ schema TraefikIoV1alpha1TraefikServiceSpecWeightedServicesItems0HealthCheck:
     timeout : int | str, default is Undefined, optional
         Timeout defines the maximum duration Traefik will wait for a health check request before considering the server unhealthy.
         Default: 5s
+    unhealthyInterval : int | str, default is Undefined, optional
+        UnhealthyInterval defines the frequency of the health check calls for unhealthy targets.
+        When UnhealthyInterval is not defined, it defaults to the Interval value.
+        Default: 30s
     """
 
 
@@ -634,9 +1007,29 @@ schema TraefikIoV1alpha1TraefikServiceSpecWeightedServicesItems0HealthCheck:
 
     timeout?: int | str
 
+    unhealthyInterval?: int | str
+
+
+schema TraefikIoV1alpha1TraefikServiceSpecWeightedServicesItems0PassiveHealthCheck:
+    r"""
+    PassiveHealthCheck defines passive health checks for ExternalName services.
+
+    Attributes
+    ----------
+    failureWindow : int | str, default is Undefined, optional
+        FailureWindow defines the time window during which the failed attempts must occur for the server to be marked as unhealthy. It also defines for how long the server will be considered unhealthy.
+    maxFailedAttempts : int, default is Undefined, optional
+        MaxFailedAttempts is the number of consecutive failed attempts allowed within the failure window before marking the server as unhealthy.
+    """
+
+
+    failureWindow?: int | str
+
+    maxFailedAttempts?: int
+
 
 schema TraefikIoV1alpha1TraefikServiceSpecWeightedServicesItems0ResponseForwarding:
-    """
+    r"""
     ResponseForwarding defines how Traefik forwards the response from the upstream Kubernetes Service to the client.
 
     Attributes
@@ -654,9 +1047,9 @@ schema TraefikIoV1alpha1TraefikServiceSpecWeightedServicesItems0ResponseForwardi
 
 
 schema TraefikIoV1alpha1TraefikServiceSpecWeightedServicesItems0Sticky:
-    """
+    r"""
     Sticky defines the sticky sessions configuration.
-    More info: https://doc.traefik.io/traefik/v3.0/routing/services/#sticky-sessions
+    More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/http/load-balancing/service/#sticky-sessions
 
     Attributes
     ----------
@@ -669,19 +1062,26 @@ schema TraefikIoV1alpha1TraefikServiceSpecWeightedServicesItems0Sticky:
 
 
 schema TraefikIoV1alpha1TraefikServiceSpecWeightedServicesItems0StickyCookie:
-    """
+    r"""
     Cookie defines the sticky cookie configuration.
 
     Attributes
     ----------
+    domain : str, default is Undefined, optional
+        Domain defines the host to which the cookie will be sent.
+        More info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#domaindomain-value
     httpOnly : bool, default is Undefined, optional
         HTTPOnly defines whether the cookie can be accessed by client-side APIs, such as JavaScript.
     maxAge : int, default is Undefined, optional
-        MaxAge indicates the number of seconds until the cookie expires.
+        MaxAge defines the number of seconds until the cookie expires.
         When set to a negative number, the cookie expires immediately.
         When set to zero, the cookie never expires.
     name : str, default is Undefined, optional
         Name defines the Cookie name.
+    path : str, default is Undefined, optional
+        Path defines the path that must exist in the requested URL for the browser to send the Cookie header.
+        When not provided the cookie will be sent on every request to the domain.
+        More info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#pathpath-value
     sameSite : str, default is Undefined, optional
         SameSite defines the same site policy.
         More info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite
@@ -690,21 +1090,25 @@ schema TraefikIoV1alpha1TraefikServiceSpecWeightedServicesItems0StickyCookie:
     """
 
 
+    domain?: str
+
     httpOnly?: bool
 
     maxAge?: int
 
     name?: str
 
-    sameSite?: str
+    path?: str
+
+    sameSite?: "none" | "lax" | "strict"
 
     secure?: bool
 
 
 schema TraefikIoV1alpha1TraefikServiceSpecWeightedSticky:
-    """
+    r"""
     Sticky defines whether sticky sessions are enabled.
-    More info: https://doc.traefik.io/traefik/v3.0/routing/providers/kubernetes-crd/#stickiness-and-load-balancing
+    More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/kubernetes/crd/http/traefikservice/#stickiness-and-load-balancing
 
     Attributes
     ----------
@@ -717,19 +1121,26 @@ schema TraefikIoV1alpha1TraefikServiceSpecWeightedSticky:
 
 
 schema TraefikIoV1alpha1TraefikServiceSpecWeightedStickyCookie:
-    """
+    r"""
     Cookie defines the sticky cookie configuration.
 
     Attributes
     ----------
+    domain : str, default is Undefined, optional
+        Domain defines the host to which the cookie will be sent.
+        More info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#domaindomain-value
     httpOnly : bool, default is Undefined, optional
         HTTPOnly defines whether the cookie can be accessed by client-side APIs, such as JavaScript.
     maxAge : int, default is Undefined, optional
-        MaxAge indicates the number of seconds until the cookie expires.
+        MaxAge defines the number of seconds until the cookie expires.
         When set to a negative number, the cookie expires immediately.
         When set to zero, the cookie never expires.
     name : str, default is Undefined, optional
         Name defines the Cookie name.
+    path : str, default is Undefined, optional
+        Path defines the path that must exist in the requested URL for the browser to send the Cookie header.
+        When not provided the cookie will be sent on every request to the domain.
+        More info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#pathpath-value
     sameSite : str, default is Undefined, optional
         SameSite defines the same site policy.
         More info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite
@@ -738,13 +1149,17 @@ schema TraefikIoV1alpha1TraefikServiceSpecWeightedStickyCookie:
     """
 
 
+    domain?: str
+
     httpOnly?: bool
 
     maxAge?: int
 
     name?: str
 
-    sameSite?: str
+    path?: str
+
+    sameSite?: "none" | "lax" | "strict"
 
     secure?: bool
 

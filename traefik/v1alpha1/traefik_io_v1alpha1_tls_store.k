@@ -6,11 +6,11 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema TLSStore:
-    """
+    r"""
     TLSStore is the CRD implementation of a Traefik TLS Store.
     For the time being, only the TLSStore named default is supported.
     This means that you cannot have two stores that are named default in different Kubernetes namespaces.
-    More info: https://doc.traefik.io/traefik/v3.0/https/tls/#certificates-stores
+    More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/http/tls/tls-certificates/#certificates-stores#certificates-stores
 
     Attributes
     ----------
@@ -35,7 +35,7 @@ schema TLSStore:
 
 
 schema TraefikIoV1alpha1TLSStoreSpec:
-    """
+    r"""
     TLSStoreSpec defines the desired state of a TLSStore.
 
     Attributes
@@ -57,7 +57,7 @@ schema TraefikIoV1alpha1TLSStoreSpec:
 
 
 schema TraefikIoV1alpha1TLSStoreSpecCertificatesItems0:
-    """
+    r"""
     Certificate holds a secret name for the TLSStore resource.
 
     Attributes
@@ -71,7 +71,7 @@ schema TraefikIoV1alpha1TLSStoreSpecCertificatesItems0:
 
 
 schema TraefikIoV1alpha1TLSStoreSpecDefaultCertificate:
-    """
+    r"""
     DefaultCertificate defines the default certificate configuration.
 
     Attributes
@@ -85,7 +85,7 @@ schema TraefikIoV1alpha1TLSStoreSpecDefaultCertificate:
 
 
 schema TraefikIoV1alpha1TLSStoreSpecDefaultGeneratedCert:
-    """
+    r"""
     DefaultGeneratedCert defines the default generated certificate configuration.
 
     Attributes
@@ -103,7 +103,7 @@ schema TraefikIoV1alpha1TLSStoreSpecDefaultGeneratedCert:
 
 
 schema TraefikIoV1alpha1TLSStoreSpecDefaultGeneratedCertDomain:
-    """
+    r"""
     Domain is the domain definition for the DefaultCertificate.
 
     Attributes

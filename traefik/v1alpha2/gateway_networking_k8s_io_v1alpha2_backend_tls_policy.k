@@ -4,11 +4,11 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
-regex_match = regex.match
+_regex_match = regex.match
 
 
 schema BackendTLSPolicy:
-    """
+    r"""
     BackendTLSPolicy provides a way to configure how a Gateway connects to a Backend via TLS.
 
     Attributes
@@ -38,7 +38,7 @@ schema BackendTLSPolicy:
 
 
 schema GatewayNetworkingK8sIoV1alpha2BackendTLSPolicySpec:
-    """
+    r"""
     Spec defines the desired state of BackendTLSPolicy.
 
     Attributes
@@ -56,7 +56,7 @@ schema GatewayNetworkingK8sIoV1alpha2BackendTLSPolicySpec:
 
 
 schema GatewayNetworkingK8sIoV1alpha2BackendTLSPolicySpecTLS:
-    """
+    r"""
     TLS contains backend TLS policy configuration.
 
     Attributes
@@ -87,14 +87,14 @@ schema GatewayNetworkingK8sIoV1alpha2BackendTLSPolicySpecTLS:
 
 
     check:
-        len(caCertRefs) <= 8
+        len(caCertRefs) <= 8 if caCertRefs
         len(hostname) <= 253
         len(hostname) >= 1
-        regex_match(str(hostname), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
+        _regex_match(str(hostname), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
 
 
 schema GatewayNetworkingK8sIoV1alpha2BackendTLSPolicySpecTLSCaCertRefsItems0:
-    """
+    r"""
     LocalObjectReference identifies an API object within the namespace of the referrer. The API object must be valid in the cluster; the Group and Kind must be registered in the cluster for this reference to be valid. 
      References to objects with invalid Group and Kind are not valid, and must be rejected by the implementation, with appropriate Conditions set on the containing object.
 
@@ -118,16 +118,16 @@ schema GatewayNetworkingK8sIoV1alpha2BackendTLSPolicySpecTLSCaCertRefsItems0:
 
     check:
         len(group) <= 253
-        regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
         len(kind) <= 63
         len(kind) >= 1
-        regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
         len(name) <= 253
         len(name) >= 1
 
 
 schema GatewayNetworkingK8sIoV1alpha2BackendTLSPolicySpecTargetRef:
-    """
+    r"""
     TargetRef identifies an API object to apply the policy to. Only Services have Extended support. Implementations MAY support additional objects, with Implementation Specific support. Note that this config applies to the entire referenced resource by default, but this default may change in the future to provide a more granular application of the policy. 
      Support: Extended for Kubernetes Service 
      Support: Implementation-specific for any other resource
@@ -162,22 +162,22 @@ schema GatewayNetworkingK8sIoV1alpha2BackendTLSPolicySpecTargetRef:
 
     check:
         len(group) <= 253
-        regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
         len(kind) <= 63
         len(kind) >= 1
-        regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63
-        len(namespace) >= 1
-        regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
-        len(sectionName) <= 253
-        len(sectionName) >= 1
-        regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
+        len(namespace) <= 63 if namespace
+        len(namespace) >= 1 if namespace
+        _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
+        len(sectionName) <= 253 if sectionName
+        len(sectionName) >= 1 if sectionName
+        _regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
 
 
 schema GatewayNetworkingK8sIoV1alpha2BackendTLSPolicyStatus:
-    """
+    r"""
     Status defines the current state of BackendTLSPolicy.
 
     Attributes
@@ -200,7 +200,7 @@ schema GatewayNetworkingK8sIoV1alpha2BackendTLSPolicyStatus:
 
 
 schema GatewayNetworkingK8sIoV1alpha2BackendTLSPolicyStatusAncestorsItems0:
-    """
+    r"""
     PolicyAncestorStatus describes the status of a route with respect to an associated Ancestor. 
      Ancestors refer to objects that are either the Target of a policy or above it in terms of object hierarchy. For example, if a policy targets a Service, the Policy's Ancestors are, in order, the Service, the HTTPRoute, the Gateway, and the GatewayClass. Almost always, in this hierarchy, the Gateway will be the most useful object to place Policy status on, so we recommend that implementations SHOULD use Gateway as the PolicyAncestorStatus object unless the designers have a _very_ good reason otherwise. 
      In the context of policy attachment, the Ancestor is used to distinguish which resource results in a distinct application of this policy. For example, if a policy targets a Service, it may have a distinct result per attached Gateway. 
@@ -231,15 +231,15 @@ schema GatewayNetworkingK8sIoV1alpha2BackendTLSPolicyStatusAncestorsItems0:
 
 
     check:
-        len(conditions) >= 1
-        len(conditions) <= 8
+        len(conditions) >= 1 if conditions
+        len(conditions) <= 8 if conditions
         len(controllerName) <= 253
         len(controllerName) >= 1
-        regex_match(str(controllerName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$")
+        _regex_match(str(controllerName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$")
 
 
 schema GatewayNetworkingK8sIoV1alpha2BackendTLSPolicyStatusAncestorsItems0AncestorRef:
-    """
+    r"""
     AncestorRef corresponds with a ParentRef in the spec that this PolicyAncestorStatus struct describes the status of.
 
     Attributes
@@ -292,25 +292,25 @@ schema GatewayNetworkingK8sIoV1alpha2BackendTLSPolicyStatusAncestorsItems0Ancest
 
 
     check:
-        len(group) <= 253
-        regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63
-        len(kind) >= 1
-        regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
+        len(group) <= 253 if group
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
+        len(kind) <= 63 if kind
+        len(kind) >= 1 if kind
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63
-        len(namespace) >= 1
-        regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
-        port <= 65535
-        port >= 1
-        len(sectionName) <= 253
-        len(sectionName) >= 1
-        regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
+        len(namespace) <= 63 if namespace
+        len(namespace) >= 1 if namespace
+        _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
+        port <= 65535 if port not in [None, Undefined]
+        port >= 1 if port not in [None, Undefined]
+        len(sectionName) <= 253 if sectionName
+        len(sectionName) >= 1 if sectionName
+        _regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
 
 
 schema GatewayNetworkingK8sIoV1alpha2BackendTLSPolicyStatusAncestorsItems0ConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, 
      type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"` 
      // other fields }
@@ -347,11 +347,11 @@ schema GatewayNetworkingK8sIoV1alpha2BackendTLSPolicyStatusAncestorsItems0Condit
 
     check:
         len(message) <= 32768
-        observedGeneration >= 0
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
         len(reason) <= 1024
         len(reason) >= 1
-        regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
+        _regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
         len($type) <= 316
-        regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+        _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
 
 
