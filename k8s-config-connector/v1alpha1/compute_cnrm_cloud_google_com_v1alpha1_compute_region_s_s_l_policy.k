@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeRegionSSLPolicy:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute region s s l policy
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeRegionSSLPolicy:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionSSLPolicySpec:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute region s s l policy spec
 
     Attributes
@@ -89,7 +89,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionSSLPolicySpec:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionSSLPolicySpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -111,7 +111,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionSSLPolicySpecProjectRef:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionSSLPolicyStatus:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute region s s l policy status
 
     Attributes
@@ -146,7 +146,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionSSLPolicyStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionSSLPolicyStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute region s s l policy status conditions items0
 
     Attributes

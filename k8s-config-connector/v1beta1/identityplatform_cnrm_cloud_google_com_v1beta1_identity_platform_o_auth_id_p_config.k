@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IdentityPlatformOAuthIDPConfig:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform o auth ID p config
 
     Attributes
@@ -36,7 +36,7 @@ schema IdentityPlatformOAuthIDPConfig:
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformOAuthIDPConfigSpec:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform o auth ID p config spec
 
     Attributes
@@ -74,7 +74,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformOAuthIDPConfigSp
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformOAuthIDPConfigSpecClientSecret:
-    """
+    r"""
     The client secret of the OAuth client, to enable OIDC code flow.
 
     Attributes
@@ -92,7 +92,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformOAuthIDPConfigSp
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformOAuthIDPConfigSpecClientSecretValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -106,7 +106,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformOAuthIDPConfigSp
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformOAuthIDPConfigSpecClientSecretValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -124,7 +124,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformOAuthIDPConfigSp
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformOAuthIDPConfigSpecResponseType:
-    """
+    r"""
     The multiple response type to request for in the OAuth authorization flow. This can possibly be a combination of set bits (e.g.: {id\_token, token}).
 
     Attributes
@@ -146,7 +146,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformOAuthIDPConfigSp
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformOAuthIDPConfigStatus:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform o auth ID p config status
 
     Attributes
@@ -164,7 +164,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformOAuthIDPConfigSt
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformOAuthIDPConfigStatusConditionsItems0:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform o auth ID p config status conditions items0
 
     Attributes

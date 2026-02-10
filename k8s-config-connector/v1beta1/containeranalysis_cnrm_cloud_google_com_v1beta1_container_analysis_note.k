@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ContainerAnalysisNote:
-    """
+    r"""
     containeranalysis cnrm cloud google com v1beta1 container analysis note
 
     Attributes
@@ -36,7 +36,7 @@ schema ContainerAnalysisNote:
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpec:
-    """
+    r"""
     containeranalysis cnrm cloud google com v1beta1 container analysis note spec
 
     Attributes
@@ -98,7 +98,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpec:
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecAttestation:
-    """
+    r"""
     A note describing an attestation role.
 
     Attributes
@@ -112,7 +112,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecAttest
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecAttestationHint:
-    """
+    r"""
     Hint hints at the purpose of the attestation authority.
 
     Attributes
@@ -126,7 +126,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecAttest
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecBuild:
-    """
+    r"""
     A note describing build provenance for a verifiable build.
 
     Attributes
@@ -140,7 +140,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecBuild:
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecDeployment:
-    """
+    r"""
     A note describing something that can be deployed.
 
     Attributes
@@ -154,7 +154,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecDeploy
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecDiscovery:
-    """
+    r"""
     A note describing the initial analysis of a resource.
 
     Attributes
@@ -168,7 +168,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecDiscov
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecImage:
-    """
+    r"""
     A note describing a base image.
 
     Attributes
@@ -186,7 +186,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecImage:
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecImageFingerprint:
-    """
+    r"""
     Required. Immutable. The fingerprint of the base image.
 
     Attributes
@@ -204,7 +204,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecImageF
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecPackage:
-    """
+    r"""
     Required for non-Windows OS. The package this Upgrade is for.
 
     Attributes
@@ -222,7 +222,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecPackag
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecPackageDistributionItems0:
-    """
+    r"""
     containeranalysis cnrm cloud google com v1beta1 container analysis note spec package distribution items0
 
     Attributes
@@ -256,7 +256,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecPackag
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecPackageDistributionItems0LatestVersion:
-    """
+    r"""
     The latest available version of this package in this distribution channel.
 
     Attributes
@@ -286,7 +286,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecPackag
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecRelatedNoteNamesItems0:
-    """
+    r"""
     containeranalysis cnrm cloud google com v1beta1 container analysis note spec related note names items0
 
     Attributes
@@ -308,7 +308,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecRelate
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecRelatedURLItems0:
-    """
+    r"""
     containeranalysis cnrm cloud google com v1beta1 container analysis note spec related URL items0
 
     Attributes
@@ -326,7 +326,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecRelate
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecVulnerability:
-    """
+    r"""
     A note describing a package vulnerability.
 
     Attributes
@@ -360,7 +360,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecVulner
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecVulnerabilityCvssV3:
-    """
+    r"""
     The full description of the CVSSv3 for this vulnerability.
 
     Attributes
@@ -414,7 +414,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecVulner
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecVulnerabilityDetailsItems0:
-    """
+    r"""
     containeranalysis cnrm cloud google com v1beta1 container analysis note spec vulnerability details items0
 
     Attributes
@@ -472,7 +472,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecVulner
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecVulnerabilityDetailsItems0AffectedVersionEnd:
-    """
+    r"""
     The version number at the end of an interval in which this vulnerability exists. A vulnerability can affect a package between version numbers that are disjoint sets of intervals (example: ) each of which will be represented in its own Detail. If a specific affected version is provided by a vulnerability database, affected_version_start and affected_version_end will be the same in that Detail.
 
     Attributes
@@ -502,7 +502,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecVulner
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecVulnerabilityDetailsItems0AffectedVersionStart:
-    """
+    r"""
     The version number at the start of an interval in which this vulnerability exists. A vulnerability can affect a package between version numbers that are disjoint sets of intervals (example: ) each of which will be represented in its own Detail. If a specific affected version is provided by a vulnerability database, affected_version_start and affected_version_end will be the same in that Detail.
 
     Attributes
@@ -532,7 +532,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecVulner
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecVulnerabilityDetailsItems0FixedVersion:
-    """
+    r"""
     The distro recommended version to update to that contains a fix for this vulnerability. Setting this to VersionKind.MAXIMUM means no such version is yet available.
 
     Attributes
@@ -562,7 +562,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecVulner
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecVulnerabilityWindowsDetailsItems0:
-    """
+    r"""
     containeranalysis cnrm cloud google com v1beta1 container analysis note spec vulnerability windows details items0
 
     Attributes
@@ -588,7 +588,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecVulner
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecVulnerabilityWindowsDetailsItems0FixingKbsItems0:
-    """
+    r"""
     containeranalysis cnrm cloud google com v1beta1 container analysis note spec vulnerability windows details items0 fixing kbs items0
 
     Attributes
@@ -606,7 +606,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteSpecVulner
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteStatus:
-    """
+    r"""
     containeranalysis cnrm cloud google com v1beta1 container analysis note status
 
     Attributes
@@ -636,7 +636,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteStatus:
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteStatusConditionsItems0:
-    """
+    r"""
     containeranalysis cnrm cloud google com v1beta1 container analysis note status conditions items0
 
     Attributes
@@ -666,7 +666,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteStatusCond
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteStatusImage:
-    """
+    r"""
     containeranalysis cnrm cloud google com v1beta1 container analysis note status image
 
     Attributes
@@ -680,7 +680,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteStatusImag
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1beta1ContainerAnalysisNoteStatusImageFingerprint:
-    """
+    r"""
     containeranalysis cnrm cloud google com v1beta1 container analysis note status image fingerprint
 
     Attributes

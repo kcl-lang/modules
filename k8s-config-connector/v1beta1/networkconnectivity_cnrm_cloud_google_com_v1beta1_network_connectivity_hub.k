@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema NetworkConnectivityHub:
-    """
+    r"""
     networkconnectivity cnrm cloud google com v1beta1 network connectivity hub
 
     Attributes
@@ -36,7 +36,7 @@ schema NetworkConnectivityHub:
 
 
 schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivityHubSpec:
-    """
+    r"""
     networkconnectivity cnrm cloud google com v1beta1 network connectivity hub spec
 
     Attributes
@@ -58,7 +58,7 @@ schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivityHubSpec:
 
 
 schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivityHubSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -82,7 +82,7 @@ schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivityHubSpecPro
 
 
 schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivityHubStatus:
-    """
+    r"""
     networkconnectivity cnrm cloud google com v1beta1 network connectivity hub status
 
     Attributes
@@ -120,7 +120,7 @@ schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivityHubStatus:
 
 
 schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivityHubStatusConditionsItems0:
-    """
+    r"""
     networkconnectivity cnrm cloud google com v1beta1 network connectivity hub status conditions items0
 
     Attributes
@@ -150,7 +150,7 @@ schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivityHubStatusC
 
 
 schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivityHubStatusRoutingVpcsItems0:
-    """
+    r"""
     networkconnectivity cnrm cloud google com v1beta1 network connectivity hub status routing vpcs items0
 
     Attributes

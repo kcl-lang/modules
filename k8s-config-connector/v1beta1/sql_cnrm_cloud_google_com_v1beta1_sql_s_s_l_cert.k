@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema SQLSSLCert:
-    """
+    r"""
     sql cnrm cloud google com v1beta1 SQL s s l cert
 
     Attributes
@@ -36,7 +36,7 @@ schema SQLSSLCert:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLSSLCertSpec:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL s s l cert spec
 
     Attributes
@@ -58,7 +58,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLSSLCertSpec:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLSSLCertSpecInstanceRef:
-    """
+    r"""
     The Cloud SQL instance.
 
     Attributes
@@ -80,7 +80,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLSSLCertSpecInstanceRef:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLSSLCertStatus:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL s s l cert status
 
     Attributes
@@ -126,7 +126,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLSSLCertStatus:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLSSLCertStatusConditionsItems0:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL s s l cert status conditions items0
 
     Attributes

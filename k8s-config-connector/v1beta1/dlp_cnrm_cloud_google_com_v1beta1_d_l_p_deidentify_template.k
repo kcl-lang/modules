@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DLPDeidentifyTemplate:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template
 
     Attributes
@@ -36,7 +36,7 @@ schema DLPDeidentifyTemplate:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpec:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec
 
     Attributes
@@ -74,7 +74,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpec:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfig:
-    """
+    r"""
     The core content of the template.
 
     Attributes
@@ -96,7 +96,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfig:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformations:
-    """
+    r"""
     Treat the dataset as free-form text and apply the same free text transformation everywhere.
 
     Attributes
@@ -110,7 +110,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config info type transformations transformations items0
 
     Attributes
@@ -128,7 +128,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0InfoTypesItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config info type transformations transformations items0 info types items0
 
     Attributes
@@ -142,7 +142,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformation:
-    """
+    r"""
     Required. Primitive transformation to apply to the infoType.
 
     Attributes
@@ -196,7 +196,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationBucketingConfig:
-    """
+    r"""
     Bucketing
 
     Attributes
@@ -210,7 +210,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config info type transformations transformations items0 primitive transformation bucketing config buckets items0
 
     Attributes
@@ -232,7 +232,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0Max:
-    """
+    r"""
     Upper bound of the range, exclusive; type must match min.
 
     Attributes
@@ -274,7 +274,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0MaxDateValue:
-    """
+    r"""
     date
 
     Attributes
@@ -296,7 +296,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0MaxTimeValue:
-    """
+    r"""
     time of day
 
     Attributes
@@ -322,7 +322,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0Min:
-    """
+    r"""
     Lower bound of the range, inclusive. Type should be the same as max if used.
 
     Attributes
@@ -364,7 +364,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0MinDateValue:
-    """
+    r"""
     date
 
     Attributes
@@ -386,7 +386,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0MinTimeValue:
-    """
+    r"""
     time of day
 
     Attributes
@@ -412,7 +412,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0ReplacementValue:
-    """
+    r"""
     Required. Replacement value for this bucket.
 
     Attributes
@@ -454,7 +454,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0ReplacementValueDateValue:
-    """
+    r"""
     date
 
     Attributes
@@ -476,7 +476,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0ReplacementValueTimeValue:
-    """
+    r"""
     time of day
 
     Attributes
@@ -502,7 +502,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCharacterMaskConfig:
-    """
+    r"""
     Mask
 
     Attributes
@@ -528,7 +528,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCharacterMaskConfigCharactersToIgnoreItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config info type transformations transformations items0 primitive transformation character mask config characters to ignore items0
 
     Attributes
@@ -546,7 +546,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoDeterministicConfig:
-    """
+    r"""
     Deterministic Crypto
 
     Attributes
@@ -568,7 +568,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoDeterministicConfigContext:
-    """
+    r"""
     A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context is set but: 1. there is no record present when transforming a given value or 2. the field is not present when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
 
     Attributes
@@ -582,7 +582,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoDeterministicConfigCryptoKey:
-    """
+    r"""
     The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
 
     Attributes
@@ -604,7 +604,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped:
-    """
+    r"""
     Key wrapped using Cloud KMS
 
     Attributes
@@ -622,7 +622,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedCryptoKeyRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config info type transformations transformations items0 primitive transformation crypto deterministic config crypto key kms wrapped crypto key ref
 
     Attributes
@@ -646,7 +646,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient:
-    """
+    r"""
     Transient crypto key
 
     Attributes
@@ -660,7 +660,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped:
-    """
+    r"""
     Unwrapped crypto key
 
     Attributes
@@ -674,7 +674,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType:
-    """
+    r"""
     The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate} For example, if the name of custom info type is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text. Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text. In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either - reverse a surrogate that does not correspond to an actual identifier - be unable to parse the surrogate and result in an error Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE.
 
     Attributes
@@ -688,7 +688,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoHashConfig:
-    """
+    r"""
     Crypto
 
     Attributes
@@ -702,7 +702,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoHashConfigCryptoKey:
-    """
+    r"""
     The key used by the hash function.
 
     Attributes
@@ -724,7 +724,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrapped:
-    """
+    r"""
     Key wrapped using Cloud KMS
 
     Attributes
@@ -742,7 +742,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedCryptoKeyRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config info type transformations transformations items0 primitive transformation crypto hash config crypto key kms wrapped crypto key ref
 
     Attributes
@@ -766,7 +766,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoHashConfigCryptoKeyTransient:
-    """
+    r"""
     Transient crypto key
 
     Attributes
@@ -780,7 +780,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoHashConfigCryptoKeyUnwrapped:
-    """
+    r"""
     Unwrapped crypto key
 
     Attributes
@@ -794,7 +794,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfig:
-    """
+    r"""
     Ffx-Fpe
 
     Attributes
@@ -828,7 +828,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfigContext:
-    """
+    r"""
     The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
 
     Attributes
@@ -842,7 +842,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey:
-    """
+    r"""
     Required. The key used by the encryption algorithm.
 
     Attributes
@@ -864,7 +864,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped:
-    """
+    r"""
     Key wrapped using Cloud KMS
 
     Attributes
@@ -882,7 +882,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedCryptoKeyRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config info type transformations transformations items0 primitive transformation crypto replace ffx fpe config crypto key kms wrapped crypto key ref
 
     Attributes
@@ -906,7 +906,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient:
-    """
+    r"""
     Transient crypto key
 
     Attributes
@@ -920,7 +920,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped:
-    """
+    r"""
     Unwrapped crypto key
 
     Attributes
@@ -934,7 +934,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType:
-    """
+    r"""
     The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
 
     Attributes
@@ -948,7 +948,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationDateShiftConfig:
-    """
+    r"""
     Date Shift
 
     Attributes
@@ -974,7 +974,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationDateShiftConfigContext:
-    """
+    r"""
     Points to the field that contains the context, for example, an entity id. If set, must also set cryptoKey. If set, shift will be consistent for the given context.
 
     Attributes
@@ -988,7 +988,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationDateShiftConfigCryptoKey:
-    """
+    r"""
     Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and crypto_key. If set, must also set context. Can only be applied to table items.
 
     Attributes
@@ -1010,7 +1010,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationDateShiftConfigCryptoKeyKmsWrapped:
-    """
+    r"""
     Key wrapped using Cloud KMS
 
     Attributes
@@ -1028,7 +1028,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedCryptoKeyRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config info type transformations transformations items0 primitive transformation date shift config crypto key kms wrapped crypto key ref
 
     Attributes
@@ -1052,7 +1052,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationDateShiftConfigCryptoKeyTransient:
-    """
+    r"""
     Transient crypto key
 
     Attributes
@@ -1066,7 +1066,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationDateShiftConfigCryptoKeyUnwrapped:
-    """
+    r"""
     Unwrapped crypto key
 
     Attributes
@@ -1080,7 +1080,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationFixedSizeBucketingConfig:
-    """
+    r"""
     Fixed size bucketing
 
     Attributes
@@ -1102,7 +1102,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationFixedSizeBucketingConfigLowerBound:
-    """
+    r"""
     Required. Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
 
     Attributes
@@ -1144,7 +1144,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValue:
-    """
+    r"""
     date
 
     Attributes
@@ -1166,7 +1166,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationFixedSizeBucketingConfigLowerBoundTimeValue:
-    """
+    r"""
     time of day
 
     Attributes
@@ -1192,7 +1192,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationFixedSizeBucketingConfigUpperBound:
-    """
+    r"""
     Required. Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
 
     Attributes
@@ -1234,7 +1234,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValue:
-    """
+    r"""
     date
 
     Attributes
@@ -1256,7 +1256,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValue:
-    """
+    r"""
     time of day
 
     Attributes
@@ -1282,7 +1282,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationReplaceConfig:
-    """
+    r"""
     Replace with a specified value.
 
     Attributes
@@ -1296,7 +1296,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationReplaceConfigNewValue:
-    """
+    r"""
     Value to replace it with.
 
     Attributes
@@ -1338,7 +1338,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationReplaceConfigNewValueDateValue:
-    """
+    r"""
     date
 
     Attributes
@@ -1360,7 +1360,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationReplaceConfigNewValueTimeValue:
-    """
+    r"""
     time of day
 
     Attributes
@@ -1386,7 +1386,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfoTypeTransformationsTransformationsItems0PrimitiveTransformationTimePartConfig:
-    """
+    r"""
     Time extraction
 
     Attributes
@@ -1400,7 +1400,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformations:
-    """
+    r"""
     Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
 
     Attributes
@@ -1418,7 +1418,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config record transformations field transformations items0
 
     Attributes
@@ -1444,7 +1444,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0Condition:
-    """
+    r"""
     Only apply the transformation if the condition evaluates to true for the given `RecordCondition`. The conditions are allowed to reference fields that are not used in the actual transformation. Example Use Cases: - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range. - Redact a field if the date of birth field is greater than 85.
 
     Attributes
@@ -1458,7 +1458,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0ConditionExpressions:
-    """
+    r"""
     An expression.
 
     Attributes
@@ -1476,7 +1476,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0ConditionExpressionsConditions:
-    """
+    r"""
     Conditions to apply to the expression.
 
     Attributes
@@ -1490,7 +1490,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0ConditionExpressionsConditionsConditionsItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config record transformations field transformations items0 condition expressions conditions conditions items0
 
     Attributes
@@ -1512,7 +1512,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0ConditionExpressionsConditionsConditionsItems0Field:
-    """
+    r"""
     Required. Field within the record this condition is evaluated against.
 
     Attributes
@@ -1526,7 +1526,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0ConditionExpressionsConditionsConditionsItems0Value:
-    """
+    r"""
     Value to compare against. [Mandatory, except for `EXISTS` tests.]
 
     Attributes
@@ -1568,7 +1568,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0ConditionExpressionsConditionsConditionsItems0ValueDateValue:
-    """
+    r"""
     date
 
     Attributes
@@ -1590,7 +1590,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0ConditionExpressionsConditionsConditionsItems0ValueTimeValue:
-    """
+    r"""
     time of day
 
     Attributes
@@ -1616,7 +1616,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0FieldsItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config record transformations field transformations items0 fields items0
 
     Attributes
@@ -1630,7 +1630,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformations:
-    """
+    r"""
     Treat the contents of the field as free text, and selectively transform content that matches an `InfoType`.
 
     Attributes
@@ -1644,7 +1644,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config record transformations field transformations items0 info type transformations transformations items0
 
     Attributes
@@ -1662,7 +1662,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0InfoTypesItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config record transformations field transformations items0 info type transformations transformations items0 info types items0
 
     Attributes
@@ -1676,7 +1676,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformation:
-    """
+    r"""
     Required. Primitive transformation to apply to the infoType.
 
     Attributes
@@ -1730,7 +1730,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationBucketingConfig:
-    """
+    r"""
     Bucketing
 
     Attributes
@@ -1744,7 +1744,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config record transformations field transformations items0 info type transformations transformations items0 primitive transformation bucketing config buckets items0
 
     Attributes
@@ -1766,7 +1766,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0Max:
-    """
+    r"""
     Upper bound of the range, exclusive; type must match min.
 
     Attributes
@@ -1808,7 +1808,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0MaxDateValue:
-    """
+    r"""
     date
 
     Attributes
@@ -1830,7 +1830,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0MaxTimeValue:
-    """
+    r"""
     time of day
 
     Attributes
@@ -1856,7 +1856,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0Min:
-    """
+    r"""
     Lower bound of the range, inclusive. Type should be the same as max if used.
 
     Attributes
@@ -1898,7 +1898,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0MinDateValue:
-    """
+    r"""
     date
 
     Attributes
@@ -1920,7 +1920,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0MinTimeValue:
-    """
+    r"""
     time of day
 
     Attributes
@@ -1946,7 +1946,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0ReplacementValue:
-    """
+    r"""
     Required. Replacement value for this bucket.
 
     Attributes
@@ -1988,7 +1988,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0ReplacementValueDateValue:
-    """
+    r"""
     date
 
     Attributes
@@ -2010,7 +2010,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0ReplacementValueTimeValue:
-    """
+    r"""
     time of day
 
     Attributes
@@ -2036,7 +2036,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCharacterMaskConfig:
-    """
+    r"""
     Mask
 
     Attributes
@@ -2062,7 +2062,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCharacterMaskConfigCharactersToIgnoreItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config record transformations field transformations items0 info type transformations transformations items0 primitive transformation character mask config characters to ignore items0
 
     Attributes
@@ -2080,7 +2080,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoDeterministicConfig:
-    """
+    r"""
     Deterministic Crypto
 
     Attributes
@@ -2102,7 +2102,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoDeterministicConfigContext:
-    """
+    r"""
     A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context is set but: 1. there is no record present when transforming a given value or 2. the field is not present when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
 
     Attributes
@@ -2116,7 +2116,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoDeterministicConfigCryptoKey:
-    """
+    r"""
     The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
 
     Attributes
@@ -2138,7 +2138,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped:
-    """
+    r"""
     Key wrapped using Cloud KMS
 
     Attributes
@@ -2156,7 +2156,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedCryptoKeyRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config record transformations field transformations items0 info type transformations transformations items0 primitive transformation crypto deterministic config crypto key kms wrapped crypto key ref
 
     Attributes
@@ -2180,7 +2180,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient:
-    """
+    r"""
     Transient crypto key
 
     Attributes
@@ -2194,7 +2194,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped:
-    """
+    r"""
     Unwrapped crypto key
 
     Attributes
@@ -2208,7 +2208,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType:
-    """
+    r"""
     The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate} For example, if the name of custom info type is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text. Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text. In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either - reverse a surrogate that does not correspond to an actual identifier - be unable to parse the surrogate and result in an error Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE.
 
     Attributes
@@ -2222,7 +2222,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoHashConfig:
-    """
+    r"""
     Crypto
 
     Attributes
@@ -2236,7 +2236,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoHashConfigCryptoKey:
-    """
+    r"""
     The key used by the hash function.
 
     Attributes
@@ -2258,7 +2258,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrapped:
-    """
+    r"""
     Key wrapped using Cloud KMS
 
     Attributes
@@ -2276,7 +2276,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedCryptoKeyRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config record transformations field transformations items0 info type transformations transformations items0 primitive transformation crypto hash config crypto key kms wrapped crypto key ref
 
     Attributes
@@ -2300,7 +2300,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoHashConfigCryptoKeyTransient:
-    """
+    r"""
     Transient crypto key
 
     Attributes
@@ -2314,7 +2314,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoHashConfigCryptoKeyUnwrapped:
-    """
+    r"""
     Unwrapped crypto key
 
     Attributes
@@ -2328,7 +2328,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfig:
-    """
+    r"""
     Ffx-Fpe
 
     Attributes
@@ -2362,7 +2362,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfigContext:
-    """
+    r"""
     The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
 
     Attributes
@@ -2376,7 +2376,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey:
-    """
+    r"""
     Required. The key used by the encryption algorithm.
 
     Attributes
@@ -2398,7 +2398,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped:
-    """
+    r"""
     Key wrapped using Cloud KMS
 
     Attributes
@@ -2416,7 +2416,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedCryptoKeyRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config record transformations field transformations items0 info type transformations transformations items0 primitive transformation crypto replace ffx fpe config crypto key kms wrapped crypto key ref
 
     Attributes
@@ -2440,7 +2440,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient:
-    """
+    r"""
     Transient crypto key
 
     Attributes
@@ -2454,7 +2454,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped:
-    """
+    r"""
     Unwrapped crypto key
 
     Attributes
@@ -2468,7 +2468,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType:
-    """
+    r"""
     The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
 
     Attributes
@@ -2482,7 +2482,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationDateShiftConfig:
-    """
+    r"""
     Date Shift
 
     Attributes
@@ -2508,7 +2508,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationDateShiftConfigContext:
-    """
+    r"""
     Points to the field that contains the context, for example, an entity id. If set, must also set cryptoKey. If set, shift will be consistent for the given context.
 
     Attributes
@@ -2522,7 +2522,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationDateShiftConfigCryptoKey:
-    """
+    r"""
     Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and crypto_key. If set, must also set context. Can only be applied to table items.
 
     Attributes
@@ -2544,7 +2544,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationDateShiftConfigCryptoKeyKmsWrapped:
-    """
+    r"""
     Key wrapped using Cloud KMS
 
     Attributes
@@ -2562,7 +2562,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedCryptoKeyRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config record transformations field transformations items0 info type transformations transformations items0 primitive transformation date shift config crypto key kms wrapped crypto key ref
 
     Attributes
@@ -2586,7 +2586,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationDateShiftConfigCryptoKeyTransient:
-    """
+    r"""
     Transient crypto key
 
     Attributes
@@ -2600,7 +2600,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationDateShiftConfigCryptoKeyUnwrapped:
-    """
+    r"""
     Unwrapped crypto key
 
     Attributes
@@ -2614,7 +2614,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationFixedSizeBucketingConfig:
-    """
+    r"""
     Fixed size bucketing
 
     Attributes
@@ -2636,7 +2636,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationFixedSizeBucketingConfigLowerBound:
-    """
+    r"""
     Required. Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
 
     Attributes
@@ -2678,7 +2678,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValue:
-    """
+    r"""
     date
 
     Attributes
@@ -2700,7 +2700,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationFixedSizeBucketingConfigLowerBoundTimeValue:
-    """
+    r"""
     time of day
 
     Attributes
@@ -2726,7 +2726,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationFixedSizeBucketingConfigUpperBound:
-    """
+    r"""
     Required. Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
 
     Attributes
@@ -2768,7 +2768,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValue:
-    """
+    r"""
     date
 
     Attributes
@@ -2790,7 +2790,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValue:
-    """
+    r"""
     time of day
 
     Attributes
@@ -2816,7 +2816,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationReplaceConfig:
-    """
+    r"""
     Replace with a specified value.
 
     Attributes
@@ -2830,7 +2830,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationReplaceConfigNewValue:
-    """
+    r"""
     Value to replace it with.
 
     Attributes
@@ -2872,7 +2872,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationReplaceConfigNewValueDateValue:
-    """
+    r"""
     date
 
     Attributes
@@ -2894,7 +2894,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationReplaceConfigNewValueTimeValue:
-    """
+    r"""
     time of day
 
     Attributes
@@ -2920,7 +2920,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0InfoTypeTransformationsTransformationsItems0PrimitiveTransformationTimePartConfig:
-    """
+    r"""
     Time extraction
 
     Attributes
@@ -2934,7 +2934,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformation:
-    """
+    r"""
     Apply the transformation to the entire field.
 
     Attributes
@@ -2988,7 +2988,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationBucketingConfig:
-    """
+    r"""
     Bucketing
 
     Attributes
@@ -3002,7 +3002,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config record transformations field transformations items0 primitive transformation bucketing config buckets items0
 
     Attributes
@@ -3024,7 +3024,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0Max:
-    """
+    r"""
     Upper bound of the range, exclusive; type must match min.
 
     Attributes
@@ -3066,7 +3066,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0MaxDateValue:
-    """
+    r"""
     date
 
     Attributes
@@ -3088,7 +3088,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0MaxTimeValue:
-    """
+    r"""
     time of day
 
     Attributes
@@ -3114,7 +3114,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0Min:
-    """
+    r"""
     Lower bound of the range, inclusive. Type should be the same as max if used.
 
     Attributes
@@ -3156,7 +3156,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0MinDateValue:
-    """
+    r"""
     date
 
     Attributes
@@ -3178,7 +3178,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0MinTimeValue:
-    """
+    r"""
     time of day
 
     Attributes
@@ -3204,7 +3204,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0ReplacementValue:
-    """
+    r"""
     Required. Replacement value for this bucket.
 
     Attributes
@@ -3246,7 +3246,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0ReplacementValueDateValue:
-    """
+    r"""
     date
 
     Attributes
@@ -3268,7 +3268,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationBucketingConfigBucketsItems0ReplacementValueTimeValue:
-    """
+    r"""
     time of day
 
     Attributes
@@ -3294,7 +3294,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCharacterMaskConfig:
-    """
+    r"""
     Mask
 
     Attributes
@@ -3320,7 +3320,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCharacterMaskConfigCharactersToIgnoreItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config record transformations field transformations items0 primitive transformation character mask config characters to ignore items0
 
     Attributes
@@ -3338,7 +3338,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCryptoDeterministicConfig:
-    """
+    r"""
     Deterministic Crypto
 
     Attributes
@@ -3360,7 +3360,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCryptoDeterministicConfigContext:
-    """
+    r"""
     A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context is set but: 1. there is no record present when transforming a given value or 2. the field is not present when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
 
     Attributes
@@ -3374,7 +3374,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCryptoDeterministicConfigCryptoKey:
-    """
+    r"""
     The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
 
     Attributes
@@ -3396,7 +3396,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped:
-    """
+    r"""
     Key wrapped using Cloud KMS
 
     Attributes
@@ -3414,7 +3414,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedCryptoKeyRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config record transformations field transformations items0 primitive transformation crypto deterministic config crypto key kms wrapped crypto key ref
 
     Attributes
@@ -3438,7 +3438,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient:
-    """
+    r"""
     Transient crypto key
 
     Attributes
@@ -3452,7 +3452,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped:
-    """
+    r"""
     Unwrapped crypto key
 
     Attributes
@@ -3466,7 +3466,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType:
-    """
+    r"""
     The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate} For example, if the name of custom info type is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text. Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text. In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either - reverse a surrogate that does not correspond to an actual identifier - be unable to parse the surrogate and result in an error Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE.
 
     Attributes
@@ -3480,7 +3480,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCryptoHashConfig:
-    """
+    r"""
     Crypto
 
     Attributes
@@ -3494,7 +3494,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCryptoHashConfigCryptoKey:
-    """
+    r"""
     The key used by the hash function.
 
     Attributes
@@ -3516,7 +3516,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrapped:
-    """
+    r"""
     Key wrapped using Cloud KMS
 
     Attributes
@@ -3534,7 +3534,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedCryptoKeyRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config record transformations field transformations items0 primitive transformation crypto hash config crypto key kms wrapped crypto key ref
 
     Attributes
@@ -3558,7 +3558,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCryptoHashConfigCryptoKeyTransient:
-    """
+    r"""
     Transient crypto key
 
     Attributes
@@ -3572,7 +3572,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCryptoHashConfigCryptoKeyUnwrapped:
-    """
+    r"""
     Unwrapped crypto key
 
     Attributes
@@ -3586,7 +3586,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfig:
-    """
+    r"""
     Ffx-Fpe
 
     Attributes
@@ -3620,7 +3620,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfigContext:
-    """
+    r"""
     The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
 
     Attributes
@@ -3634,7 +3634,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey:
-    """
+    r"""
     Required. The key used by the encryption algorithm.
 
     Attributes
@@ -3656,7 +3656,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped:
-    """
+    r"""
     Key wrapped using Cloud KMS
 
     Attributes
@@ -3674,7 +3674,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedCryptoKeyRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config record transformations field transformations items0 primitive transformation crypto replace ffx fpe config crypto key kms wrapped crypto key ref
 
     Attributes
@@ -3698,7 +3698,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient:
-    """
+    r"""
     Transient crypto key
 
     Attributes
@@ -3712,7 +3712,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped:
-    """
+    r"""
     Unwrapped crypto key
 
     Attributes
@@ -3726,7 +3726,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType:
-    """
+    r"""
     The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
 
     Attributes
@@ -3740,7 +3740,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationDateShiftConfig:
-    """
+    r"""
     Date Shift
 
     Attributes
@@ -3766,7 +3766,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationDateShiftConfigContext:
-    """
+    r"""
     Points to the field that contains the context, for example, an entity id. If set, must also set cryptoKey. If set, shift will be consistent for the given context.
 
     Attributes
@@ -3780,7 +3780,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationDateShiftConfigCryptoKey:
-    """
+    r"""
     Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and crypto_key. If set, must also set context. Can only be applied to table items.
 
     Attributes
@@ -3802,7 +3802,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationDateShiftConfigCryptoKeyKmsWrapped:
-    """
+    r"""
     Key wrapped using Cloud KMS
 
     Attributes
@@ -3820,7 +3820,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedCryptoKeyRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config record transformations field transformations items0 primitive transformation date shift config crypto key kms wrapped crypto key ref
 
     Attributes
@@ -3844,7 +3844,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationDateShiftConfigCryptoKeyTransient:
-    """
+    r"""
     Transient crypto key
 
     Attributes
@@ -3858,7 +3858,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationDateShiftConfigCryptoKeyUnwrapped:
-    """
+    r"""
     Unwrapped crypto key
 
     Attributes
@@ -3872,7 +3872,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationFixedSizeBucketingConfig:
-    """
+    r"""
     Fixed size bucketing
 
     Attributes
@@ -3894,7 +3894,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationFixedSizeBucketingConfigLowerBound:
-    """
+    r"""
     Required. Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
 
     Attributes
@@ -3936,7 +3936,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValue:
-    """
+    r"""
     date
 
     Attributes
@@ -3958,7 +3958,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationFixedSizeBucketingConfigLowerBoundTimeValue:
-    """
+    r"""
     time of day
 
     Attributes
@@ -3984,7 +3984,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationFixedSizeBucketingConfigUpperBound:
-    """
+    r"""
     Required. Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
 
     Attributes
@@ -4026,7 +4026,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValue:
-    """
+    r"""
     date
 
     Attributes
@@ -4048,7 +4048,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValue:
-    """
+    r"""
     time of day
 
     Attributes
@@ -4074,7 +4074,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationReplaceConfig:
-    """
+    r"""
     Replace with a specified value.
 
     Attributes
@@ -4088,7 +4088,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationReplaceConfigNewValue:
-    """
+    r"""
     Value to replace it with.
 
     Attributes
@@ -4130,7 +4130,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationReplaceConfigNewValueDateValue:
-    """
+    r"""
     date
 
     Attributes
@@ -4152,7 +4152,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationReplaceConfigNewValueTimeValue:
-    """
+    r"""
     time of day
 
     Attributes
@@ -4178,7 +4178,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsFieldTransformationsItems0PrimitiveTransformationTimePartConfig:
-    """
+    r"""
     Time extraction
 
     Attributes
@@ -4192,7 +4192,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsRecordSuppressionsItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config record transformations record suppressions items0
 
     Attributes
@@ -4206,7 +4206,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsRecordSuppressionsItems0Condition:
-    """
+    r"""
     A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
 
     Attributes
@@ -4220,7 +4220,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsRecordSuppressionsItems0ConditionExpressions:
-    """
+    r"""
     An expression.
 
     Attributes
@@ -4238,7 +4238,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsRecordSuppressionsItems0ConditionExpressionsConditions:
-    """
+    r"""
     Conditions to apply to the expression.
 
     Attributes
@@ -4252,7 +4252,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsRecordSuppressionsItems0ConditionExpressionsConditionsConditionsItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template spec deidentify config record transformations record suppressions items0 condition expressions conditions conditions items0
 
     Attributes
@@ -4274,7 +4274,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsRecordSuppressionsItems0ConditionExpressionsConditionsConditionsItems0Field:
-    """
+    r"""
     Required. Field within the record this condition is evaluated against.
 
     Attributes
@@ -4288,7 +4288,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsRecordSuppressionsItems0ConditionExpressionsConditionsConditionsItems0Value:
-    """
+    r"""
     Value to compare against. [Mandatory, except for `EXISTS` tests.]
 
     Attributes
@@ -4330,7 +4330,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsRecordSuppressionsItems0ConditionExpressionsConditionsConditionsItems0ValueDateValue:
-    """
+    r"""
     date
 
     Attributes
@@ -4352,7 +4352,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigRecordTransformationsRecordSuppressionsItems0ConditionExpressionsConditionsConditionsItems0ValueTimeValue:
-    """
+    r"""
     time of day
 
     Attributes
@@ -4378,7 +4378,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigReco
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigTransformationErrorHandling:
-    """
+    r"""
     Mode for handling transformation errors. If left unspecified, the default mode is `TransformationErrorHandling.ThrowError`.
 
     Attributes
@@ -4396,7 +4396,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecDeidentifyConfigTran
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecOrganizationRef:
-    """
+    r"""
     Immutable. The Organization that this resource belongs to. Only one of [organizationRef, projectRef] may be specified.
 
     Attributes
@@ -4419,7 +4419,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecOrganizationRef:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to. Only one of [organizationRef, projectRef] may be specified.
 
     Attributes
@@ -4441,7 +4441,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateSpecProjectRef:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateStatus:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template status
 
     Attributes
@@ -4471,7 +4471,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateStatus:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPDeidentifyTemplateStatusConditionsItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p deidentify template status conditions items0
 
     Attributes

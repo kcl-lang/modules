@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeRouterPeer:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router peer
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeRouterPeer:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterPeerSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router peer spec
 
     Attributes
@@ -144,7 +144,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterPeerSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterPeerSpecAdvertisedIPRangesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router peer spec advertised IP ranges items0
 
     Attributes
@@ -163,7 +163,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterPeerSpecAdvertisedIPRangesIt
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterPeerSpecBfd:
-    """
+    r"""
     BFD configuration for the BGP peering.
 
     Attributes
@@ -203,7 +203,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterPeerSpecBfd:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterPeerSpecIPAddress:
-    """
+    r"""
     IP address of the interface inside Google Cloud Platform.
     Only IPv4 is supported.
 
@@ -218,7 +218,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterPeerSpecIPAddress:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterPeerSpecRouterApplianceInstanceRef:
-    """
+    r"""
     The URI of the VM instance that is used as third-party router
     appliances such as Next Gen Firewalls, Virtual Routers, or Router
     Appliances. The VM instance must be located in zones contained in
@@ -244,7 +244,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterPeerSpecRouterApplianceInsta
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterPeerSpecRouterInterfaceRef:
-    """
+    r"""
     The interface the BGP peer is associated with.
 
     Attributes
@@ -266,7 +266,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterPeerSpecRouterInterfaceRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterPeerSpecRouterRef:
-    """
+    r"""
     The Cloud Router in which this BGP peer will be configured.
 
     Attributes
@@ -288,7 +288,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterPeerSpecRouterRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterPeerStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router peer status
 
     Attributes
@@ -319,7 +319,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterPeerStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterPeerStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router peer status conditions items0
 
     Attributes

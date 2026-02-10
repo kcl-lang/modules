@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BigQueryDataset:
-    """
-    bigquery cnrm cloud google com v1beta1 big query dataset
+    r"""
+    BigQueryDataset is the Schema for the BigQueryDataset API
 
     Attributes
     ----------
@@ -36,89 +36,56 @@ schema BigQueryDataset:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpec:
-    """
-    bigquery cnrm cloud google com v1beta1 big query dataset spec
+    r"""
+    BigQueryDatasetSpec defines the desired state of BigQueryDataset
 
     Attributes
     ----------
     access : [BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecAccessItems0], default is Undefined, optional
         An array of objects that define dataset access for one or more entities.
     defaultCollation : str, default is Undefined, optional
-        Defines the default collation specification of future tables created
-        in the dataset. If a table is created in this dataset without table-level
-        default collation, then the table inherits the dataset default collation,
-        which is applied to the string fields that do not have explicit collation
-        specified. A change to this field affects only tables created afterwards,
-        and does not alter the existing tables.
+        Optional. Defines the default collation specification of future tables
+         created in the dataset. If a table is created in this dataset without
+         table-level default collation, then the table inherits the dataset default
+         collation, which is applied to the string fields that do not have explicit
+         collation specified. A change to this field affects only tables created
+         afterwards, and does not alter the existing tables.
+         The following values are supported:
 
-        The following values are supported:
-        - 'und:ci': undetermined locale, case insensitive.
-        - '': empty string. Default to case-sensitive behavior.
+         * 'und:ci': undetermined locale, case-insensitive.
+         * '': empty string. Default to case-sensitive behavior.
     defaultEncryptionConfiguration : BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecDefaultEncryptionConfiguration, default is Undefined, optional
         default encryption configuration
     defaultPartitionExpirationMs : int, default is Undefined, optional
-        The default partition expiration for all partitioned tables in
-        the dataset, in milliseconds.
+        This default partition expiration, expressed in milliseconds.
 
+         When new time-partitioned tables are created in a dataset where this
+         property is set, the table will inherit this value, propagated as the
+         `TimePartitioning.expirationMs` property on the new table.  If you set
+         `TimePartitioning.expirationMs` explicitly when creating a table,
+         the `defaultPartitionExpirationMs` of the containing dataset is ignored.
 
-        Once this property is set, all newly-created partitioned tables in
-        the dataset will have an 'expirationMs' property in the 'timePartitioning'
-        settings set to this value, and changing the value will only
-        affect new tables, not existing ones. The storage in a partition will
-        have an expiration time of its partition time plus this value.
-        Setting this property overrides the use of 'defaultTableExpirationMs'
-        for partitioned tables: only one of 'defaultTableExpirationMs' and
-        'defaultPartitionExpirationMs' will be used for any new partitioned
-        table. If you provide an explicit 'timePartitioning.expirationMs' when
-        creating or updating a partitioned table, that value takes precedence
-        over the default partition expiration time indicated by this property.
+         When creating a partitioned table, if `defaultPartitionExpirationMs`
+         is set, the `defaultTableExpirationMs` value is ignored and the table
+         will not be inherit a table expiration deadline.
     defaultTableExpirationMs : int, default is Undefined, optional
-        The default lifetime of all tables in the dataset, in milliseconds.
-        The minimum value is 3600000 milliseconds (one hour).
-
-
-        Once this property is set, all newly-created tables in the dataset
-        will have an 'expirationTime' property set to the creation time plus
-        the value in this property, and changing the value will only affect
-        new tables, not existing ones. When the 'expirationTime' for a given
-        table is reached, that table will be deleted automatically.
-        If a table's 'expirationTime' is modified or removed before the
-        table expires, or if you provide an explicit 'expirationTime' when
-        creating a table, that value takes precedence over the default
-        expiration time indicated by this property.
+        Optional. The default lifetime of all tables in the dataset, in milliseconds. The minimum lifetime value is 3600000 milliseconds (one hour). To clear an existing default expiration with a PATCH request, set to 0. Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
     description : str, default is Undefined, optional
-        A user-friendly description of the dataset.
+        Optional. A user-friendly description of the dataset.
     friendlyName : str, default is Undefined, optional
-        A descriptive name for the dataset.
+        Optional. A descriptive name for the dataset.
     isCaseInsensitive : bool, default is Undefined, optional
-        TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
-        By default, this is FALSE, which means the dataset and its table names are
-        case-sensitive. This field does not affect routine references.
+        Optional. TRUE if the dataset and its table names are case-insensitive, otherwise FALSE. By default, this is FALSE, which means the dataset and its table names are case-sensitive. This field does not affect routine references.
     location : str, default is Undefined, optional
-        Immutable. The geographic location where the dataset should reside.
-        See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
-
-
-        There are two types of locations, regional or multi-regional. A regional
-        location is a specific geographic place, such as Tokyo, and a multi-regional
-        location is a large geographic area, such as the United States, that
-        contains at least two geographic places.
-
-
-        The default value is multi-regional location 'US'.
-        Changing this forces a new resource to be created.
+        Optional. The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations.
     maxTimeTravelHours : str, default is Undefined, optional
-        Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
+        Optional. Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days). The default value is 168 hours if this is not set.
     projectRef : BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecProjectRef, default is Undefined, optional
         project ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The datasetId of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The BigQueryDataset name. If not given, the metadata.name will be used.
     storageBillingModel : str, default is Undefined, optional
-        Specifies the storage billing model for the dataset.
-        Set this flag value to LOGICAL to use logical bytes for storage billing,
-        or to PHYSICAL to use physical bytes instead.
-
-        LOGICAL is the default if this flag isn't specified.
+        Optional. Updates storage_billing_model for the dataset.
     """
 
 
@@ -150,7 +117,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpec:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecAccessItems0:
-    """
+    r"""
     bigquery cnrm cloud google com v1beta1 big query dataset spec access items0
 
     Attributes
@@ -158,35 +125,36 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecAccessItems0:
     dataset : BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecAccessItems0Dataset, default is Undefined, optional
         dataset
     domain : str, default is Undefined, optional
-        A domain to grant access to. Any users signed in with the
-        domain specified will be granted the specified access.
+        [Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted the specified access. Example: "example.com". Maps to IAM policy member "domain:DOMAIN".
     groupByEmail : str, default is Undefined, optional
-        An email address of a Google Group to grant access to.
+        [Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member "group:GROUP".
+    iamMember : str, default is Undefined, optional
+        [Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group.
     role : str, default is Undefined, optional
-        Describes the rights granted to the user specified by the other
-        member of the access object. Basic, predefined, and custom roles
-        are supported. Predefined roles that have equivalent basic roles
-        are swapped by the API to their basic counterparts. See
-        [official docs](https://cloud.google.com/bigquery/docs/access-control).
+        An IAM role ID that should be granted to the user, group,
+         or domain specified in this access entry.
+         The following legacy mappings will be applied:
+
+         * `OWNER`: `roles/bigquery.dataOwner`
+         * `WRITER`: `roles/bigquery.dataEditor`
+         * `READER`: `roles/bigquery.dataViewer`
+
+         This field will accept any of the above formats, but will return only
+         the legacy format. For example, if you set this field to
+         "roles/bigquery.dataOwner", it will be returned back as "OWNER".
     routine : BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecAccessItems0Routine, default is Undefined, optional
         routine
     specialGroup : str, default is Undefined, optional
-        A special group to grant access to. Possible values include:
+        [Pick one] A special group to grant access to. Possible values include:
 
+           * projectOwners: Owners of the enclosing project.
+           * projectReaders: Readers of the enclosing project.
+           * projectWriters: Writers of the enclosing project.
+           * allAuthenticatedUsers: All authenticated BigQuery users.
 
-        * 'projectOwners': Owners of the enclosing project.
-
-
-        * 'projectReaders': Readers of the enclosing project.
-
-
-        * 'projectWriters': Writers of the enclosing project.
-
-
-        * 'allAuthenticatedUsers': All authenticated BigQuery users.
+         Maps to similarly-named IAM members.
     userByEmail : str, default is Undefined, optional
-        An email address of a user to grant access to. For example:
-        fred@example.com.
+        [Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps to IAM policy member "user:EMAIL" or "serviceAccount:EMAIL".
     view : BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecAccessItems0View, default is Undefined, optional
         view
     """
@@ -197,6 +165,8 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecAccessItems0:
     domain?: str
 
     groupByEmail?: str
+
+    iamMember?: str
 
     role?: str
 
@@ -210,16 +180,15 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecAccessItems0:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecAccessItems0Dataset:
-    """
-    Grants all resources of particular types in a particular dataset read access to the current dataset.
+    r"""
+    [Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this dataset. Only views are supported for now. The role field is not required when this field is set. If that dataset is deleted and re-created, its access needs to be granted again via an update operation.
 
     Attributes
     ----------
     dataset : BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecAccessItems0DatasetDataset, default is Undefined, required
         dataset
     targetTypes : [str], default is Undefined, required
-        Which resources in the dataset this entry applies to. Currently, only views are supported,
-        but additional target types may be added in the future. Possible values: VIEWS.
+        Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future.
     """
 
 
@@ -229,15 +198,15 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecAccessItems0Dataset:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecAccessItems0DatasetDataset:
-    """
+    r"""
     The dataset this entry applies to.
 
     Attributes
     ----------
     datasetId : str, default is Undefined, required
-        The ID of the dataset containing this table.
+        A unique Id for this dataset, without the project name. The Id must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
     projectId : str, default is Undefined, required
-        The ID of the project containing this table.
+        The ID of the project containing this dataset.
     """
 
 
@@ -247,23 +216,17 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecAccessItems0DatasetDa
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecAccessItems0Routine:
-    """
-    A routine from a different dataset to grant access to. Queries
-    executed against that routine will have read access to tables in
-    this dataset. The role field is not required when this field is
-    set. If that routine is updated by any user, access to the routine
-    needs to be granted again via an update operation.
+    r"""
+    [Pick one] A routine from a different dataset to grant access to. Queries executed against that routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role field is not required when this field is set. If that routine is updated by any user, access to the routine needs to be granted again via an update operation.
 
     Attributes
     ----------
     datasetId : str, default is Undefined, required
-        The ID of the dataset containing this table.
+        The ID of the dataset containing this routine.
     projectId : str, default is Undefined, required
-        The ID of the project containing this table.
+        The ID of the project containing this routine.
     routineId : str, default is Undefined, required
-        The ID of the routine. The ID must contain only letters (a-z,
-        A-Z), numbers (0-9), or underscores (_). The maximum length
-        is 256 characters.
+        The Id of the routine. The Id must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
     """
 
 
@@ -275,12 +238,8 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecAccessItems0Routine:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecAccessItems0View:
-    """
-    A view from a different dataset to grant access to. Queries
-    executed against that view will have read access to tables in
-    this dataset. The role field is not required when this field is
-    set. If that view is updated by any user, access to the view
-    needs to be granted again via an update operation.
+    r"""
+    [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to views/tables/routines in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
 
     Attributes
     ----------
@@ -289,9 +248,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecAccessItems0View:
     projectId : str, default is Undefined, required
         The ID of the project containing this table.
     tableId : str, default is Undefined, required
-        The ID of the table. The ID must contain only letters (a-z,
-        A-Z), numbers (0-9), or underscores (_). The maximum length
-        is 1,024 characters.
+        The Id of the table. The Id can contain Unicode characters in category L (letter), M (mark), N (number), Pc (connector, including underscore), Pd (dash), and Zs (space). For more information, see [General Category](https://wikipedia.org/wiki/Unicode_character_property#General_Category). The maximum length is 1,024 characters.  Certain operations allow suffixing of the table Id with a partition decorator, such as `sample_table$20190123`.
     """
 
 
@@ -303,35 +260,31 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecAccessItems0View:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecDefaultEncryptionConfiguration:
-    """
-    The default encryption key for all tables in the dataset. Once this property is set,
-    all newly-created partitioned tables in the dataset will have encryption key set to
-    this value, unless table creation request (or query) overrides the key.
+    r"""
+    The default encryption key for all tables in the dataset. After this property is set, the encryption key of all newly-created tables in the dataset is set to this value unless the table creation request or query explicitly overrides the key.
 
     Attributes
     ----------
-    kmsKeyRef : BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecDefaultEncryptionConfigurationKmsKeyRef, default is Undefined, required
+    kmsKeyRef : BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecDefaultEncryptionConfigurationKmsKeyRef, default is Undefined, optional
         kms key ref
     """
 
 
-    kmsKeyRef: BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecDefaultEncryptionConfigurationKmsKeyRef
+    kmsKeyRef?: BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecDefaultEncryptionConfigurationKmsKeyRef
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecDefaultEncryptionConfigurationKmsKeyRef:
-    """
-    Describes the Cloud KMS encryption key that will be used to protect destination
-    BigQuery table. The BigQuery Service Account associated with your project requires
-    access to this encryption key.
+    r"""
+    Optional. Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `KMSCryptoKey` resource.
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` of a `KMSCryptoKey` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` of a `KMSCryptoKey` resource.
     """
 
 
@@ -343,21 +296,25 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecDefaultEncryptionConf
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecProjectRef:
-    """
-    The project that this resource belongs to.
+    r"""
+     Optional. The project that this resource belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
     external?: str
+
+    kind?: str
 
     name?: str
 
@@ -365,25 +322,27 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetSpecProjectRef:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetStatus:
-    """
-    bigquery cnrm cloud google com v1beta1 big query dataset status
+    r"""
+    BigQueryDatasetStatus defines the config connector machine state of BigQueryDataset
 
     Attributes
     ----------
     conditions : [BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     creationTime : int, default is Undefined, optional
-        The time when this dataset was created, in milliseconds since the
-        epoch.
+        Output only. The time when this dataset was created, in milliseconds since the epoch.
     etag : str, default is Undefined, optional
-        A hash of the resource.
+        Output only. A hash of the resource.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the BigQueryAnalyticsHubDataExchangeListing resource in GCP.
     lastModifiedTime : int, default is Undefined, optional
-        The date when this dataset or any of its tables was last modified, in
-        milliseconds since the epoch.
+        Output only. The date when this dataset was last modified, in milliseconds since the epoch.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetStatusObservedState, default is Undefined, optional
+        observed state
     selfLink : str, default is Undefined, optional
-        self link
+        Output only. A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
     """
 
 
@@ -393,15 +352,19 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetStatus:
 
     etag?: str
 
+    externalRef?: str
+
     lastModifiedTime?: int
 
     observedGeneration?: int
+
+    observedState?: BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetStatusObservedState
 
     selfLink?: str
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetStatusConditionsItems0:
-    """
+    r"""
     bigquery cnrm cloud google com v1beta1 big query dataset status conditions items0
 
     Attributes
@@ -428,5 +391,19 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetStatusConditionsItems0:
     status?: str
 
     $type?: str
+
+
+schema BigqueryCnrmCloudGoogleComV1beta1BigQueryDatasetStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    location : str, default is Undefined, optional
+        Optional. If the location is not specified in the spec, the GCP server defaults to a location and will be captured here.
+    """
+
+
+    location?: str
 
 

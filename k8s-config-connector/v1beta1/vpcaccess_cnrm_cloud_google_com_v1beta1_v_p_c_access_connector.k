@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema VPCAccessConnector:
-    """
+    r"""
     vpcaccess cnrm cloud google com v1beta1 v p c access connector
 
     Attributes
@@ -36,7 +36,7 @@ schema VPCAccessConnector:
 
 
 schema VpcaccessCnrmCloudGoogleComV1beta1VPCAccessConnectorSpec:
-    """
+    r"""
     vpcaccess cnrm cloud google com v1beta1 v p c access connector spec
 
     Attributes
@@ -90,7 +90,7 @@ schema VpcaccessCnrmCloudGoogleComV1beta1VPCAccessConnectorSpec:
 
 
 schema VpcaccessCnrmCloudGoogleComV1beta1VPCAccessConnectorSpecNetworkRef:
-    """
+    r"""
     Immutable. Name or self_link of the VPC network. Required if 'ip_cidr_range' is set.
 
     Attributes
@@ -112,7 +112,7 @@ schema VpcaccessCnrmCloudGoogleComV1beta1VPCAccessConnectorSpecNetworkRef:
 
 
 schema VpcaccessCnrmCloudGoogleComV1beta1VPCAccessConnectorSpecProjectRef:
-    """
+    r"""
     Immutable. The project that this resource belongs to.
 
     Attributes
@@ -134,7 +134,7 @@ schema VpcaccessCnrmCloudGoogleComV1beta1VPCAccessConnectorSpecProjectRef:
 
 
 schema VpcaccessCnrmCloudGoogleComV1beta1VPCAccessConnectorSpecSubnet:
-    """
+    r"""
     Immutable. The subnet in which to house the connector.
 
     Attributes
@@ -152,7 +152,7 @@ schema VpcaccessCnrmCloudGoogleComV1beta1VPCAccessConnectorSpecSubnet:
 
 
 schema VpcaccessCnrmCloudGoogleComV1beta1VPCAccessConnectorSpecSubnetNameRef:
-    """
+    r"""
     Immutable. Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
     https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
 
@@ -175,7 +175,7 @@ schema VpcaccessCnrmCloudGoogleComV1beta1VPCAccessConnectorSpecSubnetNameRef:
 
 
 schema VpcaccessCnrmCloudGoogleComV1beta1VPCAccessConnectorSpecSubnetProjectRef:
-    """
+    r"""
     Immutable. Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
 
     Attributes
@@ -197,7 +197,7 @@ schema VpcaccessCnrmCloudGoogleComV1beta1VPCAccessConnectorSpecSubnetProjectRef:
 
 
 schema VpcaccessCnrmCloudGoogleComV1beta1VPCAccessConnectorStatus:
-    """
+    r"""
     vpcaccess cnrm cloud google com v1beta1 v p c access connector status
 
     Attributes
@@ -227,7 +227,7 @@ schema VpcaccessCnrmCloudGoogleComV1beta1VPCAccessConnectorStatus:
 
 
 schema VpcaccessCnrmCloudGoogleComV1beta1VPCAccessConnectorStatusConditionsItems0:
-    """
+    r"""
     vpcaccess cnrm cloud google com v1beta1 v p c access connector status conditions items0
 
     Attributes

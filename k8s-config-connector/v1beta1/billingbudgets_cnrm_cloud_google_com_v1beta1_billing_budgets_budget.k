@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BillingBudgetsBudget:
-    """
+    r"""
     billingbudgets cnrm cloud google com v1beta1 billing budgets budget
 
     Attributes
@@ -36,7 +36,7 @@ schema BillingBudgetsBudget:
 
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpec:
-    """
+    r"""
     billingbudgets cnrm cloud google com v1beta1 billing budgets budget spec
 
     Attributes
@@ -74,7 +74,7 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpec:
 
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecAllUpdatesRule:
-    """
+    r"""
     Optional. Rules to apply to notifications sent based on budget spend and thresholds.
 
     Attributes
@@ -100,7 +100,7 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecAllUpdates
 
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecAllUpdatesRuleMonitoringNotificationChannelsItems0:
-    """
+    r"""
     billingbudgets cnrm cloud google com v1beta1 billing budgets budget spec all updates rule monitoring notification channels items0
 
     Attributes
@@ -122,7 +122,7 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecAllUpdates
 
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecAllUpdatesRulePubsubTopicRef:
-    """
+    r"""
     billingbudgets cnrm cloud google com v1beta1 billing budgets budget spec all updates rule pubsub topic ref
 
     Attributes
@@ -146,7 +146,7 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecAllUpdates
 
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecAmount:
-    """
+    r"""
     Required. Budgeted amount.
 
     Attributes
@@ -164,7 +164,7 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecAmount:
 
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecAmountSpecifiedAmount:
-    """
+    r"""
     A specified amount to use as the budget. `currency_code` is optional. If specified when creating a budget, it must match the currency of the billing account. If specified when updating a budget, it must match the currency_code of the existing budget. The `currency_code` is provided on output.
 
     Attributes
@@ -186,7 +186,7 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecAmountSpec
 
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecBillingAccountRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -211,7 +211,7 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecBillingAcc
 
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecBudgetFilter:
-    """
+    r"""
     Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
 
     Attributes
@@ -253,7 +253,7 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecBudgetFilt
 
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecBudgetFilterCustomPeriod:
-    """
+    r"""
     Optional. Specifies to track usage from any start date (required) to any end date (optional). This time period is static, it does not recur.
 
     Attributes
@@ -271,7 +271,7 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecBudgetFilt
 
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecBudgetFilterCustomPeriodEndDate:
-    """
+    r"""
     Immutable. Optional. The end date of the time period. Budgets with elapsed end date won't be processed. If unset, specifies to track all usage incurred since the start_date.
 
     Attributes
@@ -293,7 +293,7 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecBudgetFilt
 
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecBudgetFilterCustomPeriodStartDate:
-    """
+    r"""
     Immutable. Required. The start date must be after January 1, 2017.
 
     Attributes
@@ -315,7 +315,7 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecBudgetFilt
 
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecBudgetFilterLabelsAnon:
-    """
+    r"""
     billingbudgets cnrm cloud google com v1beta1 billing budgets budget spec budget filter labels anon
 
     Attributes
@@ -329,7 +329,7 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecBudgetFilt
 
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecBudgetFilterProjectsItems0:
-    """
+    r"""
     billingbudgets cnrm cloud google com v1beta1 billing budgets budget spec budget filter projects items0
 
     Attributes
@@ -351,7 +351,7 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecBudgetFilt
 
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecBudgetFilterSubaccountsItems0:
-    """
+    r"""
     billingbudgets cnrm cloud google com v1beta1 billing budgets budget spec budget filter subaccounts items0
 
     Attributes
@@ -374,7 +374,7 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecBudgetFilt
 
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecThresholdRulesItems0:
-    """
+    r"""
     billingbudgets cnrm cloud google com v1beta1 billing budgets budget spec threshold rules items0
 
     Attributes
@@ -392,7 +392,7 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecThresholdR
 
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetStatus:
-    """
+    r"""
     billingbudgets cnrm cloud google com v1beta1 billing budgets budget status
 
     Attributes
@@ -414,7 +414,7 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetStatus:
 
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetStatusConditionsItems0:
-    """
+    r"""
     billingbudgets cnrm cloud google com v1beta1 billing budgets budget status conditions items0
 
     Attributes

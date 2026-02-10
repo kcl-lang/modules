@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeDisk:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute disk
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeDisk:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute disk spec
 
     Attributes
@@ -57,7 +57,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpec:
     imageRef : ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecImageRef, default is Undefined, optional
         image ref
     interface : str, default is Undefined, optional
-        DEPRECATED. `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment. Immutable. Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        DEPRECATED. `interface` is deprecated. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment. Immutable. Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
     licenses : [str], default is Undefined, optional
         Immutable. Any applicable license URI.
     location : str, default is Undefined, required
@@ -160,7 +160,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecAsyncPrimaryDisk:
-    """
+    r"""
     Immutable. A nested object resource.
 
     Attributes
@@ -174,7 +174,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecAsyncPrimaryDisk:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecAsyncPrimaryDiskDiskRef:
-    """
+    r"""
     Immutable. Primary disk for asynchronous disk replication.
 
     Attributes
@@ -196,7 +196,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecAsyncPrimaryDiskDiskRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKey:
-    """
+    r"""
     Immutable. Encrypts the disk using a customer-supplied encryption key.
 
     After you encrypt a disk with a customer-supplied key, you must
@@ -238,7 +238,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKey:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyKmsKeyRef:
-    """
+    r"""
     The encryption key used to encrypt the disk. Your project's Compute
     Engine System service account
     ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com')
@@ -265,7 +265,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyKmsKeyRef
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyKmsKeyServiceAccountRef:
-    """
+    r"""
     The service account used for the encryption request for the given KMS key.
     If absent, the Compute Engine Service Agent service account is used.
 
@@ -288,7 +288,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyKmsKeySer
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyRawKey:
-    """
+    r"""
     Immutable. Specifies a 256-bit customer-supplied encryption key, encoded in
     RFC 4648 base64 to either encrypt or decrypt this resource.
 
@@ -307,7 +307,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyRawKey:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyRawKeyValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -321,7 +321,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyRawKeyVal
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyRawKeyValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -339,7 +339,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyRawKeyVal
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyRsaEncryptedKey:
-    """
+    r"""
     Immutable. Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
     customer-supplied encryption key to either encrypt or decrypt
     this resource. You can provide either the rawKey or the rsaEncryptedKey.
@@ -359,7 +359,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyRsaEncryp
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyRsaEncryptedKeyValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -373,7 +373,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyRsaEncryp
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyRsaEncryptedKeyValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -391,7 +391,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyRsaEncryp
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecGuestOsFeaturesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute disk spec guest os features items0
 
     Attributes
@@ -405,7 +405,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecGuestOsFeaturesItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecImageRef:
-    """
+    r"""
     The image from which to initialize this disk.
 
     Attributes
@@ -427,7 +427,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecImageRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -449,8 +449,9 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecProjectRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecResourcePoliciesItems0:
-    """
+    r"""
     Resource policies applied to this disk for automatic snapshot creations.
+    This field only applies for zonal compute disk resources.
 
     Attributes
     ----------
@@ -471,7 +472,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecResourcePoliciesItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSnapshotRef:
-    """
+    r"""
     The source snapshot used to create this disk.
 
     Attributes
@@ -493,7 +494,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSnapshotRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceDiskRef:
-    """
+    r"""
     The source disk used to create this disk.
 
     Attributes
@@ -515,7 +516,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceDiskRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceImageEncryptionKey:
-    """
+    r"""
     Immutable. The customer-supplied encryption key of the source image. Required if
     the source image is protected by a customer-supplied encryption key.
 
@@ -544,7 +545,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceImageEncryptionKey:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceImageEncryptionKeyKmsKeyRef:
-    """
+    r"""
     The encryption key used to encrypt the disk. Your project's Compute
     Engine System service account
     ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com')
@@ -571,7 +572,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceImageEncryptionKeyKm
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceImageEncryptionKeyKmsKeyServiceAccountRef:
-    """
+    r"""
     The service account used for the encryption request for the given KMS key.
     If absent, the Compute Engine Service Agent service account is used.
 
@@ -594,7 +595,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceImageEncryptionKeyKm
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceSnapshotEncryptionKey:
-    """
+    r"""
     Immutable. The customer-supplied encryption key of the source snapshot. Required
     if the source snapshot is protected by a customer-supplied encryption
     key.
@@ -624,7 +625,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceSnapshotEncryptionKe
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceSnapshotEncryptionKeyKmsKeyRef:
-    """
+    r"""
     The encryption key used to encrypt the disk. Your project's Compute
     Engine System service account
     ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com')
@@ -651,7 +652,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceSnapshotEncryptionKe
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceSnapshotEncryptionKeyKmsKeyServiceAccountRef:
-    """
+    r"""
     The service account used for the encryption request for the given KMS key.
     If absent, the Compute Engine Service Agent service account is used.
 
@@ -674,7 +675,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceSnapshotEncryptionKe
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute disk status
 
     Attributes
@@ -741,7 +742,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute disk status conditions items0
 
     Attributes

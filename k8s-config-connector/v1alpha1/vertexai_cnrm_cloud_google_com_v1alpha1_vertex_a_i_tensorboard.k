@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema VertexAITensorboard:
-    """
+    r"""
     vertexai cnrm cloud google com v1alpha1 vertex a i tensorboard
 
     Attributes
@@ -36,7 +36,7 @@ schema VertexAITensorboard:
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardSpec:
-    """
+    r"""
     vertexai cnrm cloud google com v1alpha1 vertex a i tensorboard spec
 
     Attributes
@@ -70,7 +70,7 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardSpec:
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardSpecEncryptionSpec:
-    """
+    r"""
     Immutable. Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
 
     Attributes
@@ -85,7 +85,7 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardSpecEncryptionSpec:
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -107,7 +107,7 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardSpecProjectRef:
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardStatus:
-    """
+    r"""
     vertexai cnrm cloud google com v1alpha1 vertex a i tensorboard status
 
     Attributes
@@ -145,7 +145,7 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardStatus:
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardStatusConditionsItems0:
-    """
+    r"""
     vertexai cnrm cloud google com v1alpha1 vertex a i tensorboard status conditions items0
 
     Attributes

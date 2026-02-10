@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeOrganizationSecurityPolicyRule:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute organization security policy rule
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeOrganizationSecurityPolicyRule:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeOrganizationSecurityPolicyRuleSpec:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute organization security policy rule spec
 
     Attributes
@@ -93,7 +93,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeOrganizationSecurityPolicyRuleSpe
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeOrganizationSecurityPolicyRuleSpecMatch:
-    """
+    r"""
     A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 
     Attributes
@@ -116,7 +116,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeOrganizationSecurityPolicyRuleSpe
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeOrganizationSecurityPolicyRuleSpecMatchConfig:
-    """
+    r"""
     The configuration options for matching the rule.
 
     Attributes
@@ -140,7 +140,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeOrganizationSecurityPolicyRuleSpe
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeOrganizationSecurityPolicyRuleSpecMatchConfigLayer4ConfigItems0:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute organization security policy rule spec match config layer4 config items0
 
     Attributes
@@ -168,7 +168,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeOrganizationSecurityPolicyRuleSpe
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeOrganizationSecurityPolicyRuleStatus:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute organization security policy rule status
 
     Attributes
@@ -186,7 +186,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeOrganizationSecurityPolicyRuleSta
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeOrganizationSecurityPolicyRuleStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute organization security policy rule status conditions items0
 
     Attributes

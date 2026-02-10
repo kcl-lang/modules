@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DialogflowAgent:
-    """
+    r"""
     dialogflow cnrm cloud google com v1alpha1 dialogflow agent
 
     Attributes
@@ -36,7 +36,7 @@ schema DialogflowAgent:
 
 
 schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowAgentSpec:
-    """
+    r"""
     dialogflow cnrm cloud google com v1alpha1 dialogflow agent spec
 
     Attributes
@@ -111,7 +111,7 @@ schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowAgentSpec:
 
 
 schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowAgentStatus:
-    """
+    r"""
     dialogflow cnrm cloud google com v1alpha1 dialogflow agent status
 
     Attributes
@@ -134,7 +134,7 @@ schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowAgentStatus:
 
 
 schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowAgentStatusConditionsItems0:
-    """
+    r"""
     dialogflow cnrm cloud google com v1alpha1 dialogflow agent status conditions items0
 
     Attributes

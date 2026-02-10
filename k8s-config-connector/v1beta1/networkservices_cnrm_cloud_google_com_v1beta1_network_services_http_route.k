@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema NetworkServicesHTTPRoute:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services HTTP route
 
     Attributes
@@ -36,7 +36,7 @@ schema NetworkServicesHTTPRoute:
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpec:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services HTTP route spec
 
     Attributes
@@ -78,7 +78,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpec:
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecGatewaysItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services HTTP route spec gateways items0
 
     Attributes
@@ -100,7 +100,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecGatew
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecMeshesItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services HTTP route spec meshes items0
 
     Attributes
@@ -122,7 +122,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecMeshe
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -146,7 +146,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecProje
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRulesItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services HTTP route spec rules items0
 
     Attributes
@@ -164,7 +164,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRulesItems0Action:
-    """
+    r"""
     The detailed rule defining how to route matched traffic.
 
     Attributes
@@ -214,7 +214,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRulesItems0ActionCorsPolicy:
-    """
+    r"""
     The specification for allowing client side cross-origin requests.
 
     Attributes
@@ -256,7 +256,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRulesItems0ActionDestinationsItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services HTTP route spec rules items0 action destinations items0
 
     Attributes
@@ -274,7 +274,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRulesItems0ActionDestinationsItems0ServiceRef:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services HTTP route spec rules items0 action destinations items0 service ref
 
     Attributes
@@ -298,7 +298,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRulesItems0ActionFaultInjectionPolicy:
-    """
+    r"""
     The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
 
     Attributes
@@ -316,7 +316,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRulesItems0ActionFaultInjectionPolicyAbort:
-    """
+    r"""
     The specification for aborting to client requests.
 
     Attributes
@@ -334,7 +334,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRulesItems0ActionFaultInjectionPolicyDelay:
-    """
+    r"""
     The specification for injecting delay to client requests.
 
     Attributes
@@ -352,7 +352,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRulesItems0ActionRedirect:
-    """
+    r"""
     If set, the request is directed as configured by this field.
 
     Attributes
@@ -390,7 +390,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRulesItems0ActionRequestHeaderModifier:
-    """
+    r"""
     The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
 
     Attributes
@@ -412,7 +412,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRulesItems0ActionRequestMirrorPolicy:
-    """
+    r"""
     Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination. Proxy will not wait for the shadow destination to respond before returning the response. Prior to sending traffic to the shadow service, the host/authority header is suffixed with -shadow.
 
     Attributes
@@ -426,7 +426,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRulesItems0ActionRequestMirrorPolicyDestination:
-    """
+    r"""
     The destination the requests will be mirrored to. The weight of the destination will be ignored.
 
     Attributes
@@ -444,7 +444,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRulesItems0ActionRequestMirrorPolicyDestinationServiceRef:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services HTTP route spec rules items0 action request mirror policy destination service ref
 
     Attributes
@@ -468,7 +468,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRulesItems0ActionResponseHeaderModifier:
-    """
+    r"""
     The specification for modifying the headers of a response prior to sending the response back to the client.
 
     Attributes
@@ -490,7 +490,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRulesItems0ActionRetryPolicy:
-    """
+    r"""
     Specifies the retry policy associated with this route.
 
     Attributes
@@ -512,7 +512,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRulesItems0ActionURLRewrite:
-    """
+    r"""
     The specification for rewrite URL before forwarding requests to the destination.
 
     Attributes
@@ -530,7 +530,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRulesItems0MatchesItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services HTTP route spec rules items0 matches items0
 
     Attributes
@@ -564,7 +564,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRulesItems0MatchesItems0HeadersItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services HTTP route spec rules items0 matches items0 headers items0
 
     Attributes
@@ -606,7 +606,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRulesItems0MatchesItems0HeadersItems0RangeMatch:
-    """
+    r"""
     If specified, the rule will match if the request header value is within the range.
 
     Attributes
@@ -624,7 +624,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRulesItems0MatchesItems0QueryParametersItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services HTTP route spec rules items0 matches items0 query parameters items0
 
     Attributes
@@ -650,7 +650,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteStatus:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services HTTP route status
 
     Attributes
@@ -680,7 +680,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteStatus:
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteStatusConditionsItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services HTTP route status conditions items0
 
     Attributes

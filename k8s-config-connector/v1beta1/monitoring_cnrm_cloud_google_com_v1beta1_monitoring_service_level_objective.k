@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema MonitoringServiceLevelObjective:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring service level objective
 
     Attributes
@@ -36,7 +36,7 @@ schema MonitoringServiceLevelObjective:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpec:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring service level objective spec
 
     Attributes
@@ -78,7 +78,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpec:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -102,7 +102,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecPro
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecServiceLevelIndicator:
-    """
+    r"""
     The definition of good service, used to measure and calculate the quality of the `Service`'s performance with respect to a single aspect of service quality.
 
     Attributes
@@ -124,7 +124,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecSer
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecServiceLevelIndicatorBasicSli:
-    """
+    r"""
     Basic SLI on a well-known service type.
 
     Attributes
@@ -162,7 +162,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecSer
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecServiceLevelIndicatorBasicSliLatency:
-    """
+    r"""
     Good service is defined to be the count of requests made to this service that are fast enough with respect to `latency.threshold`.
 
     Attributes
@@ -180,7 +180,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecSer
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecServiceLevelIndicatorBasicSliOperationLatency:
-    """
+    r"""
     Good service is defined to be the count of operations performed by this service that are fast enough with respect to `operation_latency.threshold`.
 
     Attributes
@@ -198,7 +198,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecSer
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecServiceLevelIndicatorRequestBased:
-    """
+    r"""
     Request-based SLIs
 
     Attributes
@@ -216,7 +216,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecSer
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecServiceLevelIndicatorRequestBasedDistributionCut:
-    """
+    r"""
     `distribution_cut` is used when `good_service` is a count of values aggregated in a `Distribution` that fall into a good range. The `total_service` is the total count of all values aggregated in the `Distribution`.
 
     Attributes
@@ -234,7 +234,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecSer
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecServiceLevelIndicatorRequestBasedDistributionCutRange:
-    """
+    r"""
     Range of values considered "good." For a one-sided range, set one bound to an infinite value.
 
     Attributes
@@ -252,7 +252,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecSer
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecServiceLevelIndicatorRequestBasedGoodTotalRatio:
-    """
+    r"""
     `good_total_ratio` is used when the ratio of `good_service` to `total_service` is computed from two `TimeSeries`.
 
     Attributes
@@ -274,7 +274,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecSer
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecServiceLevelIndicatorWindowsBased:
-    """
+    r"""
     Windows-based SLIs
 
     Attributes
@@ -304,7 +304,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecSer
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecServiceLevelIndicatorWindowsBasedGoodTotalRatioThreshold:
-    """
+    r"""
     A window is good if its `performance` is high enough.
 
     Attributes
@@ -326,7 +326,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecSer
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecServiceLevelIndicatorWindowsBasedGoodTotalRatioThresholdBasicSliPerformance:
-    """
+    r"""
     `BasicSli` to evaluate to judge window quality.
 
     Attributes
@@ -364,7 +364,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecSer
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecServiceLevelIndicatorWindowsBasedGoodTotalRatioThresholdBasicSliPerformanceLatency:
-    """
+    r"""
     Good service is defined to be the count of requests made to this service that are fast enough with respect to `latency.threshold`.
 
     Attributes
@@ -382,7 +382,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecSer
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecServiceLevelIndicatorWindowsBasedGoodTotalRatioThresholdBasicSliPerformanceOperationLatency:
-    """
+    r"""
     Good service is defined to be the count of operations performed by this service that are fast enough with respect to `operation_latency.threshold`.
 
     Attributes
@@ -400,7 +400,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecSer
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecServiceLevelIndicatorWindowsBasedGoodTotalRatioThresholdPerformance:
-    """
+    r"""
     `RequestBasedSli` to evaluate to judge window quality.
 
     Attributes
@@ -418,7 +418,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecSer
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecServiceLevelIndicatorWindowsBasedGoodTotalRatioThresholdPerformanceDistributionCut:
-    """
+    r"""
     `distribution_cut` is used when `good_service` is a count of values aggregated in a `Distribution` that fall into a good range. The `total_service` is the total count of all values aggregated in the `Distribution`.
 
     Attributes
@@ -436,7 +436,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecSer
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecServiceLevelIndicatorWindowsBasedGoodTotalRatioThresholdPerformanceDistributionCutRange:
-    """
+    r"""
     Range of values considered "good." For a one-sided range, set one bound to an infinite value.
 
     Attributes
@@ -454,7 +454,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecSer
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecServiceLevelIndicatorWindowsBasedGoodTotalRatioThresholdPerformanceGoodTotalRatio:
-    """
+    r"""
     `good_total_ratio` is used when the ratio of `good_service` to `total_service` is computed from two `TimeSeries`.
 
     Attributes
@@ -476,7 +476,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecSer
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecServiceLevelIndicatorWindowsBasedMetricMeanInRange:
-    """
+    r"""
     A window is good if the metric's value is in a good range, averaged across returned streams.
 
     Attributes
@@ -494,7 +494,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecSer
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecServiceLevelIndicatorWindowsBasedMetricMeanInRangeRange:
-    """
+    r"""
     Range of values considered "good." For a one-sided range, set one bound to an infinite value.
 
     Attributes
@@ -512,7 +512,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecSer
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecServiceLevelIndicatorWindowsBasedMetricSumInRange:
-    """
+    r"""
     A window is good if the metric's value is in a good range, summed across returned streams.
 
     Attributes
@@ -530,7 +530,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecSer
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecServiceLevelIndicatorWindowsBasedMetricSumInRangeRange:
-    """
+    r"""
     Range of values considered "good." For a one-sided range, set one bound to an infinite value.
 
     Attributes
@@ -548,7 +548,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecSer
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecServiceRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -572,7 +572,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveSpecSer
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveStatus:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring service level objective status
 
     Attributes
@@ -602,7 +602,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveStatus:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceLevelObjectiveStatusConditionsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring service level objective status conditions items0
 
     Attributes

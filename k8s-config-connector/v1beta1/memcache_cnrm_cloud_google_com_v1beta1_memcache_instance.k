@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema MemcacheInstance:
-    """
+    r"""
     memcache cnrm cloud google com v1beta1 memcache instance
 
     Attributes
@@ -36,7 +36,7 @@ schema MemcacheInstance:
 
 
 schema MemcacheCnrmCloudGoogleComV1beta1MemcacheInstanceSpec:
-    """
+    r"""
     memcache cnrm cloud google com v1beta1 memcache instance spec
 
     Attributes
@@ -89,7 +89,7 @@ schema MemcacheCnrmCloudGoogleComV1beta1MemcacheInstanceSpec:
 
 
 schema MemcacheCnrmCloudGoogleComV1beta1MemcacheInstanceSpecMaintenancePolicy:
-    """
+    r"""
     Maintenance policy for an instance.
 
     Attributes
@@ -123,7 +123,7 @@ schema MemcacheCnrmCloudGoogleComV1beta1MemcacheInstanceSpecMaintenancePolicy:
 
 
 schema MemcacheCnrmCloudGoogleComV1beta1MemcacheInstanceSpecMaintenancePolicyWeeklyMaintenanceWindowItems0:
-    """
+    r"""
     memcache cnrm cloud google com v1beta1 memcache instance spec maintenance policy weekly maintenance window items0
 
     Attributes
@@ -155,7 +155,7 @@ schema MemcacheCnrmCloudGoogleComV1beta1MemcacheInstanceSpecMaintenancePolicyWee
 
 
 schema MemcacheCnrmCloudGoogleComV1beta1MemcacheInstanceSpecMaintenancePolicyWeeklyMaintenanceWindowItems0StartTime:
-    """
+    r"""
     Required. Start time of the window in UTC time.
 
     Attributes
@@ -183,7 +183,7 @@ schema MemcacheCnrmCloudGoogleComV1beta1MemcacheInstanceSpecMaintenancePolicyWee
 
 
 schema MemcacheCnrmCloudGoogleComV1beta1MemcacheInstanceSpecMemcacheParameters:
-    """
+    r"""
     Immutable. User-specified parameters for this memcache instance.
 
     Attributes
@@ -201,7 +201,7 @@ schema MemcacheCnrmCloudGoogleComV1beta1MemcacheInstanceSpecMemcacheParameters:
 
 
 schema MemcacheCnrmCloudGoogleComV1beta1MemcacheInstanceSpecNetworkRef:
-    """
+    r"""
     The full name of the network to connect the instance to.
 
     Attributes
@@ -223,7 +223,7 @@ schema MemcacheCnrmCloudGoogleComV1beta1MemcacheInstanceSpecNetworkRef:
 
 
 schema MemcacheCnrmCloudGoogleComV1beta1MemcacheInstanceSpecNodeConfig:
-    """
+    r"""
     Immutable. Configuration for memcache nodes.
 
     Attributes
@@ -241,7 +241,7 @@ schema MemcacheCnrmCloudGoogleComV1beta1MemcacheInstanceSpecNodeConfig:
 
 
 schema MemcacheCnrmCloudGoogleComV1beta1MemcacheInstanceStatus:
-    """
+    r"""
     memcache cnrm cloud google com v1beta1 memcache instance status
 
     Attributes
@@ -279,7 +279,7 @@ schema MemcacheCnrmCloudGoogleComV1beta1MemcacheInstanceStatus:
 
 
 schema MemcacheCnrmCloudGoogleComV1beta1MemcacheInstanceStatusConditionsItems0:
-    """
+    r"""
     memcache cnrm cloud google com v1beta1 memcache instance status conditions items0
 
     Attributes
@@ -309,7 +309,7 @@ schema MemcacheCnrmCloudGoogleComV1beta1MemcacheInstanceStatusConditionsItems0:
 
 
 schema MemcacheCnrmCloudGoogleComV1beta1MemcacheInstanceStatusMaintenanceScheduleItems0:
-    """
+    r"""
     memcache cnrm cloud google com v1beta1 memcache instance status maintenance schedule items0
 
     Attributes
@@ -338,7 +338,7 @@ schema MemcacheCnrmCloudGoogleComV1beta1MemcacheInstanceStatusMaintenanceSchedul
 
 
 schema MemcacheCnrmCloudGoogleComV1beta1MemcacheInstanceStatusMemcacheNodesItems0:
-    """
+    r"""
     memcache cnrm cloud google com v1beta1 memcache instance status memcache nodes items0
 
     Attributes

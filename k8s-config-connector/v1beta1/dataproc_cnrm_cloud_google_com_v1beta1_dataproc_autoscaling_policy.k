@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DataprocAutoscalingPolicy:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc autoscaling policy
 
     Attributes
@@ -36,7 +36,7 @@ schema DataprocAutoscalingPolicy:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpec:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc autoscaling policy spec
 
     Attributes
@@ -70,7 +70,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpec:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpecBasicAlgorithm:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc autoscaling policy spec basic algorithm
 
     Attributes
@@ -88,7 +88,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpecBasicAlgori
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpecBasicAlgorithmYarnConfig:
-    """
+    r"""
     Required. YARN autoscaling configuration.
 
     Attributes
@@ -118,7 +118,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpecBasicAlgori
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -142,7 +142,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpecProjectRef:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpecSecondaryWorkerConfig:
-    """
+    r"""
     Optional. Describes how the autoscaler will operate for secondary workers.
 
     Attributes
@@ -164,7 +164,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpecSecondaryWo
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpecWorkerConfig:
-    """
+    r"""
     Required. Describes how the autoscaler will operate for primary workers.
 
     Attributes
@@ -186,7 +186,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpecWorkerConfi
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicyStatus:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc autoscaling policy status
 
     Attributes
@@ -204,7 +204,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicyStatus:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicyStatusConditionsItems0:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc autoscaling policy status conditions items0
 
     Attributes

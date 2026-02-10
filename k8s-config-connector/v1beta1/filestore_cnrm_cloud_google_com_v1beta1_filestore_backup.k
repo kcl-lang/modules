@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema FilestoreBackup:
-    """
+    r"""
     filestore cnrm cloud google com v1beta1 filestore backup
 
     Attributes
@@ -36,7 +36,7 @@ schema FilestoreBackup:
 
 
 schema FilestoreCnrmCloudGoogleComV1beta1FilestoreBackupSpec:
-    """
+    r"""
     filestore cnrm cloud google com v1beta1 filestore backup spec
 
     Attributes
@@ -70,7 +70,7 @@ schema FilestoreCnrmCloudGoogleComV1beta1FilestoreBackupSpec:
 
 
 schema FilestoreCnrmCloudGoogleComV1beta1FilestoreBackupSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -94,7 +94,7 @@ schema FilestoreCnrmCloudGoogleComV1beta1FilestoreBackupSpecProjectRef:
 
 
 schema FilestoreCnrmCloudGoogleComV1beta1FilestoreBackupSpecSourceInstanceRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -118,7 +118,7 @@ schema FilestoreCnrmCloudGoogleComV1beta1FilestoreBackupSpecSourceInstanceRef:
 
 
 schema FilestoreCnrmCloudGoogleComV1beta1FilestoreBackupStatus:
-    """
+    r"""
     filestore cnrm cloud google com v1beta1 filestore backup status
 
     Attributes
@@ -160,7 +160,7 @@ schema FilestoreCnrmCloudGoogleComV1beta1FilestoreBackupStatus:
 
 
 schema FilestoreCnrmCloudGoogleComV1beta1FilestoreBackupStatusConditionsItems0:
-    """
+    r"""
     filestore cnrm cloud google com v1beta1 filestore backup status conditions items0
 
     Attributes

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeRegionNetworkEndpointGroup:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute region network endpoint group
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeRegionNetworkEndpointGroup:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRegionNetworkEndpointGroupSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute region network endpoint group spec
 
     Attributes
@@ -84,7 +84,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRegionNetworkEndpointGroupSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRegionNetworkEndpointGroupSpecCloudFunction:
-    """
+    r"""
     Immutable. Only valid when networkEndpointType is "SERVERLESS".
     Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
 
@@ -109,7 +109,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRegionNetworkEndpointGroupSpecClou
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRegionNetworkEndpointGroupSpecCloudFunctionFunctionRef:
-    """
+    r"""
     Immutable. A user-defined name of the Cloud Function.
     The function name is case-sensitive and must be 1-63 characters long.
     Example value: "func1".
@@ -133,7 +133,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRegionNetworkEndpointGroupSpecClou
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRegionNetworkEndpointGroupSpecCloudRun:
-    """
+    r"""
     Immutable. Only valid when networkEndpointType is "SERVERLESS".
     Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
 
@@ -166,7 +166,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRegionNetworkEndpointGroupSpecClou
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRegionNetworkEndpointGroupSpecCloudRunServiceRef:
-    """
+    r"""
     Immutable. Cloud Run service is the main resource of Cloud Run.
     The service must be 1-63 characters long, and comply with RFC1035.
     Example value: "run-service".
@@ -190,7 +190,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRegionNetworkEndpointGroupSpecClou
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRegionNetworkEndpointGroupSpecNetworkRef:
-    """
+    r"""
     Immutable. This field is only used for PSC.
     The URL of the network to which all network endpoints in the NEG belong. Uses
     "default" project network if unspecified.
@@ -214,7 +214,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRegionNetworkEndpointGroupSpecNetw
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRegionNetworkEndpointGroupSpecSubnetworkRef:
-    """
+    r"""
     Immutable. This field is only used for PSC.
     Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 
@@ -237,7 +237,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRegionNetworkEndpointGroupSpecSubn
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRegionNetworkEndpointGroupStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute region network endpoint group status
 
     Attributes
@@ -259,7 +259,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRegionNetworkEndpointGroupStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRegionNetworkEndpointGroupStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute region network endpoint group status conditions items0
 
     Attributes

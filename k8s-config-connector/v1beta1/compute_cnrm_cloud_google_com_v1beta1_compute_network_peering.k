@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeNetworkPeering:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute network peering
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeNetworkPeering:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkPeeringSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute network peering spec
 
     Attributes
@@ -78,7 +78,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkPeeringSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkPeeringSpecNetworkRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute network peering spec network ref
 
     Attributes
@@ -100,7 +100,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkPeeringSpecNetworkRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkPeeringSpecPeerNetworkRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute network peering spec peer network ref
 
     Attributes
@@ -122,7 +122,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkPeeringSpecPeerNetworkRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkPeeringStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute network peering status
 
     Attributes
@@ -148,7 +148,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkPeeringStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkPeeringStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute network peering status conditions items0
 
     Attributes

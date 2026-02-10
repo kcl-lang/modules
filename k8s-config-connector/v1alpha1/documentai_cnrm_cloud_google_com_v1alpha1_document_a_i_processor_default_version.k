@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DocumentAIProcessorDefaultVersion:
-    """
+    r"""
     documentai cnrm cloud google com v1alpha1 document a i processor default version
 
     Attributes
@@ -36,7 +36,7 @@ schema DocumentAIProcessorDefaultVersion:
 
 
 schema DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorDefaultVersionSpec:
-    """
+    r"""
     documentai cnrm cloud google com v1alpha1 document a i processor default version spec
 
     Attributes
@@ -55,7 +55,7 @@ schema DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorDefaultVersionSpec
 
 
 schema DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorDefaultVersionStatus:
-    """
+    r"""
     documentai cnrm cloud google com v1alpha1 document a i processor default version status
 
     Attributes
@@ -73,7 +73,7 @@ schema DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorDefaultVersionStat
 
 
 schema DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorDefaultVersionStatusConditionsItems0:
-    """
+    r"""
     documentai cnrm cloud google com v1alpha1 document a i processor default version status conditions items0
 
     Attributes

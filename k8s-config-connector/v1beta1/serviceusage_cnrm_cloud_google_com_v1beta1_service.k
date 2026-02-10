@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Service:
-    """
+    r"""
     serviceusage cnrm cloud google com v1beta1 service
 
     Attributes
@@ -36,7 +36,7 @@ schema Service:
 
 
 schema ServiceusageCnrmCloudGoogleComV1beta1ServiceSpec:
-    """
+    r"""
     serviceusage cnrm cloud google com v1beta1 service spec
 
     Attributes
@@ -54,7 +54,7 @@ schema ServiceusageCnrmCloudGoogleComV1beta1ServiceSpec:
 
 
 schema ServiceusageCnrmCloudGoogleComV1beta1ServiceSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -76,7 +76,7 @@ schema ServiceusageCnrmCloudGoogleComV1beta1ServiceSpecProjectRef:
 
 
 schema ServiceusageCnrmCloudGoogleComV1beta1ServiceStatus:
-    """
+    r"""
     serviceusage cnrm cloud google com v1beta1 service status
 
     Attributes
@@ -94,7 +94,7 @@ schema ServiceusageCnrmCloudGoogleComV1beta1ServiceStatus:
 
 
 schema ServiceusageCnrmCloudGoogleComV1beta1ServiceStatusConditionsItems0:
-    """
+    r"""
     serviceusage cnrm cloud google com v1beta1 service status conditions items0
 
     Attributes

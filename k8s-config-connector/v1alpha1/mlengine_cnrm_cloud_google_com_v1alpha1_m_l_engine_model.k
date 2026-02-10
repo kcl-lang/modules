@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema MLEngineModel:
-    """
+    r"""
     mlengine cnrm cloud google com v1alpha1 m l engine model
 
     Attributes
@@ -36,7 +36,7 @@ schema MLEngineModel:
 
 
 schema MlengineCnrmCloudGoogleComV1alpha1MLEngineModelSpec:
-    """
+    r"""
     mlengine cnrm cloud google com v1alpha1 m l engine model spec
 
     Attributes
@@ -75,7 +75,7 @@ schema MlengineCnrmCloudGoogleComV1alpha1MLEngineModelSpec:
 
 
 schema MlengineCnrmCloudGoogleComV1alpha1MLEngineModelSpecDefaultVersion:
-    """
+    r"""
     Immutable. The default version of the model. This version will be used to handle
     prediction requests that do not specify a version.
 
@@ -90,7 +90,7 @@ schema MlengineCnrmCloudGoogleComV1alpha1MLEngineModelSpecDefaultVersion:
 
 
 schema MlengineCnrmCloudGoogleComV1alpha1MLEngineModelSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -112,7 +112,7 @@ schema MlengineCnrmCloudGoogleComV1alpha1MLEngineModelSpecProjectRef:
 
 
 schema MlengineCnrmCloudGoogleComV1alpha1MLEngineModelStatus:
-    """
+    r"""
     mlengine cnrm cloud google com v1alpha1 m l engine model status
 
     Attributes
@@ -130,7 +130,7 @@ schema MlengineCnrmCloudGoogleComV1alpha1MLEngineModelStatus:
 
 
 schema MlengineCnrmCloudGoogleComV1alpha1MLEngineModelStatusConditionsItems0:
-    """
+    r"""
     mlengine cnrm cloud google com v1alpha1 m l engine model status conditions items0
 
     Attributes

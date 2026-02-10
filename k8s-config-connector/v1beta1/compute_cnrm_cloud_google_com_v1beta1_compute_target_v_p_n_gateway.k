@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeTargetVPNGateway:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target v p n gateway
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeTargetVPNGateway:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetVPNGatewaySpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target v p n gateway spec
 
     Attributes
@@ -62,7 +62,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetVPNGatewaySpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetVPNGatewaySpecNetworkRef:
-    """
+    r"""
     The network this VPN gateway is accepting traffic for.
 
     Attributes
@@ -84,7 +84,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetVPNGatewaySpecNetworkRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetVPNGatewayStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target v p n gateway status
 
     Attributes
@@ -114,7 +114,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetVPNGatewayStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetVPNGatewayStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target v p n gateway status conditions items0
 
     Attributes

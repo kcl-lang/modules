@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema FirebaseHostingSite:
-    """
+    r"""
     firebasehosting cnrm cloud google com v1alpha1 firebase hosting site
 
     Attributes
@@ -36,7 +36,7 @@ schema FirebaseHostingSite:
 
 
 schema FirebasehostingCnrmCloudGoogleComV1alpha1FirebaseHostingSiteSpec:
-    """
+    r"""
     firebasehosting cnrm cloud google com v1alpha1 firebase hosting site spec
 
     Attributes
@@ -59,7 +59,7 @@ schema FirebasehostingCnrmCloudGoogleComV1alpha1FirebaseHostingSiteSpec:
 
 
 schema FirebasehostingCnrmCloudGoogleComV1alpha1FirebaseHostingSiteSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -81,7 +81,7 @@ schema FirebasehostingCnrmCloudGoogleComV1alpha1FirebaseHostingSiteSpecProjectRe
 
 
 schema FirebasehostingCnrmCloudGoogleComV1alpha1FirebaseHostingSiteStatus:
-    """
+    r"""
     firebasehosting cnrm cloud google com v1alpha1 firebase hosting site status
 
     Attributes
@@ -113,7 +113,7 @@ schema FirebasehostingCnrmCloudGoogleComV1alpha1FirebaseHostingSiteStatus:
 
 
 schema FirebasehostingCnrmCloudGoogleComV1alpha1FirebaseHostingSiteStatusConditionsItems0:
-    """
+    r"""
     firebasehosting cnrm cloud google com v1alpha1 firebase hosting site status conditions items0
 
     Attributes

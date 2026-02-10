@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DNSRecordSet:
-    """
+    r"""
     dns cnrm cloud google com v1beta1 DNS record set
 
     Attributes
@@ -36,7 +36,7 @@ schema DNSRecordSet:
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpec:
-    """
+    r"""
     DNS cnrm cloud google com v1beta1 DNS record set spec
 
     Attributes
@@ -45,6 +45,8 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpec:
         managed zone ref
     name : str, default is Undefined, required
         Immutable. The DNS name this record set will apply to.
+    routingPolicy : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicy, default is Undefined, optional
+        routing policy
     rrdatas : [str], default is Undefined, optional
         DEPRECATED. Although this field is still available, there is limited support. We recommend that you use `spec.rrdatasRefs` instead.
     rrdatasRefs : [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRrdatasRefsItems0], default is Undefined, optional
@@ -60,6 +62,8 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpec:
 
     name: str
 
+    routingPolicy?: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicy
+
     rrdatas?: [str]
 
     rrdatasRefs?: [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRrdatasRefsItems0]
@@ -70,7 +74,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpec:
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecManagedZoneRef:
-    """
+    r"""
     DNS cnrm cloud google com v1beta1 DNS record set spec managed zone ref
 
     Attributes
@@ -91,8 +95,760 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecManagedZoneRef:
     namespace?: str
 
 
-schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRrdatasRefsItems0:
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicy:
+    r"""
+    The configuration for steering traffic based on query. You can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
+
+    Attributes
+    ----------
+    enableGeoFencing : bool, default is Undefined, optional
+        Specifies whether to enable fencing for geo queries.
+    geo : [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0], default is Undefined, optional
+        The configuration for Geo location based routing policy.
+    primaryBackup : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackup, default is Undefined, optional
+        primary backup
+    wrr : [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0], default is Undefined, optional
+        The configuration for Weighted Round Robin based routing policy.
     """
+
+
+    enableGeoFencing?: bool
+
+    geo?: [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0]
+
+    primaryBackup?: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackup
+
+    wrr?: [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0]
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy geo items0
+
+    Attributes
+    ----------
+    healthCheckedTargets : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargets, default is Undefined, optional
+        health checked targets
+    location : str, default is Undefined, required
+        The location name defined in Google Cloud.
+    rrdatasRefs : [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0RrdatasRefsItems0], default is Undefined, optional
+        rrdatas refs
+    """
+
+
+    healthCheckedTargets?: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargets
+
+    location: str
+
+    rrdatasRefs?: [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0RrdatasRefsItems0]
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargets:
+    r"""
+    For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+
+    Attributes
+    ----------
+    internalLoadBalancers : [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0], default is Undefined, required
+        The list of internal load balancers to health check.
+    """
+
+
+    internalLoadBalancers: [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0]
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy geo items0 health checked targets internal load balancers items0
+
+    Attributes
+    ----------
+    ipAddressRef : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0IPAddressRef, default is Undefined, required
+        ip address ref
+    ipProtocol : str, default is Undefined, required
+        The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"].
+    loadBalancerType : str, default is Undefined, required
+        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"].
+    networkRef : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0NetworkRef, default is Undefined, required
+        network ref
+    port : str, default is Undefined, required
+        The configured port of the load balancer.
+    projectRef : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0ProjectRef, default is Undefined, required
+        project ref
+    regionRef : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0RegionRef, default is Undefined, optional
+        region ref
+    """
+
+
+    ipAddressRef: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0IPAddressRef
+
+    ipProtocol: str
+
+    loadBalancerType: str
+
+    networkRef: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0NetworkRef
+
+    port: str
+
+    projectRef: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0ProjectRef
+
+    regionRef?: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0RegionRef
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0IPAddressRef:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy geo items0 health checked targets internal load balancers items0 IP address ref
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        Allowed value: The `address` field of a `ComputeAddress` resource.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0NetworkRef:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy geo items0 health checked targets internal load balancers items0 network ref
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0ProjectRef:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy geo items0 health checked targets internal load balancers items0 project ref
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        Allowed value: The `name` field of a `Project` resource.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0RegionRef:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy geo items0 health checked targets internal load balancers items0 region ref
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        Allowed value: The `location` field of a `ComputeForwardingRule` resource.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0RrdatasRefsItems0:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy geo items0 rrdatas refs items0
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        Allowed value: The `address` field of a `ComputeAddress` resource.
+    kind : str, default is Undefined, optional
+        Kind of the referent. Allowed values: ComputeAddress
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackup:
+    r"""
+    The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
+
+    Attributes
+    ----------
+    backupGeo : [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0], default is Undefined, required
+        The backup geo targets, which provide a regional failover policy for the otherwise global primary targets.
+    enableGeoFencingForBackups : bool, default is Undefined, optional
+        Specifies whether to enable fencing for backup geo queries.
+    primary : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimary, default is Undefined, required
+        primary
+    trickleRatio : float, default is Undefined, optional
+        Specifies the percentage of traffic to send to the backup targets even when the primary targets are healthy.
+    """
+
+
+    backupGeo: [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0]
+
+    enableGeoFencingForBackups?: bool
+
+    primary: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimary
+
+    trickleRatio?: float
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy primary backup backup geo items0
+
+    Attributes
+    ----------
+    healthCheckedTargets : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargets, default is Undefined, optional
+        health checked targets
+    location : str, default is Undefined, required
+        The location name defined in Google Cloud.
+    rrdatasRefs : [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0RrdatasRefsItems0], default is Undefined, optional
+        rrdatas refs
+    """
+
+
+    healthCheckedTargets?: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargets
+
+    location: str
+
+    rrdatasRefs?: [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0RrdatasRefsItems0]
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargets:
+    r"""
+    For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+
+    Attributes
+    ----------
+    internalLoadBalancers : [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0], default is Undefined, required
+        The list of internal load balancers to health check.
+    """
+
+
+    internalLoadBalancers: [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0]
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy primary backup backup geo items0 health checked targets internal load balancers items0
+
+    Attributes
+    ----------
+    ipAddressRef : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0IPAddressRef, default is Undefined, required
+        ip address ref
+    ipProtocol : str, default is Undefined, required
+        The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"].
+    loadBalancerType : str, default is Undefined, required
+        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"].
+    networkRef : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0NetworkRef, default is Undefined, required
+        network ref
+    port : str, default is Undefined, required
+        The configured port of the load balancer.
+    projectRef : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0ProjectRef, default is Undefined, required
+        project ref
+    regionRef : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0RegionRef, default is Undefined, optional
+        region ref
+    """
+
+
+    ipAddressRef: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0IPAddressRef
+
+    ipProtocol: str
+
+    loadBalancerType: str
+
+    networkRef: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0NetworkRef
+
+    port: str
+
+    projectRef: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0ProjectRef
+
+    regionRef?: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0RegionRef
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0IPAddressRef:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy primary backup backup geo items0 health checked targets internal load balancers items0 IP address ref
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        Allowed value: The `address` field of a `ComputeAddress` resource.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0NetworkRef:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy primary backup backup geo items0 health checked targets internal load balancers items0 network ref
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0ProjectRef:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy primary backup backup geo items0 health checked targets internal load balancers items0 project ref
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        Allowed value: The `name` field of a `Project` resource.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0RegionRef:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy primary backup backup geo items0 health checked targets internal load balancers items0 region ref
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        Allowed value: The `location` field of a `ComputeForwardingRule` resource.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0RrdatasRefsItems0:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy primary backup backup geo items0 rrdatas refs items0
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        Allowed value: The `address` field of a `ComputeAddress` resource.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimary:
+    r"""
+    The list of global primary targets to be health checked.
+
+    Attributes
+    ----------
+    internalLoadBalancers : [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0], default is Undefined, required
+        The list of internal load balancers to health check.
+    """
+
+
+    internalLoadBalancers: [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0]
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy primary backup primary internal load balancers items0
+
+    Attributes
+    ----------
+    ipAddressRef : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0IPAddressRef, default is Undefined, required
+        ip address ref
+    ipProtocol : str, default is Undefined, required
+        The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"].
+    loadBalancerType : str, default is Undefined, required
+        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"].
+    networkRef : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0NetworkRef, default is Undefined, required
+        network ref
+    port : str, default is Undefined, required
+        The configured port of the load balancer.
+    projectRef : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0ProjectRef, default is Undefined, required
+        project ref
+    regionRef : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0RegionRef, default is Undefined, optional
+        region ref
+    """
+
+
+    ipAddressRef: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0IPAddressRef
+
+    ipProtocol: str
+
+    loadBalancerType: str
+
+    networkRef: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0NetworkRef
+
+    port: str
+
+    projectRef: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0ProjectRef
+
+    regionRef?: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0RegionRef
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0IPAddressRef:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy primary backup primary internal load balancers items0 IP address ref
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        Allowed value: The `address` field of a `ComputeAddress` resource.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0NetworkRef:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy primary backup primary internal load balancers items0 network ref
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0ProjectRef:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy primary backup primary internal load balancers items0 project ref
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        Allowed value: The `name` field of a `Project` resource.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0RegionRef:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy primary backup primary internal load balancers items0 region ref
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        Allowed value: The `location` field of a `ComputeForwardingRule` resource.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy wrr items0
+
+    Attributes
+    ----------
+    healthCheckedTargets : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargets, default is Undefined, optional
+        health checked targets
+    rrdatasRefs : [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0RrdatasRefsItems0], default is Undefined, optional
+        rrdatas refs
+    weight : float, default is Undefined, required
+        The ratio of traffic routed to the target.
+    """
+
+
+    healthCheckedTargets?: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargets
+
+    rrdatasRefs?: [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0RrdatasRefsItems0]
+
+    weight: float
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargets:
+    r"""
+    The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
+
+    Attributes
+    ----------
+    internalLoadBalancers : [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0], default is Undefined, required
+        The list of internal load balancers to health check.
+    """
+
+
+    internalLoadBalancers: [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0]
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy wrr items0 health checked targets internal load balancers items0
+
+    Attributes
+    ----------
+    ipAddressRef : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0IPAddressRef, default is Undefined, required
+        ip address ref
+    ipProtocol : str, default is Undefined, required
+        The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"].
+    loadBalancerType : str, default is Undefined, required
+        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"].
+    networkRef : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0NetworkRef, default is Undefined, required
+        network ref
+    port : str, default is Undefined, required
+        The configured port of the load balancer.
+    projectRef : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0ProjectRef, default is Undefined, required
+        project ref
+    regionRef : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0RegionRef, default is Undefined, optional
+        region ref
+    """
+
+
+    ipAddressRef: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0IPAddressRef
+
+    ipProtocol: str
+
+    loadBalancerType: str
+
+    networkRef: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0NetworkRef
+
+    port: str
+
+    projectRef: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0ProjectRef
+
+    regionRef?: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0RegionRef
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0IPAddressRef:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy wrr items0 health checked targets internal load balancers items0 IP address ref
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        Allowed value: The `address` field of a `ComputeAddress` resource.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0NetworkRef:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy wrr items0 health checked targets internal load balancers items0 network ref
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0ProjectRef:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy wrr items0 health checked targets internal load balancers items0 project ref
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        Allowed value: The `name` field of a `Project` resource.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0RegionRef:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy wrr items0 health checked targets internal load balancers items0 region ref
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        Allowed value: The `location` field of a `ComputeForwardingRule` resource.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0RrdatasRefsItems0:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy wrr items0 rrdatas refs items0
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        Allowed value: The `address` field of a `ComputeAddress` resource.
+    kind : str, default is Undefined, optional
+        Kind of the referent. Allowed values: ComputeAddress
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRrdatasRefsItems0:
+    r"""
     DNS cnrm cloud google com v1beta1 DNS record set spec rrdatas refs items0
 
     Attributes
@@ -118,7 +874,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRrdatasRefsItems0:
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetStatus:
-    """
+    r"""
     DNS cnrm cloud google com v1beta1 DNS record set status
 
     Attributes
@@ -136,7 +892,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetStatus:
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetStatusConditionsItems0:
-    """
+    r"""
     DNS cnrm cloud google com v1beta1 DNS record set status conditions items0
 
     Attributes

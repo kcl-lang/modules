@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DLPJobTrigger:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger
 
     Attributes
@@ -36,7 +36,7 @@ schema DLPJobTrigger:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpec:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec
 
     Attributes
@@ -78,7 +78,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpec:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJob:
-    """
+    r"""
     For inspect jobs, a snapshot of the configuration.
 
     Attributes
@@ -104,7 +104,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJob:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobActionsItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job actions items0
 
     Attributes
@@ -138,7 +138,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobActionsItems0:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobActionsItems0PubSub:
-    """
+    r"""
     Publish a notification to a pubsub topic.
 
     Attributes
@@ -152,7 +152,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobActionsItems0PubSu
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobActionsItems0PubSubTopicRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job actions items0 pub sub topic ref
 
     Attributes
@@ -176,7 +176,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobActionsItems0PubSu
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobActionsItems0SaveFindings:
-    """
+    r"""
     Save resulting findings in a provided location.
 
     Attributes
@@ -190,7 +190,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobActionsItems0SaveF
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobActionsItems0SaveFindingsOutputConfig:
-    """
+    r"""
     Location to store findings outside of DLP.
 
     Attributes
@@ -212,7 +212,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobActionsItems0SaveF
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobActionsItems0SaveFindingsOutputConfigTable:
-    """
+    r"""
     Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific timezone will be used for generating the date details. For Inspect, each column in an existing output table must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table should be the output of a previous Risk analysis job run on the same source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results in the same table.
 
     Attributes
@@ -234,7 +234,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobActionsItems0SaveF
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobActionsItems0SaveFindingsOutputConfigTableDatasetRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job actions items0 save findings output config table dataset ref
 
     Attributes
@@ -258,7 +258,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobActionsItems0SaveF
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobActionsItems0SaveFindingsOutputConfigTableProjectRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job actions items0 save findings output config table project ref
 
     Attributes
@@ -282,7 +282,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobActionsItems0SaveF
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobActionsItems0SaveFindingsOutputConfigTableTableRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job actions items0 save findings output config table table ref
 
     Attributes
@@ -306,7 +306,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobActionsItems0SaveF
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfig:
-    """
+    r"""
     How and what to scan for.
 
     Attributes
@@ -344,7 +344,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfig:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCustomInfoTypesItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job inspect config custom info types items0
 
     Attributes
@@ -386,7 +386,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCusto
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCustomInfoTypesItems0DetectionRulesItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job inspect config custom info types items0 detection rules items0
 
     Attributes
@@ -400,7 +400,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCusto
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCustomInfoTypesItems0DetectionRulesItems0HotwordRule:
-    """
+    r"""
     Hotword-based detection rule.
 
     Attributes
@@ -422,7 +422,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCusto
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCustomInfoTypesItems0DetectionRulesItems0HotwordRuleHotwordRegex:
-    """
+    r"""
     Regular expression pattern defining what qualifies as a hotword.
 
     Attributes
@@ -440,7 +440,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCusto
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCustomInfoTypesItems0DetectionRulesItems0HotwordRuleLikelihoodAdjustment:
-    """
+    r"""
     Likelihood adjustment to apply to all matching findings.
 
     Attributes
@@ -458,7 +458,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCusto
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCustomInfoTypesItems0DetectionRulesItems0HotwordRuleProximity:
-    """
+    r"""
     Proximity of the finding within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be used to match substrings of the finding itself. For example, the certainty of a phone number regex "(d{3}) d{3}-d{4}" could be adjusted upwards if the area code is known to be the local area code of a company office using the hotword regex "(xxx)", where "xxx" is the area code in question.
 
     Attributes
@@ -476,7 +476,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCusto
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCustomInfoTypesItems0Dictionary:
-    """
+    r"""
     A list of phrases to detect as a CustomInfoType.
 
     Attributes
@@ -494,7 +494,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCusto
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCustomInfoTypesItems0DictionaryCloudStoragePath:
-    """
+    r"""
     Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
 
     Attributes
@@ -508,7 +508,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCusto
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCustomInfoTypesItems0DictionaryWordList:
-    """
+    r"""
     List of words or phrases to search for.
 
     Attributes
@@ -522,7 +522,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCusto
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCustomInfoTypesItems0InfoType:
-    """
+    r"""
     CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing infoTypes and that infoType is specified in `InspectContent.info_types` field. Specifying the latter adds findings to the one detected by the system. If built-in info type is not specified in `InspectContent.info_types` list then the name is treated as a custom info type.
 
     Attributes
@@ -540,7 +540,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCusto
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCustomInfoTypesItems0Regex:
-    """
+    r"""
     Regular expression based CustomInfoType.
 
     Attributes
@@ -558,7 +558,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCusto
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCustomInfoTypesItems0StoredType:
-    """
+    r"""
     Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported in `InspectContent`.
 
     Attributes
@@ -576,7 +576,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCusto
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCustomInfoTypesItems0StoredTypeNameRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job inspect config custom info types items0 stored type name ref
 
     Attributes
@@ -600,7 +600,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigCusto
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigInfoTypesItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job inspect config info types items0
 
     Attributes
@@ -614,7 +614,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigInfoT
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigLimits:
-    """
+    r"""
     Configuration to control the number of findings returned. This is not used for data profiling.
 
     Attributes
@@ -636,7 +636,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigLimit
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job inspect config limits max findings per info type items0
 
     Attributes
@@ -654,7 +654,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigLimit
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeItems0InfoType:
-    """
+    r"""
     Type of information the findings limit applies to. Only one limit per info_type should be provided. If InfoTypeLimit does not have an info_type, the DLP API applies the limit against all info_types that are found but not specified in another InfoTypeLimit.
 
     Attributes
@@ -672,7 +672,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigLimit
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleSetItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job inspect config rule set items0
 
     Attributes
@@ -690,7 +690,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleS
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleSetItems0InfoTypesItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job inspect config rule set items0 info types items0
 
     Attributes
@@ -708,7 +708,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleS
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleSetItems0RulesItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job inspect config rule set items0 rules items0
 
     Attributes
@@ -726,7 +726,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleS
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleSetItems0RulesItems0ExclusionRule:
-    """
+    r"""
     Exclusion rule.
 
     Attributes
@@ -752,7 +752,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleS
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleSetItems0RulesItems0ExclusionRuleDictionary:
-    """
+    r"""
     Dictionary which defines the rule.
 
     Attributes
@@ -770,7 +770,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleS
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleSetItems0RulesItems0ExclusionRuleDictionaryCloudStoragePath:
-    """
+    r"""
     Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
 
     Attributes
@@ -784,7 +784,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleS
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleSetItems0RulesItems0ExclusionRuleDictionaryWordList:
-    """
+    r"""
     List of words or phrases to search for.
 
     Attributes
@@ -798,7 +798,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleS
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleSetItems0RulesItems0ExclusionRuleExcludeInfoTypes:
-    """
+    r"""
     Set of infoTypes for which findings would affect this rule.
 
     Attributes
@@ -812,7 +812,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleS
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleSetItems0RulesItems0ExclusionRuleExcludeInfoTypesInfoTypesItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job inspect config rule set items0 rules items0 exclusion rule exclude info types info types items0
 
     Attributes
@@ -830,7 +830,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleS
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleSetItems0RulesItems0ExclusionRuleRegex:
-    """
+    r"""
     Regular expression which defines the rule.
 
     Attributes
@@ -848,7 +848,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleS
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleSetItems0RulesItems0HotwordRule:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job inspect config rule set items0 rules items0 hotword rule
 
     Attributes
@@ -870,7 +870,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleS
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleSetItems0RulesItems0HotwordRuleHotwordRegex:
-    """
+    r"""
     Regular expression pattern defining what qualifies as a hotword.
 
     Attributes
@@ -888,7 +888,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleS
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleSetItems0RulesItems0HotwordRuleLikelihoodAdjustment:
-    """
+    r"""
     Likelihood adjustment to apply to all matching findings.
 
     Attributes
@@ -906,7 +906,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleS
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleSetItems0RulesItems0HotwordRuleProximity:
-    """
+    r"""
     Proximity of the finding within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be used to match substrings of the finding itself. For example, the certainty of a phone number regex "(d{3}) d{3}-d{4}" could be adjusted upwards if the area code is known to be the local area code of a company office using the hotword regex "(xxx)", where "xxx" is the area code in question.
 
     Attributes
@@ -924,7 +924,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectConfigRuleS
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectTemplateRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job inspect template ref
 
     Attributes
@@ -948,7 +948,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobInspectTemplateRef
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfig:
-    """
+    r"""
     The data to scan.
 
     Attributes
@@ -978,7 +978,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfig:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigBigQueryOptions:
-    """
+    r"""
     BigQuery options.
 
     Attributes
@@ -1016,7 +1016,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigBigQu
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigBigQueryOptionsExcludedFieldsItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job storage config big query options excluded fields items0
 
     Attributes
@@ -1030,7 +1030,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigBigQu
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigBigQueryOptionsIdentifyingFieldsItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job storage config big query options identifying fields items0
 
     Attributes
@@ -1044,7 +1044,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigBigQu
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigBigQueryOptionsIncludedFieldsItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job storage config big query options included fields items0
 
     Attributes
@@ -1058,7 +1058,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigBigQu
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigBigQueryOptionsTableReference:
-    """
+    r"""
     Complete BigQuery table reference.
 
     Attributes
@@ -1080,7 +1080,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigBigQu
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigBigQueryOptionsTableReferenceDatasetRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job storage config big query options table reference dataset ref
 
     Attributes
@@ -1104,7 +1104,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigBigQu
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigBigQueryOptionsTableReferenceProjectRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job storage config big query options table reference project ref
 
     Attributes
@@ -1128,7 +1128,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigBigQu
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigBigQueryOptionsTableReferenceTableRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job storage config big query options table reference table ref
 
     Attributes
@@ -1152,7 +1152,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigBigQu
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigCloudStorageOptions:
-    """
+    r"""
     Google Cloud Storage options.
 
     Attributes
@@ -1186,7 +1186,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigCloud
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsFileSet:
-    """
+    r"""
     The set of one or more files to scan.
 
     Attributes
@@ -1204,7 +1204,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigCloud
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet:
-    """
+    r"""
     The regex-filtered set of files to scan. Exactly one of `url` or `regex_file_set` must be set.
 
     Attributes
@@ -1226,7 +1226,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigCloud
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetBucketRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job storage config cloud storage options file set regex file set bucket ref
 
     Attributes
@@ -1250,7 +1250,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigCloud
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigDatastoreOptions:
-    """
+    r"""
     Google Cloud Datastore options.
 
     Attributes
@@ -1268,7 +1268,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigDatas
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigDatastoreOptionsKind:
-    """
+    r"""
     The kind to process.
 
     Attributes
@@ -1282,7 +1282,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigDatas
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigDatastoreOptionsPartitionID:
-    """
+    r"""
     A partition ID identifies a grouping of entities. The grouping is always by project namespace ID may be empty.
 
     Attributes
@@ -1300,7 +1300,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigDatas
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigDatastoreOptionsPartitionIDProjectRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job storage config datastore options partition ID project ref
 
     Attributes
@@ -1324,7 +1324,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigDatas
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigHybridOptions:
-    """
+    r"""
     Hybrid inspection options.
 
     Attributes
@@ -1350,7 +1350,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigHybri
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigHybridOptionsTableOptions:
-    """
+    r"""
     If the container is a table, additional information to make findings meaningful such as the columns that are primary keys.
 
     Attributes
@@ -1364,7 +1364,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigHybri
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldsItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job storage config hybrid options table options identifying fields items0
 
     Attributes
@@ -1378,7 +1378,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigHybri
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigTimespanConfig:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec inspect job storage config timespan config
 
     Attributes
@@ -1404,7 +1404,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigTimes
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigTimespanConfigTimestampField:
-    """
+    r"""
     Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. For BigQuery: If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. For Datastore: If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`.
 
     Attributes
@@ -1418,7 +1418,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecInspectJobStorageConfigTimes
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to. Only one of [projectRef] may be specified.
 
     Attributes
@@ -1440,7 +1440,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecProjectRef:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecTriggersItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger spec triggers items0
 
     Attributes
@@ -1458,7 +1458,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecTriggersItems0:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecTriggersItems0Schedule:
-    """
+    r"""
     Create a job on a repeating basis based on the elapse of time.
 
     Attributes
@@ -1472,7 +1472,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerSpecTriggersItems0Schedule:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerStatus:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger status
 
     Attributes
@@ -1510,7 +1510,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerStatus:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerStatusConditionsItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger status conditions items0
 
     Attributes
@@ -1540,7 +1540,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerStatusConditionsItems0:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerStatusErrorsItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger status errors items0
 
     Attributes
@@ -1558,7 +1558,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerStatusErrorsItems0:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerStatusErrorsItems0Details:
-    """
+    r"""
     Detailed error codes and messages.
 
     Attributes
@@ -1580,7 +1580,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerStatusErrorsItems0Details:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPJobTriggerStatusErrorsItems0DetailsDetailsItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p job trigger status errors items0 details details items0
 
     Attributes

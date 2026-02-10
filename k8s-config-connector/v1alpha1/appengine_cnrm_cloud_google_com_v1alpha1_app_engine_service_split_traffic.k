@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AppEngineServiceSplitTraffic:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine service split traffic
 
     Attributes
@@ -36,7 +36,7 @@ schema AppEngineServiceSplitTraffic:
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineServiceSplitTrafficSpec:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine service split traffic spec
 
     Attributes
@@ -62,7 +62,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineServiceSplitTrafficSpec:
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineServiceSplitTrafficSpecSplit:
-    """
+    r"""
     Mapping that defines fractional HTTP traffic diversion to different versions within the service.
 
     Attributes
@@ -80,7 +80,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineServiceSplitTrafficSpecSplit:
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineServiceSplitTrafficStatus:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine service split traffic status
 
     Attributes
@@ -98,7 +98,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineServiceSplitTrafficStatus:
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineServiceSplitTrafficStatusConditionsItems0:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine service split traffic status conditions items0
 
     Attributes

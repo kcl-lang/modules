@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema CloudFunctions2Function:
-    """
+    r"""
     cloudfunctions2 cnrm cloud google com v1alpha1 cloud functions2 function
 
     Attributes
@@ -36,7 +36,7 @@ schema CloudFunctions2Function:
 
 
 schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpec:
-    """
+    r"""
     cloudfunctions2 cnrm cloud google com v1alpha1 cloud functions2 function spec
 
     Attributes
@@ -79,7 +79,7 @@ schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpec:
 
 
 schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpecBuildConfig:
-    """
+    r"""
     Describes the Build step of the function that builds a container
     from the given source.
 
@@ -124,7 +124,7 @@ schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpecBuild
 
 
 schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpecBuildConfigSource:
-    """
+    r"""
     The location of the function source code.
 
     Attributes
@@ -142,7 +142,7 @@ schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpecBuild
 
 
 schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpecBuildConfigSourceRepoSource:
-    """
+    r"""
     If provided, get the source from this location in a Cloud Source Repository.
 
     Attributes
@@ -182,7 +182,7 @@ schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpecBuild
 
 
 schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpecBuildConfigSourceStorageSource:
-    """
+    r"""
     If provided, get the source from this location in Google Cloud Storage.
 
     Attributes
@@ -205,7 +205,7 @@ schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpecBuild
 
 
 schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpecEventTrigger:
-    """
+    r"""
     An Eventarc trigger managed by Google Cloud Functions that fires events in
     response to a condition in another service.
 
@@ -249,7 +249,7 @@ schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpecEvent
 
 
 schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpecEventTriggerEventFiltersItems0:
-    """
+    r"""
     cloudfunctions2 cnrm cloud google com v1alpha1 cloud functions2 function spec event trigger event filters items0
 
     Attributes
@@ -278,7 +278,7 @@ schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpecEvent
 
 
 schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -300,7 +300,7 @@ schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpecProje
 
 
 schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpecServiceConfig:
-    """
+    r"""
     Describes the Service being deployed.
 
     Attributes
@@ -384,7 +384,7 @@ schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpecServi
 
 
 schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpecServiceConfigSecretEnvironmentVariablesItems0:
-    """
+    r"""
     cloudfunctions2 cnrm cloud google com v1alpha1 cloud functions2 function spec service config secret environment variables items0
 
     Attributes
@@ -410,7 +410,7 @@ schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpecServi
 
 
 schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpecServiceConfigSecretVolumesItems0:
-    """
+    r"""
     cloudfunctions2 cnrm cloud google com v1alpha1 cloud functions2 function spec service config secret volumes items0
 
     Attributes
@@ -436,7 +436,7 @@ schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpecServi
 
 
 schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpecServiceConfigSecretVolumesItems0VersionsItems0:
-    """
+    r"""
     cloudfunctions2 cnrm cloud google com v1alpha1 cloud functions2 function spec service config secret volumes items0 versions items0
 
     Attributes
@@ -454,7 +454,7 @@ schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionSpecServi
 
 
 schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionStatus:
-    """
+    r"""
     cloudfunctions2 cnrm cloud google com v1alpha1 cloud functions2 function status
 
     Attributes
@@ -488,7 +488,7 @@ schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionStatus:
 
 
 schema Cloudfunctions2CnrmCloudGoogleComV1alpha1CloudFunctions2FunctionStatusConditionsItems0:
-    """
+    r"""
     cloudfunctions2 cnrm cloud google com v1alpha1 cloud functions2 function status conditions items0
 
     Attributes

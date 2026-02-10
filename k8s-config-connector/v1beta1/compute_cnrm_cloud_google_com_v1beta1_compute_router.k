@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeRouter:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeRouter:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router spec
 
     Attributes
@@ -71,7 +71,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterSpecBgp:
-    """
+    r"""
     BGP information specific to this router.
 
     Attributes
@@ -123,7 +123,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterSpecBgp:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterSpecBgpAdvertisedIPRangesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router spec bgp advertised IP ranges items0
 
     Attributes
@@ -142,7 +142,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterSpecBgpAdvertisedIPRangesIte
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterSpecNetworkRef:
-    """
+    r"""
     A reference to the network to which this router belongs.
 
     Attributes
@@ -164,7 +164,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterSpecNetworkRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router status
 
     Attributes
@@ -190,7 +190,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router status conditions items0
 
     Attributes

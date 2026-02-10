@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ApigeeSyncAuthorization:
-    """
+    r"""
     apigee cnrm cloud google com v1alpha1 apigee sync authorization
 
     Attributes
@@ -36,7 +36,7 @@ schema ApigeeSyncAuthorization:
 
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeSyncAuthorizationSpec:
-    """
+    r"""
     apigee cnrm cloud google com v1alpha1 apigee sync authorization spec
 
     Attributes
@@ -60,7 +60,7 @@ schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeSyncAuthorizationSpec:
 
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeSyncAuthorizationStatus:
-    """
+    r"""
     apigee cnrm cloud google com v1alpha1 apigee sync authorization status
 
     Attributes
@@ -83,7 +83,7 @@ schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeSyncAuthorizationStatus:
 
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeSyncAuthorizationStatusConditionsItems0:
-    """
+    r"""
     apigee cnrm cloud google com v1alpha1 apigee sync authorization status conditions items0
 
     Attributes

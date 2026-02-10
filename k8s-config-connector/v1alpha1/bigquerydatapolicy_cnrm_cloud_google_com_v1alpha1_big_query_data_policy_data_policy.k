@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BigQueryDataPolicyDataPolicy:
-    """
+    r"""
     bigquerydatapolicy cnrm cloud google com v1alpha1 big query data policy data policy
 
     Attributes
@@ -36,7 +36,7 @@ schema BigQueryDataPolicyDataPolicy:
 
 
 schema BigquerydatapolicyCnrmCloudGoogleComV1alpha1BigQueryDataPolicyDataPolicySpec:
-    """
+    r"""
     bigquerydatapolicy cnrm cloud google com v1alpha1 big query data policy data policy spec
 
     Attributes
@@ -70,7 +70,7 @@ schema BigquerydatapolicyCnrmCloudGoogleComV1alpha1BigQueryDataPolicyDataPolicyS
 
 
 schema BigquerydatapolicyCnrmCloudGoogleComV1alpha1BigQueryDataPolicyDataPolicySpecDataMaskingPolicy:
-    """
+    r"""
     The data masking policy that specifies the data masking rule to use.
 
     Attributes
@@ -84,7 +84,7 @@ schema BigquerydatapolicyCnrmCloudGoogleComV1alpha1BigQueryDataPolicyDataPolicyS
 
 
 schema BigquerydatapolicyCnrmCloudGoogleComV1alpha1BigQueryDataPolicyDataPolicySpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -106,7 +106,7 @@ schema BigquerydatapolicyCnrmCloudGoogleComV1alpha1BigQueryDataPolicyDataPolicyS
 
 
 schema BigquerydatapolicyCnrmCloudGoogleComV1alpha1BigQueryDataPolicyDataPolicyStatus:
-    """
+    r"""
     bigquerydatapolicy cnrm cloud google com v1alpha1 big query data policy data policy status
 
     Attributes
@@ -128,7 +128,7 @@ schema BigquerydatapolicyCnrmCloudGoogleComV1alpha1BigQueryDataPolicyDataPolicyS
 
 
 schema BigquerydatapolicyCnrmCloudGoogleComV1alpha1BigQueryDataPolicyDataPolicyStatusConditionsItems0:
-    """
+    r"""
     bigquerydatapolicy cnrm cloud google com v1alpha1 big query data policy data policy status conditions items0
 
     Attributes

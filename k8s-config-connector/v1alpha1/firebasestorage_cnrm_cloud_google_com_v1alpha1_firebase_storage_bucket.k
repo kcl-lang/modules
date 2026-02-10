@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema FirebaseStorageBucket:
-    """
+    r"""
     firebasestorage cnrm cloud google com v1alpha1 firebase storage bucket
 
     Attributes
@@ -36,7 +36,7 @@ schema FirebaseStorageBucket:
 
 
 schema FirebasestorageCnrmCloudGoogleComV1alpha1FirebaseStorageBucketSpec:
-    """
+    r"""
     firebasestorage cnrm cloud google com v1alpha1 firebase storage bucket spec
 
     Attributes
@@ -54,7 +54,7 @@ schema FirebasestorageCnrmCloudGoogleComV1alpha1FirebaseStorageBucketSpec:
 
 
 schema FirebasestorageCnrmCloudGoogleComV1alpha1FirebaseStorageBucketSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -76,7 +76,7 @@ schema FirebasestorageCnrmCloudGoogleComV1alpha1FirebaseStorageBucketSpecProject
 
 
 schema FirebasestorageCnrmCloudGoogleComV1alpha1FirebaseStorageBucketStatus:
-    """
+    r"""
     firebasestorage cnrm cloud google com v1alpha1 firebase storage bucket status
 
     Attributes
@@ -98,7 +98,7 @@ schema FirebasestorageCnrmCloudGoogleComV1alpha1FirebaseStorageBucketStatus:
 
 
 schema FirebasestorageCnrmCloudGoogleComV1alpha1FirebaseStorageBucketStatusConditionsItems0:
-    """
+    r"""
     firebasestorage cnrm cloud google com v1alpha1 firebase storage bucket status conditions items0
 
     Attributes

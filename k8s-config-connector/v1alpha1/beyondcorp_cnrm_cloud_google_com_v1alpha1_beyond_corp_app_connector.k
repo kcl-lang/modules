@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BeyondCorpAppConnector:
-    """
+    r"""
     beyondcorp cnrm cloud google com v1alpha1 beyond corp app connector
 
     Attributes
@@ -36,7 +36,7 @@ schema BeyondCorpAppConnector:
 
 
 schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppConnectorSpec:
-    """
+    r"""
     beyondcorp cnrm cloud google com v1alpha1 beyond corp app connector spec
 
     Attributes
@@ -66,7 +66,7 @@ schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppConnectorSpec:
 
 
 schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppConnectorSpecPrincipalInfo:
-    """
+    r"""
     Principal information about the Identity of the AppConnector.
 
     Attributes
@@ -80,7 +80,7 @@ schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppConnectorSpecPrincipalIn
 
 
 schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppConnectorSpecPrincipalInfoServiceAccount:
-    """
+    r"""
     ServiceAccount represents a GCP service account.
 
     Attributes
@@ -94,7 +94,7 @@ schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppConnectorSpecPrincipalIn
 
 
 schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppConnectorSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -116,7 +116,7 @@ schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppConnectorSpecProjectRef:
 
 
 schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppConnectorStatus:
-    """
+    r"""
     beyondcorp cnrm cloud google com v1alpha1 beyond corp app connector status
 
     Attributes
@@ -138,7 +138,7 @@ schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppConnectorStatus:
 
 
 schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppConnectorStatusConditionsItems0:
-    """
+    r"""
     beyondcorp cnrm cloud google com v1alpha1 beyond corp app connector status conditions items0
 
     Attributes

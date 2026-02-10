@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ApigeeEndpointAttachment:
-    """
-    apigee cnrm cloud google com v1alpha1 apigee endpoint attachment
+    r"""
+    ApigeeEndpointAttachment is the Schema for the ApigeeEndpointAttachment API
 
     Attributes
     ----------
@@ -36,65 +36,103 @@ schema ApigeeEndpointAttachment:
 
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeEndpointAttachmentSpec:
-    """
-    apigee cnrm cloud google com v1alpha1 apigee endpoint attachment spec
+    r"""
+    ApigeeEndpointAttachmentSpec defines the desired state of ApigeeEndpointAttachment
 
     Attributes
     ----------
-    location : str, default is Undefined, required
-        Immutable. Location of the endpoint attachment.
-    orgId : str, default is Undefined, required
-        Immutable. The Apigee Organization associated with the Apigee instance,
-        in the format 'organizations/{{org_name}}'.
+    location : str, default is Undefined, optional
+        Required. Location of the endpoint attachment.
+    organizationRef : ApigeeCnrmCloudGoogleComV1alpha1ApigeeEndpointAttachmentSpecOrganizationRef, default is Undefined, required
+        organization ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The endpointAttachmentId of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
-    serviceAttachment : str, default is Undefined, required
-        Immutable. Format: projects/*/regions/*/serviceAttachments/*.
+        The ApigeeEndpointAttachment name. If not given, the metadata.name will be used.
+    serviceAttachmentRef : ApigeeCnrmCloudGoogleComV1alpha1ApigeeEndpointAttachmentSpecServiceAttachmentRef, default is Undefined, optional
+        service attachment ref
     """
 
 
-    location: str
+    location?: str
 
-    orgId: str
+    organizationRef: ApigeeCnrmCloudGoogleComV1alpha1ApigeeEndpointAttachmentSpecOrganizationRef
 
     resourceID?: str
 
-    serviceAttachment: str
+    serviceAttachmentRef?: ApigeeCnrmCloudGoogleComV1alpha1ApigeeEndpointAttachmentSpecServiceAttachmentRef
+
+
+schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeEndpointAttachmentSpecOrganizationRef:
+    r"""
+    Reference to parent Apigee Organization.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed ApigeeOrganization resource. Should be in the format "organizations/{{organizationID}}".
+    name : str, default is Undefined, optional
+        The name of a ApigeeOrganization resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a ApigeeOrganization resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeEndpointAttachmentSpecServiceAttachmentRef:
+    r"""
+    Reference to the ServiceAttachment for the EndpointAttachment.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The ComputeServiceAttachment selflink in the form "projects/{{project}}/regions/{{region}}/serviceAttachments/{{name}}" when not managed by Config Connector.
+    name : str, default is Undefined, optional
+        The `name` field of a `ComputeServiceAttachment` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `ComputeServiceAttachment` resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
 
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeEndpointAttachmentStatus:
-    """
-    apigee cnrm cloud google com v1alpha1 apigee endpoint attachment status
+    r"""
+    ApigeeEndpointAttachmentStatus defines the config connector machine state of ApigeeEndpointAttachment
 
     Attributes
     ----------
     conditions : [ApigeeCnrmCloudGoogleComV1alpha1ApigeeEndpointAttachmentStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
-    connectionState : str, default is Undefined, optional
-        State of the endpoint attachment connection to the service attachment.
-    host : str, default is Undefined, optional
-        Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
-    name : str, default is Undefined, optional
-        Name of the Endpoint Attachment in the following format:
-        organizations/{organization}/endpointAttachments/{endpointAttachment}.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the ApigeeEndpointAttachment resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : ApigeeCnrmCloudGoogleComV1alpha1ApigeeEndpointAttachmentStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [ApigeeCnrmCloudGoogleComV1alpha1ApigeeEndpointAttachmentStatusConditionsItems0]
 
-    connectionState?: str
-
-    host?: str
-
-    name?: str
+    externalRef?: str
 
     observedGeneration?: int
 
+    observedState?: ApigeeCnrmCloudGoogleComV1alpha1ApigeeEndpointAttachmentStatusObservedState
+
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeEndpointAttachmentStatusConditionsItems0:
-    """
+    r"""
     apigee cnrm cloud google com v1alpha1 apigee endpoint attachment status conditions items0
 
     Attributes
@@ -121,5 +159,27 @@ schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeEndpointAttachmentStatusConditionsI
     status?: str
 
     $type?: str
+
+
+schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeEndpointAttachmentStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    connectionState : str, default is Undefined, optional
+        Output only. State of the endpoint attachment connection to the service attachment.
+    host : str, default is Undefined, optional
+        Output only. Host that can be used in either the HTTP target endpoint directly or as the host in target server.
+    state : str, default is Undefined, optional
+        Output only. State of the endpoint attachment. Values other than `ACTIVE` mean the resource is not ready to use.
+    """
+
+
+    connectionState?: str
+
+    host?: str
+
+    state?: str
 
 

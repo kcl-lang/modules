@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeVPNGateway:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute v p n gateway
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeVPNGateway:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNGatewaySpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute v p n gateway spec
 
     Attributes
@@ -71,7 +71,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNGatewaySpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNGatewaySpecNetworkRef:
-    """
+    r"""
     The network this VPN gateway is accepting traffic for.
 
     Attributes
@@ -93,7 +93,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNGatewaySpecNetworkRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNGatewaySpecVpnInterfacesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute v p n gateway spec vpn interfaces items0
 
     Attributes
@@ -115,7 +115,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNGatewaySpecVpnInterfacesItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNGatewaySpecVpnInterfacesItems0InterconnectAttachmentRef:
-    """
+    r"""
     Immutable. When this value is present, the VPN Gateway will be used
     for IPsec-encrypted Cloud Interconnect; all Egress or Ingress
     traffic for this VPN Gateway interface will go through the specified
@@ -140,7 +140,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNGatewaySpecVpnInterfacesItems0I
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNGatewayStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute v p n gateway status
 
     Attributes
@@ -162,7 +162,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNGatewayStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNGatewayStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute v p n gateway status conditions items0
 
     Attributes

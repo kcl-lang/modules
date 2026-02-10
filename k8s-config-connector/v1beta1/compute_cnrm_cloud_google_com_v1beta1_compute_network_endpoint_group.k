@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeNetworkEndpointGroup:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute network endpoint group
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeNetworkEndpointGroup:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkEndpointGroupSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute network endpoint group spec
 
     Attributes
@@ -84,7 +84,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkEndpointGroupSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkEndpointGroupSpecNetworkRef:
-    """
+    r"""
     The network to which all network endpoints in the NEG belong. Uses
     "default" project network if unspecified.
 
@@ -107,7 +107,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkEndpointGroupSpecNetworkRef
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkEndpointGroupSpecSubnetworkRef:
-    """
+    r"""
     Optional subnetwork to which all network endpoints in the NEG belong.
 
     Attributes
@@ -129,7 +129,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkEndpointGroupSpecSubnetwork
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkEndpointGroupStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute network endpoint group status
 
     Attributes
@@ -155,7 +155,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkEndpointGroupStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkEndpointGroupStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute network endpoint group status conditions items0
 
     Attributes

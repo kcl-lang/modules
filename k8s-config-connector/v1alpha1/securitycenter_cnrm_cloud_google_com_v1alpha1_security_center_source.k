@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema SecurityCenterSource:
-    """
+    r"""
     securitycenter cnrm cloud google com v1alpha1 security center source
 
     Attributes
@@ -36,7 +36,7 @@ schema SecurityCenterSource:
 
 
 schema SecuritycenterCnrmCloudGoogleComV1alpha1SecurityCenterSourceSpec:
-    """
+    r"""
     securitycenter cnrm cloud google com v1alpha1 security center source spec
 
     Attributes
@@ -66,7 +66,7 @@ schema SecuritycenterCnrmCloudGoogleComV1alpha1SecurityCenterSourceSpec:
 
 
 schema SecuritycenterCnrmCloudGoogleComV1alpha1SecurityCenterSourceSpecOrganizationRef:
-    """
+    r"""
     The organization that this resource belongs to.
 
     Attributes
@@ -88,7 +88,7 @@ schema SecuritycenterCnrmCloudGoogleComV1alpha1SecurityCenterSourceSpecOrganizat
 
 
 schema SecuritycenterCnrmCloudGoogleComV1alpha1SecurityCenterSourceStatus:
-    """
+    r"""
     securitycenter cnrm cloud google com v1alpha1 security center source status
 
     Attributes
@@ -111,7 +111,7 @@ schema SecuritycenterCnrmCloudGoogleComV1alpha1SecurityCenterSourceStatus:
 
 
 schema SecuritycenterCnrmCloudGoogleComV1alpha1SecurityCenterSourceStatusConditionsItems0:
-    """
+    r"""
     securitycenter cnrm cloud google com v1alpha1 security center source status conditions items0
 
     Attributes

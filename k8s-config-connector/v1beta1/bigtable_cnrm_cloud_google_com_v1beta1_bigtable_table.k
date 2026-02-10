@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BigtableTable:
-    """
-    bigtable cnrm cloud google com v1beta1 bigtable table
+    r"""
+    BigtableTable is the Schema for the BigtableTable API
 
     Attributes
     ----------
@@ -36,23 +36,31 @@ schema BigtableTable:
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableTableSpec:
-    """
-    bigtable cnrm cloud google com v1beta1 bigtable table spec
+    r"""
+    BigtableTableSpec defines the desired state of BigtableTable
 
     Attributes
     ----------
     changeStreamRetention : str, default is Undefined, optional
-        Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+        Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days..
     columnFamily : [BigtableCnrmCloudGoogleComV1beta1BigtableTableSpecColumnFamilyItems0], default is Undefined, optional
-        A group of columns within a table which share a common configuration. This can be specified multiple times.
+        The names of the column families that should be created immediately upon table creation, specified by name. The values that may be set are specified here. At least one column family must be specified.
     deletionProtection : str, default is Undefined, optional
-        A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value.
+        NOTE: DeletionProtection proto field is changed from string (1.38) to bool (1.40) in cloud.google.com/go/bigtable/admin/apiv2/adminpb
+        Set to true to make the table protected against data loss. i.e. deleting
+        the following resources through Admin APIs are prohibited:
+
+        * The table.
+        * The column families in the table.
+        * The instance containing the table.
+
+        Note one can still delete the data stored in the table through Data APIs.
     instanceRef : BigtableCnrmCloudGoogleComV1beta1BigtableTableSpecInstanceRef, default is Undefined, required
         instance ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The BigtableTable name. If not given, the metadata.name will be used.
     splitKeys : [str], default is Undefined, optional
-        split keys
+        A list of predefined keys to split the table on.
     """
 
 
@@ -70,7 +78,7 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableTableSpec:
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableTableSpecColumnFamilyItems0:
-    """
+    r"""
     bigtable cnrm cloud google com v1beta1 bigtable table spec column family items0
 
     Attributes
@@ -84,17 +92,17 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableTableSpecColumnFamilyItems0:
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableTableSpecInstanceRef:
-    """
-    The name of the Bigtable instance.
+    r"""
+    Immutable. The instance to create the table in.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `BigtableInstance` resource.
+        A reference to an externally managed BigtableInstance resource.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a BigtableInstance resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a BigtableInstance resource.
     """
 
 
@@ -106,13 +114,15 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableTableSpecInstanceRef:
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableTableStatus:
-    """
-    bigtable cnrm cloud google com v1beta1 bigtable table status
+    r"""
+    BigtableTableStatus defines the config connector machine state of BigtableTable
 
     Attributes
     ----------
     conditions : [BigtableCnrmCloudGoogleComV1beta1BigtableTableStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the BigtableTable resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """
@@ -120,11 +130,13 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableTableStatus:
 
     conditions?: [BigtableCnrmCloudGoogleComV1beta1BigtableTableStatusConditionsItems0]
 
+    externalRef?: str
+
     observedGeneration?: int
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableTableStatusConditionsItems0:
-    """
+    r"""
     bigtable cnrm cloud google com v1beta1 bigtable table status conditions items0
 
     Attributes

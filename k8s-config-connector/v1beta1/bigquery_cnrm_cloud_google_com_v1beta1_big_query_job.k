@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BigQueryJob:
-    """
+    r"""
     bigquery cnrm cloud google com v1beta1 big query job
 
     Attributes
@@ -36,7 +36,7 @@ schema BigQueryJob:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpec:
-    """
+    r"""
     bigquery cnrm cloud google com v1beta1 big query job spec
 
     Attributes
@@ -74,7 +74,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpec:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecCopy:
-    """
+    r"""
     Immutable. Copies a table.
 
     Attributes
@@ -112,7 +112,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecCopy:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecCopyDestinationEncryptionConfiguration:
-    """
+    r"""
     Immutable. Custom encryption configuration (e.g., Cloud KMS keys).
 
     Attributes
@@ -130,7 +130,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecCopyDestinationEncryption
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecCopyDestinationEncryptionConfigurationKmsKeyRef:
-    """
+    r"""
     Describes the Cloud KMS encryption key that will be used to protect
     destination BigQuery table. The BigQuery Service Account associated
     with your project requires access to this encryption key.
@@ -154,7 +154,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecCopyDestinationEncryption
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecCopyDestinationTable:
-    """
+    r"""
     Immutable. The destination table.
 
     Attributes
@@ -168,7 +168,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecCopyDestinationTable:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecCopyDestinationTableTableRef:
-    """
+    r"""
     A reference to the table.
 
     Attributes
@@ -190,7 +190,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecCopyDestinationTableTable
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecCopySourceTablesItems0:
-    """
+    r"""
     bigquery cnrm cloud google com v1beta1 big query job spec copy source tables items0
 
     Attributes
@@ -204,7 +204,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecCopySourceTablesItems0:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecCopySourceTablesItems0TableRef:
-    """
+    r"""
     A reference to the table.
 
     Attributes
@@ -226,7 +226,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecCopySourceTablesItems0Tab
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecExtract:
-    """
+    r"""
     Immutable. Configures an extract job.
 
     Attributes
@@ -268,7 +268,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecExtract:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecExtractSourceTable:
-    """
+    r"""
     Immutable. A reference to the table being exported.
 
     Attributes
@@ -282,7 +282,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecExtractSourceTable:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecExtractSourceTableTableRef:
-    """
+    r"""
     A reference to the table.
 
     Attributes
@@ -304,7 +304,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecExtractSourceTableTableRe
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecLoad:
-    """
+    r"""
     Immutable. Configures a load job.
 
     Attributes
@@ -335,7 +335,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecLoad:
         Immutable. The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character.
         To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
         the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the
-        data in its raw, binary state. BigQuery also supports the escape sequence "\\t" to specify a tab separator.
+        data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator.
         The default value is a comma (',').
     ignoreUnknownValues : bool, default is Undefined, optional
         Immutable. Indicates if BigQuery should allow extra values that are not represented in the table schema.
@@ -352,7 +352,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecLoad:
         Immutable. The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
         an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
     nullMarker : str, default is Undefined, optional
-        Immutable. Specifies a string that represents a null value in a CSV file. For example, if you specify "\\N", BigQuery interprets "\\N" as a null value
+        Immutable. Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value
         when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
         empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
         an empty value.
@@ -390,11 +390,11 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecLoad:
         The default value is CSV.
     sourceUris : [str], default is Undefined, required
         Immutable. The fully-qualified URIs that point to your data in Google Cloud.
-        For Google Cloud Storage URIs: Each URI can contain one '\\*' wildcard character
+        For Google Cloud Storage URIs: Each URI can contain one '\*' wildcard character
         and it must come after the 'bucket' name. Size limits related to load jobs apply
         to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be
         specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table.
-        For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '\\*' wildcard character is not allowed.
+        For Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '\*' wildcard character is not allowed.
     timePartitioning : BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecLoadTimePartitioning, default is Undefined, optional
         time partitioning
     writeDisposition : str, default is Undefined, optional
@@ -451,7 +451,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecLoad:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecLoadDestinationEncryptionConfiguration:
-    """
+    r"""
     Immutable. Custom encryption configuration (e.g., Cloud KMS keys).
 
     Attributes
@@ -469,7 +469,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecLoadDestinationEncryption
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecLoadDestinationEncryptionConfigurationKmsKeyRef:
-    """
+    r"""
     Describes the Cloud KMS encryption key that will be used to protect
     destination BigQuery table. The BigQuery Service Account associated
     with your project requires access to this encryption key.
@@ -493,7 +493,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecLoadDestinationEncryption
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecLoadDestinationTable:
-    """
+    r"""
     Immutable. The destination table to load the data into.
 
     Attributes
@@ -507,7 +507,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecLoadDestinationTable:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecLoadDestinationTableTableRef:
-    """
+    r"""
     A reference to the table.
 
     Attributes
@@ -529,7 +529,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecLoadDestinationTableTable
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecLoadParquetOptions:
-    """
+    r"""
     Immutable. Parquet Options for load and make external tables.
 
     Attributes
@@ -547,7 +547,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecLoadParquetOptions:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecLoadTimePartitioning:
-    """
+    r"""
     Immutable. Time-based partitioning specification for the destination table.
 
     Attributes
@@ -572,7 +572,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecLoadTimePartitioning:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecQuery:
-    """
+    r"""
     Immutable. Configures a query job.
 
     Attributes
@@ -674,7 +674,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecQuery:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecQueryDefaultDataset:
-    """
+    r"""
     Immutable. Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
 
     Attributes
@@ -688,7 +688,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecQueryDefaultDataset:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecQueryDefaultDatasetDatasetRef:
-    """
+    r"""
     A reference to the dataset.
 
     Attributes
@@ -710,7 +710,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecQueryDefaultDatasetDatase
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecQueryDestinationEncryptionConfiguration:
-    """
+    r"""
     Immutable. Custom encryption configuration (e.g., Cloud KMS keys).
 
     Attributes
@@ -728,7 +728,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecQueryDestinationEncryptio
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecQueryDestinationEncryptionConfigurationKmsKeyRef:
-    """
+    r"""
     Describes the Cloud KMS encryption key that will be used to protect
     destination BigQuery table. The BigQuery Service Account associated
     with your project requires access to this encryption key.
@@ -752,7 +752,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecQueryDestinationEncryptio
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecQueryDestinationTable:
-    """
+    r"""
     Immutable. Describes the table where the query results should be stored.
     This property must be set for large results that exceed the maximum response size.
     For queries that produce anonymous (cached) results, this field will be populated by BigQuery.
@@ -768,7 +768,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecQueryDestinationTable:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecQueryDestinationTableTableRef:
-    """
+    r"""
     A reference to the table.
 
     Attributes
@@ -790,7 +790,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecQueryDestinationTableTabl
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecQueryScriptOptions:
-    """
+    r"""
     Immutable. Options controlling the execution of scripts.
 
     Attributes
@@ -813,7 +813,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecQueryScriptOptions:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecQueryUserDefinedFunctionResourcesItems0:
-    """
+    r"""
     bigquery cnrm cloud google com v1beta1 big query job spec query user defined function resources items0
 
     Attributes
@@ -832,7 +832,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobSpecQueryUserDefinedFunctionR
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobStatus:
-    """
+    r"""
     bigquery cnrm cloud google com v1beta1 big query job status
 
     Attributes
@@ -862,7 +862,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobStatus:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobStatusConditionsItems0:
-    """
+    r"""
     bigquery cnrm cloud google com v1beta1 big query job status conditions items0
 
     Attributes
@@ -892,7 +892,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobStatusConditionsItems0:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobStatusStatusItems0:
-    """
+    r"""
     bigquery cnrm cloud google com v1beta1 big query job status status items0
 
     Attributes
@@ -916,7 +916,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobStatusStatusItems0:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobStatusStatusItems0ErrorResultItems0:
-    """
+    r"""
     bigquery cnrm cloud google com v1beta1 big query job status status items0 error result items0
 
     Attributes
@@ -938,7 +938,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobStatusStatusItems0ErrorResult
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryJobStatusStatusItems0ErrorsItems0:
-    """
+    r"""
     bigquery cnrm cloud google com v1beta1 big query job status status items0 errors items0
 
     Attributes

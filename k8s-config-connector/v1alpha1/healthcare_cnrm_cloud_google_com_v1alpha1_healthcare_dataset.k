@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema HealthcareDataset:
-    """
+    r"""
     healthcare cnrm cloud google com v1alpha1 healthcare dataset
 
     Attributes
@@ -36,7 +36,7 @@ schema HealthcareDataset:
 
 
 schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareDatasetSpec:
-    """
+    r"""
     healthcare cnrm cloud google com v1alpha1 healthcare dataset spec
 
     Attributes
@@ -64,7 +64,7 @@ schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareDatasetSpec:
 
 
 schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareDatasetSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -86,7 +86,7 @@ schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareDatasetSpecProjectRef:
 
 
 schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareDatasetStatus:
-    """
+    r"""
     healthcare cnrm cloud google com v1alpha1 healthcare dataset status
 
     Attributes
@@ -108,7 +108,7 @@ schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareDatasetStatus:
 
 
 schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareDatasetStatusConditionsItems0:
-    """
+    r"""
     healthcare cnrm cloud google com v1alpha1 healthcare dataset status conditions items0
 
     Attributes

@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BigtableInstance:
-    """
-    bigtable cnrm cloud google com v1beta1 bigtable instance
+    r"""
+    BigtableInstance is the Schema for the BigtableInstance API
 
     Attributes
     ----------
@@ -36,8 +36,8 @@ schema BigtableInstance:
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableInstanceSpec:
-    """
-    bigtable cnrm cloud google com v1beta1 bigtable instance spec
+    r"""
+    BigtableInstanceSpec defines the desired state of BigtableInstance
 
     Attributes
     ----------
@@ -46,11 +46,11 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableInstanceSpec:
     deletionProtection : bool, default is Undefined, optional
         DEPRECATED. This field no longer serves any function and is intended to be dropped in a later version of the resource.
     displayName : str, default is Undefined, optional
-        The human-readable display name of the Bigtable instance. Defaults to the instance name.
+        Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
     instanceType : str, default is Undefined, optional
         DEPRECATED. It is recommended to leave this field unspecified since the distinction between "DEVELOPMENT" and "PRODUCTION" instances is going away, and all instances will become "PRODUCTION" instances. This means that new and existing "DEVELOPMENT" instances will be converted to "PRODUCTION" instances. It is recommended for users to use "PRODUCTION" instances in any case, since a 1-node "PRODUCTION" instance is functionally identical to a "DEVELOPMENT" instance, but without the accompanying restrictions. The instance type to create. One of "DEVELOPMENT" or "PRODUCTION". Defaults to "PRODUCTION".
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The Instance name. If not given, the metadata.name will be used.
     """
 
 
@@ -66,7 +66,7 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableInstanceSpec:
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableInstanceSpecClusterItems0:
-    """
+    r"""
     bigtable cnrm cloud google com v1beta1 bigtable instance spec cluster items0
 
     Attributes
@@ -100,7 +100,7 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableInstanceSpecClusterItems0:
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableInstanceSpecClusterItems0AutoscalingConfig:
-    """
+    r"""
     A list of Autoscaling configurations. Only one element is used and allowed.
 
     Attributes
@@ -126,9 +126,11 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableInstanceSpecClusterItems0Autosca
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableInstanceSpecClusterItems0KmsKeyRef:
-    """
+    r"""
     Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable
-    cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains
+    cluster. The requirements for this key are:
+
+    1) The Cloud Bigtable service account associated with the project that contains
     this cluster must be granted the cloudkms.cryptoKeyEncrypterDecrypter role on the CMEK key.
     2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
     3) All clusters within an instance must use the same CMEK key access to this encryption key.
@@ -136,11 +138,11 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableInstanceSpecClusterItems0KmsKeyR
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `KMSCryptoKey` resource.
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` of a `KMSCryptoKey` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` of a `KMSCryptoKey` resource.
     """
 
 
@@ -152,13 +154,13 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableInstanceSpecClusterItems0KmsKeyR
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableInstanceStatus:
-    """
-    bigtable cnrm cloud google com v1beta1 bigtable instance status
+    r"""
+    BigtableInstanceStatus defines the config connector machine state of BigtableInstance
 
     Attributes
     ----------
     conditions : [BigtableCnrmCloudGoogleComV1beta1BigtableInstanceStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """
@@ -170,7 +172,7 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableInstanceStatus:
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableInstanceStatusConditionsItems0:
-    """
+    r"""
     bigtable cnrm cloud google com v1beta1 bigtable instance status conditions items0
 
     Attributes

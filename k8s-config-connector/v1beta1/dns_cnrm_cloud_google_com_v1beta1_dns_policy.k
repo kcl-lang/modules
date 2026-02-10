@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DNSPolicy:
-    """
+    r"""
     dns cnrm cloud google com v1beta1 DNS policy
 
     Attributes
@@ -36,7 +36,7 @@ schema DNSPolicy:
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSPolicySpec:
-    """
+    r"""
     DNS cnrm cloud google com v1beta1 DNS policy spec
 
     Attributes
@@ -74,7 +74,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSPolicySpec:
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSPolicySpecAlternativeNameServerConfig:
-    """
+    r"""
     Sets an alternative name server for the associated networks.
     When specified, all DNS queries are forwarded to a name server that you choose.
     Names such as .internal are not available when an alternative name server is specified.
@@ -92,7 +92,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSPolicySpecAlternativeNameServerConfig:
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSPolicySpecAlternativeNameServerConfigTargetNameServersItems0:
-    """
+    r"""
     DNS cnrm cloud google com v1beta1 DNS policy spec alternative name server config target name servers items0
 
     Attributes
@@ -112,7 +112,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSPolicySpecAlternativeNameServerConfigTarge
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSPolicySpecNetworksItems0:
-    """
+    r"""
     DNS cnrm cloud google com v1beta1 DNS policy spec networks items0
 
     Attributes
@@ -126,7 +126,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSPolicySpecNetworksItems0:
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSPolicySpecNetworksItems0NetworkRef:
-    """
+    r"""
     VPC network to bind to.
 
     Attributes
@@ -148,7 +148,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSPolicySpecNetworksItems0NetworkRef:
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSPolicyStatus:
-    """
+    r"""
     DNS cnrm cloud google com v1beta1 DNS policy status
 
     Attributes
@@ -166,7 +166,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSPolicyStatus:
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSPolicyStatusConditionsItems0:
-    """
+    r"""
     DNS cnrm cloud google com v1beta1 DNS policy status conditions items0
 
     Attributes

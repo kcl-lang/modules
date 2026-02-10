@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema HealthcareFHIRStore:
-    """
+    r"""
     healthcare cnrm cloud google com v1alpha1 healthcare f h i r store
 
     Attributes
@@ -36,7 +36,7 @@ schema HealthcareFHIRStore:
 
 
 schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareFHIRStoreSpec:
-    """
+    r"""
     healthcare cnrm cloud google com v1alpha1 healthcare f h i r store spec
 
     Attributes
@@ -126,7 +126,7 @@ schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareFHIRStoreSpec:
 
 
 schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareFHIRStoreSpecNotificationConfig:
-    """
+    r"""
     A nested object resource.
 
     Attributes
@@ -145,7 +145,7 @@ schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareFHIRStoreSpecNotificationCo
 
 
 schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareFHIRStoreSpecNotificationConfigsItems0:
-    """
+    r"""
     healthcare cnrm cloud google com v1alpha1 healthcare f h i r store spec notification configs items0
 
     Attributes
@@ -180,7 +180,7 @@ schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareFHIRStoreSpecNotificationCo
 
 
 schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareFHIRStoreSpecStreamConfigsItems0:
-    """
+    r"""
     healthcare cnrm cloud google com v1alpha1 healthcare f h i r store spec stream configs items0
 
     Attributes
@@ -200,7 +200,7 @@ schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareFHIRStoreSpecStreamConfigsI
 
 
 schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareFHIRStoreSpecStreamConfigsItems0BigqueryDestination:
-    """
+    r"""
     The destination BigQuery structure that contains both the dataset location and corresponding schema config.
     The output is organized in one table per resource type. The server reuses the existing tables (if any) that
     are named after the resource types, e.g. "Patient", "Observation". When there is no existing table for a given
@@ -222,7 +222,7 @@ schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareFHIRStoreSpecStreamConfigsI
 
 
 schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareFHIRStoreSpecStreamConfigsItems0BigqueryDestinationSchemaConfig:
-    """
+    r"""
     The configuration for the exported BigQuery schema.
 
     Attributes
@@ -251,7 +251,7 @@ schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareFHIRStoreSpecStreamConfigsI
 
 
 schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareFHIRStoreSpecStreamConfigsItems0BigqueryDestinationSchemaConfigLastUpdatedPartitionConfig:
-    """
+    r"""
     The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
 
     Attributes
@@ -269,7 +269,7 @@ schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareFHIRStoreSpecStreamConfigsI
 
 
 schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareFHIRStoreStatus:
-    """
+    r"""
     healthcare cnrm cloud google com v1alpha1 healthcare f h i r store status
 
     Attributes
@@ -291,7 +291,7 @@ schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareFHIRStoreStatus:
 
 
 schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareFHIRStoreStatusConditionsItems0:
-    """
+    r"""
     healthcare cnrm cloud google com v1alpha1 healthcare f h i r store status conditions items0
 
     Attributes

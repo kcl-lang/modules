@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BigQueryTable:
-    """
-    bigquery cnrm cloud google com v1beta1 big query table
+    r"""
+    BigQueryTable is the Schema for the BigQueryTable API
 
     Attributes
     ----------
@@ -36,35 +36,41 @@ schema BigQueryTable:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpec:
-    """
-    bigquery cnrm cloud google com v1beta1 big query table spec
+    r"""
+    BigQueryTableSpec defines the desired state of BigQueryTable
 
     Attributes
     ----------
     clustering : [str], default is Undefined, optional
-        Specifies column names to use for data clustering. Up to four top-level columns are allowed, and should be specified in descending priority order.
+        Clustering specification for the table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
     datasetRef : BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecDatasetRef, default is Undefined, required
         dataset ref
     description : str, default is Undefined, optional
-        The field description.
+        A user-friendly description of this table.
     encryptionConfiguration : BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecEncryptionConfiguration, default is Undefined, optional
         encryption configuration
     expirationTime : int, default is Undefined, optional
-        The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed.
+        The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed.  The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
     externalDataConfiguration : BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecExternalDataConfiguration, default is Undefined, optional
         external data configuration
     friendlyName : str, default is Undefined, optional
-        A descriptive name for the table.
+        A descriptive name for this table.
+    labels : {str:str}, default is Undefined, optional
+        When using `alpha.cnrm.cloud.google.com/reconciler:direct` annotion, use labels field to set the labels for this resource on GCP. Otherwise, use .metadata.labels. Please refer to https://github.com/GoogleCloudPlatform/k8s-config-connector/issues/4274 for context. The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
     materializedView : BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecMaterializedView, default is Undefined, optional
         materialized view
     maxStaleness : str, default is Undefined, optional
         The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
     rangePartitioning : BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecRangePartitioning, default is Undefined, optional
         range partitioning
+    requirePartitionFilter : bool, default is Undefined, optional
+        If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The tableId of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The BigQueryTable name. If not given, the metadata.name will be used.
     $schema : str, default is Undefined, optional
-        A JSON schema for the table.
+        Describes the schema of this table.
+    tableConstraints : BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecTableConstraints, default is Undefined, optional
+        table constraints
     timePartitioning : BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecTimePartitioning, default is Undefined, optional
         time partitioning
     view : BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecView, default is Undefined, optional
@@ -86,15 +92,21 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpec:
 
     friendlyName?: str
 
+    labels?: {str:str}
+
     materializedView?: BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecMaterializedView
 
     maxStaleness?: str
 
     rangePartitioning?: BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecRangePartitioning
 
+    requirePartitionFilter?: bool
+
     resourceID?: str
 
     $schema?: str
+
+    tableConstraints?: BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecTableConstraints
 
     timePartitioning?: BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecTimePartitioning
 
@@ -102,17 +114,17 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpec:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecDatasetRef:
-    """
-    bigquery cnrm cloud google com v1beta1 big query table spec dataset ref
+    r"""
+    DatasetRef defines the resource reference to BigQueryDataset, which "External" field holds the GCP identifier for the KRM object.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `BigQueryDataset` resource.
+        A reference to an externally-managed BigQueryDataset resource. Should be in the format "projects/{{projectID}}/datasets/{{datasetID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a BigQueryDataset resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a BigQueryDataset resource.
     """
 
 
@@ -124,15 +136,15 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecDatasetRef:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecEncryptionConfiguration:
-    """
-    Immutable. Specifies how the table should be encrypted. If left blank, the table will be encrypted with a Google-managed key; that process is transparent to the user.
+    r"""
+    Custom encryption configuration (e.g., Cloud KMS keys).
 
     Attributes
     ----------
     kmsKeyRef : BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecEncryptionConfigurationKmsKeyRef, default is Undefined, required
         kms key ref
     kmsKeyVersion : str, default is Undefined, optional
-        The self link or full name of the kms key version used to encrypt this table.
+        DEPRECATED. // The table will be encrypted with the primary version of Cloud KMS encryption key. // The self link or full name of the kms key version used to encrypt this table.
     """
 
 
@@ -142,17 +154,17 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecEncryptionConfiguration
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecEncryptionConfigurationKmsKeyRef:
-    """
-    bigquery cnrm cloud google com v1beta1 big query table spec encryption configuration kms key ref
+    r"""
+    Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `KMSCryptoKey` resource.
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` of a `KMSCryptoKey` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` of a `KMSCryptoKey` resource.
     """
 
 
@@ -164,19 +176,19 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecEncryptionConfiguration
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecExternalDataConfiguration:
-    """
+    r"""
     Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
 
     Attributes
     ----------
     autodetect : bool, default is Undefined, required
-        Let BigQuery try to autodetect the schema and format of the table.
+        Try to detect schema and format options automatically. Any option specified explicitly will be honored.
     avroOptions : BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecExternalDataConfigurationAvroOptions, default is Undefined, optional
         avro options
     compression : str, default is Undefined, optional
-        The compression type of the data source. Valid values are "NONE" or "GZIP".
+        The compression type of the data source. Possible values include GZIP and NONE. The default value is NONE. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups, Avro, ORC and Parquet formats. An empty string is an invalid value.
     connectionId : str, default is Undefined, optional
-        The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connectionId can have the form "{{project}}.{{location}}.{{connection_id}}" or "projects/{{project}}/locations/{{location}}/connections/{{connection_id}}".
+        The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection_id can have the form `{project_id}.{location_id};{connection_id}` or `projects/{project_id}/locations/{location_id}/connections/{connection_id}`.
     csvOptions : BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecExternalDataConfigurationCsvOptions, default is Undefined, optional
         csv options
     fileSetSpecType : str, default is Undefined, optional
@@ -186,25 +198,29 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecExternalDataConfigurati
     hivePartitioningOptions : BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecExternalDataConfigurationHivePartitioningOptions, default is Undefined, optional
         hive partitioning options
     ignoreUnknownValues : bool, default is Undefined, optional
-        Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false.
+        Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored. ORC: This setting is ignored. Parquet: This setting is ignored.
     jsonOptions : BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecExternalDataConfigurationJSONOptions, default is Undefined, optional
         json options
     maxBadRecords : int, default is Undefined, optional
-        The maximum number of bad records that BigQuery can ignore when reading data.
+        The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups, Avro, ORC and Parquet formats.
     metadataCacheMode : str, default is Undefined, optional
         Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source.
     objectMetadata : str, default is Undefined, optional
-        Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If ObjectMetadata is set, sourceFormat should be omitted.
+        ObjectMetadata is used to create Object Tables. Object Tables
+         contain a listing of objects (with their metadata) found at the
+         source_uris. If ObjectMetadata is set, source_format should be omitted.
+
+         Currently SIMPLE is the only supported Object Metadata type.
     parquetOptions : BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecExternalDataConfigurationParquetOptions, default is Undefined, optional
         parquet options
     referenceFileSchemaUri : str, default is Undefined, optional
         When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
     $schema : str, default is Undefined, optional
-        Immutable. A JSON schema for the external table. Schema is required for CSV and JSON formats and is disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats when using external tables.
+        The schema for the data. Schema is required for CSV and JSON formats if autodetect is not on. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
     sourceFormat : str, default is Undefined, optional
-         Please see sourceFormat under ExternalDataConfiguration in Bigquery's public API documentation (https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration) for supported formats. To use "GOOGLE_SHEETS" the scopes must include "googleapis.com/auth/drive.readonly".
+        Please see sourceFormat under ExternalDataConfiguration in Bigquery's public API documentation (https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration) for supported formats. To use "GOOGLE_SHEETS" the scopes must include "googleapis.com/auth/drive.readonly".
     sourceUris : [str], default is Undefined, required
-        A list of the fully-qualified URIs that point to your data in Google Cloud.
+        A list of the fully-qualified URIs that point to	your data in Google Cloud.
     """
 
 
@@ -246,8 +262,8 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecExternalDataConfigurati
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecExternalDataConfigurationAvroOptions:
-    """
-    Additional options if source_format is set to "AVRO".
+    r"""
+    Additional properties to set if sourceFormat is set to AVRO.
 
     Attributes
     ----------
@@ -260,23 +276,35 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecExternalDataConfigurati
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecExternalDataConfigurationCsvOptions:
-    """
-    Additional properties to set if source_format is set to "CSV".
+    r"""
+    Additional properties to set if sourceFormat is set to CSV.
 
     Attributes
     ----------
     allowJaggedRows : bool, default is Undefined, optional
-        Indicates if BigQuery should accept rows that are missing trailing optional columns.
+        Indicates if BigQuery should accept rows that are missing trailing optional columns. If true, BigQuery treats missing trailing columns as null values. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false.
     allowQuotedNewlines : bool, default is Undefined, optional
         Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file. The default value is false.
     encoding : str, default is Undefined, optional
-        The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
+        The character encoding of the data. The supported values are UTF-8, ISO-8859-1, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE.  The default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values of the quote and fieldDelimiter properties.
     fieldDelimiter : str, default is Undefined, optional
-        The separator for fields in a CSV file.
+        The separator character for fields in a CSV file. The separator is interpreted as a single byte. For files encoded in ISO-8859-1, any single character can be used as a separator. For files encoded in UTF-8, characters represented in decimal range 1-127 (U+0001-U+007F) can be used without any modification. UTF-8 characters encoded with multiple bytes (i.e. U+0080 and above) will have only the first byte used for separating fields. The remaining bytes will be treated as a part of the field. BigQuery also supports the escape sequence "\t" (U+0009) to specify a tab separator. The default value is comma (",", U+002C).
     quote : str, default is Undefined, required
-        quote
+        The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ("). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true. To include the specific quote character within a quoted value, precede it with an additional matching quote character. For example, if you want to escape the default character  ' " ', use ' "" '.
     skipLeadingRows : int, default is Undefined, optional
-        The number of rows at the top of a CSV file that BigQuery will skip when reading the data.
+        The number of rows at the top of a CSV file that BigQuery will
+         skip when reading the data. The default value is 0. This property is
+         useful if you have header rows in the file that should be skipped.
+         When autodetect is on, the behavior is the following:
+
+         * skipLeadingRows unspecified - Autodetect tries to detect headers in the
+           first row. If they are not detected, the row is read as data. Otherwise
+           data is read starting from the second row.
+         * skipLeadingRows is 0 - Instructs autodetect that there are no headers and
+           data should be read starting from the first row.
+         * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect
+           headers in row N. If headers are not detected, row N is just skipped.
+           Otherwise row N is used to extract column names for the detected schema.
     """
 
 
@@ -294,15 +322,15 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecExternalDataConfigurati
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecExternalDataConfigurationGoogleSheetsOptions:
-    """
-    Additional options if source_format is set to "GOOGLE_SHEETS".
+    r"""
+    Additional options if sourceFormat is set to GOOGLE_SHEETS.
 
     Attributes
     ----------
     range : str, default is Undefined, optional
-        Range of a sheet to query from. Only used when non-empty. At least one of range or skip_leading_rows must be set. Typical format: "sheet_name!top_left_cell_id:bottom_right_cell_id" For example: "sheet1!A1:B20".
+        Range of a sheet to query from. Only used when non-empty. Typical format: sheet_name!top_left_cell_id:bottom_right_cell_id For example: sheet1!A1:B20
     skipLeadingRows : int, default is Undefined, optional
-        The number of rows at the top of the sheet that BigQuery will skip when reading the data. At least one of range or skip_leading_rows must be set.
+        The number of rows at the top of a sheet that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
     """
 
 
@@ -312,17 +340,58 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecExternalDataConfigurati
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecExternalDataConfigurationHivePartitioningOptions:
-    """
+    r"""
     When set, configures hive partitioning support. Not all storage formats support hive partitioning -- requesting hive partitioning on an unsupported format will lead to an error, as will providing an invalid specification.
 
     Attributes
     ----------
     mode : str, default is Undefined, optional
-        When set, what mode of hive partitioning to use when reading data.
+        When set, what mode of hive partitioning to use when reading
+         data.  The following modes are supported:
+
+         * AUTO: automatically infer partition key name(s) and type(s).
+
+         * STRINGS: automatically infer partition key name(s).  All types are
+         strings.
+
+         * CUSTOM: partition key schema is encoded in the source URI prefix.
+
+         Not all storage formats support hive partitioning. Requesting hive
+         partitioning on an unsupported format will lead to an error.
+         Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
     requirePartitionFilter : bool, default is Undefined, optional
-        If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
+        If set to true, queries over this table require a partition
+         filter that can be used for partition elimination to be specified.
+
+         Note that this field should only be true when creating a permanent
+         external table or querying a temporary external table.
+
+         Hive-partitioned loads with require_partition_filter explicitly set to
+         true will fail.
     sourceUriPrefix : str, default is Undefined, optional
-        When hive partition detection is requested, a common for all source uris must be required. The prefix must end immediately before the partition key encoding begins.
+        When hive partition detection is requested, a common prefix for
+         all source uris must be required.  The prefix must end immediately before
+         the partition key encoding begins. For example, consider files following
+         this data layout:
+
+         gs://bucket/path_to_table/dt=2019-06-01/country=USA/id=7/file.avro
+
+         gs://bucket/path_to_table/dt=2019-05-31/country=CA/id=3/file.avro
+
+         When hive partitioning is requested with either AUTO or STRINGS detection,
+         the common prefix can be either of gs://bucket/path_to_table or
+         gs://bucket/path_to_table/.
+
+         CUSTOM detection requires encoding the partitioning schema immediately
+         after the common prefix.  For CUSTOM, any of
+
+         * gs://bucket/path_to_table/{dt:DATE}/{country:STRING}/{id:INTEGER}
+
+         * gs://bucket/path_to_table/{dt:STRING}/{country:STRING}/{id:INTEGER}
+
+         * gs://bucket/path_to_table/{dt:DATE}/{country:STRING}/{id:STRING}
+
+         would all be valid source URI prefixes.
     """
 
 
@@ -334,13 +403,13 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecExternalDataConfigurati
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecExternalDataConfigurationJSONOptions:
-    """
-    Additional properties to set if sourceFormat is set to JSON.".
+    r"""
+    Additional properties to set if sourceFormat is set to JSON.
 
     Attributes
     ----------
     encoding : str, default is Undefined, optional
-        The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+        The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE.  The default value is UTF-8.
     """
 
 
@@ -348,8 +417,8 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecExternalDataConfigurati
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecExternalDataConfigurationParquetOptions:
-    """
-    Additional properties to set if sourceFormat is set to PARQUET.".
+    r"""
+    Additional properties to set if sourceFormat is set to PARQUET.
 
     Attributes
     ----------
@@ -366,19 +435,23 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecExternalDataConfigurati
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecMaterializedView:
-    """
-    If specified, configures this table as a materialized view.
+    r"""
+    The materialized view definition.
 
     Attributes
     ----------
+    allowNonIncrementalDefinition : bool, default is Undefined, optional
+        This option declares the intention to construct a materialized view that isn't refreshed incrementally.
     enableRefresh : bool, default is Undefined, optional
-        Specifies if BigQuery should automatically refresh materialized view when the base table is updated. The default is true.
+        Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
     query : str, default is Undefined, required
-        Immutable. A query whose result is persisted.
+        Required. A query whose results are persisted.
     refreshIntervalMs : int, default is Undefined, optional
-        Specifies maximum frequency at which this materialized view will be refreshed. The default is 1800000.
+        The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
     """
 
+
+    allowNonIncrementalDefinition?: bool
 
     enableRefresh?: bool
 
@@ -388,13 +461,13 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecMaterializedView:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecRangePartitioning:
-    """
-    If specified, configures range-based partitioning for this table.
+    r"""
+    If specified, configures range partitioning for this table.
 
     Attributes
     ----------
     field : str, default is Undefined, required
-        Immutable. The field used to determine how to create a range-based partition.
+        Required. The name of the column to partition the table on. It must be a top-level, INT64 column whose mode is NULLABLE or REQUIRED.
     range : BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecRangePartitioningRange, default is Undefined, required
         range
     """
@@ -406,17 +479,17 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecRangePartitioning:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecRangePartitioningRange:
-    """
-    Information required to partition based on ranges. Structure is documented below.
+    r"""
+    Defines the ranges for range partitioning.
 
     Attributes
     ----------
     end : int, default is Undefined, required
-        End of the range partitioning, exclusive.
+        Required. The end of range partitioning, exclusive.
     interval : int, default is Undefined, required
-        The width of each range within the partition.
+        Required. The width of each interval.
     start : int, default is Undefined, required
-        Start of the range partitioning, inclusive.
+        Immutable. The start of range partitioning, inclusive.
     """
 
 
@@ -427,20 +500,114 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecRangePartitioningRange:
     start: int
 
 
-schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecTimePartitioning:
+schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecTableConstraints:
+    r"""
+    Tables Primary Key and Foreign Key information
+
+    Attributes
+    ----------
+    foreignKeys : [BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecTableConstraintsForeignKeysItems0], default is Undefined, optional
+        Present only if the table has a foreign key. The foreign key is not enforced.
+    primaryKey : BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecTableConstraintsPrimaryKey, default is Undefined, optional
+        primary key
     """
+
+
+    foreignKeys?: [BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecTableConstraintsForeignKeysItems0]
+
+    primaryKey?: BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecTableConstraintsPrimaryKey
+
+
+schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecTableConstraintsForeignKeysItems0:
+    r"""
+    bigquery cnrm cloud google com v1beta1 big query table spec table constraints foreign keys items0
+
+    Attributes
+    ----------
+    columnReferences : BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecTableConstraintsForeignKeysItems0ColumnReferences, default is Undefined, required
+        column references
+    name : str, default is Undefined, optional
+        Optional. Set only if the foreign key constraint is named.
+    referencedTable : BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecTableConstraintsForeignKeysItems0ReferencedTable, default is Undefined, required
+        referenced table
+    """
+
+
+    columnReferences: BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecTableConstraintsForeignKeysItems0ColumnReferences
+
+    name?: str
+
+    referencedTable: BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecTableConstraintsForeignKeysItems0ReferencedTable
+
+
+schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecTableConstraintsForeignKeysItems0ColumnReferences:
+    r"""
+    Required. The columns that compose the foreign key.
+
+    Attributes
+    ----------
+    referencedColumn : str, default is Undefined, required
+        Required. The column in the primary key that are referenced by the referencing_column.
+    referencingColumn : str, default is Undefined, required
+        Required. The column that composes the foreign key.
+    """
+
+
+    referencedColumn: str
+
+    referencingColumn: str
+
+
+schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecTableConstraintsForeignKeysItems0ReferencedTable:
+    r"""
+    Required. The table that holds the primary key and is referenced by this foreign key.
+
+    Attributes
+    ----------
+    datasetId : str, default is Undefined, required
+        The ID of the dataset containing this table.
+    projectId : str, default is Undefined, required
+        The ID of the project containing this table.
+    tableId : str, default is Undefined, required
+        The Id of the table. The Id can contain Unicode characters in category L (letter), M (mark), N (number), Pc (connector, including underscore), Pd (dash), and Zs (space). For more information, see [General Category](https://wikipedia.org/wiki/Unicode_character_property#General_Category). The maximum length is 1,024 characters.  Certain operations allow suffixing of the table Id with a partition decorator, such as `sample_table$20190123`.
+    """
+
+
+    datasetId: str
+
+    projectId: str
+
+    tableId: str
+
+
+schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecTableConstraintsPrimaryKey:
+    r"""
+    Represents a primary key constraint on a table's columns. Present only if the table has a primary key. The primary key is not enforced.
+
+    Attributes
+    ----------
+    columns : [str], default is Undefined, required
+        Required. The columns that are composed of the primary key constraint.
+    """
+
+
+    columns: [str]
+
+
+schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecTimePartitioning:
+    r"""
     If specified, configures time-based partitioning for this table.
 
     Attributes
     ----------
     expirationMs : int, default is Undefined, optional
-        Number of milliseconds for which to keep the storage for a partition.
+        Number of milliseconds for which to keep the storage for a partition. A wrapper is used here because 0 is an invalid value.
     field : str, default is Undefined, optional
-        Immutable. The field used to determine how to create a time-based partition. If time-based partitioning is enabled without this value, the table is partitioned based on the load time.
+        Optional. Immutable. If not set, the table is partitioned by pseudo column '_PARTITIONTIME'; if set, the table is partitioned by this field. The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED. A wrapper is used here because an empty string is an invalid value.
     requirePartitionFilter : bool, default is Undefined, optional
-        If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
+        DEPRECATED. This field is deprecated; please use the top level field with the same name instead. If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
     $type : str, default is Undefined, required
-        The supported types are DAY, HOUR, MONTH, and YEAR, which will generate one partition per day, hour, month, and year, respectively.
+        Required. The supported types are DAY, HOUR, MONTH, and YEAR, which will generate one partition per day, hour, month, and year, respectively.
     """
 
 
@@ -454,15 +621,21 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecTimePartitioning:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecView:
-    """
-    If specified, configures this table as a view.
+    r"""
+    The view definition.
 
     Attributes
     ----------
     query : str, default is Undefined, required
-        A query that BigQuery executes when the view is referenced.
+        Required. A query that BigQuery executes when the view is referenced.
     useLegacySql : bool, default is Undefined, optional
-        Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL.
+        Specifies whether to use BigQuery's legacy SQL for this view.
+         The default value is true. If set to false, the view will use
+         BigQuery's GoogleSQL:
+         https://cloud.google.com/bigquery/sql-reference/
+
+         Queries and views that reference this view must use the same flag value.
+         A wrapper is used here because the default value is True.
     """
 
 
@@ -472,33 +645,49 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecView:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableStatus:
-    """
-    bigquery cnrm cloud google com v1beta1 big query table status
+    r"""
+    BigQueryTableStatus defines the config connector machine state of BigQueryTable
 
     Attributes
     ----------
     conditions : [BigqueryCnrmCloudGoogleComV1beta1BigQueryTableStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     creationTime : int, default is Undefined, optional
-        The time when this table was created, in milliseconds since the epoch.
+        Output only. The time when this table was created, in milliseconds since the epoch.
     etag : str, default is Undefined, optional
-        A hash of the resource.
+        Output only. A hash of this resource.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the BigQueryTable resource in GCP.
     lastModifiedTime : int, default is Undefined, optional
-        The time when this table was last modified, in milliseconds since the epoch.
+        Output only. The time when this table was last modified, in milliseconds since the epoch.
     location : str, default is Undefined, optional
-        The geographic location where the table resides. This value is inherited from the dataset.
+        Output only. The geographic location where the table resides. This value is inherited from the dataset.
     numBytes : int, default is Undefined, optional
-        The geographic location where the table resides. This value is inherited from the dataset.
+        Output only. The size of this table in logical bytes, excluding any data in the streaming buffer.
     numLongTermBytes : int, default is Undefined, optional
-        The number of bytes in the table that are considered "long-term storage".
+        Output only. The number of logical bytes in the table that are considered "long-term storage".
     numRows : int, default is Undefined, optional
-        The number of rows of data in this table, excluding any data in the streaming buffer.
+        Output only. The number of rows of data in this table, excluding any data in the streaming buffer.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : any, default is Undefined, optional
+        ObservedState is the state of the resource as most recently observed in GCP.
     selfLink : str, default is Undefined, optional
-        The URI of the created resource.
+        Output only. A URL that can be used to access this resource again.
     $type : str, default is Undefined, optional
-        Describes the table type.
+        Output only. Describes the table type. The following values are supported:
+
+         * `TABLE`: A normal BigQuery table.
+         * `VIEW`: A virtual table defined by a SQL query.
+         * `EXTERNAL`: A table that references data stored in an external storage
+           system, such as Google Cloud Storage.
+         * `MATERIALIZED_VIEW`: A precomputed view defined by a SQL query.
+         * `SNAPSHOT`: An immutable BigQuery table that preserves the contents of a
+           base table at a particular time. See additional information on
+           [table
+           snapshots](https://cloud.google.com/bigquery/docs/table-snapshots-intro).
+
+         The default value is `TABLE`.
     """
 
 
@@ -507,6 +696,8 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableStatus:
     creationTime?: int
 
     etag?: str
+
+    externalRef?: str
 
     lastModifiedTime?: int
 
@@ -520,13 +711,15 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableStatus:
 
     observedGeneration?: int
 
+    observedState?: any
+
     selfLink?: str
 
     $type?: str
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableStatusConditionsItems0:
-    """
+    r"""
     bigquery cnrm cloud google com v1beta1 big query table status conditions items0
 
     Attributes

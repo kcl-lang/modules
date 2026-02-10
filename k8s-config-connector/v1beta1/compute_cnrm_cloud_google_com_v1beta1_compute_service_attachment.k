@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeServiceAttachment:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute service attachment
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeServiceAttachment:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute service attachment spec
 
     Attributes
@@ -86,7 +86,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpecConsumerAcceptListsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute service attachment spec consumer accept lists items0
 
     Attributes
@@ -104,7 +104,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpecConsumerAccep
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpecConsumerAcceptListsItems0ProjectRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute service attachment spec consumer accept lists items0 project ref
 
     Attributes
@@ -128,7 +128,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpecConsumerAccep
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpecConsumerRejectListsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute service attachment spec consumer reject lists items0
 
     Attributes
@@ -150,7 +150,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpecConsumerRejec
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpecNatSubnetsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute service attachment spec nat subnets items0
 
     Attributes
@@ -172,7 +172,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpecNatSubnetsIte
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -196,7 +196,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpecProjectRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpecTargetServiceRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -220,7 +220,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpecTargetService
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute service attachment status
 
     Attributes
@@ -262,7 +262,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute service attachment status conditions items0
 
     Attributes
@@ -292,7 +292,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentStatusConditionsI
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentStatusConnectedEndpointsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute service attachment status connected endpoints items0
 
     Attributes
@@ -314,7 +314,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentStatusConnectedEn
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentStatusPscServiceAttachmentID:
-    """
+    r"""
     An 128-bit global unique ID of the PSC service attachment.
 
     Attributes

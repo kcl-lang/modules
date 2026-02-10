@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema OSConfigPatchDeployment:
-    """
+    r"""
     osconfig cnrm cloud google com v1alpha1 o s config patch deployment
 
     Attributes
@@ -36,7 +36,7 @@ schema OSConfigPatchDeployment:
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpec:
-    """
+    r"""
     osconfig cnrm cloud google com v1alpha1 o s config patch deployment spec
 
     Attributes
@@ -92,7 +92,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpec:
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecInstanceFilter:
-    """
+    r"""
     Immutable. VM instances to patch.
 
     Attributes
@@ -125,7 +125,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecInstanceFilt
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecInstanceFilterGroupLabelsItems0:
-    """
+    r"""
     osconfig cnrm cloud google com v1alpha1 o s config patch deployment spec instance filter group labels items0
 
     Attributes
@@ -139,7 +139,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecInstanceFilt
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecOneTimeSchedule:
-    """
+    r"""
     Immutable. Schedule a one-time execution.
 
     Attributes
@@ -154,7 +154,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecOneTimeSched
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfig:
-    """
+    r"""
     Immutable. Patch configuration that is applied.
 
     Attributes
@@ -200,7 +200,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfig:
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigApt:
-    """
+    r"""
     Immutable. Apt update settings. Use this setting to override the default apt patch rules.
 
     Attributes
@@ -224,7 +224,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigA
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigGoo:
-    """
+    r"""
     Immutable. goo update settings. Use this setting to override the default goo patch rules.
 
     Attributes
@@ -238,7 +238,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigG
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigPostStep:
-    """
+    r"""
     Immutable. The ExecStep to run after the patch update.
 
     Attributes
@@ -256,7 +256,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigP
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigPostStepLinuxExecStepConfig:
-    """
+    r"""
     Immutable. The ExecStepConfig for all Linux VMs targeted by the PatchJob.
 
     Attributes
@@ -283,7 +283,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigP
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigPostStepLinuxExecStepConfigGcsObject:
-    """
+    r"""
     Immutable. A Cloud Storage object containing the executable.
 
     Attributes
@@ -305,7 +305,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigP
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigPostStepWindowsExecStepConfig:
-    """
+    r"""
     Immutable. The ExecStepConfig for all Windows VMs targeted by the PatchJob.
 
     Attributes
@@ -332,7 +332,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigP
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigPostStepWindowsExecStepConfigGcsObject:
-    """
+    r"""
     Immutable. A Cloud Storage object containing the executable.
 
     Attributes
@@ -354,7 +354,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigP
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigPreStep:
-    """
+    r"""
     Immutable. The ExecStep to run before the patch update.
 
     Attributes
@@ -372,7 +372,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigP
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigPreStepLinuxExecStepConfig:
-    """
+    r"""
     Immutable. The ExecStepConfig for all Linux VMs targeted by the PatchJob.
 
     Attributes
@@ -399,7 +399,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigP
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigPreStepLinuxExecStepConfigGcsObject:
-    """
+    r"""
     Immutable. A Cloud Storage object containing the executable.
 
     Attributes
@@ -421,7 +421,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigP
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigPreStepWindowsExecStepConfig:
-    """
+    r"""
     Immutable. The ExecStepConfig for all Windows VMs targeted by the PatchJob.
 
     Attributes
@@ -448,7 +448,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigP
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigPreStepWindowsExecStepConfigGcsObject:
-    """
+    r"""
     Immutable. A Cloud Storage object containing the executable.
 
     Attributes
@@ -470,7 +470,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigP
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigWindowsUpdate:
-    """
+    r"""
     Immutable. Windows update settings. Use this setting to override the default Windows patch rules.
 
     Attributes
@@ -493,7 +493,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigW
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigYum:
-    """
+    r"""
     Immutable. Yum update settings. Use this setting to override the default yum patch rules.
 
     Attributes
@@ -521,7 +521,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigY
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigZypper:
-    """
+    r"""
     Immutable. zypper update settings. Use this setting to override the default zypper patch rules.
 
     Attributes
@@ -556,7 +556,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecPatchConfigZ
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -578,7 +578,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecProjectRef:
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecRecurringSchedule:
-    """
+    r"""
     Immutable. Schedule recurring executions.
 
     Attributes
@@ -624,7 +624,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecRecurringSch
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecRecurringScheduleMonthly:
-    """
+    r"""
     Immutable. Schedule with monthly executions.
 
     Attributes
@@ -644,7 +644,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecRecurringSch
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecRecurringScheduleMonthlyWeekDayOfMonth:
-    """
+    r"""
     Immutable. Week day in a month.
 
     Attributes
@@ -662,7 +662,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecRecurringSch
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecRecurringScheduleTimeOfDay:
-    """
+    r"""
     Immutable. Time of the day to run a recurring deployment.
 
     Attributes
@@ -689,7 +689,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecRecurringSch
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecRecurringScheduleTimeZone:
-    """
+    r"""
     Immutable. Defines the time zone that timeOfDay is relative to. The rules for daylight saving time are
     determined by the chosen time zone.
 
@@ -708,7 +708,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecRecurringSch
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecRecurringScheduleWeekly:
-    """
+    r"""
     Immutable. Schedule with weekly executions.
 
     Attributes
@@ -722,7 +722,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecRecurringSch
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecRollout:
-    """
+    r"""
     Immutable. Rollout strategy of the patch job.
 
     Attributes
@@ -740,7 +740,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecRollout:
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecRolloutDisruptionBudget:
-    """
+    r"""
     Immutable. The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up.
     During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps.
     A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget.
@@ -762,7 +762,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentSpecRolloutDisru
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentStatus:
-    """
+    r"""
     osconfig cnrm cloud google com v1alpha1 o s config patch deployment status
 
     Attributes
@@ -800,7 +800,7 @@ schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentStatus:
 
 
 schema OsconfigCnrmCloudGoogleComV1alpha1OSConfigPatchDeploymentStatusConditionsItems0:
-    """
+    r"""
     osconfig cnrm cloud google com v1alpha1 o s config patch deployment status conditions items0
 
     Attributes

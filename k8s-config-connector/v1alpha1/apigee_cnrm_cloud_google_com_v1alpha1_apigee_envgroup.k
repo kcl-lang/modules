@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ApigeeEnvgroup:
-    """
-    apigee cnrm cloud google com v1alpha1 apigee envgroup
+    r"""
+    ApigeeEnvgroup is the Schema for the ApigeeEnvgroup API
 
     Attributes
     ----------
@@ -36,48 +36,77 @@ schema ApigeeEnvgroup:
 
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeEnvgroupSpec:
-    """
-    apigee cnrm cloud google com v1alpha1 apigee envgroup spec
+    r"""
+    ApigeeEnvgroupSpec defines the desired state of ApigeeEnvgroup
 
     Attributes
     ----------
     hostnames : [str], default is Undefined, optional
-        Hostnames of the environment group.
-    orgId : str, default is Undefined, required
-        Immutable. The Apigee Organization associated with the Apigee environment group,
-        in the format 'organizations/{{org_name}}'.
+        Host names for this environment group.
+    organizationRef : ApigeeCnrmCloudGoogleComV1alpha1ApigeeEnvgroupSpecOrganizationRef, default is Undefined, required
+        organization ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The ApigeeEnvgroup name. If not given, the metadata.name will be used.
     """
 
 
     hostnames?: [str]
 
-    orgId: str
+    organizationRef: ApigeeCnrmCloudGoogleComV1alpha1ApigeeEnvgroupSpecOrganizationRef
 
     resourceID?: str
 
 
-schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeEnvgroupStatus:
+schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeEnvgroupSpecOrganizationRef:
+    r"""
+    ApigeeOrganizationRef is a reference to a ApigeeOrganization resource.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed ApigeeOrganization resource. Should be in the format "organizations/{{organizationID}}".
+    name : str, default is Undefined, optional
+        The name of a ApigeeOrganization resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a ApigeeOrganization resource.
     """
-    apigee cnrm cloud google com v1alpha1 apigee envgroup status
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeEnvgroupStatus:
+    r"""
+    ApigeeEnvgroupStatus defines the config connector machine state of ApigeeEnvgroup
 
     Attributes
     ----------
     conditions : [ApigeeCnrmCloudGoogleComV1alpha1ApigeeEnvgroupStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the ApigeeEnvgroup resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : ApigeeCnrmCloudGoogleComV1alpha1ApigeeEnvgroupStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [ApigeeCnrmCloudGoogleComV1alpha1ApigeeEnvgroupStatusConditionsItems0]
 
+    externalRef?: str
+
     observedGeneration?: int
+
+    observedState?: ApigeeCnrmCloudGoogleComV1alpha1ApigeeEnvgroupStatusObservedState
 
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeEnvgroupStatusConditionsItems0:
-    """
+    r"""
     apigee cnrm cloud google com v1alpha1 apigee envgroup status conditions items0
 
     Attributes
@@ -104,5 +133,31 @@ schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeEnvgroupStatusConditionsItems0:
     status?: str
 
     $type?: str
+
+
+schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeEnvgroupStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    createdAt : int, default is Undefined, optional
+        Output only. The time at which the environment group was created as milliseconds since epoch.
+    lastModifiedAt : int, default is Undefined, optional
+        Output only. The time at which the environment group was last updated as milliseconds since epoch.
+    name : str, default is Undefined, optional
+        ID of the environment group.
+    state : str, default is Undefined, optional
+        Output only. State of the environment group. Values other than ACTIVE means the resource is not ready to use.
+    """
+
+
+    createdAt?: int
+
+    lastModifiedAt?: int
+
+    name?: str
+
+    state?: str
 
 

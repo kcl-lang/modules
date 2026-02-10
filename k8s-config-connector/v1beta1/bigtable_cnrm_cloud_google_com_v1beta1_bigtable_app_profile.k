@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BigtableAppProfile:
-    """
-    bigtable cnrm cloud google com v1beta1 bigtable app profile
+    r"""
+    BigtableAppProfile is the Schema for the BigtableAppProfile API
 
     Attributes
     ----------
@@ -17,7 +17,7 @@ schema BigtableAppProfile:
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpec, default is Undefined, optional
+    spec : BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpec, default is Undefined, required
         spec
     status : BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileStatus, default is Undefined, optional
         status
@@ -30,37 +30,41 @@ schema BigtableAppProfile:
 
     metadata?: v1.ObjectMeta
 
-    spec?: BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpec
+    spec: BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpec
 
     status?: BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileStatus
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpec:
-    """
-    bigtable cnrm cloud google com v1beta1 bigtable app profile spec
+    r"""
+    BigtableAppProfileSpec defines the desired state of BigtableAppProfile
 
     Attributes
     ----------
+    dataBoostIsolationReadOnly : BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpecDataBoostIsolationReadOnly, default is Undefined, optional
+        data boost isolation read only
     description : str, default is Undefined, optional
-        Long form description of the use case for this app profile.
-    instanceRef : BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpecInstanceRef, default is Undefined, optional
+        Long form description of the use case for this AppProfile.
+    instanceRef : BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpecInstanceRef, default is Undefined, required
         instance ref
     multiClusterRoutingClusterIds : [str], default is Undefined, optional
-        The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
+        The set of clusters to route to, if using multi cluster routing. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
     multiClusterRoutingUseAny : bool, default is Undefined, optional
-        If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
-        in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
-        consistency to improve availability.
+        Use a multi-cluster routing policy.
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The appProfileId of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The BigtableAppProfile name. If not given, the metadata.name will be used.
     singleClusterRouting : BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpecSingleClusterRouting, default is Undefined, optional
         single cluster routing
+    standardIsolation : BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpecStandardIsolation, default is Undefined, optional
+        standard isolation
     """
 
 
+    dataBoostIsolationReadOnly?: BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpecDataBoostIsolationReadOnly
+
     description?: str
 
-    instanceRef?: BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpecInstanceRef
+    instanceRef: BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpecInstanceRef
 
     multiClusterRoutingClusterIds?: [str]
 
@@ -70,19 +74,35 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpec:
 
     singleClusterRouting?: BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpecSingleClusterRouting
 
+    standardIsolation?: BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpecStandardIsolation
+
+
+schema BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpecDataBoostIsolationReadOnly:
+    r"""
+    Specifies that this app profile is intended for read-only usage via the Data Boost feature. Please opt-in to this feature by setting the `alpha.cnrm.cloud.google.com/reconciler: direct` annotation.
+
+    Attributes
+    ----------
+    computeBillingOwner : str, default is Undefined, optional
+        The Compute Billing Owner for this Data Boost App Profile.
+    """
+
+
+    computeBillingOwner?: str
+
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpecInstanceRef:
-    """
-    The instance to create the app profile within.
+    r"""
+    InstanceRef defines the resource reference to BigtableInstance, which "External" field holds the GCP identifier for the KRM object.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `BigtableInstance` resource.
+        A reference to an externally managed BigtableInstance resource.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a BigtableInstance resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a BigtableInstance resource.
     """
 
 
@@ -94,34 +114,49 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpecInstanceRef:
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpecSingleClusterRouting:
-    """
+    r"""
     Use a single-cluster routing policy.
 
     Attributes
     ----------
     allowTransactionalWrites : bool, default is Undefined, optional
-        If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
-        It is unsafe to send these requests to the same table/row/column in multiple clusters.
-    clusterId : str, default is Undefined, required
+        Whether or not `CheckAndMutateRow` and `ReadModifyWriteRow` requests are allowed by this app profile. It is unsafe to send these requests to the same table/row/column in multiple clusters.
+    clusterId : str, default is Undefined, optional
         The cluster to which read/write requests should be routed.
     """
 
 
     allowTransactionalWrites?: bool
 
-    clusterId: str
+    clusterId?: str
+
+
+schema BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpecStandardIsolation:
+    r"""
+    The standard options used for isolating this app profile's traffic from other use cases.
+
+    Attributes
+    ----------
+    priority : str, default is Undefined, optional
+        The priority of requests sent using this app profile.
+    """
+
+
+    priority?: str
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileStatus:
-    """
-    bigtable cnrm cloud google com v1beta1 bigtable app profile status
+    r"""
+    BigtableAppProfileStatus defines the config connector machine state of BigtableAppProfile
 
     Attributes
     ----------
     conditions : [BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the BigtableAppProfile resource in GCP.
     name : str, default is Undefined, optional
-        The unique name of the requested app profile. Values are of the form 'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
+        The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """
@@ -129,13 +164,15 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileStatus:
 
     conditions?: [BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileStatusConditionsItems0]
 
+    externalRef?: str
+
     name?: str
 
     observedGeneration?: int
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileStatusConditionsItems0:
-    """
+    r"""
     bigtable cnrm cloud google com v1beta1 bigtable app profile status conditions items0
 
     Attributes

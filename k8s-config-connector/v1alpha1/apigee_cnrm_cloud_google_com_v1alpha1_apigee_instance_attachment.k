@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ApigeeInstanceAttachment:
-    """
-    apigee cnrm cloud google com v1alpha1 apigee instance attachment
+    r"""
+    ApigeeInstanceAttachment is the Schema for the ApigeeInstanceAttachment API
 
     Attributes
     ----------
@@ -36,52 +36,99 @@ schema ApigeeInstanceAttachment:
 
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceAttachmentSpec:
-    """
-    apigee cnrm cloud google com v1alpha1 apigee instance attachment spec
+    r"""
+    ApigeeInstanceAttachmentSpec defines the desired state of ApigeeInstanceAttachment
 
     Attributes
     ----------
-    environment : str, default is Undefined, required
-        Immutable. The resource ID of the environment.
-    instanceId : str, default is Undefined, required
-        Immutable. The Apigee instance associated with the Apigee environment,
-        in the format 'organizations/{{org_name}}/instances/{{instance_name}}'.
+    environmentRef : ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceAttachmentSpecEnvironmentRef, default is Undefined, required
+        environment ref
+    instanceRef : ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceAttachmentSpecInstanceRef, default is Undefined, required
+        instance ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
+        The ApigeeInstanceAttachment name. If not given, the metadata.name will be used.
     """
 
 
-    environment: str
+    environmentRef: ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceAttachmentSpecEnvironmentRef
 
-    instanceId: str
+    instanceRef: ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceAttachmentSpecInstanceRef
 
     resourceID?: str
 
 
-schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceAttachmentStatus:
+schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceAttachmentSpecEnvironmentRef:
+    r"""
+    ID of the attached environment.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed ApigeeEnvironment resource. Should be in the format "organizations/{{organizationID}}/environments/{{environmentID}}".
+    name : str, default is Undefined, optional
+        The name of a ApigeeEnvironment resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a ApigeeEnvironment resource.
     """
-    apigee cnrm cloud google com v1alpha1 apigee instance attachment status
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceAttachmentSpecInstanceRef:
+    r"""
+    Reference to parent Apigee Instance.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed ApigeeInstance resource. Should be in the format "organizations/{{organizationID}}/instances/{{instanceID}}".
+    name : str, default is Undefined, optional
+        The name of a ApigeeInstance resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a ApigeeInstance resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceAttachmentStatus:
+    r"""
+    ApigeeInstanceAttachmentStatus defines the config connector machine state of ApigeeInstanceAttachment
 
     Attributes
     ----------
     conditions : [ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceAttachmentStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
-    name : str, default is Undefined, optional
-        The name of the newly created  attachment (output parameter).
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the ApigeeInstanceAttachment resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceAttachmentStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceAttachmentStatusConditionsItems0]
 
-    name?: str
+    externalRef?: str
 
     observedGeneration?: int
 
+    observedState?: ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceAttachmentStatusObservedState
+
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceAttachmentStatusConditionsItems0:
-    """
+    r"""
     apigee cnrm cloud google com v1alpha1 apigee instance attachment status conditions items0
 
     Attributes
@@ -108,5 +155,19 @@ schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceAttachmentStatusConditionsI
     status?: str
 
     $type?: str
+
+
+schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceAttachmentStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    createdAt : str, default is Undefined, optional
+        Output only. Time the attachment was created in milliseconds since epoch.
+    """
+
+
+    createdAt?: str
 
 

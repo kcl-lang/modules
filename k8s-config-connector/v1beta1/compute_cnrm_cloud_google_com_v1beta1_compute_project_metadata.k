@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeProjectMetadata:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute project metadata
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeProjectMetadata:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeProjectMetadataSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute project metadata spec
 
     Attributes
@@ -50,7 +50,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeProjectMetadataSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeProjectMetadataStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute project metadata status
 
     Attributes
@@ -68,7 +68,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeProjectMetadataStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeProjectMetadataStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute project metadata status conditions items0
 
     Attributes

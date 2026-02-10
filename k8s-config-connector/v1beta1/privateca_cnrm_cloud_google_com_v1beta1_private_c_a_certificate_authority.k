@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema PrivateCACertificateAuthority:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate authority
 
     Attributes
@@ -36,7 +36,7 @@ schema PrivateCACertificateAuthority:
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpec:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate authority spec
 
     Attributes
@@ -82,7 +82,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpec:
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecCaPoolRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -106,7 +106,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecCaPool
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfig:
-    """
+    r"""
     Immutable. Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
 
     Attributes
@@ -124,7 +124,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfig
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfigSubjectConfig:
-    """
+    r"""
     Immutable. Required. Specifies some of the values in a certificate that are related to the subject.
 
     Attributes
@@ -142,7 +142,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfig
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfigSubjectConfigSubject:
-    """
+    r"""
     Immutable. Required. Contains distinguished name fields such as the common name, location and organization.
 
     Attributes
@@ -184,7 +184,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfig
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfigSubjectConfigSubjectAltName:
-    """
+    r"""
     Immutable. Optional. The subject alternative name fields.
 
     Attributes
@@ -214,7 +214,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfig
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfigSubjectConfigSubjectAltNameCustomSansItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate authority spec config subject config subject alt name custom sans items0
 
     Attributes
@@ -236,7 +236,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfig
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfigSubjectConfigSubjectAltNameCustomSansItems0ObjectID:
-    """
+    r"""
     Immutable. Required. The OID for this X.509 extension.
 
     Attributes
@@ -250,7 +250,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfig
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfigX509Config:
-    """
+    r"""
     Immutable. Required. Describes how some of the technical X.509 fields in a certificate should be populated.
 
     Attributes
@@ -276,7 +276,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfig
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfigX509ConfigAdditionalExtensionsItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate authority spec config x509 config additional extensions items0
 
     Attributes
@@ -298,7 +298,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfig
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfigX509ConfigAdditionalExtensionsItems0ObjectID:
-    """
+    r"""
     Immutable. Required. The OID for this X.509 extension.
 
     Attributes
@@ -312,7 +312,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfig
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfigX509ConfigCaOptions:
-    """
+    r"""
     Immutable. Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
 
     Attributes
@@ -334,7 +334,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfig
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfigX509ConfigKeyUsage:
-    """
+    r"""
     Immutable. Optional. Indicates the intended use for keys that correspond to a certificate.
 
     Attributes
@@ -356,7 +356,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfig
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfigX509ConfigKeyUsageBaseKeyUsage:
-    """
+    r"""
     Immutable. Describes high-level ways in which a key may be used.
 
     Attributes
@@ -402,7 +402,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfig
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfigX509ConfigKeyUsageExtendedKeyUsage:
-    """
+    r"""
     Immutable. Detailed scenarios in which a key may be used.
 
     Attributes
@@ -436,7 +436,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfig
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfigX509ConfigKeyUsageUnknownExtendedKeyUsagesItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate authority spec config x509 config key usage unknown extended key usages items0
 
     Attributes
@@ -450,7 +450,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfig
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfigX509ConfigPolicyIdsItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate authority spec config x509 config policy ids items0
 
     Attributes
@@ -464,7 +464,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecConfig
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecGcsBucketRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -488,7 +488,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecGcsBuc
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecKeySpec:
-    """
+    r"""
     Immutable. Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
 
     Attributes
@@ -506,7 +506,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecKeySpe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecKeySpecCloudKmsKeyVersionRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -529,7 +529,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecKeySpe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -553,7 +553,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthoritySpecProjec
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatus:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate authority status
 
     Attributes
@@ -615,7 +615,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatus:
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusAccessUrls:
-    """
+    r"""
     Output only. URLs for accessing content published by this CA, such as the CA certificate and CRLs.
 
     Attributes
@@ -633,7 +633,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusAcce
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCertificateDescriptionsItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate authority status ca certificate descriptions items0
 
     Attributes
@@ -675,7 +675,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCertificateDescriptionsItems0AuthorityKeyID:
-    """
+    r"""
     Identifies the subject_key_id of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
 
     Attributes
@@ -689,7 +689,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCertificateDescriptionsItems0CertFingerprint:
-    """
+    r"""
     The hash of the x.509 certificate.
 
     Attributes
@@ -703,7 +703,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCertificateDescriptionsItems0PublicKey:
-    """
+    r"""
     The public key that corresponds to an issued certificate.
 
     Attributes
@@ -721,7 +721,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCertificateDescriptionsItems0SubjectDescription:
-    """
+    r"""
     Describes some of the values in a certificate that are related to the subject and lifetime.
 
     Attributes
@@ -755,7 +755,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCertificateDescriptionsItems0SubjectDescriptionSubject:
-    """
+    r"""
     Contains distinguished name fields such as the common name, location and organization.
 
     Attributes
@@ -797,7 +797,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCertificateDescriptionsItems0SubjectDescriptionSubjectAltName:
-    """
+    r"""
     The subject alternative name fields.
 
     Attributes
@@ -827,7 +827,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCertificateDescriptionsItems0SubjectDescriptionSubjectAltNameCustomSansItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate authority status ca certificate descriptions items0 subject description subject alt name custom sans items0
 
     Attributes
@@ -849,7 +849,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCertificateDescriptionsItems0SubjectDescriptionSubjectAltNameCustomSansItems0ObjectID:
-    """
+    r"""
     Required. The OID for this X.509 extension.
 
     Attributes
@@ -863,7 +863,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCertificateDescriptionsItems0SubjectKeyID:
-    """
+    r"""
     Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
 
     Attributes
@@ -877,7 +877,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCertificateDescriptionsItems0X509Description:
-    """
+    r"""
     Describes some of the technical X.509 fields in a certificate.
 
     Attributes
@@ -907,7 +907,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCertificateDescriptionsItems0X509DescriptionAdditionalExtensionsItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate authority status ca certificate descriptions items0 x509 description additional extensions items0
 
     Attributes
@@ -929,7 +929,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCertificateDescriptionsItems0X509DescriptionAdditionalExtensionsItems0ObjectID:
-    """
+    r"""
     Required. The OID for this X.509 extension.
 
     Attributes
@@ -943,7 +943,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCertificateDescriptionsItems0X509DescriptionCaOptions:
-    """
+    r"""
     Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
 
     Attributes
@@ -961,7 +961,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCertificateDescriptionsItems0X509DescriptionKeyUsage:
-    """
+    r"""
     Optional. Indicates the intended use for keys that correspond to a certificate.
 
     Attributes
@@ -983,7 +983,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCertificateDescriptionsItems0X509DescriptionKeyUsageBaseKeyUsage:
-    """
+    r"""
     Describes high-level ways in which a key may be used.
 
     Attributes
@@ -1029,7 +1029,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCertificateDescriptionsItems0X509DescriptionKeyUsageExtendedKeyUsage:
-    """
+    r"""
     Detailed scenarios in which a key may be used.
 
     Attributes
@@ -1063,7 +1063,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCertificateDescriptionsItems0X509DescriptionKeyUsageUnknownExtendedKeyUsagesItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate authority status ca certificate descriptions items0 x509 description key usage unknown extended key usages items0
 
     Attributes
@@ -1077,7 +1077,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCertificateDescriptionsItems0X509DescriptionPolicyIdsItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate authority status ca certificate descriptions items0 x509 description policy ids items0
 
     Attributes
@@ -1091,7 +1091,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCaCe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusConditionsItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate authority status conditions items0
 
     Attributes
@@ -1121,7 +1121,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusCond
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusConfig:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate authority status config
 
     Attributes
@@ -1139,7 +1139,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusConf
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusConfigPublicKey:
-    """
+    r"""
     Optional. The public key that corresponds to this config. This is, for example, used when issuing Certificates, but not when creating a self-signed CertificateAuthority or CertificateAuthority CSR.
 
     Attributes
@@ -1157,7 +1157,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusConf
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusConfigX509Config:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate authority status config x509 config
 
     Attributes
@@ -1171,7 +1171,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusConf
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusSubordinateConfig:
-    """
+    r"""
     Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
 
     Attributes
@@ -1189,7 +1189,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusSubo
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateAuthorityStatusSubordinateConfigPemIssuerChain:
-    """
+    r"""
     Required. Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
 
     Attributes

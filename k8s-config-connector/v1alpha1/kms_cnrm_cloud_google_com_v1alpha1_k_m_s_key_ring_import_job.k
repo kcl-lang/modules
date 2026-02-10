@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema KMSKeyRingImportJob:
-    """
+    r"""
     kms cnrm cloud google com v1alpha1 k m s key ring import job
 
     Attributes
@@ -36,7 +36,7 @@ schema KMSKeyRingImportJob:
 
 
 schema KmsCnrmCloudGoogleComV1alpha1KMSKeyRingImportJobSpec:
-    """
+    r"""
     kms cnrm cloud google com v1alpha1 k m s key ring import job spec
 
     Attributes
@@ -68,7 +68,7 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSKeyRingImportJobSpec:
 
 
 schema KmsCnrmCloudGoogleComV1alpha1KMSKeyRingImportJobStatus:
-    """
+    r"""
     kms cnrm cloud google com v1alpha1 k m s key ring import job status
 
     Attributes
@@ -109,7 +109,7 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSKeyRingImportJobStatus:
 
 
 schema KmsCnrmCloudGoogleComV1alpha1KMSKeyRingImportJobStatusAttestationItems0:
-    """
+    r"""
     kms cnrm cloud google com v1alpha1 k m s key ring import job status attestation items0
 
     Attributes
@@ -128,7 +128,7 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSKeyRingImportJobStatusAttestationItems0:
 
 
 schema KmsCnrmCloudGoogleComV1alpha1KMSKeyRingImportJobStatusConditionsItems0:
-    """
+    r"""
     kms cnrm cloud google com v1alpha1 k m s key ring import job status conditions items0
 
     Attributes
@@ -158,7 +158,7 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSKeyRingImportJobStatusConditionsItems0:
 
 
 schema KmsCnrmCloudGoogleComV1alpha1KMSKeyRingImportJobStatusPublicKeyItems0:
-    """
+    r"""
     kms cnrm cloud google com v1alpha1 k m s key ring import job status public key items0
 
     Attributes

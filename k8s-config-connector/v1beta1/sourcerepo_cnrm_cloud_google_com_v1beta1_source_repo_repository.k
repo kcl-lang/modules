@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema SourceRepoRepository:
-    """
+    r"""
     sourcerepo cnrm cloud google com v1beta1 source repo repository
 
     Attributes
@@ -36,7 +36,7 @@ schema SourceRepoRepository:
 
 
 schema SourcerepoCnrmCloudGoogleComV1beta1SourceRepoRepositorySpec:
-    """
+    r"""
     sourcerepo cnrm cloud google com v1beta1 source repo repository spec
 
     Attributes
@@ -55,7 +55,7 @@ schema SourcerepoCnrmCloudGoogleComV1beta1SourceRepoRepositorySpec:
 
 
 schema SourcerepoCnrmCloudGoogleComV1beta1SourceRepoRepositorySpecPubsubConfigsItems0:
-    """
+    r"""
     sourcerepo cnrm cloud google com v1beta1 source repo repository spec pubsub configs items0
 
     Attributes
@@ -79,7 +79,7 @@ schema SourcerepoCnrmCloudGoogleComV1beta1SourceRepoRepositorySpecPubsubConfigsI
 
 
 schema SourcerepoCnrmCloudGoogleComV1beta1SourceRepoRepositorySpecPubsubConfigsItems0ServiceAccountRef:
-    """
+    r"""
     Service account used for publishing Cloud Pub/Sub messages. This
     service account needs to be in the same project as the
     pubsubConfig. When added, the caller needs to have
@@ -106,7 +106,7 @@ schema SourcerepoCnrmCloudGoogleComV1beta1SourceRepoRepositorySpecPubsubConfigsI
 
 
 schema SourcerepoCnrmCloudGoogleComV1beta1SourceRepoRepositorySpecPubsubConfigsItems0TopicRef:
-    """
+    r"""
     sourcerepo cnrm cloud google com v1beta1 source repo repository spec pubsub configs items0 topic ref
 
     Attributes
@@ -128,7 +128,7 @@ schema SourcerepoCnrmCloudGoogleComV1beta1SourceRepoRepositorySpecPubsubConfigsI
 
 
 schema SourcerepoCnrmCloudGoogleComV1beta1SourceRepoRepositoryStatus:
-    """
+    r"""
     sourcerepo cnrm cloud google com v1beta1 source repo repository status
 
     Attributes
@@ -154,7 +154,7 @@ schema SourcerepoCnrmCloudGoogleComV1beta1SourceRepoRepositoryStatus:
 
 
 schema SourcerepoCnrmCloudGoogleComV1beta1SourceRepoRepositoryStatusConditionsItems0:
-    """
+    r"""
     sourcerepo cnrm cloud google com v1beta1 source repo repository status conditions items0
 
     Attributes

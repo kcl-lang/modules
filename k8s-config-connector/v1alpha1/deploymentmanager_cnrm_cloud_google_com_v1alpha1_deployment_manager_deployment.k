@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DeploymentManagerDeployment:
-    """
+    r"""
     deploymentmanager cnrm cloud google com v1alpha1 deployment manager deployment
 
     Attributes
@@ -36,7 +36,7 @@ schema DeploymentManagerDeployment:
 
 
 schema DeploymentmanagerCnrmCloudGoogleComV1alpha1DeploymentManagerDeploymentSpec:
-    """
+    r"""
     deploymentmanager cnrm cloud google com v1alpha1 deployment manager deployment spec
 
     Attributes
@@ -83,7 +83,7 @@ schema DeploymentmanagerCnrmCloudGoogleComV1alpha1DeploymentManagerDeploymentSpe
 
 
 schema DeploymentmanagerCnrmCloudGoogleComV1alpha1DeploymentManagerDeploymentSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -105,7 +105,7 @@ schema DeploymentmanagerCnrmCloudGoogleComV1alpha1DeploymentManagerDeploymentSpe
 
 
 schema DeploymentmanagerCnrmCloudGoogleComV1alpha1DeploymentManagerDeploymentSpecTarget:
-    """
+    r"""
     Parameters that define your deployment, including the deployment
     configuration and relevant templates.
 
@@ -126,7 +126,7 @@ schema DeploymentmanagerCnrmCloudGoogleComV1alpha1DeploymentManagerDeploymentSpe
 
 
 schema DeploymentmanagerCnrmCloudGoogleComV1alpha1DeploymentManagerDeploymentSpecTargetConfig:
-    """
+    r"""
     The root configuration file to use for this deployment.
 
     Attributes
@@ -140,7 +140,7 @@ schema DeploymentmanagerCnrmCloudGoogleComV1alpha1DeploymentManagerDeploymentSpe
 
 
 schema DeploymentmanagerCnrmCloudGoogleComV1alpha1DeploymentManagerDeploymentSpecTargetImportsItems0:
-    """
+    r"""
     deploymentmanager cnrm cloud google com v1alpha1 deployment manager deployment spec target imports items0
 
     Attributes
@@ -159,7 +159,7 @@ schema DeploymentmanagerCnrmCloudGoogleComV1alpha1DeploymentManagerDeploymentSpe
 
 
 schema DeploymentmanagerCnrmCloudGoogleComV1alpha1DeploymentManagerDeploymentStatus:
-    """
+    r"""
     deploymentmanager cnrm cloud google com v1alpha1 deployment manager deployment status
 
     Attributes
@@ -190,7 +190,7 @@ schema DeploymentmanagerCnrmCloudGoogleComV1alpha1DeploymentManagerDeploymentSta
 
 
 schema DeploymentmanagerCnrmCloudGoogleComV1alpha1DeploymentManagerDeploymentStatusConditionsItems0:
-    """
+    r"""
     deploymentmanager cnrm cloud google com v1alpha1 deployment manager deployment status conditions items0
 
     Attributes

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema TPUNode:
-    """
+    r"""
     tpu cnrm cloud google com v1alpha1 t p u node
 
     Attributes
@@ -36,7 +36,7 @@ schema TPUNode:
 
 
 schema TpuCnrmCloudGoogleComV1alpha1TPUNodeSpec:
-    """
+    r"""
     tpu cnrm cloud google com v1alpha1 t p u node spec
 
     Attributes
@@ -100,7 +100,7 @@ schema TpuCnrmCloudGoogleComV1alpha1TPUNodeSpec:
 
 
 schema TpuCnrmCloudGoogleComV1alpha1TPUNodeSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -122,7 +122,7 @@ schema TpuCnrmCloudGoogleComV1alpha1TPUNodeSpecProjectRef:
 
 
 schema TpuCnrmCloudGoogleComV1alpha1TPUNodeSpecSchedulingConfig:
-    """
+    r"""
     Immutable. Sets the scheduling options for this TPU instance.
 
     Attributes
@@ -136,7 +136,7 @@ schema TpuCnrmCloudGoogleComV1alpha1TPUNodeSpecSchedulingConfig:
 
 
 schema TpuCnrmCloudGoogleComV1alpha1TPUNodeStatus:
-    """
+    r"""
     tpu cnrm cloud google com v1alpha1 t p u node status
 
     Attributes
@@ -167,7 +167,7 @@ schema TpuCnrmCloudGoogleComV1alpha1TPUNodeStatus:
 
 
 schema TpuCnrmCloudGoogleComV1alpha1TPUNodeStatusConditionsItems0:
-    """
+    r"""
     tpu cnrm cloud google com v1alpha1 t p u node status conditions items0
 
     Attributes
@@ -197,7 +197,7 @@ schema TpuCnrmCloudGoogleComV1alpha1TPUNodeStatusConditionsItems0:
 
 
 schema TpuCnrmCloudGoogleComV1alpha1TPUNodeStatusNetworkEndpointsItems0:
-    """
+    r"""
     tpu cnrm cloud google com v1alpha1 t p u node status network endpoints items0
 
     Attributes

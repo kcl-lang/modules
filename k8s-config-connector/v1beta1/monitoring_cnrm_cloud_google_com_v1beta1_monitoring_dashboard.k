@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema MonitoringDashboard:
-    """
-    monitoring cnrm cloud google com v1beta1 monitoring dashboard
+    r"""
+    MonitoringDashboard is the Schema for the monitoring API
 
     Attributes
     ----------
@@ -36,13 +36,15 @@ schema MonitoringDashboard:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpec:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring dashboard spec
 
     Attributes
     ----------
     columnLayout : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayout, default is Undefined, optional
         column layout
+    dashboardFilters : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecDashboardFiltersItems0], default is Undefined, optional
+        Filters to reduce the amount of data charted based on the filter criteria.
     displayName : str, default is Undefined, required
         Required. The mutable, human-readable name.
     gridLayout : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayout, default is Undefined, optional
@@ -52,13 +54,15 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpec:
     projectRef : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        Immutable. Optional. The name of the resource. Used for creation and acquisition.
     rowLayout : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayout, default is Undefined, optional
         row layout
     """
 
 
     columnLayout?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayout
+
+    dashboardFilters?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecDashboardFiltersItems0]
 
     displayName: str
 
@@ -74,7 +78,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpec:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayout:
-    """
+    r"""
     The content is divided into equally spaced columns and the widgets are arranged vertically.
 
     Attributes
@@ -88,13 +92,13 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayout:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring dashboard spec column layout columns items0
 
     Attributes
     ----------
     weight : int, default is Undefined, optional
-        The relative weight of this column. The column weight is used to adjust the width of columns on the screen (relative to peers). Greater the weight, greater the width of the column on the screen. If omitted, a value of 1 is used while rendering.
+        The relative weight of this column. The column weight is used to adjust the width of columns on the screen (relative to peers).
     widgets : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0], default is Undefined, optional
         The display widgets arranged vertically in this column.
     """
@@ -106,19 +110,37 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring dashboard spec column layout columns items0 widgets items0
 
     Attributes
     ----------
+    alertChart : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0AlertChart, default is Undefined, optional
+        alert chart
     blank : any, default is Undefined, optional
         A blank space.
+    collapsibleGroup : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0CollapsibleGroup, default is Undefined, optional
+        collapsible group
+    errorReportingPanel : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ErrorReportingPanel, default is Undefined, optional
+        error reporting panel
+    id : str, default is Undefined, optional
+        Optional. The widget id. Ids may be made up of alphanumerics, dashes and underscores. Widget ids are optional.
+    incidentList : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0IncidentList, default is Undefined, optional
+        incident list
     logsPanel : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0LogsPanel, default is Undefined, optional
         logs panel
+    pieChart : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChart, default is Undefined, optional
+        pie chart
     scorecard : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0Scorecard, default is Undefined, optional
         scorecard
+    sectionHeader : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0SectionHeader, default is Undefined, optional
+        section header
+    singleViewGroup : any, default is Undefined, optional
+        A widget that groups the other widgets by using a dropdown menu.
     text : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0Text, default is Undefined, optional
         text
+    timeSeriesTable : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTable, default is Undefined, optional
+        time series table
     title : str, default is Undefined, optional
         Optional. The title of the widget.
     xyChart : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChart, default is Undefined, optional
@@ -126,49 +148,63 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
     """
 
 
+    alertChart?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0AlertChart
+
     blank?: any
+
+    collapsibleGroup?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0CollapsibleGroup
+
+    errorReportingPanel?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ErrorReportingPanel
+
+    id?: str
+
+    incidentList?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0IncidentList
 
     logsPanel?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0LogsPanel
 
+    pieChart?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChart
+
     scorecard?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0Scorecard
 
+    sectionHeader?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0SectionHeader
+
+    singleViewGroup?: any
+
     text?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0Text
+
+    timeSeriesTable?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTable
 
     title?: str
 
     xyChart?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChart
 
 
-schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0LogsPanel:
-    """
-    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec column layout columns items0 widgets items0 logs panel
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0AlertChart:
+    r"""
+    A chart of alert policy data.
 
     Attributes
     ----------
-    $filter : str, default is Undefined, optional
-        A filter that chooses which log entries to return. See [Advanced Logs Queries](https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
-    resourceNames : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0LogsPanelResourceNamesItems0], default is Undefined, optional
-        resource names
+    alertPolicyRef : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0AlertChartAlertPolicyRef, default is Undefined, required
+        alert policy ref
     """
 
 
-    $filter?: str
-
-    resourceNames?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0LogsPanelResourceNamesItems0]
+    alertPolicyRef: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0AlertChartAlertPolicyRef
 
 
-schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0LogsPanelResourceNamesItems0:
-    """
-    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec column layout columns items0 widgets items0 logs panel resource names items0
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0AlertChartAlertPolicyRef:
+    r"""
+    Required. A reference to the MonitoringAlertPolicy.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The value of an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a MonitoringAlertPolicy resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a MonitoringAlertPolicy resource.
     """
 
 
@@ -179,22 +215,530 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
     namespace?: str
 
 
-schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0Scorecard:
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0CollapsibleGroup:
+    r"""
+    A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+
+    Attributes
+    ----------
+    collapsed : bool, default is Undefined, optional
+        The collapsed state of the widget on first page load.
     """
+
+
+    collapsed?: bool
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ErrorReportingPanel:
+    r"""
+    A widget that displays a list of error groups.
+
+    Attributes
+    ----------
+    projectRefs : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ErrorReportingPanelProjectRefsItems0], default is Undefined, optional
+        The projects from which to gather errors.
+    services : [str], default is Undefined, optional
+        An identifier of the service, such as the name of the executable, job, or Google App Engine service name. This field is expected to have a low number of values that are relatively stable over time, as opposed to `version`, which can be changed whenever new code is deployed.
+    versions : [str], default is Undefined, optional
+        Represents the source code version that the developer provided, which could represent a version label or a Git SHA-1 hash, for example. For App Engine standard environment, the version is set to the version of the app.
+    """
+
+
+    projectRefs?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ErrorReportingPanelProjectRefsItems0]
+
+    services?: [str]
+
+    versions?: [str]
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ErrorReportingPanelProjectRefsItems0:
+    r"""
+    The Project that this resource belongs to.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
+    name : str, default is Undefined, optional
+        The `name` field of a `Project` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `Project` resource.
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0IncidentList:
+    r"""
+    A widget that shows list of incidents.
+
+    Attributes
+    ----------
+    monitoredResources : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0IncidentListMonitoredResourcesItems0], default is Undefined, optional
+        Optional. The monitored resource for which incidents are listed.
+    policyRefs : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0IncidentListPolicyRefsItems0], default is Undefined, optional
+        Optional. A list of alert policies to filter the incident list by.
+    """
+
+
+    monitoredResources?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0IncidentListMonitoredResourcesItems0]
+
+    policyRefs?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0IncidentListPolicyRefsItems0]
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0IncidentListMonitoredResourcesItems0:
+    r"""
+    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec column layout columns items0 widgets items0 incident list monitored resources items0
+
+    Attributes
+    ----------
+    labels : {str:str}, default is Undefined, optional
+        Required. Values for all of the labels listed in the associated monitored resource descriptor.
+    $type : str, default is Undefined, optional
+        Required. The monitored resource type. This field must match the `type` field of a [MonitoredResourceDescriptor][google.api.MonitoredResourceDescriptor] object.
+    """
+
+
+    labels?: {str:str}
+
+    $type?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0IncidentListPolicyRefsItems0:
+    r"""
+    MonitoringAlertPolicyRef defines the resource reference to MonitoringAlertPolicy, which "External" field holds the GCP identifier for the KRM object.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The value of an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
+    name : str, default is Undefined, optional
+        The name of a MonitoringAlertPolicy resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a MonitoringAlertPolicy resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0LogsPanel:
+    r"""
+    A widget that shows a stream of logs.
+
+    Attributes
+    ----------
+    $filter : str, default is Undefined, optional
+        A filter that chooses which log entries to return.  See [Advanced Logs Queries](https://cloud.google.com/logging/docs/view/advanced-queries).
+    resourceNames : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0LogsPanelResourceNamesItems0], default is Undefined, optional
+        The names of logging resources to collect logs for.
+    """
+
+
+    $filter?: str
+
+    resourceNames?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0LogsPanelResourceNamesItems0]
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0LogsPanelResourceNamesItems0:
+    r"""
+    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec column layout columns items0 widgets items0 logs panel resource names items0
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The external name of the referenced resource
+    kind : str, default is Undefined, optional
+        Kind of the referent.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChart:
+    r"""
+    A widget that displays timeseries data as a pie chart.
+
+    Attributes
+    ----------
+    chartType : str, default is Undefined, required
+        Required. Indicates the visualization type for the PieChart.
+    dataSets : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0], default is Undefined, required
+        Required. The queries for the chart's data.
+    showLabels : bool, default is Undefined, optional
+        Optional. Indicates whether or not the pie chart should show slices' labels
+    """
+
+
+    chartType: str
+
+    dataSets: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0]
+
+    showLabels?: bool
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0:
+    r"""
+    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec column layout columns items0 widgets items0 pie chart data sets items0
+
+    Attributes
+    ----------
+    minAlignmentPeriod : str, default is Undefined, optional
+        Optional. The lower bound on data point frequency for this data set.
+    sliceNameTemplate : str, default is Undefined, optional
+        Optional. A template for the name of the slice.
+    timeSeriesQuery : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQuery, default is Undefined, required
+        time series query
+    """
+
+
+    minAlignmentPeriod?: str
+
+    sliceNameTemplate?: str
+
+    timeSeriesQuery: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQuery
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQuery:
+    r"""
+    Required. The query for the PieChart. See, `google.monitoring.dashboard.v1.TimeSeriesQuery`.
+
+    Attributes
+    ----------
+    outputFullDuration : bool, default is Undefined, optional
+        Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.
+    prometheusQuery : str, default is Undefined, optional
+        A query used to fetch time series with PromQL.
+    timeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter, default is Undefined, optional
+        time series filter
+    timeSeriesFilterRatio : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio, default is Undefined, optional
+        time series filter ratio
+    timeSeriesQueryLanguage : str, default is Undefined, optional
+        A query used to fetch time series with MQL.
+    unitOverride : str, default is Undefined, optional
+        The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the [`unit`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in `MetricDescriptor`.
+    """
+
+
+    outputFullDuration?: bool
+
+    prometheusQuery?: str
+
+    timeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter
+
+    timeSeriesFilterRatio?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio
+
+    timeSeriesQueryLanguage?: str
+
+    unitOverride?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter:
+    r"""
+    Filter parameters to fetch time series.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    pickTimeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter, default is Undefined, optional
+        pick time series filter
+    secondaryAggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation, default is Undefined, optional
+        secondary aggregation
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation
+
+    $filter: str
+
+    pickTimeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter
+
+    secondaryAggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation:
+    r"""
+    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter:
+    r"""
+    Ranking based time series filter.
+
+    Attributes
+    ----------
+    direction : str, default is Undefined, optional
+        How to use the ranking to select time series that pass through the filter.
+    numTimeSeries : int, default is Undefined, optional
+        How many time series to allow to pass through the filter.
+    rankingMethod : str, default is Undefined, optional
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
+    """
+
+
+    direction?: str
+
+    numTimeSeries?: int
+
+    rankingMethod?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio:
+    r"""
+    Parameters to fetch a ratio between two time series filters.
+
+    Attributes
+    ----------
+    denominator : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator, default is Undefined, optional
+        denominator
+    numerator : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator, default is Undefined, optional
+        numerator
+    pickTimeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter, default is Undefined, optional
+        pick time series filter
+    secondaryAggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation, default is Undefined, optional
+        secondary aggregation
+    """
+
+
+    denominator?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator
+
+    numerator?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator
+
+    pickTimeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter
+
+    secondaryAggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator:
+    r"""
+    The denominator of the ratio.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation
+
+    $filter: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation:
+    r"""
+    By default, the raw time series data is returned.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator:
+    r"""
+    The numerator of the ratio.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation
+
+    $filter: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation:
+    r"""
+    By default, the raw time series data is returned.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter:
+    r"""
+    Ranking based time series filter.
+
+    Attributes
+    ----------
+    direction : str, default is Undefined, optional
+        How to use the ranking to select time series that pass through the filter.
+    numTimeSeries : int, default is Undefined, optional
+        How many time series to allow to pass through the filter.
+    rankingMethod : str, default is Undefined, optional
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
+    """
+
+
+    direction?: str
+
+    numTimeSeries?: int
+
+    rankingMethod?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation:
+    r"""
+    Apply a second aggregation after the ratio is computed.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation:
+    r"""
+    Apply a second aggregation after `aggregation` is applied.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0Scorecard:
+    r"""
     A scorecard summarizing time series data.
 
     Attributes
     ----------
+    blankView : any, default is Undefined, optional
+        Will cause the `Scorecard` to show only the value, with no indicator to its value relative to its thresholds.
     gaugeView : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardGaugeView, default is Undefined, optional
         gauge view
     sparkChartView : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardSparkChartView, default is Undefined, optional
         spark chart view
     thresholds : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardThresholdsItems0], default is Undefined, optional
-        The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)  As an example, consider a scorecard with the following four thresholds: {   value: 90,   category: 'DANGER',   trigger: 'ABOVE', },: {   value: 70,   category: 'WARNING',   trigger: 'ABOVE', }, {   value: 10,   category: 'DANGER',   trigger: 'BELOW', }, {   value: 20,   category: 'WARNING',   trigger: 'BELOW', }  Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
+        The thresholds used to determine the state of the scorecard given the time series' current value.
     timeSeriesQuery : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardTimeSeriesQuery, default is Undefined, required
         time series query
     """
 
+
+    blankView?: any
 
     gaugeView?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardGaugeView
 
@@ -206,7 +750,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardGaugeView:
-    """
+    r"""
     Will cause the scorecard to show a gauge chart.
 
     Attributes
@@ -224,15 +768,15 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardSparkChartView:
-    """
+    r"""
     Will cause the scorecard to show a spark chart.
 
     Attributes
     ----------
     minAlignmentPeriod : str, default is Undefined, optional
-        The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.
+        The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query.
     sparkChartType : str, default is Undefined, required
-        Required. The type of sparkchart to show in this chartView. Possible values: SPARK_CHART_TYPE_UNSPECIFIED, SPARK_LINE, SPARK_BAR
+        Required. The type of sparkchart to show in this chartView.
     """
 
 
@@ -242,17 +786,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardThresholdsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring dashboard spec column layout columns items0 widgets items0 scorecard thresholds items0
 
     Attributes
     ----------
     color : str, default is Undefined, optional
-        The state color for this threshold. Color is not allowed in a XyChart. Possible values: COLOR_UNSPECIFIED, GREY, BLUE, GREEN, YELLOW, ORANGE, RED
+        The state color for this threshold. Color is not allowed in a XyChart.
     direction : str, default is Undefined, optional
-        The direction for the current threshold. Direction is not allowed in a XyChart. Possible values: DIRECTION_UNSPECIFIED, ABOVE, BELOW
+        The direction for the current threshold. Direction is not allowed in a XyChart.
     label : str, default is Undefined, optional
         A label for the threshold.
+    targetAxis : str, default is Undefined, optional
+        The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
     value : float, default is Undefined, optional
         The value of the threshold. The value should be defined in the native scale of the metric.
     """
@@ -264,25 +810,35 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
     label?: str
 
+    targetAxis?: str
+
     value?: float
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardTimeSeriesQuery:
-    """
+    r"""
     Required. Fields for querying time series data from the Stackdriver metrics API.
 
     Attributes
     ----------
+    outputFullDuration : bool, default is Undefined, optional
+        Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.
+    prometheusQuery : str, default is Undefined, optional
+        A query used to fetch time series with PromQL.
     timeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilter, default is Undefined, optional
         time series filter
     timeSeriesFilterRatio : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatio, default is Undefined, optional
         time series filter ratio
     timeSeriesQueryLanguage : str, default is Undefined, optional
-        A query used to fetch time series.
+        A query used to fetch time series with MQL.
     unitOverride : str, default is Undefined, optional
         The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the [`unit`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in `MetricDescriptor`.
     """
 
+
+    outputFullDuration?: bool
+
+    prometheusQuery?: str
 
     timeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilter
 
@@ -294,7 +850,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilter:
-    """
+    r"""
     Filter parameters to fetch time series.
 
     Attributes
@@ -320,19 +876,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterAggregation:
-    """
+    r"""
     By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -346,17 +902,17 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter:
-    """
+    r"""
     Ranking based time series filter.
 
     Attributes
     ----------
     direction : str, default is Undefined, optional
-        How to use the ranking to select time series that pass through the filter. Possible values: DIRECTION_UNSPECIFIED, TOP, BOTTOM
+        How to use the ranking to select time series that pass through the filter.
     numTimeSeries : int, default is Undefined, optional
         How many time series to allow to pass through the filter.
     rankingMethod : str, default is Undefined, optional
-        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series. Possible values: METHOD_UNSPECIFIED, METHOD_MEAN, METHOD_MAX, METHOD_MIN, METHOD_SUM, METHOD_LATEST
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
     """
 
 
@@ -368,7 +924,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatio:
-    """
+    r"""
     Parameters to fetch a ratio between two time series filters.
 
     Attributes
@@ -394,7 +950,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioDenominator:
-    """
+    r"""
     The denominator of the ratio.
 
     Attributes
@@ -402,7 +958,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
     aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation, default is Undefined, optional
         aggregation
     $filter : str, default is Undefined, required
-        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
     """
 
 
@@ -412,19 +968,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation:
-    """
-    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+    r"""
+    By default, the raw time series data is returned.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -438,7 +994,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioNumerator:
-    """
+    r"""
     The numerator of the ratio.
 
     Attributes
@@ -446,7 +1002,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
     aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation, default is Undefined, optional
         aggregation
     $filter : str, default is Undefined, required
-        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
     """
 
 
@@ -456,19 +1012,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation:
-    """
-    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+    r"""
+    By default, the raw time series data is returned.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -482,17 +1038,17 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter:
-    """
+    r"""
     Ranking based time series filter.
 
     Attributes
     ----------
     direction : str, default is Undefined, optional
-        How to use the ranking to select time series that pass through the filter. Possible values: DIRECTION_UNSPECIFIED, TOP, BOTTOM
+        How to use the ranking to select time series that pass through the filter.
     numTimeSeries : int, default is Undefined, optional
         How many time series to allow to pass through the filter.
     rankingMethod : str, default is Undefined, optional
-        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series. Possible values: METHOD_UNSPECIFIED, METHOD_MEAN, METHOD_MAX, METHOD_MIN, METHOD_SUM, METHOD_LATEST
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
     """
 
 
@@ -504,19 +1060,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation:
-    """
+    r"""
     Apply a second aggregation after the ratio is computed.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -530,19 +1086,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterSecondaryAggregation:
-    """
+    r"""
     Apply a second aggregation after `aggregation` is applied.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -555,8 +1111,26 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
     perSeriesAligner?: str
 
 
-schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0Text:
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0SectionHeader:
+    r"""
+    A widget that defines a section header for easier navigation of the dashboard.
+
+    Attributes
+    ----------
+    dividerBelow : bool, default is Undefined, optional
+        Whether to insert a divider below the section in the table of contents
+    subtitle : str, default is Undefined, optional
+        The subtitle of the section
     """
+
+
+    dividerBelow?: bool
+
+    subtitle?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0Text:
+    r"""
     A raw string or markdown displaying textual content.
 
     Attributes
@@ -564,7 +1138,9 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
     content : str, default is Undefined, optional
         The text content to be displayed.
     format : str, default is Undefined, optional
-        How the text content is formatted. Possible values: FORMAT_UNSPECIFIED, MARKDOWN, RAW
+        How the text content is formatted.
+    style : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TextStyle, default is Undefined, optional
+        style
     """
 
 
@@ -572,9 +1148,425 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
     format?: str
 
+    style?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TextStyle
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TextStyle:
+    r"""
+    How the text is styled
+
+    Attributes
+    ----------
+    backgroundColor : str, default is Undefined, optional
+        The background color as a hex string. "#RRGGBB" or "#RGB"
+    fontSize : str, default is Undefined, optional
+        Font sizes for both the title and content. The title will still be larger relative to the content.
+    horizontalAlignment : str, default is Undefined, optional
+        The horizontal alignment of both the title and content
+    padding : str, default is Undefined, optional
+        The amount of padding around the widget
+    pointerLocation : str, default is Undefined, optional
+        The pointer location for this widget (also sometimes called a "tail")
+    textColor : str, default is Undefined, optional
+        The text color as a hex string. "#RRGGBB" or "#RGB"
+    verticalAlignment : str, default is Undefined, optional
+        The vertical alignment of both the title and content
+    """
+
+
+    backgroundColor?: str
+
+    fontSize?: str
+
+    horizontalAlignment?: str
+
+    padding?: str
+
+    pointerLocation?: str
+
+    textColor?: str
+
+    verticalAlignment?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTable:
+    r"""
+    A widget that displays time series data in a tabular format.
+
+    Attributes
+    ----------
+    columnSettings : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableColumnSettingsItems0], default is Undefined, optional
+        Optional. The list of the persistent column settings for the table.
+    dataSets : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0], default is Undefined, required
+        Required. The data displayed in this table.
+    metricVisualization : str, default is Undefined, optional
+        Optional. Store rendering strategy
+    """
+
+
+    columnSettings?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableColumnSettingsItems0]
+
+    dataSets: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0]
+
+    metricVisualization?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableColumnSettingsItems0:
+    r"""
+    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec column layout columns items0 widgets items0 time series table column settings items0
+
+    Attributes
+    ----------
+    column : str, default is Undefined, required
+        Required. The id of the column.
+    visible : bool, default is Undefined, required
+        Required. Whether the column should be visible on page load.
+    """
+
+
+    column: str
+
+    visible: bool
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0:
+    r"""
+    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec column layout columns items0 widgets items0 time series table data sets items0
+
+    Attributes
+    ----------
+    minAlignmentPeriod : str, default is Undefined, optional
+        Optional. The lower bound on data point frequency for this data set.
+    tableDisplayOptions : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TableDisplayOptions, default is Undefined, optional
+        table display options
+    tableTemplate : str, default is Undefined, optional
+        Optional. A template string for naming `TimeSeries` in the resulting data set.
+    timeSeriesQuery : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQuery, default is Undefined, optional
+        time series query
+    """
+
+
+    minAlignmentPeriod?: str
+
+    tableDisplayOptions?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TableDisplayOptions
+
+    tableTemplate?: str
+
+    timeSeriesQuery?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQuery
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TableDisplayOptions:
+    r"""
+    Optional. Table display options for configuring how the table is rendered.
+
+    Attributes
+    ----------
+    shownColumns : [str], default is Undefined, optional
+        Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings
+    """
+
+
+    shownColumns?: [str]
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQuery:
+    r"""
+    Required. Fields for querying time series data from the Stackdriver metrics API.
+
+    Attributes
+    ----------
+    outputFullDuration : bool, default is Undefined, optional
+        Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.
+    prometheusQuery : str, default is Undefined, optional
+        A query used to fetch time series with PromQL.
+    timeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilter, default is Undefined, optional
+        time series filter
+    timeSeriesFilterRatio : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio, default is Undefined, optional
+        time series filter ratio
+    timeSeriesQueryLanguage : str, default is Undefined, optional
+        A query used to fetch time series with MQL.
+    unitOverride : str, default is Undefined, optional
+        The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the [`unit`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in `MetricDescriptor`.
+    """
+
+
+    outputFullDuration?: bool
+
+    prometheusQuery?: str
+
+    timeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilter
+
+    timeSeriesFilterRatio?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio
+
+    timeSeriesQueryLanguage?: str
+
+    unitOverride?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilter:
+    r"""
+    Filter parameters to fetch time series.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    pickTimeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter, default is Undefined, optional
+        pick time series filter
+    secondaryAggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation, default is Undefined, optional
+        secondary aggregation
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation
+
+    $filter: str
+
+    pickTimeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter
+
+    secondaryAggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation:
+    r"""
+    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter:
+    r"""
+    Ranking based time series filter.
+
+    Attributes
+    ----------
+    direction : str, default is Undefined, optional
+        How to use the ranking to select time series that pass through the filter.
+    numTimeSeries : int, default is Undefined, optional
+        How many time series to allow to pass through the filter.
+    rankingMethod : str, default is Undefined, optional
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
+    """
+
+
+    direction?: str
+
+    numTimeSeries?: int
+
+    rankingMethod?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio:
+    r"""
+    Parameters to fetch a ratio between two time series filters.
+
+    Attributes
+    ----------
+    denominator : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator, default is Undefined, optional
+        denominator
+    numerator : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator, default is Undefined, optional
+        numerator
+    pickTimeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter, default is Undefined, optional
+        pick time series filter
+    secondaryAggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation, default is Undefined, optional
+        secondary aggregation
+    """
+
+
+    denominator?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator
+
+    numerator?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator
+
+    pickTimeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter
+
+    secondaryAggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator:
+    r"""
+    The denominator of the ratio.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation
+
+    $filter: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation:
+    r"""
+    By default, the raw time series data is returned.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator:
+    r"""
+    The numerator of the ratio.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation
+
+    $filter: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation:
+    r"""
+    By default, the raw time series data is returned.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter:
+    r"""
+    Ranking based time series filter.
+
+    Attributes
+    ----------
+    direction : str, default is Undefined, optional
+        How to use the ranking to select time series that pass through the filter.
+    numTimeSeries : int, default is Undefined, optional
+        How many time series to allow to pass through the filter.
+    rankingMethod : str, default is Undefined, optional
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
+    """
+
+
+    direction?: str
+
+    numTimeSeries?: int
+
+    rankingMethod?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation:
+    r"""
+    Apply a second aggregation after the ratio is computed.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation:
+    r"""
+    Apply a second aggregation after `aggregation` is applied.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChart:
-    """
+    r"""
     A chart of time series data.
 
     Attributes
@@ -586,9 +1578,11 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
     thresholds : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartThresholdsItems0], default is Undefined, optional
         Threshold lines drawn horizontally across the chart.
     timeshiftDuration : str, default is Undefined, optional
-        The duration used to display a comparison chart. A comparison chart simultaneously shows values from two similar-length time periods (e.g., week-over-week metrics). The duration must be positive, and it can only be applied to charts with data sets of LINE plot type.
+        The duration used to display a comparison chart.
     xAxis : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartXAxis, default is Undefined, optional
         x axis
+    y2Axis : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartY2Axis, default is Undefined, optional
+        y2 axis
     yAxis : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartYAxis, default is Undefined, optional
         y axis
     """
@@ -604,17 +1598,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
     xAxis?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartXAxis
 
+    y2Axis?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartY2Axis
+
     yAxis?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartYAxis
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartChartOptions:
-    """
+    r"""
     Display options for the chart.
 
     Attributes
     ----------
     mode : str, default is Undefined, optional
-        The chart mode. Possible values: MODE_UNSPECIFIED, COLOR, X_RAY, STATS
+        The chart mode.
     """
 
 
@@ -622,17 +1618,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartDataSetsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring dashboard spec column layout columns items0 widgets items0 xy chart data sets items0
 
     Attributes
     ----------
     legendTemplate : str, default is Undefined, optional
-        A template string for naming `TimeSeries` in the resulting data set. This should be a string with interpolations of the form `${label_name}`, which will resolve to the label's value. 
+        A template string for naming `TimeSeries` in the resulting data set.
     minAlignmentPeriod : str, default is Undefined, optional
-        Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the `min_alignment_period` should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+        Optional. The lower bound on data point frequency for this data set.
     plotType : str, default is Undefined, optional
-        How this data should be plotted on the chart. Possible values: PLOT_TYPE_UNSPECIFIED, LINE, STACKED_AREA, STACKED_BAR, HEATMAP
+        How this data should be plotted on the chart.
+    targetAxis : str, default is Undefined, optional
+        Optional. The target axis to use for plotting the metric.
     timeSeriesQuery : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQuery, default is Undefined, required
         time series query
     """
@@ -644,25 +1642,35 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
     plotType?: str
 
+    targetAxis?: str
+
     timeSeriesQuery: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQuery
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQuery:
-    """
-    Required. Fields for querying time series data from the Stackdriver metrics API.
+    r"""
+    Fields for querying time series data from the Stackdriver metrics API.
 
     Attributes
     ----------
+    outputFullDuration : bool, default is Undefined, optional
+        Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.
+    prometheusQuery : str, default is Undefined, optional
+        A query used to fetch time series with PromQL.
     timeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter, default is Undefined, optional
         time series filter
     timeSeriesFilterRatio : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio, default is Undefined, optional
         time series filter ratio
     timeSeriesQueryLanguage : str, default is Undefined, optional
-        A query used to fetch time series.
+        A query used to fetch time series with MQL.
     unitOverride : str, default is Undefined, optional
         The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the [`unit`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in `MetricDescriptor`.
     """
 
+
+    outputFullDuration?: bool
+
+    prometheusQuery?: str
 
     timeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter
 
@@ -674,7 +1682,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter:
-    """
+    r"""
     Filter parameters to fetch time series.
 
     Attributes
@@ -700,19 +1708,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation:
-    """
+    r"""
     By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -726,17 +1734,17 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter:
-    """
+    r"""
     Ranking based time series filter.
 
     Attributes
     ----------
     direction : str, default is Undefined, optional
-        How to use the ranking to select time series that pass through the filter. Possible values: DIRECTION_UNSPECIFIED, TOP, BOTTOM
+        How to use the ranking to select time series that pass through the filter.
     numTimeSeries : int, default is Undefined, optional
         How many time series to allow to pass through the filter.
     rankingMethod : str, default is Undefined, optional
-        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series. Possible values: METHOD_UNSPECIFIED, METHOD_MEAN, METHOD_MAX, METHOD_MIN, METHOD_SUM, METHOD_LATEST
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
     """
 
 
@@ -748,7 +1756,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio:
-    """
+    r"""
     Parameters to fetch a ratio between two time series filters.
 
     Attributes
@@ -774,7 +1782,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator:
-    """
+    r"""
     The denominator of the ratio.
 
     Attributes
@@ -782,7 +1790,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
     aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation, default is Undefined, optional
         aggregation
     $filter : str, default is Undefined, required
-        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
     """
 
 
@@ -792,19 +1800,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation:
-    """
-    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+    r"""
+    By default, the raw time series data is returned.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -818,7 +1826,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator:
-    """
+    r"""
     The numerator of the ratio.
 
     Attributes
@@ -826,7 +1834,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
     aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation, default is Undefined, optional
         aggregation
     $filter : str, default is Undefined, required
-        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
     """
 
 
@@ -836,19 +1844,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation:
-    """
-    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+    r"""
+    By default, the raw time series data is returned.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -862,17 +1870,17 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter:
-    """
+    r"""
     Ranking based time series filter.
 
     Attributes
     ----------
     direction : str, default is Undefined, optional
-        How to use the ranking to select time series that pass through the filter. Possible values: DIRECTION_UNSPECIFIED, TOP, BOTTOM
+        How to use the ranking to select time series that pass through the filter.
     numTimeSeries : int, default is Undefined, optional
         How many time series to allow to pass through the filter.
     rankingMethod : str, default is Undefined, optional
-        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series. Possible values: METHOD_UNSPECIFIED, METHOD_MEAN, METHOD_MAX, METHOD_MIN, METHOD_SUM, METHOD_LATEST
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
     """
 
 
@@ -884,19 +1892,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation:
-    """
+    r"""
     Apply a second aggregation after the ratio is computed.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -910,19 +1918,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation:
-    """
+    r"""
     Apply a second aggregation after `aggregation` is applied.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -936,17 +1944,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartThresholdsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring dashboard spec column layout columns items0 widgets items0 xy chart thresholds items0
 
     Attributes
     ----------
     color : str, default is Undefined, optional
-        The state color for this threshold. Color is not allowed in a XyChart. Possible values: COLOR_UNSPECIFIED, GREY, BLUE, GREEN, YELLOW, ORANGE, RED
+        The state color for this threshold. Color is not allowed in a XyChart.
     direction : str, default is Undefined, optional
-        The direction for the current threshold. Direction is not allowed in a XyChart. Possible values: DIRECTION_UNSPECIFIED, ABOVE, BELOW
+        The direction for the current threshold. Direction is not allowed in a XyChart.
     label : str, default is Undefined, optional
         A label for the threshold.
+    targetAxis : str, default is Undefined, optional
+        The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
     value : float, default is Undefined, optional
         The value of the threshold. The value should be defined in the native scale of the metric.
     """
@@ -958,19 +1968,39 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
     label?: str
 
+    targetAxis?: str
+
     value?: float
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartXAxis:
-    """
-    The properties applied to the X axis.
+    r"""
+    The properties applied to the x-axis.
 
     Attributes
     ----------
     label : str, default is Undefined, optional
         The label of the axis.
     scale : str, default is Undefined, optional
-        The axis scale. By default, a linear scale is used. Possible values: SCALE_UNSPECIFIED, LINEAR, LOG10
+        The axis scale. By default, a linear scale is used.
+    """
+
+
+    label?: str
+
+    scale?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartY2Axis:
+    r"""
+    The properties applied to the y2-axis.
+
+    Attributes
+    ----------
+    label : str, default is Undefined, optional
+        The label of the axis.
+    scale : str, default is Undefined, optional
+        The axis scale. By default, a linear scale is used.
     """
 
 
@@ -980,15 +2010,15 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0XyChartYAxis:
-    """
-    The properties applied to the Y axis.
+    r"""
+    The properties applied to the y-axis.
 
     Attributes
     ----------
     label : str, default is Undefined, optional
         The label of the axis.
     scale : str, default is Undefined, optional
-        The axis scale. By default, a linear scale is used. Possible values: SCALE_UNSPECIFIED, LINEAR, LOG10
+        The axis scale. By default, a linear scale is used.
     """
 
 
@@ -997,8 +2027,34 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
     scale?: str
 
 
-schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayout:
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecDashboardFiltersItems0:
+    r"""
+    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec dashboard filters items0
+
+    Attributes
+    ----------
+    filterType : str, default is Undefined, optional
+        The specified filter type
+    labelKey : str, default is Undefined, required
+        Required. The key for the label
+    stringValue : str, default is Undefined, optional
+        A variable-length string value.
+    templateVariable : str, default is Undefined, optional
+        The placeholder text that can be referenced in a filter string or MQL query. If omitted, the dashboard filter will be applied to all relevant widgets in the dashboard.
     """
+
+
+    filterType?: str
+
+    labelKey: str
+
+    stringValue?: str
+
+    templateVariable?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayout:
+    r"""
     Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
 
     Attributes
@@ -1016,19 +2072,37 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayout:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring dashboard spec grid layout widgets items0
 
     Attributes
     ----------
+    alertChart : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0AlertChart, default is Undefined, optional
+        alert chart
     blank : any, default is Undefined, optional
         A blank space.
+    collapsibleGroup : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0CollapsibleGroup, default is Undefined, optional
+        collapsible group
+    errorReportingPanel : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ErrorReportingPanel, default is Undefined, optional
+        error reporting panel
+    id : str, default is Undefined, optional
+        Optional. The widget id. Ids may be made up of alphanumerics, dashes and underscores. Widget ids are optional.
+    incidentList : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0IncidentList, default is Undefined, optional
+        incident list
     logsPanel : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0LogsPanel, default is Undefined, optional
         logs panel
+    pieChart : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChart, default is Undefined, optional
+        pie chart
     scorecard : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0Scorecard, default is Undefined, optional
         scorecard
+    sectionHeader : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0SectionHeader, default is Undefined, optional
+        section header
+    singleViewGroup : any, default is Undefined, optional
+        A widget that groups the other widgets by using a dropdown menu.
     text : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0Text, default is Undefined, optional
         text
+    timeSeriesTable : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTable, default is Undefined, optional
+        time series table
     title : str, default is Undefined, optional
         Optional. The title of the widget.
     xyChart : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChart, default is Undefined, optional
@@ -1036,49 +2110,63 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
     """
 
 
+    alertChart?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0AlertChart
+
     blank?: any
+
+    collapsibleGroup?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0CollapsibleGroup
+
+    errorReportingPanel?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ErrorReportingPanel
+
+    id?: str
+
+    incidentList?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0IncidentList
 
     logsPanel?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0LogsPanel
 
+    pieChart?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChart
+
     scorecard?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0Scorecard
 
+    sectionHeader?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0SectionHeader
+
+    singleViewGroup?: any
+
     text?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0Text
+
+    timeSeriesTable?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTable
 
     title?: str
 
     xyChart?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChart
 
 
-schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0LogsPanel:
-    """
-    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec grid layout widgets items0 logs panel
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0AlertChart:
+    r"""
+    A chart of alert policy data.
 
     Attributes
     ----------
-    $filter : str, default is Undefined, optional
-        A filter that chooses which log entries to return. See [Advanced Logs Queries](https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
-    resourceNames : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0LogsPanelResourceNamesItems0], default is Undefined, optional
-        resource names
+    alertPolicyRef : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0AlertChartAlertPolicyRef, default is Undefined, required
+        alert policy ref
     """
 
 
-    $filter?: str
-
-    resourceNames?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0LogsPanelResourceNamesItems0]
+    alertPolicyRef: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0AlertChartAlertPolicyRef
 
 
-schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0LogsPanelResourceNamesItems0:
-    """
-    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec grid layout widgets items0 logs panel resource names items0
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0AlertChartAlertPolicyRef:
+    r"""
+    Required. A reference to the MonitoringAlertPolicy.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The value of an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a MonitoringAlertPolicy resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a MonitoringAlertPolicy resource.
     """
 
 
@@ -1089,22 +2177,530 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
     namespace?: str
 
 
-schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0Scorecard:
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0CollapsibleGroup:
+    r"""
+    A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+
+    Attributes
+    ----------
+    collapsed : bool, default is Undefined, optional
+        The collapsed state of the widget on first page load.
     """
+
+
+    collapsed?: bool
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ErrorReportingPanel:
+    r"""
+    A widget that displays a list of error groups.
+
+    Attributes
+    ----------
+    projectRefs : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ErrorReportingPanelProjectRefsItems0], default is Undefined, optional
+        The projects from which to gather errors.
+    services : [str], default is Undefined, optional
+        An identifier of the service, such as the name of the executable, job, or Google App Engine service name. This field is expected to have a low number of values that are relatively stable over time, as opposed to `version`, which can be changed whenever new code is deployed.
+    versions : [str], default is Undefined, optional
+        Represents the source code version that the developer provided, which could represent a version label or a Git SHA-1 hash, for example. For App Engine standard environment, the version is set to the version of the app.
+    """
+
+
+    projectRefs?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ErrorReportingPanelProjectRefsItems0]
+
+    services?: [str]
+
+    versions?: [str]
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ErrorReportingPanelProjectRefsItems0:
+    r"""
+    The Project that this resource belongs to.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
+    name : str, default is Undefined, optional
+        The `name` field of a `Project` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `Project` resource.
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0IncidentList:
+    r"""
+    A widget that shows list of incidents.
+
+    Attributes
+    ----------
+    monitoredResources : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0IncidentListMonitoredResourcesItems0], default is Undefined, optional
+        Optional. The monitored resource for which incidents are listed.
+    policyRefs : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0IncidentListPolicyRefsItems0], default is Undefined, optional
+        Optional. A list of alert policies to filter the incident list by.
+    """
+
+
+    monitoredResources?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0IncidentListMonitoredResourcesItems0]
+
+    policyRefs?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0IncidentListPolicyRefsItems0]
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0IncidentListMonitoredResourcesItems0:
+    r"""
+    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec grid layout widgets items0 incident list monitored resources items0
+
+    Attributes
+    ----------
+    labels : {str:str}, default is Undefined, optional
+        Required. Values for all of the labels listed in the associated monitored resource descriptor.
+    $type : str, default is Undefined, optional
+        Required. The monitored resource type. This field must match the `type` field of a [MonitoredResourceDescriptor][google.api.MonitoredResourceDescriptor] object.
+    """
+
+
+    labels?: {str:str}
+
+    $type?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0IncidentListPolicyRefsItems0:
+    r"""
+    MonitoringAlertPolicyRef defines the resource reference to MonitoringAlertPolicy, which "External" field holds the GCP identifier for the KRM object.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The value of an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
+    name : str, default is Undefined, optional
+        The name of a MonitoringAlertPolicy resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a MonitoringAlertPolicy resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0LogsPanel:
+    r"""
+    A widget that shows a stream of logs.
+
+    Attributes
+    ----------
+    $filter : str, default is Undefined, optional
+        A filter that chooses which log entries to return.  See [Advanced Logs Queries](https://cloud.google.com/logging/docs/view/advanced-queries).
+    resourceNames : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0LogsPanelResourceNamesItems0], default is Undefined, optional
+        The names of logging resources to collect logs for.
+    """
+
+
+    $filter?: str
+
+    resourceNames?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0LogsPanelResourceNamesItems0]
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0LogsPanelResourceNamesItems0:
+    r"""
+    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec grid layout widgets items0 logs panel resource names items0
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The external name of the referenced resource
+    kind : str, default is Undefined, optional
+        Kind of the referent.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChart:
+    r"""
+    A widget that displays timeseries data as a pie chart.
+
+    Attributes
+    ----------
+    chartType : str, default is Undefined, required
+        Required. Indicates the visualization type for the PieChart.
+    dataSets : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0], default is Undefined, required
+        Required. The queries for the chart's data.
+    showLabels : bool, default is Undefined, optional
+        Optional. Indicates whether or not the pie chart should show slices' labels
+    """
+
+
+    chartType: str
+
+    dataSets: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0]
+
+    showLabels?: bool
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0:
+    r"""
+    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec grid layout widgets items0 pie chart data sets items0
+
+    Attributes
+    ----------
+    minAlignmentPeriod : str, default is Undefined, optional
+        Optional. The lower bound on data point frequency for this data set.
+    sliceNameTemplate : str, default is Undefined, optional
+        Optional. A template for the name of the slice.
+    timeSeriesQuery : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQuery, default is Undefined, required
+        time series query
+    """
+
+
+    minAlignmentPeriod?: str
+
+    sliceNameTemplate?: str
+
+    timeSeriesQuery: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQuery
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQuery:
+    r"""
+    Required. The query for the PieChart. See, `google.monitoring.dashboard.v1.TimeSeriesQuery`.
+
+    Attributes
+    ----------
+    outputFullDuration : bool, default is Undefined, optional
+        Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.
+    prometheusQuery : str, default is Undefined, optional
+        A query used to fetch time series with PromQL.
+    timeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter, default is Undefined, optional
+        time series filter
+    timeSeriesFilterRatio : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio, default is Undefined, optional
+        time series filter ratio
+    timeSeriesQueryLanguage : str, default is Undefined, optional
+        A query used to fetch time series with MQL.
+    unitOverride : str, default is Undefined, optional
+        The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the [`unit`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in `MetricDescriptor`.
+    """
+
+
+    outputFullDuration?: bool
+
+    prometheusQuery?: str
+
+    timeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter
+
+    timeSeriesFilterRatio?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio
+
+    timeSeriesQueryLanguage?: str
+
+    unitOverride?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter:
+    r"""
+    Filter parameters to fetch time series.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    pickTimeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter, default is Undefined, optional
+        pick time series filter
+    secondaryAggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation, default is Undefined, optional
+        secondary aggregation
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation
+
+    $filter: str
+
+    pickTimeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter
+
+    secondaryAggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation:
+    r"""
+    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter:
+    r"""
+    Ranking based time series filter.
+
+    Attributes
+    ----------
+    direction : str, default is Undefined, optional
+        How to use the ranking to select time series that pass through the filter.
+    numTimeSeries : int, default is Undefined, optional
+        How many time series to allow to pass through the filter.
+    rankingMethod : str, default is Undefined, optional
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
+    """
+
+
+    direction?: str
+
+    numTimeSeries?: int
+
+    rankingMethod?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio:
+    r"""
+    Parameters to fetch a ratio between two time series filters.
+
+    Attributes
+    ----------
+    denominator : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator, default is Undefined, optional
+        denominator
+    numerator : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator, default is Undefined, optional
+        numerator
+    pickTimeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter, default is Undefined, optional
+        pick time series filter
+    secondaryAggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation, default is Undefined, optional
+        secondary aggregation
+    """
+
+
+    denominator?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator
+
+    numerator?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator
+
+    pickTimeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter
+
+    secondaryAggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator:
+    r"""
+    The denominator of the ratio.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation
+
+    $filter: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation:
+    r"""
+    By default, the raw time series data is returned.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator:
+    r"""
+    The numerator of the ratio.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation
+
+    $filter: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation:
+    r"""
+    By default, the raw time series data is returned.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter:
+    r"""
+    Ranking based time series filter.
+
+    Attributes
+    ----------
+    direction : str, default is Undefined, optional
+        How to use the ranking to select time series that pass through the filter.
+    numTimeSeries : int, default is Undefined, optional
+        How many time series to allow to pass through the filter.
+    rankingMethod : str, default is Undefined, optional
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
+    """
+
+
+    direction?: str
+
+    numTimeSeries?: int
+
+    rankingMethod?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation:
+    r"""
+    Apply a second aggregation after the ratio is computed.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation:
+    r"""
+    Apply a second aggregation after `aggregation` is applied.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0Scorecard:
+    r"""
     A scorecard summarizing time series data.
 
     Attributes
     ----------
+    blankView : any, default is Undefined, optional
+        Will cause the `Scorecard` to show only the value, with no indicator to its value relative to its thresholds.
     gaugeView : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardGaugeView, default is Undefined, optional
         gauge view
     sparkChartView : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardSparkChartView, default is Undefined, optional
         spark chart view
     thresholds : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardThresholdsItems0], default is Undefined, optional
-        The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)  As an example, consider a scorecard with the following four thresholds: {   value: 90,   category: 'DANGER',   trigger: 'ABOVE', },: {   value: 70,   category: 'WARNING',   trigger: 'ABOVE', }, {   value: 10,   category: 'DANGER',   trigger: 'BELOW', }, {   value: 20,   category: 'WARNING',   trigger: 'BELOW', }  Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
+        The thresholds used to determine the state of the scorecard given the time series' current value.
     timeSeriesQuery : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardTimeSeriesQuery, default is Undefined, required
         time series query
     """
 
+
+    blankView?: any
 
     gaugeView?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardGaugeView
 
@@ -1116,7 +2712,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardGaugeView:
-    """
+    r"""
     Will cause the scorecard to show a gauge chart.
 
     Attributes
@@ -1134,15 +2730,15 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardSparkChartView:
-    """
+    r"""
     Will cause the scorecard to show a spark chart.
 
     Attributes
     ----------
     minAlignmentPeriod : str, default is Undefined, optional
-        The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.
+        The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query.
     sparkChartType : str, default is Undefined, required
-        Required. The type of sparkchart to show in this chartView. Possible values: SPARK_CHART_TYPE_UNSPECIFIED, SPARK_LINE, SPARK_BAR
+        Required. The type of sparkchart to show in this chartView.
     """
 
 
@@ -1152,17 +2748,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardThresholdsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring dashboard spec grid layout widgets items0 scorecard thresholds items0
 
     Attributes
     ----------
     color : str, default is Undefined, optional
-        The state color for this threshold. Color is not allowed in a XyChart. Possible values: COLOR_UNSPECIFIED, GREY, BLUE, GREEN, YELLOW, ORANGE, RED
+        The state color for this threshold. Color is not allowed in a XyChart.
     direction : str, default is Undefined, optional
-        The direction for the current threshold. Direction is not allowed in a XyChart. Possible values: DIRECTION_UNSPECIFIED, ABOVE, BELOW
+        The direction for the current threshold. Direction is not allowed in a XyChart.
     label : str, default is Undefined, optional
         A label for the threshold.
+    targetAxis : str, default is Undefined, optional
+        The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
     value : float, default is Undefined, optional
         The value of the threshold. The value should be defined in the native scale of the metric.
     """
@@ -1174,25 +2772,35 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
     label?: str
 
+    targetAxis?: str
+
     value?: float
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardTimeSeriesQuery:
-    """
+    r"""
     Required. Fields for querying time series data from the Stackdriver metrics API.
 
     Attributes
     ----------
+    outputFullDuration : bool, default is Undefined, optional
+        Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.
+    prometheusQuery : str, default is Undefined, optional
+        A query used to fetch time series with PromQL.
     timeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilter, default is Undefined, optional
         time series filter
     timeSeriesFilterRatio : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatio, default is Undefined, optional
         time series filter ratio
     timeSeriesQueryLanguage : str, default is Undefined, optional
-        A query used to fetch time series.
+        A query used to fetch time series with MQL.
     unitOverride : str, default is Undefined, optional
         The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the [`unit`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in `MetricDescriptor`.
     """
 
+
+    outputFullDuration?: bool
+
+    prometheusQuery?: str
 
     timeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilter
 
@@ -1204,7 +2812,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilter:
-    """
+    r"""
     Filter parameters to fetch time series.
 
     Attributes
@@ -1230,19 +2838,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterAggregation:
-    """
+    r"""
     By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -1256,17 +2864,17 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter:
-    """
+    r"""
     Ranking based time series filter.
 
     Attributes
     ----------
     direction : str, default is Undefined, optional
-        How to use the ranking to select time series that pass through the filter. Possible values: DIRECTION_UNSPECIFIED, TOP, BOTTOM
+        How to use the ranking to select time series that pass through the filter.
     numTimeSeries : int, default is Undefined, optional
         How many time series to allow to pass through the filter.
     rankingMethod : str, default is Undefined, optional
-        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series. Possible values: METHOD_UNSPECIFIED, METHOD_MEAN, METHOD_MAX, METHOD_MIN, METHOD_SUM, METHOD_LATEST
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
     """
 
 
@@ -1278,7 +2886,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatio:
-    """
+    r"""
     Parameters to fetch a ratio between two time series filters.
 
     Attributes
@@ -1304,7 +2912,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioDenominator:
-    """
+    r"""
     The denominator of the ratio.
 
     Attributes
@@ -1312,7 +2920,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
     aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation, default is Undefined, optional
         aggregation
     $filter : str, default is Undefined, required
-        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
     """
 
 
@@ -1322,19 +2930,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation:
-    """
-    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+    r"""
+    By default, the raw time series data is returned.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -1348,7 +2956,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioNumerator:
-    """
+    r"""
     The numerator of the ratio.
 
     Attributes
@@ -1356,7 +2964,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
     aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation, default is Undefined, optional
         aggregation
     $filter : str, default is Undefined, required
-        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
     """
 
 
@@ -1366,19 +2974,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation:
-    """
-    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+    r"""
+    By default, the raw time series data is returned.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -1392,17 +3000,17 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter:
-    """
+    r"""
     Ranking based time series filter.
 
     Attributes
     ----------
     direction : str, default is Undefined, optional
-        How to use the ranking to select time series that pass through the filter. Possible values: DIRECTION_UNSPECIFIED, TOP, BOTTOM
+        How to use the ranking to select time series that pass through the filter.
     numTimeSeries : int, default is Undefined, optional
         How many time series to allow to pass through the filter.
     rankingMethod : str, default is Undefined, optional
-        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series. Possible values: METHOD_UNSPECIFIED, METHOD_MEAN, METHOD_MAX, METHOD_MIN, METHOD_SUM, METHOD_LATEST
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
     """
 
 
@@ -1414,19 +3022,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation:
-    """
+    r"""
     Apply a second aggregation after the ratio is computed.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -1440,19 +3048,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterSecondaryAggregation:
-    """
+    r"""
     Apply a second aggregation after `aggregation` is applied.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -1465,8 +3073,26 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
     perSeriesAligner?: str
 
 
-schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0Text:
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0SectionHeader:
+    r"""
+    A widget that defines a section header for easier navigation of the dashboard.
+
+    Attributes
+    ----------
+    dividerBelow : bool, default is Undefined, optional
+        Whether to insert a divider below the section in the table of contents
+    subtitle : str, default is Undefined, optional
+        The subtitle of the section
     """
+
+
+    dividerBelow?: bool
+
+    subtitle?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0Text:
+    r"""
     A raw string or markdown displaying textual content.
 
     Attributes
@@ -1474,7 +3100,9 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
     content : str, default is Undefined, optional
         The text content to be displayed.
     format : str, default is Undefined, optional
-        How the text content is formatted. Possible values: FORMAT_UNSPECIFIED, MARKDOWN, RAW
+        How the text content is formatted.
+    style : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TextStyle, default is Undefined, optional
+        style
     """
 
 
@@ -1482,9 +3110,425 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
     format?: str
 
+    style?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TextStyle
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TextStyle:
+    r"""
+    How the text is styled
+
+    Attributes
+    ----------
+    backgroundColor : str, default is Undefined, optional
+        The background color as a hex string. "#RRGGBB" or "#RGB"
+    fontSize : str, default is Undefined, optional
+        Font sizes for both the title and content. The title will still be larger relative to the content.
+    horizontalAlignment : str, default is Undefined, optional
+        The horizontal alignment of both the title and content
+    padding : str, default is Undefined, optional
+        The amount of padding around the widget
+    pointerLocation : str, default is Undefined, optional
+        The pointer location for this widget (also sometimes called a "tail")
+    textColor : str, default is Undefined, optional
+        The text color as a hex string. "#RRGGBB" or "#RGB"
+    verticalAlignment : str, default is Undefined, optional
+        The vertical alignment of both the title and content
+    """
+
+
+    backgroundColor?: str
+
+    fontSize?: str
+
+    horizontalAlignment?: str
+
+    padding?: str
+
+    pointerLocation?: str
+
+    textColor?: str
+
+    verticalAlignment?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTable:
+    r"""
+    A widget that displays time series data in a tabular format.
+
+    Attributes
+    ----------
+    columnSettings : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableColumnSettingsItems0], default is Undefined, optional
+        Optional. The list of the persistent column settings for the table.
+    dataSets : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0], default is Undefined, required
+        Required. The data displayed in this table.
+    metricVisualization : str, default is Undefined, optional
+        Optional. Store rendering strategy
+    """
+
+
+    columnSettings?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableColumnSettingsItems0]
+
+    dataSets: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0]
+
+    metricVisualization?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableColumnSettingsItems0:
+    r"""
+    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec grid layout widgets items0 time series table column settings items0
+
+    Attributes
+    ----------
+    column : str, default is Undefined, required
+        Required. The id of the column.
+    visible : bool, default is Undefined, required
+        Required. Whether the column should be visible on page load.
+    """
+
+
+    column: str
+
+    visible: bool
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0:
+    r"""
+    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec grid layout widgets items0 time series table data sets items0
+
+    Attributes
+    ----------
+    minAlignmentPeriod : str, default is Undefined, optional
+        Optional. The lower bound on data point frequency for this data set.
+    tableDisplayOptions : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TableDisplayOptions, default is Undefined, optional
+        table display options
+    tableTemplate : str, default is Undefined, optional
+        Optional. A template string for naming `TimeSeries` in the resulting data set.
+    timeSeriesQuery : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQuery, default is Undefined, optional
+        time series query
+    """
+
+
+    minAlignmentPeriod?: str
+
+    tableDisplayOptions?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TableDisplayOptions
+
+    tableTemplate?: str
+
+    timeSeriesQuery?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQuery
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TableDisplayOptions:
+    r"""
+    Optional. Table display options for configuring how the table is rendered.
+
+    Attributes
+    ----------
+    shownColumns : [str], default is Undefined, optional
+        Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings
+    """
+
+
+    shownColumns?: [str]
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQuery:
+    r"""
+    Required. Fields for querying time series data from the Stackdriver metrics API.
+
+    Attributes
+    ----------
+    outputFullDuration : bool, default is Undefined, optional
+        Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.
+    prometheusQuery : str, default is Undefined, optional
+        A query used to fetch time series with PromQL.
+    timeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilter, default is Undefined, optional
+        time series filter
+    timeSeriesFilterRatio : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio, default is Undefined, optional
+        time series filter ratio
+    timeSeriesQueryLanguage : str, default is Undefined, optional
+        A query used to fetch time series with MQL.
+    unitOverride : str, default is Undefined, optional
+        The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the [`unit`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in `MetricDescriptor`.
+    """
+
+
+    outputFullDuration?: bool
+
+    prometheusQuery?: str
+
+    timeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilter
+
+    timeSeriesFilterRatio?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio
+
+    timeSeriesQueryLanguage?: str
+
+    unitOverride?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilter:
+    r"""
+    Filter parameters to fetch time series.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    pickTimeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter, default is Undefined, optional
+        pick time series filter
+    secondaryAggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation, default is Undefined, optional
+        secondary aggregation
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation
+
+    $filter: str
+
+    pickTimeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter
+
+    secondaryAggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation:
+    r"""
+    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter:
+    r"""
+    Ranking based time series filter.
+
+    Attributes
+    ----------
+    direction : str, default is Undefined, optional
+        How to use the ranking to select time series that pass through the filter.
+    numTimeSeries : int, default is Undefined, optional
+        How many time series to allow to pass through the filter.
+    rankingMethod : str, default is Undefined, optional
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
+    """
+
+
+    direction?: str
+
+    numTimeSeries?: int
+
+    rankingMethod?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio:
+    r"""
+    Parameters to fetch a ratio between two time series filters.
+
+    Attributes
+    ----------
+    denominator : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator, default is Undefined, optional
+        denominator
+    numerator : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator, default is Undefined, optional
+        numerator
+    pickTimeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter, default is Undefined, optional
+        pick time series filter
+    secondaryAggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation, default is Undefined, optional
+        secondary aggregation
+    """
+
+
+    denominator?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator
+
+    numerator?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator
+
+    pickTimeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter
+
+    secondaryAggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator:
+    r"""
+    The denominator of the ratio.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation
+
+    $filter: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation:
+    r"""
+    By default, the raw time series data is returned.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator:
+    r"""
+    The numerator of the ratio.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation
+
+    $filter: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation:
+    r"""
+    By default, the raw time series data is returned.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter:
+    r"""
+    Ranking based time series filter.
+
+    Attributes
+    ----------
+    direction : str, default is Undefined, optional
+        How to use the ranking to select time series that pass through the filter.
+    numTimeSeries : int, default is Undefined, optional
+        How many time series to allow to pass through the filter.
+    rankingMethod : str, default is Undefined, optional
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
+    """
+
+
+    direction?: str
+
+    numTimeSeries?: int
+
+    rankingMethod?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation:
+    r"""
+    Apply a second aggregation after the ratio is computed.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation:
+    r"""
+    Apply a second aggregation after `aggregation` is applied.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChart:
-    """
+    r"""
     A chart of time series data.
 
     Attributes
@@ -1496,9 +3540,11 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
     thresholds : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartThresholdsItems0], default is Undefined, optional
         Threshold lines drawn horizontally across the chart.
     timeshiftDuration : str, default is Undefined, optional
-        The duration used to display a comparison chart. A comparison chart simultaneously shows values from two similar-length time periods (e.g., week-over-week metrics). The duration must be positive, and it can only be applied to charts with data sets of LINE plot type.
+        The duration used to display a comparison chart.
     xAxis : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartXAxis, default is Undefined, optional
         x axis
+    y2Axis : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartY2Axis, default is Undefined, optional
+        y2 axis
     yAxis : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartYAxis, default is Undefined, optional
         y axis
     """
@@ -1514,17 +3560,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
     xAxis?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartXAxis
 
+    y2Axis?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartY2Axis
+
     yAxis?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartYAxis
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartChartOptions:
-    """
+    r"""
     Display options for the chart.
 
     Attributes
     ----------
     mode : str, default is Undefined, optional
-        The chart mode. Possible values: MODE_UNSPECIFIED, COLOR, X_RAY, STATS
+        The chart mode.
     """
 
 
@@ -1532,17 +3580,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartDataSetsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring dashboard spec grid layout widgets items0 xy chart data sets items0
 
     Attributes
     ----------
     legendTemplate : str, default is Undefined, optional
-        A template string for naming `TimeSeries` in the resulting data set. This should be a string with interpolations of the form `${label_name}`, which will resolve to the label's value. 
+        A template string for naming `TimeSeries` in the resulting data set.
     minAlignmentPeriod : str, default is Undefined, optional
-        Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the `min_alignment_period` should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+        Optional. The lower bound on data point frequency for this data set.
     plotType : str, default is Undefined, optional
-        How this data should be plotted on the chart. Possible values: PLOT_TYPE_UNSPECIFIED, LINE, STACKED_AREA, STACKED_BAR, HEATMAP
+        How this data should be plotted on the chart.
+    targetAxis : str, default is Undefined, optional
+        Optional. The target axis to use for plotting the metric.
     timeSeriesQuery : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartDataSetsItems0TimeSeriesQuery, default is Undefined, required
         time series query
     """
@@ -1554,25 +3604,35 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
     plotType?: str
 
+    targetAxis?: str
+
     timeSeriesQuery: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartDataSetsItems0TimeSeriesQuery
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartDataSetsItems0TimeSeriesQuery:
-    """
-    Required. Fields for querying time series data from the Stackdriver metrics API.
+    r"""
+    Fields for querying time series data from the Stackdriver metrics API.
 
     Attributes
     ----------
+    outputFullDuration : bool, default is Undefined, optional
+        Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.
+    prometheusQuery : str, default is Undefined, optional
+        A query used to fetch time series with PromQL.
     timeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter, default is Undefined, optional
         time series filter
     timeSeriesFilterRatio : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio, default is Undefined, optional
         time series filter ratio
     timeSeriesQueryLanguage : str, default is Undefined, optional
-        A query used to fetch time series.
+        A query used to fetch time series with MQL.
     unitOverride : str, default is Undefined, optional
         The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the [`unit`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in `MetricDescriptor`.
     """
 
+
+    outputFullDuration?: bool
+
+    prometheusQuery?: str
 
     timeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter
 
@@ -1584,7 +3644,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter:
-    """
+    r"""
     Filter parameters to fetch time series.
 
     Attributes
@@ -1610,19 +3670,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation:
-    """
+    r"""
     By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -1636,17 +3696,17 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter:
-    """
+    r"""
     Ranking based time series filter.
 
     Attributes
     ----------
     direction : str, default is Undefined, optional
-        How to use the ranking to select time series that pass through the filter. Possible values: DIRECTION_UNSPECIFIED, TOP, BOTTOM
+        How to use the ranking to select time series that pass through the filter.
     numTimeSeries : int, default is Undefined, optional
         How many time series to allow to pass through the filter.
     rankingMethod : str, default is Undefined, optional
-        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series. Possible values: METHOD_UNSPECIFIED, METHOD_MEAN, METHOD_MAX, METHOD_MIN, METHOD_SUM, METHOD_LATEST
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
     """
 
 
@@ -1658,7 +3718,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio:
-    """
+    r"""
     Parameters to fetch a ratio between two time series filters.
 
     Attributes
@@ -1684,7 +3744,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator:
-    """
+    r"""
     The denominator of the ratio.
 
     Attributes
@@ -1692,7 +3752,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
     aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation, default is Undefined, optional
         aggregation
     $filter : str, default is Undefined, required
-        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
     """
 
 
@@ -1702,19 +3762,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation:
-    """
-    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+    r"""
+    By default, the raw time series data is returned.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -1728,7 +3788,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator:
-    """
+    r"""
     The numerator of the ratio.
 
     Attributes
@@ -1736,7 +3796,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
     aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation, default is Undefined, optional
         aggregation
     $filter : str, default is Undefined, required
-        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
     """
 
 
@@ -1746,19 +3806,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation:
-    """
-    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+    r"""
+    By default, the raw time series data is returned.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -1772,17 +3832,17 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter:
-    """
+    r"""
     Ranking based time series filter.
 
     Attributes
     ----------
     direction : str, default is Undefined, optional
-        How to use the ranking to select time series that pass through the filter. Possible values: DIRECTION_UNSPECIFIED, TOP, BOTTOM
+        How to use the ranking to select time series that pass through the filter.
     numTimeSeries : int, default is Undefined, optional
         How many time series to allow to pass through the filter.
     rankingMethod : str, default is Undefined, optional
-        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series. Possible values: METHOD_UNSPECIFIED, METHOD_MEAN, METHOD_MAX, METHOD_MIN, METHOD_SUM, METHOD_LATEST
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
     """
 
 
@@ -1794,19 +3854,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation:
-    """
+    r"""
     Apply a second aggregation after the ratio is computed.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -1820,19 +3880,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation:
-    """
+    r"""
     Apply a second aggregation after `aggregation` is applied.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -1846,17 +3906,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartThresholdsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring dashboard spec grid layout widgets items0 xy chart thresholds items0
 
     Attributes
     ----------
     color : str, default is Undefined, optional
-        The state color for this threshold. Color is not allowed in a XyChart. Possible values: COLOR_UNSPECIFIED, GREY, BLUE, GREEN, YELLOW, ORANGE, RED
+        The state color for this threshold. Color is not allowed in a XyChart.
     direction : str, default is Undefined, optional
-        The direction for the current threshold. Direction is not allowed in a XyChart. Possible values: DIRECTION_UNSPECIFIED, ABOVE, BELOW
+        The direction for the current threshold. Direction is not allowed in a XyChart.
     label : str, default is Undefined, optional
         A label for the threshold.
+    targetAxis : str, default is Undefined, optional
+        The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
     value : float, default is Undefined, optional
         The value of the threshold. The value should be defined in the native scale of the metric.
     """
@@ -1868,19 +3930,39 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
     label?: str
 
+    targetAxis?: str
+
     value?: float
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartXAxis:
-    """
-    The properties applied to the X axis.
+    r"""
+    The properties applied to the x-axis.
 
     Attributes
     ----------
     label : str, default is Undefined, optional
         The label of the axis.
     scale : str, default is Undefined, optional
-        The axis scale. By default, a linear scale is used. Possible values: SCALE_UNSPECIFIED, LINEAR, LOG10
+        The axis scale. By default, a linear scale is used.
+    """
+
+
+    label?: str
+
+    scale?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartY2Axis:
+    r"""
+    The properties applied to the y2-axis.
+
+    Attributes
+    ----------
+    label : str, default is Undefined, optional
+        The label of the axis.
+    scale : str, default is Undefined, optional
+        The axis scale. By default, a linear scale is used.
     """
 
 
@@ -1890,15 +3972,15 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0XyChartYAxis:
-    """
-    The properties applied to the Y axis.
+    r"""
+    The properties applied to the y-axis.
 
     Attributes
     ----------
     label : str, default is Undefined, optional
         The label of the axis.
     scale : str, default is Undefined, optional
-        The axis scale. By default, a linear scale is used. Possible values: SCALE_UNSPECIFIED, LINEAR, LOG10
+        The axis scale. By default, a linear scale is used.
     """
 
 
@@ -1908,13 +3990,13 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayout:
-    """
-    The content is arranged as a grid of tiles, with each content widget occupying one or more tiles.
+    r"""
+    The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
 
     Attributes
     ----------
     columns : int, default is Undefined, optional
-        The number of columns in the mosaic grid.
+        The number of columns in the mosaic grid. The number of columns must be between 1 and 12, inclusive.
     tiles : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0], default is Undefined, optional
         The tiles to display.
     """
@@ -1926,21 +4008,21 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayout:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring dashboard spec mosaic layout tiles items0
 
     Attributes
     ----------
     height : int, default is Undefined, optional
-        The height of the tile, measured in grid squares.
+        The height of the tile, measured in grid blocks. Tiles must have a minimum height of 1.
     widget : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0Widget, default is Undefined, optional
         widget
     width : int, default is Undefined, optional
-        The width of the tile, measured in grid squares.
+        The width of the tile, measured in grid blocks. Tiles must have a minimum width of 1.
     xPos : int, default is Undefined, optional
-        The zero-indexed position of the tile in grid squares relative to the left edge of the grid.
+        The zero-indexed position of the tile in grid blocks relative to the left edge of the grid. Tiles must be contained within the specified number of columns. `x_pos` cannot be negative.
     yPos : int, default is Undefined, optional
-        The zero-indexed position of the tile in grid squares relative to the top edge of the grid.
+        The zero-indexed position of the tile in grid blocks relative to the top edge of the grid. `y_pos` cannot be negative.
     """
 
 
@@ -1956,19 +4038,37 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0Widget:
-    """
-    The informational widget contained in the tile.
+    r"""
+    The informational widget contained in the tile. For example an `XyChart`.
 
     Attributes
     ----------
+    alertChart : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetAlertChart, default is Undefined, optional
+        alert chart
     blank : any, default is Undefined, optional
         A blank space.
+    collapsibleGroup : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetCollapsibleGroup, default is Undefined, optional
+        collapsible group
+    errorReportingPanel : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetErrorReportingPanel, default is Undefined, optional
+        error reporting panel
+    id : str, default is Undefined, optional
+        Optional. The widget id. Ids may be made up of alphanumerics, dashes and underscores. Widget ids are optional.
+    incidentList : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetIncidentList, default is Undefined, optional
+        incident list
     logsPanel : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetLogsPanel, default is Undefined, optional
         logs panel
+    pieChart : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChart, default is Undefined, optional
+        pie chart
     scorecard : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecard, default is Undefined, optional
         scorecard
+    sectionHeader : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetSectionHeader, default is Undefined, optional
+        section header
+    singleViewGroup : any, default is Undefined, optional
+        A widget that groups the other widgets by using a dropdown menu.
     text : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetText, default is Undefined, optional
         text
+    timeSeriesTable : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTable, default is Undefined, optional
+        time series table
     title : str, default is Undefined, optional
         Optional. The title of the widget.
     xyChart : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChart, default is Undefined, optional
@@ -1976,49 +4076,63 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
     """
 
 
+    alertChart?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetAlertChart
+
     blank?: any
+
+    collapsibleGroup?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetCollapsibleGroup
+
+    errorReportingPanel?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetErrorReportingPanel
+
+    id?: str
+
+    incidentList?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetIncidentList
 
     logsPanel?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetLogsPanel
 
+    pieChart?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChart
+
     scorecard?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecard
 
+    sectionHeader?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetSectionHeader
+
+    singleViewGroup?: any
+
     text?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetText
+
+    timeSeriesTable?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTable
 
     title?: str
 
     xyChart?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChart
 
 
-schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetLogsPanel:
-    """
-    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec mosaic layout tiles items0 widget logs panel
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetAlertChart:
+    r"""
+    A chart of alert policy data.
 
     Attributes
     ----------
-    $filter : str, default is Undefined, optional
-        A filter that chooses which log entries to return. See [Advanced Logs Queries](https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
-    resourceNames : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetLogsPanelResourceNamesItems0], default is Undefined, optional
-        resource names
+    alertPolicyRef : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetAlertChartAlertPolicyRef, default is Undefined, required
+        alert policy ref
     """
 
 
-    $filter?: str
-
-    resourceNames?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetLogsPanelResourceNamesItems0]
+    alertPolicyRef: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetAlertChartAlertPolicyRef
 
 
-schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetLogsPanelResourceNamesItems0:
-    """
-    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec mosaic layout tiles items0 widget logs panel resource names items0
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetAlertChartAlertPolicyRef:
+    r"""
+    Required. A reference to the MonitoringAlertPolicy.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The value of an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a MonitoringAlertPolicy resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a MonitoringAlertPolicy resource.
     """
 
 
@@ -2029,22 +4143,530 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
     namespace?: str
 
 
-schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecard:
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetCollapsibleGroup:
+    r"""
+    A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+
+    Attributes
+    ----------
+    collapsed : bool, default is Undefined, optional
+        The collapsed state of the widget on first page load.
     """
+
+
+    collapsed?: bool
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetErrorReportingPanel:
+    r"""
+    A widget that displays a list of error groups.
+
+    Attributes
+    ----------
+    projectRefs : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetErrorReportingPanelProjectRefsItems0], default is Undefined, optional
+        The projects from which to gather errors.
+    services : [str], default is Undefined, optional
+        An identifier of the service, such as the name of the executable, job, or Google App Engine service name. This field is expected to have a low number of values that are relatively stable over time, as opposed to `version`, which can be changed whenever new code is deployed.
+    versions : [str], default is Undefined, optional
+        Represents the source code version that the developer provided, which could represent a version label or a Git SHA-1 hash, for example. For App Engine standard environment, the version is set to the version of the app.
+    """
+
+
+    projectRefs?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetErrorReportingPanelProjectRefsItems0]
+
+    services?: [str]
+
+    versions?: [str]
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetErrorReportingPanelProjectRefsItems0:
+    r"""
+    The Project that this resource belongs to.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
+    name : str, default is Undefined, optional
+        The `name` field of a `Project` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `Project` resource.
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetIncidentList:
+    r"""
+    A widget that shows list of incidents.
+
+    Attributes
+    ----------
+    monitoredResources : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetIncidentListMonitoredResourcesItems0], default is Undefined, optional
+        Optional. The monitored resource for which incidents are listed.
+    policyRefs : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetIncidentListPolicyRefsItems0], default is Undefined, optional
+        Optional. A list of alert policies to filter the incident list by.
+    """
+
+
+    monitoredResources?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetIncidentListMonitoredResourcesItems0]
+
+    policyRefs?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetIncidentListPolicyRefsItems0]
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetIncidentListMonitoredResourcesItems0:
+    r"""
+    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec mosaic layout tiles items0 widget incident list monitored resources items0
+
+    Attributes
+    ----------
+    labels : {str:str}, default is Undefined, optional
+        Required. Values for all of the labels listed in the associated monitored resource descriptor.
+    $type : str, default is Undefined, optional
+        Required. The monitored resource type. This field must match the `type` field of a [MonitoredResourceDescriptor][google.api.MonitoredResourceDescriptor] object.
+    """
+
+
+    labels?: {str:str}
+
+    $type?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetIncidentListPolicyRefsItems0:
+    r"""
+    MonitoringAlertPolicyRef defines the resource reference to MonitoringAlertPolicy, which "External" field holds the GCP identifier for the KRM object.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The value of an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
+    name : str, default is Undefined, optional
+        The name of a MonitoringAlertPolicy resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a MonitoringAlertPolicy resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetLogsPanel:
+    r"""
+    A widget that shows a stream of logs.
+
+    Attributes
+    ----------
+    $filter : str, default is Undefined, optional
+        A filter that chooses which log entries to return.  See [Advanced Logs Queries](https://cloud.google.com/logging/docs/view/advanced-queries).
+    resourceNames : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetLogsPanelResourceNamesItems0], default is Undefined, optional
+        The names of logging resources to collect logs for.
+    """
+
+
+    $filter?: str
+
+    resourceNames?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetLogsPanelResourceNamesItems0]
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetLogsPanelResourceNamesItems0:
+    r"""
+    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec mosaic layout tiles items0 widget logs panel resource names items0
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The external name of the referenced resource
+    kind : str, default is Undefined, optional
+        Kind of the referent.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChart:
+    r"""
+    A widget that displays timeseries data as a pie chart.
+
+    Attributes
+    ----------
+    chartType : str, default is Undefined, required
+        Required. Indicates the visualization type for the PieChart.
+    dataSets : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0], default is Undefined, required
+        Required. The queries for the chart's data.
+    showLabels : bool, default is Undefined, optional
+        Optional. Indicates whether or not the pie chart should show slices' labels
+    """
+
+
+    chartType: str
+
+    dataSets: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0]
+
+    showLabels?: bool
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0:
+    r"""
+    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec mosaic layout tiles items0 widget pie chart data sets items0
+
+    Attributes
+    ----------
+    minAlignmentPeriod : str, default is Undefined, optional
+        Optional. The lower bound on data point frequency for this data set.
+    sliceNameTemplate : str, default is Undefined, optional
+        Optional. A template for the name of the slice.
+    timeSeriesQuery : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQuery, default is Undefined, required
+        time series query
+    """
+
+
+    minAlignmentPeriod?: str
+
+    sliceNameTemplate?: str
+
+    timeSeriesQuery: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQuery
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQuery:
+    r"""
+    Required. The query for the PieChart. See, `google.monitoring.dashboard.v1.TimeSeriesQuery`.
+
+    Attributes
+    ----------
+    outputFullDuration : bool, default is Undefined, optional
+        Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.
+    prometheusQuery : str, default is Undefined, optional
+        A query used to fetch time series with PromQL.
+    timeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter, default is Undefined, optional
+        time series filter
+    timeSeriesFilterRatio : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio, default is Undefined, optional
+        time series filter ratio
+    timeSeriesQueryLanguage : str, default is Undefined, optional
+        A query used to fetch time series with MQL.
+    unitOverride : str, default is Undefined, optional
+        The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the [`unit`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in `MetricDescriptor`.
+    """
+
+
+    outputFullDuration?: bool
+
+    prometheusQuery?: str
+
+    timeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter
+
+    timeSeriesFilterRatio?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio
+
+    timeSeriesQueryLanguage?: str
+
+    unitOverride?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter:
+    r"""
+    Filter parameters to fetch time series.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    pickTimeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter, default is Undefined, optional
+        pick time series filter
+    secondaryAggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation, default is Undefined, optional
+        secondary aggregation
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation
+
+    $filter: str
+
+    pickTimeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter
+
+    secondaryAggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation:
+    r"""
+    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter:
+    r"""
+    Ranking based time series filter.
+
+    Attributes
+    ----------
+    direction : str, default is Undefined, optional
+        How to use the ranking to select time series that pass through the filter.
+    numTimeSeries : int, default is Undefined, optional
+        How many time series to allow to pass through the filter.
+    rankingMethod : str, default is Undefined, optional
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
+    """
+
+
+    direction?: str
+
+    numTimeSeries?: int
+
+    rankingMethod?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio:
+    r"""
+    Parameters to fetch a ratio between two time series filters.
+
+    Attributes
+    ----------
+    denominator : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator, default is Undefined, optional
+        denominator
+    numerator : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator, default is Undefined, optional
+        numerator
+    pickTimeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter, default is Undefined, optional
+        pick time series filter
+    secondaryAggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation, default is Undefined, optional
+        secondary aggregation
+    """
+
+
+    denominator?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator
+
+    numerator?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator
+
+    pickTimeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter
+
+    secondaryAggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator:
+    r"""
+    The denominator of the ratio.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation
+
+    $filter: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation:
+    r"""
+    By default, the raw time series data is returned.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator:
+    r"""
+    The numerator of the ratio.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation
+
+    $filter: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation:
+    r"""
+    By default, the raw time series data is returned.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter:
+    r"""
+    Ranking based time series filter.
+
+    Attributes
+    ----------
+    direction : str, default is Undefined, optional
+        How to use the ranking to select time series that pass through the filter.
+    numTimeSeries : int, default is Undefined, optional
+        How many time series to allow to pass through the filter.
+    rankingMethod : str, default is Undefined, optional
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
+    """
+
+
+    direction?: str
+
+    numTimeSeries?: int
+
+    rankingMethod?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation:
+    r"""
+    Apply a second aggregation after the ratio is computed.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetPieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation:
+    r"""
+    Apply a second aggregation after `aggregation` is applied.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecard:
+    r"""
     A scorecard summarizing time series data.
 
     Attributes
     ----------
+    blankView : any, default is Undefined, optional
+        Will cause the `Scorecard` to show only the value, with no indicator to its value relative to its thresholds.
     gaugeView : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardGaugeView, default is Undefined, optional
         gauge view
     sparkChartView : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardSparkChartView, default is Undefined, optional
         spark chart view
     thresholds : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardThresholdsItems0], default is Undefined, optional
-        The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)  As an example, consider a scorecard with the following four thresholds: {   value: 90,   category: 'DANGER',   trigger: 'ABOVE', },: {   value: 70,   category: 'WARNING',   trigger: 'ABOVE', }, {   value: 10,   category: 'DANGER',   trigger: 'BELOW', }, {   value: 20,   category: 'WARNING',   trigger: 'BELOW', }  Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
+        The thresholds used to determine the state of the scorecard given the time series' current value.
     timeSeriesQuery : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardTimeSeriesQuery, default is Undefined, required
         time series query
     """
 
+
+    blankView?: any
 
     gaugeView?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardGaugeView
 
@@ -2056,7 +4678,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardGaugeView:
-    """
+    r"""
     Will cause the scorecard to show a gauge chart.
 
     Attributes
@@ -2074,15 +4696,15 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardSparkChartView:
-    """
+    r"""
     Will cause the scorecard to show a spark chart.
 
     Attributes
     ----------
     minAlignmentPeriod : str, default is Undefined, optional
-        The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.
+        The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query.
     sparkChartType : str, default is Undefined, required
-        Required. The type of sparkchart to show in this chartView. Possible values: SPARK_CHART_TYPE_UNSPECIFIED, SPARK_LINE, SPARK_BAR
+        Required. The type of sparkchart to show in this chartView.
     """
 
 
@@ -2092,17 +4714,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardThresholdsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring dashboard spec mosaic layout tiles items0 widget scorecard thresholds items0
 
     Attributes
     ----------
     color : str, default is Undefined, optional
-        The state color for this threshold. Color is not allowed in a XyChart. Possible values: COLOR_UNSPECIFIED, GREY, BLUE, GREEN, YELLOW, ORANGE, RED
+        The state color for this threshold. Color is not allowed in a XyChart.
     direction : str, default is Undefined, optional
-        The direction for the current threshold. Direction is not allowed in a XyChart. Possible values: DIRECTION_UNSPECIFIED, ABOVE, BELOW
+        The direction for the current threshold. Direction is not allowed in a XyChart.
     label : str, default is Undefined, optional
         A label for the threshold.
+    targetAxis : str, default is Undefined, optional
+        The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
     value : float, default is Undefined, optional
         The value of the threshold. The value should be defined in the native scale of the metric.
     """
@@ -2114,25 +4738,35 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
     label?: str
 
+    targetAxis?: str
+
     value?: float
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardTimeSeriesQuery:
-    """
+    r"""
     Required. Fields for querying time series data from the Stackdriver metrics API.
 
     Attributes
     ----------
+    outputFullDuration : bool, default is Undefined, optional
+        Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.
+    prometheusQuery : str, default is Undefined, optional
+        A query used to fetch time series with PromQL.
     timeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardTimeSeriesQueryTimeSeriesFilter, default is Undefined, optional
         time series filter
     timeSeriesFilterRatio : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardTimeSeriesQueryTimeSeriesFilterRatio, default is Undefined, optional
         time series filter ratio
     timeSeriesQueryLanguage : str, default is Undefined, optional
-        A query used to fetch time series.
+        A query used to fetch time series with MQL.
     unitOverride : str, default is Undefined, optional
         The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the [`unit`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in `MetricDescriptor`.
     """
 
+
+    outputFullDuration?: bool
+
+    prometheusQuery?: str
 
     timeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardTimeSeriesQueryTimeSeriesFilter
 
@@ -2144,7 +4778,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardTimeSeriesQueryTimeSeriesFilter:
-    """
+    r"""
     Filter parameters to fetch time series.
 
     Attributes
@@ -2170,19 +4804,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardTimeSeriesQueryTimeSeriesFilterAggregation:
-    """
+    r"""
     By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -2196,17 +4830,17 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardTimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter:
-    """
+    r"""
     Ranking based time series filter.
 
     Attributes
     ----------
     direction : str, default is Undefined, optional
-        How to use the ranking to select time series that pass through the filter. Possible values: DIRECTION_UNSPECIFIED, TOP, BOTTOM
+        How to use the ranking to select time series that pass through the filter.
     numTimeSeries : int, default is Undefined, optional
         How many time series to allow to pass through the filter.
     rankingMethod : str, default is Undefined, optional
-        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series. Possible values: METHOD_UNSPECIFIED, METHOD_MEAN, METHOD_MAX, METHOD_MIN, METHOD_SUM, METHOD_LATEST
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
     """
 
 
@@ -2218,7 +4852,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardTimeSeriesQueryTimeSeriesFilterRatio:
-    """
+    r"""
     Parameters to fetch a ratio between two time series filters.
 
     Attributes
@@ -2244,7 +4878,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardTimeSeriesQueryTimeSeriesFilterRatioDenominator:
-    """
+    r"""
     The denominator of the ratio.
 
     Attributes
@@ -2252,7 +4886,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
     aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardTimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation, default is Undefined, optional
         aggregation
     $filter : str, default is Undefined, required
-        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
     """
 
 
@@ -2262,19 +4896,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardTimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation:
-    """
-    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+    r"""
+    By default, the raw time series data is returned.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -2288,7 +4922,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardTimeSeriesQueryTimeSeriesFilterRatioNumerator:
-    """
+    r"""
     The numerator of the ratio.
 
     Attributes
@@ -2296,7 +4930,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
     aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardTimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation, default is Undefined, optional
         aggregation
     $filter : str, default is Undefined, required
-        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
     """
 
 
@@ -2306,19 +4940,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardTimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation:
-    """
-    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+    r"""
+    By default, the raw time series data is returned.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -2332,17 +4966,17 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardTimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter:
-    """
+    r"""
     Ranking based time series filter.
 
     Attributes
     ----------
     direction : str, default is Undefined, optional
-        How to use the ranking to select time series that pass through the filter. Possible values: DIRECTION_UNSPECIFIED, TOP, BOTTOM
+        How to use the ranking to select time series that pass through the filter.
     numTimeSeries : int, default is Undefined, optional
         How many time series to allow to pass through the filter.
     rankingMethod : str, default is Undefined, optional
-        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series. Possible values: METHOD_UNSPECIFIED, METHOD_MEAN, METHOD_MAX, METHOD_MIN, METHOD_SUM, METHOD_LATEST
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
     """
 
 
@@ -2354,19 +4988,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardTimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation:
-    """
+    r"""
     Apply a second aggregation after the ratio is computed.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -2380,19 +5014,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetScorecardTimeSeriesQueryTimeSeriesFilterSecondaryAggregation:
-    """
+    r"""
     Apply a second aggregation after `aggregation` is applied.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -2405,8 +5039,26 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
     perSeriesAligner?: str
 
 
-schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetText:
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetSectionHeader:
+    r"""
+    A widget that defines a section header for easier navigation of the dashboard.
+
+    Attributes
+    ----------
+    dividerBelow : bool, default is Undefined, optional
+        Whether to insert a divider below the section in the table of contents
+    subtitle : str, default is Undefined, optional
+        The subtitle of the section
     """
+
+
+    dividerBelow?: bool
+
+    subtitle?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetText:
+    r"""
     A raw string or markdown displaying textual content.
 
     Attributes
@@ -2414,7 +5066,9 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
     content : str, default is Undefined, optional
         The text content to be displayed.
     format : str, default is Undefined, optional
-        How the text content is formatted. Possible values: FORMAT_UNSPECIFIED, MARKDOWN, RAW
+        How the text content is formatted.
+    style : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTextStyle, default is Undefined, optional
+        style
     """
 
 
@@ -2422,9 +5076,425 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
     format?: str
 
+    style?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTextStyle
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTextStyle:
+    r"""
+    How the text is styled
+
+    Attributes
+    ----------
+    backgroundColor : str, default is Undefined, optional
+        The background color as a hex string. "#RRGGBB" or "#RGB"
+    fontSize : str, default is Undefined, optional
+        Font sizes for both the title and content. The title will still be larger relative to the content.
+    horizontalAlignment : str, default is Undefined, optional
+        The horizontal alignment of both the title and content
+    padding : str, default is Undefined, optional
+        The amount of padding around the widget
+    pointerLocation : str, default is Undefined, optional
+        The pointer location for this widget (also sometimes called a "tail")
+    textColor : str, default is Undefined, optional
+        The text color as a hex string. "#RRGGBB" or "#RGB"
+    verticalAlignment : str, default is Undefined, optional
+        The vertical alignment of both the title and content
+    """
+
+
+    backgroundColor?: str
+
+    fontSize?: str
+
+    horizontalAlignment?: str
+
+    padding?: str
+
+    pointerLocation?: str
+
+    textColor?: str
+
+    verticalAlignment?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTable:
+    r"""
+    A widget that displays time series data in a tabular format.
+
+    Attributes
+    ----------
+    columnSettings : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableColumnSettingsItems0], default is Undefined, optional
+        Optional. The list of the persistent column settings for the table.
+    dataSets : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0], default is Undefined, required
+        Required. The data displayed in this table.
+    metricVisualization : str, default is Undefined, optional
+        Optional. Store rendering strategy
+    """
+
+
+    columnSettings?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableColumnSettingsItems0]
+
+    dataSets: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0]
+
+    metricVisualization?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableColumnSettingsItems0:
+    r"""
+    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec mosaic layout tiles items0 widget time series table column settings items0
+
+    Attributes
+    ----------
+    column : str, default is Undefined, required
+        Required. The id of the column.
+    visible : bool, default is Undefined, required
+        Required. Whether the column should be visible on page load.
+    """
+
+
+    column: str
+
+    visible: bool
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0:
+    r"""
+    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec mosaic layout tiles items0 widget time series table data sets items0
+
+    Attributes
+    ----------
+    minAlignmentPeriod : str, default is Undefined, optional
+        Optional. The lower bound on data point frequency for this data set.
+    tableDisplayOptions : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TableDisplayOptions, default is Undefined, optional
+        table display options
+    tableTemplate : str, default is Undefined, optional
+        Optional. A template string for naming `TimeSeries` in the resulting data set.
+    timeSeriesQuery : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQuery, default is Undefined, optional
+        time series query
+    """
+
+
+    minAlignmentPeriod?: str
+
+    tableDisplayOptions?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TableDisplayOptions
+
+    tableTemplate?: str
+
+    timeSeriesQuery?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQuery
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TableDisplayOptions:
+    r"""
+    Optional. Table display options for configuring how the table is rendered.
+
+    Attributes
+    ----------
+    shownColumns : [str], default is Undefined, optional
+        Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings
+    """
+
+
+    shownColumns?: [str]
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQuery:
+    r"""
+    Required. Fields for querying time series data from the Stackdriver metrics API.
+
+    Attributes
+    ----------
+    outputFullDuration : bool, default is Undefined, optional
+        Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.
+    prometheusQuery : str, default is Undefined, optional
+        A query used to fetch time series with PromQL.
+    timeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilter, default is Undefined, optional
+        time series filter
+    timeSeriesFilterRatio : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio, default is Undefined, optional
+        time series filter ratio
+    timeSeriesQueryLanguage : str, default is Undefined, optional
+        A query used to fetch time series with MQL.
+    unitOverride : str, default is Undefined, optional
+        The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the [`unit`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in `MetricDescriptor`.
+    """
+
+
+    outputFullDuration?: bool
+
+    prometheusQuery?: str
+
+    timeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilter
+
+    timeSeriesFilterRatio?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio
+
+    timeSeriesQueryLanguage?: str
+
+    unitOverride?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilter:
+    r"""
+    Filter parameters to fetch time series.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    pickTimeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter, default is Undefined, optional
+        pick time series filter
+    secondaryAggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation, default is Undefined, optional
+        secondary aggregation
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation
+
+    $filter: str
+
+    pickTimeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter
+
+    secondaryAggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation:
+    r"""
+    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter:
+    r"""
+    Ranking based time series filter.
+
+    Attributes
+    ----------
+    direction : str, default is Undefined, optional
+        How to use the ranking to select time series that pass through the filter.
+    numTimeSeries : int, default is Undefined, optional
+        How many time series to allow to pass through the filter.
+    rankingMethod : str, default is Undefined, optional
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
+    """
+
+
+    direction?: str
+
+    numTimeSeries?: int
+
+    rankingMethod?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio:
+    r"""
+    Parameters to fetch a ratio between two time series filters.
+
+    Attributes
+    ----------
+    denominator : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator, default is Undefined, optional
+        denominator
+    numerator : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator, default is Undefined, optional
+        numerator
+    pickTimeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter, default is Undefined, optional
+        pick time series filter
+    secondaryAggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation, default is Undefined, optional
+        secondary aggregation
+    """
+
+
+    denominator?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator
+
+    numerator?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator
+
+    pickTimeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter
+
+    secondaryAggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator:
+    r"""
+    The denominator of the ratio.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation
+
+    $filter: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation:
+    r"""
+    By default, the raw time series data is returned.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator:
+    r"""
+    The numerator of the ratio.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation
+
+    $filter: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation:
+    r"""
+    By default, the raw time series data is returned.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter:
+    r"""
+    Ranking based time series filter.
+
+    Attributes
+    ----------
+    direction : str, default is Undefined, optional
+        How to use the ranking to select time series that pass through the filter.
+    numTimeSeries : int, default is Undefined, optional
+        How many time series to allow to pass through the filter.
+    rankingMethod : str, default is Undefined, optional
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
+    """
+
+
+    direction?: str
+
+    numTimeSeries?: int
+
+    rankingMethod?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation:
+    r"""
+    Apply a second aggregation after the ratio is computed.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetTimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation:
+    r"""
+    Apply a second aggregation after `aggregation` is applied.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChart:
-    """
+    r"""
     A chart of time series data.
 
     Attributes
@@ -2436,9 +5506,11 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
     thresholds : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartThresholdsItems0], default is Undefined, optional
         Threshold lines drawn horizontally across the chart.
     timeshiftDuration : str, default is Undefined, optional
-        The duration used to display a comparison chart. A comparison chart simultaneously shows values from two similar-length time periods (e.g., week-over-week metrics). The duration must be positive, and it can only be applied to charts with data sets of LINE plot type.
+        The duration used to display a comparison chart.
     xAxis : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartXAxis, default is Undefined, optional
         x axis
+    y2Axis : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartY2Axis, default is Undefined, optional
+        y2 axis
     yAxis : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartYAxis, default is Undefined, optional
         y axis
     """
@@ -2454,17 +5526,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
     xAxis?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartXAxis
 
+    y2Axis?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartY2Axis
+
     yAxis?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartYAxis
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartChartOptions:
-    """
+    r"""
     Display options for the chart.
 
     Attributes
     ----------
     mode : str, default is Undefined, optional
-        The chart mode. Possible values: MODE_UNSPECIFIED, COLOR, X_RAY, STATS
+        The chart mode.
     """
 
 
@@ -2472,17 +5546,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartDataSetsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring dashboard spec mosaic layout tiles items0 widget xy chart data sets items0
 
     Attributes
     ----------
     legendTemplate : str, default is Undefined, optional
-        A template string for naming `TimeSeries` in the resulting data set. This should be a string with interpolations of the form `${label_name}`, which will resolve to the label's value. 
+        A template string for naming `TimeSeries` in the resulting data set.
     minAlignmentPeriod : str, default is Undefined, optional
-        Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the `min_alignment_period` should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+        Optional. The lower bound on data point frequency for this data set.
     plotType : str, default is Undefined, optional
-        How this data should be plotted on the chart. Possible values: PLOT_TYPE_UNSPECIFIED, LINE, STACKED_AREA, STACKED_BAR, HEATMAP
+        How this data should be plotted on the chart.
+    targetAxis : str, default is Undefined, optional
+        Optional. The target axis to use for plotting the metric.
     timeSeriesQuery : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartDataSetsItems0TimeSeriesQuery, default is Undefined, required
         time series query
     """
@@ -2494,25 +5570,35 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
     plotType?: str
 
+    targetAxis?: str
+
     timeSeriesQuery: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartDataSetsItems0TimeSeriesQuery
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartDataSetsItems0TimeSeriesQuery:
-    """
-    Required. Fields for querying time series data from the Stackdriver metrics API.
+    r"""
+    Fields for querying time series data from the Stackdriver metrics API.
 
     Attributes
     ----------
+    outputFullDuration : bool, default is Undefined, optional
+        Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.
+    prometheusQuery : str, default is Undefined, optional
+        A query used to fetch time series with PromQL.
     timeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter, default is Undefined, optional
         time series filter
     timeSeriesFilterRatio : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio, default is Undefined, optional
         time series filter ratio
     timeSeriesQueryLanguage : str, default is Undefined, optional
-        A query used to fetch time series.
+        A query used to fetch time series with MQL.
     unitOverride : str, default is Undefined, optional
         The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the [`unit`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in `MetricDescriptor`.
     """
 
+
+    outputFullDuration?: bool
+
+    prometheusQuery?: str
 
     timeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter
 
@@ -2524,7 +5610,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter:
-    """
+    r"""
     Filter parameters to fetch time series.
 
     Attributes
@@ -2550,19 +5636,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation:
-    """
+    r"""
     By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -2576,17 +5662,17 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter:
-    """
+    r"""
     Ranking based time series filter.
 
     Attributes
     ----------
     direction : str, default is Undefined, optional
-        How to use the ranking to select time series that pass through the filter. Possible values: DIRECTION_UNSPECIFIED, TOP, BOTTOM
+        How to use the ranking to select time series that pass through the filter.
     numTimeSeries : int, default is Undefined, optional
         How many time series to allow to pass through the filter.
     rankingMethod : str, default is Undefined, optional
-        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series. Possible values: METHOD_UNSPECIFIED, METHOD_MEAN, METHOD_MAX, METHOD_MIN, METHOD_SUM, METHOD_LATEST
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
     """
 
 
@@ -2598,7 +5684,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio:
-    """
+    r"""
     Parameters to fetch a ratio between two time series filters.
 
     Attributes
@@ -2624,7 +5710,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator:
-    """
+    r"""
     The denominator of the ratio.
 
     Attributes
@@ -2632,7 +5718,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
     aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation, default is Undefined, optional
         aggregation
     $filter : str, default is Undefined, required
-        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
     """
 
 
@@ -2642,19 +5728,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation:
-    """
-    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+    r"""
+    By default, the raw time series data is returned.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -2668,7 +5754,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator:
-    """
+    r"""
     The numerator of the ratio.
 
     Attributes
@@ -2676,7 +5762,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
     aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation, default is Undefined, optional
         aggregation
     $filter : str, default is Undefined, required
-        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
     """
 
 
@@ -2686,19 +5772,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation:
-    """
-    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+    r"""
+    By default, the raw time series data is returned.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -2712,17 +5798,17 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter:
-    """
+    r"""
     Ranking based time series filter.
 
     Attributes
     ----------
     direction : str, default is Undefined, optional
-        How to use the ranking to select time series that pass through the filter. Possible values: DIRECTION_UNSPECIFIED, TOP, BOTTOM
+        How to use the ranking to select time series that pass through the filter.
     numTimeSeries : int, default is Undefined, optional
         How many time series to allow to pass through the filter.
     rankingMethod : str, default is Undefined, optional
-        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series. Possible values: METHOD_UNSPECIFIED, METHOD_MEAN, METHOD_MAX, METHOD_MIN, METHOD_SUM, METHOD_LATEST
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
     """
 
 
@@ -2734,19 +5820,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation:
-    """
+    r"""
     Apply a second aggregation after the ratio is computed.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -2760,19 +5846,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation:
-    """
+    r"""
     Apply a second aggregation after `aggregation` is applied.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -2786,17 +5872,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartThresholdsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring dashboard spec mosaic layout tiles items0 widget xy chart thresholds items0
 
     Attributes
     ----------
     color : str, default is Undefined, optional
-        The state color for this threshold. Color is not allowed in a XyChart. Possible values: COLOR_UNSPECIFIED, GREY, BLUE, GREEN, YELLOW, ORANGE, RED
+        The state color for this threshold. Color is not allowed in a XyChart.
     direction : str, default is Undefined, optional
-        The direction for the current threshold. Direction is not allowed in a XyChart. Possible values: DIRECTION_UNSPECIFIED, ABOVE, BELOW
+        The direction for the current threshold. Direction is not allowed in a XyChart.
     label : str, default is Undefined, optional
         A label for the threshold.
+    targetAxis : str, default is Undefined, optional
+        The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
     value : float, default is Undefined, optional
         The value of the threshold. The value should be defined in the native scale of the metric.
     """
@@ -2808,19 +5896,39 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
     label?: str
 
+    targetAxis?: str
+
     value?: float
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartXAxis:
-    """
-    The properties applied to the X axis.
+    r"""
+    The properties applied to the x-axis.
 
     Attributes
     ----------
     label : str, default is Undefined, optional
         The label of the axis.
     scale : str, default is Undefined, optional
-        The axis scale. By default, a linear scale is used. Possible values: SCALE_UNSPECIFIED, LINEAR, LOG10
+        The axis scale. By default, a linear scale is used.
+    """
+
+
+    label?: str
+
+    scale?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartY2Axis:
+    r"""
+    The properties applied to the y2-axis.
+
+    Attributes
+    ----------
+    label : str, default is Undefined, optional
+        The label of the axis.
+    scale : str, default is Undefined, optional
+        The axis scale. By default, a linear scale is used.
     """
 
 
@@ -2830,15 +5938,15 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetXyChartYAxis:
-    """
-    The properties applied to the Y axis.
+    r"""
+    The properties applied to the y-axis.
 
     Attributes
     ----------
     label : str, default is Undefined, optional
         The label of the axis.
     scale : str, default is Undefined, optional
-        The axis scale. By default, a linear scale is used. Possible values: SCALE_UNSPECIFIED, LINEAR, LOG10
+        The axis scale. By default, a linear scale is used.
     """
 
 
@@ -2848,23 +5956,25 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The project id of the resource.
-
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
     external?: str
+
+    kind?: str
 
     name?: str
 
@@ -2872,7 +5982,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecProjectRef:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayout:
-    """
+    r"""
     The content is divided into equally spaced rows and the widgets are arranged horizontally.
 
     Attributes
@@ -2886,13 +5996,13 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayout:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring dashboard spec row layout rows items0
 
     Attributes
     ----------
     weight : int, default is Undefined, optional
-        The relative weight of this row. The row weight is used to adjust the height of rows on the screen (relative to peers). Greater the weight, greater the height of the row on the screen. If omitted, a value of 1 is used while rendering.
+        The relative weight of this row. The row weight is used to adjust the height of rows on the screen (relative to peers).
     widgets : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0], default is Undefined, optional
         The display widgets arranged horizontally in this row.
     """
@@ -2904,19 +6014,37 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring dashboard spec row layout rows items0 widgets items0
 
     Attributes
     ----------
+    alertChart : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0AlertChart, default is Undefined, optional
+        alert chart
     blank : any, default is Undefined, optional
         A blank space.
+    collapsibleGroup : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0CollapsibleGroup, default is Undefined, optional
+        collapsible group
+    errorReportingPanel : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ErrorReportingPanel, default is Undefined, optional
+        error reporting panel
+    id : str, default is Undefined, optional
+        Optional. The widget id. Ids may be made up of alphanumerics, dashes and underscores. Widget ids are optional.
+    incidentList : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0IncidentList, default is Undefined, optional
+        incident list
     logsPanel : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0LogsPanel, default is Undefined, optional
         logs panel
+    pieChart : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChart, default is Undefined, optional
+        pie chart
     scorecard : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0Scorecard, default is Undefined, optional
         scorecard
+    sectionHeader : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0SectionHeader, default is Undefined, optional
+        section header
+    singleViewGroup : any, default is Undefined, optional
+        A widget that groups the other widgets by using a dropdown menu.
     text : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0Text, default is Undefined, optional
         text
+    timeSeriesTable : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTable, default is Undefined, optional
+        time series table
     title : str, default is Undefined, optional
         Optional. The title of the widget.
     xyChart : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChart, default is Undefined, optional
@@ -2924,49 +6052,63 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
     """
 
 
+    alertChart?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0AlertChart
+
     blank?: any
+
+    collapsibleGroup?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0CollapsibleGroup
+
+    errorReportingPanel?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ErrorReportingPanel
+
+    id?: str
+
+    incidentList?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0IncidentList
 
     logsPanel?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0LogsPanel
 
+    pieChart?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChart
+
     scorecard?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0Scorecard
 
+    sectionHeader?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0SectionHeader
+
+    singleViewGroup?: any
+
     text?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0Text
+
+    timeSeriesTable?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTable
 
     title?: str
 
     xyChart?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChart
 
 
-schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0LogsPanel:
-    """
-    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec row layout rows items0 widgets items0 logs panel
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0AlertChart:
+    r"""
+    A chart of alert policy data.
 
     Attributes
     ----------
-    $filter : str, default is Undefined, optional
-        A filter that chooses which log entries to return. See [Advanced Logs Queries](https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
-    resourceNames : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0LogsPanelResourceNamesItems0], default is Undefined, optional
-        resource names
+    alertPolicyRef : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0AlertChartAlertPolicyRef, default is Undefined, required
+        alert policy ref
     """
 
 
-    $filter?: str
-
-    resourceNames?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0LogsPanelResourceNamesItems0]
+    alertPolicyRef: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0AlertChartAlertPolicyRef
 
 
-schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0LogsPanelResourceNamesItems0:
-    """
-    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec row layout rows items0 widgets items0 logs panel resource names items0
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0AlertChartAlertPolicyRef:
+    r"""
+    Required. A reference to the MonitoringAlertPolicy.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The value of an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a MonitoringAlertPolicy resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a MonitoringAlertPolicy resource.
     """
 
 
@@ -2977,22 +6119,530 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
     namespace?: str
 
 
-schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0Scorecard:
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0CollapsibleGroup:
+    r"""
+    A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
+
+    Attributes
+    ----------
+    collapsed : bool, default is Undefined, optional
+        The collapsed state of the widget on first page load.
     """
+
+
+    collapsed?: bool
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ErrorReportingPanel:
+    r"""
+    A widget that displays a list of error groups.
+
+    Attributes
+    ----------
+    projectRefs : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ErrorReportingPanelProjectRefsItems0], default is Undefined, optional
+        The projects from which to gather errors.
+    services : [str], default is Undefined, optional
+        An identifier of the service, such as the name of the executable, job, or Google App Engine service name. This field is expected to have a low number of values that are relatively stable over time, as opposed to `version`, which can be changed whenever new code is deployed.
+    versions : [str], default is Undefined, optional
+        Represents the source code version that the developer provided, which could represent a version label or a Git SHA-1 hash, for example. For App Engine standard environment, the version is set to the version of the app.
+    """
+
+
+    projectRefs?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ErrorReportingPanelProjectRefsItems0]
+
+    services?: [str]
+
+    versions?: [str]
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ErrorReportingPanelProjectRefsItems0:
+    r"""
+    The Project that this resource belongs to.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
+    name : str, default is Undefined, optional
+        The `name` field of a `Project` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `Project` resource.
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0IncidentList:
+    r"""
+    A widget that shows list of incidents.
+
+    Attributes
+    ----------
+    monitoredResources : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0IncidentListMonitoredResourcesItems0], default is Undefined, optional
+        Optional. The monitored resource for which incidents are listed.
+    policyRefs : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0IncidentListPolicyRefsItems0], default is Undefined, optional
+        Optional. A list of alert policies to filter the incident list by.
+    """
+
+
+    monitoredResources?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0IncidentListMonitoredResourcesItems0]
+
+    policyRefs?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0IncidentListPolicyRefsItems0]
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0IncidentListMonitoredResourcesItems0:
+    r"""
+    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec row layout rows items0 widgets items0 incident list monitored resources items0
+
+    Attributes
+    ----------
+    labels : {str:str}, default is Undefined, optional
+        Required. Values for all of the labels listed in the associated monitored resource descriptor.
+    $type : str, default is Undefined, optional
+        Required. The monitored resource type. This field must match the `type` field of a [MonitoredResourceDescriptor][google.api.MonitoredResourceDescriptor] object.
+    """
+
+
+    labels?: {str:str}
+
+    $type?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0IncidentListPolicyRefsItems0:
+    r"""
+    MonitoringAlertPolicyRef defines the resource reference to MonitoringAlertPolicy, which "External" field holds the GCP identifier for the KRM object.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The value of an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
+    name : str, default is Undefined, optional
+        The name of a MonitoringAlertPolicy resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a MonitoringAlertPolicy resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0LogsPanel:
+    r"""
+    A widget that shows a stream of logs.
+
+    Attributes
+    ----------
+    $filter : str, default is Undefined, optional
+        A filter that chooses which log entries to return.  See [Advanced Logs Queries](https://cloud.google.com/logging/docs/view/advanced-queries).
+    resourceNames : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0LogsPanelResourceNamesItems0], default is Undefined, optional
+        The names of logging resources to collect logs for.
+    """
+
+
+    $filter?: str
+
+    resourceNames?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0LogsPanelResourceNamesItems0]
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0LogsPanelResourceNamesItems0:
+    r"""
+    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec row layout rows items0 widgets items0 logs panel resource names items0
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The external name of the referenced resource
+    kind : str, default is Undefined, optional
+        Kind of the referent.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChart:
+    r"""
+    A widget that displays timeseries data as a pie chart.
+
+    Attributes
+    ----------
+    chartType : str, default is Undefined, required
+        Required. Indicates the visualization type for the PieChart.
+    dataSets : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0], default is Undefined, required
+        Required. The queries for the chart's data.
+    showLabels : bool, default is Undefined, optional
+        Optional. Indicates whether or not the pie chart should show slices' labels
+    """
+
+
+    chartType: str
+
+    dataSets: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0]
+
+    showLabels?: bool
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0:
+    r"""
+    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec row layout rows items0 widgets items0 pie chart data sets items0
+
+    Attributes
+    ----------
+    minAlignmentPeriod : str, default is Undefined, optional
+        Optional. The lower bound on data point frequency for this data set.
+    sliceNameTemplate : str, default is Undefined, optional
+        Optional. A template for the name of the slice.
+    timeSeriesQuery : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQuery, default is Undefined, required
+        time series query
+    """
+
+
+    minAlignmentPeriod?: str
+
+    sliceNameTemplate?: str
+
+    timeSeriesQuery: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQuery
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQuery:
+    r"""
+    Required. The query for the PieChart. See, `google.monitoring.dashboard.v1.TimeSeriesQuery`.
+
+    Attributes
+    ----------
+    outputFullDuration : bool, default is Undefined, optional
+        Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.
+    prometheusQuery : str, default is Undefined, optional
+        A query used to fetch time series with PromQL.
+    timeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter, default is Undefined, optional
+        time series filter
+    timeSeriesFilterRatio : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio, default is Undefined, optional
+        time series filter ratio
+    timeSeriesQueryLanguage : str, default is Undefined, optional
+        A query used to fetch time series with MQL.
+    unitOverride : str, default is Undefined, optional
+        The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the [`unit`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in `MetricDescriptor`.
+    """
+
+
+    outputFullDuration?: bool
+
+    prometheusQuery?: str
+
+    timeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter
+
+    timeSeriesFilterRatio?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio
+
+    timeSeriesQueryLanguage?: str
+
+    unitOverride?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter:
+    r"""
+    Filter parameters to fetch time series.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    pickTimeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter, default is Undefined, optional
+        pick time series filter
+    secondaryAggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation, default is Undefined, optional
+        secondary aggregation
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation
+
+    $filter: str
+
+    pickTimeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter
+
+    secondaryAggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation:
+    r"""
+    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter:
+    r"""
+    Ranking based time series filter.
+
+    Attributes
+    ----------
+    direction : str, default is Undefined, optional
+        How to use the ranking to select time series that pass through the filter.
+    numTimeSeries : int, default is Undefined, optional
+        How many time series to allow to pass through the filter.
+    rankingMethod : str, default is Undefined, optional
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
+    """
+
+
+    direction?: str
+
+    numTimeSeries?: int
+
+    rankingMethod?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio:
+    r"""
+    Parameters to fetch a ratio between two time series filters.
+
+    Attributes
+    ----------
+    denominator : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator, default is Undefined, optional
+        denominator
+    numerator : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator, default is Undefined, optional
+        numerator
+    pickTimeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter, default is Undefined, optional
+        pick time series filter
+    secondaryAggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation, default is Undefined, optional
+        secondary aggregation
+    """
+
+
+    denominator?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator
+
+    numerator?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator
+
+    pickTimeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter
+
+    secondaryAggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator:
+    r"""
+    The denominator of the ratio.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation
+
+    $filter: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation:
+    r"""
+    By default, the raw time series data is returned.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator:
+    r"""
+    The numerator of the ratio.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation
+
+    $filter: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation:
+    r"""
+    By default, the raw time series data is returned.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter:
+    r"""
+    Ranking based time series filter.
+
+    Attributes
+    ----------
+    direction : str, default is Undefined, optional
+        How to use the ranking to select time series that pass through the filter.
+    numTimeSeries : int, default is Undefined, optional
+        How many time series to allow to pass through the filter.
+    rankingMethod : str, default is Undefined, optional
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
+    """
+
+
+    direction?: str
+
+    numTimeSeries?: int
+
+    rankingMethod?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation:
+    r"""
+    Apply a second aggregation after the ratio is computed.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0PieChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation:
+    r"""
+    Apply a second aggregation after `aggregation` is applied.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0Scorecard:
+    r"""
     A scorecard summarizing time series data.
 
     Attributes
     ----------
+    blankView : any, default is Undefined, optional
+        Will cause the `Scorecard` to show only the value, with no indicator to its value relative to its thresholds.
     gaugeView : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardGaugeView, default is Undefined, optional
         gauge view
     sparkChartView : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardSparkChartView, default is Undefined, optional
         spark chart view
     thresholds : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardThresholdsItems0], default is Undefined, optional
-        The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)  As an example, consider a scorecard with the following four thresholds: {   value: 90,   category: 'DANGER',   trigger: 'ABOVE', },: {   value: 70,   category: 'WARNING',   trigger: 'ABOVE', }, {   value: 10,   category: 'DANGER',   trigger: 'BELOW', }, {   value: 20,   category: 'WARNING',   trigger: 'BELOW', }  Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
+        The thresholds used to determine the state of the scorecard given the time series' current value.
     timeSeriesQuery : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardTimeSeriesQuery, default is Undefined, required
         time series query
     """
 
+
+    blankView?: any
 
     gaugeView?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardGaugeView
 
@@ -3004,7 +6654,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardGaugeView:
-    """
+    r"""
     Will cause the scorecard to show a gauge chart.
 
     Attributes
@@ -3022,15 +6672,15 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardSparkChartView:
-    """
+    r"""
     Will cause the scorecard to show a spark chart.
 
     Attributes
     ----------
     minAlignmentPeriod : str, default is Undefined, optional
-        The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.
+        The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query.
     sparkChartType : str, default is Undefined, required
-        Required. The type of sparkchart to show in this chartView. Possible values: SPARK_CHART_TYPE_UNSPECIFIED, SPARK_LINE, SPARK_BAR
+        Required. The type of sparkchart to show in this chartView.
     """
 
 
@@ -3040,17 +6690,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardThresholdsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring dashboard spec row layout rows items0 widgets items0 scorecard thresholds items0
 
     Attributes
     ----------
     color : str, default is Undefined, optional
-        The state color for this threshold. Color is not allowed in a XyChart. Possible values: COLOR_UNSPECIFIED, GREY, BLUE, GREEN, YELLOW, ORANGE, RED
+        The state color for this threshold. Color is not allowed in a XyChart.
     direction : str, default is Undefined, optional
-        The direction for the current threshold. Direction is not allowed in a XyChart. Possible values: DIRECTION_UNSPECIFIED, ABOVE, BELOW
+        The direction for the current threshold. Direction is not allowed in a XyChart.
     label : str, default is Undefined, optional
         A label for the threshold.
+    targetAxis : str, default is Undefined, optional
+        The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
     value : float, default is Undefined, optional
         The value of the threshold. The value should be defined in the native scale of the metric.
     """
@@ -3062,25 +6714,35 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
     label?: str
 
+    targetAxis?: str
+
     value?: float
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardTimeSeriesQuery:
-    """
+    r"""
     Required. Fields for querying time series data from the Stackdriver metrics API.
 
     Attributes
     ----------
+    outputFullDuration : bool, default is Undefined, optional
+        Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.
+    prometheusQuery : str, default is Undefined, optional
+        A query used to fetch time series with PromQL.
     timeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilter, default is Undefined, optional
         time series filter
     timeSeriesFilterRatio : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatio, default is Undefined, optional
         time series filter ratio
     timeSeriesQueryLanguage : str, default is Undefined, optional
-        A query used to fetch time series.
+        A query used to fetch time series with MQL.
     unitOverride : str, default is Undefined, optional
         The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the [`unit`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in `MetricDescriptor`.
     """
 
+
+    outputFullDuration?: bool
+
+    prometheusQuery?: str
 
     timeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilter
 
@@ -3092,7 +6754,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilter:
-    """
+    r"""
     Filter parameters to fetch time series.
 
     Attributes
@@ -3118,19 +6780,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterAggregation:
-    """
+    r"""
     By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -3144,17 +6806,17 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter:
-    """
+    r"""
     Ranking based time series filter.
 
     Attributes
     ----------
     direction : str, default is Undefined, optional
-        How to use the ranking to select time series that pass through the filter. Possible values: DIRECTION_UNSPECIFIED, TOP, BOTTOM
+        How to use the ranking to select time series that pass through the filter.
     numTimeSeries : int, default is Undefined, optional
         How many time series to allow to pass through the filter.
     rankingMethod : str, default is Undefined, optional
-        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series. Possible values: METHOD_UNSPECIFIED, METHOD_MEAN, METHOD_MAX, METHOD_MIN, METHOD_SUM, METHOD_LATEST
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
     """
 
 
@@ -3166,7 +6828,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatio:
-    """
+    r"""
     Parameters to fetch a ratio between two time series filters.
 
     Attributes
@@ -3192,7 +6854,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioDenominator:
-    """
+    r"""
     The denominator of the ratio.
 
     Attributes
@@ -3200,7 +6862,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
     aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation, default is Undefined, optional
         aggregation
     $filter : str, default is Undefined, required
-        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
     """
 
 
@@ -3210,19 +6872,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation:
-    """
-    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+    r"""
+    By default, the raw time series data is returned.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -3236,7 +6898,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioNumerator:
-    """
+    r"""
     The numerator of the ratio.
 
     Attributes
@@ -3244,7 +6906,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
     aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation, default is Undefined, optional
         aggregation
     $filter : str, default is Undefined, required
-        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
     """
 
 
@@ -3254,19 +6916,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation:
-    """
-    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+    r"""
+    By default, the raw time series data is returned.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -3280,17 +6942,17 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter:
-    """
+    r"""
     Ranking based time series filter.
 
     Attributes
     ----------
     direction : str, default is Undefined, optional
-        How to use the ranking to select time series that pass through the filter. Possible values: DIRECTION_UNSPECIFIED, TOP, BOTTOM
+        How to use the ranking to select time series that pass through the filter.
     numTimeSeries : int, default is Undefined, optional
         How many time series to allow to pass through the filter.
     rankingMethod : str, default is Undefined, optional
-        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series. Possible values: METHOD_UNSPECIFIED, METHOD_MEAN, METHOD_MAX, METHOD_MIN, METHOD_SUM, METHOD_LATEST
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
     """
 
 
@@ -3302,19 +6964,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation:
-    """
+    r"""
     Apply a second aggregation after the ratio is computed.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -3328,19 +6990,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0ScorecardTimeSeriesQueryTimeSeriesFilterSecondaryAggregation:
-    """
+    r"""
     Apply a second aggregation after `aggregation` is applied.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -3353,8 +7015,26 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
     perSeriesAligner?: str
 
 
-schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0Text:
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0SectionHeader:
+    r"""
+    A widget that defines a section header for easier navigation of the dashboard.
+
+    Attributes
+    ----------
+    dividerBelow : bool, default is Undefined, optional
+        Whether to insert a divider below the section in the table of contents
+    subtitle : str, default is Undefined, optional
+        The subtitle of the section
     """
+
+
+    dividerBelow?: bool
+
+    subtitle?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0Text:
+    r"""
     A raw string or markdown displaying textual content.
 
     Attributes
@@ -3362,7 +7042,9 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
     content : str, default is Undefined, optional
         The text content to be displayed.
     format : str, default is Undefined, optional
-        How the text content is formatted. Possible values: FORMAT_UNSPECIFIED, MARKDOWN, RAW
+        How the text content is formatted.
+    style : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TextStyle, default is Undefined, optional
+        style
     """
 
 
@@ -3370,9 +7052,425 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
     format?: str
 
+    style?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TextStyle
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TextStyle:
+    r"""
+    How the text is styled
+
+    Attributes
+    ----------
+    backgroundColor : str, default is Undefined, optional
+        The background color as a hex string. "#RRGGBB" or "#RGB"
+    fontSize : str, default is Undefined, optional
+        Font sizes for both the title and content. The title will still be larger relative to the content.
+    horizontalAlignment : str, default is Undefined, optional
+        The horizontal alignment of both the title and content
+    padding : str, default is Undefined, optional
+        The amount of padding around the widget
+    pointerLocation : str, default is Undefined, optional
+        The pointer location for this widget (also sometimes called a "tail")
+    textColor : str, default is Undefined, optional
+        The text color as a hex string. "#RRGGBB" or "#RGB"
+    verticalAlignment : str, default is Undefined, optional
+        The vertical alignment of both the title and content
+    """
+
+
+    backgroundColor?: str
+
+    fontSize?: str
+
+    horizontalAlignment?: str
+
+    padding?: str
+
+    pointerLocation?: str
+
+    textColor?: str
+
+    verticalAlignment?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTable:
+    r"""
+    A widget that displays time series data in a tabular format.
+
+    Attributes
+    ----------
+    columnSettings : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableColumnSettingsItems0], default is Undefined, optional
+        Optional. The list of the persistent column settings for the table.
+    dataSets : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0], default is Undefined, required
+        Required. The data displayed in this table.
+    metricVisualization : str, default is Undefined, optional
+        Optional. Store rendering strategy
+    """
+
+
+    columnSettings?: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableColumnSettingsItems0]
+
+    dataSets: [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0]
+
+    metricVisualization?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableColumnSettingsItems0:
+    r"""
+    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec row layout rows items0 widgets items0 time series table column settings items0
+
+    Attributes
+    ----------
+    column : str, default is Undefined, required
+        Required. The id of the column.
+    visible : bool, default is Undefined, required
+        Required. Whether the column should be visible on page load.
+    """
+
+
+    column: str
+
+    visible: bool
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0:
+    r"""
+    monitoring cnrm cloud google com v1beta1 monitoring dashboard spec row layout rows items0 widgets items0 time series table data sets items0
+
+    Attributes
+    ----------
+    minAlignmentPeriod : str, default is Undefined, optional
+        Optional. The lower bound on data point frequency for this data set.
+    tableDisplayOptions : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TableDisplayOptions, default is Undefined, optional
+        table display options
+    tableTemplate : str, default is Undefined, optional
+        Optional. A template string for naming `TimeSeries` in the resulting data set.
+    timeSeriesQuery : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQuery, default is Undefined, optional
+        time series query
+    """
+
+
+    minAlignmentPeriod?: str
+
+    tableDisplayOptions?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TableDisplayOptions
+
+    tableTemplate?: str
+
+    timeSeriesQuery?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQuery
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TableDisplayOptions:
+    r"""
+    Optional. Table display options for configuring how the table is rendered.
+
+    Attributes
+    ----------
+    shownColumns : [str], default is Undefined, optional
+        Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings
+    """
+
+
+    shownColumns?: [str]
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQuery:
+    r"""
+    Required. Fields for querying time series data from the Stackdriver metrics API.
+
+    Attributes
+    ----------
+    outputFullDuration : bool, default is Undefined, optional
+        Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.
+    prometheusQuery : str, default is Undefined, optional
+        A query used to fetch time series with PromQL.
+    timeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilter, default is Undefined, optional
+        time series filter
+    timeSeriesFilterRatio : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio, default is Undefined, optional
+        time series filter ratio
+    timeSeriesQueryLanguage : str, default is Undefined, optional
+        A query used to fetch time series with MQL.
+    unitOverride : str, default is Undefined, optional
+        The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the [`unit`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in `MetricDescriptor`.
+    """
+
+
+    outputFullDuration?: bool
+
+    prometheusQuery?: str
+
+    timeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilter
+
+    timeSeriesFilterRatio?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio
+
+    timeSeriesQueryLanguage?: str
+
+    unitOverride?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilter:
+    r"""
+    Filter parameters to fetch time series.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    pickTimeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter, default is Undefined, optional
+        pick time series filter
+    secondaryAggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation, default is Undefined, optional
+        secondary aggregation
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation
+
+    $filter: str
+
+    pickTimeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter
+
+    secondaryAggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation:
+    r"""
+    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter:
+    r"""
+    Ranking based time series filter.
+
+    Attributes
+    ----------
+    direction : str, default is Undefined, optional
+        How to use the ranking to select time series that pass through the filter.
+    numTimeSeries : int, default is Undefined, optional
+        How many time series to allow to pass through the filter.
+    rankingMethod : str, default is Undefined, optional
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
+    """
+
+
+    direction?: str
+
+    numTimeSeries?: int
+
+    rankingMethod?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio:
+    r"""
+    Parameters to fetch a ratio between two time series filters.
+
+    Attributes
+    ----------
+    denominator : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator, default is Undefined, optional
+        denominator
+    numerator : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator, default is Undefined, optional
+        numerator
+    pickTimeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter, default is Undefined, optional
+        pick time series filter
+    secondaryAggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation, default is Undefined, optional
+        secondary aggregation
+    """
+
+
+    denominator?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator
+
+    numerator?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator
+
+    pickTimeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter
+
+    secondaryAggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator:
+    r"""
+    The denominator of the ratio.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation
+
+    $filter: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation:
+    r"""
+    By default, the raw time series data is returned.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator:
+    r"""
+    The numerator of the ratio.
+
+    Attributes
+    ----------
+    aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation, default is Undefined, optional
+        aggregation
+    $filter : str, default is Undefined, required
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+    """
+
+
+    aggregation?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation
+
+    $filter: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation:
+    r"""
+    By default, the raw time series data is returned.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter:
+    r"""
+    Ranking based time series filter.
+
+    Attributes
+    ----------
+    direction : str, default is Undefined, optional
+        How to use the ranking to select time series that pass through the filter.
+    numTimeSeries : int, default is Undefined, optional
+        How many time series to allow to pass through the filter.
+    rankingMethod : str, default is Undefined, optional
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
+    """
+
+
+    direction?: str
+
+    numTimeSeries?: int
+
+    rankingMethod?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation:
+    r"""
+    Apply a second aggregation after the ratio is computed.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0TimeSeriesTableDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation:
+    r"""
+    Apply a second aggregation after `aggregation` is applied.
+
+    Attributes
+    ----------
+    alignmentPeriod : str, default is Undefined, optional
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
+    crossSeriesReducer : str, default is Undefined, optional
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
+    groupByFields : [str], default is Undefined, optional
+        The set of fields to preserve when `cross_series_reducer` is specified.
+    perSeriesAligner : str, default is Undefined, optional
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
+    """
+
+
+    alignmentPeriod?: str
+
+    crossSeriesReducer?: str
+
+    groupByFields?: [str]
+
+    perSeriesAligner?: str
+
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChart:
-    """
+    r"""
     A chart of time series data.
 
     Attributes
@@ -3384,9 +7482,11 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
     thresholds : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartThresholdsItems0], default is Undefined, optional
         Threshold lines drawn horizontally across the chart.
     timeshiftDuration : str, default is Undefined, optional
-        The duration used to display a comparison chart. A comparison chart simultaneously shows values from two similar-length time periods (e.g., week-over-week metrics). The duration must be positive, and it can only be applied to charts with data sets of LINE plot type.
+        The duration used to display a comparison chart.
     xAxis : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartXAxis, default is Undefined, optional
         x axis
+    y2Axis : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartY2Axis, default is Undefined, optional
+        y2 axis
     yAxis : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartYAxis, default is Undefined, optional
         y axis
     """
@@ -3402,17 +7502,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
     xAxis?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartXAxis
 
+    y2Axis?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartY2Axis
+
     yAxis?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartYAxis
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartChartOptions:
-    """
+    r"""
     Display options for the chart.
 
     Attributes
     ----------
     mode : str, default is Undefined, optional
-        The chart mode. Possible values: MODE_UNSPECIFIED, COLOR, X_RAY, STATS
+        The chart mode.
     """
 
 
@@ -3420,17 +7522,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartDataSetsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring dashboard spec row layout rows items0 widgets items0 xy chart data sets items0
 
     Attributes
     ----------
     legendTemplate : str, default is Undefined, optional
-        A template string for naming `TimeSeries` in the resulting data set. This should be a string with interpolations of the form `${label_name}`, which will resolve to the label's value. 
+        A template string for naming `TimeSeries` in the resulting data set.
     minAlignmentPeriod : str, default is Undefined, optional
-        Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the `min_alignment_period` should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
+        Optional. The lower bound on data point frequency for this data set.
     plotType : str, default is Undefined, optional
-        How this data should be plotted on the chart. Possible values: PLOT_TYPE_UNSPECIFIED, LINE, STACKED_AREA, STACKED_BAR, HEATMAP
+        How this data should be plotted on the chart.
+    targetAxis : str, default is Undefined, optional
+        Optional. The target axis to use for plotting the metric.
     timeSeriesQuery : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQuery, default is Undefined, required
         time series query
     """
@@ -3442,25 +7546,35 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
     plotType?: str
 
+    targetAxis?: str
+
     timeSeriesQuery: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQuery
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQuery:
-    """
-    Required. Fields for querying time series data from the Stackdriver metrics API.
+    r"""
+    Fields for querying time series data from the Stackdriver metrics API.
 
     Attributes
     ----------
+    outputFullDuration : bool, default is Undefined, optional
+        Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.
+    prometheusQuery : str, default is Undefined, optional
+        A query used to fetch time series with PromQL.
     timeSeriesFilter : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter, default is Undefined, optional
         time series filter
     timeSeriesFilterRatio : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio, default is Undefined, optional
         time series filter ratio
     timeSeriesQueryLanguage : str, default is Undefined, optional
-        A query used to fetch time series.
+        A query used to fetch time series with MQL.
     unitOverride : str, default is Undefined, optional
         The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the [`unit`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in `MetricDescriptor`.
     """
 
+
+    outputFullDuration?: bool
+
+    prometheusQuery?: str
 
     timeSeriesFilter?: MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter
 
@@ -3472,7 +7586,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilter:
-    """
+    r"""
     Filter parameters to fetch time series.
 
     Attributes
@@ -3498,19 +7612,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterAggregation:
-    """
+    r"""
     By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -3524,17 +7638,17 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterPickTimeSeriesFilter:
-    """
+    r"""
     Ranking based time series filter.
 
     Attributes
     ----------
     direction : str, default is Undefined, optional
-        How to use the ranking to select time series that pass through the filter. Possible values: DIRECTION_UNSPECIFIED, TOP, BOTTOM
+        How to use the ranking to select time series that pass through the filter.
     numTimeSeries : int, default is Undefined, optional
         How many time series to allow to pass through the filter.
     rankingMethod : str, default is Undefined, optional
-        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series. Possible values: METHOD_UNSPECIFIED, METHOD_MEAN, METHOD_MAX, METHOD_MIN, METHOD_SUM, METHOD_LATEST
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
     """
 
 
@@ -3546,7 +7660,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatio:
-    """
+    r"""
     Parameters to fetch a ratio between two time series filters.
 
     Attributes
@@ -3572,7 +7686,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominator:
-    """
+    r"""
     The denominator of the ratio.
 
     Attributes
@@ -3580,7 +7694,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
     aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation, default is Undefined, optional
         aggregation
     $filter : str, default is Undefined, required
-        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
     """
 
 
@@ -3590,19 +7704,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioDenominatorAggregation:
-    """
-    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+    r"""
+    By default, the raw time series data is returned.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -3616,7 +7730,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumerator:
-    """
+    r"""
     The numerator of the ratio.
 
     Attributes
@@ -3624,7 +7738,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
     aggregation : MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation, default is Undefined, optional
         aggregation
     $filter : str, default is Undefined, required
-        Required. The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        The [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
     """
 
 
@@ -3634,19 +7748,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioNumeratorAggregation:
-    """
-    By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
+    r"""
+    By default, the raw time series data is returned.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -3660,17 +7774,17 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioPickTimeSeriesFilter:
-    """
+    r"""
     Ranking based time series filter.
 
     Attributes
     ----------
     direction : str, default is Undefined, optional
-        How to use the ranking to select time series that pass through the filter. Possible values: DIRECTION_UNSPECIFIED, TOP, BOTTOM
+        How to use the ranking to select time series that pass through the filter.
     numTimeSeries : int, default is Undefined, optional
         How many time series to allow to pass through the filter.
     rankingMethod : str, default is Undefined, optional
-        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series. Possible values: METHOD_UNSPECIFIED, METHOD_MEAN, METHOD_MAX, METHOD_MIN, METHOD_SUM, METHOD_LATEST
+        `ranking_method` is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
     """
 
 
@@ -3682,19 +7796,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterRatioSecondaryAggregation:
-    """
+    r"""
     Apply a second aggregation after the ratio is computed.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -3708,19 +7822,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartDataSetsItems0TimeSeriesQueryTimeSeriesFilterSecondaryAggregation:
-    """
+    r"""
     Apply a second aggregation after `aggregation` is applied.
 
     Attributes
     ----------
     alignmentPeriod : str, default is Undefined, optional
-        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.  The value must be at least 60 seconds. If a per-series aligner other than `ALIGN_NONE` is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner `ALIGN_NONE` is specified, then this field is ignored.
+        The `alignment_period` specifies a time interval, in seconds, that is used to divide the data in all the [time series][google.monitoring.v3.TimeSeries] into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.
     crossSeriesReducer : str, default is Undefined, optional
-        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.  Not all reducer operations can be applied to all time series. The valid choices depend on the `metric_kind` and the `value_type` of the original time series. Reduction can yield a time series with a different `metric_kind` or `value_type` than the input time series.  Time series data must first be aligned (see `per_series_aligner`) in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified, and must not be `ALIGN_NONE`. An `alignment_period` must also be specified; otherwise, an error is returned. Possible values: REDUCE_NONE, REDUCE_MEAN, REDUCE_MIN, REDUCE_MAX, REDUCE_SUM, REDUCE_STDDEV, REDUCE_COUNT, REDUCE_COUNT_TRUE, REDUCE_COUNT_FALSE, REDUCE_FRACTION_TRUE, REDUCE_PERCENTILE_99, REDUCE_PERCENTILE_95, REDUCE_PERCENTILE_50, REDUCE_PERCENTILE_05, REDUCE_FRACTION_LESS_THAN, REDUCE_MAKE_DISTRIBUTION
+        The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.
     groupByFields : [str], default is Undefined, optional
-        The set of fields to preserve when `cross_series_reducer` is specified. The `group_by_fields` determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The `cross_series_reducer` is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains `resource.type`.  Fields not specified in `group_by_fields` are aggregated away.  If `group_by_fields` is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If `cross_series_reducer` is not defined, this field is ignored.
+        The set of fields to preserve when `cross_series_reducer` is specified.
     perSeriesAligner : str, default is Undefined, optional
-        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.  Not all alignment operations may be applied to all time series. The valid choices depend on the `metric_kind` and `value_type` of the original time series. Alignment can change the `metric_kind` or the `value_type` of the time series.  Time series data must be aligned in order to perform cross-time series reduction. If `cross_series_reducer` is specified, then `per_series_aligner` must be specified and not equal to `ALIGN_NONE` and `alignment_period` must be specified; otherwise, an error is returned.
+        An `Aligner` describes how to bring the data points in a single time series into temporal alignment. Except for `ALIGN_NONE`, all alignments cause all the data points in an `alignment_period` to be mathematically grouped together, resulting in a single data point for each `alignment_period` with end timestamp at the end of the period.
     """
 
 
@@ -3734,17 +7848,19 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartThresholdsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring dashboard spec row layout rows items0 widgets items0 xy chart thresholds items0
 
     Attributes
     ----------
     color : str, default is Undefined, optional
-        The state color for this threshold. Color is not allowed in a XyChart. Possible values: COLOR_UNSPECIFIED, GREY, BLUE, GREEN, YELLOW, ORANGE, RED
+        The state color for this threshold. Color is not allowed in a XyChart.
     direction : str, default is Undefined, optional
-        The direction for the current threshold. Direction is not allowed in a XyChart. Possible values: DIRECTION_UNSPECIFIED, ABOVE, BELOW
+        The direction for the current threshold. Direction is not allowed in a XyChart.
     label : str, default is Undefined, optional
         A label for the threshold.
+    targetAxis : str, default is Undefined, optional
+        The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
     value : float, default is Undefined, optional
         The value of the threshold. The value should be defined in the native scale of the metric.
     """
@@ -3756,19 +7872,39 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
     label?: str
 
+    targetAxis?: str
+
     value?: float
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartXAxis:
-    """
-    The properties applied to the X axis.
+    r"""
+    The properties applied to the x-axis.
 
     Attributes
     ----------
     label : str, default is Undefined, optional
         The label of the axis.
     scale : str, default is Undefined, optional
-        The axis scale. By default, a linear scale is used. Possible values: SCALE_UNSPECIFIED, LINEAR, LOG10
+        The axis scale. By default, a linear scale is used.
+    """
+
+
+    label?: str
+
+    scale?: str
+
+
+schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartY2Axis:
+    r"""
+    The properties applied to the y2-axis.
+
+    Attributes
+    ----------
+    label : str, default is Undefined, optional
+        The label of the axis.
+    scale : str, default is Undefined, optional
+        The axis scale. By default, a linear scale is used.
     """
 
 
@@ -3778,15 +7914,15 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0XyChartYAxis:
-    """
-    The properties applied to the Y axis.
+    r"""
+    The properties applied to the y-axis.
 
     Attributes
     ----------
     label : str, default is Undefined, optional
         The label of the axis.
     scale : str, default is Undefined, optional
-        The axis scale. By default, a linear scale is used. Possible values: SCALE_UNSPECIFIED, LINEAR, LOG10
+        The axis scale. By default, a linear scale is used.
     """
 
 
@@ -3796,15 +7932,15 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardStatus:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring dashboard status
 
     Attributes
     ----------
     conditions : [MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the MonitoringDashboard's current state.
     etag : str, default is Undefined, optional
-        \`etag\` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. An \`etag\` is returned in the response to \`GetDashboard\`, and users are expected to put that etag in the request to \`UpdateDashboard\` to ensure that their change will be applied to the same version of the Dashboard configuration. The field should not be passed during dashboard creation.
+        \`etag\` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """
@@ -3818,7 +7954,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardStatus:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardStatusConditionsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring dashboard status conditions items0
 
     Attributes

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BigQueryDatasetAccess:
-    """
+    r"""
     bigquery cnrm cloud google com v1alpha1 big query dataset access
 
     Attributes
@@ -36,7 +36,7 @@ schema BigQueryDatasetAccess:
 
 
 schema BigqueryCnrmCloudGoogleComV1alpha1BigQueryDatasetAccessSpec:
-    """
+    r"""
     bigquery cnrm cloud google com v1alpha1 big query dataset access spec
 
     Attributes
@@ -112,7 +112,7 @@ schema BigqueryCnrmCloudGoogleComV1alpha1BigQueryDatasetAccessSpec:
 
 
 schema BigqueryCnrmCloudGoogleComV1alpha1BigQueryDatasetAccessSpecDataset:
-    """
+    r"""
     Immutable. Grants all resources of particular types in a particular dataset read access to the current dataset.
 
     Attributes
@@ -131,7 +131,7 @@ schema BigqueryCnrmCloudGoogleComV1alpha1BigQueryDatasetAccessSpecDataset:
 
 
 schema BigqueryCnrmCloudGoogleComV1alpha1BigQueryDatasetAccessSpecDatasetDataset:
-    """
+    r"""
     Immutable. The dataset this entry applies to.
 
     Attributes
@@ -149,7 +149,7 @@ schema BigqueryCnrmCloudGoogleComV1alpha1BigQueryDatasetAccessSpecDatasetDataset
 
 
 schema BigqueryCnrmCloudGoogleComV1alpha1BigQueryDatasetAccessSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -171,7 +171,7 @@ schema BigqueryCnrmCloudGoogleComV1alpha1BigQueryDatasetAccessSpecProjectRef:
 
 
 schema BigqueryCnrmCloudGoogleComV1alpha1BigQueryDatasetAccessSpecView:
-    """
+    r"""
     Immutable. A view from a different dataset to grant access to. Queries
     executed against that view will have read access to tables in
     this dataset. The role field is not required when this field is
@@ -199,7 +199,7 @@ schema BigqueryCnrmCloudGoogleComV1alpha1BigQueryDatasetAccessSpecView:
 
 
 schema BigqueryCnrmCloudGoogleComV1alpha1BigQueryDatasetAccessStatus:
-    """
+    r"""
     bigquery cnrm cloud google com v1alpha1 big query dataset access status
 
     Attributes
@@ -221,7 +221,7 @@ schema BigqueryCnrmCloudGoogleComV1alpha1BigQueryDatasetAccessStatus:
 
 
 schema BigqueryCnrmCloudGoogleComV1alpha1BigQueryDatasetAccessStatusConditionsItems0:
-    """
+    r"""
     bigquery cnrm cloud google com v1alpha1 big query dataset access status conditions items0
 
     Attributes

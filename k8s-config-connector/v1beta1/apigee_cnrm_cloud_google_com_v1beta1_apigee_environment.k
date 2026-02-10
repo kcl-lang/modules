@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ApigeeEnvironment:
-    """
-    apigee cnrm cloud google com v1beta1 apigee environment
+    r"""
+    ApigeeEnvironment is the Schema for the ApigeeEnvironment API
 
     Attributes
     ----------
@@ -36,8 +36,8 @@ schema ApigeeEnvironment:
 
 
 schema ApigeeCnrmCloudGoogleComV1beta1ApigeeEnvironmentSpec:
-    """
-    apigee cnrm cloud google com v1beta1 apigee environment spec
+    r"""
+    ApigeeEnvironmentSpec defines the desired state of ApigeeEnvironment
 
     Attributes
     ----------
@@ -50,7 +50,7 @@ schema ApigeeCnrmCloudGoogleComV1beta1ApigeeEnvironmentSpec:
     properties : {str:str}, default is Undefined, optional
         Optional. Key-value pairs that may be used for customizing the environment.
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The ApigeeEnvironment name. If not given, the metadata.name will be used.
     """
 
 
@@ -66,19 +66,17 @@ schema ApigeeCnrmCloudGoogleComV1beta1ApigeeEnvironmentSpec:
 
 
 schema ApigeeCnrmCloudGoogleComV1beta1ApigeeEnvironmentSpecApigeeOrganizationRef:
-    """
-    Immutable.
+    r"""
+    Reference to parent Apigee Organization.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The apigee organization for the resource
-
-        Allowed value: The Google Cloud resource name of an `ApigeeOrganization` resource (format: `organizations/{{name}}`).
+        A reference to an externally managed ApigeeOrganization resource. Should be in the format "organizations/{{organizationID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ApigeeOrganization resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ApigeeOrganization resource.
     """
 
 
@@ -90,21 +88,25 @@ schema ApigeeCnrmCloudGoogleComV1beta1ApigeeEnvironmentSpecApigeeOrganizationRef
 
 
 schema ApigeeCnrmCloudGoogleComV1beta1ApigeeEnvironmentStatus:
-    """
-    apigee cnrm cloud google com v1beta1 apigee environment status
+    r"""
+    ApigeeEnvironmentStatus defines the config connector machine state of ApigeeEnvironment
 
     Attributes
     ----------
     conditions : [ApigeeCnrmCloudGoogleComV1beta1ApigeeEnvironmentStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     createdAt : int, default is Undefined, optional
         Output only. Creation time of this environment as milliseconds since epoch.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the ApigeeEnvironment resource in GCP.
     lastModifiedAt : int, default is Undefined, optional
         Output only. Last modification time of this environment as milliseconds since epoch.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : any, default is Undefined, optional
+        ObservedState is the state of the resource as most recently observed in GCP.
     state : str, default is Undefined, optional
-        Output only. State of the environment. Values other than ACTIVE means the resource is not ready to use. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
+        Output only. State of the environment. Values other than ACTIVE means the resource is not ready to use.
     """
 
 
@@ -112,15 +114,19 @@ schema ApigeeCnrmCloudGoogleComV1beta1ApigeeEnvironmentStatus:
 
     createdAt?: int
 
+    externalRef?: str
+
     lastModifiedAt?: int
 
     observedGeneration?: int
+
+    observedState?: any
 
     state?: str
 
 
 schema ApigeeCnrmCloudGoogleComV1beta1ApigeeEnvironmentStatusConditionsItems0:
-    """
+    r"""
     apigee cnrm cloud google com v1beta1 apigee environment status conditions items0
 
     Attributes

@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema KMSKeyRing:
-    """
-    kms cnrm cloud google com v1beta1 k m s key ring
+    r"""
+    KMSKeyRing represents a KMS KeyRing.
 
     Attributes
     ----------
@@ -36,14 +36,13 @@ schema KMSKeyRing:
 
 
 schema KmsCnrmCloudGoogleComV1beta1KMSKeyRingSpec:
-    """
+    r"""
     kms cnrm cloud google com v1beta1 k m s key ring spec
 
     Attributes
     ----------
     location : str, default is Undefined, required
-        Immutable. The location for the KeyRing.
-        A full list of valid locations can be found by running 'gcloud kms locations list'.
+        Immutable. The location for the KeyRing. A full list of valid locations can be found by running 'gcloud kms locations list'.
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
     """
@@ -55,13 +54,13 @@ schema KmsCnrmCloudGoogleComV1beta1KMSKeyRingSpec:
 
 
 schema KmsCnrmCloudGoogleComV1beta1KMSKeyRingStatus:
-    """
+    r"""
     kms cnrm cloud google com v1beta1 k m s key ring status
 
     Attributes
     ----------
     conditions : [KmsCnrmCloudGoogleComV1beta1KMSKeyRingStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the KMSKeyRing's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     selfLink : str, default is Undefined, optional
@@ -77,7 +76,7 @@ schema KmsCnrmCloudGoogleComV1beta1KMSKeyRingStatus:
 
 
 schema KmsCnrmCloudGoogleComV1beta1KMSKeyRingStatusConditionsItems0:
-    """
+    r"""
     kms cnrm cloud google com v1beta1 k m s key ring status conditions items0
 
     Attributes

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema NetworkConnectivitySpoke:
-    """
+    r"""
     networkconnectivity cnrm cloud google com v1beta1 network connectivity spoke
 
     Attributes
@@ -36,7 +36,7 @@ schema NetworkConnectivitySpoke:
 
 
 schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpec:
-    """
+    r"""
     networkconnectivity cnrm cloud google com v1beta1 network connectivity spoke spec
 
     Attributes
@@ -49,6 +49,8 @@ schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpec:
         linked interconnect attachments
     linkedRouterApplianceInstances : NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecLinkedRouterApplianceInstances, default is Undefined, optional
         linked router appliance instances
+    linkedVPCNetwork : NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecLinkedVPCNetwork, default is Undefined, optional
+        linked v p c network
     linkedVpnTunnels : NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecLinkedVpnTunnels, default is Undefined, optional
         linked vpn tunnels
     location : str, default is Undefined, required
@@ -68,6 +70,8 @@ schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpec:
 
     linkedRouterApplianceInstances?: NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecLinkedRouterApplianceInstances
 
+    linkedVPCNetwork?: NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecLinkedVPCNetwork
+
     linkedVpnTunnels?: NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecLinkedVpnTunnels
 
     location: str
@@ -78,7 +82,7 @@ schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpec:
 
 
 schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecHubRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -102,7 +106,7 @@ schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecH
 
 
 schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecLinkedInterconnectAttachments:
-    """
+    r"""
     Immutable. A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
 
     Attributes
@@ -120,7 +124,7 @@ schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecL
 
 
 schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecLinkedInterconnectAttachmentsUrisItems0:
-    """
+    r"""
     networkconnectivity cnrm cloud google com v1beta1 network connectivity spoke spec linked interconnect attachments uris items0
 
     Attributes
@@ -142,7 +146,7 @@ schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecL
 
 
 schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecLinkedRouterApplianceInstances:
-    """
+    r"""
     Immutable. The URIs of linked Router appliance resources
 
     Attributes
@@ -160,7 +164,7 @@ schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecL
 
 
 schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecLinkedRouterApplianceInstancesInstancesItems0:
-    """
+    r"""
     networkconnectivity cnrm cloud google com v1beta1 network connectivity spoke spec linked router appliance instances instances items0
 
     Attributes
@@ -178,7 +182,7 @@ schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecL
 
 
 schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecLinkedRouterApplianceInstancesInstancesItems0VirtualMachineRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -201,8 +205,50 @@ schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecL
     namespace?: str
 
 
-schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecLinkedVpnTunnels:
+schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecLinkedVPCNetwork:
+    r"""
+    Immutable. VPC network that is associated with the spoke.
+
+    Attributes
+    ----------
+    excludeExportRanges : [str], default is Undefined, optional
+        Immutable. IP ranges encompassing the subnets to be excluded from peering.
+    uriRef : NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecLinkedVPCNetworkURIRef, default is Undefined, required
+        uri ref
     """
+
+
+    excludeExportRanges?: [str]
+
+    uriRef: NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecLinkedVPCNetworkURIRef
+
+
+schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecLinkedVPCNetworkURIRef:
+    r"""
+    Immutable.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The URI of the VPC network resource.
+
+        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecLinkedVpnTunnels:
+    r"""
     Immutable. The URIs of linked VPN tunnel resources
 
     Attributes
@@ -220,7 +266,7 @@ schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecL
 
 
 schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecLinkedVpnTunnelsUrisItems0:
-    """
+    r"""
     networkconnectivity cnrm cloud google com v1beta1 network connectivity spoke spec linked vpn tunnels uris items0
 
     Attributes
@@ -242,7 +288,7 @@ schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecL
 
 
 schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -266,7 +312,7 @@ schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeSpecP
 
 
 schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeStatus:
-    """
+    r"""
     networkconnectivity cnrm cloud google com v1beta1 network connectivity spoke status
 
     Attributes
@@ -300,7 +346,7 @@ schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeStatu
 
 
 schema NetworkconnectivityCnrmCloudGoogleComV1beta1NetworkConnectivitySpokeStatusConditionsItems0:
-    """
+    r"""
     networkconnectivity cnrm cloud google com v1beta1 network connectivity spoke status conditions items0
 
     Attributes

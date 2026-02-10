@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeOrganizationSecurityPolicy:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute organization security policy
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeOrganizationSecurityPolicy:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeOrganizationSecurityPolicySpec:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute organization security policy spec
 
     Attributes
@@ -69,7 +69,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeOrganizationSecurityPolicySpec:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeOrganizationSecurityPolicyStatus:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute organization security policy status
 
     Attributes
@@ -96,7 +96,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeOrganizationSecurityPolicyStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeOrganizationSecurityPolicyStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute organization security policy status conditions items0
 
     Attributes

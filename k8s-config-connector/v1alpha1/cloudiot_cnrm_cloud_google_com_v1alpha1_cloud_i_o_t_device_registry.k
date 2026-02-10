@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema CloudIOTDeviceRegistry:
-    """
+    r"""
     cloudiot cnrm cloud google com v1alpha1 cloud i o t device registry
 
     Attributes
@@ -36,7 +36,7 @@ schema CloudIOTDeviceRegistry:
 
 
 schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceRegistrySpec:
-    """
+    r"""
     cloudiot cnrm cloud google com v1alpha1 cloud i o t device registry spec
 
     Attributes
@@ -88,7 +88,7 @@ schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceRegistrySpec:
 
 
 schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceRegistrySpecCredentialsItems0:
-    """
+    r"""
     cloudiot cnrm cloud google com v1alpha1 cloud i o t device registry spec credentials items0
 
     Attributes
@@ -102,7 +102,7 @@ schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceRegistrySpecCredentialsIt
 
 
 schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceRegistrySpecEventNotificationConfigsItems0:
-    """
+    r"""
     cloudiot cnrm cloud google com v1alpha1 cloud i o t device registry spec event notification configs items0
 
     Attributes
@@ -124,7 +124,7 @@ schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceRegistrySpecEventNotifica
 
 
 schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceRegistryStatus:
-    """
+    r"""
     cloudiot cnrm cloud google com v1alpha1 cloud i o t device registry status
 
     Attributes
@@ -142,7 +142,7 @@ schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceRegistryStatus:
 
 
 schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceRegistryStatusConditionsItems0:
-    """
+    r"""
     cloudiot cnrm cloud google com v1alpha1 cloud i o t device registry status conditions items0
 
     Attributes

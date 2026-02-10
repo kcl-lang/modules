@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeRouterInterface:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router interface
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeRouterInterface:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router interface spec
 
     Attributes
@@ -82,7 +82,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecInterconnectAttachmentRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router interface spec interconnect attachment ref
 
     Attributes
@@ -104,7 +104,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecInterconnectAtt
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecPrivateIPAddressRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router interface spec private IP address ref
 
     Attributes
@@ -126,7 +126,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecPrivateIPAddres
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecRedundantInterfaceRef:
-    """
+    r"""
     The interface the BGP peer is associated with.
 
     Attributes
@@ -148,7 +148,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecRedundantInterf
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecRouterRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router interface spec router ref
 
     Attributes
@@ -170,7 +170,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecRouterRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecSubnetworkRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router interface spec subnetwork ref
 
     Attributes
@@ -192,7 +192,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecSubnetworkRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecVpnTunnelRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router interface spec vpn tunnel ref
 
     Attributes
@@ -214,7 +214,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecVpnTunnelRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router interface status
 
     Attributes
@@ -232,7 +232,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router interface status conditions items0
 
     Attributes

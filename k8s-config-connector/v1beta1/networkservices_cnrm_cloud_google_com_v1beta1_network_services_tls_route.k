@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema NetworkServicesTLSRoute:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services TLS route
 
     Attributes
@@ -36,7 +36,7 @@ schema NetworkServicesTLSRoute:
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesTLSRouteSpec:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services TLS route spec
 
     Attributes
@@ -74,7 +74,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesTLSRouteSpec:
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesTLSRouteSpecGatewaysItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services TLS route spec gateways items0
 
     Attributes
@@ -96,7 +96,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesTLSRouteSpecGatewa
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesTLSRouteSpecMeshesItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services TLS route spec meshes items0
 
     Attributes
@@ -118,7 +118,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesTLSRouteSpecMeshes
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesTLSRouteSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -142,7 +142,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesTLSRouteSpecProjec
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesTLSRouteSpecRulesItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services TLS route spec rules items0
 
     Attributes
@@ -160,7 +160,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesTLSRouteSpecRulesI
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesTLSRouteSpecRulesItems0Action:
-    """
+    r"""
     Required. The detailed rule defining how to route matched traffic.
 
     Attributes
@@ -174,7 +174,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesTLSRouteSpecRulesI
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesTLSRouteSpecRulesItems0ActionDestinationsItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services TLS route spec rules items0 action destinations items0
 
     Attributes
@@ -192,7 +192,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesTLSRouteSpecRulesI
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesTLSRouteSpecRulesItems0ActionDestinationsItems0ServiceRef:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services TLS route spec rules items0 action destinations items0 service ref
 
     Attributes
@@ -216,7 +216,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesTLSRouteSpecRulesI
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesTLSRouteSpecRulesItems0MatchesItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services TLS route spec rules items0 matches items0
 
     Attributes
@@ -234,7 +234,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesTLSRouteSpecRulesI
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesTLSRouteStatus:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services TLS route status
 
     Attributes
@@ -264,7 +264,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesTLSRouteStatus:
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesTLSRouteStatusConditionsItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services TLS route status conditions items0
 
     Attributes

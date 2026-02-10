@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema TagsTagBinding:
-    """
-    tags cnrm cloud google com v1beta1 tags tag binding
+    r"""
+    TagsTagBinding is the Schema for the TagsTagBinding API
 
     Attributes
     ----------
@@ -36,15 +36,15 @@ schema TagsTagBinding:
 
 
 schema TagsCnrmCloudGoogleComV1beta1TagsTagBindingSpec:
-    """
-    tags cnrm cloud google com v1beta1 tags tag binding spec
+    r"""
+    TagsTagBindingSpec defines the desired state of TagsTagBinding
 
     Attributes
     ----------
     parentRef : TagsCnrmCloudGoogleComV1beta1TagsTagBindingSpecParentRef, default is Undefined, required
         parent ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
+        The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
     tagValueRef : TagsCnrmCloudGoogleComV1beta1TagsTagBindingSpecTagValueRef, default is Undefined, required
         tag value ref
     """
@@ -58,13 +58,15 @@ schema TagsCnrmCloudGoogleComV1beta1TagsTagBindingSpec:
 
 
 schema TagsCnrmCloudGoogleComV1beta1TagsTagBindingSpecParentRef:
-    """
-    tags cnrm cloud google com v1beta1 tags tag binding spec parent ref
+    r"""
+    ParentRef is a reference to a parent resource.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
         Allowed value: string of the format `//cloudresourcemanager.googleapis.com/projects/{{value}}`, where {{value}} is the `number` field of a `Project` resource.
+    kind : str, default is Undefined, optional
+        Kind to which we are binding the tag.  Defaults to Project if not specified.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -74,23 +76,25 @@ schema TagsCnrmCloudGoogleComV1beta1TagsTagBindingSpecParentRef:
 
     external?: str
 
+    kind?: str
+
     name?: str
 
     namespace?: str
 
 
 schema TagsCnrmCloudGoogleComV1beta1TagsTagBindingSpecTagValueRef:
-    """
-    tags cnrm cloud google com v1beta1 tags tag binding spec tag value ref
+    r"""
+    TagsTagValueRef is a reference to a TagsTagValue resource.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `tagValues/{{value}}`, where {{value}} is the `name` field of a `TagsTagValue` resource.
+        A reference to an externally managed TagsTagValue resource. Should be in the format "tagValues/{{tagValueID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a TagsTagValue resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a TagsTagValue resource.
     """
 
 
@@ -102,15 +106,17 @@ schema TagsCnrmCloudGoogleComV1beta1TagsTagBindingSpecTagValueRef:
 
 
 schema TagsCnrmCloudGoogleComV1beta1TagsTagBindingStatus:
-    """
-    tags cnrm cloud google com v1beta1 tags tag binding status
+    r"""
+    TagsTagBindingStatus defines the config connector machine state of TagsTagBinding
 
     Attributes
     ----------
     conditions : [TagsCnrmCloudGoogleComV1beta1TagsTagBindingStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the TagsTagBinding resource in GCP.
     name : str, default is Undefined, optional
-        The generated id for the TagBinding. This is a string of the form: 'tagBindings/{full-resource-name}/{tag-value-name}'.
+        The generated id for the TagBinding. This is a string of the form: tagBindings/{full-resource-name}/{tag-value-name}.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """
@@ -118,13 +124,15 @@ schema TagsCnrmCloudGoogleComV1beta1TagsTagBindingStatus:
 
     conditions?: [TagsCnrmCloudGoogleComV1beta1TagsTagBindingStatusConditionsItems0]
 
+    externalRef?: str
+
     name?: str
 
     observedGeneration?: int
 
 
 schema TagsCnrmCloudGoogleComV1beta1TagsTagBindingStatusConditionsItems0:
-    """
+    r"""
     tags cnrm cloud google com v1beta1 tags tag binding status conditions items0
 
     Attributes
