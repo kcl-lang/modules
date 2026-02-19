@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DataCatalogTaxonomy:
-    """
-    datacatalog cnrm cloud google com v1beta1 data catalog taxonomy
+    r"""
+    DataCatalogTaxonomy is the Schema for the datacatalog API
 
     Attributes
     ----------
@@ -36,23 +36,17 @@ schema DataCatalogTaxonomy:
 
 
 schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogTaxonomySpec:
-    """
+    r"""
     datacatalog cnrm cloud google com v1beta1 data catalog taxonomy spec
 
     Attributes
     ----------
     activatedPolicyTypes : [str], default is Undefined, optional
-        A list of policy types that are activated for this taxonomy. If not set,
-        defaults to an empty list. Possible values: ["POLICY_TYPE_UNSPECIFIED", "FINE_GRAINED_ACCESS_CONTROL"].
+        A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list. Possible values: ["POLICY_TYPE_UNSPECIFIED", "FINE_GRAINED_ACCESS_CONTROL"].
     description : str, default is Undefined, optional
-        Description of this taxonomy. It must: contain only unicode characters,
-        tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
-        long when encoded in UTF-8. If not set, defaults to an empty description.
+        Description of this taxonomy. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.
     displayName : str, default is Undefined, required
-        User defined name of this taxonomy.
-        It must: contain only unicode letters, numbers, underscores, dashes
-        and spaces; not start or end with spaces; and be at most 200 bytes
-        long when encoded in UTF-8.
+        User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
     projectRef : DatacatalogCnrmCloudGoogleComV1beta1DataCatalogTaxonomySpecProjectRef, default is Undefined, required
         project ref
     region : str, default is Undefined, optional
@@ -76,21 +70,25 @@ schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogTaxonomySpec:
 
 
 schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogTaxonomySpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
     external?: str
+
+    kind?: str
 
     name?: str
 
@@ -98,30 +96,37 @@ schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogTaxonomySpecProjectRef:
 
 
 schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogTaxonomyStatus:
-    """
+    r"""
     datacatalog cnrm cloud google com v1beta1 data catalog taxonomy status
 
     Attributes
     ----------
     conditions : [DatacatalogCnrmCloudGoogleComV1beta1DataCatalogTaxonomyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the DataCatalogTaxonomy's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the DataCatalogTaxonomy resource in GCP.
     name : str, default is Undefined, optional
-        Resource name of this taxonomy, whose format is:
-        "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
+        Resource name of this taxonomy, whose format is: "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : DatacatalogCnrmCloudGoogleComV1beta1DataCatalogTaxonomyStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [DatacatalogCnrmCloudGoogleComV1beta1DataCatalogTaxonomyStatusConditionsItems0]
 
+    externalRef?: str
+
     name?: str
 
     observedGeneration?: int
 
+    observedState?: DatacatalogCnrmCloudGoogleComV1beta1DataCatalogTaxonomyStatusObservedState
+
 
 schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogTaxonomyStatusConditionsItems0:
-    """
+    r"""
     datacatalog cnrm cloud google com v1beta1 data catalog taxonomy status conditions items0
 
     Attributes
@@ -148,5 +153,75 @@ schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogTaxonomyStatusConditionsIt
     status?: str
 
     $type?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogTaxonomyStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    policyTagCount : int, default is Undefined, optional
+        Output only. Number of policy tags in this taxonomy.
+    service : DatacatalogCnrmCloudGoogleComV1beta1DataCatalogTaxonomyStatusObservedStateService, default is Undefined, optional
+        service
+    taxonomyTimestamps : DatacatalogCnrmCloudGoogleComV1beta1DataCatalogTaxonomyStatusObservedStateTaxonomyTimestamps, default is Undefined, optional
+        taxonomy timestamps
+    """
+
+
+    policyTagCount?: int
+
+    service?: DatacatalogCnrmCloudGoogleComV1beta1DataCatalogTaxonomyStatusObservedStateService
+
+    taxonomyTimestamps?: DatacatalogCnrmCloudGoogleComV1beta1DataCatalogTaxonomyStatusObservedStateTaxonomyTimestamps
+
+
+schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogTaxonomyStatusObservedStateService:
+    r"""
+    Output only. Identity of the service which owns the Taxonomy. This field is only populated when the taxonomy is created by a Google Cloud service. Currently only 'DATAPLEX' is supported.
+
+    Attributes
+    ----------
+    identity : str, default is Undefined, optional
+        The service agent for the service.
+    name : str, default is Undefined, optional
+        The Google Cloud service name.
+    """
+
+
+    identity?: str
+
+    name?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogTaxonomyStatusObservedStateTaxonomyTimestamps:
+    r"""
+    Output only. Creation and modification timestamps of this taxonomy.
+
+    Attributes
+    ----------
+    createTime : str, default is Undefined, optional
+        Creation timestamp of the resource within the given system.
+    expiredTime : str, default is Undefined, optional
+        Output only. Expiration timestamp of the resource within the given system.
+
+        Currently only applicable to BigQuery resources.
+    updateTime : str, default is Undefined, optional
+        Timestamp of the last modification of the resource or its metadata within
+         a given system.
+
+         Note: Depending on the source system, not every modification updates this
+         timestamp.
+         For example, BigQuery timestamps every metadata modification but not data
+         or permission changes.
+    """
+
+
+    createTime?: str
+
+    expiredTime?: str
+
+    updateTime?: str
 
 

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DialogflowEntityType:
-    """
+    r"""
     dialogflow cnrm cloud google com v1alpha1 dialogflow entity type
 
     Attributes
@@ -36,7 +36,7 @@ schema DialogflowEntityType:
 
 
 schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowEntityTypeSpec:
-    """
+    r"""
     dialogflow cnrm cloud google com v1alpha1 dialogflow entity type spec
 
     Attributes
@@ -74,7 +74,7 @@ schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowEntityTypeSpec:
 
 
 schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowEntityTypeSpecEntitiesItems0:
-    """
+    r"""
     dialogflow cnrm cloud google com v1alpha1 dialogflow entity type spec entities items0
 
     Attributes
@@ -100,7 +100,7 @@ schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowEntityTypeSpecEntitiesItems
 
 
 schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowEntityTypeSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -122,7 +122,7 @@ schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowEntityTypeSpecProjectRef:
 
 
 schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowEntityTypeStatus:
-    """
+    r"""
     dialogflow cnrm cloud google com v1alpha1 dialogflow entity type status
 
     Attributes
@@ -145,7 +145,7 @@ schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowEntityTypeStatus:
 
 
 schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowEntityTypeStatusConditionsItems0:
-    """
+    r"""
     dialogflow cnrm cloud google com v1alpha1 dialogflow entity type status conditions items0
 
     Attributes

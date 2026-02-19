@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema CloudIdentityMembership:
-    """
-    cloudidentity cnrm cloud google com v1beta1 cloud identity membership
+    r"""
+    CloudIdentityMembership is the Schema for the CloudIdentityMembership API
 
     Attributes
     ----------
@@ -36,8 +36,8 @@ schema CloudIdentityMembership:
 
 
 schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipSpec:
-    """
-    cloudidentity cnrm cloud google com v1beta1 cloud identity membership spec
+    r"""
+    CloudIdentityMembershipSpec defines the desired state of CloudIdentityMembership
 
     Attributes
     ----------
@@ -48,7 +48,7 @@ schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipSpec:
     preferredMemberKey : CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipSpecPreferredMemberKey, default is Undefined, required
         preferred member key
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
+        Immutable. Optional. The service-generated name of the resource. Format: {membershipID}. Used for acquisition only. Leave unset to create a new resource.
     roles : [CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipSpecRolesItems0], default is Undefined, required
         The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
     """
@@ -66,19 +66,17 @@ schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipSpec:
 
 
 schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipSpecGroupRef:
-    """
+    r"""
     Immutable.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The group for the resource
-
-        Allowed value: The Google Cloud resource name of a `CloudIdentityGroup` resource (format: `groups/{{name}}`).
+        A reference to an externally managed CloudIdentityGroup resource. Should be in the format "groups/{{groupID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a CloudIdentityGroup resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a CloudIdentityGroup resource.
     """
 
 
@@ -90,31 +88,31 @@ schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipSpecGroupRef
 
 
 schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipSpecMemberKey:
-    """
-    Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+    r"""
+    Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned. Do not set. This is a legacy OUTPUT-ONLY field.
 
     Attributes
     ----------
-    id : str, default is Undefined, optional
-        The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
+    id : str, default is Undefined, required
+        Immutable. The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
     namespace : str, default is Undefined, optional
-        The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
+        Immutable. The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
     """
 
 
-    id?: str
+    id: str
 
     namespace?: str
 
 
 schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipSpecPreferredMemberKey:
-    """
-    Immutable. Required. Immutable. The `EntityKey` of the member.
+    r"""
+    Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
 
     Attributes
     ----------
     id : str, default is Undefined, required
-        Immutable. The ID of the entity. For Google-managed entities, the `id` must be the email address of a group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
+        Immutable. The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
     namespace : str, default is Undefined, optional
         Immutable. The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
     """
@@ -126,7 +124,7 @@ schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipSpecPreferre
 
 
 schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipSpecRolesItems0:
-    """
+    r"""
     cloudidentity cnrm cloud google com v1beta1 cloud identity membership spec roles items0
 
     Attributes
@@ -134,7 +132,7 @@ schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipSpecRolesIte
     expiryDetail : CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipSpecRolesItems0ExpiryDetail, default is Undefined, optional
         expiry detail
     name : str, default is Undefined, required
-        name
+        The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
     restrictionEvaluations : CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipSpecRolesItems0RestrictionEvaluations, default is Undefined, optional
         restriction evaluations
     """
@@ -148,7 +146,7 @@ schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipSpecRolesIte
 
 
 schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipSpecRolesItems0ExpiryDetail:
-    """
+    r"""
     The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
 
     Attributes
@@ -162,7 +160,7 @@ schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipSpecRolesIte
 
 
 schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipSpecRolesItems0RestrictionEvaluations:
-    """
+    r"""
     Evaluations of restrictions applied to parent group on this membership.
 
     Attributes
@@ -176,13 +174,13 @@ schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipSpecRolesIte
 
 
 schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipSpecRolesItems0RestrictionEvaluationsMemberRestrictionEvaluation:
-    """
+    r"""
     Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation.
 
     Attributes
     ----------
     state : str, default is Undefined, optional
-        Output only. The current state of the restriction Possible values: ENCRYPTION_STATE_UNSPECIFIED, UNSUPPORTED_BY_DEVICE, ENCRYPTED, NOT_ENCRYPTED
+        Output only. The current state of the restriction
     """
 
 
@@ -190,19 +188,21 @@ schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipSpecRolesIte
 
 
 schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipStatus:
-    """
-    cloudidentity cnrm cloud google com v1beta1 cloud identity membership status
+    r"""
+    CloudIdentityMembershipStatus defines the config connector machine state of CloudIdentityMembership
 
     Attributes
     ----------
     conditions : [CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     createTime : str, default is Undefined, optional
         Output only. The time when the `Membership` was created.
     deliverySetting : str, default is Undefined, optional
         Output only. Delivery setting associated with the membership. Possible values: DELIVERY_SETTING_UNSPECIFIED, ALL_MAIL, DIGEST, DAILY, NONE, DISABLED
     displayName : CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipStatusDisplayName, default is Undefined, optional
         display name
+    externalRef : str, default is Undefined, optional
+        A unique Config Connector specifier for the resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     $type : str, default is Undefined, optional
@@ -220,6 +220,8 @@ schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipStatus:
 
     displayName?: CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipStatusDisplayName
 
+    externalRef?: str
+
     observedGeneration?: int
 
     $type?: str
@@ -228,7 +230,7 @@ schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipStatus:
 
 
 schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipStatusConditionsItems0:
-    """
+    r"""
     cloudidentity cnrm cloud google com v1beta1 cloud identity membership status conditions items0
 
     Attributes
@@ -258,7 +260,7 @@ schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipStatusCondit
 
 
 schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityMembershipStatusDisplayName:
-    """
+    r"""
     Output only. The display name of this member, if available
 
     Attributes

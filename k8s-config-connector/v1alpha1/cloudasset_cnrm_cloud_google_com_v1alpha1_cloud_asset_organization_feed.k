@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema CloudAssetOrganizationFeed:
-    """
+    r"""
     cloudasset cnrm cloud google com v1alpha1 cloud asset organization feed
 
     Attributes
@@ -36,7 +36,7 @@ schema CloudAssetOrganizationFeed:
 
 
 schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetOrganizationFeedSpec:
-    """
+    r"""
     cloudasset cnrm cloud google com v1alpha1 cloud asset organization feed spec
 
     Attributes
@@ -91,7 +91,7 @@ schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetOrganizationFeedSpec:
 
 
 schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetOrganizationFeedSpecCondition:
-    """
+    r"""
     A condition which determines whether an asset update should be published. If specified, an asset
     will be returned only when the expression evaluates to true. When set, expression field
     must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
@@ -124,7 +124,7 @@ schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetOrganizationFeedSpecConditi
 
 
 schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetOrganizationFeedSpecFeedOutputConfig:
-    """
+    r"""
     Output configuration for asset feed destination.
 
     Attributes
@@ -138,7 +138,7 @@ schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetOrganizationFeedSpecFeedOut
 
 
 schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetOrganizationFeedSpecFeedOutputConfigPubsubDestination:
-    """
+    r"""
     Destination on Cloud Pubsub.
 
     Attributes
@@ -152,7 +152,7 @@ schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetOrganizationFeedSpecFeedOut
 
 
 schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetOrganizationFeedSpecOrganizationRef:
-    """
+    r"""
     The organization that this resource belongs to.
 
     Attributes
@@ -174,7 +174,7 @@ schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetOrganizationFeedSpecOrganiz
 
 
 schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetOrganizationFeedStatus:
-    """
+    r"""
     cloudasset cnrm cloud google com v1alpha1 cloud asset organization feed status
 
     Attributes
@@ -196,7 +196,7 @@ schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetOrganizationFeedStatus:
 
 
 schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetOrganizationFeedStatusConditionsItems0:
-    """
+    r"""
     cloudasset cnrm cloud google com v1alpha1 cloud asset organization feed status conditions items0
 
     Attributes

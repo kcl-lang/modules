@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ContainerAnalysisOccurrence:
-    """
+    r"""
     containeranalysis cnrm cloud google com v1alpha1 container analysis occurrence
 
     Attributes
@@ -36,7 +36,7 @@ schema ContainerAnalysisOccurrence:
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1alpha1ContainerAnalysisOccurrenceSpec:
-    """
+    r"""
     containeranalysis cnrm cloud google com v1alpha1 container analysis occurrence spec
 
     Attributes
@@ -74,7 +74,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1alpha1ContainerAnalysisOccurrenceSpe
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1alpha1ContainerAnalysisOccurrenceSpecAttestation:
-    """
+    r"""
     Occurrence that represents a single "attestation". The authenticity
     of an attestation can be verified using the attached signature.
     If the verifier trusts the public key of the signer, then verifying
@@ -104,7 +104,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1alpha1ContainerAnalysisOccurrenceSpe
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1alpha1ContainerAnalysisOccurrenceSpecAttestationSignaturesItems0:
-    """
+    r"""
     containeranalysis cnrm cloud google com v1alpha1 container analysis occurrence spec attestation signatures items0
 
     Attributes
@@ -138,7 +138,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1alpha1ContainerAnalysisOccurrenceSpe
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1alpha1ContainerAnalysisOccurrenceSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -160,7 +160,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1alpha1ContainerAnalysisOccurrenceSpe
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1alpha1ContainerAnalysisOccurrenceStatus:
-    """
+    r"""
     containeranalysis cnrm cloud google com v1alpha1 container analysis occurrence status
 
     Attributes
@@ -196,7 +196,7 @@ schema ContaineranalysisCnrmCloudGoogleComV1alpha1ContainerAnalysisOccurrenceSta
 
 
 schema ContaineranalysisCnrmCloudGoogleComV1alpha1ContainerAnalysisOccurrenceStatusConditionsItems0:
-    """
+    r"""
     containeranalysis cnrm cloud google com v1alpha1 container analysis occurrence status conditions items0
 
     Attributes

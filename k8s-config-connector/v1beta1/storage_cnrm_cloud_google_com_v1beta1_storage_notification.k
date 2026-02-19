@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema StorageNotification:
-    """
+    r"""
     storage cnrm cloud google com v1beta1 storage notification
 
     Attributes
@@ -36,7 +36,7 @@ schema StorageNotification:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageNotificationSpec:
-    """
+    r"""
     storage cnrm cloud google com v1beta1 storage notification spec
 
     Attributes
@@ -74,7 +74,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageNotificationSpec:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageNotificationSpecBucketRef:
-    """
+    r"""
     storage cnrm cloud google com v1beta1 storage notification spec bucket ref
 
     Attributes
@@ -96,7 +96,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageNotificationSpecBucketRef:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageNotificationSpecTopicRef:
-    """
+    r"""
     storage cnrm cloud google com v1beta1 storage notification spec topic ref
 
     Attributes
@@ -118,7 +118,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageNotificationSpecTopicRef:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageNotificationStatus:
-    """
+    r"""
     storage cnrm cloud google com v1beta1 storage notification status
 
     Attributes
@@ -144,7 +144,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageNotificationStatus:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageNotificationStatusConditionsItems0:
-    """
+    r"""
     storage cnrm cloud google com v1beta1 storage notification status conditions items0
 
     Attributes

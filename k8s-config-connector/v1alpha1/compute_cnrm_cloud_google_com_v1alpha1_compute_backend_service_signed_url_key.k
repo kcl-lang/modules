@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeBackendServiceSignedURLKey:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute backend service signed URL key
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeBackendServiceSignedURLKey:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeySpec:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute backend service signed URL key spec
 
     Attributes
@@ -62,7 +62,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeySpec:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeySpecBackendServiceRef:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute backend service signed URL key spec backend service ref
 
     Attributes
@@ -84,7 +84,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeySpecBac
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeySpecKeyValue:
-    """
+    r"""
     Immutable. 128-bit key value used for signing the URL. The key value must be a
     valid RFC 4648 Section 5 base64url encoded string.
 
@@ -103,7 +103,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeySpecKey
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeySpecKeyValueValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -117,7 +117,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeySpecKey
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeySpecKeyValueValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -135,7 +135,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeySpecKey
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeySpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -157,7 +157,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeySpecPro
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeyStatus:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute backend service signed URL key status
 
     Attributes
@@ -175,7 +175,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeyStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeyStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute backend service signed URL key status conditions items0
 
     Attributes

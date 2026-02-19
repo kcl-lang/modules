@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeDiskResourcePolicyAttachment:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute disk resource policy attachment
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeDiskResourcePolicyAttachment:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeDiskResourcePolicyAttachmentSpec:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute disk resource policy attachment spec
 
     Attributes
@@ -62,7 +62,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeDiskResourcePolicyAttachmentSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeDiskResourcePolicyAttachmentSpecDiskRef:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute disk resource policy attachment spec disk ref
 
     Attributes
@@ -84,7 +84,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeDiskResourcePolicyAttachmentSpecD
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeDiskResourcePolicyAttachmentSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -106,7 +106,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeDiskResourcePolicyAttachmentSpecP
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeDiskResourcePolicyAttachmentStatus:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute disk resource policy attachment status
 
     Attributes
@@ -124,7 +124,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeDiskResourcePolicyAttachmentStatu
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeDiskResourcePolicyAttachmentStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute disk resource policy attachment status conditions items0
 
     Attributes

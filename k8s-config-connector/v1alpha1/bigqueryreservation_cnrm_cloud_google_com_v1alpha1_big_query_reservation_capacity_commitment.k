@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BigQueryReservationCapacityCommitment:
-    """
+    r"""
     bigqueryreservation cnrm cloud google com v1alpha1 big query reservation capacity commitment
 
     Attributes
@@ -36,7 +36,7 @@ schema BigQueryReservationCapacityCommitment:
 
 
 schema BigqueryreservationCnrmCloudGoogleComV1alpha1BigQueryReservationCapacityCommitmentSpec:
-    """
+    r"""
     bigqueryreservation cnrm cloud google com v1alpha1 big query reservation capacity commitment spec
 
     Attributes
@@ -79,7 +79,7 @@ schema BigqueryreservationCnrmCloudGoogleComV1alpha1BigQueryReservationCapacityC
 
 
 schema BigqueryreservationCnrmCloudGoogleComV1alpha1BigQueryReservationCapacityCommitmentSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -101,7 +101,7 @@ schema BigqueryreservationCnrmCloudGoogleComV1alpha1BigQueryReservationCapacityC
 
 
 schema BigqueryreservationCnrmCloudGoogleComV1alpha1BigQueryReservationCapacityCommitmentStatus:
-    """
+    r"""
     bigqueryreservation cnrm cloud google com v1alpha1 big query reservation capacity commitment status
 
     Attributes
@@ -135,7 +135,7 @@ schema BigqueryreservationCnrmCloudGoogleComV1alpha1BigQueryReservationCapacityC
 
 
 schema BigqueryreservationCnrmCloudGoogleComV1alpha1BigQueryReservationCapacityCommitmentStatusConditionsItems0:
-    """
+    r"""
     bigqueryreservation cnrm cloud google com v1alpha1 big query reservation capacity commitment status conditions items0
 
     Attributes

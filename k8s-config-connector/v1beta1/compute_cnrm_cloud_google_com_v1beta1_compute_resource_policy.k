@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeResourcePolicy:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute resource policy
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeResourcePolicy:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute resource policy spec
 
     Attributes
@@ -74,7 +74,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecDiskConsistencyGroupPolicy:
-    """
+    r"""
     Immutable. Replication consistency group for asynchronous disk replication.
 
     Attributes
@@ -88,7 +88,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecDiskConsistencyG
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecGroupPlacementPolicy:
-    """
+    r"""
     Immutable. Resource policy for instances used for placement configuration.
 
     Attributes
@@ -120,7 +120,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecGroupPlacementPo
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecInstanceSchedulePolicy:
-    """
+    r"""
     Immutable. Resource policy for scheduling instance operations.
 
     Attributes
@@ -151,7 +151,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecInstanceSchedule
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecInstanceSchedulePolicyVMStartSchedule:
-    """
+    r"""
     Immutable. Specifies the schedule for starting instances.
 
     Attributes
@@ -165,7 +165,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecInstanceSchedule
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecInstanceSchedulePolicyVMStopSchedule:
-    """
+    r"""
     Immutable. Specifies the schedule for stopping instances.
 
     Attributes
@@ -179,7 +179,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecInstanceSchedule
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecSnapshotSchedulePolicy:
-    """
+    r"""
     Immutable. Policy for creating snapshots of persistent disks.
 
     Attributes
@@ -201,7 +201,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecSnapshotSchedule
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecSnapshotSchedulePolicyRetentionPolicy:
-    """
+    r"""
     Immutable. Retention policy applied to snapshots created by this resource policy.
 
     Attributes
@@ -220,7 +220,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecSnapshotSchedule
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecSnapshotSchedulePolicySchedule:
-    """
+    r"""
     Immutable. Contains one of an 'hourlySchedule', 'dailySchedule', or 'weeklySchedule'.
 
     Attributes
@@ -242,7 +242,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecSnapshotSchedule
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecSnapshotSchedulePolicyScheduleDailySchedule:
-    """
+    r"""
     Immutable. The policy will execute every nth day at the specified time.
 
     Attributes
@@ -262,7 +262,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecSnapshotSchedule
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecSnapshotSchedulePolicyScheduleHourlySchedule:
-    """
+    r"""
     Immutable. The policy will execute every nth hour starting at the specified time.
 
     Attributes
@@ -283,7 +283,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecSnapshotSchedule
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecSnapshotSchedulePolicyScheduleWeeklySchedule:
-    """
+    r"""
     Immutable. Allows specifying a snapshot time for each day of the week.
 
     Attributes
@@ -297,7 +297,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecSnapshotSchedule
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecSnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeeksItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute resource policy spec snapshot schedule policy schedule weekly schedule day of weeks items0
 
     Attributes
@@ -316,7 +316,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecSnapshotSchedule
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecSnapshotSchedulePolicySnapshotProperties:
-    """
+    r"""
     Immutable. Properties with which the snapshots are created, such as labels.
 
     Attributes
@@ -345,7 +345,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecSnapshotSchedule
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicyStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute resource policy status
 
     Attributes
@@ -367,7 +367,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicyStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicyStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute resource policy status conditions items0
 
     Attributes

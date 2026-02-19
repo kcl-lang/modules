@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AppEngineFlexibleAppVersion:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine flexible app version
 
     Attributes
@@ -36,7 +36,7 @@ schema AppEngineFlexibleAppVersion:
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpec:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine flexible app version spec
 
     Attributes
@@ -170,7 +170,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpec:
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecAPIConfig:
-    """
+    r"""
     Serving configuration for Google Cloud Endpoints.
 
     Attributes
@@ -200,7 +200,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecAPIConf
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecAutomaticScaling:
-    """
+    r"""
     Automatic scaling is based on request rate, response latencies, and other application metrics.
 
     Attributes
@@ -262,7 +262,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecAutomat
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecAutomaticScalingCPUUtilization:
-    """
+    r"""
     Target scaling by CPU usage.
 
     Attributes
@@ -280,7 +280,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecAutomat
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecAutomaticScalingDiskUtilization:
-    """
+    r"""
     Target scaling by disk usage.
 
     Attributes
@@ -306,7 +306,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecAutomat
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecAutomaticScalingNetworkUtilization:
-    """
+    r"""
     Target scaling by network usage.
 
     Attributes
@@ -332,7 +332,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecAutomat
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecAutomaticScalingRequestUtilization:
-    """
+    r"""
     Target scaling by request utilization.
 
     Attributes
@@ -350,7 +350,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecAutomat
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecDeployment:
-    """
+    r"""
     Code and application artifacts that make up this version.
 
     Attributes
@@ -377,7 +377,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecDeploym
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecDeploymentCloudBuildOptions:
-    """
+    r"""
     Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
 
     Attributes
@@ -397,7 +397,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecDeploym
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecDeploymentContainer:
-    """
+    r"""
     The Docker image for the container that runs the version.
 
     Attributes
@@ -412,7 +412,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecDeploym
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecDeploymentFilesItems0:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine flexible app version spec deployment files items0
 
     Attributes
@@ -434,7 +434,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecDeploym
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecDeploymentZip:
-    """
+    r"""
     Zip File.
 
     Attributes
@@ -452,7 +452,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecDeploym
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecEndpointsAPIService:
-    """
+    r"""
     Code and application artifacts that make up this version.
 
     Attributes
@@ -486,7 +486,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecEndpoin
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecEntrypoint:
-    """
+    r"""
     The entrypoint for the application.
 
     Attributes
@@ -500,7 +500,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecEntrypo
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecHandlersItems0:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine flexible app version spec handlers items0
 
     Attributes
@@ -539,7 +539,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecHandler
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecHandlersItems0Script:
-    """
+    r"""
     Executes a script to handle the requests that match this URL pattern.
     Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
 
@@ -554,7 +554,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecHandler
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecHandlersItems0StaticFiles:
-    """
+    r"""
     Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
     Static file handlers describe which files in the application directory are static files, and which URLs serve them.
 
@@ -600,7 +600,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecHandler
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecLivenessCheck:
-    """
+    r"""
     Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
 
     Attributes
@@ -638,7 +638,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecLivenes
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecManualScaling:
-    """
+    r"""
     A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
 
     Attributes
@@ -655,7 +655,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecManualS
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecNetwork:
-    """
+    r"""
     Extra network settings.
 
     Attributes
@@ -690,7 +690,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecNetwork
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecReadinessCheck:
-    """
+    r"""
     Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.
 
     Attributes
@@ -729,7 +729,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecReadine
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecResources:
-    """
+    r"""
     Machine resources for a version.
 
     Attributes
@@ -755,7 +755,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecResourc
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecResourcesVolumesItems0:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine flexible app version spec resources volumes items0
 
     Attributes
@@ -777,7 +777,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecResourc
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecServiceRef:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine flexible app version spec service ref
 
     Attributes
@@ -799,7 +799,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecService
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecVpcAccessConnector:
-    """
+    r"""
     Enables VPC connectivity for standard apps.
 
     Attributes
@@ -813,7 +813,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionSpecVpcAcce
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionStatus:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine flexible app version status
 
     Attributes
@@ -835,7 +835,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionStatus:
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFlexibleAppVersionStatusConditionsItems0:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine flexible app version status conditions items0
 
     Attributes

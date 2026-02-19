@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DialogflowCXIntent:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x intent
 
     Attributes
@@ -36,7 +36,7 @@ schema DialogflowCXIntent:
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXIntentSpec:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x intent spec
 
     Attributes
@@ -88,7 +88,7 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXIntentSpec:
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXIntentSpecParametersItems0:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x intent spec parameters items0
 
     Attributes
@@ -116,7 +116,7 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXIntentSpecParametersIte
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXIntentSpecTrainingPhrasesItems0:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x intent spec training phrases items0
 
     Attributes
@@ -144,7 +144,7 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXIntentSpecTrainingPhras
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXIntentSpecTrainingPhrasesItems0PartsItems0:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x intent spec training phrases items0 parts items0
 
     Attributes
@@ -162,7 +162,7 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXIntentSpecTrainingPhras
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXIntentStatus:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x intent status
 
     Attributes
@@ -185,7 +185,7 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXIntentStatus:
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXIntentStatusConditionsItems0:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x intent status conditions items0
 
     Attributes

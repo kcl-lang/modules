@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema CloudAssetProjectFeed:
-    """
+    r"""
     cloudasset cnrm cloud google com v1alpha1 cloud asset project feed
 
     Attributes
@@ -36,7 +36,7 @@ schema CloudAssetProjectFeed:
 
 
 schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetProjectFeedSpec:
-    """
+    r"""
     cloudasset cnrm cloud google com v1alpha1 cloud asset project feed spec
 
     Attributes
@@ -92,7 +92,7 @@ schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetProjectFeedSpec:
 
 
 schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetProjectFeedSpecCondition:
-    """
+    r"""
     A condition which determines whether an asset update should be published. If specified, an asset
     will be returned only when the expression evaluates to true. When set, expression field
     must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
@@ -125,7 +125,7 @@ schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetProjectFeedSpecCondition:
 
 
 schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetProjectFeedSpecFeedOutputConfig:
-    """
+    r"""
     Output configuration for asset feed destination.
 
     Attributes
@@ -139,7 +139,7 @@ schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetProjectFeedSpecFeedOutputCo
 
 
 schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetProjectFeedSpecFeedOutputConfigPubsubDestination:
-    """
+    r"""
     Destination on Cloud Pubsub.
 
     Attributes
@@ -153,7 +153,7 @@ schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetProjectFeedSpecFeedOutputCo
 
 
 schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetProjectFeedSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -175,7 +175,7 @@ schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetProjectFeedSpecProjectRef:
 
 
 schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetProjectFeedStatus:
-    """
+    r"""
     cloudasset cnrm cloud google com v1alpha1 cloud asset project feed status
 
     Attributes
@@ -197,7 +197,7 @@ schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetProjectFeedStatus:
 
 
 schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetProjectFeedStatusConditionsItems0:
-    """
+    r"""
     cloudasset cnrm cloud google com v1alpha1 cloud asset project feed status conditions items0
 
     Attributes

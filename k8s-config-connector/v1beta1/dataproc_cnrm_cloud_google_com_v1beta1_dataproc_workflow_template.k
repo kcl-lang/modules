@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DataprocWorkflowTemplate:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc workflow template
 
     Attributes
@@ -36,7 +36,7 @@ schema DataprocWorkflowTemplate:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpec:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc workflow template spec
 
     Attributes
@@ -74,7 +74,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpec:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc workflow template spec jobs items0
 
     Attributes
@@ -132,7 +132,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0HadoopJob:
-    """
+    r"""
     Immutable. Optional. Job is a Hadoop job.
 
     Attributes
@@ -174,7 +174,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0Ha
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0HadoopJobLoggingConfig:
-    """
+    r"""
     Immutable. Optional. The runtime log config for job execution.
 
     Attributes
@@ -188,7 +188,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0Ha
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0HiveJob:
-    """
+    r"""
     Immutable. Optional. Job is a Hive job.
 
     Attributes
@@ -222,7 +222,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0Hi
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0HiveJobQueryList:
-    """
+    r"""
     Immutable. A list of queries.
 
     Attributes
@@ -236,7 +236,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0Hi
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0PigJob:
-    """
+    r"""
     Immutable. Optional. Job is a Pig job.
 
     Attributes
@@ -274,7 +274,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0Pi
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0PigJobLoggingConfig:
-    """
+    r"""
     Immutable. Optional. The runtime log config for job execution.
 
     Attributes
@@ -288,7 +288,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0Pi
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0PigJobQueryList:
-    """
+    r"""
     Immutable. A list of queries.
 
     Attributes
@@ -302,7 +302,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0Pi
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0PrestoJob:
-    """
+    r"""
     Immutable. Optional. Job is a Presto job.
 
     Attributes
@@ -340,7 +340,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0Pr
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0PrestoJobLoggingConfig:
-    """
+    r"""
     Immutable. Optional. The runtime log config for job execution.
 
     Attributes
@@ -354,7 +354,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0Pr
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0PrestoJobQueryList:
-    """
+    r"""
     Immutable. A list of queries.
 
     Attributes
@@ -368,7 +368,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0Pr
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0PysparkJob:
-    """
+    r"""
     Immutable. Optional. Job is a PySpark job.
 
     Attributes
@@ -410,7 +410,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0Py
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0PysparkJobLoggingConfig:
-    """
+    r"""
     Immutable. Optional. The runtime log config for job execution.
 
     Attributes
@@ -424,7 +424,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0Py
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0Scheduling:
-    """
+    r"""
     Immutable. Optional. Job scheduling configuration.
 
     Attributes
@@ -442,7 +442,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0Sc
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0SparkJob:
-    """
+    r"""
     Immutable. Optional. Job is a Spark job.
 
     Attributes
@@ -484,7 +484,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0Sp
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0SparkJobLoggingConfig:
-    """
+    r"""
     Immutable. Optional. The runtime log config for job execution.
 
     Attributes
@@ -498,7 +498,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0Sp
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0SparkRJob:
-    """
+    r"""
     Immutable. Optional. Job is a SparkR job.
 
     Attributes
@@ -532,7 +532,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0Sp
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0SparkRJobLoggingConfig:
-    """
+    r"""
     Immutable. Optional. The runtime log config for job execution.
 
     Attributes
@@ -546,7 +546,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0Sp
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0SparkSQLJob:
-    """
+    r"""
     Immutable. Optional. Job is a SparkSql job.
 
     Attributes
@@ -580,7 +580,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0Sp
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0SparkSQLJobLoggingConfig:
-    """
+    r"""
     Immutable. Optional. The runtime log config for job execution.
 
     Attributes
@@ -594,7 +594,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0Sp
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0SparkSQLJobQueryList:
-    """
+    r"""
     Immutable. A list of queries.
 
     Attributes
@@ -608,7 +608,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecJobsItems0Sp
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecParametersItems0:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc workflow template spec parameters items0
 
     Attributes
@@ -634,7 +634,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecParametersIt
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecParametersItems0Validation:
-    """
+    r"""
     Immutable. Optional. Validation rules to be applied to this parameter's value.
 
     Attributes
@@ -652,7 +652,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecParametersIt
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecParametersItems0ValidationRegex:
-    """
+    r"""
     Immutable. Validation based on regular expressions.
 
     Attributes
@@ -666,7 +666,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecParametersIt
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecParametersItems0ValidationValues:
-    """
+    r"""
     Immutable. Validation based on a list of allowed values.
 
     Attributes
@@ -680,7 +680,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecParametersIt
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacement:
-    """
+    r"""
     Immutable. Required. WorkflowTemplate scheduling information.
 
     Attributes
@@ -698,7 +698,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacement:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementClusterSelector:
-    """
+    r"""
     Immutable. Optional. A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
 
     Attributes
@@ -716,7 +716,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementClu
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedCluster:
-    """
+    r"""
     Immutable. A cluster that is managed by the workflow.
 
     Attributes
@@ -738,7 +738,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfig:
-    """
+    r"""
     Immutable. Required. The cluster configuration.
 
     Attributes
@@ -800,7 +800,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigAutoscalingConfig:
-    """
+    r"""
     Immutable. Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
 
     Attributes
@@ -814,7 +814,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigAutoscalingConfigPolicyRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -838,7 +838,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigEncryptionConfig:
-    """
+    r"""
     Immutable. Optional. Encryption settings for the cluster.
 
     Attributes
@@ -852,7 +852,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigEncryptionConfigGcePdKmsKeyRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -876,7 +876,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigEndpointConfig:
-    """
+    r"""
     Immutable. Optional. Port/endpoint configuration for this cluster
 
     Attributes
@@ -890,7 +890,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigGceClusterConfig:
-    """
+    r"""
     Immutable. Optional. The shared Compute Engine config settings for all instances in a cluster.
 
     Attributes
@@ -948,7 +948,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigGceClusterConfigNetworkRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -972,7 +972,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity:
-    """
+    r"""
     Immutable. Optional. Node Group Affinity for sole-tenant clusters.
 
     Attributes
@@ -986,7 +986,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityNodeGroupRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -1010,7 +1010,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigGceClusterConfigReservationAffinity:
-    """
+    r"""
     Immutable. Optional. Reservation Affinity for consuming Zonal reservation.
 
     Attributes
@@ -1032,7 +1032,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigGceClusterConfigServiceAccountRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -1056,7 +1056,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig:
-    """
+    r"""
     Immutable. Optional. Shielded Instance Config for clusters using Compute Engine Shielded VMs.
 
     Attributes
@@ -1078,7 +1078,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigGceClusterConfigSubnetworkRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -1102,7 +1102,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigInitializationActionsItems0:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc workflow template spec placement managed cluster config initialization actions items0
 
     Attributes
@@ -1120,7 +1120,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigLifecycleConfig:
-    """
+    r"""
     Immutable. Optional. Lifecycle setting for the cluster.
 
     Attributes
@@ -1142,7 +1142,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigMasterConfig:
-    """
+    r"""
     Immutable. Optional. The Compute Engine config settings for the master instance in a cluster.
 
     Attributes
@@ -1180,7 +1180,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigMasterConfigAcceleratorsItems0:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc workflow template spec placement managed cluster config master config accelerators items0
 
     Attributes
@@ -1198,7 +1198,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigMasterConfigDiskConfig:
-    """
+    r"""
     Immutable. Optional. Disk option config settings.
 
     Attributes
@@ -1220,7 +1220,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigMasterConfigImageRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -1244,7 +1244,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigSecondaryWorkerConfig:
-    """
+    r"""
     Immutable. Optional. The Compute Engine config settings for additional worker instances in a cluster.
 
     Attributes
@@ -1282,7 +1282,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorsItems0:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc workflow template spec placement managed cluster config secondary worker config accelerators items0
 
     Attributes
@@ -1300,7 +1300,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig:
-    """
+    r"""
     Immutable. Optional. Disk option config settings.
 
     Attributes
@@ -1322,7 +1322,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigSecondaryWorkerConfigImageRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -1346,7 +1346,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigSecurityConfig:
-    """
+    r"""
     Immutable. Optional. Security settings for the cluster.
 
     Attributes
@@ -1360,7 +1360,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigSecurityConfigKerberosConfig:
-    """
+    r"""
     Immutable. Optional. Kerberos related configuration.
 
     Attributes
@@ -1430,7 +1430,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigSecurityConfigKerberosConfigKmsKeyRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -1454,7 +1454,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigSoftwareConfig:
-    """
+    r"""
     Immutable. Optional. The config settings for software inside the cluster.
 
     Attributes
@@ -1476,7 +1476,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigStagingBucketRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -1500,7 +1500,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigTempBucketRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -1524,7 +1524,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigWorkerConfig:
-    """
+    r"""
     Immutable. Optional. The Compute Engine config settings for worker instances in a cluster.
 
     Attributes
@@ -1562,7 +1562,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigWorkerConfigAcceleratorsItems0:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc workflow template spec placement managed cluster config worker config accelerators items0
 
     Attributes
@@ -1580,7 +1580,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigWorkerConfigDiskConfig:
-    """
+    r"""
     Immutable. Optional. Disk option config settings.
 
     Attributes
@@ -1602,7 +1602,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementManagedClusterConfigWorkerConfigImageRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -1626,7 +1626,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecPlacementMan
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -1650,7 +1650,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateSpecProjectRef:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatus:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc workflow template status
 
     Attributes
@@ -1684,7 +1684,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatus:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusConditionsItems0:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc workflow template status conditions items0
 
     Attributes
@@ -1714,7 +1714,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusConditions
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusPlacement:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc workflow template status placement
 
     Attributes
@@ -1728,7 +1728,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusPlacement:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusPlacementManagedCluster:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc workflow template status placement managed cluster
 
     Attributes
@@ -1742,7 +1742,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusPlacementM
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusPlacementManagedClusterConfig:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc workflow template status placement managed cluster config
 
     Attributes
@@ -1772,7 +1772,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusPlacementM
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusPlacementManagedClusterConfigEndpointConfig:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc workflow template status placement managed cluster config endpoint config
 
     Attributes
@@ -1786,7 +1786,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusPlacementM
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusPlacementManagedClusterConfigLifecycleConfig:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc workflow template status placement managed cluster config lifecycle config
 
     Attributes
@@ -1800,7 +1800,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusPlacementM
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusPlacementManagedClusterConfigMasterConfig:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc workflow template status placement managed cluster config master config
 
     Attributes
@@ -1822,7 +1822,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusPlacementM
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusPlacementManagedClusterConfigMasterConfigManagedGroupConfig:
-    """
+    r"""
     Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
 
     Attributes
@@ -1840,7 +1840,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusPlacementM
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusPlacementManagedClusterConfigSecondaryWorkerConfig:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc workflow template status placement managed cluster config secondary worker config
 
     Attributes
@@ -1862,7 +1862,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusPlacementM
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusPlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig:
-    """
+    r"""
     Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
 
     Attributes
@@ -1880,7 +1880,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusPlacementM
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusPlacementManagedClusterConfigWorkerConfig:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc workflow template status placement managed cluster config worker config
 
     Attributes
@@ -1902,7 +1902,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusPlacementM
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocWorkflowTemplateStatusPlacementManagedClusterConfigWorkerConfigManagedGroupConfig:
-    """
+    r"""
     Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
 
     Attributes

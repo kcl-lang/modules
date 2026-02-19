@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema LoggingLogView:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log view
 
     Attributes
@@ -36,7 +36,7 @@ schema LoggingLogView:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewSpec:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log view spec
 
     Attributes
@@ -82,7 +82,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewSpec:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewSpecBillingAccountRef:
-    """
+    r"""
     Immutable. The BillingAccount that this resource belongs to. Only one of [billingAccountRef, folderRef, organizationRef, projectRef] may be specified.
 
     Attributes
@@ -105,7 +105,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewSpecBillingAccountRef:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewSpecBucketRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -129,7 +129,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewSpecBucketRef:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewSpecFolderRef:
-    """
+    r"""
     Immutable. The Folder that this resource belongs to. Only one of [billingAccountRef, folderRef, organizationRef, projectRef] may be specified.
 
     Attributes
@@ -151,7 +151,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewSpecFolderRef:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewSpecOrganizationRef:
-    """
+    r"""
     Immutable. The Organization that this resource belongs to. Only one of [billingAccountRef, folderRef, organizationRef, projectRef] may be specified.
 
     Attributes
@@ -174,7 +174,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewSpecOrganizationRef:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to. Only one of [billingAccountRef, folderRef, organizationRef, projectRef] may be specified.
 
     Attributes
@@ -196,7 +196,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewSpecProjectRef:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewStatus:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log view status
 
     Attributes
@@ -222,7 +222,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewStatus:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewStatusConditionsItems0:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log view status conditions items0
 
     Attributes

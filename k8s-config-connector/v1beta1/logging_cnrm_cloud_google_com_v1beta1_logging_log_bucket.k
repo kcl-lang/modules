@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema LoggingLogBucket:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log bucket
 
     Attributes
@@ -36,7 +36,7 @@ schema LoggingLogBucket:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketSpec:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log bucket spec
 
     Attributes
@@ -45,6 +45,8 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketSpec:
         billing account ref
     description : str, default is Undefined, optional
         Describes this bucket.
+    enableAnalytics : bool, default is Undefined, optional
+         Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the Log Analytics page using SQL queries. Cannot be disabled once enabled.
     folderRef : LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketSpecFolderRef, default is Undefined, optional
         folder ref
     location : str, default is Undefined, required
@@ -66,6 +68,8 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketSpec:
 
     description?: str
 
+    enableAnalytics?: bool
+
     folderRef?: LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketSpecFolderRef
 
     location: str
@@ -82,7 +86,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketSpec:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketSpecBillingAccountRef:
-    """
+    r"""
     Immutable. The BillingAccount that this resource belongs to. Only one of [billingAccountRef, folderRef, organizationRef, projectRef] may be specified.
 
     Attributes
@@ -105,7 +109,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketSpecBillingAccountRef:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketSpecFolderRef:
-    """
+    r"""
     Immutable. The Folder that this resource belongs to. Only one of [billingAccountRef, folderRef, organizationRef, projectRef] may be specified.
 
     Attributes
@@ -127,7 +131,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketSpecFolderRef:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketSpecOrganizationRef:
-    """
+    r"""
     Immutable. The Organization that this resource belongs to. Only one of [billingAccountRef, folderRef, organizationRef, projectRef] may be specified.
 
     Attributes
@@ -150,7 +154,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketSpecOrganizationRef:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to. Only one of [billingAccountRef, folderRef, organizationRef, projectRef] may be specified.
 
     Attributes
@@ -172,7 +176,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketSpecProjectRef:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketStatus:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log bucket status
 
     Attributes
@@ -202,7 +206,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketStatus:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketStatusConditionsItems0:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log bucket status conditions items0
 
     Attributes

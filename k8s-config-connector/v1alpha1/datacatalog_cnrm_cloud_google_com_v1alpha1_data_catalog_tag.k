@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DataCatalogTag:
-    """
-    datacatalog cnrm cloud google com v1alpha1 data catalog tag
+    r"""
+    DataCatalogTag is the Schema for the DataCatalogTag API
 
     Attributes
     ----------
@@ -36,118 +36,169 @@ schema DataCatalogTag:
 
 
 schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagSpec:
-    """
-    datacatalog cnrm cloud google com v1alpha1 data catalog tag spec
+    r"""
+    DataCatalogTagSpec defines the desired state of DataCatalogTag
 
     Attributes
     ----------
     column : str, default is Undefined, optional
-        Resources like Entry can have schemas associated with them. This scope allows users to attach tags to an
-        individual column based on that schema.
+        Resources like entry can have schemas associated with them. This scope
+         allows you to attach tags to an individual column based on that schema.
 
-        For attaching a tag to a nested column, use '.' to separate the column names. Example:
-        'outer_column.inner_column'.
-    fields : [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagSpecFieldsItems0], default is Undefined, required
-        This maps the ID of a tag field to the value of and additional information about that field.
-        Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
-    parent : str, default is Undefined, optional
-        Immutable. The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
-        all entries in that group.
+         To attach a tag to a nested column, separate column names with a dot
+         (`.`). Example: `column.nested_column`.
+    entryRef : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagSpecEntryRef, default is Undefined, required
+        entry ref
+    fields : {str:DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagSpecFieldsAnon}, default is Undefined, optional
+        fields
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
-    template : str, default is Undefined, required
-        Immutable. The resource name of the tag template that this tag uses. Example:
-        projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}
-        This field cannot be modified after creation.
+        The DataCatalogTag name. If not given, the metadata.name will be used.
+    templateRef : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagSpecTemplateRef, default is Undefined, required
+        template ref
     """
 
 
     column?: str
 
-    fields: [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagSpecFieldsItems0]
+    entryRef: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagSpecEntryRef
 
-    parent?: str
+    fields?: {str:DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagSpecFieldsAnon}
 
     resourceID?: str
 
-    template: str
+    templateRef: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagSpecTemplateRef
 
 
-schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagSpecFieldsItems0:
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagSpecEntryRef:
+    r"""
+    Required. Reference to the DataCatalogEntry that owns this Tag. The entry must be in the same project and location as the tag.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed DataCatalogEntry resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/entrys/{{entryID}}".
+    name : str, default is Undefined, optional
+        The name of a DataCatalogEntry resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a DataCatalogEntry resource.
     """
-    datacatalog cnrm cloud google com v1alpha1 data catalog tag spec fields items0
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagSpecFieldsAnon:
+    r"""
+    datacatalog cnrm cloud google com v1alpha1 data catalog tag spec fields anon
 
     Attributes
     ----------
     boolValue : bool, default is Undefined, optional
-        Holds the value for a tag field with boolean type.
-    displayName : str, default is Undefined, optional
-        The display name of this field.
+        The value of a tag field with a boolean type.
     doubleValue : float, default is Undefined, optional
-        Holds the value for a tag field with double type.
-    enumValue : str, default is Undefined, optional
-        The display name of the enum value.
-    fieldName : str, default is Undefined, required
-        field name
-    order : int, default is Undefined, optional
-        The order of this field with respect to other fields in this tag. For example, a higher value can indicate
-        a more important field. The value can be negative. Multiple fields can have the same order, and field orders
-        within a tag do not have to be sequential.
+        The value of a tag field with a double type.
+    enumValue : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagSpecFieldsAnonEnumValue, default is Undefined, optional
+        enum value
+    richtextValue : str, default is Undefined, optional
+        The value of a tag field with a rich text type.
+
+         The maximum length is 10 MiB as this value holds HTML descriptions
+         including encoded images. The maximum length of the text without images
+         is 100 KiB.
     stringValue : str, default is Undefined, optional
-        Holds the value for a tag field with string type.
+        The value of a tag field with a string type.
+
+         The maximum length is 2000 UTF-8 characters.
     timestampValue : str, default is Undefined, optional
-        Holds the value for a tag field with timestamp type.
+        The value of a tag field with a timestamp type.
     """
 
 
     boolValue?: bool
 
-    displayName?: str
-
     doubleValue?: float
 
-    enumValue?: str
+    enumValue?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagSpecFieldsAnonEnumValue
 
-    fieldName: str
-
-    order?: int
+    richtextValue?: str
 
     stringValue?: str
 
     timestampValue?: str
 
 
-schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagStatus:
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagSpecFieldsAnonEnumValue:
+    r"""
+    The value of a tag field with an enum type.
+
+     This value must be one of the allowed values listed in this enum.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        The display name of the enum value.
     """
-    datacatalog cnrm cloud google com v1alpha1 data catalog tag status
+
+
+    displayName?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagSpecTemplateRef:
+    r"""
+    Required. The resource name of the tag template this tag uses.
+
+     This field cannot be modified after creation.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed DataCatalogTagTemplate resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/tagTemplates/{{tagTemplateID}}".
+    name : str, default is Undefined, optional
+        The name of a DataCatalogTagTemplate resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a DataCatalogTagTemplate resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagStatus:
+    r"""
+    DataCatalogTagStatus defines the config connector machine state of DataCatalogTag
 
     Attributes
     ----------
     conditions : [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
-    name : str, default is Undefined, optional
-        The resource name of the tag in URL format. Example:
-        projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
-        projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
-        where tag_id is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the DataCatalogTag resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
-    templateDisplayname : str, default is Undefined, optional
-        The display name of the tag template.
+    observedState : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagStatusConditionsItems0]
 
-    name?: str
+    externalRef?: str
 
     observedGeneration?: int
 
-    templateDisplayname?: str
+    observedState?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagStatusObservedState
 
 
 schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagStatusConditionsItems0:
-    """
+    r"""
     datacatalog cnrm cloud google com v1alpha1 data catalog tag status conditions items0
 
     Attributes
@@ -174,5 +225,23 @@ schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagStatusConditionsItems0
     status?: str
 
     $type?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    dataplexTransferStatus : str, default is Undefined, optional
+        Output only. Denotes the transfer status of the Tag Template.
+    templateDisplayName : str, default is Undefined, optional
+        Output only. The display name of the tag template.
+    """
+
+
+    dataplexTransferStatus?: str
+
+    templateDisplayName?: str
 
 

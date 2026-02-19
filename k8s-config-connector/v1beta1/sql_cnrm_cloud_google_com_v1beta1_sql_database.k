@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema SQLDatabase:
-    """
+    r"""
     sql cnrm cloud google com v1beta1 SQL database
 
     Attributes
@@ -36,7 +36,7 @@ schema SQLDatabase:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLDatabaseSpec:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL database spec
 
     Attributes
@@ -77,7 +77,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLDatabaseSpec:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLDatabaseSpecInstanceRef:
-    """
+    r"""
     The Cloud SQL instance.
 
     Attributes
@@ -99,7 +99,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLDatabaseSpecInstanceRef:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLDatabaseStatus:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL database status
 
     Attributes
@@ -121,7 +121,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLDatabaseStatus:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLDatabaseStatusConditionsItems0:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL database status conditions items0
 
     Attributes

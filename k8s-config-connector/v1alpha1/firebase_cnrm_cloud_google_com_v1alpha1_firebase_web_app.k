@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema FirebaseWebApp:
-    """
+    r"""
     firebase cnrm cloud google com v1alpha1 firebase web app
 
     Attributes
@@ -36,7 +36,7 @@ schema FirebaseWebApp:
 
 
 schema FirebaseCnrmCloudGoogleComV1alpha1FirebaseWebAppSpec:
-    """
+    r"""
     firebase cnrm cloud google com v1alpha1 firebase web app spec
 
     Attributes
@@ -68,7 +68,7 @@ schema FirebaseCnrmCloudGoogleComV1alpha1FirebaseWebAppSpec:
 
 
 schema FirebaseCnrmCloudGoogleComV1alpha1FirebaseWebAppStatus:
-    """
+    r"""
     firebase cnrm cloud google com v1alpha1 firebase web app status
 
     Attributes
@@ -100,7 +100,7 @@ schema FirebaseCnrmCloudGoogleComV1alpha1FirebaseWebAppStatus:
 
 
 schema FirebaseCnrmCloudGoogleComV1alpha1FirebaseWebAppStatusConditionsItems0:
-    """
+    r"""
     firebase cnrm cloud google com v1alpha1 firebase web app status conditions items0
 
     Attributes

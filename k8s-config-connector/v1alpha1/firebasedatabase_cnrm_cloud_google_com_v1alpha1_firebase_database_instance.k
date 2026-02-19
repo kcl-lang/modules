@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema FirebaseDatabaseInstance:
-    """
+    r"""
     firebasedatabase cnrm cloud google com v1alpha1 firebase database instance
 
     Attributes
@@ -36,7 +36,7 @@ schema FirebaseDatabaseInstance:
 
 
 schema FirebasedatabaseCnrmCloudGoogleComV1alpha1FirebaseDatabaseInstanceSpec:
-    """
+    r"""
     firebasedatabase cnrm cloud google com v1alpha1 firebase database instance spec
 
     Attributes
@@ -70,7 +70,7 @@ schema FirebasedatabaseCnrmCloudGoogleComV1alpha1FirebaseDatabaseInstanceSpec:
 
 
 schema FirebasedatabaseCnrmCloudGoogleComV1alpha1FirebaseDatabaseInstanceSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -92,7 +92,7 @@ schema FirebasedatabaseCnrmCloudGoogleComV1alpha1FirebaseDatabaseInstanceSpecPro
 
 
 schema FirebasedatabaseCnrmCloudGoogleComV1alpha1FirebaseDatabaseInstanceStatus:
-    """
+    r"""
     firebasedatabase cnrm cloud google com v1alpha1 firebase database instance status
 
     Attributes
@@ -126,7 +126,7 @@ schema FirebasedatabaseCnrmCloudGoogleComV1alpha1FirebaseDatabaseInstanceStatus:
 
 
 schema FirebasedatabaseCnrmCloudGoogleComV1alpha1FirebaseDatabaseInstanceStatusConditionsItems0:
-    """
+    r"""
     firebasedatabase cnrm cloud google com v1alpha1 firebase database instance status conditions items0
 
     Attributes

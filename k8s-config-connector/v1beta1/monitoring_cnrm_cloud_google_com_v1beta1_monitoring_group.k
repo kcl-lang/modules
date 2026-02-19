@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema MonitoringGroup:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring group
 
     Attributes
@@ -36,7 +36,7 @@ schema MonitoringGroup:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringGroupSpec:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring group spec
 
     Attributes
@@ -70,7 +70,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringGroupSpec:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringGroupSpecParentRef:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring group spec parent ref
 
     Attributes
@@ -94,7 +94,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringGroupSpecParentRef:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringGroupSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -118,7 +118,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringGroupSpecProjectRef:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringGroupStatus:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring group status
 
     Attributes
@@ -136,7 +136,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringGroupStatus:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringGroupStatusConditionsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring group status conditions items0
 
     Attributes

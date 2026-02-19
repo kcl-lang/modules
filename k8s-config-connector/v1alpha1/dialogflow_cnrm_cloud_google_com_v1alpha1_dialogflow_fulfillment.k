@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DialogflowFulfillment:
-    """
+    r"""
     dialogflow cnrm cloud google com v1alpha1 dialogflow fulfillment
 
     Attributes
@@ -36,7 +36,7 @@ schema DialogflowFulfillment:
 
 
 schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowFulfillmentSpec:
-    """
+    r"""
     dialogflow cnrm cloud google com v1alpha1 dialogflow fulfillment spec
 
     Attributes
@@ -70,7 +70,7 @@ schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowFulfillmentSpec:
 
 
 schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowFulfillmentSpecFeaturesItems0:
-    """
+    r"""
     dialogflow cnrm cloud google com v1alpha1 dialogflow fulfillment spec features items0
 
     Attributes
@@ -85,7 +85,7 @@ schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowFulfillmentSpecFeaturesItem
 
 
 schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowFulfillmentSpecGenericWebService:
-    """
+    r"""
     Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
 
     Attributes
@@ -111,7 +111,7 @@ schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowFulfillmentSpecGenericWebSe
 
 
 schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowFulfillmentSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -133,7 +133,7 @@ schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowFulfillmentSpecProjectRef:
 
 
 schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowFulfillmentStatus:
-    """
+    r"""
     dialogflow cnrm cloud google com v1alpha1 dialogflow fulfillment status
 
     Attributes
@@ -156,7 +156,7 @@ schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowFulfillmentStatus:
 
 
 schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowFulfillmentStatusConditionsItems0:
-    """
+    r"""
     dialogflow cnrm cloud google com v1alpha1 dialogflow fulfillment status conditions items0
 
     Attributes

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeInstanceGroupManager:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group manager
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeInstanceGroupManager:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group manager spec
 
     Attributes
@@ -110,7 +110,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecAutoHealingPoliciesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group manager spec auto healing policies items0
 
     Attributes
@@ -128,7 +128,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecAutoHealin
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecAutoHealingPoliciesItems0HealthCheckRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group manager spec auto healing policies items0 health check ref
 
     Attributes
@@ -152,7 +152,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecAutoHealin
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecDistributionPolicy:
-    """
+    r"""
     Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
 
     Attributes
@@ -170,7 +170,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecDistributi
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecDistributionPolicyZonesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group manager spec distribution policy zones items0
 
     Attributes
@@ -184,7 +184,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecDistributi
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecInstanceTemplateRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group manager spec instance template ref
 
     Attributes
@@ -208,7 +208,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecInstanceTe
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecNamedPortsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group manager spec named ports items0
 
     Attributes
@@ -226,7 +226,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecNamedPorts
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -250,7 +250,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecProjectRef
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecServiceAccountRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group manager spec service account ref
 
     Attributes
@@ -274,7 +274,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecServiceAcc
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecStatefulPolicy:
-    """
+    r"""
     Stateful configuration for this Instanced Group Manager
 
     Attributes
@@ -288,7 +288,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecStatefulPo
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecStatefulPolicyPreservedState:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group manager spec stateful policy preserved state
 
     Attributes
@@ -310,7 +310,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecStatefulPo
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecStatefulPolicyPreservedStateDisksAnon:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group manager spec stateful policy preserved state disks anon
 
     Attributes
@@ -324,7 +324,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecStatefulPo
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecStatefulPolicyPreservedStateExternalIpsAnon:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group manager spec stateful policy preserved state external ips anon
 
     Attributes
@@ -338,7 +338,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecStatefulPo
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecStatefulPolicyPreservedStateInternalIpsAnon:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group manager spec stateful policy preserved state internal ips anon
 
     Attributes
@@ -352,7 +352,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecStatefulPo
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecTargetPoolsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group manager spec target pools items0
 
     Attributes
@@ -374,7 +374,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecTargetPool
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecUpdatePolicy:
-    """
+    r"""
     The update policy for this managed instance group.
 
     Attributes
@@ -416,7 +416,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecUpdatePoli
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecUpdatePolicyMaxSurge:
-    """
+    r"""
     The maximum number of instances that can be created above the specified `targetSize` during the update process. This value can be either a fixed number or, if the group has 10 or more instances, a percentage. If you set a percentage, the number of instances is rounded if necessary. The default value for `maxSurge` is a fixed value equal to the number of zones in which the managed instance group operates. At least one of either `maxSurge` or `maxUnavailable` must be greater than 0. Learn more about [`maxSurge`](/compute/docs/instance-groups/rolling-out-updates-to-managed-instance-groups#max_surge).
 
     Attributes
@@ -434,7 +434,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecUpdatePoli
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecUpdatePolicyMaxUnavailable:
-    """
+    r"""
     The maximum number of instances that can be unavailable during the update process. An instance is considered available if all of the following conditions are satisfied: - The instance's [status](/compute/docs/instances/checking-instance-status) is `RUNNING`. - If there is a [health check](/compute/docs/instance-groups/autohealing-instances-in-migs) on the instance group, the instance's health check status must be `HEALTHY` at least once. If there is no health check on the group, then the instance only needs to have a status of `RUNNING` to be considered available. This value can be either a fixed number or, if the group has 10 or more instances, a percentage. If you set a percentage, the number of instances is rounded if necessary. The default value for `maxUnavailable` is a fixed value equal to the number of zones in which the managed instance group operates. At least one of either `maxSurge` or `maxUnavailable` must be greater than 0. Learn more about [`maxUnavailable`](/compute/docs/instance-groups/rolling-out-updates-to-managed-instance-groups#max_unavailable).
 
     Attributes
@@ -452,7 +452,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecUpdatePoli
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecVersionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group manager spec versions items0
 
     Attributes
@@ -474,7 +474,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecVersionsIt
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecVersionsItems0InstanceTemplateRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group manager spec versions items0 instance template ref
 
     Attributes
@@ -498,7 +498,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecVersionsIt
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecVersionsItems0TargetSize:
-    """
+    r"""
     Specifies the intended number of instances to be created from the `instanceTemplate`. The final number of instances created from the template will be equal to: - If expressed as a fixed number, the minimum of either `targetSize.fixed` or `instanceGroupManager.targetSize` is used. - if expressed as a `percent`, the `targetSize` would be `(targetSize.percent/100 * InstanceGroupManager.targetSize)` If there is a remainder, the number is rounded. If unset, this version will update any remaining instances not updated by another `version`. Read [Starting a canary update](/compute/docs/instance-groups/rolling-out-updates-to-managed-instance-groups#starting_a_canary_update) for more information.
 
     Attributes
@@ -520,7 +520,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecVersionsIt
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group manager status
 
     Attributes
@@ -578,7 +578,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group manager status conditions items0
 
     Attributes
@@ -608,7 +608,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerStatusConditio
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerStatusCurrentActions:
-    """
+    r"""
     [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
 
     Attributes
@@ -654,7 +654,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerStatusCurrentA
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerStatusStatus:
-    """
+    r"""
     [Output Only] The status of this managed instance group.
 
     Attributes
@@ -680,7 +680,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerStatusStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerStatusStatusStateful:
-    """
+    r"""
     [Output Only] Stateful status of the given Instance Group Manager.
 
     Attributes
@@ -702,7 +702,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerStatusStatusSt
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerStatusStatusStatefulPerInstanceConfigs:
-    """
+    r"""
     [Output Only] Status of per-instance configs on the instance.
 
     Attributes
@@ -716,7 +716,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerStatusStatusSt
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerStatusStatusVersionTarget:
-    """
+    r"""
     [Output Only] A status of consistency of Instances' versions with their target version specified by `version` field on Instance Group Manager.
 
     Attributes
@@ -730,7 +730,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerStatusStatusVe
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerStatusUpdatePolicy:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group manager status update policy
 
     Attributes
@@ -748,7 +748,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerStatusUpdatePo
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerStatusUpdatePolicyMaxSurge:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group manager status update policy max surge
 
     Attributes
@@ -762,7 +762,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerStatusUpdatePo
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerStatusUpdatePolicyMaxUnavailable:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group manager status update policy max unavailable
 
     Attributes

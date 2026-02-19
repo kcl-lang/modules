@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema PubSubTopic:
-    """
+    r"""
     pubsub cnrm cloud google com v1beta1 pub sub topic
 
     Attributes
@@ -36,7 +36,7 @@ schema PubSubTopic:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicSpec:
-    """
+    r"""
     pubsub cnrm cloud google com v1beta1 pub sub topic spec
 
     Attributes
@@ -72,7 +72,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicSpec:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicSpecKmsKeyRef:
-    """
+    r"""
     The KMSCryptoKey to be used to protect access to messages published
     on this topic. Your project's Pub/Sub service account
     ('service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com')
@@ -98,7 +98,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicSpecKmsKeyRef:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicSpecMessageStoragePolicy:
-    """
+    r"""
     Policy constraining the set of Google Cloud Platform regions where
     messages published to the topic may be stored. If not present, then no
     constraints are in effect.
@@ -119,7 +119,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicSpecMessageStoragePolicy:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicSpecSchemaSettings:
-    """
+    r"""
     Settings for validating messages published against a schema.
 
     Attributes
@@ -137,7 +137,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicSpecSchemaSettings:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicSpecSchemaSettingsSchemaRef:
-    """
+    r"""
     pubsub cnrm cloud google com v1beta1 pub sub topic spec schema settings schema ref
 
     Attributes
@@ -159,7 +159,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicSpecSchemaSettingsSchemaRef:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicStatus:
-    """
+    r"""
     pubsub cnrm cloud google com v1beta1 pub sub topic status
 
     Attributes
@@ -177,7 +177,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicStatus:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicStatusConditionsItems0:
-    """
+    r"""
     pubsub cnrm cloud google com v1beta1 pub sub topic status conditions items0
 
     Attributes

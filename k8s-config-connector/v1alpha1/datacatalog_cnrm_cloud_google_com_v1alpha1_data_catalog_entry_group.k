@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DataCatalogEntryGroup:
-    """
-    datacatalog cnrm cloud google com v1alpha1 data catalog entry group
+    r"""
+    DataCatalogEntryGroup is the Schema for the DataCatalogEntryGroup API
 
     Attributes
     ----------
@@ -36,24 +36,23 @@ schema DataCatalogEntryGroup:
 
 
 schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryGroupSpec:
-    """
+    r"""
     datacatalog cnrm cloud google com v1alpha1 data catalog entry group spec
 
     Attributes
     ----------
     description : str, default is Undefined, optional
-        Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
+        Entry group description. Can consist of several sentences or paragraphs that describe the entry group contents. Default value is an empty string.
     displayName : str, default is Undefined, optional
-        A short name to identify the entry group, for example, "analytics data - jan 2011".
-    entryGroupId : str, default is Undefined, required
-        Immutable. The id of the entry group to create. The id must begin with a letter or underscore,
-        contain only English letters, numbers and underscores, and be at most 64 characters.
+        A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
+    location : str, default is Undefined, required
+        location
     projectRef : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryGroupSpecProjectRef, default is Undefined, required
         project ref
-    region : str, default is Undefined, optional
-        Immutable. EntryGroup location region.
-    resourceID : str, default is Undefined, optional
-        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
+    resourceID : str, default is Undefined, required
+        The DataCatalogEntryGroup name. If not given, the metadata.name will be used.
+    transferredToDataplex : bool, default is Undefined, optional
+        Optional. When set to [true], it means DataCatalog EntryGroup was transferred to Dataplex Catalog Service. It makes EntryGroup and its Entries to be read-only in DataCatalog. However, new Tags on EntryGroup and its Entries can be created. After setting the flag to [true] it cannot be unset.
     """
 
 
@@ -61,31 +60,35 @@ schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryGroupSpec:
 
     displayName?: str
 
-    entryGroupId: str
+    location: str
 
     projectRef: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryGroupSpecProjectRef
 
-    region?: str
+    resourceID: str
 
-    resourceID?: str
+    transferredToDataplex?: bool
 
 
 schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryGroupSpecProjectRef:
-    """
-    The project that this resource belongs to.
+    r"""
+    The Project that this resource belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
     external?: str
+
+    kind?: str
 
     name?: str
 
@@ -93,29 +96,33 @@ schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryGroupSpecProjectRef:
 
 
 schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryGroupStatus:
-    """
-    datacatalog cnrm cloud google com v1alpha1 data catalog entry group status
+    r"""
+    DataCatalogEntryGroupStatus defines the config connector machine state of DataCatalogEntryGroup
 
     Attributes
     ----------
     conditions : [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryGroupStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
-    name : str, default is Undefined, optional
-        The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the DataCatalogEntryGroup resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryGroupStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryGroupStatusConditionsItems0]
 
-    name?: str
+    externalRef?: str
 
     observedGeneration?: int
 
+    observedState?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryGroupStatusObservedState
+
 
 schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryGroupStatusConditionsItems0:
-    """
+    r"""
     datacatalog cnrm cloud google com v1alpha1 data catalog entry group status conditions items0
 
     Attributes
@@ -142,5 +149,43 @@ schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryGroupStatusCondition
     status?: str
 
     $type?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryGroupStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    dataCatalogTimestamps : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryGroupStatusObservedStateDataCatalogTimestamps, default is Undefined, optional
+        data catalog timestamps
+    """
+
+
+    dataCatalogTimestamps?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryGroupStatusObservedStateDataCatalogTimestamps
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryGroupStatusObservedStateDataCatalogTimestamps:
+    r"""
+    Output only. Timestamps of the entry group. Default value is empty.
+
+    Attributes
+    ----------
+    createTime : str, default is Undefined, optional
+        Creation timestamp of the resource within the given system.
+    updateTime : str, default is Undefined, optional
+        Timestamp of the last modification of the resource or its metadata within
+         a given system.
+
+         Note: Depending on the source system, not every modification updates this
+         timestamp.
+         For example, BigQuery timestamps every metadata modification but not data
+         or permission changes.
+    """
+
+
+    createTime?: str
+
+    updateTime?: str
 
 

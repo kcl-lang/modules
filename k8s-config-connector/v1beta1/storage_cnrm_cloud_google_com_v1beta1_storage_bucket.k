@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema StorageBucket:
-    """
+    r"""
     storage cnrm cloud google com v1beta1 storage bucket
 
     Attributes
@@ -36,7 +36,7 @@ schema StorageBucket:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpec:
-    """
+    r"""
     storage cnrm cloud google com v1beta1 storage bucket spec
 
     Attributes
@@ -57,7 +57,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpec:
     lifecycleRule : [StorageCnrmCloudGoogleComV1beta1StorageBucketSpecLifecycleRuleItems0], default is Undefined, optional
         The bucket's Lifecycle Rules configuration.
     location : str, default is "US", optional
-        Immutable. The Google Cloud Storage location.
+        The Google Cloud Storage location.
     logging : StorageCnrmCloudGoogleComV1beta1StorageBucketSpecLogging, default is Undefined, optional
         logging
     publicAccessPrevention : str, default is Undefined, optional
@@ -68,6 +68,8 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpec:
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
     retentionPolicy : StorageCnrmCloudGoogleComV1beta1StorageBucketSpecRetentionPolicy, default is Undefined, optional
         retention policy
+    softDeletePolicy : StorageCnrmCloudGoogleComV1beta1StorageBucketSpecSoftDeletePolicy, default is Undefined, optional
+        soft delete policy
     storageClass : str, default is Undefined, optional
         The Storage Class of the new bucket. Supported values include: STANDARD, MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE.
     uniformBucketLevelAccess : bool, default is Undefined, optional
@@ -105,6 +107,8 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpec:
 
     retentionPolicy?: StorageCnrmCloudGoogleComV1beta1StorageBucketSpecRetentionPolicy
 
+    softDeletePolicy?: StorageCnrmCloudGoogleComV1beta1StorageBucketSpecSoftDeletePolicy
+
     storageClass?: str
 
     uniformBucketLevelAccess?: bool
@@ -115,13 +119,13 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpec:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecAutoclass:
-    """
-    Immutable. The bucket's autoclass configuration.
+    r"""
+    The bucket's autoclass configuration.
 
     Attributes
     ----------
     enabled : bool, default is Undefined, required
-        Immutable. While set to true, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+        While set to true, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
     """
 
 
@@ -129,7 +133,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecAutoclass:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecCorsItems0:
-    """
+    r"""
     storage cnrm cloud google com v1beta1 storage bucket spec cors items0
 
     Attributes
@@ -155,13 +159,13 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecCorsItems0:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecCustomPlacementConfig:
-    """
+    r"""
     The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty.
 
     Attributes
     ----------
     dataLocations : [str], default is Undefined, required
-        Immutable. The list of individual regions that comprise a dual-region bucket. See the docs for a list of acceptable regions. Note: If any of the data_locations changes, it will recreate the bucket.
+        The list of individual regions that comprise a dual-region bucket. See the docs for a list of acceptable regions.
     """
 
 
@@ -169,7 +173,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecCustomPlacementConfig:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecEncryption:
-    """
+    r"""
     The bucket's encryption configuration.
 
     Attributes
@@ -183,7 +187,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecEncryption:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecEncryptionKmsKeyRef:
-    """
+    r"""
     storage cnrm cloud google com v1beta1 storage bucket spec encryption kms key ref
 
     Attributes
@@ -205,7 +209,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecEncryptionKmsKeyRef:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecLifecycleRuleItems0:
-    """
+    r"""
     storage cnrm cloud google com v1beta1 storage bucket spec lifecycle rule items0
 
     Attributes
@@ -223,7 +227,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecLifecycleRuleItems0:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecLifecycleRuleItems0Action:
-    """
+    r"""
     The Lifecycle Rule's action configuration. A single block of this type is supported.
 
     Attributes
@@ -241,7 +245,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecLifecycleRuleItems0Actio
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecLifecycleRuleItems0Condition:
-    """
+    r"""
     The Lifecycle Rule's condition configuration.
 
     Attributes
@@ -296,7 +300,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecLifecycleRuleItems0Condi
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecLogging:
-    """
+    r"""
     The bucket's Access & Storage Logs configuration.
 
     Attributes
@@ -314,7 +318,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecLogging:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecRetentionPolicy:
-    """
+    r"""
     Configuration of the bucket's data retention policy for how long objects in the bucket should be retained.
 
     Attributes
@@ -331,8 +335,22 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecRetentionPolicy:
     retentionPeriod: int
 
 
-schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecVersioning:
+schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecSoftDeletePolicy:
+    r"""
+    The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy.
+
+    Attributes
+    ----------
+    retentionDurationSeconds : int, default is Undefined, optional
+        The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800.
     """
+
+
+    retentionDurationSeconds?: int
+
+
+schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecVersioning:
+    r"""
     The bucket's Versioning configuration.
 
     Attributes
@@ -346,7 +364,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecVersioning:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecWebsite:
-    """
+    r"""
     Configuration if the bucket acts as a website.
 
     Attributes
@@ -364,7 +382,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecWebsite:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketStatus:
-    """
+    r"""
     storage cnrm cloud google com v1beta1 storage bucket status
 
     Attributes
@@ -373,6 +391,8 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketStatus:
         Conditions represent the latest available observation of the resource's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : StorageCnrmCloudGoogleComV1beta1StorageBucketStatusObservedState, default is Undefined, optional
+        observed state
     selfLink : str, default is Undefined, optional
         The URI of the created resource.
     url : str, default is Undefined, optional
@@ -384,13 +404,15 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketStatus:
 
     observedGeneration?: int
 
+    observedState?: StorageCnrmCloudGoogleComV1beta1StorageBucketStatusObservedState
+
     selfLink?: str
 
     url?: str
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketStatusConditionsItems0:
-    """
+    r"""
     storage cnrm cloud google com v1beta1 storage bucket status conditions items0
 
     Attributes
@@ -417,5 +439,37 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketStatusConditionsItems0:
     status?: str
 
     $type?: str
+
+
+schema StorageCnrmCloudGoogleComV1beta1StorageBucketStatusObservedState:
+    r"""
+    The observed state of the underlying GCP resource.
+
+    Attributes
+    ----------
+    softDeletePolicy : StorageCnrmCloudGoogleComV1beta1StorageBucketStatusObservedStateSoftDeletePolicy, default is Undefined, optional
+        soft delete policy
+    """
+
+
+    softDeletePolicy?: StorageCnrmCloudGoogleComV1beta1StorageBucketStatusObservedStateSoftDeletePolicy
+
+
+schema StorageCnrmCloudGoogleComV1beta1StorageBucketStatusObservedStateSoftDeletePolicy:
+    r"""
+    The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted. If it is not provided, by default Google Cloud Storage sets this to default soft delete policy.
+
+    Attributes
+    ----------
+    effectiveTime : str, default is Undefined, optional
+        Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
+    retentionDurationSeconds : int, default is Undefined, optional
+        The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800.
+    """
+
+
+    effectiveTime?: str
+
+    retentionDurationSeconds?: int
 
 

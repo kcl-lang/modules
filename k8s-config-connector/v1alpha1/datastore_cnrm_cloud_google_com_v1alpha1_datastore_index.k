@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DatastoreIndex:
-    """
+    r"""
     datastore cnrm cloud google com v1alpha1 datastore index
 
     Attributes
@@ -36,7 +36,7 @@ schema DatastoreIndex:
 
 
 schema DatastoreCnrmCloudGoogleComV1alpha1DatastoreIndexSpec:
-    """
+    r"""
     datastore cnrm cloud google com v1alpha1 datastore index spec
 
     Attributes
@@ -66,7 +66,7 @@ schema DatastoreCnrmCloudGoogleComV1alpha1DatastoreIndexSpec:
 
 
 schema DatastoreCnrmCloudGoogleComV1alpha1DatastoreIndexSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -88,7 +88,7 @@ schema DatastoreCnrmCloudGoogleComV1alpha1DatastoreIndexSpecProjectRef:
 
 
 schema DatastoreCnrmCloudGoogleComV1alpha1DatastoreIndexSpecPropertiesItems0:
-    """
+    r"""
     datastore cnrm cloud google com v1alpha1 datastore index spec properties items0
 
     Attributes
@@ -106,7 +106,7 @@ schema DatastoreCnrmCloudGoogleComV1alpha1DatastoreIndexSpecPropertiesItems0:
 
 
 schema DatastoreCnrmCloudGoogleComV1alpha1DatastoreIndexStatus:
-    """
+    r"""
     datastore cnrm cloud google com v1alpha1 datastore index status
 
     Attributes
@@ -128,7 +128,7 @@ schema DatastoreCnrmCloudGoogleComV1alpha1DatastoreIndexStatus:
 
 
 schema DatastoreCnrmCloudGoogleComV1alpha1DatastoreIndexStatusConditionsItems0:
-    """
+    r"""
     datastore cnrm cloud google com v1alpha1 datastore index status conditions items0
 
     Attributes

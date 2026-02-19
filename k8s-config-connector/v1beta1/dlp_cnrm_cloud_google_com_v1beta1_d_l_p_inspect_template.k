@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DLPInspectTemplate:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p inspect template
 
     Attributes
@@ -36,7 +36,7 @@ schema DLPInspectTemplate:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpec:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p inspect template spec
 
     Attributes
@@ -74,7 +74,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpec:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfig:
-    """
+    r"""
     The core content of the template. Configuration of the scanning process.
 
     Attributes
@@ -116,7 +116,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfig:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigCustomInfoTypesItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p inspect template spec inspect config custom info types items0
 
     Attributes
@@ -154,7 +154,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigCustomInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigCustomInfoTypesItems0Dictionary:
-    """
+    r"""
     A list of phrases to detect as a CustomInfoType.
 
     Attributes
@@ -172,7 +172,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigCustomInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigCustomInfoTypesItems0DictionaryCloudStoragePath:
-    """
+    r"""
     Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
 
     Attributes
@@ -186,7 +186,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigCustomInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigCustomInfoTypesItems0DictionaryWordList:
-    """
+    r"""
     List of words or phrases to search for.
 
     Attributes
@@ -200,7 +200,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigCustomInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigCustomInfoTypesItems0InfoType:
-    """
+    r"""
     CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing infoTypes and that infoType is specified in `InspectContent.info_types` field. Specifying the latter adds findings to the one detected by the system. If built-in info type is not specified in `InspectContent.info_types` list then the name is treated as a custom info type.
 
     Attributes
@@ -214,7 +214,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigCustomInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigCustomInfoTypesItems0Regex:
-    """
+    r"""
     Regular expression based CustomInfoType.
 
     Attributes
@@ -232,7 +232,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigCustomInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigCustomInfoTypesItems0StoredType:
-    """
+    r"""
     Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported in `InspectContent`.
 
     Attributes
@@ -250,7 +250,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigCustomInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigCustomInfoTypesItems0StoredTypeNameRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p inspect template spec inspect config custom info types items0 stored type name ref
 
     Attributes
@@ -274,7 +274,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigCustomInfo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigInfoTypesItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p inspect template spec inspect config info types items0
 
     Attributes
@@ -288,7 +288,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigInfoTypesI
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigLimits:
-    """
+    r"""
     Configuration to control the number of findings returned.
 
     Attributes
@@ -310,7 +310,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigLimits:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigLimitsMaxFindingsPerInfoTypeItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p inspect template spec inspect config limits max findings per info type items0
 
     Attributes
@@ -328,7 +328,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigLimitsMaxF
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigLimitsMaxFindingsPerInfoTypeItems0InfoType:
-    """
+    r"""
     Type of information the findings limit applies to. Only one limit per info_type should be provided. If InfoTypeLimit does not have an info_type, the DLP API applies the limit against all info_types that are found but not specified in another InfoTypeLimit.
 
     Attributes
@@ -342,7 +342,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigLimitsMaxF
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p inspect template spec inspect config rule set items0
 
     Attributes
@@ -360,7 +360,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetIte
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetItems0InfoTypesItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p inspect template spec inspect config rule set items0 info types items0
 
     Attributes
@@ -374,7 +374,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetIte
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetItems0RulesItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p inspect template spec inspect config rule set items0 rules items0
 
     Attributes
@@ -392,7 +392,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetIte
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetItems0RulesItems0ExclusionRule:
-    """
+    r"""
     Exclusion rule.
 
     Attributes
@@ -418,7 +418,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetIte
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetItems0RulesItems0ExclusionRuleDictionary:
-    """
+    r"""
     Dictionary which defines the rule.
 
     Attributes
@@ -436,7 +436,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetIte
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetItems0RulesItems0ExclusionRuleDictionaryCloudStoragePath:
-    """
+    r"""
     Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
 
     Attributes
@@ -450,7 +450,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetIte
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetItems0RulesItems0ExclusionRuleDictionaryWordList:
-    """
+    r"""
     List of words or phrases to search for.
 
     Attributes
@@ -464,7 +464,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetIte
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetItems0RulesItems0ExclusionRuleExcludeInfoTypes:
-    """
+    r"""
     Set of infoTypes for which findings would affect this rule.
 
     Attributes
@@ -478,7 +478,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetIte
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetItems0RulesItems0ExclusionRuleExcludeInfoTypesInfoTypesItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p inspect template spec inspect config rule set items0 rules items0 exclusion rule exclude info types info types items0
 
     Attributes
@@ -492,7 +492,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetIte
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetItems0RulesItems0ExclusionRuleRegex:
-    """
+    r"""
     Regular expression which defines the rule.
 
     Attributes
@@ -510,7 +510,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetIte
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetItems0RulesItems0HotwordRule:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p inspect template spec inspect config rule set items0 rules items0 hotword rule
 
     Attributes
@@ -532,7 +532,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetIte
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetItems0RulesItems0HotwordRuleHotwordRegex:
-    """
+    r"""
     Regular expression pattern defining what qualifies as a hotword.
 
     Attributes
@@ -550,7 +550,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetIte
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetItems0RulesItems0HotwordRuleLikelihoodAdjustment:
-    """
+    r"""
     Likelihood adjustment to apply to all matching findings.
 
     Attributes
@@ -568,7 +568,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetIte
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetItems0RulesItems0HotwordRuleProximity:
-    """
+    r"""
     Proximity of the finding within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be used to match substrings of the finding itself. For example, the certainty of a phone number regex "(d{3}) d{3}-d{4}" could be adjusted upwards if the area code is known to be the local area code of a company office using the hotword regex "(xxx)", where "xxx" is the area code in question.
 
     Attributes
@@ -586,7 +586,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecInspectConfigRuleSetIte
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecOrganizationRef:
-    """
+    r"""
     Immutable. The Organization that this resource belongs to. Only one of [organizationRef, projectRef] may be specified.
 
     Attributes
@@ -609,7 +609,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecOrganizationRef:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to. Only one of [organizationRef, projectRef] may be specified.
 
     Attributes
@@ -631,7 +631,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateSpecProjectRef:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateStatus:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p inspect template status
 
     Attributes
@@ -661,7 +661,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateStatus:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPInspectTemplateStatusConditionsItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p inspect template status conditions items0
 
     Attributes

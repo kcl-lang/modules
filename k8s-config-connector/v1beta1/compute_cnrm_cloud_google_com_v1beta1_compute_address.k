@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeAddress:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute address
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeAddress:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute address spec
 
     Attributes
@@ -120,7 +120,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressSpecNetworkRef:
-    """
+    r"""
     The network in which to reserve the address. If global, the address
     must be within the RFC1918 IP space. The network cannot be deleted
     if there are any reserved IP ranges referring to it. This field can
@@ -146,7 +146,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressSpecNetworkRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressSpecSubnetworkRef:
-    """
+    r"""
     The subnetwork in which to reserve the address. If an IP address is
     specified, it must be within the subnetwork's IP range.  This field
     can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER
@@ -171,7 +171,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressSpecSubnetworkRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute address status
 
     Attributes
@@ -185,6 +185,8 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressStatus:
         internally during updates.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : ComputeCnrmCloudGoogleComV1beta1ComputeAddressStatusObservedState, default is Undefined, optional
+        observed state
     selfLink : str, default is Undefined, optional
         self link
     users : [str], default is Undefined, optional
@@ -200,13 +202,15 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressStatus:
 
     observedGeneration?: int
 
+    observedState?: ComputeCnrmCloudGoogleComV1beta1ComputeAddressStatusObservedState
+
     selfLink?: str
 
     users?: [str]
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute address status conditions items0
 
     Attributes
@@ -233,5 +237,21 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressStatusConditionsItems0:
     status?: str
 
     $type?: str
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressStatusObservedState:
+    r"""
+    The observed state of the underlying GCP resource.
+
+    Attributes
+    ----------
+    address : str, default is Undefined, optional
+        Immutable. The static external IP address represented by this resource.
+        The IP address must be inside the specified subnetwork,
+        if any. Set by the API if undefined.
+    """
+
+
+    address?: str
 
 

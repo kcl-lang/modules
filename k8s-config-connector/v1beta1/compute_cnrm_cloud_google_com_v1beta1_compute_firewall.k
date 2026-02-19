@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeFirewall:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute firewall
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeFirewall:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute firewall spec
 
     Attributes
@@ -146,7 +146,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallSpecAllowItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute firewall spec allow items0
 
     Attributes
@@ -173,7 +173,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallSpecAllowItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallSpecDenyItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute firewall spec deny items0
 
     Attributes
@@ -200,7 +200,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallSpecDenyItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallSpecLogConfig:
-    """
+    r"""
     This field denotes the logging options for a particular firewall rule.
     If defined, logging is enabled, and logs will be exported to Cloud Logging.
 
@@ -215,7 +215,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallSpecLogConfig:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallSpecNetworkRef:
-    """
+    r"""
     The network to attach this firewall to.
 
     Attributes
@@ -237,7 +237,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallSpecNetworkRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallSpecSourceServiceAccountsItems0:
-    """
+    r"""
     If source service accounts are specified, the firewall will apply only
     to traffic originating from an instance with a service account in this
     list. Source service accounts cannot be used to control traffic to an
@@ -269,7 +269,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallSpecSourceServiceAccountsI
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallSpecTargetServiceAccountsItems0:
-    """
+    r"""
     A list of service accounts indicating sets of instances located in the
     network that may make network connections as specified in allowed[].
     targetServiceAccounts cannot be used at the same time as targetTags or
@@ -296,7 +296,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallSpecTargetServiceAccountsI
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute firewall status
 
     Attributes
@@ -322,7 +322,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute firewall status conditions items0
 
     Attributes

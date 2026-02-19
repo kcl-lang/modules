@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IAPIdentityAwareProxyClient:
-    """
+    r"""
     iap cnrm cloud google com v1beta1 i a p identity aware proxy client
 
     Attributes
@@ -36,7 +36,7 @@ schema IAPIdentityAwareProxyClient:
 
 
 schema IapCnrmCloudGoogleComV1beta1IAPIdentityAwareProxyClientSpec:
-    """
+    r"""
     iap cnrm cloud google com v1beta1 i a p identity aware proxy client spec
 
     Attributes
@@ -58,7 +58,7 @@ schema IapCnrmCloudGoogleComV1beta1IAPIdentityAwareProxyClientSpec:
 
 
 schema IapCnrmCloudGoogleComV1beta1IAPIdentityAwareProxyClientSpecBrandRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -82,7 +82,7 @@ schema IapCnrmCloudGoogleComV1beta1IAPIdentityAwareProxyClientSpecBrandRef:
 
 
 schema IapCnrmCloudGoogleComV1beta1IAPIdentityAwareProxyClientStatus:
-    """
+    r"""
     iap cnrm cloud google com v1beta1 i a p identity aware proxy client status
 
     Attributes
@@ -104,7 +104,7 @@ schema IapCnrmCloudGoogleComV1beta1IAPIdentityAwareProxyClientStatus:
 
 
 schema IapCnrmCloudGoogleComV1beta1IAPIdentityAwareProxyClientStatusConditionsItems0:
-    """
+    r"""
     iap cnrm cloud google com v1beta1 i a p identity aware proxy client status conditions items0
 
     Attributes

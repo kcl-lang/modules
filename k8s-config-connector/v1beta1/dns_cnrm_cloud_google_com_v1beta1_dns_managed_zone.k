@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DNSManagedZone:
-    """
+    r"""
     dns cnrm cloud google com v1beta1 DNS managed zone
 
     Attributes
@@ -36,7 +36,7 @@ schema DNSManagedZone:
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpec:
-    """
+    r"""
     DNS cnrm cloud google com v1beta1 DNS managed zone spec
 
     Attributes
@@ -93,7 +93,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpec:
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecCloudLoggingConfig:
-    """
+    r"""
     Cloud logging configuration.
 
     Attributes
@@ -107,7 +107,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecCloudLoggingConfig:
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecDnssecConfig:
-    """
+    r"""
     DNSSEC configuration.
 
     Attributes
@@ -137,7 +137,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecDnssecConfig:
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecDnssecConfigDefaultKeySpecsItems0:
-    """
+    r"""
     DNS cnrm cloud google com v1beta1 DNS managed zone spec dnssec config default key specs items0
 
     Attributes
@@ -168,7 +168,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecDnssecConfigDefaultKeySpecs
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecForwardingConfig:
-    """
+    r"""
     The presence for this field indicates that outbound forwarding is enabled
     for this zone. The value of this field contains the set of destinations
     to forward to.
@@ -186,7 +186,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecForwardingConfig:
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecForwardingConfigTargetNameServersItems0:
-    """
+    r"""
     DNS cnrm cloud google com v1beta1 DNS managed zone spec forwarding config target name servers items0
 
     Attributes
@@ -206,7 +206,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecForwardingConfigTargetNameS
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPeeringConfig:
-    """
+    r"""
     The presence of this field indicates that DNS Peering is enabled for this
     zone. The value of this field contains the network to peer with.
 
@@ -221,7 +221,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPeeringConfig:
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPeeringConfigTargetNetwork:
-    """
+    r"""
     The network with which to peer.
 
     Attributes
@@ -235,7 +235,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPeeringConfigTargetNetwork:
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPeeringConfigTargetNetworkNetworkRef:
-    """
+    r"""
     VPC network to forward queries to.
 
     Attributes
@@ -257,7 +257,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPeeringConfigTargetNetworkN
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPrivateVisibilityConfig:
-    """
+    r"""
     For privately visible zones, the set of Virtual Private Cloud
     resources that the zone is visible from. At least one of 'gke_clusters' or 'networks' must be specified.
 
@@ -276,7 +276,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPrivateVisibilityConfig:
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPrivateVisibilityConfigGkeClustersItems0:
-    """
+    r"""
     DNS cnrm cloud google com v1beta1 DNS managed zone spec private visibility config gke clusters items0
 
     Attributes
@@ -290,7 +290,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPrivateVisibilityConfigGkeC
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPrivateVisibilityConfigGkeClustersItems0GkeClusterNameRef:
-    """
+    r"""
     The resource name of the cluster to bind this ManagedZone to.
     This should be specified in the format like
     'projects/*/locations/*/clusters/*'.
@@ -314,7 +314,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPrivateVisibilityConfigGkeC
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPrivateVisibilityConfigNetworksItems0:
-    """
+    r"""
     DNS cnrm cloud google com v1beta1 DNS managed zone spec private visibility config networks items0
 
     Attributes
@@ -328,7 +328,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPrivateVisibilityConfigNetw
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPrivateVisibilityConfigNetworksItems0NetworkRef:
-    """
+    r"""
     VPC network to bind to.
 
     Attributes
@@ -350,7 +350,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPrivateVisibilityConfigNetw
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecServiceDirectoryConfig:
-    """
+    r"""
     Immutable. The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
 
     Attributes
@@ -364,7 +364,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecServiceDirectoryConfig:
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecServiceDirectoryConfigNamespace:
-    """
+    r"""
     The namespace associated with the zone.
 
     Attributes
@@ -382,7 +382,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecServiceDirectoryConfigNames
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneStatus:
-    """
+    r"""
     DNS cnrm cloud google com v1beta1 DNS managed zone status
 
     Attributes
@@ -414,7 +414,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneStatus:
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneStatusConditionsItems0:
-    """
+    r"""
     DNS cnrm cloud google com v1beta1 DNS managed zone status conditions items0
 
     Attributes

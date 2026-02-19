@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema OSLoginSSHPublicKey:
-    """
+    r"""
     oslogin cnrm cloud google com v1alpha1 o s login SSH public key
 
     Attributes
@@ -36,7 +36,7 @@ schema OSLoginSSHPublicKey:
 
 
 schema OsloginCnrmCloudGoogleComV1alpha1OSLoginSSHPublicKeySpec:
-    """
+    r"""
     oslogin cnrm cloud google com v1alpha1 o s login SSH public key spec
 
     Attributes
@@ -66,7 +66,7 @@ schema OsloginCnrmCloudGoogleComV1alpha1OSLoginSSHPublicKeySpec:
 
 
 schema OsloginCnrmCloudGoogleComV1alpha1OSLoginSSHPublicKeyStatus:
-    """
+    r"""
     oslogin cnrm cloud google com v1alpha1 o s login SSH public key status
 
     Attributes
@@ -88,7 +88,7 @@ schema OsloginCnrmCloudGoogleComV1alpha1OSLoginSSHPublicKeyStatus:
 
 
 schema OsloginCnrmCloudGoogleComV1alpha1OSLoginSSHPublicKeyStatusConditionsItems0:
-    """
+    r"""
     oslogin cnrm cloud google com v1alpha1 o s login SSH public key status conditions items0
 
     Attributes

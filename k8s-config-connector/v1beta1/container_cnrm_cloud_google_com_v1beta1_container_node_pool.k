@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ContainerNodePool:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container node pool
 
     Attributes
@@ -36,7 +36,7 @@ schema ContainerNodePool:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpec:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container node pool spec
 
     Attributes
@@ -106,7 +106,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpec:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecAutoscaling:
-    """
+    r"""
     Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage. To disable autoscaling, set minNodeCount and maxNodeCount to 0.
 
     Attributes
@@ -136,7 +136,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecAutoscaling:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecClusterRef:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container node pool spec cluster ref
 
     Attributes
@@ -158,7 +158,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecClusterRef:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecManagement:
-    """
+    r"""
     Node management configuration, wherein auto-repair and auto-upgrade is configured.
 
     Attributes
@@ -176,7 +176,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecManagement:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfig:
-    """
+    r"""
     Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 
     Attributes
@@ -214,7 +214,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfig:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigAdditionalNodeNetworkConfigsItems0:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container node pool spec network config additional node network configs items0
 
     Attributes
@@ -232,7 +232,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigAddit
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigAdditionalNodeNetworkConfigsItems0NetworkRef:
-    """
+    r"""
     Immutable. Name of the VPC where the additional interface belongs.
 
     Attributes
@@ -254,7 +254,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigAddit
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigAdditionalNodeNetworkConfigsItems0SubnetworkRef:
-    """
+    r"""
     Immutable. Name of the subnetwork where the additional interface belongs.
 
     Attributes
@@ -276,7 +276,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigAddit
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigAdditionalPodNetworkConfigsItems0:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container node pool spec network config additional pod network configs items0
 
     Attributes
@@ -298,7 +298,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigAddit
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigAdditionalPodNetworkConfigsItems0SubnetworkRef:
-    """
+    r"""
     Immutable. Name of the subnetwork where the additional pod network belongs.
 
     Attributes
@@ -320,7 +320,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigAddit
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigPodCidrOverprovisionConfig:
-    """
+    r"""
     Immutable. Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited.
 
     Attributes
@@ -334,7 +334,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigPodCi
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfig:
-    """
+    r"""
     Immutable. The configuration of the nodepool.
 
     Attributes
@@ -343,6 +343,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfig:
         advanced machine features
     bootDiskKMSCryptoKeyRef : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigBootDiskKMSCryptoKeyRef, default is Undefined, optional
         boot disk k m s crypto key ref
+    confidentialNodes : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigConfidentialNodes, default is Undefined, optional
+        confidential nodes
     diskSizeGb : int, default is Undefined, optional
         Immutable. Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
     diskType : str, default is Undefined, optional
@@ -351,6 +353,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfig:
         ephemeral storage config
     ephemeralStorageLocalSsdConfig : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigEphemeralStorageLocalSsdConfig, default is Undefined, optional
         ephemeral storage local ssd config
+    fastSocket : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigFastSocket, default is Undefined, optional
+        fast socket
     gcfsConfig : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigGcfsConfig, default is Undefined, optional
         gcfs config
     guestAccelerator : [ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigGuestAcceleratorItems0], default is Undefined, optional
@@ -402,7 +406,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfig:
     tags : [str], default is Undefined, optional
         The list of instance tags applied to all nodes.
     taint : [ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigTaintItems0], default is Undefined, optional
-        Immutable. List of Kubernetes taints to be applied to each node.
+        List of Kubernetes taints to be applied to each node.
     workloadMetadataConfig : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigWorkloadMetadataConfig, default is Undefined, optional
         workload metadata config
     """
@@ -412,6 +416,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfig:
 
     bootDiskKMSCryptoKeyRef?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigBootDiskKMSCryptoKeyRef
 
+    confidentialNodes?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigConfidentialNodes
+
     diskSizeGb?: int
 
     diskType?: str
@@ -419,6 +425,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfig:
     ephemeralStorageConfig?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigEphemeralStorageConfig
 
     ephemeralStorageLocalSsdConfig?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigEphemeralStorageLocalSsdConfig
+
+    fastSocket?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigFastSocket
 
     gcfsConfig?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigGcfsConfig
 
@@ -476,21 +484,25 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfig:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigAdvancedMachineFeatures:
-    """
+    r"""
     Immutable. Specifies options for controlling advanced machine features.
 
     Attributes
     ----------
-    threadsPerCore : int, default is Undefined, required
+    enableNestedVirtualization : bool, default is Undefined, optional
+        Immutable. Whether or not to enable nested virtualization (defaults to false).
+    threadsPerCore : int, default is Undefined, optional
         Immutable. The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
     """
 
 
-    threadsPerCore: int
+    enableNestedVirtualization?: bool
+
+    threadsPerCore?: int
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigBootDiskKMSCryptoKeyRef:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container node pool spec node config boot disk k m s crypto key ref
 
     Attributes
@@ -511,8 +523,22 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigBootDisk
     namespace?: str
 
 
-schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigEphemeralStorageConfig:
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigConfidentialNodes:
+    r"""
+    Immutable. Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+
+    Attributes
+    ----------
+    enabled : bool, default is Undefined, required
+        Immutable. Whether Confidential Nodes feature is enabled for all nodes in this pool.
     """
+
+
+    enabled: bool
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigEphemeralStorageConfig:
+    r"""
     Immutable. Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
 
     Attributes
@@ -526,7 +552,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigEphemera
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigEphemeralStorageLocalSsdConfig:
-    """
+    r"""
     Immutable. Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
 
     Attributes
@@ -539,8 +565,22 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigEphemera
     localSsdCount: int
 
 
-schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigGcfsConfig:
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigFastSocket:
+    r"""
+    Enable or disable NCCL Fast Socket in the node pool.
+
+    Attributes
+    ----------
+    enabled : bool, default is Undefined, required
+        Whether or not NCCL Fast Socket is enabled.
     """
+
+
+    enabled: bool
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigGcfsConfig:
+    r"""
     Immutable. GCFS configuration for this node.
 
     Attributes
@@ -554,7 +594,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigGcfsConf
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigGuestAcceleratorItems0:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container node pool spec node config guest accelerator items0
 
     Attributes
@@ -584,7 +624,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigGuestAcc
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigGuestAcceleratorItems0GpuDriverInstallationConfig:
-    """
+    r"""
     Immutable. Configuration for auto installation of GPU driver.
 
     Attributes
@@ -598,7 +638,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigGuestAcc
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigGuestAcceleratorItems0GpuSharingConfig:
-    """
+    r"""
     Immutable. Configuration for GPU sharing.
 
     Attributes
@@ -616,7 +656,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigGuestAcc
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigGvnic:
-    """
+    r"""
     Immutable. Enable or disable gvnic in the node pool.
 
     Attributes
@@ -630,7 +670,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigGvnic:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigHostMaintenancePolicy:
-    """
+    r"""
     Immutable. The maintenance policy for the hosts on which the GKE VMs run on.
 
     Attributes
@@ -644,7 +684,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigHostMain
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigKubeletConfig:
-    """
+    r"""
     Node kubelet configs.
 
     Attributes
@@ -670,21 +710,25 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigKubeletC
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLinuxNodeConfig:
-    """
+    r"""
     Parameters that can be configured on Linux nodes.
 
     Attributes
     ----------
-    sysctls : {str:str}, default is Undefined, required
+    cgroupMode : str, default is Undefined, optional
+        cgroupMode specifies the cgroup mode to be used on the node.
+    sysctls : {str:str}, default is Undefined, optional
         The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
     """
 
 
-    sysctls: {str:str}
+    cgroupMode?: str
+
+    sysctls?: {str:str}
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLocalNvmeSsdBlockConfig:
-    """
+    r"""
     Immutable. Parameters for raw-block local NVMe SSDs.
 
     Attributes
@@ -698,7 +742,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLocalNvm
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigNodeGroupRef:
-    """
+    r"""
     Immutable. Setting this field will assign instances
     of this pool to run on the specified node group. This is useful
     for running workloads on sole tenant nodes.
@@ -722,7 +766,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigNodeGrou
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigReservationAffinity:
-    """
+    r"""
     Immutable. The reservation affinity configuration for the node pool.
 
     Attributes
@@ -744,7 +788,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigReservat
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigSandboxConfig:
-    """
+    r"""
     Immutable. Sandbox configuration for this node.
 
     Attributes
@@ -758,7 +802,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigSandboxC
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigServiceAccountRef:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container node pool spec node config service account ref
 
     Attributes
@@ -780,7 +824,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigServiceA
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigShieldedInstanceConfig:
-    """
+    r"""
     Immutable. Shielded Instance options.
 
     Attributes
@@ -798,7 +842,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigShielded
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigSoleTenantConfig:
-    """
+    r"""
     Immutable. Node affinity options for sole tenant node pools.
 
     Attributes
@@ -812,7 +856,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigSoleTena
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigSoleTenantConfigNodeAffinityItems0:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container node pool spec node config sole tenant config node affinity items0
 
     Attributes
@@ -834,17 +878,17 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigSoleTena
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigTaintItems0:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container node pool spec node config taint items0
 
     Attributes
     ----------
     effect : str, default is Undefined, required
-        Immutable. Effect for taint.
+        Effect for taint.
     key : str, default is Undefined, required
-        Immutable. Key for taint.
+        Key for taint.
     value : str, default is Undefined, required
-        Immutable. Value for taint.
+        Value for taint.
     """
 
 
@@ -856,7 +900,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigTaintIte
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigWorkloadMetadataConfig:
-    """
+    r"""
     The workload metadata configuration for this node.
 
     Attributes
@@ -874,7 +918,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigWorkload
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecPlacementPolicy:
-    """
+    r"""
     Immutable. Specifies the node placement policy.
 
     Attributes
@@ -896,7 +940,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecPlacementPolicy:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecPlacementPolicyPolicyNameRef:
-    """
+    r"""
     Immutable. If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
 
     Attributes
@@ -918,7 +962,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecPlacementPolicyPol
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecUpgradeSettings:
-    """
+    r"""
     Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
 
     Attributes
@@ -944,7 +988,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecUpgradeSettings:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecUpgradeSettingsBlueGreenSettings:
-    """
+    r"""
     Settings for BlueGreen node pool upgrade.
 
     Attributes
@@ -962,7 +1006,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecUpgradeSettingsBlu
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy:
-    """
+    r"""
     Standard rollout policy is the default policy for blue-green.
 
     Attributes
@@ -984,7 +1028,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecUpgradeSettingsBlu
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolStatus:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container node pool status
 
     Attributes
@@ -997,6 +1041,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolStatus:
         List of instance group URLs which have been assigned to this node pool.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolStatusObservedState, default is Undefined, optional
+        observed state
     operation : str, default is Undefined, optional
         operation
     """
@@ -1010,11 +1056,13 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolStatus:
 
     observedGeneration?: int
 
+    observedState?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolStatusObservedState
+
     operation?: str
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolStatusConditionsItems0:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container node pool status conditions items0
 
     Attributes
@@ -1041,5 +1089,19 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolStatusConditionsItems0
     status?: str
 
     $type?: str
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolStatusObservedState:
+    r"""
+    The observed state of the underlying GCP resource.
+
+    Attributes
+    ----------
+    version : str, default is Undefined, optional
+        version
+    """
+
+
+    version?: str
 
 

@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DataflowFlexTemplateJob:
-    """
-    dataflow cnrm cloud google com v1beta1 dataflow flex template job
+    r"""
+    DataflowFlexTemplateJob is the Schema for the DataflowFlexTemplateJob API
 
     Attributes
     ----------
@@ -36,35 +36,35 @@ schema DataflowFlexTemplateJob:
 
 
 schema DataflowCnrmCloudGoogleComV1beta1DataflowFlexTemplateJobSpec:
-    """
-    dataflow cnrm cloud google com v1beta1 dataflow flex template job spec
+    r"""
+    DataflowFlexTemplateJobSpec defines the desired state of DataflowFlexTemplateJob
 
     Attributes
     ----------
     additionalExperiments : [str], default is Undefined, optional
-        List of experiments that should be used by the job. An example value is ["enable_stackdriver_agent_metrics"].
+        Additional experiment flags for the job.
     autoscalingAlgorithm : str, default is Undefined, optional
-        The algorithm to use for autoscaling.
+        The algorithm to use for autoscaling
     containerSpecGcsPath : str, default is Undefined, required
-        container spec gcs path
+        Cloud Storage path to a file with json serialized ContainerSpec as content.
     enableStreamingEngine : bool, default is Undefined, optional
-        Immutable. Indicates if the job should use the streaming engine feature.
+        Whether to enable Streaming Engine for the job.
     ipConfiguration : str, default is Undefined, optional
-        The configuration for VM IPs. Options are "WORKER_IP_PUBLIC" or "WORKER_IP_PRIVATE".
+        Configuration for VM IPs.
     kmsKeyNameRef : DataflowCnrmCloudGoogleComV1beta1DataflowFlexTemplateJobSpecKmsKeyNameRef, default is Undefined, optional
         kms key name ref
     launcherMachineType : str, default is Undefined, optional
         The machine type to use for launching the job. The default is n1-standard-1.
     machineType : str, default is Undefined, optional
-        The machine type to use for the job.
+        The machine type to use for the job. Defaults to the value from the template if not specified.
     maxWorkers : int, default is Undefined, optional
-        Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
+        The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
     networkRef : DataflowCnrmCloudGoogleComV1beta1DataflowFlexTemplateJobSpecNetworkRef, default is Undefined, optional
         network ref
     numWorkers : int, default is Undefined, optional
-        Immutable. The initial number of Google Compute Engine instances for the job.
+        The initial number of Google Compute Engine instances for the job.
     parameters : any, default is Undefined, optional
-        parameters
+        The parameters for FlexTemplate. Ex. {"num_workers":"5"}
     region : str, default is Undefined, optional
         Immutable. The region in which the created job should run.
     sdkContainerImage : str, default is Undefined, optional
@@ -72,13 +72,13 @@ schema DataflowCnrmCloudGoogleComV1beta1DataflowFlexTemplateJobSpec:
     serviceAccountEmailRef : DataflowCnrmCloudGoogleComV1beta1DataflowFlexTemplateJobSpecServiceAccountEmailRef, default is Undefined, optional
         service account email ref
     stagingLocation : str, default is Undefined, optional
-        The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
+        The Cloud Storage path for staging local files. Must be a valid Cloud Storage URL, beginning with `gs://`.
     subnetworkRef : DataflowCnrmCloudGoogleComV1beta1DataflowFlexTemplateJobSpecSubnetworkRef, default is Undefined, optional
         subnetwork ref
     tempLocation : str, default is Undefined, optional
-        The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
+        The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
     transformNameMapping : any, default is Undefined, optional
-        Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
+        Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. Only applicable when updating a pipeline.
     """
 
 
@@ -122,17 +122,17 @@ schema DataflowCnrmCloudGoogleComV1beta1DataflowFlexTemplateJobSpec:
 
 
 schema DataflowCnrmCloudGoogleComV1beta1DataflowFlexTemplateJobSpecKmsKeyNameRef:
-    """
-    The name for the Cloud KMS key for the job.
+    r"""
+    The Cloud KMS key for the job.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `KMSCryptoKey` resource.
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` of a `KMSCryptoKey` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` of a `KMSCryptoKey` resource.
     """
 
 
@@ -144,17 +144,17 @@ schema DataflowCnrmCloudGoogleComV1beta1DataflowFlexTemplateJobSpecKmsKeyNameRef
 
 
 schema DataflowCnrmCloudGoogleComV1beta1DataflowFlexTemplateJobSpecNetworkRef:
-    """
-    dataflow cnrm cloud google com v1beta1 dataflow flex template job spec network ref
+    r"""
+    Network to which VMs will be assigned.  If empty or unspecified, the service will use the network "default".
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -166,13 +166,13 @@ schema DataflowCnrmCloudGoogleComV1beta1DataflowFlexTemplateJobSpecNetworkRef:
 
 
 schema DataflowCnrmCloudGoogleComV1beta1DataflowFlexTemplateJobSpecServiceAccountEmailRef:
-    """
-    dataflow cnrm cloud google com v1beta1 dataflow flex template job spec service account email ref
+    r"""
+    The email address of the service account to run the job as.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `email` field of an `IAMServiceAccount` resource.
+        The `email` field of an `IAMServiceAccount` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -188,17 +188,17 @@ schema DataflowCnrmCloudGoogleComV1beta1DataflowFlexTemplateJobSpecServiceAccoun
 
 
 schema DataflowCnrmCloudGoogleComV1beta1DataflowFlexTemplateJobSpecSubnetworkRef:
-    """
-    dataflow cnrm cloud google com v1beta1 dataflow flex template job spec subnetwork ref
+    r"""
+    Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeSubnetwork` resource.
+        The ComputeSubnetwork selflink of form "projects/{{project}}/regions/{{region}}/subnetworks/{{name}}", when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `ComputeSubnetwork` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `ComputeSubnetwork` resource.
     """
 
 
@@ -210,21 +210,31 @@ schema DataflowCnrmCloudGoogleComV1beta1DataflowFlexTemplateJobSpecSubnetworkRef
 
 
 schema DataflowCnrmCloudGoogleComV1beta1DataflowFlexTemplateJobStatus:
-    """
-    dataflow cnrm cloud google com v1beta1 dataflow flex template job status
+    r"""
+    DataflowFlexTemplateJobStatus defines the config connector machine state of DataflowFlexTemplateJob
 
     Attributes
     ----------
     conditions : [DataflowCnrmCloudGoogleComV1beta1DataflowFlexTemplateJobStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     jobId : str, default is Undefined, optional
         job Id
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     state : str, default is Undefined, optional
-        state
+        The current state of the job.
+
+         Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise
+         specified.
+
+         A job in the `JOB_STATE_RUNNING` state may asynchronously enter a
+         terminal state. After a job has reached a terminal state, no
+         further state updates may be made.
+
+         This field may be mutated by the Cloud Dataflow service;
+         callers cannot mutate it.
     $type : str, default is Undefined, optional
-        The type of this job, selected from the JobType enum.
+        The type of Cloud Dataflow job.
     """
 
 
@@ -240,7 +250,7 @@ schema DataflowCnrmCloudGoogleComV1beta1DataflowFlexTemplateJobStatus:
 
 
 schema DataflowCnrmCloudGoogleComV1beta1DataflowFlexTemplateJobStatusConditionsItems0:
-    """
+    r"""
     dataflow cnrm cloud google com v1beta1 dataflow flex template job status conditions items0
 
     Attributes

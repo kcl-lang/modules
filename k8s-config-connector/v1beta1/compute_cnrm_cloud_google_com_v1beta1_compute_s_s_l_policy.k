@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeSSLPolicy:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute s s l policy
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeSSLPolicy:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLPolicySpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute s s l policy spec
 
     Attributes
@@ -83,7 +83,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLPolicySpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLPolicyStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute s s l policy status
 
     Attributes
@@ -118,7 +118,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLPolicyStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLPolicyStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute s s l policy status conditions items0
 
     Attributes

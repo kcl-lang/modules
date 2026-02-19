@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IdentityPlatformTenantOAuthIDPConfig:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform tenant o auth ID p config
 
     Attributes
@@ -36,7 +36,7 @@ schema IdentityPlatformTenantOAuthIDPConfig:
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformTenantOAuthIDPConfigSpec:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform tenant o auth ID p config spec
 
     Attributes
@@ -78,7 +78,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformTenantOAuthIDPCo
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformTenantOAuthIDPConfigSpecClientSecret:
-    """
+    r"""
     The client secret of the OAuth client, to enable OIDC code flow.
 
     Attributes
@@ -96,7 +96,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformTenantOAuthIDPCo
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformTenantOAuthIDPConfigSpecClientSecretValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -110,7 +110,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformTenantOAuthIDPCo
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformTenantOAuthIDPConfigSpecClientSecretValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -128,7 +128,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformTenantOAuthIDPCo
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformTenantOAuthIDPConfigSpecResponseType:
-    """
+    r"""
     The multiple response type to request for in the OAuth authorization flow. This can possibly be a combination of set bits (e.g.: {id\_token, token}).
 
     Attributes
@@ -150,7 +150,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformTenantOAuthIDPCo
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformTenantOAuthIDPConfigSpecTenantRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -174,7 +174,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformTenantOAuthIDPCo
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformTenantOAuthIDPConfigStatus:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform tenant o auth ID p config status
 
     Attributes
@@ -192,7 +192,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformTenantOAuthIDPCo
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformTenantOAuthIDPConfigStatusConditionsItems0:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform tenant o auth ID p config status conditions items0
 
     Attributes

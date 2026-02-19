@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema HealthcareConsentStore:
-    """
+    r"""
     healthcare cnrm cloud google com v1alpha1 healthcare consent store
 
     Attributes
@@ -36,7 +36,7 @@ schema HealthcareConsentStore:
 
 
 schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareConsentStoreSpec:
-    """
+    r"""
     healthcare cnrm cloud google com v1alpha1 healthcare consent store spec
 
     Attributes
@@ -65,7 +65,7 @@ schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareConsentStoreSpec:
 
 
 schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareConsentStoreStatus:
-    """
+    r"""
     healthcare cnrm cloud google com v1alpha1 healthcare consent store status
 
     Attributes
@@ -83,7 +83,7 @@ schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareConsentStoreStatus:
 
 
 schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareConsentStoreStatusConditionsItems0:
-    """
+    r"""
     healthcare cnrm cloud google com v1alpha1 healthcare consent store status conditions items0
 
     Attributes

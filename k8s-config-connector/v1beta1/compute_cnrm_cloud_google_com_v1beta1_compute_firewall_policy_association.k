@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeFirewallPolicyAssociation:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute firewall policy association
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeFirewallPolicyAssociation:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyAssociationSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute firewall policy association spec
 
     Attributes
@@ -58,7 +58,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyAssociationSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyAssociationSpecAttachmentTargetRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -89,7 +89,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyAssociationSpecAttac
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyAssociationSpecFirewallPolicyRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -113,7 +113,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyAssociationSpecFirew
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyAssociationStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute firewall policy association status
 
     Attributes
@@ -135,7 +135,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyAssociationStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyAssociationStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute firewall policy association status conditions items0
 
     Attributes

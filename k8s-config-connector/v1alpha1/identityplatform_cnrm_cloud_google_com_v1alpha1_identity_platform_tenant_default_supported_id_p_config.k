@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IdentityPlatformTenantDefaultSupportedIDPConfig:
-    """
+    r"""
     identityplatform cnrm cloud google com v1alpha1 identity platform tenant default supported ID p config
 
     Attributes
@@ -36,7 +36,7 @@ schema IdentityPlatformTenantDefaultSupportedIDPConfig:
 
 
 schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformTenantDefaultSupportedIDPConfigSpec:
-    """
+    r"""
     identityplatform cnrm cloud google com v1alpha1 identity platform tenant default supported ID p config spec
 
     Attributes
@@ -70,7 +70,7 @@ schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformTenantDefaultSu
 
 
 schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformTenantDefaultSupportedIDPConfigSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -92,7 +92,7 @@ schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformTenantDefaultSu
 
 
 schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformTenantDefaultSupportedIDPConfigStatus:
-    """
+    r"""
     identityplatform cnrm cloud google com v1alpha1 identity platform tenant default supported ID p config status
 
     Attributes
@@ -114,7 +114,7 @@ schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformTenantDefaultSu
 
 
 schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformTenantDefaultSupportedIDPConfigStatusConditionsItems0:
-    """
+    r"""
     identityplatform cnrm cloud google com v1alpha1 identity platform tenant default supported ID p config status conditions items0
 
     Attributes

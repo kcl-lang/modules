@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AccessContextManagerGCPUserAccessBinding:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1alpha1 access context manager g c p user access binding
 
     Attributes
@@ -36,7 +36,7 @@ schema AccessContextManagerGCPUserAccessBinding:
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1alpha1AccessContextManagerGCPUserAccessBindingSpec:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1alpha1 access context manager g c p user access binding spec
 
     Attributes
@@ -62,7 +62,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1alpha1AccessContextManagerGCPUser
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1alpha1AccessContextManagerGCPUserAccessBindingSpecOrganizationRef:
-    """
+    r"""
     The organization that this resource belongs to.
 
     Attributes
@@ -84,7 +84,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1alpha1AccessContextManagerGCPUser
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1alpha1AccessContextManagerGCPUserAccessBindingStatus:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1alpha1 access context manager g c p user access binding status
 
     Attributes
@@ -106,7 +106,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1alpha1AccessContextManagerGCPUser
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1alpha1AccessContextManagerGCPUserAccessBindingStatusConditionsItems0:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1alpha1 access context manager g c p user access binding status conditions items0
 
     Attributes

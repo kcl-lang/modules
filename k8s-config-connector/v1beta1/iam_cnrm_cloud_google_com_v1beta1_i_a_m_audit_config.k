@@ -4,10 +4,11 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
 
 
 schema IAMAuditConfig:
-    """
+    r"""
     IAMAuditConfig is the schema for the IAM audit logging API.
 
     Attributes
@@ -37,7 +38,7 @@ schema IAMAuditConfig:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMAuditConfigSpec:
-    """
+    r"""
     IAMAuditConfigSpec defines the desired state of IAMAuditConfig.
 
     Attributes
@@ -47,7 +48,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMAuditConfigSpec:
     resourceRef : IamCnrmCloudGoogleComV1beta1IAMAuditConfigSpecResourceRef, default is Undefined, required
         resource ref
     service : str, default is Undefined, required
-        Immutable. Required. The service for which to enable Data Access audit logs. The special value 'allServices' covers all services. Note that if there are audit configs covering both 'allServices' and a specific service, then the union of the two audit configs is used for that service: the 'logTypes' specified in each 'auditLogConfig' are enabled, and the 'exemptedMembers' in each 'auditLogConfg' are exempted.
+        Immutable. Required. The service for which to enable Data Access audit logs. The special value 'allServices' covers all services. Note that if there are audit configs covering both 'allServices' and a specific service, then the union of the two audit configs is used for that service: the 'logTypes' specified in each 'auditLogConfig' are enabled, and the 'exemptedMembers' in each 'auditLogConfig' are exempted.
     """
 
 
@@ -59,7 +60,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMAuditConfigSpec:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMAuditConfigSpecAuditLogConfigsItems0:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m audit config spec audit log configs items0
 
     Attributes
@@ -77,21 +78,21 @@ schema IamCnrmCloudGoogleComV1beta1IAMAuditConfigSpecAuditLogConfigsItems0:
 
 
     check:
-        regex.match(str(logType), r"^(DATA_READ|DATA_WRITE|ADMIN_READ)$")
+        _regex_match(str(logType), r"^(DATA_READ|DATA_WRITE|ADMIN_READ)$")
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMAuditConfigSpecResourceRef:
-    """
+    r"""
     Immutable. Required. The GCP resource to set the IAMAuditConfig on (e.g. project).
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        api version
+        APIVersion of the referenced resource
     external : str, default is Undefined, optional
-        external
+        The external name of the referenced resource
     kind : str, default is Undefined, required
-        kind
+        Kind of the referenced resource
     name : str, default is Undefined, optional
         name
     namespace : str, default is Undefined, optional
@@ -111,7 +112,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMAuditConfigSpecResourceRef:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMAuditConfigStatus:
-    """
+    r"""
     IAMAuditConfigStatus defines the observed state of IAMAuditConfig.
 
     Attributes
@@ -129,7 +130,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMAuditConfigStatus:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMAuditConfigStatusConditionsItems0:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m audit config status conditions items0
 
     Attributes

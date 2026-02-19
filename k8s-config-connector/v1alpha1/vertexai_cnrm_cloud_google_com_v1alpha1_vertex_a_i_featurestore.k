@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema VertexAIFeaturestore:
-    """
-    vertexai cnrm cloud google com v1alpha1 vertex a i featurestore
+    r"""
+    VertexAIFeaturestore is the Schema for the VertexAIFeaturestore API
 
     Attributes
     ----------
@@ -36,65 +36,98 @@ schema VertexAIFeaturestore:
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreSpec:
-    """
-    vertexai cnrm cloud google com v1alpha1 vertex a i featurestore spec
+    r"""
+    VertexAIFeaturestoreSpec defines the desired state of VertexAIFeaturestore
 
     Attributes
     ----------
     encryptionSpec : VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreSpecEncryptionSpec, default is Undefined, optional
         encryption spec
-    forceDestroy : bool, default is Undefined, optional
-        If set to true, any EntityTypes and Features for this Featurestore will also be deleted.
+    labels : {str:str}, default is Undefined, optional
+        Optional. The labels with user-defined metadata to organize your
+         Featurestore.
+
+         Label keys and values can be no longer than 64 characters
+         (Unicode codepoints), can only contain lowercase letters, numeric
+         characters, underscores and dashes. International characters are allowed.
+
+         See https://goo.gl/xmQnxf for more information on and examples of labels.
+         No more than 64 user labels can be associated with one Featurestore(System
+         labels are excluded)."
+         System reserved label keys are prefixed with "aiplatform.googleapis.com/"
+         and are immutable.
+    location : str, default is Undefined, required
+        The location for the resource.
     onlineServingConfig : VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreSpecOnlineServingConfig, default is Undefined, optional
         online serving config
-    onlineStorageTtlDays : int, default is Undefined, optional
-        TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days.
+    onlineStorageTTLDays : int, default is Undefined, optional
+        Optional. TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than `online_storage_ttl_days` since the feature generation time. Note that `online_storage_ttl_days` should be less than or equal to `offline_storage_ttl_days` for each EntityType under a featurestore. If not set, default to 4000 days
     projectRef : VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreSpecProjectRef, default is Undefined, required
         project ref
-    region : str, default is Undefined, required
-        Immutable. The region of the dataset. eg us-central1.
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The VertexAIFeaturestore name. If not given, the metadata.name will be used.
     """
 
 
     encryptionSpec?: VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreSpecEncryptionSpec
 
-    forceDestroy?: bool
+    labels?: {str:str}
+
+    location: str
 
     onlineServingConfig?: VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreSpecOnlineServingConfig
 
-    onlineStorageTtlDays?: int
+    onlineStorageTTLDays?: int
 
     projectRef: VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreSpecProjectRef
-
-    region: str
 
     resourceID?: str
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreSpecEncryptionSpec:
-    """
-    If set, both of the online and offline data storage will be secured by this key.
+    r"""
+    Optional. Customer-managed encryption key spec for data storage. If set, both of the online and offline data storage will be secured by this key.
 
     Attributes
     ----------
-    kmsKeyName : str, default is Undefined, required
-        The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
+    kmsKeyRef : VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreSpecEncryptionSpecKmsKeyRef, default is Undefined, required
+        kms key ref
     """
 
 
-    kmsKeyName: str
+    kmsKeyRef: VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreSpecEncryptionSpecKmsKeyRef
+
+
+schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreSpecEncryptionSpecKmsKeyRef:
+    r"""
+    Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. The key needs to be in the same region as where the compute resource is created.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
+    name : str, default is Undefined, optional
+        The `name` of a `KMSCryptoKey` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` of a `KMSCryptoKey` resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreSpecOnlineServingConfig:
-    """
-    Config for online serving resources.
+    r"""
+    Optional. Config for online storage resources. The field should not co-exist with the field of `OnlineStoreReplicationConfig`. If both of it and OnlineStoreReplicationConfig are unset, the feature store will not have an online store and cannot be used for online serving.
 
     Attributes
     ----------
     fixedNodeCount : int, default is Undefined, optional
-        The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
+        The number of nodes for the online store. The number of nodes doesn't scale automatically, but you can manually update the number of nodes. If set to 0, the featurestore will not have an online store and cannot be used for online serving.
     scaling : VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreSpecOnlineServingConfigScaling, default is Undefined, optional
         scaling
     """
@@ -106,39 +139,47 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreSpecOnlineServingCo
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreSpecOnlineServingConfigScaling:
-    """
-    Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
+    r"""
+    Online serving scaling configuration. Only one of `fixed_node_count` and `scaling` can be set. Setting one will reset the other.
 
     Attributes
     ----------
-    maxNodeCount : int, default is Undefined, required
-        The maximum number of nodes to scale up to. Must be greater than minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
-    minNodeCount : int, default is Undefined, required
-        The minimum number of nodes to scale down to. Must be greater than or equal to 1.
+    cpuUtilizationTarget : int, default is Undefined, optional
+        Optional. The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set or set to 0, default to 50.
+    maxNodeCount : int, default is Undefined, optional
+        The maximum number of nodes to scale up to. Must be greater than min_node_count, and less than or equal to 10 times of 'min_node_count'.
+    minNodeCount : int, default is Undefined, optional
+        Required. The minimum number of nodes to scale down to. Must be greater than or equal to 1.
     """
 
 
-    maxNodeCount: int
+    cpuUtilizationTarget?: int
 
-    minNodeCount: int
+    maxNodeCount?: int
+
+    minNodeCount?: int
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreSpecProjectRef:
-    """
-    The project that this resource belongs to.
+    r"""
+    The Project that this resource belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
     external?: str
+
+    kind?: str
 
     name?: str
 
@@ -146,37 +187,33 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreSpecProjectRef:
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreStatus:
-    """
-    vertexai cnrm cloud google com v1alpha1 vertex a i featurestore status
+    r"""
+    VertexAIFeaturestoreStatus defines the config connector machine state of VertexAIFeaturestore
 
     Attributes
     ----------
     conditions : [VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
-    createTime : str, default is Undefined, optional
-        The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-    etag : str, default is Undefined, optional
-        Used to perform consistent read-modify-write updates.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the VertexAIFeaturestore resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
-    updateTime : str, default is Undefined, optional
-        The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+    observedState : VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreStatusConditionsItems0]
 
-    createTime?: str
-
-    etag?: str
+    externalRef?: str
 
     observedGeneration?: int
 
-    updateTime?: str
+    observedState?: VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreStatusObservedState
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreStatusConditionsItems0:
-    """
+    r"""
     vertexai cnrm cloud google com v1alpha1 vertex a i featurestore status conditions items0
 
     Attributes
@@ -203,5 +240,27 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreStatusConditionsIte
     status?: str
 
     $type?: str
+
+
+schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    createTime : str, default is Undefined, optional
+        Output only. Timestamp when this Featurestore was created.
+    state : str, default is Undefined, optional
+        Output only. State of the featurestore.
+    updateTime : str, default is Undefined, optional
+        Output only. Timestamp when this Featurestore was last updated.
+    """
+
+
+    createTime?: str
+
+    state?: str
+
+    updateTime?: str
 
 

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeInstance:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeInstance:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance spec
 
     Attributes
@@ -158,7 +158,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecAdvancedMachineFeatures:
-    """
+    r"""
     Controls for advanced machine-related behavior features.
 
     Attributes
@@ -180,7 +180,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecAdvancedMachineFeature
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecAttachedDiskItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance spec attached disk items0
 
     Attributes
@@ -214,7 +214,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecAttachedDiskItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecAttachedDiskItems0DiskEncryptionKeyRaw:
-    """
+    r"""
     A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
 
     Attributes
@@ -232,7 +232,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecAttachedDiskItems0Disk
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecAttachedDiskItems0DiskEncryptionKeyRawValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -246,7 +246,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecAttachedDiskItems0Disk
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecAttachedDiskItems0DiskEncryptionKeyRawValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -264,7 +264,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecAttachedDiskItems0Disk
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecAttachedDiskItems0KmsKeyRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance spec attached disk items0 kms key ref
 
     Attributes
@@ -286,7 +286,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecAttachedDiskItems0KmsK
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecAttachedDiskItems0SourceDiskRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance spec attached disk items0 source disk ref
 
     Attributes
@@ -308,7 +308,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecAttachedDiskItems0Sour
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecBootDisk:
-    """
+    r"""
     Immutable. The boot disk for the instance.
 
     Attributes
@@ -350,7 +350,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecBootDisk:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecBootDiskDiskEncryptionKeyRaw:
-    """
+    r"""
     Immutable. A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
 
     Attributes
@@ -368,7 +368,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecBootDiskDiskEncryption
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecBootDiskDiskEncryptionKeyRawValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -382,7 +382,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecBootDiskDiskEncryption
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecBootDiskDiskEncryptionKeyRawValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -400,7 +400,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecBootDiskDiskEncryption
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecBootDiskInitializeParams:
-    """
+    r"""
     Immutable. Parameters with which a disk was created alongside the instance.
 
     Attributes
@@ -430,7 +430,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecBootDiskInitializePara
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecBootDiskInitializeParamsSourceImageRef:
-    """
+    r"""
     Immutable. The image from which to initialize this disk.
 
     Attributes
@@ -452,7 +452,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecBootDiskInitializePara
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecBootDiskKmsKeyRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance spec boot disk kms key ref
 
     Attributes
@@ -474,7 +474,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecBootDiskKmsKeyRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecBootDiskSourceDiskRef:
-    """
+    r"""
     Immutable. The source disk used to create this disk.
 
     Attributes
@@ -496,7 +496,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecBootDiskSourceDiskRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecConfidentialInstanceConfig:
-    """
+    r"""
     Immutable. The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
 
     Attributes
@@ -510,7 +510,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecConfidentialInstanceCo
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecGuestAcceleratorItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance spec guest accelerator items0
 
     Attributes
@@ -518,7 +518,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecGuestAcceleratorItems0
     count : int, default is Undefined, required
         Immutable. The number of the guest accelerator cards exposed to this instance.
     $type : str, default is Undefined, required
-        Immutable. The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
+        Immutable. The accelerator type resource exposed to this instance. E.g. nvidia-tesla-t4.
     """
 
 
@@ -528,7 +528,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecGuestAcceleratorItems0
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecInstanceTemplateRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance spec instance template ref
 
     Attributes
@@ -550,7 +550,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecInstanceTemplateRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecMetadataItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance spec metadata items0
 
     Attributes
@@ -568,7 +568,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecMetadataItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance spec network interface items0
 
     Attributes
@@ -577,10 +577,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0
         Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
     aliasIpRange : [ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0AliasIPRangeItems0], default is Undefined, optional
         An array of alias IP ranges for this network interface.
+    internalIpv6PrefixLength : int, default is Undefined, optional
+        The prefix length of the primary internal IPv6 range.
     ipv6AccessConfig : [ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0IPV6AccessConfigItems0], default is Undefined, optional
         An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
     ipv6AccessType : str, default is Undefined, optional
         One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+    ipv6Address : str, default is Undefined, optional
+        An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
     name : str, default is Undefined, optional
         The name of the interface.
     networkIp : str, default is Undefined, optional
@@ -606,9 +610,13 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0
 
     aliasIpRange?: [ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0AliasIPRangeItems0]
 
+    internalIpv6PrefixLength?: int
+
     ipv6AccessConfig?: [ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0IPV6AccessConfigItems0]
 
     ipv6AccessType?: str
+
+    ipv6Address?: str
 
     name?: str
 
@@ -630,7 +638,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0AccessConfigItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance spec network interface items0 access config items0
 
     Attributes
@@ -652,7 +660,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0AccessConfigItems0NatIPRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance spec network interface items0 access config items0 nat IP ref
 
     Attributes
@@ -674,7 +682,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0AliasIPRangeItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance spec network interface items0 alias IP range items0
 
     Attributes
@@ -692,7 +700,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0IPV6AccessConfigItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance spec network interface items0 IP v6 access config items0
 
     Attributes
@@ -722,7 +730,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0NetworkIPRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance spec network interface items0 network IP ref
 
     Attributes
@@ -748,7 +756,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0NetworkRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance spec network interface items0 network ref
 
     Attributes
@@ -770,7 +778,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0SubnetworkRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance spec network interface items0 subnetwork ref
 
     Attributes
@@ -792,7 +800,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkPerformanceConfig:
-    """
+    r"""
     Immutable. Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
 
     Attributes
@@ -806,7 +814,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkPerformanceConf
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecParams:
-    """
+    r"""
     Immutable. Stores additional params passed with the request, but not persisted as part of resource payload.
 
     Attributes
@@ -820,7 +828,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecParams:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecReservationAffinity:
-    """
+    r"""
     Immutable. Specifies the reservations that this instance can consume from.
 
     Attributes
@@ -838,7 +846,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecReservationAffinity:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecReservationAffinitySpecificReservation:
-    """
+    r"""
     Immutable. Specifies the label selector for the reservation to use.
 
     Attributes
@@ -856,7 +864,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecReservationAffinitySpe
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecResourcePoliciesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance spec resource policies items0
 
     Attributes
@@ -878,7 +886,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecResourcePoliciesItems0
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecScheduling:
-    """
+    r"""
     The scheduling strategy being used by the instance.
 
     Attributes
@@ -928,7 +936,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecScheduling:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecSchedulingLocalSsdRecoveryTimeout:
-    """
+    r"""
     Immutable. Specifies the maximum amount of time a Local Ssd Vm should wait while
       recovery of the Local Ssd state is attempted. Its value should be in
       between 0 and 168 hours with hour granularity and the default value being 1
@@ -953,7 +961,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecSchedulingLocalSsdReco
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecSchedulingMaxRunDuration:
-    """
+    r"""
     Immutable. The timeout for new network connections to hosts.
 
     Attributes
@@ -975,7 +983,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecSchedulingMaxRunDurati
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecSchedulingNodeAffinitiesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance spec scheduling node affinities items0
 
     Attributes
@@ -989,7 +997,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecSchedulingNodeAffiniti
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecScratchDiskItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance spec scratch disk items0
 
     Attributes
@@ -1007,7 +1015,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecScratchDiskItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecServiceAccount:
-    """
+    r"""
     The service account to attach to the instance.
 
     Attributes
@@ -1025,7 +1033,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecServiceAccount:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecServiceAccountServiceAccountRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance spec service account service account ref
 
     Attributes
@@ -1047,7 +1055,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecServiceAccountServiceA
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecShieldedInstanceConfig:
-    """
+    r"""
     The shielded vm config being used by the instance.
 
     Attributes
@@ -1069,7 +1077,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecShieldedInstanceConfig
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance status
 
     Attributes
@@ -1079,6 +1087,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceStatus:
     cpuPlatform : str, default is Undefined, optional
         The CPU platform used by this instance.
     currentStatus : str, default is Undefined, optional
+
         					Current status of the instance.
         					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
         					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
@@ -1117,7 +1126,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance status conditions items0
 
     Attributes

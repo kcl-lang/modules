@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeNodeGroup:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute node group
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeNodeGroup:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute node group spec
 
     Attributes
@@ -86,7 +86,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpecAutoscalingPolicy:
-    """
+    r"""
     Immutable. If you use sole-tenant nodes for your workloads, you can use the node
     group autoscaler to automatically manage the sizes of your node groups.
 
@@ -116,7 +116,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpecAutoscalingPolicy:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpecMaintenanceWindow:
-    """
+    r"""
     Immutable. contains properties for the timeframe of maintenance.
 
     Attributes
@@ -130,7 +130,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpecMaintenanceWindow:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpecNodeTemplateRef:
-    """
+    r"""
     The node template to which this node group belongs.
 
     Attributes
@@ -152,7 +152,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpecNodeTemplateRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpecShareSettings:
-    """
+    r"""
     Immutable. Share settings for the node group.
 
     Attributes
@@ -170,7 +170,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpecShareSettings:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpecShareSettingsProjectMapItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute node group spec share settings project map items0
 
     Attributes
@@ -188,7 +188,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpecShareSettingsProjectM
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpecShareSettingsProjectMapItems0IDRef:
-    """
+    r"""
     The key of this project config in the parent map.
 
     Attributes
@@ -210,7 +210,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpecShareSettingsProjectM
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpecShareSettingsProjectMapItems0ProjectIDRef:
-    """
+    r"""
     The project id/number should be the same as the key of this project
     config in the project map.
 
@@ -233,7 +233,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpecShareSettingsProjectM
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute node group status
 
     Attributes
@@ -259,7 +259,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute node group status conditions items0
 
     Attributes

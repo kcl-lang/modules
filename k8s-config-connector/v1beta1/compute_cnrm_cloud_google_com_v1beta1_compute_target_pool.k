@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeTargetPool:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target pool
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeTargetPool:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target pool spec
 
     Attributes
@@ -82,7 +82,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolSpecBackupTargetPoolRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target pool spec backup target pool ref
 
     Attributes
@@ -104,7 +104,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolSpecBackupTargetPoolRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolSpecHealthChecksItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target pool spec health checks items0
 
     Attributes
@@ -118,7 +118,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolSpecHealthChecksItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolSpecHealthChecksItems0HTTPHealthCheckRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target pool spec health checks items0 HTTP health check ref
 
     Attributes
@@ -140,7 +140,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolSpecHealthChecksItems0HT
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolSpecInstancesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target pool spec instances items0
 
     Attributes
@@ -162,7 +162,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolSpecInstancesItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolSpecSecurityPolicyRef:
-    """
+    r"""
     The resource URL for the security policy associated with this target pool.
 
     Attributes
@@ -184,7 +184,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolSpecSecurityPolicyRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target pool status
 
     Attributes
@@ -206,7 +206,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target pool status conditions items0
 
     Attributes

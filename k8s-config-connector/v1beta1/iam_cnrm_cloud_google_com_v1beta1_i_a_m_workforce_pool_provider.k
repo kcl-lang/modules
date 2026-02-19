@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IAMWorkforcePoolProvider:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m workforce pool provider
 
     Attributes
@@ -36,7 +36,7 @@ schema IAMWorkforcePoolProvider:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderSpec:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m workforce pool provider spec
 
     Attributes
@@ -86,7 +86,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderSpec:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderSpecOidc:
-    """
+    r"""
     An OpenId Connect 1.0 identity provider configuration.
 
     Attributes
@@ -116,7 +116,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderSpecOidc:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderSpecOidcClientSecret:
-    """
+    r"""
     The optional client secret. Required to enable Authorization Code flow for web sign-in.
 
     Attributes
@@ -130,7 +130,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderSpecOidcClientSecret:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderSpecOidcClientSecretValue:
-    """
+    r"""
     The value of the client secret.
 
     Attributes
@@ -144,7 +144,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderSpecOidcClientSecretV
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderSpecOidcClientSecretValuePlainText:
-    """
+    r"""
     Input only. The plain text of the client secret value.
 
     Attributes
@@ -162,7 +162,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderSpecOidcClientSecretV
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderSpecOidcClientSecretValuePlainTextValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -176,7 +176,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderSpecOidcClientSecretV
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderSpecOidcClientSecretValuePlainTextValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -194,7 +194,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderSpecOidcClientSecretV
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderSpecOidcWebSsoConfig:
-    """
+    r"""
     Required. Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
 
     Attributes
@@ -216,7 +216,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderSpecOidcWebSsoConfig:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderSpecSaml:
-    """
+    r"""
     A SAML identity provider configuration.
 
     Attributes
@@ -230,7 +230,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderSpecSaml:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderSpecWorkforcePoolRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -254,7 +254,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderSpecWorkforcePoolRef:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderStatus:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m workforce pool provider status
 
     Attributes
@@ -280,7 +280,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderStatus:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderStatusConditionsItems0:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m workforce pool provider status conditions items0
 
     Attributes
@@ -310,7 +310,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderStatusConditionsItems
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderStatusOidc:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m workforce pool provider status oidc
 
     Attributes
@@ -324,7 +324,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderStatusOidc:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderStatusOidcClientSecret:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m workforce pool provider status oidc client secret
 
     Attributes
@@ -338,7 +338,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderStatusOidcClientSecre
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolProviderStatusOidcClientSecretValue:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m workforce pool provider status oidc client secret value
 
     Attributes

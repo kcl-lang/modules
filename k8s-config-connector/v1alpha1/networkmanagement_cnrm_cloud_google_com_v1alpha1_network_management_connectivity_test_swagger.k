@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema NetworkManagementConnectivityTest:
-    """
-    networkmanagement cnrm cloud google com v1alpha1 network management connectivity test
+    r"""
+    NetworkManagementConnectivityTest is the Schema for the NetworkManagementConnectivityTest API
 
     Attributes
     ----------
@@ -36,115 +36,214 @@ schema NetworkManagementConnectivityTest:
 
 
 schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpec:
-    """
-    networkmanagement cnrm cloud google com v1alpha1 network management connectivity test spec
+    r"""
+    NetworkManagementConnectivityTestSpec defines the desired state of NetworkManagementConnectivityTest
 
     Attributes
     ----------
+    bypassFirewallChecks : bool, default is Undefined, optional
+        Whether the test should skip firewall checking. If not provided, we assume false.
     description : str, default is Undefined, optional
-        The user-supplied description of the Connectivity Test.
-        Maximum of 512 characters.
+        The user-supplied description of the Connectivity Test. Maximum of 512 characters.
     destination : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestination, default is Undefined, required
         destination
+    labels : {str:str}, default is Undefined, optional
+        Resource labels to represent user-provided metadata.
+    location : str, default is Undefined, required
+        Immutable. The name of the location where the RuntimeTemplate will be created.
     projectRef : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecProjectRef, default is Undefined, required
         project ref
     $protocol : str, default is Undefined, optional
         IP Protocol of the test. When not provided, "TCP" is assumed.
-    relatedProjects : [str], default is Undefined, optional
-        Other projects that may be relevant for reachability analysis.
-        This is applicable to scenarios where a test can cross project
-        boundaries.
+    relatedProjects : [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecRelatedProjectsItems0], default is Undefined, optional
+        Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross project boundaries.
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The NetworkManagementConnectivityTest name. If not given, the metadata.name will be used.
+    roundTrip : bool, default is Undefined, optional
+        Whether run analysis for the return path from destination to source. Default value is false.
     source : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSource, default is Undefined, required
         source
     """
 
 
+    bypassFirewallChecks?: bool
+
     description?: str
 
     destination: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestination
+
+    labels?: {str:str}
+
+    location: str
 
     projectRef: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecProjectRef
 
     $protocol?: str
 
-    relatedProjects?: [str]
+    relatedProjects?: [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecRelatedProjectsItems0]
 
     resourceID?: str
+
+    roundTrip?: bool
 
     source: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSource
 
 
 schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestination:
-    """
+    r"""
     Required. Destination specification of the Connectivity Test.
 
-    You can use a combination of destination IP address, Compute
-    Engine VM instance, or VPC network to uniquely identify the
-    destination location.
+     You can use a combination of destination IP address, Compute Engine
+     VM instance, or VPC network to uniquely identify the destination
+     location.
 
-    Even if the destination IP address is not unique, the source IP
-    location is unique. Usually, the analysis can infer the destination
-    endpoint from route information.
+     Even if the destination IP address is not unique, the source IP
+     location is unique. Usually, the analysis can infer the destination
+     endpoint from route information.
 
-    If the destination you specify is a VM instance and the instance has
-    multiple network interfaces, then you must also specify either a
-    destination IP address or VPC network to identify the destination
-    interface.
+     If the destination you specify is a VM instance and the instance has
+     multiple network interfaces, then you must also specify either
+     a destination IP address  or VPC network to identify the destination
+     interface.
 
-    A reachability analysis proceeds even if the destination location
-    is ambiguous. However, the result can include endpoints that you
-    don't intend to test.
+     A reachability analysis proceeds even if the destination location is
+     ambiguous. However, the result can include endpoints that you don't
+     intend to test.
 
     Attributes
     ----------
-    instance : str, default is Undefined, optional
-        A Compute Engine instance URI.
+    appEngineVersion : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationAppEngineVersion, default is Undefined, optional
+        app engine version
+    cloudFunction : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationCloudFunction, default is Undefined, optional
+        cloud function
+    cloudRunRevision : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationCloudRunRevision, default is Undefined, optional
+        cloud run revision
+    computeForwardingRuleRef : str, default is Undefined, optional
+        A forwarding rule and its corresponding IP address represent the frontend configuration of a Google Cloud load balancer. Forwarding rules are also used for protocol forwarding, Private Service Connect and other network services to provide forwarding information in the control plane. Format: projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
+    computeInstanceRef : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationComputeInstanceRef, default is Undefined, optional
+        compute instance ref
+    computeNetworkRef : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationComputeNetworkRef, default is Undefined, optional
+        compute network ref
+    containerClusterRef : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationContainerClusterRef, default is Undefined, optional
+        container cluster ref
+    fqdn : str, default is Undefined, optional
+        DNS endpoint of [Google Kubernetes Engine cluster control plane](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture). Requires gke_master_cluster to be set, can't be used simultaneoulsly with ip_address or network. Applicable only to destination endpoint.
     ipAddress : str, default is Undefined, optional
-        The IP address of the endpoint, which can be an external or
-        internal IP. An IPv6 address is only allowed when the test's
-        destination is a global load balancer VIP.
-    network : str, default is Undefined, optional
-        A Compute Engine network URI.
+        The IP address of the endpoint, which can be an external or internal IP.
+    networkType : str, default is Undefined, optional
+        Type of the network where the endpoint is located. Applicable only to source endpoint, as destination network type can be inferred from the source.
     port : int, default is Undefined, optional
-        The IP protocol port of the endpoint. Only applicable when
-        protocol is TCP or UDP.
-    projectId : str, default is Undefined, optional
-        Project ID where the endpoint is located. The Project ID can be
-        derived from the URI if you provide a VM instance or network URI.
-        The following are two cases where you must provide the project ID:
-        1. Only the IP address is specified, and the IP address is within
-        a GCP project. 2. When you are using Shared VPC and the IP address
-        that you provide is from the service project. In this case, the
-        network that the IP address resides in is defined in the host
-        project.
+        The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
+    projectRef : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationProjectRef, default is Undefined, optional
+        project ref
+    redisCluster : str, default is Undefined, optional
+        A [Redis Cluster](https://cloud.google.com/memorystore/docs/cluster) URI.
+    redisInstance : str, default is Undefined, optional
+        A [Redis Instance](https://cloud.google.com/memorystore/docs/redis) URI.
+    sqlInstance : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationSQLInstance, default is Undefined, optional
+        sql instance
     """
 
 
-    instance?: str
+    appEngineVersion?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationAppEngineVersion
+
+    cloudFunction?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationCloudFunction
+
+    cloudRunRevision?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationCloudRunRevision
+
+    computeForwardingRuleRef?: str
+
+    computeInstanceRef?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationComputeInstanceRef
+
+    computeNetworkRef?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationComputeNetworkRef
+
+    containerClusterRef?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationContainerClusterRef
+
+    fqdn?: str
 
     ipAddress?: str
 
-    network?: str
+    networkType?: str
 
     port?: int
 
-    projectId?: str
+    projectRef?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationProjectRef
+
+    redisCluster?: str
+
+    redisInstance?: str
+
+    sqlInstance?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationSQLInstance
 
 
-schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecProjectRef:
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationAppEngineVersion:
+    r"""
+    An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions).
+
+    Attributes
+    ----------
+    uri : str, default is Undefined, optional
+        An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
     """
-    The project that this resource belongs to.
+
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationCloudFunction:
+    r"""
+    A [Cloud Function](https://cloud.google.com/functions).
+
+    Attributes
+    ----------
+    uri : str, default is Undefined, optional
+        A [Cloud Function](https://cloud.google.com/functions) name.
+    """
+
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationCloudRunRevision:
+    r"""
+    A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get)
+
+    Attributes
+    ----------
+    runRevisionRef : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationCloudRunRevisionRunRevisionRef, default is Undefined, optional
+        run revision ref
+    """
+
+
+    runRevisionRef?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationCloudRunRevisionRunRevisionRef
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationCloudRunRevisionRunRevisionRef:
+    r"""
+    A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
+
+    Attributes
+    ----------
+    external : str, default is Undefined, required
+        A reference to an externally managed RunRevision resource. Should be in the format "projects/{{project}}/locations/{{location}}/revisions/{{revision}}".
+    """
+
+
+    external: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationComputeInstanceRef:
+    r"""
+    A Compute Engine instance URI.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        A reference to an externally managed ComputeInstance resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/instances/{{instanceID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeInstance resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeInstance resource.
     """
 
 
@@ -155,94 +254,439 @@ schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityT
     namespace?: str
 
 
-schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSource:
-    """
-    Required. Source specification of the Connectivity Test.
-
-    You can use a combination of source IP address, virtual machine
-    (VM) instance, or Compute Engine network to uniquely identify the
-    source location.
-
-    Examples: If the source IP address is an internal IP address within
-    a Google Cloud Virtual Private Cloud (VPC) network, then you must
-    also specify the VPC network. Otherwise, specify the VM instance,
-    which already contains its internal IP address and VPC network
-    information.
-
-    If the source of the test is within an on-premises network, then
-    you must provide the destination VPC network.
-
-    If the source endpoint is a Compute Engine VM instance with multiple
-    network interfaces, the instance itself is not sufficient to
-    identify the endpoint. So, you must also specify the source IP
-    address or VPC network.
-
-    A reachability analysis proceeds even if the source location is
-    ambiguous. However, the test result may include endpoints that
-    you don't intend to test.
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationComputeNetworkRef:
+    r"""
+    A Compute Engine network URI.
 
     Attributes
     ----------
-    instance : str, default is Undefined, optional
-        A Compute Engine instance URI.
-    ipAddress : str, default is Undefined, optional
-        The IP address of the endpoint, which can be an external or
-        internal IP. An IPv6 address is only allowed when the test's
-        destination is a global load balancer VIP.
-    network : str, default is Undefined, optional
-        A Compute Engine network URI.
-    networkType : str, default is Undefined, optional
-        Type of the network where the endpoint is located. Possible values: ["GCP_NETWORK", "NON_GCP_NETWORK"].
-    port : int, default is Undefined, optional
-        The IP protocol port of the endpoint. Only applicable when
-        protocol is TCP or UDP.
-    projectId : str, default is Undefined, optional
-        Project ID where the endpoint is located. The Project ID can be
-        derived from the URI if you provide a VM instance or network URI.
-        The following are two cases where you must provide the project ID:
-
-        1. Only the IP address is specified, and the IP address is
-           within a GCP project.
-        2. When you are using Shared VPC and the IP address
-           that you provide is from the service project. In this case,
-           the network that the IP address resides in is defined in the
-           host project.
+    external : str, default is Undefined, optional
+        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
+    name : str, default is Undefined, optional
+        The name of a ComputeNetwork resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a ComputeNetwork resource.
     """
 
 
-    instance?: str
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationContainerClusterRef:
+    r"""
+    A cluster URI for [Google Kubernetes Engine cluster control plane](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The GKE cluster. Valid formats: `projects/{projectID}/locations/{location}/clusters/{clusterID}` `projects/{projectID}/zones/{zone}/clusters/{clusterID}`
+    name : str, default is Undefined, optional
+        Name of the project resource. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names */
+    namespace : str, default is Undefined, optional
+        Namespace of the project resource. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/ */
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationProjectRef:
+    r"""
+    Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a Google Cloud project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
+    name : str, default is Undefined, optional
+        The `name` field of a `Project` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `Project` resource.
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecDestinationSQLInstance:
+    r"""
+    A [Cloud SQL](https://cloud.google.com/sql) instance URI.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The SQLInstance selfLink, when not managed by Config Connector.
+    name : str, default is Undefined, optional
+        The `name` field of a `SQLInstance` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `SQLInstance` resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecProjectRef:
+    r"""
+    Immutable. The Project that this resource belongs to.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
+    name : str, default is Undefined, optional
+        The `name` field of a `Project` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `Project` resource.
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecRelatedProjectsItems0:
+    r"""
+    The Project that this resource belongs to.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
+    name : str, default is Undefined, optional
+        The `name` field of a `Project` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `Project` resource.
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSource:
+    r"""
+    Required. Source specification of the Connectivity Test.
+
+     You can use a combination of source IP address, virtual machine
+     (VM) instance, or Compute Engine network to uniquely identify
+     the source location.
+
+     Examples:
+     If the source IP address is an internal IP address within a Google Cloud
+     Virtual Private Cloud (VPC) network, then you must also specify the VPC
+     network. Otherwise, specify the VM instance, which already contains its
+     internal IP address and VPC network information.
+
+     If the source of the test is within an on-premises network, then you must
+     provide the destination VPC network.
+
+     If the source endpoint is a Compute Engine VM instance with multiple
+     network interfaces, the instance itself is not sufficient to identify the
+     endpoint. So, you must also specify the source IP address or VPC network.
+
+     A reachability analysis proceeds even if the source location is
+     ambiguous. However, the test result may include endpoints that you don't
+     intend to test.
+
+    Attributes
+    ----------
+    appEngineVersion : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceAppEngineVersion, default is Undefined, optional
+        app engine version
+    cloudFunction : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceCloudFunction, default is Undefined, optional
+        cloud function
+    cloudRunRevision : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceCloudRunRevision, default is Undefined, optional
+        cloud run revision
+    computeForwardingRuleRef : str, default is Undefined, optional
+        A forwarding rule and its corresponding IP address represent the frontend configuration of a Google Cloud load balancer. Forwarding rules are also used for protocol forwarding, Private Service Connect and other network services to provide forwarding information in the control plane. Format: projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
+    computeInstanceRef : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceComputeInstanceRef, default is Undefined, optional
+        compute instance ref
+    computeNetworkRef : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceComputeNetworkRef, default is Undefined, optional
+        compute network ref
+    containerClusterRef : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceContainerClusterRef, default is Undefined, optional
+        container cluster ref
+    fqdn : str, default is Undefined, optional
+        DNS endpoint of [Google Kubernetes Engine cluster control plane](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture). Requires gke_master_cluster to be set, can't be used simultaneoulsly with ip_address or network. Applicable only to destination endpoint.
+    ipAddress : str, default is Undefined, optional
+        The IP address of the endpoint, which can be an external or internal IP.
+    networkType : str, default is Undefined, optional
+        Type of the network where the endpoint is located. Applicable only to source endpoint, as destination network type can be inferred from the source.
+    port : int, default is Undefined, optional
+        The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
+    projectRef : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceProjectRef, default is Undefined, optional
+        project ref
+    redisCluster : str, default is Undefined, optional
+        A [Redis Cluster](https://cloud.google.com/memorystore/docs/cluster) URI.
+    redisInstance : str, default is Undefined, optional
+        A [Redis Instance](https://cloud.google.com/memorystore/docs/redis) URI.
+    sqlInstance : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceSQLInstance, default is Undefined, optional
+        sql instance
+    """
+
+
+    appEngineVersion?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceAppEngineVersion
+
+    cloudFunction?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceCloudFunction
+
+    cloudRunRevision?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceCloudRunRevision
+
+    computeForwardingRuleRef?: str
+
+    computeInstanceRef?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceComputeInstanceRef
+
+    computeNetworkRef?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceComputeNetworkRef
+
+    containerClusterRef?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceContainerClusterRef
+
+    fqdn?: str
 
     ipAddress?: str
-
-    network?: str
 
     networkType?: str
 
     port?: int
 
-    projectId?: str
+    projectRef?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceProjectRef
+
+    redisCluster?: str
+
+    redisInstance?: str
+
+    sqlInstance?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceSQLInstance
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceAppEngineVersion:
+    r"""
+    An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions).
+
+    Attributes
+    ----------
+    uri : str, default is Undefined, optional
+        An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
+    """
+
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceCloudFunction:
+    r"""
+    A [Cloud Function](https://cloud.google.com/functions).
+
+    Attributes
+    ----------
+    uri : str, default is Undefined, optional
+        A [Cloud Function](https://cloud.google.com/functions) name.
+    """
+
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceCloudRunRevision:
+    r"""
+    A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get)
+
+    Attributes
+    ----------
+    runRevisionRef : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceCloudRunRevisionRunRevisionRef, default is Undefined, optional
+        run revision ref
+    """
+
+
+    runRevisionRef?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceCloudRunRevisionRunRevisionRef
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceCloudRunRevisionRunRevisionRef:
+    r"""
+    A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
+
+    Attributes
+    ----------
+    external : str, default is Undefined, required
+        A reference to an externally managed RunRevision resource. Should be in the format "projects/{{project}}/locations/{{location}}/revisions/{{revision}}".
+    """
+
+
+    external: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceComputeInstanceRef:
+    r"""
+    A Compute Engine instance URI.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed ComputeInstance resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/instances/{{instanceID}}".
+    name : str, default is Undefined, optional
+        The name of a ComputeInstance resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a ComputeInstance resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceComputeNetworkRef:
+    r"""
+    A Compute Engine network URI.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
+    name : str, default is Undefined, optional
+        The name of a ComputeNetwork resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a ComputeNetwork resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceContainerClusterRef:
+    r"""
+    A cluster URI for [Google Kubernetes Engine cluster control plane](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The GKE cluster. Valid formats: `projects/{projectID}/locations/{location}/clusters/{clusterID}` `projects/{projectID}/zones/{zone}/clusters/{clusterID}`
+    name : str, default is Undefined, optional
+        Name of the project resource. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names */
+    namespace : str, default is Undefined, optional
+        Namespace of the project resource. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/ */
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceProjectRef:
+    r"""
+    Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a Google Cloud project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
+    name : str, default is Undefined, optional
+        The `name` field of a `Project` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `Project` resource.
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestSpecSourceSQLInstance:
+    r"""
+    A [Cloud SQL](https://cloud.google.com/sql) instance URI.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The SQLInstance selfLink, when not managed by Config Connector.
+    name : str, default is Undefined, optional
+        The `name` field of a `SQLInstance` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `SQLInstance` resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
 
 
 schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatus:
-    """
-    networkmanagement cnrm cloud google com v1alpha1 network management connectivity test status
+    r"""
+    NetworkManagementConnectivityTestStatus defines the config connector machine state of NetworkManagementConnectivityTest
 
     Attributes
     ----------
     conditions : [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the NetworkManagementConnectivityTest resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusConditionsItems0]
 
+    externalRef?: str
+
     observedGeneration?: int
+
+    observedState?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedState
 
 
 schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusConditionsItems0:
-    """
+    r"""
     networkmanagement cnrm cloud google com v1alpha1 network management connectivity test status conditions items0
 
     Attributes
@@ -269,5 +713,2927 @@ schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityT
     status?: str
 
     $type?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    createTime : str, default is Undefined, optional
+        Output only. The time the test was created.
+    destination : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateDestination, default is Undefined, optional
+        destination
+    displayName : str, default is Undefined, optional
+        Output only. The display name of a Connectivity Test.
+    probingDetails : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetails, default is Undefined, optional
+        probing details
+    reachabilityDetails : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetails, default is Undefined, optional
+        reachability details
+    returnReachabilityDetails : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetails, default is Undefined, optional
+        return reachability details
+    source : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateSource, default is Undefined, optional
+        source
+    updateTime : str, default is Undefined, optional
+        Output only. The time the test's configuration was updated.
+    """
+
+
+    createTime?: str
+
+    destination?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateDestination
+
+    displayName?: str
+
+    probingDetails?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetails
+
+    reachabilityDetails?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetails
+
+    returnReachabilityDetails?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetails
+
+    source?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateSource
+
+    updateTime?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateDestination:
+    r"""
+    Destination specification of the Connectivity Test.
+
+     You can use a combination of destination IP address, Compute Engine
+     VM instance, or VPC network to uniquely identify the destination
+     location.
+
+     Even if the destination IP address is not unique, the source IP
+     location is unique. Usually, the analysis can infer the destination
+     endpoint from route information.
+
+     If the destination you specify is a VM instance and the instance has
+     multiple network interfaces, then you must also specify either
+     a destination IP address  or VPC network to identify the destination
+     interface.
+
+     A reachability analysis proceeds even if the destination location is
+     ambiguous. However, the result can include endpoints that you don't
+     intend to test.
+
+    Attributes
+    ----------
+    forwardingRuleTarget : str, default is Undefined, optional
+        Output only. Specifies the type of the target of the forwarding rule.
+    loadBalancerID : str, default is Undefined, optional
+        Output only. ID of the load balancer the forwarding rule points to. Empty for forwarding rules not related to load balancers.
+    loadBalancerType : str, default is Undefined, optional
+        Output only. Type of the load balancer the forwarding rule points to.
+    """
+
+
+    forwardingRuleTarget?: str
+
+    loadBalancerID?: str
+
+    loadBalancerType?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetails:
+    r"""
+    Output only. The probing details of this test from the latest run, present for applicable tests only. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
+
+    Attributes
+    ----------
+    abortCause : str, default is Undefined, optional
+        The reason probing was aborted.
+    destinationEgressLocation : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetailsDestinationEgressLocation, default is Undefined, optional
+        destination egress location
+    endpointInfo : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetailsEndpointInfo, default is Undefined, optional
+        endpoint info
+    error : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetailsError, default is Undefined, optional
+        error
+    probingLatency : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetailsProbingLatency, default is Undefined, optional
+        probing latency
+    result : str, default is Undefined, optional
+        The overall result of active probing.
+    sentProbeCount : int, default is Undefined, optional
+        Number of probes sent.
+    successfulProbeCount : int, default is Undefined, optional
+        Number of probes that reached the destination.
+    verifyTime : str, default is Undefined, optional
+        The time that reachability was assessed through active probing.
+    """
+
+
+    abortCause?: str
+
+    destinationEgressLocation?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetailsDestinationEgressLocation
+
+    endpointInfo?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetailsEndpointInfo
+
+    error?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetailsError
+
+    probingLatency?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetailsProbingLatency
+
+    result?: str
+
+    sentProbeCount?: int
+
+    successfulProbeCount?: int
+
+    verifyTime?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetailsDestinationEgressLocation:
+    r"""
+    The EdgeLocation from which a packet destined for/originating from the internet will egress/ingress the Google network. This will only be populated for a connectivity test which has an internet destination/source address. The absence of this field *must not* be used as an indication that the destination/source is part of the Google network.
+
+    Attributes
+    ----------
+    metropolitanArea : str, default is Undefined, optional
+        Name of the metropolitan area.
+    """
+
+
+    metropolitanArea?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetailsEndpointInfo:
+    r"""
+    The source and destination endpoints derived from the test input and used for active probing.
+
+    Attributes
+    ----------
+    destinationIP : str, default is Undefined, optional
+        Destination IP address.
+    destinationNetworkURI : str, default is Undefined, optional
+        URI of the network where this packet is sent to.
+    destinationPort : int, default is Undefined, optional
+        Destination port. Only valid when protocol is TCP or UDP.
+    $protocol : str, default is Undefined, optional
+        IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+    sourceAgentURI : str, default is Undefined, optional
+        URI of the source telemetry agent this packet originates from.
+    sourceIP : str, default is Undefined, optional
+        Source IP address.
+    sourceNetworkURI : str, default is Undefined, optional
+        URI of the network where this packet originates from.
+    sourcePort : int, default is Undefined, optional
+        Source port. Only valid when protocol is TCP or UDP.
+    """
+
+
+    destinationIP?: str
+
+    destinationNetworkURI?: str
+
+    destinationPort?: int
+
+    $protocol?: str
+
+    sourceAgentURI?: str
+
+    sourceIP?: str
+
+    sourceNetworkURI?: str
+
+    sourcePort?: int
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetailsError:
+    r"""
+    Details about an internal failure or the cancellation of active probing.
+
+    Attributes
+    ----------
+    code : int, default is Undefined, optional
+        The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code].
+    details : [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetailsErrorDetailsItems0], default is Undefined, optional
+        A list of messages that carry the error details.  There is a common set of message types for APIs to use.
+    message : str, default is Undefined, optional
+        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the [google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client.
+    """
+
+
+    code?: int
+
+    details?: [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetailsErrorDetailsItems0]
+
+    message?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetailsErrorDetailsItems0:
+    r"""
+    networkmanagement cnrm cloud google com v1alpha1 network management connectivity test status observed state probing details error details items0
+
+    Attributes
+    ----------
+    typeURL : str, default is Undefined, optional
+        A URL/resource name that uniquely identifies the type of the serialized
+         protocol buffer message. This string must contain at least
+         one "/" character. The last segment of the URL's path must represent
+         the fully qualified name of the type (as in
+         `path/google.protobuf.Duration`). The name should be in a canonical form
+         (e.g., leading "." is not accepted).
+
+         In practice, teams usually precompile into the binary all types that they
+         expect it to use in the context of Any. However, for URLs which use the
+         scheme `http`, `https`, or no scheme, one can optionally set up a type
+         server that maps type URLs to message definitions as follows:
+
+         * If no scheme is provided, `https` is assumed.
+         * An HTTP GET on the URL must yield a [google.protobuf.Type][]
+           value in binary format, or produce an error.
+         * Applications are allowed to cache lookup results based on the
+           URL, or have them precompiled into a binary to avoid any
+           lookup. Therefore, binary compatibility needs to be preserved
+           on changes to types. (Use versioned type names to manage
+           breaking changes.)
+
+         Note: this functionality is not currently available in the official
+         protobuf release, and it is not used for type URLs beginning with
+         type.googleapis.com.
+
+         Schemes other than `http`, `https` (or the empty scheme) might be
+         used with implementation specific semantics.
+    value : str, default is Undefined, optional
+        Must be a valid serialized protocol buffer of the above specified type.
+    """
+
+
+    typeURL?: str
+
+    value?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetailsProbingLatency:
+    r"""
+    Latency as measured by active probing in one direction: from the source to the destination endpoint.
+
+    Attributes
+    ----------
+    latencyPercentiles : [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetailsProbingLatencyLatencyPercentilesItems0], default is Undefined, optional
+        Representative latency percentiles.
+    """
+
+
+    latencyPercentiles?: [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetailsProbingLatencyLatencyPercentilesItems0]
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetailsProbingLatencyLatencyPercentilesItems0:
+    r"""
+    networkmanagement cnrm cloud google com v1alpha1 network management connectivity test status observed state probing details probing latency latency percentiles items0
+
+    Attributes
+    ----------
+    latencyMicros : int, default is Undefined, optional
+        percent-th percentile of latency observed, in microseconds. Fraction of percent/100 of samples have latency lower or equal to the value of this field.
+    percent : int, default is Undefined, optional
+        Percentage of samples this data point applies to.
+    """
+
+
+    latencyMicros?: int
+
+    percent?: int
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetails:
+    r"""
+    Output only. The reachability details of this test from the latest run. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
+
+    Attributes
+    ----------
+    error : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsError, default is Undefined, optional
+        error
+    result : str, default is Undefined, optional
+        The overall result of the test's configuration analysis.
+    traces : [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0], default is Undefined, optional
+        Result may contain a list of traces if a test has multiple possible paths in the network, such as when destination endpoint is a load balancer with multiple backends.
+    verifyTime : str, default is Undefined, optional
+        The time of the configuration analysis.
+    """
+
+
+    error?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsError
+
+    result?: str
+
+    traces?: [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0]
+
+    verifyTime?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsError:
+    r"""
+    The details of a failure or a cancellation of reachability analysis.
+
+    Attributes
+    ----------
+    code : int, default is Undefined, optional
+        The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code].
+    details : [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsErrorDetailsItems0], default is Undefined, optional
+        A list of messages that carry the error details.  There is a common set of message types for APIs to use.
+    message : str, default is Undefined, optional
+        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the [google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client.
+    """
+
+
+    code?: int
+
+    details?: [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsErrorDetailsItems0]
+
+    message?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsErrorDetailsItems0:
+    r"""
+    networkmanagement cnrm cloud google com v1alpha1 network management connectivity test status observed state reachability details error details items0
+
+    Attributes
+    ----------
+    typeURL : str, default is Undefined, optional
+        A URL/resource name that uniquely identifies the type of the serialized
+         protocol buffer message. This string must contain at least
+         one "/" character. The last segment of the URL's path must represent
+         the fully qualified name of the type (as in
+         `path/google.protobuf.Duration`). The name should be in a canonical form
+         (e.g., leading "." is not accepted).
+
+         In practice, teams usually precompile into the binary all types that they
+         expect it to use in the context of Any. However, for URLs which use the
+         scheme `http`, `https`, or no scheme, one can optionally set up a type
+         server that maps type URLs to message definitions as follows:
+
+         * If no scheme is provided, `https` is assumed.
+         * An HTTP GET on the URL must yield a [google.protobuf.Type][]
+           value in binary format, or produce an error.
+         * Applications are allowed to cache lookup results based on the
+           URL, or have them precompiled into a binary to avoid any
+           lookup. Therefore, binary compatibility needs to be preserved
+           on changes to types. (Use versioned type names to manage
+           breaking changes.)
+
+         Note: this functionality is not currently available in the official
+         protobuf release, and it is not used for type URLs beginning with
+         type.googleapis.com.
+
+         Schemes other than `http`, `https` (or the empty scheme) might be
+         used with implementation specific semantics.
+    value : str, default is Undefined, optional
+        Must be a valid serialized protocol buffer of the above specified type.
+    """
+
+
+    typeURL?: str
+
+    value?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0:
+    r"""
+    networkmanagement cnrm cloud google com v1alpha1 network management connectivity test status observed state reachability details traces items0
+
+    Attributes
+    ----------
+    endpointInfo : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0EndpointInfo, default is Undefined, optional
+        endpoint info
+    forwardTraceID : int, default is Undefined, optional
+        ID of trace. For forward traces, this ID is unique for each trace. For return traces, it matches ID of associated forward trace. A single forward trace can be associated with none, one or more than one return trace.
+    steps : [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0], default is Undefined, optional
+        A trace of a test contains multiple steps from the initial state to the
+         final state (delivered, dropped, forwarded, or aborted).
+
+         The steps are ordered by the processing sequence within the simulated
+         network state machine. It is critical to preserve the order of the steps
+         and avoid reordering or sorting them.
+    """
+
+
+    endpointInfo?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0EndpointInfo
+
+    forwardTraceID?: int
+
+    steps?: [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0]
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0EndpointInfo:
+    r"""
+    Derived from the source and destination endpoints definition specified by user request, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces.
+
+    Attributes
+    ----------
+    destinationIP : str, default is Undefined, optional
+        Destination IP address.
+    destinationNetworkURI : str, default is Undefined, optional
+        URI of the network where this packet is sent to.
+    destinationPort : int, default is Undefined, optional
+        Destination port. Only valid when protocol is TCP or UDP.
+    $protocol : str, default is Undefined, optional
+        IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+    sourceAgentURI : str, default is Undefined, optional
+        URI of the source telemetry agent this packet originates from.
+    sourceIP : str, default is Undefined, optional
+        Source IP address.
+    sourceNetworkURI : str, default is Undefined, optional
+        URI of the network where this packet originates from.
+    sourcePort : int, default is Undefined, optional
+        Source port. Only valid when protocol is TCP or UDP.
+    """
+
+
+    destinationIP?: str
+
+    destinationNetworkURI?: str
+
+    destinationPort?: int
+
+    $protocol?: str
+
+    sourceAgentURI?: str
+
+    sourceIP?: str
+
+    sourceNetworkURI?: str
+
+    sourcePort?: int
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0:
+    r"""
+    networkmanagement cnrm cloud google com v1alpha1 network management connectivity test status observed state reachability details traces items0 steps items0
+
+    Attributes
+    ----------
+    abort : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Abort, default is Undefined, optional
+        abort
+    appEngineVersion : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0AppEngineVersion, default is Undefined, optional
+        app engine version
+    causesDrop : bool, default is Undefined, optional
+        This is a step that leads to the final state Drop.
+    cloudFunction : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0CloudFunction, default is Undefined, optional
+        cloud function
+    cloudRunRevision : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0CloudRunRevision, default is Undefined, optional
+        cloud run revision
+    cloudSQLInstance : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0CloudSQLInstance, default is Undefined, optional
+        cloud SQL instance
+    deliver : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Deliver, default is Undefined, optional
+        deliver
+    description : str, default is Undefined, optional
+        A description of the step. Usually this is a summary of the state.
+    drop : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Drop, default is Undefined, optional
+        drop
+    endpoint : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Endpoint, default is Undefined, optional
+        endpoint
+    firewall : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Firewall, default is Undefined, optional
+        firewall
+    forward : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Forward, default is Undefined, optional
+        forward
+    forwardingRule : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0ForwardingRule, default is Undefined, optional
+        forwarding rule
+    gkeMaster : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0GkeMaster, default is Undefined, optional
+        gke master
+    googleService : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0GoogleService, default is Undefined, optional
+        google service
+    instance : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Instance, default is Undefined, optional
+        instance
+    loadBalancer : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0LoadBalancer, default is Undefined, optional
+        load balancer
+    loadBalancerBackendInfo : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0LoadBalancerBackendInfo, default is Undefined, optional
+        load balancer backend info
+    nat : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Nat, default is Undefined, optional
+        nat
+    network : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Network, default is Undefined, optional
+        network
+    projectID : str, default is Undefined, optional
+        Project ID that contains the configuration this step is validating.
+    proxyConnection : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0ProxyConnection, default is Undefined, optional
+        proxy connection
+    redisCluster : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0RedisCluster, default is Undefined, optional
+        redis cluster
+    redisInstance : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0RedisInstance, default is Undefined, optional
+        redis instance
+    route : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Route, default is Undefined, optional
+        route
+    serverlessNeg : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0ServerlessNeg, default is Undefined, optional
+        serverless neg
+    state : str, default is Undefined, optional
+        Each step is in one of the pre-defined states.
+    storageBucket : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0StorageBucket, default is Undefined, optional
+        storage bucket
+    vpcConnector : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0VpcConnector, default is Undefined, optional
+        vpc connector
+    vpnGateway : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0VpnGateway, default is Undefined, optional
+        vpn gateway
+    vpnTunnel : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0VpnTunnel, default is Undefined, optional
+        vpn tunnel
+    """
+
+
+    abort?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Abort
+
+    appEngineVersion?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0AppEngineVersion
+
+    causesDrop?: bool
+
+    cloudFunction?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0CloudFunction
+
+    cloudRunRevision?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0CloudRunRevision
+
+    cloudSQLInstance?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0CloudSQLInstance
+
+    deliver?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Deliver
+
+    description?: str
+
+    drop?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Drop
+
+    endpoint?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Endpoint
+
+    firewall?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Firewall
+
+    forward?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Forward
+
+    forwardingRule?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0ForwardingRule
+
+    gkeMaster?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0GkeMaster
+
+    googleService?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0GoogleService
+
+    instance?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Instance
+
+    loadBalancer?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0LoadBalancer
+
+    loadBalancerBackendInfo?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0LoadBalancerBackendInfo
+
+    nat?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Nat
+
+    network?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Network
+
+    projectID?: str
+
+    proxyConnection?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0ProxyConnection
+
+    redisCluster?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0RedisCluster
+
+    redisInstance?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0RedisInstance
+
+    route?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Route
+
+    serverlessNeg?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0ServerlessNeg
+
+    state?: str
+
+    storageBucket?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0StorageBucket
+
+    vpcConnector?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0VpcConnector
+
+    vpnGateway?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0VpnGateway
+
+    vpnTunnel?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0VpnTunnel
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Abort:
+    r"""
+    Display information of the final state "abort" and reason.
+
+    Attributes
+    ----------
+    cause : str, default is Undefined, optional
+        Causes that the analysis is aborted.
+    ipAddress : str, default is Undefined, optional
+        IP address that caused the abort.
+    projectsMissingPermission : [str], default is Undefined, optional
+        List of project IDs the user specified in the request but lacks access to. In this case, analysis is aborted with the PERMISSION_DENIED cause.
+    resourceURI : str, default is Undefined, optional
+        URI of the resource that caused the abort.
+    """
+
+
+    cause?: str
+
+    ipAddress?: str
+
+    projectsMissingPermission?: [str]
+
+    resourceURI?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0AppEngineVersion:
+    r"""
+    Display information of an App Engine service version.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of an App Engine version.
+    environment : str, default is Undefined, optional
+        App Engine execution environment for a version.
+    runtime : str, default is Undefined, optional
+        Runtime of the App Engine version.
+    uri : str, default is Undefined, optional
+        URI of an App Engine version.
+    """
+
+
+    displayName?: str
+
+    environment?: str
+
+    runtime?: str
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0CloudFunction:
+    r"""
+    Display information of a Cloud Function.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of a Cloud Function.
+    location : str, default is Undefined, optional
+        Location in which the Cloud Function is deployed.
+    uri : str, default is Undefined, optional
+        URI of a Cloud Function.
+    versionID : int, default is Undefined, optional
+        Latest successfully deployed version id of the Cloud Function.
+    """
+
+
+    displayName?: str
+
+    location?: str
+
+    uri?: str
+
+    versionID?: int
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0CloudRunRevision:
+    r"""
+    Display information of a Cloud Run revision.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of a Cloud Run revision.
+    location : str, default is Undefined, optional
+        Location in which this revision is deployed.
+    serviceURI : str, default is Undefined, optional
+        URI of Cloud Run service this revision belongs to.
+    uri : str, default is Undefined, optional
+        URI of a Cloud Run revision.
+    """
+
+
+    displayName?: str
+
+    location?: str
+
+    serviceURI?: str
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0CloudSQLInstance:
+    r"""
+    Display information of a Cloud SQL instance.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of a Cloud SQL instance.
+    externalIP : str, default is Undefined, optional
+        External IP address of a Cloud SQL instance.
+    internalIP : str, default is Undefined, optional
+        Internal IP address of a Cloud SQL instance.
+    networkURI : str, default is Undefined, optional
+        URI of a Cloud SQL instance network or empty string if the instance does not have one.
+    region : str, default is Undefined, optional
+        Region in which the Cloud SQL instance is running.
+    uri : str, default is Undefined, optional
+        URI of a Cloud SQL instance.
+    """
+
+
+    displayName?: str
+
+    externalIP?: str
+
+    internalIP?: str
+
+    networkURI?: str
+
+    region?: str
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Deliver:
+    r"""
+    Display information of the final state "deliver" and reason.
+
+    Attributes
+    ----------
+    ipAddress : str, default is Undefined, optional
+        IP address of the target (if applicable).
+    pscGoogleAPITarget : str, default is Undefined, optional
+        PSC Google API target the packet is delivered to (if applicable).
+    resourceURI : str, default is Undefined, optional
+        URI of the resource that the packet is delivered to.
+    storageBucket : str, default is Undefined, optional
+        Name of the Cloud Storage Bucket the packet is delivered to (if applicable).
+    target : str, default is Undefined, optional
+        Target type where the packet is delivered to.
+    """
+
+
+    ipAddress?: str
+
+    pscGoogleAPITarget?: str
+
+    resourceURI?: str
+
+    storageBucket?: str
+
+    target?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Drop:
+    r"""
+    Display information of the final state "drop" and reason.
+
+    Attributes
+    ----------
+    cause : str, default is Undefined, optional
+        Cause that the packet is dropped.
+    destinationIP : str, default is Undefined, optional
+        Destination IP address of the dropped packet (if relevant).
+    region : str, default is Undefined, optional
+        Region of the dropped packet (if relevant).
+    resourceURI : str, default is Undefined, optional
+        URI of the resource that caused the drop.
+    sourceIP : str, default is Undefined, optional
+        Source IP address of the dropped packet (if relevant).
+    """
+
+
+    cause?: str
+
+    destinationIP?: str
+
+    region?: str
+
+    resourceURI?: str
+
+    sourceIP?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Endpoint:
+    r"""
+    Display information of the source and destination under analysis. The endpoint information in an intermediate state may differ with the initial input, as it might be modified by state like NAT, or Connection Proxy.
+
+    Attributes
+    ----------
+    destinationIP : str, default is Undefined, optional
+        Destination IP address.
+    destinationNetworkURI : str, default is Undefined, optional
+        URI of the network where this packet is sent to.
+    destinationPort : int, default is Undefined, optional
+        Destination port. Only valid when protocol is TCP or UDP.
+    $protocol : str, default is Undefined, optional
+        IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+    sourceAgentURI : str, default is Undefined, optional
+        URI of the source telemetry agent this packet originates from.
+    sourceIP : str, default is Undefined, optional
+        Source IP address.
+    sourceNetworkURI : str, default is Undefined, optional
+        URI of the network where this packet originates from.
+    sourcePort : int, default is Undefined, optional
+        Source port. Only valid when protocol is TCP or UDP.
+    """
+
+
+    destinationIP?: str
+
+    destinationNetworkURI?: str
+
+    destinationPort?: int
+
+    $protocol?: str
+
+    sourceAgentURI?: str
+
+    sourceIP?: str
+
+    sourceNetworkURI?: str
+
+    sourcePort?: int
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Firewall:
+    r"""
+    Display information of a Compute Engine firewall rule.
+
+    Attributes
+    ----------
+    action : str, default is Undefined, optional
+        Possible values: ALLOW, DENY, APPLY_SECURITY_PROFILE_GROUP
+    direction : str, default is Undefined, optional
+        Possible values: INGRESS, EGRESS
+    displayName : str, default is Undefined, optional
+        The display name of the firewall rule. This field might be empty for firewall policy rules.
+    firewallRuleType : str, default is Undefined, optional
+        The firewall rule's type.
+    networkURI : str, default is Undefined, optional
+        The URI of the VPC network that the firewall rule is associated with. This field is not applicable to hierarchical firewall policy rules.
+    policy : str, default is Undefined, optional
+        The name of the firewall policy that this rule is associated with. This field is not applicable to VPC firewall rules and implied VPC firewall rules.
+    policyURI : str, default is Undefined, optional
+        The URI of the firewall policy that this rule is associated with. This field is not applicable to VPC firewall rules and implied VPC firewall rules.
+    priority : int, default is Undefined, optional
+        The priority of the firewall rule.
+    targetServiceAccounts : [str], default is Undefined, optional
+        The target service accounts specified by the firewall rule.
+    targetTags : [str], default is Undefined, optional
+        The target tags defined by the VPC firewall rule. This field is not applicable to firewall policy rules.
+    uri : str, default is Undefined, optional
+        The URI of the firewall rule. This field is not applicable to implied VPC firewall rules.
+    """
+
+
+    action?: str
+
+    direction?: str
+
+    displayName?: str
+
+    firewallRuleType?: str
+
+    networkURI?: str
+
+    policy?: str
+
+    policyURI?: str
+
+    priority?: int
+
+    targetServiceAccounts?: [str]
+
+    targetTags?: [str]
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Forward:
+    r"""
+    Display information of the final state "forward" and reason.
+
+    Attributes
+    ----------
+    ipAddress : str, default is Undefined, optional
+        IP address of the target (if applicable).
+    resourceURI : str, default is Undefined, optional
+        URI of the resource that the packet is forwarded to.
+    target : str, default is Undefined, optional
+        Target type where this packet is forwarded to.
+    """
+
+
+    ipAddress?: str
+
+    resourceURI?: str
+
+    target?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0ForwardingRule:
+    r"""
+    Display information of a Compute Engine forwarding rule.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of the forwarding rule.
+    loadBalancerName : str, default is Undefined, optional
+        Name of the load balancer the forwarding rule belongs to. Empty for forwarding rules not related to load balancers (like PSC forwarding rules).
+    matchedPortRange : str, default is Undefined, optional
+        Port range defined in the forwarding rule that matches the packet.
+    matchedProtocol : str, default is Undefined, optional
+        Protocol defined in the forwarding rule that matches the packet.
+    networkURI : str, default is Undefined, optional
+        Network URI.
+    pscGoogleAPITarget : str, default is Undefined, optional
+        PSC Google API target this forwarding rule targets (if applicable).
+    pscServiceAttachmentURI : str, default is Undefined, optional
+        URI of the PSC service attachment this forwarding rule targets (if applicable).
+    region : str, default is Undefined, optional
+        Region of the forwarding rule. Set only for regional forwarding rules.
+    target : str, default is Undefined, optional
+        Target type of the forwarding rule.
+    uri : str, default is Undefined, optional
+        URI of the forwarding rule.
+    vip : str, default is Undefined, optional
+        VIP of the forwarding rule.
+    """
+
+
+    displayName?: str
+
+    loadBalancerName?: str
+
+    matchedPortRange?: str
+
+    matchedProtocol?: str
+
+    networkURI?: str
+
+    pscGoogleAPITarget?: str
+
+    pscServiceAttachmentURI?: str
+
+    region?: str
+
+    target?: str
+
+    uri?: str
+
+    vip?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0GkeMaster:
+    r"""
+    Display information of a Google Kubernetes Engine cluster master.
+
+    Attributes
+    ----------
+    clusterNetworkURI : str, default is Undefined, optional
+        URI of a GKE cluster network.
+    clusterURI : str, default is Undefined, optional
+        URI of a GKE cluster.
+    dnsEndpoint : str, default is Undefined, optional
+        DNS endpoint of a GKE cluster control plane.
+    externalIP : str, default is Undefined, optional
+        External IP address of a GKE cluster control plane.
+    internalIP : str, default is Undefined, optional
+        Internal IP address of a GKE cluster control plane.
+    """
+
+
+    clusterNetworkURI?: str
+
+    clusterURI?: str
+
+    dnsEndpoint?: str
+
+    externalIP?: str
+
+    internalIP?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0GoogleService:
+    r"""
+    Display information of a Google service
+
+    Attributes
+    ----------
+    googleServiceType : str, default is Undefined, optional
+        Recognized type of a Google Service.
+    sourceIP : str, default is Undefined, optional
+        Source IP address.
+    """
+
+
+    googleServiceType?: str
+
+    sourceIP?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Instance:
+    r"""
+    Display information of a Compute Engine instance.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of a Compute Engine instance.
+    externalIP : str, default is Undefined, optional
+        External IP address of the network interface.
+    interface : str, default is Undefined, optional
+        Name of the network interface of a Compute Engine instance.
+    internalIP : str, default is Undefined, optional
+        Internal IP address of the network interface.
+    networkTags : [str], default is Undefined, optional
+        Network tags configured on the instance.
+    networkURI : str, default is Undefined, optional
+        URI of a Compute Engine network.
+    pscNetworkAttachmentURI : str, default is Undefined, optional
+        URI of the PSC network attachment the NIC is attached to (if relevant).
+    serviceAccount : str, default is Undefined, optional
+        Service account authorized for the instance.
+    uri : str, default is Undefined, optional
+        URI of a Compute Engine instance.
+    """
+
+
+    displayName?: str
+
+    externalIP?: str
+
+    interface?: str
+
+    internalIP?: str
+
+    networkTags?: [str]
+
+    networkURI?: str
+
+    pscNetworkAttachmentURI?: str
+
+    serviceAccount?: str
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0LoadBalancer:
+    r"""
+    Display information of the load balancers. Deprecated in favor of the `load_balancer_backend_info` field, not used in new tests.
+
+    Attributes
+    ----------
+    backendType : str, default is Undefined, optional
+        Type of load balancer's backend configuration.
+    backendURI : str, default is Undefined, optional
+        Backend configuration URI.
+    backends : [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0LoadBalancerBackendsItems0], default is Undefined, optional
+        Information for the loadbalancer backends.
+    healthCheckURI : str, default is Undefined, optional
+        URI of the health check for the load balancer. Deprecated and no longer populated as different load balancer backends might have different health checks.
+    loadBalancerType : str, default is Undefined, optional
+        Type of the load balancer.
+    """
+
+
+    backendType?: str
+
+    backendURI?: str
+
+    backends?: [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0LoadBalancerBackendsItems0]
+
+    healthCheckURI?: str
+
+    loadBalancerType?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0LoadBalancerBackendInfo:
+    r"""
+    Display information of a specific load balancer backend.
+
+    Attributes
+    ----------
+    backendBucketURI : str, default is Undefined, optional
+        URI of the backend bucket this backend targets (if applicable).
+    backendServiceURI : str, default is Undefined, optional
+        URI of the backend service this backend belongs to (if applicable).
+    healthCheckFirewallsConfigState : str, default is Undefined, optional
+        Output only. Health check firewalls configuration state for the backend. This is a result of the static firewall analysis (verifying that health check traffic from required IP ranges to the backend is allowed or not). The backend might still be unhealthy even if these firewalls are configured. Please refer to the documentation for more information: https://cloud.google.com/load-balancing/docs/firewall-rules
+    healthCheckURI : str, default is Undefined, optional
+        URI of the health check attached to this backend (if applicable).
+    instanceGroupURI : str, default is Undefined, optional
+        URI of the instance group this backend belongs to (if applicable).
+    instanceURI : str, default is Undefined, optional
+        URI of the backend instance (if applicable). Populated for instance group backends, and zonal NEG backends.
+    name : str, default is Undefined, optional
+        Display name of the backend. For example, it might be an instance name for the instance group backends, or an IP address and port for zonal network endpoint group backends.
+    networkEndpointGroupURI : str, default is Undefined, optional
+        URI of the network endpoint group this backend belongs to (if applicable).
+    pscGoogleAPITarget : str, default is Undefined, optional
+        PSC Google API target this PSC NEG backend targets (if applicable).
+    pscServiceAttachmentURI : str, default is Undefined, optional
+        URI of the PSC service attachment this PSC NEG backend targets (if applicable).
+    """
+
+
+    backendBucketURI?: str
+
+    backendServiceURI?: str
+
+    healthCheckFirewallsConfigState?: str
+
+    healthCheckURI?: str
+
+    instanceGroupURI?: str
+
+    instanceURI?: str
+
+    name?: str
+
+    networkEndpointGroupURI?: str
+
+    pscGoogleAPITarget?: str
+
+    pscServiceAttachmentURI?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0LoadBalancerBackendsItems0:
+    r"""
+    networkmanagement cnrm cloud google com v1alpha1 network management connectivity test status observed state reachability details traces items0 steps items0 load balancer backends items0
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of a Compute Engine instance or network endpoint.
+    healthCheckAllowingFirewallRules : [str], default is Undefined, optional
+        A list of firewall rule URIs allowing probes from health check IP ranges.
+    healthCheckBlockingFirewallRules : [str], default is Undefined, optional
+        A list of firewall rule URIs blocking probes from health check IP ranges.
+    healthCheckFirewallState : str, default is Undefined, optional
+        State of the health check firewall configuration.
+    uri : str, default is Undefined, optional
+        URI of a Compute Engine instance or network endpoint.
+    """
+
+
+    displayName?: str
+
+    healthCheckAllowingFirewallRules?: [str]
+
+    healthCheckBlockingFirewallRules?: [str]
+
+    healthCheckFirewallState?: str
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Nat:
+    r"""
+    Display information of a NAT.
+
+    Attributes
+    ----------
+    natGatewayName : str, default is Undefined, optional
+        The name of Cloud NAT Gateway. Only valid when type is CLOUD_NAT.
+    networkURI : str, default is Undefined, optional
+        URI of the network where NAT translation takes place.
+    newDestinationIP : str, default is Undefined, optional
+        Destination IP address after NAT translation.
+    newDestinationPort : int, default is Undefined, optional
+        Destination port after NAT translation. Only valid when protocol is TCP or UDP.
+    newSourceIP : str, default is Undefined, optional
+        Source IP address after NAT translation.
+    newSourcePort : int, default is Undefined, optional
+        Source port after NAT translation. Only valid when protocol is TCP or UDP.
+    oldDestinationIP : str, default is Undefined, optional
+        Destination IP address before NAT translation.
+    oldDestinationPort : int, default is Undefined, optional
+        Destination port before NAT translation. Only valid when protocol is TCP or UDP.
+    oldSourceIP : str, default is Undefined, optional
+        Source IP address before NAT translation.
+    oldSourcePort : int, default is Undefined, optional
+        Source port before NAT translation. Only valid when protocol is TCP or UDP.
+    $protocol : str, default is Undefined, optional
+        IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+    routerURI : str, default is Undefined, optional
+        Uri of the Cloud Router. Only valid when type is CLOUD_NAT.
+    $type : str, default is Undefined, optional
+        Type of NAT.
+    """
+
+
+    natGatewayName?: str
+
+    networkURI?: str
+
+    newDestinationIP?: str
+
+    newDestinationPort?: int
+
+    newSourceIP?: str
+
+    newSourcePort?: int
+
+    oldDestinationIP?: str
+
+    oldDestinationPort?: int
+
+    oldSourceIP?: str
+
+    oldSourcePort?: int
+
+    $protocol?: str
+
+    routerURI?: str
+
+    $type?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Network:
+    r"""
+    Display information of a Google Cloud network.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of a Compute Engine network.
+    matchedIPRange : str, default is Undefined, optional
+        The IP range of the subnet matching the source IP address of the test.
+    matchedSubnetURI : str, default is Undefined, optional
+        URI of the subnet matching the source IP address of the test.
+    region : str, default is Undefined, optional
+        The region of the subnet matching the source IP address of the test.
+    uri : str, default is Undefined, optional
+        URI of a Compute Engine network.
+    """
+
+
+    displayName?: str
+
+    matchedIPRange?: str
+
+    matchedSubnetURI?: str
+
+    region?: str
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0ProxyConnection:
+    r"""
+    Display information of a ProxyConnection.
+
+    Attributes
+    ----------
+    networkURI : str, default is Undefined, optional
+        URI of the network where connection is proxied.
+    newDestinationIP : str, default is Undefined, optional
+        Destination IP address of a new connection.
+    newDestinationPort : int, default is Undefined, optional
+        Destination port of a new connection. Only valid when protocol is TCP or UDP.
+    newSourceIP : str, default is Undefined, optional
+        Source IP address of a new connection.
+    newSourcePort : int, default is Undefined, optional
+        Source port of a new connection. Only valid when protocol is TCP or UDP.
+    oldDestinationIP : str, default is Undefined, optional
+        Destination IP address of an original connection
+    oldDestinationPort : int, default is Undefined, optional
+        Destination port of an original connection. Only valid when protocol is TCP or UDP.
+    oldSourceIP : str, default is Undefined, optional
+        Source IP address of an original connection.
+    oldSourcePort : int, default is Undefined, optional
+        Source port of an original connection. Only valid when protocol is TCP or UDP.
+    $protocol : str, default is Undefined, optional
+        IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+    subnetURI : str, default is Undefined, optional
+        Uri of proxy subnet.
+    """
+
+
+    networkURI?: str
+
+    newDestinationIP?: str
+
+    newDestinationPort?: int
+
+    newSourceIP?: str
+
+    newSourcePort?: int
+
+    oldDestinationIP?: str
+
+    oldDestinationPort?: int
+
+    oldSourceIP?: str
+
+    oldSourcePort?: int
+
+    $protocol?: str
+
+    subnetURI?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0RedisCluster:
+    r"""
+    Display information of a Redis Cluster.
+
+    Attributes
+    ----------
+    discoveryEndpointIPAddress : str, default is Undefined, optional
+        Discovery endpoint IP address of a Redis Cluster.
+    displayName : str, default is Undefined, optional
+        Name of a Redis Cluster.
+    location : str, default is Undefined, optional
+        Name of the region in which the Redis Cluster is defined. For example, "us-central1".
+    networkURI : str, default is Undefined, optional
+        URI of a Redis Cluster network in format "projects/{project_id}/global/networks/{network_id}".
+    secondaryEndpointIPAddress : str, default is Undefined, optional
+        Secondary endpoint IP address of a Redis Cluster.
+    uri : str, default is Undefined, optional
+        URI of a Redis Cluster in format "projects/{project_id}/locations/{location}/clusters/{cluster_id}"
+    """
+
+
+    discoveryEndpointIPAddress?: str
+
+    displayName?: str
+
+    location?: str
+
+    networkURI?: str
+
+    secondaryEndpointIPAddress?: str
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0RedisInstance:
+    r"""
+    Display information of a Redis Instance.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of a Cloud Redis Instance.
+    networkURI : str, default is Undefined, optional
+        URI of a Cloud Redis Instance network.
+    primaryEndpointIP : str, default is Undefined, optional
+        Primary endpoint IP address of a Cloud Redis Instance.
+    readEndpointIP : str, default is Undefined, optional
+        Read endpoint IP address of a Cloud Redis Instance (if applicable).
+    region : str, default is Undefined, optional
+        Region in which the Cloud Redis Instance is defined.
+    uri : str, default is Undefined, optional
+        URI of a Cloud Redis Instance.
+    """
+
+
+    displayName?: str
+
+    networkURI?: str
+
+    primaryEndpointIP?: str
+
+    readEndpointIP?: str
+
+    region?: str
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0Route:
+    r"""
+    Display information of a Compute Engine route.
+
+    Attributes
+    ----------
+    advertisedRouteNextHopURI : str, default is Undefined, optional
+        For advertised routes, the URI of their next hop, i.e. the URI of the hybrid endpoint (VPN tunnel, Interconnect attachment, NCC router appliance) the advertised prefix is advertised through, or URI of the source peered network.
+    advertisedRouteSourceRouterURI : str, default is Undefined, optional
+        For advertised dynamic routes, the URI of the Cloud Router that advertised the corresponding IP prefix.
+    destIPRange : str, default is Undefined, optional
+        Destination IP range of the route.
+    destPortRanges : [str], default is Undefined, optional
+        Destination port ranges of the route. Policy based routes only.
+    displayName : str, default is Undefined, optional
+        Name of a route.
+    instanceTags : [str], default is Undefined, optional
+        Instance tags of the route.
+    nccHubURI : str, default is Undefined, optional
+        URI of a NCC Hub. NCC_HUB routes only.
+    nccSpokeURI : str, default is Undefined, optional
+        URI of a NCC Spoke. NCC_HUB routes only.
+    networkURI : str, default is Undefined, optional
+        URI of a Compute Engine network. NETWORK routes only.
+    nextHop : str, default is Undefined, optional
+        Next hop of the route.
+    nextHopType : str, default is Undefined, optional
+        Type of next hop.
+    priority : int, default is Undefined, optional
+        Priority of the route.
+    protocols : [str], default is Undefined, optional
+        Protocols of the route. Policy based routes only.
+    region : str, default is Undefined, optional
+        Region of the route (if applicable).
+    routeScope : str, default is Undefined, optional
+        Indicates where route is applicable.
+    routeType : str, default is Undefined, optional
+        Type of route.
+    srcIPRange : str, default is Undefined, optional
+        Source IP address range of the route. Policy based routes only.
+    srcPortRanges : [str], default is Undefined, optional
+        Source port ranges of the route. Policy based routes only.
+    uri : str, default is Undefined, optional
+        URI of a route (if applicable).
+    """
+
+
+    advertisedRouteNextHopURI?: str
+
+    advertisedRouteSourceRouterURI?: str
+
+    destIPRange?: str
+
+    destPortRanges?: [str]
+
+    displayName?: str
+
+    instanceTags?: [str]
+
+    nccHubURI?: str
+
+    nccSpokeURI?: str
+
+    networkURI?: str
+
+    nextHop?: str
+
+    nextHopType?: str
+
+    priority?: int
+
+    protocols?: [str]
+
+    region?: str
+
+    routeScope?: str
+
+    routeType?: str
+
+    srcIPRange?: str
+
+    srcPortRanges?: [str]
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0ServerlessNeg:
+    r"""
+    Display information of a Serverless network endpoint group backend. Used only for return traces.
+
+    Attributes
+    ----------
+    negURI : str, default is Undefined, optional
+        URI of the serverless network endpoint group.
+    """
+
+
+    negURI?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0StorageBucket:
+    r"""
+    Display information of a Storage Bucket. Used only for return traces.
+
+    Attributes
+    ----------
+    bucket : str, default is Undefined, optional
+        Cloud Storage Bucket name.
+    """
+
+
+    bucket?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0VpcConnector:
+    r"""
+    Display information of a VPC connector.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of a VPC connector.
+    location : str, default is Undefined, optional
+        Location in which the VPC connector is deployed.
+    uri : str, default is Undefined, optional
+        URI of a VPC connector.
+    """
+
+
+    displayName?: str
+
+    location?: str
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0VpnGateway:
+    r"""
+    Display information of a Compute Engine VPN gateway.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of a VPN gateway.
+    ipAddress : str, default is Undefined, optional
+        IP address of the VPN gateway.
+    networkURI : str, default is Undefined, optional
+        URI of a Compute Engine network where the VPN gateway is configured.
+    region : str, default is Undefined, optional
+        Name of a Google Cloud region where this VPN gateway is configured.
+    uri : str, default is Undefined, optional
+        URI of a VPN gateway.
+    vpnTunnelURI : str, default is Undefined, optional
+        A VPN tunnel that is associated with this VPN gateway. There may be multiple VPN tunnels configured on a VPN gateway, and only the one relevant to the test is displayed.
+    """
+
+
+    displayName?: str
+
+    ipAddress?: str
+
+    networkURI?: str
+
+    region?: str
+
+    uri?: str
+
+    vpnTunnelURI?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0StepsItems0VpnTunnel:
+    r"""
+    Display information of a Compute Engine VPN tunnel.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of a VPN tunnel.
+    networkURI : str, default is Undefined, optional
+        URI of a Compute Engine network where the VPN tunnel is configured.
+    region : str, default is Undefined, optional
+        Name of a Google Cloud region where this VPN tunnel is configured.
+    remoteGateway : str, default is Undefined, optional
+        URI of a VPN gateway at remote end of the tunnel.
+    remoteGatewayIP : str, default is Undefined, optional
+        Remote VPN gateway's IP address.
+    routingType : str, default is Undefined, optional
+        Type of the routing policy.
+    sourceGateway : str, default is Undefined, optional
+        URI of the VPN gateway at local end of the tunnel.
+    sourceGatewayIP : str, default is Undefined, optional
+        Local VPN gateway's IP address.
+    uri : str, default is Undefined, optional
+        URI of a VPN tunnel.
+    """
+
+
+    displayName?: str
+
+    networkURI?: str
+
+    region?: str
+
+    remoteGateway?: str
+
+    remoteGatewayIP?: str
+
+    routingType?: str
+
+    sourceGateway?: str
+
+    sourceGatewayIP?: str
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetails:
+    r"""
+    Output only. The reachability details of this test from the latest run for the return path. The details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of an existing test.
+
+    Attributes
+    ----------
+    error : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsError, default is Undefined, optional
+        error
+    result : str, default is Undefined, optional
+        The overall result of the test's configuration analysis.
+    traces : [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0], default is Undefined, optional
+        Result may contain a list of traces if a test has multiple possible paths in the network, such as when destination endpoint is a load balancer with multiple backends.
+    verifyTime : str, default is Undefined, optional
+        The time of the configuration analysis.
+    """
+
+
+    error?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsError
+
+    result?: str
+
+    traces?: [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0]
+
+    verifyTime?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsError:
+    r"""
+    The details of a failure or a cancellation of reachability analysis.
+
+    Attributes
+    ----------
+    code : int, default is Undefined, optional
+        The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code].
+    details : [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsErrorDetailsItems0], default is Undefined, optional
+        A list of messages that carry the error details.  There is a common set of message types for APIs to use.
+    message : str, default is Undefined, optional
+        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the [google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client.
+    """
+
+
+    code?: int
+
+    details?: [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsErrorDetailsItems0]
+
+    message?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsErrorDetailsItems0:
+    r"""
+    networkmanagement cnrm cloud google com v1alpha1 network management connectivity test status observed state return reachability details error details items0
+
+    Attributes
+    ----------
+    typeURL : str, default is Undefined, optional
+        A URL/resource name that uniquely identifies the type of the serialized
+         protocol buffer message. This string must contain at least
+         one "/" character. The last segment of the URL's path must represent
+         the fully qualified name of the type (as in
+         `path/google.protobuf.Duration`). The name should be in a canonical form
+         (e.g., leading "." is not accepted).
+
+         In practice, teams usually precompile into the binary all types that they
+         expect it to use in the context of Any. However, for URLs which use the
+         scheme `http`, `https`, or no scheme, one can optionally set up a type
+         server that maps type URLs to message definitions as follows:
+
+         * If no scheme is provided, `https` is assumed.
+         * An HTTP GET on the URL must yield a [google.protobuf.Type][]
+           value in binary format, or produce an error.
+         * Applications are allowed to cache lookup results based on the
+           URL, or have them precompiled into a binary to avoid any
+           lookup. Therefore, binary compatibility needs to be preserved
+           on changes to types. (Use versioned type names to manage
+           breaking changes.)
+
+         Note: this functionality is not currently available in the official
+         protobuf release, and it is not used for type URLs beginning with
+         type.googleapis.com.
+
+         Schemes other than `http`, `https` (or the empty scheme) might be
+         used with implementation specific semantics.
+    value : str, default is Undefined, optional
+        Must be a valid serialized protocol buffer of the above specified type.
+    """
+
+
+    typeURL?: str
+
+    value?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0:
+    r"""
+    networkmanagement cnrm cloud google com v1alpha1 network management connectivity test status observed state return reachability details traces items0
+
+    Attributes
+    ----------
+    endpointInfo : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0EndpointInfo, default is Undefined, optional
+        endpoint info
+    forwardTraceID : int, default is Undefined, optional
+        ID of trace. For forward traces, this ID is unique for each trace. For return traces, it matches ID of associated forward trace. A single forward trace can be associated with none, one or more than one return trace.
+    steps : [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0], default is Undefined, optional
+        A trace of a test contains multiple steps from the initial state to the
+         final state (delivered, dropped, forwarded, or aborted).
+
+         The steps are ordered by the processing sequence within the simulated
+         network state machine. It is critical to preserve the order of the steps
+         and avoid reordering or sorting them.
+    """
+
+
+    endpointInfo?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0EndpointInfo
+
+    forwardTraceID?: int
+
+    steps?: [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0]
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0EndpointInfo:
+    r"""
+    Derived from the source and destination endpoints definition specified by user request, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces.
+
+    Attributes
+    ----------
+    destinationIP : str, default is Undefined, optional
+        Destination IP address.
+    destinationNetworkURI : str, default is Undefined, optional
+        URI of the network where this packet is sent to.
+    destinationPort : int, default is Undefined, optional
+        Destination port. Only valid when protocol is TCP or UDP.
+    $protocol : str, default is Undefined, optional
+        IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+    sourceAgentURI : str, default is Undefined, optional
+        URI of the source telemetry agent this packet originates from.
+    sourceIP : str, default is Undefined, optional
+        Source IP address.
+    sourceNetworkURI : str, default is Undefined, optional
+        URI of the network where this packet originates from.
+    sourcePort : int, default is Undefined, optional
+        Source port. Only valid when protocol is TCP or UDP.
+    """
+
+
+    destinationIP?: str
+
+    destinationNetworkURI?: str
+
+    destinationPort?: int
+
+    $protocol?: str
+
+    sourceAgentURI?: str
+
+    sourceIP?: str
+
+    sourceNetworkURI?: str
+
+    sourcePort?: int
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0:
+    r"""
+    networkmanagement cnrm cloud google com v1alpha1 network management connectivity test status observed state return reachability details traces items0 steps items0
+
+    Attributes
+    ----------
+    abort : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Abort, default is Undefined, optional
+        abort
+    appEngineVersion : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0AppEngineVersion, default is Undefined, optional
+        app engine version
+    causesDrop : bool, default is Undefined, optional
+        This is a step that leads to the final state Drop.
+    cloudFunction : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0CloudFunction, default is Undefined, optional
+        cloud function
+    cloudRunRevision : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0CloudRunRevision, default is Undefined, optional
+        cloud run revision
+    cloudSQLInstance : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0CloudSQLInstance, default is Undefined, optional
+        cloud SQL instance
+    deliver : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Deliver, default is Undefined, optional
+        deliver
+    description : str, default is Undefined, optional
+        A description of the step. Usually this is a summary of the state.
+    drop : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Drop, default is Undefined, optional
+        drop
+    endpoint : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Endpoint, default is Undefined, optional
+        endpoint
+    firewall : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Firewall, default is Undefined, optional
+        firewall
+    forward : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Forward, default is Undefined, optional
+        forward
+    forwardingRule : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0ForwardingRule, default is Undefined, optional
+        forwarding rule
+    gkeMaster : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0GkeMaster, default is Undefined, optional
+        gke master
+    googleService : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0GoogleService, default is Undefined, optional
+        google service
+    instance : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Instance, default is Undefined, optional
+        instance
+    loadBalancer : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0LoadBalancer, default is Undefined, optional
+        load balancer
+    loadBalancerBackendInfo : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0LoadBalancerBackendInfo, default is Undefined, optional
+        load balancer backend info
+    nat : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Nat, default is Undefined, optional
+        nat
+    network : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Network, default is Undefined, optional
+        network
+    projectID : str, default is Undefined, optional
+        Project ID that contains the configuration this step is validating.
+    proxyConnection : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0ProxyConnection, default is Undefined, optional
+        proxy connection
+    redisCluster : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0RedisCluster, default is Undefined, optional
+        redis cluster
+    redisInstance : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0RedisInstance, default is Undefined, optional
+        redis instance
+    route : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Route, default is Undefined, optional
+        route
+    serverlessNeg : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0ServerlessNeg, default is Undefined, optional
+        serverless neg
+    state : str, default is Undefined, optional
+        Each step is in one of the pre-defined states.
+    storageBucket : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0StorageBucket, default is Undefined, optional
+        storage bucket
+    vpcConnector : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0VpcConnector, default is Undefined, optional
+        vpc connector
+    vpnGateway : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0VpnGateway, default is Undefined, optional
+        vpn gateway
+    vpnTunnel : NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0VpnTunnel, default is Undefined, optional
+        vpn tunnel
+    """
+
+
+    abort?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Abort
+
+    appEngineVersion?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0AppEngineVersion
+
+    causesDrop?: bool
+
+    cloudFunction?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0CloudFunction
+
+    cloudRunRevision?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0CloudRunRevision
+
+    cloudSQLInstance?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0CloudSQLInstance
+
+    deliver?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Deliver
+
+    description?: str
+
+    drop?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Drop
+
+    endpoint?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Endpoint
+
+    firewall?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Firewall
+
+    forward?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Forward
+
+    forwardingRule?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0ForwardingRule
+
+    gkeMaster?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0GkeMaster
+
+    googleService?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0GoogleService
+
+    instance?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Instance
+
+    loadBalancer?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0LoadBalancer
+
+    loadBalancerBackendInfo?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0LoadBalancerBackendInfo
+
+    nat?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Nat
+
+    network?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Network
+
+    projectID?: str
+
+    proxyConnection?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0ProxyConnection
+
+    redisCluster?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0RedisCluster
+
+    redisInstance?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0RedisInstance
+
+    route?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Route
+
+    serverlessNeg?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0ServerlessNeg
+
+    state?: str
+
+    storageBucket?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0StorageBucket
+
+    vpcConnector?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0VpcConnector
+
+    vpnGateway?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0VpnGateway
+
+    vpnTunnel?: NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0VpnTunnel
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Abort:
+    r"""
+    Display information of the final state "abort" and reason.
+
+    Attributes
+    ----------
+    cause : str, default is Undefined, optional
+        Causes that the analysis is aborted.
+    ipAddress : str, default is Undefined, optional
+        IP address that caused the abort.
+    projectsMissingPermission : [str], default is Undefined, optional
+        List of project IDs the user specified in the request but lacks access to. In this case, analysis is aborted with the PERMISSION_DENIED cause.
+    resourceURI : str, default is Undefined, optional
+        URI of the resource that caused the abort.
+    """
+
+
+    cause?: str
+
+    ipAddress?: str
+
+    projectsMissingPermission?: [str]
+
+    resourceURI?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0AppEngineVersion:
+    r"""
+    Display information of an App Engine service version.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of an App Engine version.
+    environment : str, default is Undefined, optional
+        App Engine execution environment for a version.
+    runtime : str, default is Undefined, optional
+        Runtime of the App Engine version.
+    uri : str, default is Undefined, optional
+        URI of an App Engine version.
+    """
+
+
+    displayName?: str
+
+    environment?: str
+
+    runtime?: str
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0CloudFunction:
+    r"""
+    Display information of a Cloud Function.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of a Cloud Function.
+    location : str, default is Undefined, optional
+        Location in which the Cloud Function is deployed.
+    uri : str, default is Undefined, optional
+        URI of a Cloud Function.
+    versionID : int, default is Undefined, optional
+        Latest successfully deployed version id of the Cloud Function.
+    """
+
+
+    displayName?: str
+
+    location?: str
+
+    uri?: str
+
+    versionID?: int
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0CloudRunRevision:
+    r"""
+    Display information of a Cloud Run revision.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of a Cloud Run revision.
+    location : str, default is Undefined, optional
+        Location in which this revision is deployed.
+    serviceURI : str, default is Undefined, optional
+        URI of Cloud Run service this revision belongs to.
+    uri : str, default is Undefined, optional
+        URI of a Cloud Run revision.
+    """
+
+
+    displayName?: str
+
+    location?: str
+
+    serviceURI?: str
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0CloudSQLInstance:
+    r"""
+    Display information of a Cloud SQL instance.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of a Cloud SQL instance.
+    externalIP : str, default is Undefined, optional
+        External IP address of a Cloud SQL instance.
+    internalIP : str, default is Undefined, optional
+        Internal IP address of a Cloud SQL instance.
+    networkURI : str, default is Undefined, optional
+        URI of a Cloud SQL instance network or empty string if the instance does not have one.
+    region : str, default is Undefined, optional
+        Region in which the Cloud SQL instance is running.
+    uri : str, default is Undefined, optional
+        URI of a Cloud SQL instance.
+    """
+
+
+    displayName?: str
+
+    externalIP?: str
+
+    internalIP?: str
+
+    networkURI?: str
+
+    region?: str
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Deliver:
+    r"""
+    Display information of the final state "deliver" and reason.
+
+    Attributes
+    ----------
+    ipAddress : str, default is Undefined, optional
+        IP address of the target (if applicable).
+    pscGoogleAPITarget : str, default is Undefined, optional
+        PSC Google API target the packet is delivered to (if applicable).
+    resourceURI : str, default is Undefined, optional
+        URI of the resource that the packet is delivered to.
+    storageBucket : str, default is Undefined, optional
+        Name of the Cloud Storage Bucket the packet is delivered to (if applicable).
+    target : str, default is Undefined, optional
+        Target type where the packet is delivered to.
+    """
+
+
+    ipAddress?: str
+
+    pscGoogleAPITarget?: str
+
+    resourceURI?: str
+
+    storageBucket?: str
+
+    target?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Drop:
+    r"""
+    Display information of the final state "drop" and reason.
+
+    Attributes
+    ----------
+    cause : str, default is Undefined, optional
+        Cause that the packet is dropped.
+    destinationIP : str, default is Undefined, optional
+        Destination IP address of the dropped packet (if relevant).
+    region : str, default is Undefined, optional
+        Region of the dropped packet (if relevant).
+    resourceURI : str, default is Undefined, optional
+        URI of the resource that caused the drop.
+    sourceIP : str, default is Undefined, optional
+        Source IP address of the dropped packet (if relevant).
+    """
+
+
+    cause?: str
+
+    destinationIP?: str
+
+    region?: str
+
+    resourceURI?: str
+
+    sourceIP?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Endpoint:
+    r"""
+    Display information of the source and destination under analysis. The endpoint information in an intermediate state may differ with the initial input, as it might be modified by state like NAT, or Connection Proxy.
+
+    Attributes
+    ----------
+    destinationIP : str, default is Undefined, optional
+        Destination IP address.
+    destinationNetworkURI : str, default is Undefined, optional
+        URI of the network where this packet is sent to.
+    destinationPort : int, default is Undefined, optional
+        Destination port. Only valid when protocol is TCP or UDP.
+    $protocol : str, default is Undefined, optional
+        IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+    sourceAgentURI : str, default is Undefined, optional
+        URI of the source telemetry agent this packet originates from.
+    sourceIP : str, default is Undefined, optional
+        Source IP address.
+    sourceNetworkURI : str, default is Undefined, optional
+        URI of the network where this packet originates from.
+    sourcePort : int, default is Undefined, optional
+        Source port. Only valid when protocol is TCP or UDP.
+    """
+
+
+    destinationIP?: str
+
+    destinationNetworkURI?: str
+
+    destinationPort?: int
+
+    $protocol?: str
+
+    sourceAgentURI?: str
+
+    sourceIP?: str
+
+    sourceNetworkURI?: str
+
+    sourcePort?: int
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Firewall:
+    r"""
+    Display information of a Compute Engine firewall rule.
+
+    Attributes
+    ----------
+    action : str, default is Undefined, optional
+        Possible values: ALLOW, DENY, APPLY_SECURITY_PROFILE_GROUP
+    direction : str, default is Undefined, optional
+        Possible values: INGRESS, EGRESS
+    displayName : str, default is Undefined, optional
+        The display name of the firewall rule. This field might be empty for firewall policy rules.
+    firewallRuleType : str, default is Undefined, optional
+        The firewall rule's type.
+    networkURI : str, default is Undefined, optional
+        The URI of the VPC network that the firewall rule is associated with. This field is not applicable to hierarchical firewall policy rules.
+    policy : str, default is Undefined, optional
+        The name of the firewall policy that this rule is associated with. This field is not applicable to VPC firewall rules and implied VPC firewall rules.
+    policyURI : str, default is Undefined, optional
+        The URI of the firewall policy that this rule is associated with. This field is not applicable to VPC firewall rules and implied VPC firewall rules.
+    priority : int, default is Undefined, optional
+        The priority of the firewall rule.
+    targetServiceAccounts : [str], default is Undefined, optional
+        The target service accounts specified by the firewall rule.
+    targetTags : [str], default is Undefined, optional
+        The target tags defined by the VPC firewall rule. This field is not applicable to firewall policy rules.
+    uri : str, default is Undefined, optional
+        The URI of the firewall rule. This field is not applicable to implied VPC firewall rules.
+    """
+
+
+    action?: str
+
+    direction?: str
+
+    displayName?: str
+
+    firewallRuleType?: str
+
+    networkURI?: str
+
+    policy?: str
+
+    policyURI?: str
+
+    priority?: int
+
+    targetServiceAccounts?: [str]
+
+    targetTags?: [str]
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Forward:
+    r"""
+    Display information of the final state "forward" and reason.
+
+    Attributes
+    ----------
+    ipAddress : str, default is Undefined, optional
+        IP address of the target (if applicable).
+    resourceURI : str, default is Undefined, optional
+        URI of the resource that the packet is forwarded to.
+    target : str, default is Undefined, optional
+        Target type where this packet is forwarded to.
+    """
+
+
+    ipAddress?: str
+
+    resourceURI?: str
+
+    target?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0ForwardingRule:
+    r"""
+    Display information of a Compute Engine forwarding rule.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of the forwarding rule.
+    loadBalancerName : str, default is Undefined, optional
+        Name of the load balancer the forwarding rule belongs to. Empty for forwarding rules not related to load balancers (like PSC forwarding rules).
+    matchedPortRange : str, default is Undefined, optional
+        Port range defined in the forwarding rule that matches the packet.
+    matchedProtocol : str, default is Undefined, optional
+        Protocol defined in the forwarding rule that matches the packet.
+    networkURI : str, default is Undefined, optional
+        Network URI.
+    pscGoogleAPITarget : str, default is Undefined, optional
+        PSC Google API target this forwarding rule targets (if applicable).
+    pscServiceAttachmentURI : str, default is Undefined, optional
+        URI of the PSC service attachment this forwarding rule targets (if applicable).
+    region : str, default is Undefined, optional
+        Region of the forwarding rule. Set only for regional forwarding rules.
+    target : str, default is Undefined, optional
+        Target type of the forwarding rule.
+    uri : str, default is Undefined, optional
+        URI of the forwarding rule.
+    vip : str, default is Undefined, optional
+        VIP of the forwarding rule.
+    """
+
+
+    displayName?: str
+
+    loadBalancerName?: str
+
+    matchedPortRange?: str
+
+    matchedProtocol?: str
+
+    networkURI?: str
+
+    pscGoogleAPITarget?: str
+
+    pscServiceAttachmentURI?: str
+
+    region?: str
+
+    target?: str
+
+    uri?: str
+
+    vip?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0GkeMaster:
+    r"""
+    Display information of a Google Kubernetes Engine cluster master.
+
+    Attributes
+    ----------
+    clusterNetworkURI : str, default is Undefined, optional
+        URI of a GKE cluster network.
+    clusterURI : str, default is Undefined, optional
+        URI of a GKE cluster.
+    dnsEndpoint : str, default is Undefined, optional
+        DNS endpoint of a GKE cluster control plane.
+    externalIP : str, default is Undefined, optional
+        External IP address of a GKE cluster control plane.
+    internalIP : str, default is Undefined, optional
+        Internal IP address of a GKE cluster control plane.
+    """
+
+
+    clusterNetworkURI?: str
+
+    clusterURI?: str
+
+    dnsEndpoint?: str
+
+    externalIP?: str
+
+    internalIP?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0GoogleService:
+    r"""
+    Display information of a Google service
+
+    Attributes
+    ----------
+    googleServiceType : str, default is Undefined, optional
+        Recognized type of a Google Service.
+    sourceIP : str, default is Undefined, optional
+        Source IP address.
+    """
+
+
+    googleServiceType?: str
+
+    sourceIP?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Instance:
+    r"""
+    Display information of a Compute Engine instance.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of a Compute Engine instance.
+    externalIP : str, default is Undefined, optional
+        External IP address of the network interface.
+    interface : str, default is Undefined, optional
+        Name of the network interface of a Compute Engine instance.
+    internalIP : str, default is Undefined, optional
+        Internal IP address of the network interface.
+    networkTags : [str], default is Undefined, optional
+        Network tags configured on the instance.
+    networkURI : str, default is Undefined, optional
+        URI of a Compute Engine network.
+    pscNetworkAttachmentURI : str, default is Undefined, optional
+        URI of the PSC network attachment the NIC is attached to (if relevant).
+    serviceAccount : str, default is Undefined, optional
+        Service account authorized for the instance.
+    uri : str, default is Undefined, optional
+        URI of a Compute Engine instance.
+    """
+
+
+    displayName?: str
+
+    externalIP?: str
+
+    interface?: str
+
+    internalIP?: str
+
+    networkTags?: [str]
+
+    networkURI?: str
+
+    pscNetworkAttachmentURI?: str
+
+    serviceAccount?: str
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0LoadBalancer:
+    r"""
+    Display information of the load balancers. Deprecated in favor of the `load_balancer_backend_info` field, not used in new tests.
+
+    Attributes
+    ----------
+    backendType : str, default is Undefined, optional
+        Type of load balancer's backend configuration.
+    backendURI : str, default is Undefined, optional
+        Backend configuration URI.
+    backends : [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0LoadBalancerBackendsItems0], default is Undefined, optional
+        Information for the loadbalancer backends.
+    healthCheckURI : str, default is Undefined, optional
+        URI of the health check for the load balancer. Deprecated and no longer populated as different load balancer backends might have different health checks.
+    loadBalancerType : str, default is Undefined, optional
+        Type of the load balancer.
+    """
+
+
+    backendType?: str
+
+    backendURI?: str
+
+    backends?: [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0LoadBalancerBackendsItems0]
+
+    healthCheckURI?: str
+
+    loadBalancerType?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0LoadBalancerBackendInfo:
+    r"""
+    Display information of a specific load balancer backend.
+
+    Attributes
+    ----------
+    backendBucketURI : str, default is Undefined, optional
+        URI of the backend bucket this backend targets (if applicable).
+    backendServiceURI : str, default is Undefined, optional
+        URI of the backend service this backend belongs to (if applicable).
+    healthCheckFirewallsConfigState : str, default is Undefined, optional
+        Output only. Health check firewalls configuration state for the backend. This is a result of the static firewall analysis (verifying that health check traffic from required IP ranges to the backend is allowed or not). The backend might still be unhealthy even if these firewalls are configured. Please refer to the documentation for more information: https://cloud.google.com/load-balancing/docs/firewall-rules
+    healthCheckURI : str, default is Undefined, optional
+        URI of the health check attached to this backend (if applicable).
+    instanceGroupURI : str, default is Undefined, optional
+        URI of the instance group this backend belongs to (if applicable).
+    instanceURI : str, default is Undefined, optional
+        URI of the backend instance (if applicable). Populated for instance group backends, and zonal NEG backends.
+    name : str, default is Undefined, optional
+        Display name of the backend. For example, it might be an instance name for the instance group backends, or an IP address and port for zonal network endpoint group backends.
+    networkEndpointGroupURI : str, default is Undefined, optional
+        URI of the network endpoint group this backend belongs to (if applicable).
+    pscGoogleAPITarget : str, default is Undefined, optional
+        PSC Google API target this PSC NEG backend targets (if applicable).
+    pscServiceAttachmentURI : str, default is Undefined, optional
+        URI of the PSC service attachment this PSC NEG backend targets (if applicable).
+    """
+
+
+    backendBucketURI?: str
+
+    backendServiceURI?: str
+
+    healthCheckFirewallsConfigState?: str
+
+    healthCheckURI?: str
+
+    instanceGroupURI?: str
+
+    instanceURI?: str
+
+    name?: str
+
+    networkEndpointGroupURI?: str
+
+    pscGoogleAPITarget?: str
+
+    pscServiceAttachmentURI?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0LoadBalancerBackendsItems0:
+    r"""
+    networkmanagement cnrm cloud google com v1alpha1 network management connectivity test status observed state return reachability details traces items0 steps items0 load balancer backends items0
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of a Compute Engine instance or network endpoint.
+    healthCheckAllowingFirewallRules : [str], default is Undefined, optional
+        A list of firewall rule URIs allowing probes from health check IP ranges.
+    healthCheckBlockingFirewallRules : [str], default is Undefined, optional
+        A list of firewall rule URIs blocking probes from health check IP ranges.
+    healthCheckFirewallState : str, default is Undefined, optional
+        State of the health check firewall configuration.
+    uri : str, default is Undefined, optional
+        URI of a Compute Engine instance or network endpoint.
+    """
+
+
+    displayName?: str
+
+    healthCheckAllowingFirewallRules?: [str]
+
+    healthCheckBlockingFirewallRules?: [str]
+
+    healthCheckFirewallState?: str
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Nat:
+    r"""
+    Display information of a NAT.
+
+    Attributes
+    ----------
+    natGatewayName : str, default is Undefined, optional
+        The name of Cloud NAT Gateway. Only valid when type is CLOUD_NAT.
+    networkURI : str, default is Undefined, optional
+        URI of the network where NAT translation takes place.
+    newDestinationIP : str, default is Undefined, optional
+        Destination IP address after NAT translation.
+    newDestinationPort : int, default is Undefined, optional
+        Destination port after NAT translation. Only valid when protocol is TCP or UDP.
+    newSourceIP : str, default is Undefined, optional
+        Source IP address after NAT translation.
+    newSourcePort : int, default is Undefined, optional
+        Source port after NAT translation. Only valid when protocol is TCP or UDP.
+    oldDestinationIP : str, default is Undefined, optional
+        Destination IP address before NAT translation.
+    oldDestinationPort : int, default is Undefined, optional
+        Destination port before NAT translation. Only valid when protocol is TCP or UDP.
+    oldSourceIP : str, default is Undefined, optional
+        Source IP address before NAT translation.
+    oldSourcePort : int, default is Undefined, optional
+        Source port before NAT translation. Only valid when protocol is TCP or UDP.
+    $protocol : str, default is Undefined, optional
+        IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+    routerURI : str, default is Undefined, optional
+        Uri of the Cloud Router. Only valid when type is CLOUD_NAT.
+    $type : str, default is Undefined, optional
+        Type of NAT.
+    """
+
+
+    natGatewayName?: str
+
+    networkURI?: str
+
+    newDestinationIP?: str
+
+    newDestinationPort?: int
+
+    newSourceIP?: str
+
+    newSourcePort?: int
+
+    oldDestinationIP?: str
+
+    oldDestinationPort?: int
+
+    oldSourceIP?: str
+
+    oldSourcePort?: int
+
+    $protocol?: str
+
+    routerURI?: str
+
+    $type?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Network:
+    r"""
+    Display information of a Google Cloud network.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of a Compute Engine network.
+    matchedIPRange : str, default is Undefined, optional
+        The IP range of the subnet matching the source IP address of the test.
+    matchedSubnetURI : str, default is Undefined, optional
+        URI of the subnet matching the source IP address of the test.
+    region : str, default is Undefined, optional
+        The region of the subnet matching the source IP address of the test.
+    uri : str, default is Undefined, optional
+        URI of a Compute Engine network.
+    """
+
+
+    displayName?: str
+
+    matchedIPRange?: str
+
+    matchedSubnetURI?: str
+
+    region?: str
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0ProxyConnection:
+    r"""
+    Display information of a ProxyConnection.
+
+    Attributes
+    ----------
+    networkURI : str, default is Undefined, optional
+        URI of the network where connection is proxied.
+    newDestinationIP : str, default is Undefined, optional
+        Destination IP address of a new connection.
+    newDestinationPort : int, default is Undefined, optional
+        Destination port of a new connection. Only valid when protocol is TCP or UDP.
+    newSourceIP : str, default is Undefined, optional
+        Source IP address of a new connection.
+    newSourcePort : int, default is Undefined, optional
+        Source port of a new connection. Only valid when protocol is TCP or UDP.
+    oldDestinationIP : str, default is Undefined, optional
+        Destination IP address of an original connection
+    oldDestinationPort : int, default is Undefined, optional
+        Destination port of an original connection. Only valid when protocol is TCP or UDP.
+    oldSourceIP : str, default is Undefined, optional
+        Source IP address of an original connection.
+    oldSourcePort : int, default is Undefined, optional
+        Source port of an original connection. Only valid when protocol is TCP or UDP.
+    $protocol : str, default is Undefined, optional
+        IP protocol in string format, for example: "TCP", "UDP", "ICMP".
+    subnetURI : str, default is Undefined, optional
+        Uri of proxy subnet.
+    """
+
+
+    networkURI?: str
+
+    newDestinationIP?: str
+
+    newDestinationPort?: int
+
+    newSourceIP?: str
+
+    newSourcePort?: int
+
+    oldDestinationIP?: str
+
+    oldDestinationPort?: int
+
+    oldSourceIP?: str
+
+    oldSourcePort?: int
+
+    $protocol?: str
+
+    subnetURI?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0RedisCluster:
+    r"""
+    Display information of a Redis Cluster.
+
+    Attributes
+    ----------
+    discoveryEndpointIPAddress : str, default is Undefined, optional
+        Discovery endpoint IP address of a Redis Cluster.
+    displayName : str, default is Undefined, optional
+        Name of a Redis Cluster.
+    location : str, default is Undefined, optional
+        Name of the region in which the Redis Cluster is defined. For example, "us-central1".
+    networkURI : str, default is Undefined, optional
+        URI of a Redis Cluster network in format "projects/{project_id}/global/networks/{network_id}".
+    secondaryEndpointIPAddress : str, default is Undefined, optional
+        Secondary endpoint IP address of a Redis Cluster.
+    uri : str, default is Undefined, optional
+        URI of a Redis Cluster in format "projects/{project_id}/locations/{location}/clusters/{cluster_id}"
+    """
+
+
+    discoveryEndpointIPAddress?: str
+
+    displayName?: str
+
+    location?: str
+
+    networkURI?: str
+
+    secondaryEndpointIPAddress?: str
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0RedisInstance:
+    r"""
+    Display information of a Redis Instance.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of a Cloud Redis Instance.
+    networkURI : str, default is Undefined, optional
+        URI of a Cloud Redis Instance network.
+    primaryEndpointIP : str, default is Undefined, optional
+        Primary endpoint IP address of a Cloud Redis Instance.
+    readEndpointIP : str, default is Undefined, optional
+        Read endpoint IP address of a Cloud Redis Instance (if applicable).
+    region : str, default is Undefined, optional
+        Region in which the Cloud Redis Instance is defined.
+    uri : str, default is Undefined, optional
+        URI of a Cloud Redis Instance.
+    """
+
+
+    displayName?: str
+
+    networkURI?: str
+
+    primaryEndpointIP?: str
+
+    readEndpointIP?: str
+
+    region?: str
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0Route:
+    r"""
+    Display information of a Compute Engine route.
+
+    Attributes
+    ----------
+    advertisedRouteNextHopURI : str, default is Undefined, optional
+        For advertised routes, the URI of their next hop, i.e. the URI of the hybrid endpoint (VPN tunnel, Interconnect attachment, NCC router appliance) the advertised prefix is advertised through, or URI of the source peered network.
+    advertisedRouteSourceRouterURI : str, default is Undefined, optional
+        For advertised dynamic routes, the URI of the Cloud Router that advertised the corresponding IP prefix.
+    destIPRange : str, default is Undefined, optional
+        Destination IP range of the route.
+    destPortRanges : [str], default is Undefined, optional
+        Destination port ranges of the route. Policy based routes only.
+    displayName : str, default is Undefined, optional
+        Name of a route.
+    instanceTags : [str], default is Undefined, optional
+        Instance tags of the route.
+    nccHubURI : str, default is Undefined, optional
+        URI of a NCC Hub. NCC_HUB routes only.
+    nccSpokeURI : str, default is Undefined, optional
+        URI of a NCC Spoke. NCC_HUB routes only.
+    networkURI : str, default is Undefined, optional
+        URI of a Compute Engine network. NETWORK routes only.
+    nextHop : str, default is Undefined, optional
+        Next hop of the route.
+    nextHopType : str, default is Undefined, optional
+        Type of next hop.
+    priority : int, default is Undefined, optional
+        Priority of the route.
+    protocols : [str], default is Undefined, optional
+        Protocols of the route. Policy based routes only.
+    region : str, default is Undefined, optional
+        Region of the route (if applicable).
+    routeScope : str, default is Undefined, optional
+        Indicates where route is applicable.
+    routeType : str, default is Undefined, optional
+        Type of route.
+    srcIPRange : str, default is Undefined, optional
+        Source IP address range of the route. Policy based routes only.
+    srcPortRanges : [str], default is Undefined, optional
+        Source port ranges of the route. Policy based routes only.
+    uri : str, default is Undefined, optional
+        URI of a route (if applicable).
+    """
+
+
+    advertisedRouteNextHopURI?: str
+
+    advertisedRouteSourceRouterURI?: str
+
+    destIPRange?: str
+
+    destPortRanges?: [str]
+
+    displayName?: str
+
+    instanceTags?: [str]
+
+    nccHubURI?: str
+
+    nccSpokeURI?: str
+
+    networkURI?: str
+
+    nextHop?: str
+
+    nextHopType?: str
+
+    priority?: int
+
+    protocols?: [str]
+
+    region?: str
+
+    routeScope?: str
+
+    routeType?: str
+
+    srcIPRange?: str
+
+    srcPortRanges?: [str]
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0ServerlessNeg:
+    r"""
+    Display information of a Serverless network endpoint group backend. Used only for return traces.
+
+    Attributes
+    ----------
+    negURI : str, default is Undefined, optional
+        URI of the serverless network endpoint group.
+    """
+
+
+    negURI?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0StorageBucket:
+    r"""
+    Display information of a Storage Bucket. Used only for return traces.
+
+    Attributes
+    ----------
+    bucket : str, default is Undefined, optional
+        Cloud Storage Bucket name.
+    """
+
+
+    bucket?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0VpcConnector:
+    r"""
+    Display information of a VPC connector.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of a VPC connector.
+    location : str, default is Undefined, optional
+        Location in which the VPC connector is deployed.
+    uri : str, default is Undefined, optional
+        URI of a VPC connector.
+    """
+
+
+    displayName?: str
+
+    location?: str
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0VpnGateway:
+    r"""
+    Display information of a Compute Engine VPN gateway.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of a VPN gateway.
+    ipAddress : str, default is Undefined, optional
+        IP address of the VPN gateway.
+    networkURI : str, default is Undefined, optional
+        URI of a Compute Engine network where the VPN gateway is configured.
+    region : str, default is Undefined, optional
+        Name of a Google Cloud region where this VPN gateway is configured.
+    uri : str, default is Undefined, optional
+        URI of a VPN gateway.
+    vpnTunnelURI : str, default is Undefined, optional
+        A VPN tunnel that is associated with this VPN gateway. There may be multiple VPN tunnels configured on a VPN gateway, and only the one relevant to the test is displayed.
+    """
+
+
+    displayName?: str
+
+    ipAddress?: str
+
+    networkURI?: str
+
+    region?: str
+
+    uri?: str
+
+    vpnTunnelURI?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0StepsItems0VpnTunnel:
+    r"""
+    Display information of a Compute Engine VPN tunnel.
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of a VPN tunnel.
+    networkURI : str, default is Undefined, optional
+        URI of a Compute Engine network where the VPN tunnel is configured.
+    region : str, default is Undefined, optional
+        Name of a Google Cloud region where this VPN tunnel is configured.
+    remoteGateway : str, default is Undefined, optional
+        URI of a VPN gateway at remote end of the tunnel.
+    remoteGatewayIP : str, default is Undefined, optional
+        Remote VPN gateway's IP address.
+    routingType : str, default is Undefined, optional
+        Type of the routing policy.
+    sourceGateway : str, default is Undefined, optional
+        URI of the VPN gateway at local end of the tunnel.
+    sourceGatewayIP : str, default is Undefined, optional
+        Local VPN gateway's IP address.
+    uri : str, default is Undefined, optional
+        URI of a VPN tunnel.
+    """
+
+
+    displayName?: str
+
+    networkURI?: str
+
+    region?: str
+
+    remoteGateway?: str
+
+    remoteGatewayIP?: str
+
+    routingType?: str
+
+    sourceGateway?: str
+
+    sourceGatewayIP?: str
+
+    uri?: str
+
+
+schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateSource:
+    r"""
+    Source specification of the Connectivity Test.
+
+     You can use a combination of source IP address, virtual machine
+     (VM) instance, or Compute Engine network to uniquely identify
+     the source location.
+
+     Examples:
+     If the source IP address is an internal IP address within a Google Cloud
+     Virtual Private Cloud (VPC) network, then you must also specify the VPC
+     network. Otherwise, specify the VM instance, which already contains its
+     internal IP address and VPC network information.
+
+     If the source of the test is within an on-premises network, then you must
+     provide the destination VPC network.
+
+     If the source endpoint is a Compute Engine VM instance with multiple
+     network interfaces, the instance itself is not sufficient to identify the
+     endpoint. So, you must also specify the source IP address or VPC network.
+
+     A reachability analysis proceeds even if the source location is
+     ambiguous. However, the test result may include endpoints that you don't
+     intend to test.
+
+    Attributes
+    ----------
+    forwardingRuleTarget : str, default is Undefined, optional
+        Output only. Specifies the type of the target of the forwarding rule.
+    loadBalancerID : str, default is Undefined, optional
+        Output only. ID of the load balancer the forwarding rule points to. Empty for forwarding rules not related to load balancers.
+    loadBalancerType : str, default is Undefined, optional
+        Output only. Type of the load balancer the forwarding rule points to.
+    """
+
+
+    forwardingRuleTarget?: str
+
+    loadBalancerID?: str
+
+    loadBalancerType?: str
 
 

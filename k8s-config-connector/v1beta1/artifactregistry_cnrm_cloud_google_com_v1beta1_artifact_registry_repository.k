@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ArtifactRegistryRepository:
-    """
-    artifactregistry cnrm cloud google com v1beta1 artifact registry repository
+    r"""
+    ArtifactRegistryRepository is the Schema for the ArtifactRegistryRepository API
 
     Attributes
     ----------
@@ -36,28 +36,21 @@ schema ArtifactRegistryRepository:
 
 
 schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpec:
-    """
-    artifactregistry cnrm cloud google com v1beta1 artifact registry repository spec
+    r"""
+    ArtifactRegistryRepositorySpec defines the desired state of ArtifactRegistryRepository
 
     Attributes
     ----------
     cleanupPolicies : [ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecCleanupPoliciesItems0], default is Undefined, optional
-        Cleanup policies for this repository. Cleanup policies indicate when
-        certain package versions can be automatically deleted.
-        Map keys are policy IDs supplied by users during policy creation. They must
-        unique within a repository and be under 128 characters in length.
+        Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
     cleanupPolicyDryRun : bool, default is Undefined, optional
-        If true, the cleanup pipeline is prevented from deleting versions in this
-        repository.
+        Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
     description : str, default is Undefined, optional
         The user-provided description of the repository.
     dockerConfig : ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecDockerConfig, default is Undefined, optional
         docker config
-    format : str, default is Undefined, required
-        Immutable. The format of packages that are stored in the repository. Supported formats
-        can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
-        You can only create alpha formats if you are a member of the
-        [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+    format : str, default is Undefined, optional
+        Optional. The format of packages that are stored in the repository.
     kmsKeyRef : ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecKmsKeyRef, default is Undefined, optional
         kms key ref
     location : str, default is Undefined, required
@@ -65,11 +58,11 @@ schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpec:
     mavenConfig : ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecMavenConfig, default is Undefined, optional
         maven config
     mode : str, default is Undefined, optional
-        Immutable. The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY" Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"].
+        Optional. The mode of the repository.
     remoteRepositoryConfig : ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecRemoteRepositoryConfig, default is Undefined, optional
         remote repository config
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The repositoryId of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The ArtifactRegistryRepository name. If not given, the metadata.name will be used.
     virtualRepositoryConfig : ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecVirtualRepositoryConfig, default is Undefined, optional
         virtual repository config
     """
@@ -83,7 +76,7 @@ schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpec:
 
     dockerConfig?: ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecDockerConfig
 
-    format: str
+    format?: str
 
     kmsKeyRef?: ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecKmsKeyRef
 
@@ -101,17 +94,17 @@ schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpec:
 
 
 schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecCleanupPoliciesItems0:
-    """
+    r"""
     artifactregistry cnrm cloud google com v1beta1 artifact registry repository spec cleanup policies items0
 
     Attributes
     ----------
     action : str, default is Undefined, optional
-        Policy action. Possible values: ["DELETE", "KEEP"].
+        Policy action.
     condition : ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecCleanupPoliciesItems0Condition, default is Undefined, optional
         condition
-    id : str, default is Undefined, required
-        id
+    id : str, default is Undefined, optional
+        The user-provided ID of the cleanup policy.
     mostRecentVersions : ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecCleanupPoliciesItems0MostRecentVersions, default is Undefined, optional
         most recent versions
     """
@@ -121,13 +114,13 @@ schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecCl
 
     condition?: ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecCleanupPoliciesItems0Condition
 
-    id: str
+    id?: str
 
     mostRecentVersions?: ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecCleanupPoliciesItems0MostRecentVersions
 
 
 schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecCleanupPoliciesItems0Condition:
-    """
+    r"""
     Policy condition for matching versions.
 
     Attributes
@@ -141,7 +134,7 @@ schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecCl
     tagPrefixes : [str], default is Undefined, optional
         Match versions by tag prefix. Applied on any prefix match.
     tagState : str, default is Undefined, optional
-        Match versions by tag status. Default value: "ANY" Possible values: ["TAGGED", "UNTAGGED", "ANY"].
+        Match versions by tag status.
     versionNamePrefixes : [str], default is Undefined, optional
         Match versions by version name prefix. Applied on any prefix match.
     """
@@ -161,16 +154,15 @@ schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecCl
 
 
 schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecCleanupPoliciesItems0MostRecentVersions:
-    """
-    Policy condition for retaining a minimum number of versions. May only be
-    specified with a Keep action.
+    r"""
+    Policy condition for retaining a minimum number of versions. May only be specified with a Keep action.
 
     Attributes
     ----------
     keepCount : int, default is Undefined, optional
         Minimum number of versions to keep.
     packageNamePrefixes : [str], default is Undefined, optional
-        Match versions by package prefix. Applied on any prefix match.
+        List of package name prefixes that will apply this rule.
     """
 
 
@@ -180,7 +172,7 @@ schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecCl
 
 
 schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecDockerConfig:
-    """
+    r"""
     Docker repository config contains repository level configuration for the repositories of docker type.
 
     Attributes
@@ -194,18 +186,17 @@ schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecDo
 
 
 schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecKmsKeyRef:
-    """
-    The customer managed encryption key that’s used to encrypt the
-    contents of the Repository.
+    r"""
+    The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `KMSCryptoKey` resource.
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` of a `KMSCryptoKey` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` of a `KMSCryptoKey` resource.
     """
 
 
@@ -217,18 +208,15 @@ schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecKm
 
 
 schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecMavenConfig:
-    """
-    MavenRepositoryConfig is maven related repository details.
-    Provides additional configuration details for repositories of the maven
-    format type.
+    r"""
+    Maven repository config contains repository level configuration for the repositories of maven type.
 
     Attributes
     ----------
     allowSnapshotOverwrites : bool, default is Undefined, optional
-        Immutable. The repository with this flag will allow publishing the same
-        snapshot versions.
+        The repository with this flag will allow publishing the same snapshot versions.
     versionPolicy : str, default is Undefined, optional
-        Immutable. Version policy defines the versions that the registry will accept. Default value: "VERSION_POLICY_UNSPECIFIED" Possible values: ["VERSION_POLICY_UNSPECIFIED", "RELEASE", "SNAPSHOT"].
+        Version policy defines the versions that the registry will accept.
     """
 
 
@@ -238,13 +226,13 @@ schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecMa
 
 
 schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecRemoteRepositoryConfig:
-    """
-    Immutable. Configuration specific for a Remote Repository.
+    r"""
+    Configuration specific for a Remote Repository.
 
     Attributes
     ----------
     description : str, default is Undefined, optional
-        Immutable. The description of the remote source.
+        The description of the remote source.
     dockerRepository : ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecRemoteRepositoryConfigDockerRepository, default is Undefined, optional
         docker repository
     mavenRepository : ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecRemoteRepositoryConfigMavenRepository, default is Undefined, optional
@@ -268,13 +256,13 @@ schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecRe
 
 
 schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecRemoteRepositoryConfigDockerRepository:
-    """
-    Immutable. Specific settings for a Docker remote repository.
+    r"""
+    Specific settings for a Docker remote repository.
 
     Attributes
     ----------
     publicRepository : str, default is Undefined, optional
-        Immutable. Address of the remote repository. Default value: "DOCKER_HUB" Possible values: ["DOCKER_HUB"].
+        One of the publicly available Docker repositories supported by Artifact Registry.
     """
 
 
@@ -282,13 +270,13 @@ schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecRe
 
 
 schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecRemoteRepositoryConfigMavenRepository:
-    """
-    Immutable. Specific settings for a Maven remote repository.
+    r"""
+    Specific settings for a Maven remote repository.
 
     Attributes
     ----------
     publicRepository : str, default is Undefined, optional
-        Immutable. Address of the remote repository. Default value: "MAVEN_CENTRAL" Possible values: ["MAVEN_CENTRAL"].
+        One of the publicly available Maven repositories supported by Artifact Registry.
     """
 
 
@@ -296,13 +284,13 @@ schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecRe
 
 
 schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecRemoteRepositoryConfigNpmRepository:
-    """
-    Immutable. Specific settings for an Npm remote repository.
+    r"""
+    Specific settings for an Npm remote repository.
 
     Attributes
     ----------
     publicRepository : str, default is Undefined, optional
-        Immutable. Address of the remote repository. Default value: "NPMJS" Possible values: ["NPMJS"].
+        One of the publicly available Npm repositories supported by Artifact Registry.
     """
 
 
@@ -310,13 +298,13 @@ schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecRe
 
 
 schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecRemoteRepositoryConfigPythonRepository:
-    """
-    Immutable. Specific settings for a Python remote repository.
+    r"""
+    Specific settings for a Python remote repository.
 
     Attributes
     ----------
     publicRepository : str, default is Undefined, optional
-        Immutable. Address of the remote repository. Default value: "PYPI" Possible values: ["PYPI"].
+        One of the publicly available Python repositories supported by Artifact Registry.
     """
 
 
@@ -324,14 +312,13 @@ schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecRe
 
 
 schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecVirtualRepositoryConfig:
-    """
+    r"""
     Configuration specific for a Virtual Repository.
 
     Attributes
     ----------
     upstreamPolicies : [ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecVirtualRepositoryConfigUpstreamPoliciesItems0], default is Undefined, optional
-        Policies that configure the upstream artifacts distributed by the Virtual
-        Repository. Upstream policies cannot be set on a standard repository.
+        Policies that configure the upstream artifacts distributed by the Virtual Repository. Upstream policies cannot be set on a standard repository.
     """
 
 
@@ -339,7 +326,7 @@ schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecVi
 
 
 schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecVirtualRepositoryConfigUpstreamPoliciesItems0:
-    """
+    r"""
     artifactregistry cnrm cloud google com v1beta1 artifact registry repository spec virtual repository config upstream policies items0
 
     Attributes
@@ -361,18 +348,17 @@ schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecVi
 
 
 schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecVirtualRepositoryConfigUpstreamPoliciesItems0RepositoryRef:
-    """
-    A reference to the repository resource, for example:
-    "projects/p1/locations/us-central1/repositories/repo1".
+    r"""
+    A reference to the repository resource, for example: `projects/p1/locations/us-central1/repositories/repo1`.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `projects/{{project}}/locations/{{location}}/repositories/{{value}}`, where {{value}} is the `name` field of an `ArtifactRegistryRepository` resource.
+        A reference to an externally managed ArtifactRegistryRepository resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/repositories/{{repositoryID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ArtifactRegistryRepository resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ArtifactRegistryRepository resource.
     """
 
 
@@ -384,22 +370,21 @@ schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecVi
 
 
 schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositoryStatus:
-    """
-    artifactregistry cnrm cloud google com v1beta1 artifact registry repository status
+    r"""
+    ArtifactRegistryRepositoryStatus defines the config connector machine state of ArtifactRegistryRepository
 
     Attributes
     ----------
     conditions : [ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositoryStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     createTime : str, default is Undefined, optional
-        The time when the repository was created.
+        Output only. The time when the repository was created.
     name : str, default is Undefined, optional
-        The name of the repository, for example:
-        "repo1".
+        The name of the repository, for example: "repo1".
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     updateTime : str, default is Undefined, optional
-        The time when the repository was last updated.
+        Output only. The time when the repository was last updated.
     """
 
 
@@ -415,7 +400,7 @@ schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositoryStatus
 
 
 schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositoryStatusConditionsItems0:
-    """
+    r"""
     artifactregistry cnrm cloud google com v1beta1 artifact registry repository status conditions items0
 
     Attributes

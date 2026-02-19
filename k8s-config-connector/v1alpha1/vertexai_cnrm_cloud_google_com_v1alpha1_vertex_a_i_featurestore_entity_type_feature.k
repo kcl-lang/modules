@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema VertexAIFeaturestoreEntityTypeFeature:
-    """
+    r"""
     vertexai cnrm cloud google com v1alpha1 vertex a i featurestore entity type feature
 
     Attributes
@@ -36,7 +36,7 @@ schema VertexAIFeaturestoreEntityTypeFeature:
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreEntityTypeFeatureSpec:
-    """
+    r"""
     vertexai cnrm cloud google com v1alpha1 vertex a i featurestore entity type feature spec
 
     Attributes
@@ -62,7 +62,7 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreEntityTypeFeatureSp
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreEntityTypeFeatureStatus:
-    """
+    r"""
     vertexai cnrm cloud google com v1alpha1 vertex a i featurestore entity type feature status
 
     Attributes
@@ -96,7 +96,7 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreEntityTypeFeatureSt
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreEntityTypeFeatureStatusConditionsItems0:
-    """
+    r"""
     vertexai cnrm cloud google com v1alpha1 vertex a i featurestore entity type feature status conditions items0
 
     Attributes

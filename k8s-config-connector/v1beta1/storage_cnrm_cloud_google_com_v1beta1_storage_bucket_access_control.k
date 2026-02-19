@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema StorageBucketAccessControl:
-    """
+    r"""
     storage cnrm cloud google com v1beta1 storage bucket access control
 
     Attributes
@@ -36,7 +36,7 @@ schema StorageBucketAccessControl:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketAccessControlSpec:
-    """
+    r"""
     storage cnrm cloud google com v1beta1 storage bucket access control spec
 
     Attributes
@@ -72,7 +72,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketAccessControlSpec:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketAccessControlSpecBucketRef:
-    """
+    r"""
     Reference to the bucket.
 
     Attributes
@@ -94,7 +94,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketAccessControlSpecBucketRef:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketAccessControlStatus:
-    """
+    r"""
     storage cnrm cloud google com v1beta1 storage bucket access control status
 
     Attributes
@@ -120,7 +120,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketAccessControlStatus:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketAccessControlStatusConditionsItems0:
-    """
+    r"""
     storage cnrm cloud google com v1beta1 storage bucket access control status conditions items0
 
     Attributes

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DNSResponsePolicy:
-    """
+    r"""
     dns cnrm cloud google com v1alpha1 DNS response policy
 
     Attributes
@@ -36,7 +36,7 @@ schema DNSResponsePolicy:
 
 
 schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicySpec:
-    """
+    r"""
     DNS cnrm cloud google com v1alpha1 DNS response policy spec
 
     Attributes
@@ -66,7 +66,7 @@ schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicySpec:
 
 
 schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicySpecGkeClustersItems0:
-    """
+    r"""
     DNS cnrm cloud google com v1alpha1 DNS response policy spec gke clusters items0
 
     Attributes
@@ -82,7 +82,7 @@ schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicySpecGkeClustersItems0:
 
 
 schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicySpecNetworksItems0:
-    """
+    r"""
     DNS cnrm cloud google com v1alpha1 DNS response policy spec networks items0
 
     Attributes
@@ -98,7 +98,7 @@ schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicySpecNetworksItems0:
 
 
 schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicySpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -120,7 +120,7 @@ schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicySpecProjectRef:
 
 
 schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicyStatus:
-    """
+    r"""
     DNS cnrm cloud google com v1alpha1 DNS response policy status
 
     Attributes
@@ -138,7 +138,7 @@ schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicyStatus:
 
 
 schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicyStatusConditionsItems0:
-    """
+    r"""
     DNS cnrm cloud google com v1alpha1 DNS response policy status conditions items0
 
     Attributes

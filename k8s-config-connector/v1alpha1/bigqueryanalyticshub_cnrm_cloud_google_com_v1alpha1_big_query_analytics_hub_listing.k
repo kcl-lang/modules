@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BigQueryAnalyticsHubListing:
-    """
-    bigqueryanalyticshub cnrm cloud google com v1alpha1 big query analytics hub listing
+    r"""
+    BigQueryAnalyticsHubListing is the Schema for the BigQueryAnalyticsHubListing API
 
     Attributes
     ----------
@@ -17,7 +17,7 @@ schema BigQueryAnalyticsHubListing:
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpec, default is Undefined, required
+    spec : BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpec, default is Undefined, optional
         spec
     status : BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingStatus, default is Undefined, optional
         status
@@ -30,63 +30,61 @@ schema BigQueryAnalyticsHubListing:
 
     metadata?: v1.ObjectMeta
 
-    spec: BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpec
+    spec?: BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpec
 
     status?: BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingStatus
 
 
 schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpec:
-    """
-    bigqueryanalyticshub cnrm cloud google com v1alpha1 big query analytics hub listing spec
+    r"""
+    BigQueryAnalyticsHubListingSpec defines the desired state of BigQueryAnalyticsHubDataExchangeListing
 
     Attributes
     ----------
-    bigqueryDataset : BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecBigqueryDataset, default is Undefined, required
-        bigquery dataset
     categories : [str], default is Undefined, optional
-        Categories of the listing. Up to two categories are allowed.
-    dataExchangeId : str, default is Undefined, required
-        Immutable. The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
+        Optional. Categories of the listing. Up to two categories are allowed.
+    dataExchangeRef : BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecDataExchangeRef, default is Undefined, required
+        data exchange ref
     dataProvider : BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecDataProvider, default is Undefined, optional
         data provider
     description : str, default is Undefined, optional
-        Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
+        Optional. Short description of the listing. The description must contain only Unicode characters or tabs  (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes.
+    discoveryType : str, default is Undefined, optional
+        Optional. Type of discovery of the listing on the discovery page.
     displayName : str, default is Undefined, required
-        Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces.
+        Required. Human-readable display name of the listing. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and can't start or end with spaces. Default value is an empty string. Max length: 63 bytes.
     documentation : str, default is Undefined, optional
-        Documentation describing the listing.
-    icon : str, default is Undefined, optional
-        Base64 encoded image representing the listing.
+        Optional. Documentation describing the listing.
     location : str, default is Undefined, required
-        Immutable. The name of the location this data exchange listing.
+        Immutable. The name of the location this data exchange.
     primaryContact : str, default is Undefined, optional
-        Email or URL of the primary point of contact of the listing.
+        Optional. Email or URL of the primary point of contact of the listing. Max Length: 1000 bytes.
     projectRef : BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecProjectRef, default is Undefined, required
         project ref
     publisher : BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecPublisher, default is Undefined, optional
         publisher
     requestAccess : str, default is Undefined, optional
-        Email or URL of the request access of the listing. Subscribers can use this reference to request access.
+        Optional. Email or URL of the request access of the listing. Subscribers can use this reference to request access. Max Length: 1000 bytes.
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The listingId of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        Immutable. The BigQueryAnalyticsHubDataExchangeListing name. If not given, the metadata.name will be used.
+    source : BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecSource, default is Undefined, required
+        source
     """
 
 
-    bigqueryDataset: BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecBigqueryDataset
-
     categories?: [str]
 
-    dataExchangeId: str
+    dataExchangeRef: BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecDataExchangeRef
 
     dataProvider?: BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecDataProvider
 
     description?: str
 
+    discoveryType?: str
+
     displayName: str
 
     documentation?: str
-
-    icon?: str
 
     location: str
 
@@ -100,51 +98,21 @@ schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListing
 
     resourceID?: str
 
-
-schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecBigqueryDataset:
-    """
-    Shared dataset i.e. BigQuery dataset source.
-
-    Attributes
-    ----------
-    dataset : str, default is Undefined, required
-        Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123.
-    """
+    source: BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecSource
 
 
-    dataset: str
-
-
-schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecDataProvider:
-    """
-    Details of the data provider who owns the source data.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        Name of the data provider.
-    primaryContact : str, default is Undefined, optional
-        Email or URL of the data provider.
-    """
-
-
-    name: str
-
-    primaryContact?: str
-
-
-schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecProjectRef:
-    """
-    The project that this resource belongs to.
+schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecDataExchangeRef:
+    r"""
+    BigQueryAnalyticsHubDataExchangeRef defines the resource reference to BigQueryAnalyticsHubDataExchange, which "External" field holds the GCP identifier for the KRM object.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        A reference to an externally managed BigQueryAnalyticsHubDataExchange resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/dataexchanges/{{dataexchangeID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a BigQueryAnalyticsHubDataExchange resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a BigQueryAnalyticsHubDataExchange resource.
     """
 
 
@@ -155,48 +123,212 @@ schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListing
     namespace?: str
 
 
-schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecPublisher:
-    """
-    Details of the publisher who owns the listing and who can share the source data.
+schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecDataProvider:
+    r"""
+    Optional. Details of the data provider who owns the source data.
 
     Attributes
     ----------
-    name : str, default is Undefined, required
-        Name of the listing publisher.
+    name : str, default is Undefined, optional
+        Optional. Name of the data provider.
     primaryContact : str, default is Undefined, optional
-        Email or URL of the listing publisher.
+        Optional. Email or URL of the data provider. Max Length: 1000 bytes.
     """
 
 
-    name: str
+    name?: str
 
     primaryContact?: str
 
 
-schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingStatus:
+schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecProjectRef:
+    r"""
+    The Project that this resource belongs to.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
+    name : str, default is Undefined, optional
+        The `name` field of a `Project` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `Project` resource.
     """
-    bigqueryanalyticshub cnrm cloud google com v1alpha1 big query analytics hub listing status
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecPublisher:
+    r"""
+    Optional. Details of the publisher who owns the listing and who can share the source data.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        Optional. Name of the listing publisher.
+    primaryContact : str, default is Undefined, optional
+        Optional. Email or URL of the listing publisher. Max Length: 1000 bytes.
+    """
+
+
+    name?: str
+
+    primaryContact?: str
+
+
+schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecSource:
+    r"""
+    bigqueryanalyticshub cnrm cloud google com v1alpha1 big query analytics hub listing spec source
+
+    Attributes
+    ----------
+    bigQueryDatasetSource : BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecSourceBigQueryDatasetSource, default is Undefined, optional
+        big query dataset source
+    """
+
+
+    bigQueryDatasetSource?: BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecSourceBigQueryDatasetSource
+
+
+schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecSourceBigQueryDatasetSource:
+    r"""
+    One of the following fields must be set.
+
+    Attributes
+    ----------
+    datasetRef : BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecSourceBigQueryDatasetSourceDatasetRef, default is Undefined, required
+        dataset ref
+    restrictedExportPolicy : BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecSourceBigQueryDatasetSourceRestrictedExportPolicy, default is Undefined, optional
+        restricted export policy
+    selectedResources : [BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecSourceBigQueryDatasetSourceSelectedResourcesItems0], default is Undefined, optional
+        Optional. Resources in this dataset that are selectively shared. If this field is empty, then the entire dataset (all resources) are shared. This field is only valid for data clean room exchanges.
+    """
+
+
+    datasetRef: BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecSourceBigQueryDatasetSourceDatasetRef
+
+    restrictedExportPolicy?: BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecSourceBigQueryDatasetSourceRestrictedExportPolicy
+
+    selectedResources?: [BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecSourceBigQueryDatasetSourceSelectedResourcesItems0]
+
+
+schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecSourceBigQueryDatasetSourceDatasetRef:
+    r"""
+    Resource name of the dataset source for this listing. e.g. `projects/myproject/datasets/123`
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally-managed BigQueryDataset resource. Should be in the format "projects/{{projectID}}/datasets/{{datasetID}}".
+    name : str, default is Undefined, optional
+        The name of a BigQueryDataset resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a BigQueryDataset resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecSourceBigQueryDatasetSourceRestrictedExportPolicy:
+    r"""
+    Optional. If set, restricted export policy will be propagated and enforced on the linked dataset.
+
+    Attributes
+    ----------
+    enabled : bool, default is Undefined, optional
+        Optional. If true, enable restricted export.
+    restrictDirectTableAccess : bool, default is Undefined, optional
+        Optional. If true, restrict direct table access (read api/tabledata.list) on linked table.
+    restrictQueryResult : bool, default is Undefined, optional
+        Optional. If true, restrict export of query result derived from restricted linked dataset table.
+    """
+
+
+    enabled?: bool
+
+    restrictDirectTableAccess?: bool
+
+    restrictQueryResult?: bool
+
+
+schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecSourceBigQueryDatasetSourceSelectedResourcesItems0:
+    r"""
+    bigqueryanalyticshub cnrm cloud google com v1alpha1 big query analytics hub listing spec source big query dataset source selected resources items0
+
+    Attributes
+    ----------
+    tableRef : BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecSourceBigQueryDatasetSourceSelectedResourcesItems0TableRef, default is Undefined, optional
+        table ref
+    """
+
+
+    tableRef?: BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecSourceBigQueryDatasetSourceSelectedResourcesItems0TableRef
+
+
+schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecSourceBigQueryDatasetSourceSelectedResourcesItems0TableRef:
+    r"""
+    Optional. A reference to a BigQueryTable. Format: `projects/{projectId}/datasets/{datasetId}/tables/{tableId}` Example:"projects/test_project/datasets/test_dataset/tables/test_table"
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally-managed BigQueryTable resource. Should be in the format "projects/{{projectID}}/datasets/{{datasetsID}}/tables/{{tableID}}".
+    name : str, default is Undefined, optional
+        The name of a BigQueryTable resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a BigQueryTable resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingStatus:
+    r"""
+    BigQueryAnalyticsHubListingStatus defines the config connector machine state of BigQueryAnalyticsHubDataExchangeListing
 
     Attributes
     ----------
     conditions : [BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
-    name : str, default is Undefined, optional
-        The resource name of the listing. e.g. "projects/myproject/locations/US/dataExchanges/123/listings/456".
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the BigQueryAnalyticsHubDataExchangeListing resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingStatusConditionsItems0]
 
-    name?: str
+    externalRef?: str
 
     observedGeneration?: int
 
+    observedState?: BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingStatusObservedState
+
 
 schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingStatusConditionsItems0:
-    """
+    r"""
     bigqueryanalyticshub cnrm cloud google com v1alpha1 big query analytics hub listing status conditions items0
 
     Attributes
@@ -223,5 +355,19 @@ schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListing
     status?: str
 
     $type?: str
+
+
+schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    state : str, default is Undefined, optional
+        Output only. Current state of the listing.
+    """
+
+
+    state?: str
 
 

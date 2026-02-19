@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BigQueryConnectionConnection:
-    """
-    bigqueryconnection cnrm cloud google com v1alpha1 big query connection connection
+    r"""
+    BigQueryConnectionConnection is the Schema for the BigQueryConnectionConnection API
 
     Attributes
     ----------
@@ -17,7 +17,7 @@ schema BigQueryConnectionConnection:
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpec, default is Undefined, required
+    spec : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpec, default is Undefined, optional
         spec
     status : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatus, default is Undefined, optional
         status
@@ -30,14 +30,14 @@ schema BigQueryConnectionConnection:
 
     metadata?: v1.ObjectMeta
 
-    spec: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpec
+    spec?: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpec
 
     status?: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatus
 
 
 schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpec:
-    """
-    bigqueryconnection cnrm cloud google com v1alpha1 big query connection connection spec
+    r"""
+    BigQueryConnectionConnectionSpec defines the desired state to connect BigQuery to external resources
 
     Attributes
     ----------
@@ -45,28 +45,24 @@ schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionS
         aws
     azure : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecAzure, default is Undefined, optional
         azure
-    cloudResource : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudResource, default is Undefined, optional
-        cloud resource
+    cloudResource : any, default is Undefined, optional
+        Use Cloud Resource properties.
+    cloudSQL : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQL, default is Undefined, optional
+        cloud SQL
     cloudSpanner : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSpanner, default is Undefined, optional
         cloud spanner
-    cloudSql : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQL, default is Undefined, optional
-        cloud Sql
     description : str, default is Undefined, optional
-        A descriptive description for the connection.
+        User provided description.
     friendlyName : str, default is Undefined, optional
-        A descriptive name for the connection.
+        User provided display name for the connection.
     location : str, default is Undefined, required
-        Immutable. The geographic location where the connection should reside.
-        Cloud SQL instance must be in the same location as the connection
-        with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
-        Examples: US, EU, asia-northeast1, us-central1, europe-west1.
-        Spanner Connections same as spanner region
-        AWS allowed regions are aws-us-east-1
-        Azure allowed regions are azure-eastus2.
+        Immutable.
     projectRef : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The connectionId of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        Immutable. Optional. The BigQuery Connection ID used for resource creation or acquisition. For creation: If specified, this value is used as the connection ID. If not provided, a UUID will be generated and assigned as the connection ID. For acquisition: This field must be provided to identify the connection resource to acquire.
+    spark : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecSpark, default is Undefined, optional
+        spark
     """
 
 
@@ -74,11 +70,11 @@ schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionS
 
     azure?: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecAzure
 
-    cloudResource?: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudResource
+    cloudResource?: any
+
+    cloudSQL?: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQL
 
     cloudSpanner?: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSpanner
-
-    cloudSql?: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQL
 
     description?: str
 
@@ -90,10 +86,12 @@ schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionS
 
     resourceID?: str
 
+    spark?: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecSpark
+
 
 schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecAws:
-    """
-    Connection properties specific to Amazon Web Services.
+    r"""
+    Amazon Web Services (AWS) properties.
 
     Attributes
     ----------
@@ -106,207 +104,331 @@ schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionS
 
 
 schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecAwsAccessRole:
-    """
+    r"""
     Authentication using Google owned service account to assume into customer's AWS IAM Role.
 
     Attributes
     ----------
-    iamRoleId : str, default is Undefined, required
+    iamRoleID : str, default is Undefined, required
         The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
-    identity : str, default is Undefined, optional
-        A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
     """
 
 
-    iamRoleId: str
-
-    identity?: str
+    iamRoleID: str
 
 
 schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecAzure:
-    """
-    Container for connection properties specific to Azure.
+    r"""
+    Azure properties.
 
     Attributes
     ----------
-    application : str, default is Undefined, optional
-        The name of the Azure Active Directory Application.
-    clientId : str, default is Undefined, optional
-        The client id of the Azure Active Directory Application.
-    customerTenantId : str, default is Undefined, required
+    customerTenantID : str, default is Undefined, required
         The id of customer's directory that host the data.
-    federatedApplicationClientId : str, default is Undefined, optional
-        The Azure Application (client) ID where the federated credentials will be hosted.
-    identity : str, default is Undefined, optional
-        A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
-    objectId : str, default is Undefined, optional
-        The object id of the Azure Active Directory Application.
-    redirectUri : str, default is Undefined, optional
-        The URL user will be redirected to after granting consent during connection setup.
+    federatedApplicationClientID : str, default is Undefined, optional
+        The client ID of the user's Azure Active Directory Application used for a federated connection.
     """
 
 
-    application?: str
+    customerTenantID: str
 
-    clientId?: str
-
-    customerTenantId: str
-
-    federatedApplicationClientId?: str
-
-    identity?: str
-
-    objectId?: str
-
-    redirectUri?: str
-
-
-schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudResource:
-    """
-    Container for connection properties for delegation of access to GCP resources.
-
-    Attributes
-    ----------
-    serviceAccountId : str, default is Undefined, optional
-        The account ID of the service created for the purpose of this connection.
-    """
-
-
-    serviceAccountId?: str
+    federatedApplicationClientID?: str
 
 
 schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQL:
-    """
-    Connection properties specific to the Cloud SQL.
+    r"""
+    Cloud SQL properties.
 
     Attributes
     ----------
     credential : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQLCredential, default is Undefined, required
         credential
-    database : str, default is Undefined, required
-        Database name.
-    instanceId : str, default is Undefined, required
-        Cloud SQL instance ID in the form project:location:instance.
-    serviceAccountId : str, default is Undefined, optional
-        When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
+    databaseRef : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQLDatabaseRef, default is Undefined, required
+        database ref
+    instanceRef : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQLInstanceRef, default is Undefined, required
+        instance ref
     $type : str, default is Undefined, required
-        Type of the Cloud SQL database. Possible values: ["DATABASE_TYPE_UNSPECIFIED", "POSTGRES", "MYSQL"].
+        Type of the Cloud SQL database.
     """
 
 
     credential: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQLCredential
 
-    database: str
+    databaseRef: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQLDatabaseRef
 
-    instanceId: str
-
-    serviceAccountId?: str
+    instanceRef: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQLInstanceRef
 
     $type: str
 
 
 schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQLCredential:
-    """
-    Cloud SQL properties.
+    r"""
+    Cloud SQL credential.
 
     Attributes
     ----------
-    password : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQLCredentialPassword, default is Undefined, required
-        password
-    username : str, default is Undefined, required
-        Username for database.
+    secretRef : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQLCredentialSecretRef, default is Undefined, optional
+        secret ref
     """
 
 
-    password: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQLCredentialPassword
-
-    username: str
+    secretRef?: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQLCredentialSecretRef
 
 
-schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQLCredentialPassword:
-    """
-    Password for database.
+schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQLCredentialSecretRef:
+    r"""
+    The Kubernetes Secret object that stores the "username" and "password" information. The Secret type has to be `kubernetes.io/basic-auth`.
 
     Attributes
     ----------
-    value : str, default is Undefined, optional
-        Value of the field. Cannot be used if 'valueFrom' is specified.
-    valueFrom : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQLCredentialPasswordValueFrom, default is Undefined, optional
-        value from
-    """
-
-
-    value?: str
-
-    valueFrom?: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQLCredentialPasswordValueFrom
-
-
-schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQLCredentialPasswordValueFrom:
-    """
-    Source for the field's value. Cannot be used if 'value' is specified.
-
-    Attributes
-    ----------
-    secretKeyRef : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQLCredentialPasswordValueFromSecretKeyRef, default is Undefined, optional
-        secret key ref
-    """
-
-
-    secretKeyRef?: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQLCredentialPasswordValueFromSecretKeyRef
-
-
-schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQLCredentialPasswordValueFromSecretKeyRef:
-    """
-    Reference to a value with the given key in the given Secret in the resource's namespace.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        Key that identifies the value to be extracted.
     name : str, default is Undefined, required
-        Name of the Secret to extract a value from.
+        The `metadata.name` field of a Kubernetes `Secret`
+    namespace : str, default is Undefined, optional
+        The `metadata.namespace` field of a Kubernetes `Secret`.
     """
 
-
-    key: str
 
     name: str
 
+    namespace?: str
 
-schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSpanner:
-    """
-    Connection properties specific to Cloud Spanner.
+
+schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQLDatabaseRef:
+    r"""
+    Reference to the SQL Database.
 
     Attributes
     ----------
-    database : str, default is Undefined, required
-        Cloud Spanner database in the form 'project/instance/database'.
-    useParallelism : bool, default is Undefined, optional
-        If parallelism should be used when reading from Cloud Spanner.
-    useServerlessAnalytics : bool, default is Undefined, optional
-        If the serverless analytics service should be used to read data from Cloud Spanner. useParallelism must be set when using serverless analytics.
+    external : str, default is Undefined, optional
+        The SQL Database name, when not managed by Config Connector.
+    name : str, default is Undefined, optional
+        The `name` field of a `SQLDatabase` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `SQLDatabase` resource.
     """
 
 
-    database: str
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSQLInstanceRef:
+    r"""
+    Reference to the Cloud SQL instance ID.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The SQLInstance selfLink, when not managed by Config Connector.
+    name : str, default is Undefined, optional
+        The `name` field of a `SQLInstance` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `SQLInstance` resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSpanner:
+    r"""
+    Cloud Spanner properties.
+
+    Attributes
+    ----------
+    databaseRef : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSpannerDatabaseRef, default is Undefined, required
+        database ref
+    databaseRole : str, default is Undefined, optional
+        Optional. Cloud Spanner database role for fine-grained access control.
+         The Cloud Spanner admin should have provisioned the database role with
+         appropriate permissions, such as `SELECT` and `INSERT`. Other users should
+         only use roles provided by their Cloud Spanner admins.
+
+         For more details, see [About fine-grained access control]
+         (https://cloud.google.com/spanner/docs/fgac-about).
+
+         REQUIRES: The database role name must start with a letter, and can only
+         contain letters, numbers, and underscores.
+    maxParallelism : int, default is Undefined, optional
+        Allows setting max parallelism per query when executing on Spanner
+         independent compute resources. If unspecified, default values of
+         parallelism are chosen that are dependent on the Cloud Spanner instance
+         configuration.
+
+         REQUIRES: `use_parallelism` must be set.
+         REQUIRES: Either `use_data_boost` or `use_serverless_analytics` must be
+         set.
+    useDataBoost : bool, default is Undefined, optional
+        If set, the request will be executed via Spanner independent compute
+         resources.
+         REQUIRES: `use_parallelism` must be set.
+
+         NOTE: `use_serverless_analytics` will be deprecated. Prefer
+         `use_data_boost` over `use_serverless_analytics`.
+    useParallelism : bool, default is Undefined, optional
+        If parallelism should be used when reading from Cloud Spanner
+    useServerlessAnalytics : bool, default is Undefined, optional
+        If the serverless analytics service should be used to read data from Cloud Spanner. Note: `use_parallelism` must be set when using serverless analytics.
+    """
+
+
+    databaseRef: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSpannerDatabaseRef
+
+    databaseRole?: str
+
+    maxParallelism?: int
+
+    useDataBoost?: bool
 
     useParallelism?: bool
 
     useServerlessAnalytics?: bool
 
 
-schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecProjectRef:
-    """
-    The project that this resource belongs to.
+schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecCloudSpannerDatabaseRef:
+    r"""
+    Reference to a spanner database ID.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        A reference to an externally managed SpannerDatabase resource. Should be in the format "projects/{{projectID}}/instances/{{instanceID}}/databases/{{databaseID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a SpannerDatabase resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a SpannerDatabase resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecProjectRef:
+    r"""
+    The Project that this resource belongs to.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
+    name : str, default is Undefined, optional
+        The `name` field of a `Project` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `Project` resource.
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecSpark:
+    r"""
+    Spark properties.
+
+    Attributes
+    ----------
+    metastoreService : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecSparkMetastoreService, default is Undefined, optional
+        metastore service
+    sparkHistoryServer : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecSparkSparkHistoryServer, default is Undefined, optional
+        spark history server
+    """
+
+
+    metastoreService?: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecSparkMetastoreService
+
+    sparkHistoryServer?: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecSparkSparkHistoryServer
+
+
+schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecSparkMetastoreService:
+    r"""
+    Optional. Dataproc Metastore Service configuration for the connection.
+
+    Attributes
+    ----------
+    metastoreServiceRef : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecSparkMetastoreServiceMetastoreServiceRef, default is Undefined, optional
+        metastore service ref
+    """
+
+
+    metastoreServiceRef?: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecSparkMetastoreServiceMetastoreServiceRef
+
+
+schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecSparkMetastoreServiceMetastoreServiceRef:
+    r"""
+    Optional. Resource name of an existing Dataproc Metastore service.
+
+     Example:
+
+     * `projects/[project_id]/locations/[region]/services/[service_id]`
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed MetastoreService resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/services/{{serviceID}}".
+    name : str, default is Undefined, optional
+        The name of a MetastoreService resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a MetastoreService resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecSparkSparkHistoryServer:
+    r"""
+    Optional. Spark History Server configuration for the connection.
+
+    Attributes
+    ----------
+    dataprocClusterRef : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecSparkSparkHistoryServerDataprocClusterRef, default is Undefined, optional
+        dataproc cluster ref
+    """
+
+
+    dataprocClusterRef?: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecSparkSparkHistoryServerDataprocClusterRef
+
+
+schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionSpecSparkSparkHistoryServerDataprocClusterRef:
+    r"""
+    Optional. Resource name of an existing Dataproc Cluster to act as a Spark
+     History Server for the connection.
+
+     Example:
+
+     * `projects/[project_id]/regions/[region]/clusters/[cluster_name]`
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed DataprocCluster resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/clusters/{{clusterName}}".
+    name : str, default is Undefined, optional
+        The name of a DataprocCluster resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a DataprocCluster resource.
     """
 
 
@@ -318,34 +440,33 @@ schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionS
 
 
 schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatus:
-    """
-    bigqueryconnection cnrm cloud google com v1alpha1 big query connection connection status
+    r"""
+    BigQueryConnectionConnectionStatus defines the config connector machine state of BigQueryConnectionConnection
 
     Attributes
     ----------
     conditions : [BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
-    hasCredential : bool, default is Undefined, optional
-        True if the connection has credential assigned.
-    name : str, default is Undefined, optional
-        The resource name of the connection in the form of:
-        "projects/{project_id}/locations/{location_id}/connections/{connectionId}".
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the BigQueryConnectionConnection resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusConditionsItems0]
 
-    hasCredential?: bool
-
-    name?: str
+    externalRef?: str
 
     observedGeneration?: int
 
+    observedState?: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusObservedState
+
 
 schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusConditionsItems0:
-    """
+    r"""
     bigqueryconnection cnrm cloud google com v1alpha1 big query connection connection status conditions items0
 
     Attributes
@@ -372,5 +493,171 @@ schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionS
     status?: str
 
     $type?: str
+
+
+schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    aws : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusObservedStateAws, default is Undefined, optional
+        aws
+    azure : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusObservedStateAzure, default is Undefined, optional
+        azure
+    cloudResource : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusObservedStateCloudResource, default is Undefined, optional
+        cloud resource
+    cloudSQL : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusObservedStateCloudSQL, default is Undefined, optional
+        cloud SQL
+    description : str, default is Undefined, optional
+        The description for the connection.
+    friendlyName : str, default is Undefined, optional
+        The display name for the connection.
+    hasCredential : bool, default is Undefined, optional
+        Output only. True, if credential is configured for this connection.
+    spark : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusObservedStateSpark, default is Undefined, optional
+        spark
+    """
+
+
+    aws?: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusObservedStateAws
+
+    azure?: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusObservedStateAzure
+
+    cloudResource?: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusObservedStateCloudResource
+
+    cloudSQL?: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusObservedStateCloudSQL
+
+    description?: str
+
+    friendlyName?: str
+
+    hasCredential?: bool
+
+    spark?: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusObservedStateSpark
+
+
+schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusObservedStateAws:
+    r"""
+    bigqueryconnection cnrm cloud google com v1alpha1 big query connection connection status observed state aws
+
+    Attributes
+    ----------
+    accessRole : BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusObservedStateAwsAccessRole, default is Undefined, optional
+        access role
+    """
+
+
+    accessRole?: BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusObservedStateAwsAccessRole
+
+
+schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusObservedStateAwsAccessRole:
+    r"""
+    bigqueryconnection cnrm cloud google com v1alpha1 big query connection connection status observed state aws access role
+
+    Attributes
+    ----------
+    identity : str, default is Undefined, optional
+        A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
+    """
+
+
+    identity?: str
+
+
+schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusObservedStateAzure:
+    r"""
+    bigqueryconnection cnrm cloud google com v1alpha1 big query connection connection status observed state azure
+
+    Attributes
+    ----------
+    application : str, default is Undefined, optional
+        The name of the Azure Active Directory Application.
+    clientID : str, default is Undefined, optional
+        The client id of the Azure Active Directory Application.
+    identity : str, default is Undefined, optional
+        A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
+    objectID : str, default is Undefined, optional
+        The object id of the Azure Active Directory Application.
+    redirectUri : str, default is Undefined, optional
+        The URL user will be redirected to after granting consent during connection setup.
+    """
+
+
+    application?: str
+
+    clientID?: str
+
+    identity?: str
+
+    objectID?: str
+
+    redirectUri?: str
+
+
+schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusObservedStateCloudResource:
+    r"""
+    bigqueryconnection cnrm cloud google com v1alpha1 big query connection connection status observed state cloud resource
+
+    Attributes
+    ----------
+    serviceAccountID : str, default is Undefined, optional
+         The account ID of the service created for the purpose of this
+         connection.
+
+         The service account does not have any permissions associated with it
+         when it is created. After creation, customers delegate permissions
+         to the service account. When the connection is used in the context of an
+         operation in BigQuery, the service account will be used to connect to the
+         desired resources in GCP.
+
+         The account ID is in the form of:
+           <service-1234>@gcp-sa-bigquery-cloudresource.iam.gserviceaccount.com
+    """
+
+
+    serviceAccountID?: str
+
+
+schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusObservedStateCloudSQL:
+    r"""
+    bigqueryconnection cnrm cloud google com v1alpha1 big query connection connection status observed state cloud SQL
+
+    Attributes
+    ----------
+    serviceAccountID : str, default is Undefined, optional
+        The account ID of the service used for the purpose of this connection.
+
+         When the connection is used in the context of an operation in
+         BigQuery, this service account will serve as the identity being used for
+         connecting to the CloudSQL instance specified in this connection.
+    """
+
+
+    serviceAccountID?: str
+
+
+schema BigqueryconnectionCnrmCloudGoogleComV1alpha1BigQueryConnectionConnectionStatusObservedStateSpark:
+    r"""
+    bigqueryconnection cnrm cloud google com v1alpha1 big query connection connection status observed state spark
+
+    Attributes
+    ----------
+    serviceAccountID : str, default is Undefined, optional
+         The account ID of the service created for the purpose of this
+         connection.
+
+         The service account does not have any permissions associated with it when
+         it is created. After creation, customers delegate permissions to the
+         service account. When the connection is used in the context of a stored
+         procedure for Apache Spark in BigQuery, the service account is used to
+         connect to the desired resources in Google Cloud.
+
+         The account ID is in the form of:
+         bqcx-<projectnumber>-<uniqueid>@gcp-sa-bigquery-consp.iam.gserviceaccount.com
+    """
+
+
+    serviceAccountID?: str
 
 

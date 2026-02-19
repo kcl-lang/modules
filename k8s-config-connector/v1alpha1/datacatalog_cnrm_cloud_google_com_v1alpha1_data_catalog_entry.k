@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DataCatalogEntry:
-    """
-    datacatalog cnrm cloud google com v1alpha1 data catalog entry
+    r"""
+    DataCatalogEntry is the Schema for the DataCatalogEntry API
 
     Attributes
     ----------
@@ -36,238 +36,987 @@ schema DataCatalogEntry:
 
 
 schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpec:
-    """
-    datacatalog cnrm cloud google com v1alpha1 data catalog entry spec
+    r"""
+    DataCatalogEntrySpec defines the desired state of DataCatalogEntry
 
     Attributes
     ----------
+    businessContext : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecBusinessContext, default is Undefined, optional
+        business context
+    cloudBigtableSystemSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecCloudBigtableSystemSpec, default is Undefined, optional
+        cloud bigtable system spec
+    dataSourceConnectionSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDataSourceConnectionSpec, default is Undefined, optional
+        data source connection spec
+    databaseTableSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDatabaseTableSpec, default is Undefined, optional
+        database table spec
+    datasetSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDatasetSpec, default is Undefined, optional
+        dataset spec
     description : str, default is Undefined, optional
-        Entry description, which can consist of several sentences or paragraphs that describe entry contents.
+        Entry description that can consist of several sentences or paragraphs
+         that describe entry contents.
+
+         The description must not contain Unicode non-characters as well as C0
+         and C1 control codes except tabs (HT), new lines (LF), carriage returns
+         (CR), and page breaks (FF).
+         The maximum size is 2000 bytes when encoded in UTF-8.
+         Default value is an empty string.
     displayName : str, default is Undefined, optional
-        Display information such as title and description. A short name to identify the entry,
-        for example, "Analytics Data - Jan 2011".
-    entryGroup : str, default is Undefined, required
-        Immutable. The name of the entry group this entry is in.
-    entryId : str, default is Undefined, required
-        Immutable. The id of the entry to create.
+        Display name of an entry.
+
+         The maximum size is 500 bytes when encoded in UTF-8.
+         Default value is an empty string.
+    entryGroupRef : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecEntryGroupRef, default is Undefined, required
+        entry group ref
+    featureOnlineStoreSpec : any, default is Undefined, optional
+        FeatureonlineStore spec for Vertex AI Feature Store.
+    filesetSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecFilesetSpec, default is Undefined, optional
+        fileset spec
     gcsFilesetSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecGcsFilesetSpec, default is Undefined, optional
         gcs fileset spec
-    linkedResource : str, default is Undefined, optional
-        The resource this metadata entry refers to.
-        For Google Cloud Platform resources, linkedResource is the full name of the resource.
-        For example, the linkedResource for a table resource from BigQuery is:
-        //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId
-        Output only when Entry is of type in the EntryType enum. For entries with userSpecifiedType,
-        this field is optional and defaults to an empty string.
+    labels : {str:str}, default is Undefined, optional
+        Cloud labels attached to the entry.
+
+         In Data Catalog, you can create and modify labels attached only to custom
+         entries. Synced entries have unmodifiable labels that come from the source
+         system.
+    lookerSystemSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecLookerSystemSpec, default is Undefined, optional
+        looker system spec
+    modelSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecModelSpec, default is Undefined, optional
+        model spec
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
-    $schema : str, default is Undefined, optional
-        Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
-        attached to it. See
-        https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
-        for what fields this schema can contain.
+        The DataCatalogEntry name. If not given, the metadata.name will be used.
+    routineSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecRoutineSpec, default is Undefined, optional
+        routine spec
+    $schema : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecSchema, default is Undefined, optional
+        schema
+    serviceSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecServiceSpec, default is Undefined, optional
+        service spec
+    sourceSystemTimestamps : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecSourceSystemTimestamps, default is Undefined, optional
+        source system timestamps
+    sqlDatabaseSystemSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecSQLDatabaseSystemSpec, default is Undefined, optional
+        sql database system spec
     $type : str, default is Undefined, optional
-        Immutable. The type of the entry. Only used for Entries with types in the EntryType enum.
-        Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType. Possible values: ["FILESET"].
+        The type of the entry.
+
+         For details, see [`EntryType`](#entrytype).
+    usageSignal : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecUsageSignal, default is Undefined, optional
+        usage signal
     userSpecifiedSystem : str, default is Undefined, optional
-        This field indicates the entry's source system that Data Catalog does not integrate with.
-        userSpecifiedSystem strings must begin with a letter or underscore and can only contain letters, numbers,
-        and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
+        Indicates the entry's source system that Data Catalog doesn't
+         automatically integrate with.
+
+         The `user_specified_system` string has the following limitations:
+
+         * Is case insensitive.
+         * Must begin with a letter or underscore.
+         * Can only contain letters, numbers, and underscores.
+         * Must be at least 1 character and at most 64 characters long.
     userSpecifiedType : str, default is Undefined, optional
-        Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
-        When creating an entry, users should check the enum values first, if nothing matches the entry
-        to be created, then provide a custom value, for example "my_special_type".
-        userSpecifiedType strings must begin with a letter or underscore and can only contain letters,
-        numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
+        Custom entry type that doesn't match any of the values allowed for input
+         and listed in the `EntryType` enum.
+
+         When creating an entry, first check the type values in the enum.
+         If there are no appropriate types for the new entry,
+         provide a custom value, for example, `my_special_type`.
+
+         The `user_specified_type` string has the following limitations:
+
+         * Is case insensitive.
+         * Must begin with a letter or underscore.
+         * Can only contain letters, numbers, and underscores.
+         * Must be at least 1 character and at most 64 characters long.
     """
 
+
+    businessContext?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecBusinessContext
+
+    cloudBigtableSystemSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecCloudBigtableSystemSpec
+
+    dataSourceConnectionSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDataSourceConnectionSpec
+
+    databaseTableSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDatabaseTableSpec
+
+    datasetSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDatasetSpec
 
     description?: str
 
     displayName?: str
 
-    entryGroup: str
+    entryGroupRef: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecEntryGroupRef
 
-    entryId: str
+    featureOnlineStoreSpec?: any
+
+    filesetSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecFilesetSpec
 
     gcsFilesetSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecGcsFilesetSpec
 
-    linkedResource?: str
+    labels?: {str:str}
+
+    lookerSystemSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecLookerSystemSpec
+
+    modelSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecModelSpec
 
     resourceID?: str
 
-    $schema?: str
+    routineSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecRoutineSpec
+
+    $schema?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecSchema
+
+    serviceSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecServiceSpec
+
+    sourceSystemTimestamps?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecSourceSystemTimestamps
+
+    sqlDatabaseSystemSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecSQLDatabaseSystemSpec
 
     $type?: str
+
+    usageSignal?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecUsageSignal
 
     userSpecifiedSystem?: str
 
     userSpecifiedType?: str
 
 
-schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecGcsFilesetSpec:
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecBusinessContext:
+    r"""
+    Business Context of the entry. Not supported for BigQuery datasets
+
+    Attributes
+    ----------
+    contacts : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecBusinessContextContacts, default is Undefined, optional
+        contacts
+    entryOverview : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecBusinessContextEntryOverview, default is Undefined, optional
+        entry overview
     """
-    Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
+
+
+    contacts?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecBusinessContextContacts
+
+    entryOverview?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecBusinessContextEntryOverview
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecBusinessContextContacts:
+    r"""
+    Contact people for the entry.
+
+    Attributes
+    ----------
+    people : [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecBusinessContextContactsPeopleItems0], default is Undefined, optional
+        The list of contact people for the entry.
+    """
+
+
+    people?: [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecBusinessContextContactsPeopleItems0]
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecBusinessContextContactsPeopleItems0:
+    r"""
+    datacatalog cnrm cloud google com v1alpha1 data catalog entry spec business context contacts people items0
+
+    Attributes
+    ----------
+    designation : str, default is Undefined, optional
+        Designation of the person, for example, Data Steward.
+    email : str, default is Undefined, optional
+        Email of the person in the format of `john.doe@xyz`, `<john.doe@xyz>`, or `John Doe<john.doe@xyz>`.
+    """
+
+
+    designation?: str
+
+    email?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecBusinessContextEntryOverview:
+    r"""
+    Entry overview fields for rich text descriptions of entries.
+
+    Attributes
+    ----------
+    overview : str, default is Undefined, optional
+        Entry overview with support for rich text.
+
+         The overview must only contain Unicode characters, and should be
+         formatted using HTML.
+         The maximum length is 10 MiB as this value holds HTML descriptions
+         including encoded images. The maximum length of the text without images
+         is 100 KiB.
+    """
+
+
+    overview?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecCloudBigtableSystemSpec:
+    r"""
+    Specification that applies to Cloud Bigtable system. Only settable when `integrated_system` is equal to `CLOUD_BIGTABLE`
+
+    Attributes
+    ----------
+    instanceDisplayName : str, default is Undefined, optional
+        Display name of the Instance. This is user specified and different from the resource name.
+    """
+
+
+    instanceDisplayName?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDataSourceConnectionSpec:
+    r"""
+    Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
+
+    Attributes
+    ----------
+    bigqueryConnectionSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDataSourceConnectionSpecBigqueryConnectionSpec, default is Undefined, optional
+        bigquery connection spec
+    """
+
+
+    bigqueryConnectionSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDataSourceConnectionSpecBigqueryConnectionSpec
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDataSourceConnectionSpecBigqueryConnectionSpec:
+    r"""
+    Output only. Fields specific to BigQuery connections.
+
+    Attributes
+    ----------
+    cloudSQL : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDataSourceConnectionSpecBigqueryConnectionSpecCloudSQL, default is Undefined, optional
+        cloud SQL
+    connectionType : str, default is Undefined, optional
+        The type of the BigQuery connection.
+    hasCredential : bool, default is Undefined, optional
+        True if there are credentials attached to the BigQuery connection; false otherwise.
+    """
+
+
+    cloudSQL?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDataSourceConnectionSpecBigqueryConnectionSpecCloudSQL
+
+    connectionType?: str
+
+    hasCredential?: bool
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDataSourceConnectionSpecBigqueryConnectionSpecCloudSQL:
+    r"""
+    Specification for the BigQuery connection to a Cloud SQL instance.
+
+    Attributes
+    ----------
+    database : str, default is Undefined, optional
+        Database name.
+    instanceID : str, default is Undefined, optional
+        Cloud SQL instance ID in the format of `project:location:instance`.
+    $type : str, default is Undefined, optional
+        Type of the Cloud SQL database.
+    """
+
+
+    database?: str
+
+    instanceID?: str
+
+    $type?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDatabaseTableSpec:
+    r"""
+    Specification that applies to a table resource. Valid only for entries with the `TABLE` or `EXPLORE` type.
+
+    Attributes
+    ----------
+    databaseViewSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDatabaseTableSpecDatabaseViewSpec, default is Undefined, optional
+        database view spec
+    $type : str, default is Undefined, optional
+        Type of this table.
+    """
+
+
+    databaseViewSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDatabaseTableSpecDatabaseViewSpec
+
+    $type?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDatabaseTableSpecDatabaseViewSpec:
+    r"""
+    Spec what aplies to tables that are actually views. Not set for "real" tables.
+
+    Attributes
+    ----------
+    baseTable : str, default is Undefined, optional
+        Name of a singular table this view reflects one to one.
+    sqlQuery : str, default is Undefined, optional
+        SQL query used to generate this view.
+    viewType : str, default is Undefined, optional
+        Type of this view.
+    """
+
+
+    baseTable?: str
+
+    sqlQuery?: str
+
+    viewType?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDatasetSpec:
+    r"""
+    Specification that applies to a dataset.
+
+    Attributes
+    ----------
+    vertexDatasetSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDatasetSpecVertexDatasetSpec, default is Undefined, optional
+        vertex dataset spec
+    """
+
+
+    vertexDatasetSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDatasetSpecVertexDatasetSpec
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDatasetSpecVertexDatasetSpec:
+    r"""
+    Vertex AI Dataset specific fields
+
+    Attributes
+    ----------
+    dataItemCount : int, default is Undefined, optional
+        The number of DataItems in this Dataset. Only apply for non-structured Dataset.
+    dataType : str, default is Undefined, optional
+        Type of the dataset.
+    """
+
+
+    dataItemCount?: int
+
+    dataType?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecEntryGroupRef:
+    r"""
+    Reference to the entry group that contains the entry.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed DataCatalogEntryGroup resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/entrygroups/{{entrygroupID}}".
+    name : str, default is Undefined, optional
+        The name of a DataCatalogEntryGroup resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a DataCatalogEntryGroup resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecFilesetSpec:
+    r"""
+    Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
+
+    Attributes
+    ----------
+    dataplexFileset : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecFilesetSpecDataplexFileset, default is Undefined, optional
+        dataplex fileset
+    """
+
+
+    dataplexFileset?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecFilesetSpecDataplexFileset
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecFilesetSpecDataplexFileset:
+    r"""
+    Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.
+
+    Attributes
+    ----------
+    dataplexSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecFilesetSpecDataplexFilesetDataplexSpec, default is Undefined, optional
+        dataplex spec
+    """
+
+
+    dataplexSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecFilesetSpecDataplexFilesetDataplexSpec
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecFilesetSpecDataplexFilesetDataplexSpec:
+    r"""
+    Common Dataplex fields.
+
+    Attributes
+    ----------
+    asset : str, default is Undefined, optional
+        Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
+    compressionFormat : str, default is Undefined, optional
+        Compression format of the data, e.g., zip, gzip etc.
+    dataFormat : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecFilesetSpecDataplexFilesetDataplexSpecDataFormat, default is Undefined, optional
+        data format
+    projectID : str, default is Undefined, optional
+        Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as the correspondingly Dataplex lake / zone / asset.
+    """
+
+
+    asset?: str
+
+    compressionFormat?: str
+
+    dataFormat?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecFilesetSpecDataplexFilesetDataplexSpecDataFormat
+
+    projectID?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecFilesetSpecDataplexFilesetDataplexSpecDataFormat:
+    r"""
+    Format of the data.
+
+    Attributes
+    ----------
+    avro : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecFilesetSpecDataplexFilesetDataplexSpecDataFormatAvro, default is Undefined, optional
+        avro
+    csv : any, default is Undefined, optional
+        Marks a CSV-encoded data source.
+    orc : any, default is Undefined, optional
+        Marks an ORC-encoded data source.
+    parquet : any, default is Undefined, optional
+        Marks a Parquet-encoded data source.
+    protobuf : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecFilesetSpecDataplexFilesetDataplexSpecDataFormatProtobuf, default is Undefined, optional
+        protobuf
+    thrift : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecFilesetSpecDataplexFilesetDataplexSpecDataFormatThrift, default is Undefined, optional
+        thrift
+    """
+
+
+    avro?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecFilesetSpecDataplexFilesetDataplexSpecDataFormatAvro
+
+    csv?: any
+
+    orc?: any
+
+    parquet?: any
+
+    protobuf?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecFilesetSpecDataplexFilesetDataplexSpecDataFormatProtobuf
+
+    thrift?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecFilesetSpecDataplexFilesetDataplexSpecDataFormatThrift
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecFilesetSpecDataplexFilesetDataplexSpecDataFormatAvro:
+    r"""
+    Schema in Avro JSON format.
+
+    Attributes
+    ----------
+    text : str, default is Undefined, optional
+        JSON source of the Avro schema.
+    """
+
+
+    text?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecFilesetSpecDataplexFilesetDataplexSpecDataFormatProtobuf:
+    r"""
+    Schema in protocol buffer format.
+
+    Attributes
+    ----------
+    text : str, default is Undefined, optional
+        Protocol buffer source of the schema.
+    """
+
+
+    text?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecFilesetSpecDataplexFilesetDataplexSpecDataFormatThrift:
+    r"""
+    Schema in Thrift format.
+
+    Attributes
+    ----------
+    text : str, default is Undefined, optional
+        Thrift IDL source of the schema.
+    """
+
+
+    text?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecGcsFilesetSpec:
+    r"""
+    Specification that applies to a Cloud Storage fileset. Valid only for entries with the `FILESET` type.
 
     Attributes
     ----------
     filePatterns : [str], default is Undefined, required
-        Patterns to identify a set of files in Google Cloud Storage.
-        See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames)
-        for more information. Note that bucket wildcards are currently not supported. Examples of valid filePatterns:
+        Required. Patterns to identify a set of files in Google Cloud Storage.
 
-        * gs://bucket_name/dir/*: matches all files within bucket_name/dir directory.
-        * gs://bucket_name/dir/**: matches all files in bucket_name/dir spanning all subdirectories.
-        * gs://bucket_name/file*: matches files prefixed by file in bucket_name
-        * gs://bucket_name/??.txt: matches files with two characters followed by .txt in bucket_name
-        * gs://bucket_name/[aeiou].txt: matches files that contain a single vowel character followed by .txt in bucket_name
-        * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in bucket_name
-        * gs://bucket_name/a/*/b: matches all files in bucket_name that match a/*/b pattern, such as a/c/b, a/d/b
-        * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt.
-    sampleGcsFileSpecs : [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecGcsFilesetSpecSampleGcsFileSpecsItems0], default is Undefined, optional
-        Sample files contained in this fileset, not all files contained in this fileset are represented here.
+         For more information, see [Wildcard Names]
+         (https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames).
+
+         Note: Currently, bucket wildcards are not supported.
+
+         Examples of valid `file_patterns`:
+
+          * `gs://bucket_name/dir/*`: matches all files in `bucket_name/dir`
+                                      directory
+          * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir`
+                                       and all subdirectories
+          * `gs://bucket_name/file*`: matches files prefixed by `file` in
+                                      `bucket_name`
+          * `gs://bucket_name/??.txt`: matches files with two characters followed by
+                                       `.txt` in `bucket_name`
+          * `gs://bucket_name/[aeiou].txt`: matches files that contain a single
+                                            vowel character followed by `.txt` in
+                                            `bucket_name`
+          * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ...
+                                          or `m` followed by `.txt` in `bucket_name`
+          * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match
+                                      the `a/*/b` pattern, such as `a/c/b`, `a/d/b`
+          * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt`
+
+         You can combine wildcards to match complex sets of files, for example:
+
+         `gs://bucket_name/[a-m]??.j*g`
     """
 
 
     filePatterns: [str]
 
-    sampleGcsFileSpecs?: [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecGcsFilesetSpecSampleGcsFileSpecsItems0]
 
-
-schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecGcsFilesetSpecSampleGcsFileSpecsItems0:
-    """
-    datacatalog cnrm cloud google com v1alpha1 data catalog entry spec gcs fileset spec sample gcs file specs items0
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecLookerSystemSpec:
+    r"""
+    Specification that applies to Looker sysstem. Only settable when `user_specified_system` is equal to `LOOKER`
 
     Attributes
     ----------
-    filePath : str, default is Undefined, optional
-        The full file path.
-    sizeBytes : int, default is Undefined, optional
-        The size of the file, in bytes.
+    parentInstanceDisplayName : str, default is Undefined, optional
+        Name of the parent Looker Instance. Empty if it does not exist.
+    parentInstanceID : str, default is Undefined, optional
+        ID of the parent Looker Instance. Empty if it does not exist. Example value: `someinstance.looker.com`
+    parentModelDisplayName : str, default is Undefined, optional
+        Name of the parent Model. Empty if it does not exist.
+    parentModelID : str, default is Undefined, optional
+        ID of the parent Model. Empty if it does not exist.
+    parentViewDisplayName : str, default is Undefined, optional
+        Name of the parent View. Empty if it does not exist.
+    parentViewID : str, default is Undefined, optional
+        ID of the parent View. Empty if it does not exist.
     """
 
 
-    filePath?: str
+    parentInstanceDisplayName?: str
 
-    sizeBytes?: int
+    parentInstanceID?: str
+
+    parentModelDisplayName?: str
+
+    parentModelID?: str
+
+    parentViewDisplayName?: str
+
+    parentViewID?: str
 
 
-schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatus:
-    """
-    datacatalog cnrm cloud google com v1alpha1 data catalog entry status
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecModelSpec:
+    r"""
+    Model specification.
 
     Attributes
     ----------
-    bigqueryDateShardedSpec : [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusBigqueryDateShardedSpecItems0], default is Undefined, optional
-        Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
-        Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
-    bigqueryTableSpec : [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusBigqueryTableSpecItems0], default is Undefined, optional
-        Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
-    conditions : [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
-    integratedSystem : str, default is Undefined, optional
-        This field indicates the entry's source system that Data Catalog integrates with, such as BigQuery or Pub/Sub.
+    vertexModelSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecModelSpecVertexModelSpec, default is Undefined, optional
+        vertex model spec
+    """
+
+
+    vertexModelSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecModelSpecVertexModelSpec
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecModelSpecVertexModelSpec:
+    r"""
+    Specification for vertex model resources.
+
+    Attributes
+    ----------
+    containerImageURI : str, default is Undefined, optional
+        URI of the Docker image to be used as the custom container for serving predictions.
+    versionAliases : [str], default is Undefined, optional
+        User provided version aliases so that a model version can be referenced via alias
+    versionDescription : str, default is Undefined, optional
+        The description of this version.
+    versionID : str, default is Undefined, optional
+        The version ID of the model.
+    vertexModelSourceInfo : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecModelSpecVertexModelSpecVertexModelSourceInfo, default is Undefined, optional
+        vertex model source info
+    """
+
+
+    containerImageURI?: str
+
+    versionAliases?: [str]
+
+    versionDescription?: str
+
+    versionID?: str
+
+    vertexModelSourceInfo?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecModelSpecVertexModelSpecVertexModelSourceInfo
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecModelSpecVertexModelSpecVertexModelSourceInfo:
+    r"""
+    Source of a Vertex model.
+
+    Attributes
+    ----------
+    copy : bool, default is Undefined, optional
+        If this Model is copy of another Model. If true then [source_type][google.cloud.datacatalog.v1.VertexModelSourceInfo.source_type] pertains to the original.
+    sourceType : str, default is Undefined, optional
+        Type of the model source.
+    """
+
+
+    copy?: bool
+
+    sourceType?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecRoutineSpec:
+    r"""
+    Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
+
+    Attributes
+    ----------
+    bigqueryRoutineSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecRoutineSpecBigqueryRoutineSpec, default is Undefined, optional
+        bigquery routine spec
+    definitionBody : str, default is Undefined, optional
+        The body of the routine.
+    language : str, default is Undefined, optional
+        The language the routine is written in. The exact value depends on the
+         source system. For BigQuery routines, possible values are:
+
+         * `SQL`
+         * `JAVASCRIPT`
+    returnType : str, default is Undefined, optional
+        Return type of the argument. The exact value depends on the source system and the language.
+    routineArguments : [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecRoutineSpecRoutineArgumentsItems0], default is Undefined, optional
+        Arguments of the routine.
+    routineType : str, default is Undefined, optional
+        The type of the routine.
+    """
+
+
+    bigqueryRoutineSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecRoutineSpecBigqueryRoutineSpec
+
+    definitionBody?: str
+
+    language?: str
+
+    returnType?: str
+
+    routineArguments?: [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecRoutineSpecRoutineArgumentsItems0]
+
+    routineType?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecRoutineSpecBigqueryRoutineSpec:
+    r"""
+    Fields specific for BigQuery routines.
+
+    Attributes
+    ----------
+    importedLibraries : [str], default is Undefined, optional
+        Paths of the imported libraries.
+    """
+
+
+    importedLibraries?: [str]
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecRoutineSpecRoutineArgumentsItems0:
+    r"""
+    datacatalog cnrm cloud google com v1alpha1 data catalog entry spec routine spec routine arguments items0
+
+    Attributes
+    ----------
+    mode : str, default is Undefined, optional
+        Specifies whether the argument is input or output.
     name : str, default is Undefined, optional
-        The Data Catalog resource name of the entry in URL format.
-        Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
-        Note that this Entry and its child resources may not actually be stored in the location in this name.
-    observedGeneration : int, default is Undefined, optional
-        ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+        The name of the argument. A return argument of a function might not have a name.
+    $type : str, default is Undefined, optional
+        Type of the argument. The exact value depends on the source system and the language.
     """
 
 
-    bigqueryDateShardedSpec?: [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusBigqueryDateShardedSpecItems0]
-
-    bigqueryTableSpec?: [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusBigqueryTableSpecItems0]
-
-    conditions?: [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusConditionsItems0]
-
-    integratedSystem?: str
+    mode?: str
 
     name?: str
 
+    $type?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecSQLDatabaseSystemSpec:
+    r"""
+    Specification that applies to a relational database system. Only settable when `user_specified_system` is equal to `SQL_DATABASE`
+
+    Attributes
+    ----------
+    databaseVersion : str, default is Undefined, optional
+        Version of the database engine.
+    instanceHost : str, default is Undefined, optional
+        Host of the SQL database enum InstanceHost { UNDEFINED = 0; SELF_HOSTED = 1; CLOUD_SQL = 2; AMAZON_RDS = 3; AZURE_SQL = 4; } Host of the enclousing database instance.
+    sqlEngine : str, default is Undefined, optional
+        SQL Database Engine. enum SqlEngine { UNDEFINED = 0; MY_SQL = 1; POSTGRE_SQL = 2; SQL_SERVER = 3; } Engine of the enclosing database instance.
+    """
+
+
+    databaseVersion?: str
+
+    instanceHost?: str
+
+    sqlEngine?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecSchema:
+    r"""
+    Schema of the entry. An entry might not have any schema attached to it.
+
+    Attributes
+    ----------
+    columns : [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecSchemaColumnsItems0], default is Undefined, optional
+        The unified GoogleSQL-like schema of columns.
+
+         The overall maximum number of columns and nested columns is 10,000.
+         The maximum nested depth is 15 levels.
+    """
+
+
+    columns?: [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecSchemaColumnsItems0]
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecSchemaColumnsItems0:
+    r"""
+    datacatalog cnrm cloud google com v1alpha1 data catalog entry spec schema columns items0
+
+    Attributes
+    ----------
+    column : str, default is Undefined, required
+        Required. Name of the column.
+
+         Must be a UTF-8 string without dots (.).
+         The maximum size is 64 bytes.
+    defaultValue : str, default is Undefined, optional
+        Optional. Default value for the column.
+    description : str, default is Undefined, optional
+        Optional. Description of the column. Default value is an empty string.
+
+         The description must be a UTF-8 string with the maximum size of 2000
+         bytes.
+    gcRule : str, default is Undefined, optional
+        Optional. Garbage collection policy for the column or column family. Applies to systems like Cloud Bigtable.
+    highestIndexingType : str, default is Undefined, optional
+        Optional. Most important inclusion of this column.
+    lookerColumnSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecSchemaColumnsItems0LookerColumnSpec, default is Undefined, optional
+        looker column spec
+    mode : str, default is Undefined, optional
+        Optional. A column's mode indicates whether values in this column are
+         required, nullable, or repeated.
+
+         Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are supported.
+         Default mode is `NULLABLE`.
+    ordinalPosition : int, default is Undefined, optional
+        Optional. Ordinal position
+    rangeElementType : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecSchemaColumnsItems0RangeElementType, default is Undefined, optional
+        range element type
+    subcolumns : any, default is Undefined, optional
+        Optional. Schema of sub-columns. A column can have zero or more sub-columns.
+    $type : str, default is Undefined, required
+        Required. Type of the column.
+
+         Must be a UTF-8 string with the maximum size of 128 bytes.
+    """
+
+
+    column: str
+
+    defaultValue?: str
+
+    description?: str
+
+    gcRule?: str
+
+    highestIndexingType?: str
+
+    lookerColumnSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecSchemaColumnsItems0LookerColumnSpec
+
+    mode?: str
+
+    ordinalPosition?: int
+
+    rangeElementType?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecSchemaColumnsItems0RangeElementType
+
+    subcolumns?: any
+
+    $type: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecSchemaColumnsItems0LookerColumnSpec:
+    r"""
+    Looker specific column info of this column.
+
+    Attributes
+    ----------
+    $type : str, default is Undefined, optional
+        Looker specific column type of this column.
+    """
+
+
+    $type?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecSchemaColumnsItems0RangeElementType:
+    r"""
+    Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is required. Possible values for the field element type of a RANGE include: * DATE * DATETIME * TIMESTAMP
+
+    Attributes
+    ----------
+    $type : str, default is Undefined, required
+        Required. The type of a field element. See [ColumnSchema.type][google.cloud.datacatalog.v1.ColumnSchema.type].
+    """
+
+
+    $type: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecServiceSpec:
+    r"""
+    Specification that applies to a Service resource.
+
+    Attributes
+    ----------
+    cloudBigtableInstanceSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecServiceSpecCloudBigtableInstanceSpec, default is Undefined, optional
+        cloud bigtable instance spec
+    """
+
+
+    cloudBigtableInstanceSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecServiceSpecCloudBigtableInstanceSpec
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecServiceSpecCloudBigtableInstanceSpec:
+    r"""
+    Specification that applies to Instance entries of `CLOUD_BIGTABLE` system.
+
+    Attributes
+    ----------
+    cloudBigtableClusterSpecs : [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecServiceSpecCloudBigtableInstanceSpecCloudBigtableClusterSpecsItems0], default is Undefined, optional
+        The list of clusters for the Instance.
+    """
+
+
+    cloudBigtableClusterSpecs?: [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecServiceSpecCloudBigtableInstanceSpecCloudBigtableClusterSpecsItems0]
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecServiceSpecCloudBigtableInstanceSpecCloudBigtableClusterSpecsItems0:
+    r"""
+    datacatalog cnrm cloud google com v1alpha1 data catalog entry spec service spec cloud bigtable instance spec cloud bigtable cluster specs items0
+
+    Attributes
+    ----------
+    displayName : str, default is Undefined, optional
+        Name of the cluster.
+    linkedResource : str, default is Undefined, optional
+        A link back to the parent resource, in this case Instance.
+    location : str, default is Undefined, optional
+        Location of the cluster, typically a Cloud zone.
+    $type : str, default is Undefined, optional
+        Type of the resource. For a cluster this would be "CLUSTER".
+    """
+
+
+    displayName?: str
+
+    linkedResource?: str
+
+    location?: str
+
+    $type?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecSourceSystemTimestamps:
+    r"""
+    Timestamps from the underlying resource, not from the Data Catalog
+     entry.
+
+     Output only when the entry has a system listed in the `IntegratedSystem`
+     enum. For entries with `user_specified_system`, this field is optional
+     and defaults to an empty timestamp.
+
+    Attributes
+    ----------
+    createTime : str, default is Undefined, optional
+        Creation timestamp of the resource within the given system.
+    updateTime : str, default is Undefined, optional
+        Timestamp of the last modification of the resource or its metadata within
+         a given system.
+
+         Note: Depending on the source system, not every modification updates this
+         timestamp.
+         For example, BigQuery timestamps every metadata modification but not data
+         or permission changes.
+    """
+
+
+    createTime?: str
+
+    updateTime?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecUsageSignal:
+    r"""
+    Resource usage statistics.
+
+    Attributes
+    ----------
+    favoriteCount : int, default is Undefined, optional
+        Favorite count in the source system.
+    updateTime : str, default is Undefined, optional
+        The end timestamp of the duration of usage statistics.
+    """
+
+
+    favoriteCount?: int
+
+    updateTime?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatus:
+    r"""
+    DataCatalogEntryStatus defines the config connector machine state of DataCatalogEntry
+
+    Attributes
+    ----------
+    conditions : [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusConditionsItems0], default is Undefined, optional
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the DataCatalogEntry resource in GCP.
+    observedGeneration : int, default is Undefined, optional
+        ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedState, default is Undefined, optional
+        observed state
+    """
+
+
+    conditions?: [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusConditionsItems0]
+
+    externalRef?: str
+
     observedGeneration?: int
 
-
-schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusBigqueryDateShardedSpecItems0:
-    """
-    datacatalog cnrm cloud google com v1alpha1 data catalog entry status bigquery date sharded spec items0
-
-    Attributes
-    ----------
-    dataset : str, default is Undefined, optional
-        The Data Catalog resource name of the dataset entry the current table belongs to, for example,
-        projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}.
-    shardCount : int, default is Undefined, optional
-        Total number of shards.
-    tablePrefix : str, default is Undefined, optional
-        The table name prefix of the shards. The name of any given shard is [tablePrefix]YYYYMMDD,
-        for example, for shard MyTable20180101, the tablePrefix is MyTable.
-    """
-
-
-    dataset?: str
-
-    shardCount?: int
-
-    tablePrefix?: str
-
-
-schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusBigqueryTableSpecItems0:
-    """
-    datacatalog cnrm cloud google com v1alpha1 data catalog entry status bigquery table spec items0
-
-    Attributes
-    ----------
-    tableSourceType : str, default is Undefined, optional
-        The table source type.
-    tableSpec : [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusBigqueryTableSpecItems0TableSpecItems0], default is Undefined, optional
-        Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
-    viewSpec : [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusBigqueryTableSpecItems0ViewSpecItems0], default is Undefined, optional
-        Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
-    """
-
-
-    tableSourceType?: str
-
-    tableSpec?: [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusBigqueryTableSpecItems0TableSpecItems0]
-
-    viewSpec?: [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusBigqueryTableSpecItems0ViewSpecItems0]
-
-
-schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusBigqueryTableSpecItems0TableSpecItems0:
-    """
-    datacatalog cnrm cloud google com v1alpha1 data catalog entry status bigquery table spec items0 table spec items0
-
-    Attributes
-    ----------
-    groupedEntry : str, default is Undefined, optional
-        If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
-        Data Catalog resource name of the date sharded grouped entry, for example,
-        projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}.
-        Otherwise, groupedEntry is empty.
-    """
-
-
-    groupedEntry?: str
-
-
-schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusBigqueryTableSpecItems0ViewSpecItems0:
-    """
-    datacatalog cnrm cloud google com v1alpha1 data catalog entry status bigquery table spec items0 view spec items0
-
-    Attributes
-    ----------
-    viewQuery : str, default is Undefined, optional
-        The query that defines the table view.
-    """
-
-
-    viewQuery?: str
+    observedState?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedState
 
 
 schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusConditionsItems0:
-    """
+    r"""
     datacatalog cnrm cloud google com v1alpha1 data catalog entry status conditions items0
 
     Attributes
@@ -294,5 +1043,454 @@ schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusConditionsItem
     status?: str
 
     $type?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    bigqueryDateShardedSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateBigqueryDateShardedSpec, default is Undefined, optional
+        bigquery date sharded spec
+    bigqueryTableSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateBigqueryTableSpec, default is Undefined, optional
+        bigquery table spec
+    dataSource : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDataSource, default is Undefined, optional
+        data source
+    databaseTableSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpec, default is Undefined, optional
+        database table spec
+    featureOnlineStoreSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateFeatureOnlineStoreSpec, default is Undefined, optional
+        feature online store spec
+    gcsFilesetSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateGcsFilesetSpec, default is Undefined, optional
+        gcs fileset spec
+    integratedSystem : str, default is Undefined, optional
+        Output only. Indicates the entry's source system that Data Catalog integrates with, such as BigQuery, Pub/Sub, or Dataproc Metastore.
+    linkedResource : str, default is Undefined, optional
+        The resource this metadata entry refers to.
+
+         For Google Cloud Platform resources, `linked_resource` is the
+         [Full Resource Name]
+         (https://cloud.google.com/apis/design/resource_names#full_resource_name).
+
+         Output only when the entry is one of the types in the `EntryType` enum.
+
+         For entries with a `user_specified_type`, this field is optional and
+         defaults to an empty string.
+
+         The resource string must contain only letters (a-z, A-Z), numbers (0-9),
+         underscores (_), periods (.), colons (:), slashes (/), dashes (-),
+         and hashes (#).
+         The maximum size is 200 bytes when encoded in UTF-8.
+    personalDetails : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStatePersonalDetails, default is Undefined, optional
+        personal details
+    usageSignal : any, default is Undefined, optional
+        Resource usage statistics.
+    """
+
+
+    bigqueryDateShardedSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateBigqueryDateShardedSpec
+
+    bigqueryTableSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateBigqueryTableSpec
+
+    dataSource?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDataSource
+
+    databaseTableSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpec
+
+    featureOnlineStoreSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateFeatureOnlineStoreSpec
+
+    gcsFilesetSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateGcsFilesetSpec
+
+    integratedSystem?: str
+
+    linkedResource?: str
+
+    personalDetails?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStatePersonalDetails
+
+    usageSignal?: any
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateBigqueryDateShardedSpec:
+    r"""
+    Output only. Specification for a group of BigQuery tables with
+     the `[prefix]YYYYMMDD` name pattern.
+
+     For more information, see [Introduction to partitioned tables]
+     (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
+
+    Attributes
+    ----------
+    dataset : str, default is Undefined, optional
+        Output only. The Data Catalog resource name of the dataset entry the
+         current table belongs to. For example:
+
+         `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`.
+    latestShardResource : str, default is Undefined, optional
+        Output only. BigQuery resource name of the latest shard.
+    shardCount : int, default is Undefined, optional
+        Output only. Total number of shards.
+    tablePrefix : str, default is Undefined, optional
+        Output only. The table name prefix of the shards.
+
+         The name of any given shard is `[table_prefix]YYYYMMDD`.
+         For example, for the `MyTable20180101` shard, the
+         `table_prefix` is `MyTable`.
+    """
+
+
+    dataset?: str
+
+    latestShardResource?: str
+
+    shardCount?: int
+
+    tablePrefix?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateBigqueryTableSpec:
+    r"""
+    Output only. Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
+
+    Attributes
+    ----------
+    tableSourceType : str, default is Undefined, optional
+        Output only. The table source type.
+    tableSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateBigqueryTableSpecTableSpec, default is Undefined, optional
+        table spec
+    viewSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateBigqueryTableSpecViewSpec, default is Undefined, optional
+        view spec
+    """
+
+
+    tableSourceType?: str
+
+    tableSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateBigqueryTableSpecTableSpec
+
+    viewSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateBigqueryTableSpecViewSpec
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateBigqueryTableSpecTableSpec:
+    r"""
+    Specification of a BigQuery table. Populated only if the `table_source_type` is `BIGQUERY_TABLE`.
+
+    Attributes
+    ----------
+    groupedEntry : str, default is Undefined, optional
+        Output only. If the table is date-sharded, that is, it matches the
+         `[prefix]YYYYMMDD` name pattern, this field is the Data Catalog resource
+         name of the date-sharded grouped entry. For example:
+
+         `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`.
+
+         Otherwise, `grouped_entry` is empty.
+    """
+
+
+    groupedEntry?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateBigqueryTableSpecViewSpec:
+    r"""
+    Table view specification. Populated only if the `table_source_type` is `BIGQUERY_VIEW`.
+
+    Attributes
+    ----------
+    viewQuery : str, default is Undefined, optional
+        Output only. The query that defines the table view.
+    """
+
+
+    viewQuery?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDataSource:
+    r"""
+    Output only. Physical location of the entry.
+
+    Attributes
+    ----------
+    resource : str, default is Undefined, optional
+        Full name of a resource as defined by the service. For example:
+
+         `//bigquery.googleapis.com/projects/{PROJECT_ID}/locations/{LOCATION}/datasets/{DATASET_ID}/tables/{TABLE_ID}`
+    service : str, default is Undefined, optional
+        Service that physically stores the data.
+    sourceEntry : str, default is Undefined, optional
+        Output only. Data Catalog entry name, if applicable.
+    storageProperties : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDataSourceStorageProperties, default is Undefined, optional
+        storage properties
+    """
+
+
+    resource?: str
+
+    service?: str
+
+    sourceEntry?: str
+
+    storageProperties?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDataSourceStorageProperties
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDataSourceStorageProperties:
+    r"""
+    Detailed properties of the underlying storage.
+
+    Attributes
+    ----------
+    filePattern : [str], default is Undefined, optional
+        Patterns to identify a set of files for this fileset.
+
+         Examples of a valid `file_pattern`:
+
+          * `gs://bucket_name/dir/*`: matches all files in the `bucket_name/dir`
+                                      directory
+          * `gs://bucket_name/dir/**`: matches all files in the `bucket_name/dir`
+                                       and all subdirectories recursively
+          * `gs://bucket_name/file*`: matches files prefixed by `file` in
+                                      `bucket_name`
+          * `gs://bucket_name/??.txt`: matches files with two characters followed by
+                                       `.txt` in `bucket_name`
+          * `gs://bucket_name/[aeiou].txt`: matches files that contain a single
+                                            vowel character followed by `.txt` in
+                                            `bucket_name`
+          * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ...
+                                          or `m` followed by `.txt` in `bucket_name`
+          * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match
+                                      the `a/*/b` pattern, such as `a/c/b`, `a/d/b`
+          * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt`
+    fileType : str, default is Undefined, optional
+        File type in MIME format, for example, `text/plain`.
+    """
+
+
+    filePattern?: [str]
+
+    fileType?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpec:
+    r"""
+    Specification that applies to a table resource. Valid only for entries with the `TABLE` or `EXPLORE` type.
+
+    Attributes
+    ----------
+    dataplexTable : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpecDataplexTable, default is Undefined, optional
+        dataplex table
+    """
+
+
+    dataplexTable?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpecDataplexTable
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpecDataplexTable:
+    r"""
+    Output only. Fields specific to a Dataplex table and present only in the Dataplex table entries.
+
+    Attributes
+    ----------
+    dataplexSpec : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpecDataplexTableDataplexSpec, default is Undefined, optional
+        dataplex spec
+    externalTables : [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpecDataplexTableExternalTablesItems0], default is Undefined, optional
+        List of external tables registered by Dataplex in other systems based on
+         the same underlying data.
+
+         External tables allow to query this data in those systems.
+    userManaged : bool, default is Undefined, optional
+        Indicates if the table schema is managed by the user or not.
+    """
+
+
+    dataplexSpec?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpecDataplexTableDataplexSpec
+
+    externalTables?: [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpecDataplexTableExternalTablesItems0]
+
+    userManaged?: bool
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpecDataplexTableDataplexSpec:
+    r"""
+    Common Dataplex fields.
+
+    Attributes
+    ----------
+    asset : str, default is Undefined, optional
+        Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
+    compressionFormat : str, default is Undefined, optional
+        Compression format of the data, e.g., zip, gzip etc.
+    dataFormat : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpecDataplexTableDataplexSpecDataFormat, default is Undefined, optional
+        data format
+    projectID : str, default is Undefined, optional
+        Project ID of the underlying Cloud Storage or BigQuery data. Note that this may not be the same project as the correspondingly Dataplex lake / zone / asset.
+    """
+
+
+    asset?: str
+
+    compressionFormat?: str
+
+    dataFormat?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpecDataplexTableDataplexSpecDataFormat
+
+    projectID?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpecDataplexTableDataplexSpecDataFormat:
+    r"""
+    Format of the data.
+
+    Attributes
+    ----------
+    avro : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpecDataplexTableDataplexSpecDataFormatAvro, default is Undefined, optional
+        avro
+    csv : any, default is Undefined, optional
+        Marks a CSV-encoded data source.
+    orc : any, default is Undefined, optional
+        Marks an ORC-encoded data source.
+    parquet : any, default is Undefined, optional
+        Marks a Parquet-encoded data source.
+    protobuf : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpecDataplexTableDataplexSpecDataFormatProtobuf, default is Undefined, optional
+        protobuf
+    thrift : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpecDataplexTableDataplexSpecDataFormatThrift, default is Undefined, optional
+        thrift
+    """
+
+
+    avro?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpecDataplexTableDataplexSpecDataFormatAvro
+
+    csv?: any
+
+    orc?: any
+
+    parquet?: any
+
+    protobuf?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpecDataplexTableDataplexSpecDataFormatProtobuf
+
+    thrift?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpecDataplexTableDataplexSpecDataFormatThrift
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpecDataplexTableDataplexSpecDataFormatAvro:
+    r"""
+    Schema in Avro JSON format.
+
+    Attributes
+    ----------
+    text : str, default is Undefined, optional
+        JSON source of the Avro schema.
+    """
+
+
+    text?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpecDataplexTableDataplexSpecDataFormatProtobuf:
+    r"""
+    Schema in protocol buffer format.
+
+    Attributes
+    ----------
+    text : str, default is Undefined, optional
+        Protocol buffer source of the schema.
+    """
+
+
+    text?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpecDataplexTableDataplexSpecDataFormatThrift:
+    r"""
+    Schema in Thrift format.
+
+    Attributes
+    ----------
+    text : str, default is Undefined, optional
+        Thrift IDL source of the schema.
+    """
+
+
+    text?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateDatabaseTableSpecDataplexTableExternalTablesItems0:
+    r"""
+    datacatalog cnrm cloud google com v1alpha1 data catalog entry status observed state database table spec dataplex table external tables items0
+
+    Attributes
+    ----------
+    dataCatalogEntry : str, default is Undefined, optional
+        Name of the Data Catalog entry representing the external table.
+    fullyQualifiedName : str, default is Undefined, optional
+        Fully qualified name (FQN) of the external table.
+    googleCloudResource : str, default is Undefined, optional
+        Google Cloud resource name of the external table.
+    system : str, default is Undefined, optional
+        Service in which the external table is registered.
+    """
+
+
+    dataCatalogEntry?: str
+
+    fullyQualifiedName?: str
+
+    googleCloudResource?: str
+
+    system?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateFeatureOnlineStoreSpec:
+    r"""
+    FeatureonlineStore spec for Vertex AI Feature Store.
+
+    Attributes
+    ----------
+    storageType : str, default is Undefined, optional
+        Output only. Type of underelaying storage for the FeatureOnlineStore.
+    """
+
+
+    storageType?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateGcsFilesetSpec:
+    r"""
+    Specification that applies to a Cloud Storage fileset. Valid only for entries with the `FILESET` type.
+
+    Attributes
+    ----------
+    sampleGCSFileSpecs : [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateGcsFilesetSpecSampleGCSFileSpecsItems0], default is Undefined, optional
+        Output only. Sample files contained in this fileset, not all files contained in this fileset are represented here.
+    """
+
+
+    sampleGCSFileSpecs?: [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateGcsFilesetSpecSampleGCSFileSpecsItems0]
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateGcsFilesetSpecSampleGCSFileSpecsItems0:
+    r"""
+    datacatalog cnrm cloud google com v1alpha1 data catalog entry status observed state gcs fileset spec sample g c s file specs items0
+
+    Attributes
+    ----------
+    filePath : str, default is Undefined, required
+        Required. Full file path. Example: `gs://bucket_name/a/b.txt`.
+    """
+
+
+    filePath: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStatePersonalDetails:
+    r"""
+    Output only. Additional information related to the entry. Private to the current user.
+
+    Attributes
+    ----------
+    starTime : str, default is Undefined, optional
+        Set if the entry is starred; unset otherwise.
+    starred : bool, default is Undefined, optional
+        True if the entry is starred by the user; false otherwise.
+    """
+
+
+    starTime?: str
+
+    starred?: bool
 
 

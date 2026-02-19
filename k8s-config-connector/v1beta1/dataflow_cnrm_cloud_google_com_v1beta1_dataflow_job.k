@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DataflowJob:
-    """
+    r"""
     dataflow cnrm cloud google com v1beta1 dataflow job
 
     Attributes
@@ -36,7 +36,7 @@ schema DataflowJob:
 
 
 schema DataflowCnrmCloudGoogleComV1beta1DataflowJobSpec:
-    """
+    r"""
     dataflow cnrm cloud google com v1beta1 dataflow job spec
 
     Attributes
@@ -110,7 +110,7 @@ schema DataflowCnrmCloudGoogleComV1beta1DataflowJobSpec:
 
 
 schema DataflowCnrmCloudGoogleComV1beta1DataflowJobSpecKmsKeyRef:
-    """
+    r"""
     The name for the Cloud KMS key for the job.
 
     Attributes
@@ -132,7 +132,7 @@ schema DataflowCnrmCloudGoogleComV1beta1DataflowJobSpecKmsKeyRef:
 
 
 schema DataflowCnrmCloudGoogleComV1beta1DataflowJobSpecNetworkRef:
-    """
+    r"""
     dataflow cnrm cloud google com v1beta1 dataflow job spec network ref
 
     Attributes
@@ -154,7 +154,7 @@ schema DataflowCnrmCloudGoogleComV1beta1DataflowJobSpecNetworkRef:
 
 
 schema DataflowCnrmCloudGoogleComV1beta1DataflowJobSpecServiceAccountRef:
-    """
+    r"""
     dataflow cnrm cloud google com v1beta1 dataflow job spec service account ref
 
     Attributes
@@ -176,7 +176,7 @@ schema DataflowCnrmCloudGoogleComV1beta1DataflowJobSpecServiceAccountRef:
 
 
 schema DataflowCnrmCloudGoogleComV1beta1DataflowJobSpecSubnetworkRef:
-    """
+    r"""
     dataflow cnrm cloud google com v1beta1 dataflow job spec subnetwork ref
 
     Attributes
@@ -198,7 +198,7 @@ schema DataflowCnrmCloudGoogleComV1beta1DataflowJobSpecSubnetworkRef:
 
 
 schema DataflowCnrmCloudGoogleComV1beta1DataflowJobStatus:
-    """
+    r"""
     dataflow cnrm cloud google com v1beta1 dataflow job status
 
     Attributes
@@ -228,7 +228,7 @@ schema DataflowCnrmCloudGoogleComV1beta1DataflowJobStatus:
 
 
 schema DataflowCnrmCloudGoogleComV1beta1DataflowJobStatusConditionsItems0:
-    """
+    r"""
     dataflow cnrm cloud google com v1beta1 dataflow job status conditions items0
 
     Attributes

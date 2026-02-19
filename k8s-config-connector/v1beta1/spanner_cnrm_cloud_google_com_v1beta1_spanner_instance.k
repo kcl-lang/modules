@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema SpannerInstance:
-    """
-    spanner cnrm cloud google com v1beta1 spanner instance
+    r"""
+    SpannerInstance is the Schema for the SpannerInstance API
 
     Attributes
     ----------
@@ -36,33 +36,72 @@ schema SpannerInstance:
 
 
 schema SpannerCnrmCloudGoogleComV1beta1SpannerInstanceSpec:
-    """
-    spanner cnrm cloud google com v1beta1 spanner instance spec
+    r"""
+    SpannerInstanceSpec defines the desired state of SpannerInstance
 
     Attributes
     ----------
+    autoscalingConfig : SpannerCnrmCloudGoogleComV1beta1SpannerInstanceSpecAutoscalingConfig, default is Undefined, optional
+        autoscaling config
     config : str, default is Undefined, required
-        Immutable. The name of the instance's configuration (similar but not
-        quite the same as a region) which defines the geographic placement and
-        replication of your databases in this instance. It determines where your data
-        is stored. Values are typically of the form 'regional-europe-west1' , 'us-central' etc.
-        In order to obtain a valid list please consult the
-        [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
+        Immutable. The name of the instance's configuration (similar but not quite the same as a region) which defines the geographic placement and replication of your databases in this instance. It determines where your data is stored. Values are typically of the form 'regional-europe-west1' , 'us-central' etc. In order to obtain a valid list please consult the [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
+    defaultBackupScheduleType : str, default is Undefined, optional
+        Optional. Controls the default backup schedule behavior for new databases
+        within the instance. By default, a backup schedule is created automatically
+        when a new database is created in a new instance.
+
+        Note that the `AUTOMATIC` value isn't permitted for free instances,
+        as backups and backup schedules aren't supported for free instances.
+
+        In the `GetInstance` or `ListInstances` response, if the value of
+        `default_backup_schedule_type` isn't set, or set to `NONE`, Spanner doesn't
+        create a default backup schedule for new databases in the instance.
     displayName : str, default is Undefined, required
-        The descriptive name for this instance as it appears in UIs. Must be
-        unique per project and between 4 and 30 characters in length.
+        The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters in length.
+    edition : str, default is Undefined, optional
+        Optional. The `Edition` of the current instance. Currently accepted values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS. If edition is unspecified, it has automatically upgraded to the lowest edition that matches your usage pattern.
+    labels : {str:str}, default is Undefined, optional
+        Cloud Labels are a flexible and lightweight mechanism for organizing cloud
+        resources into groups that reflect a customer's organizational needs and
+        deployment strategies. Cloud Labels can be used to filter collections of
+        resources. They can be used to control how resource metrics are aggregated.
+        And they can be used as arguments to policy management rules (e.g. route,
+        firewall, load balancing, etc.).
+
+          - Label keys must be between 1 and 63 characters long and must conform to
+            the following regular expression: `[a-z][a-z0-9_-]{0,62}`.
+          - Label values must be between 0 and 63 characters long and must conform
+            to the regular expression `[a-z0-9_-]{0,63}`.
+          - No more than 64 labels can be associated with a given resource.
+
+        See https://goo.gl/xmQnxf for more information on and examples of labels.
+
+        If you plan to use labels in your own code, please note that additional
+        characters may be allowed in the future. And so you are advised to use an
+        internal label representation, such as JSON, which doesn't rely upon
+        specific characters being disallowed.  For example, representing labels
+        as the string:  name + "_" + value  would prove problematic if we were to
+        allow "_" in a future release.
     numNodes : int, default is Undefined, optional
         num nodes
     processingUnits : int, default is Undefined, optional
         processing units
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The SpannerInstance name. If not given, the metadata.name will be used.
     """
 
 
+    autoscalingConfig?: SpannerCnrmCloudGoogleComV1beta1SpannerInstanceSpecAutoscalingConfig
+
     config: str
 
+    defaultBackupScheduleType?: str
+
     displayName: str
+
+    edition?: str
+
+    labels?: {str:str}
 
     numNodes?: int
 
@@ -71,16 +110,82 @@ schema SpannerCnrmCloudGoogleComV1beta1SpannerInstanceSpec:
     resourceID?: str
 
 
-schema SpannerCnrmCloudGoogleComV1beta1SpannerInstanceStatus:
+schema SpannerCnrmCloudGoogleComV1beta1SpannerInstanceSpecAutoscalingConfig:
+    r"""
+    Optional. The autoscaling configuration. Autoscaling is enabled if this field is set. When autoscaling is enabled, node_count and processing_units are treated as OUTPUT_ONLY fields and reflect the current compute capacity allocated to the instance.
+
+    Attributes
+    ----------
+    autoscalingLimits : SpannerCnrmCloudGoogleComV1beta1SpannerInstanceSpecAutoscalingConfigAutoscalingLimits, default is Undefined, optional
+        autoscaling limits
+    autoscalingTargets : SpannerCnrmCloudGoogleComV1beta1SpannerInstanceSpecAutoscalingConfigAutoscalingTargets, default is Undefined, optional
+        autoscaling targets
     """
-    spanner cnrm cloud google com v1beta1 spanner instance status
+
+
+    autoscalingLimits?: SpannerCnrmCloudGoogleComV1beta1SpannerInstanceSpecAutoscalingConfigAutoscalingLimits
+
+    autoscalingTargets?: SpannerCnrmCloudGoogleComV1beta1SpannerInstanceSpecAutoscalingConfigAutoscalingTargets
+
+
+schema SpannerCnrmCloudGoogleComV1beta1SpannerInstanceSpecAutoscalingConfigAutoscalingLimits:
+    r"""
+    Required. Autoscaling limits for an instance.
+
+    Attributes
+    ----------
+    maxNodes : int, default is Undefined, optional
+        Maximum number of nodes allocated to the instance. If set, this number should be greater than or equal to min_nodes.
+    maxProcessingUnits : int, default is Undefined, optional
+        Maximum number of processing units allocated to the instance. If set, this number should be multiples of 1000 and be greater than or equal to min_processing_units.
+    minNodes : int, default is Undefined, optional
+        Minimum number of nodes allocated to the instance. If set, this number should be greater than or equal to 1.
+    minProcessingUnits : int, default is Undefined, optional
+        Minimum number of processing units allocated to the instance. If set, this number should be multiples of 1000.
+    """
+
+
+    maxNodes?: int
+
+    maxProcessingUnits?: int
+
+    minNodes?: int
+
+    minProcessingUnits?: int
+
+
+schema SpannerCnrmCloudGoogleComV1beta1SpannerInstanceSpecAutoscalingConfigAutoscalingTargets:
+    r"""
+    Required. The autoscaling targets for an instance.
+
+    Attributes
+    ----------
+    highPriorityCpuUtilizationPercent : int, default is Undefined, optional
+        Required. The target high priority cpu utilization percentage that the autoscaler should be trying to achieve for the instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive.
+    storageUtilizationPercent : int, default is Undefined, optional
+        Required. The target storage utilization percentage that the autoscaler should be trying to achieve for the instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 100] inclusive.
+    """
+
+
+    highPriorityCpuUtilizationPercent?: int
+
+    storageUtilizationPercent?: int
+
+
+schema SpannerCnrmCloudGoogleComV1beta1SpannerInstanceStatus:
+    r"""
+    SpannerInstanceStatus defines the config connector machine state of SpannerInstance
 
     Attributes
     ----------
     conditions : [SpannerCnrmCloudGoogleComV1beta1SpannerInstanceStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the SpannerInstance's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the SpannerInstance resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : SpannerCnrmCloudGoogleComV1beta1SpannerInstanceStatusObservedState, default is Undefined, optional
+        observed state
     state : str, default is Undefined, optional
         Instance status: 'CREATING' or 'READY'.
     """
@@ -88,13 +193,17 @@ schema SpannerCnrmCloudGoogleComV1beta1SpannerInstanceStatus:
 
     conditions?: [SpannerCnrmCloudGoogleComV1beta1SpannerInstanceStatusConditionsItems0]
 
+    externalRef?: str
+
     observedGeneration?: int
+
+    observedState?: SpannerCnrmCloudGoogleComV1beta1SpannerInstanceStatusObservedState
 
     state?: str
 
 
 schema SpannerCnrmCloudGoogleComV1beta1SpannerInstanceStatusConditionsItems0:
-    """
+    r"""
     spanner cnrm cloud google com v1beta1 spanner instance status conditions items0
 
     Attributes
@@ -121,5 +230,23 @@ schema SpannerCnrmCloudGoogleComV1beta1SpannerInstanceStatusConditionsItems0:
     status?: str
 
     $type?: str
+
+
+schema SpannerCnrmCloudGoogleComV1beta1SpannerInstanceStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    numNodes : int, default is Undefined, optional
+        NumNodes and ProcessUnits is output fields with AutoScaler is set.
+    processingUnits : int, default is Undefined, optional
+        processing units
+    """
+
+
+    numNodes?: int
+
+    processingUnits?: int
 
 

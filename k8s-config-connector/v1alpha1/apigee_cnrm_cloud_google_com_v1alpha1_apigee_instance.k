@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ApigeeInstance:
-    """
-    apigee cnrm cloud google com v1alpha1 apigee instance
+    r"""
+    ApigeeInstance is the Schema for the ApigeeInstance API
 
     Attributes
     ----------
@@ -36,49 +36,41 @@ schema ApigeeInstance:
 
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceSpec:
-    """
-    apigee cnrm cloud google com v1alpha1 apigee instance spec
+    r"""
+    ApigeeInstanceSpec defines the desired state of ApigeeInstance
 
     Attributes
     ----------
+    accessLoggingConfig : ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceSpecAccessLoggingConfig, default is Undefined, optional
+        access logging config
     consumerAcceptList : [str], default is Undefined, optional
-        Immutable. Optional. Customer accept list represents the list of projects (id/number) on customer
-        side that can privately connect to the service attachment. It is an optional field
-        which the customers can provide during the instance creation. By default, the customer
-        project associated with the Apigee organization will be included to the list.
+        Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
     description : str, default is Undefined, optional
-        Immutable. Description of the instance.
-    diskEncryptionKeyName : str, default is Undefined, optional
-        Immutable. Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only.
-        Use the following format: 'projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)'.
+        Optional. Description of the instance.
+    diskEncryptionKMSCryptoKeyRef : ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceSpecDiskEncryptionKMSCryptoKeyRef, default is Undefined, optional
+        disk encryption k m s crypto key ref
     displayName : str, default is Undefined, optional
-        Immutable. Display name of the instance.
+        Optional. Display name for the instance.
     ipRange : str, default is Undefined, optional
-        Immutable. IP range represents the customer-provided CIDR block of length 22 that will be used for
-        the Apigee instance creation. This optional range, if provided, should be freely
-        available as part of larger named range the customer has allocated to the Service
-        Networking peering. If this is not provided, Apigee will automatically request for any
-        available /22 CIDR block from Service Networking. The customer should use this CIDR block
-        for configuring their firewall needs to allow traffic from Apigee.
-        Input format: "a.b.c.d/22".
+        Optional. Comma-separated list of CIDR blocks of length 22 and/or 28 used to create the Apigee instance. Providing CIDR ranges is optional. You can provide just /22 or /28 or both (or neither). Ranges you provide should be freely available as part of a larger named range you have allocated to the Service Networking peering. If this parameter is not provided, Apigee automatically requests an available /22 and /28 CIDR block from Service Networking. Use the /22 CIDR block for configuring your firewall needs to allow traffic from Apigee. Input formats: `a.b.c.d/22` or `e.f.g.h/28` or `a.b.c.d/22,e.f.g.h/28`
     location : str, default is Undefined, required
-        Immutable. Required. Compute Engine location where the instance resides.
-    orgId : str, default is Undefined, required
-        Immutable. The Apigee Organization associated with the Apigee instance,
-        in the format 'organizations/{{org_name}}'.
-    peeringCidrRange : str, default is Undefined, optional
-        Immutable. The size of the CIDR block range that will be reserved by the instance. For valid values,
-        see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
+        Required. Compute Engine location where the instance resides.
+    organizationRef : ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceSpecOrganizationRef, default is Undefined, required
+        organization ref
+    peeringCIDRRange : str, default is Undefined, optional
+        Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The ApigeeInstance name. If not given, the metadata.name will be used.
     """
 
+
+    accessLoggingConfig?: ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceSpecAccessLoggingConfig
 
     consumerAcceptList?: [str]
 
     description?: str
 
-    diskEncryptionKeyName?: str
+    diskEncryptionKMSCryptoKeyRef?: ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceSpecDiskEncryptionKMSCryptoKeyRef
 
     displayName?: str
 
@@ -86,47 +78,103 @@ schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceSpec:
 
     location: str
 
-    orgId: str
+    organizationRef: ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceSpecOrganizationRef
 
-    peeringCidrRange?: str
+    peeringCIDRRange?: str
 
     resourceID?: str
 
 
-schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceStatus:
+schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceSpecAccessLoggingConfig:
+    r"""
+    Optional. Access logging configuration enables the access logging feature at the instance. Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
+
+    Attributes
+    ----------
+    enabled : bool, default is Undefined, optional
+        Optional. Boolean flag that specifies whether the customer access log feature is enabled.
+    $filter : str, default is Undefined, optional
+        Optional. Ship the access log entries that match the status_code defined in the filter. The status_code is the only expected/supported filter field. (Ex: status_code) The filter will parse it to the Common Expression Language semantics for expression evaluation to build the filter condition. (Ex: "filter": status_code >= 200 && status_code < 300 )
     """
-    apigee cnrm cloud google com v1alpha1 apigee instance status
+
+
+    enabled?: bool
+
+    $filter?: str
+
+
+schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceSpecDiskEncryptionKMSCryptoKeyRef:
+    r"""
+    Customer Managed Encryption Key (CMEK) used for disk and volume encryption. If not specified, a Google-Managed encryption key will be used.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
+    name : str, default is Undefined, optional
+        The `name` of a `KMSCryptoKey` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` of a `KMSCryptoKey` resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceSpecOrganizationRef:
+    r"""
+    Reference to parent Apigee Organization.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed ApigeeOrganization resource. Should be in the format "organizations/{{organizationID}}".
+    name : str, default is Undefined, optional
+        The name of a ApigeeOrganization resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a ApigeeOrganization resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceStatus:
+    r"""
+    ApigeeInstanceStatus defines the config connector machine state of ApigeeInstance
 
     Attributes
     ----------
     conditions : [ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
-    host : str, default is Undefined, optional
-        Output only. Hostname or IP address of the exposed Apigee endpoint used by clients to connect to the service.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the ApigeeInstance resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
-    port : str, default is Undefined, optional
-        Output only. Port number of the exposed Apigee endpoint.
-    serviceAttachment : str, default is Undefined, optional
-        Output only. Resource name of the service attachment created for the instance in
-        the format: projects/*/regions/*/serviceAttachments/* Apigee customers can privately
-        forward traffic to this service attachment using the PSC endpoints.
+    observedState : ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceStatusConditionsItems0]
 
-    host?: str
+    externalRef?: str
 
     observedGeneration?: int
 
-    port?: str
-
-    serviceAttachment?: str
+    observedState?: ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceStatusObservedState
 
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceStatusConditionsItems0:
-    """
+    r"""
     apigee cnrm cloud google com v1alpha1 apigee instance status conditions items0
 
     Attributes
@@ -153,5 +201,43 @@ schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceStatusConditionsItems0:
     status?: str
 
     $type?: str
+
+
+schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeInstanceStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    createdAt : int, default is Undefined, optional
+        Output only. Time the instance was created in milliseconds since epoch.
+    host : str, default is Undefined, optional
+        Output only. Internal hostname or IP address of the Apigee endpoint used by clients to connect to the service.
+    lastModifiedAt : int, default is Undefined, optional
+        Output only. Time the instance was last modified in milliseconds since epoch.
+    port : str, default is Undefined, optional
+        Output only. Port number of the exposed Apigee endpoint.
+    runtimeVersion : str, default is Undefined, optional
+        Output only. Version of the runtime system running in the instance. The runtime system is the set of components that serve the API Proxy traffic in your Environments.
+    serviceAttachment : str, default is Undefined, optional
+        Output only. Resource name of the service attachment created for the instance in the format: `projects/{{project-id}}/regions/{{region-id}}/serviceAttachments/{{service-attachment-id}}` Apigee customers can privately forward traffic to this service attachment using the PSC endpoints.
+    state : str, default is Undefined, optional
+        Output only. State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
+    """
+
+
+    createdAt?: int
+
+    host?: str
+
+    lastModifiedAt?: int
+
+    port?: str
+
+    runtimeVersion?: str
+
+    serviceAttachment?: str
+
+    state?: str
 
 

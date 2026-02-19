@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema LoggingLogSink:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log sink
 
     Attributes
@@ -36,7 +36,7 @@ schema LoggingLogSink:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpec:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log sink spec
 
     Attributes
@@ -64,7 +64,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpec:
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
     uniqueWriterIdentity : bool, default is Undefined, optional
-        Immutable. Whether or not to create a unique identity associated with this sink. If false (the default), then the writer_identity used is serviceAccount:cloud-logs@system.gserviceaccount.com. If true, then a unique service account is created and used for this sink. If you wish to publish logs across projects, you must set unique_writer_identity to true.
+        Whether or not to create a unique identity associated with this sink. If false (the default), then the writer_identity used is serviceAccount:cloud-logs@system.gserviceaccount.com. If true, then a unique service account is created and used for this sink. If you wish to publish logs across projects, you must set unique_writer_identity to true.
     """
 
 
@@ -94,7 +94,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpec:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecBigqueryOptions:
-    """
+    r"""
     Options that affect sinks exporting data to BigQuery.
 
     Attributes
@@ -108,7 +108,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecBigqueryOptions:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecDestination:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log sink spec destination
 
     Attributes
@@ -134,7 +134,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecDestination:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecDestinationBigQueryDatasetRef:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log sink spec destination big query dataset ref
 
     Attributes
@@ -156,7 +156,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecDestinationBigQueryData
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecDestinationLoggingLogBucketRef:
-    """
+    r"""
     Only `external` field is supported to configure the reference.
 
     Attributes
@@ -178,7 +178,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecDestinationLoggingLogBu
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecDestinationPubSubTopicRef:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log sink spec destination pub sub topic ref
 
     Attributes
@@ -200,7 +200,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecDestinationPubSubTopicR
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecDestinationStorageBucketRef:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log sink spec destination storage bucket ref
 
     Attributes
@@ -222,7 +222,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecDestinationStorageBucke
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecExclusionsItems0:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log sink spec exclusions items0
 
     Attributes
@@ -248,7 +248,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecExclusionsItems0:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecFolderRef:
-    """
+    r"""
     The folder in which to create the sink. Only one of projectRef,
     folderRef, or organizationRef may be specified.
 
@@ -271,7 +271,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecFolderRef:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecOrganizationRef:
-    """
+    r"""
     The organization in which to create the sink. Only one of projectRef,
     folderRef, or organizationRef may be specified.
 
@@ -294,7 +294,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecOrganizationRef:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecProjectRef:
-    """
+    r"""
     The project in which to create the sink. Only one of projectRef,
     folderRef, or organizationRef may be specified.
 
@@ -317,7 +317,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecProjectRef:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkStatus:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log sink status
 
     Attributes
@@ -339,7 +339,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkStatus:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkStatusConditionsItems0:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log sink status conditions items0
 
     Attributes

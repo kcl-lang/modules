@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema GKEBackupBackupPlan:
-    """
-    gkebackup cnrm cloud google com v1alpha1 g k e backup backup plan
+    r"""
+    GKEBackupBackupPlan is the Schema for the GKEBackupBackupPlan API
 
     Attributes
     ----------
@@ -36,8 +36,8 @@ schema GKEBackupBackupPlan:
 
 
 schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpec:
-    """
-    gkebackup cnrm cloud google com v1alpha1 g k e backup backup plan spec
+    r"""
+    GKEBackupBackupPlanSpec defines the desired state of GKEBackupBackupPlan
 
     Attributes
     ----------
@@ -45,21 +45,26 @@ schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpec:
         backup config
     backupSchedule : GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupSchedule, default is Undefined, optional
         backup schedule
-    cluster : str, default is Undefined, required
-        Immutable. The source cluster from which Backups will be created via this BackupPlan.
+    clusterRef : GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecClusterRef, default is Undefined, required
+        cluster ref
     deactivated : bool, default is Undefined, optional
-        This flag indicates whether this BackupPlan has been deactivated.
-        Setting this field to True locks the BackupPlan such that no further updates will be allowed
-        (except deletes), including the deactivated field itself. It also prevents any new Backups
-        from being created via this BackupPlan (including scheduled Backups).
+        Optional. This flag indicates whether this BackupPlan has been deactivated.
+         Setting this field to True locks the BackupPlan such that no further
+         updates will be allowed (except deletes), including the deactivated field
+         itself. It also prevents any new Backups from being created via this
+         BackupPlan (including scheduled Backups).
+
+         Default: False
     description : str, default is Undefined, optional
-        User specified descriptive string for this BackupPlan.
+        Optional. User specified descriptive string for this BackupPlan.
+    labels : {str:str}, default is Undefined, optional
+        Optional. A set of custom labels supplied by user.
     location : str, default is Undefined, required
-        Immutable. The region of the Backup Plan.
+        Immutable.
     projectRef : GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The GKEBackupBackupPlan name. If not given, the metadata.name will be used.
     retentionPolicy : GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecRetentionPolicy, default is Undefined, optional
         retention policy
     """
@@ -69,11 +74,13 @@ schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpec:
 
     backupSchedule?: GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupSchedule
 
-    cluster: str
+    clusterRef: GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecClusterRef
 
     deactivated?: bool
 
     description?: str
+
+    labels?: {str:str}
 
     location: str
 
@@ -85,21 +92,31 @@ schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpec:
 
 
 schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupConfig:
-    """
-    Defines the configuration of Backups created via this BackupPlan.
+    r"""
+    Optional. Defines the configuration of Backups created via this BackupPlan.
 
     Attributes
     ----------
     allNamespaces : bool, default is Undefined, optional
-        If True, include all namespaced resources.
+        If True, include all namespaced resources
     encryptionKey : GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupConfigEncryptionKey, default is Undefined, optional
         encryption key
     includeSecrets : bool, default is Undefined, optional
-        This flag specifies whether Kubernetes Secret resources should be included
-        when they fall into the scope of Backups.
+        Optional. This flag specifies whether Kubernetes Secret resources should
+         be included when they fall into the scope of Backups.
+
+         Default: False
     includeVolumeData : bool, default is Undefined, optional
-        This flag specifies whether volume data should be backed up when PVCs are
-        included in the scope of a Backup.
+        Optional. This flag specifies whether volume data should be backed up
+         when PVCs are included in the scope of a Backup.
+
+         Default: False
+    permissiveMode : bool, default is Undefined, optional
+        Optional. If false, Backups will fail when Backup for GKE detects
+         Kubernetes configuration that is non-standard or
+         requires additional setup to restore.
+
+         Default: False
     selectedApplications : GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupConfigSelectedApplications, default is Undefined, optional
         selected applications
     selectedNamespaces : GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupConfigSelectedNamespaces, default is Undefined, optional
@@ -115,104 +132,43 @@ schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupConfig:
 
     includeVolumeData?: bool
 
+    permissiveMode?: bool
+
     selectedApplications?: GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupConfigSelectedApplications
 
     selectedNamespaces?: GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupConfigSelectedNamespaces
 
 
 schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupConfigEncryptionKey:
-    """
-    This defines a customer managed encryption key that will be used to encrypt the "config"
-    portion (the Kubernetes resources) of Backups created via this plan.
+    r"""
+    Optional. This defines a customer managed encryption key that will be
+     used to encrypt the "config" portion (the Kubernetes resources) of
+     Backups created via this plan.
+
+     Default (empty): Config backup artifacts will not be encrypted.
 
     Attributes
     ----------
-    gcpKmsEncryptionKey : str, default is Undefined, required
-        Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/cryptoKeys/*.
+    kmsKeyRef : GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupConfigEncryptionKeyKmsKeyRef, default is Undefined, optional
+        kms key ref
     """
 
 
-    gcpKmsEncryptionKey: str
+    kmsKeyRef?: GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupConfigEncryptionKeyKmsKeyRef
 
 
-schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupConfigSelectedApplications:
-    """
-    A list of namespaced Kubernetes Resources.
-
-    Attributes
-    ----------
-    namespacedNames : [GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupConfigSelectedApplicationsNamespacedNamesItems0], default is Undefined, required
-        A list of namespaced Kubernetes resources.
-    """
-
-
-    namespacedNames: [GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupConfigSelectedApplicationsNamespacedNamesItems0]
-
-
-schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupConfigSelectedApplicationsNamespacedNamesItems0:
-    """
-    gkebackup cnrm cloud google com v1alpha1 g k e backup backup plan spec backup config selected applications namespaced names items0
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        The name of a Kubernetes Resource.
-    namespace : str, default is Undefined, required
-        The namespace of a Kubernetes Resource.
-    """
-
-
-    name: str
-
-    namespace: str
-
-
-schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupConfigSelectedNamespaces:
-    """
-    If set, include just the resources in the listed namespaces.
-
-    Attributes
-    ----------
-    namespaces : [str], default is Undefined, required
-        A list of Kubernetes Namespaces.
-    """
-
-
-    namespaces: [str]
-
-
-schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupSchedule:
-    """
-    Defines a schedule for automatic Backup creation via this BackupPlan.
-
-    Attributes
-    ----------
-    cronSchedule : str, default is Undefined, optional
-        A standard cron string that defines a repeating schedule for
-        creating Backups via this BackupPlan.
-        If this is defined, then backupRetainDays must also be defined.
-    paused : bool, default is Undefined, optional
-        This flag denotes whether automatic Backup creation is paused for this BackupPlan.
-    """
-
-
-    cronSchedule?: str
-
-    paused?: bool
-
-
-schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecProjectRef:
-    """
-    The project that this resource belongs to.
+schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupConfigEncryptionKeyKmsKeyRef:
+    r"""
+    Optional. Google Cloud KMS encryption key.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` of a `KMSCryptoKey` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` of a `KMSCryptoKey` resource.
     """
 
 
@@ -223,34 +179,294 @@ schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecProjectRef:
     namespace?: str
 
 
-schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecRetentionPolicy:
+schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupConfigSelectedApplications:
+    r"""
+    If set, include just the resources referenced by the listed ProtectedApplications.
+
+    Attributes
+    ----------
+    namespacedNames : [GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupConfigSelectedApplicationsNamespacedNamesItems0], default is Undefined, optional
+        Optional. A list of namespaced Kubernetes resources.
     """
-    RetentionPolicy governs lifecycle of Backups created under this plan.
+
+
+    namespacedNames?: [GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupConfigSelectedApplicationsNamespacedNamesItems0]
+
+
+schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupConfigSelectedApplicationsNamespacedNamesItems0:
+    r"""
+    gkebackup cnrm cloud google com v1alpha1 g k e backup backup plan spec backup config selected applications namespaced names items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        Optional. The name of the Kubernetes resource.
+    namespace : str, default is Undefined, optional
+        Optional. The Namespace of the Kubernetes resource.
+    """
+
+
+    name?: str
+
+    namespace?: str
+
+
+schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupConfigSelectedNamespaces:
+    r"""
+    If set, include just the resources in the listed namespaces.
+
+    Attributes
+    ----------
+    namespaces : [str], default is Undefined, optional
+        Optional. A list of Kubernetes Namespaces
+    """
+
+
+    namespaces?: [str]
+
+
+schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupSchedule:
+    r"""
+    Optional. Defines a schedule for automatic Backup creation via this BackupPlan.
+
+    Attributes
+    ----------
+    cronSchedule : str, default is Undefined, optional
+        Optional. A standard [cron](https://wikipedia.com/wiki/cron) string that
+         defines a repeating schedule for creating Backups via this BackupPlan.
+         This is mutually exclusive with the
+         [rpo_config][google.cloud.gkebackup.v1.BackupPlan.Schedule.rpo_config]
+         field since at most one schedule can be defined for a BackupPlan. If this
+         is defined, then
+         [backup_retain_days][google.cloud.gkebackup.v1.BackupPlan.RetentionPolicy.backup_retain_days]
+         must also be defined.
+
+         Default (empty): no automatic backup creation will occur.
+    paused : bool, default is Undefined, optional
+        Optional. This flag denotes whether automatic Backup creation is paused
+         for this BackupPlan.
+
+         Default: False
+    rpoConfig : GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupScheduleRpoConfig, default is Undefined, optional
+        rpo config
+    """
+
+
+    cronSchedule?: str
+
+    paused?: bool
+
+    rpoConfig?: GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupScheduleRpoConfig
+
+
+schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupScheduleRpoConfig:
+    r"""
+    Optional. Defines the RPO schedule configuration for this BackupPlan.
+     This is mutually exclusive with the
+     [cron_schedule][google.cloud.gkebackup.v1.BackupPlan.Schedule.cron_schedule]
+     field since at most one schedule can be defined for a BackupPLan. If this
+     is defined, then
+     [backup_retain_days][google.cloud.gkebackup.v1.BackupPlan.RetentionPolicy.backup_retain_days]
+     must also be defined.
+
+     Default (empty): no automatic backup creation will occur.
+
+    Attributes
+    ----------
+    exclusionWindows : [GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupScheduleRpoConfigExclusionWindowsItems0], default is Undefined, optional
+        Optional. User specified time windows during which backup can NOT happen for this BackupPlan - backups should start and finish outside of any given exclusion window. Note: backup jobs will be scheduled to start and finish outside the duration of the window as much as possible, but running jobs will not get canceled when it runs into the window. All the time and date values in exclusion_windows entry in the API are in UTC. We only allow <=1 recurrence (daily or weekly) exclusion window for a BackupPlan while no restriction on number of single occurrence windows.
+    targetRPOMinutes : int, default is Undefined, optional
+        Required. Defines the target RPO for the BackupPlan in minutes, which means the target maximum data loss in time that is acceptable for this BackupPlan. This must be at least 60, i.e., 1 hour, and at most 86400, i.e., 60 days.
+    """
+
+
+    exclusionWindows?: [GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupScheduleRpoConfigExclusionWindowsItems0]
+
+    targetRPOMinutes?: int
+
+
+schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupScheduleRpoConfigExclusionWindowsItems0:
+    r"""
+    gkebackup cnrm cloud google com v1alpha1 g k e backup backup plan spec backup schedule rpo config exclusion windows items0
+
+    Attributes
+    ----------
+    daily : bool, default is Undefined, optional
+        The exclusion window occurs every day if set to "True". Specifying this field to "False" is an error.
+    daysOfWeek : GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupScheduleRpoConfigExclusionWindowsItems0DaysOfWeek, default is Undefined, optional
+        days of week
+    duration : str, default is Undefined, required
+        Required. Specifies duration of the window. Duration must be >= 5 minutes and < (target RPO - 20 minutes). Additional restrictions based on the recurrence type to allow some time for backup to happen: - single_occurrence_date:  no restriction, but UI may warn about this when duration >= target RPO - daily window: duration < 24 hours - weekly window: - days of week includes all seven days of a week: duration < 24 hours - all other weekly window: duration < 168 hours (i.e., 24 * 7 hours)
+    singleOccurrenceDate : GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupScheduleRpoConfigExclusionWindowsItems0SingleOccurrenceDate, default is Undefined, optional
+        single occurrence date
+    startTime : GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupScheduleRpoConfigExclusionWindowsItems0StartTime, default is Undefined, required
+        start time
+    """
+
+
+    daily?: bool
+
+    daysOfWeek?: GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupScheduleRpoConfigExclusionWindowsItems0DaysOfWeek
+
+    duration: str
+
+    singleOccurrenceDate?: GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupScheduleRpoConfigExclusionWindowsItems0SingleOccurrenceDate
+
+    startTime: GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupScheduleRpoConfigExclusionWindowsItems0StartTime
+
+
+schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupScheduleRpoConfigExclusionWindowsItems0DaysOfWeek:
+    r"""
+    The exclusion window occurs on these days of each week in UTC.
+
+    Attributes
+    ----------
+    daysOfWeek : [str], default is Undefined, optional
+        Optional. A list of days of week.
+    """
+
+
+    daysOfWeek?: [str]
+
+
+schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupScheduleRpoConfigExclusionWindowsItems0SingleOccurrenceDate:
+    r"""
+    No recurrence. The exclusion window occurs only once and on this date in UTC.
+
+    Attributes
+    ----------
+    day : int, default is Undefined, optional
+        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+    month : int, default is Undefined, optional
+        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+    year : int, default is Undefined, optional
+        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+    """
+
+
+    day?: int
+
+    month?: int
+
+    year?: int
+
+
+schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecBackupScheduleRpoConfigExclusionWindowsItems0StartTime:
+    r"""
+    Required. Specifies the start time of the window using time of the day in UTC.
+
+    Attributes
+    ----------
+    hours : int, default is Undefined, optional
+        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    minutes : int, default is Undefined, optional
+        Minutes of hour of day. Must be from 0 to 59.
+    nanos : int, default is Undefined, optional
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    seconds : int, default is Undefined, optional
+        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
+
+
+    hours?: int
+
+    minutes?: int
+
+    nanos?: int
+
+    seconds?: int
+
+
+schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecClusterRef:
+    r"""
+    Required. Immutable. The source cluster from which Backups will be created via this BackupPlan.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The GKE cluster. Valid formats: `projects/{projectID}/locations/{location}/clusters/{clusterID}` `projects/{projectID}/zones/{zone}/clusters/{clusterID}`
+    name : str, default is Undefined, optional
+        Name of the project resource. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names */
+    namespace : str, default is Undefined, optional
+        Namespace of the project resource. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/ */
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecProjectRef:
+    r"""
+    The Project that this resource belongs to.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
+    name : str, default is Undefined, optional
+        The `name` field of a `Project` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `Project` resource.
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecRetentionPolicy:
+    r"""
+    Optional. RetentionPolicy governs lifecycle of Backups created under this plan.
 
     Attributes
     ----------
     backupDeleteLockDays : int, default is Undefined, optional
-        Minimum age for a Backup created via this BackupPlan (in days).
-        Must be an integer value between 0-90 (inclusive).
-        A Backup created under this BackupPlan will not be deletable
-        until it reaches Backup's (create time + backup_delete_lock_days).
-        Updating this field of a BackupPlan does not affect existing Backups.
-        Backups created after a successful update will inherit this new value.
+        Optional. Minimum age for Backups created via this BackupPlan (in days).
+         This field MUST be an integer value between 0-90 (inclusive).
+         A Backup created under this BackupPlan will NOT be deletable until it
+         reaches Backup's (create_time + backup_delete_lock_days).
+         Updating this field of a BackupPlan does NOT affect existing Backups
+         under it. Backups created AFTER a successful update will inherit
+         the new value.
+
+         Default: 0 (no delete blocking)
     backupRetainDays : int, default is Undefined, optional
-        The default maximum age of a Backup created via this BackupPlan.
-        This field MUST be an integer value >= 0 and <= 365. If specified,
-        a Backup created under this BackupPlan will be automatically deleted
-        after its age reaches (createTime + backupRetainDays).
-        If not specified, Backups created under this BackupPlan will NOT be
-        subject to automatic deletion. Updating this field does NOT affect
-        existing Backups under it. Backups created AFTER a successful update
-        will automatically pick up the new value.
-        NOTE: backupRetainDays must be >= backupDeleteLockDays.
-        If cronSchedule is defined, then this must be <= 360 * the creation interval.].
+        Optional. The default maximum age of a Backup created via this
+         BackupPlan. This field MUST be an integer value >= 0 and <= 365. If
+         specified, a Backup created under this BackupPlan will be automatically
+         deleted after its age reaches (create_time + backup_retain_days). If not
+         specified, Backups created under this BackupPlan will NOT be subject to
+         automatic deletion. Updating this field does NOT affect existing Backups
+         under it. Backups created AFTER a successful update will automatically
+         pick up the new value. NOTE: backup_retain_days must be >=
+         [backup_delete_lock_days][google.cloud.gkebackup.v1.BackupPlan.RetentionPolicy.backup_delete_lock_days].
+         If
+         [cron_schedule][google.cloud.gkebackup.v1.BackupPlan.Schedule.cron_schedule]
+         is defined, then this must be
+         <= 360 * the creation interval. If
+         [rpo_config][google.cloud.gkebackup.v1.BackupPlan.Schedule.rpo_config] is
+         defined, then this must be
+         <= 360 * [target_rpo_minutes][Schedule.rpo_config.target_rpo_minutes] /
+         (1440minutes/day).
+
+         Default: 0 (no automatic deletion)
     locked : bool, default is Undefined, optional
-        This flag denotes whether the retention policy of this BackupPlan is locked.
-        If set to True, no further update is allowed on this policy, including
-        the locked field itself.
+        Optional. This flag denotes whether the retention policy of this
+         BackupPlan is locked.  If set to True, no further update is allowed on
+         this policy, including the `locked` field itself.
+
+         Default: False
     """
 
 
@@ -262,50 +478,33 @@ schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanSpecRetentionPolicy
 
 
 schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanStatus:
-    """
-    gkebackup cnrm cloud google com v1alpha1 g k e backup backup plan status
+    r"""
+    GKEBackupBackupPlanStatus defines the config connector machine state of GKEBackupBackupPlan
 
     Attributes
     ----------
     conditions : [GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
-    etag : str, default is Undefined, optional
-        etag is used for optimistic concurrency control as a way to help prevent simultaneous
-        updates of a backup plan from overwriting each other. It is strongly suggested that
-        systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
-        in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
-        and systems are expected to put that etag in the request to backupPlans.patch or
-        backupPlans.delete to ensure that their change will be applied to the same version of the resource.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the GKEBackupBackupPlan resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
-    protectedPodCount : int, default is Undefined, optional
-        The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
-    state : str, default is Undefined, optional
-        The State of the BackupPlan.
-    stateReason : str, default is Undefined, optional
-        Detailed description of why BackupPlan is in its current state.
-    uid : str, default is Undefined, optional
-        Server generated, unique identifier of UUID format.
+    observedState : GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanStatusConditionsItems0]
 
-    etag?: str
+    externalRef?: str
 
     observedGeneration?: int
 
-    protectedPodCount?: int
-
-    state?: str
-
-    stateReason?: str
-
-    uid?: str
+    observedState?: GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanStatusObservedState
 
 
 schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanStatusConditionsItems0:
-    """
+    r"""
     gkebackup cnrm cloud google com v1alpha1 g k e backup backup plan status conditions items0
 
     Attributes
@@ -332,5 +531,69 @@ schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanStatusConditionsIte
     status?: str
 
     $type?: str
+
+
+schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    backupSchedule : GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanStatusObservedStateBackupSchedule, default is Undefined, optional
+        backup schedule
+    createTime : str, default is Undefined, optional
+        Output only. The timestamp when this BackupPlan resource was created.
+    etag : str, default is Undefined, optional
+        Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupPlan`, and systems are expected to put that etag in the request to `UpdateBackupPlan` or `DeleteBackupPlan` to ensure that their change will be applied to the same version of the resource.
+    protectedPodCount : int, default is Undefined, optional
+        Output only. The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
+    rpoRiskLevel : int, default is Undefined, optional
+        Output only. A number that represents the current risk level of this BackupPlan from RPO perspective with 1 being no risk and 5 being highest risk.
+    rpoRiskReason : str, default is Undefined, optional
+        Output only. Human-readable description of why the BackupPlan is in the current rpo_risk_level and action items if any.
+    state : str, default is Undefined, optional
+        Output only. State of the BackupPlan. This State field reflects the various stages a BackupPlan can be in during the Create operation. It will be set to "DEACTIVATED" if the BackupPlan is deactivated on an Update
+    stateReason : str, default is Undefined, optional
+        Output only. Human-readable description of why BackupPlan is in the current `state`
+    uid : str, default is Undefined, optional
+        Output only. Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
+    updateTime : str, default is Undefined, optional
+        Output only. The timestamp when this BackupPlan resource was last updated.
+    """
+
+
+    backupSchedule?: GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanStatusObservedStateBackupSchedule
+
+    createTime?: str
+
+    etag?: str
+
+    protectedPodCount?: int
+
+    rpoRiskLevel?: int
+
+    rpoRiskReason?: str
+
+    state?: str
+
+    stateReason?: str
+
+    uid?: str
+
+    updateTime?: str
+
+
+schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupPlanStatusObservedStateBackupSchedule:
+    r"""
+    Optional. Defines a schedule for automatic Backup creation via this BackupPlan.
+
+    Attributes
+    ----------
+    nextScheduledBackupTime : str, default is Undefined, optional
+        Output only. Start time of next scheduled backup under this BackupPlan by either cron_schedule or rpo config.
+    """
+
+
+    nextScheduledBackupTime?: str
 
 

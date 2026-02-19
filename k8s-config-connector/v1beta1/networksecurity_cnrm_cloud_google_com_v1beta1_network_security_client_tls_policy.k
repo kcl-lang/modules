@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema NetworkSecurityClientTLSPolicy:
-    """
+    r"""
     networksecurity cnrm cloud google com v1beta1 network security client TLS policy
 
     Attributes
@@ -36,7 +36,7 @@ schema NetworkSecurityClientTLSPolicy:
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpec:
-    """
+    r"""
     networksecurity cnrm cloud google com v1beta1 network security client TLS policy spec
 
     Attributes
@@ -74,7 +74,7 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpe
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpecClientCertificate:
-    """
+    r"""
     Optional. Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
 
     Attributes
@@ -92,7 +92,7 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpe
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpecClientCertificateCertificateProviderInstance:
-    """
+    r"""
     The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
 
     Attributes
@@ -106,7 +106,7 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpe
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpecClientCertificateGrpcEndpoint:
-    """
+    r"""
     gRPC specific configuration to access the gRPC server to obtain the cert and private key.
 
     Attributes
@@ -120,7 +120,7 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpe
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -144,7 +144,7 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpe
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpecServerValidationCaItems0:
-    """
+    r"""
     networksecurity cnrm cloud google com v1beta1 network security client TLS policy spec server validation ca items0
 
     Attributes
@@ -162,7 +162,7 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpe
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpecServerValidationCaItems0CertificateProviderInstance:
-    """
+    r"""
     The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
 
     Attributes
@@ -176,7 +176,7 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpe
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpecServerValidationCaItems0GrpcEndpoint:
-    """
+    r"""
     gRPC specific configuration to access the gRPC server to obtain the CA certificate.
 
     Attributes
@@ -190,7 +190,7 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpe
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicyStatus:
-    """
+    r"""
     networksecurity cnrm cloud google com v1beta1 network security client TLS policy status
 
     Attributes
@@ -216,7 +216,7 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySta
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicyStatusConditionsItems0:
-    """
+    r"""
     networksecurity cnrm cloud google com v1beta1 network security client TLS policy status conditions items0
 
     Attributes

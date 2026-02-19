@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema RecaptchaEnterpriseKey:
-    """
+    r"""
     recaptchaenterprise cnrm cloud google com v1beta1 recaptcha enterprise key
 
     Attributes
@@ -36,7 +36,7 @@ schema RecaptchaEnterpriseKey:
 
 
 schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpec:
-    """
+    r"""
     recaptchaenterprise cnrm cloud google com v1beta1 recaptcha enterprise key spec
 
     Attributes
@@ -53,6 +53,8 @@ schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpec:
         Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
     testingOptions : RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecTestingOptions, default is Undefined, optional
         testing options
+    wafSettings : RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecWafSettings, default is Undefined, optional
+        waf settings
     webSettings : RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecWebSettings, default is Undefined, optional
         web settings
     """
@@ -70,11 +72,13 @@ schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpec:
 
     testingOptions?: RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecTestingOptions
 
+    wafSettings?: RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecWafSettings
+
     webSettings?: RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecWebSettings
 
 
 schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecAndroidSettings:
-    """
+    r"""
     Settings for keys that can be used by Android apps.
 
     Attributes
@@ -92,7 +96,7 @@ schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecAnd
 
 
 schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecIosSettings:
-    """
+    r"""
     Settings for keys that can be used by iOS apps.
 
     Attributes
@@ -110,7 +114,7 @@ schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecIos
 
 
 schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -134,7 +138,7 @@ schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecPro
 
 
 schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecTestingOptions:
-    """
+    r"""
     Immutable. Options for user acceptance testing.
 
     Attributes
@@ -151,8 +155,26 @@ schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecTes
     testingScore?: float
 
 
-schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecWebSettings:
+schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecWafSettings:
+    r"""
+    Immutable. Settings specific to keys that can be used for WAF (Web Application Firewall).
+
+    Attributes
+    ----------
+    wafFeature : str, default is Undefined, required
+        Immutable. Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
+    wafService : str, default is Undefined, required
+        Immutable. The WAF service that uses this key. Possible values: CA, FASTLY
     """
+
+
+    wafFeature: str
+
+    wafService: str
+
+
+schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecWebSettings:
+    r"""
     Settings for keys that can be used by websites.
 
     Attributes
@@ -182,7 +204,7 @@ schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecWeb
 
 
 schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeyStatus:
-    """
+    r"""
     recaptchaenterprise cnrm cloud google com v1beta1 recaptcha enterprise key status
 
     Attributes
@@ -204,7 +226,7 @@ schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeyStatus:
 
 
 schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeyStatusConditionsItems0:
-    """
+    r"""
     recaptchaenterprise cnrm cloud google com v1beta1 recaptcha enterprise key status conditions items0
 
     Attributes

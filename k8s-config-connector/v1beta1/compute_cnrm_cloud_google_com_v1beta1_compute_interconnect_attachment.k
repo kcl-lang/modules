@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeInterconnectAttachment:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute interconnect attachment
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeInterconnectAttachment:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInterconnectAttachmentSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute interconnect attachment spec
 
     Attributes
@@ -135,7 +135,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInterconnectAttachmentSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInterconnectAttachmentSpecIpsecInternalAddressesItems0:
-    """
+    r"""
     Immutable. The addresses that have been reserved for the
     interconnect attachment. Used only for interconnect attachment that
     has the encryption option as IPSEC.
@@ -175,7 +175,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInterconnectAttachmentSpecIpsecInt
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInterconnectAttachmentSpecRouterRef:
-    """
+    r"""
     The Cloud Router to be used for dynamic routing. This router must
     be in the same region as this ComputeInterconnectAttachment. The
     ComputeInterconnectAttachment will automatically connect the
@@ -201,7 +201,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInterconnectAttachmentSpecRouterRe
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInterconnectAttachmentStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute interconnect attachment status
 
     Attributes
@@ -262,7 +262,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInterconnectAttachmentStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInterconnectAttachmentStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute interconnect attachment status conditions items0
 
     Attributes
@@ -292,7 +292,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInterconnectAttachmentStatusCondit
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInterconnectAttachmentStatusPrivateInterconnectInfo:
-    """
+    r"""
     Information specific to an InterconnectAttachment. This property
     is populated if the interconnect that this is attached to is of type DEDICATED.
 

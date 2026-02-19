@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeVPNTunnel:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute v p n tunnel
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeVPNTunnel:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute v p n tunnel spec
 
     Attributes
@@ -114,7 +114,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecPeerExternalGatewayRef:
-    """
+    r"""
     The peer side external VPN gateway to which this VPN tunnel
     is connected.
 
@@ -137,7 +137,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecPeerExternalGatewayRe
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecPeerGCPGatewayRef:
-    """
+    r"""
     The peer side HA GCP VPN gateway to which this VPN tunnel is
     connected. If provided, the VPN tunnel will automatically use the
     same VPN gateway interface ID in the peer GCP VPN gateway.
@@ -161,7 +161,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecPeerGCPGatewayRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecRouterRef:
-    """
+    r"""
     The router to be used for dynamic routing.
 
     Attributes
@@ -183,7 +183,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecRouterRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecSharedSecret:
-    """
+    r"""
     Immutable. Shared secret used to set the secure session between the Cloud VPN
     gateway and the peer VPN gateway.
 
@@ -202,7 +202,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecSharedSecret:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecSharedSecretValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -216,7 +216,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecSharedSecretValueFrom
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecSharedSecretValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -234,7 +234,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecSharedSecretValueFrom
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecTargetVPNGatewayRef:
-    """
+    r"""
     The ComputeTargetVPNGateway with which this VPN tunnel is
     associated.
 
@@ -257,7 +257,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecTargetVPNGatewayRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecVpnGatewayRef:
-    """
+    r"""
     The ComputeVPNGateway with which this VPN tunnel is associated.
     This must be used if a High Availability VPN gateway resource is
     created.
@@ -281,7 +281,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecVpnGatewayRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute v p n tunnel status
 
     Attributes
@@ -324,7 +324,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute v p n tunnel status conditions items0
 
     Attributes

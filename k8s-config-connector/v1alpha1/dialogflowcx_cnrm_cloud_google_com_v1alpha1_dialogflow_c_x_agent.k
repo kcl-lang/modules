@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DialogflowCXAgent:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x agent
 
     Attributes
@@ -36,7 +36,7 @@ schema DialogflowCXAgent:
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXAgentSpec:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x agent spec
 
     Attributes
@@ -104,7 +104,7 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXAgentSpec:
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXAgentSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -126,7 +126,7 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXAgentSpecProjectRef:
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXAgentSpecSpeechToTextSettings:
-    """
+    r"""
     Settings related to speech recognition.
 
     Attributes
@@ -140,7 +140,7 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXAgentSpecSpeechToTextSe
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXAgentStatus:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x agent status
 
     Attributes
@@ -166,7 +166,7 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXAgentStatus:
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXAgentStatusConditionsItems0:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x agent status conditions items0
 
     Attributes

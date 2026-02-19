@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ApigeeAddonsConfig:
-    """
+    r"""
     apigee cnrm cloud google com v1alpha1 apigee addons config
 
     Attributes
@@ -36,7 +36,7 @@ schema ApigeeAddonsConfig:
 
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeAddonsConfigSpec:
-    """
+    r"""
     apigee cnrm cloud google com v1alpha1 apigee addons config spec
 
     Attributes
@@ -58,7 +58,7 @@ schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeAddonsConfigSpec:
 
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeAddonsConfigSpecAddonsConfig:
-    """
+    r"""
     Addon configurations of the Apigee organization.
 
     Attributes
@@ -88,7 +88,7 @@ schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeAddonsConfigSpecAddonsConfig:
 
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeAddonsConfigSpecAddonsConfigAPISecurityConfig:
-    """
+    r"""
     Configuration for the Monetization add-on.
 
     Attributes
@@ -106,7 +106,7 @@ schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeAddonsConfigSpecAddonsConfigAPISecu
 
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeAddonsConfigSpecAddonsConfigAdvancedAPIOpsConfig:
-    """
+    r"""
     Configuration for the Monetization add-on.
 
     Attributes
@@ -120,7 +120,7 @@ schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeAddonsConfigSpecAddonsConfigAdvance
 
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeAddonsConfigSpecAddonsConfigConnectorsPlatformConfig:
-    """
+    r"""
     Configuration for the Monetization add-on.
 
     Attributes
@@ -138,7 +138,7 @@ schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeAddonsConfigSpecAddonsConfigConnect
 
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeAddonsConfigSpecAddonsConfigIntegrationConfig:
-    """
+    r"""
     Configuration for the Monetization add-on.
 
     Attributes
@@ -152,7 +152,7 @@ schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeAddonsConfigSpecAddonsConfigIntegra
 
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeAddonsConfigSpecAddonsConfigMonetizationConfig:
-    """
+    r"""
     Configuration for the Monetization add-on.
 
     Attributes
@@ -166,7 +166,7 @@ schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeAddonsConfigSpecAddonsConfigMonetiz
 
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeAddonsConfigStatus:
-    """
+    r"""
     apigee cnrm cloud google com v1alpha1 apigee addons config status
 
     Attributes
@@ -184,7 +184,7 @@ schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeAddonsConfigStatus:
 
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeAddonsConfigStatusConditionsItems0:
-    """
+    r"""
     apigee cnrm cloud google com v1alpha1 apigee addons config status conditions items0
 
     Attributes

@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema RunJob:
-    """
-    run cnrm cloud google com v1beta1 run job
+    r"""
+    RunJob is the Schema for the RunJob API
 
     Attributes
     ----------
@@ -36,35 +36,27 @@ schema RunJob:
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpec:
-    """
-    run cnrm cloud google com v1beta1 run job spec
+    r"""
+    RunJobSpec defines the desired state of RunJob
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
-
-        Cloud Run API v2 does not support annotations with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected on new resources.
-        All system annotations in v1 now have a corresponding field in v2 Job.
-
-        This field follows Kubernetes annotations' namespacing, limits, and rules.
+        Optional. User-provided annotations, which are stored in GCP.
     binaryAuthorization : RunCnrmCloudGoogleComV1beta1RunJobSpecBinaryAuthorization, default is Undefined, optional
         binary authorization
     client : str, default is Undefined, optional
-        Arbitrary identifier for the API client.
+        Optional. Arbitrary identifier for the API client.
     clientVersion : str, default is Undefined, optional
-        Arbitrary version identifier for the API client.
+        Optional. Arbitrary version identifier for the API client.
     launchStage : str, default is Undefined, optional
-        The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
-        If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
-
-        For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output. Possible values: ["UNIMPLEMENTED", "PRELAUNCH", "EARLY_ACCESS", "ALPHA", "BETA", "GA", "DEPRECATED"].
-    location : str, default is Undefined, required
-        Immutable. The location of the cloud run job.
-    projectRef : RunCnrmCloudGoogleComV1beta1RunJobSpecProjectRef, default is Undefined, required
+        Optional. The launch stage of the job. Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
+    location : str, default is Undefined, optional
+        The location of the cloud run job
+    projectRef : RunCnrmCloudGoogleComV1beta1RunJobSpecProjectRef, default is Undefined, optional
         project ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The RunJob name. If not given, the metadata.name will be used.
     template : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplate, default is Undefined, required
         template
     """
@@ -80,9 +72,9 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpec:
 
     launchStage?: str
 
-    location: str
+    location?: str
 
-    projectRef: RunCnrmCloudGoogleComV1beta1RunJobSpecProjectRef
+    projectRef?: RunCnrmCloudGoogleComV1beta1RunJobSpecProjectRef
 
     resourceID?: str
 
@@ -90,15 +82,15 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpec:
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecBinaryAuthorization:
-    """
-    Settings for the Binary Authorization feature.
+    r"""
+    Optional. Settings for Binary Authorization feature.
 
     Attributes
     ----------
     breakglassJustification : str, default is Undefined, optional
-        If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass.
+        Optional. If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
     useDefault : bool, default is Undefined, optional
-        If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
+        Optional. If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
     """
 
 
@@ -108,21 +100,25 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecBinaryAuthorization:
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
     external?: str
+
+    kind?: str
 
     name?: str
 
@@ -130,23 +126,28 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecProjectRef:
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplate:
-    """
-    The template used to create executions for this Job.
+    r"""
+    Required. The template used to create executions for this Job.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+        Unstructured key value map that may be set by external tools to store and
+         arbitrary metadata. They are not queryable and should be preserved
+         when modifying objects.
 
-        Cloud Run API v2 does not support annotations with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
-        All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+         <p>Cloud Run API v2 does not support annotations with `run.googleapis.com`,
+         `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev`
+         namespaces, and they will be rejected. All system annotations in v1 now
+         have a corresponding field in v2 ExecutionTemplate.
 
-        This field follows Kubernetes annotations' namespacing, limits, and rules.
+         <p>This field follows Kubernetes annotations' namespacing, limits, and
+         rules.
     parallelism : int, default is Undefined, optional
-        Specifies the maximum desired number of tasks the execution should run at given time. Must be <= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
+        Optional. Specifies the maximum desired number of tasks the execution should run at given time. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
     taskCount : int, default is Undefined, optional
-        Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/.
-    template : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplate, default is Undefined, required
+        Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. Defaults to 1.
+    template : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplate, default is Undefined, optional
         template
     """
 
@@ -157,12 +158,12 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplate:
 
     taskCount?: int
 
-    template: RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplate
+    template?: RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplate
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplate:
-    """
-    Describes the task(s) that will be created when executing an execution.
+    r"""
+    Required. Describes the task(s) that will be created when executing an execution.
 
     Attributes
     ----------
@@ -171,17 +172,15 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplate:
     encryptionKeyRef : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateEncryptionKeyRef, default is Undefined, optional
         encryption key ref
     executionEnvironment : str, default is Undefined, optional
-        The execution environment being used to host this Task. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"].
+        Optional. The execution environment being used to host this Task.
     maxRetries : int, default is Undefined, optional
-        Number of retries allowed per Task, before marking this Task failed.
+        Number of retries allowed per Task, before marking this Task failed. Defaults to 3.
     serviceAccountRef : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateServiceAccountRef, default is Undefined, optional
         service account ref
     timeout : str, default is Undefined, optional
-        Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
-
-        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        Optional. Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds.
     volumes : [RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0], default is Undefined, optional
-        A list of Volumes to make available to containers.
+        Optional. A list of Volumes to make available to containers.
     vpcAccess : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVpcAccess, default is Undefined, optional
         vpc access
     """
@@ -205,27 +204,32 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplate:
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0:
-    """
+    r"""
     run cnrm cloud google com v1beta1 run job spec template template containers items0
 
     Attributes
     ----------
     args : [str], default is Undefined, optional
-        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell.
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
     command : [str], default is Undefined, optional
-        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell.
+        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+    dependsOn : [str], default is Undefined, optional
+        Names of the containers that must start before this container.
     env : [RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0EnvItems0], default is Undefined, optional
         List of environment variables to set in the container.
-    image : str, default is Undefined, required
-        URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images.
+    image : str, default is Undefined, optional
+        Required. Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
     livenessProbe : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0LivenessProbe, default is Undefined, optional
         liveness probe
     name : str, default is Undefined, optional
-        Name of the container specified as a DNS_LABEL.
+        Name of the container specified as a DNS_LABEL (RFC 1123).
     ports : [RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0PortsItems0], default is Undefined, optional
-        List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+        List of ports to expose from the container. Only a single port can be
+         specified. The specified ports must be listening on all interfaces
+         (0.0.0.0) within the container to be accessible.
 
-        If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
+         If omitted, a port number will be chosen and passed to the container
+         through the PORT environment variable for the container to listen on.
     resources : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0Resources, default is Undefined, optional
         resources
     startupProbe : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0StartupProbe, default is Undefined, optional
@@ -241,9 +245,11 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0:
 
     command?: [str]
 
+    dependsOn?: [str]
+
     env?: [RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0EnvItems0]
 
-    image: str
+    image?: str
 
     livenessProbe?: RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0LivenessProbe
 
@@ -261,21 +267,21 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0:
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0EnvItems0:
-    """
+    r"""
     run cnrm cloud google com v1beta1 run job spec template template containers items0 env items0
 
     Attributes
     ----------
-    name : str, default is Undefined, required
-        Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+    name : str, default is Undefined, optional
+        Required. Name of the environment variable. Must not exceed 32768 characters.
     value : str, default is Undefined, optional
-        Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes.
+        Literal value of the environment variable. Defaults to "", and the maximum length is 32768 bytes. Variable references are not supported in Cloud Run.
     valueSource : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0EnvItems0ValueSource, default is Undefined, optional
         value source
     """
 
 
-    name: str
+    name?: str
 
     value?: str
 
@@ -283,7 +289,7 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0Env
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0EnvItems0ValueSource:
-    """
+    r"""
     Source for the environment variable's value.
 
     Attributes
@@ -297,35 +303,35 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0Env
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0EnvItems0ValueSourceSecretKeyRef:
-    """
+    r"""
     Selects a secret and a specific version from Cloud Secret Manager.
 
     Attributes
     ----------
-    secretRef : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0EnvItems0ValueSourceSecretKeyRefSecretRef, default is Undefined, required
+    secretRef : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0EnvItems0ValueSourceSecretKeyRefSecretRef, default is Undefined, optional
         secret ref
-    versionRef : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0EnvItems0ValueSourceSecretKeyRefVersionRef, default is Undefined, required
+    versionRef : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0EnvItems0ValueSourceSecretKeyRefVersionRef, default is Undefined, optional
         version ref
     """
 
 
-    secretRef: RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0EnvItems0ValueSourceSecretKeyRefSecretRef
+    secretRef?: RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0EnvItems0ValueSourceSecretKeyRefSecretRef
 
-    versionRef: RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0EnvItems0ValueSourceSecretKeyRefVersionRef
+    versionRef?: RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0EnvItems0ValueSourceSecretKeyRefVersionRef
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0EnvItems0ValueSourceSecretKeyRefSecretRef:
-    """
-    The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+    r"""
+    Required. The name of the secret in Cloud Secret  Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret}
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `SecretManagerSecret` resource.
+        A reference to an externally managed SecretManagerSecret resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/secrets/{{secretID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a SecretManagerSecret resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a SecretManagerSecret resource.
     """
 
 
@@ -337,17 +343,17 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0Env
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0EnvItems0ValueSourceSecretKeyRefVersionRef:
-    """
-    The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+    r"""
+    The Cloud Secret Manager secret version. Can be 'latest' for the latest version, an integer for a specific version, or a version alias.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `version` field of a `SecretManagerSecretVersion` resource.
+        A reference to an externally managed SecretManagerSecretVersion resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/secretversions/{{secretversionID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a SecretManagerSecretVersion resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a SecretManagerSecretVersion resource.
     """
 
 
@@ -359,24 +365,23 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0Env
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0LivenessProbe:
-    """
-    DEPRECATED. `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-    This field is not supported in Cloud Run Job currently.
+    r"""
+    Periodic probe of container liveness. Container will be restarted if the probe fails.
 
     Attributes
     ----------
     failureThreshold : int, default is Undefined, optional
-        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     httpGet : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0LivenessProbeHTTPGet, default is Undefined, optional
         http get
     initialDelaySeconds : int, default is Undefined, optional
-        Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes.
+        Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
     periodSeconds : int, default is Undefined, optional
-        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds.
+        Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
     tcpSocket : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0LivenessProbeTCPSocket, default is Undefined, optional
         tcp socket
     timeoutSeconds : int, default is Undefined, optional
-        Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes.
+        Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
     """
 
 
@@ -394,15 +399,17 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0Liv
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0LivenessProbeHTTPGet:
-    """
-    HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+    r"""
+    Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
 
     Attributes
     ----------
     httpHeaders : [RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0], default is Undefined, optional
-        Custom headers to set in the request. HTTP allows repeated headers.
+        Optional. Custom headers to set in the request. HTTP allows repeated headers.
     path : str, default is Undefined, optional
-        Path to access on the HTTP server. Defaults to '/'.
+        Optional. Path to access on the HTTP server. Defaults to '/'.
+    port : int, default is Undefined, optional
+        Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
     """
 
 
@@ -410,33 +417,35 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0Liv
 
     path?: str
 
+    port?: int
+
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0LivenessProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     run cnrm cloud google com v1beta1 run job spec template template containers items0 liveness probe HTTP get HTTP headers items0
 
     Attributes
     ----------
-    name : str, default is Undefined, required
-        The header field name.
+    name : str, default is Undefined, optional
+        Required. The header field name
     value : str, default is Undefined, optional
-        The header field value.
+        Optional. The header field value
     """
 
 
-    name: str
+    name?: str
 
     value?: str
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0LivenessProbeTCPSocket:
-    """
-    TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+    r"""
+    Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
 
     Attributes
     ----------
     port : int, default is Undefined, optional
-        Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+        Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
     """
 
 
@@ -444,13 +453,13 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0Liv
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0PortsItems0:
-    """
+    r"""
     run cnrm cloud google com v1beta1 run job spec template template containers items0 ports items0
 
     Attributes
     ----------
     containerPort : int, default is Undefined, optional
-        Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
+        Port number the container listens on. This must be a valid TCP port number, 0 < container_port < 65536.
     name : str, default is Undefined, optional
         If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
     """
@@ -462,13 +471,20 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0Por
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0Resources:
-    """
-    Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources.
+    r"""
+    Compute Resource requirements by this container.
 
     Attributes
     ----------
     limits : {str:str}, default is Undefined, optional
-        Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go.
+        Only `memory` and `cpu` keys in the map are supported.
+
+         <p>Notes:
+          * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4
+         CPU requires at least 2Gi of memory. For more information, go to
+         https://cloud.google.com/run/docs/configuring/cpu.
+           * For supported 'memory' values and syntax, go to
+          https://cloud.google.com/run/docs/configuring/memory-limits
     """
 
 
@@ -476,24 +492,23 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0Res
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0StartupProbe:
-    """
-    DEPRECATED. `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-    This field is not supported in Cloud Run Job currently.
+    r"""
+    Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
 
     Attributes
     ----------
     failureThreshold : int, default is Undefined, optional
-        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     httpGet : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0StartupProbeHTTPGet, default is Undefined, optional
         http get
     initialDelaySeconds : int, default is Undefined, optional
-        Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes.
+        Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
     periodSeconds : int, default is Undefined, optional
-        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds.
+        Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
     tcpSocket : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0StartupProbeTCPSocket, default is Undefined, optional
         tcp socket
     timeoutSeconds : int, default is Undefined, optional
-        Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes.
+        Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
     """
 
 
@@ -511,15 +526,17 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0Sta
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0StartupProbeHTTPGet:
-    """
-    HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+    r"""
+    Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
 
     Attributes
     ----------
     httpHeaders : [RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0StartupProbeHTTPGetHTTPHeadersItems0], default is Undefined, optional
-        Custom headers to set in the request. HTTP allows repeated headers.
+        Optional. Custom headers to set in the request. HTTP allows repeated headers.
     path : str, default is Undefined, optional
-        Path to access on the HTTP server. Defaults to '/'.
+        Optional. Path to access on the HTTP server. Defaults to '/'.
+    port : int, default is Undefined, optional
+        Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
     """
 
 
@@ -527,33 +544,35 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0Sta
 
     path?: str
 
+    port?: int
+
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0StartupProbeHTTPGetHTTPHeadersItems0:
-    """
+    r"""
     run cnrm cloud google com v1beta1 run job spec template template containers items0 startup probe HTTP get HTTP headers items0
 
     Attributes
     ----------
-    name : str, default is Undefined, required
-        The header field name.
+    name : str, default is Undefined, optional
+        Required. The header field name
     value : str, default is Undefined, optional
-        The header field value.
+        Optional. The header field value
     """
 
 
-    name: str
+    name?: str
 
     value?: str
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0StartupProbeTCPSocket:
-    """
-    TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+    r"""
+    Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
 
     Attributes
     ----------
     port : int, default is Undefined, optional
-        Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+        Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
     """
 
 
@@ -561,35 +580,35 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0Sta
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateContainersItems0VolumeMountsItems0:
-    """
+    r"""
     run cnrm cloud google com v1beta1 run job spec template template containers items0 volume mounts items0
 
     Attributes
     ----------
-    mountPath : str, default is Undefined, required
-        Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run.
-    name : str, default is Undefined, required
-        This must match the Name of a Volume.
+    mountPath : str, default is Undefined, optional
+        Required. Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be `/cloudsql`. All instances defined in the Volume will be available as `/cloudsql/[instance]`. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+    name : str, default is Undefined, optional
+        Required. This must match the Name of a Volume.
     """
 
 
-    mountPath: str
+    mountPath?: str
 
-    name: str
+    name?: str
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateEncryptionKeyRef:
-    """
+    r"""
     A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `KMSCryptoKey` resource.
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` of a `KMSCryptoKey` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` of a `KMSCryptoKey` resource.
     """
 
 
@@ -601,13 +620,13 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateEncryptionKeyRef:
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateServiceAccountRef:
-    """
-    Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
+    r"""
+    Optional. Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `email` field of an `IAMServiceAccount` resource.
+        The `email` field of an `IAMServiceAccount` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -623,37 +642,77 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateServiceAccountRef:
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0:
-    """
+    r"""
     run cnrm cloud google com v1beta1 run job spec template template volumes items0
 
     Attributes
     ----------
+    cloudSqlInstance : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0CloudSQLInstance, default is Undefined, optional
+        cloud Sql instance
     emptyDir : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0EmptyDir, default is Undefined, optional
         empty dir
-    name : str, default is Undefined, required
-        Volume's name.
+    name : str, default is Undefined, optional
+        Required. Volume's name.
     secret : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0Secret, default is Undefined, optional
         secret
     """
 
 
+    cloudSqlInstance?: RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0CloudSQLInstance
+
     emptyDir?: RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0EmptyDir
 
-    name: str
+    name?: str
 
     secret?: RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0Secret
 
 
-schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0EmptyDir:
+schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0CloudSQLInstance:
+    r"""
+    For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+
+    Attributes
+    ----------
+    instanceRefs : [RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0CloudSQLInstanceInstanceRefsItems0], default is Undefined, optional
+        The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
     """
+
+
+    instanceRefs?: [RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0CloudSQLInstanceInstanceRefsItems0]
+
+
+schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0CloudSQLInstanceInstanceRefsItems0:
+    r"""
+    run cnrm cloud google com v1beta1 run job spec template template volumes items0 cloud SQL instance instance refs items0
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The SQLInstance selfLink, when not managed by Config Connector.
+    name : str, default is Undefined, optional
+        The `name` field of a `SQLInstance` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `SQLInstance` resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0EmptyDir:
+    r"""
     Ephemeral storage used as a shared volume.
 
     Attributes
     ----------
     medium : str, default is Undefined, optional
-        The different types of medium supported for EmptyDir. Default value: "MEMORY" Possible values: ["MEMORY"].
+        The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
     sizeLimit : str, default is Undefined, optional
-        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers. The default is nil which means that the limit is undefined. More info: https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume. Info in Kubernetes: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
     """
 
 
@@ -663,16 +722,32 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0EmptyD
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0Secret:
-    """
-    Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret.
+    r"""
+    Secret represents a secret that should populate this volume.
 
     Attributes
     ----------
     defaultMode : int, default is Undefined, optional
-        Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+        Integer representation of mode bits to use on created files by default.
+         Must be a value between 0000 and 0777 (octal), defaulting to 0444.
+         Directories within the path are not affected by  this setting.
+
+         Notes
+
+         * Internally, a umask of 0222 will be applied to any non-zero value.
+         * This is an integer representation of the mode bits. So, the octal
+         integer value should look exactly as the chmod numeric notation with a
+         leading zero. Some examples: for chmod 640 (u=rw,g=r), set to 0640 (octal)
+         or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or
+         493 (base-10).
+         * This might be in conflict with other options that affect the
+         file mode, like fsGroup, and the result can be other mode bits set.
+
+         This might be in conflict with other options that affect the
+         file mode, like fsGroup, and as a result, other mode bits could be set.
     items : [RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0SecretItemsItems0], default is Undefined, optional
         If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
-    secretRef : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0SecretSecretRef, default is Undefined, required
+    secretRef : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0SecretSecretRef, default is Undefined, optional
         secret ref
     """
 
@@ -681,43 +756,56 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0Secret
 
     items?: [RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0SecretItemsItems0]
 
-    secretRef: RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0SecretSecretRef
+    secretRef?: RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0SecretSecretRef
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0SecretItemsItems0:
-    """
+    r"""
     run cnrm cloud google com v1beta1 run job spec template template volumes items0 secret items items0
 
     Attributes
     ----------
-    mode : int, default is Undefined, required
-        Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
-    path : str, default is Undefined, required
-        The relative path of the secret in the container.
-    versionRef : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0SecretItemsItems0VersionRef, default is Undefined, required
+    mode : int, default is Undefined, optional
+        Integer octal mode bits to use on this file, must be a value between
+         01 and 0777 (octal). If 0 or not set, the Volume's default mode will be
+         used.
+
+         Notes
+
+         * Internally, a umask of 0222 will be applied to any non-zero value.
+         * This is an integer representation of the mode bits. So, the octal
+         integer value should look exactly as the chmod numeric notation with a
+         leading zero. Some examples: for chmod 640 (u=rw,g=r), set to 0640 (octal)
+         or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or
+         493 (base-10).
+         * This might be in conflict with other options that affect the
+         file mode, like fsGroup, and the result can be other mode bits set.
+    path : str, default is Undefined, optional
+        Required. The relative path of the secret in the container.
+    versionRef : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0SecretItemsItems0VersionRef, default is Undefined, optional
         version ref
     """
 
 
-    mode: int
+    mode?: int
 
-    path: str
+    path?: str
 
-    versionRef: RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0SecretItemsItems0VersionRef
+    versionRef?: RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0SecretItemsItems0VersionRef
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0SecretItemsItems0VersionRef:
-    """
-    The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+    r"""
+    The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `version` field of a `SecretManagerSecretVersion` resource.
+        A reference to an externally managed SecretManagerSecretVersion resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/secretversions/{{secretversionID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a SecretManagerSecretVersion resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a SecretManagerSecretVersion resource.
     """
 
 
@@ -729,17 +817,17 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0Secret
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0SecretSecretRef:
-    """
-    Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+    r"""
+    Required. The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `SecretManagerSecret` resource.
+        A reference to an externally managed SecretManagerSecret resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/secrets/{{secretID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a SecretManagerSecret resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a SecretManagerSecret resource.
     """
 
 
@@ -751,59 +839,173 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0Secret
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVpcAccess:
-    """
-    VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+    r"""
+    Optional. VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 
     Attributes
     ----------
+    connectorRef : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVpcAccessConnectorRef, default is Undefined, optional
+        connector ref
     egress : str, default is Undefined, optional
-        Traffic VPC egress settings. Possible values: ["ALL_TRAFFIC", "PRIVATE_RANGES_ONLY"].
+        Optional. Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
+    networkInterfaces : [RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVpcAccessNetworkInterfacesItems0], default is Undefined, optional
+        Optional. Direct VPC egress settings. Currently only single network interface is supported.
     """
 
+
+    connectorRef?: RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVpcAccessConnectorRef
 
     egress?: str
 
+    networkInterfaces?: [RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVpcAccessNetworkInterfacesItems0]
+
+
+schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVpcAccessConnectorRef:
+    r"""
+    VPC Access connector name. Format: `projects/{project}/locations/{location}/connectors/{connector}`, where `{project}` can be project id or number. For more information on sending traffic to a VPC network via a connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed VPCAccessConnector resource. Should be in the format `projects/{project_id}/locations/{location}/connectors/{connector_id}`
+    name : str, default is Undefined, optional
+        The name of a VPCAccessConnector resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a VPCAccessConnector resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVpcAccessNetworkInterfacesItems0:
+    r"""
+    run cnrm cloud google com v1beta1 run job spec template template vpc access network interfaces items0
+
+    Attributes
+    ----------
+    networkRef : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVpcAccessNetworkInterfacesItems0NetworkRef, default is Undefined, optional
+        network ref
+    subnetworkRef : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVpcAccessNetworkInterfacesItems0SubnetworkRef, default is Undefined, optional
+        subnetwork ref
+    tags : [str], default is Undefined, optional
+        Optional. Network tags applied to this Cloud Run resource.
+    """
+
+
+    networkRef?: RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVpcAccessNetworkInterfacesItems0NetworkRef
+
+    subnetworkRef?: RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVpcAccessNetworkInterfacesItems0SubnetworkRef
+
+    tags?: [str]
+
+
+schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVpcAccessNetworkInterfacesItems0NetworkRef:
+    r"""
+    Optional. The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
+    name : str, default is Undefined, optional
+        The name of a ComputeNetwork resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a ComputeNetwork resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVpcAccessNetworkInterfacesItems0SubnetworkRef:
+    r"""
+    Optional. The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The ComputeSubnetwork selflink of form "projects/{{project}}/regions/{{region}}/subnetworks/{{name}}", when not managed by Config Connector.
+    name : str, default is Undefined, optional
+        The `name` field of a `ComputeSubnetwork` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `ComputeSubnetwork` resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
 
 schema RunCnrmCloudGoogleComV1beta1RunJobStatus:
-    """
-    run cnrm cloud google com v1beta1 run job status
+    r"""
+    RunJobStatus defines the config connector machine state of RunJob
 
     Attributes
     ----------
     conditions : [RunCnrmCloudGoogleComV1beta1RunJobStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     createTime : str, default is Undefined, optional
-        The creation time.
+        Output only. The creation time.
     creator : str, default is Undefined, optional
-        Email address of the authenticated creator.
+        Output only. Email address of the authenticated creator.
     deleteTime : str, default is Undefined, optional
-        The deletion time.
+        Output only. The deletion time. It is only populated as a response to a Delete request.
     etag : str, default is Undefined, optional
-        A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
+        Output only. A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
     executionCount : int, default is Undefined, optional
-        Number of executions created for this job.
+        Output only. Number of executions created for this job.
     expireTime : str, default is Undefined, optional
-        For a deleted resource, the time after which it will be permamently deleted.
+        Output only. For a deleted resource, the time after which it will be permanently deleted.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the RunJob resource in GCP.
+    lastModifiedCookie : str, default is Undefined, optional
+        LastModifiedCookie contains hashes of the last applied spec and the last observed GCP state. The format is "<spec-hash>/<gcp-hash>". This is used by the controller to detect if the user's desired state has changed or if the GCP resource has drifted.
     lastModifier : str, default is Undefined, optional
-        Email address of the last authenticated modifier.
+        Output only. Email address of the last authenticated modifier.
     latestCreatedExecution : [RunCnrmCloudGoogleComV1beta1RunJobStatusLatestCreatedExecutionItems0], default is Undefined, optional
-        Name of the last created execution.
+        Output only. Name of the last created execution.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     reconciling : bool, default is Undefined, optional
-        Returns true if the Job is currently being acted upon by the system to bring it into the desired state.
+        Output only. Returns true if the Job is currently being acted upon by the
+        system to bring it into the desired state.
 
-        When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+        When a new Job is created, or an existing one is updated, Cloud Run
+        will asynchronously perform all necessary steps to bring the Job to the
+        desired state. This process is called reconciliation.
+        While reconciliation is in process, `observed_generation` and
+        `latest_succeeded_execution`, will have transient values that might
+        mismatch the intended state: Once reconciliation is over (and this field is
+        false), there are two possible outcomes: reconciliation succeeded and the
+        state matches the Job, or there was an error,  and reconciliation failed.
+        This state can be found in `terminal_condition.state`.
 
-        If reconciliation succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and latestCreatedExecution.
+        If reconciliation succeeded, the following fields will match:
+        `observed_generation` and `generation`, `latest_succeeded_execution` and
+        `latest_created_execution`.
 
-        If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions.
+        If reconciliation failed, `observed_generation` and
+        `latest_succeeded_execution` will have the state of the last succeeded
+        execution or empty for newly created Job. Additional information on the
+        failure can be found in `terminal_condition` and `conditions`.
     terminalCondition : [RunCnrmCloudGoogleComV1beta1RunJobStatusTerminalConditionItems0], default is Undefined, optional
-        The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state.
+        Output only. The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state.
     uid : str, default is Undefined, optional
-        Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+        Output only. Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
     updateTime : str, default is Undefined, optional
-        The last-modified time.
+        Output only. The last-modified time.
     """
 
 
@@ -821,6 +1023,10 @@ schema RunCnrmCloudGoogleComV1beta1RunJobStatus:
 
     expireTime?: str
 
+    externalRef?: str
+
+    lastModifiedCookie?: str
+
     lastModifier?: str
 
     latestCreatedExecution?: [RunCnrmCloudGoogleComV1beta1RunJobStatusLatestCreatedExecutionItems0]
@@ -837,7 +1043,7 @@ schema RunCnrmCloudGoogleComV1beta1RunJobStatus:
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobStatusConditionsItems0:
-    """
+    r"""
     run cnrm cloud google com v1beta1 run job status conditions items0
 
     Attributes
@@ -867,33 +1073,37 @@ schema RunCnrmCloudGoogleComV1beta1RunJobStatusConditionsItems0:
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobStatusLatestCreatedExecutionItems0:
-    """
+    r"""
     run cnrm cloud google com v1beta1 run job status latest created execution items0
 
     Attributes
     ----------
+    completionStatus : str, default is Undefined, optional
+        Status for the execution completion.
     completionTime : str, default is Undefined, optional
-        Completion timestamp of the execution.
-
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        Creation timestamp of the execution.
     createTime : str, default is Undefined, optional
         Creation timestamp of the execution.
-
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+    deleteTime : str, default is Undefined, optional
+        The deletion time of the execution. It is only populated as a response to a Delete request.
     name : str, default is Undefined, optional
         Name of the execution.
     """
 
 
+    completionStatus?: str
+
     completionTime?: str
 
     createTime?: str
+
+    deleteTime?: str
 
     name?: str
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobStatusTerminalConditionItems0:
-    """
+    r"""
     run cnrm cloud google com v1beta1 run job status terminal condition items0
 
     Attributes
@@ -902,8 +1112,6 @@ schema RunCnrmCloudGoogleComV1beta1RunJobStatusTerminalConditionItems0:
         A reason for the execution condition.
     lastTransitionTime : str, default is Undefined, optional
         Last time the condition transitioned from one status to another.
-
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     message : str, default is Undefined, optional
         Human readable message indicating details about the current status.
     reason : str, default is Undefined, optional
@@ -911,7 +1119,7 @@ schema RunCnrmCloudGoogleComV1beta1RunJobStatusTerminalConditionItems0:
     revisionReason : str, default is Undefined, optional
         A reason for the revision condition.
     severity : str, default is Undefined, optional
-        How to interpret failures of this condition, one of Error, Warning, Info.
+        How to interpret failures of this condition, one of Error, Warning, Info
     state : str, default is Undefined, optional
         State of the condition.
     $type : str, default is Undefined, optional

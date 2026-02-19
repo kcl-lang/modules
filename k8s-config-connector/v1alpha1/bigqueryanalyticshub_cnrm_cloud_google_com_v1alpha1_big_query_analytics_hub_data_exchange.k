@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BigQueryAnalyticsHubDataExchange:
-    """
-    bigqueryanalyticshub cnrm cloud google com v1alpha1 big query analytics hub data exchange
+    r"""
+    BigQueryAnalyticsHubDataExchange is the Schema for the BigQueryAnalyticsHubDataExchange API
 
     Attributes
     ----------
@@ -36,37 +36,37 @@ schema BigQueryAnalyticsHubDataExchange:
 
 
 schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubDataExchangeSpec:
-    """
-    bigqueryanalyticshub cnrm cloud google com v1alpha1 big query analytics hub data exchange spec
+    r"""
+    BigQueryAnalyticsHubDataExchangeSpec defines the desired state of BigQueryAnalyticsHubDataExchange
 
     Attributes
     ----------
     description : str, default is Undefined, optional
-        Description of the data exchange.
-    displayName : str, default is Undefined, required
-        Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
+        Optional. Description of the data exchange. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). Default value is an empty string. Max length: 2000 bytes.
+    discoveryType : str, default is Undefined, optional
+        Optional. Type of discovery on the discovery page for all the listings under this exchange. Updating this field also updates (overwrites) the discovery_type field for all the listings under this exchange.
+    displayName : str, default is Undefined, optional
+        Required. Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and must not start or end with spaces. Default value is an empty string. Max length: 63 bytes.
     documentation : str, default is Undefined, optional
-        Documentation describing the data exchange.
-    icon : str, default is Undefined, optional
-        Base64 encoded image representing the data exchange.
+        Optional. Documentation describing the data exchange.
     location : str, default is Undefined, required
         Immutable. The name of the location this data exchange.
     primaryContact : str, default is Undefined, optional
-        Email or URL of the primary point of contact of the data exchange.
+        Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes.
     projectRef : BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubDataExchangeSpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The dataExchangeId of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        Immutable. The BigQueryAnalyticsHubDataExchange name. If not given, the metadata.name will be used.
     """
 
 
     description?: str
 
-    displayName: str
+    discoveryType?: str
+
+    displayName?: str
 
     documentation?: str
-
-    icon?: str
 
     location: str
 
@@ -78,21 +78,25 @@ schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubDataExc
 
 
 schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubDataExchangeSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
     external?: str
+
+    kind?: str
 
     name?: str
 
@@ -100,34 +104,33 @@ schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubDataExc
 
 
 schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubDataExchangeStatus:
-    """
-    bigqueryanalyticshub cnrm cloud google com v1alpha1 big query analytics hub data exchange status
+    r"""
+    BigQueryAnalyticsHubDataExchangeStatus defines the config connector machine state of BigQueryAnalyticsHubDataExchange
 
     Attributes
     ----------
     conditions : [BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubDataExchangeStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
-    listingCount : int, default is Undefined, optional
-        Number of listings contained in the data exchange.
-    name : str, default is Undefined, optional
-        The resource name of the data exchange, for example:
-        "projects/myproject/locations/US/dataExchanges/123".
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the BigQueryAnalyticsHubDataExchange resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubDataExchangeStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubDataExchangeStatusConditionsItems0]
 
-    listingCount?: int
-
-    name?: str
+    externalRef?: str
 
     observedGeneration?: int
 
+    observedState?: BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubDataExchangeStatusObservedState
+
 
 schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubDataExchangeStatusConditionsItems0:
-    """
+    r"""
     bigqueryanalyticshub cnrm cloud google com v1alpha1 big query analytics hub data exchange status conditions items0
 
     Attributes
@@ -154,5 +157,19 @@ schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubDataExc
     status?: str
 
     $type?: str
+
+
+schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubDataExchangeStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    listingCount : int, default is Undefined, optional
+        Number of listings contained in the data exchange.
+    """
+
+
+    listingCount?: int
 
 

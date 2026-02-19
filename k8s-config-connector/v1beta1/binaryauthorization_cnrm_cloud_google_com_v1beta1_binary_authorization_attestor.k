@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BinaryAuthorizationAttestor:
-    """
+    r"""
     binaryauthorization cnrm cloud google com v1beta1 binary authorization attestor
 
     Attributes
@@ -36,7 +36,7 @@ schema BinaryAuthorizationAttestor:
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationAttestorSpec:
-    """
+    r"""
     binaryauthorization cnrm cloud google com v1beta1 binary authorization attestor spec
 
     Attributes
@@ -62,7 +62,7 @@ schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationAttestorSp
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationAttestorSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -86,7 +86,7 @@ schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationAttestorSp
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationAttestorSpecUserOwnedDrydockNote:
-    """
+    r"""
     This specifies how an attestation will be read, and how it will be used during policy enforcement.
 
     Attributes
@@ -104,7 +104,7 @@ schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationAttestorSp
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationAttestorSpecUserOwnedDrydockNoteNoteRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -128,7 +128,7 @@ schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationAttestorSp
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationAttestorSpecUserOwnedDrydockNotePublicKeysItems0:
-    """
+    r"""
     binaryauthorization cnrm cloud google com v1beta1 binary authorization attestor spec user owned drydock note public keys items0
 
     Attributes
@@ -154,7 +154,7 @@ schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationAttestorSp
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationAttestorSpecUserOwnedDrydockNotePublicKeysItems0PkixPublicKey:
-    """
+    r"""
     A raw PKIX SubjectPublicKeyInfo format public key. NOTE: `id` may be explicitly provided by the caller when using this type of public key, but it MUST be a valid RFC3986 URI. If `id` is left blank, a default one will be computed based on the digest of the DER encoding of the public key.
 
     Attributes
@@ -172,7 +172,7 @@ schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationAttestorSp
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationAttestorStatus:
-    """
+    r"""
     binaryauthorization cnrm cloud google com v1beta1 binary authorization attestor status
 
     Attributes
@@ -198,7 +198,7 @@ schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationAttestorSt
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationAttestorStatusConditionsItems0:
-    """
+    r"""
     binaryauthorization cnrm cloud google com v1beta1 binary authorization attestor status conditions items0
 
     Attributes
@@ -228,7 +228,7 @@ schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationAttestorSt
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationAttestorStatusUserOwnedDrydockNote:
-    """
+    r"""
     binaryauthorization cnrm cloud google com v1beta1 binary authorization attestor status user owned drydock note
 
     Attributes

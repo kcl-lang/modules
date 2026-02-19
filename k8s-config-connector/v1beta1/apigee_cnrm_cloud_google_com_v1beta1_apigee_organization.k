@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ApigeeOrganization:
-    """
-    apigee cnrm cloud google com v1beta1 apigee organization
+    r"""
+    ApigeeOrganization is the Schema for the ApigeeOrganization API
 
     Attributes
     ----------
@@ -36,31 +36,31 @@ schema ApigeeOrganization:
 
 
 schema ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationSpec:
-    """
-    apigee cnrm cloud google com v1beta1 apigee organization spec
+    r"""
+    ApigeeOrganizationSpec defines the desired state of ApigeeOrganization
 
     Attributes
     ----------
     addonsConfig : ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationSpecAddonsConfig, default is Undefined, optional
         addons config
     analyticsRegion : str, default is Undefined, required
-        Immutable. Required. Primary GCP region for analytics data storage. For valid values, see (https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        Required. DEPRECATED: This field will eventually be deprecated and replaced with a differently-named field. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
     authorizedNetworkRef : ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationSpecAuthorizedNetworkRef, default is Undefined, optional
         authorized network ref
     description : str, default is Undefined, optional
         Description of the Apigee organization.
     displayName : str, default is Undefined, optional
-        Display name for the Apigee organization.
+        Display name for the Apigee organization. Unused, but reserved for future use.
     projectRef : ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationSpecProjectRef, default is Undefined, required
         project ref
     properties : {str:str}, default is Undefined, optional
         Properties defined in the Apigee organization profile.
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
+        The ApigeeOrganization name. If not given, the metadata.name will be used.
     runtimeDatabaseEncryptionKeyRef : ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationSpecRuntimeDatabaseEncryptionKeyRef, default is Undefined, optional
         runtime database encryption key ref
     runtimeType : str, default is Undefined, required
-        Immutable. Required. Runtime type of the Apigee organization based on the Apigee subscription purchased. Possible values: RUNTIME_TYPE_UNSPECIFIED, CLOUD, HYBRID
+        Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
     """
 
 
@@ -86,7 +86,7 @@ schema ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationSpec:
 
 
 schema ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationSpecAddonsConfig:
-    """
+    r"""
     Addon configurations of the Apigee organization.
 
     Attributes
@@ -104,7 +104,7 @@ schema ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationSpecAddonsConfig:
 
 
 schema ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationSpecAddonsConfigAdvancedAPIOpsConfig:
-    """
+    r"""
     Configuration for the Advanced API Ops add-on.
 
     Attributes
@@ -118,7 +118,7 @@ schema ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationSpecAddonsConfigAdvanced
 
 
 schema ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationSpecAddonsConfigMonetizationConfig:
-    """
+    r"""
     Configuration for the Monetization add-on.
 
     Attributes
@@ -132,19 +132,17 @@ schema ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationSpecAddonsConfigMonetiza
 
 
 schema ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationSpecAuthorizedNetworkRef:
-    """
-    apigee cnrm cloud google com v1beta1 apigee organization spec authorized network ref
+    r"""
+    Compute Engine network used for Service Networking to be peered with Apigee runtime instances. See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started). Valid only when [RuntimeType](#RuntimeType) is set to `CLOUD`. The value must be set before the creation of a runtime instance and can be updated only when there are no runtime instances. For example: `default`. Apigee also supports shared VPC (that is, the host network project is not the same as the one that is peering with Apigee). See [Shared VPC overview](https://cloud.google.com/vpc/docs/shared-vpc). To use a shared VPC network, use the following format: `projects/{host-project-id}/{region}/networks/{network-name}`. For example: `projects/my-sharedvpc-host/global/networks/mynetwork` **Note:** Not supported for Apigee hybrid.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Compute Engine network used for Service Networking to be peered with Apigee runtime instances. See (https://cloud.google.com/vpc/docs/shared-vpc). To use a shared VPC network, use the following format: `projects/{host-project-id}/{region}/networks/{network-name}`. For example: `projects/my-sharedvpc-host/global/networks/mynetwork` **Note:** Not supported for Apigee hybrid.
-
-        Allowed value: The Google Cloud resource name of a `ComputeNetwork` resource (format: `projects/{{project}}/global/networks/{{name}}`).
+        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -156,23 +154,25 @@ schema ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationSpecAuthorizedNetworkRef
 
 
 schema ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationSpecProjectRef:
-    """
-    Immutable. The Project that this resource belongs to.
+    r"""
+    Required. Name of the GCP project in which to associate the Apigee organization.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Required. Name of the GCP project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: projects/<project> Authorization requires the following IAM permission on the specified resource parent: apigee.organizations.create
-
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
     external?: str
+
+    kind?: str
 
     name?: str
 
@@ -180,19 +180,17 @@ schema ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationSpecProjectRef:
 
 
 schema ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationSpecRuntimeDatabaseEncryptionKeyRef:
-    """
-    apigee cnrm cloud google com v1beta1 apigee organization spec runtime database encryption key ref
+    r"""
+    Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. If not specified or [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when (#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
-
-        Allowed value: The Google Cloud resource name of a `KMSCryptoKey` resource (format: `{{selfLink}}`).
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` of a `KMSCryptoKey` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` of a `KMSCryptoKey` resource.
     """
 
 
@@ -204,33 +202,37 @@ schema ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationSpecRuntimeDatabaseEncry
 
 
 schema ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationStatus:
-    """
-    apigee cnrm cloud google com v1beta1 apigee organization status
+    r"""
+    ApigeeOrganizationStatus defines the config connector machine state of ApigeeOrganization
 
     Attributes
     ----------
     billingType : str, default is Undefined, optional
-        Output only. Billing type of the Apigee organization. See (https://cloud.google.com/apigee/pricing). Possible values: BILLING_TYPE_UNSPECIFIED, SUBSCRIPTION, EVALUATION
+        Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
     caCertificate : str, default is Undefined, optional
-        Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when (#RuntimeType) is `CLOUD`.
+        Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when [RuntimeType](#RuntimeType) is `CLOUD`.
     conditions : [ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     createdAt : int, default is Undefined, optional
         Output only. Time that the Apigee organization was created in milliseconds since epoch.
     environments : [str], default is Undefined, optional
         Output only. List of environments in the Apigee organization.
     expiresAt : int, default is Undefined, optional
         Output only. Time that the Apigee organization is scheduled for deletion.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the ApigeeOrganization resource in GCP.
     lastModifiedAt : int, default is Undefined, optional
         Output only. Time that the Apigee organization was last modified in milliseconds since epoch.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : any, default is Undefined, optional
+        ObservedState is the state of the resource as most recently observed in GCP.
     projectId : str, default is Undefined, optional
         Output only. Project ID associated with the Apigee organization.
     state : str, default is Undefined, optional
-        Output only. State of the organization. Values other than ACTIVE means the resource is not ready to use. Possible values: SNAPSHOT_STATE_UNSPECIFIED, MISSING, OK_DOCSTORE, OK_SUBMITTED, OK_EXTERNAL, DELETED
+        Output only. State of the organization. Values other than ACTIVE means the resource is not ready to use.
     subscriptionType : str, default is Undefined, optional
-        Output only. DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See (https://cloud.google.com/apigee/pricing/). Possible values: SUBSCRIPTION_TYPE_UNSPECIFIED, PAID, TRIAL
+        Output only. DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
     """
 
 
@@ -246,9 +248,13 @@ schema ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationStatus:
 
     expiresAt?: int
 
+    externalRef?: str
+
     lastModifiedAt?: int
 
     observedGeneration?: int
+
+    observedState?: any
 
     projectId?: str
 
@@ -258,7 +264,7 @@ schema ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationStatus:
 
 
 schema ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationStatusConditionsItems0:
-    """
+    r"""
     apigee cnrm cloud google com v1beta1 apigee organization status conditions items0
 
     Attributes

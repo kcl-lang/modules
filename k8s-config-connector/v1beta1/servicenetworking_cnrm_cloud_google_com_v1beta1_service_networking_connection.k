@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ServiceNetworkingConnection:
-    """
+    r"""
     servicenetworking cnrm cloud google com v1beta1 service networking connection
 
     Attributes
@@ -36,7 +36,7 @@ schema ServiceNetworkingConnection:
 
 
 schema ServicenetworkingCnrmCloudGoogleComV1beta1ServiceNetworkingConnectionSpec:
-    """
+    r"""
     servicenetworking cnrm cloud google com v1beta1 service networking connection spec
 
     Attributes
@@ -58,7 +58,7 @@ schema ServicenetworkingCnrmCloudGoogleComV1beta1ServiceNetworkingConnectionSpec
 
 
 schema ServicenetworkingCnrmCloudGoogleComV1beta1ServiceNetworkingConnectionSpecNetworkRef:
-    """
+    r"""
     servicenetworking cnrm cloud google com v1beta1 service networking connection spec network ref
 
     Attributes
@@ -80,7 +80,7 @@ schema ServicenetworkingCnrmCloudGoogleComV1beta1ServiceNetworkingConnectionSpec
 
 
 schema ServicenetworkingCnrmCloudGoogleComV1beta1ServiceNetworkingConnectionSpecReservedPeeringRangesItems0:
-    """
+    r"""
     servicenetworking cnrm cloud google com v1beta1 service networking connection spec reserved peering ranges items0
 
     Attributes
@@ -102,7 +102,7 @@ schema ServicenetworkingCnrmCloudGoogleComV1beta1ServiceNetworkingConnectionSpec
 
 
 schema ServicenetworkingCnrmCloudGoogleComV1beta1ServiceNetworkingConnectionStatus:
-    """
+    r"""
     servicenetworking cnrm cloud google com v1beta1 service networking connection status
 
     Attributes
@@ -124,7 +124,7 @@ schema ServicenetworkingCnrmCloudGoogleComV1beta1ServiceNetworkingConnectionStat
 
 
 schema ServicenetworkingCnrmCloudGoogleComV1beta1ServiceNetworkingConnectionStatusConditionsItems0:
-    """
+    r"""
     servicenetworking cnrm cloud google com v1beta1 service networking connection status conditions items0
 
     Attributes

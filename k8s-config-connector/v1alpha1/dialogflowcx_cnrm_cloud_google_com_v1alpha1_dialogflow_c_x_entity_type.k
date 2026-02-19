@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DialogflowCXEntityType:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x entity type
 
     Attributes
@@ -36,7 +36,7 @@ schema DialogflowCXEntityType:
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXEntityTypeSpec:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x entity type spec
 
     Attributes
@@ -97,7 +97,7 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXEntityTypeSpec:
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXEntityTypeSpecEntitiesItems0:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x entity type spec entities items0
 
     Attributes
@@ -118,7 +118,7 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXEntityTypeSpecEntitiesI
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXEntityTypeSpecExcludedPhrasesItems0:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x entity type spec excluded phrases items0
 
     Attributes
@@ -132,7 +132,7 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXEntityTypeSpecExcludedP
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXEntityTypeStatus:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x entity type status
 
     Attributes
@@ -155,7 +155,7 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXEntityTypeStatus:
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXEntityTypeStatusConditionsItems0:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x entity type status conditions items0
 
     Attributes

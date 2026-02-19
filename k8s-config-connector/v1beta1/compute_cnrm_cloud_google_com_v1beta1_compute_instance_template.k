@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeInstanceTemplate:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance template
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeInstanceTemplate:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance template spec
 
     Attributes
@@ -138,7 +138,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecAdvancedMachineFeatures:
-    """
+    r"""
     Immutable. Controls for advanced machine-related behavior features.
 
     Attributes
@@ -160,7 +160,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecAdvancedMachin
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecConfidentialInstanceConfig:
-    """
+    r"""
     Immutable. The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail to create.
 
     Attributes
@@ -174,7 +174,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecConfidentialIn
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance template spec disk items0
 
     Attributes
@@ -256,7 +256,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0DiskEncryptionKey:
-    """
+    r"""
     Immutable. Encrypts or decrypts a disk using a customer-supplied encryption key.
 
     Attributes
@@ -270,7 +270,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0Disk
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0DiskEncryptionKeyKmsKeyRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance template spec disk items0 disk encryption key kms key ref
 
     Attributes
@@ -292,7 +292,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0Disk
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0ResourcePoliciesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance template spec disk items0 resource policies items0
 
     Attributes
@@ -314,7 +314,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0Reso
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0SourceDiskRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance template spec disk items0 source disk ref
 
     Attributes
@@ -336,7 +336,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0Sour
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0SourceImageEncryptionKey:
-    """
+    r"""
     Immutable. The customer-supplied encryption key of the source
     image. Required if the source image is protected by a
     customer-supplied encryption key.
@@ -361,7 +361,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0Sour
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0SourceImageEncryptionKeyKmsKeySelfLinkRef:
-    """
+    r"""
     The self link of the encryption key that is stored in Google Cloud
     KMS.
 
@@ -384,7 +384,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0Sour
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0SourceImageEncryptionKeyKmsKeyServiceAccountRef:
-    """
+    r"""
     The service account being used for the encryption request for the
     given KMS key. If absent, the Compute Engine default service account
     is used.
@@ -408,7 +408,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0Sour
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0SourceImageRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance template spec disk items0 source image ref
 
     Attributes
@@ -430,7 +430,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0Sour
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0SourceSnapshotEncryptionKey:
-    """
+    r"""
     Immutable. The customer-supplied encryption key of the source snapshot.
 
     Attributes
@@ -448,7 +448,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0Sour
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0SourceSnapshotEncryptionKeyKmsKeySelfLinkRef:
-    """
+    r"""
     The self link of the encryption key that is stored in Google Cloud
     KMS.
 
@@ -471,7 +471,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0Sour
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0SourceSnapshotEncryptionKeyKmsKeyServiceAccountRef:
-    """
+    r"""
     The service account being used for the encryption request for the
     given KMS key. If absent, the Compute Engine default service account
     is used.
@@ -495,7 +495,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0Sour
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0SourceSnapshotRef:
-    """
+    r"""
     The source snapshot to create this disk. When creating a new
     instance, one of initializeParams.sourceSnapshot,
     initializeParams.sourceImage, or disks.source is required except for
@@ -520,7 +520,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecDiskItems0Sour
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecGuestAcceleratorItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance template spec guest accelerator items0
 
     Attributes
@@ -528,7 +528,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecGuestAccelerat
     count : int, default is Undefined, required
         Immutable. The number of the guest accelerator cards exposed to this instance.
     $type : str, default is Undefined, required
-        Immutable. The accelerator type resource to expose to this instance. E.g. nvidia-tesla-k80.
+        Immutable. The accelerator type resource to expose to this instance. E.g. nvidia-tesla-t4.
     """
 
 
@@ -538,7 +538,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecGuestAccelerat
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecMetadataItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance template spec metadata items0
 
     Attributes
@@ -556,7 +556,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecMetadataItems0
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecNetworkInterfaceItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance template spec network interface items0
 
     Attributes
@@ -565,10 +565,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecNetworkInterfa
         access config
     aliasIpRange : [ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecNetworkInterfaceItems0AliasIPRangeItems0], default is Undefined, optional
         Immutable. An array of alias IP ranges for this network interface. Can only be specified for network interfaces on subnet-mode networks.
+    internalIpv6PrefixLength : int, default is Undefined, optional
+        The prefix length of the primary internal IPv6 range.
     ipv6AccessConfig : [ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecNetworkInterfaceItems0IPV6AccessConfigItems0], default is Undefined, optional
         An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
     ipv6AccessType : str, default is Undefined, optional
         One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+    ipv6Address : str, default is Undefined, optional
+        An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
     name : str, default is Undefined, optional
         The name of the network_interface.
     networkAttachment : str, default is Undefined, optional
@@ -594,9 +598,13 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecNetworkInterfa
 
     aliasIpRange?: [ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecNetworkInterfaceItems0AliasIPRangeItems0]
 
+    internalIpv6PrefixLength?: int
+
     ipv6AccessConfig?: [ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecNetworkInterfaceItems0IPV6AccessConfigItems0]
 
     ipv6AccessType?: str
+
+    ipv6Address?: str
 
     name?: str
 
@@ -618,7 +626,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecNetworkInterfa
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecNetworkInterfaceItems0AccessConfigItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance template spec network interface items0 access config items0
 
     Attributes
@@ -640,7 +648,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecNetworkInterfa
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecNetworkInterfaceItems0AccessConfigItems0NatIPRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance template spec network interface items0 access config items0 nat IP ref
 
     Attributes
@@ -662,7 +670,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecNetworkInterfa
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecNetworkInterfaceItems0AliasIPRangeItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance template spec network interface items0 alias IP range items0
 
     Attributes
@@ -680,7 +688,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecNetworkInterfa
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecNetworkInterfaceItems0IPV6AccessConfigItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance template spec network interface items0 IP v6 access config items0
 
     Attributes
@@ -710,7 +718,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecNetworkInterfa
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecNetworkInterfaceItems0NetworkRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance template spec network interface items0 network ref
 
     Attributes
@@ -732,7 +740,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecNetworkInterfa
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecNetworkInterfaceItems0SubnetworkRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance template spec network interface items0 subnetwork ref
 
     Attributes
@@ -754,7 +762,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecNetworkInterfa
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecNetworkPerformanceConfig:
-    """
+    r"""
     Immutable. Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
 
     Attributes
@@ -768,7 +776,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecNetworkPerform
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecReservationAffinity:
-    """
+    r"""
     Immutable. Specifies the reservations that this instance can consume from.
 
     Attributes
@@ -786,7 +794,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecReservationAff
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecReservationAffinitySpecificReservation:
-    """
+    r"""
     Immutable. Specifies the label selector for the reservation to use.
 
     Attributes
@@ -804,7 +812,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecReservationAff
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecResourcePoliciesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance template spec resource policies items0
 
     Attributes
@@ -826,7 +834,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecResourcePolici
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecScheduling:
-    """
+    r"""
     Immutable. The scheduling strategy to use.
 
     Attributes
@@ -879,7 +887,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecScheduling:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecSchedulingLocalSsdRecoveryTimeoutItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance template spec scheduling local ssd recovery timeout items0
 
     Attributes
@@ -901,7 +909,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecSchedulingLoca
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecSchedulingMaxRunDuration:
-    """
+    r"""
     Immutable. The timeout for new network connections to hosts.
 
     Attributes
@@ -923,7 +931,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecSchedulingMaxR
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecSchedulingNodeAffinitiesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance template spec scheduling node affinities items0
 
     Attributes
@@ -937,7 +945,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecSchedulingNode
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecServiceAccount:
-    """
+    r"""
     Immutable. Service account to attach to the instance.
 
     Attributes
@@ -955,7 +963,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecServiceAccount
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecServiceAccountServiceAccountRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance template spec service account service account ref
 
     Attributes
@@ -977,7 +985,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecServiceAccount
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecShieldedInstanceConfig:
-    """
+    r"""
     Immutable. Enable Shielded VM on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Note: shielded_instance_config can only be used with boot images with shielded vm support.
 
     Attributes
@@ -999,7 +1007,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateSpecShieldedInstan
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance template status
 
     Attributes
@@ -1033,7 +1041,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceTemplateStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance template status conditions items0
 
     Attributes

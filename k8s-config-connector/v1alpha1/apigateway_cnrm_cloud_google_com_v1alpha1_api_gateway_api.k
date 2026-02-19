@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema APIGatewayAPI:
-    """
-    apigateway cnrm cloud google com v1alpha1 API gateway API
+    r"""
+    APIGatewayAPI is the Schema for the APIGatewayAPI API
 
     Attributes
     ----------
@@ -36,48 +36,55 @@ schema APIGatewayAPI:
 
 
 schema ApigatewayCnrmCloudGoogleComV1alpha1APIGatewayAPISpec:
-    """
-    apigateway cnrm cloud google com v1alpha1 API gateway API spec
+    r"""
+    APIGatewayAPISpec defines the desired state of APIGatewayAPI
 
     Attributes
     ----------
     displayName : str, default is Undefined, optional
-        A user-visible name for the API.
+        Optional. Display name.
+    labels : {str:str}, default is Undefined, optional
+        Optional. Resource labels to represent user-provided metadata. For more information, see the {{compute_name_short}} documentation: https://cloud.google.com/compute/docs/labeling-resources
     managedService : str, default is Undefined, optional
-        Immutable. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
-        If not specified, a new Service will automatically be created in the same project as this API.
-    projectRef : ApigatewayCnrmCloudGoogleComV1alpha1APIGatewayAPISpecProjectRef, default is Undefined, required
+        Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
+    projectRef : ApigatewayCnrmCloudGoogleComV1alpha1APIGatewayAPISpecProjectRef, default is Undefined, optional
         project ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The apiId of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The APIGatewayAPI name. If not given, the metadata.name will be used.
     """
 
 
     displayName?: str
 
+    labels?: {str:str}
+
     managedService?: str
 
-    projectRef: ApigatewayCnrmCloudGoogleComV1alpha1APIGatewayAPISpecProjectRef
+    projectRef?: ApigatewayCnrmCloudGoogleComV1alpha1APIGatewayAPISpecProjectRef
 
     resourceID?: str
 
 
 schema ApigatewayCnrmCloudGoogleComV1alpha1APIGatewayAPISpecProjectRef:
-    """
-    The project that this resource belongs to.
+    r"""
+     Optional. The project that this resource belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
     external?: str
+
+    kind?: str
 
     name?: str
 
@@ -85,33 +92,33 @@ schema ApigatewayCnrmCloudGoogleComV1alpha1APIGatewayAPISpecProjectRef:
 
 
 schema ApigatewayCnrmCloudGoogleComV1alpha1APIGatewayAPIStatus:
-    """
-    apigateway cnrm cloud google com v1alpha1 API gateway API status
+    r"""
+    APIGatewayAPIStatus defines the config connector machine state of APIGatewayAPI
 
     Attributes
     ----------
     conditions : [ApigatewayCnrmCloudGoogleComV1alpha1APIGatewayAPIStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
-    createTime : str, default is Undefined, optional
-        Creation timestamp in RFC3339 text format.
-    name : str, default is Undefined, optional
-        The resource name of the API. Format 'projects/{{project}}/locations/global/apis/{{apiId}}'.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the APIGatewayAPI resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : ApigatewayCnrmCloudGoogleComV1alpha1APIGatewayAPIStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [ApigatewayCnrmCloudGoogleComV1alpha1APIGatewayAPIStatusConditionsItems0]
 
-    createTime?: str
-
-    name?: str
+    externalRef?: str
 
     observedGeneration?: int
 
+    observedState?: ApigatewayCnrmCloudGoogleComV1alpha1APIGatewayAPIStatusObservedState
+
 
 schema ApigatewayCnrmCloudGoogleComV1alpha1APIGatewayAPIStatusConditionsItems0:
-    """
+    r"""
     apigateway cnrm cloud google com v1alpha1 API gateway API status conditions items0
 
     Attributes
@@ -138,5 +145,31 @@ schema ApigatewayCnrmCloudGoogleComV1alpha1APIGatewayAPIStatusConditionsItems0:
     status?: str
 
     $type?: str
+
+
+schema ApigatewayCnrmCloudGoogleComV1alpha1APIGatewayAPIStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    createTime : str, default is Undefined, optional
+        Created time.
+    name : str, default is Undefined, optional
+        Resource name of the API. Format: projects/{project}/locations/global/apis/{api}
+    state : str, default is Undefined, optional
+         State of the API.
+    updateTime : str, default is Undefined, optional
+        Updated time.
+    """
+
+
+    createTime?: str
+
+    name?: str
+
+    state?: str
+
+    updateTime?: str
 
 
