@@ -1,0 +1,25 @@
+version: v1.12.3
+name: cluster-api
+displayName: cluster-api
+createdAt: "2026-02-21T11:26:53Z"
+description: KCL package for https://github.com/kubernetes-sigs/cluster-api CRDs
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `cluster-api` with tag `v1.12.3` as dependency
+  ```
+  kcl mod add cluster-api:v1.12.3
+  ```
+
+  #### Pull `cluster-api` with tag `v1.12.3` to local
+  ```
+  kcl mod pull cluster-api:v1.12.3
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
