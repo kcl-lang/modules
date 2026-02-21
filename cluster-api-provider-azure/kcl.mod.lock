@@ -1,5 +1,17 @@
 [dependencies]
+  [dependencies.cluster-api]
+    name = "cluster-api"
+    full_name = "cluster-api_v1.12.3"
+    version = "v1.12.3"
+    sum = "YTi6fdOdnZyiu5EDlSd7hF+kLwQBLMLB30UuR2fsGpY="
+    reg = "ghcr.io"
+    repo = "kcl-lang/cluster-api"
+    oci_tag = "v1.12.3"
   [dependencies.k8s]
     name = "k8s"
     full_name = "k8s_1.32.4"
     version = "1.32.4"
+    sum = "WrltC/mTXtdzmhBZxlvM71wJL5C/UZ/vW+bF3nFvNbM="
+    reg = "ghcr.io"
+    repo = "kcl-lang/k8s"
+    oci_tag = "1.32.4"
