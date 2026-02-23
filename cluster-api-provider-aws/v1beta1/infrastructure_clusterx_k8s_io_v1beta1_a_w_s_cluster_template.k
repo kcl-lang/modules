@@ -78,7 +78,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateMetadata:
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize
+        labels is a map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: http://kubernetes.io/docs/user-guide/labels
@@ -208,15 +208,19 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecContr
     Attributes
     ----------
     host : str, default is Undefined, required
-        The hostname on which the API server is serving.
+        host is the hostname on which the API server is serving.
     port : int, default is Undefined, required
-        The port on which the API server is serving.
+        port is the port on which the API server is serving.
     """
 
 
     host: str
 
     port: int
+
+
+    check:
+        len(host) <= 512
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecControlPlaneLoadBalancer:

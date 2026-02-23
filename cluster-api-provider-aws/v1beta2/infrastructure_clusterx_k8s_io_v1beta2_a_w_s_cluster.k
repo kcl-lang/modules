@@ -163,15 +163,19 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterSpecControlPlaneEndpoint:
     Attributes
     ----------
     host : str, default is Undefined, required
-        The hostname on which the API server is serving.
+        host is the hostname on which the API server is serving.
     port : int, default is Undefined, required
-        The port on which the API server is serving.
+        port is the port on which the API server is serving.
     """
 
 
     host: str
 
     port: int
+
+
+    check:
+        len(host) <= 512
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterSpecControlPlaneLoadBalancer:
@@ -456,6 +460,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterSpecNetwork:
     ----------
     additionalControlPlaneIngressRules : [InfrastructureClusterxK8sIoV1beta2AWSClusterSpecNetworkAdditionalControlPlaneIngressRulesItems0], default is Undefined, optional
         AdditionalControlPlaneIngressRules is an optional set of ingress rules to add to the control plane
+    additionalNodeIngressRules : [InfrastructureClusterxK8sIoV1beta2AWSClusterSpecNetworkAdditionalNodeIngressRulesItems0], default is Undefined, optional
+        AdditionalNodeIngressRules is an optional set of ingress rules to add to every node
     cni : InfrastructureClusterxK8sIoV1beta2AWSClusterSpecNetworkCni, default is Undefined, optional
         cni
     nodePortIngressRuleCidrBlocks : [str], default is Undefined, optional
@@ -473,6 +479,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterSpecNetwork:
 
     additionalControlPlaneIngressRules?: [InfrastructureClusterxK8sIoV1beta2AWSClusterSpecNetworkAdditionalControlPlaneIngressRulesItems0]
 
+    additionalNodeIngressRules?: [InfrastructureClusterxK8sIoV1beta2AWSClusterSpecNetworkAdditionalNodeIngressRulesItems0]
+
     cni?: InfrastructureClusterxK8sIoV1beta2AWSClusterSpecNetworkCni
 
     nodePortIngressRuleCidrBlocks?: [str]
@@ -485,6 +493,53 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterSpecNetwork:
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterSpecNetworkAdditionalControlPlaneIngressRulesItems0:
+    r"""
+    IngressRule defines an AWS ingress rule for security groups.
+
+    Attributes
+    ----------
+    cidrBlocks : [str], default is Undefined, optional
+        List of CIDR blocks to allow access from. Cannot be specified with SourceSecurityGroupID.
+    description : str, default is Undefined, required
+        Description provides extended information about the ingress rule.
+    fromPort : int, default is Undefined, required
+        FromPort is the start of port range.
+    ipv6CidrBlocks : [str], default is Undefined, optional
+        List of IPv6 CIDR blocks to allow access from. Cannot be specified with SourceSecurityGroupID.
+    natGatewaysIPsSource : bool, default is Undefined, optional
+        NatGatewaysIPsSource use the NAT gateways IPs as the source for the ingress rule.
+    $protocol : str, default is Undefined, required
+        Protocol is the protocol for the ingress rule. Accepted values are "-1" (all), "4" (IP in IP),"tcp", "udp", "icmp", and "58" (ICMPv6), "50" (ESP).
+    sourceSecurityGroupIds : [str], default is Undefined, optional
+        The security group id to allow access from. Cannot be specified with CidrBlocks.
+    sourceSecurityGroupRoles : [str], default is Undefined, optional
+        The security group role to allow access from. Cannot be specified with CidrBlocks.
+        The field will be combined with source security group IDs if specified.
+    toPort : int, default is Undefined, required
+        ToPort is the end of port range.
+    """
+
+
+    cidrBlocks?: [str]
+
+    description: str
+
+    fromPort: int
+
+    ipv6CidrBlocks?: [str]
+
+    natGatewaysIPsSource?: bool
+
+    $protocol: "-1" | "4" | "tcp" | "udp" | "icmp" | "58" | "50"
+
+    sourceSecurityGroupIds?: [str]
+
+    sourceSecurityGroupRoles?: [str]
+
+    toPort: int
+
+
+schema InfrastructureClusterxK8sIoV1beta2AWSClusterSpecNetworkAdditionalNodeIngressRulesItems0:
     r"""
     IngressRule defines an AWS ingress rule for security groups.
 
@@ -1235,10 +1290,29 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterStatusBastion:
         Availability zone of instance
     capacityReservationId : str, default is Undefined, optional
         CapacityReservationID specifies the target Capacity Reservation into which the instance should be launched.
+    capacityReservationPreference : str, default is Undefined, optional
+        CapacityReservationPreference specifies the preference for use of Capacity Reservations by the instance. Valid values include:
+        "Open": The instance may make use of open Capacity Reservations that match its AZ and InstanceType
+        "None": The instance may not make use of any Capacity Reservations. This is to conserve open reservations for desired workloads
+        "CapacityReservationsOnly": The instance will only run if matched or targeted to a Capacity Reservation. Note that this is incompatible with a MarketType of `Spot`
+    cpuOptions : InfrastructureClusterxK8sIoV1beta2AWSClusterStatusBastionCPUOptions, default is Undefined, optional
+        cpu options
+    dynamicHostAllocation : InfrastructureClusterxK8sIoV1beta2AWSClusterStatusBastionDynamicHostAllocation, default is Undefined, optional
+        dynamic host allocation
     ebsOptimized : bool, default is Undefined, optional
         Indicates whether the instance is optimized for Amazon EBS I/O.
     enaSupport : bool, default is Undefined, optional
         Specifies whether enhanced networking with ENA is enabled.
+    hostAffinity : str, default is Undefined, optional
+        HostAffinity specifies the dedicated host affinity setting for the instance.
+        When HostAffinity is set to "host", an instance started onto a specific host always restarts on the same host if stopped:
+        - If HostID is set, the instance launches on the specific host and must return to that same host after any stop/start (Targeted & Pinned).
+        - If HostID is not set, the instance gets launched on any available and must returns to the same host after any stop/start (Auto-placed & Pinned).
+        When HostAffinity is set to "default" (the default value), the instance (when restarted) can return on any available host:
+        - If HostID is set, the instance launches on the specified host now, but (when restarted) can return to any available hosts (Targeted & Flexible).
+        - If HostID is not set, the instance launches on any available host now, and (when restarted) can return to any available hosts (Auto-placed & Flexible).
+    hostID : str, default is Undefined, optional
+        HostID specifies the dedicated host on which the instance should be started.
     iamProfile : str, default is Undefined, optional
         The name of the IAM instance profile associated with the instance, if applicable.
     id : str, default is Undefined, required
@@ -1306,9 +1380,19 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterStatusBastion:
 
     capacityReservationId?: str
 
+    capacityReservationPreference?: str
+
+    cpuOptions?: InfrastructureClusterxK8sIoV1beta2AWSClusterStatusBastionCPUOptions
+
+    dynamicHostAllocation?: InfrastructureClusterxK8sIoV1beta2AWSClusterStatusBastionDynamicHostAllocation
+
     ebsOptimized?: bool
 
     enaSupport?: bool
+
+    hostAffinity?: "default" | "host"
+
+    hostID?: str
 
     iamProfile?: str
 
@@ -1373,15 +1457,61 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterStatusBastionAddressesItems0:
     Attributes
     ----------
     address : str, default is Undefined, required
-        The machine address.
+        address is the machine address.
     $type : str, default is Undefined, required
-        Machine address type, one of Hostname, ExternalIP, InternalIP, ExternalDNS or InternalDNS.
+        type is the machine address type, one of Hostname, ExternalIP, InternalIP, ExternalDNS or InternalDNS.
     """
 
 
     address: str
 
-    $type: str
+    $type: "Hostname" | "ExternalIP" | "InternalIP" | "ExternalDNS" | "InternalDNS"
+
+
+    check:
+        len(address) <= 256
+        len(address) >= 1
+
+
+schema InfrastructureClusterxK8sIoV1beta2AWSClusterStatusBastionCPUOptions:
+    r"""
+    CPUOptions defines CPU-related settings for the instance, including the confidential computing policy.
+    When omitted, this means no opinion and the AWS platform is left to choose a reasonable default.
+
+    Attributes
+    ----------
+    confidentialCompute : str, default is Undefined, optional
+        ConfidentialCompute specifies whether confidential computing should be enabled for the instance,
+        and, if so, which confidential computing technology to use.
+        Valid values are: Disabled, AMDEncryptedVirtualizationNestedPaging
+        When set to Disabled, confidential computing will be disabled for the instance.
+        When set to AMDEncryptedVirtualizationNestedPaging, AMD SEV-SNP will be used as the confidential computing technology for the instance.
+        In this case, ensure the following conditions are met:
+        1) The selected instance type supports AMD SEV-SNP.
+        2) The selected AWS region supports AMD SEV-SNP.
+        3) The selected AMI supports AMD SEV-SNP.
+        More details can be checked at https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sev-snp.html
+        When omitted, this means no opinion and the AWS platform is left to choose a reasonable default,
+        which is subject to change without notice. The current default is Disabled.
+    """
+
+
+    confidentialCompute?: "Disabled" | "AMDEncryptedVirtualizationNestedPaging"
+
+
+schema InfrastructureClusterxK8sIoV1beta2AWSClusterStatusBastionDynamicHostAllocation:
+    r"""
+    DynamicHostAllocation enables automatic allocation of dedicated hosts.
+    This field is mutually exclusive with HostID.
+
+    Attributes
+    ----------
+    tags : {str:str}, default is Undefined, optional
+        Tags to apply to the allocated dedicated host.
+    """
+
+
+    tags?: {str:str}
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterStatusBastionInstanceMetadataOptions:
@@ -1573,14 +1703,14 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may be empty.
     severity : str, default is Undefined, optional
@@ -1607,6 +1737,16 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterStatusConditionsItems0:
     status: str
 
     $type: str
+
+
+    check:
+        len(message) <= 10240 if message
+        len(message) >= 1 if message
+        len(reason) <= 256 if reason
+        len(reason) >= 1 if reason
+        len(severity) <= 32 if severity
+        len($type) <= 256
+        len($type) >= 1
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterStatusFailureDomainsAnon:

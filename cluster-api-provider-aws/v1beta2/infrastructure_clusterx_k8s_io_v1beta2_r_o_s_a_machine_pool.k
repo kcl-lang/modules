@@ -56,8 +56,13 @@ schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpec:
     availabilityZone : str, default is Undefined, optional
         AvailabilityZone is an optinal field specifying the availability zone where instances of this machine pool should run
         For Multi-AZ clusters, you can create a machine pool in a Single-AZ of your choice.
+    capacityReservationID : str, default is Undefined, optional
+        CapacityReservationID specifies the ID of an AWS On-Demand Capacity Reservation and Capacity Blocks for ML.
+        The CapacityReservationID must be pre-created in advance, before creating a NodePool.
+    imageType : str, default is Undefined, optional
+        ImageType is the AMI (Amazon Machine Image) to use for running the associated NodePool (i.e. Windows or Default/Linux).
     instanceType : str, default is Undefined, required
-        InstanceType specifies the AWS instance type
+        InstanceType specifies the AWS instance type, for example `r5.xlarge`. Instance type ref; https://aws.amazon.com/ec2/instance-types/
     labels : {str:str}, default is Undefined, optional
         Labels specifies labels for the Kubernetes node objects
     nodeDrainGracePeriod : str, default is Undefined, optional
@@ -98,6 +103,10 @@ schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpec:
     autoscaling?: InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpecAutoscaling
 
     availabilityZone?: str
+
+    capacityReservationID?: str
+
+    imageType?: "Windows" | "Default"
 
     instanceType: str
 
@@ -150,7 +159,7 @@ schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpecAutoscaling:
 
     check:
         maxReplicas >= 1 if maxReplicas not in [None, Undefined]
-        minReplicas >= 1 if minReplicas not in [None, Undefined]
+        minReplicas >= 0 if minReplicas not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolSpecTaintsItems0:
@@ -288,14 +297,14 @@ schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may be empty.
     severity : str, default is Undefined, optional
@@ -322,5 +331,15 @@ schema InfrastructureClusterxK8sIoV1beta2ROSAMachinePoolStatusConditionsItems0:
     status: str
 
     $type: str
+
+
+    check:
+        len(message) <= 10240 if message
+        len(message) >= 1 if message
+        len(reason) <= 256 if reason
+        len(reason) >= 1 if reason
+        len(severity) <= 32 if severity
+        len($type) <= 256
+        len($type) >= 1
 
 

@@ -48,7 +48,9 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpec:
     auditLogRoleARN : str, default is Undefined, optional
         AuditLogRoleARN defines the role that is used to forward audit logs to AWS CloudWatch.
         If not set, audit log forwarding is disabled.
-    availabilityZones : [str], default is Undefined, required
+    autoNode : ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecAutoNode, default is Undefined, optional
+        auto node
+    availabilityZones : [str], default is Undefined, optional
         AvailabilityZones describe AWS AvailabilityZones of the worker nodes.
         should match the AvailabilityZones of the provided Subnets.
         a machinepool will be created for each availabilityZone.
@@ -58,6 +60,8 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpec:
         is running.
     channelGroup : str, default is "stable", required
         OpenShift version channel group, default is stable.
+    cloudWatchlogForwarder : ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecCloudWatchlogForwarder, default is Undefined, optional
+        cloud watchlog forwarder
     clusterRegistryConfig : ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecClusterRegistryConfig, default is Undefined, optional
         cluster registry config
     controlPlaneEndpoint : ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecControlPlaneEndpoint, default is Undefined, optional
@@ -86,28 +90,37 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpec:
         At most one provider can be configured.
     identityRef : ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecIdentityRef, default is Undefined, optional
         identity ref
-    installerRoleARN : str, default is Undefined, required
-        InstallerRoleARN is an AWS IAM role that OpenShift Cluster Manager will assume to create the cluster..
+    installerRoleARN : str, default is Undefined, optional
+        InstallerRoleARN is an AWS IAM role that OpenShift Cluster Manager will assume to create the cluster.
+        Required if RosaRoleConfigRef is not specified.
     network : ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecNetwork, default is Undefined, optional
         network
-    oidcID : str, default is Undefined, required
+    oidcID : str, default is Undefined, optional
         The ID of the internal OpenID Connect Provider.
+        Required if RosaRoleConfigRef is not specified.
     provisionShardID : str, default is Undefined, optional
         ProvisionShardID defines the shard where ROSA hosted control plane components will be hosted.
     region : str, default is Undefined, required
         The AWS Region the cluster lives in.
-    rolesRef : ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecRolesRef, default is Undefined, required
+    rolesRef : ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecRolesRef, default is Undefined, optional
         roles ref
     rosaClusterName : str, default is Undefined, required
         Cluster name must be valid DNS-1035 label, so it must consist of lower case alphanumeric
         characters or '-', start with an alphabetic character, end with an alphanumeric character
         and have a max length of 54 characters.
-    subnets : [str], default is Undefined, required
+    rosaNetworkRef : ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecRosaNetworkRef, default is Undefined, optional
+        rosa network ref
+    rosaRoleConfigRef : ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecRosaRoleConfigRef, default is Undefined, optional
+        rosa role config ref
+    s3LogForwarder : ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecS3LogForwarder, default is Undefined, optional
+        s3 log forwarder
+    subnets : [str], default is Undefined, optional
         The Subnet IDs to use when installing the cluster.
         SubnetIDs should come in pairs; two per availability zone, one private and one public.
-    supportRoleARN : str, default is Undefined, required
+    supportRoleARN : str, default is Undefined, optional
         SupportRoleARN is an AWS IAM role used by Red Hat SREs to enable
         access to the cluster account in order to provide support.
+        Required if RosaRoleConfigRef is not specified.
     version : str, default is Undefined, required
         OpenShift semantic version, for example "4.14.5".
     versionGate : str, default is "WaitForAcknowledge", required
@@ -116,8 +129,9 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpec:
         WaitForAcknowledge: If acknowledgment is required, the upgrade will not proceed until VersionGate is set to Acknowledge or AlwaysAcknowledge.
         Acknowledge: If acknowledgment is required, apply it for the upgrade. After upgrade is done set the version gate to WaitForAcknowledge.
         AlwaysAcknowledge: If acknowledgment is required, apply it and proceed with the upgrade.
-    workerRoleARN : str, default is Undefined, required
+    workerRoleARN : str, default is Undefined, optional
         WorkerRoleARN is an AWS IAM role that will be attached to worker instances.
+        Required if RosaRoleConfigRef is not specified.
     """
 
 
@@ -125,11 +139,15 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpec:
 
     auditLogRoleARN?: str
 
-    availabilityZones: [str]
+    autoNode?: ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecAutoNode
+
+    availabilityZones?: [str]
 
     billingAccount?: str
 
-    channelGroup: "stable" | "candidate" | "nightly" = "stable"
+    channelGroup: "stable" | "eus" | "fast" | "candidate" | "nightly" = "stable"
+
+    cloudWatchlogForwarder?: ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecCloudWatchlogForwarder
 
     clusterRegistryConfig?: ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecClusterRegistryConfig
 
@@ -151,29 +169,35 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpec:
 
     identityRef?: ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecIdentityRef
 
-    installerRoleARN: str
+    installerRoleARN?: str
 
     network?: ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecNetwork
 
-    oidcID: str
+    oidcID?: str
 
     provisionShardID?: str
 
     region: str
 
-    rolesRef: ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecRolesRef
+    rolesRef?: ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecRolesRef
 
     rosaClusterName: str
 
-    subnets: [str]
+    rosaNetworkRef?: ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecRosaNetworkRef
 
-    supportRoleARN: str
+    rosaRoleConfigRef?: ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecRosaRoleConfigRef
+
+    s3LogForwarder?: ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecS3LogForwarder
+
+    subnets?: [str]
+
+    supportRoleARN?: str
 
     version: str
 
     versionGate: "Acknowledge" | "WaitForAcknowledge" | "AlwaysAcknowledge" = "WaitForAcknowledge"
 
-    workerRoleARN: str
+    workerRoleARN?: str
 
 
     check:
@@ -182,6 +206,55 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpec:
         len(externalAuthProviders) <= 1 if externalAuthProviders
         len(rosaClusterName) <= 54
         _regex_match(str(rosaClusterName), r"^[a-z]([-a-z0-9]*[a-z0-9])?$")
+
+
+schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecAutoNode:
+    r"""
+    autoNode set the autoNode mode and roleARN.
+
+    Attributes
+    ----------
+    mode : str, default is "Disabled", optional
+        mode specifies the mode for the AutoNode. Setting Enable/Disable mode will allows/disallow karpenter AutoNode scaling.
+    roleARN : str, default is Undefined, optional
+        roleARN sets the autoNode role ARN, which includes the IAM policy and cluster-specific role that grant the necessary permissions to the Karpenter controller.
+        The role must be attached with the same OIDC-ID that is used with the ROSA-HCP cluster.
+    """
+
+
+    mode?: "Enabled" | "Disabled" = "Disabled"
+
+    roleARN?: str
+
+
+    check:
+        len(roleARN) <= 2048 if roleARN
+
+
+schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecCloudWatchlogForwarder:
+    r"""
+    cloudWatchlogForwarder set the cloudWatch log forward config for applications and groupVersions.
+
+    Attributes
+    ----------
+    applications : [str], default is Undefined, optional
+        applications list included in the groupLog Ids ex; for groupLog api allowed applications as audit-webhook.
+    cloudWatchLogGroupName : str, default is Undefined, optional
+        cloudWatchLogGroupName is the name of the CloudWatch log group.
+    cloudWatchLogRoleArn : str, default is Undefined, optional
+        cloudWatchLogRoleArn is the ARN of the IAM CloudWatch role for log distribution.
+    groupLogIDs : [str], default is Undefined, optional
+        groupLogIDs is list of available groupLog Ids ex; api, authentication, controller manager, scheduler
+    """
+
+
+    applications?: [str]
+
+    cloudWatchLogGroupName?: str
+
+    cloudWatchLogRoleArn?: str
+
+    groupLogIDs?: [str]
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecClusterRegistryConfig:
@@ -270,15 +343,19 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecControlPlaneEndpoint:
     Attributes
     ----------
     host : str, default is Undefined, required
-        The hostname on which the API server is serving.
+        host is the hostname on which the API server is serving.
     port : int, default is Undefined, required
-        The port on which the API server is serving.
+        port is the port on which the API server is serving.
     """
 
 
     host: str
 
     port: int
+
+
+    check:
+        len(host) <= 512
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecCredentialsSecretRef:
@@ -356,7 +433,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecDefaultMachinePoolSpe
 
     check:
         maxReplicas >= 1 if maxReplicas not in [None, Undefined]
-        minReplicas >= 1 if minReplicas not in [None, Undefined]
+        minReplicas >= 0 if minReplicas not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProvidersItems0:
@@ -692,6 +769,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecNetwork:
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecRolesRef:
     r"""
     AWS IAM roles used to perform credential requests by the openshift operators.
+    Required if RosaRoleConfigRef is not specified.
 
     Attributes
     ----------
@@ -1080,6 +1158,70 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecRolesRef:
     storageARN: str
 
 
+schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecRosaNetworkRef:
+    r"""
+    ROSANetworkRef references ROSANetwork custom resource that contains the networking infrastructure
+    for the ROSA HCP cluster.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    """
+
+
+    name?: str = ""
+
+
+schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecRosaRoleConfigRef:
+    r"""
+    RosaRoleConfigRef is a reference to a RosaRoleConfig resource that contains account roles, operator roles and OIDC configuration.
+    RosaRoleConfigRef and role fields such as installerRoleARN, supportRoleARN, workerRoleARN, rolesRef and oidcID are mutually exclusive.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        Name of the referent.
+        This field is effectively required, but due to backwards compatibility is
+        allowed to be empty. Instances of this type with an empty value here are
+        almost certainly wrong.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    """
+
+
+    name?: str = ""
+
+
+schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecS3LogForwarder:
+    r"""
+    s3LogForwarder set the AWS S3 log forward config for applications and groupVersions.
+
+    Attributes
+    ----------
+    applications : [str], default is Undefined, optional
+        applications list included in the groupLog Ids ex; for groupLog api allowed applications as audit-webhook.
+    groupLogIDs : [str], default is Undefined, optional
+        groupLogIDs is list of available groupLog Ids ex; api, authentication, controller manager, scheduler
+    s3ConfigBucketName : str, default is Undefined, optional
+        s3ConfigBucketName is the name of the S3 bucket
+    s3ConfigBucketPrefix : str, default is Undefined, optional
+        s3ConfigBucketPrefix is the prefix to use for objects stored in the S3 bucket.
+    """
+
+
+    applications?: [str]
+
+    groupLogIDs?: [str]
+
+    s3ConfigBucketName?: str
+
+    s3ConfigBucketPrefix?: str
+
+
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneStatus:
     r"""
     RosaControlPlaneStatus defines the observed state of ROSAControlPlane.
@@ -1113,6 +1255,8 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneStatus:
         OIDCEndpointURL is the endpoint url for the managed OIDC provider.
     ready : bool, default is Undefined, required
         Ready denotes that the ROSAControlPlane API Server is ready to receive requests.
+    version : str, default is Undefined, optional
+        OpenShift semantic version, for example "4.14.5".
     """
 
 
@@ -1134,6 +1278,8 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneStatus:
 
     ready: bool = False
 
+    version?: str
+
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneStatusConditionsItems0:
     r"""
@@ -1142,14 +1288,14 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may be empty.
     severity : str, default is Undefined, optional
@@ -1176,5 +1322,15 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneStatusConditionsItems0:
     status: str
 
     $type: str
+
+
+    check:
+        len(message) <= 10240 if message
+        len(message) >= 1 if message
+        len(reason) <= 256 if reason
+        len(reason) >= 1 if reason
+        len(severity) <= 32 if severity
+        len($type) <= 256
+        len($type) >= 1
 
 

@@ -11,31 +11,31 @@ schema AWSFargateProfile:
 
     Attributes
     ----------
-    apiVersion : str, default is "infrastructure.cluster.x-k8s.io/v1beta1", required
+    apiVersion : str, default is "infrastructure.cluster.x-k8s.io/v1beta2", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
     kind : str, default is "AWSFargateProfile", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : InfrastructureClusterxK8sIoV1beta1AWSFargateProfileSpec, default is Undefined, optional
+    spec : InfrastructureClusterxK8sIoV1beta2AWSFargateProfileSpec, default is Undefined, optional
         spec
-    status : InfrastructureClusterxK8sIoV1beta1AWSFargateProfileStatus, default is Undefined, optional
+    status : InfrastructureClusterxK8sIoV1beta2AWSFargateProfileStatus, default is Undefined, optional
         status
     """
 
 
-    apiVersion: "infrastructure.cluster.x-k8s.io/v1beta1" = "infrastructure.cluster.x-k8s.io/v1beta1"
+    apiVersion: "infrastructure.cluster.x-k8s.io/v1beta2" = "infrastructure.cluster.x-k8s.io/v1beta2"
 
     kind: "AWSFargateProfile" = "AWSFargateProfile"
 
     metadata?: v1.ObjectMeta
 
-    spec?: InfrastructureClusterxK8sIoV1beta1AWSFargateProfileSpec
+    spec?: InfrastructureClusterxK8sIoV1beta2AWSFargateProfileSpec
 
-    status?: InfrastructureClusterxK8sIoV1beta1AWSFargateProfileStatus
+    status?: InfrastructureClusterxK8sIoV1beta2AWSFargateProfileStatus
 
 
-schema InfrastructureClusterxK8sIoV1beta1AWSFargateProfileSpec:
+schema InfrastructureClusterxK8sIoV1beta2AWSFargateProfileSpec:
     r"""
     FargateProfileSpec defines the desired state of FargateProfile.
 
@@ -53,7 +53,27 @@ schema InfrastructureClusterxK8sIoV1beta1AWSFargateProfileSpec:
         If the role is pre-existing we will treat it as unmanaged
         and not delete it on deletion. If the EKSEnableIAM feature
         flag is true and no name is supplied then a role is created.
-    selectors : [InfrastructureClusterxK8sIoV1beta1AWSFargateProfileSpecSelectorsItems0], default is Undefined, optional
+    rolePath : str, default is Undefined, optional
+        RolePath sets the path to the role. For more information about paths, see IAM Identifiers
+        (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+        in the IAM User Guide.
+
+        This parameter is optional. If it is not included, it defaults to a slash
+        (/).
+    rolePermissionsBoundary : str, default is Undefined, optional
+        RolePermissionsBoundary sets the ARN of the managed policy that is used
+        to set the permissions boundary for the role.
+
+        A permissions boundary policy defines the maximum permissions that identity-based
+        policies can grant to an entity, but does not grant permissions. Permissions
+        boundaries do not define the maximum permissions that a resource-based policy
+        can grant to an entity. To learn more, see Permissions boundaries for IAM
+        entities (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
+        in the IAM User Guide.
+
+        For more information about policy types, see Policy types (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policy-types)
+        in the IAM User Guide.
+    selectors : [InfrastructureClusterxK8sIoV1beta2AWSFargateProfileSpecSelectorsItems0], default is Undefined, optional
         Selectors specify fargate pod selectors.
     subnetIDs : [str], default is Undefined, optional
         SubnetIDs specifies which subnets are used for the
@@ -69,7 +89,11 @@ schema InfrastructureClusterxK8sIoV1beta1AWSFargateProfileSpec:
 
     roleName?: str
 
-    selectors?: [InfrastructureClusterxK8sIoV1beta1AWSFargateProfileSpecSelectorsItems0]
+    rolePath?: str
+
+    rolePermissionsBoundary?: str
+
+    selectors?: [InfrastructureClusterxK8sIoV1beta2AWSFargateProfileSpecSelectorsItems0]
 
     subnetIDs?: [str]
 
@@ -78,7 +102,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSFargateProfileSpec:
         len(clusterName) >= 1
 
 
-schema InfrastructureClusterxK8sIoV1beta1AWSFargateProfileSpecSelectorsItems0:
+schema InfrastructureClusterxK8sIoV1beta2AWSFargateProfileSpecSelectorsItems0:
     r"""
     FargateSelector specifies a selector for pods that should run on this fargate pool.
 
@@ -96,13 +120,13 @@ schema InfrastructureClusterxK8sIoV1beta1AWSFargateProfileSpecSelectorsItems0:
     namespace?: str
 
 
-schema InfrastructureClusterxK8sIoV1beta1AWSFargateProfileStatus:
+schema InfrastructureClusterxK8sIoV1beta2AWSFargateProfileStatus:
     r"""
     FargateProfileStatus defines the observed state of FargateProfile.
 
     Attributes
     ----------
-    conditions : [InfrastructureClusterxK8sIoV1beta1AWSFargateProfileStatusConditionsItems0], default is Undefined, optional
+    conditions : [InfrastructureClusterxK8sIoV1beta2AWSFargateProfileStatusConditionsItems0], default is Undefined, optional
         Conditions defines current state of the Fargate profile.
     failureMessage : str, default is Undefined, optional
         FailureMessage will be set in the event that there is a terminal problem
@@ -143,7 +167,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSFargateProfileStatus:
     """
 
 
-    conditions?: [InfrastructureClusterxK8sIoV1beta1AWSFargateProfileStatusConditionsItems0]
+    conditions?: [InfrastructureClusterxK8sIoV1beta2AWSFargateProfileStatusConditionsItems0]
 
     failureMessage?: str
 
@@ -152,7 +176,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSFargateProfileStatus:
     ready: bool = False
 
 
-schema InfrastructureClusterxK8sIoV1beta1AWSFargateProfileStatusConditionsItems0:
+schema InfrastructureClusterxK8sIoV1beta2AWSFargateProfileStatusConditionsItems0:
     r"""
     Condition defines an observation of a Cluster API resource operational state.
 

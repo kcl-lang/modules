@@ -173,6 +173,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpecAdditionalSecurityGroupsI
     ----------
     arn : str, default is Undefined, optional
         ARN of resource.
+
         Deprecated: This field has no function and is going to be removed in the next release.
     filters : [InfrastructureClusterxK8sIoV1beta1AWSMachineSpecAdditionalSecurityGroupsItems0FiltersItems0], default is Undefined, optional
         Filters is a set of key/value pairs used to identify a resource
@@ -387,6 +388,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineSpecSubnet:
     ----------
     arn : str, default is Undefined, optional
         ARN of resource.
+
         Deprecated: This field has no function and is going to be removed in the next release.
     filters : [InfrastructureClusterxK8sIoV1beta1AWSMachineSpecSubnetFiltersItems0], default is Undefined, optional
         Filters is a set of key/value pairs used to identify a resource
@@ -498,15 +500,20 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineStatusAddressesItems0:
     Attributes
     ----------
     address : str, default is Undefined, required
-        The machine address.
+        address is the machine address.
     $type : str, default is Undefined, required
-        Machine address type, one of Hostname, ExternalIP, InternalIP, ExternalDNS or InternalDNS.
+        type is the machine address type, one of Hostname, ExternalIP, InternalIP, ExternalDNS or InternalDNS.
     """
 
 
     address: str
 
-    $type: str
+    $type: "Hostname" | "ExternalIP" | "InternalIP" | "ExternalDNS" | "InternalDNS"
+
+
+    check:
+        len(address) <= 256
+        len(address) >= 1
 
 
 schema InfrastructureClusterxK8sIoV1beta1AWSMachineStatusConditionsItems0:
@@ -516,14 +523,14 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may be empty.
     severity : str, default is Undefined, optional
@@ -550,5 +557,15 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineStatusConditionsItems0:
     status: str
 
     $type: str
+
+
+    check:
+        len(message) <= 10240 if message
+        len(message) >= 1 if message
+        len(reason) <= 256 if reason
+        len(reason) >= 1 if reason
+        len(severity) <= 32 if severity
+        len($type) <= 256
+        len($type) >= 1
 
 
