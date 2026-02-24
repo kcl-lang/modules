@@ -60,6 +60,10 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpec:
         have finished initializing and resource consumption to become stable
         after it enters the InService state.
         If no value is supplied by user a default value of 300 seconds is set
+    ignition : InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpecIgnition, default is Undefined, optional
+        ignition
+    lifecycleHooks : [InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpecLifecycleHooksItems0], default is Undefined, optional
+        AWSLifecycleHooks specifies lifecycle hooks for the autoscaling group.
     maxSize : int, default is 1, required
         MaxSize defines the maximum size of the group.
     minSize : int, default is 1, required
@@ -93,6 +97,10 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpec:
     defaultCoolDown?: str
 
     defaultInstanceWarmup?: str
+
+    ignition?: InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpecIgnition
+
+    lifecycleHooks?: [InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpecLifecycleHooksItems0]
 
     maxSize: int = 1
 
@@ -130,6 +138,11 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpecAwsLaunchTemplate:
         ami
     capacityReservationId : str, default is Undefined, optional
         CapacityReservationID specifies the target Capacity Reservation into which the instance should be launched.
+    capacityReservationPreference : str, default is Undefined, optional
+        CapacityReservationPreference specifies the preference for use of Capacity Reservations by the instance. Valid values include:
+        "Open": The instance may make use of open Capacity Reservations that match its AZ and InstanceType
+        "None": The instance may not make use of any Capacity Reservations. This is to conserve open reservations for desired workloads
+        "CapacityReservationsOnly": The instance will only run if matched or targeted to a Capacity Reservation
     iamInstanceProfile : str, default is Undefined, optional
         The name or the Amazon Resource Name (ARN) of the instance profile associated
         with the IAM role for the instance. The instance profile contains the IAM
@@ -189,6 +202,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpecAwsLaunchTemplate:
     ami?: InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpecAwsLaunchTemplateAmi
 
     capacityReservationId?: str
+
+    capacityReservationPreference?: str
 
     iamInstanceProfile?: str
 
@@ -457,6 +472,154 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpecAwsLaunchTemplateSpot
 
 
     maxPrice?: str
+
+
+schema InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpecIgnition:
+    r"""
+    Ignition defined options related to the bootstrapping systems where Ignition is used.
+
+    Attributes
+    ----------
+    proxy : InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpecIgnitionProxy, default is Undefined, optional
+        proxy
+    storageType : str, default is "ClusterObjectStore", optional
+        StorageType defines how to store the boostrap user data for Ignition.
+        This can be used to instruct Ignition from where to fetch the user data to bootstrap an instance.
+
+        When omitted, the storage option will default to ClusterObjectStore.
+
+        When set to "ClusterObjectStore", if the capability is available and a Cluster ObjectStore configuration
+        is correctly provided in the Cluster object (under .spec.s3Bucket),
+        an object store will be used to store bootstrap user data.
+
+        When set to "UnencryptedUserData", EC2 Instance User Data will be used to store the machine bootstrap user data, unencrypted.
+        This option is considered less secure than others as user data may contain sensitive informations (keys, certificates, etc.)
+        and users with ec2:DescribeInstances permission or users running pods
+        that can access the ec2 metadata service have access to this sensitive information.
+        So this is only to be used at ones own risk, and only when other more secure options are not viable.
+    tls : InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpecIgnitionTLS, default is Undefined, optional
+        tls
+    version : str, default is Undefined, optional
+        Version defines which version of Ignition will be used to generate bootstrap data.
+        Defaults to `2.3` if storageType is set to `ClusterObjectStore`.
+        It will be ignored if storageType is set to `UnencryptedUserData`, as the userdata defines its own version.
+    """
+
+
+    proxy?: InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpecIgnitionProxy
+
+    storageType?: "ClusterObjectStore" | "UnencryptedUserData" = "ClusterObjectStore"
+
+    tls?: InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpecIgnitionTLS
+
+    version?: "2.3" | "3.0" | "3.1" | "3.2" | "3.3" | "3.4"
+
+
+schema InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpecIgnitionProxy:
+    r"""
+    Proxy defines proxy settings for Ignition.
+    Only valid for Ignition versions 3.1 and above.
+
+    Attributes
+    ----------
+    httpProxy : str, default is Undefined, optional
+        HTTPProxy is the HTTP proxy to use for Ignition.
+        A single URL that specifies the proxy server to use for HTTP and HTTPS requests,
+        unless overridden by the HTTPSProxy or NoProxy options.
+    httpsProxy : str, default is Undefined, optional
+        HTTPSProxy is the HTTPS proxy to use for Ignition.
+        A single URL that specifies the proxy server to use for HTTPS requests,
+        unless overridden by the NoProxy option.
+    noProxy : [str], default is Undefined, optional
+        NoProxy is the list of domains to not proxy for Ignition.
+        Specifies a list of strings to hosts that should be excluded from proxying.
+
+        Each value is represented by:
+        - An IP address prefix (1.2.3.4)
+        - An IP address prefix in CIDR notation (1.2.3.4/8)
+        - A domain name
+          - A domain name matches that name and all subdomains
+          - A domain name with a leading . matches subdomains only
+        - A special DNS label (*), indicates that no proxying should be done
+
+        An IP address prefix and domain name can also include a literal port number (1.2.3.4:80).
+    """
+
+
+    httpProxy?: str
+
+    httpsProxy?: str
+
+    noProxy?: [str]
+
+
+    check:
+        len(noProxy) <= 64 if noProxy
+        all noProxy in noProxy { len(noProxy) <= 2048 if noProxy not in [None, Undefined] } if noProxy
+
+
+schema InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpecIgnitionTLS:
+    r"""
+    TLS defines TLS settings for Ignition.
+    Only valid for Ignition versions 3.1 and above.
+
+    Attributes
+    ----------
+    certificateAuthorities : [str], default is Undefined, optional
+        CASources defines the list of certificate authorities to use for Ignition.
+        The value is the certificate bundle (in PEM format). The bundle can contain multiple concatenated certificates.
+        Supported schemes are http, https, tftp, s3, arn, gs, and `data` (RFC 2397) URL scheme.
+    """
+
+
+    certificateAuthorities?: [str]
+
+
+    check:
+        len(certificateAuthorities) <= 64 if certificateAuthorities
+        all certificateAuthorities in certificateAuthorities { len(certificateAuthorities) <= 65536 if certificateAuthorities not in [None, Undefined] } if certificateAuthorities
+
+
+schema InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpecLifecycleHooksItems0:
+    r"""
+    AWSLifecycleHook describes an AWS lifecycle hook
+
+    Attributes
+    ----------
+    defaultResult : str, default is Undefined, optional
+        The default result for the lifecycle hook. The possible values are CONTINUE and ABANDON.
+    heartbeatTimeout : str, default is Undefined, optional
+        The maximum time, in seconds, that an instance can remain in a Pending:Wait or
+        Terminating:Wait state. The maximum is 172800 seconds (48 hours) or 100 times
+        HeartbeatTimeout, whichever is smaller.
+    lifecycleTransition : str, default is Undefined, required
+        The state of the EC2 instance to which to attach the lifecycle hook.
+    name : str, default is Undefined, required
+        The name of the lifecycle hook.
+    notificationMetadata : str, default is Undefined, optional
+        Contains additional metadata that will be passed to the notification target.
+    notificationTargetARN : str, default is Undefined, optional
+        The ARN of the notification target that Amazon EC2 Auto Scaling uses to
+        notify you when an instance is in the transition state for the lifecycle hook.
+    roleARN : str, default is Undefined, optional
+        The ARN of the IAM role that allows the Auto Scaling group to publish to the
+        specified notification target.
+    """
+
+
+    defaultResult?: "CONTINUE" | "ABANDON"
+
+    heartbeatTimeout?: str
+
+    lifecycleTransition: "autoscaling:EC2_INSTANCE_LAUNCHING" | "autoscaling:EC2_INSTANCE_TERMINATING"
+
+    name: str
+
+    notificationMetadata?: str
+
+    notificationTargetARN?: str
+
+    roleARN?: str
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpecMixedInstancesPolicy:
@@ -756,14 +919,14 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachinePoolStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may be empty.
     severity : str, default is Undefined, optional
@@ -790,6 +953,16 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachinePoolStatusConditionsItems0:
     status: str
 
     $type: str
+
+
+    check:
+        len(message) <= 10240 if message
+        len(message) >= 1 if message
+        len(reason) <= 256 if reason
+        len(reason) >= 1 if reason
+        len(severity) <= 32 if severity
+        len($type) <= 256
+        len($type) >= 1
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachinePoolStatusInstancesItems0:

@@ -69,6 +69,10 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpec:
         InstanceType specifies the AWS instance type
     labels : {str:str}, default is Undefined, optional
         Labels specifies labels for the Kubernetes node objects
+    lifecycleHooks : [InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecLifecycleHooksItems0], default is Undefined, optional
+        AWSLifecycleHooks specifies lifecycle hooks for the managed node group.
+    nodeRepairConfig : InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecNodeRepairConfig, default is Undefined, optional
+        node repair config
     providerIDList : [str], default is Undefined, optional
         ProviderIDList are the provider IDs of instances in the
         autoscaling group corresponding to the nodegroup represented by this
@@ -84,6 +88,26 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpec:
         If the role is pre-existing we will treat it as unmanaged
         and not delete it on deletion. If the EKSEnableIAM feature
         flag is true and no name is supplied then a role is created.
+    rolePath : str, default is Undefined, optional
+        RolePath sets the path to the role. For more information about paths, see IAM Identifiers
+        (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
+        in the IAM User Guide.
+
+        This parameter is optional. If it is not included, it defaults to a slash
+        (/).
+    rolePermissionsBoundary : str, default is Undefined, optional
+        RolePermissionsBoundary sets the ARN of the managed policy that is used
+        to set the permissions boundary for the role.
+
+        A permissions boundary policy defines the maximum permissions that identity-based
+        policies can grant to an entity, but does not grant permissions. Permissions
+        boundaries do not define the maximum permissions that a resource-based policy
+        can grant to an entity. To learn more, see Permissions boundaries for IAM
+        entities (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
+        in the IAM User Guide.
+
+        For more information about policy types, see Policy types (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policy-types)
+        in the IAM User Guide.
     scaling : InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecScaling, default is Undefined, optional
         scaling
     subnetIDs : [str], default is Undefined, optional
@@ -98,7 +122,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpec:
 
     additionalTags?: {str:str}
 
-    amiType?: "AL2_x86_64" | "AL2_x86_64_GPU" | "AL2_ARM_64" | "AL2023_x86_64_STANDARD" | "AL2023_ARM_64_STANDARD" | "CUSTOM" = "AL2_x86_64"
+    amiType?: "AL2_x86_64" | "AL2_x86_64_GPU" | "AL2_ARM_64" | "CUSTOM" | "BOTTLEROCKET_ARM_64" | "BOTTLEROCKET_x86_64" | "BOTTLEROCKET_ARM_64_FIPS" | "BOTTLEROCKET_x86_64_FIPS" | "BOTTLEROCKET_ARM_64_NVIDIA" | "BOTTLEROCKET_x86_64_NVIDIA" | "WINDOWS_CORE_2019_x86_64" | "WINDOWS_FULL_2019_x86_64" | "WINDOWS_CORE_2022_x86_64" | "WINDOWS_FULL_2022_x86_64" | "AL2023_x86_64_STANDARD" | "AL2023_ARM_64_STANDARD" | "AL2023_x86_64_NEURON" | "AL2023_x86_64_NVIDIA" | "AL2023_ARM_64_NVIDIA" = "AL2_x86_64"
 
     amiVersion?: str
 
@@ -118,6 +142,10 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpec:
 
     labels?: {str:str}
 
+    lifecycleHooks?: [InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecLifecycleHooksItems0]
+
+    nodeRepairConfig?: InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecNodeRepairConfig
+
     providerIDList?: [str]
 
     remoteAccess?: InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecRemoteAccess
@@ -125,6 +153,10 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpec:
     roleAdditionalPolicies?: [str]
 
     roleName?: str
+
+    rolePath?: str
+
+    rolePermissionsBoundary?: str
 
     scaling?: InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecScaling
 
@@ -155,6 +187,11 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTempl
         ami
     capacityReservationId : str, default is Undefined, optional
         CapacityReservationID specifies the target Capacity Reservation into which the instance should be launched.
+    capacityReservationPreference : str, default is Undefined, optional
+        CapacityReservationPreference specifies the preference for use of Capacity Reservations by the instance. Valid values include:
+        "Open": The instance may make use of open Capacity Reservations that match its AZ and InstanceType
+        "None": The instance may not make use of any Capacity Reservations. This is to conserve open reservations for desired workloads
+        "CapacityReservationsOnly": The instance will only run if matched or targeted to a Capacity Reservation
     iamInstanceProfile : str, default is Undefined, optional
         The name or the Amazon Resource Name (ARN) of the instance profile associated
         with the IAM role for the instance. The instance profile contains the IAM
@@ -214,6 +251,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTempl
     ami?: InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTemplateAmi
 
     capacityReservationId?: str
+
+    capacityReservationPreference?: str
 
     iamInstanceProfile?: str
 
@@ -484,6 +523,63 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTempl
     maxPrice?: str
 
 
+schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecLifecycleHooksItems0:
+    r"""
+    AWSLifecycleHook describes an AWS lifecycle hook
+
+    Attributes
+    ----------
+    defaultResult : str, default is Undefined, optional
+        The default result for the lifecycle hook. The possible values are CONTINUE and ABANDON.
+    heartbeatTimeout : str, default is Undefined, optional
+        The maximum time, in seconds, that an instance can remain in a Pending:Wait or
+        Terminating:Wait state. The maximum is 172800 seconds (48 hours) or 100 times
+        HeartbeatTimeout, whichever is smaller.
+    lifecycleTransition : str, default is Undefined, required
+        The state of the EC2 instance to which to attach the lifecycle hook.
+    name : str, default is Undefined, required
+        The name of the lifecycle hook.
+    notificationMetadata : str, default is Undefined, optional
+        Contains additional metadata that will be passed to the notification target.
+    notificationTargetARN : str, default is Undefined, optional
+        The ARN of the notification target that Amazon EC2 Auto Scaling uses to
+        notify you when an instance is in the transition state for the lifecycle hook.
+    roleARN : str, default is Undefined, optional
+        The ARN of the IAM role that allows the Auto Scaling group to publish to the
+        specified notification target.
+    """
+
+
+    defaultResult?: "CONTINUE" | "ABANDON"
+
+    heartbeatTimeout?: str
+
+    lifecycleTransition: "autoscaling:EC2_INSTANCE_LAUNCHING" | "autoscaling:EC2_INSTANCE_TERMINATING"
+
+    name: str
+
+    notificationMetadata?: str
+
+    notificationTargetARN?: str
+
+    roleARN?: str
+
+
+schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecNodeRepairConfig:
+    r"""
+    NodeRepairConfig specifies the node auto repair configuration for the managed node group.
+
+    Attributes
+    ----------
+    enabled : bool, default is Undefined, optional
+        Enabled specifies whether node auto repair is enabled for the node group.
+        When enabled, EKS will automatically repair unhealthy nodes by replacing them.
+    """
+
+
+    enabled?: bool = False
+
+
 schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecRemoteAccess:
     r"""
     RemoteAccess specifies how machines can be accessed remotely
@@ -651,14 +747,14 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolStatusConditionsIt
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may be empty.
     severity : str, default is Undefined, optional
@@ -685,5 +781,15 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolStatusConditionsIt
     status: str
 
     $type: str
+
+
+    check:
+        len(message) <= 10240 if message
+        len(message) >= 1 if message
+        len(reason) <= 256 if reason
+        len(reason) >= 1 if reason
+        len(severity) <= 32 if severity
+        len($type) <= 256
+        len($type) >= 1
 
 

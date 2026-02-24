@@ -82,7 +82,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateMetadata:
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize
+        labels is a map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: http://kubernetes.io/docs/user-guide/labels
@@ -113,10 +113,31 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpec:
         ami
     capacityReservationId : str, default is Undefined, optional
         CapacityReservationID specifies the target Capacity Reservation into which the instance should be launched.
+    capacityReservationPreference : str, default is Undefined, optional
+        CapacityReservationPreference specifies the preference for use of Capacity Reservations by the instance. Valid values include:
+        "Open": The instance may make use of open Capacity Reservations that match its AZ and InstanceType
+        "None": The instance may not make use of any Capacity Reservations. This is to conserve open reservations for desired workloads
+        "CapacityReservationsOnly": The instance will only run if matched or targeted to a Capacity Reservation. Note that this is incompatible with a MarketType of `Spot`
     cloudInit : InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecCloudInit, default is Undefined, optional
         cloud init
+    cpuOptions : InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecCPUOptions, default is Undefined, optional
+        cpu options
+    dynamicHostAllocation : InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecDynamicHostAllocation, default is Undefined, optional
+        dynamic host allocation
     elasticIpPool : InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecElasticIPPool, default is Undefined, optional
         elastic Ip pool
+    hostAffinity : str, default is "default", optional
+        HostAffinity specifies the dedicated host affinity setting for the instance.
+        When HostAffinity is set to "host", an instance started onto a specific host always restarts on the same host if stopped:
+        - If HostID is set, the instance launches on the specific host and must return to that same host after any stop/start (Targeted & Pinned).
+        - If HostID is not set, the instance gets launched on any available and must returns to the same host after any stop/start (Auto-placed & Pinned).
+        When HostAffinity is set to "default" (the default value), the instance (when restarted) can return on any available host:
+        - If HostID is set, the instance launches on the specified host now, but (when restarted) can return to any available hosts (Targeted & Flexible).
+        - If HostID is not set, the instance launches on any available host now, and (when restarted) can return to any available hosts (Auto-placed & Flexible).
+        If HostAffinity is not specified, it defaults to "default".
+    hostID : str, default is Undefined, optional
+        HostID specifies the Dedicated Host on which the instance must be started.
+        This field is mutually exclusive with DynamicHostAllocation.
     iamInstanceProfile : str, default is Undefined, optional
         IAMInstanceProfile is a name of an IAM instance profile to assign to the instance
     ignition : InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecIgnition, default is Undefined, optional
@@ -188,6 +209,10 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpec:
         subnet
     tenancy : str, default is Undefined, optional
         Tenancy indicates if instance should run on shared or single-tenant hardware.
+        When Tenancy=host, AWS will attempt to find a suitable host from:
+        - Preexisting allocated hosts that have auto-placement enabled
+        - A specific host ID, if configured
+        - Allocating a new dedicated host if DynamicHostAllocation is configured
     uncompressedUserData : bool, default is Undefined, optional
         UncompressedUserData specify whether the user data is gzip-compressed before it is sent to ec2 instance.
         cloud-init has built-in support for gzip-compressed user data
@@ -203,9 +228,19 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpec:
 
     capacityReservationId?: str
 
+    capacityReservationPreference?: str
+
     cloudInit?: InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecCloudInit
 
+    cpuOptions?: InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecCPUOptions
+
+    dynamicHostAllocation?: InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecDynamicHostAllocation
+
     elasticIpPool?: InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecElasticIPPool
+
+    hostAffinity?: "default" | "host" = "default"
+
+    hostID?: str
 
     iamInstanceProfile?: str
 
@@ -257,6 +292,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpec:
 
 
     check:
+        len(hostID) <= 19 if hostID
+        _regex_match(str(hostID), r"^h-[0-9a-f]{17}$") if hostID
         len(instanceType) >= 2
         len(networkInterfaces) <= 2 if networkInterfaces
         placementGroupPartition <= 7 if placementGroupPartition not in [None, Undefined]
@@ -321,6 +358,32 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecAmi:
     id?: str
 
 
+schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecCPUOptions:
+    r"""
+    CPUOptions defines CPU-related settings for the instance, including the confidential computing policy.
+    When omitted, this means no opinion and the AWS platform is left to choose a reasonable default.
+
+    Attributes
+    ----------
+    confidentialCompute : str, default is Undefined, optional
+        ConfidentialCompute specifies whether confidential computing should be enabled for the instance,
+        and, if so, which confidential computing technology to use.
+        Valid values are: Disabled, AMDEncryptedVirtualizationNestedPaging
+        When set to Disabled, confidential computing will be disabled for the instance.
+        When set to AMDEncryptedVirtualizationNestedPaging, AMD SEV-SNP will be used as the confidential computing technology for the instance.
+        In this case, ensure the following conditions are met:
+        1) The selected instance type supports AMD SEV-SNP.
+        2) The selected AWS region supports AMD SEV-SNP.
+        3) The selected AMI supports AMD SEV-SNP.
+        More details can be checked at https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sev-snp.html
+        When omitted, this means no opinion and the AWS platform is left to choose a reasonable default,
+        which is subject to change without notice. The current default is Disabled.
+    """
+
+
+    confidentialCompute?: "Disabled" | "AMDEncryptedVirtualizationNestedPaging"
+
+
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecCloudInit:
     r"""
     CloudInit defines options related to the bootstrapping systems where
@@ -353,6 +416,23 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecCloud
     secretPrefix?: str
 
     secureSecretsBackend?: "secrets-manager" | "ssm-parameter-store"
+
+
+schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecDynamicHostAllocation:
+    r"""
+    DynamicHostAllocation enables automatic allocation of a single dedicated host.
+    Cost effectiveness of allocating a single instance on a dedicated host may vary
+    depending on the instance type and the region.
+    This field is mutually exclusive with HostID and always allocates exactly one host.
+
+    Attributes
+    ----------
+    tags : {str:str}, default is Undefined, optional
+        Tags to apply to the allocated dedicated host.
+    """
+
+
+    tags?: {str:str}
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecElasticIPPool:
@@ -411,8 +491,10 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecIgnit
         So this is only to be used at ones own risk, and only when other more secure options are not viable.
     tls : InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecIgnitionTLS, default is Undefined, optional
         tls
-    version : str, default is "2.3", optional
+    version : str, default is Undefined, optional
         Version defines which version of Ignition will be used to generate bootstrap data.
+        Defaults to `2.3` if storageType is set to `ClusterObjectStore`.
+        It will be ignored if storageType is set to `UnencryptedUserData`, as the userdata defines its own version.
     """
 
 
@@ -422,7 +504,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecIgnit
 
     tls?: InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecIgnitionTLS
 
-    version?: "2.3" | "3.0" | "3.1" | "3.2" | "3.3" | "3.4" = "2.3"
+    version?: "2.3" | "3.0" | "3.1" | "3.2" | "3.3" | "3.4"
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecIgnitionProxy:
@@ -721,13 +803,96 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateStatus:
         Capacity defines the resource capacity for this machine.
         This value is used for autoscaling from zero operations as defined in:
         https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20210310-opt-in-autoscaling-from-zero.md
+    conditions : [InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateStatusConditionsItems0], default is Undefined, optional
+        Conditions defines current service state of the AWSMachineTemplate.
+    nodeInfo : InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateStatusNodeInfo, default is Undefined, optional
+        node info
     """
 
 
     capacity?: {str:int | str}
 
+    conditions?: [InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateStatusConditionsItems0]
+
+    nodeInfo?: InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateStatusNodeInfo
+
 
     check:
         all _, capacity in capacity { _regex_match(str(capacity), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if capacity } if capacity
+
+
+schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateStatusConditionsItems0:
+    r"""
+    Condition defines an observation of a Cluster API resource operational state.
+
+    Attributes
+    ----------
+    lastTransitionTime : str, default is Undefined, required
+        lastTransitionTime is the last time the condition transitioned from one status to another.
+        This should be when the underlying condition changed. If that is not known, then using the time when
+        the API field changed is acceptable.
+    message : str, default is Undefined, optional
+        message is a human readable message indicating details about the transition.
+        This field may be empty.
+    reason : str, default is Undefined, optional
+        reason is the reason for the condition's last transition in CamelCase.
+        The specific API may choose whether or not this field is considered a guaranteed API.
+        This field may be empty.
+    severity : str, default is Undefined, optional
+        severity provides an explicit classification of Reason code, so the users or machines can immediately
+        understand the current situation and act accordingly.
+        The Severity field MUST be set only when Status=False.
+    status : str, default is Undefined, required
+        status of the condition, one of True, False, Unknown.
+    $type : str, default is Undefined, required
+        type of condition in CamelCase or in foo.example.com/CamelCase.
+        Many .condition.type values are consistent across resources like Available, but because arbitrary conditions
+        can be useful (see .node.status.conditions), the ability to deconflict is important.
+    """
+
+
+    lastTransitionTime: str
+
+    message?: str
+
+    reason?: str
+
+    severity?: str
+
+    status: str
+
+    $type: str
+
+
+    check:
+        len(message) <= 10240 if message
+        len(message) >= 1 if message
+        len(reason) <= 256 if reason
+        len(reason) >= 1 if reason
+        len(severity) <= 32 if severity
+        len($type) <= 256
+        len($type) >= 1
+
+
+schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateStatusNodeInfo:
+    r"""
+    NodeInfo contains information about the node's architecture and operating system.
+    This value is used for autoscaling from zero operations as defined in:
+    https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20210310-opt-in-autoscaling-from-zero.md
+
+    Attributes
+    ----------
+    architecture : str, default is Undefined, optional
+        Architecture is the CPU architecture of the node.
+        Its underlying type is a string and its value can be any of amd64, arm64.
+    operatingSystem : str, default is Undefined, optional
+        OperatingSystem is the operating system of the node.
+        Its underlying type is a string and its value can be any of linux, windows.
+    """
+
+
+    architecture?: "amd64" | "arm64"
+
+    operatingSystem?: "linux" | "windows"
 
 

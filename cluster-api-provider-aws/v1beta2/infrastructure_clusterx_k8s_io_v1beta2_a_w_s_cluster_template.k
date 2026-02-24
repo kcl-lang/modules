@@ -78,7 +78,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateMetadata:
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize
+        labels is a map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: http://kubernetes.io/docs/user-guide/labels
@@ -216,15 +216,19 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecContr
     Attributes
     ----------
     host : str, default is Undefined, required
-        The hostname on which the API server is serving.
+        host is the hostname on which the API server is serving.
     port : int, default is Undefined, required
-        The port on which the API server is serving.
+        port is the port on which the API server is serving.
     """
 
 
     host: str
 
     port: int
+
+
+    check:
+        len(host) <= 512
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecControlPlaneLoadBalancer:
@@ -509,6 +513,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
     ----------
     additionalControlPlaneIngressRules : [InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkAdditionalControlPlaneIngressRulesItems0], default is Undefined, optional
         AdditionalControlPlaneIngressRules is an optional set of ingress rules to add to the control plane
+    additionalNodeIngressRules : [InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkAdditionalNodeIngressRulesItems0], default is Undefined, optional
+        AdditionalNodeIngressRules is an optional set of ingress rules to add to every node
     cni : InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkCni, default is Undefined, optional
         cni
     nodePortIngressRuleCidrBlocks : [str], default is Undefined, optional
@@ -526,6 +532,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
 
     additionalControlPlaneIngressRules?: [InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkAdditionalControlPlaneIngressRulesItems0]
 
+    additionalNodeIngressRules?: [InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkAdditionalNodeIngressRulesItems0]
+
     cni?: InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkCni
 
     nodePortIngressRuleCidrBlocks?: [str]
@@ -538,6 +546,53 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkAdditionalControlPlaneIngressRulesItems0:
+    r"""
+    IngressRule defines an AWS ingress rule for security groups.
+
+    Attributes
+    ----------
+    cidrBlocks : [str], default is Undefined, optional
+        List of CIDR blocks to allow access from. Cannot be specified with SourceSecurityGroupID.
+    description : str, default is Undefined, required
+        Description provides extended information about the ingress rule.
+    fromPort : int, default is Undefined, required
+        FromPort is the start of port range.
+    ipv6CidrBlocks : [str], default is Undefined, optional
+        List of IPv6 CIDR blocks to allow access from. Cannot be specified with SourceSecurityGroupID.
+    natGatewaysIPsSource : bool, default is Undefined, optional
+        NatGatewaysIPsSource use the NAT gateways IPs as the source for the ingress rule.
+    $protocol : str, default is Undefined, required
+        Protocol is the protocol for the ingress rule. Accepted values are "-1" (all), "4" (IP in IP),"tcp", "udp", "icmp", and "58" (ICMPv6), "50" (ESP).
+    sourceSecurityGroupIds : [str], default is Undefined, optional
+        The security group id to allow access from. Cannot be specified with CidrBlocks.
+    sourceSecurityGroupRoles : [str], default is Undefined, optional
+        The security group role to allow access from. Cannot be specified with CidrBlocks.
+        The field will be combined with source security group IDs if specified.
+    toPort : int, default is Undefined, required
+        ToPort is the end of port range.
+    """
+
+
+    cidrBlocks?: [str]
+
+    description: str
+
+    fromPort: int
+
+    ipv6CidrBlocks?: [str]
+
+    natGatewaysIPsSource?: bool
+
+    $protocol: "-1" | "4" | "tcp" | "udp" | "icmp" | "58" | "50"
+
+    sourceSecurityGroupIds?: [str]
+
+    sourceSecurityGroupRoles?: [str]
+
+    toPort: int
+
+
+schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkAdditionalNodeIngressRulesItems0:
     r"""
     IngressRule defines an AWS ingress rule for security groups.
 
