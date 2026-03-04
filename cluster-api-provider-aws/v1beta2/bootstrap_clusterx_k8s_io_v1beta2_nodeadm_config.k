@@ -5,135 +5,119 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 import k8s.apimachinery.pkg.apis.meta.v1
 
 
-schema EKSConfig:
+schema NodeadmConfig:
     r"""
-    EKSConfig is the schema for the Amazon EKS Machine Bootstrap Configuration API.
-
-    Deprecated: EKSConfig is deprecated and will be removed in a future release.
-    Amazon Linux 2 (AL2) reaches end-of-life in June 2026 see: https://aws.amazon.com/amazon-linux-2/faqs/
-    Please use NodeadmConfig with Amazon Linux 2023 (AL2023) instead.
+    NodeadmConfig is the Schema for the nodeadmconfigs API.
 
     Attributes
     ----------
     apiVersion : str, default is "bootstrap.cluster.x-k8s.io/v1beta2", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-    kind : str, default is "EKSConfig", required
+    kind : str, default is "NodeadmConfig", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : BootstrapClusterxK8sIoV1beta2EKSConfigSpec, default is Undefined, optional
+    spec : BootstrapClusterxK8sIoV1beta2NodeadmConfigSpec, default is Undefined, optional
         spec
-    status : BootstrapClusterxK8sIoV1beta2EKSConfigStatus, default is Undefined, optional
+    status : BootstrapClusterxK8sIoV1beta2NodeadmConfigStatus, default is Undefined, optional
         status
     """
 
 
     apiVersion: "bootstrap.cluster.x-k8s.io/v1beta2" = "bootstrap.cluster.x-k8s.io/v1beta2"
 
-    kind: "EKSConfig" = "EKSConfig"
+    kind: "NodeadmConfig" = "NodeadmConfig"
 
     metadata?: v1.ObjectMeta
 
-    spec?: BootstrapClusterxK8sIoV1beta2EKSConfigSpec
+    spec?: BootstrapClusterxK8sIoV1beta2NodeadmConfigSpec
 
-    status?: BootstrapClusterxK8sIoV1beta2EKSConfigStatus
+    status?: BootstrapClusterxK8sIoV1beta2NodeadmConfigStatus
 
 
-schema BootstrapClusterxK8sIoV1beta2EKSConfigSpec:
+schema BootstrapClusterxK8sIoV1beta2NodeadmConfigSpec:
     r"""
-    EKSConfigSpec defines the desired state of Amazon EKS Bootstrap Configuration.
+    NodeadmConfigSpec defines the desired state of NodeadmConfig.
 
     Attributes
     ----------
-    apiRetryAttempts : int, default is Undefined, optional
-        APIRetryAttempts is the number of retry attempts for AWS API call.
-    boostrapCommandOverride : str, default is Undefined, optional
-        BootstrapCommandOverride allows you to override the bootstrap command to use for EKS nodes.
-    containerRuntime : str, default is Undefined, optional
-        ContainerRuntime specify the container runtime to use when bootstrapping EKS.
-    diskSetup : BootstrapClusterxK8sIoV1beta2EKSConfigSpecDiskSetup, default is Undefined, optional
+    containerd : BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecContainerd, default is Undefined, optional
+        containerd
+    diskSetup : BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecDiskSetup, default is Undefined, optional
         disk setup
-    dnsClusterIP : str, default is Undefined, optional
-         DNSClusterIP overrides the IP address to use for DNS queries within the cluster.
-    dockerConfigJson : str, default is Undefined, optional
-        DockerConfigJson is used for the contents of the /etc/docker/daemon.json file. Useful if you want a custom config differing from the default one in the AMI.
-        This is expected to be a json string.
-    files : [BootstrapClusterxK8sIoV1beta2EKSConfigSpecFilesItems0], default is Undefined, optional
+    featureGates : {str:bool}, default is Undefined, optional
+        FeatureGates holds key-value pairs to enable or disable application features.
+    files : [BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecFilesItems0], default is Undefined, optional
         Files specifies extra files to be passed to user_data upon creation.
-    kubeletExtraArgs : {str:str}, default is Undefined, optional
-        KubeletExtraArgs passes the specified kubelet args into the Amazon EKS machine bootstrap script
+    kubelet : BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecKubelet, default is Undefined, optional
+        kubelet
     mounts : [[str]], default is Undefined, optional
         Mounts specifies a list of mount points to be setup.
-    ntp : BootstrapClusterxK8sIoV1beta2EKSConfigSpecNtp, default is Undefined, optional
+    ntp : BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecNtp, default is Undefined, optional
         ntp
-    pauseContainer : BootstrapClusterxK8sIoV1beta2EKSConfigSpecPauseContainer, default is Undefined, optional
-        pause container
-    postBootstrapCommands : [str], default is Undefined, optional
-        PostBootstrapCommands specifies extra commands to run after bootstrapping nodes to the cluster
-    preBootstrapCommands : [str], default is Undefined, optional
-        PreBootstrapCommands specifies extra commands to run before bootstrapping nodes to the cluster
-    serviceIPV6Cidr : str, default is Undefined, optional
-        ServiceIPV6Cidr is the ipv6 cidr range of the cluster. If this is specified then
-        the ip family will be set to ipv6.
-    useMaxPods : bool, default is Undefined, optional
-        UseMaxPods  sets --max-pods for the kubelet when true.
-    users : [BootstrapClusterxK8sIoV1beta2EKSConfigSpecUsersItems0], default is Undefined, optional
-        Users specifies extra users to add
+    preNodeadmCommands : [str], default is Undefined, optional
+        PreNodeadmCommands specifies extra commands to run before bootstrapping nodes.
+    users : [BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecUsersItems0], default is Undefined, optional
+        Users specifies extra users to add.
     """
 
 
-    apiRetryAttempts?: int
+    containerd?: BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecContainerd
 
-    boostrapCommandOverride?: str
+    diskSetup?: BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecDiskSetup
 
-    containerRuntime?: str
+    featureGates?: {str:bool}
 
-    diskSetup?: BootstrapClusterxK8sIoV1beta2EKSConfigSpecDiskSetup
+    files?: [BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecFilesItems0]
 
-    dnsClusterIP?: str
-
-    dockerConfigJson?: str
-
-    files?: [BootstrapClusterxK8sIoV1beta2EKSConfigSpecFilesItems0]
-
-    kubeletExtraArgs?: {str:str}
+    kubelet?: BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecKubelet
 
     mounts?: [[str]]
 
-    ntp?: BootstrapClusterxK8sIoV1beta2EKSConfigSpecNtp
+    ntp?: BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecNtp
 
-    pauseContainer?: BootstrapClusterxK8sIoV1beta2EKSConfigSpecPauseContainer
+    preNodeadmCommands?: [str]
 
-    postBootstrapCommands?: [str]
-
-    preBootstrapCommands?: [str]
-
-    serviceIPV6Cidr?: str
-
-    useMaxPods?: bool
-
-    users?: [BootstrapClusterxK8sIoV1beta2EKSConfigSpecUsersItems0]
+    users?: [BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecUsersItems0]
 
 
-schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecDiskSetup:
+schema BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecContainerd:
+    r"""
+    Containerd contains options for containerd.
+
+    Attributes
+    ----------
+    baseRuntimeSpec : any, default is Undefined, optional
+        BaseRuntimeSpec is the OCI runtime specification upon which all containers will be based.
+    config : str, default is Undefined, optional
+        Config is an inline containerd configuration TOML that will be merged with the defaults.
+    """
+
+
+    baseRuntimeSpec?: any
+
+    config?: str
+
+
+schema BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecDiskSetup:
     r"""
     DiskSetup specifies options for the creation of partition tables and file systems on devices.
 
     Attributes
     ----------
-    filesystems : [BootstrapClusterxK8sIoV1beta2EKSConfigSpecDiskSetupFilesystemsItems0], default is Undefined, optional
+    filesystems : [BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecDiskSetupFilesystemsItems0], default is Undefined, optional
         Filesystems specifies the list of file systems to setup.
-    partitions : [BootstrapClusterxK8sIoV1beta2EKSConfigSpecDiskSetupPartitionsItems0], default is Undefined, optional
+    partitions : [BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecDiskSetupPartitionsItems0], default is Undefined, optional
         Partitions specifies the list of the partitions to setup.
     """
 
 
-    filesystems?: [BootstrapClusterxK8sIoV1beta2EKSConfigSpecDiskSetupFilesystemsItems0]
+    filesystems?: [BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecDiskSetupFilesystemsItems0]
 
-    partitions?: [BootstrapClusterxK8sIoV1beta2EKSConfigSpecDiskSetupPartitionsItems0]
+    partitions?: [BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecDiskSetupPartitionsItems0]
 
 
-schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecDiskSetupFilesystemsItems0:
+schema BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecDiskSetupFilesystemsItems0:
     r"""
     Filesystem defines the file systems to be created.
 
@@ -168,7 +152,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecDiskSetupFilesystemsItems0:
     partition?: str
 
 
-schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecDiskSetupPartitionsItems0:
+schema BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecDiskSetupPartitionsItems0:
     r"""
     Partition defines how to create and layout a partition.
 
@@ -199,7 +183,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecDiskSetupPartitionsItems0:
     tableType?: str
 
 
-schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecFilesItems0:
+schema BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecFilesItems0:
     r"""
     File defines the input for generating write_files in cloud-init.
 
@@ -209,7 +193,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecFilesItems0:
         Append specifies whether to append Content to existing file if Path exists.
     content : str, default is Undefined, optional
         Content is the actual content of the file.
-    contentFrom : BootstrapClusterxK8sIoV1beta2EKSConfigSpecFilesItems0ContentFrom, default is Undefined, optional
+    contentFrom : BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecFilesItems0ContentFrom, default is Undefined, optional
         content from
     encoding : str, default is Undefined, optional
         Encoding specifies the encoding of the file contents.
@@ -226,7 +210,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecFilesItems0:
 
     content?: str
 
-    contentFrom?: BootstrapClusterxK8sIoV1beta2EKSConfigSpecFilesItems0ContentFrom
+    contentFrom?: BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecFilesItems0ContentFrom
 
     encoding?: "base64" | "gzip" | "gzip+base64"
 
@@ -237,21 +221,21 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecFilesItems0:
     permissions?: str
 
 
-schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecFilesItems0ContentFrom:
+schema BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecFilesItems0ContentFrom:
     r"""
     ContentFrom is a referenced source of content to populate the file.
 
     Attributes
     ----------
-    secret : BootstrapClusterxK8sIoV1beta2EKSConfigSpecFilesItems0ContentFromSecret, default is Undefined, required
+    secret : BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecFilesItems0ContentFromSecret, default is Undefined, required
         secret
     """
 
 
-    secret: BootstrapClusterxK8sIoV1beta2EKSConfigSpecFilesItems0ContentFromSecret
+    secret: BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecFilesItems0ContentFromSecret
 
 
-schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecFilesItems0ContentFromSecret:
+schema BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecFilesItems0ContentFromSecret:
     r"""
     Secret represents a secret that should populate this file.
 
@@ -269,9 +253,27 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecFilesItems0ContentFromSecret:
     name: str
 
 
-schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecNtp:
+schema BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecKubelet:
     r"""
-    NTP specifies NTP configuration
+    Kubelet contains options for kubelet.
+
+    Attributes
+    ----------
+    config : any, default is Undefined, optional
+        Config is a KubeletConfiguration that will be merged with the defaults.
+    flags : [str], default is Undefined, optional
+        Flags are command-line kubelet arguments that will be appended to the defaults.
+    """
+
+
+    config?: any
+
+    flags?: [str]
+
+
+schema BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecNtp:
+    r"""
+    NTP specifies NTP configuration.
 
     Attributes
     ----------
@@ -287,25 +289,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecNtp:
     servers?: [str]
 
 
-schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecPauseContainer:
-    r"""
-    PauseContainer allows customization of the pause container to use.
-
-    Attributes
-    ----------
-    accountNumber : str, default is Undefined, required
-         AccountNumber is the AWS account number to pull the pause container from.
-    version : str, default is Undefined, required
-        Version is the tag of the pause container to use.
-    """
-
-
-    accountNumber: str
-
-    version: str
-
-
-schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecUsersItems0:
+schema BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecUsersItems0:
     r"""
     User defines the input for a generated user in cloud-init.
 
@@ -325,7 +309,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecUsersItems0:
         Name specifies the username
     passwd : str, default is Undefined, optional
         Passwd specifies a hashed password for the user
-    passwdFrom : BootstrapClusterxK8sIoV1beta2EKSConfigSpecUsersItems0PasswdFrom, default is Undefined, optional
+    passwdFrom : BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecUsersItems0PasswdFrom, default is Undefined, optional
         passwd from
     primaryGroup : str, default is Undefined, optional
         PrimaryGroup specifies the primary group for the user
@@ -352,7 +336,7 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecUsersItems0:
 
     passwd?: str
 
-    passwdFrom?: BootstrapClusterxK8sIoV1beta2EKSConfigSpecUsersItems0PasswdFrom
+    passwdFrom?: BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecUsersItems0PasswdFrom
 
     primaryGroup?: str
 
@@ -363,21 +347,21 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecUsersItems0:
     sudo?: str
 
 
-schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecUsersItems0PasswdFrom:
+schema BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecUsersItems0PasswdFrom:
     r"""
     PasswdFrom is a referenced source of passwd to populate the passwd.
 
     Attributes
     ----------
-    secret : BootstrapClusterxK8sIoV1beta2EKSConfigSpecUsersItems0PasswdFromSecret, default is Undefined, required
+    secret : BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecUsersItems0PasswdFromSecret, default is Undefined, required
         secret
     """
 
 
-    secret: BootstrapClusterxK8sIoV1beta2EKSConfigSpecUsersItems0PasswdFromSecret
+    secret: BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecUsersItems0PasswdFromSecret
 
 
-schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecUsersItems0PasswdFromSecret:
+schema BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecUsersItems0PasswdFromSecret:
     r"""
     Secret represents a secret that should populate this password.
 
@@ -395,28 +379,31 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigSpecUsersItems0PasswdFromSecret:
     name: str
 
 
-schema BootstrapClusterxK8sIoV1beta2EKSConfigStatus:
+schema BootstrapClusterxK8sIoV1beta2NodeadmConfigStatus:
     r"""
-    EKSConfigStatus defines the observed state of the Amazon EKS Bootstrap Configuration.
+    NodeadmConfigStatus defines the observed state of NodeadmConfig.
 
     Attributes
     ----------
-    conditions : [BootstrapClusterxK8sIoV1beta2EKSConfigStatusConditionsItems0], default is Undefined, optional
-        Conditions defines current service state of the EKSConfig.
+    conditions : [BootstrapClusterxK8sIoV1beta2NodeadmConfigStatusConditionsItems0], default is Undefined, optional
+        Conditions defines current service state of the NodeadmConfig.
     dataSecretName : str, default is Undefined, optional
         DataSecretName is the name of the secret that stores the bootstrap data script.
     failureMessage : str, default is Undefined, optional
-        FailureMessage will be set on non-retryable errors
+        FailureMessage will be set on non-retryable errors.
     failureReason : str, default is Undefined, optional
-        FailureReason will be set on non-retryable errors
+        FailureReason will be set on non-retryable errors.
+    initialization : BootstrapClusterxK8sIoV1beta2NodeadmConfigStatusInitialization, default is Undefined, optional
+        initialization
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the latest generation observed by the controller.
     ready : bool, default is Undefined, optional
-        Ready indicates the BootstrapData secret is ready to be consumed
+        Deprecated: This field will be removed with the CAPI v1beta2 transition
+        Ready indicates the BootstrapData secret is ready to be consumed.
     """
 
 
-    conditions?: [BootstrapClusterxK8sIoV1beta2EKSConfigStatusConditionsItems0]
+    conditions?: [BootstrapClusterxK8sIoV1beta2NodeadmConfigStatusConditionsItems0]
 
     dataSecretName?: str
 
@@ -424,12 +411,14 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigStatus:
 
     failureReason?: str
 
+    initialization?: BootstrapClusterxK8sIoV1beta2NodeadmConfigStatusInitialization
+
     observedGeneration?: int
 
     ready?: bool
 
 
-schema BootstrapClusterxK8sIoV1beta2EKSConfigStatusConditionsItems0:
+schema BootstrapClusterxK8sIoV1beta2NodeadmConfigStatusConditionsItems0:
     r"""
     Condition defines an observation of a Cluster API resource operational state.
 
@@ -480,5 +469,21 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigStatusConditionsItems0:
         len(severity) <= 32 if severity
         len($type) <= 256
         len($type) >= 1
+
+
+schema BootstrapClusterxK8sIoV1beta2NodeadmConfigStatusInitialization:
+    r"""
+    Initialization provides observations of the NodeadmConfig initialization process.
+    NOTE: Fields in this struct are part of the Cluster API contract and are used to orchestrate initial Machine provisioning.
+
+    Attributes
+    ----------
+    dataSecretCreated : bool, default is Undefined, optional
+        DataSecretCreated is true when the Machine's bootstrap secret is created.
+        NOTE: This field is part of the Cluster API contract, and it is used to orchestrate initial Machine provisioning.
+    """
+
+
+    dataSecretCreated?: bool
 
 

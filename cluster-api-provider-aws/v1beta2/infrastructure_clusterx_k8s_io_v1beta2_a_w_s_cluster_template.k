@@ -182,6 +182,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecBasti
     allowedCIDRBlocks : [str], default is Undefined, optional
         AllowedCIDRBlocks is a list of CIDR blocks allowed to access the bastion host.
         They are set as ingress rules for the Bastion host's Security Group (defaults to 0.0.0.0/0).
+        If the cluster has IPv6 enabled, defaults to ::/0 and 0.0.0.0/0.
     ami : str, default is Undefined, optional
         AMI will use the specified AMI to boot the bastion. If not specified,
         the AMI will default to one picked out in public space.
@@ -276,6 +277,12 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecContr
         Scheme sets the scheme of the load balancer (defaults to internet-facing)
     subnets : [str], default is Undefined, optional
         Subnets sets the subnets that should be applied to the control plane load balancer (defaults to discovered subnets for managed VPCs or an empty set for unmanaged VPCs)
+    targetGroupIPType : str, default is Undefined, optional
+        TargetGroupIPType sets the IP address type for the target group.
+        Valid values are ipv4 and ipv6. If not specified, defaults to ipv4 unless
+        the VPC has IPv6 enabled, in which case it defaults to ipv6.
+        This applies to the API server target group.
+        This field cannot be set if LoadBalancerType is classic or disabled.
     """
 
 
@@ -303,6 +310,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecContr
 
     subnets?: [str]
 
+    targetGroupIPType?: "ipv4" | "ipv6"
+
 
     check:
         len(name) <= 32 if name
@@ -323,6 +332,11 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecContr
     $protocol : str, default is "TCP", optional
         Protocol sets the protocol for the additional listener.
         Currently only TCP is supported.
+    targetGroupIPType : str, default is Undefined, optional
+        TargetGroupIPType sets the IP address type for the target group.
+        Valid values are ipv4 and ipv6. If not specified, defaults to ipv4 unless
+        the VPC has IPv6 enabled, in which case it defaults to ipv6.
+        This field cannot be set if LoadBalancerType is classic or disabled.
     """
 
 
@@ -331,6 +345,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecContr
     port: int
 
     $protocol?: "TCP" = "TCP"
+
+    targetGroupIPType?: "ipv4" | "ipv6"
 
 
     check:
@@ -702,10 +718,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
     ipv6CidrBlock : str, default is Undefined, optional
         IPv6CidrBlock is the IPv6 CIDR block to be used when the provider creates a managed VPC.
         A subnet can have an IPv4 and an IPv6 address.
-        IPv6 is only supported in managed clusters, this field cannot be set on AWSCluster object.
     isIpv6 : bool, default is Undefined, optional
-        IsIPv6 defines the subnet as an IPv6 subnet. A subnet is IPv6 when it is associated with a VPC that has IPv6 enabled.
-        IPv6 is only supported in managed clusters, this field cannot be set on AWSCluster object.
+        IsIPv6 defines the subnet as an IPv6 subnet. A subnet is IPv6 when it is associated with an IPv6 CIDR.
     isPublic : bool, default is Undefined, optional
         IsPublic defines the subnet as a public subnet. A subnet is public when it is associated with a route table that has a route to an internet gateway.
     natGatewayId : str, default is Undefined, optional
@@ -905,8 +919,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkVpcIPV6:
     r"""
-    IPv6 contains ipv6 specific settings for the network. Supported only in managed clusters.
-    This field cannot be set on AWSCluster object.
+    IPv6 contains ipv6 specific settings for the network.
 
     Attributes
     ----------
@@ -948,6 +961,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
         The netmask length of the IPv4 CIDR you want to allocate to VPC from
         an Amazon VPC IP Address Manager (IPAM) pool.
         Defaults to /16 for IPv4 if not specified.
+        Defaults to /56 for IPv6 if not specified.
     """
 
 
@@ -973,6 +987,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
         The netmask length of the IPv4 CIDR you want to allocate to VPC from
         an Amazon VPC IP Address Manager (IPAM) pool.
         Defaults to /16 for IPv4 if not specified.
+        Defaults to /56 for IPv6 if not specified.
     """
 
 
@@ -1095,6 +1110,12 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecon
         Scheme sets the scheme of the load balancer (defaults to internet-facing)
     subnets : [str], default is Undefined, optional
         Subnets sets the subnets that should be applied to the control plane load balancer (defaults to discovered subnets for managed VPCs or an empty set for unmanaged VPCs)
+    targetGroupIPType : str, default is Undefined, optional
+        TargetGroupIPType sets the IP address type for the target group.
+        Valid values are ipv4 and ipv6. If not specified, defaults to ipv4 unless
+        the VPC has IPv6 enabled, in which case it defaults to ipv6.
+        This applies to the API server target group.
+        This field cannot be set if LoadBalancerType is classic or disabled.
     """
 
 
@@ -1122,6 +1143,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecon
 
     subnets?: [str]
 
+    targetGroupIPType?: "ipv4" | "ipv6"
+
 
     check:
         len(name) <= 32 if name
@@ -1142,6 +1165,11 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecon
     $protocol : str, default is "TCP", optional
         Protocol sets the protocol for the additional listener.
         Currently only TCP is supported.
+    targetGroupIPType : str, default is Undefined, optional
+        TargetGroupIPType sets the IP address type for the target group.
+        Valid values are ipv4 and ipv6. If not specified, defaults to ipv4 unless
+        the VPC has IPv6 enabled, in which case it defaults to ipv6.
+        This field cannot be set if LoadBalancerType is classic or disabled.
     """
 
 
@@ -1150,6 +1178,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecon
     port: int
 
     $protocol?: "TCP" = "TCP"
+
+    targetGroupIPType?: "ipv4" | "ipv6"
 
 
     check:

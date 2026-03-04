@@ -111,6 +111,14 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpec:
         AWSMachine's value takes precedence.
     ami : InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecAmi, default is Undefined, optional
         ami
+    assignPrimaryIPv6 : str, default is Undefined, optional
+        AssignPrimaryIPv6 specifies whether to enable assigning a primary IPv6 address to the primary network Interface.
+        When set to enabled, the instance will be assigned a primary IPv6 address from the subnet's IPv6 CIDR block.
+        This is required when registering instances by ID to IPv6 target groups of dual-stack load balancers.
+
+        When not specified, the default value varies based on the subnet that the instance is launched in:
+        - disabled if subnet is ipv4 only
+        - enabled if subnet is ipv6 only or dual-stack
     capacityReservationId : str, default is Undefined, optional
         CapacityReservationID specifies the target Capacity Reservation into which the instance should be launched.
     capacityReservationPreference : str, default is Undefined, optional
@@ -225,6 +233,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpec:
     additionalTags?: {str:str}
 
     ami?: InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecAmi
+
+    assignPrimaryIPv6?: "enabled" | "disabled"
 
     capacityReservationId?: str
 
@@ -584,6 +594,11 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecInsta
         If you specify a value of disabled, you cannot access your instance metadata.
 
         Default: enabled
+    httpProtocolIpv6 : str, default is "disabled", optional
+        Enables or disables the IPv6 endpoint for the instance metadata service.
+        This applies only if you enabled the HTTP metadata endpoint.
+
+        Default: disabled
     httpPutResponseHopLimit : int, default is 1, optional
         The desired HTTP PUT response hop limit for instance metadata requests. The
         larger the number, the further instance metadata requests can travel.
@@ -615,6 +630,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecInsta
 
 
     httpEndpoint?: "enabled" | "disabled" = "enabled"
+
+    httpProtocolIpv6?: "enabled" | "disabled" = "disabled"
 
     httpPutResponseHopLimit?: int = 1
 

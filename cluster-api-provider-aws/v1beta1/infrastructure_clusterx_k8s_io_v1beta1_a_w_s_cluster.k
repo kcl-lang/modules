@@ -327,10 +327,8 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecNetworkSubnetsItems0:
     ipv6CidrBlock : str, default is Undefined, optional
         IPv6CidrBlock is the IPv6 CIDR block to be used when the provider creates a managed VPC.
         A subnet can have an IPv4 and an IPv6 address.
-        IPv6 is only supported in managed clusters, this field cannot be set on AWSCluster object.
     isIpv6 : bool, default is Undefined, optional
-        IsIPv6 defines the subnet as an IPv6 subnet. A subnet is IPv6 when it is associated with a VPC that has IPv6 enabled.
-        IPv6 is only supported in managed clusters, this field cannot be set on AWSCluster object.
+        IsIPv6 defines the subnet as an IPv6 subnet. A subnet is IPv6 when it is associated with an IPv6 CIDR.
     isPublic : bool, default is Undefined, optional
         IsPublic defines the subnet as a public subnet. A subnet is public when it is associated with a route table that has a route to an internet gateway.
     natGatewayId : str, default is Undefined, optional
@@ -414,8 +412,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecNetworkVpc:
 
 schema InfrastructureClusterxK8sIoV1beta1AWSClusterSpecNetworkVpcIPV6:
     r"""
-    IPv6 contains ipv6 specific settings for the network. Supported only in managed clusters.
-    This field cannot be set on AWSCluster object.
+    IPv6 contains ipv6 specific settings for the network.
 
     Attributes
     ----------

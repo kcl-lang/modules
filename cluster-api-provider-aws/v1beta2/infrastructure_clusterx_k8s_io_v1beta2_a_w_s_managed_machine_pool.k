@@ -353,6 +353,11 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTempl
         If you specify a value of disabled, you cannot access your instance metadata.
 
         Default: enabled
+    httpProtocolIpv6 : str, default is "disabled", optional
+        Enables or disables the IPv6 endpoint for the instance metadata service.
+        This applies only if you enabled the HTTP metadata endpoint.
+
+        Default: disabled
     httpPutResponseHopLimit : int, default is 1, optional
         The desired HTTP PUT response hop limit for instance metadata requests. The
         larger the number, the further instance metadata requests can travel.
@@ -384,6 +389,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSManagedMachinePoolSpecAwsLaunchTempl
 
 
     httpEndpoint?: "enabled" | "disabled" = "enabled"
+
+    httpProtocolIpv6?: "enabled" | "disabled" = "disabled"
 
     httpPutResponseHopLimit?: int = 1
 
