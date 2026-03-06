@@ -104,6 +104,20 @@ schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProvider:
         role Id ref
     roleIdSelector : ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderRoleIDSelector, default is Undefined, optional
         role Id selector
+    samlClientId : str, default is Undefined, optional
+        The ID of the client this role mapper should be added to. Conflicts with client_scope_id. This argument is required if client_scope_id is not set.
+        The destination client of the role. Cannot be used at the same time as client_scope_id.
+    samlClientIdRef : ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientIDRef, default is Undefined, optional
+        saml client Id ref
+    samlClientIdSelector : ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientIDSelector, default is Undefined, optional
+        saml client Id selector
+    samlClientScopeId : str, default is Undefined, optional
+        The ID of the client scope this role mapper should be added to. Conflicts with client_id. This argument is required if client_id is not set.
+        The destination client scope of the role. Cannot be used at the same time as client_id.
+    samlClientScopeIdRef : ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientScopeIDRef, default is Undefined, optional
+        saml client scope Id ref
+    samlClientScopeIdSelector : ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientScopeIDSelector, default is Undefined, optional
+        saml client scope Id selector
     """
 
 
@@ -130,6 +144,18 @@ schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProvider:
     roleIdRef?: ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderRoleIDRef
 
     roleIdSelector?: ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderRoleIDSelector
+
+    samlClientId?: str
+
+    samlClientIdRef?: ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientIDRef
+
+    samlClientIdSelector?: ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientIDSelector
+
+    samlClientScopeId?: str
+
+    samlClientScopeIdRef?: ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientScopeIDRef
+
+    samlClientScopeIdSelector?: ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientScopeIDSelector
 
 
 schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderClientIDRef:
@@ -520,6 +546,200 @@ schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderRoleIDSelecto
     resolve?: "Always" | "IfNotPresent"
 
 
+schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientIDRef:
+    r"""
+    Reference to a Client in samlclient to populate samlClientId.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    namespace : str, default is Undefined, optional
+        Namespace of the referenced object
+    policy : ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientIDRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    namespace?: str
+
+    policy?: ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientIDRefPolicy
+
+
+schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientIDRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientIDSelector:
+    r"""
+    Selector for a Client in samlclient to populate samlClientId.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    namespace : str, default is Undefined, optional
+        Namespace for the selector
+    policy : ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientIDSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    namespace?: str
+
+    policy?: ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientIDSelectorPolicy
+
+
+schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientIDSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientScopeIDRef:
+    r"""
+    Reference to a ClientScope in samlclient to populate samlClientScopeId.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    namespace : str, default is Undefined, optional
+        Namespace of the referenced object
+    policy : ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientScopeIDRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    namespace?: str
+
+    policy?: ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientScopeIDRefPolicy
+
+
+schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientScopeIDRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientScopeIDSelector:
+    r"""
+    Selector for a ClientScope in samlclient to populate samlClientScopeId.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    namespace : str, default is Undefined, optional
+        Namespace for the selector
+    policy : ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientScopeIDSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    namespace?: str
+
+    policy?: ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientScopeIDSelectorPolicy
+
+
+schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecForProviderSamlClientScopeIDSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
 schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProvider:
     r"""
     THIS IS A BETA FIELD. It will be honored
@@ -563,6 +783,20 @@ schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProvider:
         role Id ref
     roleIdSelector : ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderRoleIDSelector, default is Undefined, optional
         role Id selector
+    samlClientId : str, default is Undefined, optional
+        The ID of the client this role mapper should be added to. Conflicts with client_scope_id. This argument is required if client_scope_id is not set.
+        The destination client of the role. Cannot be used at the same time as client_scope_id.
+    samlClientIdRef : ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientIDRef, default is Undefined, optional
+        saml client Id ref
+    samlClientIdSelector : ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientIDSelector, default is Undefined, optional
+        saml client Id selector
+    samlClientScopeId : str, default is Undefined, optional
+        The ID of the client scope this role mapper should be added to. Conflicts with client_id. This argument is required if client_id is not set.
+        The destination client scope of the role. Cannot be used at the same time as client_id.
+    samlClientScopeIdRef : ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientScopeIDRef, default is Undefined, optional
+        saml client scope Id ref
+    samlClientScopeIdSelector : ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientScopeIDSelector, default is Undefined, optional
+        saml client scope Id selector
     """
 
 
@@ -589,6 +823,18 @@ schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProvider:
     roleIdRef?: ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderRoleIDRef
 
     roleIdSelector?: ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderRoleIDSelector
+
+    samlClientId?: str
+
+    samlClientIdRef?: ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientIDRef
+
+    samlClientIdSelector?: ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientIDSelector
+
+    samlClientScopeId?: str
+
+    samlClientScopeIdRef?: ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientScopeIDRef
+
+    samlClientScopeIdSelector?: ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientScopeIDSelector
 
 
 schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderClientIDRef:
@@ -979,6 +1225,200 @@ schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderRoleIDSelect
     resolve?: "Always" | "IfNotPresent"
 
 
+schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientIDRef:
+    r"""
+    Reference to a Client in samlclient to populate samlClientId.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    namespace : str, default is Undefined, optional
+        Namespace of the referenced object
+    policy : ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientIDRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    namespace?: str
+
+    policy?: ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientIDRefPolicy
+
+
+schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientIDRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientIDSelector:
+    r"""
+    Selector for a Client in samlclient to populate samlClientId.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    namespace : str, default is Undefined, optional
+        Namespace for the selector
+    policy : ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientIDSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    namespace?: str
+
+    policy?: ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientIDSelectorPolicy
+
+
+schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientIDSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientScopeIDRef:
+    r"""
+    Reference to a ClientScope in samlclient to populate samlClientScopeId.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    namespace : str, default is Undefined, optional
+        Namespace of the referenced object
+    policy : ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientScopeIDRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    namespace?: str
+
+    policy?: ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientScopeIDRefPolicy
+
+
+schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientScopeIDRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientScopeIDSelector:
+    r"""
+    Selector for a ClientScope in samlclient to populate samlClientScopeId.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    namespace : str, default is Undefined, optional
+        Namespace for the selector
+    policy : ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientScopeIDSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    namespace?: str
+
+    policy?: ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientScopeIDSelectorPolicy
+
+
+schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecInitProviderSamlClientScopeIDSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
 schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperSpecProviderConfigRef:
     r"""
     ProviderConfigReference specifies how the provider that will be used to
@@ -1060,6 +1500,12 @@ schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperStatusAtProvider:
     roleId : str, default is Undefined, optional
         The ID of the role to be added to this role mapper.
         Id of the role to assign
+    samlClientId : str, default is Undefined, optional
+        The ID of the client this role mapper should be added to. Conflicts with client_scope_id. This argument is required if client_scope_id is not set.
+        The destination client of the role. Cannot be used at the same time as client_scope_id.
+    samlClientScopeId : str, default is Undefined, optional
+        The ID of the client scope this role mapper should be added to. Conflicts with client_id. This argument is required if client_id is not set.
+        The destination client scope of the role. Cannot be used at the same time as client_id.
     """
 
 
@@ -1072,6 +1518,10 @@ schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperStatusAtProvider:
     realmId?: str
 
     roleId?: str
+
+    samlClientId?: str
+
+    samlClientScopeId?: str
 
 
 schema ClientKeycloakmCrossplaneIoV1alpha1RoleMapperStatusConditionsItems0:

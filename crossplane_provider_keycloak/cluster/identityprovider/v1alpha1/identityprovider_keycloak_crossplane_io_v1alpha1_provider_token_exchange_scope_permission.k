@@ -5,39 +5,39 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 import k8s.apimachinery.pkg.apis.meta.v1
 
 
-schema ClientUserPolicy:
+schema ProviderTokenExchangeScopePermission:
     r"""
-    ClientUserPolicy is the Schema for the ClientUserPolicys API.
+    ProviderTokenExchangeScopePermission is the Schema for the ProviderTokenExchangeScopePermissions API.
 
     Attributes
     ----------
-    apiVersion : str, default is "openidclient.keycloak.crossplane.io/v1alpha1", required
+    apiVersion : str, default is "identityprovider.keycloak.crossplane.io/v1alpha1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-    kind : str, default is "ClientUserPolicy", required
+    kind : str, default is "ProviderTokenExchangeScopePermission", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpec, default is Undefined, required
+    spec : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpec, default is Undefined, required
         spec
-    status : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicyStatus, default is Undefined, optional
+    status : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionStatus, default is Undefined, optional
         status
     """
 
 
-    apiVersion: "openidclient.keycloak.crossplane.io/v1alpha1" = "openidclient.keycloak.crossplane.io/v1alpha1"
+    apiVersion: "identityprovider.keycloak.crossplane.io/v1alpha1" = "identityprovider.keycloak.crossplane.io/v1alpha1"
 
-    kind: "ClientUserPolicy" = "ClientUserPolicy"
+    kind: "ProviderTokenExchangeScopePermission" = "ProviderTokenExchangeScopePermission"
 
     metadata?: v1.ObjectMeta
 
-    spec: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpec
+    spec: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpec
 
-    status?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicyStatus
+    status?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionStatus
 
 
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpec:
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpec:
     r"""
-    ClientUserPolicySpec defines the desired state of ClientUserPolicy
+    ProviderTokenExchangeScopePermissionSpec defines the desired state of ProviderTokenExchangeScopePermission
 
     Attributes
     ----------
@@ -49,9 +49,9 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpec:
         field in a future release. Currently, both could be set independently and
         non-default values would be honored if the feature flag is enabled.
         See the design doc for more information: https://github.com/crossplane/crossplane/blob/499895a25d1a1a0ba1604944ef98ac7a1a71f197/design/design-doc-observe-only-resources.md?plain=1#L223
-    forProvider : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProvider, default is Undefined, required
+    forProvider : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProvider, default is Undefined, required
         for provider
-    initProvider : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProvider, default is Undefined, optional
+    initProvider : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProvider, default is Undefined, optional
         init provider
     managementPolicies : [str], default is ["*"], optional
         THIS IS A BETA FIELD. It is on by default but can be opted out
@@ -64,107 +64,97 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpec:
         custom, the DeletionPolicy field will be ignored.
         See the design doc for more information: https://github.com/crossplane/crossplane/blob/499895a25d1a1a0ba1604944ef98ac7a1a71f197/design/design-doc-observe-only-resources.md?plain=1#L223
         and this one: https://github.com/crossplane/crossplane/blob/444267e84783136daa93568b364a5f01228cacbe/design/one-pager-ignore-changes.md
-    providerConfigRef : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecProviderConfigRef, default is Undefined, optional
+    providerConfigRef : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecProviderConfigRef, default is Undefined, optional
         provider config ref
-    writeConnectionSecretToRef : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecWriteConnectionSecretToRef, default is Undefined, optional
+    writeConnectionSecretToRef : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecWriteConnectionSecretToRef, default is Undefined, optional
         write connection secret to ref
     """
 
 
     deletionPolicy?: "Orphan" | "Delete" = "Delete"
 
-    forProvider: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProvider
+    forProvider: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProvider
 
-    initProvider?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProvider
+    initProvider?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProvider
 
     managementPolicies?: [str] = ["*"]
 
-    providerConfigRef?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecProviderConfigRef
+    providerConfigRef?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecProviderConfigRef
 
-    writeConnectionSecretToRef?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecWriteConnectionSecretToRef
+    writeConnectionSecretToRef?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecWriteConnectionSecretToRef
 
 
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProvider:
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProvider:
     r"""
-    openidclient keycloak crossplane io v1alpha1 client user policy spec for provider
+    identityprovider keycloak crossplane io v1alpha1 provider token exchange scope permission spec for provider
 
     Attributes
     ----------
-    decisionStrategy : str, default is Undefined, optional
-        The decision strategy, can be one of UNANIMOUS, AFFIRMATIVE, or CONSENSUS.
-    description : str, default is Undefined, optional
-        A description for the authorization policy.
-    logic : str, default is Undefined, optional
-        The logic, can be one of POSITIVE or NEGATIVE. Defaults to POSITIVE.
-    name : str, default is Undefined, optional
-        The name of the policy.
+    clients : [str], default is Undefined, optional
+        A list of IDs of the clients for which a policy will be created and set on scope based token exchange permission.
+        Ids of the clients for which a policy will be created and set on scope based token exchange permission
+    clientsRefs : [IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderClientsRefsItems0], default is Undefined, optional
+        References to Client in openidclient to populate clients.
+    clientsSelector : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderClientsSelector, default is Undefined, optional
+        clients selector
+    policyType : str, default is Undefined, optional
+        Defaults to "client" This is also the only value policy type supported by this provider.
+        Type of policy that is created. At the moment only 'client' type is supported
+    providerAlias : str, default is Undefined, optional
+        Alias of the identity provider.
+    providerAliasRef : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderProviderAliasRef, default is Undefined, optional
+        provider alias ref
+    providerAliasSelector : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderProviderAliasSelector, default is Undefined, optional
+        provider alias selector
     realmId : str, default is Undefined, optional
-        The realm this policy exists in.
-    realmIdRef : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderRealmIDRef, default is Undefined, optional
+        The realm that the identity provider exists in.
+    realmIdRef : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderRealmIDRef, default is Undefined, optional
         realm Id ref
-    realmIdSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderRealmIDSelector, default is Undefined, optional
+    realmIdSelector : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
-    resourceServerId : str, default is Undefined, optional
-        The ID of the resource server.
-    resourceServerIdRef : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderResourceServerIDRef, default is Undefined, optional
-        resource server Id ref
-    resourceServerIdSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderResourceServerIDSelector, default is Undefined, optional
-        resource server Id selector
-    users : [str], default is Undefined, optional
-        A list of user IDs that this policy applies to.
-    usersRefs : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderUsersRefsItems0], default is Undefined, optional
-        References to User in user to populate users.
-    usersSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderUsersSelector, default is Undefined, optional
-        users selector
     """
 
 
-    decisionStrategy?: str
+    clients?: [str]
 
-    description?: str
+    clientsRefs?: [IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderClientsRefsItems0]
 
-    logic?: str
+    clientsSelector?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderClientsSelector
 
-    name?: str
+    policyType?: str
+
+    providerAlias?: str
+
+    providerAliasRef?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderProviderAliasRef
+
+    providerAliasSelector?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderProviderAliasSelector
 
     realmId?: str
 
-    realmIdRef?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderRealmIDRef
+    realmIdRef?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderRealmIDRef
 
-    realmIdSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderRealmIDSelector
-
-    resourceServerId?: str
-
-    resourceServerIdRef?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderResourceServerIDRef
-
-    resourceServerIdSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderResourceServerIDSelector
-
-    users?: [str]
-
-    usersRefs?: [OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderUsersRefsItems0]
-
-    usersSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderUsersSelector
+    realmIdSelector?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderRealmIDSelector
 
 
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderRealmIDRef:
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderClientsRefsItems0:
     r"""
-    Reference to a Realm in realm to populate realmId.
+    A Reference to a named object.
 
     Attributes
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderRealmIDRefPolicy, default is Undefined, optional
+    policy : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderClientsRefsItems0Policy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderRealmIDRefPolicy
+    policy?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderClientsRefsItems0Policy
 
 
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderRealmIDRefPolicy:
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderClientsRefsItems0Policy:
     r"""
     Policies for referencing.
 
@@ -188,7 +178,185 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderRe
     resolve?: "Always" | "IfNotPresent"
 
 
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderRealmIDSelector:
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderClientsSelector:
+    r"""
+    Selector for a list of Client in openidclient to populate clients.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderClientsSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderClientsSelectorPolicy
+
+
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderClientsSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderProviderAliasRef:
+    r"""
+    Reference to a IdentityProvider in oidc to populate providerAlias.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderProviderAliasRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderProviderAliasRefPolicy
+
+
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderProviderAliasRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderProviderAliasSelector:
+    r"""
+    Selector for a IdentityProvider in oidc to populate providerAlias.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderProviderAliasSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderProviderAliasSelectorPolicy
+
+
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderProviderAliasSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderRealmIDRef:
+    r"""
+    Reference to a Realm in realm to populate realmId.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderRealmIDRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderRealmIDRefPolicy
+
+
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderRealmIDRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderRealmIDSelector:
     r"""
     Selector for a Realm in realm to populate realmId.
 
@@ -199,7 +367,7 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderRe
         as the selecting object is selected.
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels ensures an object with matching labels is selected.
-    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderRealmIDSelectorPolicy, default is Undefined, optional
+    policy : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderRealmIDSelectorPolicy, default is Undefined, optional
         policy
     """
 
@@ -208,10 +376,10 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderRe
 
     matchLabels?: {str:str}
 
-    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderRealmIDSelectorPolicy
+    policy?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderRealmIDSelectorPolicy
 
 
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderRealmIDSelectorPolicy:
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecForProviderRealmIDSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -235,185 +403,7 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderRe
     resolve?: "Always" | "IfNotPresent"
 
 
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderResourceServerIDRef:
-    r"""
-    Reference to a Client in openidclient to populate resourceServerId.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        Name of the referenced object.
-    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderResourceServerIDRefPolicy, default is Undefined, optional
-        policy
-    """
-
-
-    name: str
-
-    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderResourceServerIDRefPolicy
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderResourceServerIDRefPolicy:
-    r"""
-    Policies for referencing.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderResourceServerIDSelector:
-    r"""
-    Selector for a Client in openidclient to populate resourceServerId.
-
-    Attributes
-    ----------
-    matchControllerRef : bool, default is Undefined, optional
-        MatchControllerRef ensures an object with the same controller reference
-        as the selecting object is selected.
-    matchLabels : {str:str}, default is Undefined, optional
-        MatchLabels ensures an object with matching labels is selected.
-    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderResourceServerIDSelectorPolicy, default is Undefined, optional
-        policy
-    """
-
-
-    matchControllerRef?: bool
-
-    matchLabels?: {str:str}
-
-    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderResourceServerIDSelectorPolicy
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderResourceServerIDSelectorPolicy:
-    r"""
-    Policies for selection.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderUsersRefsItems0:
-    r"""
-    A Reference to a named object.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        Name of the referenced object.
-    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderUsersRefsItems0Policy, default is Undefined, optional
-        policy
-    """
-
-
-    name: str
-
-    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderUsersRefsItems0Policy
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderUsersRefsItems0Policy:
-    r"""
-    Policies for referencing.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderUsersSelector:
-    r"""
-    Selector for a list of User in user to populate users.
-
-    Attributes
-    ----------
-    matchControllerRef : bool, default is Undefined, optional
-        MatchControllerRef ensures an object with the same controller reference
-        as the selecting object is selected.
-    matchLabels : {str:str}, default is Undefined, optional
-        MatchLabels ensures an object with matching labels is selected.
-    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderUsersSelectorPolicy, default is Undefined, optional
-        policy
-    """
-
-
-    matchControllerRef?: bool
-
-    matchLabels?: {str:str}
-
-    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderUsersSelectorPolicy
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderUsersSelectorPolicy:
-    r"""
-    Policies for selection.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProvider:
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProvider:
     r"""
     THIS IS A BETA FIELD. It will be honored
     unless the Management Policies feature flag is disabled.
@@ -428,81 +418,71 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProvider:
 
     Attributes
     ----------
-    decisionStrategy : str, default is Undefined, optional
-        The decision strategy, can be one of UNANIMOUS, AFFIRMATIVE, or CONSENSUS.
-    description : str, default is Undefined, optional
-        A description for the authorization policy.
-    logic : str, default is Undefined, optional
-        The logic, can be one of POSITIVE or NEGATIVE. Defaults to POSITIVE.
-    name : str, default is Undefined, optional
-        The name of the policy.
+    clients : [str], default is Undefined, optional
+        A list of IDs of the clients for which a policy will be created and set on scope based token exchange permission.
+        Ids of the clients for which a policy will be created and set on scope based token exchange permission
+    clientsRefs : [IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderClientsRefsItems0], default is Undefined, optional
+        References to Client in openidclient to populate clients.
+    clientsSelector : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderClientsSelector, default is Undefined, optional
+        clients selector
+    policyType : str, default is Undefined, optional
+        Defaults to "client" This is also the only value policy type supported by this provider.
+        Type of policy that is created. At the moment only 'client' type is supported
+    providerAlias : str, default is Undefined, optional
+        Alias of the identity provider.
+    providerAliasRef : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderProviderAliasRef, default is Undefined, optional
+        provider alias ref
+    providerAliasSelector : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderProviderAliasSelector, default is Undefined, optional
+        provider alias selector
     realmId : str, default is Undefined, optional
-        The realm this policy exists in.
-    realmIdRef : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderRealmIDRef, default is Undefined, optional
+        The realm that the identity provider exists in.
+    realmIdRef : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderRealmIDRef, default is Undefined, optional
         realm Id ref
-    realmIdSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderRealmIDSelector, default is Undefined, optional
+    realmIdSelector : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
-    resourceServerId : str, default is Undefined, optional
-        The ID of the resource server.
-    resourceServerIdRef : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderResourceServerIDRef, default is Undefined, optional
-        resource server Id ref
-    resourceServerIdSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderResourceServerIDSelector, default is Undefined, optional
-        resource server Id selector
-    users : [str], default is Undefined, optional
-        A list of user IDs that this policy applies to.
-    usersRefs : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderUsersRefsItems0], default is Undefined, optional
-        References to User in user to populate users.
-    usersSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderUsersSelector, default is Undefined, optional
-        users selector
     """
 
 
-    decisionStrategy?: str
+    clients?: [str]
 
-    description?: str
+    clientsRefs?: [IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderClientsRefsItems0]
 
-    logic?: str
+    clientsSelector?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderClientsSelector
 
-    name?: str
+    policyType?: str
+
+    providerAlias?: str
+
+    providerAliasRef?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderProviderAliasRef
+
+    providerAliasSelector?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderProviderAliasSelector
 
     realmId?: str
 
-    realmIdRef?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderRealmIDRef
+    realmIdRef?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderRealmIDRef
 
-    realmIdSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderRealmIDSelector
-
-    resourceServerId?: str
-
-    resourceServerIdRef?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderResourceServerIDRef
-
-    resourceServerIdSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderResourceServerIDSelector
-
-    users?: [str]
-
-    usersRefs?: [OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderUsersRefsItems0]
-
-    usersSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderUsersSelector
+    realmIdSelector?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderRealmIDSelector
 
 
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderRealmIDRef:
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderClientsRefsItems0:
     r"""
-    Reference to a Realm in realm to populate realmId.
+    A Reference to a named object.
 
     Attributes
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderRealmIDRefPolicy, default is Undefined, optional
+    policy : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderClientsRefsItems0Policy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderRealmIDRefPolicy
+    policy?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderClientsRefsItems0Policy
 
 
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderRealmIDRefPolicy:
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderClientsRefsItems0Policy:
     r"""
     Policies for referencing.
 
@@ -526,7 +506,185 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderR
     resolve?: "Always" | "IfNotPresent"
 
 
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderRealmIDSelector:
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderClientsSelector:
+    r"""
+    Selector for a list of Client in openidclient to populate clients.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderClientsSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderClientsSelectorPolicy
+
+
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderClientsSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderProviderAliasRef:
+    r"""
+    Reference to a IdentityProvider in oidc to populate providerAlias.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderProviderAliasRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderProviderAliasRefPolicy
+
+
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderProviderAliasRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderProviderAliasSelector:
+    r"""
+    Selector for a IdentityProvider in oidc to populate providerAlias.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderProviderAliasSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderProviderAliasSelectorPolicy
+
+
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderProviderAliasSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderRealmIDRef:
+    r"""
+    Reference to a Realm in realm to populate realmId.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderRealmIDRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderRealmIDRefPolicy
+
+
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderRealmIDRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderRealmIDSelector:
     r"""
     Selector for a Realm in realm to populate realmId.
 
@@ -537,7 +695,7 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderR
         as the selecting object is selected.
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels ensures an object with matching labels is selected.
-    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderRealmIDSelectorPolicy, default is Undefined, optional
+    policy : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderRealmIDSelectorPolicy, default is Undefined, optional
         policy
     """
 
@@ -546,10 +704,10 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderR
 
     matchLabels?: {str:str}
 
-    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderRealmIDSelectorPolicy
+    policy?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderRealmIDSelectorPolicy
 
 
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderRealmIDSelectorPolicy:
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecInitProviderRealmIDSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -573,185 +731,7 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderR
     resolve?: "Always" | "IfNotPresent"
 
 
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderResourceServerIDRef:
-    r"""
-    Reference to a Client in openidclient to populate resourceServerId.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        Name of the referenced object.
-    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderResourceServerIDRefPolicy, default is Undefined, optional
-        policy
-    """
-
-
-    name: str
-
-    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderResourceServerIDRefPolicy
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderResourceServerIDRefPolicy:
-    r"""
-    Policies for referencing.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderResourceServerIDSelector:
-    r"""
-    Selector for a Client in openidclient to populate resourceServerId.
-
-    Attributes
-    ----------
-    matchControllerRef : bool, default is Undefined, optional
-        MatchControllerRef ensures an object with the same controller reference
-        as the selecting object is selected.
-    matchLabels : {str:str}, default is Undefined, optional
-        MatchLabels ensures an object with matching labels is selected.
-    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderResourceServerIDSelectorPolicy, default is Undefined, optional
-        policy
-    """
-
-
-    matchControllerRef?: bool
-
-    matchLabels?: {str:str}
-
-    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderResourceServerIDSelectorPolicy
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderResourceServerIDSelectorPolicy:
-    r"""
-    Policies for selection.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderUsersRefsItems0:
-    r"""
-    A Reference to a named object.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        Name of the referenced object.
-    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderUsersRefsItems0Policy, default is Undefined, optional
-        policy
-    """
-
-
-    name: str
-
-    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderUsersRefsItems0Policy
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderUsersRefsItems0Policy:
-    r"""
-    Policies for referencing.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderUsersSelector:
-    r"""
-    Selector for a list of User in user to populate users.
-
-    Attributes
-    ----------
-    matchControllerRef : bool, default is Undefined, optional
-        MatchControllerRef ensures an object with the same controller reference
-        as the selecting object is selected.
-    matchLabels : {str:str}, default is Undefined, optional
-        MatchLabels ensures an object with matching labels is selected.
-    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderUsersSelectorPolicy, default is Undefined, optional
-        policy
-    """
-
-
-    matchControllerRef?: bool
-
-    matchLabels?: {str:str}
-
-    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderUsersSelectorPolicy
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderUsersSelectorPolicy:
-    r"""
-    Policies for selection.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecProviderConfigRef:
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecProviderConfigRef:
     r"""
     ProviderConfigReference specifies how the provider that will be used to
     create, observe, update, and delete this managed resource should be
@@ -761,17 +741,17 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecProviderConfi
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecProviderConfigRefPolicy, default is Undefined, optional
+    policy : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecProviderConfigRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecProviderConfigRefPolicy
+    policy?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecProviderConfigRefPolicy
 
 
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecProviderConfigRefPolicy:
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecProviderConfigRefPolicy:
     r"""
     Policies for referencing.
 
@@ -795,7 +775,7 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecProviderConfi
     resolve?: "Always" | "IfNotPresent"
 
 
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecWriteConnectionSecretToRef:
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionSpecWriteConnectionSecretToRef:
     r"""
     WriteConnectionSecretToReference specifies the namespace and name of a
     Secret to which any connection details for this managed resource should
@@ -816,15 +796,15 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecWriteConnecti
     namespace: str
 
 
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicyStatus:
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionStatus:
     r"""
-    ClientUserPolicyStatus defines the observed state of ClientUserPolicy.
+    ProviderTokenExchangeScopePermissionStatus defines the observed state of ProviderTokenExchangeScopePermission.
 
     Attributes
     ----------
-    atProvider : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicyStatusAtProvider, default is Undefined, optional
+    atProvider : IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionStatusAtProvider, default is Undefined, optional
         at provider
-    conditions : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicyStatusConditionsItems0], default is Undefined, optional
+    conditions : [IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionStatusConditionsItems0], default is Undefined, optional
         Conditions of the resource.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the latest metadata.generation
@@ -833,56 +813,66 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicyStatus:
     """
 
 
-    atProvider?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicyStatusAtProvider
+    atProvider?: IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionStatusAtProvider
 
-    conditions?: [OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicyStatusConditionsItems0]
+    conditions?: [IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionStatusConditionsItems0]
 
     observedGeneration?: int
 
 
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicyStatusAtProvider:
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionStatusAtProvider:
     r"""
-    openidclient keycloak crossplane io v1alpha1 client user policy status at provider
+    identityprovider keycloak crossplane io v1alpha1 provider token exchange scope permission status at provider
 
     Attributes
     ----------
-    decisionStrategy : str, default is Undefined, optional
-        The decision strategy, can be one of UNANIMOUS, AFFIRMATIVE, or CONSENSUS.
-    description : str, default is Undefined, optional
-        A description for the authorization policy.
+    authorizationIdpResourceId : str, default is Undefined, optional
+        (Computed) Resource ID representing the identity provider, this automatically created by keycloak.
+        Resource id representing the identity provider, this automatically created by keycloak
+    authorizationResourceServerId : str, default is Undefined, optional
+        (Computed) Resource server ID representing the realm management client on which this permission is managed.
+        Resource server id representing the realm management client on which this permission is managed
+    authorizationTokenExchangeScopePermissionId : str, default is Undefined, optional
+        (Computed) Permission ID representing the Permission with scope 'Token Exchange' and the resource 'authorization_idp_resource_id', this automatically created by keycloak, the policy ID will be set on this permission.
+        Permission id representing the Permission with scope 'Token Exchange' and the resource 'authorization_idp_resource_id', this automatically created by keycloak, the policy id will be set on this permission
+    clients : [str], default is Undefined, optional
+        A list of IDs of the clients for which a policy will be created and set on scope based token exchange permission.
+        Ids of the clients for which a policy will be created and set on scope based token exchange permission
     id : str, default is Undefined, optional
-        Policy ID representing the user policy.
-    logic : str, default is Undefined, optional
-        The logic, can be one of POSITIVE or NEGATIVE. Defaults to POSITIVE.
-    name : str, default is Undefined, optional
-        The name of the policy.
+        id
+    policyId : str, default is Undefined, optional
+        (Computed) Policy ID that will be set on the scope based token exchange permission automatically created by enabling permissions on the reference identity provider.
+        Policy id that will be set on the scope based token exchange permission automatically created by enabling permissions on the reference identity provider
+    policyType : str, default is Undefined, optional
+        Defaults to "client" This is also the only value policy type supported by this provider.
+        Type of policy that is created. At the moment only 'client' type is supported
+    providerAlias : str, default is Undefined, optional
+        Alias of the identity provider.
     realmId : str, default is Undefined, optional
-        The realm this policy exists in.
-    resourceServerId : str, default is Undefined, optional
-        The ID of the resource server.
-    users : [str], default is Undefined, optional
-        A list of user IDs that this policy applies to.
+        The realm that the identity provider exists in.
     """
 
 
-    decisionStrategy?: str
+    authorizationIdpResourceId?: str
 
-    description?: str
+    authorizationResourceServerId?: str
+
+    authorizationTokenExchangeScopePermissionId?: str
+
+    clients?: [str]
 
     id?: str
 
-    logic?: str
+    policyId?: str
 
-    name?: str
+    policyType?: str
+
+    providerAlias?: str
 
     realmId?: str
 
-    resourceServerId?: str
 
-    users?: [str]
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicyStatusConditionsItems0:
+schema IdentityproviderKeycloakCrossplaneIoV1alpha1ProviderTokenExchangeScopePermissionStatusConditionsItems0:
     r"""
     A Condition that may apply to a resource.
 

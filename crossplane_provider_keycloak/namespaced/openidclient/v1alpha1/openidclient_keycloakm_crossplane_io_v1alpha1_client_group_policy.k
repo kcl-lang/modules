@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ClientGroupPolicy:
     r"""
-    ClientGroupPolicy is the Schema for the ClientGroupPolicys API. <no value>
+    ClientGroupPolicy is the Schema for the ClientGroupPolicys API.
 
     Attributes
     ----------
@@ -77,25 +77,25 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientGroupPolicySpecForProvider
     Attributes
     ----------
     decisionStrategy : str, default is Undefined, optional
-        decision strategy
+        The decision strategy, can be one of UNANIMOUS, AFFIRMATIVE, or CONSENSUS.
     description : str, default is Undefined, optional
-        description
+        A description for the authorization policy.
     groups : [OpenidclientKeycloakmCrossplaneIoV1alpha1ClientGroupPolicySpecForProviderGroupsItems0], default is Undefined, optional
-        groups
+        A list of groups group. At least one group must be defined.
     groupsClaim : str, default is Undefined, optional
-        groups claim
+        The name of the claim in the token that contains the group information.
     logic : str, default is Undefined, optional
-        logic
+        The logic, can be one of POSITIVE or NEGATIVE. Defaults to POSITIVE.
     name : str, default is Undefined, optional
-        name
+        The name of the policy.
     realmId : str, default is Undefined, optional
-        realm Id
+        The realm this policy exists in.
     realmIdRef : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientGroupPolicySpecForProviderRealmIDRef, default is Undefined, optional
         realm Id ref
     realmIdSelector : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientGroupPolicySpecForProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
     resourceServerId : str, default is Undefined, optional
-        resource server Id
+        The ID of the resource server.
     resourceServerIdRef : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientGroupPolicySpecForProviderResourceServerIDRef, default is Undefined, optional
         resource server Id ref
     resourceServerIdSelector : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientGroupPolicySpecForProviderResourceServerIDSelector, default is Undefined, optional
@@ -135,15 +135,15 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientGroupPolicySpecForProvider
     Attributes
     ----------
     extendChildren : bool, default is Undefined, optional
-        extend children
+        When true, the policy will also apply to all child groups of this group.
     id : str, default is Undefined, optional
-        id
+        The ID of the group.
     idRef : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientGroupPolicySpecForProviderGroupsItems0IDRef, default is Undefined, optional
         id ref
     idSelector : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientGroupPolicySpecForProviderGroupsItems0IDSelector, default is Undefined, optional
         id selector
     path : str, default is Undefined, optional
-        path
+        The path of the group.
     """
 
 
@@ -465,25 +465,25 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientGroupPolicySpecInitProvide
     Attributes
     ----------
     decisionStrategy : str, default is Undefined, optional
-        decision strategy
+        The decision strategy, can be one of UNANIMOUS, AFFIRMATIVE, or CONSENSUS.
     description : str, default is Undefined, optional
-        description
+        A description for the authorization policy.
     groups : [OpenidclientKeycloakmCrossplaneIoV1alpha1ClientGroupPolicySpecInitProviderGroupsItems0], default is Undefined, optional
-        groups
+        A list of groups group. At least one group must be defined.
     groupsClaim : str, default is Undefined, optional
-        groups claim
+        The name of the claim in the token that contains the group information.
     logic : str, default is Undefined, optional
-        logic
+        The logic, can be one of POSITIVE or NEGATIVE. Defaults to POSITIVE.
     name : str, default is Undefined, optional
-        name
+        The name of the policy.
     realmId : str, default is Undefined, optional
-        realm Id
+        The realm this policy exists in.
     realmIdRef : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientGroupPolicySpecInitProviderRealmIDRef, default is Undefined, optional
         realm Id ref
     realmIdSelector : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientGroupPolicySpecInitProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
     resourceServerId : str, default is Undefined, optional
-        resource server Id
+        The ID of the resource server.
     resourceServerIdRef : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientGroupPolicySpecInitProviderResourceServerIDRef, default is Undefined, optional
         resource server Id ref
     resourceServerIdSelector : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientGroupPolicySpecInitProviderResourceServerIDSelector, default is Undefined, optional
@@ -523,15 +523,15 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientGroupPolicySpecInitProvide
     Attributes
     ----------
     extendChildren : bool, default is Undefined, optional
-        extend children
+        When true, the policy will also apply to all child groups of this group.
     id : str, default is Undefined, optional
-        id
+        The ID of the group.
     idRef : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientGroupPolicySpecInitProviderGroupsItems0IDRef, default is Undefined, optional
         id ref
     idSelector : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientGroupPolicySpecInitProviderGroupsItems0IDSelector, default is Undefined, optional
         id selector
     path : str, default is Undefined, optional
-        path
+        The path of the group.
     """
 
 
@@ -905,23 +905,23 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientGroupPolicyStatusAtProvide
     Attributes
     ----------
     decisionStrategy : str, default is Undefined, optional
-        decision strategy
+        The decision strategy, can be one of UNANIMOUS, AFFIRMATIVE, or CONSENSUS.
     description : str, default is Undefined, optional
-        description
+        A description for the authorization policy.
     groups : [OpenidclientKeycloakmCrossplaneIoV1alpha1ClientGroupPolicyStatusAtProviderGroupsItems0], default is Undefined, optional
-        groups
+        A list of groups group. At least one group must be defined.
     groupsClaim : str, default is Undefined, optional
-        groups claim
+        The name of the claim in the token that contains the group information.
     id : str, default is Undefined, optional
-        id
+        The ID of the group.
     logic : str, default is Undefined, optional
-        logic
+        The logic, can be one of POSITIVE or NEGATIVE. Defaults to POSITIVE.
     name : str, default is Undefined, optional
-        name
+        The name of the policy.
     realmId : str, default is Undefined, optional
-        realm Id
+        The realm this policy exists in.
     resourceServerId : str, default is Undefined, optional
-        resource server Id
+        The ID of the resource server.
     """
 
 
@@ -951,11 +951,11 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientGroupPolicyStatusAtProvide
     Attributes
     ----------
     extendChildren : bool, default is Undefined, optional
-        extend children
+        When true, the policy will also apply to all child groups of this group.
     id : str, default is Undefined, optional
-        id
+        The ID of the group.
     path : str, default is Undefined, optional
-        path
+        The path of the group.
     """
 
 

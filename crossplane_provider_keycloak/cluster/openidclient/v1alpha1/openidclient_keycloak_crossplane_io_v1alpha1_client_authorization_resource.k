@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ClientAuthorizationResource:
     r"""
-    ClientAuthorizationResource is the Schema for the ClientAuthorizationResources API. <no value>
+    ClientAuthorizationResource is the Schema for the ClientAuthorizationResources API.
 
     Attributes
     ----------
@@ -91,33 +91,33 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationResourceSpecFo
     Attributes
     ----------
     attributes : {str:str}, default is Undefined, optional
-        attributes
+        A map of attributes for the resource. Values can be comma-separated lists.
     displayName : str, default is Undefined, optional
-        display name
+        The display name of the resource.
     iconUri : str, default is Undefined, optional
-        icon Uri
+        An icon URI for the resource.
     name : str, default is Undefined, optional
-        name
+        The name of the resource.
     ownerManagedAccess : bool, default is Undefined, optional
-        owner managed access
+        When true, this resource supports user-managed access. Defaults to false.
     realmId : str, default is Undefined, optional
-        realm Id
+        The realm this resource exists in.
     realmIdRef : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationResourceSpecForProviderRealmIDRef, default is Undefined, optional
         realm Id ref
     realmIdSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationResourceSpecForProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
     resourceServerId : str, default is Undefined, optional
-        resource server Id
+        The ID of the resource server.
     resourceServerIdRef : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationResourceSpecForProviderResourceServerIDRef, default is Undefined, optional
         resource server Id ref
     resourceServerIdSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationResourceSpecForProviderResourceServerIDSelector, default is Undefined, optional
         resource server Id selector
     scopes : [str], default is Undefined, optional
-        scopes
+        A set of scope names that this resource uses.
     $type : str, default is Undefined, optional
-        type
+        The type of this resource (e.g., urn:myapp:resources:default).
     uris : [str], default is Undefined, optional
-        uris
+        A set of URIs that this resource represents.
     """
 
 
@@ -344,33 +344,33 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationResourceSpecIn
     Attributes
     ----------
     attributes : {str:str}, default is Undefined, optional
-        attributes
+        A map of attributes for the resource. Values can be comma-separated lists.
     displayName : str, default is Undefined, optional
-        display name
+        The display name of the resource.
     iconUri : str, default is Undefined, optional
-        icon Uri
+        An icon URI for the resource.
     name : str, default is Undefined, optional
-        name
+        The name of the resource.
     ownerManagedAccess : bool, default is Undefined, optional
-        owner managed access
+        When true, this resource supports user-managed access. Defaults to false.
     realmId : str, default is Undefined, optional
-        realm Id
+        The realm this resource exists in.
     realmIdRef : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationResourceSpecInitProviderRealmIDRef, default is Undefined, optional
         realm Id ref
     realmIdSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationResourceSpecInitProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
     resourceServerId : str, default is Undefined, optional
-        resource server Id
+        The ID of the resource server.
     resourceServerIdRef : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationResourceSpecInitProviderResourceServerIDRef, default is Undefined, optional
         resource server Id ref
     resourceServerIdSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationResourceSpecInitProviderResourceServerIDSelector, default is Undefined, optional
         resource server Id selector
     scopes : [str], default is Undefined, optional
-        scopes
+        A set of scope names that this resource uses.
     $type : str, default is Undefined, optional
-        type
+        The type of this resource (e.g., urn:myapp:resources:default).
     uris : [str], default is Undefined, optional
-        uris
+        A set of URIs that this resource represents.
     """
 
 
@@ -677,27 +677,27 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationResourceStatus
     Attributes
     ----------
     attributes : {str:str}, default is Undefined, optional
-        attributes
+        A map of attributes for the resource. Values can be comma-separated lists.
     displayName : str, default is Undefined, optional
-        display name
+        The display name of the resource.
     iconUri : str, default is Undefined, optional
-        icon Uri
+        An icon URI for the resource.
     id : str, default is Undefined, optional
-        id
+        Resource ID representing the authorization resource.
     name : str, default is Undefined, optional
-        name
+        The name of the resource.
     ownerManagedAccess : bool, default is Undefined, optional
-        owner managed access
+        When true, this resource supports user-managed access. Defaults to false.
     realmId : str, default is Undefined, optional
-        realm Id
+        The realm this resource exists in.
     resourceServerId : str, default is Undefined, optional
-        resource server Id
+        The ID of the resource server.
     scopes : [str], default is Undefined, optional
-        scopes
+        A set of scope names that this resource uses.
     $type : str, default is Undefined, optional
-        type
+        The type of this resource (e.g., urn:myapp:resources:default).
     uris : [str], default is Undefined, optional
-        uris
+        A set of URIs that this resource represents.
     """
 
 
