@@ -73,7 +73,7 @@ schema KeycloakCrossplaneIoV1beta1ProviderConfigSpecCredentials:
 
     secretRef?: KeycloakCrossplaneIoV1beta1ProviderConfigSpecCredentialsSecretRef
 
-    source: "None" | "Secret" | "InjectedIdentity" | "Environment" | "Filesystem" | "Kubernetes"
+    source: "None" | "Secret" | "Environment" | "Filesystem"
 
 
 schema KeycloakCrossplaneIoV1beta1ProviderConfigSpecCredentialsEnv:

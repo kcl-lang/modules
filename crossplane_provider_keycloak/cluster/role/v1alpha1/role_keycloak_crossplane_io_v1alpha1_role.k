@@ -116,6 +116,12 @@ schema RoleKeycloakCrossplaneIoV1alpha1RoleSpecForProvider:
         realm Id ref
     realmIdSelector : RoleKeycloakCrossplaneIoV1alpha1RoleSpecForProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
+    samlClientId : str, default is Undefined, optional
+        When specified, this role will be created as a client role attached to the client with the provided ID
+    samlClientIdRef : RoleKeycloakCrossplaneIoV1alpha1RoleSpecForProviderSamlClientIDRef, default is Undefined, optional
+        saml client Id ref
+    samlClientIdSelector : RoleKeycloakCrossplaneIoV1alpha1RoleSpecForProviderSamlClientIDSelector, default is Undefined, optional
+        saml client Id selector
     """
 
 
@@ -144,6 +150,12 @@ schema RoleKeycloakCrossplaneIoV1alpha1RoleSpecForProvider:
     realmIdRef?: RoleKeycloakCrossplaneIoV1alpha1RoleSpecForProviderRealmIDRef
 
     realmIdSelector?: RoleKeycloakCrossplaneIoV1alpha1RoleSpecForProviderRealmIDSelector
+
+    samlClientId?: str
+
+    samlClientIdRef?: RoleKeycloakCrossplaneIoV1alpha1RoleSpecForProviderSamlClientIDRef
+
+    samlClientIdSelector?: RoleKeycloakCrossplaneIoV1alpha1RoleSpecForProviderSamlClientIDSelector
 
 
 schema RoleKeycloakCrossplaneIoV1alpha1RoleSpecForProviderClientIDRef:
@@ -413,6 +425,95 @@ schema RoleKeycloakCrossplaneIoV1alpha1RoleSpecForProviderRealmIDSelectorPolicy:
     resolve?: "Always" | "IfNotPresent"
 
 
+schema RoleKeycloakCrossplaneIoV1alpha1RoleSpecForProviderSamlClientIDRef:
+    r"""
+    Reference to a Client in samlclient to populate samlClientId.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : RoleKeycloakCrossplaneIoV1alpha1RoleSpecForProviderSamlClientIDRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: RoleKeycloakCrossplaneIoV1alpha1RoleSpecForProviderSamlClientIDRefPolicy
+
+
+schema RoleKeycloakCrossplaneIoV1alpha1RoleSpecForProviderSamlClientIDRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema RoleKeycloakCrossplaneIoV1alpha1RoleSpecForProviderSamlClientIDSelector:
+    r"""
+    Selector for a Client in samlclient to populate samlClientId.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : RoleKeycloakCrossplaneIoV1alpha1RoleSpecForProviderSamlClientIDSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: RoleKeycloakCrossplaneIoV1alpha1RoleSpecForProviderSamlClientIDSelectorPolicy
+
+
+schema RoleKeycloakCrossplaneIoV1alpha1RoleSpecForProviderSamlClientIDSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
 schema RoleKeycloakCrossplaneIoV1alpha1RoleSpecInitProvider:
     r"""
     THIS IS A BETA FIELD. It will be honored
@@ -454,6 +555,12 @@ schema RoleKeycloakCrossplaneIoV1alpha1RoleSpecInitProvider:
         realm Id ref
     realmIdSelector : RoleKeycloakCrossplaneIoV1alpha1RoleSpecInitProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
+    samlClientId : str, default is Undefined, optional
+        When specified, this role will be created as a client role attached to the client with the provided ID
+    samlClientIdRef : RoleKeycloakCrossplaneIoV1alpha1RoleSpecInitProviderSamlClientIDRef, default is Undefined, optional
+        saml client Id ref
+    samlClientIdSelector : RoleKeycloakCrossplaneIoV1alpha1RoleSpecInitProviderSamlClientIDSelector, default is Undefined, optional
+        saml client Id selector
     """
 
 
@@ -482,6 +589,12 @@ schema RoleKeycloakCrossplaneIoV1alpha1RoleSpecInitProvider:
     realmIdRef?: RoleKeycloakCrossplaneIoV1alpha1RoleSpecInitProviderRealmIDRef
 
     realmIdSelector?: RoleKeycloakCrossplaneIoV1alpha1RoleSpecInitProviderRealmIDSelector
+
+    samlClientId?: str
+
+    samlClientIdRef?: RoleKeycloakCrossplaneIoV1alpha1RoleSpecInitProviderSamlClientIDRef
+
+    samlClientIdSelector?: RoleKeycloakCrossplaneIoV1alpha1RoleSpecInitProviderSamlClientIDSelector
 
 
 schema RoleKeycloakCrossplaneIoV1alpha1RoleSpecInitProviderClientIDRef:
@@ -751,6 +864,95 @@ schema RoleKeycloakCrossplaneIoV1alpha1RoleSpecInitProviderRealmIDSelectorPolicy
     resolve?: "Always" | "IfNotPresent"
 
 
+schema RoleKeycloakCrossplaneIoV1alpha1RoleSpecInitProviderSamlClientIDRef:
+    r"""
+    Reference to a Client in samlclient to populate samlClientId.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : RoleKeycloakCrossplaneIoV1alpha1RoleSpecInitProviderSamlClientIDRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: RoleKeycloakCrossplaneIoV1alpha1RoleSpecInitProviderSamlClientIDRefPolicy
+
+
+schema RoleKeycloakCrossplaneIoV1alpha1RoleSpecInitProviderSamlClientIDRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema RoleKeycloakCrossplaneIoV1alpha1RoleSpecInitProviderSamlClientIDSelector:
+    r"""
+    Selector for a Client in samlclient to populate samlClientId.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : RoleKeycloakCrossplaneIoV1alpha1RoleSpecInitProviderSamlClientIDSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: RoleKeycloakCrossplaneIoV1alpha1RoleSpecInitProviderSamlClientIDSelectorPolicy
+
+
+schema RoleKeycloakCrossplaneIoV1alpha1RoleSpecInitProviderSamlClientIDSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
 schema RoleKeycloakCrossplaneIoV1alpha1RoleSpecProviderConfigRef:
     r"""
     ProviderConfigReference specifies how the provider that will be used to
@@ -862,6 +1064,8 @@ schema RoleKeycloakCrossplaneIoV1alpha1RoleStatusAtProvider:
         The name of the role
     realmId : str, default is Undefined, optional
         The realm this role exists within.
+    samlClientId : str, default is Undefined, optional
+        When specified, this role will be created as a client role attached to the client with the provided ID
     """
 
 
@@ -880,6 +1084,8 @@ schema RoleKeycloakCrossplaneIoV1alpha1RoleStatusAtProvider:
     name?: str
 
     realmId?: str
+
+    samlClientId?: str
 
 
 schema RoleKeycloakCrossplaneIoV1alpha1RoleStatusConditionsItems0:

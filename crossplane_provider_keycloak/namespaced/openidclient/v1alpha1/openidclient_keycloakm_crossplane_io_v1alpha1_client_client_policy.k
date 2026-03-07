@@ -77,31 +77,37 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProvide
     Attributes
     ----------
     clients : [str], default is Undefined, optional
-        The clients allowed by this client policy.
+        A list of client IDs that this policy applies to.
     clientsRefs : [OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProviderClientsRefsItems0], default is Undefined, optional
         References to Client in openidclient to populate clients.
     clientsSelector : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProviderClientsSelector, default is Undefined, optional
         clients selector
     decisionStrategy : str, default is Undefined, optional
-        (Computed) Dictates how the policies associated with a given permission are evaluated and how a final decision is obtained. Could be one of AFFIRMATIVE, CONSENSUS, or UNANIMOUS. Applies to permissions.
+        The decision strategy, can be one of UNANIMOUS, AFFIRMATIVE, or CONSENSUS.
     description : str, default is Undefined, optional
-        The description of this client policy.
+        A description for the authorization policy.
     logic : str, default is Undefined, optional
-        (Computed) Dictates how the policy decision should be made. Can be either POSITIVE or NEGATIVE. Applies to policies.
+        The logic, can be one of POSITIVE or NEGATIVE. Defaults to POSITIVE.
     name : str, default is Undefined, optional
-        The name of this client policy.
+        The name of the policy.
     realmId : str, default is Undefined, optional
-        The realm this client policy exists within.
+        The realm this policy exists in.
     realmIdRef : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProviderRealmIDRef, default is Undefined, optional
         realm Id ref
     realmIdSelector : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
     resourceServerId : str, default is Undefined, optional
-        The ID of the resource server this client policy is attached to.
+        The ID of the resource server.
     resourceServerIdRef : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProviderResourceServerIDRef, default is Undefined, optional
         resource server Id ref
     resourceServerIdSelector : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProviderResourceServerIDSelector, default is Undefined, optional
         resource server Id selector
+    samlClients : [str], default is Undefined, optional
+        A list of client IDs that this policy applies to.
+    samlClientsRefs : [OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProviderSamlClientsRefsItems0], default is Undefined, optional
+        References to Client in samlclient to populate samlClients.
+    samlClientsSelector : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProviderSamlClientsSelector, default is Undefined, optional
+        saml clients selector
     """
 
 
@@ -130,6 +136,12 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProvide
     resourceServerIdRef?: OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProviderResourceServerIDRef
 
     resourceServerIdSelector?: OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProviderResourceServerIDSelector
+
+    samlClients?: [str]
+
+    samlClientsRefs?: [OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProviderSamlClientsRefsItems0]
+
+    samlClientsSelector?: OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProviderSamlClientsSelector
 
 
 schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProviderClientsRefsItems0:
@@ -423,6 +435,103 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProvide
     resolve?: "Always" | "IfNotPresent"
 
 
+schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProviderSamlClientsRefsItems0:
+    r"""
+    A NamespacedReference to a named object.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    namespace : str, default is Undefined, optional
+        Namespace of the referenced object
+    policy : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProviderSamlClientsRefsItems0Policy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    namespace?: str
+
+    policy?: OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProviderSamlClientsRefsItems0Policy
+
+
+schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProviderSamlClientsRefsItems0Policy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProviderSamlClientsSelector:
+    r"""
+    Selector for a list of Client in samlclient to populate samlClients.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    namespace : str, default is Undefined, optional
+        Namespace for the selector
+    policy : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProviderSamlClientsSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    namespace?: str
+
+    policy?: OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProviderSamlClientsSelectorPolicy
+
+
+schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecForProviderSamlClientsSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
 schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProvider:
     r"""
     THIS IS A BETA FIELD. It will be honored
@@ -439,31 +548,37 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProvid
     Attributes
     ----------
     clients : [str], default is Undefined, optional
-        The clients allowed by this client policy.
+        A list of client IDs that this policy applies to.
     clientsRefs : [OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProviderClientsRefsItems0], default is Undefined, optional
         References to Client in openidclient to populate clients.
     clientsSelector : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProviderClientsSelector, default is Undefined, optional
         clients selector
     decisionStrategy : str, default is Undefined, optional
-        (Computed) Dictates how the policies associated with a given permission are evaluated and how a final decision is obtained. Could be one of AFFIRMATIVE, CONSENSUS, or UNANIMOUS. Applies to permissions.
+        The decision strategy, can be one of UNANIMOUS, AFFIRMATIVE, or CONSENSUS.
     description : str, default is Undefined, optional
-        The description of this client policy.
+        A description for the authorization policy.
     logic : str, default is Undefined, optional
-        (Computed) Dictates how the policy decision should be made. Can be either POSITIVE or NEGATIVE. Applies to policies.
+        The logic, can be one of POSITIVE or NEGATIVE. Defaults to POSITIVE.
     name : str, default is Undefined, optional
-        The name of this client policy.
+        The name of the policy.
     realmId : str, default is Undefined, optional
-        The realm this client policy exists within.
+        The realm this policy exists in.
     realmIdRef : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProviderRealmIDRef, default is Undefined, optional
         realm Id ref
     realmIdSelector : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
     resourceServerId : str, default is Undefined, optional
-        The ID of the resource server this client policy is attached to.
+        The ID of the resource server.
     resourceServerIdRef : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProviderResourceServerIDRef, default is Undefined, optional
         resource server Id ref
     resourceServerIdSelector : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProviderResourceServerIDSelector, default is Undefined, optional
         resource server Id selector
+    samlClients : [str], default is Undefined, optional
+        A list of client IDs that this policy applies to.
+    samlClientsRefs : [OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProviderSamlClientsRefsItems0], default is Undefined, optional
+        References to Client in samlclient to populate samlClients.
+    samlClientsSelector : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProviderSamlClientsSelector, default is Undefined, optional
+        saml clients selector
     """
 
 
@@ -492,6 +607,12 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProvid
     resourceServerIdRef?: OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProviderResourceServerIDRef
 
     resourceServerIdSelector?: OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProviderResourceServerIDSelector
+
+    samlClients?: [str]
+
+    samlClientsRefs?: [OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProviderSamlClientsRefsItems0]
+
+    samlClientsSelector?: OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProviderSamlClientsSelector
 
 
 schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProviderClientsRefsItems0:
@@ -785,6 +906,103 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProvid
     resolve?: "Always" | "IfNotPresent"
 
 
+schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProviderSamlClientsRefsItems0:
+    r"""
+    A NamespacedReference to a named object.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    namespace : str, default is Undefined, optional
+        Namespace of the referenced object
+    policy : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProviderSamlClientsRefsItems0Policy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    namespace?: str
+
+    policy?: OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProviderSamlClientsRefsItems0Policy
+
+
+schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProviderSamlClientsRefsItems0Policy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProviderSamlClientsSelector:
+    r"""
+    Selector for a list of Client in samlclient to populate samlClients.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    namespace : str, default is Undefined, optional
+        Namespace for the selector
+    policy : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProviderSamlClientsSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    namespace?: str
+
+    policy?: OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProviderSamlClientsSelectorPolicy
+
+
+schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecInitProviderSamlClientsSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
 schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicySpecProviderConfigRef:
     r"""
     ProviderConfigReference specifies how the provider that will be used to
@@ -853,21 +1071,23 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicyStatusAtProvid
     Attributes
     ----------
     clients : [str], default is Undefined, optional
-        The clients allowed by this client policy.
+        A list of client IDs that this policy applies to.
     decisionStrategy : str, default is Undefined, optional
-        (Computed) Dictates how the policies associated with a given permission are evaluated and how a final decision is obtained. Could be one of AFFIRMATIVE, CONSENSUS, or UNANIMOUS. Applies to permissions.
+        The decision strategy, can be one of UNANIMOUS, AFFIRMATIVE, or CONSENSUS.
     description : str, default is Undefined, optional
-        The description of this client policy.
+        A description for the authorization policy.
     id : str, default is Undefined, optional
-        id
+        Policy ID representing the client policy.
     logic : str, default is Undefined, optional
-        (Computed) Dictates how the policy decision should be made. Can be either POSITIVE or NEGATIVE. Applies to policies.
+        The logic, can be one of POSITIVE or NEGATIVE. Defaults to POSITIVE.
     name : str, default is Undefined, optional
-        The name of this client policy.
+        The name of the policy.
     realmId : str, default is Undefined, optional
-        The realm this client policy exists within.
+        The realm this policy exists in.
     resourceServerId : str, default is Undefined, optional
-        The ID of the resource server this client policy is attached to.
+        The ID of the resource server.
+    samlClients : [str], default is Undefined, optional
+        A list of client IDs that this policy applies to.
     """
 
 
@@ -886,6 +1106,8 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicyStatusAtProvid
     realmId?: str
 
     resourceServerId?: str
+
+    samlClients?: [str]
 
 
 schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientClientPolicyStatusConditionsItems0:

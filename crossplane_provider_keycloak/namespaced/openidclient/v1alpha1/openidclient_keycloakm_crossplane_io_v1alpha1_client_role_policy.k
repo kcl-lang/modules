@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ClientRolePolicy:
     r"""
-    ClientRolePolicy is the Schema for the ClientRolePolicys API. <no value>
+    ClientRolePolicy is the Schema for the ClientRolePolicys API.
 
     Attributes
     ----------
@@ -77,31 +77,31 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientRolePolicySpecForProvider:
     Attributes
     ----------
     decisionStrategy : str, default is Undefined, optional
-        decision strategy
+        The decision strategy, can be one of UNANIMOUS, AFFIRMATIVE, or CONSENSUS.
     description : str, default is Undefined, optional
-        description
+        A description for the authorization policy.
     fetchRoles : bool, default is Undefined, optional
-        fetch roles
+        When true, roles will be fetched from the user's claims. Available in Keycloak 25+.
     logic : str, default is Undefined, optional
-        logic
+        The logic, can be one of POSITIVE or NEGATIVE. Defaults to POSITIVE.
     name : str, default is Undefined, optional
-        name
+        The name of the policy.
     realmId : str, default is Undefined, optional
-        realm Id
+        The realm this policy exists in.
     realmIdRef : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientRolePolicySpecForProviderRealmIDRef, default is Undefined, optional
         realm Id ref
     realmIdSelector : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientRolePolicySpecForProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
     resourceServerId : str, default is Undefined, optional
-        resource server Id
+        The ID of the resource server.
     resourceServerIdRef : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientRolePolicySpecForProviderResourceServerIDRef, default is Undefined, optional
         resource server Id ref
     resourceServerIdSelector : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientRolePolicySpecForProviderResourceServerIDSelector, default is Undefined, optional
         resource server Id selector
     role : [OpenidclientKeycloakmCrossplaneIoV1alpha1ClientRolePolicySpecForProviderRoleItems0], default is Undefined, optional
-        role
+        A list of roles role. At least one role must be defined.
     $type : str, default is Undefined, optional
-        type
+        The type of policy. Must be role.
     """
 
 
@@ -333,13 +333,13 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientRolePolicySpecForProviderR
     Attributes
     ----------
     id : str, default is Undefined, optional
-        id
+        The ID of the role.
     idRef : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientRolePolicySpecForProviderRoleItems0IDRef, default is Undefined, optional
         id ref
     idSelector : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientRolePolicySpecForProviderRoleItems0IDSelector, default is Undefined, optional
         id selector
     required : bool, default is Undefined, optional
-        required
+        When true, this role must be present for the policy to grant access.
     """
 
 
@@ -465,31 +465,31 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientRolePolicySpecInitProvider
     Attributes
     ----------
     decisionStrategy : str, default is Undefined, optional
-        decision strategy
+        The decision strategy, can be one of UNANIMOUS, AFFIRMATIVE, or CONSENSUS.
     description : str, default is Undefined, optional
-        description
+        A description for the authorization policy.
     fetchRoles : bool, default is Undefined, optional
-        fetch roles
+        When true, roles will be fetched from the user's claims. Available in Keycloak 25+.
     logic : str, default is Undefined, optional
-        logic
+        The logic, can be one of POSITIVE or NEGATIVE. Defaults to POSITIVE.
     name : str, default is Undefined, optional
-        name
+        The name of the policy.
     realmId : str, default is Undefined, optional
-        realm Id
+        The realm this policy exists in.
     realmIdRef : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientRolePolicySpecInitProviderRealmIDRef, default is Undefined, optional
         realm Id ref
     realmIdSelector : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientRolePolicySpecInitProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
     resourceServerId : str, default is Undefined, optional
-        resource server Id
+        The ID of the resource server.
     resourceServerIdRef : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientRolePolicySpecInitProviderResourceServerIDRef, default is Undefined, optional
         resource server Id ref
     resourceServerIdSelector : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientRolePolicySpecInitProviderResourceServerIDSelector, default is Undefined, optional
         resource server Id selector
     role : [OpenidclientKeycloakmCrossplaneIoV1alpha1ClientRolePolicySpecInitProviderRoleItems0], default is Undefined, optional
-        role
+        A list of roles role. At least one role must be defined.
     $type : str, default is Undefined, optional
-        type
+        The type of policy. Must be role.
     """
 
 
@@ -721,13 +721,13 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientRolePolicySpecInitProvider
     Attributes
     ----------
     id : str, default is Undefined, optional
-        id
+        The ID of the role.
     idRef : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientRolePolicySpecInitProviderRoleItems0IDRef, default is Undefined, optional
         id ref
     idSelector : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientRolePolicySpecInitProviderRoleItems0IDSelector, default is Undefined, optional
         id selector
     required : bool, default is Undefined, optional
-        required
+        When true, this role must be present for the policy to grant access.
     """
 
 
@@ -905,25 +905,25 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientRolePolicyStatusAtProvider
     Attributes
     ----------
     decisionStrategy : str, default is Undefined, optional
-        decision strategy
+        The decision strategy, can be one of UNANIMOUS, AFFIRMATIVE, or CONSENSUS.
     description : str, default is Undefined, optional
-        description
+        A description for the authorization policy.
     fetchRoles : bool, default is Undefined, optional
-        fetch roles
+        When true, roles will be fetched from the user's claims. Available in Keycloak 25+.
     id : str, default is Undefined, optional
-        id
+        The ID of the role.
     logic : str, default is Undefined, optional
-        logic
+        The logic, can be one of POSITIVE or NEGATIVE. Defaults to POSITIVE.
     name : str, default is Undefined, optional
-        name
+        The name of the policy.
     realmId : str, default is Undefined, optional
-        realm Id
+        The realm this policy exists in.
     resourceServerId : str, default is Undefined, optional
-        resource server Id
+        The ID of the resource server.
     role : [OpenidclientKeycloakmCrossplaneIoV1alpha1ClientRolePolicyStatusAtProviderRoleItems0], default is Undefined, optional
-        role
+        A list of roles role. At least one role must be defined.
     $type : str, default is Undefined, optional
-        type
+        The type of policy. Must be role.
     """
 
 
@@ -955,9 +955,9 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientRolePolicyStatusAtProvider
     Attributes
     ----------
     id : str, default is Undefined, optional
-        id
+        The ID of the role.
     required : bool, default is Undefined, optional
-        required
+        When true, this role must be present for the policy to grant access.
     """
 
 

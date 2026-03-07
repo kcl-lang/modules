@@ -106,6 +106,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecForProvider:
         The maximum time a user has to use an admin-generated permit before it expires.
     actionTokenGeneratedByUserLifespan : str, default is Undefined, optional
         The maximum time a user has to use a user-generated permit before it expires.
+    adminPermissionsEnabled : bool, default is Undefined, optional
+        Enables the use of fine grained permissions v2
     adminTheme : str, default is Undefined, optional
         Used for the admin console.
     attributes : {str:str}, default is Undefined, optional
@@ -207,6 +209,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecForProvider:
         The maximum amount of time before a session expires regardless of activity.
     ssoSessionMaxLifespanRememberMe : str, default is Undefined, optional
         Similar to sso_session_max_lifespan, but used when a user clicks "Remember Me". If not set, Keycloak will default to the value of sso_session_max_lifespan.
+    terraformDeletionProtection : bool, default is Undefined, optional
+        When set to true, the realm cannot be deleted. Defaults to false.
     userManagedAccess : bool, default is Undefined, optional
         When true, users are allowed to manage their own resources. Defaults to false.
     verifyEmail : bool, default is Undefined, optional
@@ -233,6 +237,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecForProvider:
     actionTokenGeneratedByAdminLifespan?: str
 
     actionTokenGeneratedByUserLifespan?: str
+
+    adminPermissionsEnabled?: bool
 
     adminTheme?: str
 
@@ -326,6 +332,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecForProvider:
 
     ssoSessionMaxLifespanRememberMe?: str
 
+    terraformDeletionProtection?: bool
+
     userManagedAccess?: bool
 
     verifyEmail?: bool
@@ -395,8 +403,10 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecForProviderSMTPServerItems0:
 
     Attributes
     ----------
+    allowUtf8 : bool, default is Undefined, optional
+        allow Utf8
     auth : [RealmKeycloakCrossplaneIoV1alpha1RealmSpecForProviderSMTPServerItems0AuthItems0], default is Undefined, optional
-        Enables authentication to the SMTP server.  This block supports the following arguments:
+        Enables authentication to the SMTP server. Cannot be set alongside token_auth. This block supports the following arguments:
     envelopeFrom : str, default is Undefined, optional
         The email address uses for bounces.
     from : str, default is Undefined, optional
@@ -415,8 +425,12 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecForProviderSMTPServerItems0:
         When true, enables SSL. Defaults to false.
     starttls : bool, default is Undefined, optional
         When true, enables StartTLS. Defaults to false.
+    tokenAuth : [RealmKeycloakCrossplaneIoV1alpha1RealmSpecForProviderSMTPServerItems0TokenAuthItems0], default is Undefined, optional
+        Enables authentication to the SMTP server through OAUTH2. Cannot be set alongside auth. This block supports the following arguments:
     """
 
+
+    allowUtf8?: bool
 
     auth?: [RealmKeycloakCrossplaneIoV1alpha1RealmSpecForProviderSMTPServerItems0AuthItems0]
 
@@ -437,6 +451,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecForProviderSMTPServerItems0:
     ssl?: bool
 
     starttls?: bool
+
+    tokenAuth?: [RealmKeycloakCrossplaneIoV1alpha1RealmSpecForProviderSMTPServerItems0TokenAuthItems0]
 
 
 schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecForProviderSMTPServerItems0AuthItems0:
@@ -460,6 +476,58 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecForProviderSMTPServerItems0Auth
 schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecForProviderSMTPServerItems0AuthItems0PasswordSecretRef:
     r"""
     The SMTP server password.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key to select.
+    name : str, default is Undefined, required
+        Name of the secret.
+    namespace : str, default is Undefined, required
+        Namespace of the secret.
+    """
+
+
+    key: str
+
+    name: str
+
+    namespace: str
+
+
+schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecForProviderSMTPServerItems0TokenAuthItems0:
+    r"""
+    realm keycloak crossplane io v1alpha1 realm spec for provider SMTP server items0 token auth items0
+
+    Attributes
+    ----------
+    clientId : str, default is Undefined, optional
+        The auth token client ID.
+    clientSecretSecretRef : RealmKeycloakCrossplaneIoV1alpha1RealmSpecForProviderSMTPServerItems0TokenAuthItems0ClientSecretSecretRef, default is Undefined, optional
+        client secret secret ref
+    scope : str, default is Undefined, optional
+        The auth token scope.
+    url : str, default is Undefined, optional
+        The auth token URL.
+    username : str, default is Undefined, optional
+        The SMTP server username.
+    """
+
+
+    clientId?: str
+
+    clientSecretSecretRef?: RealmKeycloakCrossplaneIoV1alpha1RealmSpecForProviderSMTPServerItems0TokenAuthItems0ClientSecretSecretRef
+
+    scope?: str
+
+    url?: str
+
+    username?: str
+
+
+schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecForProviderSMTPServerItems0TokenAuthItems0ClientSecretSecretRef:
+    r"""
+    The auth token client secret.
 
     Attributes
     ----------
@@ -509,6 +577,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecForProviderSecurityDefensesItem
         max failure wait seconds
     maxLoginFailures : float, default is Undefined, optional
         How many failures before wait is triggered.
+    maxTemporaryLockouts : float, default is Undefined, optional
+        How many temporary lockouts are permitted before a user is permanently locked out. permanent_lockout needs to be true. Defaults to 0
     minimumQuickLoginWaitSeconds : float, default is Undefined, optional
         How long to wait after a quick login failure.
     permanentLockout : bool, default is Undefined, optional
@@ -525,6 +595,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecForProviderSecurityDefensesItem
     maxFailureWaitSeconds?: float
 
     maxLoginFailures?: float
+
+    maxTemporaryLockouts?: float
 
     minimumQuickLoginWaitSeconds?: float
 
@@ -726,6 +798,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecInitProvider:
         The maximum time a user has to use an admin-generated permit before it expires.
     actionTokenGeneratedByUserLifespan : str, default is Undefined, optional
         The maximum time a user has to use a user-generated permit before it expires.
+    adminPermissionsEnabled : bool, default is Undefined, optional
+        Enables the use of fine grained permissions v2
     adminTheme : str, default is Undefined, optional
         Used for the admin console.
     attributes : {str:str}, default is Undefined, optional
@@ -827,6 +901,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecInitProvider:
         The maximum amount of time before a session expires regardless of activity.
     ssoSessionMaxLifespanRememberMe : str, default is Undefined, optional
         Similar to sso_session_max_lifespan, but used when a user clicks "Remember Me". If not set, Keycloak will default to the value of sso_session_max_lifespan.
+    terraformDeletionProtection : bool, default is Undefined, optional
+        When set to true, the realm cannot be deleted. Defaults to false.
     userManagedAccess : bool, default is Undefined, optional
         When true, users are allowed to manage their own resources. Defaults to false.
     verifyEmail : bool, default is Undefined, optional
@@ -853,6 +929,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecInitProvider:
     actionTokenGeneratedByAdminLifespan?: str
 
     actionTokenGeneratedByUserLifespan?: str
+
+    adminPermissionsEnabled?: bool
 
     adminTheme?: str
 
@@ -946,6 +1024,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecInitProvider:
 
     ssoSessionMaxLifespanRememberMe?: str
 
+    terraformDeletionProtection?: bool
+
     userManagedAccess?: bool
 
     verifyEmail?: bool
@@ -1015,8 +1095,10 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecInitProviderSMTPServerItems0:
 
     Attributes
     ----------
+    allowUtf8 : bool, default is Undefined, optional
+        allow Utf8
     auth : [RealmKeycloakCrossplaneIoV1alpha1RealmSpecInitProviderSMTPServerItems0AuthItems0], default is Undefined, optional
-        Enables authentication to the SMTP server.  This block supports the following arguments:
+        Enables authentication to the SMTP server. Cannot be set alongside token_auth. This block supports the following arguments:
     envelopeFrom : str, default is Undefined, optional
         The email address uses for bounces.
     from : str, default is Undefined, optional
@@ -1035,8 +1117,12 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecInitProviderSMTPServerItems0:
         When true, enables SSL. Defaults to false.
     starttls : bool, default is Undefined, optional
         When true, enables StartTLS. Defaults to false.
+    tokenAuth : [RealmKeycloakCrossplaneIoV1alpha1RealmSpecInitProviderSMTPServerItems0TokenAuthItems0], default is Undefined, optional
+        Enables authentication to the SMTP server through OAUTH2. Cannot be set alongside auth. This block supports the following arguments:
     """
 
+
+    allowUtf8?: bool
 
     auth?: [RealmKeycloakCrossplaneIoV1alpha1RealmSpecInitProviderSMTPServerItems0AuthItems0]
 
@@ -1057,6 +1143,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecInitProviderSMTPServerItems0:
     ssl?: bool
 
     starttls?: bool
+
+    tokenAuth?: [RealmKeycloakCrossplaneIoV1alpha1RealmSpecInitProviderSMTPServerItems0TokenAuthItems0]
 
 
 schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecInitProviderSMTPServerItems0AuthItems0:
@@ -1080,6 +1168,58 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecInitProviderSMTPServerItems0Aut
 schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecInitProviderSMTPServerItems0AuthItems0PasswordSecretRef:
     r"""
     The SMTP server password.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key to select.
+    name : str, default is Undefined, required
+        Name of the secret.
+    namespace : str, default is Undefined, required
+        Namespace of the secret.
+    """
+
+
+    key: str
+
+    name: str
+
+    namespace: str
+
+
+schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecInitProviderSMTPServerItems0TokenAuthItems0:
+    r"""
+    realm keycloak crossplane io v1alpha1 realm spec init provider SMTP server items0 token auth items0
+
+    Attributes
+    ----------
+    clientId : str, default is Undefined, optional
+        The auth token client ID.
+    clientSecretSecretRef : RealmKeycloakCrossplaneIoV1alpha1RealmSpecInitProviderSMTPServerItems0TokenAuthItems0ClientSecretSecretRef, default is Undefined, required
+        client secret secret ref
+    scope : str, default is Undefined, optional
+        The auth token scope.
+    url : str, default is Undefined, optional
+        The auth token URL.
+    username : str, default is Undefined, optional
+        The SMTP server username.
+    """
+
+
+    clientId?: str
+
+    clientSecretSecretRef: RealmKeycloakCrossplaneIoV1alpha1RealmSpecInitProviderSMTPServerItems0TokenAuthItems0ClientSecretSecretRef
+
+    scope?: str
+
+    url?: str
+
+    username?: str
+
+
+schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecInitProviderSMTPServerItems0TokenAuthItems0ClientSecretSecretRef:
+    r"""
+    The auth token client secret.
 
     Attributes
     ----------
@@ -1129,6 +1269,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecInitProviderSecurityDefensesIte
         max failure wait seconds
     maxLoginFailures : float, default is Undefined, optional
         How many failures before wait is triggered.
+    maxTemporaryLockouts : float, default is Undefined, optional
+        How many temporary lockouts are permitted before a user is permanently locked out. permanent_lockout needs to be true. Defaults to 0
     minimumQuickLoginWaitSeconds : float, default is Undefined, optional
         How long to wait after a quick login failure.
     permanentLockout : bool, default is Undefined, optional
@@ -1145,6 +1287,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmSpecInitProviderSecurityDefensesIte
     maxFailureWaitSeconds?: float
 
     maxLoginFailures?: float
+
+    maxTemporaryLockouts?: float
 
     minimumQuickLoginWaitSeconds?: float
 
@@ -1426,6 +1570,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmStatusAtProvider:
         The maximum time a user has to use an admin-generated permit before it expires.
     actionTokenGeneratedByUserLifespan : str, default is Undefined, optional
         The maximum time a user has to use a user-generated permit before it expires.
+    adminPermissionsEnabled : bool, default is Undefined, optional
+        Enables the use of fine grained permissions v2
     adminTheme : str, default is Undefined, optional
         Used for the admin console.
     attributes : {str:str}, default is Undefined, optional
@@ -1529,6 +1675,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmStatusAtProvider:
         The maximum amount of time before a session expires regardless of activity.
     ssoSessionMaxLifespanRememberMe : str, default is Undefined, optional
         Similar to sso_session_max_lifespan, but used when a user clicks "Remember Me". If not set, Keycloak will default to the value of sso_session_max_lifespan.
+    terraformDeletionProtection : bool, default is Undefined, optional
+        When set to true, the realm cannot be deleted. Defaults to false.
     userManagedAccess : bool, default is Undefined, optional
         When true, users are allowed to manage their own resources. Defaults to false.
     verifyEmail : bool, default is Undefined, optional
@@ -1555,6 +1703,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmStatusAtProvider:
     actionTokenGeneratedByAdminLifespan?: str
 
     actionTokenGeneratedByUserLifespan?: str
+
+    adminPermissionsEnabled?: bool
 
     adminTheme?: str
 
@@ -1650,6 +1800,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmStatusAtProvider:
 
     ssoSessionMaxLifespanRememberMe?: str
 
+    terraformDeletionProtection?: bool
+
     userManagedAccess?: bool
 
     verifyEmail?: bool
@@ -1719,8 +1871,10 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmStatusAtProviderSMTPServerItems0:
 
     Attributes
     ----------
+    allowUtf8 : bool, default is Undefined, optional
+        allow Utf8
     auth : [RealmKeycloakCrossplaneIoV1alpha1RealmStatusAtProviderSMTPServerItems0AuthItems0], default is Undefined, optional
-        Enables authentication to the SMTP server.  This block supports the following arguments:
+        Enables authentication to the SMTP server. Cannot be set alongside token_auth. This block supports the following arguments:
     envelopeFrom : str, default is Undefined, optional
         The email address uses for bounces.
     from : str, default is Undefined, optional
@@ -1739,8 +1893,12 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmStatusAtProviderSMTPServerItems0:
         When true, enables SSL. Defaults to false.
     starttls : bool, default is Undefined, optional
         When true, enables StartTLS. Defaults to false.
+    tokenAuth : [RealmKeycloakCrossplaneIoV1alpha1RealmStatusAtProviderSMTPServerItems0TokenAuthItems0], default is Undefined, optional
+        Enables authentication to the SMTP server through OAUTH2. Cannot be set alongside auth. This block supports the following arguments:
     """
 
+
+    allowUtf8?: bool
 
     auth?: [RealmKeycloakCrossplaneIoV1alpha1RealmStatusAtProviderSMTPServerItems0AuthItems0]
 
@@ -1762,6 +1920,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmStatusAtProviderSMTPServerItems0:
 
     starttls?: bool
 
+    tokenAuth?: [RealmKeycloakCrossplaneIoV1alpha1RealmStatusAtProviderSMTPServerItems0TokenAuthItems0]
+
 
 schema RealmKeycloakCrossplaneIoV1alpha1RealmStatusAtProviderSMTPServerItems0AuthItems0:
     r"""
@@ -1773,6 +1933,32 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmStatusAtProviderSMTPServerItems0Aut
         The SMTP server username.
     """
 
+
+    username?: str
+
+
+schema RealmKeycloakCrossplaneIoV1alpha1RealmStatusAtProviderSMTPServerItems0TokenAuthItems0:
+    r"""
+    realm keycloak crossplane io v1alpha1 realm status at provider SMTP server items0 token auth items0
+
+    Attributes
+    ----------
+    clientId : str, default is Undefined, optional
+        The auth token client ID.
+    scope : str, default is Undefined, optional
+        The auth token scope.
+    url : str, default is Undefined, optional
+        The auth token URL.
+    username : str, default is Undefined, optional
+        The SMTP server username.
+    """
+
+
+    clientId?: str
+
+    scope?: str
+
+    url?: str
 
     username?: str
 
@@ -1807,6 +1993,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmStatusAtProviderSecurityDefensesIte
         max failure wait seconds
     maxLoginFailures : float, default is Undefined, optional
         How many failures before wait is triggered.
+    maxTemporaryLockouts : float, default is Undefined, optional
+        How many temporary lockouts are permitted before a user is permanently locked out. permanent_lockout needs to be true. Defaults to 0
     minimumQuickLoginWaitSeconds : float, default is Undefined, optional
         How long to wait after a quick login failure.
     permanentLockout : bool, default is Undefined, optional
@@ -1823,6 +2011,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1RealmStatusAtProviderSecurityDefensesIte
     maxFailureWaitSeconds?: float
 
     maxLoginFailures?: float
+
+    maxTemporaryLockouts?: float
 
     minimumQuickLoginWaitSeconds?: float
 

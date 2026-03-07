@@ -80,10 +80,15 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientScopeSpecForProvider:
         When set, a consent screen will be displayed to users authenticating to clients with this scope attached. The consent screen will display the string value of this attribute.
     description : str, default is Undefined, optional
         The description of this client scope in the GUI.
+    extraConfig : {str:str}, default is Undefined, optional
+        A map of key/value pairs to add extra configuration attributes to this client scope. Use this attribute at your own risk, as it may conflict with top-level configuration attributes in future provider updates.
+        extra_config = {
+        "myattribute" = "myvalue"
+        }
     guiOrder : float, default is Undefined, optional
         Specify order of the client scope in GUI (such as in Consent page) as integer.
     includeInTokenScope : bool, default is Undefined, optional
-        When true, the name of this client scope will be added to the access token property 'scope' as well as to the Token Introspection Endpoint response.
+        When true, the name of this client scope will be added to the access token property 'scope' as well as to the Token Introspection Endpoint response. When false, this scope will be omitted from the token and from the Token Introspection Endpoint response. Defaults to true.
     name : str, default is Undefined, optional
         The display name of this client scope in the GUI.
     realmId : str, default is Undefined, optional
@@ -98,6 +103,8 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientScopeSpecForProvider:
     consentScreenText?: str
 
     description?: str
+
+    extraConfig?: {str:str}
 
     guiOrder?: float
 
@@ -228,10 +235,15 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientScopeSpecInitProvider:
         When set, a consent screen will be displayed to users authenticating to clients with this scope attached. The consent screen will display the string value of this attribute.
     description : str, default is Undefined, optional
         The description of this client scope in the GUI.
+    extraConfig : {str:str}, default is Undefined, optional
+        A map of key/value pairs to add extra configuration attributes to this client scope. Use this attribute at your own risk, as it may conflict with top-level configuration attributes in future provider updates.
+        extra_config = {
+        "myattribute" = "myvalue"
+        }
     guiOrder : float, default is Undefined, optional
         Specify order of the client scope in GUI (such as in Consent page) as integer.
     includeInTokenScope : bool, default is Undefined, optional
-        When true, the name of this client scope will be added to the access token property 'scope' as well as to the Token Introspection Endpoint response.
+        When true, the name of this client scope will be added to the access token property 'scope' as well as to the Token Introspection Endpoint response. When false, this scope will be omitted from the token and from the Token Introspection Endpoint response. Defaults to true.
     name : str, default is Undefined, optional
         The display name of this client scope in the GUI.
     realmId : str, default is Undefined, optional
@@ -246,6 +258,8 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientScopeSpecInitProvider:
     consentScreenText?: str
 
     description?: str
+
+    extraConfig?: {str:str}
 
     guiOrder?: float
 
@@ -428,12 +442,17 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientScopeStatusAtProvider:
         When set, a consent screen will be displayed to users authenticating to clients with this scope attached. The consent screen will display the string value of this attribute.
     description : str, default is Undefined, optional
         The description of this client scope in the GUI.
+    extraConfig : {str:str}, default is Undefined, optional
+        A map of key/value pairs to add extra configuration attributes to this client scope. Use this attribute at your own risk, as it may conflict with top-level configuration attributes in future provider updates.
+        extra_config = {
+        "myattribute" = "myvalue"
+        }
     guiOrder : float, default is Undefined, optional
         Specify order of the client scope in GUI (such as in Consent page) as integer.
     id : str, default is Undefined, optional
         id
     includeInTokenScope : bool, default is Undefined, optional
-        When true, the name of this client scope will be added to the access token property 'scope' as well as to the Token Introspection Endpoint response.
+        When true, the name of this client scope will be added to the access token property 'scope' as well as to the Token Introspection Endpoint response. When false, this scope will be omitted from the token and from the Token Introspection Endpoint response. Defaults to true.
     name : str, default is Undefined, optional
         The display name of this client scope in the GUI.
     realmId : str, default is Undefined, optional
@@ -444,6 +463,8 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientScopeStatusAtProvider:
     consentScreenText?: str
 
     description?: str
+
+    extraConfig?: {str:str}
 
     guiOrder?: float
 
