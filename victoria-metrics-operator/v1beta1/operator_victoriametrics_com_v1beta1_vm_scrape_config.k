@@ -4,12 +4,12 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
-
+_regex_match = regex.match
 
 
 schema VMScrapeConfig:
-    """
-    VMScrapeConfig specifies a set of targets and parameters describing how to scrape them.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config
 
     Attributes
     ----------
@@ -21,8 +21,8 @@ schema VMScrapeConfig:
         metadata
     spec : OperatorVictoriametricsComV1beta1VMScrapeConfigSpec, default is Undefined, optional
         spec
-    status : any, default is Undefined, optional
-        VMScrapeConfigStatus defines the observed state of VMScrapeConfig
+    status : OperatorVictoriametricsComV1beta1VMScrapeConfigStatus, default is Undefined, optional
+        status
     """
 
 
@@ -34,72 +34,81 @@ schema VMScrapeConfig:
 
     spec?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpec
 
-    status?: any
+    status?: OperatorVictoriametricsComV1beta1VMScrapeConfigStatus
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpec:
-    """
-    VMScrapeConfigSpec defines the desired state of VMScrapeConfig
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec
 
     Attributes
     ----------
     authorization : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecAuthorization, default is Undefined, optional
         authorization
     azureSDConfigs : [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecAzureSDConfigsItems0], default is Undefined, optional
-        AzureSDConfigs defines a list of Azure service discovery configurations.
+        azure s d configs
     basicAuth : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecBasicAuth, default is Undefined, optional
         basic auth
+    bearerTokenFile : str, default is Undefined, optional
+        bearer token file
+    bearerTokenSecret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecBearerTokenSecret, default is Undefined, optional
+        bearer token secret
     consulSDConfigs : [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0], default is Undefined, optional
-        ConsulSDConfigs defines a list of Consul service discovery configurations.
+        consul s d configs
     digitalOceanSDConfigs : [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0], default is Undefined, optional
-        DigitalOceanSDConfigs defines a list of DigitalOcean service discovery configurations.
+        digital ocean s d configs
     dnsSDConfigs : [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDNSSDConfigsItems0], default is Undefined, optional
-        DNSSDConfigs defines a list of DNS service discovery configurations.
+        dns s d configs
     ec2SDConfigs : [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecEc2SDConfigsItems0], default is Undefined, optional
-        EC2SDConfigs defines a list of EC2 service discovery configurations.
+        ec2 s d configs
     fileSDConfigs : [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecFileSDConfigsItems0], default is Undefined, optional
-        FileSDConfigs defines a list of file service discovery configurations.
+        file s d configs
     follow_redirects : bool, default is Undefined, optional
-        FollowRedirects controls redirects for scraping.
+        follow redirects
     gceSDConfigs : [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecGceSDConfigsItems0], default is Undefined, optional
-        GCESDConfigs defines a list of GCE service discovery configurations.
+        gce s d configs
     honorLabels : bool, default is Undefined, optional
-        HonorLabels chooses the metric's labels on collisions with target labels.
+        honor labels
     honorTimestamps : bool, default is Undefined, optional
-        HonorTimestamps controls whether to respect the timestamps present in scraped data.
+        honor timestamps
     httpSDConfigs : [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0], default is Undefined, optional
-        HTTPSDConfigs defines a list of HTTP service discovery configurations.
+        http s d configs
+    interval : str, default is Undefined, optional
+        interval
     kubernetesSDConfigs : [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0], default is Undefined, optional
-        KubernetesSDConfigs defines a list of Kubernetes service discovery configurations.
+        kubernetes s d configs
+    max_scrape_size : str, default is Undefined, optional
+        max scrape size
     metricRelabelConfigs : [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecMetricRelabelConfigsItems0], default is Undefined, optional
-        MetricRelabelConfigs to apply to samples before ingestion.
-    metricsPath : str, default is Undefined, optional
-        MetricsPath HTTP path to scrape for metrics. If empty, use the default value (e.g. /metrics).
+        metric relabel configs
+    nomadSDConfigs : [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0], default is Undefined, optional
+        nomad s d configs
     oauth2 : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOauth2, default is Undefined, optional
         oauth2
     openstackSDConfigs : [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOpenstackSDConfigsItems0], default is Undefined, optional
-        OpenStackSDConfigs defines a list of OpenStack service discovery configurations.
+        openstack s d configs
     params : {str:[str]}, default is Undefined, optional
-        Optional HTTP URL parameters
+        params
+    path : str, default is Undefined, optional
+        path
     proxyURL : str, default is Undefined, optional
-        ProxyURL eg http://proxyserver:2195 Directs scrapes to proxy through this endpoint.
+        proxy URL
     relabelConfigs : [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecRelabelConfigsItems0], default is Undefined, optional
-        RelabelConfigs to apply to samples before scraping.
-        See https://docs.victoriametrics.com/vmagent.html#relabeling
+        relabel configs
     sampleLimit : int, default is Undefined, optional
-        SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.
+        sample limit
     scheme : str, default is Undefined, optional
-        Configures the protocol scheme used for requests.
-        If empty, use HTTP by default.
-    scrapeInterval : str, default is Undefined, optional
-        ScrapeInterval is the interval between consecutive scrapes.
+        scheme
+    scrapeClass : str, default is Undefined, optional
+        scrape class
     scrapeTimeout : str, default is Undefined, optional
-        ScrapeTimeout is the number of seconds to wait until a scrape request times out.
+        scrape timeout
+    scrape_interval : str, default is Undefined, optional
+        scrape interval
     seriesLimit : int, default is Undefined, optional
-        SeriesLimit defines per-scrape limit on number of unique time series
-        a single target can expose during all the scrapes on the time window of 24h.
+        series limit
     staticConfigs : [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecStaticConfigsItems0], default is Undefined, optional
-        StaticConfigs defines a list of static targets with a common label set.
+        static configs
     tlsConfig : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecTLSConfig, default is Undefined, optional
         tls config
     vm_scrape_params : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParams, default is Undefined, optional
@@ -112,6 +121,10 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpec:
     azureSDConfigs?: [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecAzureSDConfigsItems0]
 
     basicAuth?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecBasicAuth
+
+    bearerTokenFile?: str
+
+    bearerTokenSecret?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecBearerTokenSecret
 
     consulSDConfigs?: [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0]
 
@@ -133,11 +146,15 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpec:
 
     httpSDConfigs?: [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0]
 
+    interval?: str
+
     kubernetesSDConfigs?: [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0]
+
+    max_scrape_size?: str
 
     metricRelabelConfigs?: [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecMetricRelabelConfigsItems0]
 
-    metricsPath?: str
+    nomadSDConfigs?: [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0]
 
     oauth2?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOauth2
 
@@ -145,17 +162,21 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpec:
 
     params?: {str:[str]}
 
+    path?: str
+
     proxyURL?: str
 
     relabelConfigs?: [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecRelabelConfigsItems0]
 
     sampleLimit?: int
 
-    scheme?: "HTTP" | "HTTPS"
+    scheme?: "http" | "https" | "HTTPS" | "HTTP"
 
-    scrapeInterval?: str
+    scrapeClass?: str
 
     scrapeTimeout?: str
+
+    scrape_interval?: str
 
     seriesLimit?: int
 
@@ -167,17 +188,17 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpec:
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecAuthorization:
-    """
-    Authorization header to use on every scrape request.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec authorization
 
     Attributes
     ----------
     credentials : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecAuthorizationCredentials, default is Undefined, optional
         credentials
     credentialsFile : str, default is Undefined, optional
-        File with value for authorization
+        credentials file
     $type : str, default is Undefined, optional
-        Type of authorization, default to bearer
+        type
     """
 
 
@@ -189,54 +210,49 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecAuthorization:
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecAuthorizationCredentials:
-    """
-    Reference to the secret with value for authorization
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec authorization credentials
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecAzureSDConfigsItems0:
-    """
-    AzureSDConfig allow retrieving scrape targets from Azure VMs.
-    See https://docs.victoriametrics.com/sd_configs/#azure_sd_configs
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec azure s d configs items0
 
     Attributes
     ----------
     authenticationMethod : str, default is Undefined, optional
-        # The authentication method, either OAuth or ManagedIdentity.
-        See https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview
+        authentication method
     clientID : str, default is Undefined, optional
-        Optional client ID. Only required with the OAuth authentication method.
+        client ID
     clientSecret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecAzureSDConfigsItems0ClientSecret, default is Undefined, optional
         client secret
     environment : str, default is Undefined, optional
-        The Azure environment.
+        environment
     port : int, default is Undefined, optional
-        The port to scrape metrics from. If using the public IP address, this must
-        instead be specified in the relabeling rule.
+        port
     resourceGroup : str, default is Undefined, optional
-        Optional resource group name. Limits discovery to this resource group.
+        resource group
     subscriptionID : str, default is Undefined, required
-        The subscription ID. Always required.
+        subscription ID
     tenantID : str, default is Undefined, optional
-        Optional tenant ID. Only required with the OAuth authentication method.
+        tenant ID
     """
 
 
@@ -262,39 +278,37 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecAzureSDConfigsItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecAzureSDConfigsItems0ClientSecret:
-    """
-    Optional client secret. Only required with the OAuth authentication method.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec azure s d configs items0 client secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecBasicAuth:
-    """
-    BasicAuth information to use on every scrape request.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec basic auth
 
     Attributes
     ----------
     password : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecBasicAuthPassword, default is Undefined, optional
         password
     password_file : str, default is Undefined, optional
-        PasswordFile defines path to password file at disk
+        password file
     username : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecBasicAuthUsername, default is Undefined, optional
         username
     """
@@ -308,99 +322,111 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecBasicAuth:
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecBasicAuthPassword:
-    """
-    The secret in the service scrape namespace that contains the password
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec basic auth password
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecBasicAuthUsername:
-    """
-    The secret in the service scrape namespace that contains the username
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec basic auth username
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecBearerTokenSecret:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec bearer token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0:
-    """
-    ConsulSDConfig defines a Consul service discovery configuration
-    See https://docs.victoriametrics.com/sd_configs/#consul_sd_configs
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0
 
     Attributes
     ----------
     allowStale : bool, default is Undefined, optional
-        Allow stale Consul results (see https://www.consul.io/api/features/consistency.html). Will reduce load on Consul.
-        If unset, use its default value.
+        allow stale
     authorization : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0Authorization, default is Undefined, optional
         authorization
     basicAuth : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0BasicAuth, default is Undefined, optional
         basic auth
     datacenter : str, default is Undefined, optional
-        Consul Datacenter name, if not provided it will use the local Consul Agent Datacenter.
+        datacenter
+    $filter : str, default is Undefined, optional
+        filter
     followRedirects : bool, default is Undefined, optional
-        Configure whether HTTP requests follow HTTP 3xx redirects.
-        If unset, use its default value.
+        follow redirects
     namespace : str, default is Undefined, optional
-        Namespaces are only supported in Consul Enterprise.
+        namespace
     nodeMeta : {str:str}, default is Undefined, optional
-        Node metadata key/value pairs to filter nodes for a given service.
+        node meta
     oauth2 : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0Oauth2, default is Undefined, optional
         oauth2
     partition : str, default is Undefined, optional
-        Admin Partitions are only supported in Consul Enterprise.
+        partition
     proxyURL : str, default is Undefined, optional
-        ProxyURL eg http://proxyserver:2195 Directs scrapes to proxy through this endpoint.
+        proxy URL
     proxy_client_config : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfig, default is Undefined, optional
         proxy client config
     scheme : str, default is Undefined, optional
-        HTTP Scheme default "http"
+        scheme
     server : str, default is Undefined, required
-        A valid string consisting of a hostname or IP followed by an optional port number.
+        server
     services : [str], default is Undefined, optional
-        A list of services for which targets are retrieved. If omitted, all services are scraped.
+        services
     tagSeparator : str, default is Undefined, optional
-        The string by which Consul tags are joined into the tag label.
-        If unset, use its default value.
+        tag separator
     tags : [str], default is Undefined, optional
-        An optional list of tags used to filter nodes for a given service. Services must contain all tags in the list.
+        tags
     tlsConfig : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0TLSConfig, default is Undefined, optional
         tls config
     tokenRef : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0TokenRef, default is Undefined, optional
@@ -415,6 +441,8 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0:
     basicAuth?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0BasicAuth
 
     datacenter?: str
+
+    $filter?: str
 
     followRedirects?: bool
 
@@ -450,17 +478,17 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0Authorization:
-    """
-    Authorization header to use on every scrape request.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 authorization
 
     Attributes
     ----------
     credentials : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0AuthorizationCredentials, default is Undefined, optional
         credentials
     credentialsFile : str, default is Undefined, optional
-        File with value for authorization
+        credentials file
     $type : str, default is Undefined, optional
-        Type of authorization, default to bearer
+        type
     """
 
 
@@ -472,39 +500,37 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0A
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0AuthorizationCredentials:
-    """
-    Reference to the secret with value for authorization
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 authorization credentials
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0BasicAuth:
-    """
-    BasicAuth information to use on every scrape request.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 basic auth
 
     Attributes
     ----------
     password : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0BasicAuthPassword, default is Undefined, optional
         password
     password_file : str, default is Undefined, optional
-        PasswordFile defines path to password file at disk
+        password file
     username : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0BasicAuthUsername, default is Undefined, optional
         username
     """
@@ -518,60 +544,52 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0B
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0BasicAuthPassword:
-    """
-    The secret in the service scrape namespace that contains the password
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 basic auth password
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0BasicAuthUsername:
-    """
-    The secret in the service scrape namespace that contains the username
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 basic auth username
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0Oauth2:
-    """
-    OAuth2 defines auth configuration
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 oauth2
 
     Attributes
     ----------
@@ -580,13 +598,17 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0O
     client_secret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0Oauth2ClientSecret, default is Undefined, optional
         client secret
     client_secret_file : str, default is Undefined, optional
-        ClientSecretFile defines path for client secret file.
+        client secret file
     endpoint_params : {str:str}, default is Undefined, optional
-        Parameters to append to the token URL
+        endpoint params
+    proxy_url : str, default is Undefined, optional
+        proxy url
     scopes : [str], default is Undefined, optional
-        OAuth2 scopes used for the token request
+        scopes
+    tls_config : any, default is Undefined, optional
+        tls config
     token_url : str, default is Undefined, required
-        The URL to fetch the token from
+        token url
     """
 
 
@@ -598,7 +620,11 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0O
 
     endpoint_params?: {str:str}
 
+    proxy_url?: str
+
     scopes?: [str]
+
+    tls_config?: any
 
     token_url: str
 
@@ -608,8 +634,8 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0O
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0Oauth2ClientID:
-    """
-    The secret or configmap containing the OAuth2 client id
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 oauth2 client ID
 
     Attributes
     ----------
@@ -626,81 +652,74 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0O
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0Oauth2ClientIDConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 oauth2 client ID config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0Oauth2ClientIDSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 oauth2 client ID secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0Oauth2ClientSecret:
-    """
-    The secret containing the OAuth2 client secret
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 oauth2 client secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfig:
-    """
-    ProxyClientConfig configures proxy auth settings for scraping
-    See feature description https://docs.victoriametrics.com/vmagent.html#scraping-targets-via-a-proxy
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 proxy client config
 
     Attributes
     ----------
@@ -710,7 +729,7 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0P
         bearer token
     bearer_token_file : str, default is Undefined, optional
         bearer token file
-    tls_config : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfig, default is Undefined, optional
+    tls_config : any, default is Undefined, optional
         tls config
     """
 
@@ -721,19 +740,19 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0P
 
     bearer_token_file?: str
 
-    tls_config?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfig
+    tls_config?: any
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigBasicAuth:
-    """
-    BasicAuth allow an endpoint to authenticate over basic authentication
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 proxy client config basic auth
 
     Attributes
     ----------
     password : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigBasicAuthPassword, default is Undefined, optional
         password
     password_file : str, default is Undefined, optional
-        PasswordFile defines path to password file at disk
+        password file
     username : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigBasicAuthUsername, default is Undefined, optional
         username
     """
@@ -747,301 +766,93 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0P
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigBasicAuthPassword:
-    """
-    The secret in the service scrape namespace that contains the password
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 proxy client config basic auth password
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigBasicAuthUsername:
-    """
-    The secret in the service scrape namespace that contains the username
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 proxy client config basic auth username
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigBearerToken:
-    """
-    SecretKeySelector selects a key of a Secret.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 proxy client config bearer token
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfig:
-    """
-    TLSConfig specifies TLSConfig configuration parameters.
-
-    Attributes
-    ----------
-    ca : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfigCa, default is Undefined, optional
-        ca
-    caFile : str, default is Undefined, optional
-        Path to the CA cert in the container to use for the targets.
-    cert : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfigCert, default is Undefined, optional
-        cert
-    certFile : str, default is Undefined, optional
-        Path to the client cert file in the container for the targets.
-    insecureSkipVerify : bool, default is Undefined, optional
-        Disable target certificate validation.
-    keyFile : str, default is Undefined, optional
-        Path to the client key file in the container for the targets.
-    keySecret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfigKeySecret, default is Undefined, optional
-        key secret
-    serverName : str, default is Undefined, optional
-        Used to verify the hostname for the targets.
-    """
-
-
-    ca?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfigCa
-
-    caFile?: str
-
-    cert?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfigCert
-
-    certFile?: str
-
-    insecureSkipVerify?: bool
-
-    keyFile?: str
-
-    keySecret?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfigKeySecret
-
-    serverName?: str
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfigCa:
-    """
-    Stuct containing the CA cert to use for the targets.
-
-    Attributes
-    ----------
-    configMap : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfigCaConfigMap, default is Undefined, optional
-        config map
-    secret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfigCaSecret, default is Undefined, optional
-        secret
-    """
-
-
-    configMap?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfigCaConfigMap
-
-    secret?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfigCaSecret
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfigCaConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key to select.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfigCaSecret:
-    """
-    Secret containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfigCert:
-    """
-    Struct containing the client cert file for the targets.
-
-    Attributes
-    ----------
-    configMap : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfigCertConfigMap, default is Undefined, optional
-        config map
-    secret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfigCertSecret, default is Undefined, optional
-        secret
-    """
-
-
-    configMap?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfigCertConfigMap
-
-    secret?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfigCertSecret
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfigCertConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key to select.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfigCertSecret:
-    """
-    Secret containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0ProxyClientConfigTLSConfigKeySecret:
-    """
-    Secret containing the client key file for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0TLSConfig:
-    """
-    TLS configuration to use on every scrape request
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 TLS config
 
     Attributes
     ----------
     ca : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0TLSConfigCa, default is Undefined, optional
         ca
     caFile : str, default is Undefined, optional
-        Path to the CA cert in the container to use for the targets.
+        ca file
     cert : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0TLSConfigCert, default is Undefined, optional
         cert
     certFile : str, default is Undefined, optional
-        Path to the client cert file in the container for the targets.
+        cert file
     insecureSkipVerify : bool, default is Undefined, optional
-        Disable target certificate validation.
+        insecure skip verify
     keyFile : str, default is Undefined, optional
-        Path to the client key file in the container for the targets.
+        key file
     keySecret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0TLSConfigKeySecret, default is Undefined, optional
         key secret
     serverName : str, default is Undefined, optional
-        Used to verify the hostname for the targets.
+        server name
     """
 
 
@@ -1063,8 +874,8 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0T
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0TLSConfigCa:
-    """
-    Stuct containing the CA cert to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 TLS config ca
 
     Attributes
     ----------
@@ -1081,56 +892,52 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0T
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0TLSConfigCaConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 TLS config ca config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0TLSConfigCaSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 TLS config ca secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0TLSConfigCert:
-    """
-    Struct containing the client cert file for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 TLS config cert
 
     Attributes
     ----------
@@ -1147,114 +954,103 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0T
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0TLSConfigCertConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 TLS config cert config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0TLSConfigCertSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 TLS config cert secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0TLSConfigKeySecret:
-    """
-    Secret containing the client key file for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 TLS config key secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecConsulSDConfigsItems0TokenRef:
-    """
-    Consul ACL TokenRef, if not provided it will use the ACL from the local Consul Agent.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec consul s d configs items0 token ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDNSSDConfigsItems0:
-    """
-    DNSSDConfig allows specifying a set of DNS domain names which are periodically queried to discover a list of targets.
-    The DNS servers to be contacted are read from /etc/resolv.conf.
-    See https://docs.victoriametrics.com/sd_configs/#dns_sd_configs
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec DNS s d configs items0
 
     Attributes
     ----------
     names : [str], default is Undefined, required
-        A list of DNS domain names to be queried.
+        names
     port : int, default is Undefined, optional
-        The port number used if the query type is not SRV
-        Ignored for SRV records
+        port
     $type : str, default is Undefined, optional
         type
     """
@@ -1272,23 +1068,21 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDNSSDConfigsItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0:
-    """
-    DigitalOceanSDConfig allow retrieving scrape targets from DigitalOcean's Droplets API.
-    This service discovery uses the public IPv4 address by default, by that can be changed with relabeling
-    See https://docs.victoriametrics.com/sd_configs/#digitalocean_sd_configs
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec digital ocean s d configs items0
 
     Attributes
     ----------
     authorization : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0Authorization, default is Undefined, optional
         authorization
     followRedirects : bool, default is Undefined, optional
-        Configure whether HTTP requests follow HTTP 3xx redirects.
+        follow redirects
     oauth2 : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0Oauth2, default is Undefined, optional
         oauth2
     port : int, default is Undefined, optional
-        The port to scrape metrics from.
+        port
     proxyURL : str, default is Undefined, optional
-        ProxyURL eg http://proxyserver:2195 Directs scrapes to proxy through this endpoint.
+        proxy URL
     proxy_client_config : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfig, default is Undefined, optional
         proxy client config
     tlsConfig : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0TLSConfig, default is Undefined, optional
@@ -1312,17 +1106,17 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsI
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0Authorization:
-    """
-    Authorization header to use on every scrape request.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec digital ocean s d configs items0 authorization
 
     Attributes
     ----------
     credentials : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0AuthorizationCredentials, default is Undefined, optional
         credentials
     credentialsFile : str, default is Undefined, optional
-        File with value for authorization
+        credentials file
     $type : str, default is Undefined, optional
-        Type of authorization, default to bearer
+        type
     """
 
 
@@ -1334,32 +1128,30 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsI
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0AuthorizationCredentials:
-    """
-    Reference to the secret with value for authorization
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec digital ocean s d configs items0 authorization credentials
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0Oauth2:
-    """
-    OAuth2 defines auth configuration
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec digital ocean s d configs items0 oauth2
 
     Attributes
     ----------
@@ -1368,13 +1160,17 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsI
     client_secret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0Oauth2ClientSecret, default is Undefined, optional
         client secret
     client_secret_file : str, default is Undefined, optional
-        ClientSecretFile defines path for client secret file.
+        client secret file
     endpoint_params : {str:str}, default is Undefined, optional
-        Parameters to append to the token URL
+        endpoint params
+    proxy_url : str, default is Undefined, optional
+        proxy url
     scopes : [str], default is Undefined, optional
-        OAuth2 scopes used for the token request
+        scopes
+    tls_config : any, default is Undefined, optional
+        tls config
     token_url : str, default is Undefined, required
-        The URL to fetch the token from
+        token url
     """
 
 
@@ -1386,7 +1182,11 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsI
 
     endpoint_params?: {str:str}
 
+    proxy_url?: str
+
     scopes?: [str]
+
+    tls_config?: any
 
     token_url: str
 
@@ -1396,8 +1196,8 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsI
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0Oauth2ClientID:
-    """
-    The secret or configmap containing the OAuth2 client id
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec digital ocean s d configs items0 oauth2 client ID
 
     Attributes
     ----------
@@ -1414,81 +1214,74 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsI
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0Oauth2ClientIDConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec digital ocean s d configs items0 oauth2 client ID config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0Oauth2ClientIDSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec digital ocean s d configs items0 oauth2 client ID secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0Oauth2ClientSecret:
-    """
-    The secret containing the OAuth2 client secret
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec digital ocean s d configs items0 oauth2 client secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfig:
-    """
-    ProxyClientConfig configures proxy auth settings for scraping
-    See feature description https://docs.victoriametrics.com/vmagent.html#scraping-targets-via-a-proxy
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec digital ocean s d configs items0 proxy client config
 
     Attributes
     ----------
@@ -1498,7 +1291,7 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsI
         bearer token
     bearer_token_file : str, default is Undefined, optional
         bearer token file
-    tls_config : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfig, default is Undefined, optional
+    tls_config : any, default is Undefined, optional
         tls config
     """
 
@@ -1509,19 +1302,19 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsI
 
     bearer_token_file?: str
 
-    tls_config?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfig
+    tls_config?: any
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigBasicAuth:
-    """
-    BasicAuth allow an endpoint to authenticate over basic authentication
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec digital ocean s d configs items0 proxy client config basic auth
 
     Attributes
     ----------
     password : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigBasicAuthPassword, default is Undefined, optional
         password
     password_file : str, default is Undefined, optional
-        PasswordFile defines path to password file at disk
+        password file
     username : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigBasicAuthUsername, default is Undefined, optional
         username
     """
@@ -1535,301 +1328,93 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsI
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigBasicAuthPassword:
-    """
-    The secret in the service scrape namespace that contains the password
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec digital ocean s d configs items0 proxy client config basic auth password
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigBasicAuthUsername:
-    """
-    The secret in the service scrape namespace that contains the username
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec digital ocean s d configs items0 proxy client config basic auth username
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigBearerToken:
-    """
-    SecretKeySelector selects a key of a Secret.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec digital ocean s d configs items0 proxy client config bearer token
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfig:
-    """
-    TLSConfig specifies TLSConfig configuration parameters.
-
-    Attributes
-    ----------
-    ca : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfigCa, default is Undefined, optional
-        ca
-    caFile : str, default is Undefined, optional
-        Path to the CA cert in the container to use for the targets.
-    cert : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfigCert, default is Undefined, optional
-        cert
-    certFile : str, default is Undefined, optional
-        Path to the client cert file in the container for the targets.
-    insecureSkipVerify : bool, default is Undefined, optional
-        Disable target certificate validation.
-    keyFile : str, default is Undefined, optional
-        Path to the client key file in the container for the targets.
-    keySecret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfigKeySecret, default is Undefined, optional
-        key secret
-    serverName : str, default is Undefined, optional
-        Used to verify the hostname for the targets.
-    """
-
-
-    ca?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfigCa
-
-    caFile?: str
-
-    cert?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfigCert
-
-    certFile?: str
-
-    insecureSkipVerify?: bool
-
-    keyFile?: str
-
-    keySecret?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfigKeySecret
-
-    serverName?: str
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfigCa:
-    """
-    Stuct containing the CA cert to use for the targets.
-
-    Attributes
-    ----------
-    configMap : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfigCaConfigMap, default is Undefined, optional
-        config map
-    secret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfigCaSecret, default is Undefined, optional
-        secret
-    """
-
-
-    configMap?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfigCaConfigMap
-
-    secret?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfigCaSecret
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfigCaConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key to select.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfigCaSecret:
-    """
-    Secret containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfigCert:
-    """
-    Struct containing the client cert file for the targets.
-
-    Attributes
-    ----------
-    configMap : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfigCertConfigMap, default is Undefined, optional
-        config map
-    secret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfigCertSecret, default is Undefined, optional
-        secret
-    """
-
-
-    configMap?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfigCertConfigMap
-
-    secret?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfigCertSecret
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfigCertConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key to select.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfigCertSecret:
-    """
-    Secret containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0ProxyClientConfigTLSConfigKeySecret:
-    """
-    Secret containing the client key file for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0TLSConfig:
-    """
-    TLS configuration to use on every scrape request
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec digital ocean s d configs items0 TLS config
 
     Attributes
     ----------
     ca : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0TLSConfigCa, default is Undefined, optional
         ca
     caFile : str, default is Undefined, optional
-        Path to the CA cert in the container to use for the targets.
+        ca file
     cert : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0TLSConfigCert, default is Undefined, optional
         cert
     certFile : str, default is Undefined, optional
-        Path to the client cert file in the container for the targets.
+        cert file
     insecureSkipVerify : bool, default is Undefined, optional
-        Disable target certificate validation.
+        insecure skip verify
     keyFile : str, default is Undefined, optional
-        Path to the client key file in the container for the targets.
+        key file
     keySecret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0TLSConfigKeySecret, default is Undefined, optional
         key secret
     serverName : str, default is Undefined, optional
-        Used to verify the hostname for the targets.
+        server name
     """
 
 
@@ -1851,8 +1436,8 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsI
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0TLSConfigCa:
-    """
-    Stuct containing the CA cert to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec digital ocean s d configs items0 TLS config ca
 
     Attributes
     ----------
@@ -1869,56 +1454,52 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsI
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0TLSConfigCaConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec digital ocean s d configs items0 TLS config ca config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0TLSConfigCaSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec digital ocean s d configs items0 TLS config ca secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0TLSConfigCert:
-    """
-    Struct containing the client cert file for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec digital ocean s d configs items0 TLS config cert
 
     Attributes
     ----------
@@ -1935,100 +1516,87 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsI
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0TLSConfigCertConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec digital ocean s d configs items0 TLS config cert config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0TLSConfigCertSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec digital ocean s d configs items0 TLS config cert secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecDigitalOceanSDConfigsItems0TLSConfigKeySecret:
-    """
-    Secret containing the client key file for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec digital ocean s d configs items0 TLS config key secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecEc2SDConfigsItems0:
-    """
-    EC2SDConfig allow retrieving scrape targets from AWS EC2 instances.
-    The private IP address is used by default, but may be changed to the public IP address with relabeling.
-    The IAM credentials used must have the ec2:DescribeInstances permission to discover scrape targets
-    See https://docs.victoriametrics.com/sd_configs/#ec2_sd_configs
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec ec2 s d configs items0
 
     Attributes
     ----------
     accessKey : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecEc2SDConfigsItems0AccessKey, default is Undefined, optional
         access key
     filters : [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecEc2SDConfigsItems0FiltersItems0], default is Undefined, optional
-        Filters can be used optionally to filter the instance list by other criteria.
-        Available filter criteria can be found here:
-        https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html
-        Filter API documentation: https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Filter.html
+        filters
     port : int, default is Undefined, optional
-        The port to scrape metrics from. If using the public IP address, this must
-        instead be specified in the relabeling rule.
+        port
     region : str, default is Undefined, optional
-        The AWS region
+        region
     roleARN : str, default is Undefined, optional
-        AWS Role ARN, an alternative to using AWS API keys.
+        role a r n
     secretKey : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecEc2SDConfigsItems0SecretKey, default is Undefined, optional
         secret key
     """
@@ -2048,32 +1616,30 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecEc2SDConfigsItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecEc2SDConfigsItems0AccessKey:
-    """
-    AccessKey is the AWS API key.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec ec2 s d configs items0 access key
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecEc2SDConfigsItems0FiltersItems0:
-    """
-    EC2Filter is the configuration for filtering EC2 instances.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec ec2 s d configs items0 filters items0
 
     Attributes
     ----------
@@ -2090,38 +1656,35 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecEc2SDConfigsItems0Filt
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecEc2SDConfigsItems0SecretKey:
-    """
-    SecretKey is the AWS API secret.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec ec2 s d configs items0 secret key
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecFileSDConfigsItems0:
-    """
-    FileSDConfig defines a file service discovery configuration
-    See https://docs.victoriametrics.com/sd_configs/#file_sd_configs
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec file s d configs items0
 
     Attributes
     ----------
     files : [str], default is Undefined, required
-        List of files to be used for file discovery.
+        files
     """
 
 
@@ -2133,32 +1696,21 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecFileSDConfigsItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecGceSDConfigsItems0:
-    """
-    GCESDConfig configures scrape targets from GCP GCE instances.
-    The private IP address is used by default, but may be changed to
-    the public IP address with relabeling.
-    See https://docs.victoriametrics.com/sd_configs/#gce_sd_configs
-
-
-    The GCE service discovery will load the Google Cloud credentials
-    from the file specified by the GOOGLE_APPLICATION_CREDENTIALS environment variable.
-    See https://cloud.google.com/kubernetes-engine/docs/tutorials/authenticating-to-cloud-platform
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec gce s d configs items0
 
     Attributes
     ----------
     $filter : str, default is Undefined, optional
-        Filter can be used optionally to filter the instance list by other criteria
-        Syntax of this filter is described in the filter query parameter section:
-        https://cloud.google.com/compute/docs/reference/latest/instances/list
+        filter
     port : int, default is Undefined, optional
-        The port to scrape metrics from. If using the public IP address, this must
-        instead be specified in the relabeling rule.
+        port
     project : str, default is Undefined, required
-        The Google Cloud Project ID
+        project
     tagSeparator : str, default is Undefined, optional
-        The tag separator is used to separate the tags on concatenation
-    zone : str, default is Undefined, required
-        The zone of the scrape targets. If you need multiple zones use multiple GCESDConfigs.
+        tag separator
+    zone : any, default is Undefined, required
+        zone
     """
 
 
@@ -2170,18 +1722,16 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecGceSDConfigsItems0:
 
     tagSeparator?: str
 
-    zone: str
+    zone: any
 
 
     check:
         len(project) >= 1
-        len(zone) >= 1
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0:
-    """
-    HTTPSDConfig defines a HTTP service discovery configuration
-    See https://docs.victoriametrics.com/sd_configs/#http_sd_configs
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec HTTPS d configs items0
 
     Attributes
     ----------
@@ -2190,13 +1740,13 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0:
     basicAuth : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0BasicAuth, default is Undefined, optional
         basic auth
     proxyURL : str, default is Undefined, optional
-        ProxyURL eg http://proxyserver:2195 Directs scrapes to proxy through this endpoint.
+        proxy URL
     proxy_client_config : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfig, default is Undefined, optional
         proxy client config
     tlsConfig : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0TLSConfig, default is Undefined, optional
         tls config
     url : str, default is Undefined, required
-        URL from which the targets are fetched.
+        url
     """
 
 
@@ -2215,21 +1765,21 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0:
 
     check:
         len(url) >= 1
-        regex.match(str(url), r"^http(s)?://.+$")
+        _regex_match(str(url), r"^http(s)?://.+$")
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0Authorization:
-    """
-    Authorization header to use on every scrape request.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec HTTPS d configs items0 authorization
 
     Attributes
     ----------
     credentials : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0AuthorizationCredentials, default is Undefined, optional
         credentials
     credentialsFile : str, default is Undefined, optional
-        File with value for authorization
+        credentials file
     $type : str, default is Undefined, optional
-        Type of authorization, default to bearer
+        type
     """
 
 
@@ -2241,39 +1791,37 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0Aut
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0AuthorizationCredentials:
-    """
-    Reference to the secret with value for authorization
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec HTTPS d configs items0 authorization credentials
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0BasicAuth:
-    """
-    BasicAuth information to use on every scrape request.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec HTTPS d configs items0 basic auth
 
     Attributes
     ----------
     password : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0BasicAuthPassword, default is Undefined, optional
         password
     password_file : str, default is Undefined, optional
-        PasswordFile defines path to password file at disk
+        password file
     username : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0BasicAuthUsername, default is Undefined, optional
         username
     """
@@ -2287,61 +1835,52 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0Bas
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0BasicAuthPassword:
-    """
-    The secret in the service scrape namespace that contains the password
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec HTTPS d configs items0 basic auth password
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0BasicAuthUsername:
-    """
-    The secret in the service scrape namespace that contains the username
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec HTTPS d configs items0 basic auth username
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfig:
-    """
-    ProxyClientConfig configures proxy auth settings for scraping
-    See feature description https://docs.victoriametrics.com/vmagent.html#scraping-targets-via-a-proxy
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec HTTPS d configs items0 proxy client config
 
     Attributes
     ----------
@@ -2351,7 +1890,7 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0Pro
         bearer token
     bearer_token_file : str, default is Undefined, optional
         bearer token file
-    tls_config : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfig, default is Undefined, optional
+    tls_config : any, default is Undefined, optional
         tls config
     """
 
@@ -2362,19 +1901,19 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0Pro
 
     bearer_token_file?: str
 
-    tls_config?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfig
+    tls_config?: any
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigBasicAuth:
-    """
-    BasicAuth allow an endpoint to authenticate over basic authentication
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec HTTPS d configs items0 proxy client config basic auth
 
     Attributes
     ----------
     password : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigBasicAuthPassword, default is Undefined, optional
         password
     password_file : str, default is Undefined, optional
-        PasswordFile defines path to password file at disk
+        password file
     username : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigBasicAuthUsername, default is Undefined, optional
         username
     """
@@ -2388,301 +1927,93 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0Pro
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigBasicAuthPassword:
-    """
-    The secret in the service scrape namespace that contains the password
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec HTTPS d configs items0 proxy client config basic auth password
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigBasicAuthUsername:
-    """
-    The secret in the service scrape namespace that contains the username
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec HTTPS d configs items0 proxy client config basic auth username
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigBearerToken:
-    """
-    SecretKeySelector selects a key of a Secret.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec HTTPS d configs items0 proxy client config bearer token
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfig:
-    """
-    TLSConfig specifies TLSConfig configuration parameters.
-
-    Attributes
-    ----------
-    ca : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfigCa, default is Undefined, optional
-        ca
-    caFile : str, default is Undefined, optional
-        Path to the CA cert in the container to use for the targets.
-    cert : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfigCert, default is Undefined, optional
-        cert
-    certFile : str, default is Undefined, optional
-        Path to the client cert file in the container for the targets.
-    insecureSkipVerify : bool, default is Undefined, optional
-        Disable target certificate validation.
-    keyFile : str, default is Undefined, optional
-        Path to the client key file in the container for the targets.
-    keySecret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfigKeySecret, default is Undefined, optional
-        key secret
-    serverName : str, default is Undefined, optional
-        Used to verify the hostname for the targets.
-    """
-
-
-    ca?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfigCa
-
-    caFile?: str
-
-    cert?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfigCert
-
-    certFile?: str
-
-    insecureSkipVerify?: bool
-
-    keyFile?: str
-
-    keySecret?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfigKeySecret
-
-    serverName?: str
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfigCa:
-    """
-    Stuct containing the CA cert to use for the targets.
-
-    Attributes
-    ----------
-    configMap : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfigCaConfigMap, default is Undefined, optional
-        config map
-    secret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfigCaSecret, default is Undefined, optional
-        secret
-    """
-
-
-    configMap?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfigCaConfigMap
-
-    secret?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfigCaSecret
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfigCaConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key to select.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfigCaSecret:
-    """
-    Secret containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfigCert:
-    """
-    Struct containing the client cert file for the targets.
-
-    Attributes
-    ----------
-    configMap : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfigCertConfigMap, default is Undefined, optional
-        config map
-    secret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfigCertSecret, default is Undefined, optional
-        secret
-    """
-
-
-    configMap?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfigCertConfigMap
-
-    secret?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfigCertSecret
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfigCertConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key to select.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfigCertSecret:
-    """
-    Secret containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0ProxyClientConfigTLSConfigKeySecret:
-    """
-    Secret containing the client key file for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0TLSConfig:
-    """
-    TLS configuration to use on every scrape request
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec HTTPS d configs items0 TLS config
 
     Attributes
     ----------
     ca : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0TLSConfigCa, default is Undefined, optional
         ca
     caFile : str, default is Undefined, optional
-        Path to the CA cert in the container to use for the targets.
+        ca file
     cert : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0TLSConfigCert, default is Undefined, optional
         cert
     certFile : str, default is Undefined, optional
-        Path to the client cert file in the container for the targets.
+        cert file
     insecureSkipVerify : bool, default is Undefined, optional
-        Disable target certificate validation.
+        insecure skip verify
     keyFile : str, default is Undefined, optional
-        Path to the client key file in the container for the targets.
+        key file
     keySecret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0TLSConfigKeySecret, default is Undefined, optional
         key secret
     serverName : str, default is Undefined, optional
-        Used to verify the hostname for the targets.
+        server name
     """
 
 
@@ -2704,8 +2035,8 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0TLS
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0TLSConfigCa:
-    """
-    Stuct containing the CA cert to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec HTTPS d configs items0 TLS config ca
 
     Attributes
     ----------
@@ -2722,56 +2053,52 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0TLS
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0TLSConfigCaConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec HTTPS d configs items0 TLS config ca config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0TLSConfigCaSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec HTTPS d configs items0 TLS config ca secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0TLSConfigCert:
-    """
-    Struct containing the client cert file for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec HTTPS d configs items0 TLS config cert
 
     Attributes
     ----------
@@ -2788,90 +2115,79 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0TLS
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0TLSConfigCertConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec HTTPS d configs items0 TLS config cert config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0TLSConfigCertSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec HTTPS d configs items0 TLS config cert secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecHTTPSDConfigsItems0TLSConfigKeySecret:
-    """
-    Secret containing the client key file for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec HTTPS d configs items0 TLS config key secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0:
-    """
-    KubernetesSDConfig allows retrieving scrape targets from Kubernetes' REST API.
-    See https://docs.victoriametrics.com/sd_configs/#kubernetes_sd_configs
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0
 
     Attributes
     ----------
     apiServer : str, default is Undefined, optional
-        The API server address consisting of a hostname or IP address followed
-        by an optional port number.
-        If left empty, assuming process is running inside
-        of the cluster. It will discover API servers automatically and use the pod's
-        CA certificate and bearer token file at /var/run/secrets/kubernetes.io/serviceaccount/.
+        api server
     attach_metadata : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0AttachMetadata, default is Undefined, optional
         attach metadata
     authorization : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0Authorization, default is Undefined, optional
@@ -2879,19 +2195,19 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsIte
     basicAuth : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0BasicAuth, default is Undefined, optional
         basic auth
     followRedirects : bool, default is Undefined, optional
-        Configure whether HTTP requests follow HTTP 3xx redirects.
+        follow redirects
     namespaces : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0Namespaces, default is Undefined, optional
         namespaces
     oauth2 : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0Oauth2, default is Undefined, optional
         oauth2
     proxyURL : str, default is Undefined, optional
-        ProxyURL eg http://proxyserver:2195 Directs scrapes to proxy through this endpoint.
+        proxy URL
     proxy_client_config : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfig, default is Undefined, optional
         proxy client config
     role : str, default is Undefined, required
-        Role of the Kubernetes entities that should be discovered.
+        role
     selectors : [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0SelectorsItems0], default is Undefined, optional
-        Selector to select objects.
+        selectors
     tlsConfig : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0TLSConfig, default is Undefined, optional
         tls config
     """
@@ -2915,7 +2231,7 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsIte
 
     proxy_client_config?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfig
 
-    role: str
+    role: "node" | "pod" | "service" | "endpoints" | "endpointslice" | "ingress"
 
     selectors?: [OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0SelectorsItems0]
 
@@ -2923,32 +2239,35 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsIte
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0AttachMetadata:
-    """
-    AttachMetadata configures metadata attaching from service discovery
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 attach metadata
 
     Attributes
     ----------
+    namespace : bool, default is Undefined, optional
+        namespace
     node : bool, default is Undefined, optional
-        Node instructs vmagent to add node specific metadata from service discovery
-        Valid for roles: pod, endpoints, endpointslice.
+        node
     """
 
+
+    namespace?: bool
 
     node?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0Authorization:
-    """
-    Authorization header to use on every scrape request.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 authorization
 
     Attributes
     ----------
     credentials : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0AuthorizationCredentials, default is Undefined, optional
         credentials
     credentialsFile : str, default is Undefined, optional
-        File with value for authorization
+        credentials file
     $type : str, default is Undefined, optional
-        Type of authorization, default to bearer
+        type
     """
 
 
@@ -2960,39 +2279,37 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsIte
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0AuthorizationCredentials:
-    """
-    Reference to the secret with value for authorization
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 authorization credentials
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0BasicAuth:
-    """
-    BasicAuth information to use on every scrape request.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 basic auth
 
     Attributes
     ----------
     password : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0BasicAuthPassword, default is Undefined, optional
         password
     password_file : str, default is Undefined, optional
-        PasswordFile defines path to password file at disk
+        password file
     username : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0BasicAuthUsername, default is Undefined, optional
         username
     """
@@ -3006,68 +2323,59 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsIte
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0BasicAuthPassword:
-    """
-    The secret in the service scrape namespace that contains the password
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 basic auth password
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0BasicAuthUsername:
-    """
-    The secret in the service scrape namespace that contains the username
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 basic auth username
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0Namespaces:
-    """
-    Optional namespace discovery. If omitted, discover targets across all namespaces.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 namespaces
 
     Attributes
     ----------
     names : [str], default is Undefined, optional
-        List of namespaces where to watch for resources.
-        If empty and `ownNamespace` isn't true, watch for resources in all namespaces.
+        names
     ownNamespace : bool, default is Undefined, optional
-        Includes the namespace in which the pod exists to the list of watched namespaces.
+        own namespace
     """
 
 
@@ -3077,8 +2385,8 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsIte
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0Oauth2:
-    """
-    OAuth2 defines auth configuration
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 oauth2
 
     Attributes
     ----------
@@ -3087,13 +2395,17 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsIte
     client_secret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0Oauth2ClientSecret, default is Undefined, optional
         client secret
     client_secret_file : str, default is Undefined, optional
-        ClientSecretFile defines path for client secret file.
+        client secret file
     endpoint_params : {str:str}, default is Undefined, optional
-        Parameters to append to the token URL
+        endpoint params
+    proxy_url : str, default is Undefined, optional
+        proxy url
     scopes : [str], default is Undefined, optional
-        OAuth2 scopes used for the token request
+        scopes
+    tls_config : any, default is Undefined, optional
+        tls config
     token_url : str, default is Undefined, required
-        The URL to fetch the token from
+        token url
     """
 
 
@@ -3105,7 +2417,11 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsIte
 
     endpoint_params?: {str:str}
 
+    proxy_url?: str
+
     scopes?: [str]
+
+    tls_config?: any
 
     token_url: str
 
@@ -3115,8 +2431,8 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsIte
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0Oauth2ClientID:
-    """
-    The secret or configmap containing the OAuth2 client id
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 oauth2 client ID
 
     Attributes
     ----------
@@ -3133,81 +2449,74 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsIte
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0Oauth2ClientIDConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 oauth2 client ID config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0Oauth2ClientIDSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 oauth2 client ID secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0Oauth2ClientSecret:
-    """
-    The secret containing the OAuth2 client secret
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 oauth2 client secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfig:
-    """
-    ProxyClientConfig configures proxy auth settings for scraping
-    See feature description https://docs.victoriametrics.com/vmagent.html#scraping-targets-via-a-proxy
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 proxy client config
 
     Attributes
     ----------
@@ -3217,7 +2526,7 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsIte
         bearer token
     bearer_token_file : str, default is Undefined, optional
         bearer token file
-    tls_config : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfig, default is Undefined, optional
+    tls_config : any, default is Undefined, optional
         tls config
     """
 
@@ -3228,19 +2537,19 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsIte
 
     bearer_token_file?: str
 
-    tls_config?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfig
+    tls_config?: any
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigBasicAuth:
-    """
-    BasicAuth allow an endpoint to authenticate over basic authentication
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 proxy client config basic auth
 
     Attributes
     ----------
     password : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigBasicAuthPassword, default is Undefined, optional
         password
     password_file : str, default is Undefined, optional
-        PasswordFile defines path to password file at disk
+        password file
     username : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigBasicAuthUsername, default is Undefined, optional
         username
     """
@@ -3254,282 +2563,74 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsIte
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigBasicAuthPassword:
-    """
-    The secret in the service scrape namespace that contains the password
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 proxy client config basic auth password
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigBasicAuthUsername:
-    """
-    The secret in the service scrape namespace that contains the username
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 proxy client config basic auth username
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigBearerToken:
-    """
-    SecretKeySelector selects a key of a Secret.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 proxy client config bearer token
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfig:
-    """
-    TLSConfig specifies TLSConfig configuration parameters.
-
-    Attributes
-    ----------
-    ca : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfigCa, default is Undefined, optional
-        ca
-    caFile : str, default is Undefined, optional
-        Path to the CA cert in the container to use for the targets.
-    cert : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfigCert, default is Undefined, optional
-        cert
-    certFile : str, default is Undefined, optional
-        Path to the client cert file in the container for the targets.
-    insecureSkipVerify : bool, default is Undefined, optional
-        Disable target certificate validation.
-    keyFile : str, default is Undefined, optional
-        Path to the client key file in the container for the targets.
-    keySecret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfigKeySecret, default is Undefined, optional
-        key secret
-    serverName : str, default is Undefined, optional
-        Used to verify the hostname for the targets.
-    """
-
-
-    ca?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfigCa
-
-    caFile?: str
-
-    cert?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfigCert
-
-    certFile?: str
-
-    insecureSkipVerify?: bool
-
-    keyFile?: str
-
-    keySecret?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfigKeySecret
-
-    serverName?: str
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfigCa:
-    """
-    Stuct containing the CA cert to use for the targets.
-
-    Attributes
-    ----------
-    configMap : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfigCaConfigMap, default is Undefined, optional
-        config map
-    secret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfigCaSecret, default is Undefined, optional
-        secret
-    """
-
-
-    configMap?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfigCaConfigMap
-
-    secret?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfigCaSecret
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfigCaConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key to select.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfigCaSecret:
-    """
-    Secret containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfigCert:
-    """
-    Struct containing the client cert file for the targets.
-
-    Attributes
-    ----------
-    configMap : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfigCertConfigMap, default is Undefined, optional
-        config map
-    secret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfigCertSecret, default is Undefined, optional
-        secret
-    """
-
-
-    configMap?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfigCertConfigMap
-
-    secret?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfigCertSecret
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfigCertConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key to select.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfigCertSecret:
-    """
-    Secret containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0ProxyClientConfigTLSConfigKeySecret:
-    """
-    Secret containing the client key file for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0SelectorsItems0:
-    """
-    K8SSelectorConfig is Kubernetes Selector Config
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 selectors items0
 
     Attributes
     ----------
@@ -3546,31 +2647,31 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsIte
 
     label?: str
 
-    role: str
+    role: "node" | "pod" | "service" | "endpoints" | "endpointslice" | "ingress"
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0TLSConfig:
-    """
-    TLS configuration to use on every scrape request
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 TLS config
 
     Attributes
     ----------
     ca : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0TLSConfigCa, default is Undefined, optional
         ca
     caFile : str, default is Undefined, optional
-        Path to the CA cert in the container to use for the targets.
+        ca file
     cert : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0TLSConfigCert, default is Undefined, optional
         cert
     certFile : str, default is Undefined, optional
-        Path to the client cert file in the container for the targets.
+        cert file
     insecureSkipVerify : bool, default is Undefined, optional
-        Disable target certificate validation.
+        insecure skip verify
     keyFile : str, default is Undefined, optional
-        Path to the client key file in the container for the targets.
+        key file
     keySecret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0TLSConfigKeySecret, default is Undefined, optional
         key secret
     serverName : str, default is Undefined, optional
-        Used to verify the hostname for the targets.
+        server name
     """
 
 
@@ -3592,8 +2693,8 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsIte
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0TLSConfigCa:
-    """
-    Stuct containing the CA cert to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 TLS config ca
 
     Attributes
     ----------
@@ -3610,56 +2711,52 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsIte
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0TLSConfigCaConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 TLS config ca config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0TLSConfigCaSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 TLS config ca secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0TLSConfigCert:
-    """
-    Struct containing the client cert file for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 TLS config cert
 
     Attributes
     ----------
@@ -3676,121 +2773,101 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsIte
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0TLSConfigCertConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 TLS config cert config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0TLSConfigCertSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 TLS config cert secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecKubernetesSDConfigsItems0TLSConfigKeySecret:
-    """
-    Secret containing the client key file for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec kubernetes s d configs items0 TLS config key secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecMetricRelabelConfigsItems0:
-    """
-    RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion.
-    It defines `<metric_relabel_configs>`-section of configuration.
-    More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec metric relabel configs items0
 
     Attributes
     ----------
     action : str, default is Undefined, optional
-        Action to perform based on regex matching. Default is 'replace'
+        action
     $if : any, default is Undefined, optional
-        If represents metricsQL match expression (or list of expressions): '{__name__=~"foo_.*"}'
+        if
     labels : {str:str}, default is Undefined, optional
-        Labels is used together with Match for `action: graphite`
+        labels
     match : str, default is Undefined, optional
-        Match is used together with Labels for `action: graphite`
+        match
     modulus : int, default is Undefined, optional
-        Modulus to take of the hash of the source label values.
+        modulus
     regex : any, default is Undefined, optional
-        Regular expression against which the extracted value is matched. Default is '(.*)'
-        victoriaMetrics supports multiline regex joined with |
-        https://docs.victoriametrics.com/vmagent/#relabeling-enhancements
+        regex
     replacement : str, default is Undefined, optional
-        Replacement value against which a regex replace is performed if the
-        regular expression matches. Regex capture groups are available. Default is '$1'
+        replacement
     separator : str, default is Undefined, optional
-        Separator placed between concatenated source label values. default is ';'.
+        separator
     sourceLabels : [str], default is Undefined, optional
-        The source labels select values from existing labels. Their content is concatenated
-        using the configured separator and matched against the configured regular expression
-        for the replace, keep, and drop actions.
+        source labels
     source_labels : [str], default is Undefined, optional
-        UnderScoreSourceLabels - additional form of source labels source_labels
-        for compatibility with original relabel config.
-        if set  both sourceLabels and source_labels, sourceLabels has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        source labels
     targetLabel : str, default is Undefined, optional
-        Label to which the resulting value is written in a replace action.
-        It is mandatory for replace actions. Regex capture groups are available.
+        target label
     target_label : str, default is Undefined, optional
-        UnderScoreTargetLabel - additional form of target label - target_label
-        for compatibility with original relabel config.
-        if set  both targetLabel and target_label, targetLabel has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        target label
     """
 
 
@@ -3819,9 +2896,613 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecMetricRelabelConfigsIt
     target_label?: str
 
 
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOauth2:
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0
+
+    Attributes
+    ----------
+    allowStale : bool, default is Undefined, optional
+        allow stale
+    authorization : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0Authorization, default is Undefined, optional
+        authorization
+    basicAuth : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0BasicAuth, default is Undefined, optional
+        basic auth
+    followRedirects : bool, default is Undefined, optional
+        follow redirects
+    namespace : str, default is Undefined, optional
+        namespace
+    oauth2 : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0Oauth2, default is Undefined, optional
+        oauth2
+    proxyURL : str, default is Undefined, optional
+        proxy URL
+    proxy_client_config : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0ProxyClientConfig, default is Undefined, optional
+        proxy client config
+    region : str, default is Undefined, optional
+        region
+    server : str, default is Undefined, required
+        server
+    tagSeparator : str, default is Undefined, optional
+        tag separator
+    tlsConfig : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfig, default is Undefined, optional
+        tls config
     """
-    OAuth2 defines auth configuration
+
+
+    allowStale?: bool
+
+    authorization?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0Authorization
+
+    basicAuth?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0BasicAuth
+
+    followRedirects?: bool
+
+    namespace?: str
+
+    oauth2?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0Oauth2
+
+    proxyURL?: str
+
+    proxy_client_config?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0ProxyClientConfig
+
+    region?: str
+
+    server: str
+
+    tagSeparator?: str
+
+    tlsConfig?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfig
+
+
+    check:
+        len(server) >= 1
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0Authorization:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 authorization
+
+    Attributes
+    ----------
+    credentials : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0AuthorizationCredentials, default is Undefined, optional
+        credentials
+    credentialsFile : str, default is Undefined, optional
+        credentials file
+    $type : str, default is Undefined, optional
+        type
+    """
+
+
+    credentials?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0AuthorizationCredentials
+
+    credentialsFile?: str
+
+    $type?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0AuthorizationCredentials:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 authorization credentials
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0BasicAuth:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 basic auth
+
+    Attributes
+    ----------
+    password : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0BasicAuthPassword, default is Undefined, optional
+        password
+    password_file : str, default is Undefined, optional
+        password file
+    username : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0BasicAuthUsername, default is Undefined, optional
+        username
+    """
+
+
+    password?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0BasicAuthPassword
+
+    password_file?: str
+
+    username?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0BasicAuthUsername
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0BasicAuthPassword:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 basic auth password
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0BasicAuthUsername:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 basic auth username
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0Oauth2:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 oauth2
+
+    Attributes
+    ----------
+    client_id : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0Oauth2ClientID, default is Undefined, required
+        client id
+    client_secret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0Oauth2ClientSecret, default is Undefined, optional
+        client secret
+    client_secret_file : str, default is Undefined, optional
+        client secret file
+    endpoint_params : {str:str}, default is Undefined, optional
+        endpoint params
+    proxy_url : str, default is Undefined, optional
+        proxy url
+    scopes : [str], default is Undefined, optional
+        scopes
+    tls_config : any, default is Undefined, optional
+        tls config
+    token_url : str, default is Undefined, required
+        token url
+    """
+
+
+    client_id: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0Oauth2ClientID
+
+    client_secret?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0Oauth2ClientSecret
+
+    client_secret_file?: str
+
+    endpoint_params?: {str:str}
+
+    proxy_url?: str
+
+    scopes?: [str]
+
+    tls_config?: any
+
+    token_url: str
+
+
+    check:
+        len(token_url) >= 1
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0Oauth2ClientID:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 oauth2 client ID
+
+    Attributes
+    ----------
+    configMap : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0Oauth2ClientIDConfigMap, default is Undefined, optional
+        config map
+    secret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0Oauth2ClientIDSecret, default is Undefined, optional
+        secret
+    """
+
+
+    configMap?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0Oauth2ClientIDConfigMap
+
+    secret?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0Oauth2ClientIDSecret
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0Oauth2ClientIDConfigMap:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 oauth2 client ID config map
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0Oauth2ClientIDSecret:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 oauth2 client ID secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0Oauth2ClientSecret:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 oauth2 client secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0ProxyClientConfig:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 proxy client config
+
+    Attributes
+    ----------
+    basic_auth : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0ProxyClientConfigBasicAuth, default is Undefined, optional
+        basic auth
+    bearer_token : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0ProxyClientConfigBearerToken, default is Undefined, optional
+        bearer token
+    bearer_token_file : str, default is Undefined, optional
+        bearer token file
+    tls_config : any, default is Undefined, optional
+        tls config
+    """
+
+
+    basic_auth?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0ProxyClientConfigBasicAuth
+
+    bearer_token?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0ProxyClientConfigBearerToken
+
+    bearer_token_file?: str
+
+    tls_config?: any
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0ProxyClientConfigBasicAuth:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 proxy client config basic auth
+
+    Attributes
+    ----------
+    password : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0ProxyClientConfigBasicAuthPassword, default is Undefined, optional
+        password
+    password_file : str, default is Undefined, optional
+        password file
+    username : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0ProxyClientConfigBasicAuthUsername, default is Undefined, optional
+        username
+    """
+
+
+    password?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0ProxyClientConfigBasicAuthPassword
+
+    password_file?: str
+
+    username?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0ProxyClientConfigBasicAuthUsername
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0ProxyClientConfigBasicAuthPassword:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 proxy client config basic auth password
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0ProxyClientConfigBasicAuthUsername:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 proxy client config basic auth username
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0ProxyClientConfigBearerToken:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 proxy client config bearer token
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfig:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 TLS config
+
+    Attributes
+    ----------
+    ca : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfigCa, default is Undefined, optional
+        ca
+    caFile : str, default is Undefined, optional
+        ca file
+    cert : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfigCert, default is Undefined, optional
+        cert
+    certFile : str, default is Undefined, optional
+        cert file
+    insecureSkipVerify : bool, default is Undefined, optional
+        insecure skip verify
+    keyFile : str, default is Undefined, optional
+        key file
+    keySecret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfigKeySecret, default is Undefined, optional
+        key secret
+    serverName : str, default is Undefined, optional
+        server name
+    """
+
+
+    ca?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfigCa
+
+    caFile?: str
+
+    cert?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfigCert
+
+    certFile?: str
+
+    insecureSkipVerify?: bool
+
+    keyFile?: str
+
+    keySecret?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfigKeySecret
+
+    serverName?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfigCa:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 TLS config ca
+
+    Attributes
+    ----------
+    configMap : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfigCaConfigMap, default is Undefined, optional
+        config map
+    secret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfigCaSecret, default is Undefined, optional
+        secret
+    """
+
+
+    configMap?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfigCaConfigMap
+
+    secret?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfigCaSecret
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfigCaConfigMap:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 TLS config ca config map
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfigCaSecret:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 TLS config ca secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfigCert:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 TLS config cert
+
+    Attributes
+    ----------
+    configMap : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfigCertConfigMap, default is Undefined, optional
+        config map
+    secret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfigCertSecret, default is Undefined, optional
+        secret
+    """
+
+
+    configMap?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfigCertConfigMap
+
+    secret?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfigCertSecret
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfigCertConfigMap:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 TLS config cert config map
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfigCertSecret:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 TLS config cert secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecNomadSDConfigsItems0TLSConfigKeySecret:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec nomad s d configs items0 TLS config key secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOauth2:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec oauth2
 
     Attributes
     ----------
@@ -3830,13 +3511,17 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOauth2:
     client_secret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOauth2ClientSecret, default is Undefined, optional
         client secret
     client_secret_file : str, default is Undefined, optional
-        ClientSecretFile defines path for client secret file.
+        client secret file
     endpoint_params : {str:str}, default is Undefined, optional
-        Parameters to append to the token URL
+        endpoint params
+    proxy_url : str, default is Undefined, optional
+        proxy url
     scopes : [str], default is Undefined, optional
-        OAuth2 scopes used for the token request
+        scopes
+    tls_config : any, default is Undefined, optional
+        tls config
     token_url : str, default is Undefined, required
-        The URL to fetch the token from
+        token url
     """
 
 
@@ -3848,7 +3533,11 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOauth2:
 
     endpoint_params?: {str:str}
 
+    proxy_url?: str
+
     scopes?: [str]
+
+    tls_config?: any
 
     token_url: str
 
@@ -3858,8 +3547,8 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOauth2:
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOauth2ClientID:
-    """
-    The secret or configmap containing the OAuth2 client id
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec oauth2 client ID
 
     Attributes
     ----------
@@ -3876,131 +3565,111 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOauth2ClientID:
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOauth2ClientIDConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec oauth2 client ID config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOauth2ClientIDSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec oauth2 client ID secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOauth2ClientSecret:
-    """
-    The secret containing the OAuth2 client secret
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec oauth2 client secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOpenstackSDConfigsItems0:
-    """
-    OpenStackSDConfig allow retrieving scrape targets from OpenStack Nova instances.
-    See https://docs.victoriametrics.com/sd_configs/#openstack_sd_configs
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec openstack s d configs items0
 
     Attributes
     ----------
     allTenants : bool, default is Undefined, optional
-        Whether the service discovery should list all instances for all projects.
-        It is only relevant for the 'instance' role and usually requires admin permissions.
+        all tenants
     applicationCredentialId : str, default is Undefined, optional
-        ApplicationCredentialID
+        application credential Id
     applicationCredentialName : str, default is Undefined, optional
-        The ApplicationCredentialID or ApplicationCredentialName fields are
-        required if using an application credential to authenticate. Some providers
-        allow you to create an application credential to authenticate rather than a
-        password.
+        application credential name
     applicationCredentialSecret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOpenstackSDConfigsItems0ApplicationCredentialSecret, default is Undefined, optional
         application credential secret
     availability : str, default is Undefined, optional
-        Availability of the endpoint to connect to.
+        availability
     domainID : str, default is Undefined, optional
-        DomainID
+        domain ID
     domainName : str, default is Undefined, optional
-        At most one of domainId and domainName must be provided if using username
-        with Identity V3. Otherwise, either are optional.
+        domain name
     identityEndpoint : str, default is Undefined, optional
-        IdentityEndpoint specifies the HTTP endpoint that is required to work with
-        the Identity API of the appropriate version.
+        identity endpoint
     password : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOpenstackSDConfigsItems0Password, default is Undefined, optional
         password
     port : int, default is Undefined, optional
-        The port to scrape metrics from. If using the public IP address, this must
-        instead be specified in the relabeling rule.
+        port
     projectID : str, default is Undefined, optional
-         ProjectID
+        project ID
     projectName : str, default is Undefined, optional
-        The ProjectId and ProjectName fields are optional for the Identity V2 API.
-        Some providers allow you to specify a ProjectName instead of the ProjectId.
-        Some require both. Your provider's authentication policies will determine
-        how these fields influence authentication.
+        project name
     region : str, default is Undefined, required
-        The OpenStack Region.
+        region
     role : str, default is Undefined, required
-        The OpenStack role of entities that should be discovered.
+        role
     tlsConfig : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOpenstackSDConfigsItems0TLSConfig, default is Undefined, optional
         tls config
     userid : str, default is Undefined, optional
-        UserID
+        userid
     username : str, default is Undefined, optional
-        Username is required if using Identity V2 API. Consult with your provider's
-        control panel to discover your account's username.
-        In Identity V3, either userid or a combination of username
-        and domainId or domainName are needed
+        username
     """
 
 
@@ -4044,77 +3713,71 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOpenstackSDConfigsItem
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOpenstackSDConfigsItems0ApplicationCredentialSecret:
-    """
-    The applicationCredentialSecret field is required if using an application
-    credential to authenticate.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec openstack s d configs items0 application credential secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOpenstackSDConfigsItems0Password:
-    """
-    Password for the Identity V2 and V3 APIs. Consult with your provider's
-    control panel to discover your account's preferred method of authentication.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec openstack s d configs items0 password
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOpenstackSDConfigsItems0TLSConfig:
-    """
-    TLS configuration to use on every scrape request
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec openstack s d configs items0 TLS config
 
     Attributes
     ----------
     ca : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOpenstackSDConfigsItems0TLSConfigCa, default is Undefined, optional
         ca
     caFile : str, default is Undefined, optional
-        Path to the CA cert in the container to use for the targets.
+        ca file
     cert : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOpenstackSDConfigsItems0TLSConfigCert, default is Undefined, optional
         cert
     certFile : str, default is Undefined, optional
-        Path to the client cert file in the container for the targets.
+        cert file
     insecureSkipVerify : bool, default is Undefined, optional
-        Disable target certificate validation.
+        insecure skip verify
     keyFile : str, default is Undefined, optional
-        Path to the client key file in the container for the targets.
+        key file
     keySecret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOpenstackSDConfigsItems0TLSConfigKeySecret, default is Undefined, optional
         key secret
     serverName : str, default is Undefined, optional
-        Used to verify the hostname for the targets.
+        server name
     """
 
 
@@ -4136,8 +3799,8 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOpenstackSDConfigsItem
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOpenstackSDConfigsItems0TLSConfigCa:
-    """
-    Stuct containing the CA cert to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec openstack s d configs items0 TLS config ca
 
     Attributes
     ----------
@@ -4154,56 +3817,52 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOpenstackSDConfigsItem
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOpenstackSDConfigsItems0TLSConfigCaConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec openstack s d configs items0 TLS config ca config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOpenstackSDConfigsItems0TLSConfigCaSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec openstack s d configs items0 TLS config ca secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOpenstackSDConfigsItems0TLSConfigCert:
-    """
-    Struct containing the client cert file for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec openstack s d configs items0 TLS config cert
 
     Attributes
     ----------
@@ -4220,121 +3879,101 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOpenstackSDConfigsItem
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOpenstackSDConfigsItems0TLSConfigCertConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec openstack s d configs items0 TLS config cert config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOpenstackSDConfigsItems0TLSConfigCertSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec openstack s d configs items0 TLS config cert secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecOpenstackSDConfigsItems0TLSConfigKeySecret:
-    """
-    Secret containing the client key file for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec openstack s d configs items0 TLS config key secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecRelabelConfigsItems0:
-    """
-    RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion.
-    It defines `<metric_relabel_configs>`-section of configuration.
-    More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec relabel configs items0
 
     Attributes
     ----------
     action : str, default is Undefined, optional
-        Action to perform based on regex matching. Default is 'replace'
+        action
     $if : any, default is Undefined, optional
-        If represents metricsQL match expression (or list of expressions): '{__name__=~"foo_.*"}'
+        if
     labels : {str:str}, default is Undefined, optional
-        Labels is used together with Match for `action: graphite`
+        labels
     match : str, default is Undefined, optional
-        Match is used together with Labels for `action: graphite`
+        match
     modulus : int, default is Undefined, optional
-        Modulus to take of the hash of the source label values.
+        modulus
     regex : any, default is Undefined, optional
-        Regular expression against which the extracted value is matched. Default is '(.*)'
-        victoriaMetrics supports multiline regex joined with |
-        https://docs.victoriametrics.com/vmagent/#relabeling-enhancements
+        regex
     replacement : str, default is Undefined, optional
-        Replacement value against which a regex replace is performed if the
-        regular expression matches. Regex capture groups are available. Default is '$1'
+        replacement
     separator : str, default is Undefined, optional
-        Separator placed between concatenated source label values. default is ';'.
+        separator
     sourceLabels : [str], default is Undefined, optional
-        The source labels select values from existing labels. Their content is concatenated
-        using the configured separator and matched against the configured regular expression
-        for the replace, keep, and drop actions.
+        source labels
     source_labels : [str], default is Undefined, optional
-        UnderScoreSourceLabels - additional form of source labels source_labels
-        for compatibility with original relabel config.
-        if set  both sourceLabels and source_labels, sourceLabels has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        source labels
     targetLabel : str, default is Undefined, optional
-        Label to which the resulting value is written in a replace action.
-        It is mandatory for replace actions. Regex capture groups are available.
+        target label
     target_label : str, default is Undefined, optional
-        UnderScoreTargetLabel - additional form of target label - target_label
-        for compatibility with original relabel config.
-        if set  both targetLabel and target_label, targetLabel has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        target label
     """
 
 
@@ -4364,16 +4003,15 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecRelabelConfigsItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecStaticConfigsItems0:
-    """
-    StaticConfig defines a static configuration.
-    See https://docs.victoriametrics.com/sd_configs/#static_configs
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec static configs items0
 
     Attributes
     ----------
     labels : {str:str}, default is Undefined, optional
-        Labels assigned to all metrics scraped from the targets.
+        labels
     targets : [str], default is Undefined, optional
-        List of targets for this static configuration.
+        targets
     """
 
 
@@ -4383,27 +4021,27 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecStaticConfigsItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecTLSConfig:
-    """
-    TLS configuration to use on every scrape request
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec TLS config
 
     Attributes
     ----------
     ca : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecTLSConfigCa, default is Undefined, optional
         ca
     caFile : str, default is Undefined, optional
-        Path to the CA cert in the container to use for the targets.
+        ca file
     cert : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecTLSConfigCert, default is Undefined, optional
         cert
     certFile : str, default is Undefined, optional
-        Path to the client cert file in the container for the targets.
+        cert file
     insecureSkipVerify : bool, default is Undefined, optional
-        Disable target certificate validation.
+        insecure skip verify
     keyFile : str, default is Undefined, optional
-        Path to the client key file in the container for the targets.
+        key file
     keySecret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecTLSConfigKeySecret, default is Undefined, optional
         key secret
     serverName : str, default is Undefined, optional
-        Used to verify the hostname for the targets.
+        server name
     """
 
 
@@ -4425,8 +4063,8 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecTLSConfig:
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecTLSConfigCa:
-    """
-    Stuct containing the CA cert to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec TLS config ca
 
     Attributes
     ----------
@@ -4443,56 +4081,52 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecTLSConfigCa:
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecTLSConfigCaConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec TLS config ca config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecTLSConfigCaSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec TLS config ca secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecTLSConfigCert:
-    """
-    Struct containing the client cert file for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec TLS config cert
 
     Attributes
     ----------
@@ -4509,104 +4143,87 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecTLSConfigCert:
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecTLSConfigCertConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec TLS config cert config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecTLSConfigCertSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec TLS config cert secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecTLSConfigKeySecret:
-    """
-    Secret containing the client key file for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec TLS config key secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParams:
-    """
-    VMScrapeParams defines VictoriaMetrics specific scrape parameters
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec VM scrape params
 
     Attributes
     ----------
     disable_compression : bool, default is Undefined, optional
         disable compression
     disable_keep_alive : bool, default is Undefined, optional
-        disable_keepalive allows disabling HTTP keep-alive when scraping targets.
-        By default, HTTP keep-alive is enabled, so TCP connections to scrape targets
-        could be re-used.
-        See https://docs.victoriametrics.com/vmagent.html#scrape_config-enhancements
+        disable keep alive
     headers : [str], default is Undefined, optional
-        Headers allows sending custom headers to scrape targets
-        must be in of semicolon separated header with it's value
-        eg:
-        headerName: headerValue
-        vmagent supports since 1.79.0 version
-    metric_relabel_debug : bool, default is Undefined, optional
-        deprecated since [v1.85](https://github.com/VictoriaMetrics/VictoriaMetrics/releases/tag/v1.85.0), will be removed in next release
+        headers
     no_stale_markers : bool, default is Undefined, optional
         no stale markers
     proxy_client_config : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfig, default is Undefined, optional
         proxy client config
-    relabel_debug : bool, default is Undefined, optional
-        deprecated since [v1.85](https://github.com/VictoriaMetrics/VictoriaMetrics/releases/tag/v1.85.0), will be removed in next release
     scrape_align_interval : str, default is Undefined, optional
         scrape align interval
     scrape_offset : str, default is Undefined, optional
@@ -4622,13 +4239,9 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParams:
 
     headers?: [str]
 
-    metric_relabel_debug?: bool
-
     no_stale_markers?: bool
 
     proxy_client_config?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfig
-
-    relabel_debug?: bool
 
     scrape_align_interval?: str
 
@@ -4638,9 +4251,8 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParams:
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfig:
-    """
-    ProxyClientConfig configures proxy auth settings for scraping
-    See feature description https://docs.victoriametrics.com/vmagent.html#scraping-targets-via-a-proxy
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec VM scrape params proxy client config
 
     Attributes
     ----------
@@ -4650,7 +4262,7 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyCli
         bearer token
     bearer_token_file : str, default is Undefined, optional
         bearer token file
-    tls_config : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfig, default is Undefined, optional
+    tls_config : any, default is Undefined, optional
         tls config
     """
 
@@ -4661,19 +4273,19 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyCli
 
     bearer_token_file?: str
 
-    tls_config?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfig
+    tls_config?: any
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigBasicAuth:
-    """
-    BasicAuth allow an endpoint to authenticate over basic authentication
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec VM scrape params proxy client config basic auth
 
     Attributes
     ----------
     password : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigBasicAuthPassword, default is Undefined, optional
         password
     password_file : str, default is Undefined, optional
-        PasswordFile defines path to password file at disk
+        password file
     username : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigBasicAuthUsername, default is Undefined, optional
         username
     """
@@ -4687,276 +4299,140 @@ schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyCli
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigBasicAuthPassword:
-    """
-    The secret in the service scrape namespace that contains the password
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec VM scrape params proxy client config basic auth password
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigBasicAuthUsername:
-    """
-    The secret in the service scrape namespace that contains the username
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec VM scrape params proxy client config basic auth username
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigBearerToken:
-    """
-    SecretKeySelector selects a key of a Secret.
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config spec VM scrape params proxy client config bearer token
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfig:
-    """
-    TLSConfig specifies TLSConfig configuration parameters.
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigStatus:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config status
 
     Attributes
     ----------
-    ca : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfigCa, default is Undefined, optional
-        ca
-    caFile : str, default is Undefined, optional
-        Path to the CA cert in the container to use for the targets.
-    cert : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfigCert, default is Undefined, optional
-        cert
-    certFile : str, default is Undefined, optional
-        Path to the client cert file in the container for the targets.
-    insecureSkipVerify : bool, default is Undefined, optional
-        Disable target certificate validation.
-    keyFile : str, default is Undefined, optional
-        Path to the client key file in the container for the targets.
-    keySecret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfigKeySecret, default is Undefined, optional
-        key secret
-    serverName : str, default is Undefined, optional
-        Used to verify the hostname for the targets.
+    conditions : [OperatorVictoriametricsComV1beta1VMScrapeConfigStatusConditionsItems0], default is Undefined, optional
+        conditions
+    observedGeneration : int, default is Undefined, optional
+        observed generation
+    reason : str, default is Undefined, optional
+        reason
+    updateStatus : str, default is Undefined, optional
+        update status
     """
 
 
-    ca?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfigCa
+    conditions?: [OperatorVictoriametricsComV1beta1VMScrapeConfigStatusConditionsItems0]
 
-    caFile?: str
+    observedGeneration?: int
 
-    cert?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfigCert
+    reason?: str
 
-    certFile?: str
-
-    insecureSkipVerify?: bool
-
-    keyFile?: str
-
-    keySecret?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfigKeySecret
-
-    serverName?: str
+    updateStatus?: str
 
 
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfigCa:
-    """
-    Stuct containing the CA cert to use for the targets.
+schema OperatorVictoriametricsComV1beta1VMScrapeConfigStatusConditionsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM scrape config status conditions items0
 
     Attributes
     ----------
-    configMap : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfigCaConfigMap, default is Undefined, optional
-        config map
-    secret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfigCaSecret, default is Undefined, optional
-        secret
+    lastTransitionTime : str, default is Undefined, required
+        last transition time
+    lastUpdateTime : str, default is Undefined, required
+        last update time
+    message : str, default is Undefined, optional
+        message
+    observedGeneration : int, default is Undefined, optional
+        observed generation
+    reason : str, default is Undefined, required
+        reason
+    status : str, default is Undefined, required
+        status
+    $type : str, default is Undefined, required
+        type
     """
 
 
-    configMap?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfigCaConfigMap
+    lastTransitionTime: str
 
-    secret?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfigCaSecret
+    lastUpdateTime: str
 
+    message?: str
 
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfigCaConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    observedGeneration?: int
 
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key to select.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
-    """
+    reason: str
+
+    status: "True" | "False" | "Unknown"
+
+    $type: str
 
 
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfigCaSecret:
-    """
-    Secret containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfigCert:
-    """
-    Struct containing the client cert file for the targets.
-
-    Attributes
-    ----------
-    configMap : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfigCertConfigMap, default is Undefined, optional
-        config map
-    secret : OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfigCertSecret, default is Undefined, optional
-        secret
-    """
-
-
-    configMap?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfigCertConfigMap
-
-    secret?: OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfigCertSecret
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfigCertConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key to select.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfigCertSecret:
-    """
-    Secret containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMScrapeConfigSpecVMScrapeParamsProxyClientConfigTLSConfigKeySecret:
-    """
-    Secret containing the client key file for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
+    check:
+        len(message) <= 32768 if message
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
+        len(reason) <= 1024
+        len(reason) >= 1
+        len($type) <= 316
 
 
