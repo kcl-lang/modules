@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema VMRule:
-    """
-    VMRule defines rule records for vmalert application
+    r"""
+    operator victoriametrics com v1beta1 VM rule
 
     Attributes
     ----------
@@ -19,8 +19,8 @@ schema VMRule:
         metadata
     spec : OperatorVictoriametricsComV1beta1VMRuleSpec, default is Undefined, required
         spec
-    status : any, default is Undefined, optional
-        VMRuleStatus defines the observed state of VMRule
+    status : OperatorVictoriametricsComV1beta1VMRuleStatus, default is Undefined, optional
+        status
     """
 
 
@@ -32,17 +32,17 @@ schema VMRule:
 
     spec: OperatorVictoriametricsComV1beta1VMRuleSpec
 
-    status?: any
+    status?: OperatorVictoriametricsComV1beta1VMRuleStatus
 
 
 schema OperatorVictoriametricsComV1beta1VMRuleSpec:
-    """
-    VMRuleSpec defines the desired state of VMRule
+    r"""
+    operator victoriametrics com v1beta1 VM rule spec
 
     Attributes
     ----------
     groups : [OperatorVictoriametricsComV1beta1VMRuleSpecGroupsItems0], default is Undefined, required
-        Groups list of group rules
+        groups
     """
 
 
@@ -50,60 +50,49 @@ schema OperatorVictoriametricsComV1beta1VMRuleSpec:
 
 
 schema OperatorVictoriametricsComV1beta1VMRuleSpecGroupsItems0:
-    """
-    RuleGroup is a list of sequentially evaluated recording and alerting rules.
+    r"""
+    operator victoriametrics com v1beta1 VM rule spec groups items0
 
     Attributes
     ----------
     concurrency : int, default is Undefined, optional
-        Concurrency defines how many rules execute at once.
-    extra_filter_labels : {str:str}, default is Undefined, optional
-        ExtraFilterLabels optional list of label filters applied to every rule's
-        request withing a group. Is compatible only with VM datasource.
-        See more details at https://docs.victoriametrics.com#prometheus-querying-api-enhancements
-        Deprecated, use params instead
+        concurrency
+    eval_alignment : bool, default is Undefined, optional
+        eval alignment
+    eval_delay : str, default is Undefined, optional
+        eval delay
+    eval_offset : str, default is Undefined, optional
+        eval offset
     headers : [str], default is Undefined, optional
-        Headers contains optional HTTP headers added to each rule request
-        Must be in form `header-name: value`
-        For example:
-         headers:
-           - "CustomHeader: foo"
-           - "CustomHeader2: bar"
+        headers
     interval : str, default is Undefined, optional
-        evaluation interval for group
+        interval
     labels : {str:str}, default is Undefined, optional
-        Labels optional list of labels added to every rule within a group.
-        It has priority over the external labels.
-        Labels are commonly used for adding environment
-        or tenant-specific tag.
+        labels
     limit : int, default is Undefined, optional
-        Limit the number of alerts an alerting rule and series a recording
-        rule can produce
+        limit
     name : str, default is Undefined, required
-        Name of group
+        name
     notifier_headers : [str], default is Undefined, optional
-        NotifierHeaders contains optional HTTP headers added to each alert request which will send to notifier
-        Must be in form `header-name: value`
-        For example:
-         headers:
-           - "CustomHeader: foo"
-           - "CustomHeader2: bar"
+        notifier headers
     params : {str:[str]}, default is Undefined, optional
-        Params optional HTTP URL parameters added to each rule request
+        params
     rules : [OperatorVictoriametricsComV1beta1VMRuleSpecGroupsItems0RulesItems0], default is Undefined, required
-        Rules list of alert rules
+        rules
     tenant : str, default is Undefined, optional
-        Tenant id for group, can be used only with enterprise version of vmalert
-        See more details at https://docs.victoriametrics.com/vmalert.html#multitenancy
+        tenant
     $type : str, default is Undefined, optional
-        Type defines datasource type for enterprise version of vmalert
-        possible values - prometheus,graphite
+        type
     """
 
 
     concurrency?: int
 
-    extra_filter_labels?: {str:str}
+    eval_alignment?: bool
+
+    eval_delay?: str
+
+    eval_offset?: str
 
     headers?: [str]
 
@@ -127,34 +116,29 @@ schema OperatorVictoriametricsComV1beta1VMRuleSpecGroupsItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMRuleSpecGroupsItems0RulesItems0:
-    """
-    Rule describes an alerting or recording rule.
+    r"""
+    operator victoriametrics com v1beta1 VM rule spec groups items0 rules items0
 
     Attributes
     ----------
     alert : str, default is Undefined, optional
-        Alert is a name for alert
+        alert
     annotations : {str:str}, default is Undefined, optional
-        Annotations will be added to rule configuration
+        annotations
     debug : bool, default is Undefined, optional
-        Debug enables logging for rule
-        it useful for tracking
+        debug
     expr : str, default is Undefined, optional
-        Expr is query, that will be evaluated at dataSource
+        expr
     $for : str, default is Undefined, optional
-        For evaluation interval in time.Duration format
-        30s, 1m, 1h  or nanoseconds
+        for
     keep_firing_for : str, default is Undefined, optional
-        KeepFiringFor will make alert continue firing for this long
-        even when the alerting expression no longer has results.
-        Use time.Duration format, 30s, 1m, 1h  or nanoseconds
+        keep firing for
     labels : {str:str}, default is Undefined, optional
-        Labels will be added to rule configuration
+        labels
     record : str, default is Undefined, optional
-        Record represents a query, that will be recorded to dataSource
+        record
     update_entries_limit : int, default is Undefined, optional
-        UpdateEntriesLimit defines max number of rule's state updates stored in memory.
-        Overrides `-rule.updateEntriesLimit` in vmalert.
+        update entries limit
     """
 
 
@@ -175,5 +159,77 @@ schema OperatorVictoriametricsComV1beta1VMRuleSpecGroupsItems0RulesItems0:
     record?: str
 
     update_entries_limit?: int
+
+
+schema OperatorVictoriametricsComV1beta1VMRuleStatus:
+    r"""
+    operator victoriametrics com v1beta1 VM rule status
+
+    Attributes
+    ----------
+    conditions : [OperatorVictoriametricsComV1beta1VMRuleStatusConditionsItems0], default is Undefined, optional
+        conditions
+    observedGeneration : int, default is Undefined, optional
+        observed generation
+    reason : str, default is Undefined, optional
+        reason
+    updateStatus : str, default is Undefined, optional
+        update status
+    """
+
+
+    conditions?: [OperatorVictoriametricsComV1beta1VMRuleStatusConditionsItems0]
+
+    observedGeneration?: int
+
+    reason?: str
+
+    updateStatus?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMRuleStatusConditionsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM rule status conditions items0
+
+    Attributes
+    ----------
+    lastTransitionTime : str, default is Undefined, required
+        last transition time
+    lastUpdateTime : str, default is Undefined, required
+        last update time
+    message : str, default is Undefined, optional
+        message
+    observedGeneration : int, default is Undefined, optional
+        observed generation
+    reason : str, default is Undefined, required
+        reason
+    status : str, default is Undefined, required
+        status
+    $type : str, default is Undefined, required
+        type
+    """
+
+
+    lastTransitionTime: str
+
+    lastUpdateTime: str
+
+    message?: str
+
+    observedGeneration?: int
+
+    reason: str
+
+    status: "True" | "False" | "Unknown"
+
+    $type: str
+
+
+    check:
+        len(message) <= 32768 if message
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
+        len(reason) <= 1024
+        len(reason) >= 1
+        len($type) <= 316
 
 

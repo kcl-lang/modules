@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema VMStaticScrape:
-    """
-    VMStaticScrape  defines static targets configuration for scraping.
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape
 
     Attributes
     ----------
@@ -19,8 +19,8 @@ schema VMStaticScrape:
         metadata
     spec : OperatorVictoriametricsComV1beta1VMStaticScrapeSpec, default is Undefined, optional
         spec
-    status : any, default is Undefined, optional
-        VMStaticScrapeStatus defines the observed state of VMStaticScrape
+    status : OperatorVictoriametricsComV1beta1VMStaticScrapeStatus, default is Undefined, optional
+        status
     """
 
 
@@ -32,24 +32,25 @@ schema VMStaticScrape:
 
     spec?: OperatorVictoriametricsComV1beta1VMStaticScrapeSpec
 
-    status?: any
+    status?: OperatorVictoriametricsComV1beta1VMStaticScrapeStatus
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpec:
-    """
-    VMStaticScrapeSpec defines the desired state of VMStaticScrape.
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec
 
     Attributes
     ----------
     jobName : str, default is Undefined, optional
-        JobName name of job.
+        job name
     sampleLimit : int, default is Undefined, optional
-        SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.
+        sample limit
+    scrapeClass : str, default is Undefined, optional
+        scrape class
     seriesLimit : int, default is Undefined, optional
-        SeriesLimit defines per-scrape limit on number of unique time series
-        a single target can expose during all the scrapes on the time window of 24h.
+        series limit
     targetEndpoints : [OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0], default is Undefined, required
-        A list of target endpoints to scrape metrics from.
+        target endpoints
     """
 
 
@@ -57,14 +58,16 @@ schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpec:
 
     sampleLimit?: int
 
+    scrapeClass?: str
+
     seriesLimit?: int
 
     targetEndpoints: [OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0]
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0:
-    """
-    TargetEndpoint defines single static target endpoint.
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0
 
     Attributes
     ----------
@@ -73,48 +76,45 @@ schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0:
     basicAuth : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0BasicAuth, default is Undefined, optional
         basic auth
     bearerTokenFile : str, default is Undefined, optional
-        File to read bearer token for scraping targets.
+        bearer token file
     bearerTokenSecret : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0BearerTokenSecret, default is Undefined, optional
         bearer token secret
     follow_redirects : bool, default is Undefined, optional
-        FollowRedirects controls redirects for scraping.
+        follow redirects
     honorLabels : bool, default is Undefined, optional
-        HonorLabels chooses the metric's labels on collisions with target labels.
+        honor labels
     honorTimestamps : bool, default is Undefined, optional
-        HonorTimestamps controls whether vmagent respects the timestamps present in scraped data.
+        honor timestamps
     interval : str, default is Undefined, optional
-        Interval at which metrics should be scraped
+        interval
     labels : {str:str}, default is Undefined, optional
-        Labels static labels for targets.
+        labels
+    max_scrape_size : str, default is Undefined, optional
+        max scrape size
     metricRelabelConfigs : [OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0MetricRelabelConfigsItems0], default is Undefined, optional
-        MetricRelabelConfigs to apply to samples before ingestion.
+        metric relabel configs
     oauth2 : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0Oauth2, default is Undefined, optional
         oauth2
     params : {str:[str]}, default is Undefined, optional
-        Optional HTTP URL parameters
+        params
     path : str, default is Undefined, optional
-        HTTP path to scrape for metrics.
-    port : str, default is Undefined, optional
-        Default port for target.
+        path
     proxyURL : str, default is Undefined, optional
-        ProxyURL eg http://proxyserver:2195 Directs scrapes to proxy through this endpoint.
+        proxy URL
     relabelConfigs : [OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0RelabelConfigsItems0], default is Undefined, optional
-        RelabelConfigs to apply to samples before scraping.
-        More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config
+        relabel configs
     sampleLimit : int, default is Undefined, optional
-        SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.
+        sample limit
     scheme : str, default is Undefined, optional
-        HTTP scheme to use for scraping.
+        scheme
     scrapeTimeout : str, default is Undefined, optional
-        Timeout after which the scrape is ended
+        scrape timeout
     scrape_interval : str, default is Undefined, optional
-        ScrapeInterval is the same as Interval and has priority over it.
-        one of scrape_interval or interval can be used
+        scrape interval
     seriesLimit : int, default is Undefined, optional
-        SeriesLimit defines per-scrape limit on number of unique time series
-        a single target can expose during all the scrapes on the time window of 24h.
+        series limit
     targets : [str], default is Undefined, required
-        Targets static targets addresses in form of ["192.122.55.55:9100","some-name:9100"].
+        targets
     tlsConfig : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0TLSConfig, default is Undefined, optional
         tls config
     vm_scrape_params : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParams, default is Undefined, optional
@@ -140,6 +140,8 @@ schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0:
 
     labels?: {str:str}
 
+    max_scrape_size?: str
+
     metricRelabelConfigs?: [OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0MetricRelabelConfigsItems0]
 
     oauth2?: OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0Oauth2
@@ -148,15 +150,13 @@ schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0:
 
     path?: str
 
-    port?: str
-
     proxyURL?: str
 
     relabelConfigs?: [OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0RelabelConfigsItems0]
 
     sampleLimit?: int
 
-    scheme?: "http" | "https"
+    scheme?: "http" | "https" | "HTTPS" | "HTTP"
 
     scrapeTimeout?: str
 
@@ -176,17 +176,17 @@ schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0Authorization:
-    """
-    Authorization with http header Authorization
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 authorization
 
     Attributes
     ----------
     credentials : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0AuthorizationCredentials, default is Undefined, optional
         credentials
     credentialsFile : str, default is Undefined, optional
-        File with value for authorization
+        credentials file
     $type : str, default is Undefined, optional
-        Type of authorization, default to bearer
+        type
     """
 
 
@@ -198,40 +198,37 @@ schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0A
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0AuthorizationCredentials:
-    """
-    Reference to the secret with value for authorization
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 authorization credentials
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0BasicAuth:
-    """
-    BasicAuth allow an endpoint to authenticate over basic authentication
-    More info: https://prometheus.io/docs/operating/configuration/#endpoints
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 basic auth
 
     Attributes
     ----------
     password : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0BasicAuthPassword, default is Undefined, optional
         password
     password_file : str, default is Undefined, optional
-        PasswordFile defines path to password file at disk
+        password file
     username : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0BasicAuthUsername, default is Undefined, optional
         username
     """
@@ -245,127 +242,101 @@ schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0B
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0BasicAuthPassword:
-    """
-    The secret in the service scrape namespace that contains the password
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 basic auth password
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0BasicAuthUsername:
-    """
-    The secret in the service scrape namespace that contains the username
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 basic auth username
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0BearerTokenSecret:
-    """
-    Secret to mount to read bearer token for scraping targets. The secret
-    needs to be in the same namespace as the service scrape and accessible by
-    the victoria-metrics operator.
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 bearer token secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0MetricRelabelConfigsItems0:
-    """
-    RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion.
-    It defines `<metric_relabel_configs>`-section of configuration.
-    More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 metric relabel configs items0
 
     Attributes
     ----------
     action : str, default is Undefined, optional
-        Action to perform based on regex matching. Default is 'replace'
+        action
     $if : any, default is Undefined, optional
-        If represents metricsQL match expression (or list of expressions): '{__name__=~"foo_.*"}'
+        if
     labels : {str:str}, default is Undefined, optional
-        Labels is used together with Match for `action: graphite`
+        labels
     match : str, default is Undefined, optional
-        Match is used together with Labels for `action: graphite`
+        match
     modulus : int, default is Undefined, optional
-        Modulus to take of the hash of the source label values.
+        modulus
     regex : any, default is Undefined, optional
-        Regular expression against which the extracted value is matched. Default is '(.*)'
-        victoriaMetrics supports multiline regex joined with |
-        https://docs.victoriametrics.com/vmagent/#relabeling-enhancements
+        regex
     replacement : str, default is Undefined, optional
-        Replacement value against which a regex replace is performed if the
-        regular expression matches. Regex capture groups are available. Default is '$1'
+        replacement
     separator : str, default is Undefined, optional
-        Separator placed between concatenated source label values. default is ';'.
+        separator
     sourceLabels : [str], default is Undefined, optional
-        The source labels select values from existing labels. Their content is concatenated
-        using the configured separator and matched against the configured regular expression
-        for the replace, keep, and drop actions.
+        source labels
     source_labels : [str], default is Undefined, optional
-        UnderScoreSourceLabels - additional form of source labels source_labels
-        for compatibility with original relabel config.
-        if set  both sourceLabels and source_labels, sourceLabels has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        source labels
     targetLabel : str, default is Undefined, optional
-        Label to which the resulting value is written in a replace action.
-        It is mandatory for replace actions. Regex capture groups are available.
+        target label
     target_label : str, default is Undefined, optional
-        UnderScoreTargetLabel - additional form of target label - target_label
-        for compatibility with original relabel config.
-        if set  both targetLabel and target_label, targetLabel has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        target label
     """
 
 
@@ -395,8 +366,8 @@ schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0M
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0Oauth2:
-    """
-    OAuth2 defines auth configuration
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 oauth2
 
     Attributes
     ----------
@@ -405,13 +376,17 @@ schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0O
     client_secret : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0Oauth2ClientSecret, default is Undefined, optional
         client secret
     client_secret_file : str, default is Undefined, optional
-        ClientSecretFile defines path for client secret file.
+        client secret file
     endpoint_params : {str:str}, default is Undefined, optional
-        Parameters to append to the token URL
+        endpoint params
+    proxy_url : str, default is Undefined, optional
+        proxy url
     scopes : [str], default is Undefined, optional
-        OAuth2 scopes used for the token request
+        scopes
+    tls_config : any, default is Undefined, optional
+        tls config
     token_url : str, default is Undefined, required
-        The URL to fetch the token from
+        token url
     """
 
 
@@ -423,7 +398,11 @@ schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0O
 
     endpoint_params?: {str:str}
 
+    proxy_url?: str
+
     scopes?: [str]
+
+    tls_config?: any
 
     token_url: str
 
@@ -433,8 +412,8 @@ schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0O
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0Oauth2ClientID:
-    """
-    The secret or configmap containing the OAuth2 client id
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 oauth2 client ID
 
     Attributes
     ----------
@@ -451,121 +430,101 @@ schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0O
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0Oauth2ClientIDConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 oauth2 client ID config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0Oauth2ClientIDSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 oauth2 client ID secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0Oauth2ClientSecret:
-    """
-    The secret containing the OAuth2 client secret
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 oauth2 client secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0RelabelConfigsItems0:
-    """
-    RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion.
-    It defines `<metric_relabel_configs>`-section of configuration.
-    More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 relabel configs items0
 
     Attributes
     ----------
     action : str, default is Undefined, optional
-        Action to perform based on regex matching. Default is 'replace'
+        action
     $if : any, default is Undefined, optional
-        If represents metricsQL match expression (or list of expressions): '{__name__=~"foo_.*"}'
+        if
     labels : {str:str}, default is Undefined, optional
-        Labels is used together with Match for `action: graphite`
+        labels
     match : str, default is Undefined, optional
-        Match is used together with Labels for `action: graphite`
+        match
     modulus : int, default is Undefined, optional
-        Modulus to take of the hash of the source label values.
+        modulus
     regex : any, default is Undefined, optional
-        Regular expression against which the extracted value is matched. Default is '(.*)'
-        victoriaMetrics supports multiline regex joined with |
-        https://docs.victoriametrics.com/vmagent/#relabeling-enhancements
+        regex
     replacement : str, default is Undefined, optional
-        Replacement value against which a regex replace is performed if the
-        regular expression matches. Regex capture groups are available. Default is '$1'
+        replacement
     separator : str, default is Undefined, optional
-        Separator placed between concatenated source label values. default is ';'.
+        separator
     sourceLabels : [str], default is Undefined, optional
-        The source labels select values from existing labels. Their content is concatenated
-        using the configured separator and matched against the configured regular expression
-        for the replace, keep, and drop actions.
+        source labels
     source_labels : [str], default is Undefined, optional
-        UnderScoreSourceLabels - additional form of source labels source_labels
-        for compatibility with original relabel config.
-        if set  both sourceLabels and source_labels, sourceLabels has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        source labels
     targetLabel : str, default is Undefined, optional
-        Label to which the resulting value is written in a replace action.
-        It is mandatory for replace actions. Regex capture groups are available.
+        target label
     target_label : str, default is Undefined, optional
-        UnderScoreTargetLabel - additional form of target label - target_label
-        for compatibility with original relabel config.
-        if set  both targetLabel and target_label, targetLabel has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        target label
     """
 
 
@@ -595,27 +554,27 @@ schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0R
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0TLSConfig:
-    """
-    TLSConfig configuration to use when scraping the endpoint
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 TLS config
 
     Attributes
     ----------
     ca : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0TLSConfigCa, default is Undefined, optional
         ca
     caFile : str, default is Undefined, optional
-        Path to the CA cert in the container to use for the targets.
+        ca file
     cert : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0TLSConfigCert, default is Undefined, optional
         cert
     certFile : str, default is Undefined, optional
-        Path to the client cert file in the container for the targets.
+        cert file
     insecureSkipVerify : bool, default is Undefined, optional
-        Disable target certificate validation.
+        insecure skip verify
     keyFile : str, default is Undefined, optional
-        Path to the client key file in the container for the targets.
+        key file
     keySecret : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0TLSConfigKeySecret, default is Undefined, optional
         key secret
     serverName : str, default is Undefined, optional
-        Used to verify the hostname for the targets.
+        server name
     """
 
 
@@ -637,8 +596,8 @@ schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0T
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0TLSConfigCa:
-    """
-    Stuct containing the CA cert to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 TLS config ca
 
     Attributes
     ----------
@@ -655,56 +614,52 @@ schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0T
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0TLSConfigCaConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 TLS config ca config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0TLSConfigCaSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 TLS config ca secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0TLSConfigCert:
-    """
-    Struct containing the client cert file for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 TLS config cert
 
     Attributes
     ----------
@@ -721,104 +676,87 @@ schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0T
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0TLSConfigCertConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 TLS config cert config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0TLSConfigCertSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 TLS config cert secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0TLSConfigKeySecret:
-    """
-    Secret containing the client key file for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 TLS config key secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParams:
-    """
-    VMScrapeParams defines VictoriaMetrics specific scrape parameters
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 VM scrape params
 
     Attributes
     ----------
     disable_compression : bool, default is Undefined, optional
         disable compression
     disable_keep_alive : bool, default is Undefined, optional
-        disable_keepalive allows disabling HTTP keep-alive when scraping targets.
-        By default, HTTP keep-alive is enabled, so TCP connections to scrape targets
-        could be re-used.
-        See https://docs.victoriametrics.com/vmagent.html#scrape_config-enhancements
+        disable keep alive
     headers : [str], default is Undefined, optional
-        Headers allows sending custom headers to scrape targets
-        must be in of semicolon separated header with it's value
-        eg:
-        headerName: headerValue
-        vmagent supports since 1.79.0 version
-    metric_relabel_debug : bool, default is Undefined, optional
-        deprecated since [v1.85](https://github.com/VictoriaMetrics/VictoriaMetrics/releases/tag/v1.85.0), will be removed in next release
+        headers
     no_stale_markers : bool, default is Undefined, optional
         no stale markers
     proxy_client_config : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfig, default is Undefined, optional
         proxy client config
-    relabel_debug : bool, default is Undefined, optional
-        deprecated since [v1.85](https://github.com/VictoriaMetrics/VictoriaMetrics/releases/tag/v1.85.0), will be removed in next release
     scrape_align_interval : str, default is Undefined, optional
         scrape align interval
     scrape_offset : str, default is Undefined, optional
@@ -834,13 +772,9 @@ schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0V
 
     headers?: [str]
 
-    metric_relabel_debug?: bool
-
     no_stale_markers?: bool
 
     proxy_client_config?: OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfig
-
-    relabel_debug?: bool
 
     scrape_align_interval?: str
 
@@ -850,9 +784,8 @@ schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0V
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfig:
-    """
-    ProxyClientConfig configures proxy auth settings for scraping
-    See feature description https://docs.victoriametrics.com/vmagent.html#scraping-targets-via-a-proxy
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 VM scrape params proxy client config
 
     Attributes
     ----------
@@ -862,7 +795,7 @@ schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0V
         bearer token
     bearer_token_file : str, default is Undefined, optional
         bearer token file
-    tls_config : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfig, default is Undefined, optional
+    tls_config : any, default is Undefined, optional
         tls config
     """
 
@@ -873,19 +806,19 @@ schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0V
 
     bearer_token_file?: str
 
-    tls_config?: OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfig
+    tls_config?: any
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigBasicAuth:
-    """
-    BasicAuth allow an endpoint to authenticate over basic authentication
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 VM scrape params proxy client config basic auth
 
     Attributes
     ----------
     password : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigBasicAuthPassword, default is Undefined, optional
         password
     password_file : str, default is Undefined, optional
-        PasswordFile defines path to password file at disk
+        password file
     username : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigBasicAuthUsername, default is Undefined, optional
         username
     """
@@ -899,276 +832,140 @@ schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0V
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigBasicAuthPassword:
-    """
-    The secret in the service scrape namespace that contains the password
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 VM scrape params proxy client config basic auth password
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigBasicAuthUsername:
-    """
-    The secret in the service scrape namespace that contains the username
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 VM scrape params proxy client config basic auth username
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigBearerToken:
-    """
-    SecretKeySelector selects a key of a Secret.
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape spec target endpoints items0 VM scrape params proxy client config bearer token
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
-schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfig:
-    """
-    TLSConfig specifies TLSConfig configuration parameters.
+schema OperatorVictoriametricsComV1beta1VMStaticScrapeStatus:
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape status
 
     Attributes
     ----------
-    ca : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfigCa, default is Undefined, optional
-        ca
-    caFile : str, default is Undefined, optional
-        Path to the CA cert in the container to use for the targets.
-    cert : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfigCert, default is Undefined, optional
-        cert
-    certFile : str, default is Undefined, optional
-        Path to the client cert file in the container for the targets.
-    insecureSkipVerify : bool, default is Undefined, optional
-        Disable target certificate validation.
-    keyFile : str, default is Undefined, optional
-        Path to the client key file in the container for the targets.
-    keySecret : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfigKeySecret, default is Undefined, optional
-        key secret
-    serverName : str, default is Undefined, optional
-        Used to verify the hostname for the targets.
+    conditions : [OperatorVictoriametricsComV1beta1VMStaticScrapeStatusConditionsItems0], default is Undefined, optional
+        conditions
+    observedGeneration : int, default is Undefined, optional
+        observed generation
+    reason : str, default is Undefined, optional
+        reason
+    updateStatus : str, default is Undefined, optional
+        update status
     """
 
 
-    ca?: OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfigCa
+    conditions?: [OperatorVictoriametricsComV1beta1VMStaticScrapeStatusConditionsItems0]
 
-    caFile?: str
+    observedGeneration?: int
 
-    cert?: OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfigCert
+    reason?: str
 
-    certFile?: str
-
-    insecureSkipVerify?: bool
-
-    keyFile?: str
-
-    keySecret?: OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfigKeySecret
-
-    serverName?: str
+    updateStatus?: str
 
 
-schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfigCa:
-    """
-    Stuct containing the CA cert to use for the targets.
+schema OperatorVictoriametricsComV1beta1VMStaticScrapeStatusConditionsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM static scrape status conditions items0
 
     Attributes
     ----------
-    configMap : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfigCaConfigMap, default is Undefined, optional
-        config map
-    secret : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfigCaSecret, default is Undefined, optional
-        secret
+    lastTransitionTime : str, default is Undefined, required
+        last transition time
+    lastUpdateTime : str, default is Undefined, required
+        last update time
+    message : str, default is Undefined, optional
+        message
+    observedGeneration : int, default is Undefined, optional
+        observed generation
+    reason : str, default is Undefined, required
+        reason
+    status : str, default is Undefined, required
+        status
+    $type : str, default is Undefined, required
+        type
     """
 
 
-    configMap?: OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfigCaConfigMap
+    lastTransitionTime: str
 
-    secret?: OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfigCaSecret
+    lastUpdateTime: str
 
+    message?: str
 
-schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfigCaConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    observedGeneration?: int
 
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key to select.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
-    """
+    reason: str
+
+    status: "True" | "False" | "Unknown"
+
+    $type: str
 
 
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfigCaSecret:
-    """
-    Secret containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfigCert:
-    """
-    Struct containing the client cert file for the targets.
-
-    Attributes
-    ----------
-    configMap : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfigCertConfigMap, default is Undefined, optional
-        config map
-    secret : OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfigCertSecret, default is Undefined, optional
-        secret
-    """
-
-
-    configMap?: OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfigCertConfigMap
-
-    secret?: OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfigCertSecret
-
-
-schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfigCertConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key to select.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfigCertSecret:
-    """
-    Secret containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMStaticScrapeSpecTargetEndpointsItems0VMScrapeParamsProxyClientConfigTLSConfigKeySecret:
-    """
-    Secret containing the client key file for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
+    check:
+        len(message) <= 32768 if message
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
+        len(reason) <= 1024
+        len(reason) >= 1
+        len($type) <= 316
 
 

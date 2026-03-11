@@ -4,11 +4,12 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
 
 
 schema VMAlertmanager:
-    """
-    VMAlertmanager represents Victoria-Metrics deployment for Alertmanager.
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager
 
     Attributes
     ----------
@@ -37,185 +38,167 @@ schema VMAlertmanager:
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpec:
-    """
-    Specification of the desired behavior of the VMAlertmanager cluster. More info:
-    https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec
 
     Attributes
     ----------
     additionalPeers : [str], default is Undefined, optional
-        AdditionalPeers allows injecting a set of additional Alertmanagers to peer with to form a highly available cluster.
+        additional peers
     affinity : any, default is Undefined, optional
-        Affinity If specified, the pod's scheduling constraints.
+        affinity
     claimTemplates : [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0], default is Undefined, optional
-        ClaimTemplates allows adding additional VolumeClaimTemplates for StatefulSet
+        claim templates
     clusterAdvertiseAddress : str, default is Undefined, optional
-        ClusterAdvertiseAddress is the explicit address to advertise in cluster.
-        Needs to be provided for non RFC1918 [1] (public) addresses.
-        [1] RFC1918: https://tools.ietf.org/html/rfc1918
+        cluster advertise address
+    clusterDomainName : str, default is Undefined, optional
+        cluster domain name
     configMaps : [str], default is Undefined, optional
-        ConfigMaps is a list of ConfigMaps in the same namespace as the VMAlertmanager
-        object, which shall be mounted into the VMAlertmanager Pods.
-        The ConfigMaps are mounted into /etc/vm/configs/<configmap-name>.
+        config maps
     configNamespaceSelector : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigNamespaceSelector, default is Undefined, optional
         config namespace selector
     configRawYaml : str, default is Undefined, optional
-        ConfigRawYaml - raw configuration for alertmanager,
-        it helps it to start without secret.
-        priority -> hardcoded ConfigRaw -> ConfigRaw, provided by user -> ConfigSecret.
+        config raw yaml
+    configReloadAuthKeySecret : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigReloadAuthKeySecret, default is Undefined, optional
+        config reload auth key secret
     configReloaderExtraArgs : {str:str}, default is Undefined, optional
-        ConfigReloaderExtraArgs that will be passed to  VMAuths config-reloader container
-        for example resyncInterval: "30s"
+        config reloader extra args
+    configReloaderImage : str, default is Undefined, optional
+        config reloader image
+    configReloaderImageTag : str, default is Undefined, optional
+        config reloader image tag
+    configReloaderResources : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigReloaderResources, default is Undefined, optional
+        config reloader resources
     configSecret : str, default is Undefined, optional
-        ConfigSecret is the name of a Kubernetes Secret in the same namespace as the
-        VMAlertmanager object, which contains configuration for this VMAlertmanager,
-        configuration must be inside secret key: alertmanager.yaml.
-        It must be created by user.
-        instance. Defaults to 'vmalertmanager-<alertmanager-name>'
-        The secret is mounted into /etc/alertmanager/config.
+        config secret
     configSelector : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigSelector, default is Undefined, optional
         config selector
     containers : [any], default is Undefined, optional
-        Containers allows injecting additional containers or patching existing containers.
-        This is meant to allow adding an authentication proxy to an VMAlertmanager pod.
+        containers
+    disableAutomountServiceAccountToken : bool, default is Undefined, optional
+        disable automount service account token
     disableNamespaceMatcher : bool, default is Undefined, optional
-        DisableNamespaceMatcher disables namespace label matcher for VMAlertmanagerConfig
-        It may be useful if alert doesn't have namespace label for some reason
+        disable namespace matcher
     disableRouteContinueEnforce : bool, default is Undefined, optional
-        DisableRouteContinueEnforce cancel the behavior for VMAlertmanagerConfig that always enforce first-level route continue to true
+        disable route continue enforce
+    disableSelfServiceScrape : bool, default is Undefined, optional
+        disable self service scrape
     dnsConfig : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecDNSConfig, default is Undefined, optional
         dns config
     dnsPolicy : str, default is Undefined, optional
-        DNSPolicy sets DNS policy for the pod
+        dns policy
+    enforcedNamespaceLabel : str, default is Undefined, optional
+        enforced namespace label
+    enforcedTopRouteMatchers : [str], default is Undefined, optional
+        enforced top route matchers
     externalURL : str, default is Undefined, optional
-        ExternalURL the VMAlertmanager instances will be available under. This is
-        necessary to generate correct URLs. This is necessary if VMAlertmanager is not
-        served from root of a DNS name.
+        external URL
     extraArgs : {str:str}, default is Undefined, optional
-        ExtraArgs that will be passed to  VMAlertmanager pod
-        for example log.level: debug
+        extra args
     extraEnvs : [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecExtraEnvsItems0], default is Undefined, optional
-        ExtraEnvs that will be added to VMAlertmanager pod
+        extra envs
+    extraEnvsFrom : [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecExtraEnvsFromItems0], default is Undefined, optional
+        extra envs from
+    gossipConfig : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfig, default is Undefined, optional
+        gossip config
+    hostAliases : [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecHostAliasesItems0], default is Undefined, optional
+        host aliases
     hostNetwork : bool, default is Undefined, optional
-        HostNetwork controls whether the pod may use the node network namespace
+        host network
+    host_aliases : [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecHostAliasesItems0], default is Undefined, optional
+        host aliases
     image : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecImage, default is Undefined, optional
         image
     imagePullSecrets : [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecImagePullSecretsItems0], default is Undefined, optional
-        ImagePullSecrets An optional list of references to secrets in the same namespace
-        to use for pulling images from registries
-        see https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod
+        image pull secrets
     initContainers : [any], default is Undefined, optional
-        InitContainers allows adding initContainers to the pod definition. Those can be used to e.g.
-        fetch secrets for injection into the VMAlertmanager configuration from external sources. Any
-        errors during the execution of an initContainer will lead to a restart of the Pod. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
-        Using initContainers for any use case other then secret fetching is entirely outside the scope
-        of what the maintainers will support and by doing so, you accept that this behaviour may break
-        at any time without notice.
+        init containers
     listenLocal : bool, default is Undefined, optional
-        ListenLocal makes the VMAlertmanager server listen on loopback, so that it
-        does not bind against the Pod IP. Note this is only for the VMAlertmanager
-        UI, not the gossip communication.
+        listen local
     livenessProbe : any, default is Undefined, optional
-        LivenessProbe that will be added CRD pod
+        liveness probe
     logFormat : str, default is Undefined, optional
-        LogFormat for VMAlertmanager to be configured with.
+        log format
     logLevel : str, default is Undefined, optional
-        Log level for VMAlertmanager to be configured with.
+        log level
+    managedMetadata : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecManagedMetadata, default is Undefined, optional
+        managed metadata
     minReadySeconds : int, default is Undefined, optional
-        MinReadySeconds defines a minim number os seconds to wait before starting update next pod
-        if previous in healthy state
+        min ready seconds
     nodeSelector : {str:str}, default is Undefined, optional
-        NodeSelector Define which Nodes the Pods are scheduled on.
+        node selector
     paused : bool, default is Undefined, optional
-        Paused If set to true all actions on the underlying managed objects are not
-        going to be performed, except for delete actions.
+        paused
+    persistentVolumeClaimRetentionPolicy : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecPersistentVolumeClaimRetentionPolicy, default is Undefined, optional
+        persistent volume claim retention policy
     podDisruptionBudget : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecPodDisruptionBudget, default is Undefined, optional
         pod disruption budget
     podMetadata : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecPodMetadata, default is Undefined, optional
         pod metadata
+    port : str, default is Undefined, optional
+        port
     portName : str, default is Undefined, optional
-        PortName used for the pods and governing service.
-        This defaults to web
+        port name
     priorityClassName : str, default is Undefined, optional
-        PriorityClassName class assigned to the Pods
+        priority class name
     readinessGates : [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecReadinessGatesItems0], default is Undefined, optional
-        ReadinessGates defines pod readiness gates
+        readiness gates
     readinessProbe : any, default is Undefined, optional
-        ReadinessProbe that will be added CRD pod
+        readiness probe
     replicaCount : int, default is Undefined, optional
-        ReplicaCount Size is the expected size of the alertmanager cluster. The controller will
-        eventually make the size of the running cluster equal to the expected
+        replica count
     resources : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecResources, default is Undefined, optional
         resources
     retention : str, default is Undefined, optional
-        Retention Time duration VMAlertmanager shall retain data for. Default is '120h',
-        and must match the regular expression `[0-9]+(ms|s|m|h)` (milliseconds seconds minutes hours).
+        retention
     revisionHistoryLimitCount : int, default is Undefined, optional
-        The number of old ReplicaSets to retain to allow rollback in deployment or
-        maximum number of revisions that will be maintained in the StatefulSet's revision history.
-        Defaults to 10.
+        revision history limit count
     rollingUpdateStrategy : str, default is Undefined, optional
-        RollingUpdateStrategy defines strategy for application updates
-        Default is OnDelete, in this case operator handles update process
-        Can be changed for RollingUpdate
+        rolling update strategy
     routePrefix : str, default is Undefined, optional
-        RoutePrefix VMAlertmanager registers HTTP handlers for. This is useful,
-        if using ExternalURL and a proxy is rewriting HTTP routes of a request,
-        and the actual ExternalURL is still true, but the server serves requests
-        under a different route prefix. For example for use with `kubectl proxy`.
+        route prefix
     runtimeClassName : str, default is Undefined, optional
-        RuntimeClassName - defines runtime class for kubernetes pod.
-        https://kubernetes.io/docs/concepts/containers/runtime-class/
+        runtime class name
     schedulerName : str, default is Undefined, optional
-        SchedulerName - defines kubernetes scheduler name
+        scheduler name
     secrets : [str], default is Undefined, optional
-        Secrets is a list of Secrets in the same namespace as the VMAlertmanager
-        object, which shall be mounted into the VMAlertmanager Pods.
-        The Secrets are mounted into /etc/vm/secrets/<secret-name>
+        secrets
     securityContext : any, default is Undefined, optional
-        SecurityContext holds pod-level security attributes and common container settings.
-        This defaults to the default PodSecurityContext.
+        security context
     selectAllByDefault : bool, default is Undefined, optional
-        SelectAllByDefault changes default behavior for empty CRD selectors, such ConfigSelector.
-        with selectAllByDefault: true and undefined ConfigSelector and ConfigNamespaceSelector
-        Operator selects all exist alertManagerConfigs
-        with selectAllByDefault: false - selects nothing
+        select all by default
     serviceAccountName : str, default is Undefined, optional
-        ServiceAccountName is the name of the ServiceAccount to use
+        service account name
     serviceScrapeSpec : any, default is Undefined, optional
-        ServiceScrapeSpec that will be added to vmalertmanager VMServiceScrape spec
+        service scrape spec
     serviceSpec : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecServiceSpec, default is Undefined, optional
         service spec
     startupProbe : any, default is Undefined, optional
-        StartupProbe that will be added to CRD pod
+        startup probe
     storage : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorage, default is Undefined, optional
         storage
     templates : [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecTemplatesItems0], default is Undefined, optional
-        Templates is a list of ConfigMap key references for ConfigMaps in the same namespace as the VMAlertmanager
-        object, which shall be mounted into the VMAlertmanager Pods.
-        The Templates are mounted into /etc/vm/templates/<configmap-name>/<configmap-key>.
+        templates
     terminationGracePeriodSeconds : int, default is Undefined, optional
-        TerminationGracePeriodSeconds period for container graceful termination
+        termination grace period seconds
     tolerations : [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecTolerationsItems0], default is Undefined, optional
-        Tolerations If specified, the pod's tolerations.
+        tolerations
     topologySpreadConstraints : [any], default is Undefined, optional
-        TopologySpreadConstraints embedded kubernetes pod configuration option,
-        controls how pods are spread across your cluster among failure-domains
-        such as regions, zones, nodes, and other user-defined topology domains
-        https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
+        topology spread constraints
+    tracingConfig : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecTracingConfig, default is Undefined, optional
+        tracing config
+    useDefaultResources : bool, default is Undefined, optional
+        use default resources
     useStrictSecurity : bool, default is Undefined, optional
-        UseStrictSecurity enables strict security mode for component
-        it restricts disk writes access
-        uses non-root user out of the box
-        drops not needed security permissions
+        use strict security
+    useVMConfigReloader : bool, default is Undefined, optional
+        use VM config reloader
     volumeMounts : [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecVolumeMountsItems0], default is Undefined, optional
-        VolumeMounts allows configuration of additional VolumeMounts on the output StatefulSet definition.
-        VolumeMounts specified will be appended to other VolumeMounts in the alertmanager container,
-        that are generated as a result of StorageSpec objects.
+        volume mounts
     volumes : [any], default is Undefined, optional
-        Volumes allows configuration of additional volumes on the output StatefulSet definition.
-        Volumes specified will be appended to other volumes that are generated as a result of
-        StorageSpec objects.
+        volumes
+    webConfig : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecWebConfig, default is Undefined, optional
+        web config
     """
 
 
@@ -227,13 +210,23 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpec:
 
     clusterAdvertiseAddress?: str
 
+    clusterDomainName?: str
+
     configMaps?: [str]
 
     configNamespaceSelector?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigNamespaceSelector
 
     configRawYaml?: str
 
+    configReloadAuthKeySecret?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigReloadAuthKeySecret
+
     configReloaderExtraArgs?: {str:str}
+
+    configReloaderImage?: str
+
+    configReloaderImageTag?: str
+
+    configReloaderResources?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigReloaderResources
 
     configSecret?: str
 
@@ -241,13 +234,21 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpec:
 
     containers?: [any]
 
+    disableAutomountServiceAccountToken?: bool
+
     disableNamespaceMatcher?: bool
 
     disableRouteContinueEnforce?: bool
 
+    disableSelfServiceScrape?: bool
+
     dnsConfig?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecDNSConfig
 
     dnsPolicy?: str
+
+    enforcedNamespaceLabel?: str
+
+    enforcedTopRouteMatchers?: [str]
 
     externalURL?: str
 
@@ -255,7 +256,15 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpec:
 
     extraEnvs?: [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecExtraEnvsItems0]
 
+    extraEnvsFrom?: [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecExtraEnvsFromItems0]
+
+    gossipConfig?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfig
+
+    hostAliases?: [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecHostAliasesItems0]
+
     hostNetwork?: bool
+
+    host_aliases?: [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecHostAliasesItems0]
 
     image?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecImage
 
@@ -267,9 +276,11 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpec:
 
     livenessProbe?: any
 
-    logFormat?: str
+    logFormat?: "logfmt" | "json"
 
-    logLevel?: str
+    logLevel?: "debug" | "info" | "warn" | "error" | "DEBUG" | "INFO" | "WARN" | "ERROR"
+
+    managedMetadata?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecManagedMetadata
 
     minReadySeconds?: int
 
@@ -277,9 +288,13 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpec:
 
     paused?: bool
 
+    persistentVolumeClaimRetentionPolicy?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecPersistentVolumeClaimRetentionPolicy
+
     podDisruptionBudget?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecPodDisruptionBudget
 
     podMetadata?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecPodMetadata
+
+    port?: str
 
     portName?: str
 
@@ -329,38 +344,37 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpec:
 
     topologySpreadConstraints?: [any]
 
+    tracingConfig?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecTracingConfig
+
+    useDefaultResources?: bool
+
     useStrictSecurity?: bool
+
+    useVMConfigReloader?: bool
 
     volumeMounts?: [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecVolumeMountsItems0]
 
     volumes?: [any]
 
+    webConfig?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecWebConfig
+
 
     check:
-        replicaCount >= 0 if replicaCount is not Undefined
-        regex.match(str(retention), r"[0-9]+(ms|s|m|h)") if retention
+        _regex_match(str(retention), r"[0-9]+(ms|s|m|h)") if retention
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0:
-    """
-    PersistentVolumeClaim is a user's request for and claim to a persistent volume
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec claim templates items0
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        APIVersion defines the versioned schema of this representation of an object.
-        Servers should convert recognized schemas to the latest internal value, and
-        may reject unrecognized values.
-        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+        api version
     kind : str, default is Undefined, optional
-        Kind is a string value representing the REST resource this object represents.
-        Servers may infer this from the endpoint the client submits requests to.
-        Cannot be updated.
-        In CamelCase.
-        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        kind
     metadata : any, default is Undefined, optional
-        Standard object's metadata.
-        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+        metadata
     spec : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0Spec, default is Undefined, optional
         spec
     status : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0Status, default is Undefined, optional
@@ -380,15 +394,13 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0Spec:
-    """
-    spec defines the desired characteristics of a volume requested by a pod author.
-    More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec claim templates items0 spec
 
     Attributes
     ----------
     accessModes : [str], default is Undefined, optional
-        accessModes contains the desired access modes the volume should have.
-        More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
+        access modes
     dataSource : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0SpecDataSource, default is Undefined, optional
         data source
     dataSourceRef : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0SpecDataSourceRef, default is Undefined, optional
@@ -398,13 +410,13 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0Sp
     selector : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0SpecSelector, default is Undefined, optional
         selector
     storageClassName : str, default is Undefined, optional
-        storageClassName is the name of the StorageClass required by the claim.
-        More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1
+        storage class name
+    volumeAttributesClassName : str, default is Undefined, optional
+        volume attributes class name
     volumeMode : str, default is Undefined, optional
-        volumeMode defines what type of volume is required by the claim.
-        Value of Filesystem is implied when not included in claim spec.
+        volume mode
     volumeName : str, default is Undefined, optional
-        volumeName is the binding reference to the PersistentVolume backing this claim.
+        volume name
     """
 
 
@@ -420,32 +432,25 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0Sp
 
     storageClassName?: str
 
+    volumeAttributesClassName?: str
+
     volumeMode?: str
 
     volumeName?: str
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0SpecDataSource:
-    """
-    dataSource field can be used to specify either:
-    * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot)
-    * An existing PVC (PersistentVolumeClaim)
-    If the provisioner or an external controller can support the specified data source,
-    it will create a new volume based on the contents of the specified data source.
-    When the AnyVolumeDataSource feature gate is enabled, dataSource contents will be copied to dataSourceRef,
-    and dataSourceRef contents will be copied to dataSource when dataSourceRef.namespace is not specified.
-    If the namespace is specified, then dataSourceRef will not be copied to dataSource.
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec claim templates items0 spec data source
 
     Attributes
     ----------
     apiGroup : str, default is Undefined, optional
-        APIGroup is the group for the resource being referenced.
-        If APIGroup is not specified, the specified Kind must be in the core API group.
-        For any other third-party types, APIGroup is required.
+        api group
     kind : str, default is Undefined, required
-        Kind is the type of resource being referenced
+        kind
     name : str, default is Undefined, required
-        Name is the name of resource being referenced
+        name
     """
 
 
@@ -457,45 +462,19 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0Sp
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0SpecDataSourceRef:
-    """
-    dataSourceRef specifies the object from which to populate the volume with data, if a non-empty
-    volume is desired. This may be any object from a non-empty API group (non
-    core object) or a PersistentVolumeClaim object.
-    When this field is specified, volume binding will only succeed if the type of
-    the specified object matches some installed volume populator or dynamic
-    provisioner.
-    This field will replace the functionality of the dataSource field and as such
-    if both fields are non-empty, they must have the same value. For backwards
-    compatibility, when namespace isn't specified in dataSourceRef,
-    both fields (dataSource and dataSourceRef) will be set to the same
-    value automatically if one of them is empty and the other is non-empty.
-    When namespace is specified in dataSourceRef,
-    dataSource isn't set to the same value and must be empty.
-    There are three important differences between dataSource and dataSourceRef:
-    * While dataSource only allows two specific types of objects, dataSourceRef
-      allows any non-core object, as well as PersistentVolumeClaim objects.
-    * While dataSource ignores disallowed values (dropping them), dataSourceRef
-      preserves all values, and generates an error if a disallowed value is
-      specified.
-    * While dataSource only allows local objects, dataSourceRef allows objects
-      in any namespaces.
-    (Beta) Using this field requires the AnyVolumeDataSource feature gate to be enabled.
-    (Alpha) Using the namespace field of dataSourceRef requires the CrossNamespaceVolumeDataSource feature gate to be enabled.
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec claim templates items0 spec data source ref
 
     Attributes
     ----------
     apiGroup : str, default is Undefined, optional
-        APIGroup is the group for the resource being referenced.
-        If APIGroup is not specified, the specified Kind must be in the core API group.
-        For any other third-party types, APIGroup is required.
+        api group
     kind : str, default is Undefined, required
-        Kind is the type of resource being referenced
+        kind
     name : str, default is Undefined, required
-        Name is the name of resource being referenced
+        name
     namespace : str, default is Undefined, optional
-        Namespace is the namespace of resource being referenced
-        Note that when a namespace is specified, a gateway.networking.k8s.io/ReferenceGrant object is required in the referent namespace to allow that namespace's owner to accept the reference. See the ReferenceGrant documentation for details.
-        (Alpha) This field requires the CrossNamespaceVolumeDataSource feature gate to be enabled.
+        namespace
     """
 
 
@@ -509,37 +488,17 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0Sp
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0SpecResources:
-    """
-    resources represents the minimum resources the volume should have.
-    If RecoverVolumeExpansionFailure feature is enabled users are allowed to specify resource requirements
-    that are lower than previous value but must still be higher than capacity recorded in the
-    status field of the claim.
-    More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec claim templates items0 spec resources
 
     Attributes
     ----------
-    claims : [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0SpecResourcesClaimsItems0], default is Undefined, optional
-        Claims lists the names of resources, defined in spec.resourceClaims,
-        that are used by this container.
-
-
-        This is an alpha field and requires enabling the
-        DynamicResourceAllocation feature gate.
-
-
-        This field is immutable. It can only be set for containers.
     limits : {str:int | str}, default is Undefined, optional
-        Limits describes the maximum amount of compute resources allowed.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        limits
     requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum amount of compute resources required.
-        If Requests is omitted for a container, it defaults to Limits if that is explicitly specified,
-        otherwise to an implementation-defined value. Requests cannot exceed Limits.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        requests
     """
 
-
-    claims?: [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0SpecResourcesClaimsItems0]
 
     limits?: {str:int | str}
 
@@ -547,38 +506,20 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0Sp
 
 
     check:
-        all _, limits in limits {regex.match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex.match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
-
-
-schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0SpecResourcesClaimsItems0:
-    """
-    ResourceClaim references one entry in PodSpec.ResourceClaims.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        Name must match the name of one entry in pod.spec.resourceClaims of
-        the Pod where this field is used. It makes that resource available
-        inside a container.
-    """
-
-
-    name: str
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0SpecSelector:
-    """
-    selector is a label query over volumes to consider for binding.
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec claim templates items0 spec selector
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0SpecSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
+        match labels
     """
 
 
@@ -588,22 +529,17 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0Sp
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0SpecSelectorMatchExpressionsItems0:
-    """
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec claim templates items0 spec selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
+        values
     """
 
 
@@ -615,41 +551,33 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0Sp
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0Status:
-    """
-    status represents the current information/status of a persistent volume claim.
-    Read-only.
-    More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec claim templates items0 status
 
     Attributes
     ----------
     accessModes : [str], default is Undefined, optional
-        accessModes contains the actual access modes the volume backing the PVC has.
-        More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
+        access modes
+    allocatedResourceStatuses : {str:str}, default is Undefined, optional
+        allocated resource statuses
     allocatedResources : {str:int | str}, default is Undefined, optional
-        allocatedResources is the storage resource within AllocatedResources tracks the capacity allocated to a PVC. It may
-        be larger than the actual capacity when a volume expansion operation is requested.
-        For storage quota, the larger value from allocatedResources and PVC.spec.resources is used.
-        If allocatedResources is not set, PVC.spec.resources alone is used for quota calculation.
-        If a volume expansion capacity request is lowered, allocatedResources is only
-        lowered if there are no expansion operations in progress and if the actual volume capacity
-        is equal or lower than the requested capacity.
-        This is an alpha field and requires enabling RecoverVolumeExpansionFailure feature.
+        allocated resources
     capacity : {str:int | str}, default is Undefined, optional
-        capacity represents the actual resources of the underlying volume.
+        capacity
     conditions : [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0StatusConditionsItems0], default is Undefined, optional
-        conditions is the current Condition of persistent volume claim. If underlying persistent volume is being
-        resized then the Condition will be set to 'ResizeStarted'.
+        conditions
+    currentVolumeAttributesClassName : str, default is Undefined, optional
+        current volume attributes class name
+    modifyVolumeStatus : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0StatusModifyVolumeStatus, default is Undefined, optional
+        modify volume status
     phase : str, default is Undefined, optional
-        phase represents the current phase of PersistentVolumeClaim.
-    resizeStatus : str, default is Undefined, optional
-        resizeStatus stores status of resize operation.
-        ResizeStatus is not set by default but when expansion is complete resizeStatus is set to empty
-        string by resize controller or kubelet.
-        This is an alpha field and requires enabling RecoverVolumeExpansionFailure feature.
+        phase
     """
 
 
     accessModes?: [str]
+
+    allocatedResourceStatuses?: {str:str}
 
     allocatedResources?: {str:int | str}
 
@@ -657,36 +585,36 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0St
 
     conditions?: [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0StatusConditionsItems0]
 
-    phase?: str
+    currentVolumeAttributesClassName?: str
 
-    resizeStatus?: str
+    modifyVolumeStatus?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0StatusModifyVolumeStatus
+
+    phase?: str
 
 
     check:
-        all _, allocatedResources in allocatedResources {regex.match(str(allocatedResources), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if allocatedResources } if allocatedResources
-        all _, capacity in capacity {regex.match(str(capacity), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if capacity } if capacity
+        all _, allocatedResources in allocatedResources { _regex_match(str(allocatedResources), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if allocatedResources } if allocatedResources
+        all _, capacity in capacity { _regex_match(str(capacity), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if capacity } if capacity
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0StatusConditionsItems0:
-    """
-    PersistentVolumeClaimCondition contains details about state of pvc
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec claim templates items0 status conditions items0
 
     Attributes
     ----------
     lastProbeTime : str, default is Undefined, optional
-        lastProbeTime is the time we probed the condition.
+        last probe time
     lastTransitionTime : str, default is Undefined, optional
-        lastTransitionTime is the time the condition transitioned from one status to another.
+        last transition time
     message : str, default is Undefined, optional
-        message is the human-readable message indicating details about last transition.
+        message
     reason : str, default is Undefined, optional
-        reason is a unique, this should be a short, machine understandable string that gives the reason
-        for condition's last transition. If it reports "ResizeStarted" that means the underlying
-        persistent volume is being resized.
+        reason
     status : str, default is Undefined, required
         status
     $type : str, default is Undefined, required
-        PersistentVolumeClaimConditionType is a valid value of PersistentVolumeClaimCondition.Type
+        type
     """
 
 
@@ -703,22 +631,34 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0St
     $type: str
 
 
-schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigNamespaceSelector:
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecClaimTemplatesItems0StatusModifyVolumeStatus:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec claim templates items0 status modify volume status
+
+    Attributes
+    ----------
+    status : str, default is Undefined, required
+        status
+    targetVolumeAttributesClassName : str, default is Undefined, optional
+        target volume attributes class name
     """
-     ConfigNamespaceSelector defines namespace selector for VMAlertmanagerConfig.
-    Works in combination with Selector.
-    NamespaceSelector nil - only objects at VMAlertmanager namespace.
-    Selector nil - only objects at NamespaceSelector namespaces.
-    If both nil - behaviour controlled by selectAllByDefault
+
+
+    status: str
+
+    targetVolumeAttributesClassName?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigNamespaceSelector:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec config namespace selector
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigNamespaceSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
+        match labels
     """
 
 
@@ -728,22 +668,17 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigNamespaceSelecto
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigNamespaceSelectorMatchExpressionsItems0:
-    """
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec config namespace selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
+        values
     """
 
 
@@ -754,22 +689,83 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigNamespaceSelecto
     values?: [str]
 
 
-schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigSelector:
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigReloadAuthKeySecret:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec config reload auth key secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
     """
-    ConfigSelector defines selector for VMAlertmanagerConfig, result config will be merged with with Raw or Secret config.
-    Works in combination with NamespaceSelector.
-    NamespaceSelector nil - only objects at VMAlertmanager namespace.
-    Selector nil - only objects at NamespaceSelector namespaces.
-    If both nil - behaviour controlled by selectAllByDefault
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigReloaderResources:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec config reloader resources
+
+    Attributes
+    ----------
+    claims : [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigReloaderResourcesClaimsItems0], default is Undefined, optional
+        claims
+    limits : {str:int | str}, default is Undefined, optional
+        limits
+    requests : {str:int | str}, default is Undefined, optional
+        requests
+    """
+
+
+    claims?: [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigReloaderResourcesClaimsItems0]
+
+    limits?: {str:int | str}
+
+    requests?: {str:int | str}
+
+
+    check:
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigReloaderResourcesClaimsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec config reloader resources claims items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    request : str, default is Undefined, optional
+        request
+    """
+
+
+    name: str
+
+    request?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigSelector:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec config selector
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
+        match labels
     """
 
 
@@ -779,22 +775,17 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigSelector:
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigSelectorMatchExpressionsItems0:
-    """
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec config selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
+        values
     """
 
 
@@ -806,26 +797,17 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecConfigSelectorMatchExp
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecDNSConfig:
-    """
-    Specifies the DNS parameters of a pod.
-    Parameters specified here will be merged to the generated DNS
-    configuration based on DNSPolicy.
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec DNS config
 
     Attributes
     ----------
     nameservers : [str], default is Undefined, optional
-        A list of DNS name server IP addresses.
-        This will be appended to the base nameservers generated from DNSPolicy.
-        Duplicated nameservers will be removed.
+        nameservers
     options : [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecDNSConfigOptionsItems0], default is Undefined, optional
-        A list of DNS resolver options.
-        This will be merged with the base options generated from DNSPolicy.
-        Duplicated entries will be removed. Resolution options given in Options
-        will override those that appear in the base DNSPolicy.
+        options
     searches : [str], default is Undefined, optional
-        A list of DNS search domains for host-name lookup.
-        This will be appended to the base search paths generated from DNSPolicy.
-        Duplicated search paths will be removed.
+        searches
     """
 
 
@@ -837,13 +819,13 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecDNSConfig:
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecDNSConfigOptionsItems0:
-    """
-    PodDNSConfigOption defines DNS resolver options of a pod.
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec DNS config options items0
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Required.
+        name
     value : str, default is Undefined, optional
         value
     """
@@ -854,24 +836,74 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecDNSConfigOptionsItems0
     value?: str
 
 
-schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecExtraEnvsItems0:
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecExtraEnvsFromItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec extra envs from items0
+
+    Attributes
+    ----------
+    configMapRef : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecExtraEnvsFromItems0ConfigMapRef, default is Undefined, optional
+        config map ref
+    prefix : str, default is Undefined, optional
+        prefix
+    secretRef : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecExtraEnvsFromItems0SecretRef, default is Undefined, optional
+        secret ref
     """
-    EnvVar represents an environment variable present in a Container.
+
+
+    configMapRef?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecExtraEnvsFromItems0ConfigMapRef
+
+    prefix?: str
+
+    secretRef?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecExtraEnvsFromItems0SecretRef
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecExtraEnvsFromItems0ConfigMapRef:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec extra envs from items0 config map ref
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecExtraEnvsFromItems0SecretRef:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec extra envs from items0 secret ref
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecExtraEnvsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec extra envs items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of the environment variable. Must be a C_IDENTIFIER.
+        name
     value : str, default is Undefined, optional
-        Variable references $(VAR_NAME) are expanded
-        using the previously defined environment variables in the container and
-        any service environment variables. If a variable cannot be resolved,
-        the reference in the input string will be unchanged. Double $$ are reduced
-        to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e.
-        "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
-        Escaped references will never be expanded, regardless of whether the variable
-        exists or not.
-        Defaults to "".
+        value
     """
 
 
@@ -880,19 +912,286 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecExtraEnvsItems0:
     value?: str
 
 
-schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecImage:
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfig:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec gossip config
+
+    Attributes
+    ----------
+    tls_client_config : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSClientConfig, default is Undefined, optional
+        tls client config
+    tls_server_config : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSServerConfig, default is Undefined, optional
+        tls server config
     """
-    Image - docker image settings for VMAlertmanager
-    if no specified operator uses default config version
+
+
+    tls_client_config?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSClientConfig
+
+    tls_server_config?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSServerConfig
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSClientConfig:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec gossip config TLS client config
+
+    Attributes
+    ----------
+    ca_file : str, default is Undefined, optional
+        ca file
+    ca_secret_ref : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSClientConfigCaSecretRef, default is Undefined, optional
+        ca secret ref
+    cert_file : str, default is Undefined, optional
+        cert file
+    cert_secret_ref : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSClientConfigCertSecretRef, default is Undefined, optional
+        cert secret ref
+    insecure_skip_verify : bool, default is Undefined, optional
+        insecure skip verify
+    key_file : str, default is Undefined, optional
+        key file
+    key_secret_ref : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSClientConfigKeySecretRef, default is Undefined, optional
+        key secret ref
+    server_name : str, default is Undefined, optional
+        server name
+    """
+
+
+    ca_file?: str
+
+    ca_secret_ref?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSClientConfigCaSecretRef
+
+    cert_file?: str
+
+    cert_secret_ref?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSClientConfigCertSecretRef
+
+    insecure_skip_verify?: bool
+
+    key_file?: str
+
+    key_secret_ref?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSClientConfigKeySecretRef
+
+    server_name?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSClientConfigCaSecretRef:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec gossip config TLS client config ca secret ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSClientConfigCertSecretRef:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec gossip config TLS client config cert secret ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSClientConfigKeySecretRef:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec gossip config TLS client config key secret ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSServerConfig:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec gossip config TLS server config
+
+    Attributes
+    ----------
+    cert_file : str, default is Undefined, optional
+        cert file
+    cert_secret_ref : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSServerConfigCertSecretRef, default is Undefined, optional
+        cert secret ref
+    cipher_suites : [str], default is Undefined, optional
+        cipher suites
+    client_auth_type : str, default is Undefined, optional
+        client auth type
+    client_ca_file : str, default is Undefined, optional
+        client ca file
+    client_ca_secret_ref : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSServerConfigClientCaSecretRef, default is Undefined, optional
+        client ca secret ref
+    curve_preferences : [str], default is Undefined, optional
+        curve preferences
+    key_file : str, default is Undefined, optional
+        key file
+    key_secret_ref : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSServerConfigKeySecretRef, default is Undefined, optional
+        key secret ref
+    max_version : str, default is Undefined, optional
+        max version
+    min_version : str, default is Undefined, optional
+        min version
+    prefer_server_cipher_suites : bool, default is Undefined, optional
+        prefer server cipher suites
+    """
+
+
+    cert_file?: str
+
+    cert_secret_ref?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSServerConfigCertSecretRef
+
+    cipher_suites?: [str]
+
+    client_auth_type?: "NoClientCert" | "RequireAndVerifyClientCert"
+
+    client_ca_file?: str
+
+    client_ca_secret_ref?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSServerConfigClientCaSecretRef
+
+    curve_preferences?: [str]
+
+    key_file?: str
+
+    key_secret_ref?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSServerConfigKeySecretRef
+
+    max_version?: "TLS10" | "TLS11" | "TLS12" | "TLS13"
+
+    min_version?: "TLS10" | "TLS11" | "TLS12" | "TLS13"
+
+    prefer_server_cipher_suites?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSServerConfigCertSecretRef:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec gossip config TLS server config cert secret ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSServerConfigClientCaSecretRef:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec gossip config TLS server config client ca secret ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecGossipConfigTLSServerConfigKeySecretRef:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec gossip config TLS server config key secret ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecHostAliasesItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec host aliases items0
+
+    Attributes
+    ----------
+    hostnames : [str], default is Undefined, optional
+        hostnames
+    ip : str, default is Undefined, required
+        ip
+    """
+
+
+    hostnames?: [str]
+
+    ip: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecImage:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec image
 
     Attributes
     ----------
     pullPolicy : str, default is Undefined, optional
-        PullPolicy describes how to pull docker image
+        pull policy
     repository : str, default is Undefined, optional
-        Repository contains name of docker image + it's repository if needed
+        repository
     tag : str, default is Undefined, optional
-        Tag contains desired docker image version
+        tag
     """
 
 
@@ -904,41 +1203,69 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecImage:
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecImagePullSecretsItems0:
-    """
-    LocalObjectReference contains enough information to let you locate the
-    referenced object inside the same namespace.
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec image pull secrets items0
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     """
 
 
-    name?: str
+    name?: str = ""
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecManagedMetadata:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec managed metadata
+
+    Attributes
+    ----------
+    annotations : {str:str}, default is Undefined, optional
+        annotations
+    labels : {str:str}, default is Undefined, optional
+        labels
+    """
+
+
+    annotations?: {str:str}
+
+    labels?: {str:str}
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecPersistentVolumeClaimRetentionPolicy:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec persistent volume claim retention policy
+
+    Attributes
+    ----------
+    whenDeleted : str, default is Undefined, optional
+        when deleted
+    whenScaled : str, default is Undefined, optional
+        when scaled
+    """
+
+
+    whenDeleted?: str
+
+    whenScaled?: str
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecPodDisruptionBudget:
-    """
-    PodDisruptionBudget created by operator
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec pod disruption budget
 
     Attributes
     ----------
     maxUnavailable : int | str, default is Undefined, optional
-        An eviction is allowed if at most "maxUnavailable" pods selected by
-        "selector" are unavailable after the eviction, i.e. even in absence of
-        the evicted pod. For example, one can prevent all voluntary evictions
-        by specifying 0. This is a mutually exclusive setting with "minAvailable".
+        max unavailable
     minAvailable : int | str, default is Undefined, optional
-        An eviction is allowed if at least "minAvailable" pods selected by
-        "selector" will still be available after the eviction, i.e. even in the
-        absence of the evicted pod.  So for example you can prevent all voluntary
-        evictions by specifying "100%".
+        min available
     selectorLabels : {str:str}, default is Undefined, optional
-        replaces default labels selector generated by operator
-        it's useful when you need to create custom budget
+        selector labels
+    unhealthyPodEvictionPolicy : str, default is Undefined, optional
+        unhealthy pod eviction policy
     """
 
 
@@ -948,30 +1275,21 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecPodDisruptionBudget:
 
     selectorLabels?: {str:str}
 
+    unhealthyPodEvictionPolicy?: "IfHealthyBudget" | "AlwaysAllow"
+
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecPodMetadata:
-    """
-    PodMetadata configures Labels and Annotations which are propagated to the alertmanager pods.
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec pod metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
-        set by external tools to store and retrieve arbitrary metadata. They are not
-        queryable and should be preserved when modifying objects.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels Map of string keys and values that can be used to organize and categorize
-        (scope and select) objects. May match selectors of replication controllers
-        and services.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+        labels
     name : str, default is Undefined, optional
-        Name must be unique within a namespace. Is required when creating resources, although
-        some resources may allow a client to request the generation of an appropriate name
-        automatically. Name is primarily intended for creation idempotence and configuration
-        definition.
-        Cannot be updated.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names
+        name
     """
 
 
@@ -983,13 +1301,13 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecPodMetadata:
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecReadinessGatesItems0:
-    """
-    PodReadinessGate contains the reference to a pod condition
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec readiness gates items0
 
     Attributes
     ----------
     conditionType : str, default is Undefined, required
-        ConditionType refers to a condition in the pod's condition list with matching type.
+        condition type
     """
 
 
@@ -997,30 +1315,17 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecReadinessGatesItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecResources:
-    """
-    Resources container resource request and limits,
-    https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec resources
 
     Attributes
     ----------
     claims : [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecResourcesClaimsItems0], default is Undefined, optional
-        Claims lists the names of resources, defined in spec.resourceClaims,
-        that are used by this container.
-
-
-        This is an alpha field and requires enabling the
-        DynamicResourceAllocation feature gate.
-
-
-        This field is immutable. It can only be set for containers.
+        claims
     limits : {str:int | str}, default is Undefined, optional
-        Limits describes the maximum amount of compute resources allowed.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        limits
     requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum amount of compute resources required.
-        If Requests is omitted for a container, it defaults to Limits if that is explicitly specified,
-        otherwise to an implementation-defined value. Requests cannot exceed Limits.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        requests
     """
 
 
@@ -1032,40 +1337,40 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecResources:
 
 
     check:
-        all _, limits in limits {regex.match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex.match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecResourcesClaimsItems0:
-    """
-    ResourceClaim references one entry in PodSpec.ResourceClaims.
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec resources claims items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name must match the name of one entry in pod.spec.resourceClaims of
-        the Pod where this field is used. It makes that resource available
-        inside a container.
+        name
+    request : str, default is Undefined, optional
+        request
     """
 
 
     name: str
 
+    request?: str
+
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecServiceSpec:
-    """
-    ServiceSpec that will be added to vmalertmanager service spec
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec service spec
 
     Attributes
     ----------
     metadata : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecServiceSpecMetadata, default is Undefined, optional
         metadata
     spec : any, default is Undefined, required
-        ServiceSpec describes the attributes that a user creates on a service.
-        More info: https://kubernetes.io/docs/concepts/services-networking/service/
+        spec
     useAsDefault : bool, default is Undefined, optional
-        UseAsDefault applies changes from given service definition to the main object Service
-        Changing from headless service to clusterIP or loadbalancer may break cross-component communication
+        use as default
     """
 
 
@@ -1077,28 +1382,17 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecServiceSpec:
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecServiceSpecMetadata:
-    """
-    EmbeddedObjectMetadata defines objectMeta for additional service.
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec service spec metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
-        set by external tools to store and retrieve arbitrary metadata. They are not
-        queryable and should be preserved when modifying objects.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels Map of string keys and values that can be used to organize and categorize
-        (scope and select) objects. May match selectors of replication controllers
-        and services.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+        labels
     name : str, default is Undefined, optional
-        Name must be unique within a namespace. Is required when creating resources, although
-        some resources may allow a client to request the generation of an appropriate name
-        automatically. Name is primarily intended for creation idempotence and configuration
-        definition.
-        Cannot be updated.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names
+        name
     """
 
 
@@ -1110,15 +1404,11 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecServiceSpecMetadata:
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorage:
-    """
-    Storage is the definition of how storage will be used by the VMAlertmanager
-    instances.
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec storage
 
     Attributes
     ----------
-    disableMountSubPath : bool, default is Undefined, optional
-        Deprecated: subPath usage will be disabled by default in a future release, this option will become unnecessary.
-        DisableMountSubPath allows to remove any subPath usage in volume mounts.
     emptyDir : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageEmptyDir, default is Undefined, optional
         empty dir
     volumeClaimTemplate : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplate, default is Undefined, optional
@@ -1126,32 +1416,21 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorage:
     """
 
 
-    disableMountSubPath?: bool
-
     emptyDir?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageEmptyDir
 
     volumeClaimTemplate?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplate
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageEmptyDir:
-    """
-    EmptyDirVolumeSource to be used by the Prometheus StatefulSets. If specified, used in place of any volumeClaimTemplate. More
-    info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec storage empty dir
 
     Attributes
     ----------
     medium : str, default is Undefined, optional
-        medium represents what type of storage medium should back this directory.
-        The default is "" which means to use the node's default medium.
-        Must be an empty string (default) or Memory.
-        More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+        medium
     sizeLimit : int | str, default is Undefined, optional
-        sizeLimit is the total amount of local storage required for this EmptyDir volume.
-        The size limit is also applicable for memory medium.
-        The maximum usage on memory medium EmptyDir would be the minimum value between
-        the SizeLimit specified here and the sum of memory limits of all containers in a pod.
-        The default is nil which means that the limit is undefined.
-        More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+        size limit
     """
 
 
@@ -1161,26 +1440,19 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageEmptyDir:
 
 
     check:
-        regex.match(str(sizeLimit), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if sizeLimit
+        _regex_match(str(sizeLimit), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if sizeLimit
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplate:
-    """
-    A PVC spec to be used by the VMAlertManager StatefulSets.
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec storage volume claim template
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        APIVersion defines the versioned schema of this representation of an object.
-        Servers should convert recognized schemas to the latest internal value, and
-        may reject unrecognized values.
-        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+        api version
     kind : str, default is Undefined, optional
-        Kind is a string value representing the REST resource this object represents.
-        Servers may infer this from the endpoint the client submits requests to.
-        Cannot be updated.
-        In CamelCase.
-        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        kind
     metadata : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateMetadata, default is Undefined, optional
         metadata
     spec : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateSpec, default is Undefined, optional
@@ -1202,28 +1474,17 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemp
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateMetadata:
-    """
-    EmbeddedMetadata contains metadata relevant to an EmbeddedResource.
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec storage volume claim template metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
-        set by external tools to store and retrieve arbitrary metadata. They are not
-        queryable and should be preserved when modifying objects.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels Map of string keys and values that can be used to organize and categorize
-        (scope and select) objects. May match selectors of replication controllers
-        and services.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+        labels
     name : str, default is Undefined, optional
-        Name must be unique within a namespace. Is required when creating resources, although
-        some resources may allow a client to request the generation of an appropriate name
-        automatically. Name is primarily intended for creation idempotence and configuration
-        definition.
-        Cannot be updated.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names
+        name
     """
 
 
@@ -1235,15 +1496,13 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemp
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateSpec:
-    """
-    Spec defines the desired characteristics of a volume requested by a pod author.
-    More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec storage volume claim template spec
 
     Attributes
     ----------
     accessModes : [str], default is Undefined, optional
-        accessModes contains the desired access modes the volume should have.
-        More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
+        access modes
     dataSource : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateSpecDataSource, default is Undefined, optional
         data source
     dataSourceRef : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateSpecDataSourceRef, default is Undefined, optional
@@ -1253,13 +1512,13 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemp
     selector : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateSpecSelector, default is Undefined, optional
         selector
     storageClassName : str, default is Undefined, optional
-        storageClassName is the name of the StorageClass required by the claim.
-        More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1
+        storage class name
+    volumeAttributesClassName : str, default is Undefined, optional
+        volume attributes class name
     volumeMode : str, default is Undefined, optional
-        volumeMode defines what type of volume is required by the claim.
-        Value of Filesystem is implied when not included in claim spec.
+        volume mode
     volumeName : str, default is Undefined, optional
-        volumeName is the binding reference to the PersistentVolume backing this claim.
+        volume name
     """
 
 
@@ -1275,32 +1534,25 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemp
 
     storageClassName?: str
 
+    volumeAttributesClassName?: str
+
     volumeMode?: str
 
     volumeName?: str
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateSpecDataSource:
-    """
-    dataSource field can be used to specify either:
-    * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot)
-    * An existing PVC (PersistentVolumeClaim)
-    If the provisioner or an external controller can support the specified data source,
-    it will create a new volume based on the contents of the specified data source.
-    When the AnyVolumeDataSource feature gate is enabled, dataSource contents will be copied to dataSourceRef,
-    and dataSourceRef contents will be copied to dataSource when dataSourceRef.namespace is not specified.
-    If the namespace is specified, then dataSourceRef will not be copied to dataSource.
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec storage volume claim template spec data source
 
     Attributes
     ----------
     apiGroup : str, default is Undefined, optional
-        APIGroup is the group for the resource being referenced.
-        If APIGroup is not specified, the specified Kind must be in the core API group.
-        For any other third-party types, APIGroup is required.
+        api group
     kind : str, default is Undefined, required
-        Kind is the type of resource being referenced
+        kind
     name : str, default is Undefined, required
-        Name is the name of resource being referenced
+        name
     """
 
 
@@ -1312,45 +1564,19 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemp
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateSpecDataSourceRef:
-    """
-    dataSourceRef specifies the object from which to populate the volume with data, if a non-empty
-    volume is desired. This may be any object from a non-empty API group (non
-    core object) or a PersistentVolumeClaim object.
-    When this field is specified, volume binding will only succeed if the type of
-    the specified object matches some installed volume populator or dynamic
-    provisioner.
-    This field will replace the functionality of the dataSource field and as such
-    if both fields are non-empty, they must have the same value. For backwards
-    compatibility, when namespace isn't specified in dataSourceRef,
-    both fields (dataSource and dataSourceRef) will be set to the same
-    value automatically if one of them is empty and the other is non-empty.
-    When namespace is specified in dataSourceRef,
-    dataSource isn't set to the same value and must be empty.
-    There are three important differences between dataSource and dataSourceRef:
-    * While dataSource only allows two specific types of objects, dataSourceRef
-      allows any non-core object, as well as PersistentVolumeClaim objects.
-    * While dataSource ignores disallowed values (dropping them), dataSourceRef
-      preserves all values, and generates an error if a disallowed value is
-      specified.
-    * While dataSource only allows local objects, dataSourceRef allows objects
-      in any namespaces.
-    (Beta) Using this field requires the AnyVolumeDataSource feature gate to be enabled.
-    (Alpha) Using the namespace field of dataSourceRef requires the CrossNamespaceVolumeDataSource feature gate to be enabled.
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec storage volume claim template spec data source ref
 
     Attributes
     ----------
     apiGroup : str, default is Undefined, optional
-        APIGroup is the group for the resource being referenced.
-        If APIGroup is not specified, the specified Kind must be in the core API group.
-        For any other third-party types, APIGroup is required.
+        api group
     kind : str, default is Undefined, required
-        Kind is the type of resource being referenced
+        kind
     name : str, default is Undefined, required
-        Name is the name of resource being referenced
+        name
     namespace : str, default is Undefined, optional
-        Namespace is the namespace of resource being referenced
-        Note that when a namespace is specified, a gateway.networking.k8s.io/ReferenceGrant object is required in the referent namespace to allow that namespace's owner to accept the reference. See the ReferenceGrant documentation for details.
-        (Alpha) This field requires the CrossNamespaceVolumeDataSource feature gate to be enabled.
+        namespace
     """
 
 
@@ -1364,37 +1590,17 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemp
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateSpecResources:
-    """
-    resources represents the minimum resources the volume should have.
-    If RecoverVolumeExpansionFailure feature is enabled users are allowed to specify resource requirements
-    that are lower than previous value but must still be higher than capacity recorded in the
-    status field of the claim.
-    More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec storage volume claim template spec resources
 
     Attributes
     ----------
-    claims : [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateSpecResourcesClaimsItems0], default is Undefined, optional
-        Claims lists the names of resources, defined in spec.resourceClaims,
-        that are used by this container.
-
-
-        This is an alpha field and requires enabling the
-        DynamicResourceAllocation feature gate.
-
-
-        This field is immutable. It can only be set for containers.
     limits : {str:int | str}, default is Undefined, optional
-        Limits describes the maximum amount of compute resources allowed.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        limits
     requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum amount of compute resources required.
-        If Requests is omitted for a container, it defaults to Limits if that is explicitly specified,
-        otherwise to an implementation-defined value. Requests cannot exceed Limits.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        requests
     """
 
-
-    claims?: [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateSpecResourcesClaimsItems0]
 
     limits?: {str:int | str}
 
@@ -1402,38 +1608,20 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemp
 
 
     check:
-        all _, limits in limits {regex.match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex.match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
-
-
-schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateSpecResourcesClaimsItems0:
-    """
-    ResourceClaim references one entry in PodSpec.ResourceClaims.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        Name must match the name of one entry in pod.spec.resourceClaims of
-        the Pod where this field is used. It makes that resource available
-        inside a container.
-    """
-
-
-    name: str
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateSpecSelector:
-    """
-    selector is a label query over volumes to consider for binding.
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec storage volume claim template spec selector
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateSpecSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
+        match labels
     """
 
 
@@ -1443,22 +1631,17 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemp
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateSpecSelectorMatchExpressionsItems0:
-    """
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec storage volume claim template spec selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
+        values
     """
 
 
@@ -1470,41 +1653,33 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemp
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateStatus:
-    """
-    Status represents the current information/status of a persistent volume claim.
-    Read-only.
-    More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec storage volume claim template status
 
     Attributes
     ----------
     accessModes : [str], default is Undefined, optional
-        accessModes contains the actual access modes the volume backing the PVC has.
-        More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
+        access modes
+    allocatedResourceStatuses : {str:str}, default is Undefined, optional
+        allocated resource statuses
     allocatedResources : {str:int | str}, default is Undefined, optional
-        allocatedResources is the storage resource within AllocatedResources tracks the capacity allocated to a PVC. It may
-        be larger than the actual capacity when a volume expansion operation is requested.
-        For storage quota, the larger value from allocatedResources and PVC.spec.resources is used.
-        If allocatedResources is not set, PVC.spec.resources alone is used for quota calculation.
-        If a volume expansion capacity request is lowered, allocatedResources is only
-        lowered if there are no expansion operations in progress and if the actual volume capacity
-        is equal or lower than the requested capacity.
-        This is an alpha field and requires enabling RecoverVolumeExpansionFailure feature.
+        allocated resources
     capacity : {str:int | str}, default is Undefined, optional
-        capacity represents the actual resources of the underlying volume.
+        capacity
     conditions : [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateStatusConditionsItems0], default is Undefined, optional
-        conditions is the current Condition of persistent volume claim. If underlying persistent volume is being
-        resized then the Condition will be set to 'ResizeStarted'.
+        conditions
+    currentVolumeAttributesClassName : str, default is Undefined, optional
+        current volume attributes class name
+    modifyVolumeStatus : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateStatusModifyVolumeStatus, default is Undefined, optional
+        modify volume status
     phase : str, default is Undefined, optional
-        phase represents the current phase of PersistentVolumeClaim.
-    resizeStatus : str, default is Undefined, optional
-        resizeStatus stores status of resize operation.
-        ResizeStatus is not set by default but when expansion is complete resizeStatus is set to empty
-        string by resize controller or kubelet.
-        This is an alpha field and requires enabling RecoverVolumeExpansionFailure feature.
+        phase
     """
 
 
     accessModes?: [str]
+
+    allocatedResourceStatuses?: {str:str}
 
     allocatedResources?: {str:int | str}
 
@@ -1512,36 +1687,36 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemp
 
     conditions?: [OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateStatusConditionsItems0]
 
-    phase?: str
+    currentVolumeAttributesClassName?: str
 
-    resizeStatus?: str
+    modifyVolumeStatus?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateStatusModifyVolumeStatus
+
+    phase?: str
 
 
     check:
-        all _, allocatedResources in allocatedResources {regex.match(str(allocatedResources), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if allocatedResources } if allocatedResources
-        all _, capacity in capacity {regex.match(str(capacity), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if capacity } if capacity
+        all _, allocatedResources in allocatedResources { _regex_match(str(allocatedResources), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if allocatedResources } if allocatedResources
+        all _, capacity in capacity { _regex_match(str(capacity), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if capacity } if capacity
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateStatusConditionsItems0:
-    """
-    PersistentVolumeClaimCondition contains details about state of pvc
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec storage volume claim template status conditions items0
 
     Attributes
     ----------
     lastProbeTime : str, default is Undefined, optional
-        lastProbeTime is the time we probed the condition.
+        last probe time
     lastTransitionTime : str, default is Undefined, optional
-        lastTransitionTime is the time the condition transitioned from one status to another.
+        last transition time
     message : str, default is Undefined, optional
-        message is the human-readable message indicating details about last transition.
+        message
     reason : str, default is Undefined, optional
-        reason is a unique, this should be a short, machine understandable string that gives the reason
-        for condition's last transition. If it reports "ResizeStarted" that means the underlying
-        persistent volume is being resized.
+        reason
     status : str, default is Undefined, required
         status
     $type : str, default is Undefined, required
-        PersistentVolumeClaimConditionType is a valid value of PersistentVolumeClaimCondition.Type
+        type
     """
 
 
@@ -1558,52 +1733,58 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemp
     $type: str
 
 
-schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecTemplatesItems0:
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecStorageVolumeClaimTemplateStatusModifyVolumeStatus:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec storage volume claim template status modify volume status
+
+    Attributes
+    ----------
+    status : str, default is Undefined, required
+        status
+    targetVolumeAttributesClassName : str, default is Undefined, optional
+        target volume attributes class name
     """
-    ConfigMapKeyReference refers to a key in a ConfigMap.
+
+
+    status: str
+
+    targetVolumeAttributesClassName?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecTemplatesItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec templates items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The ConfigMap key to refer to.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
 
 schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecTolerationsItems0:
-    """
-    The pod this Toleration is attached to tolerates any taint that matches
-    the triple <key,value,effect> using the matching operator <operator>.
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec tolerations items0
 
     Attributes
     ----------
     effect : str, default is Undefined, optional
-        Effect indicates the taint effect to match. Empty means match all taint effects.
-        When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+        effect
     key : str, default is Undefined, optional
-        Key is the taint key that the toleration applies to. Empty means match all taint keys.
-        If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+        key
     operator : str, default is Undefined, optional
-        Operator represents a key's relationship to the value.
-        Valid operators are Exists and Equal. Defaults to Equal.
-        Exists is equivalent to wildcard for value, so that a pod can
-        tolerate all taints of a particular category.
+        operator
     tolerationSeconds : int, default is Undefined, optional
-        TolerationSeconds represents the period of time the toleration (which must be
-        of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default,
-        it is not set, which means tolerate the taint forever (do not evict). Zero and
-        negative values will be treated as 0 (evict immediately) by the system.
+        toleration seconds
     value : str, default is Undefined, optional
-        Value is the taint value the toleration matches to.
-        If the operator is Exists, the value should be empty, otherwise just a regular string.
+        value
     """
 
 
@@ -1618,33 +1799,176 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecTolerationsItems0:
     value?: str
 
 
-schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecVolumeMountsItems0:
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecTracingConfig:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec tracing config
+
+    Attributes
+    ----------
+    client_type : str, default is Undefined, optional
+        client type
+    compression : str, default is Undefined, optional
+        compression
+    endpoint : str, default is Undefined, required
+        endpoint
+    http_headers : {str:str}, default is Undefined, optional
+        http headers
+    insecure : bool, default is Undefined, optional
+        insecure
+    sampling_fraction : str, default is Undefined, optional
+        sampling fraction
+    timeout : str, default is Undefined, optional
+        timeout
+    tls_config : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecTracingConfigTLSConfig, default is Undefined, optional
+        tls config
     """
-    VolumeMount describes a mounting of a Volume within a container.
+
+
+    client_type?: "http" | "grpc"
+
+    compression?: str
+
+    endpoint: str
+
+    http_headers?: {str:str}
+
+    insecure?: bool
+
+    sampling_fraction?: str
+
+    timeout?: str
+
+    tls_config?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecTracingConfigTLSConfig
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecTracingConfigTLSConfig:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec tracing config TLS config
+
+    Attributes
+    ----------
+    ca_file : str, default is Undefined, optional
+        ca file
+    ca_secret_ref : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecTracingConfigTLSConfigCaSecretRef, default is Undefined, optional
+        ca secret ref
+    cert_file : str, default is Undefined, optional
+        cert file
+    cert_secret_ref : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecTracingConfigTLSConfigCertSecretRef, default is Undefined, optional
+        cert secret ref
+    insecure_skip_verify : bool, default is Undefined, optional
+        insecure skip verify
+    key_file : str, default is Undefined, optional
+        key file
+    key_secret_ref : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecTracingConfigTLSConfigKeySecretRef, default is Undefined, optional
+        key secret ref
+    server_name : str, default is Undefined, optional
+        server name
+    """
+
+
+    ca_file?: str
+
+    ca_secret_ref?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecTracingConfigTLSConfigCaSecretRef
+
+    cert_file?: str
+
+    cert_secret_ref?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecTracingConfigTLSConfigCertSecretRef
+
+    insecure_skip_verify?: bool
+
+    key_file?: str
+
+    key_secret_ref?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecTracingConfigTLSConfigKeySecretRef
+
+    server_name?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecTracingConfigTLSConfigCaSecretRef:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec tracing config TLS config ca secret ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecTracingConfigTLSConfigCertSecretRef:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec tracing config TLS config cert secret ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecTracingConfigTLSConfigKeySecretRef:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec tracing config TLS config key secret ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecVolumeMountsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec volume mounts items0
 
     Attributes
     ----------
     mountPath : str, default is Undefined, required
-        Path within the container at which the volume should be mounted.  Must
-        not contain ':'.
+        mount path
     mountPropagation : str, default is Undefined, optional
-        mountPropagation determines how mounts are propagated from the host
-        to container and the other way around.
-        When not set, MountPropagationNone is used.
-        This field is beta in 1.10.
+        mount propagation
     name : str, default is Undefined, required
-        This must match the Name of a Volume.
+        name
     readOnly : bool, default is Undefined, optional
-        Mounted read-only if true, read-write otherwise (false or unspecified).
-        Defaults to false.
+        read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
-        Path within the volume from which the container's volume should be mounted.
-        Defaults to "" (volume's root).
+        sub path
     subPathExpr : str, default is Undefined, optional
-        Expanded path within the volume from which the container's volume should be mounted.
-        Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment.
-        Defaults to "" (volume's root).
-        SubPathExpr and SubPath are mutually exclusive.
+        sub path expr
     """
 
 
@@ -1656,28 +1980,246 @@ schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecVolumeMountsItems0:
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
-schema OperatorVictoriametricsComV1beta1VMAlertmanagerStatus:
-    """
-    Most recent observed status of the VMAlertmanager cluster.
-    Operator API itself. More info:
-    https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecWebConfig:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec web config
 
     Attributes
     ----------
-    reason : str, default is Undefined, optional
-        Reason has non empty reason for update failure
-    updateStatus : str, default is Undefined, optional
-        Status defines a status of object update
+    basic_auth_users : {str:str}, default is Undefined, optional
+        basic auth users
+    http_server_config : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecWebConfigHTTPServerConfig, default is Undefined, optional
+        http server config
+    tls_server_config : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecWebConfigTLSServerConfig, default is Undefined, optional
+        tls server config
     """
 
+
+    basic_auth_users?: {str:str}
+
+    http_server_config?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecWebConfigHTTPServerConfig
+
+    tls_server_config?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecWebConfigTLSServerConfig
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecWebConfigHTTPServerConfig:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec web config HTTP server config
+
+    Attributes
+    ----------
+    headers : {str:str}, default is Undefined, optional
+        headers
+    http2 : bool, default is Undefined, optional
+        http2
+    """
+
+
+    headers?: {str:str}
+
+    http2?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecWebConfigTLSServerConfig:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec web config TLS server config
+
+    Attributes
+    ----------
+    cert_file : str, default is Undefined, optional
+        cert file
+    cert_secret_ref : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecWebConfigTLSServerConfigCertSecretRef, default is Undefined, optional
+        cert secret ref
+    cipher_suites : [str], default is Undefined, optional
+        cipher suites
+    client_auth_type : str, default is Undefined, optional
+        client auth type
+    client_ca_file : str, default is Undefined, optional
+        client ca file
+    client_ca_secret_ref : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecWebConfigTLSServerConfigClientCaSecretRef, default is Undefined, optional
+        client ca secret ref
+    curve_preferences : [str], default is Undefined, optional
+        curve preferences
+    key_file : str, default is Undefined, optional
+        key file
+    key_secret_ref : OperatorVictoriametricsComV1beta1VMAlertmanagerSpecWebConfigTLSServerConfigKeySecretRef, default is Undefined, optional
+        key secret ref
+    max_version : str, default is Undefined, optional
+        max version
+    min_version : str, default is Undefined, optional
+        min version
+    prefer_server_cipher_suites : bool, default is Undefined, optional
+        prefer server cipher suites
+    """
+
+
+    cert_file?: str
+
+    cert_secret_ref?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecWebConfigTLSServerConfigCertSecretRef
+
+    cipher_suites?: [str]
+
+    client_auth_type?: "NoClientCert" | "RequireAndVerifyClientCert"
+
+    client_ca_file?: str
+
+    client_ca_secret_ref?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecWebConfigTLSServerConfigClientCaSecretRef
+
+    curve_preferences?: [str]
+
+    key_file?: str
+
+    key_secret_ref?: OperatorVictoriametricsComV1beta1VMAlertmanagerSpecWebConfigTLSServerConfigKeySecretRef
+
+    max_version?: "TLS10" | "TLS11" | "TLS12" | "TLS13"
+
+    min_version?: "TLS10" | "TLS11" | "TLS12" | "TLS13"
+
+    prefer_server_cipher_suites?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecWebConfigTLSServerConfigCertSecretRef:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec web config TLS server config cert secret ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecWebConfigTLSServerConfigClientCaSecretRef:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec web config TLS server config client ca secret ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerSpecWebConfigTLSServerConfigKeySecretRef:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager spec web config TLS server config key secret ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerStatus:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager status
+
+    Attributes
+    ----------
+    conditions : [OperatorVictoriametricsComV1beta1VMAlertmanagerStatusConditionsItems0], default is Undefined, optional
+        conditions
+    observedGeneration : int, default is Undefined, optional
+        observed generation
+    reason : str, default is Undefined, optional
+        reason
+    updateStatus : str, default is Undefined, optional
+        update status
+    """
+
+
+    conditions?: [OperatorVictoriametricsComV1beta1VMAlertmanagerStatusConditionsItems0]
+
+    observedGeneration?: int
 
     reason?: str
 
     updateStatus?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAlertmanagerStatusConditionsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM alertmanager status conditions items0
+
+    Attributes
+    ----------
+    lastTransitionTime : str, default is Undefined, required
+        last transition time
+    lastUpdateTime : str, default is Undefined, required
+        last update time
+    message : str, default is Undefined, optional
+        message
+    observedGeneration : int, default is Undefined, optional
+        observed generation
+    reason : str, default is Undefined, required
+        reason
+    status : str, default is Undefined, required
+        status
+    $type : str, default is Undefined, required
+        type
+    """
+
+
+    lastTransitionTime: str
+
+    lastUpdateTime: str
+
+    message?: str
+
+    observedGeneration?: int
+
+    reason: str
+
+    status: "True" | "False" | "Unknown"
+
+    $type: str
+
+
+    check:
+        len(message) <= 32768 if message
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
+        len(reason) <= 1024
+        len(reason) >= 1
+        len($type) <= 316
 
 

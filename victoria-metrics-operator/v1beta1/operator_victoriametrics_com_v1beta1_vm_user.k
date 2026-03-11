@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema VMUser:
-    """
-    VMUser is the Schema for the vmusers API
+    r"""
+    operator victoriametrics com v1beta1 VM user
 
     Attributes
     ----------
@@ -19,8 +19,8 @@ schema VMUser:
         metadata
     spec : OperatorVictoriametricsComV1beta1VMUserSpec, default is Undefined, optional
         spec
-    status : any, default is Undefined, optional
-        VMUserStatus defines the observed state of VMUser
+    status : OperatorVictoriametricsComV1beta1VMUserStatus, default is Undefined, optional
+        status
     """
 
 
@@ -32,71 +32,59 @@ schema VMUser:
 
     spec?: OperatorVictoriametricsComV1beta1VMUserSpec
 
-    status?: any
+    status?: OperatorVictoriametricsComV1beta1VMUserStatus
 
 
 schema OperatorVictoriametricsComV1beta1VMUserSpec:
-    """
-    VMUserSpec defines the desired state of VMUser
+    r"""
+    operator victoriametrics com v1beta1 VM user spec
 
     Attributes
     ----------
     bearerToken : str, default is Undefined, optional
-        BearerToken Authorization header value for accessing protected endpoint.
+        bearer token
     default_url : [str], default is Undefined, optional
-        DefaultURLs backend url for non-matching paths filter
-        usually used for default backend with error message
+        default url
     disable_secret_creation : bool, default is Undefined, optional
-        DisableSecretCreation skips related secret creation for vmuser
+        disable secret creation
     discover_backend_ips : bool, default is Undefined, optional
-        DiscoverBackendIPs instructs discovering URLPrefix backend IPs via DNS.
+        discover backend ips
     drop_src_path_prefix_parts : int, default is Undefined, optional
-        DropSrcPathPrefixParts is the number of `/`-delimited request path prefix parts to drop before proxying the request to backend.
-        See https://docs.victoriametrics.com/vmauth.html#dropping-request-path-prefix for more details.
+        drop src path prefix parts
+    dump_request_on_errors : bool, default is Undefined, optional
+        dump request on errors
     generatePassword : bool, default is Undefined, optional
-        GeneratePassword instructs operator to generate password for user
-        if spec.password if empty.
+        generate password
     headers : [str], default is Undefined, optional
-        Headers represent additional http headers, that vmauth uses
-        in form of ["header_key: header_value"]
-        multiple values for header key:
-        ["header_key: value1,value2"]
-        it's available since 1.68.0 version of vmauth
+        headers
     ip_filters : OperatorVictoriametricsComV1beta1VMUserSpecIPFilters, default is Undefined, optional
         ip filters
     load_balancing_policy : str, default is Undefined, optional
-        LoadBalancingPolicy defines load balancing policy to use for backend urls.
-        Supported policies: least_loaded, first_available.
-        See https://docs.victoriametrics.com/vmauth.html#load-balancing for more details (default "least_loaded")
+        load balancing policy
+    managedMetadata : OperatorVictoriametricsComV1beta1VMUserSpecManagedMetadata, default is Undefined, optional
+        managed metadata
     max_concurrent_requests : int, default is Undefined, optional
-        MaxConcurrentRequests defines max concurrent requests per user
-        300 is default value for vmauth
+        max concurrent requests
     metric_labels : {str:str}, default is Undefined, optional
-        MetricLabels - additional labels for metrics exported by vmauth for given user.
+        metric labels
     name : str, default is Undefined, optional
-        Name of the VMUser object.
+        name
     password : str, default is Undefined, optional
-        Password basic auth password for accessing protected endpoint.
+        password
     passwordRef : OperatorVictoriametricsComV1beta1VMUserSpecPasswordRef, default is Undefined, optional
         password ref
     response_headers : [str], default is Undefined, optional
-        ResponseHeaders represent additional http headers, that vmauth adds for request response
-        in form of ["header_key: header_value"]
-        multiple values for header key:
-        ["header_key: value1,value2"]
-        it's available since 1.93.0 version of vmauth
+        response headers
     retry_status_codes : [int], default is Undefined, optional
-        RetryStatusCodes defines http status codes in numeric format for request retries
-        e.g. [429,503]
+        retry status codes
     targetRefs : [OperatorVictoriametricsComV1beta1VMUserSpecTargetRefsItems0], default is Undefined, required
-        TargetRefs - reference to endpoints, which user may access.
+        target refs
     tlsConfig : OperatorVictoriametricsComV1beta1VMUserSpecTLSConfig, default is Undefined, optional
         tls config
     tokenRef : OperatorVictoriametricsComV1beta1VMUserSpecTokenRef, default is Undefined, optional
         token ref
     username : str, default is Undefined, optional
-        UserName basic auth user name for accessing protected endpoint,
-        will be replaced with metadata.name of VMUser if omitted.
+        username
     """
 
 
@@ -110,6 +98,8 @@ schema OperatorVictoriametricsComV1beta1VMUserSpec:
 
     drop_src_path_prefix_parts?: int
 
+    dump_request_on_errors?: bool
+
     generatePassword?: bool
 
     headers?: [str]
@@ -117,6 +107,8 @@ schema OperatorVictoriametricsComV1beta1VMUserSpec:
     ip_filters?: OperatorVictoriametricsComV1beta1VMUserSpecIPFilters
 
     load_balancing_policy?: "least_loaded" | "first_available"
+
+    managedMetadata?: OperatorVictoriametricsComV1beta1VMUserSpecManagedMetadata
 
     max_concurrent_requests?: int
 
@@ -142,10 +134,8 @@ schema OperatorVictoriametricsComV1beta1VMUserSpec:
 
 
 schema OperatorVictoriametricsComV1beta1VMUserSpecIPFilters:
-    """
-    IPFilters defines per target src ip filters
-    supported only with enterprise version of vmauth
-    https://docs.victoriametrics.com/vmauth.html#ip-filters
+    r"""
+    operator victoriametrics com v1beta1 VM user spec IP filters
 
     Attributes
     ----------
@@ -161,52 +151,68 @@ schema OperatorVictoriametricsComV1beta1VMUserSpecIPFilters:
     deny_list?: [str]
 
 
-schema OperatorVictoriametricsComV1beta1VMUserSpecPasswordRef:
+schema OperatorVictoriametricsComV1beta1VMUserSpecManagedMetadata:
+    r"""
+    operator victoriametrics com v1beta1 VM user spec managed metadata
+
+    Attributes
+    ----------
+    annotations : {str:str}, default is Undefined, optional
+        annotations
+    labels : {str:str}, default is Undefined, optional
+        labels
     """
-    PasswordRef allows fetching password from user-create secret by its name and key.
+
+
+    annotations?: {str:str}
+
+    labels?: {str:str}
+
+
+schema OperatorVictoriametricsComV1beta1VMUserSpecPasswordRef:
+    r"""
+    operator victoriametrics com v1beta1 VM user spec password ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMUserSpecTLSConfig:
-    """
-    TLSConfig specifies TLSConfig configuration parameters.
+    r"""
+    operator victoriametrics com v1beta1 VM user spec TLS config
 
     Attributes
     ----------
     ca : OperatorVictoriametricsComV1beta1VMUserSpecTLSConfigCa, default is Undefined, optional
         ca
     caFile : str, default is Undefined, optional
-        Path to the CA cert in the container to use for the targets.
+        ca file
     cert : OperatorVictoriametricsComV1beta1VMUserSpecTLSConfigCert, default is Undefined, optional
         cert
     certFile : str, default is Undefined, optional
-        Path to the client cert file in the container for the targets.
+        cert file
     insecureSkipVerify : bool, default is Undefined, optional
-        Disable target certificate validation.
+        insecure skip verify
     keyFile : str, default is Undefined, optional
-        Path to the client key file in the container for the targets.
+        key file
     keySecret : OperatorVictoriametricsComV1beta1VMUserSpecTLSConfigKeySecret, default is Undefined, optional
         key secret
     serverName : str, default is Undefined, optional
-        Used to verify the hostname for the targets.
+        server name
     """
 
 
@@ -228,8 +234,8 @@ schema OperatorVictoriametricsComV1beta1VMUserSpecTLSConfig:
 
 
 schema OperatorVictoriametricsComV1beta1VMUserSpecTLSConfigCa:
-    """
-    Stuct containing the CA cert to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM user spec TLS config ca
 
     Attributes
     ----------
@@ -246,56 +252,52 @@ schema OperatorVictoriametricsComV1beta1VMUserSpecTLSConfigCa:
 
 
 schema OperatorVictoriametricsComV1beta1VMUserSpecTLSConfigCaConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM user spec TLS config ca config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMUserSpecTLSConfigCaSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM user spec TLS config ca secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMUserSpecTLSConfigCert:
-    """
-    Struct containing the client cert file for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM user spec TLS config cert
 
     Attributes
     ----------
@@ -312,129 +314,107 @@ schema OperatorVictoriametricsComV1beta1VMUserSpecTLSConfigCert:
 
 
 schema OperatorVictoriametricsComV1beta1VMUserSpecTLSConfigCertConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM user spec TLS config cert config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMUserSpecTLSConfigCertSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM user spec TLS config cert secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMUserSpecTLSConfigKeySecret:
-    """
-    Secret containing the client key file for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM user spec TLS config key secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMUserSpecTargetRefsItems0:
-    """
-    TargetRef describes target for user traffic forwarding.
-    one of target types can be chosen:
-    crd or static per targetRef.
-    user can define multiple targetRefs with different ref Types.
+    r"""
+    operator victoriametrics com v1beta1 VM user spec target refs items0
 
     Attributes
     ----------
     crd : OperatorVictoriametricsComV1beta1VMUserSpecTargetRefsItems0Crd, default is Undefined, optional
         crd
     discover_backend_ips : bool, default is Undefined, optional
-        DiscoverBackendIPs instructs discovering URLPrefix backend IPs via DNS.
+        discover backend ips
     drop_src_path_prefix_parts : int, default is Undefined, optional
-        DropSrcPathPrefixParts is the number of `/`-delimited request path prefix parts to drop before proxying the request to backend.
-        See https://docs.victoriametrics.com/vmauth.html#dropping-request-path-prefix for more details.
+        drop src path prefix parts
     headers : [str], default is Undefined, optional
-        RequestHeaders represent additional http headers, that vmauth uses
-        in form of ["header_key: header_value"]
-        multiple values for header key:
-        ["header_key: value1,value2"]
-        it's available since 1.68.0 version of vmauth
+        headers
     hosts : [str], default is Undefined, optional
         hosts
     load_balancing_policy : str, default is Undefined, optional
-        LoadBalancingPolicy defines load balancing policy to use for backend urls.
-        Supported policies: least_loaded, first_available.
-        See https://docs.victoriametrics.com/vmauth.html#load-balancing for more details (default "least_loaded")
+        load balancing policy
     paths : [str], default is Undefined, optional
-        Paths - matched path to route.
+        paths
+    query_args : [OperatorVictoriametricsComV1beta1VMUserSpecTargetRefsItems0QueryArgsItems0], default is Undefined, optional
+        query args
     response_headers : [str], default is Undefined, optional
-        ResponseHeaders represent additional http headers, that vmauth adds for request response
-        in form of ["header_key: header_value"]
-        multiple values for header key:
-        ["header_key: value1,value2"]
-        it's available since 1.93.0 version of vmauth
+        response headers
     retry_status_codes : [int], default is Undefined, optional
-        RetryStatusCodes defines http status codes in numeric format for request retries
-        Can be defined per target or at VMUser.spec level
-        e.g. [429,503]
+        retry status codes
     src_headers : [str], default is Undefined, optional
-        SrcHeaders is an optional list of headers, which must match request headers.
+        src headers
     src_query_args : [str], default is Undefined, optional
-        SrcQueryArgs is an optional list of query args, which must match request URL query args.
+        src query args
     static : OperatorVictoriametricsComV1beta1VMUserSpecTargetRefsItems0Static, default is Undefined, optional
         static
     targetRefBasicAuth : OperatorVictoriametricsComV1beta1VMUserSpecTargetRefsItems0TargetRefBasicAuth, default is Undefined, optional
         target ref basic auth
     target_path_suffix : str, default is Undefined, optional
-        TargetPathSuffix allows to add some suffix to the target path
-        It allows to hide tenant configuration from user with crd as ref.
-        it also may contain any url encoded params.
+        target path suffix
     """
 
 
@@ -452,6 +432,8 @@ schema OperatorVictoriametricsComV1beta1VMUserSpecTargetRefsItems0:
 
     paths?: [str]
 
+    query_args?: [OperatorVictoriametricsComV1beta1VMUserSpecTargetRefsItems0QueryArgsItems0]
+
     response_headers?: [str]
 
     retry_status_codes?: [int]
@@ -468,40 +450,55 @@ schema OperatorVictoriametricsComV1beta1VMUserSpecTargetRefsItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMUserSpecTargetRefsItems0Crd:
-    """
-    CRD describes exist operator's CRD object,
-    operator generates access url based on CRD params.
+    r"""
+    operator victoriametrics com v1beta1 VM user spec target refs items0 crd
 
     Attributes
     ----------
     kind : str, default is Undefined, required
-        Kind one of:
-        VMAgent VMAlert VMCluster VMSingle or VMAlertManager
+        kind
     name : str, default is Undefined, required
-        Name target CRD object name
+        name
     namespace : str, default is Undefined, required
-        Namespace target CRD object namespace.
+        namespace
     """
 
 
-    kind: str
+    kind: "VMAgent" | "VMAlert" | "VMSingle" | "VLogs" | "VMAlertManager" | "VMAlertmanager" | "VMCluster/vmselect" | "VMCluster/vmstorage" | "VMCluster/vminsert" | "VLSingle" | "VLCluster/vlinsert" | "VLCluster/vlselect" | "VLCluster/vlstorage" | "VLAgent" | "VTCluster/vtinsert" | "VTCluster/vtselect" | "VTCluster/vtstorage" | "VTSingle"
 
     name: str
 
     namespace: str
 
 
-schema OperatorVictoriametricsComV1beta1VMUserSpecTargetRefsItems0Static:
+schema OperatorVictoriametricsComV1beta1VMUserSpecTargetRefsItems0QueryArgsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM user spec target refs items0 query args items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    values : [str], default is Undefined, required
+        values
     """
-    Static - user defined url for traffic forward,
-    for instance http://vmsingle:8429
+
+
+    name: str
+
+    values: [str]
+
+
+schema OperatorVictoriametricsComV1beta1VMUserSpecTargetRefsItems0Static:
+    r"""
+    operator victoriametrics com v1beta1 VM user spec target refs items0 static
 
     Attributes
     ----------
     url : str, default is Undefined, optional
-        URL http url for given staticRef.
+        url
     urls : [str], default is Undefined, optional
-        URLs allows setting multiple urls for load-balancing at vmauth-side.
+        urls
     """
 
 
@@ -511,8 +508,8 @@ schema OperatorVictoriametricsComV1beta1VMUserSpecTargetRefsItems0Static:
 
 
 schema OperatorVictoriametricsComV1beta1VMUserSpecTargetRefsItems0TargetRefBasicAuth:
-    """
-    TargetRefBasicAuth allow an target endpoint to authenticate over basic authentication
+    r"""
+    operator victoriametrics com v1beta1 VM user spec target refs items0 target ref basic auth
 
     Attributes
     ----------
@@ -529,78 +526,140 @@ schema OperatorVictoriametricsComV1beta1VMUserSpecTargetRefsItems0TargetRefBasic
 
 
 schema OperatorVictoriametricsComV1beta1VMUserSpecTargetRefsItems0TargetRefBasicAuthPassword:
-    """
-    The secret in the service scrape namespace that contains the password
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM user spec target refs items0 target ref basic auth password
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMUserSpecTargetRefsItems0TargetRefBasicAuthUsername:
-    """
-    The secret in the service scrape namespace that contains the username
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM user spec target refs items0 target ref basic auth username
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMUserSpecTokenRef:
-    """
-    TokenRef allows fetching token from user-created secrets by its name and key.
+    r"""
+    operator victoriametrics com v1beta1 VM user spec token ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMUserStatus:
+    r"""
+    operator victoriametrics com v1beta1 VM user status
+
+    Attributes
+    ----------
+    conditions : [OperatorVictoriametricsComV1beta1VMUserStatusConditionsItems0], default is Undefined, optional
+        conditions
+    observedGeneration : int, default is Undefined, optional
+        observed generation
+    reason : str, default is Undefined, optional
+        reason
+    updateStatus : str, default is Undefined, optional
+        update status
+    """
+
+
+    conditions?: [OperatorVictoriametricsComV1beta1VMUserStatusConditionsItems0]
+
+    observedGeneration?: int
+
+    reason?: str
+
+    updateStatus?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMUserStatusConditionsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM user status conditions items0
+
+    Attributes
+    ----------
+    lastTransitionTime : str, default is Undefined, required
+        last transition time
+    lastUpdateTime : str, default is Undefined, required
+        last update time
+    message : str, default is Undefined, optional
+        message
+    observedGeneration : int, default is Undefined, optional
+        observed generation
+    reason : str, default is Undefined, required
+        reason
+    status : str, default is Undefined, required
+        status
+    $type : str, default is Undefined, required
+        type
+    """
+
+
+    lastTransitionTime: str
+
+    lastUpdateTime: str
+
+    message?: str
+
+    observedGeneration?: int
+
+    reason: str
+
+    status: "True" | "False" | "Unknown"
+
+    $type: str
+
+
+    check:
+        len(message) <= 32768 if message
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
+        len(reason) <= 1024
+        len(reason) >= 1
+        len($type) <= 316
 
 
