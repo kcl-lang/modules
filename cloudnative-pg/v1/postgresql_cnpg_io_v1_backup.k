@@ -187,6 +187,9 @@ schema PostgresqlCnpgIoV1BackupStatus:
         google credentials
     instanceID : PostgresqlCnpgIoV1BackupStatusInstanceID, default is Undefined, optional
         instance ID
+    majorVersion : int, default is Undefined, optional
+        The PostgreSQL major version that was running when the
+        backup was taken.
     method : str, default is Undefined, optional
         The backup method being used
     online : bool, default is Undefined, optional
@@ -195,6 +198,10 @@ schema PostgresqlCnpgIoV1BackupStatus:
         The last backup status
     pluginMetadata : {str:str}, default is Undefined, optional
         A map containing the plugin metadata
+    reconciliationStartedAt : str, default is Undefined, optional
+        When the backup process was started by the operator
+    reconciliationTerminatedAt : str, default is Undefined, optional
+        When the reconciliation was terminated by the operator (either successfully or not)
     s3Credentials : PostgresqlCnpgIoV1BackupStatusS3Credentials, default is Undefined, optional
         s3 credentials
     serverName : str, default is Undefined, optional
@@ -203,9 +210,9 @@ schema PostgresqlCnpgIoV1BackupStatus:
     snapshotBackupStatus : PostgresqlCnpgIoV1BackupStatusSnapshotBackupStatus, default is Undefined, optional
         snapshot backup status
     startedAt : str, default is Undefined, optional
-        When the backup was started
+        When the backup execution was started by the backup tool
     stoppedAt : str, default is Undefined, optional
-        When the backup was terminated
+        When the backup execution was terminated by the backup tool
     tablespaceMapFile : str, default is Undefined, optional
         Tablespace map file content as returned by Postgres in case of online (hot) backups
     """
@@ -245,6 +252,8 @@ schema PostgresqlCnpgIoV1BackupStatus:
 
     instanceID?: PostgresqlCnpgIoV1BackupStatusInstanceID
 
+    majorVersion?: int
+
     method?: str
 
     online?: bool
@@ -252,6 +261,10 @@ schema PostgresqlCnpgIoV1BackupStatus:
     phase?: str
 
     pluginMetadata?: {str:str}
+
+    reconciliationStartedAt?: str
+
+    reconciliationTerminatedAt?: str
 
     s3Credentials?: PostgresqlCnpgIoV1BackupStatusS3Credentials
 
@@ -282,6 +295,9 @@ schema PostgresqlCnpgIoV1BackupStatusAzureCredentials:
         storage key
     storageSasToken : PostgresqlCnpgIoV1BackupStatusAzureCredentialsStorageSasToken, default is Undefined, optional
         storage sas token
+    useDefaultAzureCredentials : bool, default is Undefined, optional
+        Use the default Azure authentication flow, which includes DefaultAzureCredential.
+        This allows authentication using environment variables and managed identities.
     """
 
 
@@ -294,6 +310,8 @@ schema PostgresqlCnpgIoV1BackupStatusAzureCredentials:
     storageKey?: PostgresqlCnpgIoV1BackupStatusAzureCredentialsStorageKey
 
     storageSasToken?: PostgresqlCnpgIoV1BackupStatusAzureCredentialsStorageSasToken
+
+    useDefaultAzureCredentials?: bool
 
 
 schema PostgresqlCnpgIoV1BackupStatusAzureCredentialsConnectionString:
@@ -437,12 +455,19 @@ schema PostgresqlCnpgIoV1BackupStatusInstanceID:
         The container ID
     podName : str, default is Undefined, optional
         The pod name
+    sessionID : str, default is Undefined, optional
+        The instance manager session ID. This is a unique identifier generated at instance manager
+        startup and changes on every restart (including container reboots). Used to detect if
+        the instance manager was restarted during long-running operations like backups, which
+        would terminate any running backup process.
     """
 
 
     ContainerID?: str
 
     podName?: str
+
+    sessionID?: str
 
 
 schema PostgresqlCnpgIoV1BackupStatusS3Credentials:
