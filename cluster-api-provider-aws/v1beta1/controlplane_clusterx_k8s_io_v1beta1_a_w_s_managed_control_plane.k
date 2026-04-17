@@ -188,8 +188,8 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpec:
 
 
     check:
-        len(roleName) >= 2 if roleName
-        len(version) >= 2 if version
+        len(roleName) >= 2 if roleName not in [None, Undefined]
+        len(version) >= 2 if version not in [None, Undefined]
         _regex_match(str(version), r"^v?(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.?(\.0|[1-9][0-9]*)?$") if version
 
 
@@ -869,7 +869,7 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecNetworkVpcElast
 
 
     check:
-        len(publicIpv4Pool) <= 30 if publicIpv4Pool
+        len(publicIpv4Pool) <= 30 if publicIpv4Pool not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecNetworkVpcIPV6:
@@ -1553,10 +1553,16 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusBastionCPUOpt
         More details can be checked at https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sev-snp.html
         When omitted, this means no opinion and the AWS platform is left to choose a reasonable default,
         which is subject to change without notice. The current default is Disabled.
+    nestedVirtualization : str, default is Undefined, optional
+        NestedVirtualization specifies whether to enable nested virtualization on the instance.
+        Nested virtualization is supported on C8i, M8i, and R8i instance types.
+        Valid values are: enabled, disabled
     """
 
 
     confidentialCompute?: "Disabled" | "AMDEncryptedVirtualizationNestedPaging"
+
+    nestedVirtualization?: "enabled" | "disabled"
 
 
 schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusBastionDynamicHostAllocation:
@@ -1807,11 +1813,11 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusConditionsIte
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 

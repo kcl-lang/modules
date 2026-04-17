@@ -562,7 +562,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpecIgnitionProxy:
 
     check:
         len(noProxy) <= 64 if noProxy
-        all noProxy in noProxy { len(noProxy) <= 2048 if noProxy not in [None, Undefined] } if noProxy
+        all i in noProxy { len(i) <= 2048 if i not in [None, Undefined] } if noProxy
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpecIgnitionTLS:
@@ -584,7 +584,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpecIgnitionTLS:
 
     check:
         len(certificateAuthorities) <= 64 if certificateAuthorities
-        all certificateAuthorities in certificateAuthorities { len(certificateAuthorities) <= 65536 if certificateAuthorities not in [None, Undefined] } if certificateAuthorities
+        all i in certificateAuthorities { len(i) <= 65536 if i not in [None, Undefined] } if certificateAuthorities
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachinePoolSpecLifecycleHooksItems0:
@@ -963,11 +963,11 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachinePoolStatusConditionsItems0:
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 

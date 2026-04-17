@@ -314,7 +314,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecContr
 
 
     check:
-        len(name) <= 32 if name
+        len(name) <= 32 if name not in [None, Undefined]
         _regex_match(str(name), r"^[A-Za-z0-9]([A-Za-z0-9]{0,31}|[-A-Za-z0-9]{0,30}[A-Za-z0-9])$") if name
 
 
@@ -914,7 +914,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
 
 
     check:
-        len(publicIpv4Pool) <= 30 if publicIpv4Pool
+        len(publicIpv4Pool) <= 30 if publicIpv4Pool not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkVpcIPV6:
@@ -1147,7 +1147,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecon
 
 
     check:
-        len(name) <= 32 if name
+        len(name) <= 32 if name not in [None, Undefined]
         _regex_match(str(name), r"^[A-Za-z0-9]([A-Za-z0-9]{0,31}|[-A-Za-z0-9]{0,30}[A-Za-z0-9])$") if name
 
 

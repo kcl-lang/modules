@@ -1,7 +1,7 @@
 [package]
 name = "cluster-api-provider-aws"
 edition = "*"
-version = "v2.10.2"
+version = "v2.11.0"
 description = "KCL package for https://github.com/kubernetes-sigs/cluster-api-provider-aws CRDs"
 
 [dependencies]

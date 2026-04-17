@@ -259,8 +259,8 @@ schema ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplat
 
 
     check:
-        len(roleName) >= 2 if roleName
-        len(version) >= 2 if version
+        len(roleName) >= 2 if roleName not in [None, Undefined]
+        len(version) >= 2 if version not in [None, Undefined]
         _regex_match(str(version), r"^v?(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.?(\.0|[1-9][0-9]*)?$") if version
 
 
@@ -1038,7 +1038,7 @@ schema ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplat
 
 
     check:
-        len(publicIpv4Pool) <= 30 if publicIpv4Pool
+        len(publicIpv4Pool) <= 30 if publicIpv4Pool not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpecNetworkVpcIPV6:
