@@ -1,7 +1,8 @@
 [package]
 name = "strimzi-kafka-operator"
-version = "0.2.1"
-description = "`strimzi-kafka-operator` is the Apache Kafka Operator definition on Kubernetes and OpenShift"
+edition = "*"
+version = "0.51.0"
+description = "KCL package for https://github.com/strimzi/strimzi-kafka-operator CRDs"
 
 [dependencies]
-k8s = "1.31.2"
+k8s = "1.32.4"

@@ -7,35 +7,35 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema StrimziPodSet:
     r"""
-    core strimzi io v1beta2 strimzi pod set
+    core strimzi io v1 strimzi pod set
 
     Attributes
     ----------
-    apiVersion : str, default is "core.strimzi.io/v1beta2", required
+    apiVersion : str, default is "core.strimzi.io/v1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
     kind : str, default is "StrimziPodSet", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : CoreStrimziIoV1beta2StrimziPodSetSpec, default is Undefined, optional
+    spec : CoreStrimziIoV1StrimziPodSetSpec, default is Undefined, required
         spec
-    status : CoreStrimziIoV1beta2StrimziPodSetStatus, default is Undefined, optional
+    status : CoreStrimziIoV1StrimziPodSetStatus, default is Undefined, optional
         status
     """
 
 
-    apiVersion: "core.strimzi.io/v1beta2" = "core.strimzi.io/v1beta2"
+    apiVersion: "core.strimzi.io/v1" = "core.strimzi.io/v1"
 
     kind: "StrimziPodSet" = "StrimziPodSet"
 
     metadata?: v1.ObjectMeta
 
-    spec?: CoreStrimziIoV1beta2StrimziPodSetSpec
+    spec: CoreStrimziIoV1StrimziPodSetSpec
 
-    status?: CoreStrimziIoV1beta2StrimziPodSetStatus
+    status?: CoreStrimziIoV1StrimziPodSetStatus
 
 
-schema CoreStrimziIoV1beta2StrimziPodSetSpec:
+schema CoreStrimziIoV1StrimziPodSetSpec:
     r"""
     The specification of the StrimziPodSet.
 
@@ -43,37 +43,37 @@ schema CoreStrimziIoV1beta2StrimziPodSetSpec:
     ----------
     pods : [any], default is Undefined, required
         The Pods managed by this StrimziPodSet.
-    selector : CoreStrimziIoV1beta2StrimziPodSetSpecSelector, default is Undefined, required
+    selector : CoreStrimziIoV1StrimziPodSetSpecSelector, default is Undefined, required
         selector
     """
 
 
     pods: [any]
 
-    selector: CoreStrimziIoV1beta2StrimziPodSetSpecSelector
+    selector: CoreStrimziIoV1StrimziPodSetSpecSelector
 
 
-schema CoreStrimziIoV1beta2StrimziPodSetSpecSelector:
+schema CoreStrimziIoV1StrimziPodSetSpecSelector:
     r"""
     Selector is a label query which matches all the pods managed by this `StrimziPodSet`. Only `matchLabels` is supported. If `matchExpressions` is set, it will be ignored.
 
     Attributes
     ----------
-    matchExpressions : [CoreStrimziIoV1beta2StrimziPodSetSpecSelectorMatchExpressionsItems0], default is Undefined, optional
+    matchExpressions : [CoreStrimziIoV1StrimziPodSetSpecSelectorMatchExpressionsItems0], default is Undefined, optional
         match expressions
     matchLabels : {str:str}, default is Undefined, optional
         match labels
     """
 
 
-    matchExpressions?: [CoreStrimziIoV1beta2StrimziPodSetSpecSelectorMatchExpressionsItems0]
+    matchExpressions?: [CoreStrimziIoV1StrimziPodSetSpecSelectorMatchExpressionsItems0]
 
     matchLabels?: {str:str}
 
 
-schema CoreStrimziIoV1beta2StrimziPodSetSpecSelectorMatchExpressionsItems0:
+schema CoreStrimziIoV1StrimziPodSetSpecSelectorMatchExpressionsItems0:
     r"""
-    core strimzi io v1beta2 strimzi pod set spec selector match expressions items0
+    core strimzi io v1 strimzi pod set spec selector match expressions items0
 
     Attributes
     ----------
@@ -93,13 +93,13 @@ schema CoreStrimziIoV1beta2StrimziPodSetSpecSelectorMatchExpressionsItems0:
     values?: [str]
 
 
-schema CoreStrimziIoV1beta2StrimziPodSetStatus:
+schema CoreStrimziIoV1StrimziPodSetStatus:
     r"""
     The status of the StrimziPodSet.
 
     Attributes
     ----------
-    conditions : [CoreStrimziIoV1beta2StrimziPodSetStatusConditionsItems0], default is Undefined, optional
+    conditions : [CoreStrimziIoV1StrimziPodSetStatusConditionsItems0], default is Undefined, optional
         List of status conditions.
     currentPods : int, default is Undefined, optional
         Number of pods managed by this `StrimziPodSet` resource that have the current revision.
@@ -112,7 +112,7 @@ schema CoreStrimziIoV1beta2StrimziPodSetStatus:
     """
 
 
-    conditions?: [CoreStrimziIoV1beta2StrimziPodSetStatusConditionsItems0]
+    conditions?: [CoreStrimziIoV1StrimziPodSetStatusConditionsItems0]
 
     currentPods?: int
 
@@ -123,9 +123,9 @@ schema CoreStrimziIoV1beta2StrimziPodSetStatus:
     readyPods?: int
 
 
-schema CoreStrimziIoV1beta2StrimziPodSetStatusConditionsItems0:
+schema CoreStrimziIoV1StrimziPodSetStatusConditionsItems0:
     r"""
-    core strimzi io v1beta2 strimzi pod set status conditions items0
+    core strimzi io v1 strimzi pod set status conditions items0
 
     Attributes
     ----------
