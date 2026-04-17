@@ -7,35 +7,35 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema KafkaRebalance:
     r"""
-    kafka strimzi io v1beta2 kafka rebalance
+    kafka strimzi io v1 kafka rebalance
 
     Attributes
     ----------
-    apiVersion : str, default is "kafka.strimzi.io/v1beta2", required
+    apiVersion : str, default is "kafka.strimzi.io/v1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
     kind : str, default is "KafkaRebalance", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : KafkaStrimziIoV1beta2KafkaRebalanceSpec, default is Undefined, optional
+    spec : KafkaStrimziIoV1KafkaRebalanceSpec, default is Undefined, required
         spec
-    status : KafkaStrimziIoV1beta2KafkaRebalanceStatus, default is Undefined, optional
+    status : KafkaStrimziIoV1KafkaRebalanceStatus, default is Undefined, optional
         status
     """
 
 
-    apiVersion: "kafka.strimzi.io/v1beta2" = "kafka.strimzi.io/v1beta2"
+    apiVersion: "kafka.strimzi.io/v1" = "kafka.strimzi.io/v1"
 
     kind: "KafkaRebalance" = "KafkaRebalance"
 
     metadata?: v1.ObjectMeta
 
-    spec?: KafkaStrimziIoV1beta2KafkaRebalanceSpec
+    spec: KafkaStrimziIoV1KafkaRebalanceSpec
 
-    status?: KafkaStrimziIoV1beta2KafkaRebalanceStatus
+    status?: KafkaStrimziIoV1KafkaRebalanceStatus
 
 
-schema KafkaStrimziIoV1beta2KafkaRebalanceSpec:
+schema KafkaStrimziIoV1KafkaRebalanceSpec:
     r"""
     The specification of the Kafka rebalance.
 
@@ -62,7 +62,7 @@ schema KafkaStrimziIoV1beta2KafkaRebalanceSpec:
         * `remove-brokers` mode can be used before scaling down the cluster to move replicas out of the brokers to be removed.
         * `remove-disks` mode can be used to move data across the volumes within the same broker
         .
-    moveReplicasOffVolumes : [KafkaStrimziIoV1beta2KafkaRebalanceSpecMoveReplicasOffVolumesItems0], default is Undefined, optional
+    moveReplicasOffVolumes : [KafkaStrimziIoV1KafkaRebalanceSpecMoveReplicasOffVolumesItems0], default is Undefined, optional
         List of brokers and their corresponding volumes from which replicas need to be moved.
     rebalanceDisk : bool, default is Undefined, optional
         Enables intra-broker disk balancing, which balances disk space utilization between disks on the same broker. Only applies to Kafka deployments that use JBOD storage with multiple disks. When enabled, inter-broker balancing is disabled. Default is false.
@@ -89,7 +89,7 @@ schema KafkaStrimziIoV1beta2KafkaRebalanceSpec:
 
     mode?: "full" | "add-brokers" | "remove-brokers" | "remove-disks"
 
-    moveReplicasOffVolumes?: [KafkaStrimziIoV1beta2KafkaRebalanceSpecMoveReplicasOffVolumesItems0]
+    moveReplicasOffVolumes?: [KafkaStrimziIoV1KafkaRebalanceSpecMoveReplicasOffVolumesItems0]
 
     rebalanceDisk?: bool
 
@@ -108,9 +108,9 @@ schema KafkaStrimziIoV1beta2KafkaRebalanceSpec:
         replicationThrottle >= 0 if replicationThrottle not in [None, Undefined]
 
 
-schema KafkaStrimziIoV1beta2KafkaRebalanceSpecMoveReplicasOffVolumesItems0:
+schema KafkaStrimziIoV1KafkaRebalanceSpecMoveReplicasOffVolumesItems0:
     r"""
-    kafka strimzi io v1beta2 kafka rebalance spec move replicas off volumes items0
+    kafka strimzi io v1 kafka rebalance spec move replicas off volumes items0
 
     Attributes
     ----------
@@ -130,39 +130,39 @@ schema KafkaStrimziIoV1beta2KafkaRebalanceSpecMoveReplicasOffVolumesItems0:
         len(volumeIds) >= 1 if volumeIds
 
 
-schema KafkaStrimziIoV1beta2KafkaRebalanceStatus:
+schema KafkaStrimziIoV1KafkaRebalanceStatus:
     r"""
     The status of the Kafka rebalance.
 
     Attributes
     ----------
-    conditions : [KafkaStrimziIoV1beta2KafkaRebalanceStatusConditionsItems0], default is Undefined, optional
+    conditions : [KafkaStrimziIoV1KafkaRebalanceStatusConditionsItems0], default is Undefined, optional
         List of status conditions.
     observedGeneration : int, default is Undefined, optional
         The generation of the CRD that was last reconciled by the operator.
     optimizationResult : any, default is Undefined, optional
         A JSON object describing the optimization result.
-    progress : KafkaStrimziIoV1beta2KafkaRebalanceStatusProgress, default is Undefined, optional
+    progress : KafkaStrimziIoV1KafkaRebalanceStatusProgress, default is Undefined, optional
         progress
     sessionId : str, default is Undefined, optional
         The session identifier for requests to Cruise Control pertaining to this KafkaRebalance resource. This is used by the Kafka Rebalance operator to track the status of ongoing rebalancing operations.
     """
 
 
-    conditions?: [KafkaStrimziIoV1beta2KafkaRebalanceStatusConditionsItems0]
+    conditions?: [KafkaStrimziIoV1KafkaRebalanceStatusConditionsItems0]
 
     observedGeneration?: int
 
     optimizationResult?: any
 
-    progress?: KafkaStrimziIoV1beta2KafkaRebalanceStatusProgress
+    progress?: KafkaStrimziIoV1KafkaRebalanceStatusProgress
 
     sessionId?: str
 
 
-schema KafkaStrimziIoV1beta2KafkaRebalanceStatusConditionsItems0:
+schema KafkaStrimziIoV1KafkaRebalanceStatusConditionsItems0:
     r"""
-    kafka strimzi io v1beta2 kafka rebalance status conditions items0
+    kafka strimzi io v1 kafka rebalance status conditions items0
 
     Attributes
     ----------
@@ -190,7 +190,7 @@ schema KafkaStrimziIoV1beta2KafkaRebalanceStatusConditionsItems0:
     $type?: str
 
 
-schema KafkaStrimziIoV1beta2KafkaRebalanceStatusProgress:
+schema KafkaStrimziIoV1KafkaRebalanceStatusProgress:
     r"""
     A reference to Config Map with the progress information.
 

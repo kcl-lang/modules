@@ -7,35 +7,35 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema KafkaTopic:
     r"""
-    kafka strimzi io v1beta2 kafka topic
+    kafka strimzi io v1 kafka topic
 
     Attributes
     ----------
-    apiVersion : str, default is "kafka.strimzi.io/v1beta2", required
+    apiVersion : str, default is "kafka.strimzi.io/v1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
     kind : str, default is "KafkaTopic", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : KafkaStrimziIoV1beta2KafkaTopicSpec, default is Undefined, optional
+    spec : KafkaStrimziIoV1KafkaTopicSpec, default is Undefined, required
         spec
-    status : KafkaStrimziIoV1beta2KafkaTopicStatus, default is Undefined, optional
+    status : KafkaStrimziIoV1KafkaTopicStatus, default is Undefined, optional
         status
     """
 
 
-    apiVersion: "kafka.strimzi.io/v1beta2" = "kafka.strimzi.io/v1beta2"
+    apiVersion: "kafka.strimzi.io/v1" = "kafka.strimzi.io/v1"
 
     kind: "KafkaTopic" = "KafkaTopic"
 
     metadata?: v1.ObjectMeta
 
-    spec?: KafkaStrimziIoV1beta2KafkaTopicSpec
+    spec: KafkaStrimziIoV1KafkaTopicSpec
 
-    status?: KafkaStrimziIoV1beta2KafkaTopicStatus
+    status?: KafkaStrimziIoV1KafkaTopicStatus
 
 
-schema KafkaStrimziIoV1beta2KafkaTopicSpec:
+schema KafkaStrimziIoV1KafkaTopicSpec:
     r"""
     The specification of the topic.
 
@@ -67,17 +67,17 @@ schema KafkaStrimziIoV1beta2KafkaTopicSpec:
         replicas >= 1 if replicas not in [None, Undefined]
 
 
-schema KafkaStrimziIoV1beta2KafkaTopicStatus:
+schema KafkaStrimziIoV1KafkaTopicStatus:
     r"""
     The status of the topic.
 
     Attributes
     ----------
-    conditions : [KafkaStrimziIoV1beta2KafkaTopicStatusConditionsItems0], default is Undefined, optional
+    conditions : [KafkaStrimziIoV1KafkaTopicStatusConditionsItems0], default is Undefined, optional
         List of status conditions.
     observedGeneration : int, default is Undefined, optional
         The generation of the CRD that was last reconciled by the operator.
-    replicasChange : KafkaStrimziIoV1beta2KafkaTopicStatusReplicasChange, default is Undefined, optional
+    replicasChange : KafkaStrimziIoV1KafkaTopicStatusReplicasChange, default is Undefined, optional
         replicas change
     topicId : str, default is Undefined, optional
         The topic's id. For a KafkaTopic with the ready condition, this will change only if the topic gets deleted and recreated with the same name.
@@ -86,20 +86,20 @@ schema KafkaStrimziIoV1beta2KafkaTopicStatus:
     """
 
 
-    conditions?: [KafkaStrimziIoV1beta2KafkaTopicStatusConditionsItems0]
+    conditions?: [KafkaStrimziIoV1KafkaTopicStatusConditionsItems0]
 
     observedGeneration?: int
 
-    replicasChange?: KafkaStrimziIoV1beta2KafkaTopicStatusReplicasChange
+    replicasChange?: KafkaStrimziIoV1KafkaTopicStatusReplicasChange
 
     topicId?: str
 
     topicName?: str
 
 
-schema KafkaStrimziIoV1beta2KafkaTopicStatusConditionsItems0:
+schema KafkaStrimziIoV1KafkaTopicStatusConditionsItems0:
     r"""
-    kafka strimzi io v1beta2 kafka topic status conditions items0
+    kafka strimzi io v1 kafka topic status conditions items0
 
     Attributes
     ----------
@@ -127,7 +127,7 @@ schema KafkaStrimziIoV1beta2KafkaTopicStatusConditionsItems0:
     $type?: str
 
 
-schema KafkaStrimziIoV1beta2KafkaTopicStatusReplicasChange:
+schema KafkaStrimziIoV1KafkaTopicStatusReplicasChange:
     r"""
     Replication factor change status.
 
