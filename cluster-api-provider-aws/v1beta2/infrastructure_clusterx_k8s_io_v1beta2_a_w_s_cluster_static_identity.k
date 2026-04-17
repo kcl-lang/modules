@@ -5,48 +5,56 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 import k8s.apimachinery.pkg.apis.meta.v1
 
 
-schema AWSClusterControllerIdentity:
+schema AWSClusterStaticIdentity:
     r"""
-    AWSClusterControllerIdentity is the Schema for the awsclustercontrolleridentities API
-    It is used to grant access to use Cluster API Provider AWS Controller credentials.
+    AWSClusterStaticIdentity is the Schema for the awsclusterstaticidentities API
+    It represents a reference to an AWS access key ID and secret access key, stored in a secret.
 
     Attributes
     ----------
     apiVersion : str, default is "infrastructure.cluster.x-k8s.io/v1beta2", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-    kind : str, default is "AWSClusterControllerIdentity", required
+    kind : str, default is "AWSClusterStaticIdentity", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : InfrastructureClusterxK8sIoV1beta1AWSClusterControllerIdentitySpec, default is Undefined, optional
+    spec : InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpec, default is Undefined, optional
         spec
     """
 
 
     apiVersion: "infrastructure.cluster.x-k8s.io/v1beta2" = "infrastructure.cluster.x-k8s.io/v1beta2"
 
-    kind: "AWSClusterControllerIdentity" = "AWSClusterControllerIdentity"
+    kind: "AWSClusterStaticIdentity" = "AWSClusterStaticIdentity"
 
     metadata?: v1.ObjectMeta
 
-    spec?: InfrastructureClusterxK8sIoV1beta1AWSClusterControllerIdentitySpec
+    spec?: InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpec
 
 
-schema InfrastructureClusterxK8sIoV1beta1AWSClusterControllerIdentitySpec:
+schema InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpec:
     r"""
-    Spec for this AWSClusterControllerIdentity.
+    Spec for this AWSClusterStaticIdentity
 
     Attributes
     ----------
-    allowedNamespaces : InfrastructureClusterxK8sIoV1beta1AWSClusterControllerIdentitySpecAllowedNamespaces, default is Undefined, optional
+    allowedNamespaces : InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpecAllowedNamespaces, default is Undefined, optional
         allowed namespaces
+    secretRef : str, default is Undefined, required
+        Reference to a secret containing the credentials. The secret should
+        contain the following data keys:
+         AccessKeyID: AKIAIOSFODNN7EXAMPLE
+         SecretAccessKey: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+         SessionToken: Optional
     """
 
 
-    allowedNamespaces?: InfrastructureClusterxK8sIoV1beta1AWSClusterControllerIdentitySpecAllowedNamespaces
+    allowedNamespaces?: InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpecAllowedNamespaces
+
+    secretRef: str
 
 
-schema InfrastructureClusterxK8sIoV1beta1AWSClusterControllerIdentitySpecAllowedNamespaces:
+schema InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpecAllowedNamespaces:
     r"""
     AllowedNamespaces is used to identify which namespaces are allowed to use the identity from.
     Namespaces can be selected either using an array of namespaces or with label selector.
@@ -58,24 +66,24 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterControllerIdentitySpecAllowed
     ----------
     list : [str], default is Undefined, optional
         An nil or empty list indicates that AWSClusters cannot use the identity from any namespace.
-    selector : InfrastructureClusterxK8sIoV1beta1AWSClusterControllerIdentitySpecAllowedNamespacesSelector, default is Undefined, optional
+    selector : InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpecAllowedNamespacesSelector, default is Undefined, optional
         selector
     """
 
 
     list?: [str]
 
-    selector?: InfrastructureClusterxK8sIoV1beta1AWSClusterControllerIdentitySpecAllowedNamespacesSelector
+    selector?: InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpecAllowedNamespacesSelector
 
 
-schema InfrastructureClusterxK8sIoV1beta1AWSClusterControllerIdentitySpecAllowedNamespacesSelector:
+schema InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpecAllowedNamespacesSelector:
     r"""
     An empty selector indicates that AWSClusters cannot use this
     AWSClusterIdentity from any namespace.
 
     Attributes
     ----------
-    matchExpressions : [InfrastructureClusterxK8sIoV1beta1AWSClusterControllerIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0], default is Undefined, optional
+    matchExpressions : [InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0], default is Undefined, optional
         matchExpressions is a list of label selector requirements. The requirements are ANDed.
     matchLabels : {str:str}, default is Undefined, optional
         matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
@@ -84,12 +92,12 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterControllerIdentitySpecAllowed
     """
 
 
-    matchExpressions?: [InfrastructureClusterxK8sIoV1beta1AWSClusterControllerIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0]
+    matchExpressions?: [InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0]
 
     matchLabels?: {str:str}
 
 
-schema InfrastructureClusterxK8sIoV1beta1AWSClusterControllerIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0:
+schema InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0:
     r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.

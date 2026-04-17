@@ -302,7 +302,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpec:
 
 
     check:
-        len(hostID) <= 19 if hostID
+        len(hostID) <= 19 if hostID not in [None, Undefined]
         _regex_match(str(hostID), r"^h-[0-9a-f]{17}$") if hostID
         len(instanceType) >= 2
         len(networkInterfaces) <= 2 if networkInterfaces
@@ -388,10 +388,16 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecCPUOp
         More details can be checked at https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sev-snp.html
         When omitted, this means no opinion and the AWS platform is left to choose a reasonable default,
         which is subject to change without notice. The current default is Disabled.
+    nestedVirtualization : str, default is Undefined, optional
+        NestedVirtualization specifies whether to enable nested virtualization on the instance.
+        Nested virtualization is supported on C8i, M8i, and R8i instance types.
+        Valid values are: enabled, disabled
     """
 
 
     confidentialCompute?: "Disabled" | "AMDEncryptedVirtualizationNestedPaging"
+
+    nestedVirtualization?: "enabled" | "disabled"
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecCloudInit:
@@ -473,7 +479,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecElast
 
 
     check:
-        len(publicIpv4Pool) <= 30 if publicIpv4Pool
+        len(publicIpv4Pool) <= 30 if publicIpv4Pool not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecIgnition:
@@ -557,7 +563,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecIgnit
 
     check:
         len(noProxy) <= 64 if noProxy
-        all noProxy in noProxy { len(noProxy) <= 2048 if noProxy not in [None, Undefined] } if noProxy
+        all i in noProxy { len(i) <= 2048 if i not in [None, Undefined] } if noProxy
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecIgnitionTLS:
@@ -579,7 +585,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecIgnit
 
     check:
         len(certificateAuthorities) <= 64 if certificateAuthorities
-        all certificateAuthorities in certificateAuthorities { len(certificateAuthorities) <= 65536 if certificateAuthorities not in [None, Undefined] } if certificateAuthorities
+        all i in certificateAuthorities { len(i) <= 65536 if i not in [None, Undefined] } if certificateAuthorities
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecInstanceMetadataOptions:
@@ -835,7 +841,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateStatus:
 
 
     check:
-        all _, capacity in capacity { _regex_match(str(capacity), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if capacity } if capacity
+        all _, k in capacity { _regex_match(str(k), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if k } if capacity
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateStatusConditionsItems0:
@@ -882,11 +888,11 @@ schema InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateStatusConditionsItems
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 

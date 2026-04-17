@@ -18,7 +18,7 @@ schema AWSClusterRoleIdentity:
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpec, default is Undefined, optional
+    spec : InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpec, default is Undefined, optional
         spec
     """
 
@@ -29,16 +29,16 @@ schema AWSClusterRoleIdentity:
 
     metadata?: v1.ObjectMeta
 
-    spec?: InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpec
+    spec?: InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpec
 
 
-schema InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpec:
+schema InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpec:
     r"""
     Spec for this AWSClusterRoleIdentity.
 
     Attributes
     ----------
-    allowedNamespaces : InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpecAllowedNamespaces, default is Undefined, optional
+    allowedNamespaces : InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecAllowedNamespaces, default is Undefined, optional
         allowed namespaces
     durationSeconds : int, default is Undefined, optional
         The duration, in seconds, of the role session before it is renewed.
@@ -62,12 +62,12 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpec:
         The Amazon Resource Name (ARN) of the role to assume.
     sessionName : str, default is Undefined, optional
         An identifier for the assumed role session
-    sourceIdentityRef : InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpecSourceIdentityRef, default is Undefined, optional
+    sourceIdentityRef : InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecSourceIdentityRef, default is Undefined, optional
         source identity ref
     """
 
 
-    allowedNamespaces?: InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpecAllowedNamespaces
+    allowedNamespaces?: InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecAllowedNamespaces
 
     durationSeconds?: int
 
@@ -81,7 +81,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpec:
 
     sessionName?: str
 
-    sourceIdentityRef?: InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpecSourceIdentityRef
+    sourceIdentityRef?: InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecSourceIdentityRef
 
 
     check:
@@ -89,7 +89,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpec:
         durationSeconds >= 900 if durationSeconds not in [None, Undefined]
 
 
-schema InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpecAllowedNamespaces:
+schema InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecAllowedNamespaces:
     r"""
     AllowedNamespaces is used to identify which namespaces are allowed to use the identity from.
     Namespaces can be selected either using an array of namespaces or with label selector.
@@ -101,24 +101,24 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpecAllowedNamesp
     ----------
     list : [str], default is Undefined, optional
         An nil or empty list indicates that AWSClusters cannot use the identity from any namespace.
-    selector : InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpecAllowedNamespacesSelector, default is Undefined, optional
+    selector : InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecAllowedNamespacesSelector, default is Undefined, optional
         selector
     """
 
 
     list?: [str]
 
-    selector?: InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpecAllowedNamespacesSelector
+    selector?: InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecAllowedNamespacesSelector
 
 
-schema InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpecAllowedNamespacesSelector:
+schema InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecAllowedNamespacesSelector:
     r"""
     An empty selector indicates that AWSClusters cannot use this
     AWSClusterIdentity from any namespace.
 
     Attributes
     ----------
-    matchExpressions : [InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0], default is Undefined, optional
+    matchExpressions : [InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0], default is Undefined, optional
         matchExpressions is a list of label selector requirements. The requirements are ANDed.
     matchLabels : {str:str}, default is Undefined, optional
         matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
@@ -127,12 +127,12 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpecAllowedNamesp
     """
 
 
-    matchExpressions?: [InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0]
+    matchExpressions?: [InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0]
 
     matchLabels?: {str:str}
 
 
-schema InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0:
+schema InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0:
     r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
@@ -159,7 +159,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpecAllowedNamesp
     values?: [str]
 
 
-schema InfrastructureClusterxK8sIoV1beta1AWSClusterRoleIdentitySpecSourceIdentityRef:
+schema InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecSourceIdentityRef:
     r"""
     SourceIdentityRef is a reference to another identity which will be chained to do
     role assumption. All identity types are accepted.

@@ -58,8 +58,15 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpec:
         BillingAccount is an optional AWS account to use for billing the subscription fees for ROSA HCP clusters.
         The cost of running each ROSA HCP cluster will be billed to the infrastructure account in which the cluster
         is running.
-    channelGroup : str, default is "stable", required
-        OpenShift version channel group, default is stable.
+    channel : str, default is Undefined, optional
+        Channel is the Y-stream OpenShift channel to use for this cluster, for example "stable-4.16" or "eus-4.16".
+        This determines which Y-stream versions are available for upgrades.
+        When not specified, OCM will determine the appropriate channel based on the cluster version.
+        If Channel is set, ChannelGroup will be ignored.
+    channelGroup : str, default is Undefined, optional
+        OpenShift version channel group.
+        When not specified, OCM will determine the appropriate channel group based on the cluster version.
+        This field will be deprecated in a future release in favor of the Channel field.
     cloudWatchlogForwarder : ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecCloudWatchlogForwarder, default is Undefined, optional
         cloud watchlog forwarder
     clusterRegistryConfig : ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecClusterRegistryConfig, default is Undefined, optional
@@ -88,6 +95,16 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpec:
         Can only be set if "enableExternalAuthProviders" is set to "True".
 
         At most one provider can be configured.
+    fips : str, default is "Disabled", optional
+        FIPS configures FIPS-validated / Modules in Process cryptographic libraries.
+        FIPS (Federal Information Processing Standard) 140-2 is a U.S. government standard
+        that validates cryptographic modules used to protect sensitive information.
+
+        When set to "Enabled", the cluster will use FIPS 140-2 validated cryptographic modules.
+        This setting is immutable and cannot be changed after cluster creation.
+
+        IMPORTANT: When FIPS is enabled, etcdEncryptionKMSARN must be provided.
+        The KMS key must be tagged with 'red-hat:true'.
     identityRef : ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecIdentityRef, default is Undefined, optional
         identity ref
     installerRoleARN : str, default is Undefined, optional
@@ -145,7 +162,9 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpec:
 
     billingAccount?: str
 
-    channelGroup: "stable" | "eus" | "fast" | "candidate" | "nightly" = "stable"
+    channel?: str
+
+    channelGroup?: "stable" | "eus" | "fast" | "candidate" | "nightly"
 
     cloudWatchlogForwarder?: ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecCloudWatchlogForwarder
 
@@ -166,6 +185,8 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpec:
     etcdEncryptionKMSARN?: str
 
     externalAuthProviders?: [ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProvidersItems0]
+
+    fips?: "Enabled" | "Disabled" = "Disabled"
 
     identityRef?: ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecIdentityRef
 
@@ -201,7 +222,8 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpec:
 
 
     check:
-        len(domainPrefix) <= 15 if domainPrefix
+        _regex_match(str(channel), r"^(stable|eus|fast|candidate|nightly)-[0-9]+\.[0-9]+$") if channel
+        len(domainPrefix) <= 15 if domainPrefix not in [None, Undefined]
         _regex_match(str(domainPrefix), r"^[a-z]([-a-z0-9]*[a-z0-9])?$") if domainPrefix
         len(externalAuthProviders) <= 1 if externalAuthProviders
         len(rosaClusterName) <= 54
@@ -228,7 +250,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecAutoNode:
 
 
     check:
-        len(roleARN) <= 2048 if roleARN
+        len(roleARN) <= 2048 if roleARN not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecCloudWatchlogForwarder:
@@ -562,7 +584,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProviders
 
 
     check:
-        len(prefix) >= 1 if prefix
+        len(prefix) >= 1 if prefix not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProvidersItems0ClaimValidationRulesItems0:
@@ -636,7 +658,7 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProviders
     check:
         len(audiences) >= 1
         len(audiences) <= 10
-        all audiences in audiences { len(audiences) >= 1 if audiences not in [None, Undefined] } if audiences
+        all i in audiences { len(i) >= 1 if i not in [None, Undefined] } if audiences
         _regex_match(str(issuerURL), r"^https:\/\/[^\s]")
 
 
@@ -1228,6 +1250,8 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneStatus:
 
     Attributes
     ----------
+    availableChannels : [str], default is Undefined, optional
+        Available channels for the ROSA hosted control plane.
     availableUpgrades : [str], default is Undefined, optional
         Available upgrades for the ROSA hosted control plane.
     conditions : [ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneStatusConditionsItems0], default is Undefined, optional
@@ -1259,6 +1283,8 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneStatus:
         OpenShift semantic version, for example "4.14.5".
     """
 
+
+    availableChannels?: [str]
 
     availableUpgrades?: [str]
 
@@ -1325,11 +1351,11 @@ schema ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneStatusConditionsItems0:
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 

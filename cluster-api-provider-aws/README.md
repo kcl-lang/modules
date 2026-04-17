@@ -208,6 +208,9 @@
   - [InfrastructureClusterxK8sIoV1beta1AWSManagedMachinePoolStatusConditionsItems0](#infrastructureclusterxk8siov1beta1awsmanagedmachinepoolstatusconditionsitems0)
 - v1beta2
   - [AWSCluster](#awscluster)
+  - [AWSClusterControllerIdentity](#awsclustercontrolleridentity)
+  - [AWSClusterRoleIdentity](#awsclusterroleidentity)
+  - [AWSClusterStaticIdentity](#awsclusterstaticidentity)
   - [AWSClusterTemplate](#awsclustertemplate)
   - [AWSFargateProfile](#awsfargateprofile)
   - [AWSMachine](#awsmachine)
@@ -246,8 +249,42 @@
   - [BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecUsersItems0](#bootstrapclusterxk8siov1beta2eksconfigtemplatespectemplatespecusersitems0)
   - [BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecUsersItems0PasswdFrom](#bootstrapclusterxk8siov1beta2eksconfigtemplatespectemplatespecusersitems0passwdfrom)
   - [BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpecTemplateSpecUsersItems0PasswdFromSecret](#bootstrapclusterxk8siov1beta2eksconfigtemplatespectemplatespecusersitems0passwdfromsecret)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigSpec](#bootstrapclusterxk8siov1beta2nodeadmconfigspec)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecContainerd](#bootstrapclusterxk8siov1beta2nodeadmconfigspeccontainerd)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecDiskSetup](#bootstrapclusterxk8siov1beta2nodeadmconfigspecdisksetup)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecDiskSetupFilesystemsItems0](#bootstrapclusterxk8siov1beta2nodeadmconfigspecdisksetupfilesystemsitems0)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecDiskSetupPartitionsItems0](#bootstrapclusterxk8siov1beta2nodeadmconfigspecdisksetuppartitionsitems0)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecFilesItems0](#bootstrapclusterxk8siov1beta2nodeadmconfigspecfilesitems0)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecFilesItems0ContentFrom](#bootstrapclusterxk8siov1beta2nodeadmconfigspecfilesitems0contentfrom)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecFilesItems0ContentFromSecret](#bootstrapclusterxk8siov1beta2nodeadmconfigspecfilesitems0contentfromsecret)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecKubelet](#bootstrapclusterxk8siov1beta2nodeadmconfigspeckubelet)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecNtp](#bootstrapclusterxk8siov1beta2nodeadmconfigspecntp)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecUsersItems0](#bootstrapclusterxk8siov1beta2nodeadmconfigspecusersitems0)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecUsersItems0PasswdFrom](#bootstrapclusterxk8siov1beta2nodeadmconfigspecusersitems0passwdfrom)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecUsersItems0PasswdFromSecret](#bootstrapclusterxk8siov1beta2nodeadmconfigspecusersitems0passwdfromsecret)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigStatus](#bootstrapclusterxk8siov1beta2nodeadmconfigstatus)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigStatusConditionsItems0](#bootstrapclusterxk8siov1beta2nodeadmconfigstatusconditionsitems0)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigStatusInitialization](#bootstrapclusterxk8siov1beta2nodeadmconfigstatusinitialization)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpec](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespec)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplate](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplate)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpec](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespec)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecContainerd](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespeccontainerd)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecDiskSetup](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespecdisksetup)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecDiskSetupFilesystemsItems0](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespecdisksetupfilesystemsitems0)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecDiskSetupPartitionsItems0](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespecdisksetuppartitionsitems0)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecFilesItems0](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespecfilesitems0)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecFilesItems0ContentFrom](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespecfilesitems0contentfrom)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecFilesItems0ContentFromSecret](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespecfilesitems0contentfromsecret)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecKubelet](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespeckubelet)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecNtp](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespecntp)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecUsersItems0](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespecusersitems0)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecUsersItems0PasswdFrom](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespecusersitems0passwdfrom)
+  - [BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecUsersItems0PasswdFromSecret](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespecusersitems0passwdfromsecret)
   - [ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpec](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanespec)
   - [ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpecAccessConfig](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanespecaccessconfig)
+  - [ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpecAccessEntriesItems0](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanespecaccessentriesitems0)
+  - [ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpecAccessEntriesItems0AccessPoliciesItems0](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanespecaccessentriesitems0accesspoliciesitems0)
+  - [ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpecAccessEntriesItems0AccessPoliciesItems0AccessScope](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanespecaccessentriesitems0accesspoliciesitems0accessscope)
   - [ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpecAddonsItems0](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanespecaddonsitems0)
   - [ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpecBastion](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanespecbastion)
   - [ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpecControlPlaneEndpoint](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanespeccontrolplaneendpoint)
@@ -316,6 +353,9 @@
   - [ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplate](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanetemplatespectemplate)
   - [ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpec](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanetemplatespectemplatespec)
   - [ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpecAccessConfig](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanetemplatespectemplatespecaccessconfig)
+  - [ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpecAccessEntriesItems0](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanetemplatespectemplatespecaccessentriesitems0)
+  - [ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpecAccessEntriesItems0AccessPoliciesItems0](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanetemplatespectemplatespecaccessentriesitems0accesspoliciesitems0)
+  - [ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpecAccessEntriesItems0AccessPoliciesItems0AccessScope](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanetemplatespectemplatespecaccessentriesitems0accesspoliciesitems0accessscope)
   - [ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpecAddonsItems0](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanetemplatespectemplatespecaddonsitems0)
   - [ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpecBastion](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanetemplatespectemplatespecbastion)
   - [ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpecControlPlaneEndpoint](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanetemplatespectemplatespeccontrolplaneendpoint)
@@ -377,6 +417,15 @@
   - [ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneStatusConditionsItems0](#controlplaneclusterxk8siov1beta2rosacontrolplanestatusconditionsitems0)
   - [EKSConfig](#eksconfig)
   - [EKSConfigTemplate](#eksconfigtemplate)
+  - [InfrastructureClusterxK8sIoV1beta2AWSClusterControllerIdentitySpec](#infrastructureclusterxk8siov1beta2awsclustercontrolleridentityspec)
+  - [InfrastructureClusterxK8sIoV1beta2AWSClusterControllerIdentitySpecAllowedNamespaces](#infrastructureclusterxk8siov1beta2awsclustercontrolleridentityspecallowednamespaces)
+  - [InfrastructureClusterxK8sIoV1beta2AWSClusterControllerIdentitySpecAllowedNamespacesSelector](#infrastructureclusterxk8siov1beta2awsclustercontrolleridentityspecallowednamespacesselector)
+  - [InfrastructureClusterxK8sIoV1beta2AWSClusterControllerIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0](#infrastructureclusterxk8siov1beta2awsclustercontrolleridentityspecallowednamespacesselectormatchexpressionsitems0)
+  - [InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpec](#infrastructureclusterxk8siov1beta2awsclusterroleidentityspec)
+  - [InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecAllowedNamespaces](#infrastructureclusterxk8siov1beta2awsclusterroleidentityspecallowednamespaces)
+  - [InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecAllowedNamespacesSelector](#infrastructureclusterxk8siov1beta2awsclusterroleidentityspecallowednamespacesselector)
+  - [InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0](#infrastructureclusterxk8siov1beta2awsclusterroleidentityspecallowednamespacesselectormatchexpressionsitems0)
+  - [InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecSourceIdentityRef](#infrastructureclusterxk8siov1beta2awsclusterroleidentityspecsourceidentityref)
   - [InfrastructureClusterxK8sIoV1beta2AWSClusterSpec](#infrastructureclusterxk8siov1beta2awsclusterspec)
   - [InfrastructureClusterxK8sIoV1beta2AWSClusterSpecBastion](#infrastructureclusterxk8siov1beta2awsclusterspecbastion)
   - [InfrastructureClusterxK8sIoV1beta2AWSClusterSpecControlPlaneEndpoint](#infrastructureclusterxk8siov1beta2awsclusterspeccontrolplaneendpoint)
@@ -404,6 +453,10 @@
   - [InfrastructureClusterxK8sIoV1beta2AWSClusterSpecSecondaryControlPlaneLoadBalancerAdditionalListenersItems0HealthCheck](#infrastructureclusterxk8siov1beta2awsclusterspecsecondarycontrolplaneloadbalanceradditionallistenersitems0healthcheck)
   - [InfrastructureClusterxK8sIoV1beta2AWSClusterSpecSecondaryControlPlaneLoadBalancerHealthCheck](#infrastructureclusterxk8siov1beta2awsclusterspecsecondarycontrolplaneloadbalancerhealthcheck)
   - [InfrastructureClusterxK8sIoV1beta2AWSClusterSpecSecondaryControlPlaneLoadBalancerIngressRulesItems0](#infrastructureclusterxk8siov1beta2awsclusterspecsecondarycontrolplaneloadbalanceringressrulesitems0)
+  - [InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpec](#infrastructureclusterxk8siov1beta2awsclusterstaticidentityspec)
+  - [InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpecAllowedNamespaces](#infrastructureclusterxk8siov1beta2awsclusterstaticidentityspecallowednamespaces)
+  - [InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpecAllowedNamespacesSelector](#infrastructureclusterxk8siov1beta2awsclusterstaticidentityspecallowednamespacesselector)
+  - [InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0](#infrastructureclusterxk8siov1beta2awsclusterstaticidentityspecallowednamespacesselectormatchexpressionsitems0)
   - [InfrastructureClusterxK8sIoV1beta2AWSClusterStatus](#infrastructureclusterxk8siov1beta2awsclusterstatus)
   - [InfrastructureClusterxK8sIoV1beta2AWSClusterStatusBastion](#infrastructureclusterxk8siov1beta2awsclusterstatusbastion)
   - [InfrastructureClusterxK8sIoV1beta2AWSClusterStatusBastionAddressesItems0](#infrastructureclusterxk8siov1beta2awsclusterstatusbastionaddressesitems0)
@@ -594,6 +647,8 @@
   - [InfrastructureClusterxK8sIoV1beta2ROSARoleConfigStatusAccountRolesRef](#infrastructureclusterxk8siov1beta2rosaroleconfigstatusaccountrolesref)
   - [InfrastructureClusterxK8sIoV1beta2ROSARoleConfigStatusConditionsItems0](#infrastructureclusterxk8siov1beta2rosaroleconfigstatusconditionsitems0)
   - [InfrastructureClusterxK8sIoV1beta2ROSARoleConfigStatusOperatorRolesRef](#infrastructureclusterxk8siov1beta2rosaroleconfigstatusoperatorrolesref)
+  - [NodeadmConfig](#nodeadmconfig)
+  - [NodeadmConfigTemplate](#nodeadmconfigtemplate)
   - [ROSACluster](#rosacluster)
   - [ROSAControlPlane](#rosacontrolplane)
   - [ROSAMachinePool](#rosamachinepool)
@@ -895,7 +950,7 @@ Bastion contains options to configure the bastion host.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**allowedCIDRBlocks**|[str]|AllowedCIDRBlocks is a list of CIDR blocks allowed to access the bastion host.<br />They are set as ingress rules for the Bastion host's Security Group (defaults to 0.0.0.0/0).||
+|**allowedCIDRBlocks**|[str]|AllowedCIDRBlocks is a list of CIDR blocks allowed to access the bastion host.<br />They are set as ingress rules for the Bastion host's Security Group (defaults to 0.0.0.0/0).<br />If the cluster has IPv6 enabled, defaults to ::/0 and 0.0.0.0/0.||
 |**ami**|str|AMI will use the specified AMI to boot the bastion. If not specified,<br />the AMI will default to one picked out in public space.||
 |**disableIngressRules**|bool|DisableIngressRules will ensure there are no Ingress rules in the bastion host's security group.<br />Requires AllowedCIDRBlocks to be empty.||
 |**enabled**|bool|Enabled allows this provider to create a bastion host instance<br />with a public ip to access the VPC private network.||
@@ -1076,8 +1131,8 @@ SubnetSpec configures an AWS Subnet.
 |**availabilityZone**|str|AvailabilityZone defines the availability zone to use for this subnet in the cluster's region.||
 |**cidrBlock**|str|CidrBlock is the CIDR block to be used when the provider creates a managed VPC.||
 |**id** `required`|str|ID defines a unique identifier to reference this resource.<br />If you're bringing your subnet, set the AWS subnet-id here, it must start with `subnet-`.<br /><br />When the VPC is managed by CAPA, and you'd like the provider to create a subnet for you,<br />the id can be set to any placeholder value that does not start with `subnet-`;<br />upon creation, the subnet AWS identifier will be populated in the `ResourceID` field and<br />the `id` field is going to be used as the subnet name. If you specify a tag<br />called `Name`, it takes precedence.||
-|**ipv6CidrBlock**|str|IPv6CidrBlock is the IPv6 CIDR block to be used when the provider creates a managed VPC.<br />A subnet can have an IPv4 and an IPv6 address.<br />IPv6 is only supported in managed clusters, this field cannot be set on AWSCluster object.||
-|**isIpv6**|bool|IsIPv6 defines the subnet as an IPv6 subnet. A subnet is IPv6 when it is associated with a VPC that has IPv6 enabled.<br />IPv6 is only supported in managed clusters, this field cannot be set on AWSCluster object.||
+|**ipv6CidrBlock**|str|IPv6CidrBlock is the IPv6 CIDR block to be used when the provider creates a managed VPC.<br />A subnet can have an IPv4 and an IPv6 address.||
+|**isIpv6**|bool|IsIPv6 defines the subnet as an IPv6 subnet. A subnet is IPv6 when it is associated with an IPv6 CIDR.||
 |**isPublic**|bool|IsPublic defines the subnet as a public subnet. A subnet is public when it is associated with a route table that has a route to an internet gateway.||
 |**natGatewayId**|str|NatGatewayID is the NAT gateway id associated with the subnet.<br />Ignored unless the subnet is managed by the provider, in which case this is set on the public subnet where the NAT gateway resides. It is then used to determine routes for private subnets in the same AZ as the public subnet.||
 |**parentZoneName**|str|ParentZoneName is the zone name where the current subnet's zone is tied when<br />the zone is a Local Zone.<br /><br />The subnets in Local Zone or Wavelength Zone locations consume the ParentZoneName<br />to select the correct private route table to egress traffic to the internet.||
@@ -1119,7 +1174,7 @@ ElasticIPPool contains specific configuration to allocate Public IPv4 address (E
 |**publicIpv4PoolFallbackOrder**|"amazon-pool" | "none"|PublicIpv4PoolFallBackOrder defines the fallback action when the Public IPv4 Pool has been exhausted,<br />no more IPv4 address available in the pool.<br /><br />When set to 'amazon-pool', the controller check if the pool has available IPv4 address, when pool has reached the<br />IPv4 limit, the address will be claimed from Amazon-pool (default).<br /><br />When set to 'none', the controller will fail the Elastic IP allocation when the publicIpv4Pool is exhausted.||
 ### ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecNetworkVpcIPV6
 
-IPv6 contains ipv6 specific settings for the network. Supported only in managed clusters. This field cannot be set on AWSCluster object.
+IPv6 contains ipv6 specific settings for the network.
 
 #### Attributes
 
@@ -1139,7 +1194,7 @@ IPAMPool defines the IPAMv6 pool to be used for VPC. Mutually exclusive with Cid
 | --- | --- | --- | --- |
 |**id**|str|ID is the ID of the IPAM pool this provider should use to create VPC.||
 |**name**|str|Name is the name of the IPAM pool this provider should use to create VPC.||
-|**netmaskLength**|int|The netmask length of the IPv4 CIDR you want to allocate to VPC from<br />an Amazon VPC IP Address Manager (IPAM) pool.<br />Defaults to /16 for IPv4 if not specified.||
+|**netmaskLength**|int|The netmask length of the IPv4 CIDR you want to allocate to VPC from<br />an Amazon VPC IP Address Manager (IPAM) pool.<br />Defaults to /16 for IPv4 if not specified.<br />Defaults to /56 for IPv6 if not specified.||
 ### ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecNetworkVpcIpamPool
 
 IPAMPool defines the IPAMv4 pool to be used for VPC. Mutually exclusive with CidrBlock.
@@ -1150,7 +1205,7 @@ IPAMPool defines the IPAMv4 pool to be used for VPC. Mutually exclusive with Cid
 | --- | --- | --- | --- |
 |**id**|str|ID is the ID of the IPAM pool this provider should use to create VPC.||
 |**name**|str|Name is the name of the IPAM pool this provider should use to create VPC.||
-|**netmaskLength**|int|The netmask length of the IPv4 CIDR you want to allocate to VPC from<br />an Amazon VPC IP Address Manager (IPAM) pool.<br />Defaults to /16 for IPv4 if not specified.||
+|**netmaskLength**|int|The netmask length of the IPv4 CIDR you want to allocate to VPC from<br />an Amazon VPC IP Address Manager (IPAM) pool.<br />Defaults to /16 for IPv4 if not specified.<br />Defaults to /56 for IPv6 if not specified.||
 ### ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecNetworkVpcSecondaryCidrBlocksItems0
 
 VpcCidrBlock defines the CIDR block and settings to associate with the managed VPC. Currently, only IPv4 is supported.
@@ -1195,7 +1250,7 @@ EnvVar represents an environment variable present in a Container.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**name** `required`|str|Name of the environment variable. Must be a C_IDENTIFIER.||
-|**value**|str|Variable references $(VAR_NAME) are expanded<br />using the previously defined environment variables in the container and<br />any service environment variables. If a variable cannot be resolved,<br />the reference in the input string will be unchanged. Double $ are reduced<br />to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e.<br />"$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".<br />Escaped references will never be expanded, regardless of whether the variable<br />exists or not.<br />Defaults to "".||
+|**value**|str|Variable references $(VAR_NAME) are expanded<br />using the previously defined environment variables in the container and<br />any service environment variables. If a variable cannot be resolved,<br />the reference in the input string will be unchanged. Double $$ are reduced<br />to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e.<br />"$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".<br />Escaped references will never be expanded, regardless of whether the variable<br />exists or not.<br />Defaults to "".||
 |**valueFrom**|[ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecVpcCniEnvItems0ValueFrom](#controlplaneclusterxk8siov1beta1awsmanagedcontrolplanespecvpccnienvitems0valuefrom)|value from||
 ### ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecVpcCniEnvItems0ValueFrom
 
@@ -1307,6 +1362,7 @@ Bastion holds details of the instance that is used as a bastion jump box
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**addresses**|[[ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusBastionAddressesItems0](#controlplaneclusterxk8siov1beta1awsmanagedcontrolplanestatusbastionaddressesitems0)]|Addresses contains the AWS instance associated addresses.||
+|**assignPrimaryIPv6**|str|AssignPrimaryIPv6 specifies whether to enable assigning a primary IPv6 address to the primary network Interface.||
 |**availabilityZone**|str|Availability zone of instance||
 |**capacityReservationId**|str|CapacityReservationID specifies the target Capacity Reservation into which the instance should be launched.||
 |**capacityReservationPreference**|str|CapacityReservationPreference specifies the preference for use of Capacity Reservations by the instance. Valid values include:<br />"Open": The instance may make use of open Capacity Reservations that match its AZ and InstanceType<br />"None": The instance may not make use of any Capacity Reservations. This is to conserve open reservations for desired workloads<br />"CapacityReservationsOnly": The instance will only run if matched or targeted to a Capacity Reservation. Note that this is incompatible with a MarketType of `Spot`||
@@ -1321,6 +1377,7 @@ Bastion holds details of the instance that is used as a bastion jump box
 |**imageId**|str|The ID of the AMI used to launch the instance.||
 |**instanceMetadataOptions**|[ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusBastionInstanceMetadataOptions](#controlplaneclusterxk8siov1beta1awsmanagedcontrolplanestatusbastioninstancemetadataoptions)|instance metadata options||
 |**instanceState**|str|The current state of the instance.||
+|**ipv6Address**|str|The IPv6 address assigned to the instance.||
 |**marketType**|"OnDemand" | "Spot" | "CapacityBlock"|MarketType specifies the type of market for the EC2 instance. Valid values include:<br />"OnDemand" (default): The instance runs as a standard OnDemand instance.<br />"Spot": The instance runs as a Spot instance. When SpotMarketOptions is provided, the marketType defaults to "Spot".<br />"CapacityBlock": The instance utilizes pre-purchased compute capacity (capacity blocks) with AWS Capacity Reservations.<br />If this value is selected, CapacityReservationID must be specified to identify the target reservation.<br />If marketType is not specified and spotMarketOptions is provided, the marketType defaults to "Spot".||
 |**networkInterfaceType**|str|NetworkInterfaceType is the interface type of the primary network Interface.||
 |**networkInterfaces**|[str]|Specifies ENIs attached to instance||
@@ -1360,6 +1417,7 @@ CPUOptions defines CPU-related settings for the instance, including the confiden
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**confidentialCompute**|"Disabled" | "AMDEncryptedVirtualizationNestedPaging"|ConfidentialCompute specifies whether confidential computing should be enabled for the instance,<br />and, if so, which confidential computing technology to use.<br />Valid values are: Disabled, AMDEncryptedVirtualizationNestedPaging<br />When set to Disabled, confidential computing will be disabled for the instance.<br />When set to AMDEncryptedVirtualizationNestedPaging, AMD SEV-SNP will be used as the confidential computing technology for the instance.<br />In this case, ensure the following conditions are met:<br />1) The selected instance type supports AMD SEV-SNP.<br />2) The selected AWS region supports AMD SEV-SNP.<br />3) The selected AMI supports AMD SEV-SNP.<br />More details can be checked at https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sev-snp.html<br />When omitted, this means no opinion and the AWS platform is left to choose a reasonable default,<br />which is subject to change without notice. The current default is Disabled.||
+|**nestedVirtualization**|"enabled" | "disabled"|NestedVirtualization specifies whether to enable nested virtualization on the instance.<br />Nested virtualization is supported on C8i, M8i, and R8i instance types.<br />Valid values are: enabled, disabled||
 ### ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusBastionDynamicHostAllocation
 
 DynamicHostAllocation enables automatic allocation of dedicated hosts. This field is mutually exclusive with HostID.
@@ -1378,6 +1436,7 @@ InstanceMetadataOptions is the metadata options for the EC2 instance.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**httpEndpoint**|"enabled" | "disabled"|Enables or disables the HTTP metadata endpoint on your instances.<br /><br />If you specify a value of disabled, you cannot access your instance metadata.<br /><br />Default: enabled|"enabled"|
+|**httpProtocolIpv6**|"enabled" | "disabled"|Enables or disables the IPv6 endpoint for the instance metadata service.<br />This applies only if you enabled the HTTP metadata endpoint.<br /><br />Default: disabled|"disabled"|
 |**httpPutResponseHopLimit**|int|The desired HTTP PUT response hop limit for instance metadata requests. The<br />larger the number, the further instance metadata requests can travel.<br /><br />Default: 1|1|
 |**httpTokens**|"optional" | "required"|The state of token usage for your instance metadata requests.<br /><br />If the state is optional, you can choose to retrieve instance metadata with<br />or without a session token on your request. If you retrieve the IAM role<br />credentials without a token, the version 1.0 role credentials are returned.<br />If you retrieve the IAM role credentials using a valid session token, the<br />version 2.0 role credentials are returned.<br /><br />If the state is required, you must send a session token with any instance<br />metadata retrieval requests. In this state, retrieving the IAM role credentials<br />always returns the version 2.0 credentials; the version 1.0 credentials are<br />not available.<br /><br />Default: optional|"optional"|
 |**instanceMetadataTags**|"enabled" | "disabled"|Set to enabled to allow access to instance tags from the instance metadata.<br />Set to disabled to turn off access to instance tags from the instance metadata.<br />For more information, see Work with instance tags using the instance metadata<br />(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#work-with-tags-in-IMDS).<br /><br />Default: disabled|"disabled"|
@@ -1493,6 +1552,7 @@ APIServerELB is the Kubernetes api server load balancer.
 |**elbListeners**|[[ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusNetworkStatusAPIServerElbElbListenersItems0](#controlplaneclusterxk8siov1beta1awsmanagedcontrolplanestatusnetworkstatusapiserverelbelblistenersitems0)]|ELBListeners is an array of listeners associated with the load balancer. There must be at least one.||
 |**healthChecks**|[ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusNetworkStatusAPIServerElbHealthChecks](#controlplaneclusterxk8siov1beta1awsmanagedcontrolplanestatusnetworkstatusapiserverelbhealthchecks)|health checks||
 |**listeners**|[[ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusNetworkStatusAPIServerElbListenersItems0](#controlplaneclusterxk8siov1beta1awsmanagedcontrolplanestatusnetworkstatusapiserverelblistenersitems0)]|ClassicELBListeners is an array of classic elb listeners associated with the load balancer. There must be at least one.||
+|**loadBalancerIPAddressType**|"ipv4" | "dualstack" | "dualstack-without-public-ipv4"|LoadBalancerIPAddressType specifies the IP address type for the load balancer.||
 |**loadBalancerType**|"classic" | "elb" | "alb" | "nlb"|LoadBalancerType sets the type for a load balancer. The default type is classic.||
 |**name**|str|The name of the load balancer. It must be unique within the set of load balancers<br />defined in the region. It also serves as identifier.||
 |**scheme**|str|Scheme is the load balancer scheme, either internet-facing or private.||
@@ -1528,6 +1588,7 @@ TargetGroupSpec specifies target group settings for a given listener. This is cr
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**ipType**|str|IPType is the IP address type for the target group.||
 |**name** `required`|str|Name of the TargetGroup. Must be unique over the same group of listeners.||
 |**port** `required`|int|Port is the exposed port||
 |**protocol** `required`|"tcp" | "tls" | "udp" | "TCP" | "TLS" | "UDP"|||
@@ -1589,6 +1650,7 @@ SecondaryAPIServerELB is the secondary Kubernetes api server load balancer.
 |**elbListeners**|[[ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusNetworkStatusSecondaryAPIServerELBElbListenersItems0](#controlplaneclusterxk8siov1beta1awsmanagedcontrolplanestatusnetworkstatussecondaryapiserverelbelblistenersitems0)]|ELBListeners is an array of listeners associated with the load balancer. There must be at least one.||
 |**healthChecks**|[ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusNetworkStatusSecondaryAPIServerELBHealthChecks](#controlplaneclusterxk8siov1beta1awsmanagedcontrolplanestatusnetworkstatussecondaryapiserverelbhealthchecks)|health checks||
 |**listeners**|[[ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusNetworkStatusSecondaryAPIServerELBListenersItems0](#controlplaneclusterxk8siov1beta1awsmanagedcontrolplanestatusnetworkstatussecondaryapiserverelblistenersitems0)]|ClassicELBListeners is an array of classic elb listeners associated with the load balancer. There must be at least one.||
+|**loadBalancerIPAddressType**|"ipv4" | "dualstack" | "dualstack-without-public-ipv4"|LoadBalancerIPAddressType specifies the IP address type for the load balancer.||
 |**loadBalancerType**|"classic" | "elb" | "alb" | "nlb"|LoadBalancerType sets the type for a load balancer. The default type is classic.||
 |**name**|str|The name of the load balancer. It must be unique within the set of load balancers<br />defined in the region. It also serves as identifier.||
 |**scheme**|str|Scheme is the load balancer scheme, either internet-facing or private.||
@@ -1624,6 +1686,7 @@ TargetGroupSpec specifies target group settings for a given listener. This is cr
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**ipType**|str|IPType is the IP address type for the target group.||
 |**name** `required`|str|Name of the TargetGroup. Must be unique over the same group of listeners.||
 |**port** `required`|int|Port is the exposed port||
 |**protocol** `required`|"tcp" | "tls" | "udp" | "TCP" | "TLS" | "UDP"|||
@@ -1941,8 +2004,8 @@ SubnetSpec configures an AWS Subnet.
 |**availabilityZone**|str|AvailabilityZone defines the availability zone to use for this subnet in the cluster's region.||
 |**cidrBlock**|str|CidrBlock is the CIDR block to be used when the provider creates a managed VPC.||
 |**id**|str|ID defines a unique identifier to reference this resource.||
-|**ipv6CidrBlock**|str|IPv6CidrBlock is the IPv6 CIDR block to be used when the provider creates a managed VPC.<br />A subnet can have an IPv4 and an IPv6 address.<br />IPv6 is only supported in managed clusters, this field cannot be set on AWSCluster object.||
-|**isIpv6**|bool|IsIPv6 defines the subnet as an IPv6 subnet. A subnet is IPv6 when it is associated with a VPC that has IPv6 enabled.<br />IPv6 is only supported in managed clusters, this field cannot be set on AWSCluster object.||
+|**ipv6CidrBlock**|str|IPv6CidrBlock is the IPv6 CIDR block to be used when the provider creates a managed VPC.<br />A subnet can have an IPv4 and an IPv6 address.||
+|**isIpv6**|bool|IsIPv6 defines the subnet as an IPv6 subnet. A subnet is IPv6 when it is associated with an IPv6 CIDR.||
 |**isPublic**|bool|IsPublic defines the subnet as a public subnet. A subnet is public when it is associated with a route table that has a route to an internet gateway.||
 |**natGatewayId**|str|NatGatewayID is the NAT gateway id associated with the subnet.<br />Ignored unless the subnet is managed by the provider, in which case this is set on the public subnet where the NAT gateway resides. It is then used to determine routes for private subnets in the same AZ as the public subnet.||
 |**routeTableId**|str|RouteTableID is the routing table id associated with the subnet.||
@@ -1964,7 +2027,7 @@ VPC configuration.
 |**tags**|{str:str}|Tags is a collection of tags describing the resource.||
 ### InfrastructureClusterxK8sIoV1beta1AWSClusterSpecNetworkVpcIPV6
 
-IPv6 contains ipv6 specific settings for the network. Supported only in managed clusters. This field cannot be set on AWSCluster object.
+IPv6 contains ipv6 specific settings for the network.
 
 #### Attributes
 
@@ -2371,8 +2434,8 @@ SubnetSpec configures an AWS Subnet.
 |**availabilityZone**|str|AvailabilityZone defines the availability zone to use for this subnet in the cluster's region.||
 |**cidrBlock**|str|CidrBlock is the CIDR block to be used when the provider creates a managed VPC.||
 |**id**|str|ID defines a unique identifier to reference this resource.||
-|**ipv6CidrBlock**|str|IPv6CidrBlock is the IPv6 CIDR block to be used when the provider creates a managed VPC.<br />A subnet can have an IPv4 and an IPv6 address.<br />IPv6 is only supported in managed clusters, this field cannot be set on AWSCluster object.||
-|**isIpv6**|bool|IsIPv6 defines the subnet as an IPv6 subnet. A subnet is IPv6 when it is associated with a VPC that has IPv6 enabled.<br />IPv6 is only supported in managed clusters, this field cannot be set on AWSCluster object.||
+|**ipv6CidrBlock**|str|IPv6CidrBlock is the IPv6 CIDR block to be used when the provider creates a managed VPC.<br />A subnet can have an IPv4 and an IPv6 address.||
+|**isIpv6**|bool|IsIPv6 defines the subnet as an IPv6 subnet. A subnet is IPv6 when it is associated with an IPv6 CIDR.||
 |**isPublic**|bool|IsPublic defines the subnet as a public subnet. A subnet is public when it is associated with a route table that has a route to an internet gateway.||
 |**natGatewayId**|str|NatGatewayID is the NAT gateway id associated with the subnet.<br />Ignored unless the subnet is managed by the provider, in which case this is set on the public subnet where the NAT gateway resides. It is then used to determine routes for private subnets in the same AZ as the public subnet.||
 |**routeTableId**|str|RouteTableID is the routing table id associated with the subnet.||
@@ -2394,7 +2457,7 @@ VPC configuration.
 |**tags**|{str:str}|Tags is a collection of tags describing the resource.||
 ### InfrastructureClusterxK8sIoV1beta1AWSClusterTemplateSpecTemplateSpecNetworkVpcIPV6
 
-IPv6 contains ipv6 specific settings for the network. Supported only in managed clusters. This field cannot be set on AWSCluster object.
+IPv6 contains ipv6 specific settings for the network.
 
 #### Attributes
 
@@ -3206,6 +3269,42 @@ AWSCluster is the schema for Amazon EC2 based Kubernetes Cluster API.
 |**metadata**|[ObjectMeta](#objectmeta)|metadata||
 |**spec**|[InfrastructureClusterxK8sIoV1beta2AWSClusterSpec](#infrastructureclusterxk8siov1beta2awsclusterspec)|spec||
 |**status**|[InfrastructureClusterxK8sIoV1beta2AWSClusterStatus](#infrastructureclusterxk8siov1beta2awsclusterstatus)|status||
+### AWSClusterControllerIdentity
+
+AWSClusterControllerIdentity is the Schema for the awsclustercontrolleridentities API It is used to grant access to use Cluster API Provider AWS Controller credentials.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion** `required` `readOnly`|"infrastructure.cluster.x-k8s.io/v1beta2"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"infrastructure.cluster.x-k8s.io/v1beta2"|
+|**kind** `required` `readOnly`|"AWSClusterControllerIdentity"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"AWSClusterControllerIdentity"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec**|[InfrastructureClusterxK8sIoV1beta2AWSClusterControllerIdentitySpec](#infrastructureclusterxk8siov1beta2awsclustercontrolleridentityspec)|spec||
+### AWSClusterRoleIdentity
+
+AWSClusterRoleIdentity is the Schema for the awsclusterroleidentities API It is used to assume a role using the provided sourceRef.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion** `required` `readOnly`|"infrastructure.cluster.x-k8s.io/v1beta2"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"infrastructure.cluster.x-k8s.io/v1beta2"|
+|**kind** `required` `readOnly`|"AWSClusterRoleIdentity"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"AWSClusterRoleIdentity"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec**|[InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpec](#infrastructureclusterxk8siov1beta2awsclusterroleidentityspec)|spec||
+### AWSClusterStaticIdentity
+
+AWSClusterStaticIdentity is the Schema for the awsclusterstaticidentities API It represents a reference to an AWS access key ID and secret access key, stored in a secret.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion** `required` `readOnly`|"infrastructure.cluster.x-k8s.io/v1beta2"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"infrastructure.cluster.x-k8s.io/v1beta2"|
+|**kind** `required` `readOnly`|"AWSClusterStaticIdentity"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"AWSClusterStaticIdentity"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec**|[InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpec](#infrastructureclusterxk8siov1beta2awsclusterstaticidentityspec)|spec||
 ### AWSClusterTemplate
 
 AWSClusterTemplate is the schema for Amazon EC2 based Kubernetes Cluster Templates.
@@ -3685,6 +3784,374 @@ Secret represents a secret that should populate this password.
 | --- | --- | --- | --- |
 |**key** `required`|str|Key is the key in the secret's data map for this value.||
 |**name** `required`|str|Name of the secret in the KubeadmBootstrapConfig's namespace to use.||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigSpec
+
+NodeadmConfigSpec defines the desired state of NodeadmConfig.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**containerd**|[BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecContainerd](#bootstrapclusterxk8siov1beta2nodeadmconfigspeccontainerd)|containerd||
+|**diskSetup**|[BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecDiskSetup](#bootstrapclusterxk8siov1beta2nodeadmconfigspecdisksetup)|disk setup||
+|**featureGates**|{str:bool}|FeatureGates holds key-value pairs to enable or disable application features.||
+|**files**|[[BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecFilesItems0](#bootstrapclusterxk8siov1beta2nodeadmconfigspecfilesitems0)]|Files specifies extra files to be passed to user_data upon creation.||
+|**kubelet**|[BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecKubelet](#bootstrapclusterxk8siov1beta2nodeadmconfigspeckubelet)|kubelet||
+|**mounts**|[[str]]|Mounts specifies a list of mount points to be setup.||
+|**ntp**|[BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecNtp](#bootstrapclusterxk8siov1beta2nodeadmconfigspecntp)|ntp||
+|**preNodeadmCommands**|[str]|PreNodeadmCommands specifies extra commands to run before bootstrapping nodes.||
+|**users**|[[BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecUsersItems0](#bootstrapclusterxk8siov1beta2nodeadmconfigspecusersitems0)]|Users specifies extra users to add.||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecContainerd
+
+Containerd contains options for containerd.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**baseRuntimeSpec**|any|BaseRuntimeSpec is the OCI runtime specification upon which all containers will be based.||
+|**config**|str|Config is an inline containerd configuration TOML that will be merged with the defaults.||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecDiskSetup
+
+DiskSetup specifies options for the creation of partition tables and file systems on devices.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**filesystems**|[[BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecDiskSetupFilesystemsItems0](#bootstrapclusterxk8siov1beta2nodeadmconfigspecdisksetupfilesystemsitems0)]|Filesystems specifies the list of file systems to setup.||
+|**partitions**|[[BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecDiskSetupPartitionsItems0](#bootstrapclusterxk8siov1beta2nodeadmconfigspecdisksetuppartitionsitems0)]|Partitions specifies the list of the partitions to setup.||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecDiskSetupFilesystemsItems0
+
+Filesystem defines the file systems to be created.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**device** `required`|str|Device specifies the device name||
+|**extraOpts**|[str]|ExtraOpts defined extra options to add to the command for creating the file system.||
+|**filesystem** `required`|str|Filesystem specifies the file system type.||
+|**label** `required`|str|Label specifies the file system label to be used. If set to None, no label is used.||
+|**overwrite**|bool|Overwrite defines whether or not to overwrite any existing filesystem.<br />If true, any pre-existing file system will be destroyed. Use with Caution.||
+|**partition**|str|Partition specifies the partition to use. The valid options are: "auto\|any", "auto", "any", "none", and <NUM>, where NUM is the actual partition number.||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecDiskSetupPartitionsItems0
+
+Partition defines how to create and layout a partition.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**device** `required`|str|Device is the name of the device.||
+|**layout** `required`|bool|Layout specifies the device layout.<br />If it is true, a single partition will be created for the entire device.<br />When layout is false, it means don't partition or ignore existing partitioning.||
+|**overwrite**|bool|Overwrite describes whether to skip checks and create the partition if a partition or filesystem is found on the device.<br />Use with caution. Default is 'false'.||
+|**tableType**|str|TableType specifies the tupe of partition table. The following are supported:<br />'mbr': default and setups a MS-DOS partition table<br />'gpt': setups a GPT partition table||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecFilesItems0
+
+File defines the input for generating write_files in cloud-init.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**append**|bool|Append specifies whether to append Content to existing file if Path exists.||
+|**content**|str|Content is the actual content of the file.||
+|**contentFrom**|[BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecFilesItems0ContentFrom](#bootstrapclusterxk8siov1beta2nodeadmconfigspecfilesitems0contentfrom)|content from||
+|**encoding**|"base64" | "gzip" | "gzip+base64"|Encoding specifies the encoding of the file contents.||
+|**owner**|str|Owner specifies the ownership of the file, e.g. "root:root".||
+|**path** `required`|str|Path specifies the full path on disk where to store the file.||
+|**permissions**|str|Permissions specifies the permissions to assign to the file, e.g. "0640".||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecFilesItems0ContentFrom
+
+ContentFrom is a referenced source of content to populate the file.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**secret** `required`|[BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecFilesItems0ContentFromSecret](#bootstrapclusterxk8siov1beta2nodeadmconfigspecfilesitems0contentfromsecret)|secret||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecFilesItems0ContentFromSecret
+
+Secret represents a secret that should populate this file.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**key** `required`|str|Key is the key in the secret's data map for this value.||
+|**name** `required`|str|Name of the secret in the KubeadmBootstrapConfig's namespace to use.||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecKubelet
+
+Kubelet contains options for kubelet.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**config**|any|Config is a KubeletConfiguration that will be merged with the defaults.||
+|**flags**|[str]|Flags are command-line kubelet arguments that will be appended to the defaults.||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecNtp
+
+NTP specifies NTP configuration.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**enabled**|bool|Enabled specifies whether NTP should be enabled||
+|**servers**|[str]|Servers specifies which NTP servers to use||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecUsersItems0
+
+User defines the input for a generated user in cloud-init.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**gecos**|str|Gecos specifies the gecos to use for the user||
+|**groups**|str|Groups specifies the additional groups for the user||
+|**homeDir**|str|HomeDir specifies the home directory to use for the user||
+|**inactive**|bool|Inactive specifies whether to mark the user as inactive||
+|**lockPassword**|bool|LockPassword specifies if password login should be disabled||
+|**name** `required`|str|Name specifies the username||
+|**passwd**|str|Passwd specifies a hashed password for the user||
+|**passwdFrom**|[BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecUsersItems0PasswdFrom](#bootstrapclusterxk8siov1beta2nodeadmconfigspecusersitems0passwdfrom)|passwd from||
+|**primaryGroup**|str|PrimaryGroup specifies the primary group for the user||
+|**shell**|str|Shell specifies the user's shell||
+|**sshAuthorizedKeys**|[str]|SSHAuthorizedKeys specifies a list of ssh authorized keys for the user||
+|**sudo**|str|Sudo specifies a sudo role for the user||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecUsersItems0PasswdFrom
+
+PasswdFrom is a referenced source of passwd to populate the passwd.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**secret** `required`|[BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecUsersItems0PasswdFromSecret](#bootstrapclusterxk8siov1beta2nodeadmconfigspecusersitems0passwdfromsecret)|secret||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigSpecUsersItems0PasswdFromSecret
+
+Secret represents a secret that should populate this password.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**key** `required`|str|Key is the key in the secret's data map for this value.||
+|**name** `required`|str|Name of the secret in the KubeadmBootstrapConfig's namespace to use.||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigStatus
+
+NodeadmConfigStatus defines the observed state of NodeadmConfig.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**conditions**|[[BootstrapClusterxK8sIoV1beta2NodeadmConfigStatusConditionsItems0](#bootstrapclusterxk8siov1beta2nodeadmconfigstatusconditionsitems0)]|Conditions defines current service state of the NodeadmConfig.||
+|**dataSecretName**|str|DataSecretName is the name of the secret that stores the bootstrap data script.||
+|**failureMessage**|str|FailureMessage will be set on non-retryable errors.||
+|**failureReason**|str|FailureReason will be set on non-retryable errors.||
+|**initialization**|[BootstrapClusterxK8sIoV1beta2NodeadmConfigStatusInitialization](#bootstrapclusterxk8siov1beta2nodeadmconfigstatusinitialization)|initialization||
+|**observedGeneration**|int|ObservedGeneration is the latest generation observed by the controller.||
+|**ready**|bool|Deprecated: This field will be removed with the CAPI v1beta2 transition<br />Ready indicates the BootstrapData secret is ready to be consumed.||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigStatusConditionsItems0
+
+Condition defines an observation of a Cluster API resource operational state.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed. If that is not known, then using the time when<br />the API field changed is acceptable.||
+|**message**|str|message is a human readable message indicating details about the transition.<br />This field may be empty.||
+|**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
+|**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
+|**status** `required`|str|status of the condition, one of True, False, Unknown.||
+|**type** `required`|str|||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigStatusInitialization
+
+Initialization provides observations of the NodeadmConfig initialization process. NOTE: Fields in this struct are part of the Cluster API contract and are used to orchestrate initial Machine provisioning.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**dataSecretCreated**|bool|DataSecretCreated is true when the Machine's bootstrap secret is created.<br />NOTE: This field is part of the Cluster API contract, and it is used to orchestrate initial Machine provisioning.||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpec
+
+NodeadmConfigTemplateSpec defines the desired state of templated NodeadmConfig Amazon EKS Configuration resources.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**template** `required`|[BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplate](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplate)|template||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplate
+
+NodeadmConfigTemplateResource defines the Template structure.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**spec**|[BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpec](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespec)|spec||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpec
+
+Spec represents the NodeadmConfig each object created from the template will become. We are setting nullable to avoid this issue: https://github.com/kubernetes/kubernetes/issues/117447#issuecomment-2127733969 where we cannot remove all fields with an SSA patch if they were previously set.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**containerd**|[BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecContainerd](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespeccontainerd)|containerd||
+|**diskSetup**|[BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecDiskSetup](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespecdisksetup)|disk setup||
+|**featureGates**|{str:bool}|FeatureGates holds key-value pairs to enable or disable application features.||
+|**files**|[[BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecFilesItems0](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespecfilesitems0)]|Files specifies extra files to be passed to user_data upon creation.||
+|**kubelet**|[BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecKubelet](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespeckubelet)|kubelet||
+|**mounts**|[[str]]|Mounts specifies a list of mount points to be setup.||
+|**ntp**|[BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecNtp](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespecntp)|ntp||
+|**preNodeadmCommands**|[str]|PreNodeadmCommands specifies extra commands to run before bootstrapping nodes.||
+|**users**|[[BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecUsersItems0](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespecusersitems0)]|Users specifies extra users to add.||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecContainerd
+
+Containerd contains options for containerd.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**baseRuntimeSpec**|any|BaseRuntimeSpec is the OCI runtime specification upon which all containers will be based.||
+|**config**|str|Config is an inline containerd configuration TOML that will be merged with the defaults.||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecDiskSetup
+
+DiskSetup specifies options for the creation of partition tables and file systems on devices.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**filesystems**|[[BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecDiskSetupFilesystemsItems0](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespecdisksetupfilesystemsitems0)]|Filesystems specifies the list of file systems to setup.||
+|**partitions**|[[BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecDiskSetupPartitionsItems0](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespecdisksetuppartitionsitems0)]|Partitions specifies the list of the partitions to setup.||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecDiskSetupFilesystemsItems0
+
+Filesystem defines the file systems to be created.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**device** `required`|str|Device specifies the device name||
+|**extraOpts**|[str]|ExtraOpts defined extra options to add to the command for creating the file system.||
+|**filesystem** `required`|str|Filesystem specifies the file system type.||
+|**label** `required`|str|Label specifies the file system label to be used. If set to None, no label is used.||
+|**overwrite**|bool|Overwrite defines whether or not to overwrite any existing filesystem.<br />If true, any pre-existing file system will be destroyed. Use with Caution.||
+|**partition**|str|Partition specifies the partition to use. The valid options are: "auto\|any", "auto", "any", "none", and <NUM>, where NUM is the actual partition number.||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecDiskSetupPartitionsItems0
+
+Partition defines how to create and layout a partition.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**device** `required`|str|Device is the name of the device.||
+|**layout** `required`|bool|Layout specifies the device layout.<br />If it is true, a single partition will be created for the entire device.<br />When layout is false, it means don't partition or ignore existing partitioning.||
+|**overwrite**|bool|Overwrite describes whether to skip checks and create the partition if a partition or filesystem is found on the device.<br />Use with caution. Default is 'false'.||
+|**tableType**|str|TableType specifies the tupe of partition table. The following are supported:<br />'mbr': default and setups a MS-DOS partition table<br />'gpt': setups a GPT partition table||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecFilesItems0
+
+File defines the input for generating write_files in cloud-init.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**append**|bool|Append specifies whether to append Content to existing file if Path exists.||
+|**content**|str|Content is the actual content of the file.||
+|**contentFrom**|[BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecFilesItems0ContentFrom](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespecfilesitems0contentfrom)|content from||
+|**encoding**|"base64" | "gzip" | "gzip+base64"|Encoding specifies the encoding of the file contents.||
+|**owner**|str|Owner specifies the ownership of the file, e.g. "root:root".||
+|**path** `required`|str|Path specifies the full path on disk where to store the file.||
+|**permissions**|str|Permissions specifies the permissions to assign to the file, e.g. "0640".||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecFilesItems0ContentFrom
+
+ContentFrom is a referenced source of content to populate the file.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**secret** `required`|[BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecFilesItems0ContentFromSecret](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespecfilesitems0contentfromsecret)|secret||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecFilesItems0ContentFromSecret
+
+Secret represents a secret that should populate this file.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**key** `required`|str|Key is the key in the secret's data map for this value.||
+|**name** `required`|str|Name of the secret in the KubeadmBootstrapConfig's namespace to use.||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecKubelet
+
+Kubelet contains options for kubelet.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**config**|any|Config is a KubeletConfiguration that will be merged with the defaults.||
+|**flags**|[str]|Flags are command-line kubelet arguments that will be appended to the defaults.||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecNtp
+
+NTP specifies NTP configuration.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**enabled**|bool|Enabled specifies whether NTP should be enabled||
+|**servers**|[str]|Servers specifies which NTP servers to use||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecUsersItems0
+
+User defines the input for a generated user in cloud-init.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**gecos**|str|Gecos specifies the gecos to use for the user||
+|**groups**|str|Groups specifies the additional groups for the user||
+|**homeDir**|str|HomeDir specifies the home directory to use for the user||
+|**inactive**|bool|Inactive specifies whether to mark the user as inactive||
+|**lockPassword**|bool|LockPassword specifies if password login should be disabled||
+|**name** `required`|str|Name specifies the username||
+|**passwd**|str|Passwd specifies a hashed password for the user||
+|**passwdFrom**|[BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecUsersItems0PasswdFrom](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespecusersitems0passwdfrom)|passwd from||
+|**primaryGroup**|str|PrimaryGroup specifies the primary group for the user||
+|**shell**|str|Shell specifies the user's shell||
+|**sshAuthorizedKeys**|[str]|SSHAuthorizedKeys specifies a list of ssh authorized keys for the user||
+|**sudo**|str|Sudo specifies a sudo role for the user||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecUsersItems0PasswdFrom
+
+PasswdFrom is a referenced source of passwd to populate the passwd.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**secret** `required`|[BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecUsersItems0PasswdFromSecret](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespectemplatespecusersitems0passwdfromsecret)|secret||
+### BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpecTemplateSpecUsersItems0PasswdFromSecret
+
+Secret represents a secret that should populate this password.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**key** `required`|str|Key is the key in the secret's data map for this value.||
+|**name** `required`|str|Name of the secret in the KubeadmBootstrapConfig's namespace to use.||
 ### ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpec
 
 AWSManagedControlPlaneSpec defines the desired state of an Amazon EKS Cluster.
@@ -3694,6 +4161,7 @@ AWSManagedControlPlaneSpec defines the desired state of an Amazon EKS Cluster.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**accessConfig**|[ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpecAccessConfig](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanespecaccessconfig)|access config||
+|**accessEntries**|[[ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpecAccessEntriesItems0](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanespecaccessentriesitems0)]|AccessEntries specifies the access entries for the cluster<br />Access entries require AuthenticationMode to be either "api" or "api_and_config_map"||
 |**additionalTags**|{str:str}|AdditionalTags is an optional set of tags to add to AWS resources managed by the AWS provider, in addition to the<br />ones added by default.||
 |**addons**|[[ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpecAddonsItems0](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanespecaddonsitems0)]|Addons defines the EKS addons to enable with the EKS cluster.||
 |**associateOIDCProvider**|bool|AssociateOIDCProvider can be enabled to automatically create an identity<br />provider for the controller for use with IAM roles for service accounts|False|
@@ -3735,6 +4203,39 @@ AccessConfig specifies the access configuration information for the cluster
 | --- | --- | --- | --- |
 |**authenticationMode**|"config_map" | "api" | "api_and_config_map"|AuthenticationMode specifies the desired authentication mode for the cluster<br />Defaults to config_map|"config_map"|
 |**bootstrapClusterCreatorAdminPermissions**|bool|BootstrapClusterCreatorAdminPermissions grants cluster admin permissions<br />to the IAM identity creating the cluster. Only applied during creation,<br />ignored when updating existing clusters. Defaults to true.|True|
+### ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpecAccessEntriesItems0
+
+AccessEntry represents an AWS EKS access entry for IAM principals
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**accessPolicies**|[[ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpecAccessEntriesItems0AccessPoliciesItems0](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanespecaccessentriesitems0accesspoliciesitems0)]|AccessPolicies specifies the policies to associate with this access entry<br />Cannot be specified if Type is "ec2_linux" or "ec2_windows"||
+|**kubernetesGroups**|[str]|KubernetesGroups represents the Kubernetes groups for the access entry<br />Cannot be specified if Type is "ec2_linux" or "ec2_windows"||
+|**principalARN** `required`|str|PrincipalARN is the Amazon Resource Name (ARN) of the IAM principal||
+|**type**|"standard" | "ec2_linux" | "ec2_windows" | "fargate_linux" | "ec2" | "hybrid_linux" | "hyperpod_linux"||"standard"|
+|**username**|str|Username is the username for the access entry||
+### ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpecAccessEntriesItems0AccessPoliciesItems0
+
+AccessPolicyReference represents a reference to an AWS EKS access policy
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**accessScope** `required`|[ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpecAccessEntriesItems0AccessPoliciesItems0AccessScope](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanespecaccessentriesitems0accesspoliciesitems0accessscope)|access scope||
+|**policyARN** `required`|str|PolicyARN is the Amazon Resource Name (ARN) of the access policy||
+### ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpecAccessEntriesItems0AccessPoliciesItems0AccessScope
+
+AccessScope specifies the scope for the policy
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**namespaces**|[str]|Namespaces are the namespaces for the access scope<br />Only valid when Type is namespace||
+|**type** `required`|"cluster" | "namespace"||"cluster"|
 ### ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpecAddonsItems0
 
 Addon represents a EKS addon.
@@ -3757,7 +4258,7 @@ Bastion contains options to configure the bastion host.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**allowedCIDRBlocks**|[str]|AllowedCIDRBlocks is a list of CIDR blocks allowed to access the bastion host.<br />They are set as ingress rules for the Bastion host's Security Group (defaults to 0.0.0.0/0).||
+|**allowedCIDRBlocks**|[str]|AllowedCIDRBlocks is a list of CIDR blocks allowed to access the bastion host.<br />They are set as ingress rules for the Bastion host's Security Group (defaults to 0.0.0.0/0).<br />If the cluster has IPv6 enabled, defaults to ::/0 and 0.0.0.0/0.||
 |**ami**|str|AMI will use the specified AMI to boot the bastion. If not specified,<br />the AMI will default to one picked out in public space.||
 |**disableIngressRules**|bool|DisableIngressRules will ensure there are no Ingress rules in the bastion host's security group.<br />Requires AllowedCIDRBlocks to be empty.||
 |**enabled**|bool|Enabled allows this provider to create a bastion host instance<br />with a public ip to access the VPC private network.||
@@ -3938,8 +4439,8 @@ SubnetSpec configures an AWS Subnet.
 |**availabilityZone**|str|AvailabilityZone defines the availability zone to use for this subnet in the cluster's region.||
 |**cidrBlock**|str|CidrBlock is the CIDR block to be used when the provider creates a managed VPC.||
 |**id** `required`|str|ID defines a unique identifier to reference this resource.<br />If you're bringing your subnet, set the AWS subnet-id here, it must start with `subnet-`.<br /><br />When the VPC is managed by CAPA, and you'd like the provider to create a subnet for you,<br />the id can be set to any placeholder value that does not start with `subnet-`;<br />upon creation, the subnet AWS identifier will be populated in the `ResourceID` field and<br />the `id` field is going to be used as the subnet name. If you specify a tag<br />called `Name`, it takes precedence.||
-|**ipv6CidrBlock**|str|IPv6CidrBlock is the IPv6 CIDR block to be used when the provider creates a managed VPC.<br />A subnet can have an IPv4 and an IPv6 address.<br />IPv6 is only supported in managed clusters, this field cannot be set on AWSCluster object.||
-|**isIpv6**|bool|IsIPv6 defines the subnet as an IPv6 subnet. A subnet is IPv6 when it is associated with a VPC that has IPv6 enabled.<br />IPv6 is only supported in managed clusters, this field cannot be set on AWSCluster object.||
+|**ipv6CidrBlock**|str|IPv6CidrBlock is the IPv6 CIDR block to be used when the provider creates a managed VPC.<br />A subnet can have an IPv4 and an IPv6 address.||
+|**isIpv6**|bool|IsIPv6 defines the subnet as an IPv6 subnet. A subnet is IPv6 when it is associated with an IPv6 CIDR.||
 |**isPublic**|bool|IsPublic defines the subnet as a public subnet. A subnet is public when it is associated with a route table that has a route to an internet gateway.||
 |**natGatewayId**|str|NatGatewayID is the NAT gateway id associated with the subnet.<br />Ignored unless the subnet is managed by the provider, in which case this is set on the public subnet where the NAT gateway resides. It is then used to determine routes for private subnets in the same AZ as the public subnet.||
 |**parentZoneName**|str|ParentZoneName is the zone name where the current subnet's zone is tied when<br />the zone is a Local Zone.<br /><br />The subnets in Local Zone or Wavelength Zone locations consume the ParentZoneName<br />to select the correct private route table to egress traffic to the internet.||
@@ -3981,7 +4482,7 @@ ElasticIPPool contains specific configuration to allocate Public IPv4 address (E
 |**publicIpv4PoolFallbackOrder**|"amazon-pool" | "none"|PublicIpv4PoolFallBackOrder defines the fallback action when the Public IPv4 Pool has been exhausted,<br />no more IPv4 address available in the pool.<br /><br />When set to 'amazon-pool', the controller check if the pool has available IPv4 address, when pool has reached the<br />IPv4 limit, the address will be claimed from Amazon-pool (default).<br /><br />When set to 'none', the controller will fail the Elastic IP allocation when the publicIpv4Pool is exhausted.||
 ### ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpecNetworkVpcIPV6
 
-IPv6 contains ipv6 specific settings for the network. Supported only in managed clusters. This field cannot be set on AWSCluster object.
+IPv6 contains ipv6 specific settings for the network.
 
 #### Attributes
 
@@ -4001,7 +4502,7 @@ IPAMPool defines the IPAMv6 pool to be used for VPC. Mutually exclusive with Cid
 | --- | --- | --- | --- |
 |**id**|str|ID is the ID of the IPAM pool this provider should use to create VPC.||
 |**name**|str|Name is the name of the IPAM pool this provider should use to create VPC.||
-|**netmaskLength**|int|The netmask length of the IPv4 CIDR you want to allocate to VPC from<br />an Amazon VPC IP Address Manager (IPAM) pool.<br />Defaults to /16 for IPv4 if not specified.||
+|**netmaskLength**|int|The netmask length of the IPv4 CIDR you want to allocate to VPC from<br />an Amazon VPC IP Address Manager (IPAM) pool.<br />Defaults to /16 for IPv4 if not specified.<br />Defaults to /56 for IPv6 if not specified.||
 ### ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpecNetworkVpcIpamPool
 
 IPAMPool defines the IPAMv4 pool to be used for VPC. Mutually exclusive with CidrBlock.
@@ -4012,7 +4513,7 @@ IPAMPool defines the IPAMv4 pool to be used for VPC. Mutually exclusive with Cid
 | --- | --- | --- | --- |
 |**id**|str|ID is the ID of the IPAM pool this provider should use to create VPC.||
 |**name**|str|Name is the name of the IPAM pool this provider should use to create VPC.||
-|**netmaskLength**|int|The netmask length of the IPv4 CIDR you want to allocate to VPC from<br />an Amazon VPC IP Address Manager (IPAM) pool.<br />Defaults to /16 for IPv4 if not specified.||
+|**netmaskLength**|int|The netmask length of the IPv4 CIDR you want to allocate to VPC from<br />an Amazon VPC IP Address Manager (IPAM) pool.<br />Defaults to /16 for IPv4 if not specified.<br />Defaults to /56 for IPv6 if not specified.||
 ### ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpecNetworkVpcSecondaryCidrBlocksItems0
 
 VpcCidrBlock defines the CIDR block and settings to associate with the managed VPC. Currently, only IPv4 is supported.
@@ -4058,7 +4559,7 @@ EnvVar represents an environment variable present in a Container.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**name** `required`|str|Name of the environment variable. Must be a C_IDENTIFIER.||
-|**value**|str|Variable references $(VAR_NAME) are expanded<br />using the previously defined environment variables in the container and<br />any service environment variables. If a variable cannot be resolved,<br />the reference in the input string will be unchanged. Double $ are reduced<br />to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e.<br />"$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".<br />Escaped references will never be expanded, regardless of whether the variable<br />exists or not.<br />Defaults to "".||
+|**value**|str|Variable references $(VAR_NAME) are expanded<br />using the previously defined environment variables in the container and<br />any service environment variables. If a variable cannot be resolved,<br />the reference in the input string will be unchanged. Double $$ are reduced<br />to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e.<br />"$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".<br />Escaped references will never be expanded, regardless of whether the variable<br />exists or not.<br />Defaults to "".||
 |**valueFrom**|[ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpecVpcCniEnvItems0ValueFrom](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanespecvpccnienvitems0valuefrom)|value from||
 ### ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneSpecVpcCniEnvItems0ValueFrom
 
@@ -4171,6 +4672,7 @@ Bastion holds details of the instance that is used as a bastion jump box
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**addresses**|[[ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneStatusBastionAddressesItems0](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanestatusbastionaddressesitems0)]|Addresses contains the AWS instance associated addresses.||
+|**assignPrimaryIPv6**|str|AssignPrimaryIPv6 specifies whether to enable assigning a primary IPv6 address to the primary network Interface.||
 |**availabilityZone**|str|Availability zone of instance||
 |**capacityReservationId**|str|CapacityReservationID specifies the target Capacity Reservation into which the instance should be launched.||
 |**capacityReservationPreference**|str|CapacityReservationPreference specifies the preference for use of Capacity Reservations by the instance. Valid values include:<br />"Open": The instance may make use of open Capacity Reservations that match its AZ and InstanceType<br />"None": The instance may not make use of any Capacity Reservations. This is to conserve open reservations for desired workloads<br />"CapacityReservationsOnly": The instance will only run if matched or targeted to a Capacity Reservation. Note that this is incompatible with a MarketType of `Spot`||
@@ -4185,6 +4687,7 @@ Bastion holds details of the instance that is used as a bastion jump box
 |**imageId**|str|The ID of the AMI used to launch the instance.||
 |**instanceMetadataOptions**|[ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneStatusBastionInstanceMetadataOptions](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanestatusbastioninstancemetadataoptions)|instance metadata options||
 |**instanceState**|str|The current state of the instance.||
+|**ipv6Address**|str|The IPv6 address assigned to the instance.||
 |**marketType**|"OnDemand" | "Spot" | "CapacityBlock"|MarketType specifies the type of market for the EC2 instance. Valid values include:<br />"OnDemand" (default): The instance runs as a standard OnDemand instance.<br />"Spot": The instance runs as a Spot instance. When SpotMarketOptions is provided, the marketType defaults to "Spot".<br />"CapacityBlock": The instance utilizes pre-purchased compute capacity (capacity blocks) with AWS Capacity Reservations.<br />If this value is selected, CapacityReservationID must be specified to identify the target reservation.<br />If marketType is not specified and spotMarketOptions is provided, the marketType defaults to "Spot".||
 |**networkInterfaceType**|str|NetworkInterfaceType is the interface type of the primary network Interface.||
 |**networkInterfaces**|[str]|Specifies ENIs attached to instance||
@@ -4224,6 +4727,7 @@ CPUOptions defines CPU-related settings for the instance, including the confiden
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**confidentialCompute**|"Disabled" | "AMDEncryptedVirtualizationNestedPaging"|ConfidentialCompute specifies whether confidential computing should be enabled for the instance,<br />and, if so, which confidential computing technology to use.<br />Valid values are: Disabled, AMDEncryptedVirtualizationNestedPaging<br />When set to Disabled, confidential computing will be disabled for the instance.<br />When set to AMDEncryptedVirtualizationNestedPaging, AMD SEV-SNP will be used as the confidential computing technology for the instance.<br />In this case, ensure the following conditions are met:<br />1) The selected instance type supports AMD SEV-SNP.<br />2) The selected AWS region supports AMD SEV-SNP.<br />3) The selected AMI supports AMD SEV-SNP.<br />More details can be checked at https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sev-snp.html<br />When omitted, this means no opinion and the AWS platform is left to choose a reasonable default,<br />which is subject to change without notice. The current default is Disabled.||
+|**nestedVirtualization**|"enabled" | "disabled"|NestedVirtualization specifies whether to enable nested virtualization on the instance.<br />Nested virtualization is supported on C8i, M8i, and R8i instance types.<br />Valid values are: enabled, disabled||
 ### ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneStatusBastionDynamicHostAllocation
 
 DynamicHostAllocation enables automatic allocation of dedicated hosts. This field is mutually exclusive with HostID.
@@ -4242,6 +4746,7 @@ InstanceMetadataOptions is the metadata options for the EC2 instance.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**httpEndpoint**|"enabled" | "disabled"|Enables or disables the HTTP metadata endpoint on your instances.<br /><br />If you specify a value of disabled, you cannot access your instance metadata.<br /><br />Default: enabled|"enabled"|
+|**httpProtocolIpv6**|"enabled" | "disabled"|Enables or disables the IPv6 endpoint for the instance metadata service.<br />This applies only if you enabled the HTTP metadata endpoint.<br /><br />Default: disabled|"disabled"|
 |**httpPutResponseHopLimit**|int|The desired HTTP PUT response hop limit for instance metadata requests. The<br />larger the number, the further instance metadata requests can travel.<br /><br />Default: 1|1|
 |**httpTokens**|"optional" | "required"|The state of token usage for your instance metadata requests.<br /><br />If the state is optional, you can choose to retrieve instance metadata with<br />or without a session token on your request. If you retrieve the IAM role<br />credentials without a token, the version 1.0 role credentials are returned.<br />If you retrieve the IAM role credentials using a valid session token, the<br />version 2.0 role credentials are returned.<br /><br />If the state is required, you must send a session token with any instance<br />metadata retrieval requests. In this state, retrieving the IAM role credentials<br />always returns the version 2.0 credentials; the version 1.0 credentials are<br />not available.<br /><br />Default: optional|"optional"|
 |**instanceMetadataTags**|"enabled" | "disabled"|Set to enabled to allow access to instance tags from the instance metadata.<br />Set to disabled to turn off access to instance tags from the instance metadata.<br />For more information, see Work with instance tags using the instance metadata<br />(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#work-with-tags-in-IMDS).<br /><br />Default: disabled|"disabled"|
@@ -4357,6 +4862,7 @@ APIServerELB is the Kubernetes api server load balancer.
 |**elbListeners**|[[ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneStatusNetworkStatusAPIServerElbElbListenersItems0](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanestatusnetworkstatusapiserverelbelblistenersitems0)]|ELBListeners is an array of listeners associated with the load balancer. There must be at least one.||
 |**healthChecks**|[ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneStatusNetworkStatusAPIServerElbHealthChecks](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanestatusnetworkstatusapiserverelbhealthchecks)|health checks||
 |**listeners**|[[ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneStatusNetworkStatusAPIServerElbListenersItems0](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanestatusnetworkstatusapiserverelblistenersitems0)]|ClassicELBListeners is an array of classic elb listeners associated with the load balancer. There must be at least one.||
+|**loadBalancerIPAddressType**|"ipv4" | "dualstack" | "dualstack-without-public-ipv4"|LoadBalancerIPAddressType specifies the IP address type for the load balancer.||
 |**loadBalancerType**|"classic" | "elb" | "alb" | "nlb"|LoadBalancerType sets the type for a load balancer. The default type is classic.||
 |**name**|str|The name of the load balancer. It must be unique within the set of load balancers<br />defined in the region. It also serves as identifier.||
 |**scheme**|str|Scheme is the load balancer scheme, either internet-facing or private.||
@@ -4392,6 +4898,7 @@ TargetGroupSpec specifies target group settings for a given listener. This is cr
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**ipType**|str|IPType is the IP address type for the target group.||
 |**name** `required`|str|Name of the TargetGroup. Must be unique over the same group of listeners.||
 |**port** `required`|int|Port is the exposed port||
 |**protocol** `required`|"tcp" | "tls" | "udp" | "TCP" | "TLS" | "UDP"|||
@@ -4453,6 +4960,7 @@ SecondaryAPIServerELB is the secondary Kubernetes api server load balancer.
 |**elbListeners**|[[ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneStatusNetworkStatusSecondaryAPIServerELBElbListenersItems0](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanestatusnetworkstatussecondaryapiserverelbelblistenersitems0)]|ELBListeners is an array of listeners associated with the load balancer. There must be at least one.||
 |**healthChecks**|[ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneStatusNetworkStatusSecondaryAPIServerELBHealthChecks](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanestatusnetworkstatussecondaryapiserverelbhealthchecks)|health checks||
 |**listeners**|[[ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneStatusNetworkStatusSecondaryAPIServerELBListenersItems0](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanestatusnetworkstatussecondaryapiserverelblistenersitems0)]|ClassicELBListeners is an array of classic elb listeners associated with the load balancer. There must be at least one.||
+|**loadBalancerIPAddressType**|"ipv4" | "dualstack" | "dualstack-without-public-ipv4"|LoadBalancerIPAddressType specifies the IP address type for the load balancer.||
 |**loadBalancerType**|"classic" | "elb" | "alb" | "nlb"|LoadBalancerType sets the type for a load balancer. The default type is classic.||
 |**name**|str|The name of the load balancer. It must be unique within the set of load balancers<br />defined in the region. It also serves as identifier.||
 |**scheme**|str|Scheme is the load balancer scheme, either internet-facing or private.||
@@ -4488,6 +4996,7 @@ TargetGroupSpec specifies target group settings for a given listener. This is cr
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**ipType**|str|IPType is the IP address type for the target group.||
 |**name** `required`|str|Name of the TargetGroup. Must be unique over the same group of listeners.||
 |**port** `required`|int|Port is the exposed port||
 |**protocol** `required`|"tcp" | "tls" | "udp" | "TCP" | "TLS" | "UDP"|||
@@ -4599,6 +5108,7 @@ AWSManagedControlPlaneSpec defines the desired state of an Amazon EKS Cluster.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**accessConfig**|[ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpecAccessConfig](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanetemplatespectemplatespecaccessconfig)|access config||
+|**accessEntries**|[[ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpecAccessEntriesItems0](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanetemplatespectemplatespecaccessentriesitems0)]|AccessEntries specifies the access entries for the cluster<br />Access entries require AuthenticationMode to be either "api" or "api_and_config_map"||
 |**additionalTags**|{str:str}|AdditionalTags is an optional set of tags to add to AWS resources managed by the AWS provider, in addition to the<br />ones added by default.||
 |**addons**|[[ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpecAddonsItems0](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanetemplatespectemplatespecaddonsitems0)]|Addons defines the EKS addons to enable with the EKS cluster.||
 |**associateOIDCProvider**|bool|AssociateOIDCProvider can be enabled to automatically create an identity<br />provider for the controller for use with IAM roles for service accounts|False|
@@ -4640,6 +5150,39 @@ AccessConfig specifies the access configuration information for the cluster
 | --- | --- | --- | --- |
 |**authenticationMode**|"config_map" | "api" | "api_and_config_map"|AuthenticationMode specifies the desired authentication mode for the cluster<br />Defaults to config_map|"config_map"|
 |**bootstrapClusterCreatorAdminPermissions**|bool|BootstrapClusterCreatorAdminPermissions grants cluster admin permissions<br />to the IAM identity creating the cluster. Only applied during creation,<br />ignored when updating existing clusters. Defaults to true.|True|
+### ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpecAccessEntriesItems0
+
+AccessEntry represents an AWS EKS access entry for IAM principals
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**accessPolicies**|[[ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpecAccessEntriesItems0AccessPoliciesItems0](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanetemplatespectemplatespecaccessentriesitems0accesspoliciesitems0)]|AccessPolicies specifies the policies to associate with this access entry<br />Cannot be specified if Type is "ec2_linux" or "ec2_windows"||
+|**kubernetesGroups**|[str]|KubernetesGroups represents the Kubernetes groups for the access entry<br />Cannot be specified if Type is "ec2_linux" or "ec2_windows"||
+|**principalARN** `required`|str|PrincipalARN is the Amazon Resource Name (ARN) of the IAM principal||
+|**type**|"standard" | "ec2_linux" | "ec2_windows" | "fargate_linux" | "ec2" | "hybrid_linux" | "hyperpod_linux"||"standard"|
+|**username**|str|Username is the username for the access entry||
+### ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpecAccessEntriesItems0AccessPoliciesItems0
+
+AccessPolicyReference represents a reference to an AWS EKS access policy
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**accessScope** `required`|[ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpecAccessEntriesItems0AccessPoliciesItems0AccessScope](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanetemplatespectemplatespecaccessentriesitems0accesspoliciesitems0accessscope)|access scope||
+|**policyARN** `required`|str|PolicyARN is the Amazon Resource Name (ARN) of the access policy||
+### ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpecAccessEntriesItems0AccessPoliciesItems0AccessScope
+
+AccessScope specifies the scope for the policy
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**namespaces**|[str]|Namespaces are the namespaces for the access scope<br />Only valid when Type is namespace||
+|**type** `required`|"cluster" | "namespace"||"cluster"|
 ### ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpecAddonsItems0
 
 Addon represents a EKS addon.
@@ -4662,7 +5205,7 @@ Bastion contains options to configure the bastion host.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**allowedCIDRBlocks**|[str]|AllowedCIDRBlocks is a list of CIDR blocks allowed to access the bastion host.<br />They are set as ingress rules for the Bastion host's Security Group (defaults to 0.0.0.0/0).||
+|**allowedCIDRBlocks**|[str]|AllowedCIDRBlocks is a list of CIDR blocks allowed to access the bastion host.<br />They are set as ingress rules for the Bastion host's Security Group (defaults to 0.0.0.0/0).<br />If the cluster has IPv6 enabled, defaults to ::/0 and 0.0.0.0/0.||
 |**ami**|str|AMI will use the specified AMI to boot the bastion. If not specified,<br />the AMI will default to one picked out in public space.||
 |**disableIngressRules**|bool|DisableIngressRules will ensure there are no Ingress rules in the bastion host's security group.<br />Requires AllowedCIDRBlocks to be empty.||
 |**enabled**|bool|Enabled allows this provider to create a bastion host instance<br />with a public ip to access the VPC private network.||
@@ -4843,8 +5386,8 @@ SubnetSpec configures an AWS Subnet.
 |**availabilityZone**|str|AvailabilityZone defines the availability zone to use for this subnet in the cluster's region.||
 |**cidrBlock**|str|CidrBlock is the CIDR block to be used when the provider creates a managed VPC.||
 |**id** `required`|str|ID defines a unique identifier to reference this resource.<br />If you're bringing your subnet, set the AWS subnet-id here, it must start with `subnet-`.<br /><br />When the VPC is managed by CAPA, and you'd like the provider to create a subnet for you,<br />the id can be set to any placeholder value that does not start with `subnet-`;<br />upon creation, the subnet AWS identifier will be populated in the `ResourceID` field and<br />the `id` field is going to be used as the subnet name. If you specify a tag<br />called `Name`, it takes precedence.||
-|**ipv6CidrBlock**|str|IPv6CidrBlock is the IPv6 CIDR block to be used when the provider creates a managed VPC.<br />A subnet can have an IPv4 and an IPv6 address.<br />IPv6 is only supported in managed clusters, this field cannot be set on AWSCluster object.||
-|**isIpv6**|bool|IsIPv6 defines the subnet as an IPv6 subnet. A subnet is IPv6 when it is associated with a VPC that has IPv6 enabled.<br />IPv6 is only supported in managed clusters, this field cannot be set on AWSCluster object.||
+|**ipv6CidrBlock**|str|IPv6CidrBlock is the IPv6 CIDR block to be used when the provider creates a managed VPC.<br />A subnet can have an IPv4 and an IPv6 address.||
+|**isIpv6**|bool|IsIPv6 defines the subnet as an IPv6 subnet. A subnet is IPv6 when it is associated with an IPv6 CIDR.||
 |**isPublic**|bool|IsPublic defines the subnet as a public subnet. A subnet is public when it is associated with a route table that has a route to an internet gateway.||
 |**natGatewayId**|str|NatGatewayID is the NAT gateway id associated with the subnet.<br />Ignored unless the subnet is managed by the provider, in which case this is set on the public subnet where the NAT gateway resides. It is then used to determine routes for private subnets in the same AZ as the public subnet.||
 |**parentZoneName**|str|ParentZoneName is the zone name where the current subnet's zone is tied when<br />the zone is a Local Zone.<br /><br />The subnets in Local Zone or Wavelength Zone locations consume the ParentZoneName<br />to select the correct private route table to egress traffic to the internet.||
@@ -4886,7 +5429,7 @@ ElasticIPPool contains specific configuration to allocate Public IPv4 address (E
 |**publicIpv4PoolFallbackOrder**|"amazon-pool" | "none"|PublicIpv4PoolFallBackOrder defines the fallback action when the Public IPv4 Pool has been exhausted,<br />no more IPv4 address available in the pool.<br /><br />When set to 'amazon-pool', the controller check if the pool has available IPv4 address, when pool has reached the<br />IPv4 limit, the address will be claimed from Amazon-pool (default).<br /><br />When set to 'none', the controller will fail the Elastic IP allocation when the publicIpv4Pool is exhausted.||
 ### ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpecNetworkVpcIPV6
 
-IPv6 contains ipv6 specific settings for the network. Supported only in managed clusters. This field cannot be set on AWSCluster object.
+IPv6 contains ipv6 specific settings for the network.
 
 #### Attributes
 
@@ -4906,7 +5449,7 @@ IPAMPool defines the IPAMv6 pool to be used for VPC. Mutually exclusive with Cid
 | --- | --- | --- | --- |
 |**id**|str|ID is the ID of the IPAM pool this provider should use to create VPC.||
 |**name**|str|Name is the name of the IPAM pool this provider should use to create VPC.||
-|**netmaskLength**|int|The netmask length of the IPv4 CIDR you want to allocate to VPC from<br />an Amazon VPC IP Address Manager (IPAM) pool.<br />Defaults to /16 for IPv4 if not specified.||
+|**netmaskLength**|int|The netmask length of the IPv4 CIDR you want to allocate to VPC from<br />an Amazon VPC IP Address Manager (IPAM) pool.<br />Defaults to /16 for IPv4 if not specified.<br />Defaults to /56 for IPv6 if not specified.||
 ### ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpecNetworkVpcIpamPool
 
 IPAMPool defines the IPAMv4 pool to be used for VPC. Mutually exclusive with CidrBlock.
@@ -4917,7 +5460,7 @@ IPAMPool defines the IPAMv4 pool to be used for VPC. Mutually exclusive with Cid
 | --- | --- | --- | --- |
 |**id**|str|ID is the ID of the IPAM pool this provider should use to create VPC.||
 |**name**|str|Name is the name of the IPAM pool this provider should use to create VPC.||
-|**netmaskLength**|int|The netmask length of the IPv4 CIDR you want to allocate to VPC from<br />an Amazon VPC IP Address Manager (IPAM) pool.<br />Defaults to /16 for IPv4 if not specified.||
+|**netmaskLength**|int|The netmask length of the IPv4 CIDR you want to allocate to VPC from<br />an Amazon VPC IP Address Manager (IPAM) pool.<br />Defaults to /16 for IPv4 if not specified.<br />Defaults to /56 for IPv6 if not specified.||
 ### ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpecNetworkVpcSecondaryCidrBlocksItems0
 
 VpcCidrBlock defines the CIDR block and settings to associate with the managed VPC. Currently, only IPv4 is supported.
@@ -4963,7 +5506,7 @@ EnvVar represents an environment variable present in a Container.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**name** `required`|str|Name of the environment variable. Must be a C_IDENTIFIER.||
-|**value**|str|Variable references $(VAR_NAME) are expanded<br />using the previously defined environment variables in the container and<br />any service environment variables. If a variable cannot be resolved,<br />the reference in the input string will be unchanged. Double $ are reduced<br />to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e.<br />"$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".<br />Escaped references will never be expanded, regardless of whether the variable<br />exists or not.<br />Defaults to "".||
+|**value**|str|Variable references $(VAR_NAME) are expanded<br />using the previously defined environment variables in the container and<br />any service environment variables. If a variable cannot be resolved,<br />the reference in the input string will be unchanged. Double $$ are reduced<br />to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e.<br />"$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".<br />Escaped references will never be expanded, regardless of whether the variable<br />exists or not.<br />Defaults to "".||
 |**valueFrom**|[ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpecVpcCniEnvItems0ValueFrom](#controlplaneclusterxk8siov1beta2awsmanagedcontrolplanetemplatespectemplatespecvpccnienvitems0valuefrom)|value from||
 ### ControlplaneClusterxK8sIoV1beta2AWSManagedControlPlaneTemplateSpecTemplateSpecVpcCniEnvItems0ValueFrom
 
@@ -5033,7 +5576,8 @@ RosaControlPlaneSpec defines the desired state of ROSAControlPlane.
 |**autoNode**|[ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecAutoNode](#controlplaneclusterxk8siov1beta2rosacontrolplanespecautonode)|auto node||
 |**availabilityZones**|[str]|AvailabilityZones describe AWS AvailabilityZones of the worker nodes.<br />should match the AvailabilityZones of the provided Subnets.<br />a machinepool will be created for each availabilityZone.||
 |**billingAccount**|str|BillingAccount is an optional AWS account to use for billing the subscription fees for ROSA HCP clusters.<br />The cost of running each ROSA HCP cluster will be billed to the infrastructure account in which the cluster<br />is running.||
-|**channelGroup** `required`|"stable" | "eus" | "fast" | "candidate" | "nightly"|OpenShift version channel group, default is stable.|"stable"|
+|**channel**|str|Channel is the Y-stream OpenShift channel to use for this cluster, for example "stable-4.16" or "eus-4.16".<br />This determines which Y-stream versions are available for upgrades.<br />When not specified, OCM will determine the appropriate channel based on the cluster version.<br />If Channel is set, ChannelGroup will be ignored.||
+|**channelGroup**|"stable" | "eus" | "fast" | "candidate" | "nightly"|OpenShift version channel group.<br />When not specified, OCM will determine the appropriate channel group based on the cluster version.<br />This field will be deprecated in a future release in favor of the Channel field.||
 |**cloudWatchlogForwarder**|[ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecCloudWatchlogForwarder](#controlplaneclusterxk8siov1beta2rosacontrolplanespeccloudwatchlogforwarder)|cloud watchlog forwarder||
 |**clusterRegistryConfig**|[ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecClusterRegistryConfig](#controlplaneclusterxk8siov1beta2rosacontrolplanespecclusterregistryconfig)|cluster registry config||
 |**controlPlaneEndpoint**|[ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecControlPlaneEndpoint](#controlplaneclusterxk8siov1beta2rosacontrolplanespeccontrolplaneendpoint)|control plane endpoint||
@@ -5044,6 +5588,7 @@ RosaControlPlaneSpec defines the desired state of ROSAControlPlane.
 |**endpointAccess**|"Public" | "Private"|EndpointAccess specifies the publishing scope of cluster endpoints. The<br />default is Public.|"Public"|
 |**etcdEncryptionKMSARN**|str|EtcdEncryptionKMSARN is the ARN of the KMS key used to encrypt etcd. The key itself needs to be<br />created out-of-band by the user and tagged with `red-hat:true`.||
 |**externalAuthProviders**|[[ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecExternalAuthProvidersItems0](#controlplaneclusterxk8siov1beta2rosacontrolplanespecexternalauthprovidersitems0)]|ExternalAuthProviders are external OIDC identity providers that can issue tokens for this cluster.<br />Can only be set if "enableExternalAuthProviders" is set to "True".<br /><br />At most one provider can be configured.||
+|**fips**|"Enabled" | "Disabled"|FIPS configures FIPS-validated / Modules in Process cryptographic libraries.<br />FIPS (Federal Information Processing Standard) 140-2 is a U.S. government standard<br />that validates cryptographic modules used to protect sensitive information.<br /><br />When set to "Enabled", the cluster will use FIPS 140-2 validated cryptographic modules.<br />This setting is immutable and cannot be changed after cluster creation.<br /><br />IMPORTANT: When FIPS is enabled, etcdEncryptionKMSARN must be provided.<br />The KMS key must be tagged with 'red-hat:true'.|"Disabled"|
 |**identityRef**|[ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecIdentityRef](#controlplaneclusterxk8siov1beta2rosacontrolplanespecidentityref)|identity ref||
 |**installerRoleARN**|str|InstallerRoleARN is an AWS IAM role that OpenShift Cluster Manager will assume to create the cluster.<br />Required if RosaRoleConfigRef is not specified.||
 |**network**|[ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneSpecNetwork](#controlplaneclusterxk8siov1beta2rosacontrolplanespecnetwork)|network||
@@ -5337,6 +5882,7 @@ RosaControlPlaneStatus defines the observed state of ROSAControlPlane.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**availableChannels**|[str]|Available channels for the ROSA hosted control plane.||
 |**availableUpgrades**|[str]|Available upgrades for the ROSA hosted control plane.||
 |**conditions**|[[ControlplaneClusterxK8sIoV1beta2ROSAControlPlaneStatusConditionsItems0](#controlplaneclusterxk8siov1beta2rosacontrolplanestatusconditionsitems0)]|Conditions specifies the conditions for the managed control plane||
 |**consoleURL**|str|ConsoleURL is the url for the openshift console.||
@@ -5363,7 +5909,7 @@ Condition defines an observation of a Cluster API resource operational state.
 |**type** `required`|str|||
 ### EKSConfig
 
-EKSConfig is the schema for the Amazon EKS Machine Bootstrap Configuration API.
+EKSConfig is the schema for the Amazon EKS Machine Bootstrap Configuration API.  Deprecated: EKSConfig is deprecated and will be removed in a future release. Amazon Linux 2 (AL2) reaches end-of-life in June 2026 see: https://aws.amazon.com/amazon-linux-2/faqs/ Please use NodeadmConfig with Amazon Linux 2023 (AL2023) instead.
 
 #### Attributes
 
@@ -5386,6 +5932,103 @@ EKSConfigTemplate is the Amazon EKS Bootstrap Configuration Template API.
 |**kind** `required` `readOnly`|"EKSConfigTemplate"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"EKSConfigTemplate"|
 |**metadata**|[ObjectMeta](#objectmeta)|metadata||
 |**spec**|[BootstrapClusterxK8sIoV1beta2EKSConfigTemplateSpec](#bootstrapclusterxk8siov1beta2eksconfigtemplatespec)|spec||
+### InfrastructureClusterxK8sIoV1beta2AWSClusterControllerIdentitySpec
+
+Spec for this AWSClusterControllerIdentity.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**allowedNamespaces**|[InfrastructureClusterxK8sIoV1beta2AWSClusterControllerIdentitySpecAllowedNamespaces](#infrastructureclusterxk8siov1beta2awsclustercontrolleridentityspecallowednamespaces)|allowed namespaces||
+### InfrastructureClusterxK8sIoV1beta2AWSClusterControllerIdentitySpecAllowedNamespaces
+
+AllowedNamespaces is used to identify which namespaces are allowed to use the identity from. Namespaces can be selected either using an array of namespaces or with label selector. An empty allowedNamespaces object indicates that AWSClusters can use this identity from any namespace. If this object is nil, no namespaces will be allowed (default behaviour, if this field is not provided) A namespace should be either in the NamespaceList or match with Selector to use the identity.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**list**|[str]|An nil or empty list indicates that AWSClusters cannot use the identity from any namespace.||
+|**selector**|[InfrastructureClusterxK8sIoV1beta2AWSClusterControllerIdentitySpecAllowedNamespacesSelector](#infrastructureclusterxk8siov1beta2awsclustercontrolleridentityspecallowednamespacesselector)|selector||
+### InfrastructureClusterxK8sIoV1beta2AWSClusterControllerIdentitySpecAllowedNamespacesSelector
+
+An empty selector indicates that AWSClusters cannot use this AWSClusterIdentity from any namespace.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**matchExpressions**|[[InfrastructureClusterxK8sIoV1beta2AWSClusterControllerIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0](#infrastructureclusterxk8siov1beta2awsclustercontrolleridentityspecallowednamespacesselectormatchexpressionsitems0)]|matchExpressions is a list of label selector requirements. The requirements are ANDed.||
+|**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels<br />map is equivalent to an element of matchExpressions, whose key field is "key", the<br />operator is "In", and the values array contains only "value". The requirements are ANDed.||
+### InfrastructureClusterxK8sIoV1beta2AWSClusterControllerIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0
+
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**key** `required`|str|key is the label key that the selector applies to.||
+|**operator** `required`|str|operator represents a key's relationship to a set of values.<br />Valid operators are In, NotIn, Exists and DoesNotExist.||
+|**values**|[str]|values is an array of string values. If the operator is In or NotIn,<br />the values array must be non-empty. If the operator is Exists or DoesNotExist,<br />the values array must be empty. This array is replaced during a strategic<br />merge patch.||
+### InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpec
+
+Spec for this AWSClusterRoleIdentity.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**allowedNamespaces**|[InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecAllowedNamespaces](#infrastructureclusterxk8siov1beta2awsclusterroleidentityspecallowednamespaces)|allowed namespaces||
+|**durationSeconds**|int|The duration, in seconds, of the role session before it is renewed.||
+|**externalID**|str|A unique identifier that might be required when you assume a role in another account.<br />If the administrator of the account to which the role belongs provided you with an<br />external ID, then provide that value in the ExternalId parameter. This value can be<br />any string, such as a passphrase or account number. A cross-account role is usually<br />set up to trust everyone in an account. Therefore, the administrator of the trusting<br />account might send an external ID to the administrator of the trusted account. That<br />way, only someone with the ID can assume the role, rather than everyone in the<br />account. For more information about the external ID, see How to Use an External ID<br />When Granting Access to Your AWS Resources to a Third Party in the IAM User Guide.||
+|**inlinePolicy**|str|An IAM policy as a JSON-encoded string that you want to use as an inline session policy.||
+|**policyARNs**|[str]|The Amazon Resource Names (ARNs) of the IAM managed policies that you want<br />to use as managed session policies.<br />The policies must exist in the same account as the role.||
+|**roleARN** `required`|str|The Amazon Resource Name (ARN) of the role to assume.||
+|**sessionName**|str|An identifier for the assumed role session||
+|**sourceIdentityRef**|[InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecSourceIdentityRef](#infrastructureclusterxk8siov1beta2awsclusterroleidentityspecsourceidentityref)|source identity ref||
+### InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecAllowedNamespaces
+
+AllowedNamespaces is used to identify which namespaces are allowed to use the identity from. Namespaces can be selected either using an array of namespaces or with label selector. An empty allowedNamespaces object indicates that AWSClusters can use this identity from any namespace. If this object is nil, no namespaces will be allowed (default behaviour, if this field is not provided) A namespace should be either in the NamespaceList or match with Selector to use the identity.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**list**|[str]|An nil or empty list indicates that AWSClusters cannot use the identity from any namespace.||
+|**selector**|[InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecAllowedNamespacesSelector](#infrastructureclusterxk8siov1beta2awsclusterroleidentityspecallowednamespacesselector)|selector||
+### InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecAllowedNamespacesSelector
+
+An empty selector indicates that AWSClusters cannot use this AWSClusterIdentity from any namespace.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**matchExpressions**|[[InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0](#infrastructureclusterxk8siov1beta2awsclusterroleidentityspecallowednamespacesselectormatchexpressionsitems0)]|matchExpressions is a list of label selector requirements. The requirements are ANDed.||
+|**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels<br />map is equivalent to an element of matchExpressions, whose key field is "key", the<br />operator is "In", and the values array contains only "value". The requirements are ANDed.||
+### InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0
+
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**key** `required`|str|key is the label key that the selector applies to.||
+|**operator** `required`|str|operator represents a key's relationship to a set of values.<br />Valid operators are In, NotIn, Exists and DoesNotExist.||
+|**values**|[str]|values is an array of string values. If the operator is In or NotIn,<br />the values array must be non-empty. If the operator is Exists or DoesNotExist,<br />the values array must be empty. This array is replaced during a strategic<br />merge patch.||
+### InfrastructureClusterxK8sIoV1beta2AWSClusterRoleIdentitySpecSourceIdentityRef
+
+SourceIdentityRef is a reference to another identity which will be chained to do role assumption. All identity types are accepted.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**kind** `required`|"AWSClusterControllerIdentity" | "AWSClusterRoleIdentity" | "AWSClusterStaticIdentity"|Kind of the identity.||
+|**name** `required`|str|Name of the identity.||
 ### InfrastructureClusterxK8sIoV1beta2AWSClusterSpec
 
 AWSClusterSpec defines the desired state of an EC2-based Kubernetes cluster.
@@ -5416,7 +6059,7 @@ Bastion contains options to configure the bastion host.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**allowedCIDRBlocks**|[str]|AllowedCIDRBlocks is a list of CIDR blocks allowed to access the bastion host.<br />They are set as ingress rules for the Bastion host's Security Group (defaults to 0.0.0.0/0).||
+|**allowedCIDRBlocks**|[str]|AllowedCIDRBlocks is a list of CIDR blocks allowed to access the bastion host.<br />They are set as ingress rules for the Bastion host's Security Group (defaults to 0.0.0.0/0).<br />If the cluster has IPv6 enabled, defaults to ::/0 and 0.0.0.0/0.||
 |**ami**|str|AMI will use the specified AMI to boot the bastion. If not specified,<br />the AMI will default to one picked out in public space.||
 |**disableIngressRules**|bool|DisableIngressRules will ensure there are no Ingress rules in the bastion host's security group.<br />Requires AllowedCIDRBlocks to be empty.||
 |**enabled**|bool|Enabled allows this provider to create a bastion host instance<br />with a public ip to access the VPC private network.||
@@ -5451,6 +6094,7 @@ ControlPlaneLoadBalancer is optional configuration for customizing control plane
 |**preserveClientIP**|bool|PreserveClientIP lets the user control if preservation of client ips must be retained or not.<br />If this is enabled 6443 will be opened to 0.0.0.0/0.||
 |**scheme**|"internet-facing" | "internal"|Scheme sets the scheme of the load balancer (defaults to internet-facing)|"internet-facing"|
 |**subnets**|[str]|Subnets sets the subnets that should be applied to the control plane load balancer (defaults to discovered subnets for managed VPCs or an empty set for unmanaged VPCs)||
+|**targetGroupIPType**|"ipv4" | "ipv6"|TargetGroupIPType sets the IP address type for the target group.<br />Valid values are ipv4 and ipv6. If not specified, defaults to ipv4 unless<br />the VPC has IPv6 enabled, in which case it defaults to ipv6.<br />This applies to the API server target group.<br />This field cannot be set if LoadBalancerType is classic or disabled.||
 ### InfrastructureClusterxK8sIoV1beta2AWSClusterSpecControlPlaneLoadBalancerAdditionalListenersItems0
 
 AdditionalListenerSpec defines the desired state of an additional listener on an AWS load balancer.
@@ -5462,6 +6106,7 @@ AdditionalListenerSpec defines the desired state of an additional listener on an
 |**healthCheck**|[InfrastructureClusterxK8sIoV1beta2AWSClusterSpecControlPlaneLoadBalancerAdditionalListenersItems0HealthCheck](#infrastructureclusterxk8siov1beta2awsclusterspeccontrolplaneloadbalanceradditionallistenersitems0healthcheck)|health check||
 |**port** `required`|int|Port sets the port for the additional listener.||
 |**protocol** `readOnly`|"TCP"||"TCP"|
+|**targetGroupIPType**|"ipv4" | "ipv6"|TargetGroupIPType sets the IP address type for the target group.<br />Valid values are ipv4 and ipv6. If not specified, defaults to ipv4 unless<br />the VPC has IPv6 enabled, in which case it defaults to ipv6.<br />This field cannot be set if LoadBalancerType is classic or disabled.||
 ### InfrastructureClusterxK8sIoV1beta2AWSClusterSpecControlPlaneLoadBalancerAdditionalListenersItems0HealthCheck
 
 HealthCheck sets the optional custom health check configuration to the API target group.
@@ -5597,8 +6242,8 @@ SubnetSpec configures an AWS Subnet.
 |**availabilityZone**|str|AvailabilityZone defines the availability zone to use for this subnet in the cluster's region.||
 |**cidrBlock**|str|CidrBlock is the CIDR block to be used when the provider creates a managed VPC.||
 |**id** `required`|str|ID defines a unique identifier to reference this resource.<br />If you're bringing your subnet, set the AWS subnet-id here, it must start with `subnet-`.<br /><br />When the VPC is managed by CAPA, and you'd like the provider to create a subnet for you,<br />the id can be set to any placeholder value that does not start with `subnet-`;<br />upon creation, the subnet AWS identifier will be populated in the `ResourceID` field and<br />the `id` field is going to be used as the subnet name. If you specify a tag<br />called `Name`, it takes precedence.||
-|**ipv6CidrBlock**|str|IPv6CidrBlock is the IPv6 CIDR block to be used when the provider creates a managed VPC.<br />A subnet can have an IPv4 and an IPv6 address.<br />IPv6 is only supported in managed clusters, this field cannot be set on AWSCluster object.||
-|**isIpv6**|bool|IsIPv6 defines the subnet as an IPv6 subnet. A subnet is IPv6 when it is associated with a VPC that has IPv6 enabled.<br />IPv6 is only supported in managed clusters, this field cannot be set on AWSCluster object.||
+|**ipv6CidrBlock**|str|IPv6CidrBlock is the IPv6 CIDR block to be used when the provider creates a managed VPC.<br />A subnet can have an IPv4 and an IPv6 address.||
+|**isIpv6**|bool|IsIPv6 defines the subnet as an IPv6 subnet. A subnet is IPv6 when it is associated with an IPv6 CIDR.||
 |**isPublic**|bool|IsPublic defines the subnet as a public subnet. A subnet is public when it is associated with a route table that has a route to an internet gateway.||
 |**natGatewayId**|str|NatGatewayID is the NAT gateway id associated with the subnet.<br />Ignored unless the subnet is managed by the provider, in which case this is set on the public subnet where the NAT gateway resides. It is then used to determine routes for private subnets in the same AZ as the public subnet.||
 |**parentZoneName**|str|ParentZoneName is the zone name where the current subnet's zone is tied when<br />the zone is a Local Zone.<br /><br />The subnets in Local Zone or Wavelength Zone locations consume the ParentZoneName<br />to select the correct private route table to egress traffic to the internet.||
@@ -5640,7 +6285,7 @@ ElasticIPPool contains specific configuration to allocate Public IPv4 address (E
 |**publicIpv4PoolFallbackOrder**|"amazon-pool" | "none"|PublicIpv4PoolFallBackOrder defines the fallback action when the Public IPv4 Pool has been exhausted,<br />no more IPv4 address available in the pool.<br /><br />When set to 'amazon-pool', the controller check if the pool has available IPv4 address, when pool has reached the<br />IPv4 limit, the address will be claimed from Amazon-pool (default).<br /><br />When set to 'none', the controller will fail the Elastic IP allocation when the publicIpv4Pool is exhausted.||
 ### InfrastructureClusterxK8sIoV1beta2AWSClusterSpecNetworkVpcIPV6
 
-IPv6 contains ipv6 specific settings for the network. Supported only in managed clusters. This field cannot be set on AWSCluster object.
+IPv6 contains ipv6 specific settings for the network.
 
 #### Attributes
 
@@ -5660,7 +6305,7 @@ IPAMPool defines the IPAMv6 pool to be used for VPC. Mutually exclusive with Cid
 | --- | --- | --- | --- |
 |**id**|str|ID is the ID of the IPAM pool this provider should use to create VPC.||
 |**name**|str|Name is the name of the IPAM pool this provider should use to create VPC.||
-|**netmaskLength**|int|The netmask length of the IPv4 CIDR you want to allocate to VPC from<br />an Amazon VPC IP Address Manager (IPAM) pool.<br />Defaults to /16 for IPv4 if not specified.||
+|**netmaskLength**|int|The netmask length of the IPv4 CIDR you want to allocate to VPC from<br />an Amazon VPC IP Address Manager (IPAM) pool.<br />Defaults to /16 for IPv4 if not specified.<br />Defaults to /56 for IPv6 if not specified.||
 ### InfrastructureClusterxK8sIoV1beta2AWSClusterSpecNetworkVpcIpamPool
 
 IPAMPool defines the IPAMv4 pool to be used for VPC. Mutually exclusive with CidrBlock.
@@ -5671,7 +6316,7 @@ IPAMPool defines the IPAMv4 pool to be used for VPC. Mutually exclusive with Cid
 | --- | --- | --- | --- |
 |**id**|str|ID is the ID of the IPAM pool this provider should use to create VPC.||
 |**name**|str|Name is the name of the IPAM pool this provider should use to create VPC.||
-|**netmaskLength**|int|The netmask length of the IPv4 CIDR you want to allocate to VPC from<br />an Amazon VPC IP Address Manager (IPAM) pool.<br />Defaults to /16 for IPv4 if not specified.||
+|**netmaskLength**|int|The netmask length of the IPv4 CIDR you want to allocate to VPC from<br />an Amazon VPC IP Address Manager (IPAM) pool.<br />Defaults to /16 for IPv4 if not specified.<br />Defaults to /56 for IPv6 if not specified.||
 ### InfrastructureClusterxK8sIoV1beta2AWSClusterSpecNetworkVpcSecondaryCidrBlocksItems0
 
 VpcCidrBlock defines the CIDR block and settings to associate with the managed VPC. Currently, only IPv4 is supported.
@@ -5714,6 +6359,7 @@ SecondaryControlPlaneLoadBalancer is an additional load balancer that can be use
 |**preserveClientIP**|bool|PreserveClientIP lets the user control if preservation of client ips must be retained or not.<br />If this is enabled 6443 will be opened to 0.0.0.0/0.||
 |**scheme**|"internet-facing" | "internal"|Scheme sets the scheme of the load balancer (defaults to internet-facing)|"internet-facing"|
 |**subnets**|[str]|Subnets sets the subnets that should be applied to the control plane load balancer (defaults to discovered subnets for managed VPCs or an empty set for unmanaged VPCs)||
+|**targetGroupIPType**|"ipv4" | "ipv6"|TargetGroupIPType sets the IP address type for the target group.<br />Valid values are ipv4 and ipv6. If not specified, defaults to ipv4 unless<br />the VPC has IPv6 enabled, in which case it defaults to ipv6.<br />This applies to the API server target group.<br />This field cannot be set if LoadBalancerType is classic or disabled.||
 ### InfrastructureClusterxK8sIoV1beta2AWSClusterSpecSecondaryControlPlaneLoadBalancerAdditionalListenersItems0
 
 AdditionalListenerSpec defines the desired state of an additional listener on an AWS load balancer.
@@ -5725,6 +6371,7 @@ AdditionalListenerSpec defines the desired state of an additional listener on an
 |**healthCheck**|[InfrastructureClusterxK8sIoV1beta2AWSClusterSpecSecondaryControlPlaneLoadBalancerAdditionalListenersItems0HealthCheck](#infrastructureclusterxk8siov1beta2awsclusterspecsecondarycontrolplaneloadbalanceradditionallistenersitems0healthcheck)|health check||
 |**port** `required`|int|Port sets the port for the additional listener.||
 |**protocol** `readOnly`|"TCP"||"TCP"|
+|**targetGroupIPType**|"ipv4" | "ipv6"|TargetGroupIPType sets the IP address type for the target group.<br />Valid values are ipv4 and ipv6. If not specified, defaults to ipv4 unless<br />the VPC has IPv6 enabled, in which case it defaults to ipv6.<br />This field cannot be set if LoadBalancerType is classic or disabled.||
 ### InfrastructureClusterxK8sIoV1beta2AWSClusterSpecSecondaryControlPlaneLoadBalancerAdditionalListenersItems0HealthCheck
 
 HealthCheck sets the optional custom health check configuration to the API target group.
@@ -5769,6 +6416,47 @@ IngressRule defines an AWS ingress rule for security groups.
 |**sourceSecurityGroupIds**|[str]|The security group id to allow access from. Cannot be specified with CidrBlocks.||
 |**sourceSecurityGroupRoles**|[str]|The security group role to allow access from. Cannot be specified with CidrBlocks.<br />The field will be combined with source security group IDs if specified.||
 |**toPort** `required`|int|ToPort is the end of port range.||
+### InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpec
+
+Spec for this AWSClusterStaticIdentity
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**allowedNamespaces**|[InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpecAllowedNamespaces](#infrastructureclusterxk8siov1beta2awsclusterstaticidentityspecallowednamespaces)|allowed namespaces||
+|**secretRef** `required`|str|Reference to a secret containing the credentials. The secret should<br />contain the following data keys:<br />AccessKeyID: AKIAIOSFODNN7EXAMPLE<br />SecretAccessKey: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY<br />SessionToken: Optional||
+### InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpecAllowedNamespaces
+
+AllowedNamespaces is used to identify which namespaces are allowed to use the identity from. Namespaces can be selected either using an array of namespaces or with label selector. An empty allowedNamespaces object indicates that AWSClusters can use this identity from any namespace. If this object is nil, no namespaces will be allowed (default behaviour, if this field is not provided) A namespace should be either in the NamespaceList or match with Selector to use the identity.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**list**|[str]|An nil or empty list indicates that AWSClusters cannot use the identity from any namespace.||
+|**selector**|[InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpecAllowedNamespacesSelector](#infrastructureclusterxk8siov1beta2awsclusterstaticidentityspecallowednamespacesselector)|selector||
+### InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpecAllowedNamespacesSelector
+
+An empty selector indicates that AWSClusters cannot use this AWSClusterIdentity from any namespace.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**matchExpressions**|[[InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0](#infrastructureclusterxk8siov1beta2awsclusterstaticidentityspecallowednamespacesselectormatchexpressionsitems0)]|matchExpressions is a list of label selector requirements. The requirements are ANDed.||
+|**matchLabels**|{str:str}|matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels<br />map is equivalent to an element of matchExpressions, whose key field is "key", the<br />operator is "In", and the values array contains only "value". The requirements are ANDed.||
+### InfrastructureClusterxK8sIoV1beta2AWSClusterStaticIdentitySpecAllowedNamespacesSelectorMatchExpressionsItems0
+
+A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**key** `required`|str|key is the label key that the selector applies to.||
+|**operator** `required`|str|operator represents a key's relationship to a set of values.<br />Valid operators are In, NotIn, Exists and DoesNotExist.||
+|**values**|[str]|values is an array of string values. If the operator is In or NotIn,<br />the values array must be non-empty. If the operator is Exists or DoesNotExist,<br />the values array must be empty. This array is replaced during a strategic<br />merge patch.||
 ### InfrastructureClusterxK8sIoV1beta2AWSClusterStatus
 
 AWSClusterStatus defines the observed state of AWSCluster.
@@ -5791,6 +6479,7 @@ Instance describes an AWS instance.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**addresses**|[[InfrastructureClusterxK8sIoV1beta2AWSClusterStatusBastionAddressesItems0](#infrastructureclusterxk8siov1beta2awsclusterstatusbastionaddressesitems0)]|Addresses contains the AWS instance associated addresses.||
+|**assignPrimaryIPv6**|str|AssignPrimaryIPv6 specifies whether to enable assigning a primary IPv6 address to the primary network Interface.||
 |**availabilityZone**|str|Availability zone of instance||
 |**capacityReservationId**|str|CapacityReservationID specifies the target Capacity Reservation into which the instance should be launched.||
 |**capacityReservationPreference**|str|CapacityReservationPreference specifies the preference for use of Capacity Reservations by the instance. Valid values include:<br />"Open": The instance may make use of open Capacity Reservations that match its AZ and InstanceType<br />"None": The instance may not make use of any Capacity Reservations. This is to conserve open reservations for desired workloads<br />"CapacityReservationsOnly": The instance will only run if matched or targeted to a Capacity Reservation. Note that this is incompatible with a MarketType of `Spot`||
@@ -5805,6 +6494,7 @@ Instance describes an AWS instance.
 |**imageId**|str|The ID of the AMI used to launch the instance.||
 |**instanceMetadataOptions**|[InfrastructureClusterxK8sIoV1beta2AWSClusterStatusBastionInstanceMetadataOptions](#infrastructureclusterxk8siov1beta2awsclusterstatusbastioninstancemetadataoptions)|instance metadata options||
 |**instanceState**|str|The current state of the instance.||
+|**ipv6Address**|str|The IPv6 address assigned to the instance.||
 |**marketType**|"OnDemand" | "Spot" | "CapacityBlock"|MarketType specifies the type of market for the EC2 instance. Valid values include:<br />"OnDemand" (default): The instance runs as a standard OnDemand instance.<br />"Spot": The instance runs as a Spot instance. When SpotMarketOptions is provided, the marketType defaults to "Spot".<br />"CapacityBlock": The instance utilizes pre-purchased compute capacity (capacity blocks) with AWS Capacity Reservations.<br />If this value is selected, CapacityReservationID must be specified to identify the target reservation.<br />If marketType is not specified and spotMarketOptions is provided, the marketType defaults to "Spot".||
 |**networkInterfaceType**|str|NetworkInterfaceType is the interface type of the primary network Interface.||
 |**networkInterfaces**|[str]|Specifies ENIs attached to instance||
@@ -5844,6 +6534,7 @@ CPUOptions defines CPU-related settings for the instance, including the confiden
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**confidentialCompute**|"Disabled" | "AMDEncryptedVirtualizationNestedPaging"|ConfidentialCompute specifies whether confidential computing should be enabled for the instance,<br />and, if so, which confidential computing technology to use.<br />Valid values are: Disabled, AMDEncryptedVirtualizationNestedPaging<br />When set to Disabled, confidential computing will be disabled for the instance.<br />When set to AMDEncryptedVirtualizationNestedPaging, AMD SEV-SNP will be used as the confidential computing technology for the instance.<br />In this case, ensure the following conditions are met:<br />1) The selected instance type supports AMD SEV-SNP.<br />2) The selected AWS region supports AMD SEV-SNP.<br />3) The selected AMI supports AMD SEV-SNP.<br />More details can be checked at https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sev-snp.html<br />When omitted, this means no opinion and the AWS platform is left to choose a reasonable default,<br />which is subject to change without notice. The current default is Disabled.||
+|**nestedVirtualization**|"enabled" | "disabled"|NestedVirtualization specifies whether to enable nested virtualization on the instance.<br />Nested virtualization is supported on C8i, M8i, and R8i instance types.<br />Valid values are: enabled, disabled||
 ### InfrastructureClusterxK8sIoV1beta2AWSClusterStatusBastionDynamicHostAllocation
 
 DynamicHostAllocation enables automatic allocation of dedicated hosts. This field is mutually exclusive with HostID.
@@ -5862,6 +6553,7 @@ InstanceMetadataOptions is the metadata options for the EC2 instance.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**httpEndpoint**|"enabled" | "disabled"|Enables or disables the HTTP metadata endpoint on your instances.<br /><br />If you specify a value of disabled, you cannot access your instance metadata.<br /><br />Default: enabled|"enabled"|
+|**httpProtocolIpv6**|"enabled" | "disabled"|Enables or disables the IPv6 endpoint for the instance metadata service.<br />This applies only if you enabled the HTTP metadata endpoint.<br /><br />Default: disabled|"disabled"|
 |**httpPutResponseHopLimit**|int|The desired HTTP PUT response hop limit for instance metadata requests. The<br />larger the number, the further instance metadata requests can travel.<br /><br />Default: 1|1|
 |**httpTokens**|"optional" | "required"|The state of token usage for your instance metadata requests.<br /><br />If the state is optional, you can choose to retrieve instance metadata with<br />or without a session token on your request. If you retrieve the IAM role<br />credentials without a token, the version 1.0 role credentials are returned.<br />If you retrieve the IAM role credentials using a valid session token, the<br />version 2.0 role credentials are returned.<br /><br />If the state is required, you must send a session token with any instance<br />metadata retrieval requests. In this state, retrieving the IAM role credentials<br />always returns the version 2.0 credentials; the version 1.0 credentials are<br />not available.<br /><br />Default: optional|"optional"|
 |**instanceMetadataTags**|"enabled" | "disabled"|Set to enabled to allow access to instance tags from the instance metadata.<br />Set to disabled to turn off access to instance tags from the instance metadata.<br />For more information, see Work with instance tags using the instance metadata<br />(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#work-with-tags-in-IMDS).<br /><br />Default: disabled|"disabled"|
@@ -5967,6 +6659,7 @@ APIServerELB is the Kubernetes api server load balancer.
 |**elbListeners**|[[InfrastructureClusterxK8sIoV1beta2AWSClusterStatusNetworkStatusAPIServerElbElbListenersItems0](#infrastructureclusterxk8siov1beta2awsclusterstatusnetworkstatusapiserverelbelblistenersitems0)]|ELBListeners is an array of listeners associated with the load balancer. There must be at least one.||
 |**healthChecks**|[InfrastructureClusterxK8sIoV1beta2AWSClusterStatusNetworkStatusAPIServerElbHealthChecks](#infrastructureclusterxk8siov1beta2awsclusterstatusnetworkstatusapiserverelbhealthchecks)|health checks||
 |**listeners**|[[InfrastructureClusterxK8sIoV1beta2AWSClusterStatusNetworkStatusAPIServerElbListenersItems0](#infrastructureclusterxk8siov1beta2awsclusterstatusnetworkstatusapiserverelblistenersitems0)]|ClassicELBListeners is an array of classic elb listeners associated with the load balancer. There must be at least one.||
+|**loadBalancerIPAddressType**|"ipv4" | "dualstack" | "dualstack-without-public-ipv4"|LoadBalancerIPAddressType specifies the IP address type for the load balancer.||
 |**loadBalancerType**|"classic" | "elb" | "alb" | "nlb"|LoadBalancerType sets the type for a load balancer. The default type is classic.||
 |**name**|str|The name of the load balancer. It must be unique within the set of load balancers<br />defined in the region. It also serves as identifier.||
 |**scheme**|str|Scheme is the load balancer scheme, either internet-facing or private.||
@@ -6002,6 +6695,7 @@ TargetGroupSpec specifies target group settings for a given listener. This is cr
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**ipType**|str|IPType is the IP address type for the target group.||
 |**name** `required`|str|Name of the TargetGroup. Must be unique over the same group of listeners.||
 |**port** `required`|int|Port is the exposed port||
 |**protocol** `required`|"tcp" | "tls" | "udp" | "TCP" | "TLS" | "UDP"|||
@@ -6063,6 +6757,7 @@ SecondaryAPIServerELB is the secondary Kubernetes api server load balancer.
 |**elbListeners**|[[InfrastructureClusterxK8sIoV1beta2AWSClusterStatusNetworkStatusSecondaryAPIServerELBElbListenersItems0](#infrastructureclusterxk8siov1beta2awsclusterstatusnetworkstatussecondaryapiserverelbelblistenersitems0)]|ELBListeners is an array of listeners associated with the load balancer. There must be at least one.||
 |**healthChecks**|[InfrastructureClusterxK8sIoV1beta2AWSClusterStatusNetworkStatusSecondaryAPIServerELBHealthChecks](#infrastructureclusterxk8siov1beta2awsclusterstatusnetworkstatussecondaryapiserverelbhealthchecks)|health checks||
 |**listeners**|[[InfrastructureClusterxK8sIoV1beta2AWSClusterStatusNetworkStatusSecondaryAPIServerELBListenersItems0](#infrastructureclusterxk8siov1beta2awsclusterstatusnetworkstatussecondaryapiserverelblistenersitems0)]|ClassicELBListeners is an array of classic elb listeners associated with the load balancer. There must be at least one.||
+|**loadBalancerIPAddressType**|"ipv4" | "dualstack" | "dualstack-without-public-ipv4"|LoadBalancerIPAddressType specifies the IP address type for the load balancer.||
 |**loadBalancerType**|"classic" | "elb" | "alb" | "nlb"|LoadBalancerType sets the type for a load balancer. The default type is classic.||
 |**name**|str|The name of the load balancer. It must be unique within the set of load balancers<br />defined in the region. It also serves as identifier.||
 |**scheme**|str|Scheme is the load balancer scheme, either internet-facing or private.||
@@ -6098,6 +6793,7 @@ TargetGroupSpec specifies target group settings for a given listener. This is cr
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**ipType**|str|IPType is the IP address type for the target group.||
 |**name** `required`|str|Name of the TargetGroup. Must be unique over the same group of listeners.||
 |**port** `required`|int|Port is the exposed port||
 |**protocol** `required`|"tcp" | "tls" | "udp" | "TCP" | "TLS" | "UDP"|||
@@ -6231,7 +6927,7 @@ Bastion contains options to configure the bastion host.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**allowedCIDRBlocks**|[str]|AllowedCIDRBlocks is a list of CIDR blocks allowed to access the bastion host.<br />They are set as ingress rules for the Bastion host's Security Group (defaults to 0.0.0.0/0).||
+|**allowedCIDRBlocks**|[str]|AllowedCIDRBlocks is a list of CIDR blocks allowed to access the bastion host.<br />They are set as ingress rules for the Bastion host's Security Group (defaults to 0.0.0.0/0).<br />If the cluster has IPv6 enabled, defaults to ::/0 and 0.0.0.0/0.||
 |**ami**|str|AMI will use the specified AMI to boot the bastion. If not specified,<br />the AMI will default to one picked out in public space.||
 |**disableIngressRules**|bool|DisableIngressRules will ensure there are no Ingress rules in the bastion host's security group.<br />Requires AllowedCIDRBlocks to be empty.||
 |**enabled**|bool|Enabled allows this provider to create a bastion host instance<br />with a public ip to access the VPC private network.||
@@ -6266,6 +6962,7 @@ ControlPlaneLoadBalancer is optional configuration for customizing control plane
 |**preserveClientIP**|bool|PreserveClientIP lets the user control if preservation of client ips must be retained or not.<br />If this is enabled 6443 will be opened to 0.0.0.0/0.||
 |**scheme**|"internet-facing" | "internal"|Scheme sets the scheme of the load balancer (defaults to internet-facing)|"internet-facing"|
 |**subnets**|[str]|Subnets sets the subnets that should be applied to the control plane load balancer (defaults to discovered subnets for managed VPCs or an empty set for unmanaged VPCs)||
+|**targetGroupIPType**|"ipv4" | "ipv6"|TargetGroupIPType sets the IP address type for the target group.<br />Valid values are ipv4 and ipv6. If not specified, defaults to ipv4 unless<br />the VPC has IPv6 enabled, in which case it defaults to ipv6.<br />This applies to the API server target group.<br />This field cannot be set if LoadBalancerType is classic or disabled.||
 ### InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecControlPlaneLoadBalancerAdditionalListenersItems0
 
 AdditionalListenerSpec defines the desired state of an additional listener on an AWS load balancer.
@@ -6277,6 +6974,7 @@ AdditionalListenerSpec defines the desired state of an additional listener on an
 |**healthCheck**|[InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecControlPlaneLoadBalancerAdditionalListenersItems0HealthCheck](#infrastructureclusterxk8siov1beta2awsclustertemplatespectemplatespeccontrolplaneloadbalanceradditionallistenersitems0healthcheck)|health check||
 |**port** `required`|int|Port sets the port for the additional listener.||
 |**protocol** `readOnly`|"TCP"||"TCP"|
+|**targetGroupIPType**|"ipv4" | "ipv6"|TargetGroupIPType sets the IP address type for the target group.<br />Valid values are ipv4 and ipv6. If not specified, defaults to ipv4 unless<br />the VPC has IPv6 enabled, in which case it defaults to ipv6.<br />This field cannot be set if LoadBalancerType is classic or disabled.||
 ### InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecControlPlaneLoadBalancerAdditionalListenersItems0HealthCheck
 
 HealthCheck sets the optional custom health check configuration to the API target group.
@@ -6412,8 +7110,8 @@ SubnetSpec configures an AWS Subnet.
 |**availabilityZone**|str|AvailabilityZone defines the availability zone to use for this subnet in the cluster's region.||
 |**cidrBlock**|str|CidrBlock is the CIDR block to be used when the provider creates a managed VPC.||
 |**id** `required`|str|ID defines a unique identifier to reference this resource.<br />If you're bringing your subnet, set the AWS subnet-id here, it must start with `subnet-`.<br /><br />When the VPC is managed by CAPA, and you'd like the provider to create a subnet for you,<br />the id can be set to any placeholder value that does not start with `subnet-`;<br />upon creation, the subnet AWS identifier will be populated in the `ResourceID` field and<br />the `id` field is going to be used as the subnet name. If you specify a tag<br />called `Name`, it takes precedence.||
-|**ipv6CidrBlock**|str|IPv6CidrBlock is the IPv6 CIDR block to be used when the provider creates a managed VPC.<br />A subnet can have an IPv4 and an IPv6 address.<br />IPv6 is only supported in managed clusters, this field cannot be set on AWSCluster object.||
-|**isIpv6**|bool|IsIPv6 defines the subnet as an IPv6 subnet. A subnet is IPv6 when it is associated with a VPC that has IPv6 enabled.<br />IPv6 is only supported in managed clusters, this field cannot be set on AWSCluster object.||
+|**ipv6CidrBlock**|str|IPv6CidrBlock is the IPv6 CIDR block to be used when the provider creates a managed VPC.<br />A subnet can have an IPv4 and an IPv6 address.||
+|**isIpv6**|bool|IsIPv6 defines the subnet as an IPv6 subnet. A subnet is IPv6 when it is associated with an IPv6 CIDR.||
 |**isPublic**|bool|IsPublic defines the subnet as a public subnet. A subnet is public when it is associated with a route table that has a route to an internet gateway.||
 |**natGatewayId**|str|NatGatewayID is the NAT gateway id associated with the subnet.<br />Ignored unless the subnet is managed by the provider, in which case this is set on the public subnet where the NAT gateway resides. It is then used to determine routes for private subnets in the same AZ as the public subnet.||
 |**parentZoneName**|str|ParentZoneName is the zone name where the current subnet's zone is tied when<br />the zone is a Local Zone.<br /><br />The subnets in Local Zone or Wavelength Zone locations consume the ParentZoneName<br />to select the correct private route table to egress traffic to the internet.||
@@ -6455,7 +7153,7 @@ ElasticIPPool contains specific configuration to allocate Public IPv4 address (E
 |**publicIpv4PoolFallbackOrder**|"amazon-pool" | "none"|PublicIpv4PoolFallBackOrder defines the fallback action when the Public IPv4 Pool has been exhausted,<br />no more IPv4 address available in the pool.<br /><br />When set to 'amazon-pool', the controller check if the pool has available IPv4 address, when pool has reached the<br />IPv4 limit, the address will be claimed from Amazon-pool (default).<br /><br />When set to 'none', the controller will fail the Elastic IP allocation when the publicIpv4Pool is exhausted.||
 ### InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkVpcIPV6
 
-IPv6 contains ipv6 specific settings for the network. Supported only in managed clusters. This field cannot be set on AWSCluster object.
+IPv6 contains ipv6 specific settings for the network.
 
 #### Attributes
 
@@ -6475,7 +7173,7 @@ IPAMPool defines the IPAMv6 pool to be used for VPC. Mutually exclusive with Cid
 | --- | --- | --- | --- |
 |**id**|str|ID is the ID of the IPAM pool this provider should use to create VPC.||
 |**name**|str|Name is the name of the IPAM pool this provider should use to create VPC.||
-|**netmaskLength**|int|The netmask length of the IPv4 CIDR you want to allocate to VPC from<br />an Amazon VPC IP Address Manager (IPAM) pool.<br />Defaults to /16 for IPv4 if not specified.||
+|**netmaskLength**|int|The netmask length of the IPv4 CIDR you want to allocate to VPC from<br />an Amazon VPC IP Address Manager (IPAM) pool.<br />Defaults to /16 for IPv4 if not specified.<br />Defaults to /56 for IPv6 if not specified.||
 ### InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkVpcIpamPool
 
 IPAMPool defines the IPAMv4 pool to be used for VPC. Mutually exclusive with CidrBlock.
@@ -6486,7 +7184,7 @@ IPAMPool defines the IPAMv4 pool to be used for VPC. Mutually exclusive with Cid
 | --- | --- | --- | --- |
 |**id**|str|ID is the ID of the IPAM pool this provider should use to create VPC.||
 |**name**|str|Name is the name of the IPAM pool this provider should use to create VPC.||
-|**netmaskLength**|int|The netmask length of the IPv4 CIDR you want to allocate to VPC from<br />an Amazon VPC IP Address Manager (IPAM) pool.<br />Defaults to /16 for IPv4 if not specified.||
+|**netmaskLength**|int|The netmask length of the IPv4 CIDR you want to allocate to VPC from<br />an Amazon VPC IP Address Manager (IPAM) pool.<br />Defaults to /16 for IPv4 if not specified.<br />Defaults to /56 for IPv6 if not specified.||
 ### InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkVpcSecondaryCidrBlocksItems0
 
 VpcCidrBlock defines the CIDR block and settings to associate with the managed VPC. Currently, only IPv4 is supported.
@@ -6529,6 +7227,7 @@ SecondaryControlPlaneLoadBalancer is an additional load balancer that can be use
 |**preserveClientIP**|bool|PreserveClientIP lets the user control if preservation of client ips must be retained or not.<br />If this is enabled 6443 will be opened to 0.0.0.0/0.||
 |**scheme**|"internet-facing" | "internal"|Scheme sets the scheme of the load balancer (defaults to internet-facing)|"internet-facing"|
 |**subnets**|[str]|Subnets sets the subnets that should be applied to the control plane load balancer (defaults to discovered subnets for managed VPCs or an empty set for unmanaged VPCs)||
+|**targetGroupIPType**|"ipv4" | "ipv6"|TargetGroupIPType sets the IP address type for the target group.<br />Valid values are ipv4 and ipv6. If not specified, defaults to ipv4 unless<br />the VPC has IPv6 enabled, in which case it defaults to ipv6.<br />This applies to the API server target group.<br />This field cannot be set if LoadBalancerType is classic or disabled.||
 ### InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecondaryControlPlaneLoadBalancerAdditionalListenersItems0
 
 AdditionalListenerSpec defines the desired state of an additional listener on an AWS load balancer.
@@ -6540,6 +7239,7 @@ AdditionalListenerSpec defines the desired state of an additional listener on an
 |**healthCheck**|[InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecondaryControlPlaneLoadBalancerAdditionalListenersItems0HealthCheck](#infrastructureclusterxk8siov1beta2awsclustertemplatespectemplatespecsecondarycontrolplaneloadbalanceradditionallistenersitems0healthcheck)|health check||
 |**port** `required`|int|Port sets the port for the additional listener.||
 |**protocol** `readOnly`|"TCP"||"TCP"|
+|**targetGroupIPType**|"ipv4" | "ipv6"|TargetGroupIPType sets the IP address type for the target group.<br />Valid values are ipv4 and ipv6. If not specified, defaults to ipv4 unless<br />the VPC has IPv6 enabled, in which case it defaults to ipv6.<br />This field cannot be set if LoadBalancerType is classic or disabled.||
 ### InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecondaryControlPlaneLoadBalancerAdditionalListenersItems0HealthCheck
 
 HealthCheck sets the optional custom health check configuration to the API target group.
@@ -6726,6 +7426,7 @@ InstanceMetadataOptions defines the behavior for applying metadata to instances.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**httpEndpoint**|"enabled" | "disabled"|Enables or disables the HTTP metadata endpoint on your instances.<br /><br />If you specify a value of disabled, you cannot access your instance metadata.<br /><br />Default: enabled|"enabled"|
+|**httpProtocolIpv6**|"enabled" | "disabled"|Enables or disables the IPv6 endpoint for the instance metadata service.<br />This applies only if you enabled the HTTP metadata endpoint.<br /><br />Default: disabled|"disabled"|
 |**httpPutResponseHopLimit**|int|The desired HTTP PUT response hop limit for instance metadata requests. The<br />larger the number, the further instance metadata requests can travel.<br /><br />Default: 1|1|
 |**httpTokens**|"optional" | "required"|The state of token usage for your instance metadata requests.<br /><br />If the state is optional, you can choose to retrieve instance metadata with<br />or without a session token on your request. If you retrieve the IAM role<br />credentials without a token, the version 1.0 role credentials are returned.<br />If you retrieve the IAM role credentials using a valid session token, the<br />version 2.0 role credentials are returned.<br /><br />If the state is required, you must send a session token with any instance<br />metadata retrieval requests. In this state, retrieving the IAM role credentials<br />always returns the version 2.0 credentials; the version 1.0 credentials are<br />not available.<br /><br />Default: optional|"optional"|
 |**instanceMetadataTags**|"enabled" | "disabled"|Set to enabled to allow access to instance tags from the instance metadata.<br />Set to disabled to turn off access to instance tags from the instance metadata.<br />For more information, see Work with instance tags using the instance metadata<br />(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#work-with-tags-in-IMDS).<br /><br />Default: disabled|"disabled"|
@@ -6970,6 +7671,7 @@ AWSMachineSpec defines the desired state of an Amazon EC2 instance.
 |**additionalSecurityGroups**|[[InfrastructureClusterxK8sIoV1beta2AWSMachineSpecAdditionalSecurityGroupsItems0](#infrastructureclusterxk8siov1beta2awsmachinespecadditionalsecuritygroupsitems0)]|AdditionalSecurityGroups is an array of references to security groups that should be applied to the<br />instance. These security groups would be set in addition to any security groups defined<br />at the cluster level or in the actuator. It is possible to specify either IDs of Filters. Using Filters<br />will cause additional requests to AWS API and if tags change the attached security groups might change too.||
 |**additionalTags**|{str:str}|AdditionalTags is an optional set of tags to add to an instance, in addition to the ones added by default by the<br />AWS provider. If both the AWSCluster and the AWSMachine specify the same tag name with different values, the<br />AWSMachine's value takes precedence.||
 |**ami**|[InfrastructureClusterxK8sIoV1beta2AWSMachineSpecAmi](#infrastructureclusterxk8siov1beta2awsmachinespecami)|ami||
+|**assignPrimaryIPv6**|"enabled" | "disabled"|AssignPrimaryIPv6 specifies whether to enable assigning a primary IPv6 address to the primary network Interface.<br />When set to enabled, the instance will be assigned a primary IPv6 address from the subnet's IPv6 CIDR block.<br />This is required when registering instances by ID to IPv6 target groups of dual-stack load balancers.<br /><br />When not specified, the default value varies based on the subnet that the instance is launched in:<br />- disabled if subnet is ipv4 only<br />- enabled if subnet is ipv6 only or dual-stack||
 |**capacityReservationId**|str|CapacityReservationID specifies the target Capacity Reservation into which the instance should be launched.||
 |**capacityReservationPreference**|str|CapacityReservationPreference specifies the preference for use of Capacity Reservations by the instance. Valid values include:<br />"Open": The instance may make use of open Capacity Reservations that match its AZ and InstanceType<br />"None": The instance may not make use of any Capacity Reservations. This is to conserve open reservations for desired workloads<br />"CapacityReservationsOnly": The instance will only run if matched or targeted to a Capacity Reservation. Note that this is incompatible with a MarketType of `Spot`||
 |**cloudInit**|[InfrastructureClusterxK8sIoV1beta2AWSMachineSpecCloudInit](#infrastructureclusterxk8siov1beta2awsmachinespeccloudinit)|cloud init||
@@ -7041,6 +7743,7 @@ CPUOptions defines CPU-related settings for the instance, including the confiden
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**confidentialCompute**|"Disabled" | "AMDEncryptedVirtualizationNestedPaging"|ConfidentialCompute specifies whether confidential computing should be enabled for the instance,<br />and, if so, which confidential computing technology to use.<br />Valid values are: Disabled, AMDEncryptedVirtualizationNestedPaging<br />When set to Disabled, confidential computing will be disabled for the instance.<br />When set to AMDEncryptedVirtualizationNestedPaging, AMD SEV-SNP will be used as the confidential computing technology for the instance.<br />In this case, ensure the following conditions are met:<br />1) The selected instance type supports AMD SEV-SNP.<br />2) The selected AWS region supports AMD SEV-SNP.<br />3) The selected AMI supports AMD SEV-SNP.<br />More details can be checked at https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sev-snp.html<br />When omitted, this means no opinion and the AWS platform is left to choose a reasonable default,<br />which is subject to change without notice. The current default is Disabled.||
+|**nestedVirtualization**|"enabled" | "disabled"|NestedVirtualization specifies whether to enable nested virtualization on the instance.<br />Nested virtualization is supported on C8i, M8i, and R8i instance types.<br />Valid values are: enabled, disabled||
 ### InfrastructureClusterxK8sIoV1beta2AWSMachineSpecCloudInit
 
 CloudInit defines options related to the bootstrapping systems where CloudInit is used.
@@ -7113,6 +7816,7 @@ InstanceMetadataOptions is the metadata options for the EC2 instance.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**httpEndpoint**|"enabled" | "disabled"|Enables or disables the HTTP metadata endpoint on your instances.<br /><br />If you specify a value of disabled, you cannot access your instance metadata.<br /><br />Default: enabled|"enabled"|
+|**httpProtocolIpv6**|"enabled" | "disabled"|Enables or disables the IPv6 endpoint for the instance metadata service.<br />This applies only if you enabled the HTTP metadata endpoint.<br /><br />Default: disabled|"disabled"|
 |**httpPutResponseHopLimit**|int|The desired HTTP PUT response hop limit for instance metadata requests. The<br />larger the number, the further instance metadata requests can travel.<br /><br />Default: 1|1|
 |**httpTokens**|"optional" | "required"|The state of token usage for your instance metadata requests.<br /><br />If the state is optional, you can choose to retrieve instance metadata with<br />or without a session token on your request. If you retrieve the IAM role<br />credentials without a token, the version 1.0 role credentials are returned.<br />If you retrieve the IAM role credentials using a valid session token, the<br />version 2.0 role credentials are returned.<br /><br />If the state is required, you must send a session token with any instance<br />metadata retrieval requests. In this state, retrieving the IAM role credentials<br />always returns the version 2.0 credentials; the version 1.0 credentials are<br />not available.<br /><br />Default: optional|"optional"|
 |**instanceMetadataTags**|"enabled" | "disabled"|Set to enabled to allow access to instance tags from the instance metadata.<br />Set to disabled to turn off access to instance tags from the instance metadata.<br />For more information, see Work with instance tags using the instance metadata<br />(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#work-with-tags-in-IMDS).<br /><br />Default: disabled|"disabled"|
@@ -7275,6 +7979,7 @@ Spec is the specification of the desired behavior of the machine.
 |**additionalSecurityGroups**|[[InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecAdditionalSecurityGroupsItems0](#infrastructureclusterxk8siov1beta2awsmachinetemplatespectemplatespecadditionalsecuritygroupsitems0)]|AdditionalSecurityGroups is an array of references to security groups that should be applied to the<br />instance. These security groups would be set in addition to any security groups defined<br />at the cluster level or in the actuator. It is possible to specify either IDs of Filters. Using Filters<br />will cause additional requests to AWS API and if tags change the attached security groups might change too.||
 |**additionalTags**|{str:str}|AdditionalTags is an optional set of tags to add to an instance, in addition to the ones added by default by the<br />AWS provider. If both the AWSCluster and the AWSMachine specify the same tag name with different values, the<br />AWSMachine's value takes precedence.||
 |**ami**|[InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecAmi](#infrastructureclusterxk8siov1beta2awsmachinetemplatespectemplatespecami)|ami||
+|**assignPrimaryIPv6**|"enabled" | "disabled"|AssignPrimaryIPv6 specifies whether to enable assigning a primary IPv6 address to the primary network Interface.<br />When set to enabled, the instance will be assigned a primary IPv6 address from the subnet's IPv6 CIDR block.<br />This is required when registering instances by ID to IPv6 target groups of dual-stack load balancers.<br /><br />When not specified, the default value varies based on the subnet that the instance is launched in:<br />- disabled if subnet is ipv4 only<br />- enabled if subnet is ipv6 only or dual-stack||
 |**capacityReservationId**|str|CapacityReservationID specifies the target Capacity Reservation into which the instance should be launched.||
 |**capacityReservationPreference**|str|CapacityReservationPreference specifies the preference for use of Capacity Reservations by the instance. Valid values include:<br />"Open": The instance may make use of open Capacity Reservations that match its AZ and InstanceType<br />"None": The instance may not make use of any Capacity Reservations. This is to conserve open reservations for desired workloads<br />"CapacityReservationsOnly": The instance will only run if matched or targeted to a Capacity Reservation. Note that this is incompatible with a MarketType of `Spot`||
 |**cloudInit**|[InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecCloudInit](#infrastructureclusterxk8siov1beta2awsmachinetemplatespectemplatespeccloudinit)|cloud init||
@@ -7346,6 +8051,7 @@ CPUOptions defines CPU-related settings for the instance, including the confiden
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**confidentialCompute**|"Disabled" | "AMDEncryptedVirtualizationNestedPaging"|ConfidentialCompute specifies whether confidential computing should be enabled for the instance,<br />and, if so, which confidential computing technology to use.<br />Valid values are: Disabled, AMDEncryptedVirtualizationNestedPaging<br />When set to Disabled, confidential computing will be disabled for the instance.<br />When set to AMDEncryptedVirtualizationNestedPaging, AMD SEV-SNP will be used as the confidential computing technology for the instance.<br />In this case, ensure the following conditions are met:<br />1) The selected instance type supports AMD SEV-SNP.<br />2) The selected AWS region supports AMD SEV-SNP.<br />3) The selected AMI supports AMD SEV-SNP.<br />More details can be checked at https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sev-snp.html<br />When omitted, this means no opinion and the AWS platform is left to choose a reasonable default,<br />which is subject to change without notice. The current default is Disabled.||
+|**nestedVirtualization**|"enabled" | "disabled"|NestedVirtualization specifies whether to enable nested virtualization on the instance.<br />Nested virtualization is supported on C8i, M8i, and R8i instance types.<br />Valid values are: enabled, disabled||
 ### InfrastructureClusterxK8sIoV1beta2AWSMachineTemplateSpecTemplateSpecCloudInit
 
 CloudInit defines options related to the bootstrapping systems where CloudInit is used.
@@ -7418,6 +8124,7 @@ InstanceMetadataOptions is the metadata options for the EC2 instance.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**httpEndpoint**|"enabled" | "disabled"|Enables or disables the HTTP metadata endpoint on your instances.<br /><br />If you specify a value of disabled, you cannot access your instance metadata.<br /><br />Default: enabled|"enabled"|
+|**httpProtocolIpv6**|"enabled" | "disabled"|Enables or disables the IPv6 endpoint for the instance metadata service.<br />This applies only if you enabled the HTTP metadata endpoint.<br /><br />Default: disabled|"disabled"|
 |**httpPutResponseHopLimit**|int|The desired HTTP PUT response hop limit for instance metadata requests. The<br />larger the number, the further instance metadata requests can travel.<br /><br />Default: 1|1|
 |**httpTokens**|"optional" | "required"|The state of token usage for your instance metadata requests.<br /><br />If the state is optional, you can choose to retrieve instance metadata with<br />or without a session token on your request. If you retrieve the IAM role<br />credentials without a token, the version 1.0 role credentials are returned.<br />If you retrieve the IAM role credentials using a valid session token, the<br />version 2.0 role credentials are returned.<br /><br />If the state is required, you must send a session token with any instance<br />metadata retrieval requests. In this state, retrieving the IAM role credentials<br />always returns the version 2.0 credentials; the version 1.0 credentials are<br />not available.<br /><br />Default: optional|"optional"|
 |**instanceMetadataTags**|"enabled" | "disabled"|Set to enabled to allow access to instance tags from the instance metadata.<br />Set to disabled to turn off access to instance tags from the instance metadata.<br />For more information, see Work with instance tags using the instance metadata<br />(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#work-with-tags-in-IMDS).<br /><br />Default: disabled|"disabled"|
@@ -7713,6 +8420,7 @@ InstanceMetadataOptions defines the behavior for applying metadata to instances.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**httpEndpoint**|"enabled" | "disabled"|Enables or disables the HTTP metadata endpoint on your instances.<br /><br />If you specify a value of disabled, you cannot access your instance metadata.<br /><br />Default: enabled|"enabled"|
+|**httpProtocolIpv6**|"enabled" | "disabled"|Enables or disables the IPv6 endpoint for the instance metadata service.<br />This applies only if you enabled the HTTP metadata endpoint.<br /><br />Default: disabled|"disabled"|
 |**httpPutResponseHopLimit**|int|The desired HTTP PUT response hop limit for instance metadata requests. The<br />larger the number, the further instance metadata requests can travel.<br /><br />Default: 1|1|
 |**httpTokens**|"optional" | "required"|The state of token usage for your instance metadata requests.<br /><br />If the state is optional, you can choose to retrieve instance metadata with<br />or without a session token on your request. If you retrieve the IAM role<br />credentials without a token, the version 1.0 role credentials are returned.<br />If you retrieve the IAM role credentials using a valid session token, the<br />version 2.0 role credentials are returned.<br /><br />If the state is required, you must send a session token with any instance<br />metadata retrieval requests. In this state, retrieving the IAM role credentials<br />always returns the version 2.0 credentials; the version 1.0 credentials are<br />not available.<br /><br />Default: optional|"optional"|
 |**instanceMetadataTags**|"enabled" | "disabled"|Set to enabled to allow access to instance tags from the instance metadata.<br />Set to disabled to turn off access to instance tags from the instance metadata.<br />For more information, see Work with instance tags using the instance metadata<br />(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#work-with-tags-in-IMDS).<br /><br />Default: disabled|"disabled"|
@@ -8214,6 +8922,31 @@ AWS IAM roles used to perform credential requests by the openshift operators.
 |**networkARN** `required`|str|NetworkARN is an ARN value referencing a role appropriate for the Network Operator.<br /><br />The following is an example of a valid policy document:<br /><br />{<br />"Version": "2012-10-17",<br />"Statement": [<br />{<br />"Effect": "Allow",<br />"Action": [<br />"ec2:DescribeInstances",<br />"ec2:DescribeInstanceStatus",<br />"ec2:DescribeInstanceTypes",<br />"ec2:UnassignPrivateIpAddresses",<br />"ec2:AssignPrivateIpAddresses",<br />"ec2:UnassignIpv6Addresses",<br />"ec2:AssignIpv6Addresses",<br />"ec2:DescribeSubnets",<br />"ec2:DescribeNetworkInterfaces"<br />],<br />"Resource": "*"<br />}<br />]<br />}||
 |**nodePoolManagementARN** `required`|str|NodePoolManagementARN is an ARN value referencing a role appropriate for the CAPI Controller.<br /><br />The following is an example of a valid policy document:<br /><br />{<br />"Version": "2012-10-17",<br />"Statement": [<br />{<br />"Action": [<br />"ec2:AssociateRouteTable",<br />"ec2:AttachInternetGateway",<br />"ec2:AuthorizeSecurityGroupIngress",<br />"ec2:CreateInternetGateway",<br />"ec2:CreateNatGateway",<br />"ec2:CreateRoute",<br />"ec2:CreateRouteTable",<br />"ec2:CreateSecurityGroup",<br />"ec2:CreateSubnet",<br />"ec2:CreateTags",<br />"ec2:DeleteInternetGateway",<br />"ec2:DeleteNatGateway",<br />"ec2:DeleteRouteTable",<br />"ec2:DeleteSecurityGroup",<br />"ec2:DeleteSubnet",<br />"ec2:DeleteTags",<br />"ec2:DescribeAccountAttributes",<br />"ec2:DescribeAddresses",<br />"ec2:DescribeAvailabilityZones",<br />"ec2:DescribeImages",<br />"ec2:DescribeInstances",<br />"ec2:DescribeInternetGateways",<br />"ec2:DescribeNatGateways",<br />"ec2:DescribeNetworkInterfaces",<br />"ec2:DescribeNetworkInterfaceAttribute",<br />"ec2:DescribeRouteTables",<br />"ec2:DescribeSecurityGroups",<br />"ec2:DescribeSubnets",<br />"ec2:DescribeVpcs",<br />"ec2:DescribeVpcAttribute",<br />"ec2:DescribeVolumes",<br />"ec2:DetachInternetGateway",<br />"ec2:DisassociateRouteTable",<br />"ec2:DisassociateAddress",<br />"ec2:ModifyInstanceAttribute",<br />"ec2:ModifyNetworkInterfaceAttribute",<br />"ec2:ModifySubnetAttribute",<br />"ec2:RevokeSecurityGroupIngress",<br />"ec2:RunInstances",<br />"ec2:TerminateInstances",<br />"tag:GetResources",<br />"ec2:CreateLaunchTemplate",<br />"ec2:CreateLaunchTemplateVersion",<br />"ec2:DescribeLaunchTemplates",<br />"ec2:DescribeLaunchTemplateVersions",<br />"ec2:DeleteLaunchTemplate",<br />"ec2:DeleteLaunchTemplateVersions"<br />],<br />"Resource": [<br />"*"<br />],<br />"Effect": "Allow"<br />},<br />{<br />"Condition": {<br />"StringLike": {<br />"iam:AWSServiceName": "elasticloadbalancing.amazonaws.com"<br />}<br />},<br />"Action": [<br />"iam:CreateServiceLinkedRole"<br />],<br />"Resource": [<br />"arn:*:iam::*:role/aws-service-role/elasticloadbalancing.amazonaws.com/AWSServiceRoleForElasticLoadBalancing"<br />],<br />"Effect": "Allow"<br />},<br />{<br />"Action": [<br />"iam:PassRole"<br />],<br />"Resource": [<br />"arn:*:iam::*:role/*-worker-role"<br />],<br />"Effect": "Allow"<br />},<br />{<br />"Effect": "Allow",<br />"Action": [<br />"kms:Decrypt",<br />"kms:ReEncrypt",<br />"kms:GenerateDataKeyWithoutPlainText",<br />"kms:DescribeKey"<br />],<br />"Resource": "*"<br />},<br />{<br />"Effect": "Allow",<br />"Action": [<br />"kms:CreateGrant"<br />],<br />"Resource": "*",<br />"Condition": {<br />"Bool": {<br />"kms:GrantIsForAWSResource": true<br />}<br />}<br />}<br />]<br />}||
 |**storageARN** `required`|str|StorageARN is an ARN value referencing a role appropriate for the Storage Operator.<br /><br />The following is an example of a valid policy document:<br /><br />{<br />"Version": "2012-10-17",<br />"Statement": [<br />{<br />"Effect": "Allow",<br />"Action": [<br />"ec2:AttachVolume",<br />"ec2:CreateSnapshot",<br />"ec2:CreateTags",<br />"ec2:CreateVolume",<br />"ec2:DeleteSnapshot",<br />"ec2:DeleteTags",<br />"ec2:DeleteVolume",<br />"ec2:DescribeInstances",<br />"ec2:DescribeSnapshots",<br />"ec2:DescribeTags",<br />"ec2:DescribeVolumes",<br />"ec2:DescribeVolumesModifications",<br />"ec2:DetachVolume",<br />"ec2:ModifyVolume"<br />],<br />"Resource": "*"<br />}<br />]<br />}||
+### NodeadmConfig
+
+NodeadmConfig is the Schema for the nodeadmconfigs API.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion** `required` `readOnly`|"bootstrap.cluster.x-k8s.io/v1beta2"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"bootstrap.cluster.x-k8s.io/v1beta2"|
+|**kind** `required` `readOnly`|"NodeadmConfig"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"NodeadmConfig"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec**|[BootstrapClusterxK8sIoV1beta2NodeadmConfigSpec](#bootstrapclusterxk8siov1beta2nodeadmconfigspec)|spec||
+|**status**|[BootstrapClusterxK8sIoV1beta2NodeadmConfigStatus](#bootstrapclusterxk8siov1beta2nodeadmconfigstatus)|status||
+### NodeadmConfigTemplate
+
+NodeadmConfigTemplate is the Amazon EKS Bootstrap Configuration Template API.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion** `required` `readOnly`|"bootstrap.cluster.x-k8s.io/v1beta2"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"bootstrap.cluster.x-k8s.io/v1beta2"|
+|**kind** `required` `readOnly`|"NodeadmConfigTemplate"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"NodeadmConfigTemplate"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec**|[BootstrapClusterxK8sIoV1beta2NodeadmConfigTemplateSpec](#bootstrapclusterxk8siov1beta2nodeadmconfigtemplatespec)|spec||
 ### ROSACluster
 
 ROSACluster is the Schema for the ROSAClusters API.
