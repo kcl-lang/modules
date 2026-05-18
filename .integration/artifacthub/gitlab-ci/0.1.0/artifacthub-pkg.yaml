@@ -1,0 +1,24 @@
+version: 0.1.0
+name: gitlab-ci
+displayName: GitLab CI/CD
+description: "`gitlab-ci` is a KCL module for authoring GitLab CI/CD pipelines"
+links:
+- name: GitLab CI/CD YAML syntax reference
+  url: https://docs.gitlab.com/ci/yaml/
+- name: KCL homepage
+  url: https://kcl-lang.io/
+install: |
+  #### Add `gitlab-ci` with tag `0.1.0` as dependency
+  ```
+  kcl mod add gitlab-ci:0.1.0
+  ```
+
+  #### Pull `gitlab-ci` with tag `0.1.0` to local
+  ```
+  kcl mod pull gitlab-ci:0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
