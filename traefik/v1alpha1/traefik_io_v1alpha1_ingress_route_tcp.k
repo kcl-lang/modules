@@ -196,11 +196,6 @@ schema TraefikIoV1alpha1IngressRouteTCPSpecRoutesItems0ServicesItems0ProxyProtoc
     version?: int
 
 
-    check:
-        version <= 2 if version not in [None, Undefined]
-        version >= 1 if version not in [None, Undefined]
-
-
 schema TraefikIoV1alpha1IngressRouteTCPSpecTLS:
     r"""
     TLS defines the TLS configuration on a layer 4 / TCP Route.
