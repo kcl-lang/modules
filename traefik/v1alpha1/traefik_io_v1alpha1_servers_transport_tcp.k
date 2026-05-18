@@ -86,10 +86,6 @@ schema TraefikIoV1alpha1ServersTransportTCPSpecProxyProtocol:
     version?: int
 
 
-    check:
-        version <= 2 if version not in [None, Undefined]
-        version >= 1 if version not in [None, Undefined]
-
 
 schema TraefikIoV1alpha1ServersTransportTCPSpecTLS:
     r"""
