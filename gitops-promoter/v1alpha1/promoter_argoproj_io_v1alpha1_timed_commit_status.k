@@ -45,6 +45,10 @@ schema PromoterArgoprojIoV1alpha1TimedCommitStatusSpec:
     ----------
     environments : [PromoterArgoprojIoV1alpha1TimedCommitStatusSpecEnvironmentsItems0], default is Undefined, required
         environments
+    key : str, default is "timer", optional
+        Key is the gate name referenced in the PromotionStrategy's activeCommitStatuses or
+        proposedCommitStatuses. When omitted, the CRD default is timer. Set Key explicitly, even if you use the CRD default.
+        Must be lowercase alphanumeric with hyphens, 1–63 characters (pattern: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$).
     promotionStrategyRef : PromoterArgoprojIoV1alpha1TimedCommitStatusSpecPromotionStrategyRef, default is Undefined, required
         promotion strategy ref
     """
@@ -52,7 +56,15 @@ schema PromoterArgoprojIoV1alpha1TimedCommitStatusSpec:
 
     environments: [PromoterArgoprojIoV1alpha1TimedCommitStatusSpecEnvironmentsItems0]
 
+    key?: str = "timer"
+
     promotionStrategyRef: PromoterArgoprojIoV1alpha1TimedCommitStatusSpecPromotionStrategyRef
+
+
+    check:
+        len(key) <= 63 if key
+        len(key) >= 1 if key
+        _regex_match(str(key), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if key
 
 
 schema PromoterArgoprojIoV1alpha1TimedCommitStatusSpecEnvironmentsItems0:
@@ -74,6 +86,10 @@ schema PromoterArgoprojIoV1alpha1TimedCommitStatusSpecEnvironmentsItems0:
     duration: str
 
 
+    check:
+        len(branch) >= 1
+
+
 schema PromoterArgoprojIoV1alpha1TimedCommitStatusSpecPromotionStrategyRef:
     r"""
     PromotionStrategyRef is a reference to the promotion strategy that this timed commit status applies to.
@@ -88,6 +104,12 @@ schema PromoterArgoprojIoV1alpha1TimedCommitStatusSpecPromotionStrategyRef:
     name: str
 
 
+    check:
+        len(name) <= 253
+        len(name) >= 1
+        _regex_match(str(name), r"^[a-z0-9]([-a-z0-9.]*[a-z0-9])?$")
+
+
 schema PromoterArgoprojIoV1alpha1TimedCommitStatusStatus:
     r"""
     status defines the observed state of TimedCommitStatus
@@ -98,12 +120,19 @@ schema PromoterArgoprojIoV1alpha1TimedCommitStatusStatus:
         Conditions represent the latest available observations of an object's state
     environments : [PromoterArgoprojIoV1alpha1TimedCommitStatusStatusEnvironmentsItems0], default is Undefined, optional
         Environments holds the status of each environment being tracked.
+    observedGeneration : int, default is Undefined, optional
+        ObservedGeneration is the .metadata.generation that this status was reconciled from.
+        Because status is written via Server-Side Apply with ForceOwnership (which has no
+        optimistic-concurrency check), this field is the canonical way to detect stale
+        status writes: compare status.observedGeneration with metadata.generation.
     """
 
 
     conditions?: [PromoterArgoprojIoV1alpha1TimedCommitStatusStatusConditionsItems0]
 
     environments?: [PromoterArgoprojIoV1alpha1TimedCommitStatusStatusEnvironmentsItems0]
+
+    observedGeneration?: int
 
 
 schema PromoterArgoprojIoV1alpha1TimedCommitStatusStatusConditionsItems0:
@@ -179,6 +208,7 @@ schema PromoterArgoprojIoV1alpha1TimedCommitStatusStatusEnvironmentsItems0:
         Allowing you to extend the duration of an already deployed commit, if the time has not yet elapsed.
     sha : str, default is Undefined, required
         Sha is the commit SHA being tracked for this environment.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     """
 
 
@@ -193,5 +223,11 @@ schema PromoterArgoprojIoV1alpha1TimedCommitStatusStatusEnvironmentsItems0:
     requiredDuration: str
 
     sha: str
+
+
+    check:
+        len(branch) >= 1
+        len(sha) <= 64
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$")
 
 

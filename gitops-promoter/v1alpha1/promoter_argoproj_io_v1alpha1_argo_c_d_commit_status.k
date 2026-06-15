@@ -45,6 +45,10 @@ schema PromoterArgoprojIoV1alpha1ArgoCDCommitStatusSpec:
     ----------
     applicationSelector : PromoterArgoprojIoV1alpha1ArgoCDCommitStatusSpecApplicationSelector, default is Undefined, required
         application selector
+    key : str, default is "argocd-health", optional
+        Key is the gate name referenced in the PromotionStrategy's activeCommitStatuses.
+        When omitted, the CRD default is argocd-health. Set Key explicitly, even if you use the CRD default.
+        Must be lowercase alphanumeric with hyphens, 1–63 characters (pattern: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?$).
     promotionStrategyRef : PromoterArgoprojIoV1alpha1ArgoCDCommitStatusSpecPromotionStrategyRef, default is Undefined, required
         promotion strategy ref
     url : PromoterArgoprojIoV1alpha1ArgoCDCommitStatusSpecURL, default is Undefined, optional
@@ -54,9 +58,17 @@ schema PromoterArgoprojIoV1alpha1ArgoCDCommitStatusSpec:
 
     applicationSelector: PromoterArgoprojIoV1alpha1ArgoCDCommitStatusSpecApplicationSelector
 
+    key?: str = "argocd-health"
+
     promotionStrategyRef: PromoterArgoprojIoV1alpha1ArgoCDCommitStatusSpecPromotionStrategyRef
 
     url?: PromoterArgoprojIoV1alpha1ArgoCDCommitStatusSpecURL
+
+
+    check:
+        len(key) <= 63 if key
+        len(key) >= 1 if key
+        _regex_match(str(key), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if key
 
 
 schema PromoterArgoprojIoV1alpha1ArgoCDCommitStatusSpecApplicationSelector:
@@ -118,6 +130,12 @@ schema PromoterArgoprojIoV1alpha1ArgoCDCommitStatusSpecPromotionStrategyRef:
 
 
     name: str
+
+
+    check:
+        len(name) <= 253
+        len(name) >= 1
+        _regex_match(str(name), r"^[a-z0-9]([-a-z0-9.]*[a-z0-9])?$")
 
 
 schema PromoterArgoprojIoV1alpha1ArgoCDCommitStatusSpecURL:
@@ -184,6 +202,11 @@ schema PromoterArgoprojIoV1alpha1ArgoCDCommitStatusStatus:
         This field is sorted by environment (same order as the referenced PromotionStrategy), then namespace, then name.
     conditions : [PromoterArgoprojIoV1alpha1ArgoCDCommitStatusStatusConditionsItems0], default is Undefined, optional
         Conditions Represents the observations of the current state.
+    observedGeneration : int, default is Undefined, optional
+        ObservedGeneration is the .metadata.generation that this status was reconciled from.
+        Because status is written via Server-Side Apply with ForceOwnership (which has no
+        optimistic-concurrency check), this field is the canonical way to detect stale
+        status writes: compare status.observedGeneration with metadata.generation.
     """
 
 
@@ -191,16 +214,19 @@ schema PromoterArgoprojIoV1alpha1ArgoCDCommitStatusStatus:
 
     conditions?: [PromoterArgoprojIoV1alpha1ArgoCDCommitStatusStatusConditionsItems0]
 
+    observedGeneration?: int
+
 
 schema PromoterArgoprojIoV1alpha1ArgoCDCommitStatusStatusApplicationsSelectedItems0:
     r"""
-    ApplicationsSelected represents the Argo CD applications that are selected by the commit status.
+    ApplicationsSelected represents the Argo CD applications that are selected by the commit status. The fields in this
+    struct are all required, since the controller should always fully construct this information.
 
     Attributes
     ----------
     clusterName : str, default is Undefined, required
         ClusterName is the name of the cluster that the application manifest is deployed to. An empty string indicates
-        the local cluster.
+        the local cluster. There is no minimum length, since the local cluster is represented by an empty string.
     environment : str, default is Undefined, required
         Environment is the syncSource.targetBranch of the Argo CD application (in effect, its environment).
     lastTransitionTime : str, default is Undefined, optional
@@ -212,7 +238,11 @@ schema PromoterArgoprojIoV1alpha1ArgoCDCommitStatusStatusApplicationsSelectedIte
     phase : str, default is Undefined, required
         Phase is the current phase of the commit status.
     sha : str, default is Undefined, required
-        Sha is the commit SHA that this status is associated with.
+        Sha is the commit SHA that the application is synced to.
+        This field is only populated when the application's sync status is Synced.
+        When the sync status is OutOfSync or Unknown, this field will be empty because
+        Status.Sync.Revision may contain a branch name instead of a SHA.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     """
 
 
@@ -226,13 +256,21 @@ schema PromoterArgoprojIoV1alpha1ArgoCDCommitStatusStatusApplicationsSelectedIte
 
     namespace: str
 
-    phase: str
+    phase: "pending" | "success" | "failure"
 
     sha: str
 
 
     check:
         len(environment) >= 1
+        len(name) <= 253
+        len(name) >= 1
+        _regex_match(str(name), r"^[a-z0-9]([-a-z0-9.]*[a-z0-9])?$")
+        len(namespace) <= 63
+        len(namespace) >= 1
+        _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$")
+        len(sha) <= 64
+        _regex_match(str(sha), r"^(|[a-f0-9]{40}|[a-f0-9]{64})$")
 
 
 schema PromoterArgoprojIoV1alpha1ArgoCDCommitStatusStatusConditionsItems0:
