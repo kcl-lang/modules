@@ -43,10 +43,16 @@ schema PromoterArgoprojIoV1alpha1ClusterScmProviderSpec:
 
     Attributes
     ----------
+    azureDevOps : PromoterArgoprojIoV1alpha1ClusterScmProviderSpecAzureDevOps, default is Undefined, optional
+        azure dev ops
+    bitbucketCloud : any, default is Undefined, optional
+        BitbucketCloud required configuration for Bitbucket Cloud as the SCM provider
     fake : PromoterArgoprojIoV1alpha1ClusterScmProviderSpecFake, default is Undefined, optional
         fake
     forgejo : PromoterArgoprojIoV1alpha1ClusterScmProviderSpecForgejo, default is Undefined, optional
         forgejo
+    gitea : PromoterArgoprojIoV1alpha1ClusterScmProviderSpecGitea, default is Undefined, optional
+        gitea
     github : PromoterArgoprojIoV1alpha1ClusterScmProviderSpecGithub, default is Undefined, optional
         github
     gitlab : PromoterArgoprojIoV1alpha1ClusterScmProviderSpecGitlab, default is Undefined, optional
@@ -56,15 +62,45 @@ schema PromoterArgoprojIoV1alpha1ClusterScmProviderSpec:
     """
 
 
+    azureDevOps?: PromoterArgoprojIoV1alpha1ClusterScmProviderSpecAzureDevOps
+
+    bitbucketCloud?: any
+
     fake?: PromoterArgoprojIoV1alpha1ClusterScmProviderSpecFake
 
     forgejo?: PromoterArgoprojIoV1alpha1ClusterScmProviderSpecForgejo
+
+    gitea?: PromoterArgoprojIoV1alpha1ClusterScmProviderSpecGitea
 
     github?: PromoterArgoprojIoV1alpha1ClusterScmProviderSpecGithub
 
     gitlab?: PromoterArgoprojIoV1alpha1ClusterScmProviderSpecGitlab
 
     secretRef?: PromoterArgoprojIoV1alpha1ClusterScmProviderSpecSecretRef
+
+
+schema PromoterArgoprojIoV1alpha1ClusterScmProviderSpecAzureDevOps:
+    r"""
+    AzureDevOps required configuration for Azure DevOps as the SCM provider
+
+    Attributes
+    ----------
+    domain : str, default is Undefined, optional
+        Domain is the Azure DevOps domain, such as "dev.azure.com". If using the default Azure DevOps domain, leave this field empty.
+    organization : str, default is Undefined, required
+        Organization is the Azure DevOps organization name.
+    """
+
+
+    domain?: str
+
+    organization: str
+
+
+    check:
+        len(organization) <= 50
+        len(organization) >= 1
+        _regex_match(str(organization), r"^[A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?$")
 
 
 schema PromoterArgoprojIoV1alpha1ClusterScmProviderSpecFake:
@@ -81,6 +117,11 @@ schema PromoterArgoprojIoV1alpha1ClusterScmProviderSpecFake:
     domain?: str
 
 
+    check:
+        len(domain) <= 253 if domain
+        len(domain) >= 1 if domain
+
+
 schema PromoterArgoprojIoV1alpha1ClusterScmProviderSpecForgejo:
     r"""
     Forgejo required configuration for Forgejo as the SCM provider
@@ -94,6 +135,30 @@ schema PromoterArgoprojIoV1alpha1ClusterScmProviderSpecForgejo:
 
 
     domain: str
+
+
+    check:
+        len(domain) <= 253
+        len(domain) >= 1
+
+
+schema PromoterArgoprojIoV1alpha1ClusterScmProviderSpecGitea:
+    r"""
+    Gitea required configuration for Gitea as the SCM provider
+
+    Attributes
+    ----------
+    domain : str, default is Undefined, required
+        Domain is the Gitea domain, such as "gitea.com" or "gitea.mycompany.com".
+        There is no default domain since Gitea is self-hosted.
+    """
+
+
+    domain: str
+
+
+    check:
+        len(domain) >= 1
 
 
 schema PromoterArgoprojIoV1alpha1ClusterScmProviderSpecGithub:
@@ -122,6 +187,7 @@ schema PromoterArgoprojIoV1alpha1ClusterScmProviderSpecGithub:
 
 
     check:
+        appID >= 0
         installationID >= 0 if installationID not in [None, Undefined]
 
 
@@ -166,10 +232,17 @@ schema PromoterArgoprojIoV1alpha1ClusterScmProviderStatus:
     ----------
     conditions : [PromoterArgoprojIoV1alpha1ClusterScmProviderStatusConditionsItems0], default is Undefined, optional
         Conditions Represents the observations of the current state.
+    observedGeneration : int, default is Undefined, optional
+        ObservedGeneration is the .metadata.generation that this status was reconciled from.
+        Because status is written via Server-Side Apply with ForceOwnership (which has no
+        optimistic-concurrency check), this field is the canonical way to detect stale
+        status writes: compare status.observedGeneration with metadata.generation.
     """
 
 
     conditions?: [PromoterArgoprojIoV1alpha1ClusterScmProviderStatusConditionsItems0]
+
+    observedGeneration?: int
 
 
 schema PromoterArgoprojIoV1alpha1ClusterScmProviderStatusConditionsItems0:
