@@ -43,12 +43,16 @@ schema PromoterArgoprojIoV1alpha1GitRepositorySpec:
 
     Attributes
     ----------
+    azureDevOps : PromoterArgoprojIoV1alpha1GitRepositorySpecAzureDevOps, default is Undefined, optional
+        azure dev ops
     bitbucketCloud : PromoterArgoprojIoV1alpha1GitRepositorySpecBitbucketCloud, default is Undefined, optional
         bitbucket cloud
     fake : PromoterArgoprojIoV1alpha1GitRepositorySpecFake, default is Undefined, optional
         fake
     forgejo : PromoterArgoprojIoV1alpha1GitRepositorySpecForgejo, default is Undefined, optional
         forgejo
+    gitea : PromoterArgoprojIoV1alpha1GitRepositorySpecGitea, default is Undefined, optional
+        gitea
     github : PromoterArgoprojIoV1alpha1GitRepositorySpecGithub, default is Undefined, optional
         github
     gitlab : PromoterArgoprojIoV1alpha1GitRepositorySpecGitlab, default is Undefined, optional
@@ -58,17 +62,46 @@ schema PromoterArgoprojIoV1alpha1GitRepositorySpec:
     """
 
 
+    azureDevOps?: PromoterArgoprojIoV1alpha1GitRepositorySpecAzureDevOps
+
     bitbucketCloud?: PromoterArgoprojIoV1alpha1GitRepositorySpecBitbucketCloud
 
     fake?: PromoterArgoprojIoV1alpha1GitRepositorySpecFake
 
     forgejo?: PromoterArgoprojIoV1alpha1GitRepositorySpecForgejo
 
+    gitea?: PromoterArgoprojIoV1alpha1GitRepositorySpecGitea
+
     github?: PromoterArgoprojIoV1alpha1GitRepositorySpecGithub
 
     gitlab?: PromoterArgoprojIoV1alpha1GitRepositorySpecGitlab
 
     scmProviderRef: PromoterArgoprojIoV1alpha1GitRepositorySpecScmProviderRef
+
+
+schema PromoterArgoprojIoV1alpha1GitRepositorySpecAzureDevOps:
+    r"""
+    AzureDevOpsRepo is a repository in Azure DevOps, identified by its project and name.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name is the name of the repository.
+    project : str, default is Undefined, required
+        Project is the project name in Azure DevOps.
+    """
+
+
+    name: str
+
+    project: str
+
+
+    check:
+        len(name) <= 64
+        len(name) >= 1
+        len(project) <= 64
+        len(project) >= 1
 
 
 schema PromoterArgoprojIoV1alpha1GitRepositorySpecBitbucketCloud:
@@ -91,6 +124,7 @@ schema PromoterArgoprojIoV1alpha1GitRepositorySpecBitbucketCloud:
 
     check:
         len(name) <= 62
+        len(name) >= 1
         _regex_match(str(name), r"^[a-zA-Z0-9_.-]+$")
         len(owner) >= 1
         _regex_match(str(owner), r"^[a-zA-Z0-9_-]+$")
@@ -114,6 +148,11 @@ schema PromoterArgoprojIoV1alpha1GitRepositorySpecFake:
     owner: str
 
 
+    check:
+        len(name) >= 1
+        len(owner) >= 1
+
+
 schema PromoterArgoprojIoV1alpha1GitRepositorySpecForgejo:
     r"""
     ForgejoRepo is a repository in Forgejo, identified by its owner and name.
@@ -130,6 +169,33 @@ schema PromoterArgoprojIoV1alpha1GitRepositorySpecForgejo:
     name: str
 
     owner: str
+
+
+    check:
+        len(name) >= 1
+        len(owner) >= 1
+
+
+schema PromoterArgoprojIoV1alpha1GitRepositorySpecGitea:
+    r"""
+    GiteaRepo is a repository in Gitea, identified by its owner and name.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name is the name of the repository.
+    owner : str, default is Undefined, required
+        Owner is the owner of the repository.
+    """
+
+
+    name: str
+
+    owner: str
+
+
+    check:
+        len(owner) >= 1
 
 
 schema PromoterArgoprojIoV1alpha1GitRepositorySpecGithub:
@@ -152,8 +218,10 @@ schema PromoterArgoprojIoV1alpha1GitRepositorySpecGithub:
 
     check:
         len(name) <= 100
+        len(name) >= 1
         _regex_match(str(name), r"^[a-zA-Z0-9_\-\.]+$")
         len(owner) <= 39
+        len(owner) >= 1
         _regex_match(str(owner), r"^[a-zA-Z0-9][a-zA-Z0-9\-]*$")
 
 
@@ -180,8 +248,11 @@ schema PromoterArgoprojIoV1alpha1GitRepositorySpecGitlab:
 
 
     check:
+        len(name) >= 1
         _regex_match(str(name), r"^[a-zA-Z0-9_\-\/.]+$")
+        len(namespace) >= 1
         _regex_match(str(namespace), r"^[a-zA-Z0-9_\-\/.]+$")
+        projectId >= 0
 
 
 schema PromoterArgoprojIoV1alpha1GitRepositorySpecScmProviderRef:
@@ -202,6 +273,12 @@ schema PromoterArgoprojIoV1alpha1GitRepositorySpecScmProviderRef:
     name: str
 
 
+    check:
+        len(name) <= 253
+        len(name) >= 1
+        _regex_match(str(name), r"^[a-z0-9]([-a-z0-9.]*[a-z0-9])?$")
+
+
 schema PromoterArgoprojIoV1alpha1GitRepositoryStatus:
     r"""
     GitRepositoryStatus defines the observed state of GitRepository
@@ -210,10 +287,17 @@ schema PromoterArgoprojIoV1alpha1GitRepositoryStatus:
     ----------
     conditions : [PromoterArgoprojIoV1alpha1GitRepositoryStatusConditionsItems0], default is Undefined, optional
         Conditions Represents the observations of the current state.
+    observedGeneration : int, default is Undefined, optional
+        ObservedGeneration is the .metadata.generation that this status was reconciled from.
+        Because status is written via Server-Side Apply with ForceOwnership (which has no
+        optimistic-concurrency check), this field is the canonical way to detect stale
+        status writes: compare status.observedGeneration with metadata.generation.
     """
 
 
     conditions?: [PromoterArgoprojIoV1alpha1GitRepositoryStatusConditionsItems0]
+
+    observedGeneration?: int
 
 
 schema PromoterArgoprojIoV1alpha1GitRepositoryStatusConditionsItems0:

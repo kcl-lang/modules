@@ -44,15 +44,19 @@ schema PromoterArgoprojIoV1alpha1CommitStatusSpec:
     Attributes
     ----------
     description : str, default is Undefined, required
-        description
+        Description is a human-readable description of the commit status.
+        This is shown in the SCM provider (GitHub, GitLab, etc.) as the commit status description.
+        Use an action-oriented message to convey that the system is actively working. For example,
+        "Waiting for approval" instead of "Approval pending."
     gitRepositoryRef : PromoterArgoprojIoV1alpha1CommitStatusSpecGitRepositoryRef, default is Undefined, required
         git repository ref
     name : str, default is Undefined, required
-        name
+        Name is the name of the commit status.
     phase : str, default is "pending", required
-        CommitStatusPhase represents the phase of a commit status.
+        Phase is the state of the commit status. This will be mapped to the appropriate equivalent in the SCM.
     sha : str, default is Undefined, required
-        sha
+        SHA is the commit SHA to set the status on.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     url : str, default is Undefined, optional
         Url is a URL that the user can follow to see more details about the status
     """
@@ -74,8 +78,8 @@ schema PromoterArgoprojIoV1alpha1CommitStatusSpec:
     check:
         len(name) >= 1
         len(sha) <= 64
-        len(sha) >= 1
-        _regex_match(str(sha), r"^[a-fA-F0-9]+$")
+        len(sha) >= 40
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$")
         _regex_match(str(url), r"^(https?://.*)?$") if url
 
 
@@ -93,6 +97,12 @@ schema PromoterArgoprojIoV1alpha1CommitStatusSpecGitRepositoryRef:
     name: str
 
 
+    check:
+        len(name) <= 253
+        len(name) >= 1
+        _regex_match(str(name), r"^[a-z0-9]([-a-z0-9.]*[a-z0-9])?$")
+
+
 schema PromoterArgoprojIoV1alpha1CommitStatusStatus:
     r"""
     CommitStatusStatus defines the observed state of CommitStatus
@@ -101,22 +111,35 @@ schema PromoterArgoprojIoV1alpha1CommitStatusStatus:
     ----------
     conditions : [PromoterArgoprojIoV1alpha1CommitStatusStatusConditionsItems0], default is Undefined, optional
         Conditions Represents the observations of the current state.
-    id : str, default is Undefined, required
+    id : str, default is Undefined, optional
         Id is the unique identifier of the commit status, set by the SCM
+    observedGeneration : int, default is Undefined, optional
+        ObservedGeneration is the .metadata.generation that this status was reconciled from.
+        Because status is written via Server-Side Apply with ForceOwnership (which has no
+        optimistic-concurrency check), this field is the canonical way to detect stale
+        status writes: compare status.observedGeneration with metadata.generation.
     phase : str, default is "pending", optional
-        CommitStatusPhase represents the phase of a commit status.
-    sha : str, default is Undefined, required
-        sha
+        Phase is the state of the commit status. This will be mapped to the appropriate equivalent in the SCM.
+    sha : str, default is Undefined, optional
+        Sha is the commit SHA that the status is set on.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     """
 
 
     conditions?: [PromoterArgoprojIoV1alpha1CommitStatusStatusConditionsItems0]
 
-    id: str
+    id?: str
+
+    observedGeneration?: int
 
     phase?: "pending" | "success" | "failure" | "" = "pending"
 
-    sha: str
+    sha?: str
+
+
+    check:
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1CommitStatusStatusConditionsItems0:

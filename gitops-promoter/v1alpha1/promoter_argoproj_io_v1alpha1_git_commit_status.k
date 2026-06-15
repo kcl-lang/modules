@@ -152,6 +152,12 @@ schema PromoterArgoprojIoV1alpha1GitCommitStatusSpecPromotionStrategyRef:
     name: str
 
 
+    check:
+        len(name) <= 253
+        len(name) >= 1
+        _regex_match(str(name), r"^[a-z0-9]([-a-z0-9.]*[a-z0-9])?$")
+
+
 schema PromoterArgoprojIoV1alpha1GitCommitStatusStatus:
     r"""
     status defines the observed state of GitCommitStatus
@@ -170,12 +176,19 @@ schema PromoterArgoprojIoV1alpha1GitCommitStatusStatus:
         but the CommitStatus is always reported on the PROPOSED commit for promotion gating.
         Each environment entry tracks both the ProposedHydratedSha (where status is reported) and the
         ActiveHydratedSha, with TargetedSha indicating which one was actually evaluated.
+    observedGeneration : int, default is Undefined, optional
+        ObservedGeneration is the .metadata.generation that this status was reconciled from.
+        Because status is written via Server-Side Apply with ForceOwnership (which has no
+        optimistic-concurrency check), this field is the canonical way to detect stale
+        status writes: compare status.observedGeneration with metadata.generation.
     """
 
 
     conditions?: [PromoterArgoprojIoV1alpha1GitCommitStatusStatusConditionsItems0]
 
     environments?: [PromoterArgoprojIoV1alpha1GitCommitStatusStatusEnvironmentsItems0]
+
+    observedGeneration?: int
 
 
 schema PromoterArgoprojIoV1alpha1GitCommitStatusStatusConditionsItems0:
@@ -241,6 +254,7 @@ schema PromoterArgoprojIoV1alpha1GitCommitStatusStatusEnvironmentsItems0:
         This comes from the PromotionStrategy's environment status.
         The expression is evaluated against THIS commit's data, not the proposed commit.
         May be empty if the PromotionStrategy hasn't reconciled yet.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     branch : str, default is Undefined, required
         Branch is the environment branch name being validated.
     expressionResult : bool, default is Undefined, optional
@@ -258,11 +272,13 @@ schema PromoterArgoprojIoV1alpha1GitCommitStatusStatusEnvironmentsItems0:
         The CommitStatus resource is created with this SHA, allowing the PromotionStrategy to gate
         promotions based on the validation of the ACTIVE commit.
         May be empty if the PromotionStrategy hasn't reconciled yet.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     targetedSha : str, default is Undefined, optional
         TargetedSha is the commit SHA that was actually validated by the expression.
         This will match either ProposedHydratedSha or ActiveHydratedSha depending on
         the Target setting ("proposed" or "active").
         This field clarifies which commit's data was used in the expression evaluation.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     """
 
 
@@ -277,5 +293,16 @@ schema PromoterArgoprojIoV1alpha1GitCommitStatusStatusEnvironmentsItems0:
     proposedHydratedSha: str
 
     targetedSha?: str
+
+
+    check:
+        len(activeHydratedSha) <= 64 if activeHydratedSha
+        _regex_match(str(activeHydratedSha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if activeHydratedSha
+        len(branch) >= 1
+        len(proposedHydratedSha) <= 64
+        len(proposedHydratedSha) >= 40
+        _regex_match(str(proposedHydratedSha), r"^([a-f0-9]{40}|[a-f0-9]{64})$")
+        len(targetedSha) <= 64 if targetedSha
+        _regex_match(str(targetedSha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if targetedSha
 
 

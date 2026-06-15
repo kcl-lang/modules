@@ -47,6 +47,9 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicySpec:
         ActiveBranch staging hydrated branch
     activeCommitStatuses : [PromoterArgoprojIoV1alpha1ChangeTransferPolicySpecActiveCommitStatusesItems0], default is Undefined, optional
         ActiveCommitStatuses lists the statuses to be monitored on the active branch
+    activePath : str, default is Undefined, optional
+        ActivePath is an optional repository subpath for this policy's active state.
+        When set, hydrator metadata is read from <activePath>/hydrator.metadata.
     autoMerge : bool, default is True, optional
         auto merge
     gitRepositoryRef : PromoterArgoprojIoV1alpha1ChangeTransferPolicySpecGitRepositoryRef, default is Undefined, required
@@ -62,6 +65,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicySpec:
 
     activeCommitStatuses?: [PromoterArgoprojIoV1alpha1ChangeTransferPolicySpecActiveCommitStatusesItems0]
 
+    activePath?: str
+
     autoMerge?: bool = True
 
     gitRepositoryRef: PromoterArgoprojIoV1alpha1ChangeTransferPolicySpecGitRepositoryRef
@@ -69,6 +74,12 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicySpec:
     proposedBranch: str
 
     proposedCommitStatuses?: [PromoterArgoprojIoV1alpha1ChangeTransferPolicySpecProposedCommitStatusesItems0]
+
+
+    check:
+        len(activeBranch) >= 1
+        len(activePath) >= 1 if activePath
+        len(proposedBranch) >= 1
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicySpecActiveCommitStatusesItems0:
@@ -103,6 +114,12 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicySpecGitRepositoryRef:
 
 
     name: str
+
+
+    check:
+        len(name) <= 253
+        len(name) >= 1
+        _regex_match(str(name), r"^[a-z0-9]([-a-z0-9.]*[a-z0-9])?$")
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicySpecProposedCommitStatusesItems0:
@@ -141,6 +158,11 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatus:
         The history length is hard-coded to be at most 5 entries. This may change in the future.
         History is constructed on a best-effort basis and should be used for informational purposes only.
         History is in reverse chronological order (newest is first).
+    observedGeneration : int, default is Undefined, optional
+        ObservedGeneration is the .metadata.generation that this status was reconciled from.
+        Because status is written via Server-Side Apply with ForceOwnership (which has no
+        optimistic-concurrency check), this field is the canonical way to detect stale
+        status writes: compare status.observedGeneration with metadata.generation.
     proposed : PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposed, default is Undefined, optional
         proposed
     pullRequest : PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusPullRequest, default is Undefined, optional
@@ -153,6 +175,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatus:
     conditions?: [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusConditionsItems0]
 
     history?: [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0]
+
+    observedGeneration?: int
 
     proposed?: PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposed
 
@@ -191,6 +215,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveCommitStatusesI
 
     Attributes
     ----------
+    description : str, default is Undefined, optional
+        Description is the description of the commit status
     key : str, default is Undefined, required
         Key staging hydrated branch
     phase : str, default is Undefined, required
@@ -199,6 +225,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveCommitStatusesI
         Url is the URL of the commit status
     """
 
+
+    description?: str
 
     key: str
 
@@ -232,6 +260,7 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveDry:
         RepoURL is the URL of the repository where the commit is located
     sha : str, default is Undefined, optional
         Sha is the SHA of the commit in the branch
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message
     """
@@ -254,6 +283,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveDry:
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveDryReferencesItems0:
@@ -287,6 +318,7 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveDryReferencesIt
         RepoURL is the URL of the repository where the commit is located.
     sha : str, default is Undefined, optional
         Sha is the commit hash.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message, i.e. `git show --format=%s`.
     """
@@ -307,6 +339,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveDryReferencesIt
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveHydrated:
@@ -327,6 +361,7 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveHydrated:
         RepoURL is the URL of the repository where the commit is located
     sha : str, default is Undefined, optional
         Sha is the SHA of the commit in the branch
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message
     """
@@ -349,6 +384,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveHydrated:
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveHydratedReferencesItems0:
@@ -382,6 +419,7 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveHydratedReferen
         RepoURL is the URL of the repository where the commit is located.
     sha : str, default is Undefined, optional
         Sha is the commit hash.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message, i.e. `git show --format=%s`.
     """
@@ -402,6 +440,108 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveHydratedReferen
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveNote:
+    r"""
+    Note is the hydrator metadata from the git note attached to the hydrated commit.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the dry commit that was used to hydrate the branch.
+    body : str, default is Undefined, optional
+        Body is the body of the dry commit that was used to hydrate the branch without the subject.
+    date : str, default is Undefined, optional
+        Date is the date of the dry commit that was used to hydrate the branch.
+    drySha : str, default is Undefined, optional
+        DrySha is the SHA of the commit that was used as the dry source for hydration.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
+    references : [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveNoteReferencesItems0], default is Undefined, optional
+        References are the references to other commits, that went into the hydration of the branch.
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the dry commit that was used to hydrate the branch.
+    """
+
+
+    author?: str
+
+    body?: str
+
+    date?: str
+
+    drySha?: str
+
+    references?: [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveNoteReferencesItems0]
+
+    repoURL?: str
+
+    subject?: str
+
+
+    check:
+        len(drySha) <= 64 if drySha
+        _regex_match(str(drySha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if drySha
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveNoteReferencesItems0:
+    r"""
+    RevisionReference contains a reference to a some information that is related in some way to another commit. For now,
+    it supports only references to a commit. In the future, it may support other types of references.
+
+    Attributes
+    ----------
+    commit : PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveNoteReferencesItems0Commit, default is Undefined, optional
+        commit
+    """
+
+
+    commit?: PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveNoteReferencesItems0Commit
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveNoteReferencesItems0Commit:
+    r"""
+    Commit contains metadata about the commit that is related in some way to another commit.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the commit.
+    body : str, default is Undefined, optional
+        Body is the body of the commit message, excluding the subject line, i.e. `git show --format=%b`.
+    date : str, default is Undefined, optional
+        Date is the date of the commit, formatted as by `git show -s --format=%aI`.
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located.
+    sha : str, default is Undefined, optional
+        Sha is the commit hash.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the commit message, i.e. `git show --format=%s`.
+    """
+
+
+    author?: str
+
+    body?: str
+
+    date?: str
+
+    repoURL?: str
+
+    sha?: str
+
+    subject?: str
+
+
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActiveNote:
@@ -601,6 +741,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveCo
 
     Attributes
     ----------
+    description : str, default is Undefined, optional
+        Description is the description of the commit status
     key : str, default is Undefined, required
         Key staging hydrated branch
     phase : str, default is Undefined, required
@@ -609,6 +751,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveCo
         Url is the URL of the commit status
     """
 
+
+    description?: str
 
     key: str
 
@@ -642,6 +786,7 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveDr
         RepoURL is the URL of the repository where the commit is located
     sha : str, default is Undefined, optional
         Sha is the SHA of the commit in the branch
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message
     """
@@ -664,6 +809,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveDr
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveDryReferencesItems0:
@@ -697,6 +844,7 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveDr
         RepoURL is the URL of the repository where the commit is located.
     sha : str, default is Undefined, optional
         Sha is the commit hash.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message, i.e. `git show --format=%s`.
     """
@@ -717,6 +865,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveDr
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveHydrated:
@@ -737,6 +887,7 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveHy
         RepoURL is the URL of the repository where the commit is located
     sha : str, default is Undefined, optional
         Sha is the SHA of the commit in the branch
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message
     """
@@ -759,6 +910,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveHy
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveHydratedReferencesItems0:
@@ -792,6 +945,7 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveHy
         RepoURL is the URL of the repository where the commit is located.
     sha : str, default is Undefined, optional
         Sha is the commit hash.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message, i.e. `git show --format=%s`.
     """
@@ -812,6 +966,108 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveHy
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveNote:
+    r"""
+    Note is the hydrator metadata from the git note attached to the hydrated commit.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the dry commit that was used to hydrate the branch.
+    body : str, default is Undefined, optional
+        Body is the body of the dry commit that was used to hydrate the branch without the subject.
+    date : str, default is Undefined, optional
+        Date is the date of the dry commit that was used to hydrate the branch.
+    drySha : str, default is Undefined, optional
+        DrySha is the SHA of the commit that was used as the dry source for hydration.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
+    references : [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveNoteReferencesItems0], default is Undefined, optional
+        References are the references to other commits, that went into the hydration of the branch.
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the dry commit that was used to hydrate the branch.
+    """
+
+
+    author?: str
+
+    body?: str
+
+    date?: str
+
+    drySha?: str
+
+    references?: [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveNoteReferencesItems0]
+
+    repoURL?: str
+
+    subject?: str
+
+
+    check:
+        len(drySha) <= 64 if drySha
+        _regex_match(str(drySha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if drySha
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveNoteReferencesItems0:
+    r"""
+    RevisionReference contains a reference to a some information that is related in some way to another commit. For now,
+    it supports only references to a commit. In the future, it may support other types of references.
+
+    Attributes
+    ----------
+    commit : PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveNoteReferencesItems0Commit, default is Undefined, optional
+        commit
+    """
+
+
+    commit?: PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveNoteReferencesItems0Commit
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveNoteReferencesItems0Commit:
+    r"""
+    Commit contains metadata about the commit that is related in some way to another commit.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the commit.
+    body : str, default is Undefined, optional
+        Body is the body of the commit message, excluding the subject line, i.e. `git show --format=%b`.
+    date : str, default is Undefined, optional
+        Date is the date of the commit, formatted as by `git show -s --format=%aI`.
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located.
+    sha : str, default is Undefined, optional
+        Sha is the commit hash.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the commit message, i.e. `git show --format=%s`.
+    """
+
+
+    author?: str
+
+    body?: str
+
+    date?: str
+
+    repoURL?: str
+
+    sha?: str
+
+    subject?: str
+
+
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ActiveNote:
@@ -930,6 +1186,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0Proposed
 
     Attributes
     ----------
+    description : str, default is Undefined, optional
+        Description is the description of the commit status
     key : str, default is Undefined, required
         Key staging hydrated branch
     phase : str, default is Undefined, required
@@ -938,6 +1196,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0Proposed
         Url is the URL of the commit status
     """
 
+
+    description?: str
 
     key: str
 
@@ -971,6 +1231,7 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0Proposed
         RepoURL is the URL of the repository where the commit is located
     sha : str, default is Undefined, optional
         Sha is the SHA of the commit in the branch
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message
     """
@@ -993,6 +1254,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0Proposed
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0ProposedHydratedReferencesItems0:
@@ -1026,6 +1289,7 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0Proposed
         RepoURL is the URL of the repository where the commit is located.
     sha : str, default is Undefined, optional
         Sha is the commit hash.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message, i.e. `git show --format=%s`.
     """
@@ -1046,6 +1310,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0Proposed
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0PullRequest:
@@ -1054,6 +1320,13 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0PullRequ
 
     Attributes
     ----------
+    externallyMergedOrClosed : bool, default is Undefined, optional
+        ExternallyMergedOrClosed indicates that the pull request is no longer open on the SCM while the
+        PullRequest still desired it open: merged or closed outside the controller, or closed on the SCM
+        because the PullRequest resource was deleted (finalizer) before this status was reconciled.
+        When true, the State field will be empty ("") since we cannot tell merge vs. close from the provider.
+        This status is preserved even after the PullRequest resource is deleted, maintaining a historical
+        record until a new pull request is created for this environment.
     id : str, default is Undefined, optional
         ID is the unique identifier of the pull request, set by the SCM.
     prCreationTime : str, default is Undefined, optional
@@ -1069,6 +1342,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0PullRequ
         Url is the URL of the pull request.
     """
 
+
+    externallyMergedOrClosed?: bool
 
     id?: str
 
@@ -1117,6 +1392,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedCommitStatuse
 
     Attributes
     ----------
+    description : str, default is Undefined, optional
+        Description is the description of the commit status
     key : str, default is Undefined, required
         Key staging hydrated branch
     phase : str, default is Undefined, required
@@ -1125,6 +1402,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedCommitStatuse
         Url is the URL of the commit status
     """
 
+
+    description?: str
 
     key: str
 
@@ -1158,6 +1437,7 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedDry:
         RepoURL is the URL of the repository where the commit is located
     sha : str, default is Undefined, optional
         Sha is the SHA of the commit in the branch
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message
     """
@@ -1180,6 +1460,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedDry:
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedDryReferencesItems0:
@@ -1213,6 +1495,7 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedDryReferences
         RepoURL is the URL of the repository where the commit is located.
     sha : str, default is Undefined, optional
         Sha is the commit hash.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message, i.e. `git show --format=%s`.
     """
@@ -1233,6 +1516,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedDryReferences
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedHydrated:
@@ -1253,6 +1538,7 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedHydrated:
         RepoURL is the URL of the repository where the commit is located
     sha : str, default is Undefined, optional
         Sha is the SHA of the commit in the branch
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message
     """
@@ -1275,6 +1561,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedHydrated:
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedHydratedReferencesItems0:
@@ -1308,6 +1596,7 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedHydratedRefer
         RepoURL is the URL of the repository where the commit is located.
     sha : str, default is Undefined, optional
         Sha is the commit hash.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message, i.e. `git show --format=%s`.
     """
@@ -1328,6 +1617,108 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedHydratedRefer
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedNote:
+    r"""
+    Note is the hydrator metadata from the git note attached to the hydrated commit.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the dry commit that was used to hydrate the branch.
+    body : str, default is Undefined, optional
+        Body is the body of the dry commit that was used to hydrate the branch without the subject.
+    date : str, default is Undefined, optional
+        Date is the date of the dry commit that was used to hydrate the branch.
+    drySha : str, default is Undefined, optional
+        DrySha is the SHA of the commit that was used as the dry source for hydration.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
+    references : [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedNoteReferencesItems0], default is Undefined, optional
+        References are the references to other commits, that went into the hydration of the branch.
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the dry commit that was used to hydrate the branch.
+    """
+
+
+    author?: str
+
+    body?: str
+
+    date?: str
+
+    drySha?: str
+
+    references?: [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedNoteReferencesItems0]
+
+    repoURL?: str
+
+    subject?: str
+
+
+    check:
+        len(drySha) <= 64 if drySha
+        _regex_match(str(drySha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if drySha
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedNoteReferencesItems0:
+    r"""
+    RevisionReference contains a reference to a some information that is related in some way to another commit. For now,
+    it supports only references to a commit. In the future, it may support other types of references.
+
+    Attributes
+    ----------
+    commit : PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedNoteReferencesItems0Commit, default is Undefined, optional
+        commit
+    """
+
+
+    commit?: PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedNoteReferencesItems0Commit
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedNoteReferencesItems0Commit:
+    r"""
+    Commit contains metadata about the commit that is related in some way to another commit.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the commit.
+    body : str, default is Undefined, optional
+        Body is the body of the commit message, excluding the subject line, i.e. `git show --format=%b`.
+    date : str, default is Undefined, optional
+        Date is the date of the commit, formatted as by `git show -s --format=%aI`.
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located.
+    sha : str, default is Undefined, optional
+        Sha is the commit hash.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the commit message, i.e. `git show --format=%s`.
+    """
+
+
+    author?: str
+
+    body?: str
+
+    date?: str
+
+    repoURL?: str
+
+    sha?: str
+
+    subject?: str
+
+
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposedNote:
@@ -1427,6 +1818,13 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusPullRequest:
 
     Attributes
     ----------
+    externallyMergedOrClosed : bool, default is Undefined, optional
+        ExternallyMergedOrClosed indicates that the pull request is no longer open on the SCM while the
+        PullRequest still desired it open: merged or closed outside the controller, or closed on the SCM
+        because the PullRequest resource was deleted (finalizer) before this status was reconciled.
+        When true, the State field will be empty ("") since we cannot tell merge vs. close from the provider.
+        This status is preserved even after the PullRequest resource is deleted, maintaining a historical
+        record until a new pull request is created for this environment.
     id : str, default is Undefined, optional
         ID is the unique identifier of the pull request, set by the SCM.
     prCreationTime : str, default is Undefined, optional
@@ -1442,6 +1840,8 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusPullRequest:
         Url is the URL of the pull request.
     """
 
+
+    externallyMergedOrClosed?: bool
 
     id?: str
 

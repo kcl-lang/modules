@@ -49,6 +49,10 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategySpec:
 
         The commit statuses specified in this field apply to all environments in the promotion sequence. You can also
         specify commit statuses for individual environments in the `environments` field.
+    activePath : str, default is Undefined, optional
+        ActivePath is the default repository subpath for this strategy's active state.
+        When set, proposed branches are created as <environment-branch>-next/<activePath>.
+        Individual environments can override this value via their own activePath field.
     environments : [PromoterArgoprojIoV1alpha1PromotionStrategySpecEnvironmentsItems0], default is Undefined, required
         Environments is the sequence of environments that a dry commit will be promoted through.
     gitRepositoryRef : PromoterArgoprojIoV1alpha1PromotionStrategySpecGitRepositoryRef, default is Undefined, required
@@ -65,6 +69,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategySpec:
 
     activeCommitStatuses?: [PromoterArgoprojIoV1alpha1PromotionStrategySpecActiveCommitStatusesItems0]
 
+    activePath?: str
+
     environments: [PromoterArgoprojIoV1alpha1PromotionStrategySpecEnvironmentsItems0]
 
     gitRepositoryRef: PromoterArgoprojIoV1alpha1PromotionStrategySpecGitRepositoryRef
@@ -73,6 +79,7 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategySpec:
 
 
     check:
+        len(activePath) >= 1 if activePath
         len(environments) >= 1
 
 
@@ -108,6 +115,9 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategySpecEnvironmentsItems0:
 
         The commit statuses specified in this field apply to this environment only. You can also specify commit statuses
         for all environments in the `spec.activeCommitStatuses` field.
+    activePath : str, default is Undefined, optional
+        ActivePath optionally overrides the strategy-level activePath for this environment.
+        When set, this environment's CTP uses this path instead of spec.activePath.
     autoMerge : bool, default is True, optional
         AutoMerge determines whether the dry commit should be automatically merged into the next branch in the sequence.
         If false, the dry commit will be proposed but not merged.
@@ -125,11 +135,18 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategySpecEnvironmentsItems0:
 
     activeCommitStatuses?: [PromoterArgoprojIoV1alpha1PromotionStrategySpecEnvironmentsItems0ActiveCommitStatusesItems0]
 
+    activePath?: str
+
     autoMerge?: bool = True
 
     branch: str
 
     proposedCommitStatuses?: [PromoterArgoprojIoV1alpha1PromotionStrategySpecEnvironmentsItems0ProposedCommitStatusesItems0]
+
+
+    check:
+        len(activePath) >= 1 if activePath
+        len(branch) >= 1
 
 
 schema PromoterArgoprojIoV1alpha1PromotionStrategySpecEnvironmentsItems0ActiveCommitStatusesItems0:
@@ -186,6 +203,12 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategySpecGitRepositoryRef:
     name: str
 
 
+    check:
+        len(name) <= 253
+        len(name) >= 1
+        _regex_match(str(name), r"^[a-z0-9]([-a-z0-9.]*[a-z0-9])?$")
+
+
 schema PromoterArgoprojIoV1alpha1PromotionStrategySpecProposedCommitStatusesItems0:
     r"""
     CommitStatusSelector is used to select commit statuses by their key.
@@ -216,12 +239,19 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatus:
         Conditions Represents the observations of the current state.
     environments : [PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0], default is Undefined, required
         Environments holds the status of each environment in the promotion sequence.
+    observedGeneration : int, default is Undefined, optional
+        ObservedGeneration is the .metadata.generation that this status was reconciled from.
+        Because status is written via Server-Side Apply with ForceOwnership (which has no
+        optimistic-concurrency check), this field is the canonical way to detect stale
+        status writes: compare status.observedGeneration with metadata.generation.
     """
 
 
     conditions?: [PromoterArgoprojIoV1alpha1PromotionStrategyStatusConditionsItems0]
 
     environments: [PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0]
+
+    observedGeneration?: int
 
 
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusConditionsItems0:
@@ -314,6 +344,10 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0:
     pullRequest?: PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0PullRequest
 
 
+    check:
+        len(branch) >= 1
+
+
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Active:
     r"""
     Active is the state of the active branch for the environment.
@@ -346,6 +380,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Active
 
     Attributes
     ----------
+    description : str, default is Undefined, optional
+        Description is the description of the commit status
     key : str, default is Undefined, required
         Key staging hydrated branch
     phase : str, default is Undefined, required
@@ -354,6 +390,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Active
         Url is the URL of the commit status
     """
 
+
+    description?: str
 
     key: str
 
@@ -387,6 +425,7 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Active
         RepoURL is the URL of the repository where the commit is located
     sha : str, default is Undefined, optional
         Sha is the SHA of the commit in the branch
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message
     """
@@ -409,6 +448,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Active
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveDryReferencesItems0:
@@ -442,6 +483,7 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Active
         RepoURL is the URL of the repository where the commit is located.
     sha : str, default is Undefined, optional
         Sha is the commit hash.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message, i.e. `git show --format=%s`.
     """
@@ -462,6 +504,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Active
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveHydrated:
@@ -482,6 +526,7 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Active
         RepoURL is the URL of the repository where the commit is located
     sha : str, default is Undefined, optional
         Sha is the SHA of the commit in the branch
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message
     """
@@ -504,6 +549,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Active
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveHydratedReferencesItems0:
@@ -537,6 +584,7 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Active
         RepoURL is the URL of the repository where the commit is located.
     sha : str, default is Undefined, optional
         Sha is the commit hash.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message, i.e. `git show --format=%s`.
     """
@@ -557,6 +605,108 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Active
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
+
+
+schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveNote:
+    r"""
+    Note is the hydrator metadata from the git note attached to the hydrated commit.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the dry commit that was used to hydrate the branch.
+    body : str, default is Undefined, optional
+        Body is the body of the dry commit that was used to hydrate the branch without the subject.
+    date : str, default is Undefined, optional
+        Date is the date of the dry commit that was used to hydrate the branch.
+    drySha : str, default is Undefined, optional
+        DrySha is the SHA of the commit that was used as the dry source for hydration.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
+    references : [PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveNoteReferencesItems0], default is Undefined, optional
+        References are the references to other commits, that went into the hydration of the branch.
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the dry commit that was used to hydrate the branch.
+    """
+
+
+    author?: str
+
+    body?: str
+
+    date?: str
+
+    drySha?: str
+
+    references?: [PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveNoteReferencesItems0]
+
+    repoURL?: str
+
+    subject?: str
+
+
+    check:
+        len(drySha) <= 64 if drySha
+        _regex_match(str(drySha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if drySha
+
+
+schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveNoteReferencesItems0:
+    r"""
+    RevisionReference contains a reference to a some information that is related in some way to another commit. For now,
+    it supports only references to a commit. In the future, it may support other types of references.
+
+    Attributes
+    ----------
+    commit : PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveNoteReferencesItems0Commit, default is Undefined, optional
+        commit
+    """
+
+
+    commit?: PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveNoteReferencesItems0Commit
+
+
+schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveNoteReferencesItems0Commit:
+    r"""
+    Commit contains metadata about the commit that is related in some way to another commit.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the commit.
+    body : str, default is Undefined, optional
+        Body is the body of the commit message, excluding the subject line, i.e. `git show --format=%b`.
+    date : str, default is Undefined, optional
+        Date is the date of the commit, formatted as by `git show -s --format=%aI`.
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located.
+    sha : str, default is Undefined, optional
+        Sha is the commit hash.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the commit message, i.e. `git show --format=%s`.
+    """
+
+
+    author?: str
+
+    body?: str
+
+    date?: str
+
+    repoURL?: str
+
+    sha?: str
+
+    subject?: str
+
+
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ActiveNote:
@@ -704,6 +854,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Histor
 
     Attributes
     ----------
+    description : str, default is Undefined, optional
+        Description is the description of the commit status
     key : str, default is Undefined, required
         Key staging hydrated branch
     phase : str, default is Undefined, required
@@ -712,6 +864,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Histor
         Url is the URL of the commit status
     """
 
+
+    description?: str
 
     key: str
 
@@ -745,6 +899,7 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Histor
         RepoURL is the URL of the repository where the commit is located
     sha : str, default is Undefined, optional
         Sha is the SHA of the commit in the branch
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message
     """
@@ -767,6 +922,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Histor
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveDryReferencesItems0:
@@ -800,6 +957,7 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Histor
         RepoURL is the URL of the repository where the commit is located.
     sha : str, default is Undefined, optional
         Sha is the commit hash.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message, i.e. `git show --format=%s`.
     """
@@ -820,6 +978,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Histor
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveHydrated:
@@ -840,6 +1000,7 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Histor
         RepoURL is the URL of the repository where the commit is located
     sha : str, default is Undefined, optional
         Sha is the SHA of the commit in the branch
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message
     """
@@ -862,6 +1023,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Histor
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveHydratedReferencesItems0:
@@ -895,6 +1058,7 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Histor
         RepoURL is the URL of the repository where the commit is located.
     sha : str, default is Undefined, optional
         Sha is the commit hash.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message, i.e. `git show --format=%s`.
     """
@@ -915,6 +1079,108 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Histor
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
+
+
+schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveNote:
+    r"""
+    Note is the hydrator metadata from the git note attached to the hydrated commit.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the dry commit that was used to hydrate the branch.
+    body : str, default is Undefined, optional
+        Body is the body of the dry commit that was used to hydrate the branch without the subject.
+    date : str, default is Undefined, optional
+        Date is the date of the dry commit that was used to hydrate the branch.
+    drySha : str, default is Undefined, optional
+        DrySha is the SHA of the commit that was used as the dry source for hydration.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
+    references : [PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveNoteReferencesItems0], default is Undefined, optional
+        References are the references to other commits, that went into the hydration of the branch.
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the dry commit that was used to hydrate the branch.
+    """
+
+
+    author?: str
+
+    body?: str
+
+    date?: str
+
+    drySha?: str
+
+    references?: [PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveNoteReferencesItems0]
+
+    repoURL?: str
+
+    subject?: str
+
+
+    check:
+        len(drySha) <= 64 if drySha
+        _regex_match(str(drySha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if drySha
+
+
+schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveNoteReferencesItems0:
+    r"""
+    RevisionReference contains a reference to a some information that is related in some way to another commit. For now,
+    it supports only references to a commit. In the future, it may support other types of references.
+
+    Attributes
+    ----------
+    commit : PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveNoteReferencesItems0Commit, default is Undefined, optional
+        commit
+    """
+
+
+    commit?: PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveNoteReferencesItems0Commit
+
+
+schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveNoteReferencesItems0Commit:
+    r"""
+    Commit contains metadata about the commit that is related in some way to another commit.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the commit.
+    body : str, default is Undefined, optional
+        Body is the body of the commit message, excluding the subject line, i.e. `git show --format=%b`.
+    date : str, default is Undefined, optional
+        Date is the date of the commit, formatted as by `git show -s --format=%aI`.
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located.
+    sha : str, default is Undefined, optional
+        Sha is the commit hash.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the commit message, i.e. `git show --format=%s`.
+    """
+
+
+    author?: str
+
+    body?: str
+
+    date?: str
+
+    repoURL?: str
+
+    sha?: str
+
+    subject?: str
+
+
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ActiveNote:
@@ -1033,6 +1299,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Histor
 
     Attributes
     ----------
+    description : str, default is Undefined, optional
+        Description is the description of the commit status
     key : str, default is Undefined, required
         Key staging hydrated branch
     phase : str, default is Undefined, required
@@ -1041,6 +1309,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Histor
         Url is the URL of the commit status
     """
 
+
+    description?: str
 
     key: str
 
@@ -1074,6 +1344,7 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Histor
         RepoURL is the URL of the repository where the commit is located
     sha : str, default is Undefined, optional
         Sha is the SHA of the commit in the branch
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message
     """
@@ -1096,6 +1367,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Histor
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0ProposedHydratedReferencesItems0:
@@ -1129,6 +1402,7 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Histor
         RepoURL is the URL of the repository where the commit is located.
     sha : str, default is Undefined, optional
         Sha is the commit hash.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message, i.e. `git show --format=%s`.
     """
@@ -1149,6 +1423,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Histor
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0HistoryItems0PullRequest:
@@ -1157,6 +1433,13 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Histor
 
     Attributes
     ----------
+    externallyMergedOrClosed : bool, default is Undefined, optional
+        ExternallyMergedOrClosed indicates that the pull request is no longer open on the SCM while the
+        PullRequest still desired it open: merged or closed outside the controller, or closed on the SCM
+        because the PullRequest resource was deleted (finalizer) before this status was reconciled.
+        When true, the State field will be empty ("") since we cannot tell merge vs. close from the provider.
+        This status is preserved even after the PullRequest resource is deleted, maintaining a historical
+        record until a new pull request is created for this environment.
     id : str, default is Undefined, optional
         ID is the unique identifier of the pull request, set by the SCM.
     prCreationTime : str, default is Undefined, optional
@@ -1172,6 +1455,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Histor
         Url is the URL of the pull request.
     """
 
+
+    externallyMergedOrClosed?: bool
 
     id?: str
 
@@ -1196,6 +1481,7 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0LastHe
     ----------
     sha : str, default is Undefined, required
         Sha is the commit SHA of the dry commit that was observed to be healthy.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     time : str, default is Undefined, required
         Time is the time when the proposed commit for the given dry SHA was merged into the active branch.
     """
@@ -1204,6 +1490,11 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0LastHe
     sha: str
 
     time: str
+
+
+    check:
+        len(sha) <= 64
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$")
 
 
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Proposed:
@@ -1238,6 +1529,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Propos
 
     Attributes
     ----------
+    description : str, default is Undefined, optional
+        Description is the description of the commit status
     key : str, default is Undefined, required
         Key staging hydrated branch
     phase : str, default is Undefined, required
@@ -1246,6 +1539,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Propos
         Url is the URL of the commit status
     """
 
+
+    description?: str
 
     key: str
 
@@ -1279,6 +1574,7 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Propos
         RepoURL is the URL of the repository where the commit is located
     sha : str, default is Undefined, optional
         Sha is the SHA of the commit in the branch
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message
     """
@@ -1301,6 +1597,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Propos
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedDryReferencesItems0:
@@ -1334,6 +1632,7 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Propos
         RepoURL is the URL of the repository where the commit is located.
     sha : str, default is Undefined, optional
         Sha is the commit hash.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message, i.e. `git show --format=%s`.
     """
@@ -1354,6 +1653,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Propos
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedHydrated:
@@ -1374,6 +1675,7 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Propos
         RepoURL is the URL of the repository where the commit is located
     sha : str, default is Undefined, optional
         Sha is the SHA of the commit in the branch
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message
     """
@@ -1396,6 +1698,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Propos
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedHydratedReferencesItems0:
@@ -1429,6 +1733,7 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Propos
         RepoURL is the URL of the repository where the commit is located.
     sha : str, default is Undefined, optional
         Sha is the commit hash.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     subject : str, default is Undefined, optional
         Subject is the subject line of the commit message, i.e. `git show --format=%s`.
     """
@@ -1449,6 +1754,108 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0Propos
 
     check:
         _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
+
+
+schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedNote:
+    r"""
+    Note is the hydrator metadata from the git note attached to the hydrated commit.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the dry commit that was used to hydrate the branch.
+    body : str, default is Undefined, optional
+        Body is the body of the dry commit that was used to hydrate the branch without the subject.
+    date : str, default is Undefined, optional
+        Date is the date of the dry commit that was used to hydrate the branch.
+    drySha : str, default is Undefined, optional
+        DrySha is the SHA of the commit that was used as the dry source for hydration.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
+    references : [PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedNoteReferencesItems0], default is Undefined, optional
+        References are the references to other commits, that went into the hydration of the branch.
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the dry commit that was used to hydrate the branch.
+    """
+
+
+    author?: str
+
+    body?: str
+
+    date?: str
+
+    drySha?: str
+
+    references?: [PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedNoteReferencesItems0]
+
+    repoURL?: str
+
+    subject?: str
+
+
+    check:
+        len(drySha) <= 64 if drySha
+        _regex_match(str(drySha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if drySha
+
+
+schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedNoteReferencesItems0:
+    r"""
+    RevisionReference contains a reference to a some information that is related in some way to another commit. For now,
+    it supports only references to a commit. In the future, it may support other types of references.
+
+    Attributes
+    ----------
+    commit : PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedNoteReferencesItems0Commit, default is Undefined, optional
+        commit
+    """
+
+
+    commit?: PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedNoteReferencesItems0Commit
+
+
+schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedNoteReferencesItems0Commit:
+    r"""
+    Commit contains metadata about the commit that is related in some way to another commit.
+
+    Attributes
+    ----------
+    author : str, default is Undefined, optional
+        Author is the author of the commit.
+    body : str, default is Undefined, optional
+        Body is the body of the commit message, excluding the subject line, i.e. `git show --format=%b`.
+    date : str, default is Undefined, optional
+        Date is the date of the commit, formatted as by `git show -s --format=%aI`.
+    repoURL : str, default is Undefined, optional
+        RepoURL is the URL of the repository where the commit is located.
+    sha : str, default is Undefined, optional
+        Sha is the commit hash.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
+    subject : str, default is Undefined, optional
+        Subject is the subject line of the commit message, i.e. `git show --format=%s`.
+    """
+
+
+    author?: str
+
+    body?: str
+
+    date?: str
+
+    repoURL?: str
+
+    sha?: str
+
+    subject?: str
+
+
+    check:
+        _regex_match(str(repoURL), r"^(https?://.*)?$") if repoURL
+        len(sha) <= 64 if sha
+        _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 
 
 schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0ProposedNote:
@@ -1548,6 +1955,13 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0PullRe
 
     Attributes
     ----------
+    externallyMergedOrClosed : bool, default is Undefined, optional
+        ExternallyMergedOrClosed indicates that the pull request is no longer open on the SCM while the
+        PullRequest still desired it open: merged or closed outside the controller, or closed on the SCM
+        because the PullRequest resource was deleted (finalizer) before this status was reconciled.
+        When true, the State field will be empty ("") since we cannot tell merge vs. close from the provider.
+        This status is preserved even after the PullRequest resource is deleted, maintaining a historical
+        record until a new pull request is created for this environment.
     id : str, default is Undefined, optional
         ID is the unique identifier of the pull request, set by the SCM.
     prCreationTime : str, default is Undefined, optional
@@ -1563,6 +1977,8 @@ schema PromoterArgoprojIoV1alpha1PromotionStrategyStatusEnvironmentsItems0PullRe
         Url is the URL of the pull request.
     """
 
+
+    externallyMergedOrClosed?: bool
 
     id?: str
 

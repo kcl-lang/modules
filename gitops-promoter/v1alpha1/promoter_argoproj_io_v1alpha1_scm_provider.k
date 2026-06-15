@@ -43,12 +43,16 @@ schema PromoterArgoprojIoV1alpha1ScmProviderSpec:
 
     Attributes
     ----------
+    azureDevOps : PromoterArgoprojIoV1alpha1ScmProviderSpecAzureDevOps, default is Undefined, optional
+        azure dev ops
     bitbucketCloud : any, default is Undefined, optional
         BitbucketCloud required configuration for Bitbucket Cloud as the SCM provider
     fake : PromoterArgoprojIoV1alpha1ScmProviderSpecFake, default is Undefined, optional
         fake
     forgejo : PromoterArgoprojIoV1alpha1ScmProviderSpecForgejo, default is Undefined, optional
         forgejo
+    gitea : PromoterArgoprojIoV1alpha1ScmProviderSpecGitea, default is Undefined, optional
+        gitea
     github : PromoterArgoprojIoV1alpha1ScmProviderSpecGithub, default is Undefined, optional
         github
     gitlab : PromoterArgoprojIoV1alpha1ScmProviderSpecGitlab, default is Undefined, optional
@@ -58,17 +62,45 @@ schema PromoterArgoprojIoV1alpha1ScmProviderSpec:
     """
 
 
+    azureDevOps?: PromoterArgoprojIoV1alpha1ScmProviderSpecAzureDevOps
+
     bitbucketCloud?: any
 
     fake?: PromoterArgoprojIoV1alpha1ScmProviderSpecFake
 
     forgejo?: PromoterArgoprojIoV1alpha1ScmProviderSpecForgejo
 
+    gitea?: PromoterArgoprojIoV1alpha1ScmProviderSpecGitea
+
     github?: PromoterArgoprojIoV1alpha1ScmProviderSpecGithub
 
     gitlab?: PromoterArgoprojIoV1alpha1ScmProviderSpecGitlab
 
     secretRef?: PromoterArgoprojIoV1alpha1ScmProviderSpecSecretRef
+
+
+schema PromoterArgoprojIoV1alpha1ScmProviderSpecAzureDevOps:
+    r"""
+    AzureDevOps required configuration for Azure DevOps as the SCM provider
+
+    Attributes
+    ----------
+    domain : str, default is Undefined, optional
+        Domain is the Azure DevOps domain, such as "dev.azure.com". If using the default Azure DevOps domain, leave this field empty.
+    organization : str, default is Undefined, required
+        Organization is the Azure DevOps organization name.
+    """
+
+
+    domain?: str
+
+    organization: str
+
+
+    check:
+        len(organization) <= 50
+        len(organization) >= 1
+        _regex_match(str(organization), r"^[A-Za-z0-9]([A-Za-z0-9-]*[A-Za-z0-9])?$")
 
 
 schema PromoterArgoprojIoV1alpha1ScmProviderSpecFake:
@@ -85,6 +117,11 @@ schema PromoterArgoprojIoV1alpha1ScmProviderSpecFake:
     domain?: str
 
 
+    check:
+        len(domain) <= 253 if domain
+        len(domain) >= 1 if domain
+
+
 schema PromoterArgoprojIoV1alpha1ScmProviderSpecForgejo:
     r"""
     Forgejo required configuration for Forgejo as the SCM provider
@@ -98,6 +135,30 @@ schema PromoterArgoprojIoV1alpha1ScmProviderSpecForgejo:
 
 
     domain: str
+
+
+    check:
+        len(domain) <= 253
+        len(domain) >= 1
+
+
+schema PromoterArgoprojIoV1alpha1ScmProviderSpecGitea:
+    r"""
+    Gitea required configuration for Gitea as the SCM provider
+
+    Attributes
+    ----------
+    domain : str, default is Undefined, required
+        Domain is the Gitea domain, such as "gitea.com" or "gitea.mycompany.com".
+        There is no default domain since Gitea is self-hosted.
+    """
+
+
+    domain: str
+
+
+    check:
+        len(domain) >= 1
 
 
 schema PromoterArgoprojIoV1alpha1ScmProviderSpecGithub:
@@ -126,6 +187,7 @@ schema PromoterArgoprojIoV1alpha1ScmProviderSpecGithub:
 
 
     check:
+        appID >= 0
         installationID >= 0 if installationID not in [None, Undefined]
 
 
@@ -170,10 +232,17 @@ schema PromoterArgoprojIoV1alpha1ScmProviderStatus:
     ----------
     conditions : [PromoterArgoprojIoV1alpha1ScmProviderStatusConditionsItems0], default is Undefined, optional
         Conditions Represents the observations of the current state.
+    observedGeneration : int, default is Undefined, optional
+        ObservedGeneration is the .metadata.generation that this status was reconciled from.
+        Because status is written via Server-Side Apply with ForceOwnership (which has no
+        optimistic-concurrency check), this field is the canonical way to detect stale
+        status writes: compare status.observedGeneration with metadata.generation.
     """
 
 
     conditions?: [PromoterArgoprojIoV1alpha1ScmProviderStatusConditionsItems0]
+
+    observedGeneration?: int
 
 
 schema PromoterArgoprojIoV1alpha1ScmProviderStatusConditionsItems0:

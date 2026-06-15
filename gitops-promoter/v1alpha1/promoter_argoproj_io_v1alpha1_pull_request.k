@@ -52,6 +52,7 @@ schema PromoterArgoprojIoV1alpha1PullRequestSpec:
     mergeSha : str, default is Undefined, required
         MergeSha is the commit SHA that the head branch must match before the PR can be merged.
         This prevents a race condition where a PR is merged with a different commit than intended.
+        Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     sourceBranch : str, default is Undefined, required
         SourceBranch is the base the git reference that we are merging into Head ---> Base
     state : str, default is "open", required
@@ -83,8 +84,9 @@ schema PromoterArgoprojIoV1alpha1PullRequestSpec:
 
     check:
         len(mergeSha) <= 64
-        len(mergeSha) >= 1
-        _regex_match(str(mergeSha), r"^[a-fA-F0-9]+$")
+        len(mergeSha) >= 40
+        _regex_match(str(mergeSha), r"^([a-f0-9]{40}|[a-f0-9]{64})$")
+        len(title) >= 1
 
 
 schema PromoterArgoprojIoV1alpha1PullRequestSpecCommit:
@@ -115,6 +117,12 @@ schema PromoterArgoprojIoV1alpha1PullRequestSpecGitRepositoryRef:
     name: str
 
 
+    check:
+        len(name) <= 253
+        len(name) >= 1
+        _regex_match(str(name), r"^[a-z0-9]([-a-z0-9.]*[a-z0-9])?$")
+
+
 schema PromoterArgoprojIoV1alpha1PullRequestStatus:
     r"""
     PullRequestStatus defines the observed state of PullRequest
@@ -123,8 +131,21 @@ schema PromoterArgoprojIoV1alpha1PullRequestStatus:
     ----------
     conditions : [PromoterArgoprojIoV1alpha1PullRequestStatusConditionsItems0], default is Undefined, optional
         Conditions Represents the observations of the current state.
+    externallyMergedOrClosed : bool, default is Undefined, optional
+        ExternallyMergedOrClosed indicates that the pull request is no longer open on the SCM while the
+        resource still desired it open (spec.state is "open"): either it was merged or closed outside the
+        controller, or it was closed on the SCM because the PullRequest resource was deleted (finalizer)
+        and a subsequent sync observed it missing. The controller does not distinguish those cases here.
+        When true, the State field will be empty ("") since we cannot tell merge vs. close from the provider.
+        The PullRequest resource will be deleted after this flag is set when possible, but the status is
+        preserved in the owning ChangeTransferPolicy to maintain a record.
     id : str, default is Undefined, optional
         ID the id of the pull request
+    observedGeneration : int, default is Undefined, optional
+        ObservedGeneration is the .metadata.generation that this status was reconciled from.
+        Because status is written via Server-Side Apply with ForceOwnership (which has no
+        optimistic-concurrency check), this field is the canonical way to detect stale
+        status writes: compare status.observedGeneration with metadata.generation.
     prCreationTime : str, default is Undefined, optional
         PRCreationTime the time the PR was created
     state : str, default is Undefined, optional
@@ -136,7 +157,11 @@ schema PromoterArgoprojIoV1alpha1PullRequestStatus:
 
     conditions?: [PromoterArgoprojIoV1alpha1PullRequestStatusConditionsItems0]
 
+    externallyMergedOrClosed?: bool
+
     id?: str
+
+    observedGeneration?: int
 
     prCreationTime?: str
 
