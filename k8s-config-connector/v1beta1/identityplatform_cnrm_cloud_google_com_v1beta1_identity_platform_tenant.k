@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IdentityPlatformTenant:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform tenant
 
     Attributes
@@ -36,7 +36,7 @@ schema IdentityPlatformTenant:
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformTenantSpec:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform tenant spec
 
     Attributes
@@ -78,7 +78,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformTenantSpec:
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformTenantSpecMfaConfig:
-    """
+    r"""
     The tenant-level configuration of MFA options.
 
     Attributes
@@ -96,7 +96,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformTenantSpecMfaCon
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformTenantStatus:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform tenant status
 
     Attributes
@@ -114,7 +114,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformTenantStatus:
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformTenantStatusConditionsItems0:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform tenant status conditions items0
 
     Attributes

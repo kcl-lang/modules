@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DNSResponsePolicyRule:
-    """
+    r"""
     dns cnrm cloud google com v1alpha1 DNS response policy rule
 
     Attributes
@@ -36,7 +36,7 @@ schema DNSResponsePolicyRule:
 
 
 schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicyRuleSpec:
-    """
+    r"""
     DNS cnrm cloud google com v1alpha1 DNS response policy rule spec
 
     Attributes
@@ -70,7 +70,7 @@ schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicyRuleSpec:
 
 
 schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicyRuleSpecLocalData:
-    """
+    r"""
     Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
     in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
 
@@ -85,7 +85,7 @@ schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicyRuleSpecLocalData:
 
 
 schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicyRuleSpecLocalDataLocalDatasItems0:
-    """
+    r"""
     DNS cnrm cloud google com v1alpha1 DNS response policy rule spec local data local datas items0
 
     Attributes
@@ -112,7 +112,7 @@ schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicyRuleSpecLocalDataLocalDatas
 
 
 schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicyRuleSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -134,7 +134,7 @@ schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicyRuleSpecProjectRef:
 
 
 schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicyRuleStatus:
-    """
+    r"""
     DNS cnrm cloud google com v1alpha1 DNS response policy rule status
 
     Attributes
@@ -152,7 +152,7 @@ schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicyRuleStatus:
 
 
 schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicyRuleStatusConditionsItems0:
-    """
+    r"""
     DNS cnrm cloud google com v1alpha1 DNS response policy rule status conditions items0
 
     Attributes

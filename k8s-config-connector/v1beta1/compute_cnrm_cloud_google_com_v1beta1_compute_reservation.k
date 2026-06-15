@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeReservation:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute reservation
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeReservation:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute reservation spec
 
     Attributes
@@ -68,7 +68,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecSpecificReservation:
-    """
+    r"""
     Reservation for instances with specific machine shapes.
 
     Attributes
@@ -90,7 +90,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecSpecificReservation
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecSpecificReservationInstanceProperties:
-    """
+    r"""
     Immutable. The instance properties for the reservation.
 
     Attributes
@@ -120,7 +120,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecSpecificReservation
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecSpecificReservationInstancePropertiesGuestAcceleratorsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute reservation spec specific reservation instance properties guest accelerators items0
 
     Attributes
@@ -143,7 +143,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecSpecificReservation
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecSpecificReservationInstancePropertiesLocalSsdsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute reservation spec specific reservation instance properties local ssds items0
 
     Attributes
@@ -161,7 +161,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecSpecificReservation
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute reservation status
 
     Attributes
@@ -196,7 +196,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute reservation status conditions items0
 
     Attributes

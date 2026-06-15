@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeExternalVPNGateway:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute external v p n gateway
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeExternalVPNGateway:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeExternalVPNGatewaySpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute external v p n gateway spec
 
     Attributes
@@ -62,7 +62,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeExternalVPNGatewaySpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeExternalVPNGatewaySpecInterfaceItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute external v p n gateway spec interface items0
 
     Attributes
@@ -87,7 +87,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeExternalVPNGatewaySpecInterfaceIte
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeExternalVPNGatewayStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute external v p n gateway status
 
     Attributes
@@ -114,7 +114,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeExternalVPNGatewayStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeExternalVPNGatewayStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute external v p n gateway status conditions items0
 
     Attributes

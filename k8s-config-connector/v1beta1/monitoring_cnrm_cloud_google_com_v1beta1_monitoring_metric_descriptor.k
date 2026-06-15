@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema MonitoringMetricDescriptor:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring metric descriptor
 
     Attributes
@@ -36,7 +36,7 @@ schema MonitoringMetricDescriptor:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringMetricDescriptorSpec:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring metric descriptor spec
 
     Attributes
@@ -86,7 +86,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringMetricDescriptorSpec:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringMetricDescriptorSpecLabelsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring metric descriptor spec labels items0
 
     Attributes
@@ -108,7 +108,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringMetricDescriptorSpecLabelsIt
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringMetricDescriptorSpecMetadata:
-    """
+    r"""
     Immutable. Optional. Metadata which can be used to guide usage of the metric.
 
     Attributes
@@ -130,7 +130,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringMetricDescriptorSpecMetadata
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringMetricDescriptorSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -154,7 +154,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringMetricDescriptorSpecProjectR
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringMetricDescriptorStatus:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring metric descriptor status
 
     Attributes
@@ -180,7 +180,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringMetricDescriptorStatus:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringMetricDescriptorStatusConditionsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring metric descriptor status conditions items0
 
     Attributes

@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DataformRepository:
-    """
-    dataform cnrm cloud google com v1alpha1 dataform repository
+    r"""
+    DataformRepository is the Schema for the dataform API
 
     Attributes
     ----------
@@ -36,25 +36,37 @@ schema DataformRepository:
 
 
 schema DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpec:
-    """
+    r"""
     dataform cnrm cloud google com v1alpha1 dataform repository spec
 
     Attributes
     ----------
+    displayName : str, default is Undefined, optional
+        Optional. The repository's user-friendly name.
     gitRemoteSettings : DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecGitRemoteSettings, default is Undefined, optional
         git remote settings
+    npmrcEnvironmentVariablesSecretVersionRef : DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecNpmrcEnvironmentVariablesSecretVersionRef, default is Undefined, optional
+        npmrc environment variables secret version ref
     projectRef : DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecProjectRef, default is Undefined, required
         project ref
     region : str, default is Undefined, required
         Immutable. A reference to the region.
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+    serviceAccountRef : DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecServiceAccountRef, default is Undefined, optional
+        service account ref
+    setAuthenticatedUserAdmin : bool, default is Undefined, optional
+        Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role on the created repository.
     workspaceCompilationOverrides : DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecWorkspaceCompilationOverrides, default is Undefined, optional
         workspace compilation overrides
     """
 
 
+    displayName?: str
+
     gitRemoteSettings?: DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecGitRemoteSettings
+
+    npmrcEnvironmentVariablesSecretVersionRef?: DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecNpmrcEnvironmentVariablesSecretVersionRef
 
     projectRef: DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecProjectRef
 
@@ -62,43 +74,157 @@ schema DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpec:
 
     resourceID?: str
 
+    serviceAccountRef?: DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecServiceAccountRef
+
+    setAuthenticatedUserAdmin?: bool
+
     workspaceCompilationOverrides?: DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecWorkspaceCompilationOverrides
 
 
 schema DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecGitRemoteSettings:
-    """
+    r"""
     Optional. If set, configures this repository to be linked to a Git remote.
 
     Attributes
     ----------
-    authenticationTokenSecretVersion : str, default is Undefined, required
-        The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format projects/*/secrets/*/versions/*.
+    authenticationTokenSecretVersionRef : DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecGitRemoteSettingsAuthenticationTokenSecretVersionRef, default is Undefined, optional
+        authentication token secret version ref
     defaultBranch : str, default is Undefined, required
         The Git remote's default branch name.
-    tokenStatus : str, default is Undefined, optional
-        Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus.
+    sshAuthenticationConfig : DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecGitRemoteSettingsSSHAuthenticationConfig, default is Undefined, optional
+        ssh authentication config
     url : str, default is Undefined, required
         The Git remote's URL.
     """
 
 
-    authenticationTokenSecretVersion: str
+    authenticationTokenSecretVersionRef?: DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecGitRemoteSettingsAuthenticationTokenSecretVersionRef
 
     defaultBranch: str
 
-    tokenStatus?: str
+    sshAuthenticationConfig?: DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecGitRemoteSettingsSSHAuthenticationConfig
 
     url: str
 
 
-schema DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecProjectRef:
+schema DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecGitRemoteSettingsAuthenticationTokenSecretVersionRef:
+    r"""
+    The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format projects/* /secrets/* /versions/*.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+         If provided must be in the format `projects/*/secrets/*/versions/*`.
+    name : str, default is Undefined, optional
+        The `name` field of a `SecretManagerSecretVersion` resource.
+    namespace : str, default is Undefined, optional
+        The `metadata.namespace` field of a `SecretManagerSecretVersion` resource.
     """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecGitRemoteSettingsSSHAuthenticationConfig:
+    r"""
+    Authentication fields for remote uris using SSH protocol.
+
+    Attributes
+    ----------
+    hostPublicKey : str, default is Undefined, required
+        Content of a public SSH key to verify an identity of a remote Git host.
+    userPrivateKeySecretVersionRef : DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecGitRemoteSettingsSSHAuthenticationConfigUserPrivateKeySecretVersionRef, default is Undefined, required
+        user private key secret version ref
+    """
+
+
+    hostPublicKey: str
+
+    userPrivateKeySecretVersionRef: DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecGitRemoteSettingsSSHAuthenticationConfigUserPrivateKeySecretVersionRef
+
+
+schema DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecGitRemoteSettingsSSHAuthenticationConfigUserPrivateKeySecretVersionRef:
+    r"""
+    The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*/secrets/*/versions/* .
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+         If provided must be in the format `projects/*/secrets/*/versions/*`.
+    name : str, default is Undefined, optional
+        The `name` field of a `SecretManagerSecretVersion` resource.
+    namespace : str, default is Undefined, optional
+        The `metadata.namespace` field of a `SecretManagerSecretVersion` resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecNpmrcEnvironmentVariablesSecretVersionRef:
+    r"""
+    Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+         If provided must be in the format `projects/*/secrets/*/versions/*`.
+    name : str, default is Undefined, optional
+        The `name` field of a `SecretManagerSecretVersion` resource.
+    namespace : str, default is Undefined, optional
+        The `metadata.namespace` field of a `SecretManagerSecretVersion` resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecProjectRef:
+    r"""
     The project that this resource belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
+    name : str, default is Undefined, optional
+        The `name` field of a `Project` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `Project` resource.
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecServiceAccountRef:
+    r"""
+    Optional. The service account reference to run workflow invocations under.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The `email` field of an `IAMServiceAccount` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -114,7 +240,7 @@ schema DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecProjectRef:
 
 
 schema DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecWorkspaceCompilationOverrides:
-    """
+    r"""
     Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
 
     Attributes
@@ -136,25 +262,33 @@ schema DataformCnrmCloudGoogleComV1alpha1DataformRepositorySpecWorkspaceCompilat
 
 
 schema DataformCnrmCloudGoogleComV1alpha1DataformRepositoryStatus:
-    """
+    r"""
     dataform cnrm cloud google com v1alpha1 dataform repository status
 
     Attributes
     ----------
     conditions : [DataformCnrmCloudGoogleComV1alpha1DataformRepositoryStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the DataformRepository's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the DataformReposity resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : any, default is Undefined, optional
+        ObservedState is the state of the resource as most recently observed in GCP.
     """
 
 
     conditions?: [DataformCnrmCloudGoogleComV1alpha1DataformRepositoryStatusConditionsItems0]
 
+    externalRef?: str
+
     observedGeneration?: int
+
+    observedState?: any
 
 
 schema DataformCnrmCloudGoogleComV1alpha1DataformRepositoryStatusConditionsItems0:
-    """
+    r"""
     dataform cnrm cloud google com v1alpha1 dataform repository status conditions items0
 
     Attributes

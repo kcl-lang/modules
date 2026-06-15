@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema SecretManagerSecret:
-    """
-    secretmanager cnrm cloud google com v1beta1 secret manager secret
+    r"""
+    SecretManagerSecret is the Schema for the SecretManagerSecret API
 
     Attributes
     ----------
@@ -17,7 +17,7 @@ schema SecretManagerSecret:
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpec, default is Undefined, required
+    spec : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpec, default is Undefined, optional
         spec
     status : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretStatus, default is Undefined, optional
         status
@@ -30,56 +30,66 @@ schema SecretManagerSecret:
 
     metadata?: v1.ObjectMeta
 
-    spec: SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpec
+    spec?: SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpec
 
     status?: SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretStatus
 
 
 schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpec:
-    """
-    secretmanager cnrm cloud google com v1beta1 secret manager secret spec
+    r"""
+    SecretManagerSecretSpec defines the desired state of SecretManagerSecret
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Custom metadata about the secret.
+        Optional. Custom metadata about the secret.
 
-        Annotations are distinct from various forms of labels. Annotations exist to allow
-        client tools to store their own state information without requiring a database.
+         Annotations are distinct from various forms of labels.
+         Annotations exist to allow client tools to store their own state
+         information without requiring a database.
 
-        Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
-        maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
-        may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
-        symbols.
+         Annotation keys must be between 1 and 63 characters long, have a UTF-8
+         encoding of maximum 128 bytes, begin and end with an alphanumeric character
+         ([a-z0-9A-Z]), and may have dashes (-), underscores (_), dots (.), and
+         alphanumerics in between these symbols.
 
-        The total size of annotation keys and values must be less than 16KiB.
-
-        An object containing a list of "key": value pairs. Example:
-        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         The total size of annotation keys and values must be less than 16KiB.
     expireTime : str, default is Undefined, optional
-        Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-    replication : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplication, default is Undefined, required
+        Optional. Timestamp in UTC when the [Secret][google.cloud.secretmanager.v1.Secret] is scheduled to expire. This is always provided on output, regardless of what was sent on input.
+    labels : {str:str}, default is Undefined, optional
+        The labels assigned to this Secret.
+
+        Label keys must be between 1 and 63 characters long, have a UTF-8 encoding
+        of maximum 128 bytes, and must conform to the following PCRE regular
+        expression: `[\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}`
+
+        Label values must be between 0 and 63 characters long, have a UTF-8
+        encoding of maximum 128 bytes, and must conform to the following PCRE
+        regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`
+
+        No more than 64 labels can be assigned to a given resource.
+    replication : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplication, default is Undefined, optional
         replication
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The secretId of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The SecretManagerSecret name. If not given, the metadata.name will be used.
     rotation : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecRotation, default is Undefined, optional
         rotation
     topics : [SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecTopicsItems0], default is Undefined, optional
-        A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
+        Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
     ttl : str, default is Undefined, optional
-        Immutable. The TTL for the Secret.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        Input only. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
     versionAliases : {str:str}, default is Undefined, optional
-        Mapping from version alias to version name.
+        Optional. Mapping from version alias to version name.
 
-        A version alias is a string with a maximum length of 63 characters and can contain
-        uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
-        characters. An alias string must start with a letter and cannot be the string
-        'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
+         A version alias is a string with a maximum length of 63 characters and can
+         contain uppercase and lowercase letters, numerals, and the hyphen (`-`)
+         and underscore ('_') characters. An alias string must start with a
+         letter and cannot be the string 'latest' or 'NEW'.
+         No more than 50 aliases can be assigned to a given secret.
 
-        An object containing a list of "key": value pairs. Example:
-        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         Version-Alias pairs will be viewable via GetSecret and modifiable via
+         UpdateSecret. Access by alias is only be supported on
+         GetSecretVersion and AccessSecretVersion.
     """
 
 
@@ -87,7 +97,9 @@ schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpec:
 
     expireTime?: str
 
-    replication: SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplication
+    labels?: {str:str}
+
+    replication?: SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplication
 
     resourceID?: str
 
@@ -101,32 +113,111 @@ schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpec:
 
 
 schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplication:
-    """
-    Immutable. The replication policy of the secret data attached to the Secret. It cannot be changed
-    after the Secret has been created.
+    r"""
+    Optional. Immutable. The replication policy of the secret data attached to
+     the [Secret][google.cloud.secretmanager.v1.Secret].
+
+     The replication policy cannot be changed after the Secret has been created.
 
     Attributes
     ----------
+    auto : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationAuto, default is Undefined, optional
+        auto
     automatic : bool, default is Undefined, optional
-        Immutable. The Secret will automatically be replicated without any restrictions.
+        The Secret will automatically be replicated without any restrictions.
     userManaged : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationUserManaged, default is Undefined, optional
         user managed
     """
 
+
+    auto?: SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationAuto
 
     automatic?: bool
 
     userManaged?: SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationUserManaged
 
 
-schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationUserManaged:
+schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationAuto:
+    r"""
+    The [Secret][google.cloud.secretmanager.v1.Secret] will automatically be replicated without any restrictions.
+
+    Attributes
+    ----------
+    customerManagedEncryption : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationAutoCustomerManagedEncryption, default is Undefined, optional
+        customer managed encryption
     """
-    Immutable. The Secret will be replicated to the regions specified by the user.
+
+
+    customerManagedEncryption?: SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationAutoCustomerManagedEncryption
+
+
+schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationAutoCustomerManagedEncryption:
+    r"""
+    Optional. The customer-managed encryption configuration of the
+     [Secret][google.cloud.secretmanager.v1.Secret]. If no configuration is
+     provided, Google-managed default encryption is used.
+
+     Updates to the [Secret][google.cloud.secretmanager.v1.Secret] encryption
+     configuration only apply to
+     [SecretVersions][google.cloud.secretmanager.v1.SecretVersion] added
+     afterwards. They do not apply retroactively to existing
+     [SecretVersions][google.cloud.secretmanager.v1.SecretVersion].
+
+    Attributes
+    ----------
+    kmsKeyRef : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationAutoCustomerManagedEncryptionKmsKeyRef, default is Undefined, required
+        kms key ref
+    """
+
+
+    kmsKeyRef: SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationAutoCustomerManagedEncryptionKmsKeyRef
+
+
+schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationAutoCustomerManagedEncryptionKmsKeyRef:
+    r"""
+    Required. The resource name of the Cloud KMS CryptoKey used to encrypt
+     secret payloads.
+
+     For secrets using the
+     [UserManaged][google.cloud.secretmanager.v1.Replication.UserManaged]
+     replication policy type, Cloud KMS CryptoKeys must reside in the same
+     location as the [replica location][Secret.UserManaged.Replica.location].
+
+     For secrets using the
+     [Automatic][google.cloud.secretmanager.v1.Replication.Automatic]
+     replication policy type, Cloud KMS CryptoKeys must reside in `global`.
+
+     The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
+    name : str, default is Undefined, optional
+        The `name` of a `KMSCryptoKey` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` of a `KMSCryptoKey` resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationUserManaged:
+    r"""
+    The [Secret][google.cloud.secretmanager.v1.Secret] will only be replicated into the locations specified.
 
     Attributes
     ----------
     replicas : [SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationUserManagedReplicasItems0], default is Undefined, required
-        Immutable. The list of Replicas for this Secret. Cannot be empty.
+        Required. The list of Replicas for this
+         [Secret][google.cloud.secretmanager.v1.Secret].
+
+         Cannot be empty.
     """
 
 
@@ -134,7 +225,7 @@ schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationU
 
 
 schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationUserManagedReplicasItems0:
-    """
+    r"""
     secretmanager cnrm cloud google com v1beta1 secret manager secret spec replication user managed replicas items0
 
     Attributes
@@ -142,7 +233,7 @@ schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationU
     customerManagedEncryption : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationUserManagedReplicasItems0CustomerManagedEncryption, default is Undefined, optional
         customer managed encryption
     location : str, default is Undefined, required
-        Immutable. The canonical IDs of the location to replicate data. For example: "us-east1".
+        The canonical IDs of the location to replicate data. For example: `"us-east1"`.
     """
 
 
@@ -152,8 +243,16 @@ schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationU
 
 
 schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationUserManagedReplicasItems0CustomerManagedEncryption:
-    """
-    Immutable. Customer Managed Encryption for the secret.
+    r"""
+    Optional. The customer-managed encryption configuration of the
+     [User-Managed Replica][Replication.UserManaged.Replica]. If no
+     configuration is provided, Google-managed default encryption is used.
+
+     Updates to the [Secret][google.cloud.secretmanager.v1.Secret]
+     encryption configuration only apply to
+     [SecretVersions][google.cloud.secretmanager.v1.SecretVersion] added
+     afterwards. They do not apply retroactively to existing
+     [SecretVersions][google.cloud.secretmanager.v1.SecretVersion].
 
     Attributes
     ----------
@@ -166,17 +265,29 @@ schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationU
 
 
 schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationUserManagedReplicasItems0CustomerManagedEncryptionKmsKeyRef:
-    """
-    Customer Managed Encryption for the secret.
+    r"""
+    Required. The resource name of the Cloud KMS CryptoKey used to encrypt
+     secret payloads.
+
+     For secrets using the
+     [UserManaged][google.cloud.secretmanager.v1.Replication.UserManaged]
+     replication policy type, Cloud KMS CryptoKeys must reside in the same
+     location as the [replica location][Secret.UserManaged.Replica.location].
+
+     For secrets using the
+     [Automatic][google.cloud.secretmanager.v1.Replication.Automatic]
+     replication policy type, Cloud KMS CryptoKeys must reside in `global`.
+
+     The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `KMSCryptoKey` resource.
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` of a `KMSCryptoKey` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` of a `KMSCryptoKey` resource.
     """
 
 
@@ -188,17 +299,33 @@ schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecReplicationU
 
 
 schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecRotation:
-    """
-    The rotation time and period for a Secret. At 'next_rotation_time', Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. 'topics' must be set to configure rotation.
+    r"""
+    Optional. Rotation policy attached to the [Secret][google.cloud.secretmanager.v1.Secret]. May be excluded if there is no rotation policy.
 
     Attributes
     ----------
     nextRotationTime : str, default is Undefined, optional
-        Timestamp in UTC at which the Secret is scheduled to rotate.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        Optional. Timestamp in UTC at which the
+         [Secret][google.cloud.secretmanager.v1.Secret] is scheduled to rotate.
+         Cannot be set to less than 300s (5 min) in the future and at most
+         3153600000s (100 years).
+
+         [next_rotation_time][google.cloud.secretmanager.v1.Rotation.next_rotation_time]
+         MUST  be set if
+         [rotation_period][google.cloud.secretmanager.v1.Rotation.rotation_period]
+         is set.
     rotationPeriod : str, default is Undefined, optional
-        Immutable. The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
-        If rotationPeriod is set, 'next_rotation_time' must be set. 'next_rotation_time' will be advanced by this period when the service automatically sends rotation notifications.
+        Input only. The Duration between rotation notifications. Must be in seconds
+         and at least 3600s (1h) and at most 3153600000s (100 years).
+
+         If
+         [rotation_period][google.cloud.secretmanager.v1.Rotation.rotation_period]
+         is set,
+         [next_rotation_time][google.cloud.secretmanager.v1.Rotation.next_rotation_time]
+         must be set.
+         [next_rotation_time][google.cloud.secretmanager.v1.Rotation.next_rotation_time]
+         will be advanced by this period when the service automatically sends
+         rotation notifications.
     """
 
 
@@ -208,7 +335,7 @@ schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecRotation:
 
 
 schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecTopicsItems0:
-    """
+    r"""
     secretmanager cnrm cloud google com v1beta1 secret manager secret spec topics items0
 
     Attributes
@@ -222,19 +349,17 @@ schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecTopicsItems0
 
 
 schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecTopicsItems0TopicRef:
-    """
-    A list of up to 10 Pub/Sub topics to which messages are
-    published when control plane operations are called on the secret
-    or its versions.
+    r"""
+    PubSubTopicRef defines the resource reference to PubSubTopic, which "External" field holds the GCP identifier for the KRM object.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `projects/{{project}}/topics/{{value}}`, where {{value}} is the `name` field of a `PubSubTopic` resource.
+        A reference to an externally managed PubSubTopic resource. Should be in the format "projects/{{projectID}}/topics/{{topicID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a PubSubTopic resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a PubSubTopic resource.
     """
 
 
@@ -246,34 +371,37 @@ schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecTopicsItems0
 
 
 schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretStatus:
-    """
-    secretmanager cnrm cloud google com v1beta1 secret manager secret status
+    r"""
+    SecretManagerSecretStatus defines the config connector machine state of SecretManagerSecret
 
     Attributes
     ----------
     conditions : [SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
-    createTime : str, default is Undefined, optional
-        The time at which the Secret was created.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the SecretManagerSecret resource in GCP.
     name : str, default is Undefined, optional
-        The resource name of the Secret. Format:
-        'projects/{{project}}/secrets/{{secret_id}}'.
+        [DEPRECATED] Please read from `.status.externalRef` instead. Config Connector will remove the `.status.name` in v1 Version.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretStatusConditionsItems0]
 
-    createTime?: str
+    externalRef?: str
 
     name?: str
 
     observedGeneration?: int
 
+    observedState?: SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretStatusObservedState
+
 
 schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretStatusConditionsItems0:
-    """
+    r"""
     secretmanager cnrm cloud google com v1beta1 secret manager secret status conditions items0
 
     Attributes
@@ -300,5 +428,19 @@ schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretStatusConditions
     status?: str
 
     $type?: str
+
+
+schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    versionAliases : {str:str}, default is Undefined, optional
+        version aliases
+    """
+
+
+    versionAliases?: {str:str}
 
 

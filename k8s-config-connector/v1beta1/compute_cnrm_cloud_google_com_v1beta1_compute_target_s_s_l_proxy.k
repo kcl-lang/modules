@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeTargetSSLProxy:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target s s l proxy
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeTargetSSLProxy:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxySpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target s s l proxy spec
 
     Attributes
@@ -75,7 +75,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxySpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxySpecBackendServiceRef:
-    """
+    r"""
     A reference to the ComputeBackendService resource.
 
     Attributes
@@ -97,9 +97,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxySpecBackendServiceRe
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxySpecCertificateMapRef:
-    """
-    Only `external` field is supported to configure the reference.
-
+    r"""
     A reference to the CertificateMap resource uri that identifies a
     certificate map associated with the given target proxy. This
     field can only be set for global target proxies. Accepted format is
@@ -124,7 +122,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxySpecCertificateMapRe
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxySpecSslCertificatesItems0:
-    """
+    r"""
     A list of ComputeSSLCertificate resources that are used to
     authenticate connections between users and the load balancer.
     Currently, exactly one SSL certificate must be specified.
@@ -148,7 +146,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxySpecSslCertificatesI
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxySpecSslPolicyRef:
-    """
+    r"""
     A reference to the ComputeSSLPolicy resource that will be
     associated with the TargetSslProxy resource. If not set, the
     ComputeTargetSSLProxy resource will not have any SSL policy
@@ -173,7 +171,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxySpecSslPolicyRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxyStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target s s l proxy status
 
     Attributes
@@ -203,7 +201,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxyStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxyStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target s s l proxy status conditions items0
 
     Attributes

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema NetworkServicesMesh:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services mesh
 
     Attributes
@@ -36,7 +36,7 @@ schema NetworkServicesMesh:
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesMeshSpec:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services mesh spec
 
     Attributes
@@ -66,7 +66,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesMeshSpec:
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesMeshSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -90,7 +90,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesMeshSpecProjectRef
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesMeshStatus:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services mesh status
 
     Attributes
@@ -120,7 +120,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesMeshStatus:
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesMeshStatusConditionsItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services mesh status conditions items0
 
     Attributes

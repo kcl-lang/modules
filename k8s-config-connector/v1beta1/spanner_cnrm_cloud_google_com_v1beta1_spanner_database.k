@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema SpannerDatabase:
-    """
+    r"""
     spanner cnrm cloud google com v1beta1 spanner database
 
     Attributes
@@ -36,7 +36,7 @@ schema SpannerDatabase:
 
 
 schema SpannerCnrmCloudGoogleComV1beta1SpannerDatabaseSpec:
-    """
+    r"""
     spanner cnrm cloud google com v1beta1 spanner database spec
 
     Attributes
@@ -82,7 +82,7 @@ schema SpannerCnrmCloudGoogleComV1beta1SpannerDatabaseSpec:
 
 
 schema SpannerCnrmCloudGoogleComV1beta1SpannerDatabaseSpecEncryptionConfig:
-    """
+    r"""
     Immutable. Encryption configuration for the database.
 
     Attributes
@@ -96,7 +96,7 @@ schema SpannerCnrmCloudGoogleComV1beta1SpannerDatabaseSpecEncryptionConfig:
 
 
 schema SpannerCnrmCloudGoogleComV1beta1SpannerDatabaseSpecEncryptionConfigKmsKeyRef:
-    """
+    r"""
     Fully qualified name of the KMS key to use to encrypt this database. This key
     must exist in the same location as the Spanner Database.
 
@@ -119,7 +119,7 @@ schema SpannerCnrmCloudGoogleComV1beta1SpannerDatabaseSpecEncryptionConfigKmsKey
 
 
 schema SpannerCnrmCloudGoogleComV1beta1SpannerDatabaseSpecInstanceRef:
-    """
+    r"""
     The instance to create the database on.
 
     Attributes
@@ -141,7 +141,7 @@ schema SpannerCnrmCloudGoogleComV1beta1SpannerDatabaseSpecInstanceRef:
 
 
 schema SpannerCnrmCloudGoogleComV1beta1SpannerDatabaseStatus:
-    """
+    r"""
     spanner cnrm cloud google com v1beta1 spanner database status
 
     Attributes
@@ -163,7 +163,7 @@ schema SpannerCnrmCloudGoogleComV1beta1SpannerDatabaseStatus:
 
 
 schema SpannerCnrmCloudGoogleComV1beta1SpannerDatabaseStatusConditionsItems0:
-    """
+    r"""
     spanner cnrm cloud google com v1beta1 spanner database status conditions items0
 
     Attributes

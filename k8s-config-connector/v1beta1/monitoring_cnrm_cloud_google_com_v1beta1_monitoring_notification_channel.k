@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema MonitoringNotificationChannel:
-    """
-    monitoring cnrm cloud google com v1beta1 monitoring notification channel
+    r"""
+    MonitoringNotificationChannel is the Schema for the MonitoringNotificationChannel API
 
     Attributes
     ----------
@@ -36,8 +36,8 @@ schema MonitoringNotificationChannel:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpec:
-    """
-    monitoring cnrm cloud google com v1beta1 monitoring notification channel spec
+    r"""
+    MonitoringNotificationChannelSpec defines the desired state of MonitoringNotificationChannel
 
     Attributes
     ----------
@@ -46,15 +46,11 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpec:
     enabled : bool, default is Undefined, optional
         Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future.
     forceDelete : bool, default is Undefined, optional
-        If true, the notification channel will be deleted regardless
-        of its use in alert policies (the policies will be updated
-        to remove the channel). If false, channels that are still
-        referenced by an existing alerting policy will fail to be
-        deleted in a delete operation.
+        If true, the notification channel will be deleted regardless of its use in alert policies (the policies will be updated to remove the channel). If false, channels that are still referenced by an existing alerting policy will fail to be deleted in a delete operation.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the NotificationChannelDescriptor.labels of the NotificationChannelDescriptor corresponding to the type field.
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
+        Immutable. Optional. The service-generated name of theresource. Used for acquisition only. Leave unset to create a new resource.
     sensitiveLabels : MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpecSensitiveLabels, default is Undefined, optional
         sensitive labels
     $type : str, default is Undefined, required
@@ -78,7 +74,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpec:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpecSensitiveLabels:
-    """
+    r"""
     Different notification type behaviors are configured primarily using the the 'labels' field on this
     resource. This block contains the labels which contain secrets or passwords so that they can be marked
     sensitive and hidden from plan output. The name of the field, eg: password, will be the key
@@ -106,7 +102,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpecSensi
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpecSensitiveLabelsAuthToken:
-    """
+    r"""
     An authorization token for a notification channel. Channel types that support this field include: slack.
 
     Attributes
@@ -124,7 +120,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpecSensi
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpecSensitiveLabelsAuthTokenValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -138,7 +134,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpecSensi
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpecSensitiveLabelsAuthTokenValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -156,7 +152,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpecSensi
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpecSensitiveLabelsPassword:
-    """
+    r"""
     An password for a notification channel. Channel types that support this field include: webhook_basicauth.
 
     Attributes
@@ -174,7 +170,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpecSensi
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpecSensitiveLabelsPasswordValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -188,7 +184,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpecSensi
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpecSensitiveLabelsPasswordValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -206,7 +202,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpecSensi
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpecSensitiveLabelsServiceKey:
-    """
+    r"""
     An servicekey token for a notification channel. Channel types that support this field include: pagerduty.
 
     Attributes
@@ -224,7 +220,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpecSensi
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpecSensitiveLabelsServiceKeyValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -238,7 +234,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpecSensi
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpecSensitiveLabelsServiceKeyValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -256,17 +252,15 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpecSensi
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelStatus:
-    """
-    monitoring cnrm cloud google com v1beta1 monitoring notification channel status
+    r"""
+    MonitoringNotificationChannelStatus defines the config connector machine state of MonitoringNotificationChannel
 
     Attributes
     ----------
     conditions : [MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     name : str, default is Undefined, optional
-        The full REST resource name for this channel. The syntax is:
-        projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
-        The [CHANNEL_ID] is automatically assigned by the server on creation.
+        The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the server on creation.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     verificationStatus : str, default is Undefined, optional
@@ -284,7 +278,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelStatus:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelStatusConditionsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring notification channel status conditions items0
 
     Attributes

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Folder:
-    """
+    r"""
     resourcemanager cnrm cloud google com v1beta1 folder
 
     Attributes
@@ -36,7 +36,7 @@ schema Folder:
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1FolderSpec:
-    """
+    r"""
     resourcemanager cnrm cloud google com v1beta1 folder spec
 
     Attributes
@@ -62,7 +62,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1FolderSpec:
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1FolderSpecFolderRef:
-    """
+    r"""
     The folder that this resource belongs to. Changing this forces the
     resource to be migrated to the newly specified folder. Only one of
     folderRef or organizationRef may be specified.
@@ -86,7 +86,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1FolderSpecFolderRef:
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1FolderSpecOrganizationRef:
-    """
+    r"""
     The organization that this resource belongs to. Changing this
     forces the resource to be migrated to the newly specified
     organization. Only one of folderRef or organizationRef may be
@@ -111,7 +111,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1FolderSpecOrganizationRef:
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1FolderStatus:
-    """
+    r"""
     resourcemanager cnrm cloud google com v1beta1 folder status
 
     Attributes
@@ -145,7 +145,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1FolderStatus:
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1FolderStatusConditionsItems0:
-    """
+    r"""
     resourcemanager cnrm cloud google com v1beta1 folder status conditions items0
 
     Attributes

@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeFirewallPolicyRule:
-    """
-    compute cnrm cloud google com v1beta1 compute firewall policy rule
+    r"""
+    ComputeFirewallPolicyRule is the Schema for the compute API
 
     Attributes
     ----------
@@ -17,7 +17,7 @@ schema ComputeFirewallPolicyRule:
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleSpec, default is Undefined, required
+    spec : ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleSpec, default is Undefined, optional
         spec
     status : ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleStatus, default is Undefined, optional
         status
@@ -30,13 +30,13 @@ schema ComputeFirewallPolicyRule:
 
     metadata?: v1.ObjectMeta
 
-    spec: ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleSpec
+    spec?: ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleSpec
 
     status?: ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleStatus
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute firewall policy rule spec
 
     Attributes
@@ -86,19 +86,17 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleSpecFirewallPolicyRef:
-    """
+    r"""
     Immutable.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The firewall policy of the resource.
-
-        Allowed value: The Google Cloud resource name of a `ComputeFirewallPolicy` resource (format: `locations/global/firewallPolicies/{{name}}`).
+        A reference to an externally managed ComputeFirewallPolicy resource. Should be in the format `locations/global/firewallPolicies/{{firewallPolicyID}}`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `ComputeFirewallPolicy` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `ComputeFirewallPolicy` resource.
     """
 
 
@@ -110,7 +108,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleSpecFirewallPoli
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleSpecMatch:
-    """
+    r"""
     A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 
     Attributes
@@ -164,7 +162,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleSpecMatch:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleSpecMatchLayer4ConfigsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute firewall policy rule spec match layer4 configs items0
 
     Attributes
@@ -182,17 +180,17 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleSpecMatchLayer4C
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleSpecTargetResourcesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute firewall policy rule spec target resources items0
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -204,13 +202,13 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleSpecTargetResour
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleSpecTargetServiceAccountsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute firewall policy rule spec target service accounts items0
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The Google Cloud resource name of an `IAMServiceAccount` resource (format: `projects/{{project}}/serviceAccounts/{{name}}@{{project}}.iam.gserviceaccount.com`).
+        The `email` field of an `IAMServiceAccount` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -226,13 +224,15 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleSpecTargetServic
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute firewall policy rule status
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique Config Connector specifier for the resource in GCP.
     kind : str, default is Undefined, optional
         Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
     observedGeneration : int, default is Undefined, optional
@@ -244,6 +244,8 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleStatus:
 
     conditions?: [ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleStatusConditionsItems0]
 
+    externalRef?: str
+
     kind?: str
 
     observedGeneration?: int
@@ -252,7 +254,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute firewall policy rule status conditions items0
 
     Attributes

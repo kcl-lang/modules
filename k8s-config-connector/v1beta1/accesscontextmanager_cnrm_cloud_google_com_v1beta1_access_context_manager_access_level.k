@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AccessContextManagerAccessLevel:
-    """
-    accesscontextmanager cnrm cloud google com v1beta1 access context manager access level
+    r"""
+    AccessContextManagerAccessLevel is the Schema for the AccessContextManagerAccessLevel API
 
     Attributes
     ----------
@@ -36,8 +36,8 @@ schema AccessContextManagerAccessLevel:
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLevelSpec:
-    """
-    accesscontextmanager cnrm cloud google com v1beta1 access context manager access level spec
+    r"""
+    AccessContextManagerAccessLevelSpec defines the desired state of AccessContextManagerAccessLevel
 
     Attributes
     ----------
@@ -48,10 +48,10 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLe
     custom : AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLevelSpecCustom, default is Undefined, optional
         custom
     description : str, default is Undefined, optional
-        Description of the AccessLevel and its use. Does not affect behavior.
+        Description of the `AccessLevel` and its use. Does not affect behavior.
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
-    title : str, default is Undefined, required
+        The AccessContextManagerAccessLevel name. If not given, the metadata.name will be used.
+    title : str, default is Undefined, optional
         Human readable title. Must be unique within the Policy.
     """
 
@@ -66,22 +66,21 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLe
 
     resourceID?: str
 
-    title: str
+    title?: str
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLevelSpecAccessPolicyRef:
-    """
-    The AccessContextManagerAccessPolicy this
-    AccessContextManagerAccessLevel lives in.
+    r"""
+    The AccessPolicy that this resource belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `accessPolicies/{{value}}`, where {{value}} is the `name` field of an `AccessContextManagerAccessPolicy` resource.
+        A reference to an externally managed AccessContextManagerAccessPolicy resource. As per https://docs.cloud.google.com/asset-inventory/docs/asset-names Should be in the format "accessPolicies/{{accesspolicyID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a AccessContextManagerAccessPolicy resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a AccessContextManagerAccessPolicy resource.
     """
 
 
@@ -93,17 +92,13 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLe
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLevelSpecBasic:
-    """
-    A set of predefined conditions for the access level and a combining function.
+    r"""
+    A `BasicLevel` composed of `Conditions`.
 
     Attributes
     ----------
     combiningFunction : str, default is Undefined, optional
-        How the conditions list should be combined to determine if a request
-        is granted this AccessLevel. If AND is used, each Condition in
-        conditions must be satisfied for the AccessLevel to be applied. If
-        OR is used, at least one Condition in conditions must be satisfied
-        for the AccessLevel to be applied. Default value: "AND" Possible values: ["AND", "OR"].
+        How the conditions list should be combined to determine if a request is granted this AccessLevel. If AND is used, each Condition in conditions must be satisfied for the AccessLevel to be applied. If OR is used, at least one Condition in conditions must be satisfied for the AccessLevel to be applied. Default value: "AND" Possible values: ["AND", "OR"].
     conditions : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLevelSpecBasicConditionsItems0], default is Undefined, required
         A set of requirements for the AccessLevel to be granted.
     """
@@ -115,7 +110,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLe
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLevelSpecBasicConditionsItems0:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager access level spec basic conditions items0
 
     Attributes
@@ -123,28 +118,15 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLe
     devicePolicy : AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLevelSpecBasicConditionsItems0DevicePolicy, default is Undefined, optional
         device policy
     ipSubnetworks : [str], default is Undefined, optional
-        A list of CIDR block IP subnetwork specification. May be IPv4
-        or IPv6.
-        Note that for a CIDR IP address block, the specified IP address
-        portion must be properly truncated (i.e. all the host bits must
-        be zero) or the input is considered malformed. For example,
-        "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly,
-        for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32"
-        is not. The originating IP of a request must be in one of the
-        listed subnets in order for this Condition to be true.
-        If empty, all IP addresses are allowed.
+        A list of CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly, for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32" is not. The originating IP of a request must be in one of the listed subnets in order for this Condition to be true. If empty, all IP addresses are allowed.
     members : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLevelSpecBasicConditionsItems0MembersItems0], default is Undefined, optional
-        members
+        The request must be made by one of the provided user or service accounts. Groups are not supported. Syntax: `user:{emailid}` `serviceAccount:{emailid}` If not specified, a request may come from any user.
     negate : bool, default is Undefined, optional
-        Whether to negate the Condition. If true, the Condition becomes
-        a NAND over its non-empty fields, each field must be false for
-        the Condition overall to be satisfied. Defaults to false.
+        Whether to negate the Condition. If true, the Condition becomes a NAND over its non-empty fields, each field must be false for the Condition overall to be satisfied. Defaults to false.
     regions : [str], default is Undefined, optional
-        The request must originate from one of the provided
-        countries/regions.
-        Format: A valid ISO 3166-1 alpha-2 code.
+        The request must originate from one of the provided countries/regions. Format: A valid ISO 3166-1 alpha-2 code.
     requiredAccessLevels : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLevelSpecBasicConditionsItems0RequiredAccessLevelsItems0], default is Undefined, optional
-        required access levels
+        A list of other access levels defined in the same `Policy`, referenced by resource name. Referencing an `AccessLevel` which does not exist is an error. All access levels listed must be granted for the Condition to be true. Example: "`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME"`
     """
 
 
@@ -162,29 +144,23 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLe
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLevelSpecBasicConditionsItems0DevicePolicy:
-    """
-    Device specific restrictions, all restrictions must hold for
-    the Condition to be true. If not specified, all devices are
-    allowed.
+    r"""
+    Device specific restrictions, all restrictions must hold for the Condition to be true. If not specified, all devices are allowed.
 
     Attributes
     ----------
     allowedDeviceManagementLevels : [str], default is Undefined, optional
-        A list of allowed device management levels.
-        An empty list allows all management levels. Possible values: ["MANAGEMENT_UNSPECIFIED", "NONE", "BASIC", "COMPLETE"].
+        A list of allowed device management levels. An empty list allows all management levels. Possible values: ["MANAGEMENT_UNSPECIFIED", "NONE", "BASIC", "COMPLETE"].
     allowedEncryptionStatuses : [str], default is Undefined, optional
-        A list of allowed encryptions statuses.
-        An empty list allows all statuses. Possible values: ["ENCRYPTION_UNSPECIFIED", "ENCRYPTION_UNSUPPORTED", "UNENCRYPTED", "ENCRYPTED"].
+        A list of allowed encryptions statuses. An empty list allows all statuses. Possible values: ["ENCRYPTION_UNSPECIFIED", "ENCRYPTION_UNSUPPORTED", "UNENCRYPTED", "ENCRYPTED"].
     osConstraints : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLevelSpecBasicConditionsItems0DevicePolicyOsConstraintsItems0], default is Undefined, optional
-        A list of allowed OS versions.
-        An empty list allows all types and all versions.
+        A list of allowed OS versions. An empty list allows all types and all versions.
     requireAdminApproval : bool, default is Undefined, optional
         Whether the device needs to be approved by the customer admin.
     requireCorpOwned : bool, default is Undefined, optional
         Whether the device needs to be corp owned.
     requireScreenLock : bool, default is Undefined, optional
-        Whether or not screenlock is required for the DevicePolicy
-        to be true. Defaults to false.
+        Whether or not screenlock is required for the DevicePolicy to be true. Defaults to false.
     """
 
 
@@ -202,15 +178,13 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLe
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLevelSpecBasicConditionsItems0DevicePolicyOsConstraintsItems0:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager access level spec basic conditions items0 device policy os constraints items0
 
     Attributes
     ----------
     minimumVersion : str, default is Undefined, optional
-        The minimum allowed OS version. If not set, any version
-        of this OS satisfies the constraint.
-        Format: "major.minor.patch" such as "10.5.301", "9.2.1".
+        The minimum allowed OS version. If not set, any version of this OS satisfies the constraint. Format: "major.minor.patch" such as "10.5.301", "9.2.1".
     osType : str, default is Undefined, required
         The operating system type of the device. Possible values: ["OS_UNSPECIFIED", "DESKTOP_MAC", "DESKTOP_WINDOWS", "DESKTOP_LINUX", "DESKTOP_CHROME_OS", "ANDROID", "IOS"].
     requireVerifiedChromeOs : bool, default is Undefined, optional
@@ -226,14 +200,8 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLe
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLevelSpecBasicConditionsItems0MembersItems0:
-    """
-    An allowed list of members (users, service accounts).
-    Using groups is not supported.
-
-    The signed-in user originating the request must be a part of one
-    of the provided members. If not specified, a request may come
-    from any user (logged in/not logged in, not present in any
-    groups, etc.).
+    r"""
+    accesscontextmanager cnrm cloud google com v1beta1 access context manager access level spec basic conditions items0 members items0
 
     Attributes
     ----------
@@ -250,13 +218,13 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLe
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLevelSpecBasicConditionsItems0MembersItems0ServiceAccountRef:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager access level spec basic conditions items0 members items0 service account ref
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `serviceAccount:{{value}}`, where {{value}} is the `email` field of an `IAMServiceAccount` resource.
+        The `email` field of an `IAMServiceAccount` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -272,20 +240,17 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLe
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLevelSpecBasicConditionsItems0RequiredAccessLevelsItems0:
-    """
-    A list of other access levels defined in the same policy.
-    Referencing an AccessContextManagerAccessLevel which does not exist
-    is an error. All access levels listed must be granted for the
-    condition to be true.
+    r"""
+    AccessLevelRef is a reference to a AccessLevel resource.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of an `AccessContextManagerAccessLevel` resource.
+        A reference to an externally managed AccessLevel resource. Should be in the format "accessPolicies/{{accessPolicyID}}/accessLevels/{{accessLevel}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a AccessLevel resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a AccessLevel resource.
     """
 
 
@@ -297,9 +262,8 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLe
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLevelSpecCustom:
-    """
-    Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
-    See CEL spec at: https://github.com/google/cel-spec.
+    r"""
+    A `CustomLevel` written in the Common Expression Language.
 
     Attributes
     ----------
@@ -312,10 +276,8 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLe
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLevelSpecCustomExpr:
-    """
-    Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
-    This page details the objects and attributes that are used to the build the CEL expressions for
-    custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+    r"""
+    Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. This page details the objects and attributes that are used to the build the CEL expressions for custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
 
     Attributes
     ----------
@@ -340,25 +302,33 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLe
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLevelStatus:
-    """
-    accesscontextmanager cnrm cloud google com v1beta1 access context manager access level status
+    r"""
+    AccessContextManagerAccessLevelStatus defines the config connector machine state of AccessContextManagerAccessLevel
 
     Attributes
     ----------
     conditions : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLevelStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the AccessContextManagerAccessLevel resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : any, default is Undefined, optional
+        ObservedState is the state of the resource as most recently observed in GCP.
     """
 
 
     conditions?: [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLevelStatusConditionsItems0]
 
+    externalRef?: str
+
     observedGeneration?: int
+
+    observedState?: any
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLevelStatusConditionsItems0:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager access level status conditions items0
 
     Attributes

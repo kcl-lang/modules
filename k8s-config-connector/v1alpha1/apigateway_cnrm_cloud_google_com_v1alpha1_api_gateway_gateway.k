@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema APIGatewayGateway:
-    """
+    r"""
     apigateway cnrm cloud google com v1alpha1 API gateway gateway
 
     Attributes
@@ -36,7 +36,7 @@ schema APIGatewayGateway:
 
 
 schema ApigatewayCnrmCloudGoogleComV1alpha1APIGatewayGatewaySpec:
-    """
+    r"""
     apigateway cnrm cloud google com v1alpha1 API gateway gateway spec
 
     Attributes
@@ -67,7 +67,7 @@ schema ApigatewayCnrmCloudGoogleComV1alpha1APIGatewayGatewaySpec:
 
 
 schema ApigatewayCnrmCloudGoogleComV1alpha1APIGatewayGatewaySpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -89,7 +89,7 @@ schema ApigatewayCnrmCloudGoogleComV1alpha1APIGatewayGatewaySpecProjectRef:
 
 
 schema ApigatewayCnrmCloudGoogleComV1alpha1APIGatewayGatewayStatus:
-    """
+    r"""
     apigateway cnrm cloud google com v1alpha1 API gateway gateway status
 
     Attributes
@@ -115,7 +115,7 @@ schema ApigatewayCnrmCloudGoogleComV1alpha1APIGatewayGatewayStatus:
 
 
 schema ApigatewayCnrmCloudGoogleComV1alpha1APIGatewayGatewayStatusConditionsItems0:
-    """
+    r"""
     apigateway cnrm cloud google com v1alpha1 API gateway gateway status conditions items0
 
     Attributes

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeNetworkEndpoint:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute network endpoint
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeNetworkEndpoint:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointSpec:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute network endpoint spec
 
     Attributes
@@ -72,7 +72,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointSpecInstanceRef:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute network endpoint spec instance ref
 
     Attributes
@@ -94,7 +94,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointSpecInstanceRef:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointSpecNetworkEndpointGroupRef:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute network endpoint spec network endpoint group ref
 
     Attributes
@@ -116,7 +116,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointSpecNetworkEndpoin
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -138,7 +138,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointSpecProjectRef:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointStatus:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute network endpoint status
 
     Attributes
@@ -156,7 +156,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute network endpoint status conditions items0
 
     Attributes

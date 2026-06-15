@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema RedisInstance:
-    """
+    r"""
     redis cnrm cloud google com v1beta1 redis instance
 
     Attributes
@@ -36,7 +36,7 @@ schema RedisInstance:
 
 
 schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpec:
-    """
+    r"""
     redis cnrm cloud google com v1beta1 redis instance spec
 
     Attributes
@@ -167,7 +167,7 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpec:
 
 
 schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecAuthorizedNetworkRef:
-    """
+    r"""
     The network to which the instance is connected. If left
     unspecified, the default network will be used.
 
@@ -190,7 +190,7 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecAuthorizedNetworkRef:
 
 
 schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecCustomerManagedKeyRef:
-    """
+    r"""
     Immutable. Optional. The KMS key reference that you want to use to
     encrypt the data at rest for this Redis instance. If this is
     provided, CMEK is enabled.
@@ -214,7 +214,7 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecCustomerManagedKeyRef:
 
 
 schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecMaintenancePolicy:
-    """
+    r"""
     Maintenance policy for an instance.
 
     Attributes
@@ -248,7 +248,7 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecMaintenancePolicy:
 
 
 schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecMaintenancePolicyWeeklyMaintenanceWindowItems0:
-    """
+    r"""
     redis cnrm cloud google com v1beta1 redis instance spec maintenance policy weekly maintenance window items0
 
     Attributes
@@ -282,7 +282,7 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecMaintenancePolicyWeeklyMai
 
 
 schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecMaintenancePolicyWeeklyMaintenanceWindowItems0StartTime:
-    """
+    r"""
     Required. Start time of the window in UTC time.
 
     Attributes
@@ -310,7 +310,7 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecMaintenancePolicyWeeklyMai
 
 
 schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecMaintenanceScheduleItems0:
-    """
+    r"""
     redis cnrm cloud google com v1beta1 redis instance spec maintenance schedule items0
 
     Attributes
@@ -339,7 +339,7 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecMaintenanceScheduleItems0:
 
 
 schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecPersistenceConfig:
-    """
+    r"""
     Persistence configuration for an instance.
 
     Attributes
@@ -381,7 +381,7 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecPersistenceConfig:
 
 
 schema RedisCnrmCloudGoogleComV1beta1RedisInstanceStatus:
-    """
+    r"""
     redis cnrm cloud google com v1beta1 redis instance status
 
     Attributes
@@ -406,6 +406,8 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceStatus:
         Output only. Info per node.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : RedisCnrmCloudGoogleComV1beta1RedisInstanceStatusObservedState, default is Undefined, optional
+        observed state
     persistenceIamIdentity : str, default is Undefined, optional
         Output only. Cloud IAM identity used by import / export operations
         to transfer data to/from Cloud Storage. Format is "serviceAccount:".
@@ -439,6 +441,8 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceStatus:
 
     observedGeneration?: int
 
+    observedState?: RedisCnrmCloudGoogleComV1beta1RedisInstanceStatusObservedState
+
     persistenceIamIdentity?: str
 
     port?: int
@@ -451,7 +455,7 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceStatus:
 
 
 schema RedisCnrmCloudGoogleComV1beta1RedisInstanceStatusConditionsItems0:
-    """
+    r"""
     redis cnrm cloud google com v1beta1 redis instance status conditions items0
 
     Attributes
@@ -481,7 +485,7 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceStatusConditionsItems0:
 
 
 schema RedisCnrmCloudGoogleComV1beta1RedisInstanceStatusMaintenanceScheduleItems0:
-    """
+    r"""
     redis cnrm cloud google com v1beta1 redis instance status maintenance schedule items0
 
     Attributes
@@ -510,7 +514,7 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceStatusMaintenanceScheduleItems
 
 
 schema RedisCnrmCloudGoogleComV1beta1RedisInstanceStatusNodesItems0:
-    """
+    r"""
     redis cnrm cloud google com v1beta1 redis instance status nodes items0
 
     Attributes
@@ -527,8 +531,22 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceStatusNodesItems0:
     zone?: str
 
 
-schema RedisCnrmCloudGoogleComV1beta1RedisInstanceStatusServerCaCertsItems0:
+schema RedisCnrmCloudGoogleComV1beta1RedisInstanceStatusObservedState:
+    r"""
+    The observed state of the underlying GCP resource.
+
+    Attributes
+    ----------
+    authString : str, default is Undefined, optional
+        Output only. AUTH String set on the instance. This field will only be populated if auth_enabled is true.
     """
+
+
+    authString?: str
+
+
+schema RedisCnrmCloudGoogleComV1beta1RedisInstanceStatusServerCaCertsItems0:
+    r"""
     redis cnrm cloud google com v1beta1 redis instance status server ca certs items0
 
     Attributes

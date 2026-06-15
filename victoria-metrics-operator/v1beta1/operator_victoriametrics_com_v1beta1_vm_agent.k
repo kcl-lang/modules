@@ -4,12 +4,12 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
 
 
 schema VMAgent:
-    """
-    VMAgent - is a tiny but brave agent, which helps you collect metrics from various sources and stores them in VictoriaMetrics
-    or any other Prometheus-compatible storage system that supports the remote_write protocol.
+    r"""
+    operator victoriametrics com v1beta1 VM agent
 
     Attributes
     ----------
@@ -38,125 +38,117 @@ schema VMAgent:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpec:
-    """
-    VMAgentSpec defines the desired state of VMAgent
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec
 
     Attributes
     ----------
-    aPIServerConfig : OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfig, default is Undefined, optional
-        a p i server config
     additionalScrapeConfigs : OperatorVictoriametricsComV1beta1VMAgentSpecAdditionalScrapeConfigs, default is Undefined, optional
         additional scrape configs
     affinity : any, default is Undefined, optional
-        Affinity If specified, the pod's scheduling constraints.
+        affinity
+    apiServerConfig : OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfig, default is Undefined, optional
+        api server config
     arbitraryFSAccessThroughSMs : OperatorVictoriametricsComV1beta1VMAgentSpecArbitraryFSAccessThroughSMs, default is Undefined, optional
         arbitrary f s access through s ms
     claimTemplates : [OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0], default is Undefined, optional
-        ClaimTemplates allows adding additional VolumeClaimTemplates for VMAgent in StatefulMode
+        claim templates
     configMaps : [str], default is Undefined, optional
-        ConfigMaps is a list of ConfigMaps in the same namespace as the vmagent
-        object, which shall be mounted into the vmagent Pods.
-        will be mounted at path  /etc/vm/configs
+        config maps
+    configReloadAuthKeySecret : OperatorVictoriametricsComV1beta1VMAgentSpecConfigReloadAuthKeySecret, default is Undefined, optional
+        config reload auth key secret
     configReloaderExtraArgs : {str:str}, default is Undefined, optional
-        ConfigReloaderExtraArgs that will be passed to  VMAuths config-reloader container
-        for example resyncInterval: "30s"
+        config reloader extra args
+    configReloaderImage : str, default is Undefined, optional
+        config reloader image
+    configReloaderImageTag : str, default is Undefined, optional
+        config reloader image tag
+    configReloaderResources : OperatorVictoriametricsComV1beta1VMAgentSpecConfigReloaderResources, default is Undefined, optional
+        config reloader resources
     containers : [any], default is Undefined, optional
-        Containers property allows to inject additions sidecars or to patch existing containers.
-        It can be useful for proxies, backup, etc.
+        containers
+    daemonSetMode : bool, default is Undefined, optional
+        daemon set mode
+    disableAutomountServiceAccountToken : bool, default is Undefined, optional
+        disable automount service account token
+    disableSelfServiceScrape : bool, default is Undefined, optional
+        disable self service scrape
     dnsConfig : OperatorVictoriametricsComV1beta1VMAgentSpecDNSConfig, default is Undefined, optional
         dns config
     dnsPolicy : str, default is Undefined, optional
-        DNSPolicy set DNS policy for the pod
+        dns policy
+    enableKubernetesAPISelectors : bool, default is Undefined, optional
+        enable kubernetes API selectors
     enforcedNamespaceLabel : str, default is Undefined, optional
-        EnforcedNamespaceLabel enforces adding a namespace label of origin for each alert
-        and metric that is user created. The label value will always be the namespace of the object that is
-        being created.
+        enforced namespace label
+    externalLabelName : str, default is Undefined, optional
+        external label name
     externalLabels : {str:str}, default is Undefined, optional
-        ExternalLabels The labels to add to any time series scraped by vmagent.
-        it doesn't affect metrics ingested directly by push API's
+        external labels
     extraArgs : {str:str}, default is Undefined, optional
-        ExtraArgs that will be passed to  VMAgent pod
-        for example remoteWrite.tmpDataPath: /tmp
-        it would be converted to flag --remoteWrite.tmpDataPath=/tmp
+        extra args
     extraEnvs : [OperatorVictoriametricsComV1beta1VMAgentSpecExtraEnvsItems0], default is Undefined, optional
-        ExtraEnvs that will be added to VMAgent pod
+        extra envs
+    extraEnvsFrom : [OperatorVictoriametricsComV1beta1VMAgentSpecExtraEnvsFromItems0], default is Undefined, optional
+        extra envs from
+    globalScrapeMetricRelabelConfigs : [OperatorVictoriametricsComV1beta1VMAgentSpecGlobalScrapeMetricRelabelConfigsItems0], default is Undefined, optional
+        global scrape metric relabel configs
+    globalScrapeRelabelConfigs : [OperatorVictoriametricsComV1beta1VMAgentSpecGlobalScrapeRelabelConfigsItems0], default is Undefined, optional
+        global scrape relabel configs
+    hostAliases : [OperatorVictoriametricsComV1beta1VMAgentSpecHostAliasesItems0], default is Undefined, optional
+        host aliases
     hostNetwork : bool, default is Undefined, optional
-        HostNetwork controls whether the pod may use the node network namespace
+        host network
     host_aliases : [OperatorVictoriametricsComV1beta1VMAgentSpecHostAliasesItems0], default is Undefined, optional
-        HostAliases provides mapping between ip and hostnames,
-        that would be propagated to pod,
-        cannot be used with HostNetwork.
+        host aliases
     ignoreNamespaceSelectors : bool, default is Undefined, optional
-        IgnoreNamespaceSelectors if set to true will ignore NamespaceSelector settings from
-        the podscrape and vmservicescrape configs, and they will only discover endpoints
-        within their current namespace.  Defaults to false.
+        ignore namespace selectors
     image : OperatorVictoriametricsComV1beta1VMAgentSpecImage, default is Undefined, optional
         image
     imagePullSecrets : [OperatorVictoriametricsComV1beta1VMAgentSpecImagePullSecretsItems0], default is Undefined, optional
-        ImagePullSecrets An optional list of references to secrets in the same namespace
-        to use for pulling images from registries
-        see https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod
+        image pull secrets
     ingestOnlyMode : bool, default is Undefined, optional
-        IngestOnlyMode switches vmagent into unmanaged mode
-        it disables any config generation for scraping
-        Currently it prevents vmagent from managing tls and auth options for remote write
+        ingest only mode
     initContainers : [any], default is Undefined, optional
-        InitContainers allows adding initContainers to the pod definition. Those can be used to e.g.
-        fetch secrets for injection into the vmagent configuration from external sources. Any
-        errors during the execution of an initContainer will lead to a restart of the Pod. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
-        Using initContainers for any use case other then secret fetching is entirely outside the scope
-        of what the maintainers will support and by doing so, you accept that this behaviour may break
-        at any time without notice.
+        init containers
     inlineRelabelConfig : [OperatorVictoriametricsComV1beta1VMAgentSpecInlineRelabelConfigItems0], default is Undefined, optional
-        InlineRelabelConfig - defines GlobalRelabelConfig for vmagent, can be defined directly at CRD.
+        inline relabel config
     inlineScrapeConfig : str, default is Undefined, optional
-        InlineScrapeConfig As scrape configs are appended, the user is responsible to make sure it
-        is valid. Note that using this feature may expose the possibility to
-        break upgrades of VMAgent. It is advised to review VMAgent release
-        notes to ensure that no incompatible scrape configs are going to break
-        VMAgent after the upgrade.
-        it should be defined as single yaml file.
-        inlineScrapeConfig: |
-            - job_name: "prometheus"
-              static_configs:
-              - targets: ["localhost:9090"]
+        inline scrape config
     insertPorts : OperatorVictoriametricsComV1beta1VMAgentSpecInsertPorts, default is Undefined, optional
         insert ports
     license : OperatorVictoriametricsComV1beta1VMAgentSpecLicense, default is Undefined, optional
         license
     livenessProbe : any, default is Undefined, optional
-        LivenessProbe that will be added CRD pod
+        liveness probe
     logFormat : str, default is Undefined, optional
-        LogFormat for VMAgent to be configured with.
+        log format
     logLevel : str, default is Undefined, optional
-        LogLevel for VMAgent to be configured with.
-        INFO, WARN, ERROR, FATAL, PANIC
+        log level
+    managedMetadata : OperatorVictoriametricsComV1beta1VMAgentSpecManagedMetadata, default is Undefined, optional
+        managed metadata
     maxScrapeInterval : str, default is Undefined, optional
-        MaxScrapeInterval allows limiting maximum scrape interval for VMServiceScrape, VMPodScrape and other scrapes
-        If interval is higher than defined limit, `maxScrapeInterval` will be used.
+        max scrape interval
     minReadySeconds : int, default is Undefined, optional
-        MinReadySeconds defines a minim number os seconds to wait before starting update next pod
-        if previous in healthy state
+        min ready seconds
     minScrapeInterval : str, default is Undefined, optional
-        MinScrapeInterval allows limiting minimal scrape interval for VMServiceScrape, VMPodScrape and other scrapes
-        If interval is lower than defined limit, `minScrapeInterval` will be used.
+        min scrape interval
     nodeScrapeNamespaceSelector : OperatorVictoriametricsComV1beta1VMAgentSpecNodeScrapeNamespaceSelector, default is Undefined, optional
         node scrape namespace selector
     nodeScrapeRelabelTemplate : [OperatorVictoriametricsComV1beta1VMAgentSpecNodeScrapeRelabelTemplateItems0], default is Undefined, optional
-        NodeScrapeRelabelTemplate defines relabel config, that will be added to each VMNodeScrape.
-        it's useful for adding specific labels to all targets
+        node scrape relabel template
     nodeScrapeSelector : OperatorVictoriametricsComV1beta1VMAgentSpecNodeScrapeSelector, default is Undefined, optional
         node scrape selector
     nodeSelector : {str:str}, default is Undefined, optional
-        NodeSelector Define which Nodes the Pods are scheduled on.
+        node selector
     overrideHonorLabels : bool, default is Undefined, optional
-        OverrideHonorLabels if set to true overrides all user configured honor_labels.
-        If HonorLabels is set in ServiceScrape or PodScrape to true, this overrides honor_labels to false.
+        override honor labels
     overrideHonorTimestamps : bool, default is Undefined, optional
-        OverrideHonorTimestamps allows to globally enforce honoring timestamps in all scrape configs.
+        override honor timestamps
     paused : bool, default is Undefined, optional
-        Paused If set to true all actions on the underlying managed objects are not
-        going to be performed, except for delete actions.
+        paused
+    persistentVolumeClaimRetentionPolicy : OperatorVictoriametricsComV1beta1VMAgentSpecPersistentVolumeClaimRetentionPolicy, default is Undefined, optional
+        persistent volume claim retention policy
     podDisruptionBudget : OperatorVictoriametricsComV1beta1VMAgentSpecPodDisruptionBudget, default is Undefined, optional
         pod disruption budget
     podMetadata : OperatorVictoriametricsComV1beta1VMAgentSpecPodMetadata, default is Undefined, optional
@@ -164,148 +156,119 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpec:
     podScrapeNamespaceSelector : OperatorVictoriametricsComV1beta1VMAgentSpecPodScrapeNamespaceSelector, default is Undefined, optional
         pod scrape namespace selector
     podScrapeRelabelTemplate : [OperatorVictoriametricsComV1beta1VMAgentSpecPodScrapeRelabelTemplateItems0], default is Undefined, optional
-        PodScrapeRelabelTemplate defines relabel config, that will be added to each VMPodScrape.
-        it's useful for adding specific labels to all targets
+        pod scrape relabel template
     podScrapeSelector : OperatorVictoriametricsComV1beta1VMAgentSpecPodScrapeSelector, default is Undefined, optional
         pod scrape selector
     port : str, default is Undefined, optional
-        Port listen address
+        port
     priorityClassName : str, default is Undefined, optional
-        PriorityClassName assigned to the Pods
+        priority class name
     probeNamespaceSelector : OperatorVictoriametricsComV1beta1VMAgentSpecProbeNamespaceSelector, default is Undefined, optional
         probe namespace selector
     probeScrapeRelabelTemplate : [OperatorVictoriametricsComV1beta1VMAgentSpecProbeScrapeRelabelTemplateItems0], default is Undefined, optional
-        ProbeScrapeRelabelTemplate defines relabel config, that will be added to each VMProbeScrape.
-        it's useful for adding specific labels to all targets
+        probe scrape relabel template
     probeSelector : OperatorVictoriametricsComV1beta1VMAgentSpecProbeSelector, default is Undefined, optional
         probe selector
     readinessGates : [OperatorVictoriametricsComV1beta1VMAgentSpecReadinessGatesItems0], default is Undefined, optional
-        ReadinessGates defines pod readiness gates
+        readiness gates
     readinessProbe : any, default is Undefined, optional
-        ReadinessProbe that will be added CRD pod
+        readiness probe
     relabelConfig : OperatorVictoriametricsComV1beta1VMAgentSpecRelabelConfig, default is Undefined, optional
         relabel config
-    remoteWrite : [OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0], default is Undefined, optional
-        RemoteWrite list of victoria metrics /some other remote write system
-        for vm it must looks like: http://victoria-metrics-single:8429/api/v1/write
-        or for cluster different url
-        https://github.com/VictoriaMetrics/VictoriaMetrics/tree/master/app/vmagent#splitting-data-streams-among-multiple-systems
+    remoteWrite : [OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0], default is Undefined, required
+        remote write
     remoteWriteSettings : OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteSettings, default is Undefined, optional
         remote write settings
     replicaCount : int, default is Undefined, optional
-        ReplicaCount is the expected size of the VMAgent cluster. The controller will
-        eventually make the size of the running cluster equal to the expected
-        size.
-        NOTE enable VMSingle deduplication for replica usage
+        replica count
     resources : OperatorVictoriametricsComV1beta1VMAgentSpecResources, default is Undefined, optional
         resources
     revisionHistoryLimitCount : int, default is Undefined, optional
-        The number of old ReplicaSets to retain to allow rollback in deployment or
-        maximum number of revisions that will be maintained in the StatefulSet's revision history.
-        Defaults to 10.
+        revision history limit count
     rollingUpdate : OperatorVictoriametricsComV1beta1VMAgentSpecRollingUpdate, default is Undefined, optional
         rolling update
     runtimeClassName : str, default is Undefined, optional
-        RuntimeClassName - defines runtime class for kubernetes pod.
-        https://kubernetes.io/docs/concepts/containers/runtime-class/
+        runtime class name
+    sampleLimit : int, default is Undefined, optional
+        sample limit
     schedulerName : str, default is Undefined, optional
-        SchedulerName - defines kubernetes scheduler name
+        scheduler name
+    scrapeClasses : [OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0], default is Undefined, optional
+        scrape classes
     scrapeConfigNamespaceSelector : OperatorVictoriametricsComV1beta1VMAgentSpecScrapeConfigNamespaceSelector, default is Undefined, optional
         scrape config namespace selector
     scrapeConfigRelabelTemplate : [OperatorVictoriametricsComV1beta1VMAgentSpecScrapeConfigRelabelTemplateItems0], default is Undefined, optional
-        ScrapeConfigRelabelTemplate defines relabel config, that will be added to each VMScrapeConfig.
-        it's useful for adding specific labels to all targets
+        scrape config relabel template
     scrapeConfigSelector : OperatorVictoriametricsComV1beta1VMAgentSpecScrapeConfigSelector, default is Undefined, optional
         scrape config selector
     scrapeInterval : str, default is Undefined, optional
-        ScrapeInterval defines how often scrape targets by default
+        scrape interval
     scrapeTimeout : str, default is Undefined, optional
-        ScrapeTimeout defines global timeout for targets scrape
+        scrape timeout
     secrets : [str], default is Undefined, optional
-        Secrets is a list of Secrets in the same namespace as the vmagent
-        object, which shall be mounted into the vmagent Pods.
-        will be mounted at path /etc/vm/secrets
+        secrets
     securityContext : any, default is Undefined, optional
-        SecurityContext holds pod-level security attributes and common container settings.
-        This defaults to the default PodSecurityContext.
+        security context
     selectAllByDefault : bool, default is Undefined, optional
-        SelectAllByDefault changes default behavior for empty CRD selectors, such ServiceScrapeSelector.
-        with selectAllByDefault: true and empty serviceScrapeSelector and ServiceScrapeNamespaceSelector
-        Operator selects all exist serviceScrapes
-        with selectAllByDefault: false - selects nothing
+        select all by default
     serviceAccountName : str, default is Undefined, optional
-        ServiceAccountName is the name of the ServiceAccount to use to run the
-        VMAgent Pods.
+        service account name
     serviceScrapeNamespaceSelector : OperatorVictoriametricsComV1beta1VMAgentSpecServiceScrapeNamespaceSelector, default is Undefined, optional
         service scrape namespace selector
     serviceScrapeRelabelTemplate : [OperatorVictoriametricsComV1beta1VMAgentSpecServiceScrapeRelabelTemplateItems0], default is Undefined, optional
-        ServiceScrapeRelabelTemplate defines relabel config, that will be added to each VMServiceScrape.
-        it's useful for adding specific labels to all targets
+        service scrape relabel template
     serviceScrapeSelector : OperatorVictoriametricsComV1beta1VMAgentSpecServiceScrapeSelector, default is Undefined, optional
         service scrape selector
     serviceScrapeSpec : any, default is Undefined, optional
-        ServiceScrapeSpec that will be added to vmagent VMServiceScrape spec
+        service scrape spec
     serviceSpec : OperatorVictoriametricsComV1beta1VMAgentSpecServiceSpec, default is Undefined, optional
         service spec
     shardCount : int, default is Undefined, optional
-        ShardCount - numbers of shards of VMAgent
-        in this case operator will use 1 deployment/sts per shard with
-        replicas count according to spec.replicas,
-        see https://docs.victoriametrics.com/vmagent.html#scraping-big-number-of-targets
+        shard count
     startupProbe : any, default is Undefined, optional
-        StartupProbe that will be added to CRD pod
+        startup probe
     statefulMode : bool, default is Undefined, optional
-        StatefulMode enables StatefulSet for `VMAgent` instead of Deployment
-        it allows using persistent storage for vmagent's persistentQueue
+        stateful mode
     statefulRollingUpdateStrategy : str, default is Undefined, optional
-        StatefulRollingUpdateStrategy allows configuration for strategyType
-        set it to RollingUpdate for disabling operator statefulSet rollingUpdate
+        stateful rolling update strategy
     statefulStorage : OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorage, default is Undefined, optional
         stateful storage
     staticScrapeNamespaceSelector : OperatorVictoriametricsComV1beta1VMAgentSpecStaticScrapeNamespaceSelector, default is Undefined, optional
         static scrape namespace selector
     staticScrapeRelabelTemplate : [OperatorVictoriametricsComV1beta1VMAgentSpecStaticScrapeRelabelTemplateItems0], default is Undefined, optional
-        StaticScrapeRelabelTemplate defines relabel config, that will be added to each VMStaticScrape.
-        it's useful for adding specific labels to all targets
+        static scrape relabel template
     staticScrapeSelector : OperatorVictoriametricsComV1beta1VMAgentSpecStaticScrapeSelector, default is Undefined, optional
         static scrape selector
+    streamAggrConfig : OperatorVictoriametricsComV1beta1VMAgentSpecStreamAggrConfig, default is Undefined, optional
+        stream aggr config
     terminationGracePeriodSeconds : int, default is Undefined, optional
-        TerminationGracePeriodSeconds period for container graceful termination
+        termination grace period seconds
     tolerations : [OperatorVictoriametricsComV1beta1VMAgentSpecTolerationsItems0], default is Undefined, optional
-        Tolerations If specified, the pod's tolerations.
+        tolerations
     topologySpreadConstraints : [any], default is Undefined, optional
-        TopologySpreadConstraints embedded kubernetes pod configuration option,
-        controls how pods are spread across your cluster among failure-domains
-        such as regions, zones, nodes, and other user-defined topology domains
-        https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
+        topology spread constraints
     updateStrategy : str, default is Undefined, optional
-        UpdateStrategy - overrides default update strategy.
-        works only for deployments, statefulset always use OnDelete.
+        update strategy
+    useDefaultResources : bool, default is Undefined, optional
+        use default resources
     useStrictSecurity : bool, default is Undefined, optional
-        UseStrictSecurity enables strict security mode for component
-        it restricts disk writes access
-        uses non-root user out of the box
-        drops not needed security permissions
+        use strict security
+    useVMConfigReloader : bool, default is Undefined, optional
+        use VM config reloader
     vmAgentExternalLabelName : str, default is Undefined, optional
-        VMAgentExternalLabelName Name of vmAgent external label used to denote vmAgent instance
-        name. Defaults to the value of `prometheus`. External label will
-        _not_ be added when value is set to empty string (`""`).
+        vm agent external label name
     volumeMounts : [OperatorVictoriametricsComV1beta1VMAgentSpecVolumeMountsItems0], default is Undefined, optional
-        VolumeMounts allows configuration of additional VolumeMounts on the output deploy definition.
-        VolumeMounts specified will be appended to other VolumeMounts in the vmagent container,
-        that are generated as a result of StorageSpec objects.
+        volume mounts
     volumes : [any], default is Undefined, optional
-        Volumes allows configuration of additional volumes on the output deploy definition.
-        Volumes specified will be appended to other volumes that are generated as a result of
-        StorageSpec objects.
+        volumes
     """
 
-
-    aPIServerConfig?: OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfig
 
     additionalScrapeConfigs?: OperatorVictoriametricsComV1beta1VMAgentSpecAdditionalScrapeConfigs
 
     affinity?: any
+
+    apiServerConfig?: OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfig
 
     arbitraryFSAccessThroughSMs?: OperatorVictoriametricsComV1beta1VMAgentSpecArbitraryFSAccessThroughSMs
 
@@ -313,21 +276,47 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpec:
 
     configMaps?: [str]
 
+    configReloadAuthKeySecret?: OperatorVictoriametricsComV1beta1VMAgentSpecConfigReloadAuthKeySecret
+
     configReloaderExtraArgs?: {str:str}
 
+    configReloaderImage?: str
+
+    configReloaderImageTag?: str
+
+    configReloaderResources?: OperatorVictoriametricsComV1beta1VMAgentSpecConfigReloaderResources
+
     containers?: [any]
+
+    daemonSetMode?: bool
+
+    disableAutomountServiceAccountToken?: bool
+
+    disableSelfServiceScrape?: bool
 
     dnsConfig?: OperatorVictoriametricsComV1beta1VMAgentSpecDNSConfig
 
     dnsPolicy?: str
 
+    enableKubernetesAPISelectors?: bool
+
     enforcedNamespaceLabel?: str
+
+    externalLabelName?: str
 
     externalLabels?: {str:str}
 
     extraArgs?: {str:str}
 
     extraEnvs?: [OperatorVictoriametricsComV1beta1VMAgentSpecExtraEnvsItems0]
+
+    extraEnvsFrom?: [OperatorVictoriametricsComV1beta1VMAgentSpecExtraEnvsFromItems0]
+
+    globalScrapeMetricRelabelConfigs?: [OperatorVictoriametricsComV1beta1VMAgentSpecGlobalScrapeMetricRelabelConfigsItems0]
+
+    globalScrapeRelabelConfigs?: [OperatorVictoriametricsComV1beta1VMAgentSpecGlobalScrapeRelabelConfigsItems0]
+
+    hostAliases?: [OperatorVictoriametricsComV1beta1VMAgentSpecHostAliasesItems0]
 
     hostNetwork?: bool
 
@@ -357,6 +346,8 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpec:
 
     logLevel?: "INFO" | "WARN" | "ERROR" | "FATAL" | "PANIC"
 
+    managedMetadata?: OperatorVictoriametricsComV1beta1VMAgentSpecManagedMetadata
+
     maxScrapeInterval?: str
 
     minReadySeconds?: int
@@ -376,6 +367,8 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpec:
     overrideHonorTimestamps?: bool
 
     paused?: bool
+
+    persistentVolumeClaimRetentionPolicy?: OperatorVictoriametricsComV1beta1VMAgentSpecPersistentVolumeClaimRetentionPolicy
 
     podDisruptionBudget?: OperatorVictoriametricsComV1beta1VMAgentSpecPodDisruptionBudget
 
@@ -403,7 +396,7 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpec:
 
     relabelConfig?: OperatorVictoriametricsComV1beta1VMAgentSpecRelabelConfig
 
-    remoteWrite?: [OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0]
+    remoteWrite: [OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0]
 
     remoteWriteSettings?: OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteSettings
 
@@ -417,7 +410,11 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpec:
 
     runtimeClassName?: str
 
+    sampleLimit?: int
+
     schedulerName?: str
+
+    scrapeClasses?: [OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0]
 
     scrapeConfigNamespaceSelector?: OperatorVictoriametricsComV1beta1VMAgentSpecScrapeConfigNamespaceSelector
 
@@ -463,6 +460,8 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpec:
 
     staticScrapeSelector?: OperatorVictoriametricsComV1beta1VMAgentSpecStaticScrapeSelector
 
+    streamAggrConfig?: OperatorVictoriametricsComV1beta1VMAgentSpecStreamAggrConfig
+
     terminationGracePeriodSeconds?: int
 
     tolerations?: [OperatorVictoriametricsComV1beta1VMAgentSpecTolerationsItems0]
@@ -471,7 +470,11 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpec:
 
     updateStrategy?: "Recreate" | "RollingUpdate"
 
+    useDefaultResources?: bool
+
     useStrictSecurity?: bool
+
+    useVMConfigReloader?: bool
 
     vmAgentExternalLabelName?: str
 
@@ -481,16 +484,13 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpec:
 
 
     check:
-        regex.match(str(scrapeInterval), r"[0-9]+(ms|s|m|h)") if scrapeInterval
-        regex.match(str(scrapeTimeout), r"[0-9]+(ms|s|m|h)") if scrapeTimeout
+        _regex_match(str(scrapeInterval), r"[0-9]+(ms|s|m|h)") if scrapeInterval
+        _regex_match(str(scrapeTimeout), r"[0-9]+(ms|s|m|h)") if scrapeTimeout
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfig:
-    """
-    APIServerConfig allows specifying a host and auth methods to access apiserver.
-    If left empty, VMAgent is assumed to run inside of the cluster
-    and will discover API servers automatically and use the pod's CA certificate
-    and bearer token file at /var/run/secrets/kubernetes.io/serviceaccount/.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec API server config
 
     Attributes
     ----------
@@ -499,12 +499,11 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfig:
     basicAuth : OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigBasicAuth, default is Undefined, optional
         basic auth
     bearerToken : str, default is Undefined, optional
-        Bearer token for accessing apiserver.
+        bearer token
     bearerTokenFile : str, default is Undefined, optional
-        File to read bearer token for accessing apiserver.
+        bearer token file
     host : str, default is Undefined, required
-        Host of apiserver.
-        A valid string consisting of a hostname or IP followed by an optional port number
+        host
     tlsConfig : OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigTLSConfig, default is Undefined, optional
         tls config
     """
@@ -524,17 +523,17 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfig:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigAuthorization:
-    """
-    Authorization configures generic authorization params
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec API server config authorization
 
     Attributes
     ----------
     credentials : OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigAuthorizationCredentials, default is Undefined, optional
         credentials
     credentialsFile : str, default is Undefined, optional
-        File with value for authorization
+        credentials file
     $type : str, default is Undefined, optional
-        Type of authorization, default to bearer
+        type
     """
 
 
@@ -546,39 +545,37 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigAuthorization:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigAuthorizationCredentials:
-    """
-    Reference to the secret with value for authorization
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec API server config authorization credentials
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigBasicAuth:
-    """
-    BasicAuth allow an endpoint to authenticate over basic authentication
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec API server config basic auth
 
     Attributes
     ----------
     password : OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigBasicAuthPassword, default is Undefined, optional
         password
     password_file : str, default is Undefined, optional
-        PasswordFile defines path to password file at disk
+        password file
     username : OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigBasicAuthUsername, default is Undefined, optional
         username
     """
@@ -592,79 +589,71 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigBasicAuth:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigBasicAuthPassword:
-    """
-    The secret in the service scrape namespace that contains the password
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec API server config basic auth password
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigBasicAuthUsername:
-    """
-    The secret in the service scrape namespace that contains the username
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec API server config basic auth username
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigTLSConfig:
-    """
-    TLSConfig Config to use for accessing apiserver.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec API server config TLS config
 
     Attributes
     ----------
     ca : OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigTLSConfigCa, default is Undefined, optional
         ca
     caFile : str, default is Undefined, optional
-        Path to the CA cert in the container to use for the targets.
+        ca file
     cert : OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigTLSConfigCert, default is Undefined, optional
         cert
     certFile : str, default is Undefined, optional
-        Path to the client cert file in the container for the targets.
+        cert file
     insecureSkipVerify : bool, default is Undefined, optional
-        Disable target certificate validation.
+        insecure skip verify
     keyFile : str, default is Undefined, optional
-        Path to the client key file in the container for the targets.
+        key file
     keySecret : OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigTLSConfigKeySecret, default is Undefined, optional
         key secret
     serverName : str, default is Undefined, optional
-        Used to verify the hostname for the targets.
+        server name
     """
 
 
@@ -686,8 +675,8 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigTLSConfig:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigTLSConfigCa:
-    """
-    Stuct containing the CA cert to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec API server config TLS config ca
 
     Attributes
     ----------
@@ -704,56 +693,52 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigTLSConfigCa:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigTLSConfigCaConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec API server config TLS config ca config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigTLSConfigCaSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec API server config TLS config ca secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigTLSConfigCert:
-    """
-    Struct containing the client cert file for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec API server config TLS config cert
 
     Attributes
     ----------
@@ -770,110 +755,96 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigTLSConfigCert:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigTLSConfigCertConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec API server config TLS config cert config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigTLSConfigCertSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec API server config TLS config cert secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecAPIServerConfigTLSConfigKeySecret:
-    """
-    Secret containing the client key file for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec API server config TLS config key secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecAdditionalScrapeConfigs:
-    """
-    AdditionalScrapeConfigs As scrape configs are appended, the user is responsible to make sure it
-    is valid. Note that using this feature may expose the possibility to
-    break upgrades of VMAgent. It is advised to review VMAgent release
-    notes to ensure that no incompatible scrape configs are going to break
-    VMAgent after the upgrade.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec additional scrape configs
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecArbitraryFSAccessThroughSMs:
-    """
-    ArbitraryFSAccessThroughSMs configures whether configuration
-    based on a service scrape can access arbitrary files on the file system
-    of the VMAgent container e.g. bearer token files.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec arbitrary f s access through s ms
 
     Attributes
     ----------
@@ -886,25 +857,17 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecArbitraryFSAccessThroughSMs:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0:
-    """
-    PersistentVolumeClaim is a user's request for and claim to a persistent volume
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec claim templates items0
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        APIVersion defines the versioned schema of this representation of an object.
-        Servers should convert recognized schemas to the latest internal value, and
-        may reject unrecognized values.
-        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+        api version
     kind : str, default is Undefined, optional
-        Kind is a string value representing the REST resource this object represents.
-        Servers may infer this from the endpoint the client submits requests to.
-        Cannot be updated.
-        In CamelCase.
-        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        kind
     metadata : any, default is Undefined, optional
-        Standard object's metadata.
-        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+        metadata
     spec : OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0Spec, default is Undefined, optional
         spec
     status : OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0Status, default is Undefined, optional
@@ -924,15 +887,13 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0Spec:
-    """
-    spec defines the desired characteristics of a volume requested by a pod author.
-    More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec claim templates items0 spec
 
     Attributes
     ----------
     accessModes : [str], default is Undefined, optional
-        accessModes contains the desired access modes the volume should have.
-        More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
+        access modes
     dataSource : OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0SpecDataSource, default is Undefined, optional
         data source
     dataSourceRef : OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0SpecDataSourceRef, default is Undefined, optional
@@ -942,13 +903,13 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0Spec:
     selector : OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0SpecSelector, default is Undefined, optional
         selector
     storageClassName : str, default is Undefined, optional
-        storageClassName is the name of the StorageClass required by the claim.
-        More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1
+        storage class name
+    volumeAttributesClassName : str, default is Undefined, optional
+        volume attributes class name
     volumeMode : str, default is Undefined, optional
-        volumeMode defines what type of volume is required by the claim.
-        Value of Filesystem is implied when not included in claim spec.
+        volume mode
     volumeName : str, default is Undefined, optional
-        volumeName is the binding reference to the PersistentVolume backing this claim.
+        volume name
     """
 
 
@@ -964,32 +925,25 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0Spec:
 
     storageClassName?: str
 
+    volumeAttributesClassName?: str
+
     volumeMode?: str
 
     volumeName?: str
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0SpecDataSource:
-    """
-    dataSource field can be used to specify either:
-    * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot)
-    * An existing PVC (PersistentVolumeClaim)
-    If the provisioner or an external controller can support the specified data source,
-    it will create a new volume based on the contents of the specified data source.
-    When the AnyVolumeDataSource feature gate is enabled, dataSource contents will be copied to dataSourceRef,
-    and dataSourceRef contents will be copied to dataSource when dataSourceRef.namespace is not specified.
-    If the namespace is specified, then dataSourceRef will not be copied to dataSource.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec claim templates items0 spec data source
 
     Attributes
     ----------
     apiGroup : str, default is Undefined, optional
-        APIGroup is the group for the resource being referenced.
-        If APIGroup is not specified, the specified Kind must be in the core API group.
-        For any other third-party types, APIGroup is required.
+        api group
     kind : str, default is Undefined, required
-        Kind is the type of resource being referenced
+        kind
     name : str, default is Undefined, required
-        Name is the name of resource being referenced
+        name
     """
 
 
@@ -1001,45 +955,19 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0SpecDataS
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0SpecDataSourceRef:
-    """
-    dataSourceRef specifies the object from which to populate the volume with data, if a non-empty
-    volume is desired. This may be any object from a non-empty API group (non
-    core object) or a PersistentVolumeClaim object.
-    When this field is specified, volume binding will only succeed if the type of
-    the specified object matches some installed volume populator or dynamic
-    provisioner.
-    This field will replace the functionality of the dataSource field and as such
-    if both fields are non-empty, they must have the same value. For backwards
-    compatibility, when namespace isn't specified in dataSourceRef,
-    both fields (dataSource and dataSourceRef) will be set to the same
-    value automatically if one of them is empty and the other is non-empty.
-    When namespace is specified in dataSourceRef,
-    dataSource isn't set to the same value and must be empty.
-    There are three important differences between dataSource and dataSourceRef:
-    * While dataSource only allows two specific types of objects, dataSourceRef
-      allows any non-core object, as well as PersistentVolumeClaim objects.
-    * While dataSource ignores disallowed values (dropping them), dataSourceRef
-      preserves all values, and generates an error if a disallowed value is
-      specified.
-    * While dataSource only allows local objects, dataSourceRef allows objects
-      in any namespaces.
-    (Beta) Using this field requires the AnyVolumeDataSource feature gate to be enabled.
-    (Alpha) Using the namespace field of dataSourceRef requires the CrossNamespaceVolumeDataSource feature gate to be enabled.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec claim templates items0 spec data source ref
 
     Attributes
     ----------
     apiGroup : str, default is Undefined, optional
-        APIGroup is the group for the resource being referenced.
-        If APIGroup is not specified, the specified Kind must be in the core API group.
-        For any other third-party types, APIGroup is required.
+        api group
     kind : str, default is Undefined, required
-        Kind is the type of resource being referenced
+        kind
     name : str, default is Undefined, required
-        Name is the name of resource being referenced
+        name
     namespace : str, default is Undefined, optional
-        Namespace is the namespace of resource being referenced
-        Note that when a namespace is specified, a gateway.networking.k8s.io/ReferenceGrant object is required in the referent namespace to allow that namespace's owner to accept the reference. See the ReferenceGrant documentation for details.
-        (Alpha) This field requires the CrossNamespaceVolumeDataSource feature gate to be enabled.
+        namespace
     """
 
 
@@ -1053,37 +981,17 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0SpecDataS
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0SpecResources:
-    """
-    resources represents the minimum resources the volume should have.
-    If RecoverVolumeExpansionFailure feature is enabled users are allowed to specify resource requirements
-    that are lower than previous value but must still be higher than capacity recorded in the
-    status field of the claim.
-    More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec claim templates items0 spec resources
 
     Attributes
     ----------
-    claims : [OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0SpecResourcesClaimsItems0], default is Undefined, optional
-        Claims lists the names of resources, defined in spec.resourceClaims,
-        that are used by this container.
-
-
-        This is an alpha field and requires enabling the
-        DynamicResourceAllocation feature gate.
-
-
-        This field is immutable. It can only be set for containers.
     limits : {str:int | str}, default is Undefined, optional
-        Limits describes the maximum amount of compute resources allowed.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        limits
     requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum amount of compute resources required.
-        If Requests is omitted for a container, it defaults to Limits if that is explicitly specified,
-        otherwise to an implementation-defined value. Requests cannot exceed Limits.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        requests
     """
 
-
-    claims?: [OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0SpecResourcesClaimsItems0]
 
     limits?: {str:int | str}
 
@@ -1091,38 +999,20 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0SpecResou
 
 
     check:
-        all _, limits in limits {regex.match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex.match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
-
-
-schema OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0SpecResourcesClaimsItems0:
-    """
-    ResourceClaim references one entry in PodSpec.ResourceClaims.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        Name must match the name of one entry in pod.spec.resourceClaims of
-        the Pod where this field is used. It makes that resource available
-        inside a container.
-    """
-
-
-    name: str
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0SpecSelector:
-    """
-    selector is a label query over volumes to consider for binding.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec claim templates items0 spec selector
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0SpecSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
+        match labels
     """
 
 
@@ -1132,22 +1022,17 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0SpecSelec
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0SpecSelectorMatchExpressionsItems0:
-    """
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec claim templates items0 spec selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
+        values
     """
 
 
@@ -1159,41 +1044,33 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0SpecSelec
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0Status:
-    """
-    status represents the current information/status of a persistent volume claim.
-    Read-only.
-    More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec claim templates items0 status
 
     Attributes
     ----------
     accessModes : [str], default is Undefined, optional
-        accessModes contains the actual access modes the volume backing the PVC has.
-        More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
+        access modes
+    allocatedResourceStatuses : {str:str}, default is Undefined, optional
+        allocated resource statuses
     allocatedResources : {str:int | str}, default is Undefined, optional
-        allocatedResources is the storage resource within AllocatedResources tracks the capacity allocated to a PVC. It may
-        be larger than the actual capacity when a volume expansion operation is requested.
-        For storage quota, the larger value from allocatedResources and PVC.spec.resources is used.
-        If allocatedResources is not set, PVC.spec.resources alone is used for quota calculation.
-        If a volume expansion capacity request is lowered, allocatedResources is only
-        lowered if there are no expansion operations in progress and if the actual volume capacity
-        is equal or lower than the requested capacity.
-        This is an alpha field and requires enabling RecoverVolumeExpansionFailure feature.
+        allocated resources
     capacity : {str:int | str}, default is Undefined, optional
-        capacity represents the actual resources of the underlying volume.
+        capacity
     conditions : [OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0StatusConditionsItems0], default is Undefined, optional
-        conditions is the current Condition of persistent volume claim. If underlying persistent volume is being
-        resized then the Condition will be set to 'ResizeStarted'.
+        conditions
+    currentVolumeAttributesClassName : str, default is Undefined, optional
+        current volume attributes class name
+    modifyVolumeStatus : OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0StatusModifyVolumeStatus, default is Undefined, optional
+        modify volume status
     phase : str, default is Undefined, optional
-        phase represents the current phase of PersistentVolumeClaim.
-    resizeStatus : str, default is Undefined, optional
-        resizeStatus stores status of resize operation.
-        ResizeStatus is not set by default but when expansion is complete resizeStatus is set to empty
-        string by resize controller or kubelet.
-        This is an alpha field and requires enabling RecoverVolumeExpansionFailure feature.
+        phase
     """
 
 
     accessModes?: [str]
+
+    allocatedResourceStatuses?: {str:str}
 
     allocatedResources?: {str:int | str}
 
@@ -1201,36 +1078,36 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0Status:
 
     conditions?: [OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0StatusConditionsItems0]
 
-    phase?: str
+    currentVolumeAttributesClassName?: str
 
-    resizeStatus?: str
+    modifyVolumeStatus?: OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0StatusModifyVolumeStatus
+
+    phase?: str
 
 
     check:
-        all _, allocatedResources in allocatedResources {regex.match(str(allocatedResources), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if allocatedResources } if allocatedResources
-        all _, capacity in capacity {regex.match(str(capacity), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if capacity } if capacity
+        all _, allocatedResources in allocatedResources { _regex_match(str(allocatedResources), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if allocatedResources } if allocatedResources
+        all _, capacity in capacity { _regex_match(str(capacity), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if capacity } if capacity
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0StatusConditionsItems0:
-    """
-    PersistentVolumeClaimCondition contains details about state of pvc
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec claim templates items0 status conditions items0
 
     Attributes
     ----------
     lastProbeTime : str, default is Undefined, optional
-        lastProbeTime is the time we probed the condition.
+        last probe time
     lastTransitionTime : str, default is Undefined, optional
-        lastTransitionTime is the time the condition transitioned from one status to another.
+        last transition time
     message : str, default is Undefined, optional
-        message is the human-readable message indicating details about last transition.
+        message
     reason : str, default is Undefined, optional
-        reason is a unique, this should be a short, machine understandable string that gives the reason
-        for condition's last transition. If it reports "ResizeStarted" that means the underlying
-        persistent volume is being resized.
+        reason
     status : str, default is Undefined, required
         status
     $type : str, default is Undefined, required
-        PersistentVolumeClaimConditionType is a valid value of PersistentVolumeClaimCondition.Type
+        type
     """
 
 
@@ -1247,27 +1124,103 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0StatusCon
     $type: str
 
 
-schema OperatorVictoriametricsComV1beta1VMAgentSpecDNSConfig:
+schema OperatorVictoriametricsComV1beta1VMAgentSpecClaimTemplatesItems0StatusModifyVolumeStatus:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec claim templates items0 status modify volume status
+
+    Attributes
+    ----------
+    status : str, default is Undefined, required
+        status
+    targetVolumeAttributesClassName : str, default is Undefined, optional
+        target volume attributes class name
     """
-    Specifies the DNS parameters of a pod.
-    Parameters specified here will be merged to the generated DNS
-    configuration based on DNSPolicy.
+
+
+    status: str
+
+    targetVolumeAttributesClassName?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecConfigReloadAuthKeySecret:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec config reload auth key secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecConfigReloaderResources:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec config reloader resources
+
+    Attributes
+    ----------
+    claims : [OperatorVictoriametricsComV1beta1VMAgentSpecConfigReloaderResourcesClaimsItems0], default is Undefined, optional
+        claims
+    limits : {str:int | str}, default is Undefined, optional
+        limits
+    requests : {str:int | str}, default is Undefined, optional
+        requests
+    """
+
+
+    claims?: [OperatorVictoriametricsComV1beta1VMAgentSpecConfigReloaderResourcesClaimsItems0]
+
+    limits?: {str:int | str}
+
+    requests?: {str:int | str}
+
+
+    check:
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecConfigReloaderResourcesClaimsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec config reloader resources claims items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    request : str, default is Undefined, optional
+        request
+    """
+
+
+    name: str
+
+    request?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecDNSConfig:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec DNS config
 
     Attributes
     ----------
     nameservers : [str], default is Undefined, optional
-        A list of DNS name server IP addresses.
-        This will be appended to the base nameservers generated from DNSPolicy.
-        Duplicated nameservers will be removed.
+        nameservers
     options : [OperatorVictoriametricsComV1beta1VMAgentSpecDNSConfigOptionsItems0], default is Undefined, optional
-        A list of DNS resolver options.
-        This will be merged with the base options generated from DNSPolicy.
-        Duplicated entries will be removed. Resolution options given in Options
-        will override those that appear in the base DNSPolicy.
+        options
     searches : [str], default is Undefined, optional
-        A list of DNS search domains for host-name lookup.
-        This will be appended to the base search paths generated from DNSPolicy.
-        Duplicated search paths will be removed.
+        searches
     """
 
 
@@ -1279,13 +1232,13 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecDNSConfig:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecDNSConfigOptionsItems0:
-    """
-    PodDNSConfigOption defines DNS resolver options of a pod.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec DNS config options items0
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Required.
+        name
     value : str, default is Undefined, optional
         value
     """
@@ -1296,24 +1249,74 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecDNSConfigOptionsItems0:
     value?: str
 
 
-schema OperatorVictoriametricsComV1beta1VMAgentSpecExtraEnvsItems0:
+schema OperatorVictoriametricsComV1beta1VMAgentSpecExtraEnvsFromItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec extra envs from items0
+
+    Attributes
+    ----------
+    configMapRef : OperatorVictoriametricsComV1beta1VMAgentSpecExtraEnvsFromItems0ConfigMapRef, default is Undefined, optional
+        config map ref
+    prefix : str, default is Undefined, optional
+        prefix
+    secretRef : OperatorVictoriametricsComV1beta1VMAgentSpecExtraEnvsFromItems0SecretRef, default is Undefined, optional
+        secret ref
     """
-    EnvVar represents an environment variable present in a Container.
+
+
+    configMapRef?: OperatorVictoriametricsComV1beta1VMAgentSpecExtraEnvsFromItems0ConfigMapRef
+
+    prefix?: str
+
+    secretRef?: OperatorVictoriametricsComV1beta1VMAgentSpecExtraEnvsFromItems0SecretRef
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecExtraEnvsFromItems0ConfigMapRef:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec extra envs from items0 config map ref
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecExtraEnvsFromItems0SecretRef:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec extra envs from items0 secret ref
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecExtraEnvsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec extra envs items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of the environment variable. Must be a C_IDENTIFIER.
+        name
     value : str, default is Undefined, optional
-        Variable references $(VAR_NAME) are expanded
-        using the previously defined environment variables in the container and
-        any service environment variables. If a variable cannot be resolved,
-        the reference in the input string will be unchanged. Double $$ are reduced
-        to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e.
-        "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
-        Escaped references will never be expanded, regardless of whether the variable
-        exists or not.
-        Defaults to "".
+        value
     """
 
 
@@ -1322,38 +1325,152 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecExtraEnvsItems0:
     value?: str
 
 
-schema OperatorVictoriametricsComV1beta1VMAgentSpecHostAliasesItems0:
+schema OperatorVictoriametricsComV1beta1VMAgentSpecGlobalScrapeMetricRelabelConfigsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec global scrape metric relabel configs items0
+
+    Attributes
+    ----------
+    action : str, default is Undefined, optional
+        action
+    $if : any, default is Undefined, optional
+        if
+    labels : {str:str}, default is Undefined, optional
+        labels
+    match : str, default is Undefined, optional
+        match
+    modulus : int, default is Undefined, optional
+        modulus
+    regex : any, default is Undefined, optional
+        regex
+    replacement : str, default is Undefined, optional
+        replacement
+    separator : str, default is Undefined, optional
+        separator
+    sourceLabels : [str], default is Undefined, optional
+        source labels
+    source_labels : [str], default is Undefined, optional
+        source labels
+    targetLabel : str, default is Undefined, optional
+        target label
+    target_label : str, default is Undefined, optional
+        target label
     """
-    HostAlias holds the mapping between IP and hostnames that will be injected as an entry in the
-    pod's hosts file.
+
+
+    action?: str
+
+    $if?: any
+
+    labels?: {str:str}
+
+    match?: str
+
+    modulus?: int
+
+    regex?: any
+
+    replacement?: str
+
+    separator?: str
+
+    sourceLabels?: [str]
+
+    source_labels?: [str]
+
+    targetLabel?: str
+
+    target_label?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecGlobalScrapeRelabelConfigsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec global scrape relabel configs items0
+
+    Attributes
+    ----------
+    action : str, default is Undefined, optional
+        action
+    $if : any, default is Undefined, optional
+        if
+    labels : {str:str}, default is Undefined, optional
+        labels
+    match : str, default is Undefined, optional
+        match
+    modulus : int, default is Undefined, optional
+        modulus
+    regex : any, default is Undefined, optional
+        regex
+    replacement : str, default is Undefined, optional
+        replacement
+    separator : str, default is Undefined, optional
+        separator
+    sourceLabels : [str], default is Undefined, optional
+        source labels
+    source_labels : [str], default is Undefined, optional
+        source labels
+    targetLabel : str, default is Undefined, optional
+        target label
+    target_label : str, default is Undefined, optional
+        target label
+    """
+
+
+    action?: str
+
+    $if?: any
+
+    labels?: {str:str}
+
+    match?: str
+
+    modulus?: int
+
+    regex?: any
+
+    replacement?: str
+
+    separator?: str
+
+    sourceLabels?: [str]
+
+    source_labels?: [str]
+
+    targetLabel?: str
+
+    target_label?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecHostAliasesItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec host aliases items0
 
     Attributes
     ----------
     hostnames : [str], default is Undefined, optional
-        Hostnames for the above IP address.
-    ip : str, default is Undefined, optional
-        IP address of the host file entry.
+        hostnames
+    ip : str, default is Undefined, required
+        ip
     """
 
 
     hostnames?: [str]
 
-    ip?: str
+    ip: str
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecImage:
-    """
-    Image - docker image settings for VMAgent
-    if no specified operator uses default config version
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec image
 
     Attributes
     ----------
     pullPolicy : str, default is Undefined, optional
-        PullPolicy describes how to pull docker image
+        pull policy
     repository : str, default is Undefined, optional
-        Repository contains name of docker image + it's repository if needed
+        repository
     tag : str, default is Undefined, optional
-        Tag contains desired docker image version
+        tag
     """
 
 
@@ -1365,66 +1482,49 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecImage:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecImagePullSecretsItems0:
-    """
-    LocalObjectReference contains enough information to let you locate the
-    referenced object inside the same namespace.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec image pull secrets items0
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecInlineRelabelConfigItems0:
-    """
-    RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion.
-    It defines `<metric_relabel_configs>`-section of configuration.
-    More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec inline relabel config items0
 
     Attributes
     ----------
     action : str, default is Undefined, optional
-        Action to perform based on regex matching. Default is 'replace'
+        action
     $if : any, default is Undefined, optional
-        If represents metricsQL match expression (or list of expressions): '{__name__=~"foo_.*"}'
+        if
     labels : {str:str}, default is Undefined, optional
-        Labels is used together with Match for `action: graphite`
+        labels
     match : str, default is Undefined, optional
-        Match is used together with Labels for `action: graphite`
+        match
     modulus : int, default is Undefined, optional
-        Modulus to take of the hash of the source label values.
+        modulus
     regex : any, default is Undefined, optional
-        Regular expression against which the extracted value is matched. Default is '(.*)'
-        victoriaMetrics supports multiline regex joined with |
-        https://docs.victoriametrics.com/vmagent/#relabeling-enhancements
+        regex
     replacement : str, default is Undefined, optional
-        Replacement value against which a regex replace is performed if the
-        regular expression matches. Regex capture groups are available. Default is '$1'
+        replacement
     separator : str, default is Undefined, optional
-        Separator placed between concatenated source label values. default is ';'.
+        separator
     sourceLabels : [str], default is Undefined, optional
-        The source labels select values from existing labels. Their content is concatenated
-        using the configured separator and matched against the configured regular expression
-        for the replace, keep, and drop actions.
+        source labels
     source_labels : [str], default is Undefined, optional
-        UnderScoreSourceLabels - additional form of source labels source_labels
-        for compatibility with original relabel config.
-        if set  both sourceLabels and source_labels, sourceLabels has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        source labels
     targetLabel : str, default is Undefined, optional
-        Label to which the resulting value is written in a replace action.
-        It is mandatory for replace actions. Regex capture groups are available.
+        target label
     target_label : str, default is Undefined, optional
-        UnderScoreTargetLabel - additional form of target label - target_label
-        for compatibility with original relabel config.
-        if set  both targetLabel and target_label, targetLabel has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        target label
     """
 
 
@@ -1454,19 +1554,19 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecInlineRelabelConfigItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecInsertPorts:
-    """
-    InsertPorts - additional listen ports for data ingestion.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec insert ports
 
     Attributes
     ----------
     graphitePort : str, default is Undefined, optional
-        GraphitePort listen port
+        graphite port
     influxPort : str, default is Undefined, optional
-        InfluxPort listen port
+        influx port
     openTSDBHTTPPort : str, default is Undefined, optional
-        OpenTSDBHTTPPort for http connections.
+        open t s d b HTTP port
     openTSDBPort : str, default is Undefined, optional
-        OpenTSDBPort for tcp and udp listen
+        open t s d b port
     """
 
 
@@ -1480,68 +1580,81 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecInsertPorts:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecLicense:
-    """
-    License allows to configure license key to be used for enterprise features.
-    Using license key is supported starting from VictoriaMetrics v1.94.0.
-    See: https://docs.victoriametrics.com/enterprise.html
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec license
 
     Attributes
     ----------
+    forceOffline : bool, default is Undefined, optional
+        force offline
     key : str, default is Undefined, optional
-        Enterprise license key. This flag is available only in VictoriaMetrics enterprise.
-        Documentation - https://docs.victoriametrics.com/enterprise.html
-        for more information, visit https://victoriametrics.com/products/enterprise/ .
-        To request a trial license, go to https://victoriametrics.com/products/enterprise/trial/
+        key
     keyRef : OperatorVictoriametricsComV1beta1VMAgentSpecLicenseKeyRef, default is Undefined, optional
         key ref
+    reloadInterval : str, default is Undefined, optional
+        reload interval
     """
 
+
+    forceOffline?: bool
 
     key?: str
 
     keyRef?: OperatorVictoriametricsComV1beta1VMAgentSpecLicenseKeyRef
 
+    reloadInterval?: str
+
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecLicenseKeyRef:
-    """
-    KeyRef is reference to secret with license key for enterprise features.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec license key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
-schema OperatorVictoriametricsComV1beta1VMAgentSpecNodeScrapeNamespaceSelector:
+schema OperatorVictoriametricsComV1beta1VMAgentSpecManagedMetadata:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec managed metadata
+
+    Attributes
+    ----------
+    annotations : {str:str}, default is Undefined, optional
+        annotations
+    labels : {str:str}, default is Undefined, optional
+        labels
     """
-    NodeScrapeNamespaceSelector defines Namespaces to be selected for VMNodeScrape discovery.
-    Works in combination with Selector.
-    NamespaceSelector nil - only objects at VMAgent namespace.
-    Selector nil - only objects at NamespaceSelector namespaces.
-    If both nil - behaviour controlled by selectAllByDefault
+
+
+    annotations?: {str:str}
+
+    labels?: {str:str}
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecNodeScrapeNamespaceSelector:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec node scrape namespace selector
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAgentSpecNodeScrapeNamespaceSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
+        match labels
     """
 
 
@@ -1551,22 +1664,17 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecNodeScrapeNamespaceSelector:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecNodeScrapeNamespaceSelectorMatchExpressionsItems0:
-    """
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec node scrape namespace selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
+        values
     """
 
 
@@ -1578,49 +1686,35 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecNodeScrapeNamespaceSelectorMa
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecNodeScrapeRelabelTemplateItems0:
-    """
-    RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion.
-    It defines `<metric_relabel_configs>`-section of configuration.
-    More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec node scrape relabel template items0
 
     Attributes
     ----------
     action : str, default is Undefined, optional
-        Action to perform based on regex matching. Default is 'replace'
+        action
     $if : any, default is Undefined, optional
-        If represents metricsQL match expression (or list of expressions): '{__name__=~"foo_.*"}'
+        if
     labels : {str:str}, default is Undefined, optional
-        Labels is used together with Match for `action: graphite`
+        labels
     match : str, default is Undefined, optional
-        Match is used together with Labels for `action: graphite`
+        match
     modulus : int, default is Undefined, optional
-        Modulus to take of the hash of the source label values.
+        modulus
     regex : any, default is Undefined, optional
-        Regular expression against which the extracted value is matched. Default is '(.*)'
-        victoriaMetrics supports multiline regex joined with |
-        https://docs.victoriametrics.com/vmagent/#relabeling-enhancements
+        regex
     replacement : str, default is Undefined, optional
-        Replacement value against which a regex replace is performed if the
-        regular expression matches. Regex capture groups are available. Default is '$1'
+        replacement
     separator : str, default is Undefined, optional
-        Separator placed between concatenated source label values. default is ';'.
+        separator
     sourceLabels : [str], default is Undefined, optional
-        The source labels select values from existing labels. Their content is concatenated
-        using the configured separator and matched against the configured regular expression
-        for the replace, keep, and drop actions.
+        source labels
     source_labels : [str], default is Undefined, optional
-        UnderScoreSourceLabels - additional form of source labels source_labels
-        for compatibility with original relabel config.
-        if set  both sourceLabels and source_labels, sourceLabels has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        source labels
     targetLabel : str, default is Undefined, optional
-        Label to which the resulting value is written in a replace action.
-        It is mandatory for replace actions. Regex capture groups are available.
+        target label
     target_label : str, default is Undefined, optional
-        UnderScoreTargetLabel - additional form of target label - target_label
-        for compatibility with original relabel config.
-        if set  both targetLabel and target_label, targetLabel has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        target label
     """
 
 
@@ -1650,21 +1744,15 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecNodeScrapeRelabelTemplateItem
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecNodeScrapeSelector:
-    """
-    NodeScrapeSelector defines VMNodeScrape to be selected for scraping.
-    Works in combination with NamespaceSelector.
-    NamespaceSelector nil - only objects at VMAgent namespace.
-    Selector nil - only objects at NamespaceSelector namespaces.
-    If both nil - behaviour controlled by selectAllByDefault
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec node scrape selector
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAgentSpecNodeScrapeSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
+        match labels
     """
 
 
@@ -1674,22 +1762,17 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecNodeScrapeSelector:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecNodeScrapeSelectorMatchExpressionsItems0:
-    """
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec node scrape selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
+        values
     """
 
 
@@ -1700,25 +1783,38 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecNodeScrapeSelectorMatchExpres
     values?: [str]
 
 
-schema OperatorVictoriametricsComV1beta1VMAgentSpecPodDisruptionBudget:
+schema OperatorVictoriametricsComV1beta1VMAgentSpecPersistentVolumeClaimRetentionPolicy:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec persistent volume claim retention policy
+
+    Attributes
+    ----------
+    whenDeleted : str, default is Undefined, optional
+        when deleted
+    whenScaled : str, default is Undefined, optional
+        when scaled
     """
-    PodDisruptionBudget created by operator
+
+
+    whenDeleted?: str
+
+    whenScaled?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecPodDisruptionBudget:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec pod disruption budget
 
     Attributes
     ----------
     maxUnavailable : int | str, default is Undefined, optional
-        An eviction is allowed if at most "maxUnavailable" pods selected by
-        "selector" are unavailable after the eviction, i.e. even in absence of
-        the evicted pod. For example, one can prevent all voluntary evictions
-        by specifying 0. This is a mutually exclusive setting with "minAvailable".
+        max unavailable
     minAvailable : int | str, default is Undefined, optional
-        An eviction is allowed if at least "minAvailable" pods selected by
-        "selector" will still be available after the eviction, i.e. even in the
-        absence of the evicted pod.  So for example you can prevent all voluntary
-        evictions by specifying "100%".
+        min available
     selectorLabels : {str:str}, default is Undefined, optional
-        replaces default labels selector generated by operator
-        it's useful when you need to create custom budget
+        selector labels
+    unhealthyPodEvictionPolicy : str, default is Undefined, optional
+        unhealthy pod eviction policy
     """
 
 
@@ -1728,30 +1824,21 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecPodDisruptionBudget:
 
     selectorLabels?: {str:str}
 
+    unhealthyPodEvictionPolicy?: "IfHealthyBudget" | "AlwaysAllow"
+
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecPodMetadata:
-    """
-    PodMetadata configures Labels and Annotations which are propagated to the vmagent pods.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec pod metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
-        set by external tools to store and retrieve arbitrary metadata. They are not
-        queryable and should be preserved when modifying objects.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels Map of string keys and values that can be used to organize and categorize
-        (scope and select) objects. May match selectors of replication controllers
-        and services.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+        labels
     name : str, default is Undefined, optional
-        Name must be unique within a namespace. Is required when creating resources, although
-        some resources may allow a client to request the generation of an appropriate name
-        automatically. Name is primarily intended for creation idempotence and configuration
-        definition.
-        Cannot be updated.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names
+        name
     """
 
 
@@ -1763,21 +1850,15 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecPodMetadata:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecPodScrapeNamespaceSelector:
-    """
-    PodScrapeNamespaceSelector defines Namespaces to be selected for VMPodScrape discovery.
-    Works in combination with Selector.
-    NamespaceSelector nil - only objects at VMAgent namespace.
-    Selector nil - only objects at NamespaceSelector namespaces.
-    If both nil - behaviour controlled by selectAllByDefault
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec pod scrape namespace selector
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAgentSpecPodScrapeNamespaceSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
+        match labels
     """
 
 
@@ -1787,22 +1868,17 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecPodScrapeNamespaceSelector:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecPodScrapeNamespaceSelectorMatchExpressionsItems0:
-    """
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec pod scrape namespace selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
+        values
     """
 
 
@@ -1814,49 +1890,35 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecPodScrapeNamespaceSelectorMat
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecPodScrapeRelabelTemplateItems0:
-    """
-    RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion.
-    It defines `<metric_relabel_configs>`-section of configuration.
-    More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec pod scrape relabel template items0
 
     Attributes
     ----------
     action : str, default is Undefined, optional
-        Action to perform based on regex matching. Default is 'replace'
+        action
     $if : any, default is Undefined, optional
-        If represents metricsQL match expression (or list of expressions): '{__name__=~"foo_.*"}'
+        if
     labels : {str:str}, default is Undefined, optional
-        Labels is used together with Match for `action: graphite`
+        labels
     match : str, default is Undefined, optional
-        Match is used together with Labels for `action: graphite`
+        match
     modulus : int, default is Undefined, optional
-        Modulus to take of the hash of the source label values.
+        modulus
     regex : any, default is Undefined, optional
-        Regular expression against which the extracted value is matched. Default is '(.*)'
-        victoriaMetrics supports multiline regex joined with |
-        https://docs.victoriametrics.com/vmagent/#relabeling-enhancements
+        regex
     replacement : str, default is Undefined, optional
-        Replacement value against which a regex replace is performed if the
-        regular expression matches. Regex capture groups are available. Default is '$1'
+        replacement
     separator : str, default is Undefined, optional
-        Separator placed between concatenated source label values. default is ';'.
+        separator
     sourceLabels : [str], default is Undefined, optional
-        The source labels select values from existing labels. Their content is concatenated
-        using the configured separator and matched against the configured regular expression
-        for the replace, keep, and drop actions.
+        source labels
     source_labels : [str], default is Undefined, optional
-        UnderScoreSourceLabels - additional form of source labels source_labels
-        for compatibility with original relabel config.
-        if set  both sourceLabels and source_labels, sourceLabels has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        source labels
     targetLabel : str, default is Undefined, optional
-        Label to which the resulting value is written in a replace action.
-        It is mandatory for replace actions. Regex capture groups are available.
+        target label
     target_label : str, default is Undefined, optional
-        UnderScoreTargetLabel - additional form of target label - target_label
-        for compatibility with original relabel config.
-        if set  both targetLabel and target_label, targetLabel has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        target label
     """
 
 
@@ -1886,21 +1948,15 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecPodScrapeRelabelTemplateItems
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecPodScrapeSelector:
-    """
-    PodScrapeSelector defines PodScrapes to be selected for target discovery.
-    Works in combination with NamespaceSelector.
-    NamespaceSelector nil - only objects at VMAgent namespace.
-    Selector nil - only objects at NamespaceSelector namespaces.
-    If both nil - behaviour controlled by selectAllByDefault
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec pod scrape selector
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAgentSpecPodScrapeSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
+        match labels
     """
 
 
@@ -1910,22 +1966,17 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecPodScrapeSelector:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecPodScrapeSelectorMatchExpressionsItems0:
-    """
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec pod scrape selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
+        values
     """
 
 
@@ -1937,21 +1988,15 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecPodScrapeSelectorMatchExpress
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecProbeNamespaceSelector:
-    """
-    ProbeNamespaceSelector defines Namespaces to be selected for VMProbe discovery.
-    Works in combination with Selector.
-    NamespaceSelector nil - only objects at VMAgent namespace.
-    Selector nil - only objects at NamespaceSelector namespaces.
-    If both nil - behaviour controlled by selectAllByDefault
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec probe namespace selector
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAgentSpecProbeNamespaceSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
+        match labels
     """
 
 
@@ -1961,22 +2006,17 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecProbeNamespaceSelector:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecProbeNamespaceSelectorMatchExpressionsItems0:
-    """
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec probe namespace selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
+        values
     """
 
 
@@ -1988,49 +2028,35 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecProbeNamespaceSelectorMatchEx
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecProbeScrapeRelabelTemplateItems0:
-    """
-    RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion.
-    It defines `<metric_relabel_configs>`-section of configuration.
-    More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec probe scrape relabel template items0
 
     Attributes
     ----------
     action : str, default is Undefined, optional
-        Action to perform based on regex matching. Default is 'replace'
+        action
     $if : any, default is Undefined, optional
-        If represents metricsQL match expression (or list of expressions): '{__name__=~"foo_.*"}'
+        if
     labels : {str:str}, default is Undefined, optional
-        Labels is used together with Match for `action: graphite`
+        labels
     match : str, default is Undefined, optional
-        Match is used together with Labels for `action: graphite`
+        match
     modulus : int, default is Undefined, optional
-        Modulus to take of the hash of the source label values.
+        modulus
     regex : any, default is Undefined, optional
-        Regular expression against which the extracted value is matched. Default is '(.*)'
-        victoriaMetrics supports multiline regex joined with |
-        https://docs.victoriametrics.com/vmagent/#relabeling-enhancements
+        regex
     replacement : str, default is Undefined, optional
-        Replacement value against which a regex replace is performed if the
-        regular expression matches. Regex capture groups are available. Default is '$1'
+        replacement
     separator : str, default is Undefined, optional
-        Separator placed between concatenated source label values. default is ';'.
+        separator
     sourceLabels : [str], default is Undefined, optional
-        The source labels select values from existing labels. Their content is concatenated
-        using the configured separator and matched against the configured regular expression
-        for the replace, keep, and drop actions.
+        source labels
     source_labels : [str], default is Undefined, optional
-        UnderScoreSourceLabels - additional form of source labels source_labels
-        for compatibility with original relabel config.
-        if set  both sourceLabels and source_labels, sourceLabels has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        source labels
     targetLabel : str, default is Undefined, optional
-        Label to which the resulting value is written in a replace action.
-        It is mandatory for replace actions. Regex capture groups are available.
+        target label
     target_label : str, default is Undefined, optional
-        UnderScoreTargetLabel - additional form of target label - target_label
-        for compatibility with original relabel config.
-        if set  both targetLabel and target_label, targetLabel has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        target label
     """
 
 
@@ -2060,21 +2086,15 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecProbeScrapeRelabelTemplateIte
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecProbeSelector:
-    """
-    ProbeSelector defines VMProbe to be selected for target probing.
-    Works in combination with NamespaceSelector.
-    NamespaceSelector nil - only objects at VMAgent namespace.
-    Selector nil - only objects at NamespaceSelector namespaces.
-    If both nil - behaviour controlled by selectAllByDefault
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec probe selector
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAgentSpecProbeSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
+        match labels
     """
 
 
@@ -2084,22 +2104,17 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecProbeSelector:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecProbeSelectorMatchExpressionsItems0:
-    """
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec probe selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
+        values
     """
 
 
@@ -2111,13 +2126,13 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecProbeSelectorMatchExpressions
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecReadinessGatesItems0:
-    """
-    PodReadinessGate contains the reference to a pod condition
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec readiness gates items0
 
     Attributes
     ----------
     conditionType : str, default is Undefined, required
-        ConditionType refers to a condition in the pod's condition list with matching type.
+        condition type
     """
 
 
@@ -2125,72 +2140,81 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecReadinessGatesItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRelabelConfig:
-    """
-    RelabelConfig ConfigMap with global relabel config -remoteWrite.relabelConfig
-    This relabeling is applied to all the collected metrics before sending them to remote storage.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec relabel config
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0:
-    """
-    VMAgentRemoteWriteSpec defines the remote storage configuration for VmAgent
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0
 
     Attributes
     ----------
+    aws : OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0Aws, default is Undefined, optional
+        aws
     basicAuth : OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0BasicAuth, default is Undefined, optional
         basic auth
     bearerTokenSecret : OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0BearerTokenSecret, default is Undefined, optional
         bearer token secret
+    forceVMProto : bool, default is Undefined, optional
+        force VM proto
     headers : [str], default is Undefined, optional
-        Headers allow configuring custom http headers
-        Must be in form of semicolon separated header with value
-        e.g.
-        headerName: headerValue
-        vmagent supports since 1.79.0 version
+        headers
     inlineUrlRelabelConfig : [OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0InlineURLRelabelConfigItems0], default is Undefined, optional
-        InlineUrlRelabelConfig defines relabeling config for remoteWriteURL, it can be defined at crd spec.
+        inline Url relabel config
+    maxDiskUsage : any, default is Undefined, optional
+        max disk usage
     oauth2 : OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0Oauth2, default is Undefined, optional
         oauth2
+    proxyURL : str, default is Undefined, optional
+        proxy URL
     sendTimeout : str, default is Undefined, optional
-        Timeout for sending a single block of data to -remoteWrite.url (default 1m0s)
+        send timeout
     streamAggrConfig : OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0StreamAggrConfig, default is Undefined, optional
         stream aggr config
     tlsConfig : OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0TLSConfig, default is Undefined, optional
         tls config
     url : str, default is Undefined, required
-        URL of the endpoint to send samples to.
+        url
     urlRelabelConfig : OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0URLRelabelConfig, default is Undefined, optional
         url relabel config
     """
 
 
+    aws?: OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0Aws
+
     basicAuth?: OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0BasicAuth
 
     bearerTokenSecret?: OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0BearerTokenSecret
+
+    forceVMProto?: bool
 
     headers?: [str]
 
     inlineUrlRelabelConfig?: [OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0InlineURLRelabelConfigItems0]
 
+    maxDiskUsage?: any
+
     oauth2?: OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0Oauth2
+
+    proxyURL?: str
 
     sendTimeout?: str
 
@@ -2204,19 +2228,53 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0:
 
 
     check:
-        regex.match(str(sendTimeout), r"[0-9]+(ms|s|m|h)") if sendTimeout
+        _regex_match(str(sendTimeout), r"[0-9]+(ms|s|m|h)") if sendTimeout
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0Aws:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 aws
+
+    Attributes
+    ----------
+    ec2Endpoint : str, default is Undefined, optional
+        ec2 endpoint
+    region : str, default is Undefined, optional
+        region
+    roleARN : str, default is Undefined, optional
+        role a r n
+    service : str, default is Undefined, optional
+        service
+    stsEndpoint : str, default is Undefined, optional
+        sts endpoint
+    useSigv4 : bool, default is Undefined, optional
+        use sigv4
+    """
+
+
+    ec2Endpoint?: str
+
+    region?: str
+
+    roleARN?: str
+
+    service?: str
+
+    stsEndpoint?: str
+
+    useSigv4?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0BasicAuth:
-    """
-    BasicAuth allow an endpoint to authenticate over basic authentication
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 basic auth
 
     Attributes
     ----------
     password : OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0BasicAuthPassword, default is Undefined, optional
         password
     password_file : str, default is Undefined, optional
-        PasswordFile defines path to password file at disk
+        password file
     username : OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0BasicAuthUsername, default is Undefined, optional
         username
     """
@@ -2230,125 +2288,101 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0BasicAuth:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0BasicAuthPassword:
-    """
-    The secret in the service scrape namespace that contains the password
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 basic auth password
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0BasicAuthUsername:
-    """
-    The secret in the service scrape namespace that contains the username
-    for authentication.
-    It must be at them same namespace as CRD
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 basic auth username
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0BearerTokenSecret:
-    """
-    Optional bearer auth token to use for -remoteWrite.url
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 bearer token secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0InlineURLRelabelConfigItems0:
-    """
-    RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion.
-    It defines `<metric_relabel_configs>`-section of configuration.
-    More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 inline URL relabel config items0
 
     Attributes
     ----------
     action : str, default is Undefined, optional
-        Action to perform based on regex matching. Default is 'replace'
+        action
     $if : any, default is Undefined, optional
-        If represents metricsQL match expression (or list of expressions): '{__name__=~"foo_.*"}'
+        if
     labels : {str:str}, default is Undefined, optional
-        Labels is used together with Match for `action: graphite`
+        labels
     match : str, default is Undefined, optional
-        Match is used together with Labels for `action: graphite`
+        match
     modulus : int, default is Undefined, optional
-        Modulus to take of the hash of the source label values.
+        modulus
     regex : any, default is Undefined, optional
-        Regular expression against which the extracted value is matched. Default is '(.*)'
-        victoriaMetrics supports multiline regex joined with |
-        https://docs.victoriametrics.com/vmagent/#relabeling-enhancements
+        regex
     replacement : str, default is Undefined, optional
-        Replacement value against which a regex replace is performed if the
-        regular expression matches. Regex capture groups are available. Default is '$1'
+        replacement
     separator : str, default is Undefined, optional
-        Separator placed between concatenated source label values. default is ';'.
+        separator
     sourceLabels : [str], default is Undefined, optional
-        The source labels select values from existing labels. Their content is concatenated
-        using the configured separator and matched against the configured regular expression
-        for the replace, keep, and drop actions.
+        source labels
     source_labels : [str], default is Undefined, optional
-        UnderScoreSourceLabels - additional form of source labels source_labels
-        for compatibility with original relabel config.
-        if set  both sourceLabels and source_labels, sourceLabels has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        source labels
     targetLabel : str, default is Undefined, optional
-        Label to which the resulting value is written in a replace action.
-        It is mandatory for replace actions. Regex capture groups are available.
+        target label
     target_label : str, default is Undefined, optional
-        UnderScoreTargetLabel - additional form of target label - target_label
-        for compatibility with original relabel config.
-        if set  both targetLabel and target_label, targetLabel has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        target label
     """
 
 
@@ -2378,8 +2412,8 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0InlineURLRel
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0Oauth2:
-    """
-    OAuth2 defines auth configuration
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 oauth2
 
     Attributes
     ----------
@@ -2388,13 +2422,17 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0Oauth2:
     client_secret : OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0Oauth2ClientSecret, default is Undefined, optional
         client secret
     client_secret_file : str, default is Undefined, optional
-        ClientSecretFile defines path for client secret file.
+        client secret file
     endpoint_params : {str:str}, default is Undefined, optional
-        Parameters to append to the token URL
+        endpoint params
+    proxy_url : str, default is Undefined, optional
+        proxy url
     scopes : [str], default is Undefined, optional
-        OAuth2 scopes used for the token request
+        scopes
+    tls_config : any, default is Undefined, optional
+        tls config
     token_url : str, default is Undefined, required
-        The URL to fetch the token from
+        token url
     """
 
 
@@ -2406,7 +2444,11 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0Oauth2:
 
     endpoint_params?: {str:str}
 
+    proxy_url?: str
+
     scopes?: [str]
+
+    tls_config?: any
 
     token_url: str
 
@@ -2416,8 +2458,8 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0Oauth2:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0Oauth2ClientID:
-    """
-    The secret or configmap containing the OAuth2 client id
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 oauth2 client ID
 
     Attributes
     ----------
@@ -2434,188 +2476,183 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0Oauth2Client
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0Oauth2ClientIDConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 oauth2 client ID config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0Oauth2ClientIDSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 oauth2 client ID secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0Oauth2ClientSecret:
-    """
-    The secret containing the OAuth2 client secret
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 oauth2 client secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0StreamAggrConfig:
-    """
-    StreamAggrConfig defines stream aggregation configuration for VMAgent for -remoteWrite.url
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 stream aggr config
 
     Attributes
     ----------
+    configmap : OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0StreamAggrConfigConfigmap, default is Undefined, optional
+        configmap
     dedupInterval : str, default is Undefined, optional
-        Allows setting different de-duplication intervals per each configured remote storage
+        dedup interval
     dropInput : bool, default is Undefined, optional
-        Allow drop all the input samples after the aggregation
+        drop input
+    dropInputLabels : [str], default is Undefined, optional
+        drop input labels
+    enableWindows : bool, default is Undefined, optional
+        enable windows
+    ignoreFirstIntervals : int, default is Undefined, optional
+        ignore first intervals
+    ignoreFirstSampleInterval : str, default is Undefined, optional
+        ignore first sample interval
+    ignoreOldSamples : bool, default is Undefined, optional
+        ignore old samples
     keepInput : bool, default is Undefined, optional
-        Allows writing both raw and aggregate data
-    rules : [OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0StreamAggrConfigRulesItems0], default is Undefined, required
-        Stream aggregation rules
+        keep input
+    rules : [OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0StreamAggrConfigRulesItems0], default is Undefined, optional
+        rules
     """
 
+
+    configmap?: OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0StreamAggrConfigConfigmap
 
     dedupInterval?: str
 
     dropInput?: bool
 
+    dropInputLabels?: [str]
+
+    enableWindows?: bool
+
+    ignoreFirstIntervals?: int
+
+    ignoreFirstSampleInterval?: str
+
+    ignoreOldSamples?: bool
+
     keepInput?: bool
 
-    rules: [OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0StreamAggrConfigRulesItems0]
+    rules?: [OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0StreamAggrConfigRulesItems0]
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0StreamAggrConfigConfigmap:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 stream aggr config configmap
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0StreamAggrConfigRulesItems0:
-    """
-    StreamAggrRule defines the rule in stream aggregation config
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 stream aggr config rules items0
 
     Attributes
     ----------
     by : [str], default is Undefined, optional
-        By is an optional list of labels for grouping input series.
-
-
-        See also Without.
-
-
-        If neither By nor Without are set, then the Outputs are calculated
-        individually per each input time series.
+        by
     dedup_interval : str, default is Undefined, optional
-        DedupInterval is an optional interval for deduplication.
+        dedup interval
     drop_input_labels : [str], default is Undefined, optional
-        DropInputLabels is an optional list with labels, which must be dropped before further processing of input samples.
-
-
-        Labels are dropped before de-duplication and aggregation.
+        drop input labels
+    enable_windows : bool, default is Undefined, optional
+        enable windows
     flush_on_shutdown : bool, default is Undefined, optional
-        FlushOnShutdown defines whether to flush the aggregation state on process termination
-        or config reload. Is `false` by default.
-        It is not recommended changing this setting, unless unfinished aggregations states
-        are preferred to missing data points.
+        flush on shutdown
+    ignoreFirstSampleInterval : str, default is Undefined, optional
+        ignore first sample interval
+    ignore_first_intervals : int, default is Undefined, optional
+        ignore first intervals
     ignore_old_samples : bool, default is Undefined, optional
-        IgnoreOldSamples instructs to ignore samples with old timestamps outside the current aggregation interval.
+        ignore old samples
     input_relabel_configs : [OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0StreamAggrConfigRulesItems0InputRelabelConfigsItems0], default is Undefined, optional
-        InputRelabelConfigs is an optional relabeling rules, which are applied on the input
-        before aggregation.
+        input relabel configs
     interval : str, default is Undefined, required
-        Interval is the interval between aggregations.
+        interval
     keep_metric_names : bool, default is Undefined, optional
-        KeepMetricNames instructs to leave metric names as is for the output time series without adding any suffix.
+        keep metric names
     match : any, default is Undefined, optional
-        Match is a label selector (or list of label selectors) for filtering time series for the given selector.
-
-
-        If the match isn't set, then all the input time series are processed.
+        match
     no_align_flush_to_interval : bool, default is Undefined, optional
-        NoAlignFlushToInterval disables aligning of flushes to multiples of Interval.
-        By default flushes are aligned to Interval.
+        no align flush to interval
     output_relabel_configs : [OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0StreamAggrConfigRulesItems0OutputRelabelConfigsItems0], default is Undefined, optional
-        OutputRelabelConfigs is an optional relabeling rules, which are applied
-        on the aggregated output before being sent to remote storage.
+        output relabel configs
     outputs : [str], default is Undefined, required
-        Outputs is a list of output aggregate functions to produce.
-
-
-        The following names are allowed:
-
-
-        - total - aggregates input counters
-        - increase - counts the increase over input counters
-        - count_series - counts the input series
-        - count_samples - counts the input samples
-        - sum_samples - sums the input samples
-        - last - the last biggest sample value
-        - min - the minimum sample value
-        - max - the maximum sample value
-        - avg - the average value across all the samples
-        - stddev - standard deviation across all the samples
-        - stdvar - standard variance across all the samples
-        - histogram_bucket - creates VictoriaMetrics histogram for input samples
-        - quantiles(phi1, ..., phiN) - quantiles' estimation for phi in the range [0..1]
-
-
-        The output time series will have the following names:
-
-
-          input_name:aggr_<interval>_<output>
+        outputs
     staleness_interval : str, default is Undefined, optional
-        Staleness interval is interval after which the series state will be reset if no samples have been sent during it.
-        The parameter is only relevant for outputs: total, total_prometheus, increase, increase_prometheus and histogram_bucket.
+        staleness interval
     without : [str], default is Undefined, optional
-        Without is an optional list of labels, which must be excluded when grouping input series.
-
-
-        See also By.
-
-
-        If neither By nor Without are set, then the Outputs are calculated
-        individually per each input time series.
+        without
     """
 
 
@@ -2625,7 +2662,13 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0StreamAggrCo
 
     drop_input_labels?: [str]
 
+    enable_windows?: bool
+
     flush_on_shutdown?: bool
+
+    ignoreFirstSampleInterval?: str
+
+    ignore_first_intervals?: int
 
     ignore_old_samples?: bool
 
@@ -2649,49 +2692,35 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0StreamAggrCo
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0StreamAggrConfigRulesItems0InputRelabelConfigsItems0:
-    """
-    RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion.
-    It defines `<metric_relabel_configs>`-section of configuration.
-    More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 stream aggr config rules items0 input relabel configs items0
 
     Attributes
     ----------
     action : str, default is Undefined, optional
-        Action to perform based on regex matching. Default is 'replace'
+        action
     $if : any, default is Undefined, optional
-        If represents metricsQL match expression (or list of expressions): '{__name__=~"foo_.*"}'
+        if
     labels : {str:str}, default is Undefined, optional
-        Labels is used together with Match for `action: graphite`
+        labels
     match : str, default is Undefined, optional
-        Match is used together with Labels for `action: graphite`
+        match
     modulus : int, default is Undefined, optional
-        Modulus to take of the hash of the source label values.
+        modulus
     regex : any, default is Undefined, optional
-        Regular expression against which the extracted value is matched. Default is '(.*)'
-        victoriaMetrics supports multiline regex joined with |
-        https://docs.victoriametrics.com/vmagent/#relabeling-enhancements
+        regex
     replacement : str, default is Undefined, optional
-        Replacement value against which a regex replace is performed if the
-        regular expression matches. Regex capture groups are available. Default is '$1'
+        replacement
     separator : str, default is Undefined, optional
-        Separator placed between concatenated source label values. default is ';'.
+        separator
     sourceLabels : [str], default is Undefined, optional
-        The source labels select values from existing labels. Their content is concatenated
-        using the configured separator and matched against the configured regular expression
-        for the replace, keep, and drop actions.
+        source labels
     source_labels : [str], default is Undefined, optional
-        UnderScoreSourceLabels - additional form of source labels source_labels
-        for compatibility with original relabel config.
-        if set  both sourceLabels and source_labels, sourceLabels has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        source labels
     targetLabel : str, default is Undefined, optional
-        Label to which the resulting value is written in a replace action.
-        It is mandatory for replace actions. Regex capture groups are available.
+        target label
     target_label : str, default is Undefined, optional
-        UnderScoreTargetLabel - additional form of target label - target_label
-        for compatibility with original relabel config.
-        if set  both targetLabel and target_label, targetLabel has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        target label
     """
 
 
@@ -2721,49 +2750,35 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0StreamAggrCo
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0StreamAggrConfigRulesItems0OutputRelabelConfigsItems0:
-    """
-    RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion.
-    It defines `<metric_relabel_configs>`-section of configuration.
-    More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 stream aggr config rules items0 output relabel configs items0
 
     Attributes
     ----------
     action : str, default is Undefined, optional
-        Action to perform based on regex matching. Default is 'replace'
+        action
     $if : any, default is Undefined, optional
-        If represents metricsQL match expression (or list of expressions): '{__name__=~"foo_.*"}'
+        if
     labels : {str:str}, default is Undefined, optional
-        Labels is used together with Match for `action: graphite`
+        labels
     match : str, default is Undefined, optional
-        Match is used together with Labels for `action: graphite`
+        match
     modulus : int, default is Undefined, optional
-        Modulus to take of the hash of the source label values.
+        modulus
     regex : any, default is Undefined, optional
-        Regular expression against which the extracted value is matched. Default is '(.*)'
-        victoriaMetrics supports multiline regex joined with |
-        https://docs.victoriametrics.com/vmagent/#relabeling-enhancements
+        regex
     replacement : str, default is Undefined, optional
-        Replacement value against which a regex replace is performed if the
-        regular expression matches. Regex capture groups are available. Default is '$1'
+        replacement
     separator : str, default is Undefined, optional
-        Separator placed between concatenated source label values. default is ';'.
+        separator
     sourceLabels : [str], default is Undefined, optional
-        The source labels select values from existing labels. Their content is concatenated
-        using the configured separator and matched against the configured regular expression
-        for the replace, keep, and drop actions.
+        source labels
     source_labels : [str], default is Undefined, optional
-        UnderScoreSourceLabels - additional form of source labels source_labels
-        for compatibility with original relabel config.
-        if set  both sourceLabels and source_labels, sourceLabels has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        source labels
     targetLabel : str, default is Undefined, optional
-        Label to which the resulting value is written in a replace action.
-        It is mandatory for replace actions. Regex capture groups are available.
+        target label
     target_label : str, default is Undefined, optional
-        UnderScoreTargetLabel - additional form of target label - target_label
-        for compatibility with original relabel config.
-        if set  both targetLabel and target_label, targetLabel has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        target label
     """
 
 
@@ -2793,27 +2808,27 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0StreamAggrCo
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0TLSConfig:
-    """
-    TLSConfig describes tls configuration for remote write target
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 TLS config
 
     Attributes
     ----------
     ca : OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0TLSConfigCa, default is Undefined, optional
         ca
     caFile : str, default is Undefined, optional
-        Path to the CA cert in the container to use for the targets.
+        ca file
     cert : OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0TLSConfigCert, default is Undefined, optional
         cert
     certFile : str, default is Undefined, optional
-        Path to the client cert file in the container for the targets.
+        cert file
     insecureSkipVerify : bool, default is Undefined, optional
-        Disable target certificate validation.
+        insecure skip verify
     keyFile : str, default is Undefined, optional
-        Path to the client key file in the container for the targets.
+        key file
     keySecret : OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0TLSConfigKeySecret, default is Undefined, optional
         key secret
     serverName : str, default is Undefined, optional
-        Used to verify the hostname for the targets.
+        server name
     """
 
 
@@ -2835,8 +2850,8 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0TLSConfig:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0TLSConfigCa:
-    """
-    Stuct containing the CA cert to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 TLS config ca
 
     Attributes
     ----------
@@ -2853,56 +2868,52 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0TLSConfigCa:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0TLSConfigCaConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 TLS config ca config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0TLSConfigCaSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 TLS config ca secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0TLSConfigCert:
-    """
-    Struct containing the client cert file for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 TLS config cert
 
     Attributes
     ----------
@@ -2919,125 +2930,115 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0TLSConfigCer
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0TLSConfigCertConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 TLS config cert config map
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0TLSConfigCertSecret:
-    """
-    Secret containing data to use for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 TLS config cert secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0TLSConfigKeySecret:
-    """
-    Secret containing the client key file for the targets.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 TLS config key secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteItems0URLRelabelConfig:
-    """
-    ConfigMap with relabeling config which is applied to metrics before sending them to the corresponding -remoteWrite.url
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write items0 URL relabel config
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteSettings:
-    """
-    RemoteWriteSettings defines global settings for all remoteWrite urls.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec remote write settings
 
     Attributes
     ----------
     flushInterval : str, default is Undefined, optional
-        Interval for flushing the data to remote storage. (default 1s)
+        flush interval
     label : {str:str}, default is Undefined, optional
-        Labels in the form 'name=value' to add to all the metrics before sending them. This overrides the label if it already exists.
+        label
     maxBlockSize : int, default is Undefined, optional
-        The maximum size in bytes of unpacked request to send to remote storage
-    maxDiskUsagePerURL : int, default is Undefined, optional
-        The maximum file-based buffer size in bytes at -remoteWrite.tmpDataPath
+        max block size
+    maxDiskUsagePerURL : any, default is Undefined, optional
+        max disk usage per URL
     queues : int, default is Undefined, optional
-        The number of concurrent queues
+        queues
     showURL : bool, default is Undefined, optional
-        Whether to show -remoteWrite.url in the exported metrics. It is hidden by default, since it can contain sensitive auth info
+        show URL
     tmpDataPath : str, default is Undefined, optional
-        Path to directory where temporary data for remote write component is stored (default vmagent-remotewrite-data)
+        tmp data path
     useMultiTenantMode : bool, default is Undefined, optional
-        Configures vmagent in multi-tenant mode with direct cluster support
-        docs https://docs.victoriametrics.com/vmagent.html#multitenancy
-        it's global setting and affects all remote storage configurations
+        use multi tenant mode
     """
 
 
@@ -3047,7 +3048,7 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteSettings:
 
     maxBlockSize?: int
 
-    maxDiskUsagePerURL?: int
+    maxDiskUsagePerURL?: any
 
     queues?: int
 
@@ -3059,34 +3060,21 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecRemoteWriteSettings:
 
 
     check:
-        regex.match(str(flushInterval), r"[0-9]+(ms|s|m|h)") if flushInterval
+        _regex_match(str(flushInterval), r"[0-9]+(ms|s|m|h)") if flushInterval
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecResources:
-    """
-    Resources container resource request and limits, https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
-    if not specified - default setting will be used
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec resources
 
     Attributes
     ----------
     claims : [OperatorVictoriametricsComV1beta1VMAgentSpecResourcesClaimsItems0], default is Undefined, optional
-        Claims lists the names of resources, defined in spec.resourceClaims,
-        that are used by this container.
-
-
-        This is an alpha field and requires enabling the
-        DynamicResourceAllocation feature gate.
-
-
-        This field is immutable. It can only be set for containers.
+        claims
     limits : {str:int | str}, default is Undefined, optional
-        Limits describes the maximum amount of compute resources allowed.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        limits
     requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum amount of compute resources required.
-        If Requests is omitted for a container, it defaults to Limits if that is explicitly specified,
-        otherwise to an implementation-defined value. Requests cannot exceed Limits.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        requests
     """
 
 
@@ -3098,55 +3086,38 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecResources:
 
 
     check:
-        all _, limits in limits {regex.match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex.match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecResourcesClaimsItems0:
-    """
-    ResourceClaim references one entry in PodSpec.ResourceClaims.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec resources claims items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name must match the name of one entry in pod.spec.resourceClaims of
-        the Pod where this field is used. It makes that resource available
-        inside a container.
+        name
+    request : str, default is Undefined, optional
+        request
     """
 
 
     name: str
 
+    request?: str
+
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecRollingUpdate:
-    """
-    RollingUpdate - overrides deployment update params.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec rolling update
 
     Attributes
     ----------
     maxSurge : int | str, default is Undefined, optional
-        The maximum number of pods that can be scheduled above the desired number of
-        pods.
-        Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%).
-        This can not be 0 if MaxUnavailable is 0.
-        Absolute number is calculated from percentage by rounding up.
-        Defaults to 25%.
-        Example: when this is set to 30%, the new ReplicaSet can be scaled up immediately when
-        the rolling update starts, such that the total number of old and new pods do not exceed
-        130% of desired pods. Once old pods have been killed,
-        new ReplicaSet can be scaled up further, ensuring that total number of pods running
-        at any time during the update is at most 130% of desired pods.
+        max surge
     maxUnavailable : int | str, default is Undefined, optional
-        The maximum number of pods that can be unavailable during the update.
-        Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%).
-        Absolute number is calculated from percentage by rounding down.
-        This can not be 0 if MaxSurge is 0.
-        Defaults to 25%.
-        Example: when this is set to 30%, the old ReplicaSet can be scaled down to 70% of desired pods
-        immediately when the rolling update starts. Once new pods are ready, old ReplicaSet
-        can be scaled down further, followed by scaling up the new ReplicaSet, ensuring
-        that the total number of pods available at all times during the update is at
-        least 70% of desired pods.
+        max unavailable
     """
 
 
@@ -3155,22 +3126,658 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecRollingUpdate:
     maxUnavailable?: int | str
 
 
-schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeConfigNamespaceSelector:
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0
+
+    Attributes
+    ----------
+    attachMetadata : OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0AttachMetadata, default is Undefined, optional
+        attach metadata
+    authorization : OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0Authorization, default is Undefined, optional
+        authorization
+    basicAuth : OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0BasicAuth, default is Undefined, optional
+        basic auth
+    bearerTokenFile : str, default is Undefined, optional
+        bearer token file
+    bearerTokenSecret : OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0BearerTokenSecret, default is Undefined, optional
+        bearer token secret
+    default : bool, default is Undefined, optional
+        default
+    metricRelabelConfigs : [OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0MetricRelabelConfigsItems0], default is Undefined, optional
+        metric relabel configs
+    name : str, default is Undefined, required
+        name
+    oauth2 : OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0Oauth2, default is Undefined, optional
+        oauth2
+    relabelConfigs : [OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0RelabelConfigsItems0], default is Undefined, optional
+        relabel configs
+    tlsConfig : OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfig, default is Undefined, optional
+        tls config
     """
-    ScrapeConfigNamespaceSelector defines Namespaces to be selected for VMScrapeConfig discovery.
-    Works in combination with Selector.
-    NamespaceSelector nil - only objects at VMAgent namespace.
-    Selector nil - only objects at NamespaceSelector namespaces.
-    If both nil - behaviour controlled by selectAllByDefault
+
+
+    attachMetadata?: OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0AttachMetadata
+
+    authorization?: OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0Authorization
+
+    basicAuth?: OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0BasicAuth
+
+    bearerTokenFile?: str
+
+    bearerTokenSecret?: OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0BearerTokenSecret
+
+    default?: bool
+
+    metricRelabelConfigs?: [OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0MetricRelabelConfigsItems0]
+
+    name: str
+
+    oauth2?: OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0Oauth2
+
+    relabelConfigs?: [OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0RelabelConfigsItems0]
+
+    tlsConfig?: OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfig
+
+
+    check:
+        len(name) >= 1
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0AttachMetadata:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0 attach metadata
+
+    Attributes
+    ----------
+    namespace : bool, default is Undefined, optional
+        namespace
+    node : bool, default is Undefined, optional
+        node
+    """
+
+
+    namespace?: bool
+
+    node?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0Authorization:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0 authorization
+
+    Attributes
+    ----------
+    credentials : OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0AuthorizationCredentials, default is Undefined, optional
+        credentials
+    credentialsFile : str, default is Undefined, optional
+        credentials file
+    $type : str, default is Undefined, optional
+        type
+    """
+
+
+    credentials?: OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0AuthorizationCredentials
+
+    credentialsFile?: str
+
+    $type?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0AuthorizationCredentials:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0 authorization credentials
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0BasicAuth:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0 basic auth
+
+    Attributes
+    ----------
+    password : OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0BasicAuthPassword, default is Undefined, optional
+        password
+    password_file : str, default is Undefined, optional
+        password file
+    username : OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0BasicAuthUsername, default is Undefined, optional
+        username
+    """
+
+
+    password?: OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0BasicAuthPassword
+
+    password_file?: str
+
+    username?: OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0BasicAuthUsername
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0BasicAuthPassword:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0 basic auth password
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0BasicAuthUsername:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0 basic auth username
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0BearerTokenSecret:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0 bearer token secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0MetricRelabelConfigsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0 metric relabel configs items0
+
+    Attributes
+    ----------
+    action : str, default is Undefined, optional
+        action
+    $if : any, default is Undefined, optional
+        if
+    labels : {str:str}, default is Undefined, optional
+        labels
+    match : str, default is Undefined, optional
+        match
+    modulus : int, default is Undefined, optional
+        modulus
+    regex : any, default is Undefined, optional
+        regex
+    replacement : str, default is Undefined, optional
+        replacement
+    separator : str, default is Undefined, optional
+        separator
+    sourceLabels : [str], default is Undefined, optional
+        source labels
+    source_labels : [str], default is Undefined, optional
+        source labels
+    targetLabel : str, default is Undefined, optional
+        target label
+    target_label : str, default is Undefined, optional
+        target label
+    """
+
+
+    action?: str
+
+    $if?: any
+
+    labels?: {str:str}
+
+    match?: str
+
+    modulus?: int
+
+    regex?: any
+
+    replacement?: str
+
+    separator?: str
+
+    sourceLabels?: [str]
+
+    source_labels?: [str]
+
+    targetLabel?: str
+
+    target_label?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0Oauth2:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0 oauth2
+
+    Attributes
+    ----------
+    client_id : OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0Oauth2ClientID, default is Undefined, required
+        client id
+    client_secret : OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0Oauth2ClientSecret, default is Undefined, optional
+        client secret
+    client_secret_file : str, default is Undefined, optional
+        client secret file
+    endpoint_params : {str:str}, default is Undefined, optional
+        endpoint params
+    proxy_url : str, default is Undefined, optional
+        proxy url
+    scopes : [str], default is Undefined, optional
+        scopes
+    tls_config : any, default is Undefined, optional
+        tls config
+    token_url : str, default is Undefined, required
+        token url
+    """
+
+
+    client_id: OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0Oauth2ClientID
+
+    client_secret?: OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0Oauth2ClientSecret
+
+    client_secret_file?: str
+
+    endpoint_params?: {str:str}
+
+    proxy_url?: str
+
+    scopes?: [str]
+
+    tls_config?: any
+
+    token_url: str
+
+
+    check:
+        len(token_url) >= 1
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0Oauth2ClientID:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0 oauth2 client ID
+
+    Attributes
+    ----------
+    configMap : OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0Oauth2ClientIDConfigMap, default is Undefined, optional
+        config map
+    secret : OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0Oauth2ClientIDSecret, default is Undefined, optional
+        secret
+    """
+
+
+    configMap?: OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0Oauth2ClientIDConfigMap
+
+    secret?: OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0Oauth2ClientIDSecret
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0Oauth2ClientIDConfigMap:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0 oauth2 client ID config map
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0Oauth2ClientIDSecret:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0 oauth2 client ID secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0Oauth2ClientSecret:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0 oauth2 client secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0RelabelConfigsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0 relabel configs items0
+
+    Attributes
+    ----------
+    action : str, default is Undefined, optional
+        action
+    $if : any, default is Undefined, optional
+        if
+    labels : {str:str}, default is Undefined, optional
+        labels
+    match : str, default is Undefined, optional
+        match
+    modulus : int, default is Undefined, optional
+        modulus
+    regex : any, default is Undefined, optional
+        regex
+    replacement : str, default is Undefined, optional
+        replacement
+    separator : str, default is Undefined, optional
+        separator
+    sourceLabels : [str], default is Undefined, optional
+        source labels
+    source_labels : [str], default is Undefined, optional
+        source labels
+    targetLabel : str, default is Undefined, optional
+        target label
+    target_label : str, default is Undefined, optional
+        target label
+    """
+
+
+    action?: str
+
+    $if?: any
+
+    labels?: {str:str}
+
+    match?: str
+
+    modulus?: int
+
+    regex?: any
+
+    replacement?: str
+
+    separator?: str
+
+    sourceLabels?: [str]
+
+    source_labels?: [str]
+
+    targetLabel?: str
+
+    target_label?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfig:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0 TLS config
+
+    Attributes
+    ----------
+    ca : OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfigCa, default is Undefined, optional
+        ca
+    caFile : str, default is Undefined, optional
+        ca file
+    cert : OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfigCert, default is Undefined, optional
+        cert
+    certFile : str, default is Undefined, optional
+        cert file
+    insecureSkipVerify : bool, default is Undefined, optional
+        insecure skip verify
+    keyFile : str, default is Undefined, optional
+        key file
+    keySecret : OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfigKeySecret, default is Undefined, optional
+        key secret
+    serverName : str, default is Undefined, optional
+        server name
+    """
+
+
+    ca?: OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfigCa
+
+    caFile?: str
+
+    cert?: OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfigCert
+
+    certFile?: str
+
+    insecureSkipVerify?: bool
+
+    keyFile?: str
+
+    keySecret?: OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfigKeySecret
+
+    serverName?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfigCa:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0 TLS config ca
+
+    Attributes
+    ----------
+    configMap : OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfigCaConfigMap, default is Undefined, optional
+        config map
+    secret : OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfigCaSecret, default is Undefined, optional
+        secret
+    """
+
+
+    configMap?: OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfigCaConfigMap
+
+    secret?: OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfigCaSecret
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfigCaConfigMap:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0 TLS config ca config map
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfigCaSecret:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0 TLS config ca secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfigCert:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0 TLS config cert
+
+    Attributes
+    ----------
+    configMap : OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfigCertConfigMap, default is Undefined, optional
+        config map
+    secret : OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfigCertSecret, default is Undefined, optional
+        secret
+    """
+
+
+    configMap?: OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfigCertConfigMap
+
+    secret?: OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfigCertSecret
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfigCertConfigMap:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0 TLS config cert config map
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfigCertSecret:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0 TLS config cert secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeClassesItems0TLSConfigKeySecret:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape classes items0 TLS config key secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeConfigNamespaceSelector:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape config namespace selector
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAgentSpecScrapeConfigNamespaceSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
+        match labels
     """
 
 
@@ -3180,22 +3787,17 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeConfigNamespaceSelector
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeConfigNamespaceSelectorMatchExpressionsItems0:
-    """
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape config namespace selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
+        values
     """
 
 
@@ -3207,49 +3809,35 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeConfigNamespaceSelector
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeConfigRelabelTemplateItems0:
-    """
-    RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion.
-    It defines `<metric_relabel_configs>`-section of configuration.
-    More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape config relabel template items0
 
     Attributes
     ----------
     action : str, default is Undefined, optional
-        Action to perform based on regex matching. Default is 'replace'
+        action
     $if : any, default is Undefined, optional
-        If represents metricsQL match expression (or list of expressions): '{__name__=~"foo_.*"}'
+        if
     labels : {str:str}, default is Undefined, optional
-        Labels is used together with Match for `action: graphite`
+        labels
     match : str, default is Undefined, optional
-        Match is used together with Labels for `action: graphite`
+        match
     modulus : int, default is Undefined, optional
-        Modulus to take of the hash of the source label values.
+        modulus
     regex : any, default is Undefined, optional
-        Regular expression against which the extracted value is matched. Default is '(.*)'
-        victoriaMetrics supports multiline regex joined with |
-        https://docs.victoriametrics.com/vmagent/#relabeling-enhancements
+        regex
     replacement : str, default is Undefined, optional
-        Replacement value against which a regex replace is performed if the
-        regular expression matches. Regex capture groups are available. Default is '$1'
+        replacement
     separator : str, default is Undefined, optional
-        Separator placed between concatenated source label values. default is ';'.
+        separator
     sourceLabels : [str], default is Undefined, optional
-        The source labels select values from existing labels. Their content is concatenated
-        using the configured separator and matched against the configured regular expression
-        for the replace, keep, and drop actions.
+        source labels
     source_labels : [str], default is Undefined, optional
-        UnderScoreSourceLabels - additional form of source labels source_labels
-        for compatibility with original relabel config.
-        if set  both sourceLabels and source_labels, sourceLabels has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        source labels
     targetLabel : str, default is Undefined, optional
-        Label to which the resulting value is written in a replace action.
-        It is mandatory for replace actions. Regex capture groups are available.
+        target label
     target_label : str, default is Undefined, optional
-        UnderScoreTargetLabel - additional form of target label - target_label
-        for compatibility with original relabel config.
-        if set  both targetLabel and target_label, targetLabel has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        target label
     """
 
 
@@ -3279,18 +3867,15 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeConfigRelabelTemplateIt
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeConfigSelector:
-    """
-    ScrapeConfigSelector defines VMScrapeConfig to be selected for target discovery.
-    Works in combination with NamespaceSelector.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape config selector
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAgentSpecScrapeConfigSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
+        match labels
     """
 
 
@@ -3300,22 +3885,17 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeConfigSelector:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeConfigSelectorMatchExpressionsItems0:
-    """
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec scrape config selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
+        values
     """
 
 
@@ -3327,21 +3907,15 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecScrapeConfigSelectorMatchExpr
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecServiceScrapeNamespaceSelector:
-    """
-    ServiceScrapeNamespaceSelector Namespaces to be selected for VMServiceScrape discovery.
-    Works in combination with Selector.
-    NamespaceSelector nil - only objects at VMAgent namespace.
-    Selector nil - only objects at NamespaceSelector namespaces.
-    If both nil - behaviour controlled by selectAllByDefault
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec service scrape namespace selector
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAgentSpecServiceScrapeNamespaceSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
+        match labels
     """
 
 
@@ -3351,22 +3925,17 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecServiceScrapeNamespaceSelecto
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecServiceScrapeNamespaceSelectorMatchExpressionsItems0:
-    """
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec service scrape namespace selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
+        values
     """
 
 
@@ -3378,49 +3947,35 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecServiceScrapeNamespaceSelecto
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecServiceScrapeRelabelTemplateItems0:
-    """
-    RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion.
-    It defines `<metric_relabel_configs>`-section of configuration.
-    More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec service scrape relabel template items0
 
     Attributes
     ----------
     action : str, default is Undefined, optional
-        Action to perform based on regex matching. Default is 'replace'
+        action
     $if : any, default is Undefined, optional
-        If represents metricsQL match expression (or list of expressions): '{__name__=~"foo_.*"}'
+        if
     labels : {str:str}, default is Undefined, optional
-        Labels is used together with Match for `action: graphite`
+        labels
     match : str, default is Undefined, optional
-        Match is used together with Labels for `action: graphite`
+        match
     modulus : int, default is Undefined, optional
-        Modulus to take of the hash of the source label values.
+        modulus
     regex : any, default is Undefined, optional
-        Regular expression against which the extracted value is matched. Default is '(.*)'
-        victoriaMetrics supports multiline regex joined with |
-        https://docs.victoriametrics.com/vmagent/#relabeling-enhancements
+        regex
     replacement : str, default is Undefined, optional
-        Replacement value against which a regex replace is performed if the
-        regular expression matches. Regex capture groups are available. Default is '$1'
+        replacement
     separator : str, default is Undefined, optional
-        Separator placed between concatenated source label values. default is ';'.
+        separator
     sourceLabels : [str], default is Undefined, optional
-        The source labels select values from existing labels. Their content is concatenated
-        using the configured separator and matched against the configured regular expression
-        for the replace, keep, and drop actions.
+        source labels
     source_labels : [str], default is Undefined, optional
-        UnderScoreSourceLabels - additional form of source labels source_labels
-        for compatibility with original relabel config.
-        if set  both sourceLabels and source_labels, sourceLabels has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        source labels
     targetLabel : str, default is Undefined, optional
-        Label to which the resulting value is written in a replace action.
-        It is mandatory for replace actions. Regex capture groups are available.
+        target label
     target_label : str, default is Undefined, optional
-        UnderScoreTargetLabel - additional form of target label - target_label
-        for compatibility with original relabel config.
-        if set  both targetLabel and target_label, targetLabel has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        target label
     """
 
 
@@ -3450,21 +4005,15 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecServiceScrapeRelabelTemplateI
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecServiceScrapeSelector:
-    """
-    ServiceScrapeSelector defines ServiceScrapes to be selected for target discovery.
-    Works in combination with NamespaceSelector.
-    NamespaceSelector nil - only objects at VMAgent namespace.
-    Selector nil - only objects at NamespaceSelector namespaces.
-    If both nil - behaviour controlled by selectAllByDefault
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec service scrape selector
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAgentSpecServiceScrapeSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
+        match labels
     """
 
 
@@ -3474,22 +4023,17 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecServiceScrapeSelector:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecServiceScrapeSelectorMatchExpressionsItems0:
-    """
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec service scrape selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
+        values
     """
 
 
@@ -3501,19 +4045,17 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecServiceScrapeSelectorMatchExp
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecServiceSpec:
-    """
-    ServiceSpec that will be added to vmagent service spec
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec service spec
 
     Attributes
     ----------
     metadata : OperatorVictoriametricsComV1beta1VMAgentSpecServiceSpecMetadata, default is Undefined, optional
         metadata
     spec : any, default is Undefined, required
-        ServiceSpec describes the attributes that a user creates on a service.
-        More info: https://kubernetes.io/docs/concepts/services-networking/service/
+        spec
     useAsDefault : bool, default is Undefined, optional
-        UseAsDefault applies changes from given service definition to the main object Service
-        Changing from headless service to clusterIP or loadbalancer may break cross-component communication
+        use as default
     """
 
 
@@ -3525,28 +4067,17 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecServiceSpec:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecServiceSpecMetadata:
-    """
-    EmbeddedObjectMetadata defines objectMeta for additional service.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec service spec metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
-        set by external tools to store and retrieve arbitrary metadata. They are not
-        queryable and should be preserved when modifying objects.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels Map of string keys and values that can be used to organize and categorize
-        (scope and select) objects. May match selectors of replication controllers
-        and services.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+        labels
     name : str, default is Undefined, optional
-        Name must be unique within a namespace. Is required when creating resources, although
-        some resources may allow a client to request the generation of an appropriate name
-        automatically. Name is primarily intended for creation idempotence and configuration
-        definition.
-        Cannot be updated.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names
+        name
     """
 
 
@@ -3558,14 +4089,11 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecServiceSpecMetadata:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorage:
-    """
-    StatefulStorage configures storage for StatefulSet
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec stateful storage
 
     Attributes
     ----------
-    disableMountSubPath : bool, default is Undefined, optional
-        Deprecated: subPath usage will be disabled by default in a future release, this option will become unnecessary.
-        DisableMountSubPath allows to remove any subPath usage in volume mounts.
     emptyDir : OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageEmptyDir, default is Undefined, optional
         empty dir
     volumeClaimTemplate : OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplate, default is Undefined, optional
@@ -3573,32 +4101,21 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorage:
     """
 
 
-    disableMountSubPath?: bool
-
     emptyDir?: OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageEmptyDir
 
     volumeClaimTemplate?: OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplate
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageEmptyDir:
-    """
-    EmptyDirVolumeSource to be used by the Prometheus StatefulSets. If specified, used in place of any volumeClaimTemplate. More
-    info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec stateful storage empty dir
 
     Attributes
     ----------
     medium : str, default is Undefined, optional
-        medium represents what type of storage medium should back this directory.
-        The default is "" which means to use the node's default medium.
-        Must be an empty string (default) or Memory.
-        More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+        medium
     sizeLimit : int | str, default is Undefined, optional
-        sizeLimit is the total amount of local storage required for this EmptyDir volume.
-        The size limit is also applicable for memory medium.
-        The maximum usage on memory medium EmptyDir would be the minimum value between
-        the SizeLimit specified here and the sum of memory limits of all containers in a pod.
-        The default is nil which means that the limit is undefined.
-        More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+        size limit
     """
 
 
@@ -3608,26 +4125,19 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageEmptyDir:
 
 
     check:
-        regex.match(str(sizeLimit), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if sizeLimit
+        _regex_match(str(sizeLimit), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if sizeLimit
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplate:
-    """
-    A PVC spec to be used by the VMAlertManager StatefulSets.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec stateful storage volume claim template
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        APIVersion defines the versioned schema of this representation of an object.
-        Servers should convert recognized schemas to the latest internal value, and
-        may reject unrecognized values.
-        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+        api version
     kind : str, default is Undefined, optional
-        Kind is a string value representing the REST resource this object represents.
-        Servers may infer this from the endpoint the client submits requests to.
-        Cannot be updated.
-        In CamelCase.
-        More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        kind
     metadata : OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateMetadata, default is Undefined, optional
         metadata
     spec : OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateSpec, default is Undefined, optional
@@ -3649,28 +4159,17 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTem
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateMetadata:
-    """
-    EmbeddedMetadata contains metadata relevant to an EmbeddedResource.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec stateful storage volume claim template metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
-        set by external tools to store and retrieve arbitrary metadata. They are not
-        queryable and should be preserved when modifying objects.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels Map of string keys and values that can be used to organize and categorize
-        (scope and select) objects. May match selectors of replication controllers
-        and services.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+        labels
     name : str, default is Undefined, optional
-        Name must be unique within a namespace. Is required when creating resources, although
-        some resources may allow a client to request the generation of an appropriate name
-        automatically. Name is primarily intended for creation idempotence and configuration
-        definition.
-        Cannot be updated.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names
+        name
     """
 
 
@@ -3682,15 +4181,13 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTem
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateSpec:
-    """
-    Spec defines the desired characteristics of a volume requested by a pod author.
-    More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec stateful storage volume claim template spec
 
     Attributes
     ----------
     accessModes : [str], default is Undefined, optional
-        accessModes contains the desired access modes the volume should have.
-        More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
+        access modes
     dataSource : OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateSpecDataSource, default is Undefined, optional
         data source
     dataSourceRef : OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateSpecDataSourceRef, default is Undefined, optional
@@ -3700,13 +4197,13 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTem
     selector : OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateSpecSelector, default is Undefined, optional
         selector
     storageClassName : str, default is Undefined, optional
-        storageClassName is the name of the StorageClass required by the claim.
-        More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1
+        storage class name
+    volumeAttributesClassName : str, default is Undefined, optional
+        volume attributes class name
     volumeMode : str, default is Undefined, optional
-        volumeMode defines what type of volume is required by the claim.
-        Value of Filesystem is implied when not included in claim spec.
+        volume mode
     volumeName : str, default is Undefined, optional
-        volumeName is the binding reference to the PersistentVolume backing this claim.
+        volume name
     """
 
 
@@ -3722,32 +4219,25 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTem
 
     storageClassName?: str
 
+    volumeAttributesClassName?: str
+
     volumeMode?: str
 
     volumeName?: str
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateSpecDataSource:
-    """
-    dataSource field can be used to specify either:
-    * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot)
-    * An existing PVC (PersistentVolumeClaim)
-    If the provisioner or an external controller can support the specified data source,
-    it will create a new volume based on the contents of the specified data source.
-    When the AnyVolumeDataSource feature gate is enabled, dataSource contents will be copied to dataSourceRef,
-    and dataSourceRef contents will be copied to dataSource when dataSourceRef.namespace is not specified.
-    If the namespace is specified, then dataSourceRef will not be copied to dataSource.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec stateful storage volume claim template spec data source
 
     Attributes
     ----------
     apiGroup : str, default is Undefined, optional
-        APIGroup is the group for the resource being referenced.
-        If APIGroup is not specified, the specified Kind must be in the core API group.
-        For any other third-party types, APIGroup is required.
+        api group
     kind : str, default is Undefined, required
-        Kind is the type of resource being referenced
+        kind
     name : str, default is Undefined, required
-        Name is the name of resource being referenced
+        name
     """
 
 
@@ -3759,45 +4249,19 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTem
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateSpecDataSourceRef:
-    """
-    dataSourceRef specifies the object from which to populate the volume with data, if a non-empty
-    volume is desired. This may be any object from a non-empty API group (non
-    core object) or a PersistentVolumeClaim object.
-    When this field is specified, volume binding will only succeed if the type of
-    the specified object matches some installed volume populator or dynamic
-    provisioner.
-    This field will replace the functionality of the dataSource field and as such
-    if both fields are non-empty, they must have the same value. For backwards
-    compatibility, when namespace isn't specified in dataSourceRef,
-    both fields (dataSource and dataSourceRef) will be set to the same
-    value automatically if one of them is empty and the other is non-empty.
-    When namespace is specified in dataSourceRef,
-    dataSource isn't set to the same value and must be empty.
-    There are three important differences between dataSource and dataSourceRef:
-    * While dataSource only allows two specific types of objects, dataSourceRef
-      allows any non-core object, as well as PersistentVolumeClaim objects.
-    * While dataSource ignores disallowed values (dropping them), dataSourceRef
-      preserves all values, and generates an error if a disallowed value is
-      specified.
-    * While dataSource only allows local objects, dataSourceRef allows objects
-      in any namespaces.
-    (Beta) Using this field requires the AnyVolumeDataSource feature gate to be enabled.
-    (Alpha) Using the namespace field of dataSourceRef requires the CrossNamespaceVolumeDataSource feature gate to be enabled.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec stateful storage volume claim template spec data source ref
 
     Attributes
     ----------
     apiGroup : str, default is Undefined, optional
-        APIGroup is the group for the resource being referenced.
-        If APIGroup is not specified, the specified Kind must be in the core API group.
-        For any other third-party types, APIGroup is required.
+        api group
     kind : str, default is Undefined, required
-        Kind is the type of resource being referenced
+        kind
     name : str, default is Undefined, required
-        Name is the name of resource being referenced
+        name
     namespace : str, default is Undefined, optional
-        Namespace is the namespace of resource being referenced
-        Note that when a namespace is specified, a gateway.networking.k8s.io/ReferenceGrant object is required in the referent namespace to allow that namespace's owner to accept the reference. See the ReferenceGrant documentation for details.
-        (Alpha) This field requires the CrossNamespaceVolumeDataSource feature gate to be enabled.
+        namespace
     """
 
 
@@ -3811,37 +4275,17 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTem
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateSpecResources:
-    """
-    resources represents the minimum resources the volume should have.
-    If RecoverVolumeExpansionFailure feature is enabled users are allowed to specify resource requirements
-    that are lower than previous value but must still be higher than capacity recorded in the
-    status field of the claim.
-    More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec stateful storage volume claim template spec resources
 
     Attributes
     ----------
-    claims : [OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateSpecResourcesClaimsItems0], default is Undefined, optional
-        Claims lists the names of resources, defined in spec.resourceClaims,
-        that are used by this container.
-
-
-        This is an alpha field and requires enabling the
-        DynamicResourceAllocation feature gate.
-
-
-        This field is immutable. It can only be set for containers.
     limits : {str:int | str}, default is Undefined, optional
-        Limits describes the maximum amount of compute resources allowed.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        limits
     requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum amount of compute resources required.
-        If Requests is omitted for a container, it defaults to Limits if that is explicitly specified,
-        otherwise to an implementation-defined value. Requests cannot exceed Limits.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        requests
     """
 
-
-    claims?: [OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateSpecResourcesClaimsItems0]
 
     limits?: {str:int | str}
 
@@ -3849,38 +4293,20 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTem
 
 
     check:
-        all _, limits in limits {regex.match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex.match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
-
-
-schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateSpecResourcesClaimsItems0:
-    """
-    ResourceClaim references one entry in PodSpec.ResourceClaims.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        Name must match the name of one entry in pod.spec.resourceClaims of
-        the Pod where this field is used. It makes that resource available
-        inside a container.
-    """
-
-
-    name: str
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateSpecSelector:
-    """
-    selector is a label query over volumes to consider for binding.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec stateful storage volume claim template spec selector
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateSpecSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
+        match labels
     """
 
 
@@ -3890,22 +4316,17 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTem
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateSpecSelectorMatchExpressionsItems0:
-    """
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec stateful storage volume claim template spec selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
+        values
     """
 
 
@@ -3917,41 +4338,33 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTem
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateStatus:
-    """
-    Status represents the current information/status of a persistent volume claim.
-    Read-only.
-    More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec stateful storage volume claim template status
 
     Attributes
     ----------
     accessModes : [str], default is Undefined, optional
-        accessModes contains the actual access modes the volume backing the PVC has.
-        More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
+        access modes
+    allocatedResourceStatuses : {str:str}, default is Undefined, optional
+        allocated resource statuses
     allocatedResources : {str:int | str}, default is Undefined, optional
-        allocatedResources is the storage resource within AllocatedResources tracks the capacity allocated to a PVC. It may
-        be larger than the actual capacity when a volume expansion operation is requested.
-        For storage quota, the larger value from allocatedResources and PVC.spec.resources is used.
-        If allocatedResources is not set, PVC.spec.resources alone is used for quota calculation.
-        If a volume expansion capacity request is lowered, allocatedResources is only
-        lowered if there are no expansion operations in progress and if the actual volume capacity
-        is equal or lower than the requested capacity.
-        This is an alpha field and requires enabling RecoverVolumeExpansionFailure feature.
+        allocated resources
     capacity : {str:int | str}, default is Undefined, optional
-        capacity represents the actual resources of the underlying volume.
+        capacity
     conditions : [OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateStatusConditionsItems0], default is Undefined, optional
-        conditions is the current Condition of persistent volume claim. If underlying persistent volume is being
-        resized then the Condition will be set to 'ResizeStarted'.
+        conditions
+    currentVolumeAttributesClassName : str, default is Undefined, optional
+        current volume attributes class name
+    modifyVolumeStatus : OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateStatusModifyVolumeStatus, default is Undefined, optional
+        modify volume status
     phase : str, default is Undefined, optional
-        phase represents the current phase of PersistentVolumeClaim.
-    resizeStatus : str, default is Undefined, optional
-        resizeStatus stores status of resize operation.
-        ResizeStatus is not set by default but when expansion is complete resizeStatus is set to empty
-        string by resize controller or kubelet.
-        This is an alpha field and requires enabling RecoverVolumeExpansionFailure feature.
+        phase
     """
 
 
     accessModes?: [str]
+
+    allocatedResourceStatuses?: {str:str}
 
     allocatedResources?: {str:int | str}
 
@@ -3959,36 +4372,36 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTem
 
     conditions?: [OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateStatusConditionsItems0]
 
-    phase?: str
+    currentVolumeAttributesClassName?: str
 
-    resizeStatus?: str
+    modifyVolumeStatus?: OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateStatusModifyVolumeStatus
+
+    phase?: str
 
 
     check:
-        all _, allocatedResources in allocatedResources {regex.match(str(allocatedResources), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if allocatedResources } if allocatedResources
-        all _, capacity in capacity {regex.match(str(capacity), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if capacity } if capacity
+        all _, allocatedResources in allocatedResources { _regex_match(str(allocatedResources), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if allocatedResources } if allocatedResources
+        all _, capacity in capacity { _regex_match(str(capacity), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if capacity } if capacity
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateStatusConditionsItems0:
-    """
-    PersistentVolumeClaimCondition contains details about state of pvc
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec stateful storage volume claim template status conditions items0
 
     Attributes
     ----------
     lastProbeTime : str, default is Undefined, optional
-        lastProbeTime is the time we probed the condition.
+        last probe time
     lastTransitionTime : str, default is Undefined, optional
-        lastTransitionTime is the time the condition transitioned from one status to another.
+        last transition time
     message : str, default is Undefined, optional
-        message is the human-readable message indicating details about last transition.
+        message
     reason : str, default is Undefined, optional
-        reason is a unique, this should be a short, machine understandable string that gives the reason
-        for condition's last transition. If it reports "ResizeStarted" that means the underlying
-        persistent volume is being resized.
+        reason
     status : str, default is Undefined, required
         status
     $type : str, default is Undefined, required
-        PersistentVolumeClaimConditionType is a valid value of PersistentVolumeClaimCondition.Type
+        type
     """
 
 
@@ -4005,22 +4418,34 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTem
     $type: str
 
 
-schema OperatorVictoriametricsComV1beta1VMAgentSpecStaticScrapeNamespaceSelector:
+schema OperatorVictoriametricsComV1beta1VMAgentSpecStatefulStorageVolumeClaimTemplateStatusModifyVolumeStatus:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec stateful storage volume claim template status modify volume status
+
+    Attributes
+    ----------
+    status : str, default is Undefined, required
+        status
+    targetVolumeAttributesClassName : str, default is Undefined, optional
+        target volume attributes class name
     """
-    StaticScrapeNamespaceSelector defines Namespaces to be selected for VMStaticScrape discovery.
-    Works in combination with NamespaceSelector.
-    NamespaceSelector nil - only objects at VMAgent namespace.
-    Selector nil - only objects at NamespaceSelector namespaces.
-    If both nil - behaviour controlled by selectAllByDefault
+
+
+    status: str
+
+    targetVolumeAttributesClassName?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecStaticScrapeNamespaceSelector:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec static scrape namespace selector
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAgentSpecStaticScrapeNamespaceSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
+        match labels
     """
 
 
@@ -4030,22 +4455,17 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecStaticScrapeNamespaceSelector
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecStaticScrapeNamespaceSelectorMatchExpressionsItems0:
-    """
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec static scrape namespace selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
+        values
     """
 
 
@@ -4057,49 +4477,35 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecStaticScrapeNamespaceSelector
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecStaticScrapeRelabelTemplateItems0:
-    """
-    RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion.
-    It defines `<metric_relabel_configs>`-section of configuration.
-    More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec static scrape relabel template items0
 
     Attributes
     ----------
     action : str, default is Undefined, optional
-        Action to perform based on regex matching. Default is 'replace'
+        action
     $if : any, default is Undefined, optional
-        If represents metricsQL match expression (or list of expressions): '{__name__=~"foo_.*"}'
+        if
     labels : {str:str}, default is Undefined, optional
-        Labels is used together with Match for `action: graphite`
+        labels
     match : str, default is Undefined, optional
-        Match is used together with Labels for `action: graphite`
+        match
     modulus : int, default is Undefined, optional
-        Modulus to take of the hash of the source label values.
+        modulus
     regex : any, default is Undefined, optional
-        Regular expression against which the extracted value is matched. Default is '(.*)'
-        victoriaMetrics supports multiline regex joined with |
-        https://docs.victoriametrics.com/vmagent/#relabeling-enhancements
+        regex
     replacement : str, default is Undefined, optional
-        Replacement value against which a regex replace is performed if the
-        regular expression matches. Regex capture groups are available. Default is '$1'
+        replacement
     separator : str, default is Undefined, optional
-        Separator placed between concatenated source label values. default is ';'.
+        separator
     sourceLabels : [str], default is Undefined, optional
-        The source labels select values from existing labels. Their content is concatenated
-        using the configured separator and matched against the configured regular expression
-        for the replace, keep, and drop actions.
+        source labels
     source_labels : [str], default is Undefined, optional
-        UnderScoreSourceLabels - additional form of source labels source_labels
-        for compatibility with original relabel config.
-        if set  both sourceLabels and source_labels, sourceLabels has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        source labels
     targetLabel : str, default is Undefined, optional
-        Label to which the resulting value is written in a replace action.
-        It is mandatory for replace actions. Regex capture groups are available.
+        target label
     target_label : str, default is Undefined, optional
-        UnderScoreTargetLabel - additional form of target label - target_label
-        for compatibility with original relabel config.
-        if set  both targetLabel and target_label, targetLabel has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        target label
     """
 
 
@@ -4129,21 +4535,15 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecStaticScrapeRelabelTemplateIt
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecStaticScrapeSelector:
-    """
-    StaticScrapeSelector defines PodScrapes to be selected for target discovery.
-    Works in combination with NamespaceSelector.
-    If both nil - match everything.
-    NamespaceSelector nil - only objects at VMAgent namespace.
-    Selector nil - only objects at NamespaceSelector namespaces.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec static scrape selector
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAgentSpecStaticScrapeSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
+        match labels
     """
 
 
@@ -4153,22 +4553,17 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecStaticScrapeSelector:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecStaticScrapeSelectorMatchExpressionsItems0:
-    """
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec static scrape selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
+        values
     """
 
 
@@ -4179,32 +4574,288 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecStaticScrapeSelectorMatchExpr
     values?: [str]
 
 
-schema OperatorVictoriametricsComV1beta1VMAgentSpecTolerationsItems0:
+schema OperatorVictoriametricsComV1beta1VMAgentSpecStreamAggrConfig:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec stream aggr config
+
+    Attributes
+    ----------
+    configmap : OperatorVictoriametricsComV1beta1VMAgentSpecStreamAggrConfigConfigmap, default is Undefined, optional
+        configmap
+    dedupInterval : str, default is Undefined, optional
+        dedup interval
+    dropInput : bool, default is Undefined, optional
+        drop input
+    dropInputLabels : [str], default is Undefined, optional
+        drop input labels
+    enableWindows : bool, default is Undefined, optional
+        enable windows
+    ignoreFirstIntervals : int, default is Undefined, optional
+        ignore first intervals
+    ignoreFirstSampleInterval : str, default is Undefined, optional
+        ignore first sample interval
+    ignoreOldSamples : bool, default is Undefined, optional
+        ignore old samples
+    keepInput : bool, default is Undefined, optional
+        keep input
+    rules : [OperatorVictoriametricsComV1beta1VMAgentSpecStreamAggrConfigRulesItems0], default is Undefined, optional
+        rules
     """
-    The pod this Toleration is attached to tolerates any taint that matches
-    the triple <key,value,effect> using the matching operator <operator>.
+
+
+    configmap?: OperatorVictoriametricsComV1beta1VMAgentSpecStreamAggrConfigConfigmap
+
+    dedupInterval?: str
+
+    dropInput?: bool
+
+    dropInputLabels?: [str]
+
+    enableWindows?: bool
+
+    ignoreFirstIntervals?: int
+
+    ignoreFirstSampleInterval?: str
+
+    ignoreOldSamples?: bool
+
+    keepInput?: bool
+
+    rules?: [OperatorVictoriametricsComV1beta1VMAgentSpecStreamAggrConfigRulesItems0]
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecStreamAggrConfigConfigmap:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec stream aggr config configmap
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecStreamAggrConfigRulesItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec stream aggr config rules items0
+
+    Attributes
+    ----------
+    by : [str], default is Undefined, optional
+        by
+    dedup_interval : str, default is Undefined, optional
+        dedup interval
+    drop_input_labels : [str], default is Undefined, optional
+        drop input labels
+    enable_windows : bool, default is Undefined, optional
+        enable windows
+    flush_on_shutdown : bool, default is Undefined, optional
+        flush on shutdown
+    ignoreFirstSampleInterval : str, default is Undefined, optional
+        ignore first sample interval
+    ignore_first_intervals : int, default is Undefined, optional
+        ignore first intervals
+    ignore_old_samples : bool, default is Undefined, optional
+        ignore old samples
+    input_relabel_configs : [OperatorVictoriametricsComV1beta1VMAgentSpecStreamAggrConfigRulesItems0InputRelabelConfigsItems0], default is Undefined, optional
+        input relabel configs
+    interval : str, default is Undefined, required
+        interval
+    keep_metric_names : bool, default is Undefined, optional
+        keep metric names
+    match : any, default is Undefined, optional
+        match
+    no_align_flush_to_interval : bool, default is Undefined, optional
+        no align flush to interval
+    output_relabel_configs : [OperatorVictoriametricsComV1beta1VMAgentSpecStreamAggrConfigRulesItems0OutputRelabelConfigsItems0], default is Undefined, optional
+        output relabel configs
+    outputs : [str], default is Undefined, required
+        outputs
+    staleness_interval : str, default is Undefined, optional
+        staleness interval
+    without : [str], default is Undefined, optional
+        without
+    """
+
+
+    by?: [str]
+
+    dedup_interval?: str
+
+    drop_input_labels?: [str]
+
+    enable_windows?: bool
+
+    flush_on_shutdown?: bool
+
+    ignoreFirstSampleInterval?: str
+
+    ignore_first_intervals?: int
+
+    ignore_old_samples?: bool
+
+    input_relabel_configs?: [OperatorVictoriametricsComV1beta1VMAgentSpecStreamAggrConfigRulesItems0InputRelabelConfigsItems0]
+
+    interval: str
+
+    keep_metric_names?: bool
+
+    match?: any
+
+    no_align_flush_to_interval?: bool
+
+    output_relabel_configs?: [OperatorVictoriametricsComV1beta1VMAgentSpecStreamAggrConfigRulesItems0OutputRelabelConfigsItems0]
+
+    outputs: [str]
+
+    staleness_interval?: str
+
+    without?: [str]
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecStreamAggrConfigRulesItems0InputRelabelConfigsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec stream aggr config rules items0 input relabel configs items0
+
+    Attributes
+    ----------
+    action : str, default is Undefined, optional
+        action
+    $if : any, default is Undefined, optional
+        if
+    labels : {str:str}, default is Undefined, optional
+        labels
+    match : str, default is Undefined, optional
+        match
+    modulus : int, default is Undefined, optional
+        modulus
+    regex : any, default is Undefined, optional
+        regex
+    replacement : str, default is Undefined, optional
+        replacement
+    separator : str, default is Undefined, optional
+        separator
+    sourceLabels : [str], default is Undefined, optional
+        source labels
+    source_labels : [str], default is Undefined, optional
+        source labels
+    targetLabel : str, default is Undefined, optional
+        target label
+    target_label : str, default is Undefined, optional
+        target label
+    """
+
+
+    action?: str
+
+    $if?: any
+
+    labels?: {str:str}
+
+    match?: str
+
+    modulus?: int
+
+    regex?: any
+
+    replacement?: str
+
+    separator?: str
+
+    sourceLabels?: [str]
+
+    source_labels?: [str]
+
+    targetLabel?: str
+
+    target_label?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecStreamAggrConfigRulesItems0OutputRelabelConfigsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec stream aggr config rules items0 output relabel configs items0
+
+    Attributes
+    ----------
+    action : str, default is Undefined, optional
+        action
+    $if : any, default is Undefined, optional
+        if
+    labels : {str:str}, default is Undefined, optional
+        labels
+    match : str, default is Undefined, optional
+        match
+    modulus : int, default is Undefined, optional
+        modulus
+    regex : any, default is Undefined, optional
+        regex
+    replacement : str, default is Undefined, optional
+        replacement
+    separator : str, default is Undefined, optional
+        separator
+    sourceLabels : [str], default is Undefined, optional
+        source labels
+    source_labels : [str], default is Undefined, optional
+        source labels
+    targetLabel : str, default is Undefined, optional
+        target label
+    target_label : str, default is Undefined, optional
+        target label
+    """
+
+
+    action?: str
+
+    $if?: any
+
+    labels?: {str:str}
+
+    match?: str
+
+    modulus?: int
+
+    regex?: any
+
+    replacement?: str
+
+    separator?: str
+
+    sourceLabels?: [str]
+
+    source_labels?: [str]
+
+    targetLabel?: str
+
+    target_label?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAgentSpecTolerationsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec tolerations items0
 
     Attributes
     ----------
     effect : str, default is Undefined, optional
-        Effect indicates the taint effect to match. Empty means match all taint effects.
-        When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+        effect
     key : str, default is Undefined, optional
-        Key is the taint key that the toleration applies to. Empty means match all taint keys.
-        If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+        key
     operator : str, default is Undefined, optional
-        Operator represents a key's relationship to the value.
-        Valid operators are Exists and Equal. Defaults to Equal.
-        Exists is equivalent to wildcard for value, so that a pod can
-        tolerate all taints of a particular category.
+        operator
     tolerationSeconds : int, default is Undefined, optional
-        TolerationSeconds represents the period of time the toleration (which must be
-        of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default,
-        it is not set, which means tolerate the taint forever (do not evict). Zero and
-        negative values will be treated as 0 (evict immediately) by the system.
+        toleration seconds
     value : str, default is Undefined, optional
-        Value is the taint value the toleration matches to.
-        If the operator is Exists, the value should be empty, otherwise just a regular string.
+        value
     """
 
 
@@ -4220,32 +4871,25 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecTolerationsItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentSpecVolumeMountsItems0:
-    """
-    VolumeMount describes a mounting of a Volume within a container.
+    r"""
+    operator victoriametrics com v1beta1 VM agent spec volume mounts items0
 
     Attributes
     ----------
     mountPath : str, default is Undefined, required
-        Path within the container at which the volume should be mounted.  Must
-        not contain ':'.
+        mount path
     mountPropagation : str, default is Undefined, optional
-        mountPropagation determines how mounts are propagated from the host
-        to container and the other way around.
-        When not set, MountPropagationNone is used.
-        This field is beta in 1.10.
+        mount propagation
     name : str, default is Undefined, required
-        This must match the Name of a Volume.
+        name
     readOnly : bool, default is Undefined, optional
-        Mounted read-only if true, read-write otherwise (false or unspecified).
-        Defaults to false.
+        read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
-        Path within the volume from which the container's volume should be mounted.
-        Defaults to "" (volume's root).
+        sub path
     subPathExpr : str, default is Undefined, optional
-        Expanded path within the volume from which the container's volume should be mounted.
-        Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment.
-        Defaults to "" (volume's root).
-        SubPathExpr and SubPath are mutually exclusive.
+        sub path expr
     """
 
 
@@ -4257,39 +4901,39 @@ schema OperatorVictoriametricsComV1beta1VMAgentSpecVolumeMountsItems0:
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema OperatorVictoriametricsComV1beta1VMAgentStatus:
-    """
-    VMAgentStatus defines the observed state of VMAgent
+    r"""
+    operator victoriametrics com v1beta1 VM agent status
 
     Attributes
     ----------
-    availableReplicas : int, default is Undefined, optional
-        AvailableReplicas Total number of available pods (ready for at least minReadySeconds)
-        targeted by this VMAlert cluster.
+    conditions : [OperatorVictoriametricsComV1beta1VMAgentStatusConditionsItems0], default is Undefined, optional
+        conditions
+    observedGeneration : int, default is Undefined, optional
+        observed generation
     reason : str, default is Undefined, optional
-        Reason defines fail reason for update process, effective only for statefulMode
+        reason
     replicas : int, default is Undefined, optional
-        ReplicaCount Total number of pods targeted by this VMAgent
+        replicas
     selector : str, default is Undefined, optional
-        Selector string form of label value set for autoscaling
+        selector
     shards : int, default is Undefined, optional
-        Shards represents total number of vmagent deployments with uniq scrape targets
-    unavailableReplicas : int, default is Undefined, optional
-        UnavailableReplicas Total number of unavailable pods targeted by this VMAgent cluster.
+        shards
     updateStatus : str, default is Undefined, optional
-        UpdateStatus defines a status for update rollout, effective only for statefulMode
-    updatedReplicas : int, default is Undefined, optional
-        UpdatedReplicas Total number of non-terminated pods targeted by this VMAgent
-        cluster that have the desired version spec.
+        update status
     """
 
 
-    availableReplicas?: int
+    conditions?: [OperatorVictoriametricsComV1beta1VMAgentStatusConditionsItems0]
+
+    observedGeneration?: int
 
     reason?: str
 
@@ -4299,10 +4943,52 @@ schema OperatorVictoriametricsComV1beta1VMAgentStatus:
 
     shards?: int
 
-    unavailableReplicas?: int
-
     updateStatus?: str
 
-    updatedReplicas?: int
+
+schema OperatorVictoriametricsComV1beta1VMAgentStatusConditionsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM agent status conditions items0
+
+    Attributes
+    ----------
+    lastTransitionTime : str, default is Undefined, required
+        last transition time
+    lastUpdateTime : str, default is Undefined, required
+        last update time
+    message : str, default is Undefined, optional
+        message
+    observedGeneration : int, default is Undefined, optional
+        observed generation
+    reason : str, default is Undefined, required
+        reason
+    status : str, default is Undefined, required
+        status
+    $type : str, default is Undefined, required
+        type
+    """
+
+
+    lastTransitionTime: str
+
+    lastUpdateTime: str
+
+    message?: str
+
+    observedGeneration?: int
+
+    reason: str
+
+    status: "True" | "False" | "Unknown"
+
+    $type: str
+
+
+    check:
+        len(message) <= 32768 if message
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
+        len(reason) <= 1024
+        len(reason) >= 1
+        len($type) <= 316
 
 

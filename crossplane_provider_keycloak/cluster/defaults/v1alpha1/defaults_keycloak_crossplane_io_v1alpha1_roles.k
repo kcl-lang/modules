@@ -91,7 +91,7 @@ schema DefaultsKeycloakCrossplaneIoV1alpha1RolesSpecForProvider:
     Attributes
     ----------
     defaultRoles : [str], default is Undefined, optional
-        Realm level roles assigned to new users by default.
+        Roles assigned to new users by default.
         Realm level roles (name) assigned to new users.
     defaultRolesRefs : [DefaultsKeycloakCrossplaneIoV1alpha1RolesSpecForProviderDefaultRolesRefsItems0], default is Undefined, optional
         References to Role in role to populate defaultRoles.
@@ -313,7 +313,7 @@ schema DefaultsKeycloakCrossplaneIoV1alpha1RolesSpecInitProvider:
     Attributes
     ----------
     defaultRoles : [str], default is Undefined, optional
-        Realm level roles assigned to new users by default.
+        Roles assigned to new users by default.
         Realm level roles (name) assigned to new users.
     defaultRolesRefs : [DefaultsKeycloakCrossplaneIoV1alpha1RolesSpecInitProviderDefaultRolesRefsItems0], default is Undefined, optional
         References to Role in role to populate defaultRoles.
@@ -615,7 +615,7 @@ schema DefaultsKeycloakCrossplaneIoV1alpha1RolesStatusAtProvider:
     Attributes
     ----------
     defaultRoles : [str], default is Undefined, optional
-        Realm level roles assigned to new users by default.
+        Roles assigned to new users by default.
         Realm level roles (name) assigned to new users.
     id : str, default is Undefined, optional
         id

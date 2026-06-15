@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema NetworkServicesEndpointPolicy:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services endpoint policy
 
     Attributes
@@ -36,7 +36,7 @@ schema NetworkServicesEndpointPolicy:
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesEndpointPolicySpec:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services endpoint policy spec
 
     Attributes
@@ -86,7 +86,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesEndpointPolicySpec
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesEndpointPolicySpecAuthorizationPolicyRef:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services endpoint policy spec authorization policy ref
 
     Attributes
@@ -110,7 +110,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesEndpointPolicySpec
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesEndpointPolicySpecClientTLSPolicyRef:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services endpoint policy spec client TLS policy ref
 
     Attributes
@@ -134,7 +134,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesEndpointPolicySpec
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesEndpointPolicySpecEndpointMatcher:
-    """
+    r"""
     Required. A matcher that selects endpoints to which the policies should be applied.
 
     Attributes
@@ -148,7 +148,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesEndpointPolicySpec
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesEndpointPolicySpecEndpointMatcherMetadataLabelMatcher:
-    """
+    r"""
     The matcher is based on node metadata presented by xDS clients.
 
     Attributes
@@ -166,7 +166,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesEndpointPolicySpec
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesEndpointPolicySpecEndpointMatcherMetadataLabelMatcherMetadataLabelsItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services endpoint policy spec endpoint matcher metadata label matcher metadata labels items0
 
     Attributes
@@ -184,7 +184,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesEndpointPolicySpec
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesEndpointPolicySpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -208,7 +208,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesEndpointPolicySpec
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesEndpointPolicySpecServerTLSPolicyRef:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services endpoint policy spec server TLS policy ref
 
     Attributes
@@ -232,7 +232,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesEndpointPolicySpec
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesEndpointPolicySpecTrafficPortSelector:
-    """
+    r"""
     Optional. Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
 
     Attributes
@@ -246,7 +246,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesEndpointPolicySpec
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesEndpointPolicyStatus:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services endpoint policy status
 
     Attributes
@@ -272,7 +272,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesEndpointPolicyStat
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesEndpointPolicyStatusConditionsItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services endpoint policy status conditions items0
 
     Attributes

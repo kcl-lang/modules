@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeSharedVPCHostProject:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute shared v p c host project
 
     Attributes
@@ -32,7 +32,7 @@ schema ComputeSharedVPCHostProject:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSharedVPCHostProjectStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute shared v p c host project status
 
     Attributes
@@ -50,7 +50,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSharedVPCHostProjectStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSharedVPCHostProjectStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute shared v p c host project status conditions items0
 
     Attributes

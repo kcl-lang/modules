@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema HealthcareDICOMStore:
-    """
+    r"""
     healthcare cnrm cloud google com v1alpha1 healthcare d i c o m store
 
     Attributes
@@ -36,7 +36,7 @@ schema HealthcareDICOMStore:
 
 
 schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareDICOMStoreSpec:
-    """
+    r"""
     healthcare cnrm cloud google com v1alpha1 healthcare d i c o m store spec
 
     Attributes
@@ -64,7 +64,7 @@ schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareDICOMStoreSpec:
 
 
 schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareDICOMStoreSpecNotificationConfig:
-    """
+    r"""
     A nested object resource.
 
     Attributes
@@ -83,7 +83,7 @@ schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareDICOMStoreSpecNotificationC
 
 
 schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareDICOMStoreSpecStreamConfigsItems0:
-    """
+    r"""
     healthcare cnrm cloud google com v1alpha1 healthcare d i c o m store spec stream configs items0
 
     Attributes
@@ -97,7 +97,7 @@ schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareDICOMStoreSpecStreamConfigs
 
 
 schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareDICOMStoreSpecStreamConfigsItems0BigqueryDestination:
-    """
+    r"""
     BigQueryDestination to include a fully qualified BigQuery table URI where DICOM instance metadata will be streamed.
 
     Attributes
@@ -111,7 +111,7 @@ schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareDICOMStoreSpecStreamConfigs
 
 
 schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareDICOMStoreStatus:
-    """
+    r"""
     healthcare cnrm cloud google com v1alpha1 healthcare d i c o m store status
 
     Attributes
@@ -133,7 +133,7 @@ schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareDICOMStoreStatus:
 
 
 schema HealthcareCnrmCloudGoogleComV1alpha1HealthcareDICOMStoreStatusConditionsItems0:
-    """
+    r"""
     healthcare cnrm cloud google com v1alpha1 healthcare d i c o m store status conditions items0
 
     Attributes

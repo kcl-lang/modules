@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IAMWorkloadIdentityPoolProvider:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m workload identity pool provider
 
     Attributes
@@ -36,7 +36,7 @@ schema IAMWorkloadIdentityPoolProvider:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkloadIdentityPoolProviderSpec:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m workload identity pool provider spec
 
     Attributes
@@ -90,7 +90,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkloadIdentityPoolProviderSpec:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkloadIdentityPoolProviderSpecAws:
-    """
+    r"""
     An Amazon Web Services identity provider.
 
     Attributes
@@ -108,7 +108,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkloadIdentityPoolProviderSpecAws:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkloadIdentityPoolProviderSpecOidc:
-    """
+    r"""
     An OpenId Connect 1.0 identity provider.
 
     Attributes
@@ -126,7 +126,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkloadIdentityPoolProviderSpecOidc:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkloadIdentityPoolProviderSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -150,7 +150,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkloadIdentityPoolProviderSpecProjectRef
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkloadIdentityPoolProviderSpecWorkloadIdentityPoolRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -174,7 +174,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkloadIdentityPoolProviderSpecWorkloadId
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkloadIdentityPoolProviderStatus:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m workload identity pool provider status
 
     Attributes
@@ -196,7 +196,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkloadIdentityPoolProviderStatus:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkloadIdentityPoolProviderStatusConditionsItems0:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m workload identity pool provider status conditions items0
 
     Attributes

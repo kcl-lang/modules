@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AppEngineFirewallRule:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine firewall rule
 
     Attributes
@@ -36,7 +36,7 @@ schema AppEngineFirewallRule:
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFirewallRuleSpec:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine firewall rule spec
 
     Attributes
@@ -66,7 +66,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFirewallRuleSpec:
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFirewallRuleStatus:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine firewall rule status
 
     Attributes
@@ -84,7 +84,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFirewallRuleStatus:
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineFirewallRuleStatusConditionsItems0:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine firewall rule status conditions items0
 
     Attributes

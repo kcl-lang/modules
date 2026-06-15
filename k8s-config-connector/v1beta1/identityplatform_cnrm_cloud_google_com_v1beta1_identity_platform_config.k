@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IdentityPlatformConfig:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform config
 
     Attributes
@@ -36,7 +36,7 @@ schema IdentityPlatformConfig:
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpec:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform config spec
 
     Attributes
@@ -86,7 +86,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpec:
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecBlockingFunctions:
-    """
+    r"""
     Configuration related to blocking functions.
 
     Attributes
@@ -100,7 +100,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecBlocki
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecBlockingFunctionsTriggersAnon:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform config spec blocking functions triggers anon
 
     Attributes
@@ -118,7 +118,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecBlocki
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecBlockingFunctionsTriggersAnonFunctionURIRef:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform config spec blocking functions triggers anon function URI ref
 
     Attributes
@@ -142,7 +142,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecBlocki
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecClient:
-    """
+    r"""
     Options related to how clients making requests on behalf of a project should be configured.
 
     Attributes
@@ -156,7 +156,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecClient
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecClientPermissions:
-    """
+    r"""
     Configuration related to restricting a user's ability to affect their account.
 
     Attributes
@@ -174,7 +174,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecClient
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecMfa:
-    """
+    r"""
     Configuration for this project's multi-factor authentication, including whether it is active and what factors can be used for the second factor
 
     Attributes
@@ -188,7 +188,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecMfa:
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecMonitoring:
-    """
+    r"""
     Configuration related to monitoring project activity.
 
     Attributes
@@ -202,7 +202,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecMonito
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecMonitoringRequestLogging:
-    """
+    r"""
     Configuration for logging requests made to this project to Stackdriver Logging
 
     Attributes
@@ -216,7 +216,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecMonito
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecMultiTenant:
-    """
+    r"""
     Configuration related to multi-tenant functionality.
 
     Attributes
@@ -234,7 +234,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecMultiT
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecMultiTenantDefaultTenantLocationRef:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform config spec multi tenant default tenant location ref
 
     Attributes
@@ -265,7 +265,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecMultiT
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotification:
-    """
+    r"""
     Configuration related to sending notifications to users.
 
     Attributes
@@ -287,7 +287,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotifi
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotificationSendEmail:
-    """
+    r"""
     Options for email sending.
 
     Attributes
@@ -329,7 +329,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotifi
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotificationSendEmailChangeEmailTemplate:
-    """
+    r"""
     Email template for change email
 
     Attributes
@@ -363,7 +363,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotifi
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotificationSendEmailDNSInfo:
-    """
+    r"""
     Information of custom domain DNS verification.
 
     Attributes
@@ -377,7 +377,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotifi
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotificationSendEmailResetPasswordTemplate:
-    """
+    r"""
     Email template for reset password
 
     Attributes
@@ -411,7 +411,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotifi
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotificationSendEmailRevertSecondFactorAdditionTemplate:
-    """
+    r"""
     Email template for reverting second factor addition emails
 
     Attributes
@@ -445,7 +445,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotifi
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotificationSendEmailSMTP:
-    """
+    r"""
     Use a custom SMTP relay
 
     Attributes
@@ -479,7 +479,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotifi
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotificationSendEmailSMTPPassword:
-    """
+    r"""
     SMTP relay password
 
     Attributes
@@ -497,7 +497,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotifi
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotificationSendEmailSMTPPasswordValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -511,7 +511,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotifi
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotificationSendEmailSMTPPasswordValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -529,7 +529,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotifi
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotificationSendEmailVerifyEmailTemplate:
-    """
+    r"""
     Email template for verify email
 
     Attributes
@@ -563,7 +563,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotifi
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotificationSendSms:
-    """
+    r"""
     Options for SMS sending.
 
     Attributes
@@ -577,7 +577,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecNotifi
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -601,7 +601,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecProjec
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecQuota:
-    """
+    r"""
     Configuration related to quotas.
 
     Attributes
@@ -615,7 +615,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecQuota:
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecQuotaSignUpQuotaConfig:
-    """
+    r"""
     Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
 
     Attributes
@@ -637,7 +637,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecQuotaS
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecSignIn:
-    """
+    r"""
     Configuration related to local sign in methods.
 
     Attributes
@@ -663,7 +663,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecSignIn
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecSignInAnonymous:
-    """
+    r"""
     Configuration options related to authenticating an anonymous user.
 
     Attributes
@@ -677,7 +677,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecSignIn
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecSignInEmail:
-    """
+    r"""
     Configuration options related to authenticating a user by their email address.
 
     Attributes
@@ -695,7 +695,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecSignIn
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecSignInPhoneNumber:
-    """
+    r"""
     Configuration options related to authenticated a user by their phone number.
 
     Attributes
@@ -713,7 +713,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigSpecSignIn
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatus:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform config status
 
     Attributes
@@ -747,7 +747,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatus:
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusClient:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform config status client
 
     Attributes
@@ -765,7 +765,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusClie
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusConditionsItems0:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform config status conditions items0
 
     Attributes
@@ -795,7 +795,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusCond
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusNotification:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform config status notification
 
     Attributes
@@ -813,7 +813,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusNoti
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusNotificationSendEmail:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform config status notification send email
 
     Attributes
@@ -843,7 +843,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusNoti
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusNotificationSendEmailChangeEmailTemplate:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform config status notification send email change email template
 
     Attributes
@@ -857,7 +857,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusNoti
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusNotificationSendEmailDNSInfo:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform config status notification send email DNS info
 
     Attributes
@@ -883,7 +883,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusNoti
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusNotificationSendEmailResetPasswordTemplate:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform config status notification send email reset password template
 
     Attributes
@@ -897,7 +897,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusNoti
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusNotificationSendEmailRevertSecondFactorAdditionTemplate:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform config status notification send email revert second factor addition template
 
     Attributes
@@ -911,7 +911,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusNoti
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusNotificationSendEmailVerifyEmailTemplate:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform config status notification send email verify email template
 
     Attributes
@@ -925,7 +925,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusNoti
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusNotificationSendSms:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform config status notification send sms
 
     Attributes
@@ -939,7 +939,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusNoti
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusNotificationSendSmsSmsTemplate:
-    """
+    r"""
     Output only. The template to use when sending an SMS.
 
     Attributes
@@ -953,7 +953,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusNoti
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusSignIn:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform config status sign in
 
     Attributes
@@ -971,7 +971,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusSign
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusSignInEmail:
-    """
+    r"""
     identityplatform cnrm cloud google com v1beta1 identity platform config status sign in email
 
     Attributes
@@ -985,7 +985,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusSign
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusSignInEmailHashConfig:
-    """
+    r"""
     Output only. Hash config information.
 
     Attributes
@@ -1015,7 +1015,7 @@ schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusSign
 
 
 schema IdentityplatformCnrmCloudGoogleComV1beta1IdentityPlatformConfigStatusSignInHashConfig:
-    """
+    r"""
     Output only. Hash config information.
 
     Attributes

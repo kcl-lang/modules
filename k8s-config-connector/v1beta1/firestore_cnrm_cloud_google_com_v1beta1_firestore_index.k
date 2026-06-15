@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema FirestoreIndex:
-    """
-    firestore cnrm cloud google com v1beta1 firestore index
+    r"""
+    FirestoreIndex is the Schema for the FirestoreIndex API
 
     Attributes
     ----------
@@ -17,7 +17,7 @@ schema FirestoreIndex:
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : FirestoreCnrmCloudGoogleComV1beta1FirestoreIndexSpec, default is Undefined, required
+    spec : FirestoreCnrmCloudGoogleComV1beta1FirestoreIndexSpec, default is Undefined, optional
         spec
     status : FirestoreCnrmCloudGoogleComV1beta1FirestoreIndexStatus, default is Undefined, optional
         status
@@ -30,14 +30,14 @@ schema FirestoreIndex:
 
     metadata?: v1.ObjectMeta
 
-    spec: FirestoreCnrmCloudGoogleComV1beta1FirestoreIndexSpec
+    spec?: FirestoreCnrmCloudGoogleComV1beta1FirestoreIndexSpec
 
     status?: FirestoreCnrmCloudGoogleComV1beta1FirestoreIndexStatus
 
 
 schema FirestoreCnrmCloudGoogleComV1beta1FirestoreIndexSpec:
-    """
-    firestore cnrm cloud google com v1beta1 firestore index spec
+    r"""
+    FirestoreIndexSpec defines the desired state of FirestoreIndex
 
     Attributes
     ----------
@@ -46,12 +46,7 @@ schema FirestoreCnrmCloudGoogleComV1beta1FirestoreIndexSpec:
     database : str, default is Undefined, optional
         Immutable. The Firestore database id. Defaults to '"(default)"'.
     fields : [FirestoreCnrmCloudGoogleComV1beta1FirestoreIndexSpecFieldsItems0], default is Undefined, required
-        Immutable. The fields supported by this index. The last field entry is always for
-        the field path '__name__'. If, on creation, '__name__' was not
-        specified as the last field, it will be added automatically with the
-        same direction as that of the last field defined. If the final field
-        in a composite index is not directional, the '__name__' will be
-        ordered '"ASCENDING"' (unless explicitly specified otherwise).
+        Immutable. The fields supported by this index. The last field entry is always for the field path '__name__'. If, on creation, '__name__' was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the '__name__' will be ordered '"ASCENDING"' (unless explicitly specified otherwise).
     queryScope : str, default is Undefined, optional
         Immutable. The scope at which a query is run. Default value: "COLLECTION" Possible values: ["COLLECTION", "COLLECTION_GROUP"].
     """
@@ -67,19 +62,17 @@ schema FirestoreCnrmCloudGoogleComV1beta1FirestoreIndexSpec:
 
 
 schema FirestoreCnrmCloudGoogleComV1beta1FirestoreIndexSpecFieldsItems0:
-    """
+    r"""
     firestore cnrm cloud google com v1beta1 firestore index spec fields items0
 
     Attributes
     ----------
     arrayConfig : str, default is Undefined, optional
-        Immutable. Indicates that this field supports operations on arrayValues. Only one of 'order' and 'arrayConfig' can
-        be specified. Possible values: ["CONTAINS"].
+        Immutable. Indicates that this field supports operations on arrayValues. Only one of 'order' and 'arrayConfig' can be specified. Possible values: ["CONTAINS"].
     fieldPath : str, default is Undefined, optional
         Immutable. Name of the field.
     order : str, default is Undefined, optional
-        Immutable. Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
-        Only one of 'order' and 'arrayConfig' can be specified. Possible values: ["ASCENDING", "DESCENDING"].
+        Immutable. Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=. Only one of 'order' and 'arrayConfig' can be specified. Possible values: ["ASCENDING", "DESCENDING"].
     """
 
 
@@ -91,16 +84,15 @@ schema FirestoreCnrmCloudGoogleComV1beta1FirestoreIndexSpecFieldsItems0:
 
 
 schema FirestoreCnrmCloudGoogleComV1beta1FirestoreIndexStatus:
-    """
-    firestore cnrm cloud google com v1beta1 firestore index status
+    r"""
+    FirestoreIndexStatus defines the config connector machine state of FirestoreIndex
 
     Attributes
     ----------
     conditions : [FirestoreCnrmCloudGoogleComV1beta1FirestoreIndexStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     name : str, default is Undefined, optional
-        A server defined name for this index. Format:
-        'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'.
+        A server defined name for this index. Format: 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """
@@ -114,7 +106,7 @@ schema FirestoreCnrmCloudGoogleComV1beta1FirestoreIndexStatus:
 
 
 schema FirestoreCnrmCloudGoogleComV1beta1FirestoreIndexStatusConditionsItems0:
-    """
+    r"""
     firestore cnrm cloud google com v1beta1 firestore index status conditions items0
 
     Attributes

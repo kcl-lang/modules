@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema CloudSchedulerJob:
-    """
+    r"""
     cloudscheduler cnrm cloud google com v1beta1 cloud scheduler job
 
     Attributes
@@ -36,7 +36,7 @@ schema CloudSchedulerJob:
 
 
 schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobSpec:
-    """
+    r"""
     cloudscheduler cnrm cloud google com v1beta1 cloud scheduler job spec
 
     Attributes
@@ -86,7 +86,7 @@ schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobSpec:
 
 
 schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobSpecAppEngineHTTPTarget:
-    """
+    r"""
     App Engine HTTP target.
 
     Attributes
@@ -116,7 +116,7 @@ schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobSpecAppEngineHTTP
 
 
 schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobSpecAppEngineHTTPTargetAppEngineRouting:
-    """
+    r"""
     App Engine Routing setting for the job.
 
     Attributes
@@ -138,7 +138,7 @@ schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobSpecAppEngineHTTP
 
 
 schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobSpecHTTPTarget:
-    """
+    r"""
     HTTP target.
 
     Attributes
@@ -172,7 +172,7 @@ schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobSpecHTTPTarget:
 
 
 schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobSpecHTTPTargetOauthToken:
-    """
+    r"""
     If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
 
     Attributes
@@ -190,7 +190,7 @@ schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobSpecHTTPTargetOau
 
 
 schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobSpecHTTPTargetOauthTokenServiceAccountRef:
-    """
+    r"""
     cloudscheduler cnrm cloud google com v1beta1 cloud scheduler job spec HTTP target oauth token service account ref
 
     Attributes
@@ -214,7 +214,7 @@ schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobSpecHTTPTargetOau
 
 
 schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobSpecHTTPTargetOidcToken:
-    """
+    r"""
     If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
 
     Attributes
@@ -232,7 +232,7 @@ schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobSpecHTTPTargetOid
 
 
 schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobSpecHTTPTargetOidcTokenServiceAccountRef:
-    """
+    r"""
     cloudscheduler cnrm cloud google com v1beta1 cloud scheduler job spec HTTP target oidc token service account ref
 
     Attributes
@@ -256,7 +256,7 @@ schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobSpecHTTPTargetOid
 
 
 schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobSpecPubsubTarget:
-    """
+    r"""
     Pub/Sub target.
 
     Attributes
@@ -278,7 +278,7 @@ schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobSpecPubsubTarget:
 
 
 schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobSpecPubsubTargetTopicRef:
-    """
+    r"""
     cloudscheduler cnrm cloud google com v1beta1 cloud scheduler job spec pubsub target topic ref
 
     Attributes
@@ -302,7 +302,7 @@ schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobSpecPubsubTargetT
 
 
 schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobSpecRetryConfig:
-    """
+    r"""
     Settings that determine the retry behavior.
 
     Attributes
@@ -332,7 +332,7 @@ schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobSpecRetryConfig:
 
 
 schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobStatus:
-    """
+    r"""
     cloudscheduler cnrm cloud google com v1beta1 cloud scheduler job status
 
     Attributes
@@ -374,7 +374,7 @@ schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobStatus:
 
 
 schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobStatusAppEngineHTTPTarget:
-    """
+    r"""
     cloudscheduler cnrm cloud google com v1beta1 cloud scheduler job status app engine HTTP target
 
     Attributes
@@ -388,7 +388,7 @@ schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobStatusAppEngineHT
 
 
 schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobStatusAppEngineHTTPTargetAppEngineRouting:
-    """
+    r"""
     cloudscheduler cnrm cloud google com v1beta1 cloud scheduler job status app engine HTTP target app engine routing
 
     Attributes
@@ -402,7 +402,7 @@ schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobStatusAppEngineHT
 
 
 schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobStatusConditionsItems0:
-    """
+    r"""
     cloudscheduler cnrm cloud google com v1beta1 cloud scheduler job status conditions items0
 
     Attributes
@@ -432,7 +432,7 @@ schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobStatusConditionsI
 
 
 schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobStatusStatus:
-    """
+    r"""
     Output only. The response from the target for the last attempted execution.
 
     Attributes
@@ -454,7 +454,7 @@ schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobStatusStatus:
 
 
 schema CloudschedulerCnrmCloudGoogleComV1beta1CloudSchedulerJobStatusStatusDetailsItems0:
-    """
+    r"""
     cloudscheduler cnrm cloud google com v1beta1 cloud scheduler job status status details items0
 
     Attributes

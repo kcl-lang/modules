@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema KMSCryptoKeyVersion:
-    """
+    r"""
     kms cnrm cloud google com v1alpha1 k m s crypto key version
 
     Attributes
@@ -36,7 +36,7 @@ schema KMSCryptoKeyVersion:
 
 
 schema KmsCnrmCloudGoogleComV1alpha1KMSCryptoKeyVersionSpec:
-    """
+    r"""
     kms cnrm cloud google com v1alpha1 k m s crypto key version spec
 
     Attributes
@@ -59,7 +59,7 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSCryptoKeyVersionSpec:
 
 
 schema KmsCnrmCloudGoogleComV1alpha1KMSCryptoKeyVersionStatus:
-    """
+    r"""
     kms cnrm cloud google com v1alpha1 k m s crypto key version status
 
     Attributes
@@ -98,7 +98,7 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSCryptoKeyVersionStatus:
 
 
 schema KmsCnrmCloudGoogleComV1alpha1KMSCryptoKeyVersionStatusAttestationItems0:
-    """
+    r"""
     kms cnrm cloud google com v1alpha1 k m s crypto key version status attestation items0
 
     Attributes
@@ -124,7 +124,7 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSCryptoKeyVersionStatusAttestationItems0:
 
 
 schema KmsCnrmCloudGoogleComV1alpha1KMSCryptoKeyVersionStatusAttestationItems0CertChains:
-    """
+    r"""
     The certificate chains needed to validate the attestation.
 
     Attributes
@@ -146,7 +146,7 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSCryptoKeyVersionStatusAttestationItems0Ce
 
 
 schema KmsCnrmCloudGoogleComV1alpha1KMSCryptoKeyVersionStatusAttestationItems0ExternalProtectionLevelOptions:
-    """
+    r"""
     ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 
     Attributes
@@ -164,7 +164,7 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSCryptoKeyVersionStatusAttestationItems0Ex
 
 
 schema KmsCnrmCloudGoogleComV1alpha1KMSCryptoKeyVersionStatusConditionsItems0:
-    """
+    r"""
     kms cnrm cloud google com v1alpha1 k m s crypto key version status conditions items0
 
     Attributes

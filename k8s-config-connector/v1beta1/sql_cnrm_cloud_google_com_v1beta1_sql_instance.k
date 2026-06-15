@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema SQLInstance:
-    """
-    sql cnrm cloud google com v1beta1 SQL instance
+    r"""
+    SQLInstance is the Schema for the sql API
 
     Attributes
     ----------
@@ -36,12 +36,14 @@ schema SQLInstance:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpec:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL instance spec
 
     Attributes
     ----------
-    databaseVersion : str, default is "MYSQL_5_6", optional
+    cloneSource : SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecCloneSource, default is Undefined, optional
+        clone source
+    databaseVersion : str, default is Undefined, optional
         The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, SQLSERVER_2017_STANDARD, SQLSERVER_2017_ENTERPRISE, SQLSERVER_2017_EXPRESS, SQLSERVER_2017_WEB. Database Version Policies includes an up-to-date reference of supported versions.
     encryptionKMSCryptoKeyRef : SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecEncryptionKMSCryptoKeyRef, default is Undefined, optional
         encryption k m s crypto key ref
@@ -64,7 +66,9 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpec:
     """
 
 
-    databaseVersion?: str = "MYSQL_5_6"
+    cloneSource?: SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecCloneSource
+
+    databaseVersion?: str
 
     encryptionKMSCryptoKeyRef?: SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecEncryptionKMSCryptoKeyRef
 
@@ -85,18 +89,84 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpec:
     settings: SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettings
 
 
-schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecEncryptionKMSCryptoKeyRef:
+schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecCloneSource:
+    r"""
+    Create this database as a clone of a source instance. Immutable.
+
+    Attributes
+    ----------
+    binLogCoordinates : SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecCloneSourceBinLogCoordinates, default is Undefined, optional
+        bin log coordinates
+    databaseNames : [str], default is Undefined, optional
+        (SQL Server only) Clone only the specified databases from the source instance. Clone all databases if empty.
+    pointInTime : str, default is Undefined, optional
+        Timestamp, if specified, identifies the time to which the source instance is cloned.
+    sqlInstanceRef : SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecCloneSourceSQLInstanceRef, default is Undefined, optional
+        sql instance ref
     """
+
+
+    binLogCoordinates?: SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecCloneSourceBinLogCoordinates
+
+    databaseNames?: [str]
+
+    pointInTime?: str
+
+    sqlInstanceRef?: SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecCloneSourceSQLInstanceRef
+
+
+schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecCloneSourceBinLogCoordinates:
+    r"""
+    Binary log coordinates, if specified, identify the position up to which the source instance is cloned. If not specified, the source instance is cloned up to the most recent binary log coordinates.
+
+    Attributes
+    ----------
+    binLogFileName : str, default is Undefined, optional
+        Name of the binary log file for a Cloud SQL instance.
+    binLogPosition : int, default is Undefined, optional
+        Position (offset) within the binary log file.
+    """
+
+
+    binLogFileName?: str
+
+    binLogPosition?: int
+
+
+schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecCloneSourceSQLInstanceRef:
+    r"""
+    The source SQLInstance to clone
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The SQLInstance selfLink, when not managed by Config Connector.
+    name : str, default is Undefined, optional
+        The `name` field of a `SQLInstance` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `SQLInstance` resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecEncryptionKMSCryptoKeyRef:
+    r"""
     SQL cnrm cloud google com v1beta1 SQL instance spec encryption k m s crypto key ref
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `KMSCryptoKey` resource.
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` of a `KMSCryptoKey` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` of a `KMSCryptoKey` resource.
     """
 
 
@@ -108,17 +178,17 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecEncryptionKMSCryptoKeyRef:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecMasterInstanceRef:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL instance spec master instance ref
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `SQLInstance` resource.
+        The SQLInstance selfLink, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `SQLInstance` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `SQLInstance` resource.
     """
 
 
@@ -130,7 +200,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecMasterInstanceRef:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecReplicaConfiguration:
-    """
+    r"""
     The configuration for replication.
 
     Attributes
@@ -184,7 +254,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecReplicaConfiguration:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecReplicaConfigurationPassword:
-    """
+    r"""
     Immutable. Password for the replication connection.
 
     Attributes
@@ -202,7 +272,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecReplicaConfigurationPassword:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecReplicaConfigurationPasswordValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -216,7 +286,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecReplicaConfigurationPasswordVa
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecReplicaConfigurationPasswordValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -234,7 +304,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecReplicaConfigurationPasswordVa
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecRootPassword:
-    """
+    r"""
     Initial root password. Required for MS SQL Server.
 
     Attributes
@@ -252,7 +322,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecRootPassword:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecRootPasswordValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -266,7 +336,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecRootPasswordValueFrom:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecRootPasswordValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -284,7 +354,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecRootPasswordValueFromSecretKey
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettings:
-    """
+    r"""
     The settings to use for the database. The configuration is detailed below.
 
     Attributes
@@ -296,15 +366,9 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettings:
     advancedMachineFeatures : SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsAdvancedMachineFeatures, default is Undefined, optional
         advanced machine features
     authorizedGaeApplications : [str], default is Undefined, optional
-        DEPRECATED. This property is only applicable to First Generation instances, and First Generation instances are now deprecated. see https://cloud.google.com/sql/docs/mysql/deprecation-notice for information on how to upgrade to Second Generation instances.
-        Specifying this field has no-ops; it's recommended to remove this field from your configuration.
+        DEPRECATED. This property is only applicable to First Generation instances, and First Generation instances are now deprecated. see https://cloud.google.com/sql/docs/mysql/deprecation-notice for information on how to upgrade to Second Generation instances. Specifying this field has no-ops; it's recommended to remove this field from your configuration.
     availabilityType : str, default is Undefined, optional
-        The availability type of the Cloud SQL instance, high availability
-        (REGIONAL) or single zone (ZONAL). For all instances, ensure that
-        settings.backup_configuration.enabled is set to true.
-        For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
-        For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
-        is set to true. Defaults to ZONAL.
+        The availability type of the Cloud SQL instance, high availability (REGIONAL) or single zone (ZONAL). For all instances, ensure that settings.backup_configuration.enabled is set to true. For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true. For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled is set to true. Defaults to ZONAL.
     backupConfiguration : SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsBackupConfiguration, default is Undefined, optional
         backup configuration
     collation : str, default is Undefined, optional
@@ -312,8 +376,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettings:
     connectorEnforcement : str, default is Undefined, optional
         Specifies if connections must use Cloud SQL connectors.
     crashSafeReplication : bool, default is Undefined, optional
-        DEPRECATED. This property is only applicable to First Generation instances, and First Generation instances are now deprecated. see https://cloud.google.com/sql/docs/mysql/deprecation-notice for information on how to upgrade to Second Generation instances.
-        Specifying this field has no-ops; it's recommended to remove this field from your configuration.
+        DEPRECATED. This property is only applicable to First Generation instances, and First Generation instances are now deprecated. see https://cloud.google.com/sql/docs/mysql/deprecation-notice for information on how to upgrade to Second Generation instances. Specifying this field has no-ops; it's recommended to remove this field from your configuration.
     dataCacheConfig : SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsDataCacheConfig, default is Undefined, optional
         data cache config
     databaseFlags : [SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsDatabaseFlagsItems0], default is Undefined, optional
@@ -345,8 +408,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettings:
     pricingPlan : str, default is Undefined, optional
         Pricing plan for this instance, can only be PER_USE.
     replicationType : str, default is Undefined, optional
-        DEPRECATED. This property is only applicable to First Generation instances, and First Generation instances are now deprecated. see https://cloud.google.com/sql/docs/mysql/deprecation-notice for information on how to upgrade to Second Generation instances.
-        Specifying this field has no-ops; it's recommended to remove this field from your configuration.
+        DEPRECATED. This property is only applicable to First Generation instances, and First Generation instances are now deprecated. see https://cloud.google.com/sql/docs/mysql/deprecation-notice for information on how to upgrade to Second Generation instances. Specifying this field has no-ops; it's recommended to remove this field from your configuration.
     sqlServerAuditConfig : SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsSQLServerAuditConfig, default is Undefined, optional
         sql server audit config
     tier : str, default is Undefined, required
@@ -414,7 +476,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettings:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsActiveDirectoryConfig:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL instance spec settings active directory config
 
     Attributes
@@ -428,7 +490,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsActiveDirectoryConfig:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsAdvancedMachineFeatures:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL instance spec settings advanced machine features
 
     Attributes
@@ -442,7 +504,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsAdvancedMachineFeature
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsBackupConfiguration:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL instance spec settings backup configuration
 
     Attributes
@@ -480,7 +542,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsBackupConfiguration:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsBackupConfigurationBackupRetentionSettings:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL instance spec settings backup configuration backup retention settings
 
     Attributes
@@ -498,7 +560,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsBackupConfigurationBac
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsDataCacheConfig:
-    """
+    r"""
     Data cache configurations.
 
     Attributes
@@ -512,7 +574,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsDataCacheConfig:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsDatabaseFlagsItems0:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL instance spec settings database flags items0
 
     Attributes
@@ -530,7 +592,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsDatabaseFlagsItems0:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsDenyMaintenancePeriod:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL instance spec settings deny maintenance period
 
     Attributes
@@ -552,7 +614,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsDenyMaintenancePeriod:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsIPConfiguration:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL instance spec settings IP configuration
 
     Attributes
@@ -571,6 +633,8 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsIPConfiguration:
         PSC settings for a Cloud SQL instance.
     requireSsl : bool, default is Undefined, optional
         require ssl
+    sslMode : str, default is Undefined, optional
+        Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to requireSsl. To change this field, also set the correspoding value in requireSsl if it has been set.
     """
 
 
@@ -588,9 +652,11 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsIPConfiguration:
 
     requireSsl?: bool
 
+    sslMode?: str
+
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsIPConfigurationAuthorizedNetworksItems0:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL instance spec settings IP configuration authorized networks items0
 
     Attributes
@@ -612,17 +678,17 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsIPConfigurationAuthori
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsIPConfigurationPrivateNetworkRef:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL instance spec settings IP configuration private network ref
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -634,7 +700,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsIPConfigurationPrivate
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsIPConfigurationPscConfigItems0:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL instance spec settings IP configuration psc config items0
 
     Attributes
@@ -652,7 +718,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsIPConfigurationPscConf
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsInsightsConfig:
-    """
+    r"""
     Configuration of Query Insights.
 
     Attributes
@@ -682,7 +748,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsInsightsConfig:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsLocationPreference:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL instance spec settings location preference
 
     Attributes
@@ -704,7 +770,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsLocationPreference:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsMaintenanceWindow:
-    """
+    r"""
     Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
 
     Attributes
@@ -726,7 +792,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsMaintenanceWindow:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsPasswordValidationPolicy:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL instance spec settings password validation policy
 
     Attributes
@@ -760,7 +826,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsPasswordValidationPoli
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsSQLServerAuditConfig:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL instance spec settings SQL server audit config
 
     Attributes
@@ -782,17 +848,17 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsSQLServerAuditConfig:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsSQLServerAuditConfigBucketRef:
-    """
+    r"""
     The name of the destination bucket (e.g., gs://mybucket).
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `url` field of a `StorageBucket` resource.
+        A reference to an externally-managed StorageBucket resource.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a StorageBucket resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a StorageBucket resource.
     """
 
 
@@ -804,7 +870,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsSQLServerAuditConfigBu
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceStatus:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL instance status
 
     Attributes
@@ -812,7 +878,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceStatus:
     availableMaintenanceVersions : [str], default is Undefined, optional
         Available Maintenance versions.
     conditions : [SQLCnrmCloudGoogleComV1beta1SQLInstanceStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the SQLInstance's current state.
     connectionName : str, default is Undefined, optional
         The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
     dnsName : str, default is Undefined, optional
@@ -870,7 +936,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceStatus:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceStatusConditionsItems0:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL instance status conditions items0
 
     Attributes
@@ -900,7 +966,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceStatusConditionsItems0:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceStatusIPAddressItems0:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL instance status IP address items0
 
     Attributes
@@ -922,7 +988,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceStatusIPAddressItems0:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceStatusServerCaCert:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL instance status server ca cert
 
     Attributes

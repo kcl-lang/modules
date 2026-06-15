@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema KMSSecretCiphertext:
-    """
+    r"""
     kms cnrm cloud google com v1alpha1 k m s secret ciphertext
 
     Attributes
@@ -36,7 +36,7 @@ schema KMSSecretCiphertext:
 
 
 schema KmsCnrmCloudGoogleComV1alpha1KMSSecretCiphertextSpec:
-    """
+    r"""
     kms cnrm cloud google com v1alpha1 k m s secret ciphertext spec
 
     Attributes
@@ -63,7 +63,7 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSSecretCiphertextSpec:
 
 
 schema KmsCnrmCloudGoogleComV1alpha1KMSSecretCiphertextSpecAdditionalAuthenticatedData:
-    """
+    r"""
     Immutable. The additional authenticated data used for integrity checks during encryption and decryption.
 
     Attributes
@@ -81,7 +81,7 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSSecretCiphertextSpecAdditionalAuthenticat
 
 
 schema KmsCnrmCloudGoogleComV1alpha1KMSSecretCiphertextSpecAdditionalAuthenticatedDataValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -95,7 +95,7 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSSecretCiphertextSpecAdditionalAuthenticat
 
 
 schema KmsCnrmCloudGoogleComV1alpha1KMSSecretCiphertextSpecAdditionalAuthenticatedDataValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -113,7 +113,7 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSSecretCiphertextSpecAdditionalAuthenticat
 
 
 schema KmsCnrmCloudGoogleComV1alpha1KMSSecretCiphertextSpecPlaintext:
-    """
+    r"""
     Immutable. The plaintext to be encrypted.
 
     Attributes
@@ -131,7 +131,7 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSSecretCiphertextSpecPlaintext:
 
 
 schema KmsCnrmCloudGoogleComV1alpha1KMSSecretCiphertextSpecPlaintextValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -145,7 +145,7 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSSecretCiphertextSpecPlaintextValueFrom:
 
 
 schema KmsCnrmCloudGoogleComV1alpha1KMSSecretCiphertextSpecPlaintextValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -163,7 +163,7 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSSecretCiphertextSpecPlaintextValueFromSec
 
 
 schema KmsCnrmCloudGoogleComV1alpha1KMSSecretCiphertextStatus:
-    """
+    r"""
     kms cnrm cloud google com v1alpha1 k m s secret ciphertext status
 
     Attributes
@@ -185,7 +185,7 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSSecretCiphertextStatus:
 
 
 schema KmsCnrmCloudGoogleComV1alpha1KMSSecretCiphertextStatusConditionsItems0:
-    """
+    r"""
     kms cnrm cloud google com v1alpha1 k m s secret ciphertext status conditions items0
 
     Attributes

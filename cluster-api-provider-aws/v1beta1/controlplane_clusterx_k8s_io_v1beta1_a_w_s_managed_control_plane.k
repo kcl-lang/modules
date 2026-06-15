@@ -188,8 +188,8 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpec:
 
 
     check:
-        len(roleName) >= 2 if roleName
-        len(version) >= 2 if version
+        len(roleName) >= 2 if roleName not in [None, Undefined]
+        len(version) >= 2 if version not in [None, Undefined]
         _regex_match(str(version), r"^v?(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.?(\.0|[1-9][0-9]*)?$") if version
 
 
@@ -206,6 +206,9 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecAddonsItems0:
         are parameter conflicts. Defaults to none
     name : str, default is Undefined, required
         Name is the name of the addon
+    preserveOnDelete : bool, default is Undefined, optional
+        PreserveOnDelete indicates that the addon resources should be
+        preserved in the cluster on delete.
     serviceAccountRoleARN : str, default is Undefined, optional
         ServiceAccountRoleArn is the ARN of an IAM role to bind to the addons service account
     version : str, default is Undefined, required
@@ -218,6 +221,8 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecAddonsItems0:
     conflictResolution?: "overwrite" | "none" = "none"
 
     name: str
+
+    preserveOnDelete?: bool
 
     serviceAccountRoleARN?: str
 
@@ -237,6 +242,7 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecBastion:
     allowedCIDRBlocks : [str], default is Undefined, optional
         AllowedCIDRBlocks is a list of CIDR blocks allowed to access the bastion host.
         They are set as ingress rules for the Bastion host's Security Group (defaults to 0.0.0.0/0).
+        If the cluster has IPv6 enabled, defaults to ::/0 and 0.0.0.0/0.
     ami : str, default is Undefined, optional
         AMI will use the specified AMI to boot the bastion. If not specified,
         the AMI will default to one picked out in public space.
@@ -271,15 +277,19 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecControlPlaneEnd
     Attributes
     ----------
     host : str, default is Undefined, required
-        The hostname on which the API server is serving.
+        host is the hostname on which the API server is serving.
     port : int, default is Undefined, required
-        The port on which the API server is serving.
+        port is the port on which the API server is serving.
     """
 
 
     host: str
 
     port: int
+
+
+    check:
+        len(host) <= 512
 
 
 schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecEncryptionConfig:
@@ -474,6 +484,8 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecNetwork:
     ----------
     additionalControlPlaneIngressRules : [ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecNetworkAdditionalControlPlaneIngressRulesItems0], default is Undefined, optional
         AdditionalControlPlaneIngressRules is an optional set of ingress rules to add to the control plane
+    additionalNodeIngressRules : [ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecNetworkAdditionalNodeIngressRulesItems0], default is Undefined, optional
+        AdditionalNodeIngressRules is an optional set of ingress rules to add to every node
     cni : ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecNetworkCni, default is Undefined, optional
         cni
     nodePortIngressRuleCidrBlocks : [str], default is Undefined, optional
@@ -491,6 +503,8 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecNetwork:
 
     additionalControlPlaneIngressRules?: [ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecNetworkAdditionalControlPlaneIngressRulesItems0]
 
+    additionalNodeIngressRules?: [ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecNetworkAdditionalNodeIngressRulesItems0]
+
     cni?: ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecNetworkCni
 
     nodePortIngressRuleCidrBlocks?: [str]
@@ -503,6 +517,53 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecNetwork:
 
 
 schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecNetworkAdditionalControlPlaneIngressRulesItems0:
+    r"""
+    IngressRule defines an AWS ingress rule for security groups.
+
+    Attributes
+    ----------
+    cidrBlocks : [str], default is Undefined, optional
+        List of CIDR blocks to allow access from. Cannot be specified with SourceSecurityGroupID.
+    description : str, default is Undefined, required
+        Description provides extended information about the ingress rule.
+    fromPort : int, default is Undefined, required
+        FromPort is the start of port range.
+    ipv6CidrBlocks : [str], default is Undefined, optional
+        List of IPv6 CIDR blocks to allow access from. Cannot be specified with SourceSecurityGroupID.
+    natGatewaysIPsSource : bool, default is Undefined, optional
+        NatGatewaysIPsSource use the NAT gateways IPs as the source for the ingress rule.
+    $protocol : str, default is Undefined, required
+        Protocol is the protocol for the ingress rule. Accepted values are "-1" (all), "4" (IP in IP),"tcp", "udp", "icmp", and "58" (ICMPv6), "50" (ESP).
+    sourceSecurityGroupIds : [str], default is Undefined, optional
+        The security group id to allow access from. Cannot be specified with CidrBlocks.
+    sourceSecurityGroupRoles : [str], default is Undefined, optional
+        The security group role to allow access from. Cannot be specified with CidrBlocks.
+        The field will be combined with source security group IDs if specified.
+    toPort : int, default is Undefined, required
+        ToPort is the end of port range.
+    """
+
+
+    cidrBlocks?: [str]
+
+    description: str
+
+    fromPort: int
+
+    ipv6CidrBlocks?: [str]
+
+    natGatewaysIPsSource?: bool
+
+    $protocol: "-1" | "4" | "tcp" | "udp" | "icmp" | "58" | "50"
+
+    sourceSecurityGroupIds?: [str]
+
+    sourceSecurityGroupRoles?: [str]
+
+    toPort: int
+
+
+schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecNetworkAdditionalNodeIngressRulesItems0:
     r"""
     IngressRule defines an AWS ingress rule for security groups.
 
@@ -612,10 +673,8 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecNetworkSubnetsI
     ipv6CidrBlock : str, default is Undefined, optional
         IPv6CidrBlock is the IPv6 CIDR block to be used when the provider creates a managed VPC.
         A subnet can have an IPv4 and an IPv6 address.
-        IPv6 is only supported in managed clusters, this field cannot be set on AWSCluster object.
     isIpv6 : bool, default is Undefined, optional
-        IsIPv6 defines the subnet as an IPv6 subnet. A subnet is IPv6 when it is associated with a VPC that has IPv6 enabled.
-        IPv6 is only supported in managed clusters, this field cannot be set on AWSCluster object.
+        IsIPv6 defines the subnet as an IPv6 subnet. A subnet is IPv6 when it is associated with an IPv6 CIDR.
     isPublic : bool, default is Undefined, optional
         IsPublic defines the subnet as a public subnet. A subnet is public when it is associated with a route table that has a route to an internet gateway.
     natGatewayId : str, default is Undefined, optional
@@ -810,13 +869,12 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecNetworkVpcElast
 
 
     check:
-        len(publicIpv4Pool) <= 30 if publicIpv4Pool
+        len(publicIpv4Pool) <= 30 if publicIpv4Pool not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecNetworkVpcIPV6:
     r"""
-    IPv6 contains ipv6 specific settings for the network. Supported only in managed clusters.
-    This field cannot be set on AWSCluster object.
+    IPv6 contains ipv6 specific settings for the network.
 
     Attributes
     ----------
@@ -858,6 +916,7 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecNetworkVpcIPV6I
         The netmask length of the IPv4 CIDR you want to allocate to VPC from
         an Amazon VPC IP Address Manager (IPAM) pool.
         Defaults to /16 for IPv4 if not specified.
+        Defaults to /56 for IPv6 if not specified.
     """
 
 
@@ -883,6 +942,7 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneSpecNetworkVpcIpamP
         The netmask length of the IPv4 CIDR you want to allocate to VPC from
         an Amazon VPC IP Address Manager (IPAM) pool.
         Defaults to /16 for IPv4 if not specified.
+        Defaults to /56 for IPv6 if not specified.
     """
 
 
@@ -1278,14 +1338,35 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusBastion:
     ----------
     addresses : [ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusBastionAddressesItems0], default is Undefined, optional
         Addresses contains the AWS instance associated addresses.
+    assignPrimaryIPv6 : str, default is Undefined, optional
+        AssignPrimaryIPv6 specifies whether to enable assigning a primary IPv6 address to the primary network Interface.
     availabilityZone : str, default is Undefined, optional
         Availability zone of instance
     capacityReservationId : str, default is Undefined, optional
         CapacityReservationID specifies the target Capacity Reservation into which the instance should be launched.
+    capacityReservationPreference : str, default is Undefined, optional
+        CapacityReservationPreference specifies the preference for use of Capacity Reservations by the instance. Valid values include:
+        "Open": The instance may make use of open Capacity Reservations that match its AZ and InstanceType
+        "None": The instance may not make use of any Capacity Reservations. This is to conserve open reservations for desired workloads
+        "CapacityReservationsOnly": The instance will only run if matched or targeted to a Capacity Reservation. Note that this is incompatible with a MarketType of `Spot`
+    cpuOptions : ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusBastionCPUOptions, default is Undefined, optional
+        cpu options
+    dynamicHostAllocation : ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusBastionDynamicHostAllocation, default is Undefined, optional
+        dynamic host allocation
     ebsOptimized : bool, default is Undefined, optional
         Indicates whether the instance is optimized for Amazon EBS I/O.
     enaSupport : bool, default is Undefined, optional
         Specifies whether enhanced networking with ENA is enabled.
+    hostAffinity : str, default is Undefined, optional
+        HostAffinity specifies the dedicated host affinity setting for the instance.
+        When HostAffinity is set to "host", an instance started onto a specific host always restarts on the same host if stopped:
+        - If HostID is set, the instance launches on the specific host and must return to that same host after any stop/start (Targeted & Pinned).
+        - If HostID is not set, the instance gets launched on any available and must returns to the same host after any stop/start (Auto-placed & Pinned).
+        When HostAffinity is set to "default" (the default value), the instance (when restarted) can return on any available host:
+        - If HostID is set, the instance launches on the specified host now, but (when restarted) can return to any available hosts (Targeted & Flexible).
+        - If HostID is not set, the instance launches on any available host now, and (when restarted) can return to any available hosts (Auto-placed & Flexible).
+    hostID : str, default is Undefined, optional
+        HostID specifies the dedicated host on which the instance should be started.
     iamProfile : str, default is Undefined, optional
         The name of the IAM instance profile associated with the instance, if applicable.
     id : str, default is Undefined, required
@@ -1296,6 +1377,8 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusBastion:
         instance metadata options
     instanceState : str, default is Undefined, optional
         The current state of the instance.
+    ipv6Address : str, default is Undefined, optional
+        The IPv6 address assigned to the instance.
     marketType : str, default is Undefined, optional
         MarketType specifies the type of market for the EC2 instance. Valid values include:
         "OnDemand" (default): The instance runs as a standard OnDemand instance.
@@ -1349,13 +1432,25 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusBastion:
 
     addresses?: [ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusBastionAddressesItems0]
 
+    assignPrimaryIPv6?: str
+
     availabilityZone?: str
 
     capacityReservationId?: str
 
+    capacityReservationPreference?: str
+
+    cpuOptions?: ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusBastionCPUOptions
+
+    dynamicHostAllocation?: ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusBastionDynamicHostAllocation
+
     ebsOptimized?: bool
 
     enaSupport?: bool
+
+    hostAffinity?: "default" | "host"
+
+    hostID?: str
 
     iamProfile?: str
 
@@ -1366,6 +1461,8 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusBastion:
     instanceMetadataOptions?: ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusBastionInstanceMetadataOptions
 
     instanceState?: str
+
+    ipv6Address?: str
 
     marketType?: "OnDemand" | "Spot" | "CapacityBlock"
 
@@ -1420,15 +1517,67 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusBastionAddres
     Attributes
     ----------
     address : str, default is Undefined, required
-        The machine address.
+        address is the machine address.
     $type : str, default is Undefined, required
-        Machine address type, one of Hostname, ExternalIP, InternalIP, ExternalDNS or InternalDNS.
+        type is the machine address type, one of Hostname, ExternalIP, InternalIP, ExternalDNS or InternalDNS.
     """
 
 
     address: str
 
-    $type: str
+    $type: "Hostname" | "ExternalIP" | "InternalIP" | "ExternalDNS" | "InternalDNS"
+
+
+    check:
+        len(address) <= 256
+        len(address) >= 1
+
+
+schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusBastionCPUOptions:
+    r"""
+    CPUOptions defines CPU-related settings for the instance, including the confidential computing policy.
+    When omitted, this means no opinion and the AWS platform is left to choose a reasonable default.
+
+    Attributes
+    ----------
+    confidentialCompute : str, default is Undefined, optional
+        ConfidentialCompute specifies whether confidential computing should be enabled for the instance,
+        and, if so, which confidential computing technology to use.
+        Valid values are: Disabled, AMDEncryptedVirtualizationNestedPaging
+        When set to Disabled, confidential computing will be disabled for the instance.
+        When set to AMDEncryptedVirtualizationNestedPaging, AMD SEV-SNP will be used as the confidential computing technology for the instance.
+        In this case, ensure the following conditions are met:
+        1) The selected instance type supports AMD SEV-SNP.
+        2) The selected AWS region supports AMD SEV-SNP.
+        3) The selected AMI supports AMD SEV-SNP.
+        More details can be checked at https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sev-snp.html
+        When omitted, this means no opinion and the AWS platform is left to choose a reasonable default,
+        which is subject to change without notice. The current default is Disabled.
+    nestedVirtualization : str, default is Undefined, optional
+        NestedVirtualization specifies whether to enable nested virtualization on the instance.
+        Nested virtualization is supported on C8i, M8i, and R8i instance types.
+        Valid values are: enabled, disabled
+    """
+
+
+    confidentialCompute?: "Disabled" | "AMDEncryptedVirtualizationNestedPaging"
+
+    nestedVirtualization?: "enabled" | "disabled"
+
+
+schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusBastionDynamicHostAllocation:
+    r"""
+    DynamicHostAllocation enables automatic allocation of dedicated hosts.
+    This field is mutually exclusive with HostID.
+
+    Attributes
+    ----------
+    tags : {str:str}, default is Undefined, optional
+        Tags to apply to the allocated dedicated host.
+    """
+
+
+    tags?: {str:str}
 
 
 schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusBastionInstanceMetadataOptions:
@@ -1443,6 +1592,11 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusBastionInstan
         If you specify a value of disabled, you cannot access your instance metadata.
 
         Default: enabled
+    httpProtocolIpv6 : str, default is "disabled", optional
+        Enables or disables the IPv6 endpoint for the instance metadata service.
+        This applies only if you enabled the HTTP metadata endpoint.
+
+        Default: disabled
     httpPutResponseHopLimit : int, default is 1, optional
         The desired HTTP PUT response hop limit for instance metadata requests. The
         larger the number, the further instance metadata requests can travel.
@@ -1474,6 +1628,8 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusBastionInstan
 
 
     httpEndpoint?: "enabled" | "disabled" = "enabled"
+
+    httpProtocolIpv6?: "enabled" | "disabled" = "disabled"
 
     httpPutResponseHopLimit?: int = 1
 
@@ -1620,14 +1776,14 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusConditionsIte
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may be empty.
     severity : str, default is Undefined, optional
@@ -1654,6 +1810,16 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusConditionsIte
     status: str
 
     $type: str
+
+
+    check:
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
+        len($type) <= 256
+        len($type) >= 1
 
 
 schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusFailureDomainsAnon:
@@ -1743,6 +1909,8 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusNetworkStatus
         health checks
     listeners : [ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusNetworkStatusAPIServerElbListenersItems0], default is Undefined, optional
         ClassicELBListeners is an array of classic elb listeners associated with the load balancer. There must be at least one.
+    loadBalancerIPAddressType : str, default is Undefined, optional
+        LoadBalancerIPAddressType specifies the IP address type for the load balancer.
     loadBalancerType : str, default is Undefined, optional
         LoadBalancerType sets the type for a load balancer. The default type is classic.
     name : str, default is Undefined, optional
@@ -1774,6 +1942,8 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusNetworkStatus
     healthChecks?: ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusNetworkStatusAPIServerElbHealthChecks
 
     listeners?: [ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusNetworkStatusAPIServerElbListenersItems0]
+
+    loadBalancerIPAddressType?: "ipv4" | "dualstack" | "dualstack-without-public-ipv4"
 
     loadBalancerType?: "classic" | "elb" | "alb" | "nlb"
 
@@ -1836,6 +2006,8 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusNetworkStatus
 
     Attributes
     ----------
+    ipType : str, default is Undefined, optional
+        IPType is the IP address type for the target group.
     name : str, default is Undefined, required
         Name of the TargetGroup. Must be unique over the same group of listeners.
     port : int, default is Undefined, required
@@ -1848,6 +2020,8 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusNetworkStatus
         vpc Id
     """
 
+
+    ipType?: str
 
     name: str
 
@@ -1985,6 +2159,8 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusNetworkStatus
         health checks
     listeners : [ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusNetworkStatusSecondaryAPIServerELBListenersItems0], default is Undefined, optional
         ClassicELBListeners is an array of classic elb listeners associated with the load balancer. There must be at least one.
+    loadBalancerIPAddressType : str, default is Undefined, optional
+        LoadBalancerIPAddressType specifies the IP address type for the load balancer.
     loadBalancerType : str, default is Undefined, optional
         LoadBalancerType sets the type for a load balancer. The default type is classic.
     name : str, default is Undefined, optional
@@ -2016,6 +2192,8 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusNetworkStatus
     healthChecks?: ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusNetworkStatusSecondaryAPIServerELBHealthChecks
 
     listeners?: [ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusNetworkStatusSecondaryAPIServerELBListenersItems0]
+
+    loadBalancerIPAddressType?: "ipv4" | "dualstack" | "dualstack-without-public-ipv4"
 
     loadBalancerType?: "classic" | "elb" | "alb" | "nlb"
 
@@ -2078,6 +2256,8 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusNetworkStatus
 
     Attributes
     ----------
+    ipType : str, default is Undefined, optional
+        IPType is the IP address type for the target group.
     name : str, default is Undefined, required
         Name of the TargetGroup. Must be unique over the same group of listeners.
     port : int, default is Undefined, required
@@ -2090,6 +2270,8 @@ schema ControlplaneClusterxK8sIoV1beta1AWSManagedControlPlaneStatusNetworkStatus
         vpc Id
     """
 
+
+    ipType?: str
 
     name: str
 

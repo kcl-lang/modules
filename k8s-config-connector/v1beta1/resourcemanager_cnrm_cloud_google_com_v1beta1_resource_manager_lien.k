@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ResourceManagerLien:
-    """
+    r"""
     resourcemanager cnrm cloud google com v1beta1 resource manager lien
 
     Attributes
@@ -36,7 +36,7 @@ schema ResourceManagerLien:
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerLienSpec:
-    """
+    r"""
     resourcemanager cnrm cloud google com v1beta1 resource manager lien spec
 
     Attributes
@@ -73,7 +73,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerLienSpec:
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerLienSpecParent:
-    """
+    r"""
     resourcemanager cnrm cloud google com v1beta1 resource manager lien spec parent
 
     Attributes
@@ -87,7 +87,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerLienSpecParent:
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerLienSpecParentProjectRef:
-    """
+    r"""
     resourcemanager cnrm cloud google com v1beta1 resource manager lien spec parent project ref
 
     Attributes
@@ -109,7 +109,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerLienSpecParentProj
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerLienStatus:
-    """
+    r"""
     resourcemanager cnrm cloud google com v1beta1 resource manager lien status
 
     Attributes
@@ -135,7 +135,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerLienStatus:
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerLienStatusConditionsItems0:
-    """
+    r"""
     resourcemanager cnrm cloud google com v1beta1 resource manager lien status conditions items0
 
     Attributes

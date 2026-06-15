@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeInstanceGroupNamedPort:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute instance group named port
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeInstanceGroupNamedPort:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeInstanceGroupNamedPortSpec:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute instance group named port spec
 
     Attributes
@@ -66,7 +66,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeInstanceGroupNamedPortSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeInstanceGroupNamedPortSpecGroupRef:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute instance group named port spec group ref
 
     Attributes
@@ -88,7 +88,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeInstanceGroupNamedPortSpecGroupRe
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeInstanceGroupNamedPortSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -110,7 +110,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeInstanceGroupNamedPortSpecProject
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeInstanceGroupNamedPortStatus:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute instance group named port status
 
     Attributes
@@ -128,7 +128,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeInstanceGroupNamedPortStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeInstanceGroupNamedPortStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute instance group named port status conditions items0
 
     Attributes

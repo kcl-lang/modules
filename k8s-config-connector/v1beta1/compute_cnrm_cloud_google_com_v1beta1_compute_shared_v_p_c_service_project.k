@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeSharedVPCServiceProject:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute shared v p c service project
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeSharedVPCServiceProject:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSharedVPCServiceProjectSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute shared v p c service project spec
 
     Attributes
@@ -55,7 +55,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSharedVPCServiceProjectSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSharedVPCServiceProjectSpecProjectRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute shared v p c service project spec project ref
 
     Attributes
@@ -77,7 +77,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSharedVPCServiceProjectSpecProject
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSharedVPCServiceProjectStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute shared v p c service project status
 
     Attributes
@@ -95,7 +95,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSharedVPCServiceProjectStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSharedVPCServiceProjectStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute shared v p c service project status conditions items0
 
     Attributes

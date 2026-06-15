@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema SecretManagerSecretVersion:
-    """
-    secretmanager cnrm cloud google com v1beta1 secret manager secret version
+    r"""
+    SecretManagerSecretVersion is the Schema for the SecretManagerSecretVersion API
 
     Attributes
     ----------
@@ -36,34 +36,42 @@ schema SecretManagerSecretVersion:
 
 
 schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionSpec:
-    """
-    secretmanager cnrm cloud google com v1beta1 secret manager secret version spec
+    r"""
+    SecretManagerSecretVersionSpec defines the desired state of SecretManagerSecretVersion
 
     Attributes
     ----------
+    deletionPolicy : str, default is Undefined, optional
+        DEPRECATED. You do not need to set this field in direct reconciler mode. Use delete-policy annotation instead. https://cloud.google.com/config-connector/docs/how-to/managing-deleting-resources#keeping_resources_after_deletion The deletion policy for the secret version. Setting 'ABANDON' allows the resource to be abandoned rather than deleted. Setting 'DISABLE' allows the resource to be disabled rather than deleted. Default is 'DELETE'. Possible values are: * DELETE * DISABLE * ABANDON.
     enabled : bool, default is Undefined, optional
-        The current state of the SecretVersion.
+        Should enable or disable the current SecretVersion. - Enabled version can be accessed and described. - Disabled version cannot be accessed, but the secret's contents still exist
+    isSecretDataBase64 : bool, default is Undefined, optional
+        DEPRECATED. You do not need to set this field in direct reconciler mode.
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
-    secretData : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionSpecSecretData, default is Undefined, required
+        The SecretVersion number. If given, Config Connector acquires the resource from the Secret Manager service. If not given, Config Connector adds a new secret version to the GCP service, and you can find out the version number from `status.observedState.version`
+    secretData : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionSpecSecretData, default is Undefined, optional
         secret data
-    secretRef : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionSpecSecretRef, default is Undefined, required
+    secretRef : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionSpecSecretRef, default is Undefined, optional
         secret ref
     """
 
 
+    deletionPolicy?: str
+
     enabled?: bool
+
+    isSecretDataBase64?: bool
 
     resourceID?: str
 
-    secretData: SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionSpecSecretData
+    secretData?: SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionSpecSecretData
 
-    secretRef: SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionSpecSecretRef
+    secretRef?: SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionSpecSecretRef
 
 
 schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionSpecSecretData:
-    """
-    Immutable. The secret data. Must be no larger than 64KiB.
+    r"""
+    The actual secret data. Config Connector supports secret data stored in Kubernetes secret or plain data (base64)
 
     Attributes
     ----------
@@ -80,7 +88,7 @@ schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionSpecSecre
 
 
 schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionSpecSecretDataValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -94,7 +102,7 @@ schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionSpecSecre
 
 
 schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionSpecSecretDataValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -112,17 +120,17 @@ schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionSpecSecre
 
 
 schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionSpecSecretRef:
-    """
-    Secret Manager secret resource
+    r"""
+    The resource name of the [Secret][google.cloud.secretmanager.v1.Secret] to create a [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] for.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `SecretManagerSecret` resource.
+        A reference to an externally managed SecretManagerSecret resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/secrets/{{secretID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a SecretManagerSecret resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a SecretManagerSecret resource.
     """
 
 
@@ -134,24 +142,27 @@ schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionSpecSecre
 
 
 schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatus:
-    """
-    secretmanager cnrm cloud google com v1beta1 secret manager secret version status
+    r"""
+    SecretManagerSecretVersionStatus defines the config connector machine state of SecretManagerSecretVersion
 
     Attributes
     ----------
     conditions : [SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     createTime : str, default is Undefined, optional
-        The time at which the Secret was created.
+        DEPRECATING NOTE: Please use status.observedState.createTime instead.
     destroyTime : str, default is Undefined, optional
-        The time at which the Secret was destroyed. Only present if state is DESTROYED.
+        DEPRECATING NOTE: Please use status.observedState.destroyTime instead.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the SecretManagerSecretVersion resource in GCP.
     name : str, default is Undefined, optional
-        The resource name of the SecretVersion. Format:
-        'projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}'.
+        DEPRECATING NOTE: Please use status.observedState.name instead.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedState, default is Undefined, optional
+        observed state
     version : str, default is Undefined, optional
-        The version of the Secret.
+        DEPRECATED.
     """
 
 
@@ -161,15 +172,19 @@ schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatus:
 
     destroyTime?: str
 
+    externalRef?: str
+
     name?: str
 
     observedGeneration?: int
+
+    observedState?: SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedState
 
     version?: str
 
 
 schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusConditionsItems0:
-    """
+    r"""
     secretmanager cnrm cloud google com v1beta1 secret manager secret version status conditions items0
 
     Attributes
@@ -196,5 +211,167 @@ schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusCon
     status?: str
 
     $type?: str
+
+
+schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    clientSpecifiedPayloadChecksum : bool, default is Undefined, optional
+        Output only. True if payload checksum specified in [SecretPayload][google.cloud.secretmanager.v1.SecretPayload] object has been received by [SecretManagerService][google.cloud.secretmanager.v1.SecretManagerService] on [SecretManagerService.AddSecretVersion][google.cloud.secretmanager.v1.SecretManagerService.AddSecretVersion].
+    createTime : str, default is Undefined, optional
+        Output only. The time at which the [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] was created.
+    customerManagedEncryption : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedStateCustomerManagedEncryption, default is Undefined, optional
+        customer managed encryption
+    destroyTime : str, default is Undefined, optional
+        Output only. The time this [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] was destroyed. Only present if [state][google.cloud.secretmanager.v1.SecretVersion.state] is [DESTROYED][google.cloud.secretmanager.v1.SecretVersion.State.DESTROYED].
+    name : str, default is Undefined, optional
+        Output only. The resource name of the
+        [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] in the
+        format `projects/*/secrets/*/versions/*`.
+
+        [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] IDs in a
+        [Secret][google.cloud.secretmanager.v1.Secret] start at 1 and are
+        incremented for each subsequent version of the secret.
+    replicationStatus : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedStateReplicationStatus, default is Undefined, optional
+        replication status
+    scheduledDestroyTime : str, default is Undefined, optional
+        Optional. Output only. Scheduled destroy time for secret version. This is a part of the Delayed secret version destroy feature. For a Secret with a valid version destroy TTL, when a secert version is destroyed, the version is moved to disabled state and it is scheduled for destruction. The version is destroyed only after the `scheduled_destroy_time`.
+    """
+
+
+    clientSpecifiedPayloadChecksum?: bool
+
+    createTime?: str
+
+    customerManagedEncryption?: SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedStateCustomerManagedEncryption
+
+    destroyTime?: str
+
+    name?: str
+
+    replicationStatus?: SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedStateReplicationStatus
+
+    scheduledDestroyTime?: str
+
+
+schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedStateCustomerManagedEncryption:
+    r"""
+    Output only. The customer-managed encryption status of the [SecretVersion][google.cloud.secretmanager.v1.SecretVersion]. Only populated if customer-managed encryption is used and [Secret][google.cloud.secretmanager.v1.Secret] is a Regionalised Secret.
+
+    Attributes
+    ----------
+    kmsKeyVersionName : str, default is Undefined, optional
+        Required. The resource name of the Cloud KMS CryptoKeyVersion used to encrypt the secret payload, in the following format: `projects/*/locations/*/keyRings/*/cryptoKeys/*/versions/*`.
+    """
+
+
+    kmsKeyVersionName?: str
+
+
+schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedStateReplicationStatus:
+    r"""
+    The replication status of the [SecretVersion][google.cloud.secretmanager.v1.SecretVersion].
+
+    Attributes
+    ----------
+    automatic : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedStateReplicationStatusAutomatic, default is Undefined, optional
+        automatic
+    userManaged : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedStateReplicationStatusUserManaged, default is Undefined, optional
+        user managed
+    """
+
+
+    automatic?: SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedStateReplicationStatusAutomatic
+
+    userManaged?: SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedStateReplicationStatusUserManaged
+
+
+schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedStateReplicationStatusAutomatic:
+    r"""
+    Describes the replication status of a
+     [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] with
+     automatic replication.
+
+     Only populated if the parent
+     [Secret][google.cloud.secretmanager.v1.Secret] has an automatic
+     replication policy.
+
+    Attributes
+    ----------
+    customerManagedEncryption : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedStateReplicationStatusAutomaticCustomerManagedEncryption, default is Undefined, optional
+        customer managed encryption
+    """
+
+
+    customerManagedEncryption?: SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedStateReplicationStatusAutomaticCustomerManagedEncryption
+
+
+schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedStateReplicationStatusAutomaticCustomerManagedEncryption:
+    r"""
+    Output only. The customer-managed encryption status of the [SecretVersion][google.cloud.secretmanager.v1.SecretVersion]. Only populated if customer-managed encryption is used.
+
+    Attributes
+    ----------
+    kmsKeyVersionName : str, default is Undefined, optional
+        Required. The resource name of the Cloud KMS CryptoKeyVersion used to encrypt the secret payload, in the following format: `projects/*/locations/*/keyRings/*/cryptoKeys/*/versions/*`.
+    """
+
+
+    kmsKeyVersionName?: str
+
+
+schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedStateReplicationStatusUserManaged:
+    r"""
+    Describes the replication status of a
+     [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] with
+     user-managed replication.
+
+     Only populated if the parent
+     [Secret][google.cloud.secretmanager.v1.Secret] has a user-managed
+     replication policy.
+
+    Attributes
+    ----------
+    replicas : [SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedStateReplicationStatusUserManagedReplicasItems0], default is Undefined, optional
+        Output only. The list of replica statuses for the [SecretVersion][google.cloud.secretmanager.v1.SecretVersion].
+    """
+
+
+    replicas?: [SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedStateReplicationStatusUserManagedReplicasItems0]
+
+
+schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedStateReplicationStatusUserManagedReplicasItems0:
+    r"""
+    secretmanager cnrm cloud google com v1beta1 secret manager secret version status observed state replication status user managed replicas items0
+
+    Attributes
+    ----------
+    customerManagedEncryption : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedStateReplicationStatusUserManagedReplicasItems0CustomerManagedEncryption, default is Undefined, optional
+        customer managed encryption
+    location : str, default is Undefined, optional
+        Output only. The canonical ID of the replica location. For example: `"us-east1"`.
+    """
+
+
+    customerManagedEncryption?: SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedStateReplicationStatusUserManagedReplicasItems0CustomerManagedEncryption
+
+    location?: str
+
+
+schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionStatusObservedStateReplicationStatusUserManagedReplicasItems0CustomerManagedEncryption:
+    r"""
+    Output only. The customer-managed encryption status of the [SecretVersion][google.cloud.secretmanager.v1.SecretVersion]. Only populated if customer-managed encryption is used.
+
+    Attributes
+    ----------
+    kmsKeyVersionName : str, default is Undefined, optional
+        Required. The resource name of the Cloud KMS CryptoKeyVersion used to encrypt the secret payload, in the following format: `projects/*/locations/*/keyRings/*/cryptoKeys/*/versions/*`.
+    """
+
+
+    kmsKeyVersionName?: str
 
 

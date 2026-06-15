@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AppEngineStandardAppVersion:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine standard app version
 
     Attributes
@@ -36,7 +36,7 @@ schema AppEngineStandardAppVersion:
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpec:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine standard app version spec
 
     Attributes
@@ -136,7 +136,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpec:
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecAutomaticScaling:
-    """
+    r"""
     Automatic scaling is based on request rate, response latencies, and other application metrics.
 
     Attributes
@@ -174,7 +174,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecAutomat
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecAutomaticScalingStandardSchedulerSettings:
-    """
+    r"""
     Scheduler settings for standard environment.
 
     Attributes
@@ -200,7 +200,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecAutomat
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecBasicScaling:
-    """
+    r"""
     Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
 
     Attributes
@@ -219,7 +219,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecBasicSc
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecDeployment:
-    """
+    r"""
     Code and application artifacts that make up this version.
 
     Attributes
@@ -238,7 +238,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecDeploym
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecDeploymentFilesItems0:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine standard app version spec deployment files items0
 
     Attributes
@@ -260,7 +260,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecDeploym
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecDeploymentZip:
-    """
+    r"""
     Zip File.
 
     Attributes
@@ -278,7 +278,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecDeploym
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecEntrypoint:
-    """
+    r"""
     The entrypoint for the application.
 
     Attributes
@@ -292,7 +292,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecEntrypo
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecHandlersItems0:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine standard app version spec handlers items0
 
     Attributes
@@ -331,7 +331,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecHandler
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecHandlersItems0Script:
-    """
+    r"""
     Executes a script to handle the requests that match this URL pattern.
     Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
 
@@ -346,7 +346,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecHandler
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecHandlersItems0StaticFiles:
-    """
+    r"""
     Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
 
     Attributes
@@ -389,7 +389,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecHandler
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecLibrariesItems0:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine standard app version spec libraries items0
 
     Attributes
@@ -407,7 +407,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecLibrari
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecManualScaling:
-    """
+    r"""
     A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
 
     Attributes
@@ -424,7 +424,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecManualS
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecServiceRef:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine standard app version spec service ref
 
     Attributes
@@ -446,7 +446,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecService
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecVpcAccessConnector:
-    """
+    r"""
     Enables VPC connectivity for standard apps.
 
     Attributes
@@ -464,7 +464,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionSpecVpcAcce
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionStatus:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine standard app version status
 
     Attributes
@@ -486,7 +486,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionStatus:
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineStandardAppVersionStatusConditionsItems0:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine standard app version status conditions items0
 
     Attributes

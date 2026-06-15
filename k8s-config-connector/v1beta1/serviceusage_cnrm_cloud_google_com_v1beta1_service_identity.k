@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ServiceIdentity:
-    """
-    serviceusage cnrm cloud google com v1beta1 service identity
+    r"""
+    ServiceIdentity is the Schema for the ServiceIdentity API
 
     Attributes
     ----------
@@ -36,15 +36,15 @@ schema ServiceIdentity:
 
 
 schema ServiceusageCnrmCloudGoogleComV1beta1ServiceIdentitySpec:
-    """
-    serviceusage cnrm cloud google com v1beta1 service identity spec
+    r"""
+    ServiceIdentitySpec defines the desired state of ServiceIdentity
 
     Attributes
     ----------
     projectRef : ServiceusageCnrmCloudGoogleComV1beta1ServiceIdentitySpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The service of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The service name. If not given, the metadata.name will be used.
     """
 
 
@@ -54,21 +54,25 @@ schema ServiceusageCnrmCloudGoogleComV1beta1ServiceIdentitySpec:
 
 
 schema ServiceusageCnrmCloudGoogleComV1beta1ServiceIdentitySpecProjectRef:
-    """
-    The project that this resource belongs to.
+    r"""
+    The project that this service identity belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
     external?: str
+
+    kind?: str
 
     name?: str
 
@@ -76,15 +80,15 @@ schema ServiceusageCnrmCloudGoogleComV1beta1ServiceIdentitySpecProjectRef:
 
 
 schema ServiceusageCnrmCloudGoogleComV1beta1ServiceIdentityStatus:
-    """
-    serviceusage cnrm cloud google com v1beta1 service identity status
+    r"""
+    ServiceIdentityStatus defines the config connector machine state of ServiceIdentity
 
     Attributes
     ----------
     conditions : [ServiceusageCnrmCloudGoogleComV1beta1ServiceIdentityStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     email : str, default is Undefined, optional
-        email
+        The email address of the service account that a service producer would use to access consumer resources.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """
@@ -98,7 +102,7 @@ schema ServiceusageCnrmCloudGoogleComV1beta1ServiceIdentityStatus:
 
 
 schema ServiceusageCnrmCloudGoogleComV1beta1ServiceIdentityStatusConditionsItems0:
-    """
+    r"""
     serviceusage cnrm cloud google com v1beta1 service identity status conditions items0
 
     Attributes

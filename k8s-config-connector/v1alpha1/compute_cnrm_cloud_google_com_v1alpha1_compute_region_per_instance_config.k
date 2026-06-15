@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeRegionPerInstanceConfig:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute region per instance config
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeRegionPerInstanceConfig:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpec:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute region per instance config spec
 
     Attributes
@@ -90,7 +90,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecPreservedState:
-    """
+    r"""
     The preserved state for this instance.
 
     Attributes
@@ -116,7 +116,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecPreser
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecPreservedStateDiskItems0:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute region per instance config spec preserved state disk items0
 
     Attributes
@@ -147,7 +147,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecPreser
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecPreservedStateExternalIPItems0:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute region per instance config spec preserved state external IP items0
 
     Attributes
@@ -169,7 +169,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecPreser
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecPreservedStateExternalIPItems0IPAddress:
-    """
+    r"""
     Ip address representation.
 
     Attributes
@@ -183,7 +183,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecPreser
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecPreservedStateInternalIPItems0:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute region per instance config spec preserved state internal IP items0
 
     Attributes
@@ -205,7 +205,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecPreser
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecPreservedStateInternalIPItems0IPAddress:
-    """
+    r"""
     Ip address representation.
 
     Attributes
@@ -219,7 +219,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecPreser
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -241,7 +241,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecProjec
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecRegionInstanceGroupManagerRef:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute region per instance config spec region instance group manager ref
 
     Attributes
@@ -263,7 +263,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecRegion
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigStatus:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute region per instance config status
 
     Attributes
@@ -281,7 +281,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute region per instance config status conditions items0
 
     Attributes

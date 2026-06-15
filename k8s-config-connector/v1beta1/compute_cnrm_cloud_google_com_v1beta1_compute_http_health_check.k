@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeHTTPHealthCheck:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute HTTP health check
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeHTTPHealthCheck:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHTTPHealthCheckSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute HTTP health check spec
 
     Attributes
@@ -92,7 +92,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeHTTPHealthCheckSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHTTPHealthCheckStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute HTTP health check status
 
     Attributes
@@ -118,7 +118,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeHTTPHealthCheckStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHTTPHealthCheckStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute HTTP health check status conditions items0
 
     Attributes

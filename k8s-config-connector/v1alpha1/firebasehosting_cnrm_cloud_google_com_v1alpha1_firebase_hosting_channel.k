@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema FirebaseHostingChannel:
-    """
+    r"""
     firebasehosting cnrm cloud google com v1alpha1 firebase hosting channel
 
     Attributes
@@ -36,7 +36,7 @@ schema FirebaseHostingChannel:
 
 
 schema FirebasehostingCnrmCloudGoogleComV1alpha1FirebaseHostingChannelSpec:
-    """
+    r"""
     firebasehosting cnrm cloud google com v1alpha1 firebase hosting channel spec
 
     Attributes
@@ -71,7 +71,7 @@ schema FirebasehostingCnrmCloudGoogleComV1alpha1FirebaseHostingChannelSpec:
 
 
 schema FirebasehostingCnrmCloudGoogleComV1alpha1FirebaseHostingChannelStatus:
-    """
+    r"""
     firebasehosting cnrm cloud google com v1alpha1 firebase hosting channel status
 
     Attributes
@@ -94,7 +94,7 @@ schema FirebasehostingCnrmCloudGoogleComV1alpha1FirebaseHostingChannelStatus:
 
 
 schema FirebasehostingCnrmCloudGoogleComV1alpha1FirebaseHostingChannelStatusConditionsItems0:
-    """
+    r"""
     firebasehosting cnrm cloud google com v1alpha1 firebase hosting channel status conditions items0
 
     Attributes

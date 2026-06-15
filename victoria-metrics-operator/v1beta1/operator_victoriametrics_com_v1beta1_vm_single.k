@@ -4,12 +4,12 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
-
+_regex_match = regex.match
 
 
 schema VMSingle:
-    """
-    VMSingle  is fast, cost-effective and scalable time-series database.
+    r"""
+    operator victoriametrics com v1beta1 VM single
 
     Attributes
     ----------
@@ -38,145 +38,121 @@ schema VMSingle:
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpec:
-    """
-    VMSingleSpec defines the desired state of VMSingle
+    r"""
+    operator victoriametrics com v1beta1 VM single spec
 
     Attributes
     ----------
     affinity : any, default is Undefined, optional
-        Affinity If specified, the pod's scheduling constraints.
+        affinity
     configMaps : [str], default is Undefined, optional
-        ConfigMaps is a list of ConfigMaps in the same namespace as the VMSingle
-        object, which shall be mounted into the VMSingle Pods.
+        config maps
     containers : [any], default is Undefined, optional
-        Containers property allows to inject additions sidecars or to patch existing containers.
-        It can be useful for proxies, backup, etc.
+        containers
+    disableAutomountServiceAccountToken : bool, default is Undefined, optional
+        disable automount service account token
+    disableSelfServiceScrape : bool, default is Undefined, optional
+        disable self service scrape
     dnsConfig : OperatorVictoriametricsComV1beta1VMSingleSpecDNSConfig, default is Undefined, optional
         dns config
     dnsPolicy : str, default is Undefined, optional
-        DNSPolicy sets DNS policy for the pod
+        dns policy
     extraArgs : {str:str}, default is Undefined, optional
-        ExtraArgs that will be passed to  VMSingle pod
-        for example remoteWrite.tmpDataPath: /tmp
+        extra args
     extraEnvs : [OperatorVictoriametricsComV1beta1VMSingleSpecExtraEnvsItems0], default is Undefined, optional
-        ExtraEnvs that will be added to VMSingle pod
+        extra envs
+    extraEnvsFrom : [OperatorVictoriametricsComV1beta1VMSingleSpecExtraEnvsFromItems0], default is Undefined, optional
+        extra envs from
     hostAliases : [OperatorVictoriametricsComV1beta1VMSingleSpecHostAliasesItems0], default is Undefined, optional
-        HostAliases provides mapping for ip and hostname,
-        that would be propagated to pod,
-        cannot be used with HostNetwork.
+        host aliases
     hostNetwork : bool, default is Undefined, optional
-        HostNetwork controls whether the pod may use the node network namespace
+        host network
+    host_aliases : [OperatorVictoriametricsComV1beta1VMSingleSpecHostAliasesItems0], default is Undefined, optional
+        host aliases
     image : OperatorVictoriametricsComV1beta1VMSingleSpecImage, default is Undefined, optional
         image
     imagePullSecrets : [OperatorVictoriametricsComV1beta1VMSingleSpecImagePullSecretsItems0], default is Undefined, optional
-        ImagePullSecrets An optional list of references to secrets in the same namespace
-        to use for pulling images from registries
-        see https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod
+        image pull secrets
     initContainers : [any], default is Undefined, optional
-        InitContainers allows adding initContainers to the pod definition. Those can be used to e.g.
-        fetch secrets for injection into the vmSingle configuration from external sources. Any
-        errors during the execution of an initContainer will lead to a restart of the Pod. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
-        Using initContainers for any use case other then secret fetching is entirely outside the scope
-        of what the maintainers will support and by doing so, you accept that this behaviour may break
-        at any time without notice.
+        init containers
     insertPorts : OperatorVictoriametricsComV1beta1VMSingleSpecInsertPorts, default is Undefined, optional
         insert ports
     license : OperatorVictoriametricsComV1beta1VMSingleSpecLicense, default is Undefined, optional
         license
     livenessProbe : any, default is Undefined, optional
-        LivenessProbe that will be added CRD pod
+        liveness probe
     logFormat : str, default is Undefined, optional
-        LogFormat for VMSingle to be configured with.
+        log format
     logLevel : str, default is Undefined, optional
-        LogLevel for victoria metrics single to be configured with.
+        log level
+    managedMetadata : OperatorVictoriametricsComV1beta1VMSingleSpecManagedMetadata, default is Undefined, optional
+        managed metadata
+    minReadySeconds : int, default is Undefined, optional
+        min ready seconds
     nodeSelector : {str:str}, default is Undefined, optional
-        NodeSelector Define which Nodes the Pods are scheduled on.
+        node selector
     paused : bool, default is Undefined, optional
-        Paused If set to true all actions on the underlying managed objects are not
-        going to be performed, except for delete actions.
+        paused
     podMetadata : OperatorVictoriametricsComV1beta1VMSingleSpecPodMetadata, default is Undefined, optional
         pod metadata
     port : str, default is Undefined, optional
-        Port listen port
+        port
     priorityClassName : str, default is Undefined, optional
-        PriorityClassName assigned to the Pods
+        priority class name
     readinessGates : [OperatorVictoriametricsComV1beta1VMSingleSpecReadinessGatesItems0], default is Undefined, optional
-        ReadinessGates defines pod readiness gates
+        readiness gates
     readinessProbe : any, default is Undefined, optional
-        ReadinessProbe that will be added CRD pod
+        readiness probe
     removePvcAfterDelete : bool, default is Undefined, optional
-        RemovePvcAfterDelete - if true, controller adds ownership to pvc
-        and after VMSingle objest deletion - pvc will be garbage collected
-        by controller manager
+        remove pvc after delete
     replicaCount : int, default is Undefined, optional
-        ReplicaCount is the expected size of the VMSingle
-        it can be 0 or 1
-        if you need more - use vm cluster
+        replica count
     resources : OperatorVictoriametricsComV1beta1VMSingleSpecResources, default is Undefined, optional
         resources
-    retentionPeriod : str, default is Undefined, required
-        RetentionPeriod for the stored metrics
-        Note VictoriaMetrics has data/ and indexdb/ folders
-        metrics from data/ removed eventually as soon as partition leaves retention period
-        reverse index data at indexdb rotates once at the half of configured retention period
-        https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#retention
+    retentionPeriod : str, default is Undefined, optional
+        retention period
     revisionHistoryLimitCount : int, default is Undefined, optional
-        The number of old ReplicaSets to retain to allow rollback in deployment or
-        maximum number of revisions that will be maintained in the StatefulSet's revision history.
-        Defaults to 10.
+        revision history limit count
     runtimeClassName : str, default is Undefined, optional
-        RuntimeClassName - defines runtime class for kubernetes pod.
-        https://kubernetes.io/docs/concepts/containers/runtime-class/
+        runtime class name
     schedulerName : str, default is Undefined, optional
-        SchedulerName - defines kubernetes scheduler name
+        scheduler name
     secrets : [str], default is Undefined, optional
-        Secrets is a list of Secrets in the same namespace as the VMSingle
-        object, which shall be mounted into the VMSingle Pods.
+        secrets
     securityContext : any, default is Undefined, optional
-        SecurityContext holds pod-level security attributes and common container settings.
-        This defaults to the default PodSecurityContext.
+        security context
     serviceAccountName : str, default is Undefined, optional
-        ServiceAccountName is the name of the ServiceAccount to use to run the
-        VMSingle Pods.
+        service account name
     serviceScrapeSpec : any, default is Undefined, optional
-        ServiceScrapeSpec that will be added to vmsingle VMServiceScrape spec
+        service scrape spec
     serviceSpec : OperatorVictoriametricsComV1beta1VMSingleSpecServiceSpec, default is Undefined, optional
         service spec
     startupProbe : any, default is Undefined, optional
-        StartupProbe that will be added to CRD pod
+        startup probe
     storage : OperatorVictoriametricsComV1beta1VMSingleSpecStorage, default is Undefined, optional
         storage
     storageDataPath : str, default is Undefined, optional
-        StorageDataPath disables spec.storage option and overrides arg for victoria-metrics binary --storageDataPath,
-        its users responsibility to mount proper device into given path.
+        storage data path
     storageMetadata : OperatorVictoriametricsComV1beta1VMSingleSpecStorageMetadata, default is Undefined, optional
         storage metadata
     streamAggrConfig : OperatorVictoriametricsComV1beta1VMSingleSpecStreamAggrConfig, default is Undefined, optional
         stream aggr config
     terminationGracePeriodSeconds : int, default is Undefined, optional
-        TerminationGracePeriodSeconds period for container graceful termination
+        termination grace period seconds
     tolerations : [OperatorVictoriametricsComV1beta1VMSingleSpecTolerationsItems0], default is Undefined, optional
-        Tolerations If specified, the pod's tolerations.
+        tolerations
     topologySpreadConstraints : [any], default is Undefined, optional
-        TopologySpreadConstraints embedded kubernetes pod configuration option,
-        controls how pods are spread across your cluster among failure-domains
-        such as regions, zones, nodes, and other user-defined topology domains
-        https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
+        topology spread constraints
+    useDefaultResources : bool, default is Undefined, optional
+        use default resources
     useStrictSecurity : bool, default is Undefined, optional
-        UseStrictSecurity enables strict security mode for component
-        it restricts disk writes access
-        uses non-root user out of the box
-        drops not needed security permissions
+        use strict security
     vmBackup : OperatorVictoriametricsComV1beta1VMSingleSpecVMBackup, default is Undefined, optional
         vm backup
     volumeMounts : [OperatorVictoriametricsComV1beta1VMSingleSpecVolumeMountsItems0], default is Undefined, optional
-        VolumeMounts allows configuration of additional VolumeMounts on the output Deployment definition.
-        VolumeMounts specified will be appended to other VolumeMounts in the VMSingle container,
-        that are generated as a result of StorageSpec objects.
+        volume mounts
     volumes : [any], default is Undefined, optional
-        Volumes allows configuration of additional volumes on the output deploy definition.
-        Volumes specified will be appended to other volumes that are generated as a result of
-        StorageSpec objects.
+        volumes
     """
 
 
@@ -186,6 +162,10 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpec:
 
     containers?: [any]
 
+    disableAutomountServiceAccountToken?: bool
+
+    disableSelfServiceScrape?: bool
+
     dnsConfig?: OperatorVictoriametricsComV1beta1VMSingleSpecDNSConfig
 
     dnsPolicy?: str
@@ -194,9 +174,13 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpec:
 
     extraEnvs?: [OperatorVictoriametricsComV1beta1VMSingleSpecExtraEnvsItems0]
 
+    extraEnvsFrom?: [OperatorVictoriametricsComV1beta1VMSingleSpecExtraEnvsFromItems0]
+
     hostAliases?: [OperatorVictoriametricsComV1beta1VMSingleSpecHostAliasesItems0]
 
     hostNetwork?: bool
+
+    host_aliases?: [OperatorVictoriametricsComV1beta1VMSingleSpecHostAliasesItems0]
 
     image?: OperatorVictoriametricsComV1beta1VMSingleSpecImage
 
@@ -213,6 +197,10 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpec:
     logFormat?: "default" | "json"
 
     logLevel?: "INFO" | "WARN" | "ERROR" | "FATAL" | "PANIC"
+
+    managedMetadata?: OperatorVictoriametricsComV1beta1VMSingleSpecManagedMetadata
+
+    minReadySeconds?: int
 
     nodeSelector?: {str:str}
 
@@ -234,7 +222,7 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpec:
 
     resources?: OperatorVictoriametricsComV1beta1VMSingleSpecResources
 
-    retentionPeriod: str
+    retentionPeriod?: str
 
     revisionHistoryLimitCount?: int
 
@@ -268,6 +256,8 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpec:
 
     topologySpreadConstraints?: [any]
 
+    useDefaultResources?: bool
+
     useStrictSecurity?: bool
 
     vmBackup?: OperatorVictoriametricsComV1beta1VMSingleSpecVMBackup
@@ -277,27 +267,22 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpec:
     volumes?: [any]
 
 
+    check:
+        _regex_match(str(retentionPeriod), r"^[0-9]+(h|d|w|y)?$") if retentionPeriod
+
+
 schema OperatorVictoriametricsComV1beta1VMSingleSpecDNSConfig:
-    """
-    Specifies the DNS parameters of a pod.
-    Parameters specified here will be merged to the generated DNS
-    configuration based on DNSPolicy.
+    r"""
+    operator victoriametrics com v1beta1 VM single spec DNS config
 
     Attributes
     ----------
     nameservers : [str], default is Undefined, optional
-        A list of DNS name server IP addresses.
-        This will be appended to the base nameservers generated from DNSPolicy.
-        Duplicated nameservers will be removed.
+        nameservers
     options : [OperatorVictoriametricsComV1beta1VMSingleSpecDNSConfigOptionsItems0], default is Undefined, optional
-        A list of DNS resolver options.
-        This will be merged with the base options generated from DNSPolicy.
-        Duplicated entries will be removed. Resolution options given in Options
-        will override those that appear in the base DNSPolicy.
+        options
     searches : [str], default is Undefined, optional
-        A list of DNS search domains for host-name lookup.
-        This will be appended to the base search paths generated from DNSPolicy.
-        Duplicated search paths will be removed.
+        searches
     """
 
 
@@ -309,13 +294,13 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecDNSConfig:
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecDNSConfigOptionsItems0:
-    """
-    PodDNSConfigOption defines DNS resolver options of a pod.
+    r"""
+    operator victoriametrics com v1beta1 VM single spec DNS config options items0
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Required.
+        name
     value : str, default is Undefined, optional
         value
     """
@@ -326,24 +311,74 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecDNSConfigOptionsItems0:
     value?: str
 
 
-schema OperatorVictoriametricsComV1beta1VMSingleSpecExtraEnvsItems0:
+schema OperatorVictoriametricsComV1beta1VMSingleSpecExtraEnvsFromItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM single spec extra envs from items0
+
+    Attributes
+    ----------
+    configMapRef : OperatorVictoriametricsComV1beta1VMSingleSpecExtraEnvsFromItems0ConfigMapRef, default is Undefined, optional
+        config map ref
+    prefix : str, default is Undefined, optional
+        prefix
+    secretRef : OperatorVictoriametricsComV1beta1VMSingleSpecExtraEnvsFromItems0SecretRef, default is Undefined, optional
+        secret ref
     """
-    EnvVar represents an environment variable present in a Container.
+
+
+    configMapRef?: OperatorVictoriametricsComV1beta1VMSingleSpecExtraEnvsFromItems0ConfigMapRef
+
+    prefix?: str
+
+    secretRef?: OperatorVictoriametricsComV1beta1VMSingleSpecExtraEnvsFromItems0SecretRef
+
+
+schema OperatorVictoriametricsComV1beta1VMSingleSpecExtraEnvsFromItems0ConfigMapRef:
+    r"""
+    operator victoriametrics com v1beta1 VM single spec extra envs from items0 config map ref
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMSingleSpecExtraEnvsFromItems0SecretRef:
+    r"""
+    operator victoriametrics com v1beta1 VM single spec extra envs from items0 secret ref
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMSingleSpecExtraEnvsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM single spec extra envs items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of the environment variable. Must be a C_IDENTIFIER.
+        name
     value : str, default is Undefined, optional
-        Variable references $(VAR_NAME) are expanded
-        using the previously defined environment variables in the container and
-        any service environment variables. If a variable cannot be resolved,
-        the reference in the input string will be unchanged. Double $$ are reduced
-        to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e.
-        "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
-        Escaped references will never be expanded, regardless of whether the variable
-        exists or not.
-        Defaults to "".
+        value
     """
 
 
@@ -353,37 +388,35 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecExtraEnvsItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecHostAliasesItems0:
-    """
-    HostAlias holds the mapping between IP and hostnames that will be injected as an entry in the
-    pod's hosts file.
+    r"""
+    operator victoriametrics com v1beta1 VM single spec host aliases items0
 
     Attributes
     ----------
     hostnames : [str], default is Undefined, optional
-        Hostnames for the above IP address.
-    ip : str, default is Undefined, optional
-        IP address of the host file entry.
+        hostnames
+    ip : str, default is Undefined, required
+        ip
     """
 
 
     hostnames?: [str]
 
-    ip?: str
+    ip: str
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecImage:
-    """
-    Image - docker image settings for VMSingle
-    if no specified operator uses default config version
+    r"""
+    operator victoriametrics com v1beta1 VM single spec image
 
     Attributes
     ----------
     pullPolicy : str, default is Undefined, optional
-        PullPolicy describes how to pull docker image
+        pull policy
     repository : str, default is Undefined, optional
-        Repository contains name of docker image + it's repository if needed
+        repository
     tag : str, default is Undefined, optional
-        Tag contains desired docker image version
+        tag
     """
 
 
@@ -395,36 +428,33 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecImage:
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecImagePullSecretsItems0:
-    """
-    LocalObjectReference contains enough information to let you locate the
-    referenced object inside the same namespace.
+    r"""
+    operator victoriametrics com v1beta1 VM single spec image pull secrets items0
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecInsertPorts:
-    """
-    InsertPorts - additional listen ports for data ingestion.
+    r"""
+    operator victoriametrics com v1beta1 VM single spec insert ports
 
     Attributes
     ----------
     graphitePort : str, default is Undefined, optional
-        GraphitePort listen port
+        graphite port
     influxPort : str, default is Undefined, optional
-        InfluxPort listen port
+        influx port
     openTSDBHTTPPort : str, default is Undefined, optional
-        OpenTSDBHTTPPort for http connections.
+        open t s d b HTTP port
     openTSDBPort : str, default is Undefined, optional
-        OpenTSDBPort for tcp and udp listen
+        open t s d b port
     """
 
 
@@ -438,75 +468,83 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecInsertPorts:
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecLicense:
-    """
-    License allows to configure license key to be used for enterprise features.
-    Using license key is supported starting from VictoriaMetrics v1.94.0.
-    See: https://docs.victoriametrics.com/enterprise.html
+    r"""
+    operator victoriametrics com v1beta1 VM single spec license
 
     Attributes
     ----------
+    forceOffline : bool, default is Undefined, optional
+        force offline
     key : str, default is Undefined, optional
-        Enterprise license key. This flag is available only in VictoriaMetrics enterprise.
-        Documentation - https://docs.victoriametrics.com/enterprise.html
-        for more information, visit https://victoriametrics.com/products/enterprise/ .
-        To request a trial license, go to https://victoriametrics.com/products/enterprise/trial/
+        key
     keyRef : OperatorVictoriametricsComV1beta1VMSingleSpecLicenseKeyRef, default is Undefined, optional
         key ref
+    reloadInterval : str, default is Undefined, optional
+        reload interval
     """
 
+
+    forceOffline?: bool
 
     key?: str
 
     keyRef?: OperatorVictoriametricsComV1beta1VMSingleSpecLicenseKeyRef
 
+    reloadInterval?: str
+
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecLicenseKeyRef:
-    """
-    KeyRef is reference to secret with license key for enterprise features.
+    r"""
+    operator victoriametrics com v1beta1 VM single spec license key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
-schema OperatorVictoriametricsComV1beta1VMSingleSpecPodMetadata:
-    """
-    PodMetadata configures Labels and Annotations which are propagated to the VMSingle pods.
+schema OperatorVictoriametricsComV1beta1VMSingleSpecManagedMetadata:
+    r"""
+    operator victoriametrics com v1beta1 VM single spec managed metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
-        set by external tools to store and retrieve arbitrary metadata. They are not
-        queryable and should be preserved when modifying objects.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels Map of string keys and values that can be used to organize and categorize
-        (scope and select) objects. May match selectors of replication controllers
-        and services.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+        labels
+    """
+
+
+    annotations?: {str:str}
+
+    labels?: {str:str}
+
+
+schema OperatorVictoriametricsComV1beta1VMSingleSpecPodMetadata:
+    r"""
+    operator victoriametrics com v1beta1 VM single spec pod metadata
+
+    Attributes
+    ----------
+    annotations : {str:str}, default is Undefined, optional
+        annotations
+    labels : {str:str}, default is Undefined, optional
+        labels
     name : str, default is Undefined, optional
-        Name must be unique within a namespace. Is required when creating resources, although
-        some resources may allow a client to request the generation of an appropriate name
-        automatically. Name is primarily intended for creation idempotence and configuration
-        definition.
-        Cannot be updated.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names
+        name
     """
 
 
@@ -518,13 +556,13 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecPodMetadata:
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecReadinessGatesItems0:
-    """
-    PodReadinessGate contains the reference to a pod condition
+    r"""
+    operator victoriametrics com v1beta1 VM single spec readiness gates items0
 
     Attributes
     ----------
     conditionType : str, default is Undefined, required
-        ConditionType refers to a condition in the pod's condition list with matching type.
+        condition type
     """
 
 
@@ -532,30 +570,17 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecReadinessGatesItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecResources:
-    """
-    Resources container resource request and limits, https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
-    if not defined default resources from operator config will be used
+    r"""
+    operator victoriametrics com v1beta1 VM single spec resources
 
     Attributes
     ----------
     claims : [OperatorVictoriametricsComV1beta1VMSingleSpecResourcesClaimsItems0], default is Undefined, optional
-        Claims lists the names of resources, defined in spec.resourceClaims,
-        that are used by this container.
-
-
-        This is an alpha field and requires enabling the
-        DynamicResourceAllocation feature gate.
-
-
-        This field is immutable. It can only be set for containers.
+        claims
     limits : {str:int | str}, default is Undefined, optional
-        Limits describes the maximum amount of compute resources allowed.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        limits
     requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum amount of compute resources required.
-        If Requests is omitted for a container, it defaults to Limits if that is explicitly specified,
-        otherwise to an implementation-defined value. Requests cannot exceed Limits.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        requests
     """
 
 
@@ -567,40 +592,40 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecResources:
 
 
     check:
-        all _, limits in limits {regex.match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex.match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecResourcesClaimsItems0:
-    """
-    ResourceClaim references one entry in PodSpec.ResourceClaims.
+    r"""
+    operator victoriametrics com v1beta1 VM single spec resources claims items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name must match the name of one entry in pod.spec.resourceClaims of
-        the Pod where this field is used. It makes that resource available
-        inside a container.
+        name
+    request : str, default is Undefined, optional
+        request
     """
 
 
     name: str
 
+    request?: str
+
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecServiceSpec:
-    """
-    ServiceSpec that will be added to vmsingle service spec
+    r"""
+    operator victoriametrics com v1beta1 VM single spec service spec
 
     Attributes
     ----------
     metadata : OperatorVictoriametricsComV1beta1VMSingleSpecServiceSpecMetadata, default is Undefined, optional
         metadata
     spec : any, default is Undefined, required
-        ServiceSpec describes the attributes that a user creates on a service.
-        More info: https://kubernetes.io/docs/concepts/services-networking/service/
+        spec
     useAsDefault : bool, default is Undefined, optional
-        UseAsDefault applies changes from given service definition to the main object Service
-        Changing from headless service to clusterIP or loadbalancer may break cross-component communication
+        use as default
     """
 
 
@@ -612,28 +637,17 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecServiceSpec:
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecServiceSpecMetadata:
-    """
-    EmbeddedObjectMetadata defines objectMeta for additional service.
+    r"""
+    operator victoriametrics com v1beta1 VM single spec service spec metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
-        set by external tools to store and retrieve arbitrary metadata. They are not
-        queryable and should be preserved when modifying objects.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels Map of string keys and values that can be used to organize and categorize
-        (scope and select) objects. May match selectors of replication controllers
-        and services.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+        labels
     name : str, default is Undefined, optional
-        Name must be unique within a namespace. Is required when creating resources, although
-        some resources may allow a client to request the generation of an appropriate name
-        automatically. Name is primarily intended for creation idempotence and configuration
-        definition.
-        Cannot be updated.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names
+        name
     """
 
 
@@ -645,15 +659,13 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecServiceSpecMetadata:
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecStorage:
-    """
-    Storage is the definition of how storage will be used by the VMSingle
-    by default it`s empty dir
+    r"""
+    operator victoriametrics com v1beta1 VM single spec storage
 
     Attributes
     ----------
     accessModes : [str], default is Undefined, optional
-        accessModes contains the desired access modes the volume should have.
-        More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
+        access modes
     dataSource : OperatorVictoriametricsComV1beta1VMSingleSpecStorageDataSource, default is Undefined, optional
         data source
     dataSourceRef : OperatorVictoriametricsComV1beta1VMSingleSpecStorageDataSourceRef, default is Undefined, optional
@@ -663,13 +675,13 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecStorage:
     selector : OperatorVictoriametricsComV1beta1VMSingleSpecStorageSelector, default is Undefined, optional
         selector
     storageClassName : str, default is Undefined, optional
-        storageClassName is the name of the StorageClass required by the claim.
-        More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1
+        storage class name
+    volumeAttributesClassName : str, default is Undefined, optional
+        volume attributes class name
     volumeMode : str, default is Undefined, optional
-        volumeMode defines what type of volume is required by the claim.
-        Value of Filesystem is implied when not included in claim spec.
+        volume mode
     volumeName : str, default is Undefined, optional
-        volumeName is the binding reference to the PersistentVolume backing this claim.
+        volume name
     """
 
 
@@ -685,32 +697,25 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecStorage:
 
     storageClassName?: str
 
+    volumeAttributesClassName?: str
+
     volumeMode?: str
 
     volumeName?: str
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecStorageDataSource:
-    """
-    dataSource field can be used to specify either:
-    * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot)
-    * An existing PVC (PersistentVolumeClaim)
-    If the provisioner or an external controller can support the specified data source,
-    it will create a new volume based on the contents of the specified data source.
-    When the AnyVolumeDataSource feature gate is enabled, dataSource contents will be copied to dataSourceRef,
-    and dataSourceRef contents will be copied to dataSource when dataSourceRef.namespace is not specified.
-    If the namespace is specified, then dataSourceRef will not be copied to dataSource.
+    r"""
+    operator victoriametrics com v1beta1 VM single spec storage data source
 
     Attributes
     ----------
     apiGroup : str, default is Undefined, optional
-        APIGroup is the group for the resource being referenced.
-        If APIGroup is not specified, the specified Kind must be in the core API group.
-        For any other third-party types, APIGroup is required.
+        api group
     kind : str, default is Undefined, required
-        Kind is the type of resource being referenced
+        kind
     name : str, default is Undefined, required
-        Name is the name of resource being referenced
+        name
     """
 
 
@@ -722,45 +727,19 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecStorageDataSource:
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecStorageDataSourceRef:
-    """
-    dataSourceRef specifies the object from which to populate the volume with data, if a non-empty
-    volume is desired. This may be any object from a non-empty API group (non
-    core object) or a PersistentVolumeClaim object.
-    When this field is specified, volume binding will only succeed if the type of
-    the specified object matches some installed volume populator or dynamic
-    provisioner.
-    This field will replace the functionality of the dataSource field and as such
-    if both fields are non-empty, they must have the same value. For backwards
-    compatibility, when namespace isn't specified in dataSourceRef,
-    both fields (dataSource and dataSourceRef) will be set to the same
-    value automatically if one of them is empty and the other is non-empty.
-    When namespace is specified in dataSourceRef,
-    dataSource isn't set to the same value and must be empty.
-    There are three important differences between dataSource and dataSourceRef:
-    * While dataSource only allows two specific types of objects, dataSourceRef
-      allows any non-core object, as well as PersistentVolumeClaim objects.
-    * While dataSource ignores disallowed values (dropping them), dataSourceRef
-      preserves all values, and generates an error if a disallowed value is
-      specified.
-    * While dataSource only allows local objects, dataSourceRef allows objects
-      in any namespaces.
-    (Beta) Using this field requires the AnyVolumeDataSource feature gate to be enabled.
-    (Alpha) Using the namespace field of dataSourceRef requires the CrossNamespaceVolumeDataSource feature gate to be enabled.
+    r"""
+    operator victoriametrics com v1beta1 VM single spec storage data source ref
 
     Attributes
     ----------
     apiGroup : str, default is Undefined, optional
-        APIGroup is the group for the resource being referenced.
-        If APIGroup is not specified, the specified Kind must be in the core API group.
-        For any other third-party types, APIGroup is required.
+        api group
     kind : str, default is Undefined, required
-        Kind is the type of resource being referenced
+        kind
     name : str, default is Undefined, required
-        Name is the name of resource being referenced
+        name
     namespace : str, default is Undefined, optional
-        Namespace is the namespace of resource being referenced
-        Note that when a namespace is specified, a gateway.networking.k8s.io/ReferenceGrant object is required in the referent namespace to allow that namespace's owner to accept the reference. See the ReferenceGrant documentation for details.
-        (Alpha) This field requires the CrossNamespaceVolumeDataSource feature gate to be enabled.
+        namespace
     """
 
 
@@ -774,28 +753,17 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecStorageDataSourceRef:
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecStorageMetadata:
-    """
-    StorageMeta defines annotations and labels attached to PVC for given vmsingle CR
+    r"""
+    operator victoriametrics com v1beta1 VM single spec storage metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
-        set by external tools to store and retrieve arbitrary metadata. They are not
-        queryable and should be preserved when modifying objects.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels Map of string keys and values that can be used to organize and categorize
-        (scope and select) objects. May match selectors of replication controllers
-        and services.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+        labels
     name : str, default is Undefined, optional
-        Name must be unique within a namespace. Is required when creating resources, although
-        some resources may allow a client to request the generation of an appropriate name
-        automatically. Name is primarily intended for creation idempotence and configuration
-        definition.
-        Cannot be updated.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names
+        name
     """
 
 
@@ -807,37 +775,17 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecStorageMetadata:
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecStorageResources:
-    """
-    resources represents the minimum resources the volume should have.
-    If RecoverVolumeExpansionFailure feature is enabled users are allowed to specify resource requirements
-    that are lower than previous value but must still be higher than capacity recorded in the
-    status field of the claim.
-    More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+    r"""
+    operator victoriametrics com v1beta1 VM single spec storage resources
 
     Attributes
     ----------
-    claims : [OperatorVictoriametricsComV1beta1VMSingleSpecStorageResourcesClaimsItems0], default is Undefined, optional
-        Claims lists the names of resources, defined in spec.resourceClaims,
-        that are used by this container.
-
-
-        This is an alpha field and requires enabling the
-        DynamicResourceAllocation feature gate.
-
-
-        This field is immutable. It can only be set for containers.
     limits : {str:int | str}, default is Undefined, optional
-        Limits describes the maximum amount of compute resources allowed.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        limits
     requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum amount of compute resources required.
-        If Requests is omitted for a container, it defaults to Limits if that is explicitly specified,
-        otherwise to an implementation-defined value. Requests cannot exceed Limits.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        requests
     """
 
-
-    claims?: [OperatorVictoriametricsComV1beta1VMSingleSpecStorageResourcesClaimsItems0]
 
     limits?: {str:int | str}
 
@@ -845,38 +793,20 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecStorageResources:
 
 
     check:
-        all _, limits in limits {regex.match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex.match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
-
-
-schema OperatorVictoriametricsComV1beta1VMSingleSpecStorageResourcesClaimsItems0:
-    """
-    ResourceClaim references one entry in PodSpec.ResourceClaims.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        Name must match the name of one entry in pod.spec.resourceClaims of
-        the Pod where this field is used. It makes that resource available
-        inside a container.
-    """
-
-
-    name: str
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecStorageSelector:
-    """
-    selector is a label query over volumes to consider for binding.
+    r"""
+    operator victoriametrics com v1beta1 VM single spec storage selector
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMSingleSpecStorageSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
+        match labels
     """
 
 
@@ -886,22 +816,17 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecStorageSelector:
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecStorageSelectorMatchExpressionsItems0:
-    """
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
+    r"""
+    operator victoriametrics com v1beta1 VM single spec storage selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
+        values
     """
 
 
@@ -913,116 +838,117 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecStorageSelectorMatchExpressi
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecStreamAggrConfig:
-    """
-    StreamAggrConfig defines stream aggregation configuration for VMSingle
+    r"""
+    operator victoriametrics com v1beta1 VM single spec stream aggr config
 
     Attributes
     ----------
+    configmap : OperatorVictoriametricsComV1beta1VMSingleSpecStreamAggrConfigConfigmap, default is Undefined, optional
+        configmap
     dedupInterval : str, default is Undefined, optional
-        Allows setting different de-duplication intervals per each configured remote storage
+        dedup interval
     dropInput : bool, default is Undefined, optional
-        Allow drop all the input samples after the aggregation
+        drop input
+    dropInputLabels : [str], default is Undefined, optional
+        drop input labels
+    enableWindows : bool, default is Undefined, optional
+        enable windows
+    ignoreFirstIntervals : int, default is Undefined, optional
+        ignore first intervals
+    ignoreFirstSampleInterval : str, default is Undefined, optional
+        ignore first sample interval
+    ignoreOldSamples : bool, default is Undefined, optional
+        ignore old samples
     keepInput : bool, default is Undefined, optional
-        Allows writing both raw and aggregate data
-    rules : [OperatorVictoriametricsComV1beta1VMSingleSpecStreamAggrConfigRulesItems0], default is Undefined, required
-        Stream aggregation rules
+        keep input
+    rules : [OperatorVictoriametricsComV1beta1VMSingleSpecStreamAggrConfigRulesItems0], default is Undefined, optional
+        rules
     """
 
+
+    configmap?: OperatorVictoriametricsComV1beta1VMSingleSpecStreamAggrConfigConfigmap
 
     dedupInterval?: str
 
     dropInput?: bool
 
+    dropInputLabels?: [str]
+
+    enableWindows?: bool
+
+    ignoreFirstIntervals?: int
+
+    ignoreFirstSampleInterval?: str
+
+    ignoreOldSamples?: bool
+
     keepInput?: bool
 
-    rules: [OperatorVictoriametricsComV1beta1VMSingleSpecStreamAggrConfigRulesItems0]
+    rules?: [OperatorVictoriametricsComV1beta1VMSingleSpecStreamAggrConfigRulesItems0]
+
+
+schema OperatorVictoriametricsComV1beta1VMSingleSpecStreamAggrConfigConfigmap:
+    r"""
+    operator victoriametrics com v1beta1 VM single spec stream aggr config configmap
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecStreamAggrConfigRulesItems0:
-    """
-    StreamAggrRule defines the rule in stream aggregation config
+    r"""
+    operator victoriametrics com v1beta1 VM single spec stream aggr config rules items0
 
     Attributes
     ----------
     by : [str], default is Undefined, optional
-        By is an optional list of labels for grouping input series.
-
-
-        See also Without.
-
-
-        If neither By nor Without are set, then the Outputs are calculated
-        individually per each input time series.
+        by
     dedup_interval : str, default is Undefined, optional
-        DedupInterval is an optional interval for deduplication.
+        dedup interval
     drop_input_labels : [str], default is Undefined, optional
-        DropInputLabels is an optional list with labels, which must be dropped before further processing of input samples.
-
-
-        Labels are dropped before de-duplication and aggregation.
+        drop input labels
+    enable_windows : bool, default is Undefined, optional
+        enable windows
     flush_on_shutdown : bool, default is Undefined, optional
-        FlushOnShutdown defines whether to flush the aggregation state on process termination
-        or config reload. Is `false` by default.
-        It is not recommended changing this setting, unless unfinished aggregations states
-        are preferred to missing data points.
+        flush on shutdown
+    ignoreFirstSampleInterval : str, default is Undefined, optional
+        ignore first sample interval
+    ignore_first_intervals : int, default is Undefined, optional
+        ignore first intervals
     ignore_old_samples : bool, default is Undefined, optional
-        IgnoreOldSamples instructs to ignore samples with old timestamps outside the current aggregation interval.
+        ignore old samples
     input_relabel_configs : [OperatorVictoriametricsComV1beta1VMSingleSpecStreamAggrConfigRulesItems0InputRelabelConfigsItems0], default is Undefined, optional
-        InputRelabelConfigs is an optional relabeling rules, which are applied on the input
-        before aggregation.
+        input relabel configs
     interval : str, default is Undefined, required
-        Interval is the interval between aggregations.
+        interval
     keep_metric_names : bool, default is Undefined, optional
-        KeepMetricNames instructs to leave metric names as is for the output time series without adding any suffix.
+        keep metric names
     match : any, default is Undefined, optional
-        Match is a label selector (or list of label selectors) for filtering time series for the given selector.
-
-
-        If the match isn't set, then all the input time series are processed.
+        match
     no_align_flush_to_interval : bool, default is Undefined, optional
-        NoAlignFlushToInterval disables aligning of flushes to multiples of Interval.
-        By default flushes are aligned to Interval.
+        no align flush to interval
     output_relabel_configs : [OperatorVictoriametricsComV1beta1VMSingleSpecStreamAggrConfigRulesItems0OutputRelabelConfigsItems0], default is Undefined, optional
-        OutputRelabelConfigs is an optional relabeling rules, which are applied
-        on the aggregated output before being sent to remote storage.
+        output relabel configs
     outputs : [str], default is Undefined, required
-        Outputs is a list of output aggregate functions to produce.
-
-
-        The following names are allowed:
-
-
-        - total - aggregates input counters
-        - increase - counts the increase over input counters
-        - count_series - counts the input series
-        - count_samples - counts the input samples
-        - sum_samples - sums the input samples
-        - last - the last biggest sample value
-        - min - the minimum sample value
-        - max - the maximum sample value
-        - avg - the average value across all the samples
-        - stddev - standard deviation across all the samples
-        - stdvar - standard variance across all the samples
-        - histogram_bucket - creates VictoriaMetrics histogram for input samples
-        - quantiles(phi1, ..., phiN) - quantiles' estimation for phi in the range [0..1]
-
-
-        The output time series will have the following names:
-
-
-          input_name:aggr_<interval>_<output>
+        outputs
     staleness_interval : str, default is Undefined, optional
-        Staleness interval is interval after which the series state will be reset if no samples have been sent during it.
-        The parameter is only relevant for outputs: total, total_prometheus, increase, increase_prometheus and histogram_bucket.
+        staleness interval
     without : [str], default is Undefined, optional
-        Without is an optional list of labels, which must be excluded when grouping input series.
-
-
-        See also By.
-
-
-        If neither By nor Without are set, then the Outputs are calculated
-        individually per each input time series.
+        without
     """
 
 
@@ -1032,7 +958,13 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecStreamAggrConfigRulesItems0:
 
     drop_input_labels?: [str]
 
+    enable_windows?: bool
+
     flush_on_shutdown?: bool
+
+    ignoreFirstSampleInterval?: str
+
+    ignore_first_intervals?: int
 
     ignore_old_samples?: bool
 
@@ -1056,49 +988,35 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecStreamAggrConfigRulesItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecStreamAggrConfigRulesItems0InputRelabelConfigsItems0:
-    """
-    RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion.
-    It defines `<metric_relabel_configs>`-section of configuration.
-    More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+    r"""
+    operator victoriametrics com v1beta1 VM single spec stream aggr config rules items0 input relabel configs items0
 
     Attributes
     ----------
     action : str, default is Undefined, optional
-        Action to perform based on regex matching. Default is 'replace'
+        action
     $if : any, default is Undefined, optional
-        If represents metricsQL match expression (or list of expressions): '{__name__=~"foo_.*"}'
+        if
     labels : {str:str}, default is Undefined, optional
-        Labels is used together with Match for `action: graphite`
+        labels
     match : str, default is Undefined, optional
-        Match is used together with Labels for `action: graphite`
+        match
     modulus : int, default is Undefined, optional
-        Modulus to take of the hash of the source label values.
+        modulus
     regex : any, default is Undefined, optional
-        Regular expression against which the extracted value is matched. Default is '(.*)'
-        victoriaMetrics supports multiline regex joined with |
-        https://docs.victoriametrics.com/vmagent/#relabeling-enhancements
+        regex
     replacement : str, default is Undefined, optional
-        Replacement value against which a regex replace is performed if the
-        regular expression matches. Regex capture groups are available. Default is '$1'
+        replacement
     separator : str, default is Undefined, optional
-        Separator placed between concatenated source label values. default is ';'.
+        separator
     sourceLabels : [str], default is Undefined, optional
-        The source labels select values from existing labels. Their content is concatenated
-        using the configured separator and matched against the configured regular expression
-        for the replace, keep, and drop actions.
+        source labels
     source_labels : [str], default is Undefined, optional
-        UnderScoreSourceLabels - additional form of source labels source_labels
-        for compatibility with original relabel config.
-        if set  both sourceLabels and source_labels, sourceLabels has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        source labels
     targetLabel : str, default is Undefined, optional
-        Label to which the resulting value is written in a replace action.
-        It is mandatory for replace actions. Regex capture groups are available.
+        target label
     target_label : str, default is Undefined, optional
-        UnderScoreTargetLabel - additional form of target label - target_label
-        for compatibility with original relabel config.
-        if set  both targetLabel and target_label, targetLabel has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        target label
     """
 
 
@@ -1128,49 +1046,35 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecStreamAggrConfigRulesItems0I
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecStreamAggrConfigRulesItems0OutputRelabelConfigsItems0:
-    """
-    RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion.
-    It defines `<metric_relabel_configs>`-section of configuration.
-    More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs
+    r"""
+    operator victoriametrics com v1beta1 VM single spec stream aggr config rules items0 output relabel configs items0
 
     Attributes
     ----------
     action : str, default is Undefined, optional
-        Action to perform based on regex matching. Default is 'replace'
+        action
     $if : any, default is Undefined, optional
-        If represents metricsQL match expression (or list of expressions): '{__name__=~"foo_.*"}'
+        if
     labels : {str:str}, default is Undefined, optional
-        Labels is used together with Match for `action: graphite`
+        labels
     match : str, default is Undefined, optional
-        Match is used together with Labels for `action: graphite`
+        match
     modulus : int, default is Undefined, optional
-        Modulus to take of the hash of the source label values.
+        modulus
     regex : any, default is Undefined, optional
-        Regular expression against which the extracted value is matched. Default is '(.*)'
-        victoriaMetrics supports multiline regex joined with |
-        https://docs.victoriametrics.com/vmagent/#relabeling-enhancements
+        regex
     replacement : str, default is Undefined, optional
-        Replacement value against which a regex replace is performed if the
-        regular expression matches. Regex capture groups are available. Default is '$1'
+        replacement
     separator : str, default is Undefined, optional
-        Separator placed between concatenated source label values. default is ';'.
+        separator
     sourceLabels : [str], default is Undefined, optional
-        The source labels select values from existing labels. Their content is concatenated
-        using the configured separator and matched against the configured regular expression
-        for the replace, keep, and drop actions.
+        source labels
     source_labels : [str], default is Undefined, optional
-        UnderScoreSourceLabels - additional form of source labels source_labels
-        for compatibility with original relabel config.
-        if set  both sourceLabels and source_labels, sourceLabels has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        source labels
     targetLabel : str, default is Undefined, optional
-        Label to which the resulting value is written in a replace action.
-        It is mandatory for replace actions. Regex capture groups are available.
+        target label
     target_label : str, default is Undefined, optional
-        UnderScoreTargetLabel - additional form of target label - target_label
-        for compatibility with original relabel config.
-        if set  both targetLabel and target_label, targetLabel has priority.
-        for details https://github.com/VictoriaMetrics/operator/issues/131
+        target label
     """
 
 
@@ -1200,31 +1104,21 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecStreamAggrConfigRulesItems0O
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecTolerationsItems0:
-    """
-    The pod this Toleration is attached to tolerates any taint that matches
-    the triple <key,value,effect> using the matching operator <operator>.
+    r"""
+    operator victoriametrics com v1beta1 VM single spec tolerations items0
 
     Attributes
     ----------
     effect : str, default is Undefined, optional
-        Effect indicates the taint effect to match. Empty means match all taint effects.
-        When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+        effect
     key : str, default is Undefined, optional
-        Key is the taint key that the toleration applies to. Empty means match all taint keys.
-        If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+        key
     operator : str, default is Undefined, optional
-        Operator represents a key's relationship to the value.
-        Valid operators are Exists and Equal. Defaults to Equal.
-        Exists is equivalent to wildcard for value, so that a pod can
-        tolerate all taints of a particular category.
+        operator
     tolerationSeconds : int, default is Undefined, optional
-        TolerationSeconds represents the period of time the toleration (which must be
-        of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default,
-        it is not set, which means tolerate the taint forever (do not evict). Zero and
-        negative values will be treated as 0 (evict immediately) by the system.
+        toleration seconds
     value : str, default is Undefined, optional
-        Value is the taint value the toleration matches to.
-        If the operator is Exists, the value should be empty, otherwise just a regular string.
+        value
     """
 
 
@@ -1240,60 +1134,55 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecTolerationsItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackup:
-    """
-    VMBackup configuration for backup
+    r"""
+    operator victoriametrics com v1beta1 VM single spec VM backup
 
     Attributes
     ----------
     acceptEULA : bool, default is Undefined, optional
-        AcceptEULA accepts enterprise feature usage, must be set to true.
-        otherwise backupmanager cannot be added to single/cluster version.
-        https://victoriametrics.com/legal/esa/
+        accept e u l a
     concurrency : int, default is Undefined, optional
-        Defines number of concurrent workers. Higher concurrency may reduce backup duration (default 10)
+        concurrency
     credentialsSecret : OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupCredentialsSecret, default is Undefined, optional
         credentials secret
     customS3Endpoint : str, default is Undefined, optional
-        Custom S3 endpoint for use with S3-compatible storages (e.g. MinIO). S3 is used if not set
+        custom s3 endpoint
     destination : str, default is Undefined, optional
-        Defines destination for backup
+        destination
     destinationDisableSuffixAdd : bool, default is Undefined, optional
-        DestinationDisableSuffixAdd - disables suffix adding for cluster version backups
-        each vmstorage backup must have unique backup folder
-        so operator adds POD_NAME as suffix for backup destination folder.
+        destination disable suffix add
     disableDaily : bool, default is Undefined, optional
-        Defines if daily backups disabled (default false)
+        disable daily
     disableHourly : bool, default is Undefined, optional
-        Defines if hourly backups disabled (default false)
+        disable hourly
     disableMonthly : bool, default is Undefined, optional
-        Defines if monthly backups disabled (default false)
+        disable monthly
     disableWeekly : bool, default is Undefined, optional
-        Defines if weekly backups disabled (default false)
+        disable weekly
     extraArgs : {str:str}, default is Undefined, optional
-        extra args like maxBytesPerSecond default 0
+        extra args
     extraEnvs : [OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0], default is Undefined, optional
         extra envs
+    extraEnvsFrom : [OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsFromItems0], default is Undefined, optional
+        extra envs from
     image : OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupImage, default is Undefined, optional
         image
     logFormat : str, default is Undefined, optional
-        LogFormat for VMBackup to be configured with.
-        default or json
+        log format
     logLevel : str, default is Undefined, optional
-        LogLevel for VMBackup to be configured with.
+        log level
     port : str, default is Undefined, optional
-        Port for health check connections
+        port
     resources : OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupResources, default is Undefined, optional
         resources
     restore : OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupRestore, default is Undefined, optional
         restore
     snapshotCreateURL : str, default is Undefined, optional
-        SnapshotCreateURL overwrites url for snapshot create
+        snapshot create URL
     snapshotDeleteURL : str, default is Undefined, optional
-        SnapShotDeleteURL overwrites url for snapshot delete
+        snapshot delete URL
     volumeMounts : [OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupVolumeMountsItems0], default is Undefined, optional
-        VolumeMounts allows configuration of additional VolumeMounts on the output Deployment definition.
-        VolumeMounts specified will be appended to other VolumeMounts in the vmbackupmanager container,
-        that are generated as a result of StorageSpec objects.
+        volume mounts
     """
 
 
@@ -1321,6 +1210,8 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackup:
 
     extraEnvs?: [OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0]
 
+    extraEnvsFrom?: [OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsFromItems0]
+
     image?: OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupImage
 
     logFormat?: "default" | "json"
@@ -1341,48 +1232,95 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackup:
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupCredentialsSecret:
-    """
-    CredentialsSecret is secret in the same namespace for access to remote storage
-    The secret is mounted into /etc/vm/creds.
+    r"""
+    operator victoriametrics com v1beta1 VM single spec VM backup credentials secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsFromItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM single spec VM backup extra envs from items0
+
+    Attributes
+    ----------
+    configMapRef : OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsFromItems0ConfigMapRef, default is Undefined, optional
+        config map ref
+    prefix : str, default is Undefined, optional
+        prefix
+    secretRef : OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsFromItems0SecretRef, default is Undefined, optional
+        secret ref
+    """
+
+
+    configMapRef?: OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsFromItems0ConfigMapRef
+
+    prefix?: str
+
+    secretRef?: OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsFromItems0SecretRef
+
+
+schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsFromItems0ConfigMapRef:
+    r"""
+    operator victoriametrics com v1beta1 VM single spec VM backup extra envs from items0 config map ref
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsFromItems0SecretRef:
+    r"""
+    operator victoriametrics com v1beta1 VM single spec VM backup extra envs from items0 secret ref
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0:
-    """
-    EnvVar represents an environment variable present in a Container.
+    r"""
+    operator victoriametrics com v1beta1 VM single spec VM backup extra envs items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of the environment variable. Must be a C_IDENTIFIER.
+        name
     value : str, default is Undefined, optional
-        Variable references $(VAR_NAME) are expanded
-        using the previously defined environment variables in the container and
-        any service environment variables. If a variable cannot be resolved,
-        the reference in the input string will be unchanged. Double $$ are reduced
-        to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e.
-        "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
-        Escaped references will never be expanded, regardless of whether the variable
-        exists or not.
-        Defaults to "".
+        value
     valueFrom : OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -1396,8 +1334,8 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0ValueFrom:
-    """
-    Source for the environment variable's value. Cannot be used if value is not empty.
+    r"""
+    operator victoriametrics com v1beta1 VM single spec VM backup extra envs items0 value from
 
     Attributes
     ----------
@@ -1405,6 +1343,8 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0Value
         config map key ref
     fieldRef : OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0ValueFromFieldRef, default is Undefined, optional
         field ref
+    fileKeyRef : OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0ValueFromFileKeyRef, default is Undefined, optional
+        file key ref
     resourceFieldRef : OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0ValueFromResourceFieldRef, default is Undefined, optional
         resource field ref
     secretKeyRef : OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0ValueFromSecretKeyRef, default is Undefined, optional
@@ -1416,46 +1356,45 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0Value
 
     fieldRef?: OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0ValueFromFieldRef
 
+    fileKeyRef?: OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0ValueFromFileKeyRef
+
     resourceFieldRef?: OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0ValueFromResourceFieldRef
 
     secretKeyRef?: OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0ValueFromSecretKeyRef
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0ValueFromConfigMapKeyRef:
-    """
-    Selects a key of a ConfigMap.
+    r"""
+    operator victoriametrics com v1beta1 VM single spec VM backup extra envs items0 value from config map key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key to select.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0ValueFromFieldRef:
-    """
-    Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`,
-    spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
+    r"""
+    operator victoriametrics com v1beta1 VM single spec VM backup extra envs items0 value from field ref
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        Version of the schema the FieldPath is written in terms of, defaults to "v1".
+        api version
     fieldPath : str, default is Undefined, required
-        Path of the field to select in the specified API version.
+        field path
     """
 
 
@@ -1464,19 +1403,44 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0Value
     fieldPath: str
 
 
-schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0ValueFromResourceFieldRef:
+schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0ValueFromFileKeyRef:
+    r"""
+    operator victoriametrics com v1beta1 VM single spec VM backup extra envs items0 value from file key ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    optional : bool, default is Undefined, optional
+        optional
+    path : str, default is Undefined, required
+        path
+    volumeName : str, default is Undefined, required
+        volume name
     """
-    Selects a resource of the container: only resources limits and requests
-    (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+
+
+    key: str
+
+    optional?: bool = False
+
+    path: str
+
+    volumeName: str
+
+
+schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0ValueFromResourceFieldRef:
+    r"""
+    operator victoriametrics com v1beta1 VM single spec VM backup extra envs items0 value from resource field ref
 
     Attributes
     ----------
     containerName : str, default is Undefined, optional
-        Container name: required for volumes, optional for env vars
+        container name
     divisor : int | str, default is Undefined, optional
-        Specifies the output format of the exposed resources, defaults to "1"
+        divisor
     resource : str, default is Undefined, required
-        Required: resource to select
+        resource
     """
 
 
@@ -1488,45 +1452,43 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0Value
 
 
     check:
-        regex.match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
+        _regex_match(str(divisor), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if divisor
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupExtraEnvsItems0ValueFromSecretKeyRef:
-    """
-    Selects a key of a secret in the pod's namespace
+    r"""
+    operator victoriametrics com v1beta1 VM single spec VM backup extra envs items0 value from secret key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupImage:
-    """
-    Image - docker image settings for VMBackuper
+    r"""
+    operator victoriametrics com v1beta1 VM single spec VM backup image
 
     Attributes
     ----------
     pullPolicy : str, default is Undefined, optional
-        PullPolicy describes how to pull docker image
+        pull policy
     repository : str, default is Undefined, optional
-        Repository contains name of docker image + it's repository if needed
+        repository
     tag : str, default is Undefined, optional
-        Tag contains desired docker image version
+        tag
     """
 
 
@@ -1538,30 +1500,17 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupImage:
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupResources:
-    """
-    Resources container resource request and limits, https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
-    if not defined default resources from operator config will be used
+    r"""
+    operator victoriametrics com v1beta1 VM single spec VM backup resources
 
     Attributes
     ----------
     claims : [OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupResourcesClaimsItems0], default is Undefined, optional
-        Claims lists the names of resources, defined in spec.resourceClaims,
-        that are used by this container.
-
-
-        This is an alpha field and requires enabling the
-        DynamicResourceAllocation feature gate.
-
-
-        This field is immutable. It can only be set for containers.
+        claims
     limits : {str:int | str}, default is Undefined, optional
-        Limits describes the maximum amount of compute resources allowed.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        limits
     requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum amount of compute resources required.
-        If Requests is omitted for a container, it defaults to Limits if that is explicitly specified,
-        otherwise to an implementation-defined value. Requests cannot exceed Limits.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        requests
     """
 
 
@@ -1573,30 +1522,31 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupResources:
 
 
     check:
-        all _, limits in limits {regex.match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex.match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupResourcesClaimsItems0:
-    """
-    ResourceClaim references one entry in PodSpec.ResourceClaims.
+    r"""
+    operator victoriametrics com v1beta1 VM single spec VM backup resources claims items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name must match the name of one entry in pod.spec.resourceClaims of
-        the Pod where this field is used. It makes that resource available
-        inside a container.
+        name
+    request : str, default is Undefined, optional
+        request
     """
 
 
     name: str
 
+    request?: str
+
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupRestore:
-    """
-    Restore Allows to enable restore options for pod
-    Read more: https://docs.victoriametrics.com/vmbackupmanager.html#restore-commands
+    r"""
+    operator victoriametrics com v1beta1 VM single spec VM backup restore
 
     Attributes
     ----------
@@ -1609,13 +1559,13 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupRestore:
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupRestoreOnStart:
-    """
-    OnStart defines configuration for restore on pod start
+    r"""
+    operator victoriametrics com v1beta1 VM single spec VM backup restore on start
 
     Attributes
     ----------
     enabled : bool, default is Undefined, optional
-        Enabled defines if restore on start enabled
+        enabled
     """
 
 
@@ -1623,32 +1573,25 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupRestoreOnStart:
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupVolumeMountsItems0:
-    """
-    VolumeMount describes a mounting of a Volume within a container.
+    r"""
+    operator victoriametrics com v1beta1 VM single spec VM backup volume mounts items0
 
     Attributes
     ----------
     mountPath : str, default is Undefined, required
-        Path within the container at which the volume should be mounted.  Must
-        not contain ':'.
+        mount path
     mountPropagation : str, default is Undefined, optional
-        mountPropagation determines how mounts are propagated from the host
-        to container and the other way around.
-        When not set, MountPropagationNone is used.
-        This field is beta in 1.10.
+        mount propagation
     name : str, default is Undefined, required
-        This must match the Name of a Volume.
+        name
     readOnly : bool, default is Undefined, optional
-        Mounted read-only if true, read-write otherwise (false or unspecified).
-        Defaults to false.
+        read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
-        Path within the volume from which the container's volume should be mounted.
-        Defaults to "" (volume's root).
+        sub path
     subPathExpr : str, default is Undefined, optional
-        Expanded path within the volume from which the container's volume should be mounted.
-        Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment.
-        Defaults to "" (volume's root).
-        SubPathExpr and SubPath are mutually exclusive.
+        sub path expr
     """
 
 
@@ -1659,6 +1602,8 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupVolumeMountsItems0:
     name: str
 
     readOnly?: bool
+
+    recursiveReadOnly?: str
 
     subPath?: str
 
@@ -1666,32 +1611,25 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecVMBackupVolumeMountsItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleSpecVolumeMountsItems0:
-    """
-    VolumeMount describes a mounting of a Volume within a container.
+    r"""
+    operator victoriametrics com v1beta1 VM single spec volume mounts items0
 
     Attributes
     ----------
     mountPath : str, default is Undefined, required
-        Path within the container at which the volume should be mounted.  Must
-        not contain ':'.
+        mount path
     mountPropagation : str, default is Undefined, optional
-        mountPropagation determines how mounts are propagated from the host
-        to container and the other way around.
-        When not set, MountPropagationNone is used.
-        This field is beta in 1.10.
+        mount propagation
     name : str, default is Undefined, required
-        This must match the Name of a Volume.
+        name
     readOnly : bool, default is Undefined, optional
-        Mounted read-only if true, read-write otherwise (false or unspecified).
-        Defaults to false.
+        read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
-        Path within the volume from which the container's volume should be mounted.
-        Defaults to "" (volume's root).
+        sub path
     subPathExpr : str, default is Undefined, optional
-        Expanded path within the volume from which the container's volume should be mounted.
-        Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment.
-        Defaults to "" (volume's root).
-        SubPathExpr and SubPath are mutually exclusive.
+        sub path expr
     """
 
 
@@ -1703,42 +1641,82 @@ schema OperatorVictoriametricsComV1beta1VMSingleSpecVolumeMountsItems0:
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
 schema OperatorVictoriametricsComV1beta1VMSingleStatus:
-    """
-    VMSingleStatus defines the observed state of VMSingle
+    r"""
+    operator victoriametrics com v1beta1 VM single status
 
     Attributes
     ----------
-    availableReplicas : int, default is Undefined, required
-        AvailableReplicas Total number of available pods (ready for at least minReadySeconds) targeted by this VMSingle.
+    conditions : [OperatorVictoriametricsComV1beta1VMSingleStatusConditionsItems0], default is Undefined, optional
+        conditions
+    observedGeneration : int, default is Undefined, optional
+        observed generation
     reason : str, default is Undefined, optional
-        Reason defines a reason in case of update failure
-    replicas : int, default is Undefined, required
-        ReplicaCount Total number of non-terminated pods targeted by this VMSingle.
-    singleStatus : str, default is Undefined, optional
-        UpdateStatus defines a status of single node rollout
-    unavailableReplicas : int, default is Undefined, required
-        UnavailableReplicas Total number of unavailable pods targeted by this VMSingle.
-    updatedReplicas : int, default is Undefined, required
-        UpdatedReplicas Total number of non-terminated pods targeted by this VMSingle.
+        reason
+    updateStatus : str, default is Undefined, optional
+        update status
     """
 
 
-    availableReplicas: int
+    conditions?: [OperatorVictoriametricsComV1beta1VMSingleStatusConditionsItems0]
+
+    observedGeneration?: int
 
     reason?: str
 
-    replicas: int
+    updateStatus?: str
 
-    singleStatus?: str
 
-    unavailableReplicas: int
+schema OperatorVictoriametricsComV1beta1VMSingleStatusConditionsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM single status conditions items0
 
-    updatedReplicas: int
+    Attributes
+    ----------
+    lastTransitionTime : str, default is Undefined, required
+        last transition time
+    lastUpdateTime : str, default is Undefined, required
+        last update time
+    message : str, default is Undefined, optional
+        message
+    observedGeneration : int, default is Undefined, optional
+        observed generation
+    reason : str, default is Undefined, required
+        reason
+    status : str, default is Undefined, required
+        status
+    $type : str, default is Undefined, required
+        type
+    """
+
+
+    lastTransitionTime: str
+
+    lastUpdateTime: str
+
+    message?: str
+
+    observedGeneration?: int
+
+    reason: str
+
+    status: "True" | "False" | "Unknown"
+
+    $type: str
+
+
+    check:
+        len(message) <= 32768 if message
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
+        len(reason) <= 1024
+        len(reason) >= 1
+        len($type) <= 316
 
 

@@ -4,10 +4,11 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
 
 
 schema IAMPolicyMember:
-    """
+    r"""
     IAMPolicyMember is the Schema for the iampolicies API
 
     Attributes
@@ -37,7 +38,7 @@ schema IAMPolicyMember:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpec:
-    """
+    r"""
     IAMPolicyMemberSpec defines the desired state of IAMPolicyMember
 
     Attributes
@@ -67,11 +68,11 @@ schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpec:
 
 
     check:
-        regex.match(str(role), r"^((projects|organizations)/[^/]+/)?roles/[\w_\.]+$")
+        _regex_match(str(role), r"^((projects|organizations)/[^/]+/)?roles/[\w_\.]+$")
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecCondition:
-    """
+    r"""
     Immutable. Optional. The condition under which the binding applies.
 
     Attributes
@@ -93,11 +94,13 @@ schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecCondition:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecMemberFrom:
-    """
+    r"""
     Immutable. The IAM identity to be bound to the role. Exactly one of 'member' or 'memberFrom' must be used, and only one subfield within 'memberFrom' can be used.
 
     Attributes
     ----------
+    bigQueryConnectionConnectionRef : IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecMemberFromBigQueryConnectionConnectionRef, default is Undefined, optional
+        big query connection connection ref
     logSinkRef : IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecMemberFromLogSinkRef, default is Undefined, optional
         log sink ref
     serviceAccountRef : IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecMemberFromServiceAccountRef, default is Undefined, optional
@@ -109,6 +112,8 @@ schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecMemberFrom:
     """
 
 
+    bigQueryConnectionConnectionRef?: IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecMemberFromBigQueryConnectionConnectionRef
+
     logSinkRef?: IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecMemberFromLogSinkRef
 
     serviceAccountRef?: IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecMemberFromServiceAccountRef
@@ -118,8 +123,30 @@ schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecMemberFrom:
     sqlInstanceRef?: IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecMemberFromSQLInstanceRef
 
 
-schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecMemberFromLogSinkRef:
+schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecMemberFromBigQueryConnectionConnectionRef:
+    r"""
+    BigQueryConnectionConnection whose service account is to be bound to the role. Use the Type field to specify the connection type. For "spark" connetion, the service account is in `status.observedState.spark.serviceAccountID`. For "cloudSQL" connection, the service account is in `status.observedState.cloudSQL.serviceAccountID`. For "cloudResource" connection, the service account is in `status.observedState.cloudResource.serviceAccountID`.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    $type : str, default is Undefined, required
+        Type field specifies the connection type of the BigQueryConnectionConnection resource, whose service account is to be bound to the role.
     """
+
+
+    name: str
+
+    namespace?: str
+
+    $type: "spark" | "cloudSQL" | "cloudResource"
+
+
+schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecMemberFromLogSinkRef:
+    r"""
     The LoggingLogSink whose writer identity (i.e. its 'status.writerIdentity') is to be bound to the role.
 
     Attributes
@@ -137,7 +164,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecMemberFromLogSinkRef:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecMemberFromSQLInstanceRef:
-    """
+    r"""
     The SQLInstance whose service account (i.e. its 'status.serviceAccountEmailAddress') is to be bound to the role.
 
     Attributes
@@ -155,7 +182,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecMemberFromSQLInstanceRef:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecMemberFromServiceAccountRef:
-    """
+    r"""
     The IAMServiceAccount to be bound to the role.
 
     Attributes
@@ -173,7 +200,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecMemberFromServiceAccountRe
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecMemberFromServiceIdentityRef:
-    """
+    r"""
     The ServiceIdentity whose service account (i.e., its 'status.email') is to be bound to the role.
 
     Attributes
@@ -191,17 +218,17 @@ schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecMemberFromServiceIdentityR
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecResourceRef:
-    """
-    Immutable. Required. The GCP resource to set the IAM policy on.
+    r"""
+    Immutable. Required. The GCP resource to set the IAM policy on (e.g. organization, project...)
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        api version
+        APIVersion of the referenced resource
     external : str, default is Undefined, optional
-        external
+        The external name of the referenced resource
     kind : str, default is Undefined, required
-        kind
+        Kind of the referenced resource
     name : str, default is Undefined, optional
         name
     namespace : str, default is Undefined, optional
@@ -221,7 +248,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecResourceRef:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberStatus:
-    """
+    r"""
     IAMPolicyMemberStatus defines the observed state of IAMPolicyMember
 
     Attributes
@@ -239,7 +266,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberStatus:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberStatusConditionsItems0:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m policy member status conditions items0
 
     Attributes

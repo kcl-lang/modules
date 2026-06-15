@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema VertexAIMetadataStore:
-    """
-    vertexai cnrm cloud google com v1alpha1 vertex a i metadata store
+    r"""
+    VertexAIMetadataStore is the Schema for the VertexAIMetadataStore API
 
     Attributes
     ----------
@@ -36,62 +36,79 @@ schema VertexAIMetadataStore:
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreSpec:
-    """
-    vertexai cnrm cloud google com v1alpha1 vertex a i metadata store spec
+    r"""
+    VertexAIMetadataStoreSpec defines the desired state of VertexAIMetadataStore
 
     Attributes
     ----------
+    dataplexConfig : VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreSpecDataplexConfig, default is Undefined, optional
+        dataplex config
     description : str, default is Undefined, optional
-        Immutable. Description of the MetadataStore.
+        Description of the MetadataStore.
     encryptionSpec : VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreSpecEncryptionSpec, default is Undefined, optional
         encryption spec
-    projectRef : VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreSpecProjectRef, default is Undefined, required
+    projectRef : VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreSpecProjectRef, default is Undefined, optional
         project ref
-    region : str, default is Undefined, required
-        Immutable. The region of the Metadata Store. eg us-central1.
+    region : str, default is Undefined, optional
+        The region of the Metadata Store. eg us-central1.
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The VertexAIMetadataStore name. If not given, the metadata.name will be used.
     """
 
+
+    dataplexConfig?: VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreSpecDataplexConfig
 
     description?: str
 
     encryptionSpec?: VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreSpecEncryptionSpec
 
-    projectRef: VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreSpecProjectRef
+    projectRef?: VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreSpecProjectRef
 
-    region: str
+    region?: str
 
     resourceID?: str
 
 
-schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreSpecEncryptionSpec:
-    """
-    Immutable. Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
+schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreSpecDataplexConfig:
+    r"""
+    Optional. Dataplex integration settings.
 
     Attributes
     ----------
-    kmsKeyName : str, default is Undefined, optional
-        Immutable. Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
-        Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+    enabledPipelinesLineage : bool, default is Undefined, optional
+        Optional. Whether or not Data Lineage synchronization is enabled for Vertex Pipelines.
     """
 
 
-    kmsKeyName?: str
+    enabledPipelinesLineage?: bool
 
 
-schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreSpecProjectRef:
+schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreSpecEncryptionSpec:
+    r"""
+    Customer-managed encryption key spec for a Metadata Store. If set, this Metadata Store and all sub-resources of this Metadata Store are secured using this key.
+
+    Attributes
+    ----------
+    kmsKeyRef : VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreSpecEncryptionSpecKmsKeyRef, default is Undefined, required
+        kms key ref
     """
-    The project that this resource belongs to.
+
+
+    kmsKeyRef: VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreSpecEncryptionSpecKmsKeyRef
+
+
+schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreSpecEncryptionSpecKmsKeyRef:
+    r"""
+    Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. The key needs to be in the same region as where the compute resource is created.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` of a `KMSCryptoKey` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` of a `KMSCryptoKey` resource.
     """
 
 
@@ -102,38 +119,60 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreSpecProjectRef:
     namespace?: str
 
 
-schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreStatus:
+schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreSpecProjectRef:
+    r"""
+    The project that this resource belongs to.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
+    name : str, default is Undefined, optional
+        The `name` field of a `Project` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `Project` resource.
     """
-    vertexai cnrm cloud google com v1alpha1 vertex a i metadata store status
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreStatus:
+    r"""
+    VertexAIMetadataStoreStatus defines the config connector machine state of VertexAIMetadataStore
 
     Attributes
     ----------
     conditions : [VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
-    createTime : str, default is Undefined, optional
-        The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the VertexAIMetadataStore resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
-    state : [VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreStatusStateItems0], default is Undefined, optional
-        State information of the MetadataStore.
-    updateTime : str, default is Undefined, optional
-        The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+    observedState : VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreStatusConditionsItems0]
 
-    createTime?: str
+    externalRef?: str
 
     observedGeneration?: int
 
-    state?: [VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreStatusStateItems0]
-
-    updateTime?: str
+    observedState?: VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreStatusObservedState
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreStatusConditionsItems0:
-    """
+    r"""
     vertexai cnrm cloud google com v1alpha1 vertex a i metadata store status conditions items0
 
     Attributes
@@ -162,17 +201,43 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreStatusConditionsIt
     $type?: str
 
 
-schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreStatusStateItems0:
-    """
-    vertexai cnrm cloud google com v1alpha1 vertex a i metadata store status state items0
+schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
 
     Attributes
     ----------
-    diskUtilizationBytes : str, default is Undefined, optional
+    createTime : str, default is Undefined, optional
+        Output only. Timestamp when this MetadataStore was created.
+    name : str, default is Undefined, optional
+        Output only. The resource name of the MetadataStore instance.
+    state : VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreStatusObservedStateState, default is Undefined, optional
+        state
+    updateTime : str, default is Undefined, optional
+        Output only. Timestamp when this MetadataStore was last updated.
+    """
+
+
+    createTime?: str
+
+    name?: str
+
+    state?: VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreStatusObservedStateState
+
+    updateTime?: str
+
+
+schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIMetadataStoreStatusObservedStateState:
+    r"""
+    Output only. State information of the MetadataStore.
+
+    Attributes
+    ----------
+    diskUtilizationBytes : int, default is Undefined, optional
         The disk utilization of the MetadataStore in bytes.
     """
 
 
-    diskUtilizationBytes?: str
+    diskUtilizationBytes?: int
 
 

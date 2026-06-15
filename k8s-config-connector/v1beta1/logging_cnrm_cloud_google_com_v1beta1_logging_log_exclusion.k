@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema LoggingLogExclusion:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log exclusion
 
     Attributes
@@ -36,7 +36,7 @@ schema LoggingLogExclusion:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogExclusionSpec:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log exclusion spec
 
     Attributes
@@ -78,7 +78,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogExclusionSpec:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogExclusionSpecBillingAccountRef:
-    """
+    r"""
     Immutable. The BillingAccount that this resource belongs to. Only one of [projectRef, folderRef, organizationRef, billingAccountRef] may be specified.
 
     Attributes
@@ -101,7 +101,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogExclusionSpecBillingAccountRef:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogExclusionSpecFolderRef:
-    """
+    r"""
     Immutable. The Folder that this resource belongs to. Only one of [projectRef, folderRef, organizationRef, billingAccountRef] may be specified.
 
     Attributes
@@ -123,7 +123,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogExclusionSpecFolderRef:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogExclusionSpecOrganizationRef:
-    """
+    r"""
     Immutable. The Organization that this resource belongs to. Only one of [projectRef, folderRef, organizationRef, billingAccountRef] may be specified.
 
     Attributes
@@ -146,7 +146,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogExclusionSpecOrganizationRef:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogExclusionSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to. Only one of [projectRef, folderRef, organizationRef, billingAccountRef] may be specified.
 
     Attributes
@@ -168,7 +168,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogExclusionSpecProjectRef:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogExclusionStatus:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log exclusion status
 
     Attributes
@@ -194,7 +194,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogExclusionStatus:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogExclusionStatusConditionsItems0:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log exclusion status conditions items0
 
     Attributes

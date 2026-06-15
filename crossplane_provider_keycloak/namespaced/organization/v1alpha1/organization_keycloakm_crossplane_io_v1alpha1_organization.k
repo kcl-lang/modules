@@ -84,7 +84,7 @@ schema OrganizationKeycloakmCrossplaneIoV1alpha1OrganizationSpecForProvider:
     description : str, default is Undefined, optional
         The description of the organization.
     domain : [OrganizationKeycloakmCrossplaneIoV1alpha1OrganizationSpecForProviderDomainItems0], default is Undefined, optional
-        A list of domains. At least one domain is required.
+        A list of domains.
     enabled : bool, default is Undefined, optional
         Enable/disable this organization.
     name : str, default is Undefined, optional
@@ -262,7 +262,7 @@ schema OrganizationKeycloakmCrossplaneIoV1alpha1OrganizationSpecInitProvider:
     description : str, default is Undefined, optional
         The description of the organization.
     domain : [OrganizationKeycloakmCrossplaneIoV1alpha1OrganizationSpecInitProviderDomainItems0], default is Undefined, optional
-        A list of domains. At least one domain is required.
+        A list of domains.
     enabled : bool, default is Undefined, optional
         Enable/disable this organization.
     name : str, default is Undefined, optional
@@ -492,7 +492,7 @@ schema OrganizationKeycloakmCrossplaneIoV1alpha1OrganizationStatusAtProvider:
     description : str, default is Undefined, optional
         The description of the organization.
     domain : [OrganizationKeycloakmCrossplaneIoV1alpha1OrganizationStatusAtProviderDomainItems0], default is Undefined, optional
-        A list of domains. At least one domain is required.
+        A list of domains.
     enabled : bool, default is Undefined, optional
         Enable/disable this organization.
     id : str, default is Undefined, optional

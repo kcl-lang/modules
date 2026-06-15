@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeTargetTCPProxy:
-    """
-    compute cnrm cloud google com v1beta1 compute target TCP proxy
+    r"""
+    ComputeTargetTCPProxy is the Schema for the ComputeTargetTCPProxy API
 
     Attributes
     ----------
@@ -36,8 +36,8 @@ schema ComputeTargetTCPProxy:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetTCPProxySpec:
-    """
-    compute cnrm cloud google com v1beta1 compute target TCP proxy spec
+    r"""
+    ComputeTargetTCPProxySpec defines the desired state of ComputeTargetTCPProxy
 
     Attributes
     ----------
@@ -45,20 +45,22 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetTCPProxySpec:
         backend service ref
     description : str, default is Undefined, optional
         Immutable. An optional description of this resource.
+    location : str, default is Undefined, optional
+        The geographical location of the ComputeTargetTCPProxy. Reference: GCP definition of regions/zones (https://cloud.google.com/compute/docs/regions-zones/)
     proxyBind : bool, default is Undefined, optional
-        Immutable. This field only applies when the forwarding rule that references
-        this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        Immutable. This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
     proxyHeader : str, default is Undefined, optional
-        Specifies the type of proxy header to append before sending data to
-        the backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"].
+        Specifies the type of proxy header to append before sending data to the backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"].
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The ComputeTargetTCPProxy name. If not given, the metadata.name will be used.
     """
 
 
     backendServiceRef: ComputeCnrmCloudGoogleComV1beta1ComputeTargetTCPProxySpecBackendServiceRef
 
     description?: str
+
+    location?: str
 
     proxyBind?: bool
 
@@ -68,17 +70,17 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetTCPProxySpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetTCPProxySpecBackendServiceRef:
-    """
+    r"""
     A reference to the ComputeBackendService resource.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeBackendService` resource.
+        The value of an externally managed ComputeBackendService resource.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeBackendService resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeBackendService resource.
     """
 
 
@@ -90,27 +92,31 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetTCPProxySpecBackendServiceRe
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetTCPProxyStatus:
-    """
-    compute cnrm cloud google com v1beta1 compute target TCP proxy status
+    r"""
+    ComputeTargetTCPProxyStatus defines the config connector machine state of ComputeTargetTCPProxy
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeTargetTCPProxyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the ComputeTargetTCPProxy resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     proxyId : int, default is Undefined, optional
         The unique identifier for the resource.
     selfLink : str, default is Undefined, optional
-        self link
+        The SelfLink for the resource.
     """
 
 
     conditions?: [ComputeCnrmCloudGoogleComV1beta1ComputeTargetTCPProxyStatusConditionsItems0]
 
     creationTimestamp?: str
+
+    externalRef?: str
 
     observedGeneration?: int
 
@@ -120,7 +126,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetTCPProxyStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetTCPProxyStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target TCP proxy status conditions items0
 
     Attributes

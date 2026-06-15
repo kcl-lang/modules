@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema OSConfigGuestPolicy:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config guest policy
 
     Attributes
@@ -36,7 +36,7 @@ schema OSConfigGuestPolicy:
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpec:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config guest policy spec
 
     Attributes
@@ -70,7 +70,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpec:
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecAssignment:
-    """
+    r"""
     Specifies the VMs that are assigned this policy. This allows you to target sets or groups of VMs by different parameters such as labels, names, OS, or zones. Empty assignments will target ALL VMs underneath this policy. Conflict Management Policies that exist higher up in the resource hierarchy (closer to the Org) will override those lower down if there is a conflict. At the same level in the resource hierarchy (ie. within a project), the service will prevent the creation of multiple policies that conflict with each other. If there are multiple policies that specify the same config (eg. package, software recipe, repository, etc.), the service will ensure that no VM could potentially receive instructions from both policies. To create multiple policies that specify different versions of a package or different configs for different Operating Systems, each policy must be mutually exclusive in their targeting according to labels, OS, or other criteria. Different configs are identified for conflicts in different ways. Packages are identified by their name and the package manager(s) they target. Package repositories are identified by their unique id where applicable. Some package managers don't have a unique identifier for repositories and where that's the case, no uniqueness is validated by the service. Note that if OS Inventory is disabled, a VM will not be assigned a policy that targets by OS because the service will see this VM's OS as unknown.
 
     Attributes
@@ -100,7 +100,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecAssignment:
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecAssignmentGroupLabelsItems0:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config guest policy spec assignment group labels items0
 
     Attributes
@@ -114,7 +114,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecAssignmentGroupLa
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecAssignmentInstancesItems0:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config guest policy spec assignment instances items0
 
     Attributes
@@ -136,7 +136,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecAssignmentInstanc
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecAssignmentOsTypesItems0:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config guest policy spec assignment os types items0
 
     Attributes
@@ -158,7 +158,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecAssignmentOsTypes
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecPackageRepositoriesItems0:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config guest policy spec package repositories items0
 
     Attributes
@@ -184,7 +184,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecPackageRepositori
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecPackageRepositoriesItems0Apt:
-    """
+    r"""
     An Apt Repository.
 
     Attributes
@@ -214,7 +214,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecPackageRepositori
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecPackageRepositoriesItems0Goo:
-    """
+    r"""
     A Goo Repository.
 
     Attributes
@@ -232,7 +232,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecPackageRepositori
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecPackageRepositoriesItems0Yum:
-    """
+    r"""
     A Yum Repository.
 
     Attributes
@@ -258,7 +258,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecPackageRepositori
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecPackageRepositoriesItems0Zypper:
-    """
+    r"""
     A Zypper Repository.
 
     Attributes
@@ -284,7 +284,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecPackageRepositori
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecPackagesItems0:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config guest policy spec packages items0
 
     Attributes
@@ -306,7 +306,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecPackagesItems0:
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config guest policy spec recipes items0
 
     Attributes
@@ -340,7 +340,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0:
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0ArtifactsItems0:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config guest policy spec recipes items0 artifacts items0
 
     Attributes
@@ -366,7 +366,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0Arti
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0ArtifactsItems0Gcs:
-    """
+    r"""
     A Google Cloud Storage artifact.
 
     Attributes
@@ -388,7 +388,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0Arti
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0ArtifactsItems0GcsBucketRef:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config guest policy spec recipes items0 artifacts items0 gcs bucket ref
 
     Attributes
@@ -412,7 +412,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0Arti
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0ArtifactsItems0Remote:
-    """
+    r"""
     A generic remote artifact.
 
     Attributes
@@ -430,7 +430,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0Arti
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0InstallStepsItems0:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config guest policy spec recipes items0 install steps items0
 
     Attributes
@@ -468,7 +468,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0Inst
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0InstallStepsItems0ArchiveExtraction:
-    """
+    r"""
     Extracts an archive into the specified directory.
 
     Attributes
@@ -490,7 +490,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0Inst
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0InstallStepsItems0DpkgInstallation:
-    """
+    r"""
     Installs a deb file via dpkg.
 
     Attributes
@@ -504,7 +504,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0Inst
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0InstallStepsItems0FileCopy:
-    """
+    r"""
     Copies a file onto the instance.
 
     Attributes
@@ -530,7 +530,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0Inst
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0InstallStepsItems0FileExec:
-    """
+    r"""
     Executes an artifact or local file.
 
     Attributes
@@ -556,7 +556,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0Inst
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0InstallStepsItems0MsiInstallation:
-    """
+    r"""
     Installs an MSI file.
 
     Attributes
@@ -578,7 +578,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0Inst
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0InstallStepsItems0RpmInstallation:
-    """
+    r"""
     Installs an rpm file via the rpm utility.
 
     Attributes
@@ -592,7 +592,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0Inst
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0InstallStepsItems0ScriptRun:
-    """
+    r"""
     Runs commands in a shell.
 
     Attributes
@@ -614,7 +614,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0Inst
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0UpdateStepsItems0:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config guest policy spec recipes items0 update steps items0
 
     Attributes
@@ -652,7 +652,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0Upda
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0UpdateStepsItems0ArchiveExtraction:
-    """
+    r"""
     Extracts an archive into the specified directory.
 
     Attributes
@@ -674,7 +674,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0Upda
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0UpdateStepsItems0DpkgInstallation:
-    """
+    r"""
     Installs a deb file via dpkg.
 
     Attributes
@@ -688,7 +688,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0Upda
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0UpdateStepsItems0FileCopy:
-    """
+    r"""
     Copies a file onto the instance.
 
     Attributes
@@ -714,7 +714,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0Upda
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0UpdateStepsItems0FileExec:
-    """
+    r"""
     Executes an artifact or local file.
 
     Attributes
@@ -740,7 +740,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0Upda
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0UpdateStepsItems0MsiInstallation:
-    """
+    r"""
     Installs an MSI file.
 
     Attributes
@@ -762,7 +762,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0Upda
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0UpdateStepsItems0RpmInstallation:
-    """
+    r"""
     Installs an rpm file via the rpm utility.
 
     Attributes
@@ -776,7 +776,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0Upda
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0UpdateStepsItems0ScriptRun:
-    """
+    r"""
     Runs commands in a shell.
 
     Attributes
@@ -798,7 +798,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicySpecRecipesItems0Upda
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicyStatus:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config guest policy status
 
     Attributes
@@ -828,7 +828,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicyStatus:
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigGuestPolicyStatusConditionsItems0:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config guest policy status conditions items0
 
     Attributes

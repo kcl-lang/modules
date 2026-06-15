@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema StorageTransferAgentPool:
-    """
+    r"""
     storagetransfer cnrm cloud google com v1alpha1 storage transfer agent pool
 
     Attributes
@@ -36,7 +36,7 @@ schema StorageTransferAgentPool:
 
 
 schema StoragetransferCnrmCloudGoogleComV1alpha1StorageTransferAgentPoolSpec:
-    """
+    r"""
     storagetransfer cnrm cloud google com v1alpha1 storage transfer agent pool spec
 
     Attributes
@@ -62,7 +62,7 @@ schema StoragetransferCnrmCloudGoogleComV1alpha1StorageTransferAgentPoolSpec:
 
 
 schema StoragetransferCnrmCloudGoogleComV1alpha1StorageTransferAgentPoolSpecBandwidthLimit:
-    """
+    r"""
     Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
 
     Attributes
@@ -76,7 +76,7 @@ schema StoragetransferCnrmCloudGoogleComV1alpha1StorageTransferAgentPoolSpecBand
 
 
 schema StoragetransferCnrmCloudGoogleComV1alpha1StorageTransferAgentPoolSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -98,7 +98,7 @@ schema StoragetransferCnrmCloudGoogleComV1alpha1StorageTransferAgentPoolSpecProj
 
 
 schema StoragetransferCnrmCloudGoogleComV1alpha1StorageTransferAgentPoolStatus:
-    """
+    r"""
     storagetransfer cnrm cloud google com v1alpha1 storage transfer agent pool status
 
     Attributes
@@ -120,7 +120,7 @@ schema StoragetransferCnrmCloudGoogleComV1alpha1StorageTransferAgentPoolStatus:
 
 
 schema StoragetransferCnrmCloudGoogleComV1alpha1StorageTransferAgentPoolStatusConditionsItems0:
-    """
+    r"""
     storagetransfer cnrm cloud google com v1alpha1 storage transfer agent pool status conditions items0
 
     Attributes

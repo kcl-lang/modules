@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema NetworkSecurityServerTLSPolicy:
-    """
+    r"""
     networksecurity cnrm cloud google com v1beta1 network security server TLS policy
 
     Attributes
@@ -36,7 +36,7 @@ schema NetworkSecurityServerTLSPolicy:
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityServerTLSPolicySpec:
-    """
+    r"""
     networksecurity cnrm cloud google com v1beta1 network security server TLS policy spec
 
     Attributes
@@ -74,7 +74,7 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityServerTLSPolicySpe
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityServerTLSPolicySpecMtlsPolicy:
-    """
+    r"""
     Optional. Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allow_open and mtls_policy are set, server allows both plain text and mTLS connections.
 
     Attributes
@@ -88,7 +88,7 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityServerTLSPolicySpe
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityServerTLSPolicySpecMtlsPolicyClientValidationCaItems0:
-    """
+    r"""
     networksecurity cnrm cloud google com v1beta1 network security server TLS policy spec mtls policy client validation ca items0
 
     Attributes
@@ -106,7 +106,7 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityServerTLSPolicySpe
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityServerTLSPolicySpecMtlsPolicyClientValidationCaItems0CertificateProviderInstance:
-    """
+    r"""
     The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
 
     Attributes
@@ -120,7 +120,7 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityServerTLSPolicySpe
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityServerTLSPolicySpecMtlsPolicyClientValidationCaItems0GrpcEndpoint:
-    """
+    r"""
     gRPC specific configuration to access the gRPC server to obtain the CA certificate.
 
     Attributes
@@ -134,7 +134,7 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityServerTLSPolicySpe
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityServerTLSPolicySpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -158,7 +158,7 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityServerTLSPolicySpe
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityServerTLSPolicySpecServerCertificate:
-    """
+    r"""
     Optional. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allow_open as a permissive mode that allows both plain text and TLS is not supported.
 
     Attributes
@@ -176,7 +176,7 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityServerTLSPolicySpe
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityServerTLSPolicySpecServerCertificateCertificateProviderInstance:
-    """
+    r"""
     The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
 
     Attributes
@@ -190,7 +190,7 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityServerTLSPolicySpe
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityServerTLSPolicySpecServerCertificateGrpcEndpoint:
-    """
+    r"""
     gRPC specific configuration to access the gRPC server to obtain the cert and private key.
 
     Attributes
@@ -204,7 +204,7 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityServerTLSPolicySpe
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityServerTLSPolicyStatus:
-    """
+    r"""
     networksecurity cnrm cloud google com v1beta1 network security server TLS policy status
 
     Attributes
@@ -230,7 +230,7 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityServerTLSPolicySta
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityServerTLSPolicyStatusConditionsItems0:
-    """
+    r"""
     networksecurity cnrm cloud google com v1beta1 network security server TLS policy status conditions items0
 
     Attributes

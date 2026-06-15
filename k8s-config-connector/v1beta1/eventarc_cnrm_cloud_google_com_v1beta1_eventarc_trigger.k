@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema EventarcTrigger:
-    """
+    r"""
     eventarc cnrm cloud google com v1beta1 eventarc trigger
 
     Attributes
@@ -36,7 +36,7 @@ schema EventarcTrigger:
 
 
 schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpec:
-    """
+    r"""
     eventarc cnrm cloud google com v1beta1 eventarc trigger spec
 
     Attributes
@@ -82,7 +82,7 @@ schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpec:
 
 
 schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecChannelRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -105,7 +105,7 @@ schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecChannelRef:
 
 
 schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestination:
-    """
+    r"""
     Required. Destination specifies where the events should be sent to.
 
     Attributes
@@ -116,6 +116,10 @@ schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestination:
         cloud run service
     gke : EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationGke, default is Undefined, optional
         gke
+    httpEndpoint : EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationHTTPEndpoint, default is Undefined, optional
+        http endpoint
+    networkConfig : EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationNetworkConfig, default is Undefined, optional
+        network config
     workflowRef : EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationWorkflowRef, default is Undefined, optional
         workflow ref
     """
@@ -127,11 +131,15 @@ schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestination:
 
     gke?: EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationGke
 
+    httpEndpoint?: EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationHTTPEndpoint
+
+    networkConfig?: EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationNetworkConfig
+
     workflowRef?: EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationWorkflowRef
 
 
 schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationCloudFunctionRef:
-    """
+    r"""
     eventarc cnrm cloud google com v1beta1 eventarc trigger spec destination cloud function ref
 
     Attributes
@@ -155,7 +163,7 @@ schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationCloudFunct
 
 
 schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationCloudRunService:
-    """
+    r"""
     Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
 
     Attributes
@@ -177,7 +185,7 @@ schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationCloudRunSe
 
 
 schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationCloudRunServiceServiceRef:
-    """
+    r"""
     eventarc cnrm cloud google com v1beta1 eventarc trigger spec destination cloud run service service ref
 
     Attributes
@@ -201,7 +209,7 @@ schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationCloudRunSe
 
 
 schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationGke:
-    """
+    r"""
     A GKE service capable of receiving events. The service should be running in the same project as the trigger.
 
     Attributes
@@ -231,7 +239,7 @@ schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationGke:
 
 
 schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationGkeClusterRef:
-    """
+    r"""
     eventarc cnrm cloud google com v1beta1 eventarc trigger spec destination gke cluster ref
 
     Attributes
@@ -254,8 +262,59 @@ schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationGkeCluster
     namespace?: str
 
 
-schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationWorkflowRef:
+schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationHTTPEndpoint:
+    r"""
+    An HTTP endpoint destination described by an URI.
+
+    Attributes
+    ----------
+    uri : str, default is Undefined, required
+        Required. The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.
     """
+
+
+    uri: str
+
+
+schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationNetworkConfig:
+    r"""
+    Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+
+    Attributes
+    ----------
+    networkAttachmentRef : EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationNetworkConfigNetworkAttachmentRef, default is Undefined, required
+        network attachment ref
+    """
+
+
+    networkAttachmentRef: EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationNetworkConfigNetworkAttachmentRef
+
+
+schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationNetworkConfigNetworkAttachmentRef:
+    r"""
+    eventarc cnrm cloud google com v1beta1 eventarc trigger spec destination network config network attachment ref
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+    name : str, default is Undefined, optional
+        [WARNING] ComputeNetworkAttachment not yet supported in Config Connector, use 'external' field to reference existing resources.
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationWorkflowRef:
+    r"""
     eventarc cnrm cloud google com v1beta1 eventarc trigger spec destination workflow ref
 
     Attributes
@@ -278,7 +337,7 @@ schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecDestinationWorkflowRe
 
 
 schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecMatchingCriteriaItems0:
-    """
+    r"""
     eventarc cnrm cloud google com v1beta1 eventarc trigger spec matching criteria items0
 
     Attributes
@@ -300,7 +359,7 @@ schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecMatchingCriteriaItems
 
 
 schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -324,7 +383,7 @@ schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecProjectRef:
 
 
 schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecServiceAccountRef:
-    """
+    r"""
     eventarc cnrm cloud google com v1beta1 eventarc trigger spec service account ref
 
     Attributes
@@ -348,7 +407,7 @@ schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecServiceAccountRef:
 
 
 schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecTransport:
-    """
+    r"""
     Immutable. Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
 
     Attributes
@@ -362,7 +421,7 @@ schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecTransport:
 
 
 schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecTransportPubsub:
-    """
+    r"""
     Immutable. The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
 
     Attributes
@@ -376,7 +435,7 @@ schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecTransportPubsub:
 
 
 schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecTransportPubsubTopicRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -400,7 +459,7 @@ schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerSpecTransportPubsubTopicR
 
 
 schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerStatus:
-    """
+    r"""
     eventarc cnrm cloud google com v1beta1 eventarc trigger status
 
     Attributes
@@ -442,7 +501,7 @@ schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerStatus:
 
 
 schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerStatusConditionsItems0:
-    """
+    r"""
     eventarc cnrm cloud google com v1beta1 eventarc trigger status conditions items0
 
     Attributes
@@ -472,7 +531,7 @@ schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerStatusConditionsItems0:
 
 
 schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerStatusTransport:
-    """
+    r"""
     eventarc cnrm cloud google com v1beta1 eventarc trigger status transport
 
     Attributes
@@ -486,7 +545,7 @@ schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerStatusTransport:
 
 
 schema EventarcCnrmCloudGoogleComV1beta1EventarcTriggerStatusTransportPubsub:
-    """
+    r"""
     eventarc cnrm cloud google com v1beta1 eventarc trigger status transport pubsub
 
     Attributes

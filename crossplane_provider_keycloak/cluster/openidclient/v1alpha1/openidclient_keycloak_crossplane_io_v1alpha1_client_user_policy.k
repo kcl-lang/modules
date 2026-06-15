@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ClientUserPolicy:
     r"""
-    ClientUserPolicy is the Schema for the ClientUserPolicys API. <no value>
+    ClientUserPolicy is the Schema for the ClientUserPolicys API.
 
     Attributes
     ----------
@@ -91,27 +91,27 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProvider:
     Attributes
     ----------
     decisionStrategy : str, default is Undefined, optional
-        decision strategy
+        The decision strategy, can be one of UNANIMOUS, AFFIRMATIVE, or CONSENSUS.
     description : str, default is Undefined, optional
-        description
+        A description for the authorization policy.
     logic : str, default is Undefined, optional
-        logic
+        The logic, can be one of POSITIVE or NEGATIVE. Defaults to POSITIVE.
     name : str, default is Undefined, optional
-        name
+        The name of the policy.
     realmId : str, default is Undefined, optional
-        realm Id
+        The realm this policy exists in.
     realmIdRef : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderRealmIDRef, default is Undefined, optional
         realm Id ref
     realmIdSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
     resourceServerId : str, default is Undefined, optional
-        resource server Id
+        The ID of the resource server.
     resourceServerIdRef : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderResourceServerIDRef, default is Undefined, optional
         resource server Id ref
     resourceServerIdSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderResourceServerIDSelector, default is Undefined, optional
         resource server Id selector
     users : [str], default is Undefined, optional
-        users
+        A list of user IDs that this policy applies to.
     usersRefs : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderUsersRefsItems0], default is Undefined, optional
         References to User in user to populate users.
     usersSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecForProviderUsersSelector, default is Undefined, optional
@@ -429,27 +429,27 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProvider:
     Attributes
     ----------
     decisionStrategy : str, default is Undefined, optional
-        decision strategy
+        The decision strategy, can be one of UNANIMOUS, AFFIRMATIVE, or CONSENSUS.
     description : str, default is Undefined, optional
-        description
+        A description for the authorization policy.
     logic : str, default is Undefined, optional
-        logic
+        The logic, can be one of POSITIVE or NEGATIVE. Defaults to POSITIVE.
     name : str, default is Undefined, optional
-        name
+        The name of the policy.
     realmId : str, default is Undefined, optional
-        realm Id
+        The realm this policy exists in.
     realmIdRef : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderRealmIDRef, default is Undefined, optional
         realm Id ref
     realmIdSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
     resourceServerId : str, default is Undefined, optional
-        resource server Id
+        The ID of the resource server.
     resourceServerIdRef : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderResourceServerIDRef, default is Undefined, optional
         resource server Id ref
     resourceServerIdSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderResourceServerIDSelector, default is Undefined, optional
         resource server Id selector
     users : [str], default is Undefined, optional
-        users
+        A list of user IDs that this policy applies to.
     usersRefs : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderUsersRefsItems0], default is Undefined, optional
         References to User in user to populate users.
     usersSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicySpecInitProviderUsersSelector, default is Undefined, optional
@@ -847,21 +847,21 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientUserPolicyStatusAtProvider:
     Attributes
     ----------
     decisionStrategy : str, default is Undefined, optional
-        decision strategy
+        The decision strategy, can be one of UNANIMOUS, AFFIRMATIVE, or CONSENSUS.
     description : str, default is Undefined, optional
-        description
+        A description for the authorization policy.
     id : str, default is Undefined, optional
-        id
+        Policy ID representing the user policy.
     logic : str, default is Undefined, optional
-        logic
+        The logic, can be one of POSITIVE or NEGATIVE. Defaults to POSITIVE.
     name : str, default is Undefined, optional
-        name
+        The name of the policy.
     realmId : str, default is Undefined, optional
-        realm Id
+        The realm this policy exists in.
     resourceServerId : str, default is Undefined, optional
-        resource server Id
+        The ID of the resource server.
     users : [str], default is Undefined, optional
-        users
+        A list of user IDs that this policy applies to.
     """
 
 

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ServiceDirectoryService:
-    """
+    r"""
     servicedirectory cnrm cloud google com v1beta1 service directory service
 
     Attributes
@@ -36,7 +36,7 @@ schema ServiceDirectoryService:
 
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryServiceSpec:
-    """
+    r"""
     servicedirectory cnrm cloud google com v1beta1 service directory service spec
 
     Attributes
@@ -54,7 +54,7 @@ schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryServiceSpec:
 
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryServiceSpecNamespaceRef:
-    """
+    r"""
     The ServiceDirectoryNamespace that this service belongs to.
 
     Attributes
@@ -76,7 +76,7 @@ schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryServiceSpecNames
 
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryServiceStatus:
-    """
+    r"""
     servicedirectory cnrm cloud google com v1beta1 service directory service status
 
     Attributes
@@ -99,7 +99,7 @@ schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryServiceStatus:
 
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryServiceStatusConditionsItems0:
-    """
+    r"""
     servicedirectory cnrm cloud google com v1beta1 service directory service status conditions items0
 
     Attributes

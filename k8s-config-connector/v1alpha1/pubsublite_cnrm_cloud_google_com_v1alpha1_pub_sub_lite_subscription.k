@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema PubSubLiteSubscription:
-    """
+    r"""
     pubsublite cnrm cloud google com v1alpha1 pub sub lite subscription
 
     Attributes
@@ -36,7 +36,7 @@ schema PubSubLiteSubscription:
 
 
 schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteSubscriptionSpec:
-    """
+    r"""
     pubsublite cnrm cloud google com v1alpha1 pub sub lite subscription spec
 
     Attributes
@@ -70,7 +70,7 @@ schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteSubscriptionSpec:
 
 
 schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteSubscriptionSpecDeliveryConfig:
-    """
+    r"""
     The settings for this subscription's message delivery.
 
     Attributes
@@ -84,7 +84,7 @@ schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteSubscriptionSpecDeliveryCon
 
 
 schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteSubscriptionSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -106,7 +106,7 @@ schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteSubscriptionSpecProjectRef:
 
 
 schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteSubscriptionStatus:
-    """
+    r"""
     pubsublite cnrm cloud google com v1alpha1 pub sub lite subscription status
 
     Attributes
@@ -124,7 +124,7 @@ schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteSubscriptionStatus:
 
 
 schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteSubscriptionStatusConditionsItems0:
-    """
+    r"""
     pubsublite cnrm cloud google com v1alpha1 pub sub lite subscription status conditions items0
 
     Attributes

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema FilestoreInstance:
-    """
+    r"""
     filestore cnrm cloud google com v1beta1 filestore instance
 
     Attributes
@@ -36,7 +36,7 @@ schema FilestoreInstance:
 
 
 schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceSpec:
-    """
+    r"""
     filestore cnrm cloud google com v1beta1 filestore instance spec
 
     Attributes
@@ -74,7 +74,7 @@ schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceSpec:
 
 
 schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceSpecFileSharesItems0:
-    """
+    r"""
     filestore cnrm cloud google com v1beta1 filestore instance spec file shares items0
 
     Attributes
@@ -100,7 +100,7 @@ schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceSpecFileSharesItems0:
 
 
 schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceSpecFileSharesItems0NfsExportOptionsItems0:
-    """
+    r"""
     filestore cnrm cloud google com v1beta1 filestore instance spec file shares items0 nfs export options items0
 
     Attributes
@@ -130,7 +130,7 @@ schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceSpecFileSharesItems0Nf
 
 
 schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceSpecFileSharesItems0SourceBackupRef:
-    """
+    r"""
     filestore cnrm cloud google com v1beta1 filestore instance spec file shares items0 source backup ref
 
     Attributes
@@ -154,7 +154,7 @@ schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceSpecFileSharesItems0So
 
 
 schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceSpecNetworksItems0:
-    """
+    r"""
     filestore cnrm cloud google com v1beta1 filestore instance spec networks items0
 
     Attributes
@@ -180,7 +180,7 @@ schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceSpecNetworksItems0:
 
 
 schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceSpecNetworksItems0NetworkRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -204,7 +204,7 @@ schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceSpecNetworksItems0Netw
 
 
 schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -228,7 +228,7 @@ schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceSpecProjectRef:
 
 
 schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceStatus:
-    """
+    r"""
     filestore cnrm cloud google com v1beta1 filestore instance status
 
     Attributes
@@ -262,7 +262,7 @@ schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceStatus:
 
 
 schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceStatusConditionsItems0:
-    """
+    r"""
     filestore cnrm cloud google com v1beta1 filestore instance status conditions items0
 
     Attributes

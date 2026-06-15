@@ -253,8 +253,38 @@ schema GatewayEnvoyproxyIoV1alpha1EnvoyPatchPolicyStatusAncestorsItems0:
     ----------
     ancestorRef : GatewayEnvoyproxyIoV1alpha1EnvoyPatchPolicyStatusAncestorsItems0AncestorRef, default is Undefined, required
         ancestor ref
-    conditions : [GatewayEnvoyproxyIoV1alpha1EnvoyPatchPolicyStatusAncestorsItems0ConditionsItems0], default is Undefined, optional
+    conditions : [GatewayEnvoyproxyIoV1alpha1EnvoyPatchPolicyStatusAncestorsItems0ConditionsItems0], default is Undefined, required
         Conditions describes the status of the Policy with respect to the given Ancestor.
+
+        <gateway:util:excludeFromCRD>
+
+        Notes for implementors:
+
+        Conditions are a listType `map`, which means that they function like a
+        map with a key of the `type` field _in the k8s apiserver_.
+
+        This means that implementations must obey some rules when updating this
+        section.
+
+        * Implementations MUST perform a read-modify-write cycle on this field
+          before modifying it. That is, when modifying this field, implementations
+          must be confident they have fetched the most recent version of this field,
+          and ensure that changes they make are on that recent version.
+        * Implementations MUST NOT remove or reorder Conditions that they are not
+          directly responsible for. For example, if an implementation sees a Condition
+          with type `special.io/SomeField`, it MUST NOT remove, change or update that
+          Condition.
+        * Implementations MUST always _merge_ changes into Conditions of the same Type,
+          rather than creating more than one Condition of the same Type.
+        * Implementations MUST always update the `observedGeneration` field of the
+          Condition to the `metadata.generation` of the Gateway at the time of update creation.
+        * If the `observedGeneration` of a Condition is _greater than_ the value the
+          implementation knows about, then it MUST NOT perform the update on that Condition,
+          but must wait for a future reconciliation and status update. (The assumption is that
+          the implementation's copy of the object is stale and an update will be re-triggered
+          if relevant.)
+
+        </gateway:util:excludeFromCRD>
     controllerName : str, default is Undefined, required
         ControllerName is a domain/path string that indicates the name of the
         controller that wrote this status. This corresponds with the
@@ -274,14 +304,14 @@ schema GatewayEnvoyproxyIoV1alpha1EnvoyPatchPolicyStatusAncestorsItems0:
 
     ancestorRef: GatewayEnvoyproxyIoV1alpha1EnvoyPatchPolicyStatusAncestorsItems0AncestorRef
 
-    conditions?: [GatewayEnvoyproxyIoV1alpha1EnvoyPatchPolicyStatusAncestorsItems0ConditionsItems0]
+    conditions: [GatewayEnvoyproxyIoV1alpha1EnvoyPatchPolicyStatusAncestorsItems0ConditionsItems0]
 
     controllerName: str
 
 
     check:
-        len(conditions) >= 1 if conditions
-        len(conditions) <= 8 if conditions
+        len(conditions) >= 1
+        len(conditions) <= 8
         len(controllerName) <= 253
         len(controllerName) >= 1
         _regex_match(str(controllerName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$")

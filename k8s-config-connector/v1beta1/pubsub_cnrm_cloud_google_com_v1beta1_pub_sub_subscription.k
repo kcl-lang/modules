@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema PubSubSubscription:
-    """
+    r"""
     pubsub cnrm cloud google com v1beta1 pub sub subscription
 
     Attributes
@@ -36,7 +36,7 @@ schema PubSubSubscription:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpec:
-    """
+    r"""
     pubsub cnrm cloud google com v1beta1 pub sub subscription spec
 
     Attributes
@@ -143,7 +143,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpec:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecBigqueryConfig:
-    """
+    r"""
     If delivery to BigQuery is used with this subscription, this field is used to configure it.
     Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
     If all three are empty, then the subscriber will pull and ack messages using API methods.
@@ -173,7 +173,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecBigqueryConfig:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecBigqueryConfigTableRef:
-    """
+    r"""
     The name of the table to which to write data.
 
     Attributes
@@ -195,7 +195,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecBigqueryConfigTableR
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecCloudStorageConfig:
-    """
+    r"""
     If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
     Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
     If all three are empty, then the subscriber will pull and ack messages using API methods.
@@ -238,7 +238,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecCloudStorageConfig:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecCloudStorageConfigAvroConfig:
-    """
+    r"""
     If set, message data will be written to Cloud Storage in Avro format.
 
     Attributes
@@ -252,7 +252,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecCloudStorageConfigAv
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecCloudStorageConfigBucketRef:
-    """
+    r"""
     User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
 
     Attributes
@@ -274,7 +274,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecCloudStorageConfigBu
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecDeadLetterPolicy:
-    """
+    r"""
     A policy that specifies the conditions for dead lettering messages in
     this subscription. If dead_letter_policy is not set, dead lettering
     is disabled.
@@ -310,7 +310,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecDeadLetterPolicy:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecDeadLetterPolicyDeadLetterTopicRef:
-    """
+    r"""
     pubsub cnrm cloud google com v1beta1 pub sub subscription spec dead letter policy dead letter topic ref
 
     Attributes
@@ -332,7 +332,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecDeadLetterPolicyDead
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecExpirationPolicy:
-    """
+    r"""
     A policy that specifies the conditions for this subscription's expiration.
     A subscription is considered active as long as any connected subscriber
     is successfully consuming messages from the subscription or is issuing
@@ -356,7 +356,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecExpirationPolicy:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecPushConfig:
-    """
+    r"""
     If push delivery is used with this subscription, this field is used to
     configure it. An empty pushConfig signifies that the subscriber will
     pull and ack messages using API methods.
@@ -408,7 +408,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecPushConfig:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecPushConfigNoWrapper:
-    """
+    r"""
     When set, the payload to the push endpoint is not wrapped.Sets the
     'data' field as the HTTP body for delivery.
 
@@ -425,7 +425,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecPushConfigNoWrapper:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecPushConfigOidcToken:
-    """
+    r"""
     If specified, Pub/Sub will generate and attach an OIDC JWT token as
     an Authorization header in the HTTP request for every pushed message.
 
@@ -452,7 +452,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecPushConfigOidcToken:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecRetryPolicy:
-    """
+    r"""
     A policy that specifies how Pub/Sub retries message delivery for this subscription.
 
     If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
@@ -475,7 +475,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecRetryPolicy:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecTopicRef:
-    """
+    r"""
     Reference to a PubSubTopic.
 
     Attributes
@@ -497,7 +497,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionSpecTopicRef:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionStatus:
-    """
+    r"""
     pubsub cnrm cloud google com v1beta1 pub sub subscription status
 
     Attributes
@@ -515,7 +515,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionStatus:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubSubscriptionStatusConditionsItems0:
-    """
+    r"""
     pubsub cnrm cloud google com v1beta1 pub sub subscription status conditions items0
 
     Attributes

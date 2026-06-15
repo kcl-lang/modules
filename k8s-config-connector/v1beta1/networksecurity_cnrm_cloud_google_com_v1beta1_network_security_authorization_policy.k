@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema NetworkSecurityAuthorizationPolicy:
-    """
-    networksecurity cnrm cloud google com v1beta1 network security authorization policy
+    r"""
+    NetworkSecurityAuthorizationPolicy is the Schema for the NetworkSecurityAuthorizationPolicy API
 
     Attributes
     ----------
@@ -36,23 +36,23 @@ schema NetworkSecurityAuthorizationPolicy:
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityAuthorizationPolicySpec:
-    """
-    networksecurity cnrm cloud google com v1beta1 network security authorization policy spec
+    r"""
+    NetworkSecurityAuthorizationPolicySpec defines the desired state of NetworkSecurityAuthorizationPolicy
 
     Attributes
     ----------
     action : str, default is Undefined, required
-        Required. The action to take when a rule match is found. Possible values are "ALLOW" or "DENY". Possible values: ACTION_UNSPECIFIED, ALLOW, DENY
+        Required. The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
     description : str, default is Undefined, optional
         Optional. Free-text description of the resource.
     location : str, default is Undefined, required
-        Immutable. The location for the resource
+        Immutable.
     projectRef : NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityAuthorizationPolicySpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The NetworkSecurityAuthorizationPolicy name. If not given, the metadata.name will be used.
     rules : [NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityAuthorizationPolicySpecRulesItems0], default is Undefined, optional
-        Optional. List of rules to match. If not set, the action specified in the ‘action’ field will be applied without any additional rule checks.
+        Optional. List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken. A rule is a match if there is a matching source and destination. If left blank, the action specified in the `action` field will be applied on every request.
     """
 
 
@@ -70,23 +70,25 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityAuthorizationPolic
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityAuthorizationPolicySpecProjectRef:
-    """
-    Immutable. The Project that this resource belongs to.
+    r"""
+    The Project that this resource belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The project for the resource
-
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
     external?: str
+
+    kind?: str
 
     name?: str
 
@@ -94,15 +96,15 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityAuthorizationPolic
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityAuthorizationPolicySpecRulesItems0:
-    """
+    r"""
     networksecurity cnrm cloud google com v1beta1 network security authorization policy spec rules items0
 
     Attributes
     ----------
     destinations : [NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityAuthorizationPolicySpecRulesItems0DestinationsItems0], default is Undefined, optional
-        Optional. List of attributes for the traffic destination. If not set, the action specified in the ‘action’ field will be applied without any rule checks for the destination.
+        Optional. List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers. If not set, the action specified in the 'action' field will be applied without any rule checks for the destination.
     sources : [NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityAuthorizationPolicySpecRulesItems0SourcesItems0], default is Undefined, optional
-        Optional. List of attributes for the traffic source. If not set, the action specified in the ‘action’ field will be applied without any rule checks for the source.
+        Optional. List of attributes for the traffic source. All of the sources must match. A source is a match if both principals and ip_blocks match. If not set, the action specified in the 'action' field will be applied without any rule checks for the source.
     """
 
 
@@ -112,19 +114,19 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityAuthorizationPolic
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityAuthorizationPolicySpecRulesItems0DestinationsItems0:
-    """
+    r"""
     networksecurity cnrm cloud google com v1beta1 network security authorization policy spec rules items0 destinations items0
 
     Attributes
     ----------
     hosts : [str], default is Undefined, required
-        Required. List of host names to match. Matched against HOST header in http requests. Each host can be an exact match, or a prefix match (example, “mydomain.*”) or a suffix match (example, *.myorg.com”) or a presence(any) match “*”.
+        Required. List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example "*.myorg.com") or a presence (any) match "*".
     httpHeaderMatch : NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityAuthorizationPolicySpecRulesItems0DestinationsItems0HTTPHeaderMatch, default is Undefined, optional
         http header match
     methods : [str], default is Undefined, optional
-        Optional. A list of HTTP methods to match. Should not be set for gRPC services.
+        Optional. A list of HTTP methods to match. At least one method should match. Should not be set for gRPC services.
     ports : [int], default is Undefined, required
-        Required. List of destination ports to match.
+        Required. List of destination ports to match. At least one port should match.
     """
 
 
@@ -138,8 +140,8 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityAuthorizationPolic
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityAuthorizationPolicySpecRulesItems0DestinationsItems0HTTPHeaderMatch:
-    """
-    Optional. Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases.
+    r"""
+    Optional. Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match. Avoid using header matches to make authorization decisions unless there is a strong guarantee that requests arrive through a trusted client or proxy.
 
     Attributes
     ----------
@@ -156,15 +158,15 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityAuthorizationPolic
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityAuthorizationPolicySpecRulesItems0SourcesItems0:
-    """
+    r"""
     networksecurity cnrm cloud google com v1beta1 network security authorization policy spec rules items0 sources items0
 
     Attributes
     ----------
     ipBlocks : [str], default is Undefined, optional
-        Optional. List of CIDR ranges to match based on source IP address. Single IP (e.g., "1.2.3.4") and CIDR (e.g., "1.2.3.0/24") are supported.
+        Optional. List of CIDR ranges to match based on source IP address. At least one IP block should match. Single IP (e.g., "1.2.3.4") and CIDR (e.g., "1.2.3.0/24") are supported. Authorization based on source IP alone should be avoided. The IP addresses of any load balancers or proxies should be considered untrusted.
     principals : [str], default is Undefined, optional
-        Optional. List of peer identities to match for authorization. Each peer can be an exact match, or a prefix match (example, “namespace/*”) or a suffix match (example, */service-account”) or a presence match “*”.
+        Optional. List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, "*/service-account") or a presence match "*". Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
     """
 
 
@@ -174,15 +176,17 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityAuthorizationPolic
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityAuthorizationPolicyStatus:
-    """
-    networksecurity cnrm cloud google com v1beta1 network security authorization policy status
+    r"""
+    NetworkSecurityAuthorizationPolicyStatus defines the config connector machine state of NetworkSecurityAuthorizationPolicy
 
     Attributes
     ----------
     conditions : [NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityAuthorizationPolicyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     createTime : str, default is Undefined, optional
         Output only. The timestamp when the resource was created.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the NetworkSecurityAuthorizationPolicy resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     updateTime : str, default is Undefined, optional
@@ -194,13 +198,15 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityAuthorizationPolic
 
     createTime?: str
 
+    externalRef?: str
+
     observedGeneration?: int
 
     updateTime?: str
 
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityAuthorizationPolicyStatusConditionsItems0:
-    """
+    r"""
     networksecurity cnrm cloud google com v1beta1 network security authorization policy status conditions items0
 
     Attributes

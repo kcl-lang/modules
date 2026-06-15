@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IAMWorkforcePool:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m workforce pool
 
     Attributes
@@ -36,7 +36,7 @@ schema IAMWorkforcePool:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolSpec:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m workforce pool spec
 
     Attributes
@@ -74,7 +74,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolSpec:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolSpecOrganizationRef:
-    """
+    r"""
     Immutable. The Organization that this resource belongs to. Only one of [organizationRef] may be specified.
 
     Attributes
@@ -97,7 +97,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolSpecOrganizationRef:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolStatus:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m workforce pool status
 
     Attributes
@@ -123,7 +123,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolStatus:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkforcePoolStatusConditionsItems0:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m workforce pool status conditions items0
 
     Attributes

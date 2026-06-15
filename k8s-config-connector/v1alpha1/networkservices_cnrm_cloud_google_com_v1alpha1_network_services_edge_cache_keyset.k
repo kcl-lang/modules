@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema NetworkServicesEdgeCacheKeyset:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache keyset
 
     Attributes
@@ -36,7 +36,7 @@ schema NetworkServicesEdgeCacheKeyset:
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheKeysetSpec:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache keyset spec
 
     Attributes
@@ -75,7 +75,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheKeysetSp
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheKeysetSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -97,7 +97,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheKeysetSp
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheKeysetSpecPublicKeyItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache keyset spec public key items0
 
     Attributes
@@ -121,7 +121,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheKeysetSp
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheKeysetSpecPublicKeyItems0Value:
-    """
+    r"""
     The base64-encoded value of the Ed25519 public key. The base64 encoding can be padded (44 bytes) or unpadded (43 bytes).
     Representations or encodings of the public key other than this will be rejected with an error.
 
@@ -140,7 +140,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheKeysetSp
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheKeysetSpecPublicKeyItems0ValueValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -154,7 +154,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheKeysetSp
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheKeysetSpecPublicKeyItems0ValueValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -172,7 +172,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheKeysetSp
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheKeysetSpecValidationSharedKeysItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache keyset spec validation shared keys items0
 
     Attributes
@@ -192,7 +192,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheKeysetSp
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheKeysetStatus:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache keyset status
 
     Attributes
@@ -210,7 +210,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheKeysetSt
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheKeysetStatusConditionsItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache keyset status conditions items0
 
     Attributes

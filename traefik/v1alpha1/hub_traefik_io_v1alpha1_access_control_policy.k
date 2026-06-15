@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AccessControlPolicy:
-    """
+    r"""
     AccessControlPolicy defines an access control policy.
 
     Attributes
@@ -36,7 +36,7 @@ schema AccessControlPolicy:
 
 
 schema HubTraefikIoV1alpha1AccessControlPolicySpec:
-    """
+    r"""
     AccessControlPolicySpec configures an access control policy.
 
     Attributes
@@ -70,7 +70,7 @@ schema HubTraefikIoV1alpha1AccessControlPolicySpec:
 
 
 schema HubTraefikIoV1alpha1AccessControlPolicySpecAPIKey:
-    """
+    r"""
     AccessControlPolicyAPIKey configure an APIKey control policy.
 
     Attributes
@@ -92,7 +92,7 @@ schema HubTraefikIoV1alpha1AccessControlPolicySpecAPIKey:
 
 
 schema HubTraefikIoV1alpha1AccessControlPolicySpecAPIKeyKeySource:
-    """
+    r"""
     KeySource defines how to extract API keys from requests.
 
     Attributes
@@ -119,7 +119,7 @@ schema HubTraefikIoV1alpha1AccessControlPolicySpecAPIKeyKeySource:
 
 
 schema HubTraefikIoV1alpha1AccessControlPolicySpecAPIKeyKeysItems0:
-    """
+    r"""
     AccessControlPolicyAPIKeyKey defines an API key.
 
     Attributes
@@ -141,7 +141,7 @@ schema HubTraefikIoV1alpha1AccessControlPolicySpecAPIKeyKeysItems0:
 
 
 schema HubTraefikIoV1alpha1AccessControlPolicySpecBasicAuth:
-    """
+    r"""
     AccessControlPolicyBasicAuth holds the HTTP basic authentication configuration.
 
     Attributes
@@ -167,7 +167,7 @@ schema HubTraefikIoV1alpha1AccessControlPolicySpecBasicAuth:
 
 
 schema HubTraefikIoV1alpha1AccessControlPolicySpecJwt:
-    """
+    r"""
     AccessControlPolicyJWT configures a JWT access control policy.
 
     Attributes
@@ -213,7 +213,7 @@ schema HubTraefikIoV1alpha1AccessControlPolicySpecJwt:
 
 
 schema HubTraefikIoV1alpha1AccessControlPolicySpecOAuthIntro:
-    """
+    r"""
     AccessControlOAuthIntro configures an OAuth 2.0 Token Introspection access control policy.
 
     Attributes
@@ -239,7 +239,7 @@ schema HubTraefikIoV1alpha1AccessControlPolicySpecOAuthIntro:
 
 
 schema HubTraefikIoV1alpha1AccessControlPolicySpecOAuthIntroClientConfig:
-    """
+    r"""
     AccessControlOAuthIntroClientConfig configures the OAuth 2.0 client for issuing token introspection requests.
 
     Attributes
@@ -274,7 +274,7 @@ schema HubTraefikIoV1alpha1AccessControlPolicySpecOAuthIntroClientConfig:
 
 
 schema HubTraefikIoV1alpha1AccessControlPolicySpecOAuthIntroClientConfigTLS:
-    """
+    r"""
     TLS configures TLS communication with the Authorization Server.
 
     Attributes
@@ -293,7 +293,7 @@ schema HubTraefikIoV1alpha1AccessControlPolicySpecOAuthIntroClientConfigTLS:
 
 
 schema HubTraefikIoV1alpha1AccessControlPolicySpecOAuthIntroTokenSource:
-    """
+    r"""
     TokenSource describes how to extract tokens from HTTP requests.
     If multiple sources are set, the order is the following: header > query > cookie.
 
@@ -321,7 +321,7 @@ schema HubTraefikIoV1alpha1AccessControlPolicySpecOAuthIntroTokenSource:
 
 
 schema HubTraefikIoV1alpha1AccessControlPolicySpecOidc:
-    """
+    r"""
     AccessControlPolicyOIDC holds the OIDC authentication configuration.
 
     Attributes
@@ -379,7 +379,7 @@ schema HubTraefikIoV1alpha1AccessControlPolicySpecOidc:
 
 
 schema HubTraefikIoV1alpha1AccessControlPolicySpecOidcGoogle:
-    """
+    r"""
     AccessControlPolicyOIDCGoogle holds the Google OIDC authentication configuration.
 
     Attributes
@@ -425,11 +425,11 @@ schema HubTraefikIoV1alpha1AccessControlPolicySpecOidcGoogle:
 
 
     check:
-        len(emails) >= 1
+        len(emails) >= 1 if emails
 
 
 schema HubTraefikIoV1alpha1AccessControlPolicySpecOidcGoogleSecret:
-    """
+    r"""
     SecretReference represents a Secret Reference. It has enough information to retrieve secret
     in any namespace
 
@@ -448,7 +448,7 @@ schema HubTraefikIoV1alpha1AccessControlPolicySpecOidcGoogleSecret:
 
 
 schema HubTraefikIoV1alpha1AccessControlPolicySpecOidcGoogleSession:
-    """
+    r"""
     Session holds session configuration.
 
     Attributes
@@ -478,7 +478,7 @@ schema HubTraefikIoV1alpha1AccessControlPolicySpecOidcGoogleSession:
 
 
 schema HubTraefikIoV1alpha1AccessControlPolicySpecOidcGoogleStateCookie:
-    """
+    r"""
     StateCookie holds state cookie configuration.
 
     Attributes
@@ -504,7 +504,7 @@ schema HubTraefikIoV1alpha1AccessControlPolicySpecOidcGoogleStateCookie:
 
 
 schema HubTraefikIoV1alpha1AccessControlPolicySpecOidcSecret:
-    """
+    r"""
     SecretReference represents a Secret Reference. It has enough information to retrieve secret
     in any namespace
 
@@ -523,7 +523,7 @@ schema HubTraefikIoV1alpha1AccessControlPolicySpecOidcSecret:
 
 
 schema HubTraefikIoV1alpha1AccessControlPolicySpecOidcSession:
-    """
+    r"""
     Session holds session configuration.
 
     Attributes
@@ -553,7 +553,7 @@ schema HubTraefikIoV1alpha1AccessControlPolicySpecOidcSession:
 
 
 schema HubTraefikIoV1alpha1AccessControlPolicySpecOidcStateCookie:
-    """
+    r"""
     StateCookie holds state cookie configuration.
 
     Attributes
@@ -579,7 +579,7 @@ schema HubTraefikIoV1alpha1AccessControlPolicySpecOidcStateCookie:
 
 
 schema HubTraefikIoV1alpha1AccessControlPolicyStatus:
-    """
+    r"""
     The current status of this access control policy.
 
     Attributes

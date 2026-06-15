@@ -92,6 +92,8 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProvider:
     ----------
     attributes : {str:str}, default is Undefined, optional
         A map representing attributes for the group. In order to add multivalued attributes, use ## to separate the values. Max length for each value is 255 chars
+    description : str, default is Undefined, optional
+        description
     name : str, default is Undefined, optional
         The name of the group.
     parentId : str, default is Undefined, optional
@@ -110,6 +112,8 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProvider:
 
 
     attributes?: {str:str}
+
+    description?: str
 
     name?: str
 
@@ -321,6 +325,8 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProvider:
     ----------
     attributes : {str:str}, default is Undefined, optional
         A map representing attributes for the group. In order to add multivalued attributes, use ## to separate the values. Max length for each value is 255 chars
+    description : str, default is Undefined, optional
+        description
     name : str, default is Undefined, optional
         The name of the group.
     parentId : str, default is Undefined, optional
@@ -339,6 +345,8 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProvider:
 
 
     attributes?: {str:str}
+
+    description?: str
 
     name?: str
 
@@ -630,6 +638,8 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupStatusAtProvider:
     ----------
     attributes : {str:str}, default is Undefined, optional
         A map representing attributes for the group. In order to add multivalued attributes, use ## to separate the values. Max length for each value is 255 chars
+    description : str, default is Undefined, optional
+        description
     id : str, default is Undefined, optional
         id
     name : str, default is Undefined, optional
@@ -644,6 +654,8 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupStatusAtProvider:
 
 
     attributes?: {str:str}
+
+    description?: str
 
     id?: str
 

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IngressRouteUDP:
-    """
+    r"""
     IngressRouteUDP is a CRD implementation of a Traefik UDP Router.
 
     Attributes
@@ -32,7 +32,7 @@ schema IngressRouteUDP:
 
 
 schema TraefikIoV1alpha1IngressRouteUDPSpec:
-    """
+    r"""
     IngressRouteUDPSpec defines the desired state of a IngressRouteUDP.
 
     Attributes
@@ -40,7 +40,7 @@ schema TraefikIoV1alpha1IngressRouteUDPSpec:
     entryPoints : [str], default is Undefined, optional
         EntryPoints defines the list of entry point names to bind to.
         Entry points have to be configured in the static configuration.
-        More info: https://doc.traefik.io/traefik/v3.0/routing/entrypoints/
+        More info: https://doc.traefik.io/traefik/v3.6/reference/install-configuration/entrypoints/
         Default: all.
     routes : [TraefikIoV1alpha1IngressRouteUDPSpecRoutesItems0], default is Undefined, required
         Routes defines the list of routes.
@@ -53,7 +53,7 @@ schema TraefikIoV1alpha1IngressRouteUDPSpec:
 
 
 schema TraefikIoV1alpha1IngressRouteUDPSpecRoutesItems0:
-    """
+    r"""
     RouteUDP holds the UDP route configuration.
 
     Attributes
@@ -67,7 +67,7 @@ schema TraefikIoV1alpha1IngressRouteUDPSpecRoutesItems0:
 
 
 schema TraefikIoV1alpha1IngressRouteUDPSpecRoutesItems0ServicesItems0:
-    """
+    r"""
     ServiceUDP defines an upstream UDP service to proxy traffic to.
 
     Attributes
@@ -105,5 +105,9 @@ schema TraefikIoV1alpha1IngressRouteUDPSpecRoutesItems0ServicesItems0:
     port: int | str
 
     weight?: int
+
+
+    check:
+        weight >= 0 if weight not in [None, Undefined]
 
 

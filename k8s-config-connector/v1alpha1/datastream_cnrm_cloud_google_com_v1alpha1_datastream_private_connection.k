@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DatastreamPrivateConnection:
-    """
-    datastream cnrm cloud google com v1alpha1 datastream private connection
+    r"""
+    DatastreamPrivateConnection is the Schema for the DatastreamPrivateConnection API
 
     Attributes
     ----------
@@ -36,25 +36,29 @@ schema DatastreamPrivateConnection:
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionSpec:
-    """
-    datastream cnrm cloud google com v1alpha1 datastream private connection spec
+    r"""
+    DatastreamPrivateConnectionSpec defines the desired state of DatastreamPrivateConnection
 
     Attributes
     ----------
-    displayName : str, default is Undefined, required
-        Immutable. Display name.
+    displayName : str, default is Undefined, optional
+        Required. Display name.
+    labels : {str:str}, default is Undefined, optional
+        Labels.
     location : str, default is Undefined, required
-        Immutable. The name of the location this private connection is located in.
+        Immutable.
     projectRef : DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionSpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The privateConnectionId of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
-    vpcPeeringConfig : DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionSpecVpcPeeringConfig, default is Undefined, required
+        The DatastreamPrivateConnection name. If not given, the metadata.name will be used.
+    vpcPeeringConfig : DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionSpecVpcPeeringConfig, default is Undefined, optional
         vpc peering config
     """
 
 
-    displayName: str
+    displayName?: str
+
+    labels?: {str:str}
 
     location: str
 
@@ -62,21 +66,65 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionSpec:
 
     resourceID?: str
 
-    vpcPeeringConfig: DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionSpecVpcPeeringConfig
+    vpcPeeringConfig?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionSpecVpcPeeringConfig
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionSpecProjectRef:
-    """
-    The project that this resource belongs to.
+    r"""
+    The Project that this resource belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionSpecVpcPeeringConfig:
+    r"""
+    VPC Peering Config.
+
+    Attributes
+    ----------
+    networkRef : DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionSpecVpcPeeringConfigNetworkRef, default is Undefined, optional
+        network ref
+    subnet : str, default is Undefined, optional
+        Required. A free subnet for peering. (CIDR of /29)
+    """
+
+
+    networkRef?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionSpecVpcPeeringConfigNetworkRef
+
+    subnet?: str
+
+
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionSpecVpcPeeringConfigNetworkRef:
+    r"""
+    Required. Fully qualified name of the VPC that Datastream will peer to. Format: `projects/{project}/global/{networks}/{name}`
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
+    name : str, default is Undefined, optional
+        The name of a ComputeNetwork resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -87,58 +135,34 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionSpecProjec
     namespace?: str
 
 
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionSpecVpcPeeringConfig:
-    """
-    Immutable. The VPC Peering configuration is used to create VPC peering
-    between Datastream and the consumer's VPC.
-
-    Attributes
-    ----------
-    subnet : str, default is Undefined, required
-        Immutable. A free subnet for peering. (CIDR of /29).
-    vpc : str, default is Undefined, required
-        Immutable. Fully qualified name of the VPC that Datastream will peer to.
-        Format: projects/{project}/global/{networks}/{name}.
-    """
-
-
-    subnet: str
-
-    vpc: str
-
-
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionStatus:
-    """
-    datastream cnrm cloud google com v1alpha1 datastream private connection status
+    r"""
+    DatastreamPrivateConnectionStatus defines the config connector machine state of DatastreamPrivateConnection
 
     Attributes
     ----------
     conditions : [DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
-    error : [DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionStatusErrorItems0], default is Undefined, optional
-        The PrivateConnection error in case of failure.
-    name : str, default is Undefined, optional
-        The resource's name.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the DatastreamPrivateConnection resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
-    state : str, default is Undefined, optional
-        State of the PrivateConnection.
+    observedState : DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionStatusConditionsItems0]
 
-    error?: [DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionStatusErrorItems0]
-
-    name?: str
+    externalRef?: str
 
     observedGeneration?: int
 
-    state?: str
+    observedState?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionStatusObservedState
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionStatusConditionsItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream private connection status conditions items0
 
     Attributes
@@ -167,21 +191,59 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionStatusCond
     $type?: str
 
 
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionStatusErrorItems0:
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    createTime : str, default is Undefined, optional
+        Output only. The create time of the resource.
+    error : DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionStatusObservedStateError, default is Undefined, optional
+        error
+    state : str, default is Undefined, optional
+        Output only. The state of the Private Connection.
+    updateTime : str, default is Undefined, optional
+        Output only. The update time of the resource.
     """
-    datastream cnrm cloud google com v1alpha1 datastream private connection status error items0
+
+
+    createTime?: str
+
+    error?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionStatusObservedStateError
+
+    state?: str
+
+    updateTime?: str
+
+
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamPrivateConnectionStatusObservedStateError:
+    r"""
+    Output only. In case of error, the details of the error in a user-friendly format.
 
     Attributes
     ----------
     details : {str:str}, default is Undefined, optional
-        A list of messages that carry the error details.
+        Additional information about the error.
+    errorTime : str, default is Undefined, optional
+        The time when the error occurred.
+    errorUUID : str, default is Undefined, optional
+        A unique identifier for this specific error, allowing it to be traced throughout the system in logs and API responses.
     message : str, default is Undefined, optional
         A message containing more information about the error that occurred.
+    reason : str, default is Undefined, optional
+        A title that explains the reason for the error.
     """
 
 
     details?: {str:str}
 
+    errorTime?: str
+
+    errorUUID?: str
+
     message?: str
+
+    reason?: str
 
 

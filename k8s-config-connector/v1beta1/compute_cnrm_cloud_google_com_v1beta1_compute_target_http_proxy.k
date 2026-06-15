@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeTargetHTTPProxy:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target HTTP proxy
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeTargetHTTPProxy:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPProxySpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target HTTP proxy spec
 
     Attributes
@@ -76,7 +76,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPProxySpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPProxySpecURLMapRef:
-    """
+    r"""
     A reference to the ComputeURLMap resource that defines the mapping
     from URL to the BackendService.
 
@@ -99,7 +99,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPProxySpecURLMapRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPProxyStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target HTTP proxy status
 
     Attributes
@@ -129,7 +129,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPProxyStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPProxyStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target HTTP proxy status conditions items0
 
     Attributes

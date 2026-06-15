@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema SQLUser:
-    """
+    r"""
     sql cnrm cloud google com v1beta1 SQL user
 
     Attributes
@@ -36,7 +36,7 @@ schema SQLUser:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLUserSpec:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL user spec
 
     Attributes
@@ -71,7 +71,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLUserSpec:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLUserSpecInstanceRef:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL user spec instance ref
 
     Attributes
@@ -93,7 +93,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLUserSpecInstanceRef:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLUserSpecPassword:
-    """
+    r"""
     The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to
                     either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.
 
@@ -112,7 +112,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLUserSpecPassword:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLUserSpecPasswordPolicy:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL user spec password policy
 
     Attributes
@@ -142,7 +142,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLUserSpecPasswordPolicy:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLUserSpecPasswordPolicyStatusItems0:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL user spec password policy status items0
 
     Attributes
@@ -160,7 +160,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLUserSpecPasswordPolicyStatusItems0:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLUserSpecPasswordValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -174,7 +174,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLUserSpecPasswordValueFrom:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLUserSpecPasswordValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -192,7 +192,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLUserSpecPasswordValueFromSecretKeyRef:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLUserStatus:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL user status
 
     Attributes
@@ -214,7 +214,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLUserStatus:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLUserStatusConditionsItems0:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL user status conditions items0
 
     Attributes
@@ -244,7 +244,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLUserStatusConditionsItems0:
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLUserStatusSQLServerUserDetailsItems0:
-    """
+    r"""
     SQL cnrm cloud google com v1beta1 SQL user status SQL server user details items0
 
     Attributes

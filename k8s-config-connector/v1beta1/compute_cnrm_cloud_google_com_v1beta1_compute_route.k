@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeRoute:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute route
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeRoute:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouteSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute route spec
 
     Attributes
@@ -104,7 +104,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouteSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouteSpecNetworkRef:
-    """
+    r"""
     The network that this route applies to.
 
     Attributes
@@ -126,7 +126,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouteSpecNetworkRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouteSpecNextHopILBRef:
-    """
+    r"""
     A forwarding rule of type loadBalancingScheme=INTERNAL that should
     handle matching packets.  Note that this can only be used when the
     destinationRange is a public (non-RFC 1918) IP CIDR range.
@@ -150,7 +150,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouteSpecNextHopILBRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouteSpecNextHopInstanceRef:
-    """
+    r"""
     Instance that should handle matching packets.
 
     Attributes
@@ -172,7 +172,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouteSpecNextHopInstanceRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouteSpecNextHopVPNTunnelRef:
-    """
+    r"""
     The ComputeVPNTunnel that should handle matching packets
 
     Attributes
@@ -194,7 +194,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouteSpecNextHopVPNTunnelRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouteStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute route status
 
     Attributes
@@ -220,7 +220,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouteStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouteStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute route status conditions items0
 
     Attributes

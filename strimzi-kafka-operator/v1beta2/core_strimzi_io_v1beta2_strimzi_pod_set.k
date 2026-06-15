@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema StrimziPodSet:
-    """
+    r"""
     core strimzi io v1beta2 strimzi pod set
 
     Attributes
@@ -36,7 +36,7 @@ schema StrimziPodSet:
 
 
 schema CoreStrimziIoV1beta2StrimziPodSetSpec:
-    """
+    r"""
     The specification of the StrimziPodSet.
 
     Attributes
@@ -54,25 +54,25 @@ schema CoreStrimziIoV1beta2StrimziPodSetSpec:
 
 
 schema CoreStrimziIoV1beta2StrimziPodSetSpecSelector:
-    """
+    r"""
     Selector is a label query which matches all the pods managed by this `StrimziPodSet`. Only `matchLabels` is supported. If `matchExpressions` is set, it will be ignored.
 
     Attributes
     ----------
     matchExpressions : [CoreStrimziIoV1beta2StrimziPodSetSpecSelectorMatchExpressionsItems0], default is Undefined, optional
         match expressions
-    matchLabels : any, default is Undefined, optional
+    matchLabels : {str:str}, default is Undefined, optional
         match labels
     """
 
 
     matchExpressions?: [CoreStrimziIoV1beta2StrimziPodSetSpecSelectorMatchExpressionsItems0]
 
-    matchLabels?: any
+    matchLabels?: {str:str}
 
 
 schema CoreStrimziIoV1beta2StrimziPodSetSpecSelectorMatchExpressionsItems0:
-    """
+    r"""
     core strimzi io v1beta2 strimzi pod set spec selector match expressions items0
 
     Attributes
@@ -94,7 +94,7 @@ schema CoreStrimziIoV1beta2StrimziPodSetSpecSelectorMatchExpressionsItems0:
 
 
 schema CoreStrimziIoV1beta2StrimziPodSetStatus:
-    """
+    r"""
     The status of the StrimziPodSet.
 
     Attributes
@@ -124,7 +124,7 @@ schema CoreStrimziIoV1beta2StrimziPodSetStatus:
 
 
 schema CoreStrimziIoV1beta2StrimziPodSetStatusConditionsItems0:
-    """
+    r"""
     core strimzi io v1beta2 strimzi pod set status conditions items0
 
     Attributes

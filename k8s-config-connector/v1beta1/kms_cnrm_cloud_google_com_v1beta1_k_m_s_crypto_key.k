@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema KMSCryptoKey:
-    """
+    r"""
     kms cnrm cloud google com v1beta1 k m s crypto key
 
     Attributes
@@ -36,7 +36,7 @@ schema KMSCryptoKey:
 
 
 schema KmsCnrmCloudGoogleComV1beta1KMSCryptoKeySpec:
-    """
+    r"""
     kms cnrm cloud google com v1beta1 k m s crypto key spec
 
     Attributes
@@ -86,7 +86,7 @@ schema KmsCnrmCloudGoogleComV1beta1KMSCryptoKeySpec:
 
 
 schema KmsCnrmCloudGoogleComV1beta1KMSCryptoKeySpecKeyRingRef:
-    """
+    r"""
     The KMSKeyRing that this key belongs to.
 
     Attributes
@@ -108,7 +108,7 @@ schema KmsCnrmCloudGoogleComV1beta1KMSCryptoKeySpecKeyRingRef:
 
 
 schema KmsCnrmCloudGoogleComV1beta1KMSCryptoKeySpecVersionTemplate:
-    """
+    r"""
     A template describing settings for new crypto key versions.
 
     Attributes
@@ -127,7 +127,7 @@ schema KmsCnrmCloudGoogleComV1beta1KMSCryptoKeySpecVersionTemplate:
 
 
 schema KmsCnrmCloudGoogleComV1beta1KMSCryptoKeyStatus:
-    """
+    r"""
     kms cnrm cloud google com v1beta1 k m s crypto key status
 
     Attributes
@@ -149,7 +149,7 @@ schema KmsCnrmCloudGoogleComV1beta1KMSCryptoKeyStatus:
 
 
 schema KmsCnrmCloudGoogleComV1beta1KMSCryptoKeyStatusConditionsItems0:
-    """
+    r"""
     kms cnrm cloud google com v1beta1 k m s crypto key status conditions items0
 
     Attributes

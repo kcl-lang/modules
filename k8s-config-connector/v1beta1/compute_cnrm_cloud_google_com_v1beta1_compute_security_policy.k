@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeSecurityPolicy:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute security policy
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeSecurityPolicy:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute security policy spec
 
     Attributes
@@ -74,7 +74,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecAdaptiveProtectionConfig:
-    """
+    r"""
     Adaptive Protection Config of this security policy.
 
     Attributes
@@ -92,7 +92,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecAdaptiveProtecti
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecAdaptiveProtectionConfigAutoDeployConfig:
-    """
+    r"""
     Auto Deploy Config of this security policy.
 
     Attributes
@@ -118,7 +118,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecAdaptiveProtecti
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecAdaptiveProtectionConfigLayer7DdosDefenseConfig:
-    """
+    r"""
     Layer 7 DDoS Defense Config of this security policy.
 
     Attributes
@@ -136,7 +136,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecAdaptiveProtecti
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecAdvancedOptionsConfig:
-    """
+    r"""
     Advanced Options Config of this security policy.
 
     Attributes
@@ -162,7 +162,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecAdvancedOptionsC
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecAdvancedOptionsConfigJSONCustomConfig:
-    """
+    r"""
     Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.
 
     Attributes
@@ -176,7 +176,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecAdvancedOptionsC
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRecaptchaOptionsConfig:
-    """
+    r"""
     reCAPTCHA configuration options to be applied for the security policy.
 
     Attributes
@@ -190,7 +190,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRecaptchaOptions
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRecaptchaOptionsConfigRedirectSiteKeyRef:
-    """
+    r"""
     A field to supply a reCAPTCHA site key to be used for all the rules
     using the redirect action with the type of GOOGLE_RECAPTCHA under
     the security policy. The specified site key needs to be created from
@@ -217,7 +217,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRecaptchaOptions
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute security policy spec rule items0
 
     Attributes
@@ -263,7 +263,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0HeaderAction:
-    """
+    r"""
     Additional actions that are performed on headers.
 
     Attributes
@@ -277,7 +277,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Header
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0HeaderActionRequestHeadersToAddsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute security policy spec rule items0 header action request headers to adds items0
 
     Attributes
@@ -295,7 +295,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Header
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Match:
-    """
+    r"""
     A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding action is enforced.
 
     Attributes
@@ -317,7 +317,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Match:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0MatchConfig:
-    """
+    r"""
     The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
 
     Attributes
@@ -331,7 +331,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0MatchC
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0MatchExpr:
-    """
+    r"""
     User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
 
     Attributes
@@ -345,7 +345,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0MatchE
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0PreconfiguredWafConfig:
-    """
+    r"""
     Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
 
     Attributes
@@ -359,7 +359,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Precon
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0PreconfiguredWafConfigExclusionItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute security policy spec rule items0 preconfigured waf config exclusion items0
 
     Attributes
@@ -393,7 +393,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Precon
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0PreconfiguredWafConfigExclusionItems0RequestCookieItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute security policy spec rule items0 preconfigured waf config exclusion items0 request cookie items0
 
     Attributes
@@ -411,7 +411,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Precon
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0PreconfiguredWafConfigExclusionItems0RequestHeaderItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute security policy spec rule items0 preconfigured waf config exclusion items0 request header items0
 
     Attributes
@@ -429,7 +429,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Precon
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0PreconfiguredWafConfigExclusionItems0RequestQueryParamItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute security policy spec rule items0 preconfigured waf config exclusion items0 request query param items0
 
     Attributes
@@ -447,7 +447,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Precon
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0PreconfiguredWafConfigExclusionItems0RequestURIItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute security policy spec rule items0 preconfigured waf config exclusion items0 request URI items0
 
     Attributes
@@ -465,7 +465,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Precon
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RateLimitOptions:
-    """
+    r"""
     Rate limit threshold for this security policy. Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
 
     Attributes
@@ -511,7 +511,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RateLi
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RateLimitOptionsBanThreshold:
-    """
+    r"""
     Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
 
     Attributes
@@ -529,7 +529,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RateLi
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RateLimitOptionsEnforceOnKeyConfigsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute security policy spec rule items0 rate limit options enforce on key configs items0
 
     Attributes
@@ -547,7 +547,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RateLi
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RateLimitOptionsExceedRedirectOptions:
-    """
+    r"""
     Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
 
     Attributes
@@ -565,7 +565,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RateLi
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RateLimitOptionsRateLimitThreshold:
-    """
+    r"""
     Threshold at which to begin ratelimiting.
 
     Attributes
@@ -583,7 +583,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RateLi
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RedirectOptions:
-    """
+    r"""
     Parameters defining the redirect action. Cannot be specified for any other actions.
 
     Attributes
@@ -601,7 +601,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Redire
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicyStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute security policy status
 
     Attributes
@@ -627,7 +627,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicyStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicyStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute security policy status conditions items0
 
     Attributes

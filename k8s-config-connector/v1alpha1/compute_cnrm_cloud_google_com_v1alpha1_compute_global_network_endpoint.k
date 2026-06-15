@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeGlobalNetworkEndpoint:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute global network endpoint
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeGlobalNetworkEndpoint:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeGlobalNetworkEndpointSpec:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute global network endpoint spec
 
     Attributes
@@ -67,7 +67,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeGlobalNetworkEndpointSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeGlobalNetworkEndpointSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -89,7 +89,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeGlobalNetworkEndpointSpecProjectR
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeGlobalNetworkEndpointStatus:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute global network endpoint status
 
     Attributes
@@ -107,7 +107,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeGlobalNetworkEndpointStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeGlobalNetworkEndpointStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute global network endpoint status conditions items0
 
     Attributes

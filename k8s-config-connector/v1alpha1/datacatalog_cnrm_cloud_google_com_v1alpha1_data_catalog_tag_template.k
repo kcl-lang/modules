@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DataCatalogTagTemplate:
-    """
-    datacatalog cnrm cloud google com v1alpha1 data catalog tag template
+    r"""
+    DataCatalogTagTemplate is the Schema for the DataCatalogTagTemplate API
 
     Attributes
     ----------
@@ -36,64 +36,81 @@ schema DataCatalogTagTemplate:
 
 
 schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpec:
-    """
-    datacatalog cnrm cloud google com v1alpha1 data catalog tag template spec
+    r"""
+    DataCatalogTagTemplateSpec defines the desired state of DataCatalogTagTemplate
 
     Attributes
     ----------
     displayName : str, default is Undefined, optional
-        The display name for this template.
-    fields : [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsItems0], default is Undefined, required
-        Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
-    forceDelete : bool, default is Undefined, optional
-        This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
+        Display name for this template. Defaults to an empty string.
+
+         The name must contain only Unicode letters, numbers (0-9), underscores (_),
+         dashes (-), spaces ( ), and can't start or end with spaces.
+         The maximum length is 200 characters.
+    fields : {str:DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsAnon}, default is Undefined, optional
+        Fields used to create a Tag
+    isPubliclyReadable : bool, default is Undefined, optional
+        Indicates whether tags created with this template are public. Public tags
+         do not require tag template access to appear in
+         [ListTags][google.cloud.datacatalog.v1.DataCatalog.ListTags] API response.
+
+         Additionally, you can search for a public tag by value with a
+         simple search query in addition to using a ``tag:`` predicate.
+    location : str, default is Undefined, required
+        location
     projectRef : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecProjectRef, default is Undefined, required
         project ref
-    region : str, default is Undefined, optional
-        Immutable. Template location region.
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
-    tagTemplateId : str, default is Undefined, required
-        Immutable. The id of the tag template to create.
+        The DataCatalogTagTemplate name. If not given, the metadata.name will be used.
     """
 
 
     displayName?: str
 
-    fields: [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsItems0]
+    fields?: {str:DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsAnon}
 
-    forceDelete?: bool
+    isPubliclyReadable?: bool
+
+    location: str
 
     projectRef: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecProjectRef
 
-    region?: str
-
     resourceID?: str
 
-    tagTemplateId: str
 
-
-schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsItems0:
-    """
-    datacatalog cnrm cloud google com v1alpha1 data catalog tag template spec fields items0
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsAnon:
+    r"""
+    datacatalog cnrm cloud google com v1alpha1 data catalog tag template spec fields anon
 
     Attributes
     ----------
     description : str, default is Undefined, optional
-        A description for this field.
+        The description for this field. Defaults to an empty string.
     displayName : str, default is Undefined, optional
-        The display name for this field.
-    fieldId : str, default is Undefined, required
-        field Id
+        The display name for this field. Defaults to an empty string.
+
+         The name must contain only Unicode letters, numbers (0-9), underscores (_),
+         dashes (-), spaces ( ), and can't start or end with spaces.
+         The maximum length is 200 characters.
     isRequired : bool, default is Undefined, optional
-        Whether this is a required field. Defaults to false.
+        If true, this field is required. Defaults to false.
     name : str, default is Undefined, optional
-        The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}.
+        Identifier. The resource name of the tag template field in URL format.
+
+         Note: The tag template field itself might not be stored in the location
+         specified in its name.
+
+         The name must contain only letters (a-z, A-Z), numbers (0-9),
+         or underscores (_), and must start with a letter or underscore.
+         The maximum length is 64 characters.
     order : int, default is Undefined, optional
-        The order of this field with respect to other fields in this tag template.
-        A higher value indicates a more important field. The value can be negative.
-        Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
-    $type : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsItems0Type, default is Undefined, required
+        The order of this field with respect to other fields in this tag
+         template.
+
+         For example, a higher value can indicate a more important field.
+         The value can be negative. Multiple fields can have the same order and
+         field orders within a tag don't have to be sequential.
+    $type : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsAnonType, default is Undefined, required
         type
     """
 
@@ -102,63 +119,68 @@ schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsItem
 
     displayName?: str
 
-    fieldId: str
-
     isRequired?: bool
 
     name?: str
 
     order?: int
 
-    $type: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsItems0Type
+    $type: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsAnonType
 
 
-schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsItems0Type:
-    """
-    The type of value this tag field can contain.
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsAnonType:
+    r"""
+    Required. The type of value this tag field can contain.
 
     Attributes
     ----------
-    enumType : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsItems0TypeEnumType, default is Undefined, optional
+    enumType : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsAnonTypeEnumType, default is Undefined, optional
         enum type
     primitiveType : str, default is Undefined, optional
-        Represents primitive types - string, bool etc.
-         Exactly one of 'primitive_type' or 'enum_type' must be set Possible values: ["DOUBLE", "STRING", "BOOL", "TIMESTAMP"].
+        Primitive types, such as string, boolean, etc.
     """
 
 
-    enumType?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsItems0TypeEnumType
+    enumType?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsAnonTypeEnumType
 
     primitiveType?: str
 
 
-schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsItems0TypeEnumType:
-    """
-    Represents an enum type.
-     Exactly one of 'primitive_type' or 'enum_type' must be set.
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsAnonTypeEnumType:
+    r"""
+    An enum type.
 
     Attributes
     ----------
-    allowedValues : [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsItems0TypeEnumTypeAllowedValuesItems0], default is Undefined, required
-        The set of allowed values for this enum. The display names of the
-        values must be case-insensitively unique within this set. Currently,
-        enum values can only be added to the list of allowed values. Deletion
-        and renaming of enum values are not supported.
-        Can have up to 500 allowed values.
+    allowedValues : [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsAnonTypeEnumTypeAllowedValuesItems0], default is Undefined, optional
+        The set of allowed values for this enum.
+
+         This set must not be empty and can include up to 100 allowed values.
+         The display names of the values in this set must not be empty and must
+         be case-insensitively unique within this set.
+
+         The order of items in this set is preserved. This field can be used to
+         create, remove, and reorder enum values. To rename enum values, use the
+         `RenameTagTemplateFieldEnumValue` method.
     """
 
 
-    allowedValues: [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsItems0TypeEnumTypeAllowedValuesItems0]
+    allowedValues?: [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsAnonTypeEnumTypeAllowedValuesItems0]
 
 
-schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsItems0TypeEnumTypeAllowedValuesItems0:
-    """
-    datacatalog cnrm cloud google com v1alpha1 data catalog tag template spec fields items0 type enum type allowed values items0
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsAnonTypeEnumTypeAllowedValuesItems0:
+    r"""
+    datacatalog cnrm cloud google com v1alpha1 data catalog tag template spec fields anon type enum type allowed values items0
 
     Attributes
     ----------
     displayName : str, default is Undefined, required
-        The display name of the enum value.
+        Required. The display name of the enum value. Must not be an empty
+         string.
+
+         The name must contain only Unicode letters, numbers (0-9), underscores
+         (_), dashes (-), spaces ( ), and can't start or end with spaces. The
+         maximum length is 200 characters.
     """
 
 
@@ -166,21 +188,25 @@ schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsItem
 
 
 schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecProjectRef:
-    """
-    The project that this resource belongs to.
+    r"""
+    The Project that this resource belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
     external?: str
+
+    kind?: str
 
     name?: str
 
@@ -188,29 +214,33 @@ schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecProjectRef
 
 
 schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateStatus:
-    """
-    datacatalog cnrm cloud google com v1alpha1 data catalog tag template status
+    r"""
+    DataCatalogTagTemplateStatus defines the config connector machine state of DataCatalogTagTemplate
 
     Attributes
     ----------
     conditions : [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
-    name : str, default is Undefined, optional
-        The resource name of the tag template in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the DataCatalogTagTemplate resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateStatusConditionsItems0]
 
-    name?: str
+    externalRef?: str
 
     observedGeneration?: int
 
+    observedState?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateStatusObservedState
+
 
 schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateStatusConditionsItems0:
-    """
+    r"""
     datacatalog cnrm cloud google com v1alpha1 data catalog tag template status conditions items0
 
     Attributes
@@ -237,5 +267,19 @@ schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateStatusConditio
     status?: str
 
     $type?: str
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    dataplexTransferStatus : str, default is Undefined, optional
+        Optional. Transfer status of the TagTemplate
+    """
+
+
+    dataplexTransferStatus?: str
 
 

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DatastreamStream:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream
 
     Attributes
@@ -36,7 +36,7 @@ schema DatastreamStream:
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpec:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec
 
     Attributes
@@ -87,7 +87,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpec:
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAll:
-    """
+    r"""
     Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
 
     Attributes
@@ -109,7 +109,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAll:
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllMysqlExcludedObjects:
-    """
+    r"""
     MySQL data source objects to avoid backfilling.
 
     Attributes
@@ -123,7 +123,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllMysqlE
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllMysqlExcludedObjectsMysqlDatabasesItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec backfill all mysql excluded objects mysql databases items0
 
     Attributes
@@ -141,7 +141,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllMysqlE
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllMysqlExcludedObjectsMysqlDatabasesItems0MysqlTablesItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec backfill all mysql excluded objects mysql databases items0 mysql tables items0
 
     Attributes
@@ -159,7 +159,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllMysqlE
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllMysqlExcludedObjectsMysqlDatabasesItems0MysqlTablesItems0MysqlColumnsItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec backfill all mysql excluded objects mysql databases items0 mysql tables items0 mysql columns items0
 
     Attributes
@@ -198,7 +198,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllMysqlE
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllOracleExcludedObjects:
-    """
+    r"""
     PostgreSQL data source objects to avoid backfilling.
 
     Attributes
@@ -212,7 +212,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllOracle
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllOracleExcludedObjectsOracleSchemasItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec backfill all oracle excluded objects oracle schemas items0
 
     Attributes
@@ -230,7 +230,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllOracle
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllOracleExcludedObjectsOracleSchemasItems0OracleTablesItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec backfill all oracle excluded objects oracle schemas items0 oracle tables items0
 
     Attributes
@@ -248,7 +248,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllOracle
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllOracleExcludedObjectsOracleSchemasItems0OracleTablesItems0OracleColumnsItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec backfill all oracle excluded objects oracle schemas items0 oracle tables items0 oracle columns items0
 
     Attributes
@@ -295,7 +295,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllOracle
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllPostgresqlExcludedObjects:
-    """
+    r"""
     PostgreSQL data source objects to avoid backfilling.
 
     Attributes
@@ -309,7 +309,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllPostgr
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllPostgresqlExcludedObjectsPostgresqlSchemasItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec backfill all postgresql excluded objects postgresql schemas items0
 
     Attributes
@@ -327,7 +327,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllPostgr
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllPostgresqlExcludedObjectsPostgresqlSchemasItems0PostgresqlTablesItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec backfill all postgresql excluded objects postgresql schemas items0 postgresql tables items0
 
     Attributes
@@ -345,7 +345,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllPostgr
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllPostgresqlExcludedObjectsPostgresqlSchemasItems0PostgresqlTablesItems0PostgresqlColumnsItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec backfill all postgresql excluded objects postgresql schemas items0 postgresql tables items0 postgresql columns items0
 
     Attributes
@@ -388,7 +388,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecBackfillAllPostgr
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecDestinationConfig:
-    """
+    r"""
     Destination connection profile configuration.
 
     Attributes
@@ -410,7 +410,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecDestinationConfig
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecDestinationConfigBigqueryDestinationConfig:
-    """
+    r"""
     A configuration for how data should be loaded to Cloud Storage.
 
     Attributes
@@ -435,7 +435,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecDestinationConfig
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecDestinationConfigBigqueryDestinationConfigSingleTargetDataset:
-    """
+    r"""
     A single target dataset to which all data will be streamed.
 
     Attributes
@@ -450,7 +450,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecDestinationConfig
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets:
-    """
+    r"""
     Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
 
     Attributes
@@ -464,7 +464,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecDestinationConfig
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate:
-    """
+    r"""
     Dataset template used for dynamic dataset creation.
 
     Attributes
@@ -491,7 +491,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecDestinationConfig
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecDestinationConfigGcsDestinationConfig:
-    """
+    r"""
     A configuration for how data should be loaded to Cloud Storage.
 
     Attributes
@@ -522,7 +522,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecDestinationConfig
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecDestinationConfigGcsDestinationConfigJSONFileFormat:
-    """
+    r"""
     JSON file format configuration.
 
     Attributes
@@ -540,7 +540,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecDestinationConfig
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -562,7 +562,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecProjectRef:
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfig:
-    """
+    r"""
     Source connection profile configuration.
 
     Attributes
@@ -588,7 +588,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfig:
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigMysqlSourceConfig:
-    """
+    r"""
     MySQL data source configuration.
 
     Attributes
@@ -616,7 +616,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigMysql
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigMysqlSourceConfigExcludeObjects:
-    """
+    r"""
     MySQL objects to exclude from the stream.
 
     Attributes
@@ -630,7 +630,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigMysql
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabasesItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec source config mysql source config exclude objects mysql databases items0
 
     Attributes
@@ -648,7 +648,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigMysql
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabasesItems0MysqlTablesItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec source config mysql source config exclude objects mysql databases items0 mysql tables items0
 
     Attributes
@@ -666,7 +666,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigMysql
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabasesItems0MysqlTablesItems0MysqlColumnsItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec source config mysql source config exclude objects mysql databases items0 mysql tables items0 mysql columns items0
 
     Attributes
@@ -705,7 +705,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigMysql
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigMysqlSourceConfigIncludeObjects:
-    """
+    r"""
     MySQL objects to retrieve from the source.
 
     Attributes
@@ -719,7 +719,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigMysql
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabasesItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec source config mysql source config include objects mysql databases items0
 
     Attributes
@@ -737,7 +737,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigMysql
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabasesItems0MysqlTablesItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec source config mysql source config include objects mysql databases items0 mysql tables items0
 
     Attributes
@@ -755,7 +755,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigMysql
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabasesItems0MysqlTablesItems0MysqlColumnsItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec source config mysql source config include objects mysql databases items0 mysql tables items0 mysql columns items0
 
     Attributes
@@ -794,7 +794,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigMysql
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigOracleSourceConfig:
-    """
+    r"""
     MySQL data source configuration.
 
     Attributes
@@ -830,7 +830,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigOracl
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigOracleSourceConfigExcludeObjects:
-    """
+    r"""
     Oracle objects to exclude from the stream.
 
     Attributes
@@ -844,7 +844,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigOracl
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigOracleSourceConfigExcludeObjectsOracleSchemasItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec source config oracle source config exclude objects oracle schemas items0
 
     Attributes
@@ -862,7 +862,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigOracl
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigOracleSourceConfigExcludeObjectsOracleSchemasItems0OracleTablesItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec source config oracle source config exclude objects oracle schemas items0 oracle tables items0
 
     Attributes
@@ -880,7 +880,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigOracl
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigOracleSourceConfigExcludeObjectsOracleSchemasItems0OracleTablesItems0OracleColumnsItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec source config oracle source config exclude objects oracle schemas items0 oracle tables items0 oracle columns items0
 
     Attributes
@@ -927,7 +927,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigOracl
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigOracleSourceConfigIncludeObjects:
-    """
+    r"""
     Oracle objects to retrieve from the source.
 
     Attributes
@@ -941,7 +941,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigOracl
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigOracleSourceConfigIncludeObjectsOracleSchemasItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec source config oracle source config include objects oracle schemas items0
 
     Attributes
@@ -959,7 +959,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigOracl
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigOracleSourceConfigIncludeObjectsOracleSchemasItems0OracleTablesItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec source config oracle source config include objects oracle schemas items0 oracle tables items0
 
     Attributes
@@ -977,7 +977,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigOracl
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigOracleSourceConfigIncludeObjectsOracleSchemasItems0OracleTablesItems0OracleColumnsItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec source config oracle source config include objects oracle schemas items0 oracle tables items0 oracle columns items0
 
     Attributes
@@ -1024,7 +1024,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigOracl
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigPostgresqlSourceConfig:
-    """
+    r"""
     PostgreSQL data source configuration.
 
     Attributes
@@ -1057,7 +1057,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigPostg
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigPostgresqlSourceConfigExcludeObjects:
-    """
+    r"""
     PostgreSQL objects to exclude from the stream.
 
     Attributes
@@ -1071,7 +1071,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigPostg
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemasItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec source config postgresql source config exclude objects postgresql schemas items0
 
     Attributes
@@ -1089,7 +1089,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigPostg
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemasItems0PostgresqlTablesItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec source config postgresql source config exclude objects postgresql schemas items0 postgresql tables items0
 
     Attributes
@@ -1107,7 +1107,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigPostg
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemasItems0PostgresqlTablesItems0PostgresqlColumnsItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec source config postgresql source config exclude objects postgresql schemas items0 postgresql tables items0 postgresql columns items0
 
     Attributes
@@ -1150,7 +1150,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigPostg
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigPostgresqlSourceConfigIncludeObjects:
-    """
+    r"""
     PostgreSQL objects to retrieve from the source.
 
     Attributes
@@ -1164,7 +1164,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigPostg
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemasItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec source config postgresql source config include objects postgresql schemas items0
 
     Attributes
@@ -1182,7 +1182,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigPostg
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemasItems0PostgresqlTablesItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec source config postgresql source config include objects postgresql schemas items0 postgresql tables items0
 
     Attributes
@@ -1200,7 +1200,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigPostg
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemasItems0PostgresqlTablesItems0PostgresqlColumnsItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream spec source config postgresql source config include objects postgresql schemas items0 postgresql tables items0 postgresql columns items0
 
     Attributes
@@ -1243,7 +1243,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamSpecSourceConfigPostg
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamStatus:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream status
 
     Attributes
@@ -1269,7 +1269,7 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamStatus:
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamStreamStatusConditionsItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream stream status conditions items0
 
     Attributes

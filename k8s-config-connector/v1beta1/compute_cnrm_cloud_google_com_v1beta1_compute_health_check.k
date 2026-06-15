@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeHealthCheck:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute health check
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeHealthCheck:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute health check spec
 
     Attributes
@@ -108,7 +108,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecGrpcHealthCheck:
-    """
+    r"""
     A nested object resource.
 
     Attributes
@@ -154,7 +154,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecGrpcHealthCheck:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecHTTPHealthCheck:
-    """
+    r"""
     A nested object resource.
 
     Attributes
@@ -213,7 +213,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecHTTPHealthCheck:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecHTTPSHealthCheck:
-    """
+    r"""
     A nested object resource.
 
     Attributes
@@ -272,7 +272,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecHTTPSHealthCheck:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecHttp2HealthCheck:
-    """
+    r"""
     A nested object resource.
 
     Attributes
@@ -331,7 +331,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecHttp2HealthCheck:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecLogConfig:
-    """
+    r"""
     Configure logging on this health check.
 
     Attributes
@@ -346,7 +346,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecLogConfig:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecSslHealthCheck:
-    """
+    r"""
     A nested object resource.
 
     Attributes
@@ -401,7 +401,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecSslHealthCheck:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecTCPHealthCheck:
-    """
+    r"""
     A nested object resource.
 
     Attributes
@@ -456,7 +456,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecTCPHealthCheck:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute health check status
 
     Attributes
@@ -486,7 +486,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute health check status conditions items0
 
     Attributes

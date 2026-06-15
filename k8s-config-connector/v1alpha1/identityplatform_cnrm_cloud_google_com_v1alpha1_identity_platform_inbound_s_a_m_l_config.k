@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IdentityPlatformInboundSAMLConfig:
-    """
+    r"""
     identityplatform cnrm cloud google com v1alpha1 identity platform inbound s a m l config
 
     Attributes
@@ -36,7 +36,7 @@ schema IdentityPlatformInboundSAMLConfig:
 
 
 schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformInboundSAMLConfigSpec:
-    """
+    r"""
     identityplatform cnrm cloud google com v1alpha1 identity platform inbound s a m l config spec
 
     Attributes
@@ -70,7 +70,7 @@ schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformInboundSAMLConf
 
 
 schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformInboundSAMLConfigSpecIdpConfig:
-    """
+    r"""
     SAML IdP configuration when the project acts as the relying party.
 
     Attributes
@@ -96,7 +96,7 @@ schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformInboundSAMLConf
 
 
 schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformInboundSAMLConfigSpecIdpConfigIdpCertificatesItems0:
-    """
+    r"""
     identityplatform cnrm cloud google com v1alpha1 identity platform inbound s a m l config spec idp config idp certificates items0
 
     Attributes
@@ -110,7 +110,7 @@ schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformInboundSAMLConf
 
 
 schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformInboundSAMLConfigSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -132,7 +132,7 @@ schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformInboundSAMLConf
 
 
 schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformInboundSAMLConfigSpecSpConfig:
-    """
+    r"""
     SAML SP (Service Provider) configuration when the project acts as the relying party to receive
     and accept an authentication assertion issued by a SAML identity provider.
 
@@ -155,7 +155,7 @@ schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformInboundSAMLConf
 
 
 schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformInboundSAMLConfigSpecSpConfigSpCertificatesItems0:
-    """
+    r"""
     identityplatform cnrm cloud google com v1alpha1 identity platform inbound s a m l config spec sp config sp certificates items0
 
     Attributes
@@ -169,7 +169,7 @@ schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformInboundSAMLConf
 
 
 schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformInboundSAMLConfigStatus:
-    """
+    r"""
     identityplatform cnrm cloud google com v1alpha1 identity platform inbound s a m l config status
 
     Attributes
@@ -187,7 +187,7 @@ schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformInboundSAMLConf
 
 
 schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformInboundSAMLConfigStatusConditionsItems0:
-    """
+    r"""
     identityplatform cnrm cloud google com v1alpha1 identity platform inbound s a m l config status conditions items0
 
     Attributes

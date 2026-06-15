@@ -97,7 +97,7 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProvider:
     adminUrl : str, default is Undefined, optional
         URL to the admin interface of the client.
     allowRefreshTokenInStandardTokenExchange : str, default is Undefined, optional
-        allow refresh token in standard token exchange
+        Defines whether to allow refresh token in Standard Token Exchange. Possible values are NO (default) and SAME_SESSION.
     alwaysDisplayInConsole : bool, default is Undefined, optional
         Always list this client in the Account UI, even if the user does not have an active session.
     authenticationFlowBindingOverrides : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderAuthenticationFlowBindingOverridesItems0], default is Undefined, optional
@@ -116,10 +116,6 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProvider:
         Defaults to client-secret. The authenticator type for clients with an access_type of CONFIDENTIAL or BEARER-ONLY. A default Keycloak installation will have the following available types:
     clientId : str, default is Undefined, optional
         The Client ID for this client, referenced in the URI during authentication and in issued tokens.
-    clientIdRef : OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderClientIDRef, default is Undefined, optional
-        client Id ref
-    clientIdSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderClientIDSelector, default is Undefined, optional
-        client Id selector
     clientOfflineSessionIdleTimeout : str, default is Undefined, optional
         Time a client session is allowed to be idle before it expires. Tokens are invalidated when a client session is expired. If not set it uses the standard SSO Session Idle value.
     clientOfflineSessionMaxLifespan : str, default is Undefined, optional
@@ -184,6 +180,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProvider:
         realm Id ref
     realmIdSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
+    requireDpopBoundTokens : bool, default is Undefined, optional
+        Enable support for Demonstrating Proof-of-Possession (DPoP) bound tokens.
     rootUrl : str, default is Undefined, optional
         When specified, this URL is prepended to any relative URLs found within valid_redirect_uris, web_origins, and admin_url. NOTE: Due to limitations in the Keycloak API, when the root_url attribute is used, the valid_redirect_uris, web_origins, and admin_url attributes will be required.
     serviceAccountsEnabled : bool, default is Undefined, optional
@@ -191,7 +189,7 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProvider:
     standardFlowEnabled : bool, default is Undefined, optional
         When true, the OAuth2 Authorization Code Grant will be enabled for this client. Defaults to false.
     standardTokenExchangeEnabled : bool, default is Undefined, optional
-        When false, this client will not be able to initiate a login or obtain access tokens. Defaults to true.
+        Enables support for Standard Token Exchange
     useRefreshTokens : bool, default is Undefined, optional
         If this is true, a refresh_token will be created and added to the token response. If this is false then no refresh_token will be generated.  Defaults to true.
     useRefreshTokensClientCredentials : bool, default is Undefined, optional
@@ -232,10 +230,6 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProvider:
     clientAuthenticatorType?: str
 
     clientId?: str
-
-    clientIdRef?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderClientIDRef
-
-    clientIdSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderClientIDSelector
 
     clientOfflineSessionIdleTimeout?: str
 
@@ -298,6 +292,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProvider:
     realmIdRef?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderRealmIDRef
 
     realmIdSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderRealmIDSelector
+
+    requireDpopBoundTokens?: bool
 
     rootUrl?: str
 
@@ -556,95 +552,6 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderAuthorizatio
     policyEnforcementMode?: str
 
 
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderClientIDRef:
-    r"""
-    Reference to a Client in openidclient to populate clientId.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        Name of the referenced object.
-    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderClientIDRefPolicy, default is Undefined, optional
-        policy
-    """
-
-
-    name: str
-
-    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderClientIDRefPolicy
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderClientIDRefPolicy:
-    r"""
-    Policies for referencing.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderClientIDSelector:
-    r"""
-    Selector for a Client in openidclient to populate clientId.
-
-    Attributes
-    ----------
-    matchControllerRef : bool, default is Undefined, optional
-        MatchControllerRef ensures an object with the same controller reference
-        as the selecting object is selected.
-    matchLabels : {str:str}, default is Undefined, optional
-        MatchLabels ensures an object with matching labels is selected.
-    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderClientIDSelectorPolicy, default is Undefined, optional
-        policy
-    """
-
-
-    matchControllerRef?: bool
-
-    matchLabels?: {str:str}
-
-    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderClientIDSelectorPolicy
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderClientIDSelectorPolicy:
-    r"""
-    Policies for selection.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
-
-
 schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProviderClientSecretSecretRef:
     r"""
     The secret for clients with an access_type of CONFIDENTIAL or BEARER-ONLY. This value is sensitive and should be treated with the same care as a password. If omitted, this will be generated by Keycloak.
@@ -801,7 +708,7 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProvider:
     adminUrl : str, default is Undefined, optional
         URL to the admin interface of the client.
     allowRefreshTokenInStandardTokenExchange : str, default is Undefined, optional
-        allow refresh token in standard token exchange
+        Defines whether to allow refresh token in Standard Token Exchange. Possible values are NO (default) and SAME_SESSION.
     alwaysDisplayInConsole : bool, default is Undefined, optional
         Always list this client in the Account UI, even if the user does not have an active session.
     authenticationFlowBindingOverrides : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderAuthenticationFlowBindingOverridesItems0], default is Undefined, optional
@@ -820,10 +727,6 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProvider:
         Defaults to client-secret. The authenticator type for clients with an access_type of CONFIDENTIAL or BEARER-ONLY. A default Keycloak installation will have the following available types:
     clientId : str, default is Undefined, optional
         The Client ID for this client, referenced in the URI during authentication and in issued tokens.
-    clientIdRef : OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderClientIDRef, default is Undefined, optional
-        client Id ref
-    clientIdSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderClientIDSelector, default is Undefined, optional
-        client Id selector
     clientOfflineSessionIdleTimeout : str, default is Undefined, optional
         Time a client session is allowed to be idle before it expires. Tokens are invalidated when a client session is expired. If not set it uses the standard SSO Session Idle value.
     clientOfflineSessionMaxLifespan : str, default is Undefined, optional
@@ -888,6 +791,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProvider:
         realm Id ref
     realmIdSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
+    requireDpopBoundTokens : bool, default is Undefined, optional
+        Enable support for Demonstrating Proof-of-Possession (DPoP) bound tokens.
     rootUrl : str, default is Undefined, optional
         When specified, this URL is prepended to any relative URLs found within valid_redirect_uris, web_origins, and admin_url. NOTE: Due to limitations in the Keycloak API, when the root_url attribute is used, the valid_redirect_uris, web_origins, and admin_url attributes will be required.
     serviceAccountsEnabled : bool, default is Undefined, optional
@@ -895,7 +800,7 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProvider:
     standardFlowEnabled : bool, default is Undefined, optional
         When true, the OAuth2 Authorization Code Grant will be enabled for this client. Defaults to false.
     standardTokenExchangeEnabled : bool, default is Undefined, optional
-        When false, this client will not be able to initiate a login or obtain access tokens. Defaults to true.
+        Enables support for Standard Token Exchange
     useRefreshTokens : bool, default is Undefined, optional
         If this is true, a refresh_token will be created and added to the token response. If this is false then no refresh_token will be generated.  Defaults to true.
     useRefreshTokensClientCredentials : bool, default is Undefined, optional
@@ -936,10 +841,6 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProvider:
     clientAuthenticatorType?: str
 
     clientId?: str
-
-    clientIdRef?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderClientIDRef
-
-    clientIdSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderClientIDSelector
 
     clientOfflineSessionIdleTimeout?: str
 
@@ -1002,6 +903,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProvider:
     realmIdRef?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderRealmIDRef
 
     realmIdSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderRealmIDSelector
+
+    requireDpopBoundTokens?: bool
 
     rootUrl?: str
 
@@ -1260,95 +1163,6 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderAuthorizati
     policyEnforcementMode?: str
 
 
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderClientIDRef:
-    r"""
-    Reference to a Client in openidclient to populate clientId.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        Name of the referenced object.
-    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderClientIDRefPolicy, default is Undefined, optional
-        policy
-    """
-
-
-    name: str
-
-    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderClientIDRefPolicy
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderClientIDRefPolicy:
-    r"""
-    Policies for referencing.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderClientIDSelector:
-    r"""
-    Selector for a Client in openidclient to populate clientId.
-
-    Attributes
-    ----------
-    matchControllerRef : bool, default is Undefined, optional
-        MatchControllerRef ensures an object with the same controller reference
-        as the selecting object is selected.
-    matchLabels : {str:str}, default is Undefined, optional
-        MatchLabels ensures an object with matching labels is selected.
-    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderClientIDSelectorPolicy, default is Undefined, optional
-        policy
-    """
-
-
-    matchControllerRef?: bool
-
-    matchLabels?: {str:str}
-
-    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderClientIDSelectorPolicy
-
-
-schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderClientIDSelectorPolicy:
-    r"""
-    Policies for selection.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
-
-
 schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProviderClientSecretSecretRef:
     r"""
     The secret for clients with an access_type of CONFIDENTIAL or BEARER-ONLY. This value is sensitive and should be treated with the same care as a password. If omitted, this will be generated by Keycloak.
@@ -1585,7 +1399,7 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientStatusAtProvider:
     adminUrl : str, default is Undefined, optional
         URL to the admin interface of the client.
     allowRefreshTokenInStandardTokenExchange : str, default is Undefined, optional
-        allow refresh token in standard token exchange
+        Defines whether to allow refresh token in Standard Token Exchange. Possible values are NO (default) and SAME_SESSION.
     alwaysDisplayInConsole : bool, default is Undefined, optional
         Always list this client in the Account UI, even if the user does not have an active session.
     authenticationFlowBindingOverrides : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientStatusAtProviderAuthenticationFlowBindingOverridesItems0], default is Undefined, optional
@@ -1662,6 +1476,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientStatusAtProvider:
         The challenge method to use for Proof Key for Code Exchange. Can be either plain or S256 or set to empty value “.
     realmId : str, default is Undefined, optional
         The realm this client is attached to.
+    requireDpopBoundTokens : bool, default is Undefined, optional
+        Enable support for Demonstrating Proof-of-Possession (DPoP) bound tokens.
     resourceServerId : str, default is Undefined, optional
         (Computed) When authorization is enabled for this client, this attribute is the unique ID for the client (the same value as the .id attribute).
     rootUrl : str, default is Undefined, optional
@@ -1673,7 +1489,7 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientStatusAtProvider:
     standardFlowEnabled : bool, default is Undefined, optional
         When true, the OAuth2 Authorization Code Grant will be enabled for this client. Defaults to false.
     standardTokenExchangeEnabled : bool, default is Undefined, optional
-        When false, this client will not be able to initiate a login or obtain access tokens. Defaults to true.
+        Enables support for Standard Token Exchange
     useRefreshTokens : bool, default is Undefined, optional
         If this is true, a refresh_token will be created and added to the token response. If this is false then no refresh_token will be generated.  Defaults to true.
     useRefreshTokensClientCredentials : bool, default is Undefined, optional
@@ -1770,6 +1586,8 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientStatusAtProvider:
     pkceCodeChallengeMethod?: str
 
     realmId?: str
+
+    requireDpopBoundTokens?: bool
 
     resourceServerId?: str
 

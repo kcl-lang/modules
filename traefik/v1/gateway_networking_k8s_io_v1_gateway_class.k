@@ -4,11 +4,11 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
-regex_match = regex.match
+_regex_match = regex.match
 
 
 schema GatewayClass:
-    """
+    r"""
     GatewayClass describes a class of Gateways available to the user for creating Gateway resources. 
      It is recommended that this resource be used as a template for Gateways. This means that a Gateway is based on the state of the GatewayClass at the time it was created and changes to the GatewayClass or associated parameters are not propagated down to existing Gateways. This recommendation is intended to limit the blast radius of changes to GatewayClass or associated parameters. If implementations choose to propagate GatewayClass changes to existing Gateways, that MUST be clearly documented by the implementation. 
      Whenever one or more Gateways are using a GatewayClass, implementations SHOULD add the `gateway-exists-finalizer.gateway.networking.k8s.io` finalizer on the associated GatewayClass. This ensures that a GatewayClass associated with a Gateway is not deleted while in use. 
@@ -41,7 +41,7 @@ schema GatewayClass:
 
 
 schema GatewayNetworkingK8sIoV1GatewayClassSpec:
-    """
+    r"""
     Spec defines the desired state of GatewayClass.
 
     Attributes
@@ -68,12 +68,12 @@ schema GatewayNetworkingK8sIoV1GatewayClassSpec:
     check:
         len(controllerName) <= 253
         len(controllerName) >= 1
-        regex_match(str(controllerName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$")
-        len(description) <= 64
+        _regex_match(str(controllerName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$")
+        len(description) <= 64 if description
 
 
 schema GatewayNetworkingK8sIoV1GatewayClassSpecParametersRef:
-    """
+    r"""
     ParametersRef is a reference to a resource that contains the configuration parameters corresponding to the GatewayClass. This is optional if the controller does not require any additional configuration. 
      ParametersRef can reference a standard Kubernetes resource, i.e. ConfigMap, or an implementation-specific custom resource. The resource can be cluster-scoped or namespace-scoped. 
      If the referent cannot be found, the GatewayClass's "InvalidParameters" status condition will be true. 
@@ -103,19 +103,19 @@ schema GatewayNetworkingK8sIoV1GatewayClassSpecParametersRef:
 
     check:
         len(group) <= 253
-        regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
         len(kind) <= 63
         len(kind) >= 1
-        regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63
-        len(namespace) >= 1
-        regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
+        len(namespace) <= 63 if namespace
+        len(namespace) >= 1 if namespace
+        _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
 
 
 schema GatewayNetworkingK8sIoV1GatewayClassStatus:
-    """
+    r"""
     Status defines the current state of GatewayClass. 
      Implementations MUST populate status on all GatewayClass resources which specify their controller name.
 
@@ -135,12 +135,12 @@ schema GatewayNetworkingK8sIoV1GatewayClassStatus:
 
 
     check:
-        len(conditions) <= 8
-        len(supportedFeatures) <= 64
+        len(conditions) <= 8 if conditions
+        len(supportedFeatures) <= 64 if supportedFeatures
 
 
 schema GatewayNetworkingK8sIoV1GatewayClassStatusConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, 
      type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"` 
      // other fields }
@@ -177,11 +177,11 @@ schema GatewayNetworkingK8sIoV1GatewayClassStatusConditionsItems0:
 
     check:
         len(message) <= 32768
-        observedGeneration >= 0
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
         len(reason) <= 1024
         len(reason) >= 1
-        regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
+        _regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
         len($type) <= 316
-        regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+        _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
 
 

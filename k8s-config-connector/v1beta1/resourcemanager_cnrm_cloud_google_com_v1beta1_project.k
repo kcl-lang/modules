@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema Project:
-    """
+    r"""
     resourcemanager cnrm cloud google com v1beta1 project
 
     Attributes
@@ -36,7 +36,7 @@ schema Project:
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ProjectSpec:
-    """
+    r"""
     resourcemanager cnrm cloud google com v1beta1 project spec
 
     Attributes
@@ -66,7 +66,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ProjectSpec:
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ProjectSpecBillingAccountRef:
-    """
+    r"""
     resourcemanager cnrm cloud google com v1beta1 project spec billing account ref
 
     Attributes
@@ -88,7 +88,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ProjectSpecBillingAccountRef:
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ProjectSpecFolderRef:
-    """
+    r"""
     The folder that this resource belongs to. Changing this forces the
     resource to be migrated to the newly specified folder. Only one of
     folderRef or organizationRef may be specified.
@@ -112,7 +112,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ProjectSpecFolderRef:
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ProjectSpecOrganizationRef:
-    """
+    r"""
     The organization that this resource belongs to. Changing this
     forces the resource to be migrated to the newly specified
     organization. Only one of folderRef or organizationRef may be
@@ -137,7 +137,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ProjectSpecOrganizationRef:
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ProjectStatus:
-    """
+    r"""
     resourcemanager cnrm cloud google com v1beta1 project status
 
     Attributes
@@ -159,7 +159,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ProjectStatus:
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ProjectStatusConditionsItems0:
-    """
+    r"""
     resourcemanager cnrm cloud google com v1beta1 project status conditions items0
 
     Attributes

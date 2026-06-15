@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ServiceUsageConsumerQuotaOverride:
-    """
+    r"""
     serviceusage cnrm cloud google com v1alpha1 service usage consumer quota override
 
     Attributes
@@ -36,7 +36,7 @@ schema ServiceUsageConsumerQuotaOverride:
 
 
 schema ServiceusageCnrmCloudGoogleComV1alpha1ServiceUsageConsumerQuotaOverrideSpec:
-    """
+    r"""
     serviceusage cnrm cloud google com v1alpha1 service usage consumer quota override spec
 
     Attributes
@@ -82,7 +82,7 @@ schema ServiceusageCnrmCloudGoogleComV1alpha1ServiceUsageConsumerQuotaOverrideSp
 
 
 schema ServiceusageCnrmCloudGoogleComV1alpha1ServiceUsageConsumerQuotaOverrideSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -104,7 +104,7 @@ schema ServiceusageCnrmCloudGoogleComV1alpha1ServiceUsageConsumerQuotaOverrideSp
 
 
 schema ServiceusageCnrmCloudGoogleComV1alpha1ServiceUsageConsumerQuotaOverrideStatus:
-    """
+    r"""
     serviceusage cnrm cloud google com v1alpha1 service usage consumer quota override status
 
     Attributes
@@ -126,7 +126,7 @@ schema ServiceusageCnrmCloudGoogleComV1alpha1ServiceUsageConsumerQuotaOverrideSt
 
 
 schema ServiceusageCnrmCloudGoogleComV1alpha1ServiceUsageConsumerQuotaOverrideStatusConditionsItems0:
-    """
+    r"""
     serviceusage cnrm cloud google com v1alpha1 service usage consumer quota override status conditions items0
 
     Attributes

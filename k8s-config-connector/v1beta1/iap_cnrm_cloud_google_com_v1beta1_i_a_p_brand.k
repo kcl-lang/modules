@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IAPBrand:
-    """
+    r"""
     iap cnrm cloud google com v1beta1 i a p brand
 
     Attributes
@@ -36,7 +36,7 @@ schema IAPBrand:
 
 
 schema IapCnrmCloudGoogleComV1beta1IAPBrandSpec:
-    """
+    r"""
     iap cnrm cloud google com v1beta1 i a p brand spec
 
     Attributes
@@ -58,7 +58,7 @@ schema IapCnrmCloudGoogleComV1beta1IAPBrandSpec:
 
 
 schema IapCnrmCloudGoogleComV1beta1IAPBrandStatus:
-    """
+    r"""
     iap cnrm cloud google com v1beta1 i a p brand status
 
     Attributes
@@ -80,7 +80,7 @@ schema IapCnrmCloudGoogleComV1beta1IAPBrandStatus:
 
 
 schema IapCnrmCloudGoogleComV1beta1IAPBrandStatusConditionsItems0:
-    """
+    r"""
     iap cnrm cloud google com v1beta1 i a p brand status conditions items0
 
     Attributes

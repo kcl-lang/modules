@@ -78,7 +78,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateMetadata:
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize
+        labels is a map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: http://kubernetes.io/docs/user-guide/labels
@@ -182,6 +182,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecBasti
     allowedCIDRBlocks : [str], default is Undefined, optional
         AllowedCIDRBlocks is a list of CIDR blocks allowed to access the bastion host.
         They are set as ingress rules for the Bastion host's Security Group (defaults to 0.0.0.0/0).
+        If the cluster has IPv6 enabled, defaults to ::/0 and 0.0.0.0/0.
     ami : str, default is Undefined, optional
         AMI will use the specified AMI to boot the bastion. If not specified,
         the AMI will default to one picked out in public space.
@@ -216,15 +217,19 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecContr
     Attributes
     ----------
     host : str, default is Undefined, required
-        The hostname on which the API server is serving.
+        host is the hostname on which the API server is serving.
     port : int, default is Undefined, required
-        The port on which the API server is serving.
+        port is the port on which the API server is serving.
     """
 
 
     host: str
 
     port: int
+
+
+    check:
+        len(host) <= 512
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecControlPlaneLoadBalancer:
@@ -272,6 +277,12 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecContr
         Scheme sets the scheme of the load balancer (defaults to internet-facing)
     subnets : [str], default is Undefined, optional
         Subnets sets the subnets that should be applied to the control plane load balancer (defaults to discovered subnets for managed VPCs or an empty set for unmanaged VPCs)
+    targetGroupIPType : str, default is Undefined, optional
+        TargetGroupIPType sets the IP address type for the target group.
+        Valid values are ipv4 and ipv6. If not specified, defaults to ipv4 unless
+        the VPC has IPv6 enabled, in which case it defaults to ipv6.
+        This applies to the API server target group.
+        This field cannot be set if LoadBalancerType is classic or disabled.
     """
 
 
@@ -299,9 +310,11 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecContr
 
     subnets?: [str]
 
+    targetGroupIPType?: "ipv4" | "ipv6"
+
 
     check:
-        len(name) <= 32 if name
+        len(name) <= 32 if name not in [None, Undefined]
         _regex_match(str(name), r"^[A-Za-z0-9]([A-Za-z0-9]{0,31}|[-A-Za-z0-9]{0,30}[A-Za-z0-9])$") if name
 
 
@@ -319,6 +332,11 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecContr
     $protocol : str, default is "TCP", optional
         Protocol sets the protocol for the additional listener.
         Currently only TCP is supported.
+    targetGroupIPType : str, default is Undefined, optional
+        TargetGroupIPType sets the IP address type for the target group.
+        Valid values are ipv4 and ipv6. If not specified, defaults to ipv4 unless
+        the VPC has IPv6 enabled, in which case it defaults to ipv6.
+        This field cannot be set if LoadBalancerType is classic or disabled.
     """
 
 
@@ -327,6 +345,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecContr
     port: int
 
     $protocol?: "TCP" = "TCP"
+
+    targetGroupIPType?: "ipv4" | "ipv6"
 
 
     check:
@@ -509,6 +529,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
     ----------
     additionalControlPlaneIngressRules : [InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkAdditionalControlPlaneIngressRulesItems0], default is Undefined, optional
         AdditionalControlPlaneIngressRules is an optional set of ingress rules to add to the control plane
+    additionalNodeIngressRules : [InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkAdditionalNodeIngressRulesItems0], default is Undefined, optional
+        AdditionalNodeIngressRules is an optional set of ingress rules to add to every node
     cni : InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkCni, default is Undefined, optional
         cni
     nodePortIngressRuleCidrBlocks : [str], default is Undefined, optional
@@ -526,6 +548,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
 
     additionalControlPlaneIngressRules?: [InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkAdditionalControlPlaneIngressRulesItems0]
 
+    additionalNodeIngressRules?: [InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkAdditionalNodeIngressRulesItems0]
+
     cni?: InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkCni
 
     nodePortIngressRuleCidrBlocks?: [str]
@@ -538,6 +562,53 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkAdditionalControlPlaneIngressRulesItems0:
+    r"""
+    IngressRule defines an AWS ingress rule for security groups.
+
+    Attributes
+    ----------
+    cidrBlocks : [str], default is Undefined, optional
+        List of CIDR blocks to allow access from. Cannot be specified with SourceSecurityGroupID.
+    description : str, default is Undefined, required
+        Description provides extended information about the ingress rule.
+    fromPort : int, default is Undefined, required
+        FromPort is the start of port range.
+    ipv6CidrBlocks : [str], default is Undefined, optional
+        List of IPv6 CIDR blocks to allow access from. Cannot be specified with SourceSecurityGroupID.
+    natGatewaysIPsSource : bool, default is Undefined, optional
+        NatGatewaysIPsSource use the NAT gateways IPs as the source for the ingress rule.
+    $protocol : str, default is Undefined, required
+        Protocol is the protocol for the ingress rule. Accepted values are "-1" (all), "4" (IP in IP),"tcp", "udp", "icmp", and "58" (ICMPv6), "50" (ESP).
+    sourceSecurityGroupIds : [str], default is Undefined, optional
+        The security group id to allow access from. Cannot be specified with CidrBlocks.
+    sourceSecurityGroupRoles : [str], default is Undefined, optional
+        The security group role to allow access from. Cannot be specified with CidrBlocks.
+        The field will be combined with source security group IDs if specified.
+    toPort : int, default is Undefined, required
+        ToPort is the end of port range.
+    """
+
+
+    cidrBlocks?: [str]
+
+    description: str
+
+    fromPort: int
+
+    ipv6CidrBlocks?: [str]
+
+    natGatewaysIPsSource?: bool
+
+    $protocol: "-1" | "4" | "tcp" | "udp" | "icmp" | "58" | "50"
+
+    sourceSecurityGroupIds?: [str]
+
+    sourceSecurityGroupRoles?: [str]
+
+    toPort: int
+
+
+schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkAdditionalNodeIngressRulesItems0:
     r"""
     IngressRule defines an AWS ingress rule for security groups.
 
@@ -647,10 +718,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
     ipv6CidrBlock : str, default is Undefined, optional
         IPv6CidrBlock is the IPv6 CIDR block to be used when the provider creates a managed VPC.
         A subnet can have an IPv4 and an IPv6 address.
-        IPv6 is only supported in managed clusters, this field cannot be set on AWSCluster object.
     isIpv6 : bool, default is Undefined, optional
-        IsIPv6 defines the subnet as an IPv6 subnet. A subnet is IPv6 when it is associated with a VPC that has IPv6 enabled.
-        IPv6 is only supported in managed clusters, this field cannot be set on AWSCluster object.
+        IsIPv6 defines the subnet as an IPv6 subnet. A subnet is IPv6 when it is associated with an IPv6 CIDR.
     isPublic : bool, default is Undefined, optional
         IsPublic defines the subnet as a public subnet. A subnet is public when it is associated with a route table that has a route to an internet gateway.
     natGatewayId : str, default is Undefined, optional
@@ -845,13 +914,12 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
 
 
     check:
-        len(publicIpv4Pool) <= 30 if publicIpv4Pool
+        len(publicIpv4Pool) <= 30 if publicIpv4Pool not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetworkVpcIPV6:
     r"""
-    IPv6 contains ipv6 specific settings for the network. Supported only in managed clusters.
-    This field cannot be set on AWSCluster object.
+    IPv6 contains ipv6 specific settings for the network.
 
     Attributes
     ----------
@@ -893,6 +961,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
         The netmask length of the IPv4 CIDR you want to allocate to VPC from
         an Amazon VPC IP Address Manager (IPAM) pool.
         Defaults to /16 for IPv4 if not specified.
+        Defaults to /56 for IPv6 if not specified.
     """
 
 
@@ -918,6 +987,7 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecNetwo
         The netmask length of the IPv4 CIDR you want to allocate to VPC from
         an Amazon VPC IP Address Manager (IPAM) pool.
         Defaults to /16 for IPv4 if not specified.
+        Defaults to /56 for IPv6 if not specified.
     """
 
 
@@ -1040,6 +1110,12 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecon
         Scheme sets the scheme of the load balancer (defaults to internet-facing)
     subnets : [str], default is Undefined, optional
         Subnets sets the subnets that should be applied to the control plane load balancer (defaults to discovered subnets for managed VPCs or an empty set for unmanaged VPCs)
+    targetGroupIPType : str, default is Undefined, optional
+        TargetGroupIPType sets the IP address type for the target group.
+        Valid values are ipv4 and ipv6. If not specified, defaults to ipv4 unless
+        the VPC has IPv6 enabled, in which case it defaults to ipv6.
+        This applies to the API server target group.
+        This field cannot be set if LoadBalancerType is classic or disabled.
     """
 
 
@@ -1067,9 +1143,11 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecon
 
     subnets?: [str]
 
+    targetGroupIPType?: "ipv4" | "ipv6"
+
 
     check:
-        len(name) <= 32 if name
+        len(name) <= 32 if name not in [None, Undefined]
         _regex_match(str(name), r"^[A-Za-z0-9]([A-Za-z0-9]{0,31}|[-A-Za-z0-9]{0,30}[A-Za-z0-9])$") if name
 
 
@@ -1087,6 +1165,11 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecon
     $protocol : str, default is "TCP", optional
         Protocol sets the protocol for the additional listener.
         Currently only TCP is supported.
+    targetGroupIPType : str, default is Undefined, optional
+        TargetGroupIPType sets the IP address type for the target group.
+        Valid values are ipv4 and ipv6. If not specified, defaults to ipv4 unless
+        the VPC has IPv6 enabled, in which case it defaults to ipv6.
+        This field cannot be set if LoadBalancerType is classic or disabled.
     """
 
 
@@ -1095,6 +1178,8 @@ schema InfrastructureClusterxK8sIoV1beta2AWSClusterTemplateSpecTemplateSpecSecon
     port: int
 
     $protocol?: "TCP" = "TCP"
+
+    targetGroupIPType?: "ipv4" | "ipv6"
 
 
     check:

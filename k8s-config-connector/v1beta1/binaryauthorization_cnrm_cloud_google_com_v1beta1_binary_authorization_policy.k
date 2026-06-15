@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BinaryAuthorizationPolicy:
-    """
+    r"""
     binaryauthorization cnrm cloud google com v1beta1 binary authorization policy
 
     Attributes
@@ -36,7 +36,7 @@ schema BinaryAuthorizationPolicy:
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpec:
-    """
+    r"""
     binaryauthorization cnrm cloud google com v1beta1 binary authorization policy spec
 
     Attributes
@@ -82,7 +82,7 @@ schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpec
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpecAdmissionWhitelistPatternsItems0:
-    """
+    r"""
     binaryauthorization cnrm cloud google com v1beta1 binary authorization policy spec admission whitelist patterns items0
 
     Attributes
@@ -96,7 +96,7 @@ schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpec
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpecClusterAdmissionRulesAnon:
-    """
+    r"""
     binaryauthorization cnrm cloud google com v1beta1 binary authorization policy spec cluster admission rules anon
 
     Attributes
@@ -118,7 +118,7 @@ schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpec
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpecClusterAdmissionRulesAnonRequireAttestationsByItems0:
-    """
+    r"""
     binaryauthorization cnrm cloud google com v1beta1 binary authorization policy spec cluster admission rules anon require attestations by items0
 
     Attributes
@@ -140,7 +140,7 @@ schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpec
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpecDefaultAdmissionRule:
-    """
+    r"""
     Required. Default admission rule for a cluster without a per-cluster, per-kubernetes-service-account, or per-istio-service-identity admission rule.
 
     Attributes
@@ -162,7 +162,7 @@ schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpec
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpecDefaultAdmissionRuleRequireAttestationsByItems0:
-    """
+    r"""
     binaryauthorization cnrm cloud google com v1beta1 binary authorization policy spec default admission rule require attestations by items0
 
     Attributes
@@ -184,7 +184,7 @@ schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpec
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpecIstioServiceIdentityAdmissionRulesAnon:
-    """
+    r"""
     binaryauthorization cnrm cloud google com v1beta1 binary authorization policy spec istio service identity admission rules anon
 
     Attributes
@@ -206,7 +206,7 @@ schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpec
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpecIstioServiceIdentityAdmissionRulesAnonRequireAttestationsByItems0:
-    """
+    r"""
     binaryauthorization cnrm cloud google com v1beta1 binary authorization policy spec istio service identity admission rules anon require attestations by items0
 
     Attributes
@@ -228,7 +228,7 @@ schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpec
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpecKubernetesNamespaceAdmissionRulesAnon:
-    """
+    r"""
     binaryauthorization cnrm cloud google com v1beta1 binary authorization policy spec kubernetes namespace admission rules anon
 
     Attributes
@@ -250,7 +250,7 @@ schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpec
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpecKubernetesNamespaceAdmissionRulesAnonRequireAttestationsByItems0:
-    """
+    r"""
     binaryauthorization cnrm cloud google com v1beta1 binary authorization policy spec kubernetes namespace admission rules anon require attestations by items0
 
     Attributes
@@ -272,7 +272,7 @@ schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpec
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpecKubernetesServiceAccountAdmissionRulesAnon:
-    """
+    r"""
     binaryauthorization cnrm cloud google com v1beta1 binary authorization policy spec kubernetes service account admission rules anon
 
     Attributes
@@ -294,7 +294,7 @@ schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpec
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpecKubernetesServiceAccountAdmissionRulesAnonRequireAttestationsByItems0:
-    """
+    r"""
     binaryauthorization cnrm cloud google com v1beta1 binary authorization policy spec kubernetes service account admission rules anon require attestations by items0
 
     Attributes
@@ -316,7 +316,7 @@ schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpec
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -340,7 +340,7 @@ schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicySpec
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicyStatus:
-    """
+    r"""
     binaryauthorization cnrm cloud google com v1beta1 binary authorization policy status
 
     Attributes
@@ -366,7 +366,7 @@ schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicyStat
 
 
 schema BinaryauthorizationCnrmCloudGoogleComV1beta1BinaryAuthorizationPolicyStatusConditionsItems0:
-    """
+    r"""
     binaryauthorization cnrm cloud google com v1beta1 binary authorization policy status conditions items0
 
     Attributes

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ConfigControllerInstance:
-    """
+    r"""
     configcontroller cnrm cloud google com v1beta1 config controller instance
 
     Attributes
@@ -36,7 +36,7 @@ schema ConfigControllerInstance:
 
 
 schema ConfigcontrollerCnrmCloudGoogleComV1beta1ConfigControllerInstanceSpec:
-    """
+    r"""
     configcontroller cnrm cloud google com v1beta1 config controller instance spec
 
     Attributes
@@ -66,7 +66,7 @@ schema ConfigcontrollerCnrmCloudGoogleComV1beta1ConfigControllerInstanceSpec:
 
 
 schema ConfigcontrollerCnrmCloudGoogleComV1beta1ConfigControllerInstanceSpecManagementConfig:
-    """
+    r"""
     Immutable. Configuration of the cluster management
 
     Attributes
@@ -84,7 +84,7 @@ schema ConfigcontrollerCnrmCloudGoogleComV1beta1ConfigControllerInstanceSpecMana
 
 
 schema ConfigcontrollerCnrmCloudGoogleComV1beta1ConfigControllerInstanceSpecManagementConfigFullManagementConfig:
-    """
+    r"""
     Immutable. Configuration of the full (Autopilot) cluster management
 
     Attributes
@@ -122,7 +122,7 @@ schema ConfigcontrollerCnrmCloudGoogleComV1beta1ConfigControllerInstanceSpecMana
 
 
 schema ConfigcontrollerCnrmCloudGoogleComV1beta1ConfigControllerInstanceSpecManagementConfigFullManagementConfigNetworkRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -146,7 +146,7 @@ schema ConfigcontrollerCnrmCloudGoogleComV1beta1ConfigControllerInstanceSpecMana
 
 
 schema ConfigcontrollerCnrmCloudGoogleComV1beta1ConfigControllerInstanceSpecManagementConfigStandardManagementConfig:
-    """
+    r"""
     Immutable. Configuration of the standard (GKE) cluster management
 
     Attributes
@@ -184,7 +184,7 @@ schema ConfigcontrollerCnrmCloudGoogleComV1beta1ConfigControllerInstanceSpecMana
 
 
 schema ConfigcontrollerCnrmCloudGoogleComV1beta1ConfigControllerInstanceSpecManagementConfigStandardManagementConfigNetworkRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -208,7 +208,7 @@ schema ConfigcontrollerCnrmCloudGoogleComV1beta1ConfigControllerInstanceSpecMana
 
 
 schema ConfigcontrollerCnrmCloudGoogleComV1beta1ConfigControllerInstanceSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -232,7 +232,7 @@ schema ConfigcontrollerCnrmCloudGoogleComV1beta1ConfigControllerInstanceSpecProj
 
 
 schema ConfigcontrollerCnrmCloudGoogleComV1beta1ConfigControllerInstanceStatus:
-    """
+    r"""
     configcontroller cnrm cloud google com v1beta1 config controller instance status
 
     Attributes
@@ -258,7 +258,7 @@ schema ConfigcontrollerCnrmCloudGoogleComV1beta1ConfigControllerInstanceStatus:
 
 
 schema ConfigcontrollerCnrmCloudGoogleComV1beta1ConfigControllerInstanceStatusConditionsItems0:
-    """
+    r"""
     configcontroller cnrm cloud google com v1beta1 config controller instance status conditions items0
 
     Attributes

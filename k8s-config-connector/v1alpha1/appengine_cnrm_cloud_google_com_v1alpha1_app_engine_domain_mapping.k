@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AppEngineDomainMapping:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine domain mapping
 
     Attributes
@@ -36,7 +36,7 @@ schema AppEngineDomainMapping:
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineDomainMappingSpec:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine domain mapping spec
 
     Attributes
@@ -63,7 +63,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineDomainMappingSpec:
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineDomainMappingSpecSslSettings:
-    """
+    r"""
     SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
 
     Attributes
@@ -95,7 +95,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineDomainMappingSpecSslSettings:
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineDomainMappingStatus:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine domain mapping status
 
     Attributes
@@ -122,7 +122,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineDomainMappingStatus:
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineDomainMappingStatusConditionsItems0:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine domain mapping status conditions items0
 
     Attributes
@@ -152,7 +152,7 @@ schema AppengineCnrmCloudGoogleComV1alpha1AppEngineDomainMappingStatusConditions
 
 
 schema AppengineCnrmCloudGoogleComV1alpha1AppEngineDomainMappingStatusResourceRecordsItems0:
-    """
+    r"""
     appengine cnrm cloud google com v1alpha1 app engine domain mapping status resource records items0
 
     Attributes

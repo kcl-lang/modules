@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema FirebaseAndroidApp:
-    """
+    r"""
     firebase cnrm cloud google com v1alpha1 firebase android app
 
     Attributes
@@ -36,7 +36,7 @@ schema FirebaseAndroidApp:
 
 
 schema FirebaseCnrmCloudGoogleComV1alpha1FirebaseAndroidAppSpec:
-    """
+    r"""
     firebase cnrm cloud google com v1alpha1 firebase android app spec
 
     Attributes
@@ -81,7 +81,7 @@ schema FirebaseCnrmCloudGoogleComV1alpha1FirebaseAndroidAppSpec:
 
 
 schema FirebaseCnrmCloudGoogleComV1alpha1FirebaseAndroidAppSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -103,7 +103,7 @@ schema FirebaseCnrmCloudGoogleComV1alpha1FirebaseAndroidAppSpecProjectRef:
 
 
 schema FirebaseCnrmCloudGoogleComV1alpha1FirebaseAndroidAppStatus:
-    """
+    r"""
     firebase cnrm cloud google com v1alpha1 firebase android app status
 
     Attributes
@@ -136,7 +136,7 @@ schema FirebaseCnrmCloudGoogleComV1alpha1FirebaseAndroidAppStatus:
 
 
 schema FirebaseCnrmCloudGoogleComV1alpha1FirebaseAndroidAppStatusConditionsItems0:
-    """
+    r"""
     firebase cnrm cloud google com v1alpha1 firebase android app status conditions items0
 
     Attributes

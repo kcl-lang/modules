@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema VertexAIIndexEndpoint:
-    """
+    r"""
     vertexai cnrm cloud google com v1alpha1 vertex a i index endpoint
 
     Attributes
@@ -36,7 +36,7 @@ schema VertexAIIndexEndpoint:
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexEndpointSpec:
-    """
+    r"""
     vertexai cnrm cloud google com v1alpha1 vertex a i index endpoint spec
 
     Attributes
@@ -52,6 +52,8 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexEndpointSpec:
         Where '{project}' is a project number, as in '12345', and '{network}' is network name.
     projectRef : VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexEndpointSpecProjectRef, default is Undefined, required
         project ref
+    publicEndpointEnabled : bool, default is Undefined, optional
+        Immutable. If true, the deployed index will be accessible through public endpoint.
     region : str, default is Undefined, required
         Immutable. The region of the index endpoint. eg us-central1.
     resourceID : str, default is Undefined, optional
@@ -67,13 +69,15 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexEndpointSpec:
 
     projectRef: VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexEndpointSpecProjectRef
 
+    publicEndpointEnabled?: bool
+
     region: str
 
     resourceID?: str
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexEndpointSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -95,7 +99,7 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexEndpointSpecProjectRef:
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexEndpointStatus:
-    """
+    r"""
     vertexai cnrm cloud google com v1alpha1 vertex a i index endpoint status
 
     Attributes
@@ -110,6 +114,8 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexEndpointStatus:
         The resource name of the Index.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    publicEndpointDomainName : str, default is Undefined, optional
+        If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.
     updateTime : str, default is Undefined, optional
         The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
     """
@@ -125,11 +131,13 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexEndpointStatus:
 
     observedGeneration?: int
 
+    publicEndpointDomainName?: str
+
     updateTime?: str
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexEndpointStatusConditionsItems0:
-    """
+    r"""
     vertexai cnrm cloud google com v1alpha1 vertex a i index endpoint status conditions items0
 
     Attributes

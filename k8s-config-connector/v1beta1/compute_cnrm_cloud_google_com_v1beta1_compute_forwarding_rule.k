@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeForwardingRule:
-    """
-    compute cnrm cloud google com v1beta1 compute forwarding rule
+    r"""
+    ComputeForwardingRule is the Schema for the compute API
 
     Attributes
     ----------
@@ -17,7 +17,7 @@ schema ComputeForwardingRule:
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpec, default is Undefined, required
+    spec : ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpec, default is Undefined, optional
         spec
     status : ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleStatus, default is Undefined, optional
         status
@@ -30,13 +30,13 @@ schema ComputeForwardingRule:
 
     metadata?: v1.ObjectMeta
 
-    spec: ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpec
+    spec?: ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpec
 
     status?: ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleStatus
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute forwarding rule spec
 
     Attributes
@@ -68,12 +68,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpec:
         Otherwise only allows access from clients in the same region as the
         internal load balancer.
     allowPscGlobalAccess : bool, default is Undefined, optional
-        Immutable. This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
     backendServiceRef : ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecBackendServiceRef, default is Undefined, optional
         backend service ref
     description : str, default is Undefined, optional
-        Immutable. An optional description of this resource. Provide this property when
-        you create the resource.
+        Immutable. An optional description of this resource. Provide this property when you create the resource.
     ipAddress : ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecIPAddress, default is Undefined, optional
         ip address
     ipProtocol : str, default is Undefined, optional
@@ -107,8 +106,8 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpec:
     loadBalancingScheme : str, default is Undefined, optional
         Immutable. Specifies the forwarding rule type.
 
-        For more information about forwarding rules, refer to
-        [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts). Default value: "EXTERNAL" Possible values: ["EXTERNAL", "EXTERNAL_MANAGED", "INTERNAL", "INTERNAL_MANAGED"].
+        Must set to empty for private service connect forwarding rule. For more information about forwarding rules, refer to
+        [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts). Default value: "EXTERNAL" Possible values: ["EXTERNAL", "EXTERNAL_MANAGED", "INTERNAL", "INTERNAL_MANAGED", ""].
     location : str, default is Undefined, required
         Location represents the geographical location of the ComputeForwardingRule. Specify a region name or "global" for global resources. Reference: GCP definition of regions/zones (https://cloud.google.com/compute/docs/regions-zones/)
     metadataFilters : [ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecMetadataFiltersItems0], default is Undefined, optional
@@ -156,7 +155,6 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpec:
         [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
         for details.
 
-
         Only packets addressed to ports in the specified range will be forwarded to
         the backends configured with this forwarding rule.
 
@@ -175,7 +173,6 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpec:
         * If 'IPProtocol' is one of TCP, UDP, or SCTP.
         * By internal TCP/UDP load balancers, backend service-based network load
         balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
-
 
         You can specify a list of up to five ports by number, separated by commas.
         The ports can be contiguous or discontiguous. Only packets addressed to
@@ -267,18 +264,17 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecBackendServiceRef:
-    """
-    A ComputeBackendService to receive the matched traffic. This is
-    used only for internal load balancing.
+    r"""
+    A ComputeBackendService to receive the matched traffic. This is used only for internal load balancing.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeBackendService` resource.
+        The value of an externally managed ComputeBackendService resource.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeBackendService resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeBackendService resource.
     """
 
 
@@ -290,7 +286,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecBackendServiceRe
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecIPAddress:
-    """
+    r"""
     The IP address that this forwarding rule is serving on behalf of.
 
     Addresses are restricted based on the forwarding rule's load
@@ -326,17 +322,17 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecIPAddress:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecIPAddressAddressRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute forwarding rule spec IP address address ref
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `address` field of a `ComputeAddress` resource.
+        The ComputeAddress selflink in the form "projects/{{project}}/regions/{{region}}/addresses/{{name}}" when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `ComputeAddress` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `ComputeAddress` resource.
     """
 
 
@@ -348,7 +344,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecIPAddressAddress
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecMetadataFiltersItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute forwarding rule spec metadata filters items0
 
     Attributes
@@ -375,17 +371,15 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecMetadataFiltersI
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecMetadataFiltersItems0FilterLabelsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute forwarding rule spec metadata filters items0 filter labels items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Immutable. Name of the metadata label. The length must be between
-        1 and 1024 characters, inclusive.
+        Immutable. Name of the metadata label. The length must be between 1 and 1024 characters, inclusive.
     value : str, default is Undefined, required
-        Immutable. The value that the label must match. The value has a maximum
-        length of 1024 characters.
+        Immutable. The value that the label must match. The value has a maximum length of 1024 characters.
     """
 
 
@@ -395,20 +389,17 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecMetadataFiltersI
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecNetworkRef:
-    """
-    This field is not used for external load balancing. For internal
-    load balancing, this field identifies the network that the load
-    balanced IP should belong to for this forwarding rule. If this
-    field is not specified, the default network will be used.
+    r"""
+    This field is not used for external load balancing. For internal load balancing, this field identifies the network that the load balanced IP should belong to for this forwarding rule. If this field is not specified, the default network will be used.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -420,7 +411,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecNetworkRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecServiceDirectoryRegistrationsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute forwarding rule spec service directory registrations items0
 
     Attributes
@@ -438,7 +429,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecServiceDirectory
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecSubnetworkRef:
-    """
+    r"""
     Immutable. The subnetwork that the load balanced IP should belong to for this
     forwarding rule. This field is only used for internal load
     balancing.
@@ -450,11 +441,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecSubnetworkRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `ComputeSubnetwork` resource.
+        The ComputeSubnetwork selflink of form "projects/{{project}}/regions/{{region}}/subnetworks/{{name}}", when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `ComputeSubnetwork` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `ComputeSubnetwork` resource.
     """
 
 
@@ -466,14 +457,15 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecSubnetworkRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTarget:
-    """
-    The target resource to receive the matched traffic. The forwarded
-    traffic must be of a type appropriate to the target object. For
-    INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
-    are valid.
+    r"""
+    The target resource to receive the matched traffic. The forwarded traffic must be of a type appropriate to the target object. For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets are valid.
 
     Attributes
     ----------
+    googleAPIsBundle : str, default is Undefined, optional
+        google a p is bundle
+    serviceAttachmentRef : ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetServiceAttachmentRef, default is Undefined, optional
+        service attachment ref
     targetGRPCProxyRef : ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetTargetGRPCProxyRef, default is Undefined, optional
         target g RPC proxy ref
     targetHTTPProxyRef : ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetTargetHTTPProxyRef, default is Undefined, optional
@@ -489,6 +481,10 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTarget:
     """
 
 
+    googleAPIsBundle?: str
+
+    serviceAttachmentRef?: ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetServiceAttachmentRef
+
     targetGRPCProxyRef?: ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetTargetGRPCProxyRef
 
     targetHTTPProxyRef?: ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetTargetHTTPProxyRef
@@ -502,18 +498,40 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTarget:
     targetVPNGatewayRef?: ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetTargetVPNGatewayRef
 
 
-schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetTargetGRPCProxyRef:
+schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetServiceAttachmentRef:
+    r"""
+    compute cnrm cloud google com v1beta1 compute forwarding rule spec target service attachment ref
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The ComputeServiceAttachment selflink in the form "projects/{{project}}/regions/{{region}}/serviceAttachments/{{name}}" when not managed by Config Connector.
+    name : str, default is Undefined, optional
+        The `name` field of a `ComputeServiceAttachment` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `ComputeServiceAttachment` resource.
     """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetTargetGRPCProxyRef:
+    r"""
     compute cnrm cloud google com v1beta1 compute forwarding rule spec target target g RPC proxy ref
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeTargetGRPCProxy` resource.
+        The ComputeTargetGrpcProxy selflink in the form "projects/{{project}}/global/targetGrpcProxies/{{name}}" when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `ComputeTargetGrpcProxy` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `ComputeTargetGrpcProxy` resource.
     """
 
 
@@ -525,17 +543,17 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetTargetGRPC
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetTargetHTTPProxyRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute forwarding rule spec target target HTTP proxy ref
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeTargetHTTPProxy` resource.
+        The ComputeTargetHTTPProxy selflink in the form "projects/{{project}}/global/targetHttpProxies/{{name}}" or "projects/{{project}}/regions/{{region}}/targetHttpProxies/{{name}}" when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `ComputeTargetHTTPProxy` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `ComputeTargetHTTPProxy` resource.
     """
 
 
@@ -547,17 +565,17 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetTargetHTTP
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetTargetHTTPSProxyRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute forwarding rule spec target target HTTPS proxy ref
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeTargetHTTPSProxy` resource.
+        The ComputeTargetHTTPSProxy selflink in the form "projects/{{project}}/global/targetHttpProxies/{{name}}" or "projects/{{project}}/regions/{{region}}/targetHttpProxies/{{name}}" when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `ComputeTargetHTTPSProxy` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `ComputeTargetHTTPSProxy` resource.
     """
 
 
@@ -569,17 +587,17 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetTargetHTTP
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetTargetSSLProxyRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute forwarding rule spec target target s s l proxy ref
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeTargetSSLProxy` resource.
+        The ComputeTargetSSLProxy selflink in the form "projects/{{project}}/global/targetSslProxies/{{name}}" when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `ComputeTargetSSLProxy` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `ComputeTargetSSLProxy` resource.
     """
 
 
@@ -591,17 +609,17 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetTargetSSLP
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetTargetTCPProxyRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute forwarding rule spec target target TCP proxy ref
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeTargetTCPProxy` resource.
+        The ComputeTargetTCPProxy selflink in the form "projects/{{project}}/global/targetTcpProxies/{{name}}" or "projects/{{project}}/regions/{{region}}/targetTcpProxies/{{name}}" when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `ComputeTargetTCPProxy` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `ComputeTargetTCPProxy` resource.
     """
 
 
@@ -613,17 +631,17 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetTargetTCPP
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetTargetVPNGatewayRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute forwarding rule spec target target v p n gateway ref
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeTargetVPNGateway` resource.
+        The ComputeTargetVPNGateway selflink in the form "projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}" when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `ComputeTargetVPNGateway` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `ComputeTargetVPNGateway` resource.
     """
 
 
@@ -635,7 +653,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetTargetVPNG
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute forwarding rule status
 
     Attributes
@@ -643,12 +661,13 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleStatus:
     baseForwardingRule : str, default is Undefined, optional
         [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
+    externalRef : str, default is Undefined, optional
+        A unique Config Connector specifier for the resource in GCP.
     labelFingerprint : str, default is Undefined, optional
-        The fingerprint used for optimistic locking of this resource.  Used
-        internally during updates.
+        The fingerprint used for optimistic locking of this resource.  Used internally during updates.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     pscConnectionId : str, default is Undefined, optional
@@ -658,9 +677,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleStatus:
     selfLink : str, default is Undefined, optional
         self link
     serviceName : str, default is Undefined, optional
-        The internal fully qualified service name for this Forwarding Rule.
-
-        This field is only used for INTERNAL load balancing.
+        The internal fully qualified service name for this Forwarding Rule. This field is only used for INTERNAL load balancing.
     """
 
 
@@ -669,6 +686,8 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleStatus:
     conditions?: [ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleStatusConditionsItems0]
 
     creationTimestamp?: str
+
+    externalRef?: str
 
     labelFingerprint?: str
 
@@ -684,7 +703,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute forwarding rule status conditions items0
 
     Attributes

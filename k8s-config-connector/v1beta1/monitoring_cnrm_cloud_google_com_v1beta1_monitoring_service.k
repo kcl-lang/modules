@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema MonitoringService:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring service
 
     Attributes
@@ -36,7 +36,7 @@ schema MonitoringService:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceSpec:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring service spec
 
     Attributes
@@ -62,7 +62,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceSpec:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -86,7 +86,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceSpecProjectRef:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceSpecTelemetry:
-    """
+    r"""
     Configuration for how to query telemetry on a Service.
 
     Attributes
@@ -100,7 +100,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceSpecTelemetry:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceStatus:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring service status
 
     Attributes
@@ -118,7 +118,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceStatus:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceStatusConditionsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring service status conditions items0
 
     Attributes

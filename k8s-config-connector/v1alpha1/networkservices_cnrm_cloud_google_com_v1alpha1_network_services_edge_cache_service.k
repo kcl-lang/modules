@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema NetworkServicesEdgeCacheService:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache service
 
     Attributes
@@ -36,7 +36,7 @@ schema NetworkServicesEdgeCacheService:
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpec:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache service spec
 
     Attributes
@@ -101,7 +101,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecLogConfig:
-    """
+    r"""
     Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
 
     Attributes
@@ -121,7 +121,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -143,7 +143,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRouting:
-    """
+    r"""
     Defines how requests are routed, modified, cached and/or which origin content is filled from.
 
     Attributes
@@ -161,7 +161,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingHostRuleItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache service spec routing host rule items0
 
     Attributes
@@ -200,7 +200,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache service spec routing path matcher items0
 
     Attributes
@@ -222,7 +222,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache service spec routing path matcher items0 route rule items0
 
     Attributes
@@ -268,7 +268,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0HeaderAction:
-    """
+    r"""
     The header actions, including adding & removing headers, for requests that match this route.
 
     Attributes
@@ -296,7 +296,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0HeaderActionRequestHeaderToAddItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache service spec routing path matcher items0 route rule items0 header action request header to add items0
 
     Attributes
@@ -318,7 +318,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0HeaderActionRequestHeaderToRemoveItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache service spec routing path matcher items0 route rule items0 header action request header to remove items0
 
     Attributes
@@ -332,7 +332,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0HeaderActionResponseHeaderToAddItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache service spec routing path matcher items0 route rule items0 header action response header to add items0
 
     Attributes
@@ -354,7 +354,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0HeaderActionResponseHeaderToRemoveItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache service spec routing path matcher items0 route rule items0 header action response header to remove items0
 
     Attributes
@@ -370,7 +370,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0MatchRuleItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache service spec routing path matcher items0 route rule items0 match rule items0
 
     Attributes
@@ -412,7 +412,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0MatchRuleItems0HeaderMatchItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache service spec routing path matcher items0 route rule items0 match rule items0 header match items0
 
     Attributes
@@ -447,7 +447,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0MatchRuleItems0QueryParameterMatchItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache service spec routing path matcher items0 route rule items0 match rule items0 query parameter match items0
 
     Attributes
@@ -469,7 +469,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0RouteAction:
-    """
+    r"""
     In response to a matching path, the routeAction performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected origin.
 
     Attributes
@@ -491,7 +491,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0RouteActionCdnPolicy:
-    """
+    r"""
     The policy to use for defining caching and signed request behaviour for requests that match this route.
 
     Attributes
@@ -611,7 +611,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0RouteActionCdnPolicyAddSignatures:
-    """
+    r"""
     Enable signature generation or propagation on this route.
 
     This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
@@ -682,7 +682,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0RouteActionCdnPolicyCacheKeyPolicy:
-    """
+    r"""
     Defines the request parameters that contribute to the cache key.
 
     Attributes
@@ -747,7 +747,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0RouteActionCdnPolicySignedTokenOptions:
-    """
+    r"""
     Additional options for signed tokens.
 
     signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
@@ -775,7 +775,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0RouteActionCorsPolicy:
-    """
+    r"""
     CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
 
     Attributes
@@ -823,7 +823,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0RouteActionURLRewrite:
-    """
+    r"""
     The URL rewrite configuration for requests that match this route.
 
     Attributes
@@ -858,7 +858,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0URLRedirect:
-    """
+    r"""
     The URL redirect configuration for requests that match this route.
 
     Attributes
@@ -908,7 +908,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceStatus:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache service status
 
     Attributes
@@ -934,7 +934,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceStatusConditionsItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache service status conditions items0
 
     Attributes

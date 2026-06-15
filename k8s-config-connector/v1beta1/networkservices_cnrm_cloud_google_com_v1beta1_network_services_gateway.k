@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema NetworkServicesGateway:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services gateway
 
     Attributes
@@ -36,7 +36,7 @@ schema NetworkServicesGateway:
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGatewaySpec:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services gateway spec
 
     Attributes
@@ -82,7 +82,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGatewaySpec:
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGatewaySpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -106,7 +106,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGatewaySpecProject
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGatewaySpecServerTLSPolicyRef:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services gateway spec server TLS policy ref
 
     Attributes
@@ -130,7 +130,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGatewaySpecServerT
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGatewayStatus:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services gateway status
 
     Attributes
@@ -160,7 +160,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGatewayStatus:
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGatewayStatusConditionsItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services gateway status conditions items0
 
     Attributes

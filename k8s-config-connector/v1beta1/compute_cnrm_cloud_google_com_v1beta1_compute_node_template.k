@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeNodeTemplate:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute node template
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeNodeTemplate:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeTemplateSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute node template spec
 
     Attributes
@@ -76,7 +76,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeTemplateSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeTemplateSpecNodeTypeFlexibility:
-    """
+    r"""
     Immutable. Flexible properties for the desired node type. Node groups that
     use this node template will create nodes of a type that matches
     these properties. Only one of nodeTypeFlexibility and nodeType can
@@ -101,7 +101,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeTemplateSpecNodeTypeFlexibilit
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeTemplateSpecServerBinding:
-    """
+    r"""
     Immutable. The server binding policy for nodes using this template. Determines
     where the nodes should restart following a maintenance event.
 
@@ -127,7 +127,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeTemplateSpecServerBinding:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeTemplateStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute node template status
 
     Attributes
@@ -153,7 +153,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeTemplateStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeTemplateStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute node template status conditions items0
 
     Attributes

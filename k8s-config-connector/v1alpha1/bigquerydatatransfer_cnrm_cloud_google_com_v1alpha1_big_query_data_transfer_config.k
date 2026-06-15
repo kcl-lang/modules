@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BigQueryDataTransferConfig:
-    """
-    bigquerydatatransfer cnrm cloud google com v1alpha1 big query data transfer config
+    r"""
+    BigQueryDataTransferConfig is the Schema for the BigQueryDataTransferConfig API
 
     Attributes
     ----------
@@ -36,78 +36,77 @@ schema BigQueryDataTransferConfig:
 
 
 schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpec:
-    """
-    bigquerydatatransfer cnrm cloud google com v1alpha1 big query data transfer config spec
+    r"""
+    BigQueryDataTransferConfigSpec defines the desired state of BigQueryDataTransferConfig
 
     Attributes
     ----------
     dataRefreshWindowDays : int, default is Undefined, optional
-        The number of days to look back to automatically refresh the data.
-        For example, if dataRefreshWindowDays = 10, then every day BigQuery
-        reingests data for [today-10, today-1], rather than ingesting data for
-        just [today-1]. Only valid if the data source supports the feature.
-        Set the value to 0 to use the default value.
-    dataSourceId : str, default is Undefined, required
-        Immutable. The data source id. Cannot be changed once the transfer config is created.
-    destinationDatasetId : str, default is Undefined, optional
-        The BigQuery target dataset id.
+        The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
+    dataSourceID : str, default is Undefined, required
+        Immutable. Data source ID. This cannot be changed once data transfer is created. The full list of available data source IDs can be returned through an API call: https://cloud.google.com/bigquery-transfer/docs/reference/datatransfer/rest/v1/projects.locations.dataSources/list
+    datasetRef : BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecDatasetRef, default is Undefined, optional
+        dataset ref
     disabled : bool, default is Undefined, optional
-        When set to true, no runs are scheduled for a given transfer.
-    displayName : str, default is Undefined, required
-        The user specified display name for the transfer config.
+        Is this config disabled. When set to true, no runs will be scheduled for this transfer config.
+    displayName : str, default is Undefined, optional
+        User specified display name for the data transfer.
     emailPreferences : BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecEmailPreferences, default is Undefined, optional
         email preferences
-    location : str, default is Undefined, optional
-        Immutable. The geographic location where the transfer config should reside.
-        Examples: US, EU, asia-northeast1. The default value is US.
-    notificationPubsubTopic : str, default is Undefined, optional
-        Pub/Sub topic where notifications will be sent after transfer runs
-        associated with this transfer config finish.
+    encryptionConfiguration : BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecEncryptionConfiguration, default is Undefined, optional
+        encryption configuration
+    location : str, default is Undefined, required
+        Immutable.
     params : {str:str}, default is Undefined, required
-        params
+        Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
     projectRef : BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecProjectRef, default is Undefined, required
         project ref
+    pubSubTopicRef : BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecPubSubTopicRef, default is Undefined, optional
+        pub sub topic ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
+        The BigQueryDataTransferConfig name. If not given, the metadata.name will be used.
     schedule : str, default is Undefined, optional
-        Data transfer schedule. If the data source does not support a custom
-        schedule, this should be empty. If it is empty, the default value for
-        the data source will be used. The specified times are in UTC. Examples
-        of valid format: 1st,3rd monday of month 15:30, every wed,fri of jan,
-        jun 13:15, and first sunday of quarter 00:00. See more explanation
-        about the format here:
-        https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
-        NOTE: the granularity should be at least 8 hours, or less frequent.
+        Data transfer schedule.
+         If the data source does not support a custom schedule, this should be
+         empty. If it is empty, the default value for the data source will be used.
+         The specified times are in UTC.
+         Examples of valid format:
+         `1st,3rd monday of month 15:30`,
+         `every wed,fri of jan,jun 13:15`, and
+         `first sunday of quarter 00:00`.
+         See more explanation about the format here:
+         https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+
+         NOTE: The minimum interval time between recurring transfers depends on the
+         data source; refer to the documentation for your data source.
     scheduleOptions : BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecScheduleOptions, default is Undefined, optional
         schedule options
-    sensitiveParams : BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecSensitiveParams, default is Undefined, optional
-        sensitive params
-    serviceAccountName : str, default is Undefined, optional
-        Service account email. If this field is set, transfer config will
-        be created with this service account credentials. It requires that
-        requesting user calling this API has permissions to act as this service account.
+    serviceAccountRef : BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecServiceAccountRef, default is Undefined, optional
+        service account ref
     """
 
 
     dataRefreshWindowDays?: int
 
-    dataSourceId: str
+    dataSourceID: str
 
-    destinationDatasetId?: str
+    datasetRef?: BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecDatasetRef
 
     disabled?: bool
 
-    displayName: str
+    displayName?: str
 
     emailPreferences?: BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecEmailPreferences
 
-    location?: str
+    encryptionConfiguration?: BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecEncryptionConfiguration
 
-    notificationPubsubTopic?: str
+    location: str
 
     params: {str:str}
 
     projectRef: BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecProjectRef
+
+    pubSubTopicRef?: BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecPubSubTopicRef
 
     resourceID?: str
 
@@ -115,34 +114,159 @@ schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigS
 
     scheduleOptions?: BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecScheduleOptions
 
-    sensitiveParams?: BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecSensitiveParams
-
-    serviceAccountName?: str
+    serviceAccountRef?: BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecServiceAccountRef
 
 
-schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecEmailPreferences:
-    """
-    Email notifications will be sent according to these preferences to the
-    email address of the user who owns this transfer config.
-
-    Attributes
-    ----------
-    enableFailureEmail : bool, default is Undefined, required
-        If true, email notifications will be sent on transfer run failures.
-    """
-
-
-    enableFailureEmail: bool
-
-
-schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecProjectRef:
-    """
-    The project that this resource belongs to.
+schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecDatasetRef:
+    r"""
+    The BigQuery target dataset id.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        A reference to an externally-managed BigQueryDataset resource. Should be in the format "projects/{{projectID}}/datasets/{{datasetID}}".
+    name : str, default is Undefined, optional
+        The name of a BigQueryDataset resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a BigQueryDataset resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecEmailPreferences:
+    r"""
+    Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
+
+    Attributes
+    ----------
+    enableFailureEmail : bool, default is Undefined, optional
+        If true, email notifications will be sent on transfer run failures.
+    """
+
+
+    enableFailureEmail?: bool
+
+
+schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecEncryptionConfiguration:
+    r"""
+    The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery service account of your project must be granted permissions to use the key. Read methods will return the key name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project default keys if it is absent.
+
+    Attributes
+    ----------
+    kmsKeyRef : BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecEncryptionConfigurationKmsKeyRef, default is Undefined, optional
+        kms key ref
+    """
+
+
+    kmsKeyRef?: BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecEncryptionConfigurationKmsKeyRef
+
+
+schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecEncryptionConfigurationKmsKeyRef:
+    r"""
+    The KMS key used for encrypting BigQuery data.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
+    name : str, default is Undefined, optional
+        The `name` of a `KMSCryptoKey` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` of a `KMSCryptoKey` resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecProjectRef:
+    r"""
+    The Project that this resource belongs to.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
+    name : str, default is Undefined, optional
+        The `name` field of a `Project` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `Project` resource.
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecPubSubTopicRef:
+    r"""
+    Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed PubSubTopic resource. Should be in the format "projects/{{projectID}}/topics/{{topicID}}".
+    name : str, default is Undefined, optional
+        The name of a PubSubTopic resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a PubSubTopic resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecScheduleOptions:
+    r"""
+    Options customizing the data transfer schedule.
+
+    Attributes
+    ----------
+    disableAutoScheduling : bool, default is Undefined, optional
+        If true, automatic scheduling of data transfer runs for this configuration will be disabled. The runs can be started on ad-hoc basis using StartManualTransferRuns API. When automatic scheduling is disabled, the TransferConfig.schedule field will be ignored.
+    endTime : str, default is Undefined, optional
+        Defines time to stop scheduling transfer runs. A transfer run cannot be scheduled at or after the end time. The end time can be changed at any moment. The time when a data transfer can be triggered manually is not limited by this option.
+    startTime : str, default is Undefined, optional
+        Specifies time to start scheduling transfer runs. The first run will be scheduled at or after the start time according to a recurrence pattern defined in the schedule string. The start time can be changed at any moment. The time when a data transfer can be triggered manually is not limited by this option.
+    """
+
+
+    disableAutoScheduling?: bool
+
+    endTime?: str
+
+    startTime?: str
+
+
+schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecServiceAccountRef:
+    r"""
+    Service account email. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, please refer to https://cloud.google.com/bigquery/docs/use-service-accounts.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The `email` field of an `IAMServiceAccount` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -157,136 +281,34 @@ schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigS
     namespace?: str
 
 
-schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecScheduleOptions:
-    """
-    Options customizing the data transfer schedule.
-
-    Attributes
-    ----------
-    disableAutoScheduling : bool, default is Undefined, optional
-        If true, automatic scheduling of data transfer runs for this
-        configuration will be disabled. The runs can be started on ad-hoc
-        basis using transferConfigs.startManualRuns API. When automatic
-        scheduling is disabled, the TransferConfig.schedule field will
-        be ignored.
-    endTime : str, default is Undefined, optional
-        Defines time to stop scheduling transfer runs. A transfer run cannot be
-        scheduled at or after the end time. The end time can be changed at any
-        moment. The time when a data transfer can be triggered manually is not
-        limited by this option.
-    startTime : str, default is Undefined, optional
-        Specifies time to start scheduling transfer runs. The first run will be
-        scheduled at or after the start time according to a recurrence pattern
-        defined in the schedule string. The start time can be changed at any
-        moment. The time when a data transfer can be triggered manually is not
-        limited by this option.
-    """
-
-
-    disableAutoScheduling?: bool
-
-    endTime?: str
-
-    startTime?: str
-
-
-schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecSensitiveParams:
-    """
-    Different parameters are configured primarily using the the 'params' field on this
-    resource. This block contains the parameters which contain secrets or passwords so that they can be marked
-    sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
-    in the 'params' map in the api request.
-
-    Credentials may not be specified in both locations and will cause an error. Changing from one location
-    to a different credential configuration in the config will require an apply to update state.
-
-    Attributes
-    ----------
-    secretAccessKey : BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecSensitiveParamsSecretAccessKey, default is Undefined, required
-        secret access key
-    """
-
-
-    secretAccessKey: BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecSensitiveParamsSecretAccessKey
-
-
-schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecSensitiveParamsSecretAccessKey:
-    """
-    The Secret Access Key of the AWS account transferring data from.
-
-    Attributes
-    ----------
-    value : str, default is Undefined, optional
-        Value of the field. Cannot be used if 'valueFrom' is specified.
-    valueFrom : BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecSensitiveParamsSecretAccessKeyValueFrom, default is Undefined, optional
-        value from
-    """
-
-
-    value?: str
-
-    valueFrom?: BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecSensitiveParamsSecretAccessKeyValueFrom
-
-
-schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecSensitiveParamsSecretAccessKeyValueFrom:
-    """
-    Source for the field's value. Cannot be used if 'value' is specified.
-
-    Attributes
-    ----------
-    secretKeyRef : BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecSensitiveParamsSecretAccessKeyValueFromSecretKeyRef, default is Undefined, optional
-        secret key ref
-    """
-
-
-    secretKeyRef?: BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecSensitiveParamsSecretAccessKeyValueFromSecretKeyRef
-
-
-schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecSensitiveParamsSecretAccessKeyValueFromSecretKeyRef:
-    """
-    Reference to a value with the given key in the given Secret in the resource's namespace.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        Key that identifies the value to be extracted.
-    name : str, default is Undefined, required
-        Name of the Secret to extract a value from.
-    """
-
-
-    key: str
-
-    name: str
-
-
 schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigStatus:
-    """
-    bigquerydatatransfer cnrm cloud google com v1alpha1 big query data transfer config status
+    r"""
+    BigQueryDataTransferConfigStatus defines the config connector machine state of BigQueryDataTransferConfig
 
     Attributes
     ----------
     conditions : [BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
-    name : str, default is Undefined, optional
-        The resource name of the transfer config. Transfer config names have the
-        form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
-        Where configId is usually a uuid, but this is not required.
-        The name is ignored when creating a transfer config.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the BigQueryDataTransferConfig resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigStatusConditionsItems0]
 
-    name?: str
+    externalRef?: str
 
     observedGeneration?: int
 
+    observedState?: BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigStatusObservedState
+
 
 schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigStatusConditionsItems0:
-    """
+    r"""
     bigquerydatatransfer cnrm cloud google com v1alpha1 big query data transfer config status conditions items0
 
     Attributes
@@ -313,5 +335,57 @@ schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigS
     status?: str
 
     $type?: str
+
+
+schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    datasetRegion : str, default is Undefined, optional
+        Output only. Region in which BigQuery dataset is located.
+    name : str, default is Undefined, optional
+        Identifier. The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+    nextRunTime : str, default is Undefined, optional
+        Output only. Next time when data transfer will run.
+    ownerInfo : BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigStatusObservedStateOwnerInfo, default is Undefined, optional
+        owner info
+    state : str, default is Undefined, optional
+        Output only. State of the most recently updated transfer run.
+    updateTime : str, default is Undefined, optional
+        Output only. Data transfer modification time. Ignored by server on input.
+    userID : int, default is Undefined, optional
+        Deprecated. Unique ID of the user on whose behalf transfer is done.
+    """
+
+
+    datasetRegion?: str
+
+    name?: str
+
+    nextRunTime?: str
+
+    ownerInfo?: BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigStatusObservedStateOwnerInfo
+
+    state?: str
+
+    updateTime?: str
+
+    userID?: int
+
+
+schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigStatusObservedStateOwnerInfo:
+    r"""
+    Output only. Information about the user whose credentials are used to transfer data. Populated only for `transferConfigs.get` requests. In case the user information is not available, this field will not be populated.
+
+    Attributes
+    ----------
+    email : str, default is Undefined, optional
+        E-mail address of the user.
+    """
+
+
+    email?: str
 
 

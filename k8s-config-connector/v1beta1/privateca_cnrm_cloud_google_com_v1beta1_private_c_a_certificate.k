@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema PrivateCACertificate:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate
 
     Attributes
@@ -36,7 +36,7 @@ schema PrivateCACertificate:
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpec:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate spec
 
     Attributes
@@ -86,7 +86,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpec:
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecCaPoolRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -110,7 +110,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecCaPoolRef:
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecCertificateAuthorityRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -134,7 +134,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecCertificateAuth
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecCertificateTemplateRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -158,7 +158,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecCertificateTemp
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfig:
-    """
+    r"""
     Immutable. Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
 
     Attributes
@@ -180,7 +180,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfig:
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigPublicKey:
-    """
+    r"""
     Immutable. Optional. The public key that corresponds to this config. This is, for example, used when issuing Certificates, but not when creating a self-signed CertificateAuthority or CertificateAuthority CSR.
 
     Attributes
@@ -198,7 +198,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigPublicKey
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigSubjectConfig:
-    """
+    r"""
     Immutable. Required. Specifies some of the values in a certificate that are related to the subject.
 
     Attributes
@@ -216,7 +216,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigSubjectCo
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigSubjectConfigSubject:
-    """
+    r"""
     Immutable. Required. Contains distinguished name fields such as the common name, location and organization.
 
     Attributes
@@ -258,7 +258,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigSubjectCo
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigSubjectConfigSubjectAltName:
-    """
+    r"""
     Immutable. Optional. The subject alternative name fields.
 
     Attributes
@@ -284,7 +284,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigSubjectCo
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509Config:
-    """
+    r"""
     Immutable. Required. Describes how some of the technical X.509 fields in a certificate should be populated.
 
     Attributes
@@ -314,7 +314,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509Confi
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509ConfigAdditionalExtensionsItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate spec config x509 config additional extensions items0
 
     Attributes
@@ -336,7 +336,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509Confi
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509ConfigAdditionalExtensionsItems0ObjectID:
-    """
+    r"""
     Immutable. Required. The OID for this X.509 extension.
 
     Attributes
@@ -350,7 +350,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509Confi
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509ConfigCaOptions:
-    """
+    r"""
     Immutable. Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
 
     Attributes
@@ -376,7 +376,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509Confi
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509ConfigKeyUsage:
-    """
+    r"""
     Immutable. Optional. Indicates the intended use for keys that correspond to a certificate.
 
     Attributes
@@ -398,7 +398,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509Confi
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509ConfigKeyUsageBaseKeyUsage:
-    """
+    r"""
     Immutable. Describes high-level ways in which a key may be used.
 
     Attributes
@@ -444,7 +444,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509Confi
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509ConfigKeyUsageExtendedKeyUsage:
-    """
+    r"""
     Immutable. Detailed scenarios in which a key may be used.
 
     Attributes
@@ -478,7 +478,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509Confi
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509ConfigKeyUsageUnknownExtendedKeyUsagesItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate spec config x509 config key usage unknown extended key usages items0
 
     Attributes
@@ -492,7 +492,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509Confi
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509ConfigPolicyIdsItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate spec config x509 config policy ids items0
 
     Attributes
@@ -506,7 +506,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509Confi
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -530,7 +530,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecProjectRef:
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatus:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate status
 
     Attributes
@@ -576,7 +576,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatus:
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescription:
-    """
+    r"""
     Output only. A structured description of the issued X.509 certificate.
 
     Attributes
@@ -618,7 +618,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionAuthorityKeyID:
-    """
+    r"""
     Identifies the subject_key_id of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
 
     Attributes
@@ -632,7 +632,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionCertFingerprint:
-    """
+    r"""
     The hash of the x.509 certificate.
 
     Attributes
@@ -646,7 +646,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionPublicKey:
-    """
+    r"""
     The public key that corresponds to an issued certificate.
 
     Attributes
@@ -664,7 +664,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionSubjectDescription:
-    """
+    r"""
     Describes some of the values in a certificate that are related to the subject and lifetime.
 
     Attributes
@@ -698,7 +698,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionSubjectDescriptionSubject:
-    """
+    r"""
     Contains distinguished name fields such as the common name, location and / organization.
 
     Attributes
@@ -740,7 +740,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionSubjectDescriptionSubjectAltName:
-    """
+    r"""
     The subject alternative name fields.
 
     Attributes
@@ -770,7 +770,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSansItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate status certificate description subject description subject alt name custom sans items0
 
     Attributes
@@ -792,7 +792,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSansItems0ObjectID:
-    """
+    r"""
     Required. The OID for this X.509 extension.
 
     Attributes
@@ -806,7 +806,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionSubjectKeyID:
-    """
+    r"""
     Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
 
     Attributes
@@ -820,7 +820,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionX509Description:
-    """
+    r"""
     Describes some of the technical X.509 fields in a certificate.
 
     Attributes
@@ -850,7 +850,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionX509DescriptionAdditionalExtensionsItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate status certificate description x509 description additional extensions items0
 
     Attributes
@@ -872,7 +872,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionX509DescriptionAdditionalExtensionsItems0ObjectID:
-    """
+    r"""
     Required. The OID for this X.509 extension.
 
     Attributes
@@ -886,7 +886,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionX509DescriptionCaOptions:
-    """
+    r"""
     Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
 
     Attributes
@@ -904,7 +904,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionX509DescriptionKeyUsage:
-    """
+    r"""
     Optional. Indicates the intended use for keys that correspond to a certificate.
 
     Attributes
@@ -926,7 +926,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage:
-    """
+    r"""
     Describes high-level ways in which a key may be used.
 
     Attributes
@@ -972,7 +972,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage:
-    """
+    r"""
     Detailed scenarios in which a key may be used.
 
     Attributes
@@ -1006,7 +1006,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsagesItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate status certificate description x509 description key usage unknown extended key usages items0
 
     Attributes
@@ -1020,7 +1020,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionX509DescriptionPolicyIdsItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate status certificate description x509 description policy ids items0
 
     Attributes
@@ -1034,7 +1034,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusConditionsItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate status conditions items0
 
     Attributes
@@ -1064,7 +1064,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusConditionsIte
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusRevocationDetails:
-    """
+    r"""
     Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
 
     Attributes

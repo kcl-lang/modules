@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema CloudAssetFolderFeed:
-    """
+    r"""
     cloudasset cnrm cloud google com v1alpha1 cloud asset folder feed
 
     Attributes
@@ -36,7 +36,7 @@ schema CloudAssetFolderFeed:
 
 
 schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetFolderFeedSpec:
-    """
+    r"""
     cloudasset cnrm cloud google com v1alpha1 cloud asset folder feed spec
 
     Attributes
@@ -95,7 +95,7 @@ schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetFolderFeedSpec:
 
 
 schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetFolderFeedSpecCondition:
-    """
+    r"""
     A condition which determines whether an asset update should be published. If specified, an asset
     will be returned only when the expression evaluates to true. When set, expression field
     must be a valid CEL expression on a TemporalAsset with name temporal_asset. Example: a Feed with
@@ -128,7 +128,7 @@ schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetFolderFeedSpecCondition:
 
 
 schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetFolderFeedSpecFeedOutputConfig:
-    """
+    r"""
     Output configuration for asset feed destination.
 
     Attributes
@@ -142,7 +142,7 @@ schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetFolderFeedSpecFeedOutputCon
 
 
 schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetFolderFeedSpecFeedOutputConfigPubsubDestination:
-    """
+    r"""
     Destination on Cloud Pubsub.
 
     Attributes
@@ -156,7 +156,7 @@ schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetFolderFeedSpecFeedOutputCon
 
 
 schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetFolderFeedSpecFolderRef:
-    """
+    r"""
     The folder that this resource belongs to.
 
     Attributes
@@ -178,7 +178,7 @@ schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetFolderFeedSpecFolderRef:
 
 
 schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetFolderFeedStatus:
-    """
+    r"""
     cloudasset cnrm cloud google com v1alpha1 cloud asset folder feed status
 
     Attributes
@@ -205,7 +205,7 @@ schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetFolderFeedStatus:
 
 
 schema CloudassetCnrmCloudGoogleComV1alpha1CloudAssetFolderFeedStatusConditionsItems0:
-    """
+    r"""
     cloudasset cnrm cloud google com v1alpha1 cloud asset folder feed status conditions items0
 
     Attributes

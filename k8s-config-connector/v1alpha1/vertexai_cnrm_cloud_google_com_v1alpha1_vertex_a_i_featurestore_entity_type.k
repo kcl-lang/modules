@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema VertexAIFeaturestoreEntityType:
-    """
+    r"""
     vertexai cnrm cloud google com v1alpha1 vertex a i featurestore entity type
 
     Attributes
@@ -36,7 +36,7 @@ schema VertexAIFeaturestoreEntityType:
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreEntityTypeSpec:
-    """
+    r"""
     vertexai cnrm cloud google com v1alpha1 vertex a i featurestore entity type spec
 
     Attributes
@@ -66,7 +66,7 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreEntityTypeSpec:
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreEntityTypeSpecMonitoringConfig:
-    """
+    r"""
     The default monitoring configuration for all Features under this EntityType.
 
     If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
@@ -94,7 +94,7 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreEntityTypeSpecMonit
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreEntityTypeSpecMonitoringConfigCategoricalThresholdConfig:
-    """
+    r"""
     Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
 
     Attributes
@@ -108,7 +108,7 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreEntityTypeSpecMonit
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreEntityTypeSpecMonitoringConfigImportFeaturesAnalysis:
-    """
+    r"""
     The config for ImportFeatures Analysis Based Feature Monitoring.
 
     Attributes
@@ -132,7 +132,7 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreEntityTypeSpecMonit
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreEntityTypeSpecMonitoringConfigNumericalThresholdConfig:
-    """
+    r"""
     Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
 
     Attributes
@@ -146,7 +146,7 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreEntityTypeSpecMonit
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreEntityTypeSpecMonitoringConfigSnapshotAnalysis:
-    """
+    r"""
     The config for Snapshot Analysis Based Feature Monitoring.
 
     Attributes
@@ -175,7 +175,7 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreEntityTypeSpecMonit
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreEntityTypeStatus:
-    """
+    r"""
     vertexai cnrm cloud google com v1alpha1 vertex a i featurestore entity type status
 
     Attributes
@@ -209,7 +209,7 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreEntityTypeStatus:
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIFeaturestoreEntityTypeStatusConditionsItems0:
-    """
+    r"""
     vertexai cnrm cloud google com v1alpha1 vertex a i featurestore entity type status conditions items0
 
     Attributes

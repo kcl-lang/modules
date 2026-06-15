@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeTargetInstance:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target instance
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeTargetInstance:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetInstanceSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target instance spec
 
     Attributes
@@ -75,7 +75,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetInstanceSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetInstanceSpecInstanceRef:
-    """
+    r"""
     The ComputeInstance handling traffic for this target instance.
 
     Attributes
@@ -97,7 +97,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetInstanceSpecInstanceRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetInstanceSpecNetworkRef:
-    """
+    r"""
     The network this target instance uses to forward
     traffic. If not specified, the traffic will be forwarded to the network
     that the default network interface belongs to.
@@ -121,7 +121,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetInstanceSpecNetworkRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetInstanceSpecSecurityPolicyRef:
-    """
+    r"""
     The resource URL for the security policy associated with this target instance.
 
     Attributes
@@ -143,7 +143,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetInstanceSpecSecurityPolicyRe
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetInstanceStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target instance status
 
     Attributes
@@ -169,7 +169,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetInstanceStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetInstanceStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target instance status conditions items0
 
     Attributes

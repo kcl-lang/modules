@@ -83,7 +83,7 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProvider:
     adminUrl : str, default is Undefined, optional
         URL to the admin interface of the client.
     allowRefreshTokenInStandardTokenExchange : str, default is Undefined, optional
-        allow refresh token in standard token exchange
+        Defines whether to allow refresh token in Standard Token Exchange. Possible values are NO (default) and SAME_SESSION.
     alwaysDisplayInConsole : bool, default is Undefined, optional
         Always list this client in the Account UI, even if the user does not have an active session.
     authenticationFlowBindingOverrides : [OpenidclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProviderAuthenticationFlowBindingOverridesItems0], default is Undefined, optional
@@ -166,6 +166,8 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProvider:
         realm Id ref
     realmIdSelector : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
+    requireDpopBoundTokens : bool, default is Undefined, optional
+        Enable support for Demonstrating Proof-of-Possession (DPoP) bound tokens.
     rootUrl : str, default is Undefined, optional
         When specified, this URL is prepended to any relative URLs found within valid_redirect_uris, web_origins, and admin_url. NOTE: Due to limitations in the Keycloak API, when the root_url attribute is used, the valid_redirect_uris, web_origins, and admin_url attributes will be required.
     serviceAccountsEnabled : bool, default is Undefined, optional
@@ -173,7 +175,7 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProvider:
     standardFlowEnabled : bool, default is Undefined, optional
         When true, the OAuth2 Authorization Code Grant will be enabled for this client. Defaults to false.
     standardTokenExchangeEnabled : bool, default is Undefined, optional
-        When false, this client will not be able to initiate a login or obtain access tokens. Defaults to true.
+        Enables support for Standard Token Exchange
     useRefreshTokens : bool, default is Undefined, optional
         If this is true, a refresh_token will be created and added to the token response. If this is false then no refresh_token will be generated.  Defaults to true.
     useRefreshTokensClientCredentials : bool, default is Undefined, optional
@@ -276,6 +278,8 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProvider:
     realmIdRef?: OpenidclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProviderRealmIDRef
 
     realmIdSelector?: OpenidclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProviderRealmIDSelector
+
+    requireDpopBoundTokens?: bool
 
     rootUrl?: str
 
@@ -706,7 +710,7 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProvider:
     adminUrl : str, default is Undefined, optional
         URL to the admin interface of the client.
     allowRefreshTokenInStandardTokenExchange : str, default is Undefined, optional
-        allow refresh token in standard token exchange
+        Defines whether to allow refresh token in Standard Token Exchange. Possible values are NO (default) and SAME_SESSION.
     alwaysDisplayInConsole : bool, default is Undefined, optional
         Always list this client in the Account UI, even if the user does not have an active session.
     authenticationFlowBindingOverrides : [OpenidclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProviderAuthenticationFlowBindingOverridesItems0], default is Undefined, optional
@@ -789,6 +793,8 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProvider:
         realm Id ref
     realmIdSelector : OpenidclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
+    requireDpopBoundTokens : bool, default is Undefined, optional
+        Enable support for Demonstrating Proof-of-Possession (DPoP) bound tokens.
     rootUrl : str, default is Undefined, optional
         When specified, this URL is prepended to any relative URLs found within valid_redirect_uris, web_origins, and admin_url. NOTE: Due to limitations in the Keycloak API, when the root_url attribute is used, the valid_redirect_uris, web_origins, and admin_url attributes will be required.
     serviceAccountsEnabled : bool, default is Undefined, optional
@@ -796,7 +802,7 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProvider:
     standardFlowEnabled : bool, default is Undefined, optional
         When true, the OAuth2 Authorization Code Grant will be enabled for this client. Defaults to false.
     standardTokenExchangeEnabled : bool, default is Undefined, optional
-        When false, this client will not be able to initiate a login or obtain access tokens. Defaults to true.
+        Enables support for Standard Token Exchange
     useRefreshTokens : bool, default is Undefined, optional
         If this is true, a refresh_token will be created and added to the token response. If this is false then no refresh_token will be generated.  Defaults to true.
     useRefreshTokensClientCredentials : bool, default is Undefined, optional
@@ -899,6 +905,8 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProvider:
     realmIdRef?: OpenidclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProviderRealmIDRef
 
     realmIdSelector?: OpenidclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProviderRealmIDSelector
+
+    requireDpopBoundTokens?: bool
 
     rootUrl?: str
 
@@ -1381,7 +1389,7 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientStatusAtProvider:
     adminUrl : str, default is Undefined, optional
         URL to the admin interface of the client.
     allowRefreshTokenInStandardTokenExchange : str, default is Undefined, optional
-        allow refresh token in standard token exchange
+        Defines whether to allow refresh token in Standard Token Exchange. Possible values are NO (default) and SAME_SESSION.
     alwaysDisplayInConsole : bool, default is Undefined, optional
         Always list this client in the Account UI, even if the user does not have an active session.
     authenticationFlowBindingOverrides : [OpenidclientKeycloakmCrossplaneIoV1alpha1ClientStatusAtProviderAuthenticationFlowBindingOverridesItems0], default is Undefined, optional
@@ -1458,6 +1466,8 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientStatusAtProvider:
         The challenge method to use for Proof Key for Code Exchange. Can be either plain or S256 or set to empty value “.
     realmId : str, default is Undefined, optional
         The realm this client is attached to.
+    requireDpopBoundTokens : bool, default is Undefined, optional
+        Enable support for Demonstrating Proof-of-Possession (DPoP) bound tokens.
     resourceServerId : str, default is Undefined, optional
         (Computed) When authorization is enabled for this client, this attribute is the unique ID for the client (the same value as the .id attribute).
     rootUrl : str, default is Undefined, optional
@@ -1469,7 +1479,7 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientStatusAtProvider:
     standardFlowEnabled : bool, default is Undefined, optional
         When true, the OAuth2 Authorization Code Grant will be enabled for this client. Defaults to false.
     standardTokenExchangeEnabled : bool, default is Undefined, optional
-        When false, this client will not be able to initiate a login or obtain access tokens. Defaults to true.
+        Enables support for Standard Token Exchange
     useRefreshTokens : bool, default is Undefined, optional
         If this is true, a refresh_token will be created and added to the token response. If this is false then no refresh_token will be generated.  Defaults to true.
     useRefreshTokensClientCredentials : bool, default is Undefined, optional
@@ -1566,6 +1576,8 @@ schema OpenidclientKeycloakmCrossplaneIoV1alpha1ClientStatusAtProvider:
     pkceCodeChallengeMethod?: str
 
     realmId?: str
+
+    requireDpopBoundTokens?: bool
 
     resourceServerId?: str
 

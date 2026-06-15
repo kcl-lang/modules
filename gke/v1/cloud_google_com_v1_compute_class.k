@@ -245,6 +245,40 @@ schema CloudGoogleComV1ComputeClassSpecPrioritiesItems0:
         minMemoryGb >= 0 if minMemoryGb not in [None, Undefined]
 
 
+schema CloudGoogleComV1ComputeClassSpecPrioritiesItems0GpuSharing:
+    r"""
+    GpuSharing defines GPU sharing and partitioning config for a node.
+    Requires GKE version 1.35.2-gke.1485000 or later.
+
+    Attributes
+    ----------
+    sharingStrategy : str, default is Undefined, optional
+        SharingStrategy describes the GPU sharing strategy.
+        Supported values: TIME_SHARING, MPS.
+    maxSharedClientsPerGPU : int, default is Undefined, optional
+        MaxSharedClientsPerGPU describes the maximum number of containers
+        that can share a GPU. Valid range: 2-48.
+        Required when sharingStrategy is set.
+    gpuPartitionSize : str, default is Undefined, optional
+        GpuPartitionSize enables multi-instance GPU (MIG) partitioning.
+        Sets the MIG profile applied to each GPU on the node.
+        Example values for nvidia-rtx-pro-6000: "1g.24gb", "2g.48gb", "4g.96gb".
+        Example values for nvidia-h100-80gb: "1g.10gb", "2g.20gb", "3g.40gb", "4g.40gb", "7g.80gb".
+        If omitted the GPU is not partitioned.
+    """
+
+    sharingStrategy?: str
+
+    maxSharedClientsPerGPU?: int
+
+    gpuPartitionSize?: str
+
+
+    check:
+        maxSharedClientsPerGPU >= 2 if maxSharedClientsPerGPU not in [None, Undefined]
+        maxSharedClientsPerGPU <= 48 if maxSharedClientsPerGPU not in [None, Undefined]
+
+
 schema CloudGoogleComV1ComputeClassSpecPrioritiesItems0Gpu:
     r"""
     Gpu defines preferred GPU config for a node.
@@ -257,6 +291,9 @@ schema CloudGoogleComV1ComputeClassSpecPrioritiesItems0Gpu:
         DriverVersion describes version of GPU driver for a node.
     $type : str, default is Undefined, optional
         Type describes preferred GPU accelerator type for a node.
+    gpuSharing : CloudGoogleComV1ComputeClassSpecPrioritiesItems0GpuSharing, default is Undefined, optional
+        GpuSharing configures GPU sharing strategies and MIG partitioning.
+        Requires GKE version 1.35.2-gke.1485000 or later.
     """
 
 
@@ -265,6 +302,8 @@ schema CloudGoogleComV1ComputeClassSpecPrioritiesItems0Gpu:
     driverVersion?: "default" | "latest" = "default"
 
     $type?: str
+
+    gpuSharing?: CloudGoogleComV1ComputeClassSpecPrioritiesItems0GpuSharing
 
 
     check:

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeMachineImage:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute machine image
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeMachineImage:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeMachineImageSpec:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute machine image spec
 
     Attributes
@@ -71,7 +71,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeMachineImageSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeMachineImageSpecMachineImageEncryptionKey:
-    """
+    r"""
     Immutable. Encrypts the machine image using a customer-supplied encryption key.
 
     After you encrypt a machine image with a customer-supplied key, you must
@@ -104,7 +104,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeMachineImageSpecMachineImageEncry
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeMachineImageSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -126,7 +126,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeMachineImageSpecProjectRef:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeMachineImageSpecSourceInstanceRef:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute machine image spec source instance ref
 
     Attributes
@@ -148,7 +148,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeMachineImageSpecSourceInstanceRef
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeMachineImageStatus:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute machine image status
 
     Attributes
@@ -174,7 +174,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeMachineImageStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeMachineImageStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute machine image status conditions items0
 
     Attributes

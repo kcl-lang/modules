@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema VertexAIIndex:
-    """
+    r"""
     vertexai cnrm cloud google com v1alpha1 vertex a i index
 
     Attributes
@@ -36,7 +36,7 @@ schema VertexAIIndex:
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexSpec:
-    """
+    r"""
     vertexai cnrm cloud google com v1alpha1 vertex a i index spec
 
     Attributes
@@ -76,7 +76,7 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexSpec:
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexSpecMetadata:
-    """
+    r"""
     An additional information about the Index.
 
     Attributes
@@ -84,15 +84,14 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexSpecMetadata:
     config : VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexSpecMetadataConfig, default is Undefined, optional
         config
     contentsDeltaUri : str, default is Undefined, optional
-        Allows inserting, updating  or deleting the contents of the Matching Engine Index.
+        Allows creating or replacing the contents of the Matching Engine Index.
+        When being updated, the existing content of the Index will be replaced by the data
+        from the latest contentsDeltaUri.
         The string must be a valid Cloud Storage directory path. If this
         field is set when calling IndexService.UpdateIndex, then no other
         Index field can be also updated as part of the same call.
         The expected structure and format of the files this URI points to is
         described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format.
-    isCompleteOverwrite : bool, default is Undefined, optional
-        If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
-        then existing content of the Index will be replaced by the data from the contentsDeltaUri.
     """
 
 
@@ -100,11 +99,9 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexSpecMetadata:
 
     contentsDeltaUri?: str
 
-    isCompleteOverwrite?: bool
-
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexSpecMetadataConfig:
-    """
+    r"""
     Immutable. The configuration of the Matching Engine Index.
 
     Attributes
@@ -151,7 +148,7 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexSpecMetadataConfig:
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexSpecMetadataConfigAlgorithmConfig:
-    """
+    r"""
     The configuration with regard to the algorithms used for efficient search.
 
     Attributes
@@ -170,7 +167,7 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexSpecMetadataConfigAlgorith
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexSpecMetadataConfigAlgorithmConfigTreeAhConfig:
-    """
+    r"""
     Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
     Please refer to this paper for more details: https://arxiv.org/abs/1908.10396.
 
@@ -190,7 +187,7 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexSpecMetadataConfigAlgorith
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -212,53 +209,29 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexSpecProjectRef:
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexStatus:
-    """
+    r"""
     vertexai cnrm cloud google com v1alpha1 vertex a i index status
 
     Attributes
     ----------
     conditions : [VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexStatusConditionsItems0], default is Undefined, optional
         Conditions represent the latest available observation of the resource's current state.
-    createTime : str, default is Undefined, optional
-        The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-    deployedIndexes : [VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexStatusDeployedIndexesItems0], default is Undefined, optional
-        The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
-    etag : str, default is Undefined, optional
-        Used to perform consistent read-modify-write updates.
-    indexStats : [VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexStatusIndexStatsItems0], default is Undefined, optional
-        Stats of the index resource.
-    metadataSchemaUri : str, default is Undefined, optional
-        Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
-    name : str, default is Undefined, optional
-        The resource name of the Index.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
-    updateTime : str, default is Undefined, optional
-        The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+    observedState : VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexStatusConditionsItems0]
 
-    createTime?: str
-
-    deployedIndexes?: [VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexStatusDeployedIndexesItems0]
-
-    etag?: str
-
-    indexStats?: [VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexStatusIndexStatsItems0]
-
-    metadataSchemaUri?: str
-
-    name?: str
-
     observedGeneration?: int
 
-    updateTime?: str
+    observedState?: VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexStatusObservedState
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexStatusConditionsItems0:
-    """
+    r"""
     vertexai cnrm cloud google com v1alpha1 vertex a i index status conditions items0
 
     Attributes
@@ -287,27 +260,35 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexStatusConditionsItems0:
     $type?: str
 
 
-schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexStatusDeployedIndexesItems0:
-    """
-    vertexai cnrm cloud google com v1alpha1 vertex a i index status deployed indexes items0
+schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexStatusObservedState:
+    r"""
+    The observed state of the underlying GCP resource.
 
     Attributes
     ----------
-    deployedIndexId : str, default is Undefined, optional
-        The ID of the DeployedIndex in the above IndexEndpoint.
-    indexEndpoint : str, default is Undefined, optional
-        A resource name of the IndexEndpoint.
+    createTime : str, default is Undefined, optional
+        The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+    indexStats : [VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexStatusObservedStateIndexStatsItems0], default is Undefined, optional
+        Stats of the index resource.
+    metadataSchemaUri : str, default is Undefined, optional
+        Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
+    name : str, default is Undefined, optional
+        The resource name of the Index.
     """
 
 
-    deployedIndexId?: str
+    createTime?: str
 
-    indexEndpoint?: str
+    indexStats?: [VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexStatusObservedStateIndexStatsItems0]
+
+    metadataSchemaUri?: str
+
+    name?: str
 
 
-schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexStatusIndexStatsItems0:
-    """
-    vertexai cnrm cloud google com v1alpha1 vertex a i index status index stats items0
+schema VertexaiCnrmCloudGoogleComV1alpha1VertexAIIndexStatusObservedStateIndexStatsItems0:
+    r"""
+    vertexai cnrm cloud google com v1alpha1 vertex a i index status observed state index stats items0
 
     Attributes
     ----------

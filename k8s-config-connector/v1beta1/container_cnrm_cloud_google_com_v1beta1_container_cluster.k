@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ContainerCluster:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container cluster
 
     Attributes
@@ -36,7 +36,7 @@ schema ContainerCluster:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpec:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container cluster spec
 
     Attributes
@@ -57,6 +57,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpec:
         cluster telemetry
     confidentialNodes : ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecConfidentialNodes, default is Undefined, optional
         confidential nodes
+    controlPlaneEndpointsConfig : ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecControlPlaneEndpointsConfig, default is Undefined, optional
+        control plane endpoints config
     costManagementConfig : ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecCostManagementConfig, default is Undefined, optional
         cost management config
     databaseEncryption : ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecDatabaseEncryption, default is Undefined, optional
@@ -75,6 +77,10 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpec:
         Immutable. Enable Autopilot for this cluster.
     enableBinaryAuthorization : bool, default is Undefined, optional
         DEPRECATED. Deprecated in favor of binary_authorization. Enable Binary Authorization for this cluster. If enabled, all container images will be validated by Google Binary Authorization.
+    enableCiliumClusterwideNetworkPolicy : bool, default is Undefined, optional
+        Whether Cilium cluster-wide network policy is enabled on this cluster.
+    enableFqdnNetworkPolicy : bool, default is Undefined, optional
+        Whether FQDN Network Policy is enabled on this cluster.
     enableIntranodeVisibility : bool, default is Undefined, optional
         Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
     enableK8sBetaApis : ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecEnableK8sBetaApis, default is Undefined, optional
@@ -180,6 +186,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpec:
 
     confidentialNodes?: ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecConfidentialNodes
 
+    controlPlaneEndpointsConfig?: ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecControlPlaneEndpointsConfig
+
     costManagementConfig?: ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecCostManagementConfig
 
     databaseEncryption?: ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecDatabaseEncryption
@@ -197,6 +205,10 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpec:
     enableAutopilot?: bool
 
     enableBinaryAuthorization?: bool
+
+    enableCiliumClusterwideNetworkPolicy?: bool
+
+    enableFqdnNetworkPolicy?: bool
 
     enableIntranodeVisibility?: bool
 
@@ -286,7 +298,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpec:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfig:
-    """
+    r"""
     The configuration for addons supported by GKE.
 
     Attributes
@@ -344,7 +356,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfig:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigCloudrunConfig:
-    """
+    r"""
     The status of the CloudRun addon. It is disabled by default. Set disabled = false to enable.
 
     Attributes
@@ -362,7 +374,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigCloudru
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigConfigConnectorConfig:
-    """
+    r"""
     The of the Config Connector addon.
 
     Attributes
@@ -376,7 +388,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigConfigC
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigDNSCacheConfig:
-    """
+    r"""
     The status of the NodeLocal DNSCache addon. It is disabled by default. Set enabled = true to enable.
 
     Attributes
@@ -390,8 +402,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigDNSCach
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigGcePersistentDiskCsiDriverConfig:
-    """
-    Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to enabled; set disabled = true to disable.
+    r"""
+    Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Set enabled = true to enable. The Compute Engine persistent disk CSI Driver is enabled by default on newly created clusters for the following versions: Linux clusters: GKE version 1.18.10-gke.2100 or later, or 1.19.3-gke.2100 or later.
 
     Attributes
     ----------
@@ -404,7 +416,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigGcePers
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigGcpFilestoreCsiDriverConfig:
-    """
+    r"""
     The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes. Defaults to disabled; set enabled = true to enable.
 
     Attributes
@@ -418,7 +430,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigGcpFile
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigGcsFuseCsiDriverConfig:
-    """
+    r"""
     The status of the GCS Fuse CSI driver addon, which allows the usage of gcs bucket as volumes. Defaults to disabled; set enabled = true to enable.
 
     Attributes
@@ -432,7 +444,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigGcsFuse
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigGkeBackupAgentConfig:
-    """
+    r"""
     The status of the Backup for GKE Agent addon. It is disabled by default. Set enabled = true to enable.
 
     Attributes
@@ -446,7 +458,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigGkeBack
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigHTTPLoadBalancing:
-    """
+    r"""
     The status of the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster. It is enabled by default; set disabled = true to disable.
 
     Attributes
@@ -460,7 +472,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigHTTPLoa
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigHorizontalPodAutoscaling:
-    """
+    r"""
     The status of the Horizontal Pod Autoscaling addon, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods. It ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service. It is enabled by default; set disabled = true to disable.
 
     Attributes
@@ -474,7 +486,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigHorizon
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigIstioConfig:
-    """
+    r"""
     The status of the Istio addon.
 
     Attributes
@@ -492,7 +504,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigIstioCo
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigKalmConfig:
-    """
+    r"""
     Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set enabled = true to enable.
 
     Attributes
@@ -506,7 +518,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigKalmCon
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigNetworkPolicyConfig:
-    """
+    r"""
     Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a network_policy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
 
     Attributes
@@ -520,7 +532,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAddonsConfigNetwork
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAuthenticatorGroupsConfig:
-    """
+    r"""
     Configuration for the Google Groups for GKE feature.
 
     Attributes
@@ -534,7 +546,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecAuthenticatorGroups
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecBinaryAuthorization:
-    """
+    r"""
     Configuration options for the Binary Authorization feature.
 
     Attributes
@@ -552,7 +564,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecBinaryAuthorization
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterAutoscaling:
-    """
+    r"""
     Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to automatically adjust the size of the cluster and create/delete node pools based on the current needs of the cluster's workload. See the guide to using Node Auto-Provisioning for more details.
 
     Attributes
@@ -578,7 +590,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterAutoscaling:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterAutoscalingAutoProvisioningDefaults:
-    """
+    r"""
     Contains defaults for a node pool created by NAP.
 
     Attributes
@@ -624,7 +636,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterAutoscalingA
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterAutoscalingAutoProvisioningDefaultsBootDiskKMSKeyRef:
-    """
+    r"""
     Immutable. The Customer Managed Encryption Key used to encrypt the
     boot disk attached to each node in the node pool.
 
@@ -647,7 +659,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterAutoscalingA
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterAutoscalingAutoProvisioningDefaultsManagement:
-    """
+    r"""
     NodeManagement configuration for this NodePool.
 
     Attributes
@@ -669,7 +681,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterAutoscalingA
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionsItems0:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container cluster spec cluster autoscaling auto provisioning defaults management upgrade options items0
 
     Attributes
@@ -687,7 +699,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterAutoscalingA
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterAutoscalingAutoProvisioningDefaultsServiceAccountRef:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container cluster spec cluster autoscaling auto provisioning defaults service account ref
 
     Attributes
@@ -709,7 +721,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterAutoscalingA
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig:
-    """
+    r"""
     Shielded Instance options.
 
     Attributes
@@ -727,7 +739,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterAutoscalingA
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings:
-    """
+    r"""
     Specifies the upgrade settings for NAP created node pools.
 
     Attributes
@@ -753,7 +765,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterAutoscalingA
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings:
-    """
+    r"""
     Settings for blue-green upgrade strategy.
 
     Attributes
@@ -773,7 +785,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterAutoscalingA
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy:
-    """
+    r"""
     Standard policy for the blue-green upgrade.
 
     Attributes
@@ -797,7 +809,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterAutoscalingA
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterAutoscalingResourceLimitsItems0:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container cluster spec cluster autoscaling resource limits items0
 
     Attributes
@@ -819,7 +831,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterAutoscalingR
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterTelemetry:
-    """
+    r"""
     Telemetry integration for the cluster.
 
     Attributes
@@ -833,7 +845,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecClusterTelemetry:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecConfidentialNodes:
-    """
+    r"""
     Immutable. Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster.
 
     Attributes
@@ -846,8 +858,54 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecConfidentialNodes:
     enabled: bool
 
 
-schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecCostManagementConfig:
+schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecControlPlaneEndpointsConfig:
+    r"""
+    Configuration for all of the cluster's control plane endpoints. Currently supports only DNS endpoint configuration and disable IP endpoint. Other IP endpoint configurations are available in private_cluster_config.
+
+    Attributes
+    ----------
+    dnsEndpointConfig : ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecControlPlaneEndpointsConfigDNSEndpointConfig, default is Undefined, optional
+        dns endpoint config
+    ipEndpointsConfig : ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecControlPlaneEndpointsConfigIPEndpointsConfig, default is Undefined, optional
+        ip endpoints config
     """
+
+
+    dnsEndpointConfig?: ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecControlPlaneEndpointsConfigDNSEndpointConfig
+
+    ipEndpointsConfig?: ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecControlPlaneEndpointsConfigIPEndpointsConfig
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecControlPlaneEndpointsConfigDNSEndpointConfig:
+    r"""
+    DNS endpoint configuration.
+
+    Attributes
+    ----------
+    allowExternalTraffic : bool, default is Undefined, optional
+        Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
+    """
+
+
+    allowExternalTraffic?: bool
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecControlPlaneEndpointsConfigIPEndpointsConfig:
+    r"""
+    IP endpoint configuration.
+
+    Attributes
+    ----------
+    enabled : bool, default is Undefined, optional
+        Controls whether to allow direct IP access. When false, configuration of masterAuthorizedNetworksConfig, privateClusterConfig.enablePrivateEndpoint, privateClusterConfig.privateEndpointSubnetwork and privateClusterConfig.masterGlobalAccessConfig fields won't be used, and privateClusterConfig.privateEndpoint and privateClusterConfig.publicEndpoint fields won't be populated.
+    """
+
+
+    enabled?: bool
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecCostManagementConfig:
+    r"""
     Cost management configuration for the cluster.
 
     Attributes
@@ -861,7 +919,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecCostManagementConfi
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecDNSConfig:
-    """
+    r"""
     Immutable. Configuration for Cloud DNS for Kubernetes Engine.
 
     Attributes
@@ -883,7 +941,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecDNSConfig:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecDatabaseEncryption:
-    """
+    r"""
     Application-layer Secrets Encryption settings. The object format is {state = string, key_name = string}. Valid values of state are: "ENCRYPTED"; "DECRYPTED". key_name is the name of a CloudKMS key.
 
     Attributes
@@ -901,7 +959,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecDatabaseEncryption:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecDefaultSnatStatus:
-    """
+    r"""
     Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.
 
     Attributes
@@ -915,7 +973,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecDefaultSnatStatus:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecEnableK8sBetaApis:
-    """
+    r"""
     Configuration for Kubernetes Beta APIs.
 
     Attributes
@@ -929,7 +987,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecEnableK8sBetaApis:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecGatewayAPIConfig:
-    """
+    r"""
     Configuration for GKE Gateway API controller.
 
     Attributes
@@ -943,7 +1001,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecGatewayAPIConfig:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecIPAllocationPolicy:
-    """
+    r"""
     Immutable. Configuration of cluster IP allocation for VPC-native clusters. Adding this block enables IP aliasing, making the cluster VPC-native instead of routes-based.
 
     Attributes
@@ -981,7 +1039,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecIPAllocationPolicy:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecIPAllocationPolicyAdditionalPodRangesConfig:
-    """
+    r"""
     AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
 
     Attributes
@@ -995,7 +1053,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecIPAllocationPolicyA
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecIPAllocationPolicyPodCidrOverprovisionConfig:
-    """
+    r"""
     Immutable. Configuration for cluster level pod cidr overprovision. Default is disabled=false.
 
     Attributes
@@ -1009,7 +1067,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecIPAllocationPolicyP
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecIdentityServiceConfig:
-    """
+    r"""
     Configuration for Identity Service which allows customers to use external identity providers with the K8S API.
 
     Attributes
@@ -1023,7 +1081,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecIdentityServiceConf
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecLoggingConfig:
-    """
+    r"""
     Logging configuration for the cluster.
 
     Attributes
@@ -1037,7 +1095,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecLoggingConfig:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMaintenancePolicy:
-    """
+    r"""
     The maintenance policy to use for the cluster.
 
     Attributes
@@ -1059,7 +1117,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMaintenancePolicy:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMaintenancePolicyDailyMaintenanceWindow:
-    """
+    r"""
     Time window specified for daily maintenance operations. Specify start_time in RFC3339 format "HH:MM”, where HH : [00-23] and MM : [00-59] GMT.
 
     Attributes
@@ -1077,7 +1135,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMaintenancePolicyDa
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMaintenancePolicyMaintenanceExclusionItems0:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container cluster spec maintenance policy maintenance exclusion items0
 
     Attributes
@@ -1103,7 +1161,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMaintenancePolicyMa
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMaintenancePolicyMaintenanceExclusionItems0ExclusionOptions:
-    """
+    r"""
     Maintenance exclusion related options.
 
     Attributes
@@ -1117,7 +1175,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMaintenancePolicyMa
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMaintenancePolicyRecurringWindow:
-    """
+    r"""
     Time window for recurring maintenance operations.
 
     Attributes
@@ -1139,7 +1197,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMaintenancePolicyRe
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMasterAuth:
-    """
+    r"""
     DEPRECATED. Basic authentication was removed for GKE cluster versions >= 1.19. The authentication information for accessing the Kubernetes master. Some values in this block are only returned by the API if your service account has permission to get credentials for your GKE cluster. If you see an unexpected diff unsetting your client cert, ensure you have the container.clusters.getCredentials permission.
 
     Attributes
@@ -1173,7 +1231,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMasterAuth:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMasterAuthClientCertificateConfig:
-    """
+    r"""
     Immutable. Whether client certificate authorization is enabled for this cluster.
 
     Attributes
@@ -1187,7 +1245,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMasterAuthClientCer
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMasterAuthPassword:
-    """
+    r"""
     The password to use for HTTP basic authentication when accessing the Kubernetes master endpoint.
 
     Attributes
@@ -1205,7 +1263,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMasterAuthPassword:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMasterAuthPasswordValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -1219,7 +1277,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMasterAuthPasswordV
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMasterAuthPasswordValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -1237,7 +1295,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMasterAuthPasswordV
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMasterAuthorizedNetworksConfig:
-    """
+    r"""
     The desired configuration options for master authorized networks. Omit the nested cidr_blocks attribute to disallow external access (except the cluster node IPs, which GKE automatically whitelists).
 
     Attributes
@@ -1255,7 +1313,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMasterAuthorizedNet
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMasterAuthorizedNetworksConfigCidrBlocksItems0:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container cluster spec master authorized networks config cidr blocks items0
 
     Attributes
@@ -1273,7 +1331,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMasterAuthorizedNet
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMeshCertificates:
-    """
+    r"""
     If set, and enable_certificates=true, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster.
 
     Attributes
@@ -1287,7 +1345,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMeshCertificates:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMonitoringConfig:
-    """
+    r"""
     Monitoring configuration for the cluster.
 
     Attributes
@@ -1295,7 +1353,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMonitoringConfig:
     advancedDatapathObservabilityConfig : [ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMonitoringConfigAdvancedDatapathObservabilityConfigItems0], default is Undefined, optional
         Configuration of Advanced Datapath Observability features.
     enableComponents : [str], default is Undefined, optional
-        GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, SCHEDULER, and WORKLOADS.
+        GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET and WORKLOADS.
     managedPrometheus : ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMonitoringConfigManagedPrometheus, default is Undefined, optional
         managed prometheus
     """
@@ -1309,7 +1367,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMonitoringConfig:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMonitoringConfigAdvancedDatapathObservabilityConfigItems0:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container cluster spec monitoring config advanced datapath observability config items0
 
     Attributes
@@ -1327,7 +1385,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMonitoringConfigAdv
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMonitoringConfigManagedPrometheus:
-    """
+    r"""
     Configuration for Google Cloud Managed Services for Prometheus.
 
     Attributes
@@ -1341,7 +1399,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecMonitoringConfigMan
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNetworkPolicy:
-    """
+    r"""
     Configuration options for the NetworkPolicy feature.
 
     Attributes
@@ -1359,7 +1417,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNetworkPolicy:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNetworkRef:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container cluster spec network ref
 
     Attributes
@@ -1381,7 +1439,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNetworkRef:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfig:
-    """
+    r"""
     Immutable. The configuration of the nodepool.
 
     Attributes
@@ -1390,6 +1448,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfig:
         advanced machine features
     bootDiskKMSCryptoKeyRef : ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigBootDiskKMSCryptoKeyRef, default is Undefined, optional
         boot disk k m s crypto key ref
+    confidentialNodes : ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigConfidentialNodes, default is Undefined, optional
+        confidential nodes
     diskSizeGb : int, default is Undefined, optional
         Immutable. Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
     diskType : str, default is Undefined, optional
@@ -1398,6 +1458,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfig:
         ephemeral storage config
     ephemeralStorageLocalSsdConfig : ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigEphemeralStorageLocalSsdConfig, default is Undefined, optional
         ephemeral storage local ssd config
+    fastSocket : ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigFastSocket, default is Undefined, optional
+        fast socket
     gcfsConfig : ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigGcfsConfig, default is Undefined, optional
         gcfs config
     guestAccelerator : [ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigGuestAcceleratorItems0], default is Undefined, optional
@@ -1449,7 +1511,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfig:
     tags : [str], default is Undefined, optional
         The list of instance tags applied to all nodes.
     taint : [ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigTaintItems0], default is Undefined, optional
-        Immutable. List of Kubernetes taints to be applied to each node.
+        List of Kubernetes taints to be applied to each node.
     workloadMetadataConfig : ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigWorkloadMetadataConfig, default is Undefined, optional
         workload metadata config
     """
@@ -1459,6 +1521,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfig:
 
     bootDiskKMSCryptoKeyRef?: ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigBootDiskKMSCryptoKeyRef
 
+    confidentialNodes?: ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigConfidentialNodes
+
     diskSizeGb?: int
 
     diskType?: str
@@ -1466,6 +1530,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfig:
     ephemeralStorageConfig?: ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigEphemeralStorageConfig
 
     ephemeralStorageLocalSsdConfig?: ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigEphemeralStorageLocalSsdConfig
+
+    fastSocket?: ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigFastSocket
 
     gcfsConfig?: ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigGcfsConfig
 
@@ -1523,21 +1589,25 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfig:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigAdvancedMachineFeatures:
-    """
+    r"""
     Immutable. Specifies options for controlling advanced machine features.
 
     Attributes
     ----------
-    threadsPerCore : int, default is Undefined, required
+    enableNestedVirtualization : bool, default is Undefined, optional
+        Immutable. Whether or not to enable nested virtualization (defaults to false).
+    threadsPerCore : int, default is Undefined, optional
         Immutable. The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
     """
 
 
-    threadsPerCore: int
+    enableNestedVirtualization?: bool
+
+    threadsPerCore?: int
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigBootDiskKMSCryptoKeyRef:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container cluster spec node config boot disk k m s crypto key ref
 
     Attributes
@@ -1558,8 +1628,22 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigBootDiskK
     namespace?: str
 
 
-schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigEphemeralStorageConfig:
+schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigConfidentialNodes:
+    r"""
+    Immutable. Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+
+    Attributes
+    ----------
+    enabled : bool, default is Undefined, required
+        Immutable. Whether Confidential Nodes feature is enabled for all nodes in this pool.
     """
+
+
+    enabled: bool
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigEphemeralStorageConfig:
+    r"""
     Immutable. Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
 
     Attributes
@@ -1573,7 +1657,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigEphemeral
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigEphemeralStorageLocalSsdConfig:
-    """
+    r"""
     Immutable. Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
 
     Attributes
@@ -1586,8 +1670,22 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigEphemeral
     localSsdCount: int
 
 
-schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigGcfsConfig:
+schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigFastSocket:
+    r"""
+    Enable or disable NCCL Fast Socket in the node pool.
+
+    Attributes
+    ----------
+    enabled : bool, default is Undefined, required
+        Whether or not NCCL Fast Socket is enabled.
     """
+
+
+    enabled: bool
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigGcfsConfig:
+    r"""
     Immutable. GCFS configuration for this node.
 
     Attributes
@@ -1601,7 +1699,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigGcfsConfi
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigGuestAcceleratorItems0:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container cluster spec node config guest accelerator items0
 
     Attributes
@@ -1631,7 +1729,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigGuestAcce
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigGuestAcceleratorItems0GpuDriverInstallationConfig:
-    """
+    r"""
     Immutable. Configuration for auto installation of GPU driver.
 
     Attributes
@@ -1645,7 +1743,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigGuestAcce
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigGuestAcceleratorItems0GpuSharingConfig:
-    """
+    r"""
     Immutable. Configuration for GPU sharing.
 
     Attributes
@@ -1663,7 +1761,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigGuestAcce
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigGvnic:
-    """
+    r"""
     Immutable. Enable or disable gvnic in the node pool.
 
     Attributes
@@ -1677,7 +1775,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigGvnic:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigHostMaintenancePolicy:
-    """
+    r"""
     Immutable. The maintenance policy for the hosts on which the GKE VMs run on.
 
     Attributes
@@ -1691,7 +1789,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigHostMaint
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigKubeletConfig:
-    """
+    r"""
     Node kubelet configs.
 
     Attributes
@@ -1717,21 +1815,25 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigKubeletCo
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigLinuxNodeConfig:
-    """
+    r"""
     Parameters that can be configured on Linux nodes.
 
     Attributes
     ----------
-    sysctls : {str:str}, default is Undefined, required
+    cgroupMode : str, default is Undefined, optional
+        cgroupMode specifies the cgroup mode to be used on the node.
+    sysctls : {str:str}, default is Undefined, optional
         The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
     """
 
 
-    sysctls: {str:str}
+    cgroupMode?: str
+
+    sysctls?: {str:str}
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigLocalNvmeSsdBlockConfig:
-    """
+    r"""
     Immutable. Parameters for raw-block local NVMe SSDs.
 
     Attributes
@@ -1745,7 +1847,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigLocalNvme
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigNodeGroupRef:
-    """
+    r"""
     Immutable. Setting this field will assign instances
     of this pool to run on the specified node group. This is useful
     for running workloads on sole tenant nodes.
@@ -1769,7 +1871,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigNodeGroup
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigReservationAffinity:
-    """
+    r"""
     Immutable. The reservation affinity configuration for the node pool.
 
     Attributes
@@ -1791,7 +1893,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigReservati
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigSandboxConfig:
-    """
+    r"""
     Immutable. Sandbox configuration for this node.
 
     Attributes
@@ -1805,7 +1907,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigSandboxCo
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigServiceAccountRef:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container cluster spec node config service account ref
 
     Attributes
@@ -1827,7 +1929,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigServiceAc
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigShieldedInstanceConfig:
-    """
+    r"""
     Immutable. Shielded Instance options.
 
     Attributes
@@ -1845,7 +1947,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigShieldedI
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigSoleTenantConfig:
-    """
+    r"""
     Immutable. Node affinity options for sole tenant node pools.
 
     Attributes
@@ -1859,7 +1961,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigSoleTenan
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigSoleTenantConfigNodeAffinityItems0:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container cluster spec node config sole tenant config node affinity items0
 
     Attributes
@@ -1881,17 +1983,17 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigSoleTenan
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigTaintItems0:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container cluster spec node config taint items0
 
     Attributes
     ----------
     effect : str, default is Undefined, required
-        Immutable. Effect for taint.
+        Effect for taint.
     key : str, default is Undefined, required
-        Immutable. Key for taint.
+        Key for taint.
     value : str, default is Undefined, required
-        Immutable. Value for taint.
+        Value for taint.
     """
 
 
@@ -1903,7 +2005,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigTaintItem
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigWorkloadMetadataConfig:
-    """
+    r"""
     Immutable. The workload metadata configuration for this node.
 
     Attributes
@@ -1921,7 +2023,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodeConfigWorkloadM
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodePoolAutoConfig:
-    """
+    r"""
     Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
 
     Attributes
@@ -1935,7 +2037,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodePoolAutoConfig:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodePoolAutoConfigNetworkTags:
-    """
+    r"""
     Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
 
     Attributes
@@ -1949,7 +2051,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodePoolAutoConfigN
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodePoolDefaults:
-    """
+    r"""
     The default nodel pool settings for the entire cluster.
 
     Attributes
@@ -1963,7 +2065,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodePoolDefaults:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodePoolDefaultsNodeConfigDefaults:
-    """
+    r"""
     Subset of NodeConfig message that has defaults.
 
     Attributes
@@ -1981,7 +2083,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodePoolDefaultsNod
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodePoolDefaultsNodeConfigDefaultsGcfsConfig:
-    """
+    r"""
     GCFS configuration for this node.
 
     Attributes
@@ -1995,7 +2097,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNodePoolDefaultsNod
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNotificationConfig:
-    """
+    r"""
     The notification config for sending cluster upgrade notifications.
 
     Attributes
@@ -2009,7 +2111,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNotificationConfig:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNotificationConfigPubsub:
-    """
+    r"""
     Notification config for Cloud Pub/Sub.
 
     Attributes
@@ -2031,7 +2133,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNotificationConfigP
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNotificationConfigPubsubFilter:
-    """
+    r"""
     Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent.
 
     Attributes
@@ -2045,7 +2147,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNotificationConfigP
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNotificationConfigPubsubTopicRef:
-    """
+    r"""
     The PubSubTopic to send the notification to.
 
     Attributes
@@ -2067,7 +2169,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecNotificationConfigP
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecPodSecurityPolicyConfig:
-    """
+    r"""
     Configuration for the PodSecurityPolicy feature.
 
     Attributes
@@ -2081,7 +2183,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecPodSecurityPolicyCo
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecPrivateClusterConfig:
-    """
+    r"""
     Configuration for private clusters, clusters with private nodes.
 
     Attributes
@@ -2089,7 +2191,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecPrivateClusterConfi
     enablePrivateEndpoint : bool, default is Undefined, optional
         When true, the cluster's private endpoint is used as the cluster endpoint and access through the public endpoint is disabled. When false, either endpoint can be used.
     enablePrivateNodes : bool, default is Undefined, optional
-        Immutable. Enables the private cluster feature, creating a private endpoint on the cluster. In a private cluster, nodes only have RFC 1918 private addresses and communicate with the master's private endpoint via private networking.
+        Enables the private cluster feature, creating a private endpoint on the cluster. In a private cluster, nodes only have RFC 1918 private addresses and communicate with the master's private endpoint via private networking.
     masterGlobalAccessConfig : ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecPrivateClusterConfigMasterGlobalAccessConfig, default is Undefined, optional
         master global access config
     masterIpv4CidrBlock : str, default is Undefined, optional
@@ -2123,7 +2225,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecPrivateClusterConfi
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecPrivateClusterConfigMasterGlobalAccessConfig:
-    """
+    r"""
     Controls cluster master global access settings.
 
     Attributes
@@ -2137,7 +2239,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecPrivateClusterConfi
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecPrivateClusterConfigPrivateEndpointSubnetworkRef:
-    """
+    r"""
     Immutable. Subnetwork in cluster's network where master's endpoint
     will be provisioned.
 
@@ -2160,7 +2262,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecPrivateClusterConfi
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecProtectConfig:
-    """
+    r"""
     Enable/Disable Protect API features for the cluster.
 
     Attributes
@@ -2178,7 +2280,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecProtectConfig:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecProtectConfigWorkloadConfig:
-    """
+    r"""
     WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
 
     Attributes
@@ -2192,7 +2294,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecProtectConfigWorklo
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecReleaseChannel:
-    """
+    r"""
     Configuration options for the Release channel feature, which provide more control over automatic upgrades of your GKE clusters. Note that removing this field from your config will not unenroll it. Instead, use the "UNSPECIFIED" channel.
 
     Attributes
@@ -2210,7 +2312,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecReleaseChannel:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecResourceUsageExportConfig:
-    """
+    r"""
     Configuration for the ResourceUsageExportConfig feature.
 
     Attributes
@@ -2232,7 +2334,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecResourceUsageExport
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecResourceUsageExportConfigBigqueryDestination:
-    """
+    r"""
     Parameters for using BigQuery as the destination of resource usage export.
 
     Attributes
@@ -2246,7 +2348,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecResourceUsageExport
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecSecurityPostureConfig:
-    """
+    r"""
     Defines the config needed to enable/disable features for the Security Posture API.
 
     Attributes
@@ -2264,7 +2366,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecSecurityPostureConf
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecServiceExternalIpsConfig:
-    """
+    r"""
     If set, and enabled=true, services with external ips field will not be blocked.
 
     Attributes
@@ -2278,7 +2380,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecServiceExternalIpsC
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecSubnetworkRef:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container cluster spec subnetwork ref
 
     Attributes
@@ -2300,7 +2402,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecSubnetworkRef:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecVerticalPodAutoscaling:
-    """
+    r"""
     Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 
     Attributes
@@ -2314,7 +2416,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecVerticalPodAutoscal
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecWorkloadIdentityConfig:
-    """
+    r"""
     Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 
     Attributes
@@ -2333,7 +2435,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterSpecWorkloadIdentityCon
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterStatus:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container cluster status
 
     Attributes
@@ -2348,6 +2450,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterStatus:
         The current version of the master in the cluster. This may be different than the min_master_version set in the config if the master has been updated by GKE.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : ContainerCnrmCloudGoogleComV1beta1ContainerClusterStatusObservedState, default is Undefined, optional
+        observed state
     operation : str, default is Undefined, optional
         operation
     selfLink : str, default is Undefined, optional
@@ -2369,6 +2473,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterStatus:
 
     observedGeneration?: int
 
+    observedState?: ContainerCnrmCloudGoogleComV1beta1ContainerClusterStatusObservedState
+
     operation?: str
 
     selfLink?: str
@@ -2379,7 +2485,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterStatus:
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterStatusConditionsItems0:
-    """
+    r"""
     container cnrm cloud google com v1beta1 container cluster status conditions items0
 
     Attributes
@@ -2406,5 +2512,91 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterStatusConditionsItems0:
     status?: str
 
     $type?: str
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterStatusObservedState:
+    r"""
+    The observed state of the underlying GCP resource.
+
+    Attributes
+    ----------
+    controlPlaneEndpointsConfig : ContainerCnrmCloudGoogleComV1beta1ContainerClusterStatusObservedStateControlPlaneEndpointsConfig, default is Undefined, optional
+        control plane endpoints config
+    masterAuth : ContainerCnrmCloudGoogleComV1beta1ContainerClusterStatusObservedStateMasterAuth, default is Undefined, optional
+        master auth
+    privateClusterConfig : ContainerCnrmCloudGoogleComV1beta1ContainerClusterStatusObservedStatePrivateClusterConfig, default is Undefined, optional
+        private cluster config
+    """
+
+
+    controlPlaneEndpointsConfig?: ContainerCnrmCloudGoogleComV1beta1ContainerClusterStatusObservedStateControlPlaneEndpointsConfig
+
+    masterAuth?: ContainerCnrmCloudGoogleComV1beta1ContainerClusterStatusObservedStateMasterAuth
+
+    privateClusterConfig?: ContainerCnrmCloudGoogleComV1beta1ContainerClusterStatusObservedStatePrivateClusterConfig
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterStatusObservedStateControlPlaneEndpointsConfig:
+    r"""
+    Configuration for all of the cluster's control plane endpoints. Currently supports only DNS endpoint configuration and disable IP endpoint. Other IP endpoint configurations are available in private_cluster_config.
+
+    Attributes
+    ----------
+    dnsEndpointConfig : ContainerCnrmCloudGoogleComV1beta1ContainerClusterStatusObservedStateControlPlaneEndpointsConfigDNSEndpointConfig, default is Undefined, optional
+        dns endpoint config
+    """
+
+
+    dnsEndpointConfig?: ContainerCnrmCloudGoogleComV1beta1ContainerClusterStatusObservedStateControlPlaneEndpointsConfigDNSEndpointConfig
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterStatusObservedStateControlPlaneEndpointsConfigDNSEndpointConfig:
+    r"""
+    DNS endpoint configuration.
+
+    Attributes
+    ----------
+    endpoint : str, default is Undefined, optional
+        The cluster's DNS endpoint.
+    """
+
+
+    endpoint?: str
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterStatusObservedStateMasterAuth:
+    r"""
+    DEPRECATED. Basic authentication was removed for GKE cluster versions >= 1.19. The authentication information for accessing the Kubernetes master. Some values in this block are only returned by the API if your service account has permission to get credentials for your GKE cluster. If you see an unexpected diff unsetting your client cert, ensure you have the container.clusters.getCredentials permission.
+
+    Attributes
+    ----------
+    clientCertificate : str, default is Undefined, optional
+        Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+    clusterCaCertificate : str, default is Undefined, optional
+        Base64 encoded public certificate that is the root of trust for the cluster.
+    """
+
+
+    clientCertificate?: str
+
+    clusterCaCertificate?: str
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerClusterStatusObservedStatePrivateClusterConfig:
+    r"""
+    Configuration for private clusters, clusters with private nodes.
+
+    Attributes
+    ----------
+    privateEndpoint : str, default is Undefined, optional
+        The internal IP address of this cluster's master endpoint.
+    publicEndpoint : str, default is Undefined, optional
+        The external IP address of this cluster's master endpoint.
+    """
+
+
+    privateEndpoint?: str
+
+    publicEndpoint?: str
 
 

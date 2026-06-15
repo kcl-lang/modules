@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IAMWorkloadIdentityPool:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m workload identity pool
 
     Attributes
@@ -36,7 +36,7 @@ schema IAMWorkloadIdentityPool:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkloadIdentityPoolSpec:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m workload identity pool spec
 
     Attributes
@@ -70,7 +70,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkloadIdentityPoolSpec:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkloadIdentityPoolSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -94,7 +94,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkloadIdentityPoolSpecProjectRef:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkloadIdentityPoolStatus:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m workload identity pool status
 
     Attributes
@@ -116,7 +116,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMWorkloadIdentityPoolStatus:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMWorkloadIdentityPoolStatusConditionsItems0:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m workload identity pool status conditions items0
 
     Attributes

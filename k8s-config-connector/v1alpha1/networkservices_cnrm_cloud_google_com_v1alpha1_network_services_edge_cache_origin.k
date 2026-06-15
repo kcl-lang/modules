@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema NetworkServicesEdgeCacheOrigin:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache origin
 
     Attributes
@@ -36,7 +36,7 @@ schema NetworkServicesEdgeCacheOrigin:
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheOriginSpec:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache origin spec
 
     Attributes
@@ -138,7 +138,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheOriginSp
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheOriginSpecAwsV4Authentication:
-    """
+    r"""
     Enable AWS Signature Version 4 origin authentication.
 
     Attributes
@@ -162,7 +162,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheOriginSp
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheOriginSpecOriginOverrideAction:
-    """
+    r"""
     The override actions, including url rewrites and header
     additions, for requests that use this origin.
 
@@ -181,7 +181,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheOriginSp
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheOriginSpecOriginOverrideActionHeaderAction:
-    """
+    r"""
     The header actions, including adding and removing
     headers, for request handled by this origin.
 
@@ -198,7 +198,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheOriginSp
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheOriginSpecOriginOverrideActionHeaderActionRequestHeadersToAddItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache origin spec origin override action header action request headers to add items0
 
     Attributes
@@ -227,7 +227,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheOriginSp
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheOriginSpecOriginOverrideActionURLRewrite:
-    """
+    r"""
     The URL rewrite configuration for request that are
     handled by this origin.
 
@@ -246,7 +246,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheOriginSp
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheOriginSpecOriginRedirect:
-    """
+    r"""
     Follow redirects from this origin.
 
     Attributes
@@ -263,7 +263,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheOriginSp
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheOriginSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -285,7 +285,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheOriginSp
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheOriginSpecTimeout:
-    """
+    r"""
     The connection and HTTP timeout configuration for this origin.
 
     Attributes
@@ -333,7 +333,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheOriginSp
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheOriginStatus:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache origin status
 
     Attributes
@@ -351,7 +351,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheOriginSt
 
 
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheOriginStatusConditionsItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1alpha1 network services edge cache origin status conditions items0
 
     Attributes

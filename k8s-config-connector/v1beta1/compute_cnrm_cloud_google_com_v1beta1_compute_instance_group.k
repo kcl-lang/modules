@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeInstanceGroup:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeInstanceGroup:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group spec
 
     Attributes
@@ -70,7 +70,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupSpecInstancesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group spec instances items0
 
     Attributes
@@ -92,7 +92,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupSpecInstancesItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupSpecNamedPortItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group spec named port items0
 
     Attributes
@@ -110,7 +110,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupSpecNamedPortItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupSpecNetworkRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group spec network ref
 
     Attributes
@@ -132,7 +132,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupSpecNetworkRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group status
 
     Attributes
@@ -158,7 +158,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute instance group status conditions items0
 
     Attributes

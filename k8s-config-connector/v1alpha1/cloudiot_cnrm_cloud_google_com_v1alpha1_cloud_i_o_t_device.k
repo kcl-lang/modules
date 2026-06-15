@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema CloudIOTDevice:
-    """
+    r"""
     cloudiot cnrm cloud google com v1alpha1 cloud i o t device
 
     Attributes
@@ -36,7 +36,7 @@ schema CloudIOTDevice:
 
 
 schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceSpec:
-    """
+    r"""
     cloudiot cnrm cloud google com v1alpha1 cloud i o t device spec
 
     Attributes
@@ -74,7 +74,7 @@ schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceSpec:
 
 
 schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceSpecCredentialsItems0:
-    """
+    r"""
     cloudiot cnrm cloud google com v1alpha1 cloud i o t device spec credentials items0
 
     Attributes
@@ -92,7 +92,7 @@ schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceSpecCredentialsItems0:
 
 
 schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceSpecCredentialsItems0PublicKey:
-    """
+    r"""
     A public key used to verify the signature of JSON Web Tokens (JWTs).
 
     Attributes
@@ -110,7 +110,7 @@ schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceSpecCredentialsItems0Publ
 
 
 schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceSpecGatewayConfig:
-    """
+    r"""
     Gateway-related configuration and state.
 
     Attributes
@@ -136,7 +136,7 @@ schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceSpecGatewayConfig:
 
 
 schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceStatus:
-    """
+    r"""
     cloudiot cnrm cloud google com v1alpha1 cloud i o t device status
 
     Attributes
@@ -195,7 +195,7 @@ schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceStatus:
 
 
 schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceStatusConditionsItems0:
-    """
+    r"""
     cloudiot cnrm cloud google com v1alpha1 cloud i o t device status conditions items0
 
     Attributes
@@ -225,7 +225,7 @@ schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceStatusConditionsItems0:
 
 
 schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceStatusConfigItems0:
-    """
+    r"""
     cloudiot cnrm cloud google com v1alpha1 cloud i o t device status config items0
 
     Attributes
@@ -252,7 +252,7 @@ schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceStatusConfigItems0:
 
 
 schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceStatusLastErrorStatusItems0:
-    """
+    r"""
     cloudiot cnrm cloud google com v1alpha1 cloud i o t device status last error status items0
 
     Attributes
@@ -274,7 +274,7 @@ schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceStatusLastErrorStatusItem
 
 
 schema CloudiotCnrmCloudGoogleComV1alpha1CloudIOTDeviceStatusStateItems0:
-    """
+    r"""
     cloudiot cnrm cloud google com v1alpha1 cloud i o t device status state items0
 
     Attributes

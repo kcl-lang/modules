@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeFirewallPolicy:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute firewall policy
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeFirewallPolicy:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicySpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute firewall policy spec
 
     Attributes
@@ -66,7 +66,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicySpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicySpecFolderRef:
-    """
+    r"""
     Immutable. The Folder that this resource belongs to. Only one of [folderRef, organizationRef] may be specified.
 
     Attributes
@@ -88,7 +88,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicySpecFolderRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicySpecOrganizationRef:
-    """
+    r"""
     Immutable. The Organization that this resource belongs to. Only one of [folderRef, organizationRef] may be specified.
 
     Attributes
@@ -111,7 +111,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicySpecOrganizationRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute firewall policy status
 
     Attributes
@@ -153,7 +153,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute firewall policy status conditions items0
 
     Attributes

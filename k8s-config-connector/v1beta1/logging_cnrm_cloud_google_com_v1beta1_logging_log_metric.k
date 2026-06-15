@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema LoggingLogMetric:
-    """
-    logging cnrm cloud google com v1beta1 logging log metric
+    r"""
+    LoggingLogMetric is the Schema for the logging API
 
     Attributes
     ----------
@@ -36,7 +36,7 @@ schema LoggingLogMetric:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpec:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log metric spec
 
     Attributes
@@ -51,6 +51,8 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpec:
         Required. An [advanced logs filter](https://cloud.google.com/logging/docs/view/advanced_filters) which is used to match log entries. Example: "resource.type=gae_app AND severity>=ERROR" The maximum length of the filter is 20000 characters.
     labelExtractors : {str:str}, default is Undefined, optional
         Optional. A map from a label key string to an extractor expression which is used to extract data from a log entry field and assign as the label value. Each label key specified in the LabelDescriptor must have an associated extractor expression in this map. The syntax of the extractor expression is the same as for the `value_extractor` field. The extracted value is converted to the type defined in the label descriptor. If the either the extraction or the type conversion fails, the label will have a default value. The default value for a string label is an empty string, for an integer label its 0, and for a boolean label its `false`. Note that there are upper bounds on the maximum number of labels and the number of active time series that are allowed in a project.
+    loggingLogBucketRef : LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecLoggingLogBucketRef, default is Undefined, optional
+        logging log bucket ref
     metricDescriptor : LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecMetricDescriptor, default is Undefined, optional
         metric descriptor
     projectRef : LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecProjectRef, default is Undefined, required
@@ -72,6 +74,8 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpec:
 
     labelExtractors?: {str:str}
 
+    loggingLogBucketRef?: LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecLoggingLogBucketRef
+
     metricDescriptor?: LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecMetricDescriptor
 
     projectRef: LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecProjectRef
@@ -82,7 +86,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpec:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecBucketOptions:
-    """
+    r"""
     Optional. The `bucket_options` are required when the logs-based metric is using a DISTRIBUTION value type and it describes the bucket boundaries used to create a histogram of the extracted values.
 
     Attributes
@@ -104,7 +108,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecBucketOptions:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecBucketOptionsExplicitBuckets:
-    """
+    r"""
     The explicit buckets.
 
     Attributes
@@ -118,7 +122,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecBucketOptionsExplicit
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecBucketOptionsExponentialBuckets:
-    """
+    r"""
     The exponential buckets.
 
     Attributes
@@ -140,7 +144,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecBucketOptionsExponent
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecBucketOptionsLinearBuckets:
-    """
+    r"""
     The linear bucket.
 
     Attributes
@@ -161,8 +165,34 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecBucketOptionsLinearBu
     width?: float
 
 
-schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecMetricDescriptor:
+schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecLoggingLogBucketRef:
+    r"""
+    The reference to the Log Bucket that owns the Log Metric. Only Log Buckets in projects are supported. The bucket has to be in the same project as the metric. For example:projects/my-project/locations/global/buckets/my-bucket If empty, then the Log Metric is considered a non-Bucket Log Metric. Only `external` field is supported to configure the reference for now.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The external name of the referenced resource
+    kind : str, default is Undefined, optional
+        Kind of the referent.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
     """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecMetricDescriptor:
+    r"""
     Optional. The metric descriptor associated with the logs-based metric. If unspecified, it uses a default metric descriptor with a DELTA metric kind, INT64 value type, with no labels and a unit of "1". Such a metric counts the number of log entries matching the `filter` expression. The `name`, `type`, and `description` fields in the `metric_descriptor` are output only, and is constructed using the `name` and `description` field in the LogMetric. To create a logs-based metric that records a distribution of log values, a DELTA metric kind with a DISTRIBUTION value type must be used along with a `value_extractor` expression in the LogMetric. Each label in the metric descriptor must have a matching label name as the key and an extractor expression as the value in the `label_extractors` map. The `metric_kind` and `value_type` fields in the `metric_descriptor` cannot be updated once initially configured. New labels can be added in the `metric_descriptor`, but existing labels cannot be modified except for their description.
 
     Attributes
@@ -200,7 +230,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecMetricDescriptor:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecMetricDescriptorLabelsItems0:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log metric spec metric descriptor labels items0
 
     Attributes
@@ -222,7 +252,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecMetricDescriptorLabel
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecMetricDescriptorMetadata:
-    """
+    r"""
     Optional. Metadata which can be used to guide usage of the metric.
 
     Attributes
@@ -240,23 +270,25 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecMetricDescriptorMetad
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The resource name of the project in which to create the metric.
-
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
     external?: str
+
+    kind?: str
 
     name?: str
 
@@ -264,13 +296,13 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecProjectRef:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricStatus:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log metric status
 
     Attributes
     ----------
     conditions : [LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the LoggingLogMetric's current state.
     createTime : str, default is Undefined, optional
         Output only. The creation timestamp of the metric. This field may not be present for older metrics.
     metricDescriptor : LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricStatusMetricDescriptor, default is Undefined, optional
@@ -294,7 +326,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricStatus:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricStatusConditionsItems0:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log metric status conditions items0
 
     Attributes
@@ -324,7 +356,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricStatusConditionsItems0:
 
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricStatusMetricDescriptor:
-    """
+    r"""
     logging cnrm cloud google com v1beta1 logging log metric status metric descriptor
 
     Attributes

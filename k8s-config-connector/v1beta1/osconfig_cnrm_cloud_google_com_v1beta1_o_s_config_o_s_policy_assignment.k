@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema OSConfigOSPolicyAssignment:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config o s policy assignment
 
     Attributes
@@ -36,7 +36,7 @@ schema OSConfigOSPolicyAssignment:
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpec:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config o s policy assignment spec
 
     Attributes
@@ -78,7 +78,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpec:
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecInstanceFilter:
-    """
+    r"""
     Required. Filter to select VMs.
 
     Attributes
@@ -104,7 +104,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecInstanceFi
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecInstanceFilterExclusionLabelsItems0:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config o s policy assignment spec instance filter exclusion labels items0
 
     Attributes
@@ -118,7 +118,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecInstanceFi
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecInstanceFilterInclusionLabelsItems0:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config o s policy assignment spec instance filter inclusion labels items0
 
     Attributes
@@ -132,7 +132,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecInstanceFi
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecInstanceFilterInventoriesItems0:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config o s policy assignment spec instance filter inventories items0
 
     Attributes
@@ -150,7 +150,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecInstanceFi
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config o s policy assignment spec os policies items0
 
     Attributes
@@ -180,7 +180,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config o s policy assignment spec os policies items0 resource groups items0
 
     Attributes
@@ -198,7 +198,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0InventoryFiltersItems0:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config o s policy assignment spec os policies items0 resource groups items0 inventory filters items0
 
     Attributes
@@ -216,7 +216,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config o s policy assignment spec os policies items0 resource groups items0 resources items0
 
     Attributes
@@ -246,7 +246,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0Exec:
-    """
+    r"""
     Exec resource
 
     Attributes
@@ -264,7 +264,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0ExecEnforce:
-    """
+    r"""
     What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
 
     Attributes
@@ -294,7 +294,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0ExecEnforceFile:
-    """
+    r"""
     A remote or local file.
 
     Attributes
@@ -320,7 +320,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0ExecEnforceFileGcs:
-    """
+    r"""
     A Cloud Storage object.
 
     Attributes
@@ -342,7 +342,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0ExecEnforceFileRemote:
-    """
+    r"""
     A generic remote file.
 
     Attributes
@@ -360,7 +360,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0ExecValidate:
-    """
+    r"""
     Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
 
     Attributes
@@ -390,7 +390,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0ExecValidateFile:
-    """
+    r"""
     A remote or local file.
 
     Attributes
@@ -416,7 +416,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0ExecValidateFileGcs:
-    """
+    r"""
     A Cloud Storage object.
 
     Attributes
@@ -438,7 +438,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0ExecValidateFileRemote:
-    """
+    r"""
     A generic remote file.
 
     Attributes
@@ -456,7 +456,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0File:
-    """
+    r"""
     File resource
 
     Attributes
@@ -486,7 +486,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0FileFile:
-    """
+    r"""
     A remote or local source.
 
     Attributes
@@ -512,7 +512,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0FileFileGcs:
-    """
+    r"""
     A Cloud Storage object.
 
     Attributes
@@ -534,7 +534,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0FileFileRemote:
-    """
+    r"""
     A generic remote file.
 
     Attributes
@@ -552,7 +552,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0Pkg:
-    """
+    r"""
     Package resource
 
     Attributes
@@ -594,7 +594,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0PkgApt:
-    """
+    r"""
     A package managed by Apt.
 
     Attributes
@@ -608,7 +608,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0PkgDeb:
-    """
+    r"""
     A deb package file.
 
     Attributes
@@ -626,7 +626,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0PkgDebSource:
-    """
+    r"""
     Required. A deb package.
 
     Attributes
@@ -652,7 +652,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0PkgDebSourceGcs:
-    """
+    r"""
     A Cloud Storage object.
 
     Attributes
@@ -674,7 +674,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0PkgDebSourceRemote:
-    """
+    r"""
     A generic remote file.
 
     Attributes
@@ -692,7 +692,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0PkgGooget:
-    """
+    r"""
     A package managed by GooGet.
 
     Attributes
@@ -706,7 +706,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0PkgMsi:
-    """
+    r"""
     An MSI package.
 
     Attributes
@@ -724,7 +724,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0PkgMsiSource:
-    """
+    r"""
     Required. The MSI package.
 
     Attributes
@@ -750,7 +750,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0PkgMsiSourceGcs:
-    """
+    r"""
     A Cloud Storage object.
 
     Attributes
@@ -772,7 +772,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0PkgMsiSourceRemote:
-    """
+    r"""
     A generic remote file.
 
     Attributes
@@ -790,7 +790,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0PkgRpm:
-    """
+    r"""
     An rpm package file.
 
     Attributes
@@ -808,7 +808,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0PkgRpmSource:
-    """
+    r"""
     Required. An rpm package.
 
     Attributes
@@ -834,7 +834,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0PkgRpmSourceGcs:
-    """
+    r"""
     A Cloud Storage object.
 
     Attributes
@@ -856,7 +856,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0PkgRpmSourceRemote:
-    """
+    r"""
     A generic remote file.
 
     Attributes
@@ -874,7 +874,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0PkgYum:
-    """
+    r"""
     A package managed by YUM.
 
     Attributes
@@ -888,7 +888,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0PkgZypper:
-    """
+    r"""
     A package managed by Zypper.
 
     Attributes
@@ -902,7 +902,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0Repository:
-    """
+    r"""
     Package repository resource
 
     Attributes
@@ -928,7 +928,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0RepositoryApt:
-    """
+    r"""
     An Apt Repository.
 
     Attributes
@@ -958,7 +958,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0RepositoryGoo:
-    """
+    r"""
     A Goo Repository.
 
     Attributes
@@ -976,7 +976,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0RepositoryYum:
-    """
+    r"""
     A Yum Repository.
 
     Attributes
@@ -1002,7 +1002,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0RepositoryZypper:
-    """
+    r"""
     A Zypper Repository.
 
     Attributes
@@ -1028,7 +1028,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -1052,7 +1052,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecProjectRef
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecRollout:
-    """
+    r"""
     Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
 
     Attributes
@@ -1070,7 +1070,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecRollout:
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecRolloutDisruptionBudget:
-    """
+    r"""
     Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
 
     Attributes
@@ -1088,7 +1088,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecRolloutDis
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentStatus:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config o s policy assignment status
 
     Attributes
@@ -1138,7 +1138,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentStatus:
 
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentStatusConditionsItems0:
-    """
+    r"""
     osconfig cnrm cloud google com v1beta1 o s config o s policy assignment status conditions items0
 
     Attributes

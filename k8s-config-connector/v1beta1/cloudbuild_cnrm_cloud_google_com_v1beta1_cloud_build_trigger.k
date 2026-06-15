@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema CloudBuildTrigger:
-    """
+    r"""
     cloudbuild cnrm cloud google com v1beta1 cloud build trigger
 
     Attributes
@@ -36,7 +36,7 @@ schema CloudBuildTrigger:
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpec:
-    """
+    r"""
     cloudbuild cnrm cloud google com v1beta1 cloud build trigger spec
 
     Attributes
@@ -88,8 +88,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpec:
         those files matches a includedFiles glob. If not, then we do not trigger
         a build.
     location : str, default is Undefined, optional
-        Immutable. The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
-        If not specified, "global" is used.
+        Immutable. The location of the Cloud Build trigger. If not specified, "global" is used. More info: cloud.google.com/build/docs/locations.
     pubsubConfig : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecPubsubConfig, default is Undefined, optional
         pubsub config
     repositoryEventConfig : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecRepositoryEventConfig, default is Undefined, optional
@@ -153,7 +152,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpec:
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecApprovalConfig:
-    """
+    r"""
     Configuration for manual approval to start a build invocation of this BuildTrigger.
     Builds created by this trigger will require approval before they execute.
     Any user with a Cloud Build Approver role for the project can approve a build.
@@ -170,7 +169,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecApprovalConfig:
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBitbucketServerTriggerConfig:
-    """
+    r"""
     BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
 
     Attributes
@@ -201,7 +200,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBitbucketServerTr
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBitbucketServerTriggerConfigBitbucketServerConfigResourceRef:
-    """
+    r"""
     Only `external` field is supported to configure the reference.
 
     The full resource name of the bitbucket server config. Format:
@@ -226,7 +225,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBitbucketServerTr
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBitbucketServerTriggerConfigPullRequest:
-    """
+    r"""
     Filter to match changes in pull requests.
 
     Attributes
@@ -249,7 +248,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBitbucketServerTr
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBitbucketServerTriggerConfigPush:
-    """
+    r"""
     Filter to match changes in refs like branches, tags.
 
     Attributes
@@ -271,7 +270,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBitbucketServerTr
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuild:
-    """
+    r"""
     Contents of the build template. Either a filename or build template must be provided.
 
     Attributes
@@ -339,7 +338,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuild:
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildArtifacts:
-    """
+    r"""
     Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
 
     Attributes
@@ -363,7 +362,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildArtifacts:
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildArtifactsObjects:
-    """
+    r"""
     A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
 
     Files in the workspace matching specified paths globs will be uploaded to the
@@ -395,7 +394,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildArtifactsObj
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildArtifactsObjectsTimingItems0:
-    """
+    r"""
     cloudbuild cnrm cloud google com v1beta1 cloud build trigger spec build artifacts objects timing items0
 
     Attributes
@@ -419,7 +418,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildArtifactsObj
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildAvailableSecrets:
-    """
+    r"""
     Secrets and secret environment variables.
 
     Attributes
@@ -433,7 +432,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildAvailableSec
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildAvailableSecretsSecretManagerItems0:
-    """
+    r"""
     cloudbuild cnrm cloud google com v1beta1 cloud build trigger spec build available secrets secret manager items0
 
     Attributes
@@ -453,7 +452,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildAvailableSec
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildAvailableSecretsSecretManagerItems0VersionRef:
-    """
+    r"""
     cloudbuild cnrm cloud google com v1beta1 cloud build trigger spec build available secrets secret manager items0 version ref
 
     Attributes
@@ -475,7 +474,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildAvailableSec
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildLogsBucketRef:
-    """
+    r"""
     Google Cloud Storage bucket where logs should be written. Logs file
     names will be of the format ${logsBucket}/log-${build_id}.txt.
 
@@ -498,7 +497,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildLogsBucketRe
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildOptions:
-    """
+    r"""
     Special options for this build.
 
     Attributes
@@ -580,7 +579,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildOptions:
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildOptionsVolumesItems0:
-    """
+    r"""
     cloudbuild cnrm cloud google com v1beta1 cloud build trigger spec build options volumes items0
 
     Attributes
@@ -604,7 +603,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildOptionsVolum
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSecretItems0:
-    """
+    r"""
     cloudbuild cnrm cloud google com v1beta1 cloud build trigger spec build secret items0
 
     Attributes
@@ -625,7 +624,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSecretItems0
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSecretItems0KmsKeyRef:
-    """
+    r"""
     KMS crypto key to use to decrypt these envs.
 
     Attributes
@@ -647,7 +646,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSecretItems0
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSource:
-    """
+    r"""
     The location of the source files to build.
 
     One of 'storageSource' or 'repoSource' must be provided.
@@ -667,7 +666,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSource:
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceRepoSource:
-    """
+    r"""
     Location of the source in a Google Cloud Source Repository.
 
     Attributes
@@ -716,7 +715,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceRepoSo
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceRepoSourceRepoRef:
-    """
+    r"""
     The desired Cloud Source Repository. If omitted, "default" is
     assumed.
 
@@ -739,7 +738,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceRepoSo
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceStorageSource:
-    """
+    r"""
     Location of the source in an archive file in Google Cloud Storage.
 
     Attributes
@@ -763,7 +762,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceStorag
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceStorageSourceBucketRef:
-    """
+    r"""
     Google Cloud Storage bucket containing the source.
 
     Attributes
@@ -785,7 +784,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceStorag
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildStepItems0:
-    """
+    r"""
     cloudbuild cnrm cloud google com v1beta1 cloud build trigger spec build step items0
 
     Attributes
@@ -916,7 +915,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildStepItems0:
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildStepItems0VolumesItems0:
-    """
+    r"""
     cloudbuild cnrm cloud google com v1beta1 cloud build trigger spec build step items0 volumes items0
 
     Attributes
@@ -940,7 +939,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildStepItems0Vo
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGitFileSource:
-    """
+    r"""
     The file source describing the local or remote Build template.
 
     Attributes
@@ -982,7 +981,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGitFileSource:
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGitFileSourceBitbucketServerConfigRef:
-    """
+    r"""
     Only `external` field is supported to configure the reference.
 
     The full resource name of the bitbucket server config. Format:
@@ -1007,7 +1006,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGitFileSourceBitb
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGitFileSourceGithubEnterpriseConfigRef:
-    """
+    r"""
     Only `external` field is supported to configure the reference.
 
     The full resource name of the github enterprise config. Format:
@@ -1032,7 +1031,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGitFileSourceGith
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGitFileSourceRepositoryRef:
-    """
+    r"""
     Only `external` field is supported to configure the reference.
 
     The fully qualified resource name of the Repo API repository. The fully qualified resource name of the Repo API repository.
@@ -1057,7 +1056,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGitFileSourceRepo
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGithub:
-    """
+    r"""
     Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
 
     One of 'trigger_template', 'github', 'pubsub_config' or 'webhook_config' must be provided.
@@ -1091,7 +1090,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGithub:
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGithubEnterpriseConfigResourceNameRef:
-    """
+    r"""
     Only `external` field is supported to configure the reference.
 
     The full resource name of the github enterprise config. Format:
@@ -1116,7 +1115,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGithubEnterpriseC
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGithubPullRequest:
-    """
+    r"""
     filter to match changes in pull requests. Specify only one of 'pull_request' or 'push'.
 
     Attributes
@@ -1138,7 +1137,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGithubPullRequest
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGithubPush:
-    """
+    r"""
     filter to match changes in refs, like branches or tags. Specify only one of 'pull_request' or 'push'.
 
     Attributes
@@ -1160,7 +1159,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGithubPush:
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecPubsubConfig:
-    """
+    r"""
     PubsubConfig describes the configuration of a trigger that creates
     a build whenever a Pub/Sub message is published.
 
@@ -1190,7 +1189,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecPubsubConfig:
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecPubsubConfigServiceAccountRef:
-    """
+    r"""
     Service account that will make the push request.
 
     Attributes
@@ -1212,7 +1211,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecPubsubConfigServi
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecPubsubConfigTopicRef:
-    """
+    r"""
     The name of the topic from which this subscription
     is receiving messages.
 
@@ -1235,7 +1234,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecPubsubConfigTopic
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecRepositoryEventConfig:
-    """
+    r"""
     The configuration of a trigger that creates a build whenever an event from Repo API is received.
 
     Attributes
@@ -1257,7 +1256,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecRepositoryEventCo
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecRepositoryEventConfigPullRequest:
-    """
+    r"""
     Contains filter properties for matching Pull Requests.
 
     Attributes
@@ -1282,7 +1281,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecRepositoryEventCo
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecRepositoryEventConfigPush:
-    """
+    r"""
     Contains filter properties for matching git pushes.
 
     Attributes
@@ -1310,7 +1309,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecRepositoryEventCo
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecServiceAccountRef:
-    """
+    r"""
     The service account used for all user-controlled operations including
     triggers.patch, triggers.run, builds.create, and builds.cancel.
 
@@ -1339,7 +1338,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecServiceAccountRef
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecSourceToBuild:
-    """
+    r"""
     The repo and ref of the repository from which to build.
     This field is used only for those triggers that do not respond to SCM events.
     Triggers that respond to such events build source at whatever commit caused the event.
@@ -1379,7 +1378,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecSourceToBuild:
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecSourceToBuildBitbucketServerConfigRef:
-    """
+    r"""
     Only `external` field is supported to configure the reference.
 
     The full resource name of the bitbucket server config. Format:
@@ -1404,7 +1403,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecSourceToBuildBitb
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecSourceToBuildGithubEnterpriseConfigRef:
-    """
+    r"""
     Only `external` field is supported to configure the reference.
 
     The full resource name of the github enterprise config. Format:
@@ -1429,7 +1428,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecSourceToBuildGith
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecSourceToBuildRepositoryRef:
-    """
+    r"""
     Only `external` field is supported to configure the reference.
 
     The qualified resource name of the Repo API repository.
@@ -1454,7 +1453,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecSourceToBuildRepo
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecTriggerTemplate:
-    """
+    r"""
     Template describing the types of source changes to trigger a build.
 
     Branch and tag names in trigger templates are interpreted as regular
@@ -1500,7 +1499,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecTriggerTemplate:
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecTriggerTemplateRepoRef:
-    """
+    r"""
     The Cloud Source Repository to build. If omitted, the repo with
     name "default" is assumed.
 
@@ -1523,7 +1522,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecTriggerTemplateRe
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecWebhookConfig:
-    """
+    r"""
     WebhookConfig describes the configuration of a trigger that creates
     a build whenever a webhook is sent to a trigger's webhook URL.
 
@@ -1545,7 +1544,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecWebhookConfig:
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecWebhookConfigSecretRef:
-    """
+    r"""
     The secret required
 
     Attributes
@@ -1567,7 +1566,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecWebhookConfigSecr
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerStatus:
-    """
+    r"""
     cloudbuild cnrm cloud google com v1beta1 cloud build trigger status
 
     Attributes
@@ -1593,7 +1592,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerStatus:
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerStatusConditionsItems0:
-    """
+    r"""
     cloudbuild cnrm cloud google com v1beta1 cloud build trigger status conditions items0
 
     Attributes

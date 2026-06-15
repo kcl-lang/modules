@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema StorageDefaultObjectAccessControl:
-    """
+    r"""
     storage cnrm cloud google com v1beta1 storage default object access control
 
     Attributes
@@ -36,7 +36,7 @@ schema StorageDefaultObjectAccessControl:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageDefaultObjectAccessControlSpec:
-    """
+    r"""
     storage cnrm cloud google com v1beta1 storage default object access control spec
 
     Attributes
@@ -70,7 +70,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageDefaultObjectAccessControlSpec:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageDefaultObjectAccessControlSpecBucketRef:
-    """
+    r"""
     Reference to the bucket.
 
     Attributes
@@ -92,7 +92,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageDefaultObjectAccessControlSpecBuck
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageDefaultObjectAccessControlStatus:
-    """
+    r"""
     storage cnrm cloud google com v1beta1 storage default object access control status
 
     Attributes
@@ -130,7 +130,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageDefaultObjectAccessControlStatus:
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageDefaultObjectAccessControlStatusConditionsItems0:
-    """
+    r"""
     storage cnrm cloud google com v1beta1 storage default object access control status conditions items0
 
     Attributes
@@ -160,7 +160,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageDefaultObjectAccessControlStatusCo
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageDefaultObjectAccessControlStatusProjectTeam:
-    """
+    r"""
     The project team associated with the entity.
 
     Attributes

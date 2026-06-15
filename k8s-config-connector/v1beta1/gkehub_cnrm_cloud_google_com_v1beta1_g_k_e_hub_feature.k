@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema GKEHubFeature:
-    """
+    r"""
     gkehub cnrm cloud google com v1beta1 g k e hub feature
 
     Attributes
@@ -36,7 +36,7 @@ schema GKEHubFeature:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureSpec:
-    """
+    r"""
     gkehub cnrm cloud google com v1beta1 g k e hub feature spec
 
     Attributes
@@ -62,7 +62,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureSpec:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -86,7 +86,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureSpecProjectRef:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureSpecSpec:
-    """
+    r"""
     Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
 
     Attributes
@@ -104,7 +104,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureSpecSpec:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureSpecSpecFleetobservability:
-    """
+    r"""
     Fleet Observability spec.
 
     Attributes
@@ -118,7 +118,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureSpecSpecFleetobservability:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureSpecSpecFleetobservabilityLoggingConfig:
-    """
+    r"""
     Fleet Observability Logging-specific spec.
 
     Attributes
@@ -136,7 +136,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureSpecSpecFleetobservabilityLog
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureSpecSpecFleetobservabilityLoggingConfigDefaultConfig:
-    """
+    r"""
     Specified if applying the default routing config to logs not specified in other configs.
 
     Attributes
@@ -150,7 +150,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureSpecSpecFleetobservabilityLog
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureSpecSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig:
-    """
+    r"""
     Specified if applying the routing config to all logs for all fleet scopes.
 
     Attributes
@@ -164,7 +164,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureSpecSpecFleetobservabilityLog
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureSpecSpecMulticlusteringress:
-    """
+    r"""
     Multicluster Ingress-specific spec.
 
     Attributes
@@ -178,7 +178,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureSpecSpecMulticlusteringress:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureSpecSpecMulticlusteringressConfigMembershipRef:
-    """
+    r"""
     gkehub cnrm cloud google com v1beta1 g k e hub feature spec spec multiclusteringress config membership ref
 
     Attributes
@@ -202,7 +202,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureSpecSpecMulticlusteringressCo
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureStatus:
-    """
+    r"""
     gkehub cnrm cloud google com v1beta1 g k e hub feature status
 
     Attributes
@@ -240,7 +240,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureStatus:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureStatusConditionsItems0:
-    """
+    r"""
     gkehub cnrm cloud google com v1beta1 g k e hub feature status conditions items0
 
     Attributes
@@ -270,7 +270,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureStatusConditionsItems0:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureStatusResourceState:
-    """
+    r"""
     State of the Feature resource itself.
 
     Attributes
@@ -288,7 +288,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureStatusResourceState:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureStatusState:
-    """
+    r"""
     Output only. The Hub-wide Feature state
 
     Attributes
@@ -302,7 +302,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureStatusState:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureStatusStateState:
-    """
+    r"""
     Output only. The "running state" of the Feature in this Hub.
 
     Attributes

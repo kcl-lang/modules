@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ServiceDirectoryNamespace:
-    """
+    r"""
     servicedirectory cnrm cloud google com v1beta1 service directory namespace
 
     Attributes
@@ -36,13 +36,13 @@ schema ServiceDirectoryNamespace:
 
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryNamespaceSpec:
-    """
+    r"""
     servicedirectory cnrm cloud google com v1beta1 service directory namespace spec
 
     Attributes
     ----------
     location : str, default is Undefined, required
-        The location for the Namespace.
+        Immutable. The location for the Namespace.
         A full list of valid locations can be found by running
         'gcloud beta service-directory locations list'.
     projectRef : ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryNamespaceSpecProjectRef, default is Undefined, required
@@ -60,7 +60,7 @@ schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryNamespaceSpec:
 
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryNamespaceSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -82,7 +82,7 @@ schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryNamespaceSpecPro
 
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryNamespaceStatus:
-    """
+    r"""
     servicedirectory cnrm cloud google com v1beta1 service directory namespace status
 
     Attributes
@@ -105,7 +105,7 @@ schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryNamespaceStatus:
 
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryNamespaceStatusConditionsItems0:
-    """
+    r"""
     servicedirectory cnrm cloud google com v1beta1 service directory namespace status conditions items0
 
     Attributes

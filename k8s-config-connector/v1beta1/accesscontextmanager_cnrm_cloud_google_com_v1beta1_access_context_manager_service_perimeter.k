@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AccessContextManagerServicePerimeter:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter
 
     Attributes
@@ -36,7 +36,7 @@ schema AccessContextManagerServicePerimeter:
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpec:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec
 
     Attributes
@@ -102,7 +102,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecAccessPolicyRef:
-    """
+    r"""
     The AccessContextManagerAccessPolicy this
     AccessContextManagerServicePerimeter lives in.
 
@@ -125,7 +125,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpec:
-    """
+    r"""
     Proposed (or dry run) ServicePerimeter configuration.
     This configuration allows to specify and test ServicePerimeter configuration
     without enforcing actual access restrictions. Only allowed to be set when
@@ -172,7 +172,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecAccessLevelsItems0:
-    """
+    r"""
     (Optional) A list of AccessLevel resource names that allow resources within
     the ServicePerimeter to be accessed from the internet. AccessLevels listed
     must be in the same policy as this ServicePerimeter.
@@ -200,7 +200,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecEgressPoliciesItems0:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec spec egress policies items0
 
     Attributes
@@ -218,7 +218,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecEgressPoliciesItems0EgressFrom:
-    """
+    r"""
     Defines conditions on the source of a request causing this 'EgressPolicy' to apply.
 
     Attributes
@@ -238,7 +238,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecEgressPoliciesItems0EgressFromIdentitiesItems0:
-    """
+    r"""
     (Optional) A list of identities that are allowed access through this
     EgressPolicy. Should be in the format of email address. The email
     address should represent individual user or service account only.
@@ -258,7 +258,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecEgressPoliciesItems0EgressFromIdentitiesItems0ServiceAccountRef:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec spec egress policies items0 egress from identities items0 service account ref
 
     Attributes
@@ -280,7 +280,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecEgressPoliciesItems0EgressTo:
-    """
+    r"""
     Defines the conditions on the 'ApiOperation' and destination resources that
     cause this 'EgressPolicy' to apply.
 
@@ -306,7 +306,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecEgressPoliciesItems0EgressToOperationsItems0:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec spec egress policies items0 egress to operations items0
 
     Attributes
@@ -329,7 +329,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecEgressPoliciesItems0EgressToOperationsItems0MethodSelectorsItems0:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec spec egress policies items0 egress to operations items0 method selectors items0
 
     Attributes
@@ -350,7 +350,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecEgressPoliciesItems0EgressToResourcesItems0:
-    """
+    r"""
     (Optional) A list of resources, currently only projects in the form
     "projects/{project_number}". A request
     matches if it contains a resource in this list.
@@ -366,7 +366,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecEgressPoliciesItems0EgressToResourcesItems0ProjectRef:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec spec egress policies items0 egress to resources items0 project ref
 
     Attributes
@@ -388,7 +388,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec spec ingress policies items0
 
     Attributes
@@ -406,7 +406,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressFrom:
-    """
+    r"""
     Defines the conditions on the source of a request causing this 'IngressPolicy'
     to apply.
 
@@ -431,7 +431,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressFromIdentitiesItems0:
-    """
+    r"""
     (Optional) A list of identities that are allowed access through this
     ingress policy. Should be in the format of email address. The email
     address should represent individual user or service account only.
@@ -451,7 +451,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressFromIdentitiesItems0ServiceAccountRef:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec spec ingress policies items0 ingress from identities items0 service account ref
 
     Attributes
@@ -473,7 +473,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressFromSourcesItems0:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec spec ingress policies items0 ingress from sources items0
 
     Attributes
@@ -491,7 +491,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressFromSourcesItems0AccessLevelRef:
-    """
+    r"""
     An AccessLevel resource name that allow resources within the
     ServicePerimeters to be accessed from the internet. AccessLevels
     listed must be in the same policy as this ServicePerimeter.
@@ -519,7 +519,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressFromSourcesItems0ProjectRef:
-    """
+    r"""
     (Optional) A Google Cloud resource that is allowed to ingress the
     perimeter. Requests from these resources will be allowed to access
     perimeter data. Currently only projects are allowed. Format
@@ -545,7 +545,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressTo:
-    """
+    r"""
     Defines the conditions on the 'ApiOperation' and request destination that cause
     this 'IngressPolicy' to apply.
 
@@ -565,7 +565,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressToOperationsItems0:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec spec ingress policies items0 ingress to operations items0
 
     Attributes
@@ -588,7 +588,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressToOperationsItems0MethodSelectorsItems0:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec spec ingress policies items0 ingress to operations items0 method selectors items0
 
     Attributes
@@ -609,7 +609,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressToResourcesItems0:
-    """
+    r"""
     A list of resources, currently only projects in the form
     "projects/{project_number}", protected by this ServicePerimeter
     that are allowed to be accessed by sources defined in the
@@ -627,7 +627,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressToResourcesItems0ProjectRef:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec spec ingress policies items0 ingress to resources items0 project ref
 
     Attributes
@@ -649,7 +649,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecResourcesItems0:
-    """
+    r"""
     (Optional) A list of GCP resources that are inside of the service perimeter.
     Currently only projects are allowed.
 
@@ -664,7 +664,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecResourcesItems0ProjectRef:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec spec resources items0 project ref
 
     Attributes
@@ -686,7 +686,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecVpcAccessibleServices:
-    """
+    r"""
     Specifies how APIs are allowed to communicate within the Service
     Perimeter.
 
@@ -707,7 +707,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatus:
-    """
+    r"""
     ServicePerimeter configuration. Specifies sets of resources,
     restricted services and access levels that determine
     perimeter content and boundaries.
@@ -753,7 +753,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusAccessLevelsItems0:
-    """
+    r"""
     (Optional) A list of AccessLevel resource names that allow resources within
     the ServicePerimeter to be accessed from the internet. AccessLevels listed
     must be in the same policy as this ServicePerimeter.
@@ -781,7 +781,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusEgressPoliciesItems0:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec status egress policies items0
 
     Attributes
@@ -799,7 +799,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusEgressPoliciesItems0EgressFrom:
-    """
+    r"""
     Defines conditions on the source of a request causing this 'EgressPolicy' to apply.
 
     Attributes
@@ -819,7 +819,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusEgressPoliciesItems0EgressFromIdentitiesItems0:
-    """
+    r"""
     (Optional) A list of identities that are allowed access through this
     EgressPolicy. Should be in the format of email address. The email
     address should represent individual user or service account only.
@@ -839,7 +839,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusEgressPoliciesItems0EgressFromIdentitiesItems0ServiceAccountRef:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec status egress policies items0 egress from identities items0 service account ref
 
     Attributes
@@ -861,7 +861,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusEgressPoliciesItems0EgressTo:
-    """
+    r"""
     Defines the conditions on the 'ApiOperation' and destination resources that
     cause this 'EgressPolicy' to apply.
 
@@ -887,7 +887,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusEgressPoliciesItems0EgressToOperationsItems0:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec status egress policies items0 egress to operations items0
 
     Attributes
@@ -910,7 +910,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusEgressPoliciesItems0EgressToOperationsItems0MethodSelectorsItems0:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec status egress policies items0 egress to operations items0 method selectors items0
 
     Attributes
@@ -931,7 +931,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusEgressPoliciesItems0EgressToResourcesItems0:
-    """
+    r"""
     (Optional) A list of resources, currently only projects in the form
     "projects/{project_number}". A request
     matches if it contains a resource in this list.
@@ -947,7 +947,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusEgressPoliciesItems0EgressToResourcesItems0ProjectRef:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec status egress policies items0 egress to resources items0 project ref
 
     Attributes
@@ -969,7 +969,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec status ingress policies items0
 
     Attributes
@@ -987,7 +987,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressFrom:
-    """
+    r"""
     Defines the conditions on the source of a request causing this 'IngressPolicy'
     to apply.
 
@@ -1012,7 +1012,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressFromIdentitiesItems0:
-    """
+    r"""
     (Optional) A list of identities that are allowed access through this
     EgressPolicy. Should be in the format of email address. The email
     address should represent individual user or service account only.
@@ -1032,7 +1032,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressFromIdentitiesItems0ServiceAccountRef:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec status ingress policies items0 ingress from identities items0 service account ref
 
     Attributes
@@ -1054,7 +1054,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressFromSourcesItems0:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec status ingress policies items0 ingress from sources items0
 
     Attributes
@@ -1072,7 +1072,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressFromSourcesItems0AccessLevelRef:
-    """
+    r"""
     An AccessLevel resource name that allow resources within the
     ServicePerimeters to be accessed from the internet. AccessLevels
     listed must be in the same policy as this ServicePerimeter.
@@ -1100,7 +1100,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressFromSourcesItems0ProjectRef:
-    """
+    r"""
     (Optional) A Google Cloud resource that is allowed to ingress the
     perimeter. Requests from these resources will be allowed to access
     perimeter data. Currently only projects are allowed. Format
@@ -1126,7 +1126,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressTo:
-    """
+    r"""
     Defines the conditions on the 'ApiOperation' and request destination that cause
     this 'IngressPolicy' to apply.
 
@@ -1146,7 +1146,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressToOperationsItems0:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec status ingress policies items0 ingress to operations items0
 
     Attributes
@@ -1169,7 +1169,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressToOperationsItems0MethodSelectorsItems0:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec status ingress policies items0 ingress to operations items0 method selectors items0
 
     Attributes
@@ -1190,7 +1190,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressToResourcesItems0:
-    """
+    r"""
     A list of resources, currently only projects in the form
     "projects/{project_number}", protected by this ServicePerimeter
     that are allowed to be accessed by sources defined in the
@@ -1208,7 +1208,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressToResourcesItems0ProjectRef:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec status ingress policies items0 ingress to resources items0 project ref
 
     Attributes
@@ -1230,7 +1230,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusResourcesItems0:
-    """
+    r"""
     (Optional) A list of GCP resources that are inside of the service perimeter.
     Currently only projects are allowed.
 
@@ -1245,7 +1245,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusResourcesItems0ProjectRef:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec status resources items0 project ref
 
     Attributes
@@ -1267,7 +1267,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusVpcAccessibleServices:
-    """
+    r"""
     Specifies how APIs are allowed to communicate within the Service
     Perimeter.
 
@@ -1288,7 +1288,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterStatus:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter status
 
     Attributes
@@ -1314,7 +1314,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterStatusConditionsItems0:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter status conditions items0
 
     Attributes

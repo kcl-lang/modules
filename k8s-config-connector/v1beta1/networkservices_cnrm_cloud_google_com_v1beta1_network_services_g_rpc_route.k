@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema NetworkServicesGRPCRoute:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services g RPC route
 
     Attributes
@@ -36,7 +36,7 @@ schema NetworkServicesGRPCRoute:
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpec:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services g RPC route spec
 
     Attributes
@@ -78,7 +78,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpec:
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecGatewaysItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services g RPC route spec gateways items0
 
     Attributes
@@ -100,7 +100,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecGatew
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecMeshesItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services g RPC route spec meshes items0
 
     Attributes
@@ -122,7 +122,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecMeshe
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -146,7 +146,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecProje
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecRulesItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services g RPC route spec rules items0
 
     Attributes
@@ -164,7 +164,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecRulesItems0Action:
-    """
+    r"""
     Required. A detailed rule defining how to route traffic. This field is required.
 
     Attributes
@@ -190,7 +190,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecRulesItems0ActionDestinationsItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services g RPC route spec rules items0 action destinations items0
 
     Attributes
@@ -208,7 +208,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecRulesItems0ActionDestinationsItems0ServiceRef:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services g RPC route spec rules items0 action destinations items0 service ref
 
     Attributes
@@ -232,7 +232,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecRulesItems0ActionFaultInjectionPolicy:
-    """
+    r"""
     Optional. The specification for fault injection introduced into traffic to test the resiliency of clients to destination service failure. As part of fault injection, when clients send requests to a destination, delays can be introduced on a percentage of requests before sending those requests to the destination service. Similarly requests from clients can be aborted by for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
 
     Attributes
@@ -250,7 +250,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecRulesItems0ActionFaultInjectionPolicyAbort:
-    """
+    r"""
     The specification for aborting to client requests.
 
     Attributes
@@ -268,7 +268,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecRulesItems0ActionFaultInjectionPolicyDelay:
-    """
+    r"""
     The specification for injecting delay to client requests.
 
     Attributes
@@ -286,7 +286,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecRulesItems0ActionRetryPolicy:
-    """
+    r"""
     Optional. Specifies the retry policy associated with this route.
 
     Attributes
@@ -304,7 +304,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecRulesItems0MatchesItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services g RPC route spec rules items0 matches items0
 
     Attributes
@@ -322,7 +322,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecRulesItems0MatchesItems0HeadersItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services g RPC route spec rules items0 matches items0 headers items0
 
     Attributes
@@ -344,7 +344,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecRulesItems0MatchesItems0Method:
-    """
+    r"""
     Optional. A gRPC method to match against. If this field is empty or omitted, will match all methods.
 
     Attributes
@@ -370,7 +370,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteSpecRules
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteStatus:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services g RPC route status
 
     Attributes
@@ -400,7 +400,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteStatus:
 
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGRPCRouteStatusConditionsItems0:
-    """
+    r"""
     networkservices cnrm cloud google com v1beta1 network services g RPC route status conditions items0
 
     Attributes

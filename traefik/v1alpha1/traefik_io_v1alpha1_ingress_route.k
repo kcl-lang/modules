@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IngressRoute:
-    """
+    r"""
     IngressRoute is the CRD implementation of a Traefik HTTP Router.
 
     Attributes
@@ -32,7 +32,7 @@ schema IngressRoute:
 
 
 schema TraefikIoV1alpha1IngressRouteSpec:
-    """
+    r"""
     IngressRouteSpec defines the desired state of IngressRoute.
 
     Attributes
@@ -40,8 +40,12 @@ schema TraefikIoV1alpha1IngressRouteSpec:
     entryPoints : [str], default is Undefined, optional
         EntryPoints defines the list of entry point names to bind to.
         Entry points have to be configured in the static configuration.
-        More info: https://doc.traefik.io/traefik/v3.0/routing/entrypoints/
+        More info: https://doc.traefik.io/traefik/v3.6/reference/install-configuration/entrypoints/
         Default: all.
+    parentRefs : [TraefikIoV1alpha1IngressRouteSpecParentRefsItems0], default is Undefined, optional
+        ParentRefs defines references to parent IngressRoute resources for multi-layer routing.
+        When set, this IngressRoute's routers will be children of the referenced parent IngressRoute's routers.
+        More info: https://doc.traefik.io/traefik/v3.6/routing/routers/#parentrefs
     routes : [TraefikIoV1alpha1IngressRouteSpecRoutesItems0], default is Undefined, required
         Routes defines the list of routes.
     tls : TraefikIoV1alpha1IngressRouteSpecTLS, default is Undefined, optional
@@ -51,43 +55,69 @@ schema TraefikIoV1alpha1IngressRouteSpec:
 
     entryPoints?: [str]
 
+    parentRefs?: [TraefikIoV1alpha1IngressRouteSpecParentRefsItems0]
+
     routes: [TraefikIoV1alpha1IngressRouteSpecRoutesItems0]
 
     tls?: TraefikIoV1alpha1IngressRouteSpecTLS
 
 
-schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0:
+schema TraefikIoV1alpha1IngressRouteSpecParentRefsItems0:
+    r"""
+    IngressRouteRef is a reference to an IngressRoute resource.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name defines the name of the referenced IngressRoute resource.
+    namespace : str, default is Undefined, optional
+        Namespace defines the namespace of the referenced IngressRoute resource.
     """
+
+
+    name: str
+
+    namespace?: str
+
+
+schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0:
+    r"""
     Route holds the HTTP route configuration.
 
     Attributes
     ----------
-    kind : str, default is Undefined, required
+    kind : str, default is Undefined, optional
         Kind defines the kind of the route.
         Rule is the only supported kind.
+        If not defined, defaults to Rule.
     match : str, default is Undefined, required
         Match defines the router's rule.
-        More info: https://doc.traefik.io/traefik/v3.0/routing/routers/#rule
+        More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/http/routing/rules-and-priority/
     middlewares : [TraefikIoV1alpha1IngressRouteSpecRoutesItems0MiddlewaresItems0], default is Undefined, optional
         Middlewares defines the list of references to Middleware resources.
-        More info: https://doc.traefik.io/traefik/v3.0/routing/providers/kubernetes-crd/#kind-middleware
+        More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/kubernetes/crd/http/middleware/
+    observability : TraefikIoV1alpha1IngressRouteSpecRoutesItems0Observability, default is Undefined, optional
+        observability
     priority : int, default is Undefined, optional
         Priority defines the router's priority.
-        More info: https://doc.traefik.io/traefik/v3.0/routing/routers/#priority
+        More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/http/routing/rules-and-priority/#priority
     services : [TraefikIoV1alpha1IngressRouteSpecRoutesItems0ServicesItems0], default is Undefined, optional
         Services defines the list of Service.
         It can contain any combination of TraefikService and/or reference to a Kubernetes Service.
     syntax : str, default is Undefined, optional
         Syntax defines the router's rule syntax.
-        More info: https://doc.traefik.io/traefik/v3.0/routing/routers/#rulesyntax
+        More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/http/routing/rules-and-priority/#rulesyntax
+        Deprecated: Please do not use this field and rewrite the router rules to use the v3 syntax.
     """
 
 
-    kind: "Rule"
+    kind?: "Rule"
 
     match: str
 
     middlewares?: [TraefikIoV1alpha1IngressRouteSpecRoutesItems0MiddlewaresItems0]
+
+    observability?: TraefikIoV1alpha1IngressRouteSpecRoutesItems0Observability
 
     priority?: int
 
@@ -96,8 +126,12 @@ schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0:
     syntax?: str
 
 
+    check:
+        priority <= 9.223372036854775e+18 if priority not in [None, Undefined]
+
+
 schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0MiddlewaresItems0:
-    """
+    r"""
     MiddlewareRef is a reference to a Middleware resource.
 
     Attributes
@@ -114,8 +148,35 @@ schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0MiddlewaresItems0:
     namespace?: str
 
 
-schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0ServicesItems0:
+schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0Observability:
+    r"""
+    Observability defines the observability configuration for a router.
+    More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/http/routing/observability/
+
+    Attributes
+    ----------
+    accessLogs : bool, default is Undefined, optional
+        AccessLogs enables access logs for this router.
+    metrics : bool, default is Undefined, optional
+        Metrics enables metrics for this router.
+    traceVerbosity : str, default is "minimal", optional
+        TraceVerbosity defines the verbosity level of the tracing for this router.
+    tracing : bool, default is Undefined, optional
+        Tracing enables tracing for this router.
     """
+
+
+    accessLogs?: bool
+
+    metrics?: bool
+
+    traceVerbosity?: "minimal" | "detailed" = "minimal"
+
+    tracing?: bool
+
+
+schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0ServicesItems0:
+    r"""
     Service defines an upstream HTTP service to proxy traffic to.
 
     Attributes
@@ -142,6 +203,8 @@ schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0ServicesItems0:
     passHostHeader : bool, default is Undefined, optional
         PassHostHeader defines whether the client Host header is forwarded to the upstream Kubernetes Service.
         By default, passHostHeader is true.
+    passiveHealthCheck : TraefikIoV1alpha1IngressRouteSpecRoutesItems0ServicesItems0PassiveHealthCheck, default is Undefined, optional
+        passive health check
     port : int | str, default is Undefined, optional
         Port defines the port of a Kubernetes Service.
         This can be a reference to a named port.
@@ -158,7 +221,8 @@ schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0ServicesItems0:
         sticky
     strategy : str, default is Undefined, optional
         Strategy defines the load balancing strategy between the servers.
-        RoundRobin is the only supported value at the moment.
+        Supported values are: wrr (Weighed round-robin), p2c (Power of two choices), hrw (Highest Random Weight), and leasttime (Least-Time).
+        RoundRobin value is deprecated and supported for backward compatibility.
     weight : int, default is Undefined, optional
         Weight defines the weight and should only be specified when Name references a TraefikService object
         (and to be precise, one that embeds a Weighted Round Robin).
@@ -179,6 +243,8 @@ schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0ServicesItems0:
 
     passHostHeader?: bool
 
+    passiveHealthCheck?: TraefikIoV1alpha1IngressRouteSpecRoutesItems0ServicesItems0PassiveHealthCheck
+
     port?: int | str
 
     responseForwarding?: TraefikIoV1alpha1IngressRouteSpecRoutesItems0ServicesItems0ResponseForwarding
@@ -189,13 +255,17 @@ schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0ServicesItems0:
 
     sticky?: TraefikIoV1alpha1IngressRouteSpecRoutesItems0ServicesItems0Sticky
 
-    strategy?: str
+    strategy?: "wrr" | "p2c" | "hrw" | "leasttime" | "RoundRobin"
 
     weight?: int
 
 
+    check:
+        weight >= 0 if weight not in [None, Undefined]
+
+
 schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0ServicesItems0HealthCheck:
-    """
+    r"""
     Healthcheck defines health checks for ExternalName services.
 
     Attributes
@@ -208,7 +278,7 @@ schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0ServicesItems0HealthCheck:
     hostname : str, default is Undefined, optional
         Hostname defines the value of hostname in the Host header of the health check request.
     interval : int | str, default is Undefined, optional
-        Interval defines the frequency of the health check calls.
+        Interval defines the frequency of the health check calls for healthy targets.
         Default: 30s
     method : str, default is Undefined, optional
         Method defines the healthcheck method.
@@ -227,6 +297,10 @@ schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0ServicesItems0HealthCheck:
     timeout : int | str, default is Undefined, optional
         Timeout defines the maximum duration Traefik will wait for a health check request before considering the server unhealthy.
         Default: 5s
+    unhealthyInterval : int | str, default is Undefined, optional
+        UnhealthyInterval defines the frequency of the health check calls for unhealthy targets.
+        When UnhealthyInterval is not defined, it defaults to the Interval value.
+        Default: 30s
     """
 
 
@@ -252,9 +326,29 @@ schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0ServicesItems0HealthCheck:
 
     timeout?: int | str
 
+    unhealthyInterval?: int | str
+
+
+schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0ServicesItems0PassiveHealthCheck:
+    r"""
+    PassiveHealthCheck defines passive health checks for ExternalName services.
+
+    Attributes
+    ----------
+    failureWindow : int | str, default is Undefined, optional
+        FailureWindow defines the time window during which the failed attempts must occur for the server to be marked as unhealthy. It also defines for how long the server will be considered unhealthy.
+    maxFailedAttempts : int, default is Undefined, optional
+        MaxFailedAttempts is the number of consecutive failed attempts allowed within the failure window before marking the server as unhealthy.
+    """
+
+
+    failureWindow?: int | str
+
+    maxFailedAttempts?: int
+
 
 schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0ServicesItems0ResponseForwarding:
-    """
+    r"""
     ResponseForwarding defines how Traefik forwards the response from the upstream Kubernetes Service to the client.
 
     Attributes
@@ -272,9 +366,9 @@ schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0ServicesItems0ResponseForwar
 
 
 schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0ServicesItems0Sticky:
-    """
+    r"""
     Sticky defines the sticky sessions configuration.
-    More info: https://doc.traefik.io/traefik/v3.0/routing/services/#sticky-sessions
+    More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/http/load-balancing/service/#sticky-sessions
 
     Attributes
     ----------
@@ -287,19 +381,26 @@ schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0ServicesItems0Sticky:
 
 
 schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0ServicesItems0StickyCookie:
-    """
+    r"""
     Cookie defines the sticky cookie configuration.
 
     Attributes
     ----------
+    domain : str, default is Undefined, optional
+        Domain defines the host to which the cookie will be sent.
+        More info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#domaindomain-value
     httpOnly : bool, default is Undefined, optional
         HTTPOnly defines whether the cookie can be accessed by client-side APIs, such as JavaScript.
     maxAge : int, default is Undefined, optional
-        MaxAge indicates the number of seconds until the cookie expires.
+        MaxAge defines the number of seconds until the cookie expires.
         When set to a negative number, the cookie expires immediately.
         When set to zero, the cookie never expires.
     name : str, default is Undefined, optional
         Name defines the Cookie name.
+    path : str, default is Undefined, optional
+        Path defines the path that must exist in the requested URL for the browser to send the Cookie header.
+        When not provided the cookie will be sent on every request to the domain.
+        More info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#pathpath-value
     sameSite : str, default is Undefined, optional
         SameSite defines the same site policy.
         More info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite
@@ -308,31 +409,35 @@ schema TraefikIoV1alpha1IngressRouteSpecRoutesItems0ServicesItems0StickyCookie:
     """
 
 
+    domain?: str
+
     httpOnly?: bool
 
     maxAge?: int
 
     name?: str
 
-    sameSite?: str
+    path?: str
+
+    sameSite?: "none" | "lax" | "strict"
 
     secure?: bool
 
 
 schema TraefikIoV1alpha1IngressRouteSpecTLS:
-    """
+    r"""
     TLS defines the TLS configuration.
-    More info: https://doc.traefik.io/traefik/v3.0/routing/routers/#tls
+    More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/http/routing/router/#tls
 
     Attributes
     ----------
     certResolver : str, default is Undefined, optional
         CertResolver defines the name of the certificate resolver to use.
         Cert resolvers have to be configured in the static configuration.
-        More info: https://doc.traefik.io/traefik/v3.0/https/acme/#certificate-resolvers
+        More info: https://doc.traefik.io/traefik/v3.6/reference/install-configuration/tls/certificate-resolvers/acme/
     domains : [TraefikIoV1alpha1IngressRouteSpecTLSDomainsItems0], default is Undefined, optional
         Domains defines the list of domains that will be used to issue certificates.
-        More info: https://doc.traefik.io/traefik/v3.0/routing/routers/#domains
+        More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/http/tls/tls-certificates/#domains
     options : TraefikIoV1alpha1IngressRouteSpecTLSOptions, default is Undefined, optional
         options
     secretName : str, default is Undefined, optional
@@ -354,7 +459,7 @@ schema TraefikIoV1alpha1IngressRouteSpecTLS:
 
 
 schema TraefikIoV1alpha1IngressRouteSpecTLSDomainsItems0:
-    """
+    r"""
     Domain holds a domain name with SANs.
 
     Attributes
@@ -372,19 +477,19 @@ schema TraefikIoV1alpha1IngressRouteSpecTLSDomainsItems0:
 
 
 schema TraefikIoV1alpha1IngressRouteSpecTLSOptions:
-    """
+    r"""
     Options defines the reference to a TLSOption, that specifies the parameters of the TLS connection.
     If not defined, the `default` TLSOption is used.
-    More info: https://doc.traefik.io/traefik/v3.0/https/tls/#tls-options
+    More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/http/tls/tls-options/
 
     Attributes
     ----------
     name : str, default is Undefined, required
         Name defines the name of the referenced TLSOption.
-        More info: https://doc.traefik.io/traefik/v3.0/routing/providers/kubernetes-crd/#kind-tlsoption
+        More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/kubernetes/crd/http/tlsoption/
     namespace : str, default is Undefined, optional
         Namespace defines the namespace of the referenced TLSOption.
-        More info: https://doc.traefik.io/traefik/v3.0/routing/providers/kubernetes-crd/#kind-tlsoption
+        More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/kubernetes/crd/http/tlsoption/
     """
 
 
@@ -394,7 +499,7 @@ schema TraefikIoV1alpha1IngressRouteSpecTLSOptions:
 
 
 schema TraefikIoV1alpha1IngressRouteSpecTLSStore:
-    """
+    r"""
     Store defines the reference to the TLSStore, that will be used to store certificates.
     Please note that only `default` TLSStore can be used.
 
@@ -402,10 +507,10 @@ schema TraefikIoV1alpha1IngressRouteSpecTLSStore:
     ----------
     name : str, default is Undefined, required
         Name defines the name of the referenced TLSStore.
-        More info: https://doc.traefik.io/traefik/v3.0/routing/providers/kubernetes-crd/#kind-tlsstore
+        More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/kubernetes/crd/http/tlsstore/
     namespace : str, default is Undefined, optional
         Namespace defines the namespace of the referenced TLSStore.
-        More info: https://doc.traefik.io/traefik/v3.0/routing/providers/kubernetes-crd/#kind-tlsstore
+        More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/kubernetes/crd/http/tlsstore/
     """
 
 

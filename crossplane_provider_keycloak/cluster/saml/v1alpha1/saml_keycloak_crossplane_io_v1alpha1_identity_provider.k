@@ -211,6 +211,9 @@ schema SamlKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProvider:
     wantAssertionsSigned : bool, default is Undefined, optional
         Indicates whether this service provider expects a signed Assertion.
         Want Assertions Signed.
+    wantAuthnRequestsSigned : bool, default is Undefined, optional
+        Indicates whether this service provider expects authentication requests to be signed (defaults to true if signature_algorithm is set and this isn't).
+        Want Authn Requests Signed.
     xmlSignKeyInfoKeyNameTransformer : str, default is Undefined, optional
         The SAML signature key name. Can be one of NONE, KEY_ID, or CERT_SUBJECT.
         Sign Key Transformer.
@@ -302,6 +305,8 @@ schema SamlKeycloakCrossplaneIoV1alpha1IdentityProviderSpecForProvider:
     wantAssertionsEncrypted?: bool
 
     wantAssertionsSigned?: bool
+
+    wantAuthnRequestsSigned?: bool
 
     xmlSignKeyInfoKeyNameTransformer?: str
 
@@ -620,6 +625,9 @@ schema SamlKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProvider:
     wantAssertionsSigned : bool, default is Undefined, optional
         Indicates whether this service provider expects a signed Assertion.
         Want Assertions Signed.
+    wantAuthnRequestsSigned : bool, default is Undefined, optional
+        Indicates whether this service provider expects authentication requests to be signed (defaults to true if signature_algorithm is set and this isn't).
+        Want Authn Requests Signed.
     xmlSignKeyInfoKeyNameTransformer : str, default is Undefined, optional
         The SAML signature key name. Can be one of NONE, KEY_ID, or CERT_SUBJECT.
         Sign Key Transformer.
@@ -711,6 +719,8 @@ schema SamlKeycloakCrossplaneIoV1alpha1IdentityProviderSpecInitProvider:
     wantAssertionsEncrypted?: bool
 
     wantAssertionsSigned?: bool
+
+    wantAuthnRequestsSigned?: bool
 
     xmlSignKeyInfoKeyNameTransformer?: str
 
@@ -1105,6 +1115,9 @@ schema SamlKeycloakCrossplaneIoV1alpha1IdentityProviderStatusAtProvider:
     wantAssertionsSigned : bool, default is Undefined, optional
         Indicates whether this service provider expects a signed Assertion.
         Want Assertions Signed.
+    wantAuthnRequestsSigned : bool, default is Undefined, optional
+        Indicates whether this service provider expects authentication requests to be signed (defaults to true if signature_algorithm is set and this isn't).
+        Want Authn Requests Signed.
     xmlSignKeyInfoKeyNameTransformer : str, default is Undefined, optional
         The SAML signature key name. Can be one of NONE, KEY_ID, or CERT_SUBJECT.
         Sign Key Transformer.
@@ -1192,6 +1205,8 @@ schema SamlKeycloakCrossplaneIoV1alpha1IdentityProviderStatusAtProvider:
     wantAssertionsEncrypted?: bool
 
     wantAssertionsSigned?: bool
+
+    wantAuthnRequestsSigned?: bool
 
     xmlSignKeyInfoKeyNameTransformer?: str
 

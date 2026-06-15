@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema MonitoringMonitoredProject:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring monitored project
 
     Attributes
@@ -36,7 +36,7 @@ schema MonitoringMonitoredProject:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringMonitoredProjectSpec:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring monitored project spec
 
     Attributes
@@ -54,7 +54,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringMonitoredProjectSpec:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringMonitoredProjectStatus:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring monitored project status
 
     Attributes
@@ -76,7 +76,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringMonitoredProjectStatus:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringMonitoredProjectStatusConditionsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring monitored project status conditions items0
 
     Attributes

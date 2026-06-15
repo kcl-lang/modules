@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DataprocCluster:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc cluster
 
     Attributes
@@ -36,7 +36,7 @@ schema DataprocCluster:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpec:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc cluster spec
 
     Attributes
@@ -66,7 +66,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpec:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfig:
-    """
+    r"""
     Immutable. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
 
     Attributes
@@ -136,7 +136,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfig:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigAutoscalingConfig:
-    """
+    r"""
     Immutable. Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
 
     Attributes
@@ -150,7 +150,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigAutoscalingConf
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigAutoscalingConfigPolicyRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -174,7 +174,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigAutoscalingConf
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigDataprocMetricConfig:
-    """
+    r"""
     Immutable. Optional. The config for Dataproc metrics.
 
     Attributes
@@ -188,7 +188,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigDataprocMetricC
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigDataprocMetricConfigMetricsItems0:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc cluster spec config dataproc metric config metrics items0
 
     Attributes
@@ -206,7 +206,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigDataprocMetricC
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigEncryptionConfig:
-    """
+    r"""
     Immutable. Optional. Encryption settings for the cluster.
 
     Attributes
@@ -220,7 +220,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigEncryptionConfi
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigEncryptionConfigGcePdKmsKeyRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -244,7 +244,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigEncryptionConfi
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigEndpointConfig:
-    """
+    r"""
     Immutable. Optional. Port/endpoint configuration for this cluster
 
     Attributes
@@ -258,7 +258,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigEndpointConfig:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfig:
-    """
+    r"""
     Immutable. Optional. The shared Compute Engine config settings for all instances in a cluster.
 
     Attributes
@@ -320,7 +320,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfi
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfigConfidentialInstanceConfig:
-    """
+    r"""
     Immutable. Optional. Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/compute/confidential-vm/docs).
 
     Attributes
@@ -334,7 +334,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfi
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfigNetworkRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -358,7 +358,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfi
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfigNodeGroupAffinity:
-    """
+    r"""
     Immutable. Optional. Node Group Affinity for sole-tenant clusters.
 
     Attributes
@@ -372,7 +372,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfi
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfigNodeGroupAffinityNodeGroupRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -396,7 +396,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfi
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfigReservationAffinity:
-    """
+    r"""
     Immutable. Optional. Reservation Affinity for consuming Zonal reservation.
 
     Attributes
@@ -418,7 +418,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfi
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfigServiceAccountRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -442,7 +442,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfi
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfigShieldedInstanceConfig:
-    """
+    r"""
     Immutable. Optional. Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
 
     Attributes
@@ -464,7 +464,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfi
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfigSubnetworkRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -488,7 +488,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfi
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigInitializationActionsItems0:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc cluster spec config initialization actions items0
 
     Attributes
@@ -506,7 +506,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigInitializationA
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigLifecycleConfig:
-    """
+    r"""
     Immutable. Optional. Lifecycle setting for the cluster.
 
     Attributes
@@ -528,7 +528,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigLifecycleConfig
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigMasterConfig:
-    """
+    r"""
     Immutable. Optional. The Compute Engine config settings for the master instance in a cluster.
 
     Attributes
@@ -566,7 +566,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigMasterConfig:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigMasterConfigAcceleratorsItems0:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc cluster spec config master config accelerators items0
 
     Attributes
@@ -584,7 +584,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigMasterConfigAcc
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigMasterConfigDiskConfig:
-    """
+    r"""
     Immutable. Optional. Disk option config settings.
 
     Attributes
@@ -610,7 +610,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigMasterConfigDis
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigMasterConfigImageRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -634,7 +634,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigMasterConfigIma
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigMetastoreConfig:
-    """
+    r"""
     Immutable. Optional. Metastore configuration.
 
     Attributes
@@ -648,7 +648,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigMetastoreConfig
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigMetastoreConfigDataprocMetastoreServiceRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -671,7 +671,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigMetastoreConfig
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorkerConfig:
-    """
+    r"""
     Immutable. Optional. The Compute Engine config settings for additional worker instances in a cluster.
 
     Attributes
@@ -709,7 +709,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorker
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorkerConfigAcceleratorsItems0:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc cluster spec config secondary worker config accelerators items0
 
     Attributes
@@ -727,7 +727,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorker
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorkerConfigDiskConfig:
-    """
+    r"""
     Immutable. Optional. Disk option config settings.
 
     Attributes
@@ -753,7 +753,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorker
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorkerConfigImageRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -777,7 +777,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorker
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecurityConfig:
-    """
+    r"""
     Immutable. Optional. Security settings for the cluster.
 
     Attributes
@@ -795,7 +795,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecurityConfig:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecurityConfigIdentityConfig:
-    """
+    r"""
     Immutable. Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.
 
     Attributes
@@ -809,7 +809,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecurityConfigI
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecurityConfigKerberosConfig:
-    """
+    r"""
     Immutable. Optional. Kerberos related configuration.
 
     Attributes
@@ -879,7 +879,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecurityConfigK
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecurityConfigKerberosConfigKmsKeyRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -903,7 +903,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecurityConfigK
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSoftwareConfig:
-    """
+    r"""
     Immutable. Optional. The config settings for software inside the cluster.
 
     Attributes
@@ -925,7 +925,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSoftwareConfig:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigStagingBucketRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -949,7 +949,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigStagingBucketRe
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigTempBucketRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -973,7 +973,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigTempBucketRef:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigWorkerConfig:
-    """
+    r"""
     Immutable. Optional. The Compute Engine config settings for worker instances in a cluster.
 
     Attributes
@@ -1011,7 +1011,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigWorkerConfig:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigWorkerConfigAcceleratorsItems0:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc cluster spec config worker config accelerators items0
 
     Attributes
@@ -1029,7 +1029,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigWorkerConfigAcc
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigWorkerConfigDiskConfig:
-    """
+    r"""
     Immutable. Optional. Disk option config settings.
 
     Attributes
@@ -1055,7 +1055,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigWorkerConfigDis
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigWorkerConfigImageRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -1079,7 +1079,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigWorkerConfigIma
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -1103,7 +1103,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecProjectRef:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfig:
-    """
+    r"""
     Immutable. Optional. The virtual cluster config is used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a [Dataproc-on-GKE cluster](https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke). Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtual_cluster_config must be specified.
 
     Attributes
@@ -1125,7 +1125,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfig:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigAuxiliaryServicesConfig:
-    """
+    r"""
     Immutable. Optional. Configuration of auxiliary services used by this cluster.
 
     Attributes
@@ -1143,7 +1143,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigA
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig:
-    """
+    r"""
     Immutable. Optional. The Hive Metastore configuration for this workload.
 
     Attributes
@@ -1157,7 +1157,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigA
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigDataprocMetastoreServiceRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -1180,7 +1180,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigA
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig:
-    """
+    r"""
     Immutable. Optional. The Spark History Server configuration for the workload.
 
     Attributes
@@ -1194,7 +1194,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigA
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigDataprocClusterRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -1218,7 +1218,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigA
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigKubernetesClusterConfig:
-    """
+    r"""
     Immutable. Required. The configuration for running the Dataproc cluster on Kubernetes.
 
     Attributes
@@ -1240,7 +1240,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigK
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig:
-    """
+    r"""
     Immutable. Required. The configuration for running the Dataproc cluster on GKE.
 
     Attributes
@@ -1258,7 +1258,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigK
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigGkeClusterTargetRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -1282,7 +1282,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigK
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetItems0:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc cluster spec virtual cluster config kubernetes cluster config gke cluster config node pool target items0
 
     Attributes
@@ -1304,7 +1304,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigK
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetItems0NodePoolConfig:
-    """
+    r"""
     Immutable. Input only. The configuration for the GKE node pool. If specified, Dataproc attempts to create a node pool with the specified shape. If one with the same name already exists, it is verified against all specified fields. If a field differs, the virtual cluster creation will fail. If omitted, any node pool with the specified name is used. If a node pool with the specified name does not exist, Dataproc create a node pool with default values. This is an input only field. It will not be returned by the API.
 
     Attributes
@@ -1326,7 +1326,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigK
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetItems0NodePoolConfigAutoscaling:
-    """
+    r"""
     Immutable. Optional. The autoscaler configuration for this node pool. The autoscaler is enabled only when a valid configuration is present.
 
     Attributes
@@ -1344,7 +1344,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigK
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetItems0NodePoolConfigConfig:
-    """
+    r"""
     Immutable. Optional. The node pool configuration.
 
     Attributes
@@ -1386,7 +1386,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigK
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetItems0NodePoolConfigConfigAcceleratorsItems0:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc cluster spec virtual cluster config kubernetes cluster config gke cluster config node pool target items0 node pool config config accelerators items0
 
     Attributes
@@ -1408,7 +1408,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigK
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetItems0NodePoolConfigConfigEphemeralStorageConfig:
-    """
+    r"""
     Immutable. Optional. Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
 
     Attributes
@@ -1422,7 +1422,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigK
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetItems0NodePoolRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -1446,7 +1446,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigK
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig:
-    """
+    r"""
     Immutable. Optional. The software configuration for this Dataproc cluster running on Kubernetes.
 
     Attributes
@@ -1464,7 +1464,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigK
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigStagingBucketRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -1488,7 +1488,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigS
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatus:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc cluster status
 
     Attributes
@@ -1526,7 +1526,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatus:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConditionsItems0:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc cluster status conditions items0
 
     Attributes
@@ -1556,7 +1556,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConditionsItems0:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfig:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc cluster status config
 
     Attributes
@@ -1586,7 +1586,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfig:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfigEndpointConfig:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc cluster status config endpoint config
 
     Attributes
@@ -1600,7 +1600,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfigEndpointConfi
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfigLifecycleConfig:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc cluster status config lifecycle config
 
     Attributes
@@ -1614,7 +1614,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfigLifecycleConf
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfigMasterConfig:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc cluster status config master config
 
     Attributes
@@ -1640,7 +1640,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfigMasterConfig:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfigMasterConfigInstanceReferencesItems0:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc cluster status config master config instance references items0
 
     Attributes
@@ -1666,7 +1666,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfigMasterConfigI
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfigMasterConfigManagedGroupConfig:
-    """
+    r"""
     Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
 
     Attributes
@@ -1684,7 +1684,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfigMasterConfigM
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfigSecondaryWorkerConfig:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc cluster status config secondary worker config
 
     Attributes
@@ -1710,7 +1710,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfigSecondaryWork
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfigSecondaryWorkerConfigInstanceReferencesItems0:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc cluster status config secondary worker config instance references items0
 
     Attributes
@@ -1736,7 +1736,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfigSecondaryWork
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfigSecondaryWorkerConfigManagedGroupConfig:
-    """
+    r"""
     Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
 
     Attributes
@@ -1754,7 +1754,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfigSecondaryWork
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfigWorkerConfig:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc cluster status config worker config
 
     Attributes
@@ -1780,7 +1780,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfigWorkerConfig:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfigWorkerConfigInstanceReferencesItems0:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc cluster status config worker config instance references items0
 
     Attributes
@@ -1806,7 +1806,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfigWorkerConfigI
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfigWorkerConfigManagedGroupConfig:
-    """
+    r"""
     Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
 
     Attributes
@@ -1824,7 +1824,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfigWorkerConfigM
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusMetrics:
-    """
+    r"""
     Output only. Contains cluster daemon metrics such as HDFS and YARN stats. **Beta Feature**: This report is available for testing purposes only. It may be changed before final release.
 
     Attributes
@@ -1842,7 +1842,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusMetrics:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusStatus:
-    """
+    r"""
     Output only. Cluster status.
 
     Attributes
@@ -1868,7 +1868,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusStatus:
 
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusStatusHistoryItems0:
-    """
+    r"""
     dataproc cnrm cloud google com v1beta1 dataproc cluster status status history items0
 
     Attributes

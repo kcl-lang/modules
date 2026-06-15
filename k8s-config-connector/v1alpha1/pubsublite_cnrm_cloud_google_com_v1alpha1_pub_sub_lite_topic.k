@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema PubSubLiteTopic:
-    """
+    r"""
     pubsublite cnrm cloud google com v1alpha1 pub sub lite topic
 
     Attributes
@@ -36,7 +36,7 @@ schema PubSubLiteTopic:
 
 
 schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteTopicSpec:
-    """
+    r"""
     pubsublite cnrm cloud google com v1alpha1 pub sub lite topic spec
 
     Attributes
@@ -74,7 +74,7 @@ schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteTopicSpec:
 
 
 schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteTopicSpecPartitionConfig:
-    """
+    r"""
     The settings for this topic's partitions.
 
     Attributes
@@ -92,7 +92,7 @@ schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteTopicSpecPartitionConfig:
 
 
 schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteTopicSpecPartitionConfigCapacity:
-    """
+    r"""
     The capacity configuration.
 
     Attributes
@@ -110,7 +110,7 @@ schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteTopicSpecPartitionConfigCap
 
 
 schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteTopicSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -132,7 +132,7 @@ schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteTopicSpecProjectRef:
 
 
 schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteTopicSpecReservationConfig:
-    """
+    r"""
     The settings for this topic's Reservation usage.
 
     Attributes
@@ -146,7 +146,7 @@ schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteTopicSpecReservationConfig:
 
 
 schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteTopicSpecRetentionConfig:
-    """
+    r"""
     The settings for a topic's message retention.
 
     Attributes
@@ -169,7 +169,7 @@ schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteTopicSpecRetentionConfig:
 
 
 schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteTopicStatus:
-    """
+    r"""
     pubsublite cnrm cloud google com v1alpha1 pub sub lite topic status
 
     Attributes
@@ -187,7 +187,7 @@ schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteTopicStatus:
 
 
 schema PubsubliteCnrmCloudGoogleComV1alpha1PubSubLiteTopicStatusConditionsItems0:
-    """
+    r"""
     pubsublite cnrm cloud google com v1alpha1 pub sub lite topic status conditions items0
 
     Attributes

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema SecurityCenterNotificationConfig:
-    """
+    r"""
     securitycenter cnrm cloud google com v1alpha1 security center notification config
 
     Attributes
@@ -36,7 +36,7 @@ schema SecurityCenterNotificationConfig:
 
 
 schema SecuritycenterCnrmCloudGoogleComV1alpha1SecurityCenterNotificationConfigSpec:
-    """
+    r"""
     securitycenter cnrm cloud google com v1alpha1 security center notification config spec
 
     Attributes
@@ -71,7 +71,7 @@ schema SecuritycenterCnrmCloudGoogleComV1alpha1SecurityCenterNotificationConfigS
 
 
 schema SecuritycenterCnrmCloudGoogleComV1alpha1SecurityCenterNotificationConfigSpecOrganizationRef:
-    """
+    r"""
     The organization that this resource belongs to.
 
     Attributes
@@ -93,7 +93,7 @@ schema SecuritycenterCnrmCloudGoogleComV1alpha1SecurityCenterNotificationConfigS
 
 
 schema SecuritycenterCnrmCloudGoogleComV1alpha1SecurityCenterNotificationConfigSpecStreamingConfig:
-    """
+    r"""
     The config for triggering streaming-based notifications.
 
     Attributes
@@ -131,7 +131,7 @@ schema SecuritycenterCnrmCloudGoogleComV1alpha1SecurityCenterNotificationConfigS
 
 
 schema SecuritycenterCnrmCloudGoogleComV1alpha1SecurityCenterNotificationConfigStatus:
-    """
+    r"""
     securitycenter cnrm cloud google com v1alpha1 security center notification config status
 
     Attributes
@@ -159,7 +159,7 @@ schema SecuritycenterCnrmCloudGoogleComV1alpha1SecurityCenterNotificationConfigS
 
 
 schema SecuritycenterCnrmCloudGoogleComV1alpha1SecurityCenterNotificationConfigStatusConditionsItems0:
-    """
+    r"""
     securitycenter cnrm cloud google com v1alpha1 security center notification config status conditions items0
 
     Attributes

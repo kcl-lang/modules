@@ -90,10 +90,6 @@ schema SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProvider:
         The Canonicalization Method for XML signatures. Should be one of "EXCLUSIVE", "EXCLUSIVE_WITH_COMMENTS", "INCLUSIVE", or "INCLUSIVE_WITH_COMMENTS". Defaults to "EXCLUSIVE".
     clientId : str, default is Undefined, optional
         The unique ID of this client, referenced in the URI during authentication and in issued tokens.
-    clientIdRef : SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProviderClientIDRef, default is Undefined, optional
-        client Id ref
-    clientIdSelector : SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProviderClientIDSelector, default is Undefined, optional
-        client Id selector
     clientSignatureRequired : bool, default is Undefined, optional
         When true, Keycloak will expect that documents originating from a client will be signed using the certificate and/or key configured via signing_certificate and signing_private_key. Defaults to true.
     consentRequired : bool, default is Undefined, optional
@@ -104,8 +100,16 @@ schema SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProvider:
         When false, this client will not be able to initiate a login or obtain access tokens. Defaults to true.
     encryptAssertions : bool, default is Undefined, optional
         When true, the SAML assertions will be encrypted by Keycloak using the client's public key. Defaults to false.
+    encryptionAlgorithm : str, default is Undefined, optional
+        Algorithm used to encrypt SAML assertions. Allowed values: AES_256_GCM, AES_192_GCM, AES_128_GCM, AES_256_CBC, AES_192_CBC, or AES_128_CBC.
     encryptionCertificateSecretRef : SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProviderEncryptionCertificateSecretRef, default is Undefined, optional
         encryption certificate secret ref
+    encryptionDigestMethod : str, default is Undefined, optional
+        Digest method used with SAML encryption. Allowed values: SHA-512, SHA-256, or SHA-1. Only valid when encryption_key_algorithm is RSA-OAEP-11 or RSA-OAEP-MGF1P. Default is SHA-256.
+    encryptionKeyAlgorithm : str, default is Undefined, optional
+        Key transport algorithm used by the client to encrypt the secret key for SAML assertion encryption. Allowed values: RSA-OAEP-11, RSA-OAEP-MGF1P, or RSA1_5. Default is RSA-OAEP-11.
+    encryptionMaskGenerationFunction : str, default is Undefined, optional
+        Mask generation function used with SAML encryption. Allowed values: mgf1sha1, mgf1sha224, mgf1sha256, mgf1sha384, or mgf1sha512. Only valid when encryption_key_algorithm is RSA-OAEP-11. Default is mgf1sha256.
     extraConfig : {str:str}, default is Undefined, optional
         A map of key/value pairs to add extra configuration attributes to this client. Use this attribute at your own risk, as s may conflict with top-level configuration attributes in future provider updates.
     forceNameIdFormat : bool, default is Undefined, optional
@@ -173,10 +177,6 @@ schema SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProvider:
 
     clientId?: str
 
-    clientIdRef?: SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProviderClientIDRef
-
-    clientIdSelector?: SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProviderClientIDSelector
-
     clientSignatureRequired?: bool
 
     consentRequired?: bool
@@ -187,7 +187,15 @@ schema SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProvider:
 
     encryptAssertions?: bool
 
+    encryptionAlgorithm?: str
+
     encryptionCertificateSecretRef?: SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProviderEncryptionCertificateSecretRef
+
+    encryptionDigestMethod?: str
+
+    encryptionKeyAlgorithm?: str
+
+    encryptionMaskGenerationFunction?: str
 
     extraConfig?: {str:str}
 
@@ -256,103 +264,6 @@ schema SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProviderAuthenticatio
     browserId?: str
 
     directGrantId?: str
-
-
-schema SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProviderClientIDRef:
-    r"""
-    Reference to a Client in openidclient to populate clientId.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        Name of the referenced object.
-    namespace : str, default is Undefined, optional
-        Namespace of the referenced object
-    policy : SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProviderClientIDRefPolicy, default is Undefined, optional
-        policy
-    """
-
-
-    name: str
-
-    namespace?: str
-
-    policy?: SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProviderClientIDRefPolicy
-
-
-schema SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProviderClientIDRefPolicy:
-    r"""
-    Policies for referencing.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
-
-
-schema SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProviderClientIDSelector:
-    r"""
-    Selector for a Client in openidclient to populate clientId.
-
-    Attributes
-    ----------
-    matchControllerRef : bool, default is Undefined, optional
-        MatchControllerRef ensures an object with the same controller reference
-        as the selecting object is selected.
-    matchLabels : {str:str}, default is Undefined, optional
-        MatchLabels ensures an object with matching labels is selected.
-    namespace : str, default is Undefined, optional
-        Namespace for the selector
-    policy : SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProviderClientIDSelectorPolicy, default is Undefined, optional
-        policy
-    """
-
-
-    matchControllerRef?: bool
-
-    matchLabels?: {str:str}
-
-    namespace?: str
-
-    policy?: SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProviderClientIDSelectorPolicy
-
-
-schema SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProviderClientIDSelectorPolicy:
-    r"""
-    Policies for selection.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
 
 
 schema SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecForProviderEncryptionCertificateSecretRef:
@@ -535,10 +446,6 @@ schema SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProvider:
         The Canonicalization Method for XML signatures. Should be one of "EXCLUSIVE", "EXCLUSIVE_WITH_COMMENTS", "INCLUSIVE", or "INCLUSIVE_WITH_COMMENTS". Defaults to "EXCLUSIVE".
     clientId : str, default is Undefined, optional
         The unique ID of this client, referenced in the URI during authentication and in issued tokens.
-    clientIdRef : SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProviderClientIDRef, default is Undefined, optional
-        client Id ref
-    clientIdSelector : SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProviderClientIDSelector, default is Undefined, optional
-        client Id selector
     clientSignatureRequired : bool, default is Undefined, optional
         When true, Keycloak will expect that documents originating from a client will be signed using the certificate and/or key configured via signing_certificate and signing_private_key. Defaults to true.
     consentRequired : bool, default is Undefined, optional
@@ -549,8 +456,16 @@ schema SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProvider:
         When false, this client will not be able to initiate a login or obtain access tokens. Defaults to true.
     encryptAssertions : bool, default is Undefined, optional
         When true, the SAML assertions will be encrypted by Keycloak using the client's public key. Defaults to false.
+    encryptionAlgorithm : str, default is Undefined, optional
+        Algorithm used to encrypt SAML assertions. Allowed values: AES_256_GCM, AES_192_GCM, AES_128_GCM, AES_256_CBC, AES_192_CBC, or AES_128_CBC.
     encryptionCertificateSecretRef : SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProviderEncryptionCertificateSecretRef, default is Undefined, optional
         encryption certificate secret ref
+    encryptionDigestMethod : str, default is Undefined, optional
+        Digest method used with SAML encryption. Allowed values: SHA-512, SHA-256, or SHA-1. Only valid when encryption_key_algorithm is RSA-OAEP-11 or RSA-OAEP-MGF1P. Default is SHA-256.
+    encryptionKeyAlgorithm : str, default is Undefined, optional
+        Key transport algorithm used by the client to encrypt the secret key for SAML assertion encryption. Allowed values: RSA-OAEP-11, RSA-OAEP-MGF1P, or RSA1_5. Default is RSA-OAEP-11.
+    encryptionMaskGenerationFunction : str, default is Undefined, optional
+        Mask generation function used with SAML encryption. Allowed values: mgf1sha1, mgf1sha224, mgf1sha256, mgf1sha384, or mgf1sha512. Only valid when encryption_key_algorithm is RSA-OAEP-11. Default is mgf1sha256.
     extraConfig : {str:str}, default is Undefined, optional
         A map of key/value pairs to add extra configuration attributes to this client. Use this attribute at your own risk, as s may conflict with top-level configuration attributes in future provider updates.
     forceNameIdFormat : bool, default is Undefined, optional
@@ -618,10 +533,6 @@ schema SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProvider:
 
     clientId?: str
 
-    clientIdRef?: SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProviderClientIDRef
-
-    clientIdSelector?: SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProviderClientIDSelector
-
     clientSignatureRequired?: bool
 
     consentRequired?: bool
@@ -632,7 +543,15 @@ schema SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProvider:
 
     encryptAssertions?: bool
 
+    encryptionAlgorithm?: str
+
     encryptionCertificateSecretRef?: SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProviderEncryptionCertificateSecretRef
+
+    encryptionDigestMethod?: str
+
+    encryptionKeyAlgorithm?: str
+
+    encryptionMaskGenerationFunction?: str
 
     extraConfig?: {str:str}
 
@@ -701,103 +620,6 @@ schema SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProviderAuthenticati
     browserId?: str
 
     directGrantId?: str
-
-
-schema SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProviderClientIDRef:
-    r"""
-    Reference to a Client in openidclient to populate clientId.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        Name of the referenced object.
-    namespace : str, default is Undefined, optional
-        Namespace of the referenced object
-    policy : SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProviderClientIDRefPolicy, default is Undefined, optional
-        policy
-    """
-
-
-    name: str
-
-    namespace?: str
-
-    policy?: SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProviderClientIDRefPolicy
-
-
-schema SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProviderClientIDRefPolicy:
-    r"""
-    Policies for referencing.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
-
-
-schema SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProviderClientIDSelector:
-    r"""
-    Selector for a Client in openidclient to populate clientId.
-
-    Attributes
-    ----------
-    matchControllerRef : bool, default is Undefined, optional
-        MatchControllerRef ensures an object with the same controller reference
-        as the selecting object is selected.
-    matchLabels : {str:str}, default is Undefined, optional
-        MatchLabels ensures an object with matching labels is selected.
-    namespace : str, default is Undefined, optional
-        Namespace for the selector
-    policy : SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProviderClientIDSelectorPolicy, default is Undefined, optional
-        policy
-    """
-
-
-    matchControllerRef?: bool
-
-    matchLabels?: {str:str}
-
-    namespace?: str
-
-    policy?: SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProviderClientIDSelectorPolicy
-
-
-schema SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProviderClientIDSelectorPolicy:
-    r"""
-    Policies for selection.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
 
 
 schema SamlclientKeycloakmCrossplaneIoV1alpha1ClientSpecInitProviderEncryptionCertificateSecretRef:
@@ -1042,8 +864,16 @@ schema SamlclientKeycloakmCrossplaneIoV1alpha1ClientStatusAtProvider:
         When false, this client will not be able to initiate a login or obtain access tokens. Defaults to true.
     encryptAssertions : bool, default is Undefined, optional
         When true, the SAML assertions will be encrypted by Keycloak using the client's public key. Defaults to false.
+    encryptionAlgorithm : str, default is Undefined, optional
+        Algorithm used to encrypt SAML assertions. Allowed values: AES_256_GCM, AES_192_GCM, AES_128_GCM, AES_256_CBC, AES_192_CBC, or AES_128_CBC.
     encryptionCertificateSha1 : str, default is Undefined, optional
         (Computed) The sha1sum fingerprint of the encryption certificate. If the encryption certificate is not in correct base64 format, this will be left empty.
+    encryptionDigestMethod : str, default is Undefined, optional
+        Digest method used with SAML encryption. Allowed values: SHA-512, SHA-256, or SHA-1. Only valid when encryption_key_algorithm is RSA-OAEP-11 or RSA-OAEP-MGF1P. Default is SHA-256.
+    encryptionKeyAlgorithm : str, default is Undefined, optional
+        Key transport algorithm used by the client to encrypt the secret key for SAML assertion encryption. Allowed values: RSA-OAEP-11, RSA-OAEP-MGF1P, or RSA1_5. Default is RSA-OAEP-11.
+    encryptionMaskGenerationFunction : str, default is Undefined, optional
+        Mask generation function used with SAML encryption. Allowed values: mgf1sha1, mgf1sha224, mgf1sha256, mgf1sha384, or mgf1sha512. Only valid when encryption_key_algorithm is RSA-OAEP-11. Default is mgf1sha256.
     extraConfig : {str:str}, default is Undefined, optional
         A map of key/value pairs to add extra configuration attributes to this client. Use this attribute at your own risk, as s may conflict with top-level configuration attributes in future provider updates.
     forceNameIdFormat : bool, default is Undefined, optional
@@ -1119,7 +949,15 @@ schema SamlclientKeycloakmCrossplaneIoV1alpha1ClientStatusAtProvider:
 
     encryptAssertions?: bool
 
+    encryptionAlgorithm?: str
+
     encryptionCertificateSha1?: str
+
+    encryptionDigestMethod?: str
+
+    encryptionKeyAlgorithm?: str
+
+    encryptionMaskGenerationFunction?: str
 
     extraConfig?: {str:str}
 

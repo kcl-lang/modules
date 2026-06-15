@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeTargetGRPCProxy:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target g RPC proxy
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeTargetGRPCProxy:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetGRPCProxySpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target g RPC proxy spec
 
     Attributes
@@ -71,7 +71,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetGRPCProxySpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetGRPCProxySpecURLMapRef:
-    """
+    r"""
     The UrlMap resource that defines the mapping from URL to the BackendService.
     The protocol field in the BackendService must be set to GRPC.
 
@@ -94,7 +94,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetGRPCProxySpecURLMapRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetGRPCProxyStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target g RPC proxy status
 
     Attributes
@@ -134,7 +134,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetGRPCProxyStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetGRPCProxyStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute target g RPC proxy status conditions items0
 
     Attributes

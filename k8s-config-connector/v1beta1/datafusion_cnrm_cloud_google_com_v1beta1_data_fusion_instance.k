@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DataFusionInstance:
-    """
+    r"""
     datafusion cnrm cloud google com v1beta1 data fusion instance
 
     Attributes
@@ -36,7 +36,7 @@ schema DataFusionInstance:
 
 
 schema DatafusionCnrmCloudGoogleComV1beta1DataFusionInstanceSpec:
-    """
+    r"""
     datafusion cnrm cloud google com v1beta1 data fusion instance spec
 
     Attributes
@@ -98,7 +98,7 @@ schema DatafusionCnrmCloudGoogleComV1beta1DataFusionInstanceSpec:
 
 
 schema DatafusionCnrmCloudGoogleComV1beta1DataFusionInstanceSpecDataprocServiceAccountRef:
-    """
+    r"""
     datafusion cnrm cloud google com v1beta1 data fusion instance spec dataproc service account ref
 
     Attributes
@@ -122,7 +122,7 @@ schema DatafusionCnrmCloudGoogleComV1beta1DataFusionInstanceSpecDataprocServiceA
 
 
 schema DatafusionCnrmCloudGoogleComV1beta1DataFusionInstanceSpecNetworkConfig:
-    """
+    r"""
     Immutable. Network configuration options. These are required when a private Data Fusion instance is to be created.
 
     Attributes
@@ -140,7 +140,7 @@ schema DatafusionCnrmCloudGoogleComV1beta1DataFusionInstanceSpecNetworkConfig:
 
 
 schema DatafusionCnrmCloudGoogleComV1beta1DataFusionInstanceSpecNetworkConfigNetworkRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -164,7 +164,7 @@ schema DatafusionCnrmCloudGoogleComV1beta1DataFusionInstanceSpecNetworkConfigNet
 
 
 schema DatafusionCnrmCloudGoogleComV1beta1DataFusionInstanceStatus:
-    """
+    r"""
     datafusion cnrm cloud google com v1beta1 data fusion instance status
 
     Attributes
@@ -222,7 +222,7 @@ schema DatafusionCnrmCloudGoogleComV1beta1DataFusionInstanceStatus:
 
 
 schema DatafusionCnrmCloudGoogleComV1beta1DataFusionInstanceStatusAvailableVersionItems0:
-    """
+    r"""
     datafusion cnrm cloud google com v1beta1 data fusion instance status available version items0
 
     Attributes
@@ -244,7 +244,7 @@ schema DatafusionCnrmCloudGoogleComV1beta1DataFusionInstanceStatusAvailableVersi
 
 
 schema DatafusionCnrmCloudGoogleComV1beta1DataFusionInstanceStatusConditionsItems0:
-    """
+    r"""
     datafusion cnrm cloud google com v1beta1 data fusion instance status conditions items0
 
     Attributes

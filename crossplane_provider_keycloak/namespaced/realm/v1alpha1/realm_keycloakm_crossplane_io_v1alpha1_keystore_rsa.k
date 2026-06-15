@@ -87,6 +87,8 @@ schema RealmKeycloakmCrossplaneIoV1alpha1KeystoreRsaSpecForProvider:
     enabled : bool, default is Undefined, optional
         When false, key is not accessible in this realm. Defaults to true.
         Set if the keys are enabled
+    extraConfig : {str:str}, default is Undefined, optional
+        Map of additional provider configuration options passed through to the Keycloak component config. For RSA keystores this can include keys like kid.
     name : str, default is Undefined, optional
         Display name of provider when linked in admin console.
         Display name of provider when linked in admin console.
@@ -114,6 +116,8 @@ schema RealmKeycloakmCrossplaneIoV1alpha1KeystoreRsaSpecForProvider:
     certificateSecretRef?: RealmKeycloakmCrossplaneIoV1alpha1KeystoreRsaSpecForProviderCertificateSecretRef
 
     enabled?: bool
+
+    extraConfig?: {str:str}
 
     name?: str
 
@@ -291,6 +295,8 @@ schema RealmKeycloakmCrossplaneIoV1alpha1KeystoreRsaSpecInitProvider:
     enabled : bool, default is Undefined, optional
         When false, key is not accessible in this realm. Defaults to true.
         Set if the keys are enabled
+    extraConfig : {str:str}, default is Undefined, optional
+        Map of additional provider configuration options passed through to the Keycloak component config. For RSA keystores this can include keys like kid.
     name : str, default is Undefined, optional
         Display name of provider when linked in admin console.
         Display name of provider when linked in admin console.
@@ -318,6 +324,8 @@ schema RealmKeycloakmCrossplaneIoV1alpha1KeystoreRsaSpecInitProvider:
     certificateSecretRef: RealmKeycloakmCrossplaneIoV1alpha1KeystoreRsaSpecInitProviderCertificateSecretRef
 
     enabled?: bool
+
+    extraConfig?: {str:str}
 
     name?: str
 
@@ -545,6 +553,8 @@ schema RealmKeycloakmCrossplaneIoV1alpha1KeystoreRsaStatusAtProvider:
     enabled : bool, default is Undefined, optional
         When false, key is not accessible in this realm. Defaults to true.
         Set if the keys are enabled
+    extraConfig : {str:str}, default is Undefined, optional
+        Map of additional provider configuration options passed through to the Keycloak component config. For RSA keystores this can include keys like kid.
     id : str, default is Undefined, optional
         id
     name : str, default is Undefined, optional
@@ -566,6 +576,8 @@ schema RealmKeycloakmCrossplaneIoV1alpha1KeystoreRsaStatusAtProvider:
     algorithm?: str
 
     enabled?: bool
+
+    extraConfig?: {str:str}
 
     id?: str
 

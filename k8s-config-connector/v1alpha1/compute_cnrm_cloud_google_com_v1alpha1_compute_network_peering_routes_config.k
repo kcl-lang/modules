@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeNetworkPeeringRoutesConfig:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute network peering routes config
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeNetworkPeeringRoutesConfig:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkPeeringRoutesConfigSpec:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute network peering routes config spec
 
     Attributes
@@ -66,7 +66,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkPeeringRoutesConfigSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkPeeringRoutesConfigSpecNetworkRef:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute network peering routes config spec network ref
 
     Attributes
@@ -88,7 +88,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkPeeringRoutesConfigSpecNet
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkPeeringRoutesConfigSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -110,7 +110,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkPeeringRoutesConfigSpecPro
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkPeeringRoutesConfigStatus:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute network peering routes config status
 
     Attributes
@@ -128,7 +128,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkPeeringRoutesConfigStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkPeeringRoutesConfigStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute network peering routes config status conditions items0
 
     Attributes

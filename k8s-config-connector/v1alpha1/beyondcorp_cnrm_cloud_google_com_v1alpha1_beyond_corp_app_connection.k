@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BeyondCorpAppConnection:
-    """
+    r"""
     beyondcorp cnrm cloud google com v1alpha1 beyond corp app connection
 
     Attributes
@@ -36,7 +36,7 @@ schema BeyondCorpAppConnection:
 
 
 schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppConnectionSpec:
-    """
+    r"""
     beyondcorp cnrm cloud google com v1alpha1 beyond corp app connection spec
 
     Attributes
@@ -80,7 +80,7 @@ schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppConnectionSpec:
 
 
 schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppConnectionSpecApplicationEndpoint:
-    """
+    r"""
     Address of the remote application endpoint for the BeyondCorp AppConnection.
 
     Attributes
@@ -98,7 +98,7 @@ schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppConnectionSpecApplicatio
 
 
 schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppConnectionSpecGateway:
-    """
+    r"""
     Gateway used by the AppConnection.
 
     Attributes
@@ -126,7 +126,7 @@ schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppConnectionSpecGateway:
 
 
 schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppConnectionSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -148,7 +148,7 @@ schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppConnectionSpecProjectRef
 
 
 schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppConnectionStatus:
-    """
+    r"""
     beyondcorp cnrm cloud google com v1alpha1 beyond corp app connection status
 
     Attributes
@@ -166,7 +166,7 @@ schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppConnectionStatus:
 
 
 schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppConnectionStatusConditionsItems0:
-    """
+    r"""
     beyondcorp cnrm cloud google com v1alpha1 beyond corp app connection status conditions items0
 
     Attributes

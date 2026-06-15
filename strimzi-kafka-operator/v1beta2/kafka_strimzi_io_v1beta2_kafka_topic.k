@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema KafkaTopic:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka topic
 
     Attributes
@@ -36,7 +36,7 @@ schema KafkaTopic:
 
 
 schema KafkaStrimziIoV1beta2KafkaTopicSpec:
-    """
+    r"""
     The specification of the topic.
 
     Attributes
@@ -62,13 +62,13 @@ schema KafkaStrimziIoV1beta2KafkaTopicSpec:
 
 
     check:
-        partitions >= 1
-        replicas <= 32767
-        replicas >= 1
+        partitions >= 1 if partitions not in [None, Undefined]
+        replicas <= 32767 if replicas not in [None, Undefined]
+        replicas >= 1 if replicas not in [None, Undefined]
 
 
 schema KafkaStrimziIoV1beta2KafkaTopicStatus:
-    """
+    r"""
     The status of the topic.
 
     Attributes
@@ -77,6 +77,10 @@ schema KafkaStrimziIoV1beta2KafkaTopicStatus:
         List of status conditions.
     observedGeneration : int, default is Undefined, optional
         The generation of the CRD that was last reconciled by the operator.
+    replicasChange : KafkaStrimziIoV1beta2KafkaTopicStatusReplicasChange, default is Undefined, optional
+        replicas change
+    topicId : str, default is Undefined, optional
+        The topic's id. For a KafkaTopic with the ready condition, this will change only if the topic gets deleted and recreated with the same name.
     topicName : str, default is Undefined, optional
         Topic name.
     """
@@ -86,11 +90,15 @@ schema KafkaStrimziIoV1beta2KafkaTopicStatus:
 
     observedGeneration?: int
 
+    replicasChange?: KafkaStrimziIoV1beta2KafkaTopicStatusReplicasChange
+
+    topicId?: str
+
     topicName?: str
 
 
 schema KafkaStrimziIoV1beta2KafkaTopicStatusConditionsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka topic status conditions items0
 
     Attributes
@@ -117,5 +125,31 @@ schema KafkaStrimziIoV1beta2KafkaTopicStatusConditionsItems0:
     status?: str
 
     $type?: str
+
+
+schema KafkaStrimziIoV1beta2KafkaTopicStatusReplicasChange:
+    r"""
+    Replication factor change status.
+
+    Attributes
+    ----------
+    message : str, default is Undefined, optional
+        Message for the user related to the replicas change request. This may contain transient error messages that would disappear on periodic reconciliations.
+    sessionId : str, default is Undefined, optional
+        The session identifier for replicas change requests pertaining to this KafkaTopic resource. This is used by the Topic Operator to track the status of `ongoing` replicas change operations.
+    state : str, default is Undefined, optional
+        Current state of the replicas change operation. This can be `pending`, when the change has been requested, or `ongoing`, when the change has been successfully submitted to Cruise Control.
+    targetReplicas : int, default is Undefined, optional
+        The target replicas value requested by the user. This may be different from .spec.replicas when a change is ongoing.
+    """
+
+
+    message?: str
+
+    sessionId?: str
+
+    state?: "pending" | "ongoing"
+
+    targetReplicas?: int
 
 

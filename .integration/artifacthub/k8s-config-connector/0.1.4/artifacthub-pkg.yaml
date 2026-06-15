@@ -1,0 +1,25 @@
+version: 0.1.4
+name: k8s-config-connector
+displayName: k8s-config-connector
+createdAt: "2026-02-19T05:07:40Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `k8s-config-connector` with tag `0.1.4` as dependency
+  ```
+  kcl mod add k8s-config-connector:0.1.4
+  ```
+
+  #### Pull `k8s-config-connector` with tag `0.1.4` to local
+  ```
+  kcl mod pull k8s-config-connector:0.1.4
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

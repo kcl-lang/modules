@@ -1,6 +1,6 @@
 [package]
 name = "argoproj"
-version = "3.3.0-rc1"
+version = "3.3.0"
 description = "`argoproj` module contains definitions for argoproj"
 
 [dependencies]

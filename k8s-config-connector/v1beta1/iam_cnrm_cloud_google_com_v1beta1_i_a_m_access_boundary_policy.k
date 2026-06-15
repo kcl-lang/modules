@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IAMAccessBoundaryPolicy:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m access boundary policy
 
     Attributes
@@ -36,7 +36,7 @@ schema IAMAccessBoundaryPolicy:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMAccessBoundaryPolicySpec:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m access boundary policy spec
 
     Attributes
@@ -62,7 +62,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMAccessBoundaryPolicySpec:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMAccessBoundaryPolicySpecProjectRef:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m access boundary policy spec project ref
 
     Attributes
@@ -84,7 +84,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMAccessBoundaryPolicySpecProjectRef:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMAccessBoundaryPolicySpecRulesItems0:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m access boundary policy spec rules items0
 
     Attributes
@@ -102,7 +102,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMAccessBoundaryPolicySpecRulesItems0:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMAccessBoundaryPolicySpecRulesItems0AccessBoundaryRule:
-    """
+    r"""
     An access boundary rule in an IAM policy.
 
     Attributes
@@ -124,7 +124,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMAccessBoundaryPolicySpecRulesItems0AccessB
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMAccessBoundaryPolicySpecRulesItems0AccessBoundaryRuleAvailabilityCondition:
-    """
+    r"""
     The availability condition further constrains the access allowed by the access boundary rule.
 
     Attributes
@@ -153,7 +153,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMAccessBoundaryPolicySpecRulesItems0AccessB
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMAccessBoundaryPolicyStatus:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m access boundary policy status
 
     Attributes
@@ -175,7 +175,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMAccessBoundaryPolicyStatus:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMAccessBoundaryPolicyStatusConditionsItems0:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m access boundary policy status conditions items0
 
     Attributes

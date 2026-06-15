@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeAutoscaler:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute autoscaler
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeAutoscaler:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpec:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute autoscaler spec
 
     Attributes
@@ -70,7 +70,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicy:
-    """
+    r"""
     The configuration parameters for the autoscaling algorithm. You can
     define one or more of the policies for an autoscaler: cpuUtilization,
     customMetricUtilizations, and loadBalancingUtilization.
@@ -108,7 +108,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicy:
         choose a default value depending on maximum number of instances
         allowed.
     mode : str, default is Undefined, optional
-        Defines operating mode for this policy. Default value: "ON" Possible values: ["OFF", "ONLY_UP", "ON"].
+        Defines operating mode for this policy.
     scaleDownControl : ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyScaleDownControl, default is Undefined, optional
         scale down control
     scaleInControl : ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyScaleInControl, default is Undefined, optional
@@ -140,7 +140,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicy:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyCPUUtilization:
-    """
+    r"""
     Defines the CPU utilization policy that allows the autoscaler to
     scale based on the average CPU utilization of a managed instance
     group.
@@ -176,7 +176,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyCP
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyLoadBalancingUtilization:
-    """
+    r"""
     Configuration parameters of autoscaling based on a load balancer.
 
     Attributes
@@ -192,7 +192,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyLo
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyMetricItems0:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute autoscaler spec autoscaling policy metric items0
 
     Attributes
@@ -280,7 +280,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyMe
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyScaleDownControl:
-    """
+    r"""
     Defines scale down controls to reduce the risk of response latency
     and outages due to abrupt scale-in events.
 
@@ -300,7 +300,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicySc
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyScaleDownControlMaxScaledDownReplicas:
-    """
+    r"""
     A nested object resource.
 
     Attributes
@@ -320,7 +320,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicySc
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyScaleInControl:
-    """
+    r"""
     Defines scale in controls to reduce the risk of response latency
     and outages due to abrupt scale-in events.
 
@@ -340,7 +340,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicySc
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyScaleInControlMaxScaledInReplicas:
-    """
+    r"""
     A nested object resource.
 
     Attributes
@@ -360,7 +360,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicySc
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyScalingSchedulesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute autoscaler spec autoscaling policy scaling schedules items0
 
     Attributes
@@ -398,7 +398,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicySc
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -420,7 +420,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecProjectRef:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecTargetRef:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute autoscaler spec target ref
 
     Attributes
@@ -442,7 +442,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecTargetRef:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerStatus:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute autoscaler status
 
     Attributes
@@ -468,7 +468,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1alpha1 compute autoscaler status conditions items0
 
     Attributes

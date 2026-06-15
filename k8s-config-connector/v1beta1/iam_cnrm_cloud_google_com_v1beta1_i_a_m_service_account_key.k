@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IAMServiceAccountKey:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m service account key
 
     Attributes
@@ -36,7 +36,7 @@ schema IAMServiceAccountKey:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMServiceAccountKeySpec:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m service account key spec
 
     Attributes
@@ -66,7 +66,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMServiceAccountKeySpec:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMServiceAccountKeySpecServiceAccountRef:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m service account key spec service account ref
 
     Attributes
@@ -88,7 +88,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMServiceAccountKeySpecServiceAccountRef:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMServiceAccountKeyStatus:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m service account key status
 
     Attributes
@@ -126,7 +126,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMServiceAccountKeyStatus:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMServiceAccountKeyStatusConditionsItems0:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m service account key status conditions items0
 
     Attributes

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema StorageTransferJob:
-    """
+    r"""
     storagetransfer cnrm cloud google com v1beta1 storage transfer job
 
     Attributes
@@ -36,7 +36,7 @@ schema StorageTransferJob:
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpec:
-    """
+    r"""
     storagetransfer cnrm cloud google com v1beta1 storage transfer job spec
 
     Attributes
@@ -70,7 +70,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpec:
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecNotificationConfig:
-    """
+    r"""
     Notification configuration.
 
     Attributes
@@ -92,7 +92,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecNotificatio
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecNotificationConfigTopicRef:
-    """
+    r"""
     The PubSubTopic to which to publish notifications.
 
     Attributes
@@ -114,7 +114,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecNotificatio
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecSchedule:
-    """
+    r"""
     Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run.
 
     Attributes
@@ -140,7 +140,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecSchedule:
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecScheduleScheduleEndDate:
-    """
+    r"""
     The last day the recurring transfer will be run. If schedule_end_date is the same as schedule_start_date, the transfer will be executed only once.
 
     Attributes
@@ -162,7 +162,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecScheduleSch
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecScheduleScheduleStartDate:
-    """
+    r"""
     The first day the recurring transfer is scheduled to run. If schedule_start_date is in the past, the transfer will run for the first time on the following day.
 
     Attributes
@@ -184,7 +184,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecScheduleSch
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecScheduleStartTimeOfDay:
-    """
+    r"""
     The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone.
 
     Attributes
@@ -210,7 +210,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecScheduleSta
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpec:
-    """
+    r"""
     Transfer specification.
 
     Attributes
@@ -264,7 +264,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpecAwsS3DataSource:
-    """
+    r"""
     An AWS S3 data source.
 
     Attributes
@@ -290,7 +290,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpecAwsS3DataSourceAwsAccessKey:
-    """
+    r"""
     AWS credentials block.
 
     Attributes
@@ -308,7 +308,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpecAwsS3DataSourceAwsAccessKeyAccessKeyID:
-    """
+    r"""
     AWS Key ID.
 
     Attributes
@@ -326,7 +326,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpecAwsS3DataSourceAwsAccessKeyAccessKeyIDValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -340,7 +340,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpecAwsS3DataSourceAwsAccessKeyAccessKeyIDValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -358,7 +358,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpecAwsS3DataSourceAwsAccessKeySecretAccessKey:
-    """
+    r"""
     AWS Secret Access Key.
 
     Attributes
@@ -376,7 +376,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpecAwsS3DataSourceAwsAccessKeySecretAccessKeyValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -390,7 +390,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpecAwsS3DataSourceAwsAccessKeySecretAccessKeyValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -408,7 +408,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpecAzureBlobStorageDataSource:
-    """
+    r"""
     An Azure Blob Storage data source.
 
     Attributes
@@ -434,7 +434,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpecAzureBlobStorageDataSourceAzureCredentials:
-    """
+    r"""
      Credentials used to authenticate API requests to Azure.
 
     Attributes
@@ -448,7 +448,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpecAzureBlobStorageDataSourceAzureCredentialsSasToken:
-    """
+    r"""
     Azure shared access signature.
 
     Attributes
@@ -466,7 +466,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpecAzureBlobStorageDataSourceAzureCredentialsSasTokenValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -480,7 +480,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpecAzureBlobStorageDataSourceAzureCredentialsSasTokenValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -498,7 +498,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpecGcsDataSink:
-    """
+    r"""
     A Google Cloud Storage data sink.
 
     Attributes
@@ -516,7 +516,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpecGcsDataSinkBucketRef:
-    """
+    r"""
     storagetransfer cnrm cloud google com v1beta1 storage transfer job spec transfer spec gcs data sink bucket ref
 
     Attributes
@@ -538,7 +538,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpecGcsDataSource:
-    """
+    r"""
     A Google Cloud Storage data source.
 
     Attributes
@@ -556,7 +556,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpecGcsDataSourceBucketRef:
-    """
+    r"""
     storagetransfer cnrm cloud google com v1beta1 storage transfer job spec transfer spec gcs data source bucket ref
 
     Attributes
@@ -578,7 +578,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpecHTTPDataSource:
-    """
+    r"""
     A HTTP URL data source.
 
     Attributes
@@ -592,7 +592,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpecObjectConditions:
-    """
+    r"""
     Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' last_modification_time do not exclude objects in a data sink.
 
     Attributes
@@ -626,7 +626,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpecPosixDataSink:
-    """
+    r"""
     A POSIX filesystem data sink.
 
     Attributes
@@ -640,7 +640,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpecPosixDataSource:
-    """
+    r"""
     A POSIX filesystem data source.
 
     Attributes
@@ -654,7 +654,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpecTransferOptions:
-    """
+    r"""
     Characteristics of how to treat files from datasource and sink during job. If the option delete_objects_unique_in_sink is true, object conditions based on objects' last_modification_time are ignored and do not exclude objects in a data source or a data sink.
 
     Attributes
@@ -680,7 +680,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobSpecTransferSpe
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobStatus:
-    """
+    r"""
     storagetransfer cnrm cloud google com v1beta1 storage transfer job status
 
     Attributes
@@ -714,7 +714,7 @@ schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobStatus:
 
 
 schema StoragetransferCnrmCloudGoogleComV1beta1StorageTransferJobStatusConditionsItems0:
-    """
+    r"""
     storagetransfer cnrm cloud google com v1beta1 storage transfer job status conditions items0
 
     Attributes

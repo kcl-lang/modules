@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema KafkaConnector:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka connector
 
     Attributes
@@ -36,25 +36,33 @@ schema KafkaConnector:
 
 
 schema KafkaStrimziIoV1beta2KafkaConnectorSpec:
-    """
+    r"""
     The specification of the Kafka Connector.
 
     Attributes
     ----------
+    alterOffsets : KafkaStrimziIoV1beta2KafkaConnectorSpecAlterOffsets, default is Undefined, optional
+        alter offsets
     autoRestart : KafkaStrimziIoV1beta2KafkaConnectorSpecAutoRestart, default is Undefined, optional
         auto restart
     class : str, default is Undefined, optional
         The Class for the Kafka Connector.
     config : any, default is Undefined, optional
-        The Kafka Connector configuration. The following properties cannot be set: connector.class, tasks.max.
+        The Kafka Connector configuration. The following properties cannot be set: name, connector.class, tasks.max, connector.plugin.version.
+    listOffsets : KafkaStrimziIoV1beta2KafkaConnectorSpecListOffsets, default is Undefined, optional
+        list offsets
     pause : bool, default is Undefined, optional
         Whether the connector should be paused. Defaults to false.
     state : str, default is Undefined, optional
         The state the connector should be in. Defaults to running.
     tasksMax : int, default is Undefined, optional
         The maximum number of tasks for the Kafka Connector.
+    version : str, default is Undefined, optional
+        Desired version or version range to respect when starting the Kafka Connector. This is only supported when using Kafka Connect version 4.1.0 and higher.
     """
 
+
+    alterOffsets?: KafkaStrimziIoV1beta2KafkaConnectorSpecAlterOffsets
 
     autoRestart?: KafkaStrimziIoV1beta2KafkaConnectorSpecAutoRestart
 
@@ -62,19 +70,51 @@ schema KafkaStrimziIoV1beta2KafkaConnectorSpec:
 
     config?: any
 
+    listOffsets?: KafkaStrimziIoV1beta2KafkaConnectorSpecListOffsets
+
     pause?: bool
 
     state?: "paused" | "stopped" | "running"
 
     tasksMax?: int
 
+    version?: str
+
 
     check:
-        tasksMax >= 1
+        tasksMax >= 1 if tasksMax not in [None, Undefined]
+
+
+schema KafkaStrimziIoV1beta2KafkaConnectorSpecAlterOffsets:
+    r"""
+    Configuration for altering offsets.
+
+    Attributes
+    ----------
+    fromConfigMap : KafkaStrimziIoV1beta2KafkaConnectorSpecAlterOffsetsFromConfigMap, default is Undefined, required
+        from config map
+    """
+
+
+    fromConfigMap: KafkaStrimziIoV1beta2KafkaConnectorSpecAlterOffsetsFromConfigMap
+
+
+schema KafkaStrimziIoV1beta2KafkaConnectorSpecAlterOffsetsFromConfigMap:
+    r"""
+    Reference to the ConfigMap where the new offsets are stored.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    name?: str
 
 
 schema KafkaStrimziIoV1beta2KafkaConnectorSpecAutoRestart:
-    """
+    r"""
     Automatic restart of connector and tasks configuration.
 
     Attributes
@@ -91,8 +131,36 @@ schema KafkaStrimziIoV1beta2KafkaConnectorSpecAutoRestart:
     maxRestarts?: int
 
 
-schema KafkaStrimziIoV1beta2KafkaConnectorStatus:
+schema KafkaStrimziIoV1beta2KafkaConnectorSpecListOffsets:
+    r"""
+    Configuration for listing offsets.
+
+    Attributes
+    ----------
+    toConfigMap : KafkaStrimziIoV1beta2KafkaConnectorSpecListOffsetsToConfigMap, default is Undefined, required
+        to config map
     """
+
+
+    toConfigMap: KafkaStrimziIoV1beta2KafkaConnectorSpecListOffsetsToConfigMap
+
+
+schema KafkaStrimziIoV1beta2KafkaConnectorSpecListOffsetsToConfigMap:
+    r"""
+    Reference to the ConfigMap where the list of offsets will be written to.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    name?: str
+
+
+schema KafkaStrimziIoV1beta2KafkaConnectorStatus:
+    r"""
     The status of the Kafka Connector.
 
     Attributes
@@ -126,7 +194,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectorStatus:
 
 
 schema KafkaStrimziIoV1beta2KafkaConnectorStatusAutoRestart:
-    """
+    r"""
     The auto restart status.
 
     Attributes
@@ -148,7 +216,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectorStatusAutoRestart:
 
 
 schema KafkaStrimziIoV1beta2KafkaConnectorStatusConditionsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka connector status conditions items0
 
     Attributes

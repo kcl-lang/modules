@@ -4,10 +4,11 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
 
 
 schema IAMPartialPolicy:
-    """
+    r"""
     IAMPartialPolicy is the Schema for the iampartialpolicy API
 
     Attributes
@@ -37,7 +38,7 @@ schema IAMPartialPolicy:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpec:
-    """
+    r"""
     IAMPartialPolicySpec defines the desired state of IAMPartialPolicy
 
     Attributes
@@ -55,7 +56,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpec:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0:
-    """
+    r"""
     Specifies the members to bind to an IAM role.
 
     Attributes
@@ -77,11 +78,11 @@ schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0:
 
 
     check:
-        regex.match(str(role), r"^((projects|organizations)/[^/]+/)?roles/[\w_\.]+$")
+        _regex_match(str(role), r"^((projects|organizations)/[^/]+/)?roles/[\w_\.]+$")
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0Condition:
-    """
+    r"""
     Optional. The condition under which the binding applies.
 
     Attributes
@@ -103,7 +104,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0Condition:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0MembersItems0:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m partial policy spec bindings items0 members items0
 
     Attributes
@@ -121,11 +122,13 @@ schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0MembersItem
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0MembersItems0MemberFrom:
-    """
+    r"""
     The IAM identity to be bound to the role. Exactly one of 'member' or 'memberFrom' must be used, and only one subfield within 'memberFrom' can be used.
 
     Attributes
     ----------
+    bigQueryConnectionConnectionRef : IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0MembersItems0MemberFromBigQueryConnectionConnectionRef, default is Undefined, optional
+        big query connection connection ref
     logSinkRef : IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0MembersItems0MemberFromLogSinkRef, default is Undefined, optional
         log sink ref
     serviceAccountRef : IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0MembersItems0MemberFromServiceAccountRef, default is Undefined, optional
@@ -137,6 +140,8 @@ schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0MembersItem
     """
 
 
+    bigQueryConnectionConnectionRef?: IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0MembersItems0MemberFromBigQueryConnectionConnectionRef
+
     logSinkRef?: IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0MembersItems0MemberFromLogSinkRef
 
     serviceAccountRef?: IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0MembersItems0MemberFromServiceAccountRef
@@ -146,8 +151,30 @@ schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0MembersItem
     sqlInstanceRef?: IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0MembersItems0MemberFromSQLInstanceRef
 
 
-schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0MembersItems0MemberFromLogSinkRef:
+schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0MembersItems0MemberFromBigQueryConnectionConnectionRef:
+    r"""
+    BigQueryConnectionConnection whose service account is to be bound to the role. Use the Type field to specify the connection type. For "spark" connetion, the service account is in `status.observedState.spark.serviceAccountID`. For "cloudSQL" connection, the service account is in `status.observedState.cloudSQL.serviceAccountID`. For "cloudResource" connection, the service account is in `status.observedState.cloudResource.serviceAccountID`.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    $type : str, default is Undefined, required
+        Type field specifies the connection type of the BigQueryConnectionConnection resource, whose service account is to be bound to the role.
     """
+
+
+    name: str
+
+    namespace?: str
+
+    $type: "spark" | "cloudSQL" | "cloudResource"
+
+
+schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0MembersItems0MemberFromLogSinkRef:
+    r"""
     The LoggingLogSink whose writer identity (i.e. its 'status.writerIdentity') is to be bound to the role.
 
     Attributes
@@ -165,7 +192,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0MembersItem
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0MembersItems0MemberFromSQLInstanceRef:
-    """
+    r"""
     The SQLInstance whose service account (i.e. its 'status.serviceAccountEmailAddress') is to be bound to the role.
 
     Attributes
@@ -183,7 +210,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0MembersItem
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0MembersItems0MemberFromServiceAccountRef:
-    """
+    r"""
     The IAMServiceAccount to be bound to the role.
 
     Attributes
@@ -201,7 +228,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0MembersItem
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0MembersItems0MemberFromServiceIdentityRef:
-    """
+    r"""
     The ServiceIdentity whose service account (i.e., its 'status.email') is to be bound to the role.
 
     Attributes
@@ -219,17 +246,17 @@ schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecBindingsItems0MembersItem
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecResourceRef:
-    """
-    Immutable. Required. The GCP resource to set the IAM policy on.
+    r"""
+    Immutable. Required. The GCP resource to set the IAM policy on (e.g. organization, project...)
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        api version
+        APIVersion of the referenced resource
     external : str, default is Undefined, optional
-        external
+        The external name of the referenced resource
     kind : str, default is Undefined, required
-        kind
+        Kind of the referenced resource
     name : str, default is Undefined, optional
         name
     namespace : str, default is Undefined, optional
@@ -249,7 +276,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicySpecResourceRef:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicyStatus:
-    """
+    r"""
     IAMPartialPolicyStatus defines the observed state of IAMPartialPolicy
 
     Attributes
@@ -275,7 +302,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicyStatus:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicyStatusAllBindingsItems0:
-    """
+    r"""
     Specifies the members to bind to an IAM role.
 
     Attributes
@@ -296,8 +323,12 @@ schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicyStatusAllBindingsItems0:
     role: str
 
 
+    check:
+        _regex_match(str(role), r"^((projects|organizations)/[^/]+/)?roles/[\w_\.]+$")
+
+
 schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicyStatusAllBindingsItems0Condition:
-    """
+    r"""
     Optional. The condition under which the binding applies.
 
     Attributes
@@ -319,7 +350,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicyStatusAllBindingsItems0Condit
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicyStatusConditionsItems0:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m partial policy status conditions items0
 
     Attributes
@@ -349,7 +380,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicyStatusConditionsItems0:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicyStatusLastAppliedBindingsItems0:
-    """
+    r"""
     Specifies the members to bind to an IAM role.
 
     Attributes
@@ -370,8 +401,12 @@ schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicyStatusLastAppliedBindingsItem
     role: str
 
 
+    check:
+        _regex_match(str(role), r"^((projects|organizations)/[^/]+/)?roles/[\w_\.]+$")
+
+
 schema IamCnrmCloudGoogleComV1beta1IAMPartialPolicyStatusLastAppliedBindingsItems0Condition:
-    """
+    r"""
     Optional. The condition under which the binding applies.
 
     Attributes

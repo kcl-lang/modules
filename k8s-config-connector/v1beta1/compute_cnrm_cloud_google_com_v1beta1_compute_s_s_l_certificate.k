@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeSSLCertificate:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute s s l certificate
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeSSLCertificate:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute s s l certificate spec
 
     Attributes
@@ -66,7 +66,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateSpecCertificate:
-    """
+    r"""
     Immutable. The certificate in PEM format.
     The certificate chain must be no greater than 5 certs long.
     The chain must include at least one intermediate cert.
@@ -86,7 +86,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateSpecCertificate:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateSpecCertificateValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -100,7 +100,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateSpecCertificateValue
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateSpecCertificateValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -118,7 +118,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateSpecCertificateValue
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateSpecPrivateKey:
-    """
+    r"""
     Immutable. The write-only private key in PEM format.
 
     Attributes
@@ -136,7 +136,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateSpecPrivateKey:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateSpecPrivateKeyValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -150,7 +150,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateSpecPrivateKeyValueF
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateSpecPrivateKeyValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -168,7 +168,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateSpecPrivateKeyValueF
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute s s l certificate status
 
     Attributes
@@ -202,7 +202,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute s s l certificate status conditions items0
 
     Attributes

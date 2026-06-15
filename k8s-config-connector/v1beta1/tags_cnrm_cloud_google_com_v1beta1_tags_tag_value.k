@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema TagsTagValue:
-    """
-    tags cnrm cloud google com v1beta1 tags tag value
+    r"""
+    TagsTagValue is the Schema for the TagsTagValue API
 
     Attributes
     ----------
@@ -36,21 +36,27 @@ schema TagsTagValue:
 
 
 schema TagsCnrmCloudGoogleComV1beta1TagsTagValueSpec:
-    """
-    tags cnrm cloud google com v1beta1 tags tag value spec
+    r"""
+    TagsTagValueSpec defines the desired state of TagsTagValue
 
     Attributes
     ----------
     description : str, default is Undefined, optional
-        User-assigned description of the TagValue. Must not exceed 256 characters.
+        Optional. User-assigned description of the TagValue.
+         Must not exceed 256 characters.
+
+         Read-write.
     parentRef : TagsCnrmCloudGoogleComV1beta1TagsTagValueSpecParentRef, default is Undefined, required
         parent ref
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
     shortName : str, default is Undefined, required
-        Immutable. Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
+        Required. Immutable. User-assigned short name for TagValue. The short name
+         should be unique for TagValues within the same parent TagKey.
 
-        The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+         The short name must be 63 characters or less, beginning and ending with
+         an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_),
+         dots (.), and alphanumerics between.
     """
 
 
@@ -64,17 +70,17 @@ schema TagsCnrmCloudGoogleComV1beta1TagsTagValueSpec:
 
 
 schema TagsCnrmCloudGoogleComV1beta1TagsTagValueSpecParentRef:
-    """
-    tags cnrm cloud google com v1beta1 tags tag value spec parent ref
+    r"""
+    Immutable. The TagValue's parent TagKey.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `tagKeys/{{value}}`, where {{value}} is the `name` field of a `TagsTagKey` resource.
+        A reference to an externally managed TagsTagKey resource. Should be in the format "tagKeys/{{tagKeyID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a TagsTagKey resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a TagsTagKey resource.
     """
 
 
@@ -86,32 +92,33 @@ schema TagsCnrmCloudGoogleComV1beta1TagsTagValueSpecParentRef:
 
 
 schema TagsCnrmCloudGoogleComV1beta1TagsTagValueStatus:
-    """
-    tags cnrm cloud google com v1beta1 tags tag value status
+    r"""
+    TagsTagValueStatus defines the config connector machine state of TagsTagValue
 
     Attributes
     ----------
     conditions : [TagsCnrmCloudGoogleComV1beta1TagsTagValueStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     createTime : str, default is Undefined, optional
         Output only. Creation time.
-
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the TagsTagValue resource in GCP.
     name : str, default is Undefined, optional
-        The generated numeric id for the TagValue.
+        Immutable. Resource name for TagValue in the format `tagValues/456`.
     namespacedName : str, default is Undefined, optional
-        Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
+        Output only. The namespaced name of the TagValue. Can be in the form `{organization_id}/{tag_key_short_name}/{tag_value_short_name}` or `{project_id}/{tag_key_short_name}/{tag_value_short_name}` or `{project_number}/{tag_key_short_name}/{tag_value_short_name}`.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     updateTime : str, default is Undefined, optional
         Output only. Update time.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
 
 
     conditions?: [TagsCnrmCloudGoogleComV1beta1TagsTagValueStatusConditionsItems0]
 
     createTime?: str
+
+    externalRef?: str
 
     name?: str
 
@@ -123,7 +130,7 @@ schema TagsCnrmCloudGoogleComV1beta1TagsTagValueStatus:
 
 
 schema TagsCnrmCloudGoogleComV1beta1TagsTagValueStatusConditionsItems0:
-    """
+    r"""
     tags cnrm cloud google com v1beta1 tags tag value status conditions items0
 
     Attributes

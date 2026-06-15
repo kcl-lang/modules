@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema AccessContextManagerAccessPolicy:
-    """
-    accesscontextmanager cnrm cloud google com v1beta1 access context manager access policy
+    r"""
+    AccessContextManagerAccessPolicy is the Schema for the AccessContextManagerAccessPolicy API As per https://cloud.google.com/config-connector/docs/reference/resource-docs/accesscontextmanager/accesscontextmanageraccesspolicy#annotations the parent is organization which is stored in the cnrm.cloud.google.com/organization-id annotation.
 
     Attributes
     ----------
@@ -36,15 +36,15 @@ schema AccessContextManagerAccessPolicy:
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessPolicySpec:
-    """
-    accesscontextmanager cnrm cloud google com v1beta1 access context manager access policy spec
+    r"""
+    AccessContextManagerAccessPolicySpec defines the desired state of AccessContextManagerAccessPolicy
 
     Attributes
     ----------
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
+        The AccessContextManagerAccessPolicy name. If not given, the metadata.name will be used.
     title : str, default is Undefined, required
-        Human readable title. Does not affect behavior.
+        Required. Human readable title. Does not affect behavior.
     """
 
 
@@ -54,21 +54,21 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessPo
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessPolicyStatus:
-    """
-    accesscontextmanager cnrm cloud google com v1beta1 access context manager access policy status
+    r"""
+    AccessContextManagerAccessPolicyStatus defines the config connector machine state of AccessContextManagerAccessPolicy
 
     Attributes
     ----------
     conditions : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessPolicyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     createTime : str, default is Undefined, optional
-        Time the AccessPolicy was created in UTC.
+        Output only. Time the AccessPolicy was created in UTC.
     name : str, default is Undefined, optional
         Resource name of the AccessPolicy. Format: {policy_id}.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     updateTime : str, default is Undefined, optional
-        Time the AccessPolicy was updated in UTC.
+        Output only. Time the AccessPolicy was updated in UTC.
     """
 
 
@@ -84,7 +84,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessPo
 
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessPolicyStatusConditionsItems0:
-    """
+    r"""
     accesscontextmanager cnrm cloud google com v1beta1 access context manager access policy status conditions items0
 
     Attributes

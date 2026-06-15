@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DLPStoredInfoType:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p stored info type
 
     Attributes
@@ -36,7 +36,7 @@ schema DLPStoredInfoType:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpec:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p stored info type spec
 
     Attributes
@@ -82,7 +82,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpec:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecDictionary:
-    """
+    r"""
     Store dictionary-based CustomInfoType.
 
     Attributes
@@ -100,7 +100,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecDictionary:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecDictionaryCloudStoragePath:
-    """
+    r"""
     Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
 
     Attributes
@@ -114,7 +114,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecDictionaryCloudStoragePa
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecDictionaryWordList:
-    """
+    r"""
     List of words or phrases to search for.
 
     Attributes
@@ -128,7 +128,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecDictionaryWordList:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecLargeCustomDictionary:
-    """
+    r"""
     StoredInfoType where findings are defined by a dictionary of phrases.
 
     Attributes
@@ -150,7 +150,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecLargeCustomDictionary:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecLargeCustomDictionaryBigQueryField:
-    """
+    r"""
     Field in a BigQuery table where each cell represents a dictionary phrase.
 
     Attributes
@@ -168,7 +168,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecLargeCustomDictionaryBig
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldField:
-    """
+    r"""
     Designated field in the BigQuery table.
 
     Attributes
@@ -182,7 +182,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecLargeCustomDictionaryBig
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldTable:
-    """
+    r"""
     Source table of the field.
 
     Attributes
@@ -204,7 +204,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecLargeCustomDictionaryBig
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldTableDatasetRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p stored info type spec large custom dictionary big query field table dataset ref
 
     Attributes
@@ -228,7 +228,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecLargeCustomDictionaryBig
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldTableProjectRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p stored info type spec large custom dictionary big query field table project ref
 
     Attributes
@@ -252,7 +252,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecLargeCustomDictionaryBig
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecLargeCustomDictionaryBigQueryFieldTableTableRef:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p stored info type spec large custom dictionary big query field table table ref
 
     Attributes
@@ -276,7 +276,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecLargeCustomDictionaryBig
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecLargeCustomDictionaryCloudStorageFileSet:
-    """
+    r"""
     Set of files containing newline-delimited lists of dictionary phrases.
 
     Attributes
@@ -290,7 +290,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecLargeCustomDictionaryClo
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecLargeCustomDictionaryOutputPath:
-    """
+    r"""
     Location to store dictionary artifacts in Google Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
 
     Attributes
@@ -304,7 +304,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecLargeCustomDictionaryOut
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecOrganizationRef:
-    """
+    r"""
     Immutable. The Organization that this resource belongs to. Only one of [organizationRef, projectRef] may be specified.
 
     Attributes
@@ -327,7 +327,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecOrganizationRef:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to. Only one of [organizationRef, projectRef] may be specified.
 
     Attributes
@@ -349,7 +349,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecProjectRef:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecRegex:
-    """
+    r"""
     Store regular expression-based StoredInfoType.
 
     Attributes
@@ -367,7 +367,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeSpecRegex:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeStatus:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p stored info type status
 
     Attributes
@@ -385,7 +385,7 @@ schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeStatus:
 
 
 schema DlpCnrmCloudGoogleComV1beta1DLPStoredInfoTypeStatusConditionsItems0:
-    """
+    r"""
     dlp cnrm cloud google com v1beta1 d l p stored info type status conditions items0
 
     Attributes

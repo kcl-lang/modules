@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema StorageHMACKey:
-    """
+    r"""
     storage cnrm cloud google com v1alpha1 storage h m a c key
 
     Attributes
@@ -36,7 +36,7 @@ schema StorageHMACKey:
 
 
 schema StorageCnrmCloudGoogleComV1alpha1StorageHMACKeySpec:
-    """
+    r"""
     storage cnrm cloud google com v1alpha1 storage h m a c key spec
 
     Attributes
@@ -62,7 +62,7 @@ schema StorageCnrmCloudGoogleComV1alpha1StorageHMACKeySpec:
 
 
 schema StorageCnrmCloudGoogleComV1alpha1StorageHMACKeySpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -84,7 +84,7 @@ schema StorageCnrmCloudGoogleComV1alpha1StorageHMACKeySpecProjectRef:
 
 
 schema StorageCnrmCloudGoogleComV1alpha1StorageHMACKeyStatus:
-    """
+    r"""
     storage cnrm cloud google com v1alpha1 storage h m a c key status
 
     Attributes
@@ -118,7 +118,7 @@ schema StorageCnrmCloudGoogleComV1alpha1StorageHMACKeyStatus:
 
 
 schema StorageCnrmCloudGoogleComV1alpha1StorageHMACKeyStatusConditionsItems0:
-    """
+    r"""
     storage cnrm cloud google com v1alpha1 storage h m a c key status conditions items0
 
     Attributes

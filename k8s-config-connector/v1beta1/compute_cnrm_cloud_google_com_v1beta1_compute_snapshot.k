@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeSnapshot:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute snapshot
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeSnapshot:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute snapshot spec
 
     Attributes
@@ -83,7 +83,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSnapshotEncryptionKey:
-    """
+    r"""
     Immutable. Encrypts the snapshot using a customer-supplied encryption key.
 
     After you encrypt a snapshot using a customer-supplied key, you must
@@ -122,7 +122,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSnapshotEncryptionKey:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSnapshotEncryptionKeyKmsKeyRef:
-    """
+    r"""
     The encryption key that is stored in Google Cloud KMS.
 
     Attributes
@@ -144,7 +144,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSnapshotEncryptionKeyK
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSnapshotEncryptionKeyKmsKeyServiceAccountRef:
-    """
+    r"""
     The service account used for the encryption request for the given KMS key.
     If absent, the Compute Engine Service Agent service account is used.
 
@@ -167,7 +167,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSnapshotEncryptionKeyK
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSnapshotEncryptionKeyRawKey:
-    """
+    r"""
     Immutable. Specifies a 256-bit customer-supplied encryption key, encoded in
     RFC 4648 base64 to either encrypt or decrypt this resource.
 
@@ -186,7 +186,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSnapshotEncryptionKeyR
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSnapshotEncryptionKeyRawKeyValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -200,7 +200,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSnapshotEncryptionKeyR
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSnapshotEncryptionKeyRawKeyValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -218,7 +218,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSnapshotEncryptionKeyR
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSourceDiskEncryptionKey:
-    """
+    r"""
     Immutable. The customer-supplied encryption key of the source snapshot. Required
     if the source snapshot is protected by a customer-supplied encryption
     key.
@@ -238,7 +238,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSourceDiskEncryptionKe
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSourceDiskEncryptionKeyKmsKeyServiceAccountRef:
-    """
+    r"""
     The service account used for the encryption request for the given KMS key.
     If absent, the Compute Engine Service Agent service account is used.
 
@@ -261,7 +261,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSourceDiskEncryptionKe
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSourceDiskEncryptionKeyRawKey:
-    """
+    r"""
     Immutable. Specifies a 256-bit customer-supplied encryption key, encoded in
     RFC 4648 base64 to either encrypt or decrypt this resource.
 
@@ -280,7 +280,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSourceDiskEncryptionKe
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSourceDiskEncryptionKeyRawKeyValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -294,7 +294,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSourceDiskEncryptionKe
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSourceDiskEncryptionKeyRawKeyValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -312,7 +312,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSourceDiskEncryptionKe
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSourceDiskRef:
-    """
+    r"""
     A reference to the disk used to create this snapshot.
 
     Attributes
@@ -334,7 +334,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSourceDiskRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute snapshot status
 
     Attributes
@@ -386,7 +386,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute snapshot status conditions items0
 
     Attributes

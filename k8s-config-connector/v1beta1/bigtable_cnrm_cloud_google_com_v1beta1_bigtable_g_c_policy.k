@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BigtableGCPolicy:
-    """
+    r"""
     bigtable cnrm cloud google com v1beta1 bigtable g c policy
 
     Attributes
@@ -36,7 +36,7 @@ schema BigtableGCPolicy:
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableGCPolicySpec:
-    """
+    r"""
     bigtable cnrm cloud google com v1beta1 bigtable g c policy spec
 
     Attributes
@@ -80,7 +80,7 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableGCPolicySpec:
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableGCPolicySpecInstanceRef:
-    """
+    r"""
     The name of the Bigtable instance.
 
     Attributes
@@ -102,7 +102,7 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableGCPolicySpecInstanceRef:
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableGCPolicySpecMaxAgeItems0:
-    """
+    r"""
     bigtable cnrm cloud google com v1beta1 bigtable g c policy spec max age items0
 
     Attributes
@@ -120,7 +120,7 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableGCPolicySpecMaxAgeItems0:
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableGCPolicySpecMaxVersionItems0:
-    """
+    r"""
     bigtable cnrm cloud google com v1beta1 bigtable g c policy spec max version items0
 
     Attributes
@@ -134,7 +134,7 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableGCPolicySpecMaxVersionItems0:
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableGCPolicySpecTableRef:
-    """
+    r"""
     The name of the table.
 
     Attributes
@@ -156,7 +156,7 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableGCPolicySpecTableRef:
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableGCPolicyStatus:
-    """
+    r"""
     bigtable cnrm cloud google com v1beta1 bigtable g c policy status
 
     Attributes
@@ -174,7 +174,7 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableGCPolicyStatus:
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableGCPolicyStatusConditionsItems0:
-    """
+    r"""
     bigtable cnrm cloud google com v1beta1 bigtable g c policy status conditions items0
 
     Attributes

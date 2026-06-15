@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema GKEHubFeatureMembership:
-    """
-    gkehub cnrm cloud google com v1beta1 g k e hub feature membership
+    r"""
+    GKEHubFeatureMembership is the Schema for the gkehub API
 
     Attributes
     ----------
@@ -36,7 +36,7 @@ schema GKEHubFeatureMembership:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpec:
-    """
+    r"""
     gkehub cnrm cloud google com v1beta1 g k e hub feature membership spec
 
     Attributes
@@ -47,10 +47,14 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpec:
         feature ref
     location : str, default is Undefined, required
         Immutable. The location of the feature
+    membershipLocation : str, default is Undefined, optional
+        Immutable. The location of the membership
     membershipRef : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecMembershipRef, default is Undefined, required
         membership ref
     mesh : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecMesh, default is Undefined, optional
         mesh
+    policycontroller : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontroller, default is Undefined, optional
+        policycontroller
     projectRef : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecProjectRef, default is Undefined, required
         project ref
     """
@@ -62,15 +66,19 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpec:
 
     location: str
 
+    membershipLocation?: str
+
     membershipRef: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecMembershipRef
 
     mesh?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecMesh
+
+    policycontroller?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontroller
 
     projectRef: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecProjectRef
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagement:
-    """
+    r"""
     Config Management-specific spec.
 
     Attributes
@@ -81,6 +89,8 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagemen
         config sync
     hierarchyController : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagementHierarchyController, default is Undefined, optional
         hierarchy controller
+    management : str, default is Undefined, optional
+        Optional. Whether to automatically manage the configmanagement Feature. There are 3 accepted values. MANAGEMENT_UNSPECIFIED means that the mamangement mode is unspecified. MANAGEMENT_AUTOMATIC means that Google manages the Feature for the cluster. MANAGEMENT_MANUAL means that users should manage the Feature for the cluster.
     policyController : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagementPolicyController, default is Undefined, optional
         policy controller
     version : str, default is Undefined, optional
@@ -94,14 +104,16 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagemen
 
     hierarchyController?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagementHierarchyController
 
+    management?: str
+
     policyController?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagementPolicyController
 
     version?: str
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagementBinauthz:
-    """
-    Binauthz configuration for the cluster.
+    r"""
+    **DEPRECATED** Binauthz configuration for the cluster. This field will be ignored and should not be set.
 
     Attributes
     ----------
@@ -114,23 +126,29 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagemen
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagementConfigSync:
-    """
+    r"""
     Config Sync configuration for the cluster.
 
     Attributes
     ----------
     git : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagementConfigSyncGit, default is Undefined, optional
         git
+    metricsGcpServiceAccountRef : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagementConfigSyncMetricsGcpServiceAccountRef, default is Undefined, optional
+        metrics gcp service account ref
     oci : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagementConfigSyncOci, default is Undefined, optional
         oci
     preventDrift : bool, default is Undefined, optional
         Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
     sourceFormat : str, default is Undefined, optional
         Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
+    stopSyncing : bool, default is Undefined, optional
+        Set to true to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync auto-upgrades or on Config Sync version 1.20.0 or later. Defaults: false.
     """
 
 
     git?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagementConfigSyncGit
+
+    metricsGcpServiceAccountRef?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagementConfigSyncMetricsGcpServiceAccountRef
 
     oci?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagementConfigSyncOci
 
@@ -138,9 +156,11 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagemen
 
     sourceFormat?: str
 
+    stopSyncing?: bool
+
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagementConfigSyncGit:
-    """
+    r"""
     gkehub cnrm cloud google com v1beta1 g k e hub feature membership spec configmanagement config sync git
 
     Attributes
@@ -182,15 +202,35 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagemen
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagementConfigSyncGitGcpServiceAccountRef:
-    """
+    r"""
     gkehub cnrm cloud google com v1beta1 g k e hub feature membership spec configmanagement config sync git gcp service account ref
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
+        The `email` field of an `IAMServiceAccount` resource.
+    name : str, default is Undefined, optional
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    namespace : str, default is Undefined, optional
+        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+    """
 
-        Allowed value: The `email` field of an `IAMServiceAccount` resource.
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagementConfigSyncMetricsGcpServiceAccountRef:
+    r"""
+    gkehub cnrm cloud google com v1beta1 g k e hub feature membership spec configmanagement config sync metrics gcp service account ref
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA. Allowed value: The `email` field of an `IAMServiceAccount` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -206,7 +246,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagemen
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagementConfigSyncOci:
-    """
+    r"""
     gkehub cnrm cloud google com v1beta1 g k e hub feature membership spec configmanagement config sync oci
 
     Attributes
@@ -236,15 +276,13 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagemen
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagementConfigSyncOciGcpServiceAccountRef:
-    """
+    r"""
     gkehub cnrm cloud google com v1beta1 g k e hub feature membership spec configmanagement config sync oci gcp service account ref
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The GCP Service Account Email used for auth when secret_type is gcpserviceaccount. 
-
-        Allowed value: The `email` field of an `IAMServiceAccount` resource.
+        The `email` field of an `IAMServiceAccount` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -260,8 +298,8 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagemen
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagementHierarchyController:
-    """
-    Hierarchy Controller configuration for the cluster.
+    r"""
+    Hierarchy Controller is no longer available. Use https://github.com/kubernetes-sigs/hierarchical-namespaces instead.
 
     Attributes
     ----------
@@ -282,8 +320,8 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagemen
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagementPolicyController:
-    """
-    Policy Controller configuration for the cluster.
+    r"""
+    **DEPRECATED** Configuring Policy Controller through the configmanagement feature is no longer recommended. Use the policycontroller feature instead.
 
     Attributes
     ----------
@@ -324,13 +362,13 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagemen
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagementPolicyControllerMonitoring:
-    """
+    r"""
     Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]. Default: ["cloudmonitoring", "prometheus"]
 
     Attributes
     ----------
     backends : [str], default is Undefined, optional
-         Specifies the list of backends Policy Controller will export to. Specifying an empty value `[]` disables metrics export.
+        Specifies the list of backends Policy Controller will export to. Specifying an empty value `[]` disables metrics export.
     """
 
 
@@ -338,15 +376,13 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecConfigmanagemen
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecFeatureRef:
-    """
+    r"""
     Immutable.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The name of the feature
-
-        Allowed value: The Google Cloud resource name of a `GKEHubFeature` resource (format: `projects/{{project}}/locations/{{location}}/features/{{name}}`).
+        The name of the feature. Allowed value: The Google Cloud resource name of a `GKEHubFeature` resource (format: `projects/{{project}}/locations/{{location}}/features/{{name}}`).
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -362,15 +398,13 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecFeatureRef:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecMembershipRef:
-    """
+    r"""
     Immutable.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The name of the membership
-
-        Allowed value: The Google Cloud resource name of a `GKEHubMembership` resource (format: `projects/{{project}}/locations/{{location}}/memberships/{{name}}`).
+        The name of the membership. Allowed value: The Google Cloud resource name of a `GKEHubMembership` resource (format: `projects/{{project}}/locations/{{location}}/memberships/{{name}}`).
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -386,7 +420,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecMembershipRef:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecMesh:
-    """
+    r"""
     Manage Mesh Features
 
     Attributes
@@ -403,16 +437,464 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecMesh:
     management?: str
 
 
-schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecProjectRef:
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontroller:
+    r"""
+    Policy Controller-specific spec.
+
+    Attributes
+    ----------
+    policyControllerHubConfig : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfig, default is Undefined, optional
+        policy controller hub config
+    version : str, default is Undefined, optional
+        Optional. Version of Policy Controller to install. Defaults to the latest version.
     """
+
+
+    policyControllerHubConfig?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfig
+
+    version?: str
+
+
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfig:
+    r"""
+    Policy Controller configuration for the cluster.
+
+    Attributes
+    ----------
+    auditIntervalSeconds : int, default is Undefined, optional
+        Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+    constraintViolationLimit : int, default is Undefined, optional
+        The maximum number of audit violations to be stored in a constraint. If not set, the internal default of 20 will be used.
+    deploymentConfigs : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigs, default is Undefined, optional
+        deployment configs
+    exemptableNamespaces : [str], default is Undefined, optional
+        The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+    installSpec : str, default is Undefined, optional
+        Configures the mode of the Policy Controller installation. Possible values: INSTALL_SPEC_UNSPECIFIED, INSTALL_SPEC_NOT_INSTALLED, INSTALL_SPEC_ENABLED, INSTALL_SPEC_SUSPENDED, INSTALL_SPEC_DETACHED
+    logDeniesEnabled : bool, default is Undefined, optional
+        Logs all denies and dry run failures.
+    monitoring : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigMonitoring, default is Undefined, optional
+        monitoring
+    mutationEnabled : bool, default is Undefined, optional
+        Enables the ability to mutate resources using Policy Controller.
+    policyContent : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigPolicyContent, default is Undefined, optional
+        policy content
+    referentialRulesEnabled : bool, default is Undefined, optional
+        Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+    """
+
+
+    auditIntervalSeconds?: int
+
+    constraintViolationLimit?: int
+
+    deploymentConfigs?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigs
+
+    exemptableNamespaces?: [str]
+
+    installSpec?: str
+
+    logDeniesEnabled?: bool
+
+    monitoring?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigMonitoring
+
+    mutationEnabled?: bool
+
+    policyContent?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigPolicyContent
+
+    referentialRulesEnabled?: bool
+
+
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigs:
+    r"""
+    Map of deployment configs to deployments (“admission”, “audit”, “mutation”).
+
+    Attributes
+    ----------
+    admission : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAdmission, default is Undefined, optional
+        admission
+    audit : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAudit, default is Undefined, optional
+        audit
+    mutation : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsMutation, default is Undefined, optional
+        mutation
+    """
+
+
+    admission?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAdmission
+
+    audit?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAudit
+
+    mutation?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsMutation
+
+
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAdmission:
+    r"""
+    gkehub cnrm cloud google com v1beta1 g k e hub feature membership spec policycontroller policy controller hub config deployment configs admission
+
+    Attributes
+    ----------
+    containerResources : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAdmissionContainerResources, default is Undefined, optional
+        container resources
+    podAffinity : str, default is Undefined, optional
+        Pod affinity configuration.
+    podTolerations : [GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAdmissionPodTolerationsItems0], default is Undefined, optional
+        Pod tolerations of node taints.
+    replicaCount : int, default is Undefined, optional
+        Pod replica count.
+    """
+
+
+    containerResources?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAdmissionContainerResources
+
+    podAffinity?: str
+
+    podTolerations?: [GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAdmissionPodTolerationsItems0]
+
+    replicaCount?: int
+
+
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAdmissionContainerResources:
+    r"""
+    Container resource requirements.
+
+    Attributes
+    ----------
+    limits : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAdmissionContainerResourcesLimits, default is Undefined, optional
+        limits
+    requests : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAdmissionContainerResourcesRequests, default is Undefined, optional
+        requests
+    """
+
+
+    limits?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAdmissionContainerResourcesLimits
+
+    requests?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAdmissionContainerResourcesRequests
+
+
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAdmissionContainerResourcesLimits:
+    r"""
+    Limits describes the maximum amount of compute resources allowed for use by the running container.
+
+    Attributes
+    ----------
+    cpu : str, default is Undefined, optional
+        CPU requirement expressed in Kubernetes resource units.
+    memory : str, default is Undefined, optional
+        Memory requirement expressed in Kubernetes resource units.
+    """
+
+
+    cpu?: str
+
+    memory?: str
+
+
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAdmissionContainerResourcesRequests:
+    r"""
+    Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+
+    Attributes
+    ----------
+    cpu : str, default is Undefined, optional
+        CPU requirement expressed in Kubernetes resource units.
+    memory : str, default is Undefined, optional
+        Memory requirement expressed in Kubernetes resource units.
+    """
+
+
+    cpu?: str
+
+    memory?: str
+
+
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAdmissionPodTolerationsItems0:
+    r"""
+    gkehub cnrm cloud google com v1beta1 g k e hub feature membership spec policycontroller policy controller hub config deployment configs admission pod tolerations items0
+
+    Attributes
+    ----------
+    effect : str, default is Undefined, optional
+        Matches a taint effect.
+    key : str, default is Undefined, optional
+        Matches a taint key (not necessarily unique).
+    operator : str, default is Undefined, optional
+        Matches a taint operator.
+    value : str, default is Undefined, optional
+        Matches a taint value.
+    """
+
+
+    effect?: str
+
+    key?: str
+
+    operator?: str
+
+    value?: str
+
+
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAudit:
+    r"""
+    gkehub cnrm cloud google com v1beta1 g k e hub feature membership spec policycontroller policy controller hub config deployment configs audit
+
+    Attributes
+    ----------
+    containerResources : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAuditContainerResources, default is Undefined, optional
+        container resources
+    podAffinity : str, default is Undefined, optional
+        Pod affinity configuration.
+    podTolerations : [GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAuditPodTolerationsItems0], default is Undefined, optional
+        Pod tolerations of node taints.
+    replicaCount : int, default is Undefined, optional
+        Pod replica count.
+    """
+
+
+    containerResources?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAuditContainerResources
+
+    podAffinity?: str
+
+    podTolerations?: [GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAuditPodTolerationsItems0]
+
+    replicaCount?: int
+
+
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAuditContainerResources:
+    r"""
+    Container resource requirements.
+
+    Attributes
+    ----------
+    limits : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAuditContainerResourcesLimits, default is Undefined, optional
+        limits
+    requests : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAuditContainerResourcesRequests, default is Undefined, optional
+        requests
+    """
+
+
+    limits?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAuditContainerResourcesLimits
+
+    requests?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAuditContainerResourcesRequests
+
+
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAuditContainerResourcesLimits:
+    r"""
+    Limits describes the maximum amount of compute resources allowed for use by the running container.
+
+    Attributes
+    ----------
+    cpu : str, default is Undefined, optional
+        CPU requirement expressed in Kubernetes resource units.
+    memory : str, default is Undefined, optional
+        Memory requirement expressed in Kubernetes resource units.
+    """
+
+
+    cpu?: str
+
+    memory?: str
+
+
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAuditContainerResourcesRequests:
+    r"""
+    Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+
+    Attributes
+    ----------
+    cpu : str, default is Undefined, optional
+        CPU requirement expressed in Kubernetes resource units.
+    memory : str, default is Undefined, optional
+        Memory requirement expressed in Kubernetes resource units.
+    """
+
+
+    cpu?: str
+
+    memory?: str
+
+
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsAuditPodTolerationsItems0:
+    r"""
+    gkehub cnrm cloud google com v1beta1 g k e hub feature membership spec policycontroller policy controller hub config deployment configs audit pod tolerations items0
+
+    Attributes
+    ----------
+    effect : str, default is Undefined, optional
+        Matches a taint effect.
+    key : str, default is Undefined, optional
+        Matches a taint key (not necessarily unique).
+    operator : str, default is Undefined, optional
+        Matches a taint operator.
+    value : str, default is Undefined, optional
+        Matches a taint value.
+    """
+
+
+    effect?: str
+
+    key?: str
+
+    operator?: str
+
+    value?: str
+
+
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsMutation:
+    r"""
+    gkehub cnrm cloud google com v1beta1 g k e hub feature membership spec policycontroller policy controller hub config deployment configs mutation
+
+    Attributes
+    ----------
+    containerResources : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsMutationContainerResources, default is Undefined, optional
+        container resources
+    podAffinity : str, default is Undefined, optional
+        Pod affinity configuration.
+    podTolerations : [GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsMutationPodTolerationsItems0], default is Undefined, optional
+        Pod tolerations of node taints.
+    replicaCount : int, default is Undefined, optional
+        Pod replica count.
+    """
+
+
+    containerResources?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsMutationContainerResources
+
+    podAffinity?: str
+
+    podTolerations?: [GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsMutationPodTolerationsItems0]
+
+    replicaCount?: int
+
+
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsMutationContainerResources:
+    r"""
+    Container resource requirements.
+
+    Attributes
+    ----------
+    limits : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsMutationContainerResourcesLimits, default is Undefined, optional
+        limits
+    requests : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsMutationContainerResourcesRequests, default is Undefined, optional
+        requests
+    """
+
+
+    limits?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsMutationContainerResourcesLimits
+
+    requests?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsMutationContainerResourcesRequests
+
+
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsMutationContainerResourcesLimits:
+    r"""
+    Limits describes the maximum amount of compute resources allowed for use by the running container.
+
+    Attributes
+    ----------
+    cpu : str, default is Undefined, optional
+        CPU requirement expressed in Kubernetes resource units.
+    memory : str, default is Undefined, optional
+        Memory requirement expressed in Kubernetes resource units.
+    """
+
+
+    cpu?: str
+
+    memory?: str
+
+
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsMutationContainerResourcesRequests:
+    r"""
+    Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+
+    Attributes
+    ----------
+    cpu : str, default is Undefined, optional
+        CPU requirement expressed in Kubernetes resource units.
+    memory : str, default is Undefined, optional
+        Memory requirement expressed in Kubernetes resource units.
+    """
+
+
+    cpu?: str
+
+    memory?: str
+
+
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigDeploymentConfigsMutationPodTolerationsItems0:
+    r"""
+    gkehub cnrm cloud google com v1beta1 g k e hub feature membership spec policycontroller policy controller hub config deployment configs mutation pod tolerations items0
+
+    Attributes
+    ----------
+    effect : str, default is Undefined, optional
+        Matches a taint effect.
+    key : str, default is Undefined, optional
+        Matches a taint key (not necessarily unique).
+    operator : str, default is Undefined, optional
+        Matches a taint operator.
+    value : str, default is Undefined, optional
+        Matches a taint value.
+    """
+
+
+    effect?: str
+
+    key?: str
+
+    operator?: str
+
+    value?: str
+
+
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigMonitoring:
+    r"""
+    Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]. Default: ["cloudmonitoring", "prometheus"]
+
+    Attributes
+    ----------
+    backends : [str], default is Undefined, optional
+        Specifies the list of backends Policy Controller will export to. Specifying an empty value `[]` disables metrics export.
+    """
+
+
+    backends?: [str]
+
+
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigPolicyContent:
+    r"""
+    Specifies the desired policy content on the cluster.
+
+    Attributes
+    ----------
+    templateLibrary : GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary, default is Undefined, optional
+        template library
+    """
+
+
+    templateLibrary?: GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary
+
+
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary:
+    r"""
+    Configures the installation of the Template Library.
+
+    Attributes
+    ----------
+    installation : str, default is Undefined, optional
+        Configures the manner in which the template library is installed on the cluster. Possible values: INSTALLATION_UNSPECIFIED, NOT_INSTALLED, ALL
+    """
+
+
+    installation?: str
+
+
+schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecProjectRef:
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The project of the feature
-
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The project of the feature. Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -428,13 +910,13 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipSpecProjectRef:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipStatus:
-    """
+    r"""
     gkehub cnrm cloud google com v1beta1 g k e hub feature membership status
 
     Attributes
     ----------
     conditions : [GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the GKEHubFeatureMembership's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """
@@ -446,7 +928,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipStatus:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubFeatureMembershipStatusConditionsItems0:
-    """
+    r"""
     gkehub cnrm cloud google com v1beta1 g k e hub feature membership status conditions items0
 
     Attributes

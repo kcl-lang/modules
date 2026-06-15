@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DialogflowIntent:
-    """
+    r"""
     dialogflow cnrm cloud google com v1alpha1 dialogflow intent
 
     Attributes
@@ -36,7 +36,7 @@ schema DialogflowIntent:
 
 
 schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowIntentSpec:
-    """
+    r"""
     dialogflow cnrm cloud google com v1alpha1 dialogflow intent spec
 
     Attributes
@@ -112,7 +112,7 @@ schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowIntentSpec:
 
 
 schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowIntentSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -134,7 +134,7 @@ schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowIntentSpecProjectRef:
 
 
 schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowIntentStatus:
-    """
+    r"""
     dialogflow cnrm cloud google com v1alpha1 dialogflow intent status
 
     Attributes
@@ -168,7 +168,7 @@ schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowIntentStatus:
 
 
 schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowIntentStatusConditionsItems0:
-    """
+    r"""
     dialogflow cnrm cloud google com v1alpha1 dialogflow intent status conditions items0
 
     Attributes
@@ -198,7 +198,7 @@ schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowIntentStatusConditionsItems
 
 
 schema DialogflowCnrmCloudGoogleComV1alpha1DialogflowIntentStatusFollowupIntentInfoItems0:
-    """
+    r"""
     dialogflow cnrm cloud google com v1alpha1 dialogflow intent status followup intent info items0
 
     Attributes

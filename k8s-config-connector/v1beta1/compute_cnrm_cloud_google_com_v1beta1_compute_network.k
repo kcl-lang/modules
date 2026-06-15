@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeNetwork:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute network
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeNetwork:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute network spec
 
     Attributes
@@ -55,7 +55,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkSpec:
         Immutable. An optional description of this resource. The resource must be
         recreated to modify this field.
     enableUlaInternalIpv6 : bool, default is Undefined, optional
-        Immutable. Enable ULA internal ipv6 on this network. Enabling this feature will assign
+        Enable ULA internal ipv6 on this network. Enabling this feature will assign
         a /48 from google defined ULA prefix fd20::/20.
     internalIpv6Range : str, default is Undefined, optional
         Immutable. When enabling ula internal ipv6, caller optionally can specify the /48 range
@@ -102,7 +102,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute network status
 
     Attributes
@@ -129,7 +129,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute network status conditions items0
 
     Attributes

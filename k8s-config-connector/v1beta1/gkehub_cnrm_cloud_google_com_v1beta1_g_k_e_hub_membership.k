@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema GKEHubMembership:
-    """
+    r"""
     gkehub cnrm cloud google com v1beta1 g k e hub membership
 
     Attributes
@@ -36,7 +36,7 @@ schema GKEHubMembership:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipSpec:
-    """
+    r"""
     gkehub cnrm cloud google com v1beta1 g k e hub membership spec
 
     Attributes
@@ -74,7 +74,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipSpec:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipSpecAuthority:
-    """
+    r"""
     Optional. How to identify workloads from this Membership. See the documentation on Workload Identity for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 
     Attributes
@@ -88,7 +88,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipSpecAuthority:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipSpecEndpoint:
-    """
+    r"""
     Optional. Endpoint information to reach this member.
 
     Attributes
@@ -106,7 +106,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipSpecEndpoint:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipSpecEndpointGkeCluster:
-    """
+    r"""
     Optional. GKE-specific information. Only present if this Membership is a GKE cluster.
 
     Attributes
@@ -120,7 +120,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipSpecEndpointGkeCluster:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipSpecEndpointGkeClusterResourceRef:
-    """
+    r"""
     gkehub cnrm cloud google com v1beta1 g k e hub membership spec endpoint gke cluster resource ref
 
     Attributes
@@ -144,7 +144,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipSpecEndpointGkeClusterReso
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipSpecEndpointKubernetesResource:
-    """
+    r"""
     Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
 
     Attributes
@@ -162,7 +162,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipSpecEndpointKubernetesReso
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipSpecEndpointKubernetesResourceResourceOptions:
-    """
+    r"""
     Optional. Options for Kubernetes resource generation.
 
     Attributes
@@ -180,7 +180,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipSpecEndpointKubernetesReso
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipStatus:
-    """
+    r"""
     gkehub cnrm cloud google com v1beta1 g k e hub membership status
 
     Attributes
@@ -230,7 +230,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipStatus:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipStatusAuthority:
-    """
+    r"""
     gkehub cnrm cloud google com v1beta1 g k e hub membership status authority
 
     Attributes
@@ -248,7 +248,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipStatusAuthority:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipStatusConditionsItems0:
-    """
+    r"""
     gkehub cnrm cloud google com v1beta1 g k e hub membership status conditions items0
 
     Attributes
@@ -278,7 +278,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipStatusConditionsItems0:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipStatusEndpoint:
-    """
+    r"""
     gkehub cnrm cloud google com v1beta1 g k e hub membership status endpoint
 
     Attributes
@@ -296,7 +296,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipStatusEndpoint:
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipStatusEndpointKubernetesMetadata:
-    """
+    r"""
     Output only. Useful Kubernetes-specific metadata.
 
     Attributes
@@ -330,7 +330,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipStatusEndpointKubernetesMe
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipStatusEndpointKubernetesResource:
-    """
+    r"""
     gkehub cnrm cloud google com v1beta1 g k e hub membership status endpoint kubernetes resource
 
     Attributes
@@ -348,7 +348,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipStatusEndpointKubernetesRe
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipStatusEndpointKubernetesResourceConnectResourcesItems0:
-    """
+    r"""
     gkehub cnrm cloud google com v1beta1 g k e hub membership status endpoint kubernetes resource connect resources items0
 
     Attributes
@@ -366,7 +366,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipStatusEndpointKubernetesRe
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipStatusEndpointKubernetesResourceMembershipResourcesItems0:
-    """
+    r"""
     gkehub cnrm cloud google com v1beta1 g k e hub membership status endpoint kubernetes resource membership resources items0
 
     Attributes
@@ -384,7 +384,7 @@ schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipStatusEndpointKubernetesRe
 
 
 schema GkehubCnrmCloudGoogleComV1beta1GKEHubMembershipStatusState:
-    """
+    r"""
     Output only. State of the Membership resource.
 
     Attributes

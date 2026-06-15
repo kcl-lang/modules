@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeURLMap:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeURLMap:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec
 
     Attributes
@@ -88,7 +88,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteAction:
-    """
+    r"""
     defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
     Only one of defaultRouteAction or defaultUrlRedirect must be set.
     URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction.
@@ -130,7 +130,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteAction:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionCorsPolicy:
-    """
+    r"""
     The specification for allowing client side cross-origin requests. Please see
     [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/).
 
@@ -178,7 +178,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionCorsPo
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionFaultInjectionPolicy:
-    """
+    r"""
     The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
     As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service.
     Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
@@ -200,7 +200,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionFaultI
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionFaultInjectionPolicyAbort:
-    """
+    r"""
     The specification for how client requests are aborted as part of fault injection.
 
     Attributes
@@ -220,7 +220,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionFaultI
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionFaultInjectionPolicyDelay:
-    """
+    r"""
     The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
 
     Attributes
@@ -239,7 +239,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionFaultI
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionFaultInjectionPolicyDelayFixedDelay:
-    """
+    r"""
     Specifies the value of the fixed delay interval.
 
     Attributes
@@ -259,7 +259,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionFaultI
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionRequestMirrorPolicy:
-    """
+    r"""
     Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
     The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
     Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
@@ -275,7 +275,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionReques
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionRequestMirrorPolicyBackendServiceRef:
-    """
+    r"""
     The backend service resource being mirrored to.
     The backend service configured for a mirroring policy must reference
     backends that are of the same type as the original backend service
@@ -302,7 +302,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionReques
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionRetryPolicy:
-    """
+    r"""
     Specifies the retry policy associated with this route.
 
     Attributes
@@ -335,7 +335,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionRetryP
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionRetryPolicyPerTryTimeout:
-    """
+    r"""
     Specifies a non-zero timeout per retry attempt.
 
     If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
@@ -358,7 +358,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionRetryP
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionTimeout:
-    """
+    r"""
     Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as end-of-stream) up until the response has been processed. Timeout includes all retries.
     If not specified, this field uses the largest timeout among all backend services associated with the route.
     Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -378,7 +378,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionTimeou
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionURLRewrite:
-    """
+    r"""
     The spec to modify the URL of the request, before forwarding the request to the matched service.
     urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers.
     Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
@@ -400,7 +400,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionURLRew
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionWeightedBackendServicesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec default route action weighted backend services items0
 
     Attributes
@@ -424,7 +424,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionWeight
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionWeightedBackendServicesItems0BackendServiceRef:
-    """
+    r"""
     The default backend service resource.
     Before forwarding the request to backendService, the loadbalancer
     applies any relevant headerActions specified as part of this
@@ -449,7 +449,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionWeight
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionWeightedBackendServicesItems0HeaderAction:
-    """
+    r"""
     Specifies changes to request and response headers that need to take effect for the selected backendService.
     headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
     headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
@@ -478,7 +478,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionWeight
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionWeightedBackendServicesItems0HeaderActionRequestHeadersToAddItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec default route action weighted backend services items0 header action request headers to add items0
 
     Attributes
@@ -501,7 +501,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionWeight
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionWeightedBackendServicesItems0HeaderActionResponseHeadersToAddItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec default route action weighted backend services items0 header action response headers to add items0
 
     Attributes
@@ -524,7 +524,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionWeight
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultService:
-    """
+    r"""
     The defaultService resource to which traffic is directed if none of
     the hostRules match.
     For the Global URL Map, it should be a reference to the backend
@@ -555,7 +555,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultService:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultServiceBackendBucketRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec default service backend bucket ref
 
     Attributes
@@ -577,7 +577,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultServiceBackendBuc
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultServiceBackendServiceRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec default service backend service ref
 
     Attributes
@@ -599,7 +599,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultServiceBackendSer
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultURLRedirect:
-    """
+    r"""
     When none of the specified hostRules match, the request is redirected to a URL specified
     by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
     defaultRouteAction must not be set.
@@ -662,7 +662,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultURLRedirect:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecHeaderAction:
-    """
+    r"""
     Specifies changes to request and response headers that need to take effect for
     the selected backendService. The headerAction specified here take effect after
     headerAction specified under pathMatcher.
@@ -693,7 +693,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecHeaderAction:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecHeaderActionRequestHeadersToAddItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec header action request headers to add items0
 
     Attributes
@@ -717,7 +717,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecHeaderActionRequestHeade
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecHeaderActionResponseHeadersToAddItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec header action response headers to add items0
 
     Attributes
@@ -741,7 +741,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecHeaderActionResponseHead
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecHostRuleItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec host rule items0
 
     Attributes
@@ -768,7 +768,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecHostRuleItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0
 
     Attributes
@@ -820,7 +820,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteAction:
-    """
+    r"""
     defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
     advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
     to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
@@ -870,7 +870,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionCorsPolicy:
-    """
+    r"""
     The specification for allowing client side cross-origin requests. Please see
     [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/).
 
@@ -918,7 +918,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionFaultInjectionPolicy:
-    """
+    r"""
     The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
     As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
     percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
@@ -941,7 +941,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionFaultInjectionPolicyAbort:
-    """
+    r"""
     The specification for how client requests are aborted as part of fault injection.
 
     Attributes
@@ -961,7 +961,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionFaultInjectionPolicyDelay:
-    """
+    r"""
     The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
 
     Attributes
@@ -980,7 +980,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionFaultInjectionPolicyDelayFixedDelay:
-    """
+    r"""
     Specifies the value of the fixed delay interval.
 
     Attributes
@@ -1000,7 +1000,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionRequestMirrorPolicy:
-    """
+    r"""
     Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
     Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
     the host / authority header is suffixed with -shadow.
@@ -1016,7 +1016,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionRequestMirrorPolicyBackendServiceRef:
-    """
+    r"""
     Required. The backend service resource being mirrored to.
 
     Attributes
@@ -1038,7 +1038,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionRetryPolicy:
-    """
+    r"""
     Specifies the retry policy associated with this route.
 
     Attributes
@@ -1075,7 +1075,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionRetryPolicyPerTryTimeout:
-    """
+    r"""
     Specifies a non-zero timeout per retry attempt.
 
     If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
@@ -1098,7 +1098,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionTimeout:
-    """
+    r"""
     Specifies the timeout for the selected route. Timeout is computed from the time the request has been
     fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
 
@@ -1121,7 +1121,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionURLRewrite:
-    """
+    r"""
     The spec to modify the URL of the request, prior to forwarding the request to the matched service.
 
     Attributes
@@ -1145,7 +1145,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionWeightedBackendServicesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 default route action weighted backend services items0
 
     Attributes
@@ -1174,7 +1174,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionWeightedBackendServicesItems0BackendServiceRef:
-    """
+    r"""
     The default backend service resource.
     Before forwarding the request to backendService, the loadbalancer
     applies any relevant headerActions specified as part of this
@@ -1199,7 +1199,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionWeightedBackendServicesItems0HeaderAction:
-    """
+    r"""
     Specifies changes to request and response headers that need to take effect for
     the selected backendService.
 
@@ -1231,7 +1231,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionWeightedBackendServicesItems0HeaderActionRequestHeadersToAddItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 default route action weighted backend services items0 header action request headers to add items0
 
     Attributes
@@ -1254,7 +1254,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionWeightedBackendServicesItems0HeaderActionResponseHeadersToAddItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 default route action weighted backend services items0 header action response headers to add items0
 
     Attributes
@@ -1277,7 +1277,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultService:
-    """
+    r"""
     The default service to use if none of the pathRules defined by this
     PathMatcher is matched by the URL's path portion.
     For the Global URL Map, it should be a reference to the backend
@@ -1300,7 +1300,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultServiceBackendBucketRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 default service backend bucket ref
 
     Attributes
@@ -1322,7 +1322,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultServiceBackendServiceRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 default service backend service ref
 
     Attributes
@@ -1344,7 +1344,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultURLRedirect:
-    """
+    r"""
     When none of the specified hostRules match, the request is redirected to a URL specified
     by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
     defaultRouteAction must not be set.
@@ -1407,7 +1407,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0HeaderAction:
-    """
+    r"""
     Specifies changes to request and response headers that need to take effect for
     the selected backendService. HeaderAction specified here are applied after the
     matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap.
@@ -1438,7 +1438,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0HeaderA
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0HeaderActionRequestHeadersToAddItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 header action request headers to add items0
 
     Attributes
@@ -1462,7 +1462,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0HeaderA
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0HeaderActionResponseHeadersToAddItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 header action response headers to add items0
 
     Attributes
@@ -1486,7 +1486,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0HeaderA
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 path rule items0
 
     Attributes
@@ -1515,7 +1515,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteAction:
-    """
+    r"""
     In response to a matching path, the load balancer performs advanced routing
     actions like URL rewrites, header transformations, etc. prior to forwarding the
     request to the selected backend. If routeAction specifies any
@@ -1565,7 +1565,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionCorsPolicy:
-    """
+    r"""
     The specification for allowing client side cross-origin requests. Please see W3C
     Recommendation for Cross Origin Resource Sharing.
 
@@ -1614,7 +1614,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionFaultInjectionPolicy:
-    """
+    r"""
     The specification for fault injection introduced into traffic to test the
     resiliency of clients to backend service failure. As part of fault injection,
     when clients send requests to a backend service, delays can be introduced by
@@ -1638,7 +1638,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionFaultInjectionPolicyAbort:
-    """
+    r"""
     The specification for how client requests are aborted as part of fault
     injection.
 
@@ -1660,7 +1660,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionFaultInjectionPolicyDelay:
-    """
+    r"""
     The specification for how client requests are delayed as part of fault
     injection, before being sent to a backend service.
 
@@ -1681,7 +1681,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionFaultInjectionPolicyDelayFixedDelay:
-    """
+    r"""
     Specifies the value of the fixed delay interval.
 
     Attributes
@@ -1702,7 +1702,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionRequestMirrorPolicy:
-    """
+    r"""
     Specifies the policy on how requests intended for the route's backends are
     shadowed to a separate mirrored backend service. Loadbalancer does not wait for
     responses from the shadow service. Prior to sending traffic to the shadow
@@ -1719,7 +1719,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionRequestMirrorPolicyBackendServiceRef:
-    """
+    r"""
     Required. The backend service resource being mirrored to.
 
     Attributes
@@ -1741,7 +1741,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionRetryPolicy:
-    """
+    r"""
     Specifies the retry policy associated with this route.
 
     Attributes
@@ -1784,7 +1784,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionRetryPolicyPerTryTimeout:
-    """
+    r"""
     Specifies a non-zero timeout per retry attempt.
 
     Attributes
@@ -1805,7 +1805,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionTimeout:
-    """
+    r"""
     Specifies the timeout for the selected route. Timeout is computed from the time
     the request is has been fully processed (i.e. end-of-stream) up until the
     response has been completely processed. Timeout includes all retries. If not
@@ -1829,7 +1829,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionURLRewrite:
-    """
+    r"""
     The spec to modify the URL of the request, prior to forwarding the request to
     the matched service.
 
@@ -1852,7 +1852,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionWeightedBackendServicesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 path rule items0 route action weighted backend services items0
 
     Attributes
@@ -1879,7 +1879,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionWeightedBackendServicesItems0BackendServiceRef:
-    """
+    r"""
     Required. The default backend service resource. Before forwarding
     the request to backendService, the loadbalancer applies any relevant
     headerActions specified as part of this backendServiceWeight.
@@ -1903,7 +1903,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionWeightedBackendServicesItems0HeaderAction:
-    """
+    r"""
     Specifies changes to request and response headers that need to take effect for
     the selected backendService. headerAction specified here take effect before
     headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
@@ -1934,7 +1934,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionWeightedBackendServicesItems0HeaderActionRequestHeadersToAddItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 path rule items0 route action weighted backend services items0 header action request headers to add items0
 
     Attributes
@@ -1958,7 +1958,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionWeightedBackendServicesItems0HeaderActionResponseHeadersToAddItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 path rule items0 route action weighted backend services items0 header action response headers to add items0
 
     Attributes
@@ -1982,7 +1982,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0Service:
-    """
+    r"""
     The backend service to which traffic is directed if this rule is
     matched.
     For the Global URL Map, it should be a reference to the backend
@@ -2012,7 +2012,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0ServiceBackendBucketRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 path rule items0 service backend bucket ref
 
     Attributes
@@ -2034,7 +2034,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0ServiceBackendServiceRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 path rule items0 service backend service ref
 
     Attributes
@@ -2056,7 +2056,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0URLRedirect:
-    """
+    r"""
     When a path pattern is matched, the request is redirected to a URL specified
     by urlRedirect. If urlRedirect is specified, service or routeAction must not
     be set.
@@ -2122,7 +2122,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 route rules items0
 
     Attributes
@@ -2176,7 +2176,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0HeaderAction:
-    """
+    r"""
     Specifies changes to request and response headers that need to take effect for
     the selected backendService. The headerAction specified here are applied before
     the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
@@ -2208,7 +2208,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0HeaderActionRequestHeadersToAddItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 route rules items0 header action request headers to add items0
 
     Attributes
@@ -2232,7 +2232,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0HeaderActionResponseHeadersToAddItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 route rules items0 header action response headers to add items0
 
     Attributes
@@ -2256,7 +2256,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0MatchRulesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 route rules items0 match rules items0
 
     Attributes
@@ -2330,7 +2330,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0MatchRulesItems0HeaderMatchesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 route rules items0 match rules items0 header matches items0
 
     Attributes
@@ -2389,7 +2389,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0MatchRulesItems0HeaderMatchesItems0RangeMatch:
-    """
+    r"""
     The header value must be an integer and its value must be in the range specified
     in rangeMatch. If the header does not contain an integer, number or is empty,
     the match fails. For example for a range [-5, 0]
@@ -2417,7 +2417,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0MatchRulesItems0MetadataFiltersItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 route rules items0 match rules items0 metadata filters items0
 
     Attributes
@@ -2443,7 +2443,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0MatchRulesItems0MetadataFiltersItems0FilterLabelsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 route rules items0 match rules items0 metadata filters items0 filter labels items0
 
     Attributes
@@ -2463,7 +2463,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0MatchRulesItems0QueryParameterMatchesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 route rules items0 match rules items0 query parameter matches items0
 
     Attributes
@@ -2497,7 +2497,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteAction:
-    """
+    r"""
     In response to a matching matchRule, the load balancer performs advanced routing
     actions like URL rewrites, header transformations, etc. prior to forwarding the
     request to the selected backend. If  routeAction specifies any
@@ -2547,7 +2547,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionCorsPolicy:
-    """
+    r"""
     The specification for allowing client side cross-origin requests. Please see W3C
     Recommendation for Cross Origin Resource Sharing.
 
@@ -2597,7 +2597,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionFaultInjectionPolicy:
-    """
+    r"""
     The specification for fault injection introduced into traffic to test the
     resiliency of clients to backend service failure. As part of fault injection,
     when clients send requests to a backend service, delays can be introduced by
@@ -2621,7 +2621,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionFaultInjectionPolicyAbort:
-    """
+    r"""
     The specification for how client requests are aborted as part of fault
     injection.
 
@@ -2643,7 +2643,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionFaultInjectionPolicyDelay:
-    """
+    r"""
     The specification for how client requests are delayed as part of fault
     injection, before being sent to a backend service.
 
@@ -2664,7 +2664,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionFaultInjectionPolicyDelayFixedDelay:
-    """
+    r"""
     Specifies the value of the fixed delay interval.
 
     Attributes
@@ -2685,7 +2685,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionRequestMirrorPolicy:
-    """
+    r"""
     Specifies the policy on how requests intended for the route's backends are
     shadowed to a separate mirrored backend service. Loadbalancer does not wait for
     responses from the shadow service. Prior to sending traffic to the shadow
@@ -2702,7 +2702,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionRequestMirrorPolicyBackendServiceRef:
-    """
+    r"""
     Required. The backend service resource being mirrored to.
 
     Attributes
@@ -2724,7 +2724,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionRetryPolicy:
-    """
+    r"""
     Specifies the retry policy associated with this route.
 
     Attributes
@@ -2767,7 +2767,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionRetryPolicyPerTryTimeout:
-    """
+    r"""
     Specifies a non-zero timeout per retry attempt.
 
     Attributes
@@ -2788,7 +2788,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionTimeout:
-    """
+    r"""
     Specifies the timeout for the selected route. Timeout is computed from the time
     the request is has been fully processed (i.e. end-of-stream) up until the
     response has been completely processed. Timeout includes all retries. If not
@@ -2812,7 +2812,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionURLRewrite:
-    """
+    r"""
     The spec to modify the URL of the request, prior to forwarding the request to
     the matched service.
 
@@ -2852,7 +2852,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionWeightedBackendServicesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 route rules items0 route action weighted backend services items0
 
     Attributes
@@ -2879,7 +2879,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionWeightedBackendServicesItems0BackendServiceRef:
-    """
+    r"""
     Required. The default backend service resource. Before forwarding
     the request to backendService, the loadbalancer applies any relevant
     headerActions specified as part of this backendServiceWeight.
@@ -2903,7 +2903,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionWeightedBackendServicesItems0HeaderAction:
-    """
+    r"""
     Specifies changes to request and response headers that need to take effect for
     the selected backendService. headerAction specified here take effect before
     headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
@@ -2934,7 +2934,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionWeightedBackendServicesItems0HeaderActionRequestHeadersToAddItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 route rules items0 route action weighted backend services items0 header action request headers to add items0
 
     Attributes
@@ -2958,7 +2958,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionWeightedBackendServicesItems0HeaderActionResponseHeadersToAddItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 route rules items0 route action weighted backend services items0 header action response headers to add items0
 
     Attributes
@@ -2982,7 +2982,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0URLRedirect:
-    """
+    r"""
     When this rule is matched, the request is redirected to a URL specified by
     urlRedirect. If urlRedirect is specified, service or routeAction must not be
     set.
@@ -3047,7 +3047,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecTestItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec test items0
 
     Attributes
@@ -3073,7 +3073,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecTestItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecTestItems0Service:
-    """
+    r"""
     The backend service resource that should be matched by this test.
     For the Global URL Map, it should be a reference to the backend
     service or backend bucket.
@@ -3095,7 +3095,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecTestItems0Service:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecTestItems0ServiceBackendBucketRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec test items0 service backend bucket ref
 
     Attributes
@@ -3117,7 +3117,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecTestItems0ServiceBackend
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecTestItems0ServiceBackendServiceRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map spec test items0 service backend service ref
 
     Attributes
@@ -3139,7 +3139,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecTestItems0ServiceBackend
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map status
 
     Attributes
@@ -3174,7 +3174,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute URL map status conditions items0
 
     Attributes

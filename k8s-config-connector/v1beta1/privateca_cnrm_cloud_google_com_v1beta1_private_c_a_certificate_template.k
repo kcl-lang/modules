@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema PrivateCACertificateTemplate:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate template
 
     Attributes
@@ -36,7 +36,7 @@ schema PrivateCACertificateTemplate:
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpec:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate template spec
 
     Attributes
@@ -74,7 +74,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpec:
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecIdentityConstraints:
-    """
+    r"""
     Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
 
     Attributes
@@ -96,7 +96,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecIdentit
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecIdentityConstraintsCelExpression:
-    """
+    r"""
     Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
 
     Attributes
@@ -122,7 +122,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecIdentit
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPassthroughExtensions:
-    """
+    r"""
     Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
 
     Attributes
@@ -140,7 +140,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPassthr
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPassthroughExtensionsAdditionalExtensionsItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate template spec passthrough extensions additional extensions items0
 
     Attributes
@@ -154,7 +154,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPassthr
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPredefinedValues:
-    """
+    r"""
     Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
 
     Attributes
@@ -184,7 +184,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPredefi
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPredefinedValuesAdditionalExtensionsItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate template spec predefined values additional extensions items0
 
     Attributes
@@ -206,7 +206,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPredefi
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPredefinedValuesAdditionalExtensionsItems0ObjectID:
-    """
+    r"""
     Required. The OID for this X.509 extension.
 
     Attributes
@@ -220,7 +220,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPredefi
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPredefinedValuesCaOptions:
-    """
+    r"""
     Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
 
     Attributes
@@ -238,7 +238,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPredefi
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPredefinedValuesKeyUsage:
-    """
+    r"""
     Optional. Indicates the intended use for keys that correspond to a certificate.
 
     Attributes
@@ -260,7 +260,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPredefi
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPredefinedValuesKeyUsageBaseKeyUsage:
-    """
+    r"""
     Describes high-level ways in which a key may be used.
 
     Attributes
@@ -306,7 +306,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPredefi
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPredefinedValuesKeyUsageExtendedKeyUsage:
-    """
+    r"""
     Detailed scenarios in which a key may be used.
 
     Attributes
@@ -340,7 +340,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPredefi
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPredefinedValuesKeyUsageUnknownExtendedKeyUsagesItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate template spec predefined values key usage unknown extended key usages items0
 
     Attributes
@@ -354,7 +354,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPredefi
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPredefinedValuesPolicyIdsItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate template spec predefined values policy ids items0
 
     Attributes
@@ -368,7 +368,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPredefi
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -392,7 +392,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecProject
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateStatus:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate template status
 
     Attributes
@@ -418,7 +418,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateStatus:
 
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateStatusConditionsItems0:
-    """
+    r"""
     privateca cnrm cloud google com v1beta1 private c a certificate template status conditions items0
 
     Attributes

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputePacketMirroring:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute packet mirroring
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputePacketMirroring:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute packet mirroring spec
 
     Attributes
@@ -86,7 +86,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecCollectorIlb:
-    """
+    r"""
     The Forwarding Rule resource of type `loadBalancingScheme=INTERNAL` that will be used as collector for mirrored traffic. The specified forwarding rule must have `isMirroringCollector` set to true.
 
     Attributes
@@ -100,7 +100,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecCollectorIlb:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecCollectorIlbURLRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute packet mirroring spec collector ilb URL ref
 
     Attributes
@@ -124,7 +124,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecCollectorIlbURL
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecFilter:
-    """
+    r"""
     Filter for mirrored traffic. If unspecified, all traffic is mirrored.
 
     Attributes
@@ -146,7 +146,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecFilter:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecMirroredResources:
-    """
+    r"""
     PacketMirroring mirroredResourceInfos. MirroredResourceInfo specifies a set of mirrored VM instances, subnetworks and/or tags for which traffic from/to all VM instances will be mirrored.
 
     Attributes
@@ -168,7 +168,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecMirroredResourc
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecMirroredResourcesInstancesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute packet mirroring spec mirrored resources instances items0
 
     Attributes
@@ -186,7 +186,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecMirroredResourc
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecMirroredResourcesInstancesItems0URLRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute packet mirroring spec mirrored resources instances items0 URL ref
 
     Attributes
@@ -210,7 +210,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecMirroredResourc
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecMirroredResourcesSubnetworksItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute packet mirroring spec mirrored resources subnetworks items0
 
     Attributes
@@ -228,7 +228,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecMirroredResourc
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecMirroredResourcesSubnetworksItems0URLRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -252,7 +252,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecMirroredResourc
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecNetwork:
-    """
+    r"""
     Immutable. Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in the given network. All mirrored subnetworks should belong to the given network.
 
     Attributes
@@ -266,7 +266,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecNetwork:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecNetworkURLRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -290,7 +290,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecNetworkURLRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -314,7 +314,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecProjectRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute packet mirroring status
 
     Attributes
@@ -352,7 +352,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringStatusCollectorIlb:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute packet mirroring status collector ilb
 
     Attributes
@@ -366,7 +366,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringStatusCollectorIlb:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute packet mirroring status conditions items0
 
     Attributes
@@ -396,7 +396,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringStatusConditionsIte
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringStatusNetwork:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute packet mirroring status network
 
     Attributes

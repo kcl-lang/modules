@@ -4,10 +4,11 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
 
 
 schema IAMPolicy:
-    """
+    r"""
     IAMPolicy is the Schema for the iampolicies API
 
     Attributes
@@ -37,7 +38,7 @@ schema IAMPolicy:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPolicySpec:
-    """
+    r"""
     IAMPolicySpec defines the desired state of IAMPolicy
 
     Attributes
@@ -59,7 +60,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMPolicySpec:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPolicySpecAuditConfigsItems0:
-    """
+    r"""
     Specifies the Cloud Audit Logs configuration for the IAM policy.
 
     Attributes
@@ -67,7 +68,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMPolicySpecAuditConfigsItems0:
     auditLogConfigs : [IamCnrmCloudGoogleComV1beta1IAMPolicySpecAuditConfigsItems0AuditLogConfigsItems0], default is Undefined, required
         Required. The configuration for logging of each type of permission.
     service : str, default is Undefined, required
-        Required. The service for which to enable Data Access audit logs. The special value 'allServices' covers all services. Note that if there are audit configs covering both 'allServices' and a specific service, then the union of the two audit configs is used for that service: the 'logTypes' specified in each 'auditLogConfig' are enabled, and the 'exemptedMembers' in each 'auditLogConfg' are exempted.
+        Required. The service for which to enable Data Access audit logs. The special value 'allServices' covers all services. Note that if there are audit configs covering both 'allServices' and a specific service, then the union of the two audit configs is used for that service: the 'logTypes' specified in each 'auditLogConfig' are enabled, and the 'exemptedMembers' in each 'auditLogConfig' are exempted.
     """
 
 
@@ -77,7 +78,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMPolicySpecAuditConfigsItems0:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPolicySpecAuditConfigsItems0AuditLogConfigsItems0:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m policy spec audit configs items0 audit log configs items0
 
     Attributes
@@ -95,11 +96,11 @@ schema IamCnrmCloudGoogleComV1beta1IAMPolicySpecAuditConfigsItems0AuditLogConfig
 
 
     check:
-        regex.match(str(logType), r"^(DATA_READ|DATA_WRITE|ADMIN_READ)$")
+        _regex_match(str(logType), r"^(DATA_READ|DATA_WRITE|ADMIN_READ)$")
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPolicySpecBindingsItems0:
-    """
+    r"""
     Specifies the members to bind to an IAM role.
 
     Attributes
@@ -121,11 +122,11 @@ schema IamCnrmCloudGoogleComV1beta1IAMPolicySpecBindingsItems0:
 
 
     check:
-        regex.match(str(role), r"^((projects|organizations)/[^/]+/)?roles/[\w_\.]+$")
+        _regex_match(str(role), r"^((projects|organizations)/[^/]+/)?roles/[\w_\.]+$")
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPolicySpecBindingsItems0Condition:
-    """
+    r"""
     Optional. The condition under which the binding applies.
 
     Attributes
@@ -147,17 +148,17 @@ schema IamCnrmCloudGoogleComV1beta1IAMPolicySpecBindingsItems0Condition:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPolicySpecResourceRef:
-    """
-    Immutable. Required. The GCP resource to set the IAM policy on.
+    r"""
+    Immutable. Required. The GCP resource to set the IAM policy on (e.g. organization, project...)
 
     Attributes
     ----------
     apiVersion : str, default is Undefined, optional
-        api version
+        APIVersion of the referenced resource
     external : str, default is Undefined, optional
-        external
+        The external name of the referenced resource
     kind : str, default is Undefined, required
-        kind
+        Kind of the referenced resource
     name : str, default is Undefined, optional
         name
     namespace : str, default is Undefined, optional
@@ -177,7 +178,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMPolicySpecResourceRef:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPolicyStatus:
-    """
+    r"""
     IAMPolicyStatus defines the observed state of IAMPolicy
 
     Attributes
@@ -195,7 +196,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMPolicyStatus:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMPolicyStatusConditionsItems0:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m policy status conditions items0
 
     Attributes

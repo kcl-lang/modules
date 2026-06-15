@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema KafkaRebalance:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka rebalance
 
     Attributes
@@ -36,7 +36,7 @@ schema KafkaRebalance:
 
 
 schema KafkaStrimziIoV1beta2KafkaRebalanceSpec:
-    """
+    r"""
     The specification of the Kafka rebalance.
 
     Attributes
@@ -60,7 +60,10 @@ schema KafkaStrimziIoV1beta2KafkaRebalanceSpec:
         * `full` mode runs the rebalancing across all the brokers in the cluster.
         * `add-brokers` mode can be used after scaling up the cluster to move some replicas to the newly added brokers.
         * `remove-brokers` mode can be used before scaling down the cluster to move replicas out of the brokers to be removed.
-
+        * `remove-disks` mode can be used to move data across the volumes within the same broker
+        .
+    moveReplicasOffVolumes : [KafkaStrimziIoV1beta2KafkaRebalanceSpecMoveReplicasOffVolumesItems0], default is Undefined, optional
+        List of brokers and their corresponding volumes from which replicas need to be moved.
     rebalanceDisk : bool, default is Undefined, optional
         Enables intra-broker disk balancing, which balances disk space utilization between disks on the same broker. Only applies to Kafka deployments that use JBOD storage with multiple disks. When enabled, inter-broker balancing is disabled. Default is false.
     replicaMovementStrategies : [str], default is Undefined, optional
@@ -84,7 +87,9 @@ schema KafkaStrimziIoV1beta2KafkaRebalanceSpec:
 
     goals?: [str]
 
-    mode?: "full" | "add-brokers" | "remove-brokers"
+    mode?: "full" | "add-brokers" | "remove-brokers" | "remove-disks"
+
+    moveReplicasOffVolumes?: [KafkaStrimziIoV1beta2KafkaRebalanceSpecMoveReplicasOffVolumesItems0]
 
     rebalanceDisk?: bool
 
@@ -96,14 +101,37 @@ schema KafkaStrimziIoV1beta2KafkaRebalanceSpec:
 
 
     check:
-        concurrentIntraBrokerPartitionMovements >= 0
-        concurrentLeaderMovements >= 0
-        concurrentPartitionMovementsPerBroker >= 0
-        replicationThrottle >= 0
+        concurrentIntraBrokerPartitionMovements >= 0 if concurrentIntraBrokerPartitionMovements not in [None, Undefined]
+        concurrentLeaderMovements >= 0 if concurrentLeaderMovements not in [None, Undefined]
+        concurrentPartitionMovementsPerBroker >= 0 if concurrentPartitionMovementsPerBroker not in [None, Undefined]
+        len(moveReplicasOffVolumes) >= 1 if moveReplicasOffVolumes
+        replicationThrottle >= 0 if replicationThrottle not in [None, Undefined]
+
+
+schema KafkaStrimziIoV1beta2KafkaRebalanceSpecMoveReplicasOffVolumesItems0:
+    r"""
+    kafka strimzi io v1beta2 kafka rebalance spec move replicas off volumes items0
+
+    Attributes
+    ----------
+    brokerId : int, default is Undefined, optional
+        ID of the broker that contains the disk from which you want to move the partition replicas.
+    volumeIds : [int], default is Undefined, optional
+        IDs of the disks from which the partition replicas need to be moved.
+    """
+
+
+    brokerId?: int
+
+    volumeIds?: [int]
+
+
+    check:
+        len(volumeIds) >= 1 if volumeIds
 
 
 schema KafkaStrimziIoV1beta2KafkaRebalanceStatus:
-    """
+    r"""
     The status of the Kafka rebalance.
 
     Attributes
@@ -114,6 +142,8 @@ schema KafkaStrimziIoV1beta2KafkaRebalanceStatus:
         The generation of the CRD that was last reconciled by the operator.
     optimizationResult : any, default is Undefined, optional
         A JSON object describing the optimization result.
+    progress : KafkaStrimziIoV1beta2KafkaRebalanceStatusProgress, default is Undefined, optional
+        progress
     sessionId : str, default is Undefined, optional
         The session identifier for requests to Cruise Control pertaining to this KafkaRebalance resource. This is used by the Kafka Rebalance operator to track the status of ongoing rebalancing operations.
     """
@@ -125,11 +155,13 @@ schema KafkaStrimziIoV1beta2KafkaRebalanceStatus:
 
     optimizationResult?: any
 
+    progress?: KafkaStrimziIoV1beta2KafkaRebalanceStatusProgress
+
     sessionId?: str
 
 
 schema KafkaStrimziIoV1beta2KafkaRebalanceStatusConditionsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka rebalance status conditions items0
 
     Attributes
@@ -156,5 +188,19 @@ schema KafkaStrimziIoV1beta2KafkaRebalanceStatusConditionsItems0:
     status?: str
 
     $type?: str
+
+
+schema KafkaStrimziIoV1beta2KafkaRebalanceStatusProgress:
+    r"""
+    A reference to Config Map with the progress information.
+
+    Attributes
+    ----------
+    rebalanceProgressConfigMap : str, default is Undefined, optional
+        The name of the `ConfigMap` containing information related to the progress of a partition rebalance.
+    """
+
+
+    rebalanceProgressConfigMap?: str
 
 

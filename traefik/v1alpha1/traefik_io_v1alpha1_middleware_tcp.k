@@ -6,9 +6,9 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema MiddlewareTCP:
-    """
+    r"""
     MiddlewareTCP is the CRD implementation of a Traefik TCP middleware.
-    More info: https://doc.traefik.io/traefik/v3.0/middlewares/overview/
+    More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/tcp/middlewares/overview/
 
     Attributes
     ----------
@@ -33,7 +33,7 @@ schema MiddlewareTCP:
 
 
 schema TraefikIoV1alpha1MiddlewareTCPSpec:
-    """
+    r"""
     MiddlewareTCPSpec defines the desired state of a MiddlewareTCP.
 
     Attributes
@@ -55,10 +55,10 @@ schema TraefikIoV1alpha1MiddlewareTCPSpec:
 
 
 schema TraefikIoV1alpha1MiddlewareTCPSpecIPAllowList:
-    """
+    r"""
     IPAllowList defines the IPAllowList middleware configuration.
     This middleware accepts/refuses connections based on the client IP.
-    More info: https://doc.traefik.io/traefik/v3.0/middlewares/tcp/ipallowlist/
+    More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/tcp/middlewares/ipallowlist/
 
     Attributes
     ----------
@@ -71,11 +71,11 @@ schema TraefikIoV1alpha1MiddlewareTCPSpecIPAllowList:
 
 
 schema TraefikIoV1alpha1MiddlewareTCPSpecIPWhiteList:
-    """
+    r"""
     IPWhiteList defines the IPWhiteList middleware configuration.
     This middleware accepts/refuses connections based on the client IP.
     Deprecated: please use IPAllowList instead.
-    More info: https://doc.traefik.io/traefik/v3.0/middlewares/tcp/ipwhitelist/
+    More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/tcp/middlewares/ipwhitelist/
 
     Attributes
     ----------
@@ -88,7 +88,7 @@ schema TraefikIoV1alpha1MiddlewareTCPSpecIPWhiteList:
 
 
 schema TraefikIoV1alpha1MiddlewareTCPSpecInFlightConn:
-    """
+    r"""
     InFlightConn defines the InFlightConn middleware configuration.
 
     Attributes
@@ -100,5 +100,9 @@ schema TraefikIoV1alpha1MiddlewareTCPSpecInFlightConn:
 
 
     amount?: int
+
+
+    check:
+        amount >= 0 if amount not in [None, Undefined]
 
 

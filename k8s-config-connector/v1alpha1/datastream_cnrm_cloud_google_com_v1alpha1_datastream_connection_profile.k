@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DatastreamConnectionProfile:
-    """
-    datastream cnrm cloud google com v1alpha1 datastream connection profile
+    r"""
+    DatastreamConnectionProfile is the Schema for the DatastreamConnectionProfile API
 
     Attributes
     ----------
@@ -36,51 +36,55 @@ schema DatastreamConnectionProfile:
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpec:
-    """
-    datastream cnrm cloud google com v1alpha1 datastream connection profile spec
+    r"""
+    DatastreamConnectionProfileSpec defines the desired state of DatastreamConnectionProfile
 
     Attributes
     ----------
-    bigqueryProfile : any, default is Undefined, optional
-        BigQuery warehouse profile.
+    bigQueryProfile : any, default is Undefined, optional
+        BigQuery Connection Profile configuration.
     displayName : str, default is Undefined, required
-        Display name.
-    forwardSshConnectivity : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivity, default is Undefined, optional
-        forward Ssh connectivity
+        Required. Display name.
+    forwardSSHConnectivity : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivity, default is Undefined, optional
+        forward SSH connectivity
     gcsProfile : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecGcsProfile, default is Undefined, optional
         gcs profile
+    labels : {str:str}, default is Undefined, optional
+        Labels.
     location : str, default is Undefined, required
-        Immutable. The name of the location this connection profile is located in.
-    mysqlProfile : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfile, default is Undefined, optional
-        mysql profile
+        Immutable.
+    mySQLProfile : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMySQLProfile, default is Undefined, optional
+        my SQL profile
     oracleProfile : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfile, default is Undefined, optional
         oracle profile
-    postgresqlProfile : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecPostgresqlProfile, default is Undefined, optional
-        postgresql profile
     privateConnectivity : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecPrivateConnectivity, default is Undefined, optional
         private connectivity
     projectRef : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The connectionProfileId of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The DatastreamConnectionProfile name. If not given, the metadata.name will be used.
+    sqlServerProfile : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecSQLServerProfile, default is Undefined, optional
+        sql server profile
+    staticServiceIPConnectivity : any, default is Undefined, optional
+        Static Service IP connectivity.
     """
 
 
-    bigqueryProfile?: any
+    bigQueryProfile?: any
 
     displayName: str
 
-    forwardSshConnectivity?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivity
+    forwardSSHConnectivity?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivity
 
     gcsProfile?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecGcsProfile
 
+    labels?: {str:str}
+
     location: str
 
-    mysqlProfile?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfile
+    mySQLProfile?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMySQLProfile
 
     oracleProfile?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfile
-
-    postgresqlProfile?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecPostgresqlProfile
 
     privateConnectivity?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecPrivateConnectivity
 
@@ -88,145 +92,63 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpec:
 
     resourceID?: str
 
+    sqlServerProfile?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecSQLServerProfile
+
+    staticServiceIPConnectivity?: any
+
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivity:
-    """
+    r"""
     Forward SSH tunnel connectivity.
 
     Attributes
     ----------
     hostname : str, default is Undefined, required
-        Hostname for the SSH tunnel.
-    password : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivityPassword, default is Undefined, optional
-        password
+        Required. Hostname for the SSH tunnel.
     port : int, default is Undefined, optional
-        Port for the SSH tunnel.
-    privateKey : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivityPrivateKey, default is Undefined, optional
-        private key
-    username : str, default is Undefined, required
-        Username for the SSH tunnel.
+        Port for the SSH tunnel, default value is 22.
+    privateKey : str, default is Undefined, optional
+        Input only. SSH private key.
+    secretRef : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivitySecretRef, default is Undefined, required
+        secret ref
     """
 
 
     hostname: str
 
-    password?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivityPassword
-
     port?: int
 
-    privateKey?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivityPrivateKey
+    privateKey?: str
 
-    username: str
-
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivityPassword:
-    """
-    Immutable. SSH password.
-
-    Attributes
-    ----------
-    value : str, default is Undefined, optional
-        Value of the field. Cannot be used if 'valueFrom' is specified.
-    valueFrom : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivityPasswordValueFrom, default is Undefined, optional
-        value from
-    """
+    secretRef: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivitySecretRef
 
 
-    value?: str
-
-    valueFrom?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivityPasswordValueFrom
-
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivityPasswordValueFrom:
-    """
-    Source for the field's value. Cannot be used if 'value' is specified.
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivitySecretRef:
+    r"""
+    The Kubernetes Secret object that stores the "username" and "password" information for the SSH tunnel. The Secret type has to be `kubernetes.io/basic-auth`.
 
     Attributes
     ----------
-    secretKeyRef : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivityPasswordValueFromSecretKeyRef, default is Undefined, optional
-        secret key ref
-    """
-
-
-    secretKeyRef?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivityPasswordValueFromSecretKeyRef
-
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivityPasswordValueFromSecretKeyRef:
-    """
-    Reference to a value with the given key in the given Secret in the resource's namespace.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        Key that identifies the value to be extracted.
     name : str, default is Undefined, required
-        Name of the Secret to extract a value from.
+        The `metadata.name` field of a Kubernetes `Secret`
+    namespace : str, default is Undefined, optional
+        The `metadata.namespace` field of a Kubernetes `Secret`.
     """
 
-
-    key: str
 
     name: str
 
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivityPrivateKey:
-    """
-    Immutable. SSH private key.
-
-    Attributes
-    ----------
-    value : str, default is Undefined, optional
-        Value of the field. Cannot be used if 'valueFrom' is specified.
-    valueFrom : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivityPrivateKeyValueFrom, default is Undefined, optional
-        value from
-    """
-
-
-    value?: str
-
-    valueFrom?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivityPrivateKeyValueFrom
-
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivityPrivateKeyValueFrom:
-    """
-    Source for the field's value. Cannot be used if 'value' is specified.
-
-    Attributes
-    ----------
-    secretKeyRef : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivityPrivateKeyValueFromSecretKeyRef, default is Undefined, optional
-        secret key ref
-    """
-
-
-    secretKeyRef?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivityPrivateKeyValueFromSecretKeyRef
-
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecForwardSSHConnectivityPrivateKeyValueFromSecretKeyRef:
-    """
-    Reference to a value with the given key in the given Secret in the resource's namespace.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        Key that identifies the value to be extracted.
-    name : str, default is Undefined, required
-        Name of the Secret to extract a value from.
-    """
-
-
-    key: str
-
-    name: str
+    namespace?: str
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecGcsProfile:
-    """
-    Cloud Storage bucket profile.
+    r"""
+    Cloud Storage ConnectionProfile configuration.
 
     Attributes
     ----------
     bucket : str, default is Undefined, required
-        The Cloud Storage bucket name.
+        Required. The Cloud Storage bucket name.
     rootPath : str, default is Undefined, optional
         The root path inside the Cloud Storage bucket.
     """
@@ -237,294 +159,94 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecGcsPro
     rootPath?: str
 
 
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfile:
-    """
-    MySQL database profile.
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMySQLProfile:
+    r"""
+    MySQL ConnectionProfile configuration.
 
     Attributes
     ----------
     hostname : str, default is Undefined, required
-        Hostname for the MySQL connection.
-    password : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfilePassword, default is Undefined, required
-        password
+        Required. Hostname for the MySQL connection.
     port : int, default is Undefined, optional
-        Port for the MySQL connection.
-    sslConfig : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfig, default is Undefined, optional
+        Port for the MySQL connection, default value is 3306.
+    secretRef : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMySQLProfileSecretRef, default is Undefined, required
+        secret ref
+    sslConfig : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMySQLProfileSslConfig, default is Undefined, optional
         ssl config
-    username : str, default is Undefined, required
-        Username for the MySQL connection.
     """
 
 
     hostname: str
 
-    password: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfilePassword
-
     port?: int
 
-    sslConfig?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfig
+    secretRef: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMySQLProfileSecretRef
 
-    username: str
-
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfilePassword:
-    """
-    Immutable. Password for the MySQL connection.
-
-    Attributes
-    ----------
-    value : str, default is Undefined, optional
-        Value of the field. Cannot be used if 'valueFrom' is specified.
-    valueFrom : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfilePasswordValueFrom, default is Undefined, optional
-        value from
-    """
+    sslConfig?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMySQLProfileSslConfig
 
 
-    value?: str
-
-    valueFrom?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfilePasswordValueFrom
-
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfilePasswordValueFrom:
-    """
-    Source for the field's value. Cannot be used if 'value' is specified.
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMySQLProfileSecretRef:
+    r"""
+    The Kubernetes Secret object that stores the "username" and "password" information for the MySQL connection. The Secret type has to be `kubernetes.io/basic-auth`.
 
     Attributes
     ----------
-    secretKeyRef : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfilePasswordValueFromSecretKeyRef, default is Undefined, optional
-        secret key ref
-    """
-
-
-    secretKeyRef?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfilePasswordValueFromSecretKeyRef
-
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfilePasswordValueFromSecretKeyRef:
-    """
-    Reference to a value with the given key in the given Secret in the resource's namespace.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        Key that identifies the value to be extracted.
     name : str, default is Undefined, required
-        Name of the Secret to extract a value from.
+        The `metadata.name` field of a Kubernetes `Secret`
+    namespace : str, default is Undefined, optional
+        The `metadata.namespace` field of a Kubernetes `Secret`.
     """
 
-
-    key: str
 
     name: str
 
+    namespace?: str
 
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfig:
-    """
+
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMySQLProfileSslConfig:
+    r"""
     SSL configuration for the MySQL connection.
 
     Attributes
     ----------
-    caCertificate : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigCaCertificate, default is Undefined, optional
-        ca certificate
-    caCertificateSet : bool, default is Undefined, optional
-        Indicates whether the clientKey field is set.
-    clientCertificate : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigClientCertificate, default is Undefined, optional
-        client certificate
-    clientCertificateSet : bool, default is Undefined, optional
-        Indicates whether the clientCertificate field is set.
-    clientKey : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigClientKey, default is Undefined, optional
-        client key
-    clientKeySet : bool, default is Undefined, optional
-        Indicates whether the clientKey field is set.
+    caCertificate : str, default is Undefined, optional
+        Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
+    clientCertificate : str, default is Undefined, optional
+        Input only. PEM-encoded certificate that will be used by the replica to authenticate against the source database server. If this field is used then the 'client_key' and the 'ca_certificate' fields are mandatory.
+    clientKey : str, default is Undefined, optional
+        Input only. PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' and the 'ca_certificate' fields are mandatory.
     """
 
 
-    caCertificate?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigCaCertificate
+    caCertificate?: str
 
-    caCertificateSet?: bool
+    clientCertificate?: str
 
-    clientCertificate?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigClientCertificate
-
-    clientCertificateSet?: bool
-
-    clientKey?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigClientKey
-
-    clientKeySet?: bool
-
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigCaCertificate:
-    """
-    Immutable. PEM-encoded certificate of the CA that signed the source database
-    server's certificate.
-
-    Attributes
-    ----------
-    value : str, default is Undefined, optional
-        Value of the field. Cannot be used if 'valueFrom' is specified.
-    valueFrom : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigCaCertificateValueFrom, default is Undefined, optional
-        value from
-    """
-
-
-    value?: str
-
-    valueFrom?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigCaCertificateValueFrom
-
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigCaCertificateValueFrom:
-    """
-    Source for the field's value. Cannot be used if 'value' is specified.
-
-    Attributes
-    ----------
-    secretKeyRef : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigCaCertificateValueFromSecretKeyRef, default is Undefined, optional
-        secret key ref
-    """
-
-
-    secretKeyRef?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigCaCertificateValueFromSecretKeyRef
-
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigCaCertificateValueFromSecretKeyRef:
-    """
-    Reference to a value with the given key in the given Secret in the resource's namespace.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        Key that identifies the value to be extracted.
-    name : str, default is Undefined, required
-        Name of the Secret to extract a value from.
-    """
-
-
-    key: str
-
-    name: str
-
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigClientCertificate:
-    """
-    Immutable. PEM-encoded certificate that will be used by the replica to
-    authenticate against the source database server. If this field
-    is used then the 'clientKey' and the 'caCertificate' fields are
-    mandatory.
-
-    Attributes
-    ----------
-    value : str, default is Undefined, optional
-        Value of the field. Cannot be used if 'valueFrom' is specified.
-    valueFrom : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigClientCertificateValueFrom, default is Undefined, optional
-        value from
-    """
-
-
-    value?: str
-
-    valueFrom?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigClientCertificateValueFrom
-
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigClientCertificateValueFrom:
-    """
-    Source for the field's value. Cannot be used if 'value' is specified.
-
-    Attributes
-    ----------
-    secretKeyRef : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigClientCertificateValueFromSecretKeyRef, default is Undefined, optional
-        secret key ref
-    """
-
-
-    secretKeyRef?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigClientCertificateValueFromSecretKeyRef
-
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigClientCertificateValueFromSecretKeyRef:
-    """
-    Reference to a value with the given key in the given Secret in the resource's namespace.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        Key that identifies the value to be extracted.
-    name : str, default is Undefined, required
-        Name of the Secret to extract a value from.
-    """
-
-
-    key: str
-
-    name: str
-
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigClientKey:
-    """
-    Immutable. PEM-encoded private key associated with the Client Certificate.
-    If this field is used then the 'client_certificate' and the
-    'ca_certificate' fields are mandatory.
-
-    Attributes
-    ----------
-    value : str, default is Undefined, optional
-        Value of the field. Cannot be used if 'valueFrom' is specified.
-    valueFrom : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigClientKeyValueFrom, default is Undefined, optional
-        value from
-    """
-
-
-    value?: str
-
-    valueFrom?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigClientKeyValueFrom
-
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigClientKeyValueFrom:
-    """
-    Source for the field's value. Cannot be used if 'value' is specified.
-
-    Attributes
-    ----------
-    secretKeyRef : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigClientKeyValueFromSecretKeyRef, default is Undefined, optional
-        secret key ref
-    """
-
-
-    secretKeyRef?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigClientKeyValueFromSecretKeyRef
-
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecMysqlProfileSslConfigClientKeyValueFromSecretKeyRef:
-    """
-    Reference to a value with the given key in the given Secret in the resource's namespace.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        Key that identifies the value to be extracted.
-    name : str, default is Undefined, required
-        Name of the Secret to extract a value from.
-    """
-
-
-    key: str
-
-    name: str
+    clientKey?: str
 
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfile:
-    """
-    Oracle database profile.
+    r"""
+    Oracle ConnectionProfile configuration.
 
     Attributes
     ----------
     connectionAttributes : {str:str}, default is Undefined, optional
-        Connection string attributes.
+        Connection string attributes
     databaseService : str, default is Undefined, required
-        Database for the Oracle connection.
+        Required. Database for the Oracle connection.
     hostname : str, default is Undefined, required
-        Hostname for the Oracle connection.
-    password : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfilePassword, default is Undefined, required
-        password
+        Required. Hostname for the Oracle connection.
+    oracleASMConfig : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfileOracleASMConfig, default is Undefined, optional
+        oracle a s m config
+    oracleSSLConfig : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfileOracleSSLConfig, default is Undefined, optional
+        oracle s s l config
     port : int, default is Undefined, optional
-        Port for the Oracle connection.
-    username : str, default is Undefined, required
-        Username for the Oracle connection.
+        Port for the Oracle connection, default value is 1521.
+    secretManagerSecretRef : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfileSecretManagerSecretRef, default is Undefined, optional
+        secret manager secret ref
+    secretRef : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfileSecretRef, default is Undefined, required
+        secret ref
     """
 
 
@@ -534,169 +256,109 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracle
 
     hostname: str
 
-    password: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfilePassword
+    oracleASMConfig?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfileOracleASMConfig
+
+    oracleSSLConfig?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfileOracleSSLConfig
 
     port?: int
 
-    username: str
+    secretManagerSecretRef?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfileSecretManagerSecretRef
+
+    secretRef: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfileSecretRef
 
 
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfilePassword:
-    """
-    Password for the Oracle connection.
-
-    Attributes
-    ----------
-    value : str, default is Undefined, optional
-        Value of the field. Cannot be used if 'valueFrom' is specified.
-    valueFrom : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfilePasswordValueFrom, default is Undefined, optional
-        value from
-    """
-
-
-    value?: str
-
-    valueFrom?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfilePasswordValueFrom
-
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfilePasswordValueFrom:
-    """
-    Source for the field's value. Cannot be used if 'value' is specified.
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfileOracleASMConfig:
+    r"""
+    Optional. Configuration for Oracle ASM connection.
 
     Attributes
     ----------
-    secretKeyRef : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfilePasswordValueFromSecretKeyRef, default is Undefined, optional
-        secret key ref
-    """
-
-
-    secretKeyRef?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfilePasswordValueFromSecretKeyRef
-
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfilePasswordValueFromSecretKeyRef:
-    """
-    Reference to a value with the given key in the given Secret in the resource's namespace.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        Key that identifies the value to be extracted.
-    name : str, default is Undefined, required
-        Name of the Secret to extract a value from.
-    """
-
-
-    key: str
-
-    name: str
-
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecPostgresqlProfile:
-    """
-    PostgreSQL database profile.
-
-    Attributes
-    ----------
-    database : str, default is Undefined, required
-        Database for the PostgreSQL connection.
+    asmService : str, default is Undefined, required
+        Required. ASM service name for the Oracle ASM connection.
+    connectionAttributes : {str:str}, default is Undefined, optional
+        Optional. Connection string attributes
     hostname : str, default is Undefined, required
-        Hostname for the PostgreSQL connection.
-    password : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecPostgresqlProfilePassword, default is Undefined, required
-        password
-    port : int, default is Undefined, optional
-        Port for the PostgreSQL connection.
-    username : str, default is Undefined, required
-        Username for the PostgreSQL connection.
+        Required. Hostname for the Oracle ASM connection.
+    oracleSSLConfig : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfileOracleASMConfigOracleSSLConfig, default is Undefined, optional
+        oracle s s l config
+    port : int, default is Undefined, required
+        Required. Port for the Oracle ASM connection.
+    secretRef : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfileOracleASMConfigSecretRef, default is Undefined, required
+        secret ref
     """
 
 
-    database: str
+    asmService: str
+
+    connectionAttributes?: {str:str}
 
     hostname: str
 
-    password: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecPostgresqlProfilePassword
+    oracleSSLConfig?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfileOracleASMConfigOracleSSLConfig
 
-    port?: int
+    port: int
 
-    username: str
-
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecPostgresqlProfilePassword:
-    """
-    Password for the PostgreSQL connection.
-
-    Attributes
-    ----------
-    value : str, default is Undefined, optional
-        Value of the field. Cannot be used if 'valueFrom' is specified.
-    valueFrom : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecPostgresqlProfilePasswordValueFrom, default is Undefined, optional
-        value from
-    """
+    secretRef: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfileOracleASMConfigSecretRef
 
 
-    value?: str
-
-    valueFrom?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecPostgresqlProfilePasswordValueFrom
-
-
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecPostgresqlProfilePasswordValueFrom:
-    """
-    Source for the field's value. Cannot be used if 'value' is specified.
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfileOracleASMConfigOracleSSLConfig:
+    r"""
+    Optional. SSL configuration for the Oracle connection.
 
     Attributes
     ----------
-    secretKeyRef : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecPostgresqlProfilePasswordValueFromSecretKeyRef, default is Undefined, optional
-        secret key ref
+    caCertificate : str, default is Undefined, optional
+        Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
     """
 
 
-    secretKeyRef?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecPostgresqlProfilePasswordValueFromSecretKeyRef
+    caCertificate?: str
 
 
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecPostgresqlProfilePasswordValueFromSecretKeyRef:
-    """
-    Reference to a value with the given key in the given Secret in the resource's namespace.
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfileOracleASMConfigSecretRef:
+    r"""
+    The Kubernetes Secret object that stores the "username" and "password" information for the Oracle ASM connection. The Secret type has to be `kubernetes.io/basic-auth`.
 
     Attributes
     ----------
-    key : str, default is Undefined, required
-        Key that identifies the value to be extracted.
     name : str, default is Undefined, required
-        Name of the Secret to extract a value from.
+        The `metadata.name` field of a Kubernetes `Secret`
+    namespace : str, default is Undefined, optional
+        The `metadata.namespace` field of a Kubernetes `Secret`.
     """
 
-
-    key: str
 
     name: str
 
+    namespace?: str
 
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecPrivateConnectivity:
-    """
-    Private connectivity.
+
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfileOracleSSLConfig:
+    r"""
+    Optional. SSL configuration for the Oracle connection.
 
     Attributes
     ----------
-    privateConnection : str, default is Undefined, required
-        A reference to a private connection resource. Format: 'projects/{project}/locations/{location}/privateConnections/{name}'.
+    caCertificate : str, default is Undefined, optional
+        Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
     """
 
 
-    privateConnection: str
+    caCertificate?: str
 
 
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecProjectRef:
-    """
-    The project that this resource belongs to.
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfileSecretManagerSecretRef:
+    r"""
+    Optional. A reference to a Secret Manager resource name storing the Oracle connection password. Mutually exclusive with the `secretRef` field.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+         If provided must be in the format `projects/*/secrets/*`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `SecretManagerSecret` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `metadata.namespace` field of a `SecretManagerSecret` resource.
     """
 
 
@@ -707,30 +369,158 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecProjec
     namespace?: str
 
 
-schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileStatus:
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecOracleProfileSecretRef:
+    r"""
+    The Kubernetes Secret object that stores the "username" and "password" information for the Oracle connection. The Secret type has to be `kubernetes.io/basic-auth`.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        The `metadata.name` field of a Kubernetes `Secret`
+    namespace : str, default is Undefined, optional
+        The `metadata.namespace` field of a Kubernetes `Secret`.
     """
-    datastream cnrm cloud google com v1alpha1 datastream connection profile status
+
+
+    name: str
+
+    namespace?: str
+
+
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecPrivateConnectivity:
+    r"""
+    Private connectivity.
+
+    Attributes
+    ----------
+    privateConnectionRef : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecPrivateConnectivityPrivateConnectionRef, default is Undefined, required
+        private connection ref
+    """
+
+
+    privateConnectionRef: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecPrivateConnectivityPrivateConnectionRef
+
+
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecPrivateConnectivityPrivateConnectionRef:
+    r"""
+    Required. A reference to a private connection resource.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed DatastreamPrivateConnection resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/privateConnections/{{privateconnectionID}}".
+    name : str, default is Undefined, optional
+        The name of a DatastreamPrivateConnection resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a DatastreamPrivateConnection resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecProjectRef:
+    r"""
+    The Project that this resource belongs to.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
+    name : str, default is Undefined, optional
+        The `name` field of a `Project` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `Project` resource.
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecSQLServerProfile:
+    r"""
+    SQLServer Connection Profile configuration.
+
+    Attributes
+    ----------
+    database : str, default is Undefined, required
+        Required. Database for the SQLServer connection.
+    hostname : str, default is Undefined, required
+        Required. Hostname for the SQLServer connection.
+    port : int, default is Undefined, optional
+        Port for the SQLServer connection, default value is 1433.
+    secretRef : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecSQLServerProfileSecretRef, default is Undefined, required
+        secret ref
+    """
+
+
+    database: str
+
+    hostname: str
+
+    port?: int
+
+    secretRef: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecSQLServerProfileSecretRef
+
+
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileSpecSQLServerProfileSecretRef:
+    r"""
+    The Kubernetes Secret object that stores the "username" and "password" information for the SQLServer connection. The Secret type has to be `kubernetes.io/basic-auth`.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        The `metadata.name` field of a Kubernetes `Secret`
+    namespace : str, default is Undefined, optional
+        The `metadata.namespace` field of a Kubernetes `Secret`.
+    """
+
+
+    name: str
+
+    namespace?: str
+
+
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileStatus:
+    r"""
+    DatastreamConnectionProfileStatus defines the config connector machine state of DatastreamConnectionProfile
 
     Attributes
     ----------
     conditions : [DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
-    name : str, default is Undefined, optional
-        The resource's name.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the DatastreamConnectionProfile resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileStatusConditionsItems0]
 
-    name?: str
+    externalRef?: str
 
     observedGeneration?: int
 
+    observedState?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileStatusObservedState
+
 
 schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileStatusConditionsItems0:
-    """
+    r"""
     datastream cnrm cloud google com v1alpha1 datastream connection profile status conditions items0
 
     Attributes
@@ -757,5 +547,95 @@ schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileStatusCond
     status?: str
 
     $type?: str
+
+
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    createTime : str, default is Undefined, optional
+        Output only. The create time of the resource.
+    mySQLProfile : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileStatusObservedStateMySQLProfile, default is Undefined, optional
+        my SQL profile
+    oracleProfile : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileStatusObservedStateOracleProfile, default is Undefined, optional
+        oracle profile
+    updateTime : str, default is Undefined, optional
+        Output only. The update time of the resource.
+    """
+
+
+    createTime?: str
+
+    mySQLProfile?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileStatusObservedStateMySQLProfile
+
+    oracleProfile?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileStatusObservedStateOracleProfile
+
+    updateTime?: str
+
+
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileStatusObservedStateMySQLProfile:
+    r"""
+    MySQL ConnectionProfile configuration.
+
+    Attributes
+    ----------
+    sslConfig : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileStatusObservedStateMySQLProfileSslConfig, default is Undefined, optional
+        ssl config
+    """
+
+
+    sslConfig?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileStatusObservedStateMySQLProfileSslConfig
+
+
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileStatusObservedStateMySQLProfileSslConfig:
+    r"""
+    SSL configuration for the MySQL connection.
+
+    Attributes
+    ----------
+    caCertificateSet : bool, default is Undefined, optional
+        Output only. Indicates whether the ca_certificate field is set.
+    clientCertificateSet : bool, default is Undefined, optional
+        Output only. Indicates whether the client_certificate field is set.
+    clientKeySet : bool, default is Undefined, optional
+        Output only. Indicates whether the client_key field is set.
+    """
+
+
+    caCertificateSet?: bool
+
+    clientCertificateSet?: bool
+
+    clientKeySet?: bool
+
+
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileStatusObservedStateOracleProfile:
+    r"""
+    Oracle ConnectionProfile configuration.
+
+    Attributes
+    ----------
+    oracleSSLConfig : DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileStatusObservedStateOracleProfileOracleSSLConfig, default is Undefined, optional
+        oracle s s l config
+    """
+
+
+    oracleSSLConfig?: DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileStatusObservedStateOracleProfileOracleSSLConfig
+
+
+schema DatastreamCnrmCloudGoogleComV1alpha1DatastreamConnectionProfileStatusObservedStateOracleProfileOracleSSLConfig:
+    r"""
+    Optional. SSL configuration for the Oracle connection.
+
+    Attributes
+    ----------
+    caCertificateSet : bool, default is Undefined, optional
+        Output only. Indicates whether the ca_certificate field has been set for this Connection-Profile.
+    """
+
+
+    caCertificateSet?: bool
 
 

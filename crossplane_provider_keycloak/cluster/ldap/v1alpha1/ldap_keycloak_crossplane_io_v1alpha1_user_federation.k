@@ -104,6 +104,9 @@ schema LdapKeycloakCrossplaneIoV1alpha1UserFederationSpecForProvider:
     changedSyncPeriod : float, default is Undefined, optional
         How frequently Keycloak should sync changed LDAP users, in seconds. Omit this property to disable periodic changed users sync.
         How frequently Keycloak should sync changed LDAP users, in seconds. Omit this property to disable periodic changed users sync.
+    connectionPooling : bool, default is Undefined, optional
+        When true, LDAP connection pooling is enabled. Defaults to false.
+        When true, Keycloak will use connection pooling when connecting to LDAP.
     connectionTimeout : str, default is Undefined, optional
         LDAP connection timeout in the format of a Go duration string.
         LDAP connection timeout (duration string)
@@ -113,6 +116,9 @@ schema LdapKeycloakCrossplaneIoV1alpha1UserFederationSpecForProvider:
     customUserSearchFilter : str, default is Undefined, optional
         Additional LDAP filter for filtering searched users. Must begin with ( and end with ).
         Additional LDAP filter for filtering searched users. Must begin with '(' and end with ')'.
+    debug : str, default is Undefined, optional
+        Can be one of true or false. Will enable/disable logging for Kerberos Authentication. Defaults to false:
+        true: enables debug logging for Krb5LoginModule. false: disables debug logging for Krb5LoginModule
     deleteDefaultMappers : bool, default is Undefined, optional
         When true, the provider will delete the default mappers which are normally created by Keycloak when creating an LDAP user federation provider. Defaults to false.
         When true, the provider will delete the default mappers which are normally created by Keycloak when creating an LDAP user federation provider.
@@ -131,6 +137,9 @@ schema LdapKeycloakCrossplaneIoV1alpha1UserFederationSpecForProvider:
     kerberos : [LdapKeycloakCrossplaneIoV1alpha1UserFederationSpecForProviderKerberosItems0], default is Undefined, optional
         A block containing the kerberos settings.
         Settings regarding kerberos authentication for this realm.
+    krbPrincipalAttribute : str, default is Undefined, optional
+        Name of the LDAP attribute, which refers to Kerberos principal. This is used to lookup appropriate LDAP user after successful Kerberos/SPNEGO authentication in Keycloak. When this is empty, the LDAP user will be looked based on LDAP username corresponding to the first part of his Kerberos principal. For instance, for principal 'john@KEYCLOAK.ORG', it will assume that LDAP username is 'john'.
+        Name of the LDAP attribute, which refers to Kerberos principal. This is used to lookup appropriate LDAP user after successful Kerberos/SPNEGO authentication in Keycloak. When this is empty, the LDAP user will be looked based on LDAP username corresponding to the first part of his Kerberos principal. For instance, for principal 'john@KEYCLOAK.ORG', it will assume that LDAP username is 'john'.
     name : str, default is Undefined, optional
         Display name of the provider when displayed in the console.
         Display name of the provider when displayed in the console.
@@ -201,11 +210,15 @@ schema LdapKeycloakCrossplaneIoV1alpha1UserFederationSpecForProvider:
 
     changedSyncPeriod?: float
 
+    connectionPooling?: bool
+
     connectionTimeout?: str
 
     connectionUrl?: str
 
     customUserSearchFilter?: str
+
+    debug?: str
 
     deleteDefaultMappers?: bool
 
@@ -218,6 +231,8 @@ schema LdapKeycloakCrossplaneIoV1alpha1UserFederationSpecForProvider:
     importEnabled?: bool
 
     kerberos?: [LdapKeycloakCrossplaneIoV1alpha1UserFederationSpecForProviderKerberosItems0]
+
+    krbPrincipalAttribute?: str
 
     name?: str
 
@@ -465,6 +480,9 @@ schema LdapKeycloakCrossplaneIoV1alpha1UserFederationSpecInitProvider:
     changedSyncPeriod : float, default is Undefined, optional
         How frequently Keycloak should sync changed LDAP users, in seconds. Omit this property to disable periodic changed users sync.
         How frequently Keycloak should sync changed LDAP users, in seconds. Omit this property to disable periodic changed users sync.
+    connectionPooling : bool, default is Undefined, optional
+        When true, LDAP connection pooling is enabled. Defaults to false.
+        When true, Keycloak will use connection pooling when connecting to LDAP.
     connectionTimeout : str, default is Undefined, optional
         LDAP connection timeout in the format of a Go duration string.
         LDAP connection timeout (duration string)
@@ -474,6 +492,9 @@ schema LdapKeycloakCrossplaneIoV1alpha1UserFederationSpecInitProvider:
     customUserSearchFilter : str, default is Undefined, optional
         Additional LDAP filter for filtering searched users. Must begin with ( and end with ).
         Additional LDAP filter for filtering searched users. Must begin with '(' and end with ')'.
+    debug : str, default is Undefined, optional
+        Can be one of true or false. Will enable/disable logging for Kerberos Authentication. Defaults to false:
+        true: enables debug logging for Krb5LoginModule. false: disables debug logging for Krb5LoginModule
     deleteDefaultMappers : bool, default is Undefined, optional
         When true, the provider will delete the default mappers which are normally created by Keycloak when creating an LDAP user federation provider. Defaults to false.
         When true, the provider will delete the default mappers which are normally created by Keycloak when creating an LDAP user federation provider.
@@ -492,6 +513,9 @@ schema LdapKeycloakCrossplaneIoV1alpha1UserFederationSpecInitProvider:
     kerberos : [LdapKeycloakCrossplaneIoV1alpha1UserFederationSpecInitProviderKerberosItems0], default is Undefined, optional
         A block containing the kerberos settings.
         Settings regarding kerberos authentication for this realm.
+    krbPrincipalAttribute : str, default is Undefined, optional
+        Name of the LDAP attribute, which refers to Kerberos principal. This is used to lookup appropriate LDAP user after successful Kerberos/SPNEGO authentication in Keycloak. When this is empty, the LDAP user will be looked based on LDAP username corresponding to the first part of his Kerberos principal. For instance, for principal 'john@KEYCLOAK.ORG', it will assume that LDAP username is 'john'.
+        Name of the LDAP attribute, which refers to Kerberos principal. This is used to lookup appropriate LDAP user after successful Kerberos/SPNEGO authentication in Keycloak. When this is empty, the LDAP user will be looked based on LDAP username corresponding to the first part of his Kerberos principal. For instance, for principal 'john@KEYCLOAK.ORG', it will assume that LDAP username is 'john'.
     name : str, default is Undefined, optional
         Display name of the provider when displayed in the console.
         Display name of the provider when displayed in the console.
@@ -562,11 +586,15 @@ schema LdapKeycloakCrossplaneIoV1alpha1UserFederationSpecInitProvider:
 
     changedSyncPeriod?: float
 
+    connectionPooling?: bool
+
     connectionTimeout?: str
 
     connectionUrl?: str
 
     customUserSearchFilter?: str
+
+    debug?: str
 
     deleteDefaultMappers?: bool
 
@@ -579,6 +607,8 @@ schema LdapKeycloakCrossplaneIoV1alpha1UserFederationSpecInitProvider:
     importEnabled?: bool
 
     kerberos?: [LdapKeycloakCrossplaneIoV1alpha1UserFederationSpecInitProviderKerberosItems0]
+
+    krbPrincipalAttribute?: str
 
     name?: str
 
@@ -904,6 +934,9 @@ schema LdapKeycloakCrossplaneIoV1alpha1UserFederationStatusAtProvider:
     changedSyncPeriod : float, default is Undefined, optional
         How frequently Keycloak should sync changed LDAP users, in seconds. Omit this property to disable periodic changed users sync.
         How frequently Keycloak should sync changed LDAP users, in seconds. Omit this property to disable periodic changed users sync.
+    connectionPooling : bool, default is Undefined, optional
+        When true, LDAP connection pooling is enabled. Defaults to false.
+        When true, Keycloak will use connection pooling when connecting to LDAP.
     connectionTimeout : str, default is Undefined, optional
         LDAP connection timeout in the format of a Go duration string.
         LDAP connection timeout (duration string)
@@ -913,6 +946,9 @@ schema LdapKeycloakCrossplaneIoV1alpha1UserFederationStatusAtProvider:
     customUserSearchFilter : str, default is Undefined, optional
         Additional LDAP filter for filtering searched users. Must begin with ( and end with ).
         Additional LDAP filter for filtering searched users. Must begin with '(' and end with ')'.
+    debug : str, default is Undefined, optional
+        Can be one of true or false. Will enable/disable logging for Kerberos Authentication. Defaults to false:
+        true: enables debug logging for Krb5LoginModule. false: disables debug logging for Krb5LoginModule
     deleteDefaultMappers : bool, default is Undefined, optional
         When true, the provider will delete the default mappers which are normally created by Keycloak when creating an LDAP user federation provider. Defaults to false.
         When true, the provider will delete the default mappers which are normally created by Keycloak when creating an LDAP user federation provider.
@@ -933,6 +969,9 @@ schema LdapKeycloakCrossplaneIoV1alpha1UserFederationStatusAtProvider:
     kerberos : [LdapKeycloakCrossplaneIoV1alpha1UserFederationStatusAtProviderKerberosItems0], default is Undefined, optional
         A block containing the kerberos settings.
         Settings regarding kerberos authentication for this realm.
+    krbPrincipalAttribute : str, default is Undefined, optional
+        Name of the LDAP attribute, which refers to Kerberos principal. This is used to lookup appropriate LDAP user after successful Kerberos/SPNEGO authentication in Keycloak. When this is empty, the LDAP user will be looked based on LDAP username corresponding to the first part of his Kerberos principal. For instance, for principal 'john@KEYCLOAK.ORG', it will assume that LDAP username is 'john'.
+        Name of the LDAP attribute, which refers to Kerberos principal. This is used to lookup appropriate LDAP user after successful Kerberos/SPNEGO authentication in Keycloak. When this is empty, the LDAP user will be looked based on LDAP username corresponding to the first part of his Kerberos principal. For instance, for principal 'john@KEYCLOAK.ORG', it will assume that LDAP username is 'john'.
     name : str, default is Undefined, optional
         Display name of the provider when displayed in the console.
         Display name of the provider when displayed in the console.
@@ -997,11 +1036,15 @@ schema LdapKeycloakCrossplaneIoV1alpha1UserFederationStatusAtProvider:
 
     changedSyncPeriod?: float
 
+    connectionPooling?: bool
+
     connectionTimeout?: str
 
     connectionUrl?: str
 
     customUserSearchFilter?: str
+
+    debug?: str
 
     deleteDefaultMappers?: bool
 
@@ -1016,6 +1059,8 @@ schema LdapKeycloakCrossplaneIoV1alpha1UserFederationStatusAtProvider:
     importEnabled?: bool
 
     kerberos?: [LdapKeycloakCrossplaneIoV1alpha1UserFederationStatusAtProviderKerberosItems0]
+
+    krbPrincipalAttribute?: str
 
     name?: str
 

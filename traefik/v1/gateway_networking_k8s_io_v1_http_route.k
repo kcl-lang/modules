@@ -4,10 +4,11 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
 
 
 schema HTTPRoute:
-    """
+    r"""
     HTTPRoute provides a way to route HTTP requests. This includes the capability to match requests by hostname, path, header, or query param. Filters can be used to specify additional processing steps. Backends specify where matching requests should be routed.
 
     Attributes
@@ -37,7 +38,7 @@ schema HTTPRoute:
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpec:
-    """
+    r"""
     Spec defines the desired state of HTTPRoute.
 
     Attributes
@@ -77,18 +78,20 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpec:
 
     parentRefs?: [GatewayNetworkingK8sIoV1HTTPRouteSpecParentRefsItems0]
 
-    rules?: [GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0] = [{"matches": [{"path": {"type": "PathPrefix", "value": "/"}}]}]
+    rules?: [GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0] = [{"matches": [{"path": {"value": "/", "type": "PathPrefix"}}]}]
 
 
     check:
-        len(hostnames) <= 16
-        all hostnames in hostnames {len(hostnames) <= 253len(hostnames) >= 1regex_match(str(hostnames), r"^(\*\.)?[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if hostnames } if hostnames
-        len(parentRefs) <= 32
-        len(rules) <= 16
+        len(hostnames) <= 16 if hostnames
+        all hostnames in hostnames { len(hostnames) <= 253 if hostnames not in [None, Undefined] } if hostnames
+        all hostnames in hostnames { len(hostnames) >= 1 if hostnames not in [None, Undefined] } if hostnames
+        all hostnames in hostnames { _regex_match(str(hostnames), r"^(\*\.)?[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if hostnames } if hostnames
+        len(parentRefs) <= 32 if parentRefs
+        len(rules) <= 16 if rules
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecParentRefsItems0:
-    """
+    r"""
     ParentReference identifies an API object (usually a Gateway) that can be considered a parent of this resource (usually a route). There are two kinds of parent resources with "Core" support: 
      * Gateway (Gateway conformance profile) * Service (Mesh conformance profile, experimental, ClusterIP Services only) 
      This API may be extended in the future to support additional kinds of parent resources. 
@@ -144,25 +147,25 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecParentRefsItems0:
 
 
     check:
-        len(group) <= 253
-        regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63
-        len(kind) >= 1
-        regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
+        len(group) <= 253 if group
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
+        len(kind) <= 63 if kind
+        len(kind) >= 1 if kind
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63
-        len(namespace) >= 1
-        regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
-        port <= 65535
-        port >= 1
-        len(sectionName) <= 253
-        len(sectionName) >= 1
-        regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
+        len(namespace) <= 63 if namespace
+        len(namespace) >= 1 if namespace
+        _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
+        port <= 65535 if port not in [None, Undefined]
+        port >= 1 if port not in [None, Undefined]
+        len(sectionName) <= 253 if sectionName
+        len(sectionName) >= 1 if sectionName
+        _regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0:
-    """
+    r"""
     HTTPRouteRule defines semantics for matching an HTTP request based on conditions (matches), processing it (filters), and forwarding the request to an API object (backendRefs).
 
     Attributes
@@ -216,13 +219,13 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0:
 
 
     check:
-        len(backendRefs) <= 16
-        len(filters) <= 16
-        len(matches) <= 8
+        len(backendRefs) <= 16 if backendRefs
+        len(filters) <= 16 if filters
+        len(matches) <= 8 if matches
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0:
-    """
+    r"""
     HTTPBackendRef defines how a HTTPRoute forwards a HTTP request. 
      Note that when a namespace different than the local namespace is specified, a ReferenceGrant object is required in the referent namespace to allow that namespace's owner to accept the reference. See the ReferenceGrant documentation for details. 
      <gateway:experimental:description> 
@@ -276,25 +279,25 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0:
 
 
     check:
-        len(filters) <= 16
-        len(group) <= 253
-        regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63
-        len(kind) >= 1
-        regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
+        len(filters) <= 16 if filters
+        len(group) <= 253 if group
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
+        len(kind) <= 63 if kind
+        len(kind) >= 1 if kind
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63
-        len(namespace) >= 1
-        regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
-        port <= 65535
-        port >= 1
-        weight <= 1e+06
-        weight >= 0
+        len(namespace) <= 63 if namespace
+        len(namespace) >= 1 if namespace
+        _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
+        port <= 65535 if port not in [None, Undefined]
+        port >= 1 if port not in [None, Undefined]
+        weight <= 1e+06 if weight not in [None, Undefined]
+        weight >= 0 if weight not in [None, Undefined]
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0:
-    """
+    r"""
     HTTPRouteFilter defines processing steps that must be completed during the request or response lifecycle. HTTPRouteFilters are meant as an extension point to express processing that may be done in Gateway implementations. Some examples include request or response modification, implementing authentication strategies, rate-limiting, and traffic shaping. API guarantee/conformance is defined based on the type of the filter.
 
     Attributes
@@ -339,7 +342,7 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0ExtensionRef:
-    """
+    r"""
     ExtensionRef is an optional, implementation-specific extension to the "filter" behavior.  For example, resource "myroutefilter" in group "networking.example.net"). ExtensionRef MUST NOT be used for core and extended filters. 
      This filter can be used multiple times within the same rule. 
      Support: Implementation-specific
@@ -364,16 +367,16 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
 
     check:
         len(group) <= 253
-        regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
         len(kind) <= 63
         len(kind) >= 1
-        regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
         len(name) <= 253
         len(name) >= 1
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0RequestHeaderModifier:
-    """
+    r"""
     RequestHeaderModifier defines a schema for a filter that modifies request headers. 
      Support: Core
 
@@ -405,13 +408,13 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
 
 
     check:
-        len(add) <= 16
-        len(remove) <= 16
-        len(set) <= 16
+        len(add) <= 16 if add
+        len(remove) <= 16 if remove
+        len(set) <= 16 if set
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0RequestHeaderModifierAddItems0:
-    """
+    r"""
     HTTPHeader represents an HTTP Header name and value as defined by RFC 7230.
 
     Attributes
@@ -432,13 +435,13 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
     check:
         len(name) <= 256
         len(name) >= 1
-        regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$")
+        _regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$")
         len(value) <= 4096
         len(value) >= 1
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0RequestHeaderModifierSetItems0:
-    """
+    r"""
     HTTPHeader represents an HTTP Header name and value as defined by RFC 7230.
 
     Attributes
@@ -459,13 +462,13 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
     check:
         len(name) <= 256
         len(name) >= 1
-        regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$")
+        _regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$")
         len(value) <= 4096
         len(value) >= 1
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0RequestMirror:
-    """
+    r"""
     RequestMirror defines a schema for a filter that mirrors requests. Requests are sent to the specified destination, but responses from that destination are ignored. 
      This filter can be used multiple times within the same rule. Note that not all implementations will be able to support mirroring to multiple backends. 
      Support: Extended
@@ -481,7 +484,7 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0RequestMirrorBackendRef:
-    """
+    r"""
     BackendRef references a resource where mirrored requests are sent. 
      Mirrored requests must be sent only to a single destination endpoint within this BackendRef, irrespective of how many endpoints are present within this BackendRef. 
      If the referent cannot be found, this BackendRef is invalid and must be dropped from the Gateway. The controller must ensure the "ResolvedRefs" condition on the Route status is set to `status: False` and not configure this backend in the underlying implementation. 
@@ -523,22 +526,22 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
 
 
     check:
-        len(group) <= 253
-        regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63
-        len(kind) >= 1
-        regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
+        len(group) <= 253 if group
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
+        len(kind) <= 63 if kind
+        len(kind) >= 1 if kind
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63
-        len(namespace) >= 1
-        regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
-        port <= 65535
-        port >= 1
+        len(namespace) <= 63 if namespace
+        len(namespace) >= 1 if namespace
+        _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
+        port <= 65535 if port not in [None, Undefined]
+        port >= 1 if port not in [None, Undefined]
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0RequestRedirect:
-    """
+    r"""
     RequestRedirect defines a schema for a filter that responds to the request with an HTTP redirection. 
      Support: Core
 
@@ -582,15 +585,15 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
 
 
     check:
-        len(hostname) <= 253
-        len(hostname) >= 1
-        regex_match(str(hostname), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if hostname
-        port <= 65535
-        port >= 1
+        len(hostname) <= 253 if hostname
+        len(hostname) >= 1 if hostname
+        _regex_match(str(hostname), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if hostname
+        port <= 65535 if port not in [None, Undefined]
+        port >= 1 if port not in [None, Undefined]
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0RequestRedirectPath:
-    """
+    r"""
     Path defines parameters used to modify the path of the incoming request. The modified path is then used to construct the `Location` header. When empty, the request path is used as-is. 
      Support: Extended
 
@@ -618,12 +621,12 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
 
 
     check:
-        len(replaceFullPath) <= 1024
-        len(replacePrefixMatch) <= 1024
+        len(replaceFullPath) <= 1024 if replaceFullPath
+        len(replacePrefixMatch) <= 1024 if replacePrefixMatch
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0ResponseHeaderModifier:
-    """
+    r"""
     ResponseHeaderModifier defines a schema for a filter that modifies response headers. 
      Support: Extended
 
@@ -655,13 +658,13 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
 
 
     check:
-        len(add) <= 16
-        len(remove) <= 16
-        len(set) <= 16
+        len(add) <= 16 if add
+        len(remove) <= 16 if remove
+        len(set) <= 16 if set
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0ResponseHeaderModifierAddItems0:
-    """
+    r"""
     HTTPHeader represents an HTTP Header name and value as defined by RFC 7230.
 
     Attributes
@@ -682,13 +685,13 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
     check:
         len(name) <= 256
         len(name) >= 1
-        regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$")
+        _regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$")
         len(value) <= 4096
         len(value) >= 1
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0ResponseHeaderModifierSetItems0:
-    """
+    r"""
     HTTPHeader represents an HTTP Header name and value as defined by RFC 7230.
 
     Attributes
@@ -709,13 +712,13 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
     check:
         len(name) <= 256
         len(name) >= 1
-        regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$")
+        _regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$")
         len(value) <= 4096
         len(value) >= 1
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0URLRewrite:
-    """
+    r"""
     URLRewrite defines a schema for a filter that modifies a request during forwarding. 
      Support: Extended
 
@@ -735,13 +738,13 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
 
 
     check:
-        len(hostname) <= 253
-        len(hostname) >= 1
-        regex_match(str(hostname), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if hostname
+        len(hostname) <= 253 if hostname
+        len(hostname) >= 1 if hostname
+        _regex_match(str(hostname), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if hostname
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0URLRewritePath:
-    """
+    r"""
     Path defines a path rewrite. 
      Support: Extended
 
@@ -769,12 +772,12 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
 
 
     check:
-        len(replaceFullPath) <= 1024
-        len(replacePrefixMatch) <= 1024
+        len(replaceFullPath) <= 1024 if replaceFullPath
+        len(replacePrefixMatch) <= 1024 if replacePrefixMatch
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0:
-    """
+    r"""
     HTTPRouteFilter defines processing steps that must be completed during the request or response lifecycle. HTTPRouteFilters are meant as an extension point to express processing that may be done in Gateway implementations. Some examples include request or response modification, implementing authentication strategies, rate-limiting, and traffic shaping. API guarantee/conformance is defined based on the type of the filter.
 
     Attributes
@@ -819,7 +822,7 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0:
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0ExtensionRef:
-    """
+    r"""
     ExtensionRef is an optional, implementation-specific extension to the "filter" behavior.  For example, resource "myroutefilter" in group "networking.example.net"). ExtensionRef MUST NOT be used for core and extended filters. 
      This filter can be used multiple times within the same rule. 
      Support: Implementation-specific
@@ -844,16 +847,16 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0ExtensionRef
 
     check:
         len(group) <= 253
-        regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
         len(kind) <= 63
         len(kind) >= 1
-        regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
         len(name) <= 253
         len(name) >= 1
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestHeaderModifier:
-    """
+    r"""
     RequestHeaderModifier defines a schema for a filter that modifies request headers. 
      Support: Core
 
@@ -885,13 +888,13 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestHeade
 
 
     check:
-        len(add) <= 16
-        len(remove) <= 16
-        len(set) <= 16
+        len(add) <= 16 if add
+        len(remove) <= 16 if remove
+        len(set) <= 16 if set
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestHeaderModifierAddItems0:
-    """
+    r"""
     HTTPHeader represents an HTTP Header name and value as defined by RFC 7230.
 
     Attributes
@@ -912,13 +915,13 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestHeade
     check:
         len(name) <= 256
         len(name) >= 1
-        regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$")
+        _regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$")
         len(value) <= 4096
         len(value) >= 1
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestHeaderModifierSetItems0:
-    """
+    r"""
     HTTPHeader represents an HTTP Header name and value as defined by RFC 7230.
 
     Attributes
@@ -939,13 +942,13 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestHeade
     check:
         len(name) <= 256
         len(name) >= 1
-        regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$")
+        _regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$")
         len(value) <= 4096
         len(value) >= 1
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestMirror:
-    """
+    r"""
     RequestMirror defines a schema for a filter that mirrors requests. Requests are sent to the specified destination, but responses from that destination are ignored. 
      This filter can be used multiple times within the same rule. Note that not all implementations will be able to support mirroring to multiple backends. 
      Support: Extended
@@ -961,7 +964,7 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestMirro
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestMirrorBackendRef:
-    """
+    r"""
     BackendRef references a resource where mirrored requests are sent. 
      Mirrored requests must be sent only to a single destination endpoint within this BackendRef, irrespective of how many endpoints are present within this BackendRef. 
      If the referent cannot be found, this BackendRef is invalid and must be dropped from the Gateway. The controller must ensure the "ResolvedRefs" condition on the Route status is set to `status: False` and not configure this backend in the underlying implementation. 
@@ -1003,22 +1006,22 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestMirro
 
 
     check:
-        len(group) <= 253
-        regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63
-        len(kind) >= 1
-        regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
+        len(group) <= 253 if group
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
+        len(kind) <= 63 if kind
+        len(kind) >= 1 if kind
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63
-        len(namespace) >= 1
-        regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
-        port <= 65535
-        port >= 1
+        len(namespace) <= 63 if namespace
+        len(namespace) >= 1 if namespace
+        _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
+        port <= 65535 if port not in [None, Undefined]
+        port >= 1 if port not in [None, Undefined]
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestRedirect:
-    """
+    r"""
     RequestRedirect defines a schema for a filter that responds to the request with an HTTP redirection. 
      Support: Core
 
@@ -1062,15 +1065,15 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestRedir
 
 
     check:
-        len(hostname) <= 253
-        len(hostname) >= 1
-        regex_match(str(hostname), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if hostname
-        port <= 65535
-        port >= 1
+        len(hostname) <= 253 if hostname
+        len(hostname) >= 1 if hostname
+        _regex_match(str(hostname), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if hostname
+        port <= 65535 if port not in [None, Undefined]
+        port >= 1 if port not in [None, Undefined]
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestRedirectPath:
-    """
+    r"""
     Path defines parameters used to modify the path of the incoming request. The modified path is then used to construct the `Location` header. When empty, the request path is used as-is. 
      Support: Extended
 
@@ -1098,12 +1101,12 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestRedir
 
 
     check:
-        len(replaceFullPath) <= 1024
-        len(replacePrefixMatch) <= 1024
+        len(replaceFullPath) <= 1024 if replaceFullPath
+        len(replacePrefixMatch) <= 1024 if replacePrefixMatch
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0ResponseHeaderModifier:
-    """
+    r"""
     ResponseHeaderModifier defines a schema for a filter that modifies response headers. 
      Support: Extended
 
@@ -1135,13 +1138,13 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0ResponseHead
 
 
     check:
-        len(add) <= 16
-        len(remove) <= 16
-        len(set) <= 16
+        len(add) <= 16 if add
+        len(remove) <= 16 if remove
+        len(set) <= 16 if set
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0ResponseHeaderModifierAddItems0:
-    """
+    r"""
     HTTPHeader represents an HTTP Header name and value as defined by RFC 7230.
 
     Attributes
@@ -1162,13 +1165,13 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0ResponseHead
     check:
         len(name) <= 256
         len(name) >= 1
-        regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$")
+        _regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$")
         len(value) <= 4096
         len(value) >= 1
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0ResponseHeaderModifierSetItems0:
-    """
+    r"""
     HTTPHeader represents an HTTP Header name and value as defined by RFC 7230.
 
     Attributes
@@ -1189,13 +1192,13 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0ResponseHead
     check:
         len(name) <= 256
         len(name) >= 1
-        regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$")
+        _regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$")
         len(value) <= 4096
         len(value) >= 1
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0URLRewrite:
-    """
+    r"""
     URLRewrite defines a schema for a filter that modifies a request during forwarding. 
      Support: Extended
 
@@ -1215,13 +1218,13 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0URLRewrite:
 
 
     check:
-        len(hostname) <= 253
-        len(hostname) >= 1
-        regex_match(str(hostname), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if hostname
+        len(hostname) <= 253 if hostname
+        len(hostname) >= 1 if hostname
+        _regex_match(str(hostname), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if hostname
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0URLRewritePath:
-    """
+    r"""
     Path defines a path rewrite. 
      Support: Extended
 
@@ -1249,12 +1252,12 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0URLRewritePa
 
 
     check:
-        len(replaceFullPath) <= 1024
-        len(replacePrefixMatch) <= 1024
+        len(replaceFullPath) <= 1024 if replaceFullPath
+        len(replacePrefixMatch) <= 1024 if replacePrefixMatch
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0MatchesItems0:
-    """
+    r"""
     HTTPRouteMatch defines the predicate used to match requests to a given action. Multiple match types are ANDed together, i.e. the match will evaluate to true only if all conditions are satisfied. 
      For example, the match below will match a HTTP request only if its path starts with `/foo` AND it contains the `version: v1` header: 
      ``` match: 
@@ -1286,12 +1289,12 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0MatchesItems0:
 
 
     check:
-        len(headers) <= 16
-        len(queryParams) <= 16
+        len(headers) <= 16 if headers
+        len(queryParams) <= 16 if queryParams
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0MatchesItems0HeadersItems0:
-    """
+    r"""
     HTTPHeaderMatch describes how to select a HTTP route by matching HTTP request headers.
 
     Attributes
@@ -1320,13 +1323,13 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0MatchesItems0HeadersItems
     check:
         len(name) <= 256
         len(name) >= 1
-        regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$")
+        _regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$")
         len(value) <= 4096
         len(value) >= 1
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0MatchesItems0Path:
-    """
+    r"""
     Path specifies a HTTP request path matcher. If this field is not specified, a default prefix match on the "/" path is provided.
 
     Attributes
@@ -1346,11 +1349,11 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0MatchesItems0Path:
 
 
     check:
-        len(value) <= 1024
+        len(value) <= 1024 if value
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0MatchesItems0QueryParamsItems0:
-    """
+    r"""
     HTTPQueryParamMatch describes how to select a HTTP route by matching HTTP query parameters.
 
     Attributes
@@ -1380,13 +1383,13 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0MatchesItems0QueryParamsI
     check:
         len(name) <= 256
         len(name) >= 1
-        regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$")
+        _regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$")
         len(value) <= 1024
         len(value) >= 1
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0Timeouts:
-    """
+    r"""
     Timeouts defines the timeouts that can be configured for an HTTP request. 
      Support: Extended 
      
@@ -1413,12 +1416,12 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0Timeouts:
 
 
     check:
-        regex_match(str(backendRequest), r"^([0-9]{1,5}(h|m|s|ms)){1,4}$") if backendRequest
-        regex_match(str(request), r"^([0-9]{1,5}(h|m|s|ms)){1,4}$") if request
+        _regex_match(str(backendRequest), r"^([0-9]{1,5}(h|m|s|ms)){1,4}$") if backendRequest
+        _regex_match(str(request), r"^([0-9]{1,5}(h|m|s|ms)){1,4}$") if request
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteStatus:
-    """
+    r"""
     Status defines the current state of HTTPRoute.
 
     Attributes
@@ -1438,7 +1441,7 @@ schema GatewayNetworkingK8sIoV1HTTPRouteStatus:
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteStatusParentsItems0:
-    """
+    r"""
     RouteParentStatus describes the status of a route with respect to an associated Parent.
 
     Attributes
@@ -1467,15 +1470,15 @@ schema GatewayNetworkingK8sIoV1HTTPRouteStatusParentsItems0:
 
 
     check:
-        len(conditions) >= 1
-        len(conditions) <= 8
+        len(conditions) >= 1 if conditions
+        len(conditions) <= 8 if conditions
         len(controllerName) <= 253
         len(controllerName) >= 1
-        regex_match(str(controllerName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$")
+        _regex_match(str(controllerName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$")
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteStatusParentsItems0ConditionsItems0:
-    """
+    r"""
     Condition contains details for one aspect of the current state of this API Resource. --- This struct is intended for direct use as an array at the field path .status.conditions.  For example, 
      type FooStatus struct{ // Represents the observations of a foo's current state. // Known .status.conditions.type are: "Available", "Progressing", and "Degraded" // +patchMergeKey=type // +patchStrategy=merge // +listType=map // +listMapKey=type Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"` 
      // other fields }
@@ -1512,16 +1515,16 @@ schema GatewayNetworkingK8sIoV1HTTPRouteStatusParentsItems0ConditionsItems0:
 
     check:
         len(message) <= 32768
-        observedGeneration >= 0
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
         len(reason) <= 1024
         len(reason) >= 1
-        regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
+        _regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
         len($type) <= 316
-        regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+        _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteStatusParentsItems0ParentRef:
-    """
+    r"""
     ParentRef corresponds with a ParentRef in the spec that this RouteParentStatus struct describes the status of.
 
     Attributes
@@ -1574,20 +1577,20 @@ schema GatewayNetworkingK8sIoV1HTTPRouteStatusParentsItems0ParentRef:
 
 
     check:
-        len(group) <= 253
-        regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63
-        len(kind) >= 1
-        regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
+        len(group) <= 253 if group
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
+        len(kind) <= 63 if kind
+        len(kind) >= 1 if kind
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63
-        len(namespace) >= 1
-        regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
-        port <= 65535
-        port >= 1
-        len(sectionName) <= 253
-        len(sectionName) >= 1
-        regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
+        len(namespace) <= 63 if namespace
+        len(namespace) >= 1 if namespace
+        _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
+        port <= 65535 if port not in [None, Undefined]
+        port >= 1 if port not in [None, Undefined]
+        len(sectionName) <= 253 if sectionName
+        len(sectionName) >= 1 if sectionName
+        _regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
 
 

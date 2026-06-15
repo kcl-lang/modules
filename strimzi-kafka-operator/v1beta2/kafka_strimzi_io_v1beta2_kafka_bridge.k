@@ -4,10 +4,11 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
 
 
 schema KafkaBridge:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge
 
     Attributes
@@ -37,8 +38,8 @@ schema KafkaBridge:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpec:
-    """
-    The specification of the Kafka Bridge.
+    r"""
+    The specification of the HTTP Bridge.
 
     Attributes
     ----------
@@ -53,17 +54,19 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpec:
     consumer : KafkaStrimziIoV1beta2KafkaBridgeSpecConsumer, default is Undefined, optional
         consumer
     enableMetrics : bool, default is Undefined, optional
-        Enable the metrics for the Kafka Bridge. Default is false.
+        Enable the metrics for the HTTP Bridge. Default is false.
     http : KafkaStrimziIoV1beta2KafkaBridgeSpecHTTP, default is Undefined, optional
         http
     image : str, default is Undefined, optional
-        The docker image for the pods.
+        The container image used for HTTP Bridge pods. If no image name is explicitly specified, the image name corresponds to the image specified in the Cluster Operator configuration. If an image name is not defined in the Cluster Operator configuration, a default value is used.
     jvmOptions : KafkaStrimziIoV1beta2KafkaBridgeSpecJvmOptions, default is Undefined, optional
         jvm options
     livenessProbe : KafkaStrimziIoV1beta2KafkaBridgeSpecLivenessProbe, default is Undefined, optional
         liveness probe
     logging : KafkaStrimziIoV1beta2KafkaBridgeSpecLogging, default is Undefined, optional
         logging
+    metricsConfig : KafkaStrimziIoV1beta2KafkaBridgeSpecMetricsConfig, default is Undefined, optional
+        metrics config
     producer : KafkaStrimziIoV1beta2KafkaBridgeSpecProducer, default is Undefined, optional
         producer
     rack : KafkaStrimziIoV1beta2KafkaBridgeSpecRack, default is Undefined, optional
@@ -71,7 +74,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpec:
     readinessProbe : KafkaStrimziIoV1beta2KafkaBridgeSpecReadinessProbe, default is Undefined, optional
         readiness probe
     replicas : int, default is Undefined, optional
-        The number of pods in the `Deployment`.  Defaults to `1`.
+        The number of pods in the `Deployment`. Required in the `v1` version of the Strimzi API. Defaults to `1` in the `v1beta2` version of the Strimzi API.
     resources : KafkaStrimziIoV1beta2KafkaBridgeSpecResources, default is Undefined, optional
         resources
     template : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplate, default is Undefined, optional
@@ -105,6 +108,8 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpec:
 
     logging?: KafkaStrimziIoV1beta2KafkaBridgeSpecLogging
 
+    metricsConfig?: KafkaStrimziIoV1beta2KafkaBridgeSpecMetricsConfig
+
     producer?: KafkaStrimziIoV1beta2KafkaBridgeSpecProducer
 
     rack?: KafkaStrimziIoV1beta2KafkaBridgeSpecRack
@@ -123,11 +128,11 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpec:
 
 
     check:
-        replicas >= 0
+        replicas >= 0 if replicas not in [None, Undefined]
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecAdminClient:
-    """
+    r"""
     Kafka AdminClient related configuration.
 
     Attributes
@@ -141,7 +146,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecAdminClient:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecAuthentication:
-    """
+    r"""
     Authentication configuration for connecting to the cluster.
 
     Attributes
@@ -150,20 +155,32 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecAuthentication:
         access token
     accessTokenIsJwt : bool, default is Undefined, optional
         Configure whether access token should be treated as JWT. This should be set to `false` if the authorization server returns opaque tokens. Defaults to `true`.
+    accessTokenLocation : str, default is Undefined, optional
+        Path to the token file containing an access token to be used for authentication.
     audience : str, default is Undefined, optional
         OAuth audience to use when authenticating against the authorization server. Some authorization servers require the audience to be explicitly set. The possible values depend on how the authorization server is configured. By default, `audience` is not specified when performing the token endpoint request.
     certificateAndKey : KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationCertificateAndKey, default is Undefined, optional
         certificate and key
+    clientAssertion : KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationClientAssertion, default is Undefined, optional
+        client assertion
+    clientAssertionLocation : str, default is Undefined, optional
+        Path to the file containing the client assertion to be used for authentication.
+    clientAssertionType : str, default is Undefined, optional
+        The client assertion type. If not set, and either `clientAssertion` or `clientAssertionLocation` is configured, this value defaults to `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`.
     clientId : str, default is Undefined, optional
         OAuth Client ID which the Kafka client can use to authenticate against the OAuth server and use the token endpoint URI.
     clientSecret : KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationClientSecret, default is Undefined, optional
         client secret
+    config : any, default is Undefined, optional
+        Configuration for the custom authentication mechanism. Only properties with the `sasl.` and `ssl.keystore.` prefixes are allowed. Specify other options in the regular configuration section of the custom resource.
     connectTimeoutSeconds : int, default is Undefined, optional
         The connect timeout in seconds when connecting to authorization server. If not set, the effective connect timeout is 60 seconds.
     disableTlsHostnameVerification : bool, default is Undefined, optional
         Enable or disable TLS hostname verification. Default value is `false`.
     enableMetrics : bool, default is Undefined, optional
         Enable or disable OAuth metrics. Default value is `false`.
+    grantType : str, default is Undefined, optional
+        A custom OAuth grant type to use when authenticating against the authorization server with `clientId` and one of `clientSecret` or `clientAssertion`. The value defaults to `client_credentials` in these cases. This is optional configuration, only used with custom authorization server implementations.
     httpRetries : int, default is Undefined, optional
         The maximum number of retries to attempt if an initial HTTP request fails. If not set, the default is to not attempt any retries.
     httpRetryPauseMs : int, default is Undefined, optional
@@ -178,6 +195,10 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecAuthentication:
         The read timeout in seconds when connecting to authorization server. If not set, the effective read timeout is 60 seconds.
     refreshToken : KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationRefreshToken, default is Undefined, optional
         refresh token
+    sasl : bool, default is Undefined, optional
+        Enable or disable SASL on this authentication mechanism.
+    saslExtensions : {str:str}, default is Undefined, optional
+        SASL extensions parameters.
     scope : str, default is Undefined, optional
         OAuth scope to use when authenticating against the authorization server. Some authorization servers require this to be set. The possible values depend on how authorization server is configured. By default `scope` is not specified when doing the token endpoint request.
     tlsTrustedCertificates : [KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationTLSTrustedCertificatesItems0], default is Undefined, optional
@@ -185,7 +206,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecAuthentication:
     tokenEndpointUri : str, default is Undefined, optional
         Authorization server token endpoint URI.
     $type : str, default is Undefined, required
-        Authentication type. Currently the supported types are `tls`, `scram-sha-256`, `scram-sha-512`, `plain`, and 'oauth'. `scram-sha-256` and `scram-sha-512` types use SASL SCRAM-SHA-256 and SASL SCRAM-SHA-512 Authentication, respectively. `plain` type uses SASL PLAIN Authentication. `oauth` type uses SASL OAUTHBEARER Authentication. The `tls` type uses TLS Client Authentication. The `tls` type is supported only over TLS connections.
+        Specifies the authentication type. Supported types are `tls`, `scram-sha-256`, `scram-sha-512`, `plain`, 'oauth', and `custom`. `tls` uses TLS client authentication and is supported only over TLS connections. `scram-sha-256` and `scram-sha-512` use SASL SCRAM-SHA-256 and SASL SCRAM-SHA-512 authentication, respectively. `plain` uses SASL PLAIN authentication. `oauth` uses SASL OAUTHBEARER authentication. `custom` allows you to configure a custom authentication mechanism. As of Strimzi 0.49.0, `oauth` type is deprecated and will be removed in the `v1` API version. Please use `custom` type instead.
     username : str, default is Undefined, optional
         Username used for the authentication.
     """
@@ -195,19 +216,31 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecAuthentication:
 
     accessTokenIsJwt?: bool
 
+    accessTokenLocation?: str
+
     audience?: str
 
     certificateAndKey?: KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationCertificateAndKey
 
+    clientAssertion?: KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationClientAssertion
+
+    clientAssertionLocation?: str
+
+    clientAssertionType?: str
+
     clientId?: str
 
     clientSecret?: KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationClientSecret
+
+    config?: any
 
     connectTimeoutSeconds?: int
 
     disableTlsHostnameVerification?: bool
 
     enableMetrics?: bool
+
+    grantType?: str
 
     httpRetries?: int
 
@@ -223,19 +256,23 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecAuthentication:
 
     refreshToken?: KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationRefreshToken
 
+    sasl?: bool
+
+    saslExtensions?: {str:str}
+
     scope?: str
 
     tlsTrustedCertificates?: [KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationTLSTrustedCertificatesItems0]
 
     tokenEndpointUri?: str
 
-    $type: "tls" | "scram-sha-256" | "scram-sha-512" | "plain" | "oauth"
+    $type: "tls" | "scram-sha-256" | "scram-sha-512" | "plain" | "oauth" | "custom"
 
     username?: str
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationAccessToken:
-    """
+    r"""
     Link to Kubernetes Secret containing the access token which was obtained from the authorization server.
 
     Attributes
@@ -253,7 +290,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationAccessToken:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationCertificateAndKey:
-    """
+    r"""
     Reference to the `Secret` which holds the certificate and private key pair.
 
     Attributes
@@ -261,7 +298,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationCertificateAndKey:
     certificate : str, default is Undefined, required
         The name of the file certificate in the Secret.
     key : str, default is Undefined, required
-        The name of the private key in the Secret.
+        The name of the private key in the secret. The private key must be in unencrypted PKCS #8 format. For more information, see RFC 5208: https://datatracker.ietf.org/doc/html/rfc5208.
     secretName : str, default is Undefined, required
         The name of the Secret containing the certificate.
     """
@@ -274,8 +311,26 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationCertificateAndKey:
     secretName: str
 
 
-schema KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationClientSecret:
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationClientAssertion:
+    r"""
+    Link to Kubernetes secret containing the client assertion which was manually configured for the client.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key under which the secret value is stored in the Kubernetes Secret.
+    secretName : str, default is Undefined, required
+        The name of the Kubernetes Secret containing the secret value.
     """
+
+
+    key: str
+
+    secretName: str
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationClientSecret:
+    r"""
     Link to Kubernetes Secret containing the OAuth client secret which the Kafka client can use to authenticate against the OAuth server and use the token endpoint URI.
 
     Attributes
@@ -293,7 +348,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationClientSecret:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationPasswordSecret:
-    """
+    r"""
     Reference to the `Secret` which holds the password.
 
     Attributes
@@ -311,7 +366,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationPasswordSecret:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationRefreshToken:
-    """
+    r"""
     Link to Kubernetes Secret containing the refresh token which can be used to obtain access token from the authorization server.
 
     Attributes
@@ -329,39 +384,51 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationRefreshToken:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationTLSTrustedCertificatesItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec authentication TLS trusted certificates items0
 
     Attributes
     ----------
-    certificate : str, default is Undefined, required
-        The name of the file certificate in the Secret.
+    certificate : str, default is Undefined, optional
+        The name of the file certificate in the secret.
+    pattern : str, default is Undefined, optional
+        Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.
     secretName : str, default is Undefined, required
         The name of the Secret containing the certificate.
     """
 
 
-    certificate: str
+    certificate?: str
+
+    pattern?: str
 
     secretName: str
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecConsumer:
-    """
+    r"""
     Kafka consumer related configuration.
 
     Attributes
     ----------
     config : any, default is Undefined, optional
         The Kafka consumer configuration used for consumer instances created by the bridge. Properties with the following prefixes cannot be set: ssl., bootstrap.servers, group.id, sasl., security. (with the exception of: ssl.endpoint.identification.algorithm, ssl.cipher.suites, ssl.protocol, ssl.enabled.protocols).
+    enabled : bool, default is Undefined, optional
+        Whether the HTTP consumer should be enabled or disabled. The default is enabled (`true`).
+    timeoutSeconds : int, default is Undefined, optional
+        The timeout in seconds for deleting inactive consumers, default is -1 (disabled).
     """
 
 
     config?: any
 
+    enabled?: bool
+
+    timeoutSeconds?: int
+
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecHTTP:
-    """
+    r"""
     The HTTP related configuration.
 
     Attributes
@@ -369,7 +436,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecHTTP:
     cors : KafkaStrimziIoV1beta2KafkaBridgeSpecHTTPCors, default is Undefined, optional
         cors
     port : int, default is Undefined, optional
-        The port which is the server listening on.
+        Port the server listens on.
     """
 
 
@@ -379,11 +446,11 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecHTTP:
 
 
     check:
-        port >= 1023
+        port >= 1023 if port not in [None, Undefined]
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecHTTPCors:
-    """
+    r"""
     CORS configuration for the HTTP Bridge.
 
     Attributes
@@ -401,16 +468,16 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecHTTPCors:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecJvmOptions:
-    """
-    **Currently not supported** JVM Options for pods.
+    r"""
+    JVM Options for pods.
 
     Attributes
     ----------
-    _XX : any, default is Undefined, optional
+    "-XX" : {str:str}, default is Undefined, optional
         A map of -XX options to the JVM.
-    _Xms : str, default is Undefined, optional
+    "-Xms" : str, default is Undefined, optional
         -Xms option to to the JVM.
-    _Xmx : str, default is Undefined, optional
+    "-Xmx" : str, default is Undefined, optional
         -Xmx option to to the JVM.
     gcLoggingEnabled : bool, default is Undefined, optional
         Specifies whether the Garbage Collection logging is enabled. The default is false.
@@ -419,11 +486,11 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecJvmOptions:
     """
 
 
-    _XX?: any
+    "-XX"?: {str:str}
 
-    _Xms?: str
+    "-Xms"?: str
 
-    _Xmx?: str
+    "-Xmx"?: str
 
     gcLoggingEnabled?: bool
 
@@ -431,12 +498,13 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecJvmOptions:
 
 
     check:
-        regex.match(str(_Xms), r"^[0-9]+[mMgG]?$") if _Xms
-        regex.match(str(_Xmx), r"^[0-9]+[mMgG]?$") if _Xmx
+        True  # Skip validations for "-XX"
+        True  # Skip validations for "-Xms"
+        True  # Skip validations for "-Xmx"
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecJvmOptionsJavaSystemPropertiesItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec jvm options java system properties items0
 
     Attributes
@@ -454,7 +522,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecJvmOptionsJavaSystemPropertiesItems0:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecLivenessProbe:
-    """
+    r"""
     Pod liveness checking.
 
     Attributes
@@ -484,20 +552,20 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecLivenessProbe:
 
 
     check:
-        failureThreshold >= 1
-        initialDelaySeconds >= 0
-        periodSeconds >= 1
-        successThreshold >= 1
-        timeoutSeconds >= 1
+        failureThreshold >= 1 if failureThreshold not in [None, Undefined]
+        initialDelaySeconds >= 0 if initialDelaySeconds not in [None, Undefined]
+        periodSeconds >= 1 if periodSeconds not in [None, Undefined]
+        successThreshold >= 1 if successThreshold not in [None, Undefined]
+        timeoutSeconds >= 1 if timeoutSeconds not in [None, Undefined]
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecLogging:
-    """
-    Logging configuration for Kafka Bridge.
+    r"""
+    Logging configuration for HTTP Bridge.
 
     Attributes
     ----------
-    loggers : any, default is Undefined, optional
+    loggers : {str:str}, default is Undefined, optional
         A Map from logger name to logger level.
     $type : str, default is Undefined, required
         Logging type, must be either 'inline' or 'external'.
@@ -506,7 +574,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecLogging:
     """
 
 
-    loggers?: any
+    loggers?: {str:str}
 
     $type: "inline" | "external"
 
@@ -514,7 +582,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecLogging:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecLoggingValueFrom:
-    """
+    r"""
     `ConfigMap` entry where the logging configuration is stored. 
 
     Attributes
@@ -528,7 +596,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecLoggingValueFrom:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecLoggingValueFromConfigMapKeyRef:
-    """
+    r"""
     Reference to the key in the ConfigMap containing the configuration.
 
     Attributes
@@ -549,22 +617,98 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecLoggingValueFromConfigMapKeyRef:
     optional?: bool
 
 
-schema KafkaStrimziIoV1beta2KafkaBridgeSpecProducer:
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecMetricsConfig:
+    r"""
+    Metrics configuration.
+
+    Attributes
+    ----------
+    $type : str, default is Undefined, required
+        Metrics type. The supported types are `jmxPrometheusExporter` and `strimziMetricsReporter`. Type `jmxPrometheusExporter` uses the Prometheus JMX Exporter to expose Kafka JMX metrics in Prometheus format through an HTTP endpoint. Type `strimziMetricsReporter` uses the Strimzi Metrics Reporter to directly expose Kafka metrics in Prometheus format through an HTTP endpoint.
+    valueFrom : KafkaStrimziIoV1beta2KafkaBridgeSpecMetricsConfigValueFrom, default is Undefined, optional
+        value from
+    values : KafkaStrimziIoV1beta2KafkaBridgeSpecMetricsConfigValues, default is Undefined, optional
+        values
     """
+
+
+    $type: "jmxPrometheusExporter" | "strimziMetricsReporter"
+
+    valueFrom?: KafkaStrimziIoV1beta2KafkaBridgeSpecMetricsConfigValueFrom
+
+    values?: KafkaStrimziIoV1beta2KafkaBridgeSpecMetricsConfigValues
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecMetricsConfigValueFrom:
+    r"""
+    ConfigMap entry where the Prometheus JMX Exporter configuration is stored.
+
+    Attributes
+    ----------
+    configMapKeyRef : KafkaStrimziIoV1beta2KafkaBridgeSpecMetricsConfigValueFromConfigMapKeyRef, default is Undefined, optional
+        config map key ref
+    """
+
+
+    configMapKeyRef?: KafkaStrimziIoV1beta2KafkaBridgeSpecMetricsConfigValueFromConfigMapKeyRef
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecMetricsConfigValueFromConfigMapKeyRef:
+    r"""
+    Reference to the key in the ConfigMap containing the configuration.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key?: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecMetricsConfigValues:
+    r"""
+    Configuration values for the Strimzi Metrics Reporter.
+
+    Attributes
+    ----------
+    allowList : [str], default is Undefined, optional
+        A list of regex patterns to filter the metrics to collect. Should contain at least one element.
+    """
+
+
+    allowList?: [str]
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecProducer:
+    r"""
     Kafka producer related configuration.
 
     Attributes
     ----------
     config : any, default is Undefined, optional
         The Kafka producer configuration used for producer instances created by the bridge. Properties with the following prefixes cannot be set: ssl., bootstrap.servers, sasl., security. (with the exception of: ssl.endpoint.identification.algorithm, ssl.cipher.suites, ssl.protocol, ssl.enabled.protocols).
+    enabled : bool, default is Undefined, optional
+        Whether the HTTP producer should be enabled or disabled. The default is enabled (`true`).
     """
 
 
     config?: any
 
+    enabled?: bool
+
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecRack:
-    """
+    r"""
     Configuration of the node label which will be used as the client.rack consumer configuration.
 
     Attributes
@@ -578,7 +722,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecRack:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecReadinessProbe:
-    """
+    r"""
     Pod readiness checking.
 
     Attributes
@@ -608,52 +752,61 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecReadinessProbe:
 
 
     check:
-        failureThreshold >= 1
-        initialDelaySeconds >= 0
-        periodSeconds >= 1
-        successThreshold >= 1
-        timeoutSeconds >= 1
+        failureThreshold >= 1 if failureThreshold not in [None, Undefined]
+        initialDelaySeconds >= 0 if initialDelaySeconds not in [None, Undefined]
+        periodSeconds >= 1 if periodSeconds not in [None, Undefined]
+        successThreshold >= 1 if successThreshold not in [None, Undefined]
+        timeoutSeconds >= 1 if timeoutSeconds not in [None, Undefined]
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecResources:
-    """
+    r"""
     CPU and memory resources to reserve.
 
     Attributes
     ----------
     claims : [KafkaStrimziIoV1beta2KafkaBridgeSpecResourcesClaimsItems0], default is Undefined, optional
         claims
-    limits : any, default is Undefined, optional
+    limits : {str:int | str}, default is Undefined, optional
         limits
-    requests : any, default is Undefined, optional
+    requests : {str:int | str}, default is Undefined, optional
         requests
     """
 
 
     claims?: [KafkaStrimziIoV1beta2KafkaBridgeSpecResourcesClaimsItems0]
 
-    limits?: any
+    limits?: {str:int | str}
 
-    requests?: any
+    requests?: {str:int | str}
+
+
+    check:
+        all _, k in limits { _regex_match(str(k), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if k } if limits
+        all _, k in requests { _regex_match(str(k), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if k } if requests
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecResourcesClaimsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec resources claims items0
 
     Attributes
     ----------
     name : str, default is Undefined, optional
         name
+    request : str, default is Undefined, optional
+        request
     """
 
 
     name?: str
 
+    request?: str
+
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTLS:
-    """
-    TLS configuration for connecting Kafka Bridge to the cluster.
+    r"""
+    TLS configuration for connecting HTTP Bridge to the cluster.
 
     Attributes
     ----------
@@ -666,26 +819,30 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTLS:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTLSTrustedCertificatesItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec TLS trusted certificates items0
 
     Attributes
     ----------
-    certificate : str, default is Undefined, required
-        The name of the file certificate in the Secret.
+    certificate : str, default is Undefined, optional
+        The name of the file certificate in the secret.
+    pattern : str, default is Undefined, optional
+        Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.
     secretName : str, default is Undefined, required
         The name of the Secret containing the certificate.
     """
 
 
-    certificate: str
+    certificate?: str
+
+    pattern?: str
 
     secretName: str
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplate:
-    """
-    Template for Kafka Bridge resources. The template allows users to specify how a `Deployment` and `Pod` is generated.
+    r"""
+    Template for HTTP Bridge resources. The template allows users to specify how a `Deployment` and `Pod` is generated.
 
     Attributes
     ----------
@@ -726,8 +883,8 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplate:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateAPIService:
-    """
-    Template for Kafka Bridge API `Service`.
+    r"""
+    Template for HTTP Bridge API `Service`.
 
     Attributes
     ----------
@@ -748,26 +905,26 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateAPIService:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateAPIServiceMetadata:
-    """
+    r"""
     Metadata applied to the resource.
 
     Attributes
     ----------
-    annotations : any, default is Undefined, optional
+    annotations : {str:str}, default is Undefined, optional
         Annotations added to the Kubernetes resource.
-    labels : any, default is Undefined, optional
+    labels : {str:str}, default is Undefined, optional
         Labels added to the Kubernetes resource.
     """
 
 
-    annotations?: any
+    annotations?: {str:str}
 
-    labels?: any
+    labels?: {str:str}
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainer:
-    """
-    Template for the Kafka Bridge container.
+    r"""
+    Template for the HTTP Bridge container.
 
     Attributes
     ----------
@@ -775,6 +932,8 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainer:
         Environment variables which should be applied to the container.
     securityContext : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerSecurityContext, default is Undefined, optional
         security context
+    volumeMounts : [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerVolumeMountsItems0], default is Undefined, optional
+        Additional volume mounts which should be applied to the container.
     """
 
 
@@ -782,9 +941,11 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainer:
 
     securityContext?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerSecurityContext
 
+    volumeMounts?: [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerVolumeMountsItems0]
+
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerEnvItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template bridge container env items0
 
     Attributes
@@ -793,6 +954,8 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerEnvItems0:
         The environment variable key.
     value : str, default is Undefined, optional
         The environment variable value.
+    valueFrom : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerEnvItems0ValueFrom, default is Undefined, optional
+        value from
     """
 
 
@@ -800,15 +963,81 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerEnvItems0:
 
     value?: str
 
+    valueFrom?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerEnvItems0ValueFrom
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerEnvItems0ValueFrom:
+    r"""
+    Reference to the secret or config map property to which the environment variable is set.
+
+    Attributes
+    ----------
+    configMapKeyRef : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerEnvItems0ValueFromConfigMapKeyRef, default is Undefined, optional
+        config map key ref
+    secretKeyRef : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerEnvItems0ValueFromSecretKeyRef, default is Undefined, optional
+        secret key ref
+    """
+
+
+    configMapKeyRef?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerEnvItems0ValueFromConfigMapKeyRef
+
+    secretKeyRef?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerEnvItems0ValueFromSecretKeyRef
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerEnvItems0ValueFromConfigMapKeyRef:
+    r"""
+    Reference to a key in a config map.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key?: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerEnvItems0ValueFromSecretKeyRef:
+    r"""
+    Reference to a key in a secret.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key?: str
+
+    name?: str
+
+    optional?: bool
+
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerSecurityContext:
-    """
+    r"""
     Security context for the container.
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
+    appArmorProfile : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerSecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerSecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -834,6 +1063,8 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerSecurityContex
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerSecurityContextAppArmorProfile
+
     capabilities?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerSecurityContextCapabilities
 
     privileged?: bool
@@ -855,8 +1086,26 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerSecurityContex
     windowsOptions?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerSecurityContextWindowsOptions
 
 
-schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerSecurityContextCapabilities:
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerSecurityContextAppArmorProfile:
+    r"""
+    kafka strimzi io v1beta2 kafka bridge spec template bridge container security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, optional
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type?: str
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerSecurityContextCapabilities:
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template bridge container security context capabilities
 
     Attributes
@@ -874,7 +1123,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerSecurityContex
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerSecurityContextSeLinuxOptions:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template bridge container security context se linux options
 
     Attributes
@@ -900,7 +1149,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerSecurityContex
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerSecurityContextSeccompProfile:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template bridge container security context seccomp profile
 
     Attributes
@@ -918,7 +1167,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerSecurityContex
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerSecurityContextWindowsOptions:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template bridge container security context windows options
 
     Attributes
@@ -943,9 +1192,47 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerSecurityContex
     runAsUserName?: str
 
 
-schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateClusterRoleBinding:
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerVolumeMountsItems0:
+    r"""
+    kafka strimzi io v1beta2 kafka bridge spec template bridge container volume mounts items0
+
+    Attributes
+    ----------
+    mountPath : str, default is Undefined, optional
+        mount path
+    mountPropagation : str, default is Undefined, optional
+        mount propagation
+    name : str, default is Undefined, optional
+        name
+    readOnly : bool, default is Undefined, optional
+        read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
+    subPath : str, default is Undefined, optional
+        sub path
+    subPathExpr : str, default is Undefined, optional
+        sub path expr
     """
-    Template for the Kafka Bridge ClusterRoleBinding.
+
+
+    mountPath?: str
+
+    mountPropagation?: str
+
+    name?: str
+
+    readOnly?: bool
+
+    recursiveReadOnly?: str
+
+    subPath?: str
+
+    subPathExpr?: str
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateClusterRoleBinding:
+    r"""
+    Template for the HTTP Bridge ClusterRoleBinding.
 
     Attributes
     ----------
@@ -958,26 +1245,26 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateClusterRoleBinding:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateClusterRoleBindingMetadata:
-    """
+    r"""
     Metadata applied to the resource.
 
     Attributes
     ----------
-    annotations : any, default is Undefined, optional
+    annotations : {str:str}, default is Undefined, optional
         Annotations added to the Kubernetes resource.
-    labels : any, default is Undefined, optional
+    labels : {str:str}, default is Undefined, optional
         Labels added to the Kubernetes resource.
     """
 
 
-    annotations?: any
+    annotations?: {str:str}
 
-    labels?: any
+    labels?: {str:str}
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateDeployment:
-    """
-    Template for Kafka Bridge `Deployment`.
+    r"""
+    Template for HTTP Bridge `Deployment`.
 
     Attributes
     ----------
@@ -994,26 +1281,26 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateDeployment:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateDeploymentMetadata:
-    """
+    r"""
     Metadata applied to the resource.
 
     Attributes
     ----------
-    annotations : any, default is Undefined, optional
+    annotations : {str:str}, default is Undefined, optional
         Annotations added to the Kubernetes resource.
-    labels : any, default is Undefined, optional
+    labels : {str:str}, default is Undefined, optional
         Labels added to the Kubernetes resource.
     """
 
 
-    annotations?: any
+    annotations?: {str:str}
 
-    labels?: any
+    labels?: {str:str}
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainer:
-    """
-    Template for the Kafka Bridge init container.
+    r"""
+    Template for the HTTP Bridge init container.
 
     Attributes
     ----------
@@ -1021,6 +1308,8 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainer:
         Environment variables which should be applied to the container.
     securityContext : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerSecurityContext, default is Undefined, optional
         security context
+    volumeMounts : [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerVolumeMountsItems0], default is Undefined, optional
+        Additional volume mounts which should be applied to the container.
     """
 
 
@@ -1028,9 +1317,11 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainer:
 
     securityContext?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerSecurityContext
 
+    volumeMounts?: [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerVolumeMountsItems0]
+
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerEnvItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template init container env items0
 
     Attributes
@@ -1039,6 +1330,8 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerEnvItems0:
         The environment variable key.
     value : str, default is Undefined, optional
         The environment variable value.
+    valueFrom : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerEnvItems0ValueFrom, default is Undefined, optional
+        value from
     """
 
 
@@ -1046,15 +1339,81 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerEnvItems0:
 
     value?: str
 
+    valueFrom?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerEnvItems0ValueFrom
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerEnvItems0ValueFrom:
+    r"""
+    Reference to the secret or config map property to which the environment variable is set.
+
+    Attributes
+    ----------
+    configMapKeyRef : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerEnvItems0ValueFromConfigMapKeyRef, default is Undefined, optional
+        config map key ref
+    secretKeyRef : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerEnvItems0ValueFromSecretKeyRef, default is Undefined, optional
+        secret key ref
+    """
+
+
+    configMapKeyRef?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerEnvItems0ValueFromConfigMapKeyRef
+
+    secretKeyRef?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerEnvItems0ValueFromSecretKeyRef
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerEnvItems0ValueFromConfigMapKeyRef:
+    r"""
+    Reference to a key in a config map.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key?: str
+
+    name?: str
+
+    optional?: bool
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerEnvItems0ValueFromSecretKeyRef:
+    r"""
+    Reference to a key in a secret.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key?: str
+
+    name?: str
+
+    optional?: bool
+
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerSecurityContext:
-    """
+    r"""
     Security context for the container.
 
     Attributes
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
+    appArmorProfile : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerSecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     capabilities : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerSecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
@@ -1080,6 +1439,8 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerSecurityContext:
 
     allowPrivilegeEscalation?: bool
 
+    appArmorProfile?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerSecurityContextAppArmorProfile
+
     capabilities?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerSecurityContextCapabilities
 
     privileged?: bool
@@ -1101,8 +1462,26 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerSecurityContext:
     windowsOptions?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerSecurityContextWindowsOptions
 
 
-schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerSecurityContextCapabilities:
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerSecurityContextAppArmorProfile:
+    r"""
+    kafka strimzi io v1beta2 kafka bridge spec template init container security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, optional
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type?: str
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerSecurityContextCapabilities:
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template init container security context capabilities
 
     Attributes
@@ -1120,7 +1499,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerSecurityContextC
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerSecurityContextSeLinuxOptions:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template init container security context se linux options
 
     Attributes
@@ -1146,7 +1525,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerSecurityContextS
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerSecurityContextSeccompProfile:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template init container security context seccomp profile
 
     Attributes
@@ -1164,7 +1543,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerSecurityContextS
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerSecurityContextWindowsOptions:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template init container security context windows options
 
     Attributes
@@ -1189,24 +1568,68 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerSecurityContextW
     runAsUserName?: str
 
 
-schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePod:
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerVolumeMountsItems0:
+    r"""
+    kafka strimzi io v1beta2 kafka bridge spec template init container volume mounts items0
+
+    Attributes
+    ----------
+    mountPath : str, default is Undefined, optional
+        mount path
+    mountPropagation : str, default is Undefined, optional
+        mount propagation
+    name : str, default is Undefined, optional
+        name
+    readOnly : bool, default is Undefined, optional
+        read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
+    subPath : str, default is Undefined, optional
+        sub path
+    subPathExpr : str, default is Undefined, optional
+        sub path expr
     """
-    Template for Kafka Bridge `Pods`.
+
+
+    mountPath?: str
+
+    mountPropagation?: str
+
+    name?: str
+
+    readOnly?: bool
+
+    recursiveReadOnly?: str
+
+    subPath?: str
+
+    subPathExpr?: str
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePod:
+    r"""
+    Template for HTTP Bridge `Pods`.
 
     Attributes
     ----------
     affinity : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinity, default is Undefined, optional
         affinity
+    dnsConfig : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodDNSConfig, default is Undefined, optional
+        dns config
+    dnsPolicy : str, default is Undefined, optional
+        The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.
     enableServiceLinks : bool, default is Undefined, optional
         Indicates whether information about services should be injected into Pod's environment variables.
     hostAliases : [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodHostAliasesItems0], default is Undefined, optional
         The pod's HostAliases. HostAliases is an optional list of hosts and IPs that will be injected into the Pod's hosts file if specified.
+    hostUsers : bool, default is Undefined, optional
+        Use the host user namespace. Optional. Defaults to `true`. When `true` or not set, the pod runs in the host user namespace. This is required when the pod needs features available only in the host namespace, such as loading kernel modules with `CAP_SYS_MODULE`.When set to `false`, the pod runs in a new user namespace. Setting `false` helps mitigate container breakout vulnerabilities and allows containers to run as `root` without granting `root` privileges on the host. This property is alpha-level in Kubernetes and is supported only by Kubernetes clusters that enable the `UserNamespacesSupport` feature.
     imagePullSecrets : [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodImagePullSecretsItems0], default is Undefined, optional
         List of references to secrets in the same namespace to use for pulling any of the images used by this Pod. When the `STRIMZI_IMAGE_PULL_SECRETS` environment variable in Cluster Operator and the `imagePullSecrets` option are specified, only the `imagePullSecrets` variable is used and the `STRIMZI_IMAGE_PULL_SECRETS` variable is ignored.
     metadata : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodMetadata, default is Undefined, optional
         metadata
     priorityClassName : str, default is Undefined, optional
-        The name of the priority class used to assign priority to the pods. For more information about priority classes, see {K8sPriorityClass}.
+        The name of the priority class used to assign priority to the pods. 
     schedulerName : str, default is Undefined, optional
         The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.
     securityContext : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContext, default is Undefined, optional
@@ -1214,19 +1637,27 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePod:
     terminationGracePeriodSeconds : int, default is Undefined, optional
         The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.
     tmpDirSizeLimit : str, default is Undefined, optional
-        Defines the total amount (for example `1Gi`) of local storage required for temporary EmptyDir volume (`/tmp`). Default value is `5Mi`.
+        Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.
     tolerations : [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodTolerationsItems0], default is Undefined, optional
         The pod's tolerations.
     topologySpreadConstraints : [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodTopologySpreadConstraintsItems0], default is Undefined, optional
         The pod's topology spread constraints.
+    volumes : [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0], default is Undefined, optional
+        Additional volumes that can be mounted to the pod.
     """
 
 
     affinity?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinity
 
+    dnsConfig?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodDNSConfig
+
+    dnsPolicy?: "ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"
+
     enableServiceLinks?: bool
 
     hostAliases?: [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodHostAliasesItems0]
+
+    hostUsers?: bool
 
     imagePullSecrets?: [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodImagePullSecretsItems0]
 
@@ -1246,14 +1677,16 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePod:
 
     topologySpreadConstraints?: [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodTopologySpreadConstraintsItems0]
 
+    volumes?: [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0]
+
 
     check:
-        terminationGracePeriodSeconds >= 0
-        regex.match(str(tmpDirSizeLimit), r"^([0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$") if tmpDirSizeLimit
+        terminationGracePeriodSeconds >= 0 if terminationGracePeriodSeconds not in [None, Undefined]
+        _regex_match(str(tmpDirSizeLimit), r"^([0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$") if tmpDirSizeLimit
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinity:
-    """
+    r"""
     The pod's affinity rules.
 
     Attributes
@@ -1275,7 +1708,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinity:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityNodeAffinity:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity node affinity
 
     Attributes
@@ -1293,7 +1726,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityNodeAffinity:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity node affinity preferred during scheduling ignored during execution items0
 
     Attributes
@@ -1311,7 +1744,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityNodeAffinityPrefer
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity node affinity preferred during scheduling ignored during execution items0 preference
 
     Attributes
@@ -1329,7 +1762,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityNodeAffinityPrefer
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity node affinity preferred during scheduling ignored during execution items0 preference match expressions items0
 
     Attributes
@@ -1351,7 +1784,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityNodeAffinityPrefer
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity node affinity preferred during scheduling ignored during execution items0 preference match fields items0
 
     Attributes
@@ -1373,7 +1806,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityNodeAffinityPrefer
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity node affinity required during scheduling ignored during execution
 
     Attributes
@@ -1387,7 +1820,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityNodeAffinityRequir
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity node affinity required during scheduling ignored during execution node selector terms items0
 
     Attributes
@@ -1405,7 +1838,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityNodeAffinityRequir
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity node affinity required during scheduling ignored during execution node selector terms items0 match expressions items0
 
     Attributes
@@ -1427,7 +1860,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityNodeAffinityRequir
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity node affinity required during scheduling ignored during execution node selector terms items0 match fields items0
 
     Attributes
@@ -1449,7 +1882,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityNodeAffinityRequir
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinity:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod affinity
 
     Attributes
@@ -1467,7 +1900,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinity:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod affinity preferred during scheduling ignored during execution items0
 
     Attributes
@@ -1485,13 +1918,17 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityPreferr
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term
 
     Attributes
     ----------
     labelSelector : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -1503,6 +1940,10 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityPreferr
 
     labelSelector?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector
 
     namespaces?: [str]
@@ -1511,25 +1952,25 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityPreferr
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term label selector
 
     Attributes
     ----------
     matchExpressions : [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0], default is Undefined, optional
         match expressions
-    matchLabels : any, default is Undefined, optional
+    matchLabels : {str:str}, default is Undefined, optional
         match labels
     """
 
 
     matchExpressions?: [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0]
 
-    matchLabels?: any
+    matchLabels?: {str:str}
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term label selector match expressions items0
 
     Attributes
@@ -1551,25 +1992,25 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityPreferr
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector
 
     Attributes
     ----------
     matchExpressions : [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0], default is Undefined, optional
         match expressions
-    matchLabels : any, default is Undefined, optional
+    matchLabels : {str:str}, default is Undefined, optional
         match labels
     """
 
 
     matchExpressions?: [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0]
 
-    matchLabels?: any
+    matchLabels?: {str:str}
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector match expressions items0
 
     Attributes
@@ -1591,13 +2032,17 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityPreferr
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod affinity required during scheduling ignored during execution items0
 
     Attributes
     ----------
     labelSelector : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -1609,6 +2054,10 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityRequire
 
     labelSelector?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector
 
     namespaces?: [str]
@@ -1617,25 +2066,25 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityRequire
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod affinity required during scheduling ignored during execution items0 label selector
 
     Attributes
     ----------
     matchExpressions : [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0], default is Undefined, optional
         match expressions
-    matchLabels : any, default is Undefined, optional
+    matchLabels : {str:str}, default is Undefined, optional
         match labels
     """
 
 
     matchExpressions?: [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0]
 
-    matchLabels?: any
+    matchLabels?: {str:str}
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod affinity required during scheduling ignored during execution items0 label selector match expressions items0
 
     Attributes
@@ -1657,25 +2106,25 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityRequire
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod affinity required during scheduling ignored during execution items0 namespace selector
 
     Attributes
     ----------
     matchExpressions : [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0], default is Undefined, optional
         match expressions
-    matchLabels : any, default is Undefined, optional
+    matchLabels : {str:str}, default is Undefined, optional
         match labels
     """
 
 
     matchExpressions?: [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0]
 
-    matchLabels?: any
+    matchLabels?: {str:str}
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod affinity required during scheduling ignored during execution items0 namespace selector match expressions items0
 
     Attributes
@@ -1697,7 +2146,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAffinityRequire
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinity:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod anti affinity
 
     Attributes
@@ -1715,7 +2164,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinity:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod anti affinity preferred during scheduling ignored during execution items0
 
     Attributes
@@ -1733,13 +2182,17 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityPre
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term
 
     Attributes
     ----------
     labelSelector : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -1751,6 +2204,10 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityPre
 
     labelSelector?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector
 
     namespaces?: [str]
@@ -1759,25 +2216,25 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityPre
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term label selector
 
     Attributes
     ----------
     matchExpressions : [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0], default is Undefined, optional
         match expressions
-    matchLabels : any, default is Undefined, optional
+    matchLabels : {str:str}, default is Undefined, optional
         match labels
     """
 
 
     matchExpressions?: [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0]
 
-    matchLabels?: any
+    matchLabels?: {str:str}
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term label selector match expressions items0
 
     Attributes
@@ -1799,25 +2256,25 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityPre
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelector:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector
 
     Attributes
     ----------
     matchExpressions : [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0], default is Undefined, optional
         match expressions
-    matchLabels : any, default is Undefined, optional
+    matchLabels : {str:str}, default is Undefined, optional
         match labels
     """
 
 
     matchExpressions?: [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0]
 
-    matchLabels?: any
+    matchLabels?: {str:str}
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermNamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod anti affinity preferred during scheduling ignored during execution items0 pod affinity term namespace selector match expressions items0
 
     Attributes
@@ -1839,13 +2296,17 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityPre
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod anti affinity required during scheduling ignored during execution items0
 
     Attributes
     ----------
     labelSelector : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector, default is Undefined, optional
         label selector
+    matchLabelKeys : [str], default is Undefined, optional
+        match label keys
+    mismatchLabelKeys : [str], default is Undefined, optional
+        mismatch label keys
     namespaceSelector : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector, default is Undefined, optional
         namespace selector
     namespaces : [str], default is Undefined, optional
@@ -1857,6 +2318,10 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityReq
 
     labelSelector?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
 
+    matchLabelKeys?: [str]
+
+    mismatchLabelKeys?: [str]
+
     namespaceSelector?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector
 
     namespaces?: [str]
@@ -1865,25 +2330,25 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityReq
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod anti affinity required during scheduling ignored during execution items0 label selector
 
     Attributes
     ----------
     matchExpressions : [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0], default is Undefined, optional
         match expressions
-    matchLabels : any, default is Undefined, optional
+    matchLabels : {str:str}, default is Undefined, optional
         match labels
     """
 
 
     matchExpressions?: [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0]
 
-    matchLabels?: any
+    matchLabels?: {str:str}
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod anti affinity required during scheduling ignored during execution items0 label selector match expressions items0
 
     Attributes
@@ -1905,25 +2370,25 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityReq
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelector:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod anti affinity required during scheduling ignored during execution items0 namespace selector
 
     Attributes
     ----------
     matchExpressions : [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0], default is Undefined, optional
         match expressions
-    matchLabels : any, default is Undefined, optional
+    matchLabels : {str:str}, default is Undefined, optional
         match labels
     """
 
 
     matchExpressions?: [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0]
 
-    matchLabels?: any
+    matchLabels?: {str:str}
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0NamespaceSelectorMatchExpressionsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod anti affinity required during scheduling ignored during execution items0 namespace selector match expressions items0
 
     Attributes
@@ -1944,9 +2409,49 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinityPodAntiAffinityReq
     values?: [str]
 
 
-schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodDisruptionBudget:
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodDNSConfig:
+    r"""
+    The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.
+
+    Attributes
+    ----------
+    nameservers : [str], default is Undefined, optional
+        nameservers
+    options : [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodDNSConfigOptionsItems0], default is Undefined, optional
+        options
+    searches : [str], default is Undefined, optional
+        searches
     """
-    Template for Kafka Bridge `PodDisruptionBudget`.
+
+
+    nameservers?: [str]
+
+    options?: [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodDNSConfigOptionsItems0]
+
+    searches?: [str]
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodDNSConfigOptionsItems0:
+    r"""
+    kafka strimzi io v1beta2 kafka bridge spec template pod DNS config options items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    value : str, default is Undefined, optional
+        value
+    """
+
+
+    name?: str
+
+    value?: str
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodDisruptionBudget:
+    r"""
+    Template for HTTP Bridge `PodDisruptionBudget`.
 
     Attributes
     ----------
@@ -1963,29 +2468,29 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodDisruptionBudget:
 
 
     check:
-        maxUnavailable >= 0
+        maxUnavailable >= 0 if maxUnavailable not in [None, Undefined]
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodDisruptionBudgetMetadata:
-    """
+    r"""
     Metadata to apply to the `PodDisruptionBudgetTemplate` resource.
 
     Attributes
     ----------
-    annotations : any, default is Undefined, optional
+    annotations : {str:str}, default is Undefined, optional
         Annotations added to the Kubernetes resource.
-    labels : any, default is Undefined, optional
+    labels : {str:str}, default is Undefined, optional
         Labels added to the Kubernetes resource.
     """
 
 
-    annotations?: any
+    annotations?: {str:str}
 
-    labels?: any
+    labels?: {str:str}
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodHostAliasesItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod host aliases items0
 
     Attributes
@@ -2003,7 +2508,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodHostAliasesItems0:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodImagePullSecretsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod image pull secrets items0
 
     Attributes
@@ -2017,29 +2522,31 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodImagePullSecretsItems0:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodMetadata:
-    """
+    r"""
     Metadata applied to the resource.
 
     Attributes
     ----------
-    annotations : any, default is Undefined, optional
+    annotations : {str:str}, default is Undefined, optional
         Annotations added to the Kubernetes resource.
-    labels : any, default is Undefined, optional
+    labels : {str:str}, default is Undefined, optional
         Labels added to the Kubernetes resource.
     """
 
 
-    annotations?: any
+    annotations?: {str:str}
 
-    labels?: any
+    labels?: {str:str}
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContext:
-    """
+    r"""
     Configures pod-level security attributes and common container settings.
 
     Attributes
     ----------
+    appArmorProfile : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContextAppArmorProfile, default is Undefined, optional
+        app armor profile
     fsGroup : int, default is Undefined, optional
         fs group
     fsGroupChangePolicy : str, default is Undefined, optional
@@ -2050,18 +2557,24 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContext:
         run as non root
     runAsUser : int, default is Undefined, optional
         run as user
+    seLinuxChangePolicy : str, default is Undefined, optional
+        se linux change policy
     seLinuxOptions : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContextSeLinuxOptions, default is Undefined, optional
         se linux options
     seccompProfile : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContextSeccompProfile, default is Undefined, optional
         seccomp profile
     supplementalGroups : [int], default is Undefined, optional
         supplemental groups
+    supplementalGroupsPolicy : str, default is Undefined, optional
+        supplemental groups policy
     sysctls : [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContextSysctlsItems0], default is Undefined, optional
         sysctls
     windowsOptions : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContextWindowsOptions, default is Undefined, optional
         windows options
     """
 
+
+    appArmorProfile?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContextAppArmorProfile
 
     fsGroup?: int
 
@@ -2073,19 +2586,41 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContext:
 
     runAsUser?: int
 
+    seLinuxChangePolicy?: str
+
     seLinuxOptions?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContextSeLinuxOptions
 
     seccompProfile?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContextSeccompProfile
 
     supplementalGroups?: [int]
 
+    supplementalGroupsPolicy?: str
+
     sysctls?: [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContextSysctlsItems0]
 
     windowsOptions?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContextWindowsOptions
 
 
-schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContextSeLinuxOptions:
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContextAppArmorProfile:
+    r"""
+    kafka strimzi io v1beta2 kafka bridge spec template pod security context app armor profile
+
+    Attributes
+    ----------
+    localhostProfile : str, default is Undefined, optional
+        localhost profile
+    $type : str, default is Undefined, optional
+        type
     """
+
+
+    localhostProfile?: str
+
+    $type?: str
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContextSeLinuxOptions:
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod security context se linux options
 
     Attributes
@@ -2111,7 +2646,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContextSeLinuxOpti
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContextSeccompProfile:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod security context seccomp profile
 
     Attributes
@@ -2129,7 +2664,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContextSeccompProf
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContextSysctlsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod security context sysctls items0
 
     Attributes
@@ -2147,7 +2682,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContextSysctlsItem
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContextWindowsOptions:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod security context windows options
 
     Attributes
@@ -2173,7 +2708,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContextWindowsOpti
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodTolerationsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod tolerations items0
 
     Attributes
@@ -2203,7 +2738,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodTolerationsItems0:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodTopologySpreadConstraintsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod topology spread constraints items0
 
     Attributes
@@ -2245,25 +2780,25 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodTopologySpreadConstraintsI
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodTopologySpreadConstraintsItems0LabelSelector:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod topology spread constraints items0 label selector
 
     Attributes
     ----------
     matchExpressions : [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodTopologySpreadConstraintsItems0LabelSelectorMatchExpressionsItems0], default is Undefined, optional
         match expressions
-    matchLabels : any, default is Undefined, optional
+    matchLabels : {str:str}, default is Undefined, optional
         match labels
     """
 
 
     matchExpressions?: [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodTopologySpreadConstraintsItems0LabelSelectorMatchExpressionsItems0]
 
-    matchLabels?: any
+    matchLabels?: {str:str}
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodTopologySpreadConstraintsItems0LabelSelectorMatchExpressionsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge spec template pod topology spread constraints items0 label selector match expressions items0
 
     Attributes
@@ -2284,9 +2819,245 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodTopologySpreadConstraintsI
     values?: [str]
 
 
-schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateServiceAccount:
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0:
+    r"""
+    kafka strimzi io v1beta2 kafka bridge spec template pod volumes items0
+
+    Attributes
+    ----------
+    configMap : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0ConfigMap, default is Undefined, optional
+        config map
+    csi : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0Csi, default is Undefined, optional
+        csi
+    emptyDir : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0EmptyDir, default is Undefined, optional
+        empty dir
+    image : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0Image, default is Undefined, optional
+        image
+    name : str, default is Undefined, optional
+        Name to use for the volume. Required.
+    persistentVolumeClaim : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0PersistentVolumeClaim, default is Undefined, optional
+        persistent volume claim
+    secret : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0Secret, default is Undefined, optional
+        secret
     """
-    Template for the Kafka Bridge service account.
+
+
+    configMap?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0ConfigMap
+
+    csi?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0Csi
+
+    emptyDir?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0EmptyDir
+
+    image?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0Image
+
+    name?: str
+
+    persistentVolumeClaim?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0PersistentVolumeClaim
+
+    secret?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0Secret
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0ConfigMap:
+    r"""
+    `ConfigMap` to use to populate the volume.
+
+    Attributes
+    ----------
+    defaultMode : int, default is Undefined, optional
+        default mode
+    items : [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0ConfigMapItemsItems0], default is Undefined, optional
+        items
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    defaultMode?: int
+
+    items?: [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0ConfigMapItemsItems0]
+
+    name?: str
+
+    optional?: bool
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0ConfigMapItemsItems0:
+    r"""
+    kafka strimzi io v1beta2 kafka bridge spec template pod volumes items0 config map items items0
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        key
+    mode : int, default is Undefined, optional
+        mode
+    path : str, default is Undefined, optional
+        path
+    """
+
+
+    key?: str
+
+    mode?: int
+
+    path?: str
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0Csi:
+    r"""
+    `CSIVolumeSource` object to use to populate the volume.
+
+    Attributes
+    ----------
+    driver : str, default is Undefined, optional
+        driver
+    fsType : str, default is Undefined, optional
+        fs type
+    nodePublishSecretRef : KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0CsiNodePublishSecretRef, default is Undefined, optional
+        node publish secret ref
+    readOnly : bool, default is Undefined, optional
+        read only
+    volumeAttributes : {str:str}, default is Undefined, optional
+        volume attributes
+    """
+
+
+    driver?: str
+
+    fsType?: str
+
+    nodePublishSecretRef?: KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0CsiNodePublishSecretRef
+
+    readOnly?: bool
+
+    volumeAttributes?: {str:str}
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0CsiNodePublishSecretRef:
+    r"""
+    kafka strimzi io v1beta2 kafka bridge spec template pod volumes items0 csi node publish secret ref
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    name?: str
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0EmptyDir:
+    r"""
+    `EmptyDir` to use to populate the volume.
+
+    Attributes
+    ----------
+    medium : str, default is Undefined, optional
+        Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.
+    sizeLimit : str, default is Undefined, optional
+        The total amount of local storage required for this EmptyDir volume (for example 1Gi).
+    """
+
+
+    medium?: "Memory"
+
+    sizeLimit?: str
+
+
+    check:
+        _regex_match(str(sizeLimit), r"^([0-9.]+)([eEinumkKMGTP]*[-+]?[0-9]*)$") if sizeLimit
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0Image:
+    r"""
+    `ImageVolumeSource` object to use to populate the volume.
+
+    Attributes
+    ----------
+    pullPolicy : str, default is Undefined, optional
+        pull policy
+    reference : str, default is Undefined, optional
+        reference
+    """
+
+
+    pullPolicy?: str
+
+    reference?: str
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0PersistentVolumeClaim:
+    r"""
+    `PersistentVolumeClaim` object to use to populate the volume.
+
+    Attributes
+    ----------
+    claimName : str, default is Undefined, optional
+        claim name
+    readOnly : bool, default is Undefined, optional
+        read only
+    """
+
+
+    claimName?: str
+
+    readOnly?: bool
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0Secret:
+    r"""
+    `Secret` to use to populate the volume.
+
+    Attributes
+    ----------
+    defaultMode : int, default is Undefined, optional
+        default mode
+    items : [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0SecretItemsItems0], default is Undefined, optional
+        items
+    optional : bool, default is Undefined, optional
+        optional
+    secretName : str, default is Undefined, optional
+        secret name
+    """
+
+
+    defaultMode?: int
+
+    items?: [KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0SecretItemsItems0]
+
+    optional?: bool
+
+    secretName?: str
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0SecretItemsItems0:
+    r"""
+    kafka strimzi io v1beta2 kafka bridge spec template pod volumes items0 secret items items0
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        key
+    mode : int, default is Undefined, optional
+        mode
+    path : str, default is Undefined, optional
+        path
+    """
+
+
+    key?: str
+
+    mode?: int
+
+    path?: str
+
+
+schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateServiceAccount:
+    r"""
+    Template for the HTTP Bridge service account.
 
     Attributes
     ----------
@@ -2299,26 +3070,26 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateServiceAccount:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateServiceAccountMetadata:
-    """
+    r"""
     Metadata applied to the resource.
 
     Attributes
     ----------
-    annotations : any, default is Undefined, optional
+    annotations : {str:str}, default is Undefined, optional
         Annotations added to the Kubernetes resource.
-    labels : any, default is Undefined, optional
+    labels : {str:str}, default is Undefined, optional
         Labels added to the Kubernetes resource.
     """
 
 
-    annotations?: any
+    annotations?: {str:str}
 
-    labels?: any
+    labels?: {str:str}
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeSpecTracing:
-    """
-    The configuration of tracing in Kafka Bridge.
+    r"""
+    The configuration of tracing in HTTP Bridge.
 
     Attributes
     ----------
@@ -2331,8 +3102,8 @@ schema KafkaStrimziIoV1beta2KafkaBridgeSpecTracing:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeStatus:
-    """
-    The status of the Kafka Bridge.
+    r"""
+    The status of the HTTP Bridge.
 
     Attributes
     ----------
@@ -2345,7 +3116,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeStatus:
     replicas : int, default is Undefined, optional
         The current number of pods being used to provide this resource.
     url : str, default is Undefined, optional
-        The URL at which external client applications can access the Kafka Bridge.
+        The URL at which external client applications can access the HTTP Bridge.
     """
 
 
@@ -2361,7 +3132,7 @@ schema KafkaStrimziIoV1beta2KafkaBridgeStatus:
 
 
 schema KafkaStrimziIoV1beta2KafkaBridgeStatusConditionsItems0:
-    """
+    r"""
     kafka strimzi io v1beta2 kafka bridge status conditions items0
 
     Attributes

@@ -6,9 +6,9 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema TLSOption:
-    """
+    r"""
     TLSOption is the CRD implementation of a Traefik TLS Option, allowing to configure some parameters of the TLS connection.
-    More info: https://doc.traefik.io/traefik/v3.0/https/tls/#tls-options
+    More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/http/tls/tls-certificates/#certificates-stores#tls-options
 
     Attributes
     ----------
@@ -33,22 +33,24 @@ schema TLSOption:
 
 
 schema TraefikIoV1alpha1TLSOptionSpec:
-    """
+    r"""
     TLSOptionSpec defines the desired state of a TLSOption.
 
     Attributes
     ----------
     alpnProtocols : [str], default is Undefined, optional
         ALPNProtocols defines the list of supported application level protocols for the TLS handshake, in order of preference.
-        More info: https://doc.traefik.io/traefik/v3.0/https/tls/#alpn-protocols
+        More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/http/tls/tls-certificates/#certificates-stores#alpn-protocols
     cipherSuites : [str], default is Undefined, optional
         CipherSuites defines the list of supported cipher suites for TLS versions up to TLS 1.2.
-        More info: https://doc.traefik.io/traefik/v3.0/https/tls/#cipher-suites
+        More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/http/tls/tls-certificates/#certificates-stores#cipher-suites
     clientAuth : TraefikIoV1alpha1TLSOptionSpecClientAuth, default is Undefined, optional
         client auth
     curvePreferences : [str], default is Undefined, optional
-        CurvePreferences defines the preferred elliptic curves in a specific order.
-        More info: https://doc.traefik.io/traefik/v3.0/https/tls/#curve-preferences
+        CurvePreferences defines the preferred elliptic curves.
+        More info: https://doc.traefik.io/traefik/v3.6/reference/routing-configuration/http/tls/tls-certificates/#certificates-stores#curve-preferences
+    disableSessionTickets : bool, default is Undefined, optional
+        DisableSessionTickets disables TLS session resumption via session tickets.
     maxVersion : str, default is Undefined, optional
         MaxVersion defines the maximum TLS version that Traefik will accept.
         Possible values: VersionTLS10, VersionTLS11, VersionTLS12, VersionTLS13.
@@ -74,6 +76,8 @@ schema TraefikIoV1alpha1TLSOptionSpec:
 
     curvePreferences?: [str]
 
+    disableSessionTickets?: bool
+
     maxVersion?: str
 
     minVersion?: str
@@ -84,7 +88,7 @@ schema TraefikIoV1alpha1TLSOptionSpec:
 
 
 schema TraefikIoV1alpha1TLSOptionSpecClientAuth:
-    """
+    r"""
     ClientAuth defines the server's policy for TLS Client Authentication.
 
     Attributes

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ResourceManagerPolicy:
-    """
+    r"""
     resourcemanager cnrm cloud google com v1beta1 resource manager policy
 
     Attributes
@@ -36,7 +36,7 @@ schema ResourceManagerPolicy:
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerPolicySpec:
-    """
+    r"""
     resourcemanager cnrm cloud google com v1beta1 resource manager policy spec
 
     Attributes
@@ -78,7 +78,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerPolicySpec:
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerPolicySpecBooleanPolicy:
-    """
+    r"""
     A boolean policy is a constraint that is either enforced or not.
 
     Attributes
@@ -92,7 +92,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerPolicySpecBooleanP
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerPolicySpecFolderRef:
-    """
+    r"""
     The folder on which to configure the constraint. Only one of
     projectRef, folderRef, or organizationRef may be specified.
 
@@ -115,7 +115,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerPolicySpecFolderRe
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerPolicySpecListPolicy:
-    """
+    r"""
     A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. .
 
     Attributes
@@ -141,7 +141,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerPolicySpecListPoli
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerPolicySpecListPolicyAllow:
-    """
+    r"""
     One or the other must be set.
 
     Attributes
@@ -159,7 +159,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerPolicySpecListPoli
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerPolicySpecListPolicyDeny:
-    """
+    r"""
     One or the other must be set.
 
     Attributes
@@ -177,7 +177,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerPolicySpecListPoli
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerPolicySpecOrganizationRef:
-    """
+    r"""
     The organization on which to configure the constraint. Only one of
     projectRef, folderRef, or organizationRef may be specified.
 
@@ -200,7 +200,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerPolicySpecOrganiza
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerPolicySpecProjectRef:
-    """
+    r"""
     The project on which to configure the constraint. Only one of
     projectRef, folderRef, or organizationRef may be specified.
 
@@ -223,7 +223,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerPolicySpecProjectR
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerPolicySpecRestorePolicy:
-    """
+    r"""
     A restore policy is a constraint to restore the default policy.
 
     Attributes
@@ -237,7 +237,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerPolicySpecRestoreP
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerPolicyStatus:
-    """
+    r"""
     resourcemanager cnrm cloud google com v1beta1 resource manager policy status
 
     Attributes
@@ -263,7 +263,7 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerPolicyStatus:
 
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ResourceManagerPolicyStatusConditionsItems0:
-    """
+    r"""
     resourcemanager cnrm cloud google com v1beta1 resource manager policy status conditions items0
 
     Attributes

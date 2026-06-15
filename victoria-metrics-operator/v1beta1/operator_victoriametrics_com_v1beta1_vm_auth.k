@@ -4,11 +4,12 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 """
 import regex
 import k8s.apimachinery.pkg.apis.meta.v1
+_regex_match = regex.match
 
 
 schema VMAuth:
-    """
-    VMAuth is the Schema for the vmauths API
+    r"""
+    operator victoriametrics com v1beta1 VM auth
 
     Attributes
     ----------
@@ -37,181 +38,149 @@ schema VMAuth:
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpec:
-    """
-    VMAuthSpec defines the desired state of VMAuth
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec
 
     Attributes
     ----------
     affinity : any, default is Undefined, optional
-        Affinity If specified, the pod's scheduling constraints.
+        affinity
     configMaps : [str], default is Undefined, optional
-        ConfigMaps is a list of ConfigMaps in the same namespace as the VMAuth
-        object, which shall be mounted into the VMAuth Pods.
+        config maps
+    configReloadAuthKeySecret : OperatorVictoriametricsComV1beta1VMAuthSpecConfigReloadAuthKeySecret, default is Undefined, optional
+        config reload auth key secret
     configReloaderExtraArgs : {str:str}, default is Undefined, optional
-        ConfigReloaderExtraArgs that will be passed to  VMAuths config-reloader container
-        for example resyncInterval: "30s"
+        config reloader extra args
+    configReloaderImage : str, default is Undefined, optional
+        config reloader image
+    configReloaderImageTag : str, default is Undefined, optional
+        config reloader image tag
+    configReloaderResources : OperatorVictoriametricsComV1beta1VMAuthSpecConfigReloaderResources, default is Undefined, optional
+        config reloader resources
     configSecret : str, default is Undefined, optional
-        ConfigSecret is the name of a Kubernetes Secret in the same namespace as the
-        VMAuth object, which contains auth configuration for vmauth,
-        configuration must be inside secret key: config.yaml.
-        It must be created and managed manually.
-        If it's defined, configuration for vmauth becomes unmanaged and operator'll not create any related secrets/config-reloaders
+        config secret
     containers : [any], default is Undefined, optional
-        Containers property allows to inject additions sidecars or to patch existing containers.
-        It can be useful for proxies, backup, etc.
-    default_url : [str], default is Undefined, optional
-        DefaultURLs backend url for non-matching paths filter
-        usually used for default backend with error message
-    discover_backend_ips : bool, default is Undefined, optional
-        DiscoverBackendIPs instructs discovering URLPrefix backend IPs via DNS.
+        containers
+    disableAutomountServiceAccountToken : bool, default is Undefined, optional
+        disable automount service account token
+    disableSelfServiceScrape : bool, default is Undefined, optional
+        disable self service scrape
     dnsConfig : OperatorVictoriametricsComV1beta1VMAuthSpecDNSConfig, default is Undefined, optional
         dns config
     dnsPolicy : str, default is Undefined, optional
-        DNSPolicy sets DNS policy for the pod
-    drop_src_path_prefix_parts : int, default is Undefined, optional
-        DropSrcPathPrefixParts is the number of `/`-delimited request path prefix parts to drop before proxying the request to backend.
-        See https://docs.victoriametrics.com/vmauth.html#dropping-request-path-prefix for more details.
+        dns policy
+    externalConfig : OperatorVictoriametricsComV1beta1VMAuthSpecExternalConfig, default is Undefined, optional
+        external config
     extraArgs : {str:str}, default is Undefined, optional
-        ExtraArgs that will be passed to  VMAuth pod
-        for example remoteWrite.tmpDataPath: /tmp
+        extra args
     extraEnvs : [OperatorVictoriametricsComV1beta1VMAuthSpecExtraEnvsItems0], default is Undefined, optional
-        ExtraEnvs that will be added to VMAuth pod
-    headers : [str], default is Undefined, optional
-        Headers represent additional http headers, that vmauth uses
-        in form of ["header_key: header_value"]
-        multiple values for header key:
-        ["header_key: value1,value2"]
-        it's available since 1.68.0 version of vmauth
+        extra envs
+    extraEnvsFrom : [OperatorVictoriametricsComV1beta1VMAuthSpecExtraEnvsFromItems0], default is Undefined, optional
+        extra envs from
     hostAliases : [OperatorVictoriametricsComV1beta1VMAuthSpecHostAliasesItems0], default is Undefined, optional
-        HostAliases provides mapping for ip and hostname,
-        that would be propagated to pod,
-        cannot be used with HostNetwork.
+        host aliases
     hostNetwork : bool, default is Undefined, optional
-        HostNetwork controls whether the pod may use the node network namespace
+        host network
+    host_aliases : [OperatorVictoriametricsComV1beta1VMAuthSpecHostAliasesItems0], default is Undefined, optional
+        host aliases
+    hpa : OperatorVictoriametricsComV1beta1VMAuthSpecHpa, default is Undefined, optional
+        hpa
+    httpRoute : OperatorVictoriametricsComV1beta1VMAuthSpecHTTPRoute, default is Undefined, optional
+        http route
     image : OperatorVictoriametricsComV1beta1VMAuthSpecImage, default is Undefined, optional
         image
     imagePullSecrets : [OperatorVictoriametricsComV1beta1VMAuthSpecImagePullSecretsItems0], default is Undefined, optional
-        ImagePullSecrets An optional list of references to secrets in the same namespace
-        to use for pulling images from registries
-        see https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod
+        image pull secrets
     ingress : OperatorVictoriametricsComV1beta1VMAuthSpecIngress, default is Undefined, optional
         ingress
     initContainers : [any], default is Undefined, optional
-        InitContainers allows adding initContainers to the pod definition. Those can be used to e.g.
-        fetch secrets for injection into the vmSingle configuration from external sources. Any
-        errors during the execution of an initContainer will lead to a restart of the Pod. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
-        Using initContainers for any use case other then secret fetching is entirely outside the scope
-        of what the maintainers will support and by doing so, you accept that this behaviour may break
-        at any time without notice.
-    ip_filters : OperatorVictoriametricsComV1beta1VMAuthSpecIPFilters, default is Undefined, optional
-        ip filters
+        init containers
+    internalListenPort : str, default is Undefined, optional
+        internal listen port
     license : OperatorVictoriametricsComV1beta1VMAuthSpecLicense, default is Undefined, optional
         license
     livenessProbe : any, default is Undefined, optional
-        LivenessProbe that will be added CRD pod
-    load_balancing_policy : str, default is Undefined, optional
-        LoadBalancingPolicy defines load balancing policy to use for backend urls.
-        Supported policies: least_loaded, first_available.
-        See https://docs.victoriametrics.com/vmauth.html#load-balancing for more details (default "least_loaded")
+        liveness probe
     logFormat : str, default is Undefined, optional
-        LogFormat for VMAuth to be configured with.
+        log format
     logLevel : str, default is Undefined, optional
-        LogLevel for victoria metrics single to be configured with.
-    max_concurrent_requests : int, default is Undefined, optional
-        MaxConcurrentRequests defines max concurrent requests per user
-        300 is default value for vmauth
+        log level
+    managedMetadata : OperatorVictoriametricsComV1beta1VMAuthSpecManagedMetadata, default is Undefined, optional
+        managed metadata
     minReadySeconds : int, default is Undefined, optional
-        MinReadySeconds defines a minim number os seconds to wait before starting update next pod
-        if previous in healthy state
+        min ready seconds
     nodeSelector : {str:str}, default is Undefined, optional
-        NodeSelector Define which Nodes the Pods are scheduled on.
+        node selector
     paused : bool, default is Undefined, optional
-        Paused If set to true all actions on the underlying managed objects are not
-        going to be performed, except for delete actions.
+        paused
     podDisruptionBudget : OperatorVictoriametricsComV1beta1VMAuthSpecPodDisruptionBudget, default is Undefined, optional
         pod disruption budget
     podMetadata : OperatorVictoriametricsComV1beta1VMAuthSpecPodMetadata, default is Undefined, optional
         pod metadata
     port : str, default is Undefined, optional
-        Port listen port
+        port
     priorityClassName : str, default is Undefined, optional
-        PriorityClassName assigned to the Pods
+        priority class name
     readinessGates : [OperatorVictoriametricsComV1beta1VMAuthSpecReadinessGatesItems0], default is Undefined, optional
-        ReadinessGates defines pod readiness gates
+        readiness gates
     readinessProbe : any, default is Undefined, optional
-        ReadinessProbe that will be added CRD pod
+        readiness probe
     replicaCount : int, default is Undefined, optional
-        ReplicaCount is the expected size of the VMAuth
+        replica count
     resources : OperatorVictoriametricsComV1beta1VMAuthSpecResources, default is Undefined, optional
         resources
-    response_headers : [str], default is Undefined, optional
-        ResponseHeaders represent additional http headers, that vmauth adds for request response
-        in form of ["header_key: header_value"]
-        multiple values for header key:
-        ["header_key: value1,value2"]
-        it's available since 1.93.0 version of vmauth
-    retry_status_codes : [int], default is Undefined, optional
-        RetryStatusCodes defines http status codes in numeric format for request retries
-        e.g. [429,503]
     revisionHistoryLimitCount : int, default is Undefined, optional
-        The number of old ReplicaSets to retain to allow rollback in deployment or
-        maximum number of revisions that will be maintained in the StatefulSet's revision history.
-        Defaults to 10.
+        revision history limit count
+    rollingUpdate : OperatorVictoriametricsComV1beta1VMAuthSpecRollingUpdate, default is Undefined, optional
+        rolling update
     runtimeClassName : str, default is Undefined, optional
-        RuntimeClassName - defines runtime class for kubernetes pod.
-        https://kubernetes.io/docs/concepts/containers/runtime-class/
+        runtime class name
     schedulerName : str, default is Undefined, optional
-        SchedulerName - defines kubernetes scheduler name
+        scheduler name
     secrets : [str], default is Undefined, optional
-        Secrets is a list of Secrets in the same namespace as the VMAuth
-        object, which shall be mounted into the VMAuth Pods.
+        secrets
     securityContext : any, default is Undefined, optional
-        SecurityContext holds pod-level security attributes and common container settings.
-        This defaults to the default PodSecurityContext.
+        security context
     selectAllByDefault : bool, default is Undefined, optional
-        SelectAllByDefault changes default behavior for empty CRD selectors, such userSelector.
-        with selectAllByDefault: true and empty userSelector and userNamespaceSelector
-        Operator selects all exist users
-        with selectAllByDefault: false - selects nothing
+        select all by default
     serviceAccountName : str, default is Undefined, optional
-        ServiceAccountName is the name of the ServiceAccount to use to run the
-        VMAuth Pods.
+        service account name
     serviceScrapeSpec : any, default is Undefined, optional
-        ServiceScrapeSpec that will be added to vmauth VMServiceScrape spec
+        service scrape spec
     serviceSpec : OperatorVictoriametricsComV1beta1VMAuthSpecServiceSpec, default is Undefined, optional
         service spec
     startupProbe : any, default is Undefined, optional
-        StartupProbe that will be added to CRD pod
+        startup probe
     terminationGracePeriodSeconds : int, default is Undefined, optional
-        TerminationGracePeriodSeconds period for container graceful termination
-    tlsConfig : OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfig, default is Undefined, optional
-        tls config
+        termination grace period seconds
     tolerations : [OperatorVictoriametricsComV1beta1VMAuthSpecTolerationsItems0], default is Undefined, optional
-        Tolerations If specified, the pod's tolerations.
+        tolerations
     topologySpreadConstraints : [any], default is Undefined, optional
-        TopologySpreadConstraints embedded kubernetes pod configuration option,
-        controls how pods are spread across your cluster among failure-domains
-        such as regions, zones, nodes, and other user-defined topology domains
-        https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
-    unauthorizedAccessConfig : [OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedAccessConfigItems0], default is Undefined, optional
-        UnauthorizedAccessConfig configures access for un authorized users
+        topology spread constraints
+    unauthorizedAccessConfig : any, default is Undefined, optional
+        unauthorized access config
+    unauthorizedUserAccessSpec : OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpec, default is Undefined, optional
+        unauthorized user access spec
+    updateStrategy : str, default is Undefined, optional
+        update strategy
+    useDefaultResources : bool, default is Undefined, optional
+        use default resources
+    useProxyProtocol : bool, default is Undefined, optional
+        use proxy protocol
     useStrictSecurity : bool, default is Undefined, optional
-        UseStrictSecurity enables strict security mode for component
-        it restricts disk writes access
-        uses non-root user out of the box
-        drops not needed security permissions
+        use strict security
+    useVMConfigReloader : bool, default is Undefined, optional
+        use VM config reloader
     userNamespaceSelector : OperatorVictoriametricsComV1beta1VMAuthSpecUserNamespaceSelector, default is Undefined, optional
         user namespace selector
     userSelector : OperatorVictoriametricsComV1beta1VMAuthSpecUserSelector, default is Undefined, optional
         user selector
     volumeMounts : [OperatorVictoriametricsComV1beta1VMAuthSpecVolumeMountsItems0], default is Undefined, optional
-        VolumeMounts allows configuration of additional VolumeMounts on the output Deployment definition.
-        VolumeMounts specified will be appended to other VolumeMounts in the VMAuth container,
-        that are generated as a result of StorageSpec objects.
+        volume mounts
     volumes : [any], default is Undefined, optional
-        Volumes allows configuration of additional volumes on the output deploy definition.
-        Volumes specified will be appended to other volumes that are generated as a result of
-        StorageSpec objects.
+        volumes
+    vpa : OperatorVictoriametricsComV1beta1VMAuthSpecVpa, default is Undefined, optional
+        vpa
     """
 
 
@@ -219,31 +188,45 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpec:
 
     configMaps?: [str]
 
+    configReloadAuthKeySecret?: OperatorVictoriametricsComV1beta1VMAuthSpecConfigReloadAuthKeySecret
+
     configReloaderExtraArgs?: {str:str}
+
+    configReloaderImage?: str
+
+    configReloaderImageTag?: str
+
+    configReloaderResources?: OperatorVictoriametricsComV1beta1VMAuthSpecConfigReloaderResources
 
     configSecret?: str
 
     containers?: [any]
 
-    default_url?: [str]
+    disableAutomountServiceAccountToken?: bool
 
-    discover_backend_ips?: bool
+    disableSelfServiceScrape?: bool
 
     dnsConfig?: OperatorVictoriametricsComV1beta1VMAuthSpecDNSConfig
 
     dnsPolicy?: str
 
-    drop_src_path_prefix_parts?: int
+    externalConfig?: OperatorVictoriametricsComV1beta1VMAuthSpecExternalConfig
 
     extraArgs?: {str:str}
 
     extraEnvs?: [OperatorVictoriametricsComV1beta1VMAuthSpecExtraEnvsItems0]
 
-    headers?: [str]
+    extraEnvsFrom?: [OperatorVictoriametricsComV1beta1VMAuthSpecExtraEnvsFromItems0]
 
     hostAliases?: [OperatorVictoriametricsComV1beta1VMAuthSpecHostAliasesItems0]
 
     hostNetwork?: bool
+
+    host_aliases?: [OperatorVictoriametricsComV1beta1VMAuthSpecHostAliasesItems0]
+
+    hpa?: OperatorVictoriametricsComV1beta1VMAuthSpecHpa
+
+    httpRoute?: OperatorVictoriametricsComV1beta1VMAuthSpecHTTPRoute
 
     image?: OperatorVictoriametricsComV1beta1VMAuthSpecImage
 
@@ -253,19 +236,17 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpec:
 
     initContainers?: [any]
 
-    ip_filters?: OperatorVictoriametricsComV1beta1VMAuthSpecIPFilters
+    internalListenPort?: str
 
     license?: OperatorVictoriametricsComV1beta1VMAuthSpecLicense
 
     livenessProbe?: any
 
-    load_balancing_policy?: "least_loaded" | "first_available"
-
     logFormat?: "default" | "json"
 
     logLevel?: "INFO" | "WARN" | "ERROR" | "FATAL" | "PANIC"
 
-    max_concurrent_requests?: int
+    managedMetadata?: OperatorVictoriametricsComV1beta1VMAuthSpecManagedMetadata
 
     minReadySeconds?: int
 
@@ -289,11 +270,9 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpec:
 
     resources?: OperatorVictoriametricsComV1beta1VMAuthSpecResources
 
-    response_headers?: [str]
-
-    retry_status_codes?: [int]
-
     revisionHistoryLimitCount?: int
+
+    rollingUpdate?: OperatorVictoriametricsComV1beta1VMAuthSpecRollingUpdate
 
     runtimeClassName?: str
 
@@ -315,15 +294,23 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpec:
 
     terminationGracePeriodSeconds?: int
 
-    tlsConfig?: OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfig
-
     tolerations?: [OperatorVictoriametricsComV1beta1VMAuthSpecTolerationsItems0]
 
     topologySpreadConstraints?: [any]
 
-    unauthorizedAccessConfig?: [OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedAccessConfigItems0]
+    unauthorizedAccessConfig?: any
+
+    unauthorizedUserAccessSpec?: OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpec
+
+    updateStrategy?: "Recreate" | "RollingUpdate"
+
+    useDefaultResources?: bool
+
+    useProxyProtocol?: bool
 
     useStrictSecurity?: bool
+
+    useVMConfigReloader?: bool
 
     userNamespaceSelector?: OperatorVictoriametricsComV1beta1VMAuthSpecUserNamespaceSelector
 
@@ -333,28 +320,88 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpec:
 
     volumes?: [any]
 
+    vpa?: OperatorVictoriametricsComV1beta1VMAuthSpecVpa
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecConfigReloadAuthKeySecret:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec config reload auth key secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecConfigReloaderResources:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec config reloader resources
+
+    Attributes
+    ----------
+    claims : [OperatorVictoriametricsComV1beta1VMAuthSpecConfigReloaderResourcesClaimsItems0], default is Undefined, optional
+        claims
+    limits : {str:int | str}, default is Undefined, optional
+        limits
+    requests : {str:int | str}, default is Undefined, optional
+        requests
+    """
+
+
+    claims?: [OperatorVictoriametricsComV1beta1VMAuthSpecConfigReloaderResourcesClaimsItems0]
+
+    limits?: {str:int | str}
+
+    requests?: {str:int | str}
+
+
+    check:
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecConfigReloaderResourcesClaimsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec config reloader resources claims items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    request : str, default is Undefined, optional
+        request
+    """
+
+
+    name: str
+
+    request?: str
+
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecDNSConfig:
-    """
-    Specifies the DNS parameters of a pod.
-    Parameters specified here will be merged to the generated DNS
-    configuration based on DNSPolicy.
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec DNS config
 
     Attributes
     ----------
     nameservers : [str], default is Undefined, optional
-        A list of DNS name server IP addresses.
-        This will be appended to the base nameservers generated from DNSPolicy.
-        Duplicated nameservers will be removed.
+        nameservers
     options : [OperatorVictoriametricsComV1beta1VMAuthSpecDNSConfigOptionsItems0], default is Undefined, optional
-        A list of DNS resolver options.
-        This will be merged with the base options generated from DNSPolicy.
-        Duplicated entries will be removed. Resolution options given in Options
-        will override those that appear in the base DNSPolicy.
+        options
     searches : [str], default is Undefined, optional
-        A list of DNS search domains for host-name lookup.
-        This will be appended to the base search paths generated from DNSPolicy.
-        Duplicated search paths will be removed.
+        searches
     """
 
 
@@ -366,13 +413,13 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecDNSConfig:
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecDNSConfigOptionsItems0:
-    """
-    PodDNSConfigOption defines DNS resolver options of a pod.
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec DNS config options items0
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Required.
+        name
     value : str, default is Undefined, optional
         value
     """
@@ -383,24 +430,114 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecDNSConfigOptionsItems0:
     value?: str
 
 
-schema OperatorVictoriametricsComV1beta1VMAuthSpecExtraEnvsItems0:
+schema OperatorVictoriametricsComV1beta1VMAuthSpecExternalConfig:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec external config
+
+    Attributes
+    ----------
+    localPath : str, default is Undefined, optional
+        local path
+    secretRef : OperatorVictoriametricsComV1beta1VMAuthSpecExternalConfigSecretRef, default is Undefined, optional
+        secret ref
     """
-    EnvVar represents an environment variable present in a Container.
+
+
+    localPath?: str
+
+    secretRef?: OperatorVictoriametricsComV1beta1VMAuthSpecExternalConfigSecretRef
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecExternalConfigSecretRef:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec external config secret ref
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecExtraEnvsFromItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec extra envs from items0
+
+    Attributes
+    ----------
+    configMapRef : OperatorVictoriametricsComV1beta1VMAuthSpecExtraEnvsFromItems0ConfigMapRef, default is Undefined, optional
+        config map ref
+    prefix : str, default is Undefined, optional
+        prefix
+    secretRef : OperatorVictoriametricsComV1beta1VMAuthSpecExtraEnvsFromItems0SecretRef, default is Undefined, optional
+        secret ref
+    """
+
+
+    configMapRef?: OperatorVictoriametricsComV1beta1VMAuthSpecExtraEnvsFromItems0ConfigMapRef
+
+    prefix?: str
+
+    secretRef?: OperatorVictoriametricsComV1beta1VMAuthSpecExtraEnvsFromItems0SecretRef
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecExtraEnvsFromItems0ConfigMapRef:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec extra envs from items0 config map ref
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecExtraEnvsFromItems0SecretRef:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec extra envs from items0 secret ref
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecExtraEnvsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec extra envs items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of the environment variable. Must be a C_IDENTIFIER.
+        name
     value : str, default is Undefined, optional
-        Variable references $(VAR_NAME) are expanded
-        using the previously defined environment variables in the container and
-        any service environment variables. If a variable cannot be resolved,
-        the reference in the input string will be unchanged. Double $$ are reduced
-        to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e.
-        "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
-        Escaped references will never be expanded, regardless of whether the variable
-        exists or not.
-        Defaults to "".
+        value
     """
 
 
@@ -409,58 +546,759 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecExtraEnvsItems0:
     value?: str
 
 
-schema OperatorVictoriametricsComV1beta1VMAuthSpecHostAliasesItems0:
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHTTPRoute:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec HTTP route
+
+    Attributes
+    ----------
+    annotations : {str:str}, default is Undefined, optional
+        annotations
+    extraRules : [any], default is Undefined, optional
+        extra rules
+    hostnames : [str], default is Undefined, optional
+        hostnames
+    labels : {str:str}, default is Undefined, optional
+        labels
+    name : str, default is Undefined, optional
+        name
+    parentRefs : [OperatorVictoriametricsComV1beta1VMAuthSpecHTTPRouteParentRefsItems0], default is Undefined, optional
+        parent refs
     """
-    HostAlias holds the mapping between IP and hostnames that will be injected as an entry in the
-    pod's hosts file.
+
+
+    annotations?: {str:str}
+
+    extraRules?: [any]
+
+    hostnames?: [str]
+
+    labels?: {str:str}
+
+    name?: str
+
+    parentRefs?: [OperatorVictoriametricsComV1beta1VMAuthSpecHTTPRouteParentRefsItems0]
+
+
+    check:
+        all hostnames in hostnames { len(hostnames) <= 253 if hostnames not in [None, Undefined] } if hostnames
+        all hostnames in hostnames { len(hostnames) >= 1 if hostnames not in [None, Undefined] } if hostnames
+        all hostnames in hostnames { _regex_match(str(hostnames), r"^(\*\.)?[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if hostnames } if hostnames
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHTTPRouteParentRefsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec HTTP route parent refs items0
+
+    Attributes
+    ----------
+    group : str, default is "gateway.networking.k8s.io", optional
+        group
+    kind : str, default is "Gateway", optional
+        kind
+    name : str, default is Undefined, required
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    port : int, default is Undefined, optional
+        port
+    sectionName : str, default is Undefined, optional
+        section name
+    """
+
+
+    group?: str = "gateway.networking.k8s.io"
+
+    kind?: str = "Gateway"
+
+    name: str
+
+    namespace?: str
+
+    port?: int
+
+    sectionName?: str
+
+
+    check:
+        len(group) <= 253 if group
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
+        len(kind) <= 63 if kind
+        len(kind) >= 1 if kind
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
+        len(name) <= 253
+        len(name) >= 1
+        len(namespace) <= 63 if namespace
+        len(namespace) >= 1 if namespace
+        _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
+        port <= 65535 if port not in [None, Undefined]
+        port >= 1 if port not in [None, Undefined]
+        len(sectionName) <= 253 if sectionName
+        len(sectionName) >= 1 if sectionName
+        _regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHostAliasesItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec host aliases items0
 
     Attributes
     ----------
     hostnames : [str], default is Undefined, optional
-        Hostnames for the above IP address.
-    ip : str, default is Undefined, optional
-        IP address of the host file entry.
+        hostnames
+    ip : str, default is Undefined, required
+        ip
     """
 
 
     hostnames?: [str]
 
-    ip?: str
+    ip: str
 
 
-schema OperatorVictoriametricsComV1beta1VMAuthSpecIPFilters:
-    """
-    IPFilters defines per target src ip filters
-    supported only with enterprise version of vmauth
-    https://docs.victoriametrics.com/vmauth.html#ip-filters
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpa:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa
 
     Attributes
     ----------
-    allow_list : [str], default is Undefined, optional
-        allow list
-    deny_list : [str], default is Undefined, optional
-        deny list
+    behaviour : OperatorVictoriametricsComV1beta1VMAuthSpecHpaBehaviour, default is Undefined, optional
+        behaviour
+    maxReplicas : int, default is Undefined, optional
+        max replicas
+    metrics : [OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0], default is Undefined, optional
+        metrics
+    minReplicas : int, default is Undefined, optional
+        min replicas
     """
 
 
-    allow_list?: [str]
+    behaviour?: OperatorVictoriametricsComV1beta1VMAuthSpecHpaBehaviour
 
-    deny_list?: [str]
+    maxReplicas?: int
+
+    metrics?: [OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0]
+
+    minReplicas?: int
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaBehaviour:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa behaviour
+
+    Attributes
+    ----------
+    scaleDown : OperatorVictoriametricsComV1beta1VMAuthSpecHpaBehaviourScaleDown, default is Undefined, optional
+        scale down
+    scaleUp : OperatorVictoriametricsComV1beta1VMAuthSpecHpaBehaviourScaleUp, default is Undefined, optional
+        scale up
+    """
+
+
+    scaleDown?: OperatorVictoriametricsComV1beta1VMAuthSpecHpaBehaviourScaleDown
+
+    scaleUp?: OperatorVictoriametricsComV1beta1VMAuthSpecHpaBehaviourScaleUp
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaBehaviourScaleDown:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa behaviour scale down
+
+    Attributes
+    ----------
+    policies : [OperatorVictoriametricsComV1beta1VMAuthSpecHpaBehaviourScaleDownPoliciesItems0], default is Undefined, optional
+        policies
+    selectPolicy : str, default is Undefined, optional
+        select policy
+    stabilizationWindowSeconds : int, default is Undefined, optional
+        stabilization window seconds
+    tolerance : int | str, default is Undefined, optional
+        tolerance
+    """
+
+
+    policies?: [OperatorVictoriametricsComV1beta1VMAuthSpecHpaBehaviourScaleDownPoliciesItems0]
+
+    selectPolicy?: str
+
+    stabilizationWindowSeconds?: int
+
+    tolerance?: int | str
+
+
+    check:
+        _regex_match(str(tolerance), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if tolerance
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaBehaviourScaleDownPoliciesItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa behaviour scale down policies items0
+
+    Attributes
+    ----------
+    periodSeconds : int, default is Undefined, required
+        period seconds
+    $type : str, default is Undefined, required
+        type
+    value : int, default is Undefined, required
+        value
+    """
+
+
+    periodSeconds: int
+
+    $type: str
+
+    value: int
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaBehaviourScaleUp:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa behaviour scale up
+
+    Attributes
+    ----------
+    policies : [OperatorVictoriametricsComV1beta1VMAuthSpecHpaBehaviourScaleUpPoliciesItems0], default is Undefined, optional
+        policies
+    selectPolicy : str, default is Undefined, optional
+        select policy
+    stabilizationWindowSeconds : int, default is Undefined, optional
+        stabilization window seconds
+    tolerance : int | str, default is Undefined, optional
+        tolerance
+    """
+
+
+    policies?: [OperatorVictoriametricsComV1beta1VMAuthSpecHpaBehaviourScaleUpPoliciesItems0]
+
+    selectPolicy?: str
+
+    stabilizationWindowSeconds?: int
+
+    tolerance?: int | str
+
+
+    check:
+        _regex_match(str(tolerance), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if tolerance
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaBehaviourScaleUpPoliciesItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa behaviour scale up policies items0
+
+    Attributes
+    ----------
+    periodSeconds : int, default is Undefined, required
+        period seconds
+    $type : str, default is Undefined, required
+        type
+    value : int, default is Undefined, required
+        value
+    """
+
+
+    periodSeconds: int
+
+    $type: str
+
+    value: int
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa metrics items0
+
+    Attributes
+    ----------
+    containerResource : OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ContainerResource, default is Undefined, optional
+        container resource
+    external : OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0External, default is Undefined, optional
+        external
+    object : OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0Object, default is Undefined, optional
+        object
+    pods : OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0Pods, default is Undefined, optional
+        pods
+    resource : OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0Resource, default is Undefined, optional
+        resource
+    $type : str, default is Undefined, required
+        type
+    """
+
+
+    containerResource?: OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ContainerResource
+
+    external?: OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0External
+
+    object?: OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0Object
+
+    pods?: OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0Pods
+
+    resource?: OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0Resource
+
+    $type: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ContainerResource:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa metrics items0 container resource
+
+    Attributes
+    ----------
+    container : str, default is Undefined, required
+        container
+    name : str, default is Undefined, required
+        name
+    target : OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ContainerResourceTarget, default is Undefined, required
+        target
+    """
+
+
+    container: str
+
+    name: str
+
+    target: OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ContainerResourceTarget
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ContainerResourceTarget:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa metrics items0 container resource target
+
+    Attributes
+    ----------
+    averageUtilization : int, default is Undefined, optional
+        average utilization
+    averageValue : int | str, default is Undefined, optional
+        average value
+    $type : str, default is Undefined, required
+        type
+    value : int | str, default is Undefined, optional
+        value
+    """
+
+
+    averageUtilization?: int
+
+    averageValue?: int | str
+
+    $type: str
+
+    value?: int | str
+
+
+    check:
+        _regex_match(str(averageValue), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if averageValue
+        _regex_match(str(value), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if value
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0External:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa metrics items0 external
+
+    Attributes
+    ----------
+    metric : OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ExternalMetric, default is Undefined, required
+        metric
+    target : OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ExternalTarget, default is Undefined, required
+        target
+    """
+
+
+    metric: OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ExternalMetric
+
+    target: OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ExternalTarget
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ExternalMetric:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa metrics items0 external metric
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    selector : OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ExternalMetricSelector, default is Undefined, optional
+        selector
+    """
+
+
+    name: str
+
+    selector?: OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ExternalMetricSelector
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ExternalMetricSelector:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa metrics items0 external metric selector
+
+    Attributes
+    ----------
+    matchExpressions : [OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ExternalMetricSelectorMatchExpressionsItems0], default is Undefined, optional
+        match expressions
+    matchLabels : {str:str}, default is Undefined, optional
+        match labels
+    """
+
+
+    matchExpressions?: [OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ExternalMetricSelectorMatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ExternalMetricSelectorMatchExpressionsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa metrics items0 external metric selector match expressions items0
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    operator : str, default is Undefined, required
+        operator
+    values : [str], default is Undefined, optional
+        values
+    """
+
+
+    key: str
+
+    operator: str
+
+    values?: [str]
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ExternalTarget:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa metrics items0 external target
+
+    Attributes
+    ----------
+    averageUtilization : int, default is Undefined, optional
+        average utilization
+    averageValue : int | str, default is Undefined, optional
+        average value
+    $type : str, default is Undefined, required
+        type
+    value : int | str, default is Undefined, optional
+        value
+    """
+
+
+    averageUtilization?: int
+
+    averageValue?: int | str
+
+    $type: str
+
+    value?: int | str
+
+
+    check:
+        _regex_match(str(averageValue), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if averageValue
+        _regex_match(str(value), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if value
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0Object:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa metrics items0 object
+
+    Attributes
+    ----------
+    describedObject : OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ObjectDescribedObject, default is Undefined, required
+        described object
+    metric : OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ObjectMetric, default is Undefined, required
+        metric
+    target : OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ObjectTarget, default is Undefined, required
+        target
+    """
+
+
+    describedObject: OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ObjectDescribedObject
+
+    metric: OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ObjectMetric
+
+    target: OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ObjectTarget
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ObjectDescribedObject:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa metrics items0 object described object
+
+    Attributes
+    ----------
+    apiVersion : str, default is Undefined, optional
+        api version
+    kind : str, default is Undefined, required
+        kind
+    name : str, default is Undefined, required
+        name
+    """
+
+
+    apiVersion?: str
+
+    kind: str
+
+    name: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ObjectMetric:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa metrics items0 object metric
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    selector : OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ObjectMetricSelector, default is Undefined, optional
+        selector
+    """
+
+
+    name: str
+
+    selector?: OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ObjectMetricSelector
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ObjectMetricSelector:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa metrics items0 object metric selector
+
+    Attributes
+    ----------
+    matchExpressions : [OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ObjectMetricSelectorMatchExpressionsItems0], default is Undefined, optional
+        match expressions
+    matchLabels : {str:str}, default is Undefined, optional
+        match labels
+    """
+
+
+    matchExpressions?: [OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ObjectMetricSelectorMatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ObjectMetricSelectorMatchExpressionsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa metrics items0 object metric selector match expressions items0
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    operator : str, default is Undefined, required
+        operator
+    values : [str], default is Undefined, optional
+        values
+    """
+
+
+    key: str
+
+    operator: str
+
+    values?: [str]
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ObjectTarget:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa metrics items0 object target
+
+    Attributes
+    ----------
+    averageUtilization : int, default is Undefined, optional
+        average utilization
+    averageValue : int | str, default is Undefined, optional
+        average value
+    $type : str, default is Undefined, required
+        type
+    value : int | str, default is Undefined, optional
+        value
+    """
+
+
+    averageUtilization?: int
+
+    averageValue?: int | str
+
+    $type: str
+
+    value?: int | str
+
+
+    check:
+        _regex_match(str(averageValue), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if averageValue
+        _regex_match(str(value), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if value
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0Pods:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa metrics items0 pods
+
+    Attributes
+    ----------
+    metric : OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0PodsMetric, default is Undefined, required
+        metric
+    target : OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0PodsTarget, default is Undefined, required
+        target
+    """
+
+
+    metric: OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0PodsMetric
+
+    target: OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0PodsTarget
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0PodsMetric:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa metrics items0 pods metric
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    selector : OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0PodsMetricSelector, default is Undefined, optional
+        selector
+    """
+
+
+    name: str
+
+    selector?: OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0PodsMetricSelector
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0PodsMetricSelector:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa metrics items0 pods metric selector
+
+    Attributes
+    ----------
+    matchExpressions : [OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0PodsMetricSelectorMatchExpressionsItems0], default is Undefined, optional
+        match expressions
+    matchLabels : {str:str}, default is Undefined, optional
+        match labels
+    """
+
+
+    matchExpressions?: [OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0PodsMetricSelectorMatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0PodsMetricSelectorMatchExpressionsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa metrics items0 pods metric selector match expressions items0
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    operator : str, default is Undefined, required
+        operator
+    values : [str], default is Undefined, optional
+        values
+    """
+
+
+    key: str
+
+    operator: str
+
+    values?: [str]
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0PodsTarget:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa metrics items0 pods target
+
+    Attributes
+    ----------
+    averageUtilization : int, default is Undefined, optional
+        average utilization
+    averageValue : int | str, default is Undefined, optional
+        average value
+    $type : str, default is Undefined, required
+        type
+    value : int | str, default is Undefined, optional
+        value
+    """
+
+
+    averageUtilization?: int
+
+    averageValue?: int | str
+
+    $type: str
+
+    value?: int | str
+
+
+    check:
+        _regex_match(str(averageValue), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if averageValue
+        _regex_match(str(value), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if value
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0Resource:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa metrics items0 resource
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    target : OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ResourceTarget, default is Undefined, required
+        target
+    """
+
+
+    name: str
+
+    target: OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ResourceTarget
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecHpaMetricsItems0ResourceTarget:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec hpa metrics items0 resource target
+
+    Attributes
+    ----------
+    averageUtilization : int, default is Undefined, optional
+        average utilization
+    averageValue : int | str, default is Undefined, optional
+        average value
+    $type : str, default is Undefined, required
+        type
+    value : int | str, default is Undefined, optional
+        value
+    """
+
+
+    averageUtilization?: int
+
+    averageValue?: int | str
+
+    $type: str
+
+    value?: int | str
+
+
+    check:
+        _regex_match(str(averageValue), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if averageValue
+        _regex_match(str(value), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if value
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecImage:
-    """
-    Image - docker image settings for VMAuth
-    if no specified operator uses default config version
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec image
 
     Attributes
     ----------
     pullPolicy : str, default is Undefined, optional
-        PullPolicy describes how to pull docker image
+        pull policy
     repository : str, default is Undefined, optional
-        Repository contains name of docker image + it's repository if needed
+        repository
     tag : str, default is Undefined, optional
-        Tag contains desired docker image version
+        tag
     """
 
 
@@ -472,61 +1310,45 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecImage:
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecImagePullSecretsItems0:
-    """
-    LocalObjectReference contains enough information to let you locate the
-    referenced object inside the same namespace.
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec image pull secrets items0
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     """
 
 
-    name?: str
+    name?: str = ""
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecIngress:
-    """
-    Ingress enables ingress configuration for VMAuth.
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec ingress
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
-        set by external tools to store and retrieve arbitrary metadata. They are not
-        queryable and should be preserved when modifying objects.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        annotations
     class_name : str, default is Undefined, optional
-        ClassName defines ingress class name for VMAuth
+        class name
     extraRules : [OperatorVictoriametricsComV1beta1VMAuthSpecIngressExtraRulesItems0], default is Undefined, optional
-        ExtraRules - additional rules for ingress,
-        must be checked for correctness by user.
+        extra rules
     extraTls : [OperatorVictoriametricsComV1beta1VMAuthSpecIngressExtraTLSItems0], default is Undefined, optional
-        ExtraTLS - additional TLS configuration for ingress
-        must be checked for correctness by user.
+        extra Tls
     host : str, default is Undefined, optional
-        Host defines ingress host parameter for default rule
-        It will be used, only if TlsHosts is empty
+        host
     labels : {str:str}, default is Undefined, optional
-        Labels Map of string keys and values that can be used to organize and categorize
-        (scope and select) objects. May match selectors of replication controllers
-        and services.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+        labels
     name : str, default is Undefined, optional
-        Name must be unique within a namespace. Is required when creating resources, although
-        some resources may allow a client to request the generation of an appropriate name
-        automatically. Name is primarily intended for creation idempotence and configuration
-        definition.
-        Cannot be updated.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names
+        name
+    paths : [str], default is Undefined, optional
+        paths
     tlsHosts : [str], default is Undefined, optional
-        TlsHosts configures TLS access for ingress, tlsSecretName must be defined for it.
+        tls hosts
     tlsSecretName : str, default is Undefined, optional
-        TlsSecretName defines secretname at the VMAuth namespace with cert and key
-        https://kubernetes.io/docs/concepts/services-networking/ingress/#tls
+        tls secret name
     """
 
 
@@ -544,43 +1366,21 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecIngress:
 
     name?: str
 
+    paths?: [str]
+
     tlsHosts?: [str]
 
     tlsSecretName?: str
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecIngressExtraRulesItems0:
-    """
-    IngressRule represents the rules mapping the paths under a specified host to
-    the related backend services. Incoming requests are first evaluated for a host
-    match, then routed to the backend associated with the matching IngressRuleValue.
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec ingress extra rules items0
 
     Attributes
     ----------
     host : str, default is Undefined, optional
-        host is the fully qualified domain name of a network host, as defined by RFC 3986.
-        Note the following deviations from the "host" part of the
-        URI as defined in RFC 3986:
-        1. IPs are not allowed. Currently an IngressRuleValue can only apply to
-           the IP in the Spec of the parent Ingress.
-        2. The `:` delimiter is not respected because ports are not allowed.
-        	  Currently the port of an Ingress is implicitly :80 for http and
-        	  :443 for https.
-        Both these may change in the future.
-        Incoming requests are matched against the host before the
-        IngressRuleValue. If the host is unspecified, the Ingress routes all
-        traffic based on the specified IngressRuleValue.
-
-
-        host can be "precise" which is a domain name without the terminating dot of
-        a network host (e.g. "foo.bar.com") or "wildcard", which is a domain name
-        prefixed with a single wildcard label (e.g. "*.foo.com").
-        The wildcard character '*' must appear by itself as the first DNS label and
-        matches only a single label. You cannot have a wildcard label by itself (e.g. Host == "*").
-        Requests will be matched against the Host field in the following way:
-        1. If host is precise, the request matches this rule if the http host header is equal to Host.
-        2. If host is a wildcard, then the request matches this rule if the http host header
-        is to equal to the suffix (removing the first label) of the wildcard rule.
+        host
     http : OperatorVictoriametricsComV1beta1VMAuthSpecIngressExtraRulesItems0HTTP, default is Undefined, optional
         http
     """
@@ -592,17 +1392,13 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecIngressExtraRulesItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecIngressExtraRulesItems0HTTP:
-    """
-    HTTPIngressRuleValue is a list of http selectors pointing to backends.
-    In the example: http://<host>/<path>?<searchpart> -> backend where
-    where parts of the url correspond to RFC 3986, this resource will be used
-    to match against everything after the last '/' and before the first '?'
-    or '#'.
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec ingress extra rules items0 HTTP
 
     Attributes
     ----------
     paths : [OperatorVictoriametricsComV1beta1VMAuthSpecIngressExtraRulesItems0HTTPPathsItems0], default is Undefined, required
-        paths is a collection of paths that map requests to backends.
+        paths
     """
 
 
@@ -610,34 +1406,17 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecIngressExtraRulesItems0HTTP:
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecIngressExtraRulesItems0HTTPPathsItems0:
-    """
-    HTTPIngressPath associates a path with a backend. Incoming urls matching the
-    path are forwarded to the backend.
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec ingress extra rules items0 HTTP paths items0
 
     Attributes
     ----------
     backend : OperatorVictoriametricsComV1beta1VMAuthSpecIngressExtraRulesItems0HTTPPathsItems0Backend, default is Undefined, required
         backend
     path : str, default is Undefined, optional
-        path is matched against the path of an incoming request. Currently it can
-        contain characters disallowed from the conventional "path" part of a URL
-        as defined by RFC 3986. Paths must begin with a '/' and must be present
-        when using PathType with value "Exact" or "Prefix".
+        path
     pathType : str, default is Undefined, required
-        pathType determines the interpretation of the path matching. PathType can
-        be one of the following values:
-        * Exact: Matches the URL path exactly.
-        * Prefix: Matches based on a URL path prefix split by '/'. Matching is
-          done on a path element by element basis. A path element refers is the
-          list of labels in the path split by the '/' separator. A request is a
-          match for path p if every p is an element-wise prefix of p of the
-          request path. Note that if the last element of the path is a substring
-          of the last element in request path, it is not a match (e.g. /foo/bar
-          matches /foo/bar/baz, but does not match /foo/barbaz).
-        * ImplementationSpecific: Interpretation of the Path matching is up to
-          the IngressClass. Implementations can treat this as a separate PathType
-          or treat it identically to Prefix or Exact path types.
-        Implementations are required to support all path types.
+        path type
     """
 
 
@@ -649,9 +1428,8 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecIngressExtraRulesItems0HTTPPat
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecIngressExtraRulesItems0HTTPPathsItems0Backend:
-    """
-    backend defines the referenced service endpoint to which the traffic
-    will be forwarded to.
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec ingress extra rules items0 HTTP paths items0 backend
 
     Attributes
     ----------
@@ -668,22 +1446,17 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecIngressExtraRulesItems0HTTPPat
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecIngressExtraRulesItems0HTTPPathsItems0BackendResource:
-    """
-    resource is an ObjectRef to another Kubernetes resource in the namespace
-    of the Ingress object. If resource is specified, a service.Name and
-    service.Port must not be specified.
-    This is a mutually exclusive setting with "Service".
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec ingress extra rules items0 HTTP paths items0 backend resource
 
     Attributes
     ----------
     apiGroup : str, default is Undefined, optional
-        APIGroup is the group for the resource being referenced.
-        If APIGroup is not specified, the specified Kind must be in the core API group.
-        For any other third-party types, APIGroup is required.
+        api group
     kind : str, default is Undefined, required
-        Kind is the type of resource being referenced
+        kind
     name : str, default is Undefined, required
-        Name is the name of resource being referenced
+        name
     """
 
 
@@ -695,15 +1468,13 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecIngressExtraRulesItems0HTTPPat
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecIngressExtraRulesItems0HTTPPathsItems0BackendService:
-    """
-    service references a service as a backend.
-    This is a mutually exclusive setting with "Resource".
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec ingress extra rules items0 HTTP paths items0 backend service
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        name is the referenced service. The service must exist in
-        the same namespace as the Ingress object.
+        name
     port : OperatorVictoriametricsComV1beta1VMAuthSpecIngressExtraRulesItems0HTTPPathsItems0BackendServicePort, default is Undefined, optional
         port
     """
@@ -715,18 +1486,15 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecIngressExtraRulesItems0HTTPPat
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecIngressExtraRulesItems0HTTPPathsItems0BackendServicePort:
-    """
-    port of the referenced service. A port name or port number
-    is required for a IngressServiceBackend.
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec ingress extra rules items0 HTTP paths items0 backend service port
 
     Attributes
     ----------
     name : str, default is Undefined, optional
-        name is the name of the port on the Service.
-        This is a mutually exclusive setting with "Number".
+        name
     number : int, default is Undefined, optional
-        number is the numerical port number (e.g. 80) on the Service.
-        This is a mutually exclusive setting with "Name".
+        number
     """
 
 
@@ -736,22 +1504,15 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecIngressExtraRulesItems0HTTPPat
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecIngressExtraTLSItems0:
-    """
-    IngressTLS describes the transport layer security associated with an ingress.
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec ingress extra TLS items0
 
     Attributes
     ----------
     hosts : [str], default is Undefined, optional
-        hosts is a list of hosts included in the TLS certificate. The values in
-        this list must match the name/s used in the tlsSecret. Defaults to the
-        wildcard host setting for the loadbalancer controller fulfilling this
-        Ingress, if left unspecified.
+        hosts
     secretName : str, default is Undefined, optional
-        secretName is the name of the secret used to terminate TLS traffic on
-        port 443. Field is left optional to allow TLS routing based on SNI
-        hostname alone. If the SNI host in a listener conflicts with the "Host"
-        header field used by an IngressRule, the SNI host is used for termination
-        and value of the "Host" header is used for routing.
+        secret name
     """
 
 
@@ -761,71 +1522,85 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecIngressExtraTLSItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecLicense:
-    """
-    License allows to configure license key to be used for enterprise features.
-    Using license key is supported starting from VictoriaMetrics v1.94.0.
-    See: https://docs.victoriametrics.com/enterprise.html
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec license
 
     Attributes
     ----------
+    forceOffline : bool, default is Undefined, optional
+        force offline
     key : str, default is Undefined, optional
-        Enterprise license key. This flag is available only in VictoriaMetrics enterprise.
-        Documentation - https://docs.victoriametrics.com/enterprise.html
-        for more information, visit https://victoriametrics.com/products/enterprise/ .
-        To request a trial license, go to https://victoriametrics.com/products/enterprise/trial/
+        key
     keyRef : OperatorVictoriametricsComV1beta1VMAuthSpecLicenseKeyRef, default is Undefined, optional
         key ref
+    reloadInterval : str, default is Undefined, optional
+        reload interval
     """
 
+
+    forceOffline?: bool
 
     key?: str
 
     keyRef?: OperatorVictoriametricsComV1beta1VMAuthSpecLicenseKeyRef
 
+    reloadInterval?: str
+
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecLicenseKeyRef:
-    """
-    KeyRef is reference to secret with license key for enterprise features.
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec license key ref
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
+        key
     name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
+        name
     optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
+        optional
     """
 
 
     key: str
 
-    name?: str
+    name?: str = ""
 
     optional?: bool
 
 
-schema OperatorVictoriametricsComV1beta1VMAuthSpecPodDisruptionBudget:
+schema OperatorVictoriametricsComV1beta1VMAuthSpecManagedMetadata:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec managed metadata
+
+    Attributes
+    ----------
+    annotations : {str:str}, default is Undefined, optional
+        annotations
+    labels : {str:str}, default is Undefined, optional
+        labels
     """
-    PodDisruptionBudget created by operator
+
+
+    annotations?: {str:str}
+
+    labels?: {str:str}
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecPodDisruptionBudget:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec pod disruption budget
 
     Attributes
     ----------
     maxUnavailable : int | str, default is Undefined, optional
-        An eviction is allowed if at most "maxUnavailable" pods selected by
-        "selector" are unavailable after the eviction, i.e. even in absence of
-        the evicted pod. For example, one can prevent all voluntary evictions
-        by specifying 0. This is a mutually exclusive setting with "minAvailable".
+        max unavailable
     minAvailable : int | str, default is Undefined, optional
-        An eviction is allowed if at least "minAvailable" pods selected by
-        "selector" will still be available after the eviction, i.e. even in the
-        absence of the evicted pod.  So for example you can prevent all voluntary
-        evictions by specifying "100%".
+        min available
     selectorLabels : {str:str}, default is Undefined, optional
-        replaces default labels selector generated by operator
-        it's useful when you need to create custom budget
+        selector labels
+    unhealthyPodEvictionPolicy : str, default is Undefined, optional
+        unhealthy pod eviction policy
     """
 
 
@@ -835,30 +1610,21 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecPodDisruptionBudget:
 
     selectorLabels?: {str:str}
 
+    unhealthyPodEvictionPolicy?: "IfHealthyBudget" | "AlwaysAllow"
+
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecPodMetadata:
-    """
-    PodMetadata configures Labels and Annotations which are propagated to the VMAuth pods.
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec pod metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
-        set by external tools to store and retrieve arbitrary metadata. They are not
-        queryable and should be preserved when modifying objects.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels Map of string keys and values that can be used to organize and categorize
-        (scope and select) objects. May match selectors of replication controllers
-        and services.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+        labels
     name : str, default is Undefined, optional
-        Name must be unique within a namespace. Is required when creating resources, although
-        some resources may allow a client to request the generation of an appropriate name
-        automatically. Name is primarily intended for creation idempotence and configuration
-        definition.
-        Cannot be updated.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names
+        name
     """
 
 
@@ -870,13 +1636,13 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecPodMetadata:
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecReadinessGatesItems0:
-    """
-    PodReadinessGate contains the reference to a pod condition
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec readiness gates items0
 
     Attributes
     ----------
     conditionType : str, default is Undefined, required
-        ConditionType refers to a condition in the pod's condition list with matching type.
+        condition type
     """
 
 
@@ -884,30 +1650,17 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecReadinessGatesItems0:
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecResources:
-    """
-    Resources container resource request and limits, https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
-    if not defined default resources from operator config will be used
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec resources
 
     Attributes
     ----------
     claims : [OperatorVictoriametricsComV1beta1VMAuthSpecResourcesClaimsItems0], default is Undefined, optional
-        Claims lists the names of resources, defined in spec.resourceClaims,
-        that are used by this container.
-
-
-        This is an alpha field and requires enabling the
-        DynamicResourceAllocation feature gate.
-
-
-        This field is immutable. It can only be set for containers.
+        claims
     limits : {str:int | str}, default is Undefined, optional
-        Limits describes the maximum amount of compute resources allowed.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        limits
     requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum amount of compute resources required.
-        If Requests is omitted for a container, it defaults to Limits if that is explicitly specified,
-        otherwise to an implementation-defined value. Requests cannot exceed Limits.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+        requests
     """
 
 
@@ -919,40 +1672,58 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecResources:
 
 
     check:
-        all _, limits in limits {regex.match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests {regex.match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecResourcesClaimsItems0:
-    """
-    ResourceClaim references one entry in PodSpec.ResourceClaims.
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec resources claims items0
 
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name must match the name of one entry in pod.spec.resourceClaims of
-        the Pod where this field is used. It makes that resource available
-        inside a container.
+        name
+    request : str, default is Undefined, optional
+        request
     """
 
 
     name: str
 
+    request?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecRollingUpdate:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec rolling update
+
+    Attributes
+    ----------
+    maxSurge : int | str, default is Undefined, optional
+        max surge
+    maxUnavailable : int | str, default is Undefined, optional
+        max unavailable
+    """
+
+
+    maxSurge?: int | str
+
+    maxUnavailable?: int | str
+
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecServiceSpec:
-    """
-    ServiceSpec that will be added to vmsingle service spec
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec service spec
 
     Attributes
     ----------
     metadata : OperatorVictoriametricsComV1beta1VMAuthSpecServiceSpecMetadata, default is Undefined, optional
         metadata
     spec : any, default is Undefined, required
-        ServiceSpec describes the attributes that a user creates on a service.
-        More info: https://kubernetes.io/docs/concepts/services-networking/service/
+        spec
     useAsDefault : bool, default is Undefined, optional
-        UseAsDefault applies changes from given service definition to the main object Service
-        Changing from headless service to clusterIP or loadbalancer may break cross-component communication
+        use as default
     """
 
 
@@ -964,28 +1735,17 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecServiceSpec:
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecServiceSpecMetadata:
-    """
-    EmbeddedObjectMetadata defines objectMeta for additional service.
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec service spec metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations is an unstructured key value map stored with a resource that may be
-        set by external tools to store and retrieve arbitrary metadata. They are not
-        queryable and should be preserved when modifying objects.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels Map of string keys and values that can be used to organize and categorize
-        (scope and select) objects. May match selectors of replication controllers
-        and services.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels
+        labels
     name : str, default is Undefined, optional
-        Name must be unique within a namespace. Is required when creating resources, although
-        some resources may allow a client to request the generation of an appropriate name
-        automatically. Name is primarily intended for creation idempotence and configuration
-        definition.
-        Cannot be updated.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names
+        name
     """
 
 
@@ -996,230 +1756,22 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecServiceSpecMetadata:
     name?: str
 
 
-schema OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfig:
-    """
-    TLSConfig specifies TLSConfig configuration parameters.
-
-    Attributes
-    ----------
-    ca : OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfigCa, default is Undefined, optional
-        ca
-    caFile : str, default is Undefined, optional
-        Path to the CA cert in the container to use for the targets.
-    cert : OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfigCert, default is Undefined, optional
-        cert
-    certFile : str, default is Undefined, optional
-        Path to the client cert file in the container for the targets.
-    insecureSkipVerify : bool, default is Undefined, optional
-        Disable target certificate validation.
-    keyFile : str, default is Undefined, optional
-        Path to the client key file in the container for the targets.
-    keySecret : OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfigKeySecret, default is Undefined, optional
-        key secret
-    serverName : str, default is Undefined, optional
-        Used to verify the hostname for the targets.
-    """
-
-
-    ca?: OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfigCa
-
-    caFile?: str
-
-    cert?: OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfigCert
-
-    certFile?: str
-
-    insecureSkipVerify?: bool
-
-    keyFile?: str
-
-    keySecret?: OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfigKeySecret
-
-    serverName?: str
-
-
-schema OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfigCa:
-    """
-    Stuct containing the CA cert to use for the targets.
-
-    Attributes
-    ----------
-    configMap : OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfigCaConfigMap, default is Undefined, optional
-        config map
-    secret : OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfigCaSecret, default is Undefined, optional
-        secret
-    """
-
-
-    configMap?: OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfigCaConfigMap
-
-    secret?: OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfigCaSecret
-
-
-schema OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfigCaConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key to select.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfigCaSecret:
-    """
-    Secret containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfigCert:
-    """
-    Struct containing the client cert file for the targets.
-
-    Attributes
-    ----------
-    configMap : OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfigCertConfigMap, default is Undefined, optional
-        config map
-    secret : OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfigCertSecret, default is Undefined, optional
-        secret
-    """
-
-
-    configMap?: OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfigCertConfigMap
-
-    secret?: OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfigCertSecret
-
-
-schema OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfigCertConfigMap:
-    """
-    ConfigMap containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key to select.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the ConfigMap or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfigCertSecret:
-    """
-    Secret containing data to use for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
-schema OperatorVictoriametricsComV1beta1VMAuthSpecTLSConfigKeySecret:
-    """
-    Secret containing the client key file for the targets.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        The key of the secret to select from.  Must be a valid secret key.
-    name : str, default is Undefined, optional
-        Name of the referent.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        TODO: Add other useful fields. apiVersion, kind, uid?
-    optional : bool, default is Undefined, optional
-        Specify whether the Secret or its key must be defined
-    """
-
-
-    key: str
-
-    name?: str
-
-    optional?: bool
-
-
 schema OperatorVictoriametricsComV1beta1VMAuthSpecTolerationsItems0:
-    """
-    The pod this Toleration is attached to tolerates any taint that matches
-    the triple <key,value,effect> using the matching operator <operator>.
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec tolerations items0
 
     Attributes
     ----------
     effect : str, default is Undefined, optional
-        Effect indicates the taint effect to match. Empty means match all taint effects.
-        When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+        effect
     key : str, default is Undefined, optional
-        Key is the taint key that the toleration applies to. Empty means match all taint keys.
-        If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+        key
     operator : str, default is Undefined, optional
-        Operator represents a key's relationship to the value.
-        Valid operators are Exists and Equal. Defaults to Equal.
-        Exists is equivalent to wildcard for value, so that a pod can
-        tolerate all taints of a particular category.
+        operator
     tolerationSeconds : int, default is Undefined, optional
-        TolerationSeconds represents the period of time the toleration (which must be
-        of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default,
-        it is not set, which means tolerate the taint forever (do not evict). Zero and
-        negative values will be treated as 0 (evict immediately) by the system.
+        toleration seconds
     value : str, default is Undefined, optional
-        Value is the taint value the toleration matches to.
-        If the operator is Exists, the value should be empty, otherwise just a regular string.
+        value
     """
 
 
@@ -1234,47 +1786,500 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecTolerationsItems0:
     value?: str
 
 
-schema OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedAccessConfigItems0:
+schema OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpec:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec unauthorized user access spec
+
+    Attributes
+    ----------
+    default_url : [str], default is Undefined, optional
+        default url
+    discover_backend_ips : bool, default is Undefined, optional
+        discover backend ips
+    drop_src_path_prefix_parts : int, default is Undefined, optional
+        drop src path prefix parts
+    dump_request_on_errors : bool, default is Undefined, optional
+        dump request on errors
+    headers : [str], default is Undefined, optional
+        headers
+    ip_filters : OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecIPFilters, default is Undefined, optional
+        ip filters
+    load_balancing_policy : str, default is Undefined, optional
+        load balancing policy
+    max_concurrent_requests : int, default is Undefined, optional
+        max concurrent requests
+    metric_labels : {str:str}, default is Undefined, optional
+        metric labels
+    response_headers : [str], default is Undefined, optional
+        response headers
+    retry_status_codes : [int], default is Undefined, optional
+        retry status codes
+    targetRefs : [OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTargetRefsItems0], default is Undefined, optional
+        target refs
+    tlsConfig : OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfig, default is Undefined, optional
+        tls config
+    url_map : [OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecURLMapItems0], default is Undefined, optional
+        url map
+    url_prefix : any, default is Undefined, optional
+        url prefix
     """
-    operator victoriametrics com v1beta1 VM auth spec unauthorized access config items0
+
+
+    default_url?: [str]
+
+    discover_backend_ips?: bool
+
+    drop_src_path_prefix_parts?: int
+
+    dump_request_on_errors?: bool
+
+    headers?: [str]
+
+    ip_filters?: OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecIPFilters
+
+    load_balancing_policy?: "least_loaded" | "first_available"
+
+    max_concurrent_requests?: int
+
+    metric_labels?: {str:str}
+
+    response_headers?: [str]
+
+    retry_status_codes?: [int]
+
+    targetRefs?: [OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTargetRefsItems0]
+
+    tlsConfig?: OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfig
+
+    url_map?: [OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecURLMapItems0]
+
+    url_prefix?: any
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecIPFilters:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec unauthorized user access spec IP filters
+
+    Attributes
+    ----------
+    allow_list : [str], default is Undefined, optional
+        allow list
+    deny_list : [str], default is Undefined, optional
+        deny list
+    """
+
+
+    allow_list?: [str]
+
+    deny_list?: [str]
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfig:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec unauthorized user access spec TLS config
+
+    Attributes
+    ----------
+    ca : OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfigCa, default is Undefined, optional
+        ca
+    caFile : str, default is Undefined, optional
+        ca file
+    cert : OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfigCert, default is Undefined, optional
+        cert
+    certFile : str, default is Undefined, optional
+        cert file
+    insecureSkipVerify : bool, default is Undefined, optional
+        insecure skip verify
+    keyFile : str, default is Undefined, optional
+        key file
+    keySecret : OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfigKeySecret, default is Undefined, optional
+        key secret
+    serverName : str, default is Undefined, optional
+        server name
+    """
+
+
+    ca?: OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfigCa
+
+    caFile?: str
+
+    cert?: OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfigCert
+
+    certFile?: str
+
+    insecureSkipVerify?: bool
+
+    keyFile?: str
+
+    keySecret?: OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfigKeySecret
+
+    serverName?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfigCa:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec unauthorized user access spec TLS config ca
+
+    Attributes
+    ----------
+    configMap : OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfigCaConfigMap, default is Undefined, optional
+        config map
+    secret : OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfigCaSecret, default is Undefined, optional
+        secret
+    """
+
+
+    configMap?: OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfigCaConfigMap
+
+    secret?: OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfigCaSecret
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfigCaConfigMap:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec unauthorized user access spec TLS config ca config map
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfigCaSecret:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec unauthorized user access spec TLS config ca secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfigCert:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec unauthorized user access spec TLS config cert
+
+    Attributes
+    ----------
+    configMap : OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfigCertConfigMap, default is Undefined, optional
+        config map
+    secret : OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfigCertSecret, default is Undefined, optional
+        secret
+    """
+
+
+    configMap?: OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfigCertConfigMap
+
+    secret?: OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfigCertSecret
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfigCertConfigMap:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec unauthorized user access spec TLS config cert config map
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfigCertSecret:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec unauthorized user access spec TLS config cert secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTLSConfigKeySecret:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec unauthorized user access spec TLS config key secret
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTargetRefsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec unauthorized user access spec target refs items0
+
+    Attributes
+    ----------
+    crd : OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTargetRefsItems0Crd, default is Undefined, optional
+        crd
+    discover_backend_ips : bool, default is Undefined, optional
+        discover backend ips
+    drop_src_path_prefix_parts : int, default is Undefined, optional
+        drop src path prefix parts
+    headers : [str], default is Undefined, optional
+        headers
+    hosts : [str], default is Undefined, optional
+        hosts
+    load_balancing_policy : str, default is Undefined, optional
+        load balancing policy
+    paths : [str], default is Undefined, optional
+        paths
+    query_args : [OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTargetRefsItems0QueryArgsItems0], default is Undefined, optional
+        query args
+    response_headers : [str], default is Undefined, optional
+        response headers
+    retry_status_codes : [int], default is Undefined, optional
+        retry status codes
+    src_headers : [str], default is Undefined, optional
+        src headers
+    src_query_args : [str], default is Undefined, optional
+        src query args
+    static : OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTargetRefsItems0Static, default is Undefined, optional
+        static
+    targetRefBasicAuth : OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTargetRefsItems0TargetRefBasicAuth, default is Undefined, optional
+        target ref basic auth
+    target_path_suffix : str, default is Undefined, optional
+        target path suffix
+    """
+
+
+    crd?: OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTargetRefsItems0Crd
+
+    discover_backend_ips?: bool
+
+    drop_src_path_prefix_parts?: int
+
+    headers?: [str]
+
+    hosts?: [str]
+
+    load_balancing_policy?: "least_loaded" | "first_available"
+
+    paths?: [str]
+
+    query_args?: [OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTargetRefsItems0QueryArgsItems0]
+
+    response_headers?: [str]
+
+    retry_status_codes?: [int]
+
+    src_headers?: [str]
+
+    src_query_args?: [str]
+
+    static?: OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTargetRefsItems0Static
+
+    targetRefBasicAuth?: OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTargetRefsItems0TargetRefBasicAuth
+
+    target_path_suffix?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTargetRefsItems0Crd:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec unauthorized user access spec target refs items0 crd
+
+    Attributes
+    ----------
+    kind : str, default is Undefined, required
+        kind
+    name : str, default is Undefined, required
+        name
+    namespace : str, default is Undefined, required
+        namespace
+    """
+
+
+    kind: "VMAgent" | "VMAlert" | "VMSingle" | "VLogs" | "VMAlertManager" | "VMAlertmanager" | "VMCluster/vmselect" | "VMCluster/vmstorage" | "VMCluster/vminsert" | "VLSingle" | "VLCluster/vlinsert" | "VLCluster/vlselect" | "VLCluster/vlstorage" | "VLAgent" | "VTCluster/vtinsert" | "VTCluster/vtselect" | "VTCluster/vtstorage" | "VTSingle"
+
+    name: str
+
+    namespace: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTargetRefsItems0QueryArgsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec unauthorized user access spec target refs items0 query args items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    values : [str], default is Undefined, required
+        values
+    """
+
+
+    name: str
+
+    values: [str]
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTargetRefsItems0Static:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec unauthorized user access spec target refs items0 static
+
+    Attributes
+    ----------
+    url : str, default is Undefined, optional
+        url
+    urls : [str], default is Undefined, optional
+        urls
+    """
+
+
+    url?: str
+
+    urls?: [str]
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTargetRefsItems0TargetRefBasicAuth:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec unauthorized user access spec target refs items0 target ref basic auth
+
+    Attributes
+    ----------
+    password : OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTargetRefsItems0TargetRefBasicAuthPassword, default is Undefined, required
+        password
+    username : OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTargetRefsItems0TargetRefBasicAuthUsername, default is Undefined, required
+        username
+    """
+
+
+    password: OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTargetRefsItems0TargetRefBasicAuthPassword
+
+    username: OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTargetRefsItems0TargetRefBasicAuthUsername
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTargetRefsItems0TargetRefBasicAuthPassword:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec unauthorized user access spec target refs items0 target ref basic auth password
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecTargetRefsItems0TargetRefBasicAuthUsername:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec unauthorized user access spec target refs items0 target ref basic auth username
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+    optional?: bool
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedUserAccessSpecURLMapItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec unauthorized user access spec URL map items0
 
     Attributes
     ----------
     discover_backend_ips : bool, default is Undefined, optional
-        DiscoverBackendIPs instructs discovering URLPrefix backend IPs via DNS.
+        discover backend ips
     drop_src_path_prefix_parts : int, default is Undefined, optional
-        DropSrcPathPrefixParts is the number of `/`-delimited request path prefix parts to drop before proxying the request to backend.
-        See https://docs.victoriametrics.com/vmauth.html#dropping-request-path-prefix for more details.
+        drop src path prefix parts
     headers : [str], default is Undefined, optional
-        RequestHeaders represent additional http headers, that vmauth uses
-        in form of ["header_key: header_value"]
-        multiple values for header key:
-        ["header_key: value1,value2"]
-        it's available since 1.68.0 version of vmauth
+        headers
     load_balancing_policy : str, default is Undefined, optional
-        LoadBalancingPolicy defines load balancing policy to use for backend urls.
-        Supported policies: least_loaded, first_available.
-        See https://docs.victoriametrics.com/vmauth.html#load-balancing for more details (default "least_loaded")
+        load balancing policy
     response_headers : [str], default is Undefined, optional
-        ResponseHeaders represent additional http headers, that vmauth adds for request response
-        in form of ["header_key: header_value"]
-        multiple values for header key:
-        ["header_key: value1,value2"]
-        it's available since 1.93.0 version of vmauth
+        response headers
     retry_status_codes : [int], default is Undefined, optional
-        RetryStatusCodes defines http status codes in numeric format for request retries
-        Can be defined per target or at VMUser.spec level
-        e.g. [429,503]
+        retry status codes
     src_headers : [str], default is Undefined, optional
-        SrcHeaders is an optional list of headers, which must match request headers.
+        src headers
     src_hosts : [str], default is Undefined, optional
-        SrcHosts is an optional list of regular expressions, which must match the request hostname.
+        src hosts
     src_paths : [str], default is Undefined, optional
-        SrcPaths is an optional list of regular expressions, which must match the request path.
+        src paths
     src_query_args : [str], default is Undefined, optional
-        SrcQueryArgs is an optional list of query args, which must match request URL query args.
-    url_prefix : [str], default is Undefined, optional
-        UrlPrefix contains backend url prefixes for the proxied request url.
+        src query args
+    url_prefix : any, default is Undefined, optional
+        url prefix
     """
 
 
@@ -1298,25 +2303,19 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecUnauthorizedAccessConfigItems0
 
     src_query_args?: [str]
 
-    url_prefix?: [str]
+    url_prefix?: any
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecUserNamespaceSelector:
-    """
-    UserNamespaceSelector Namespaces to be selected for  VMAuth discovery.
-    Works in combination with Selector.
-    NamespaceSelector nil - only objects at VMAuth namespace.
-    Selector nil - only objects at NamespaceSelector namespaces.
-    If both nil - behaviour controlled by selectAllByDefault
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec user namespace selector
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAuthSpecUserNamespaceSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
+        match labels
     """
 
 
@@ -1326,22 +2325,17 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecUserNamespaceSelector:
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecUserNamespaceSelectorMatchExpressionsItems0:
-    """
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec user namespace selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
+        values
     """
 
 
@@ -1353,20 +2347,15 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecUserNamespaceSelectorMatchExpr
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecUserSelector:
-    """
-    UserSelector defines VMUser to be selected for config file generation.
-    Works in combination with NamespaceSelector.
-    NamespaceSelector nil - only objects at VMAuth namespace.
-    If both nil - behaviour controlled by selectAllByDefault
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec user selector
 
     Attributes
     ----------
     matchExpressions : [OperatorVictoriametricsComV1beta1VMAuthSpecUserSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+        match expressions
     matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
+        match labels
     """
 
 
@@ -1376,22 +2365,17 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecUserSelector:
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecUserSelectorMatchExpressionsItems0:
-    """
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec user selector match expressions items0
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        key is the label key that the selector applies to.
+        key
     operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
+        operator
     values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
+        values
     """
 
 
@@ -1403,32 +2387,25 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecUserSelectorMatchExpressionsIt
 
 
 schema OperatorVictoriametricsComV1beta1VMAuthSpecVolumeMountsItems0:
-    """
-    VolumeMount describes a mounting of a Volume within a container.
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec volume mounts items0
 
     Attributes
     ----------
     mountPath : str, default is Undefined, required
-        Path within the container at which the volume should be mounted.  Must
-        not contain ':'.
+        mount path
     mountPropagation : str, default is Undefined, optional
-        mountPropagation determines how mounts are propagated from the host
-        to container and the other way around.
-        When not set, MountPropagationNone is used.
-        This field is beta in 1.10.
+        mount propagation
     name : str, default is Undefined, required
-        This must match the Name of a Volume.
+        name
     readOnly : bool, default is Undefined, optional
-        Mounted read-only if true, read-write otherwise (false or unspecified).
-        Defaults to false.
+        read only
+    recursiveReadOnly : str, default is Undefined, optional
+        recursive read only
     subPath : str, default is Undefined, optional
-        Path within the volume from which the container's volume should be mounted.
-        Defaults to "" (volume's root).
+        sub path
     subPathExpr : str, default is Undefined, optional
-        Expanded path within the volume from which the container's volume should be mounted.
-        Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment.
-        Defaults to "" (volume's root).
-        SubPathExpr and SubPath are mutually exclusive.
+        sub path expr
     """
 
 
@@ -1440,26 +2417,211 @@ schema OperatorVictoriametricsComV1beta1VMAuthSpecVolumeMountsItems0:
 
     readOnly?: bool
 
+    recursiveReadOnly?: str
+
     subPath?: str
 
     subPathExpr?: str
 
 
-schema OperatorVictoriametricsComV1beta1VMAuthStatus:
-    """
-    VMAuthStatus defines the observed state of VMAuth
+schema OperatorVictoriametricsComV1beta1VMAuthSpecVpa:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec vpa
 
     Attributes
     ----------
-    reason : str, default is Undefined, optional
-        Reason defines fail reason for update process, effective only for statefulMode
-    updateStatus : str, default is Undefined, optional
-        UpdateStatus defines a status for update rollout, effective only for statefulMode
+    recommenders : [OperatorVictoriametricsComV1beta1VMAuthSpecVpaRecommendersItems0], default is Undefined, optional
+        recommenders
+    resourcePolicy : OperatorVictoriametricsComV1beta1VMAuthSpecVpaResourcePolicy, default is Undefined, optional
+        resource policy
+    updatePolicy : OperatorVictoriametricsComV1beta1VMAuthSpecVpaUpdatePolicy, default is Undefined, optional
+        update policy
     """
 
+
+    recommenders?: [OperatorVictoriametricsComV1beta1VMAuthSpecVpaRecommendersItems0]
+
+    resourcePolicy?: OperatorVictoriametricsComV1beta1VMAuthSpecVpaResourcePolicy
+
+    updatePolicy?: OperatorVictoriametricsComV1beta1VMAuthSpecVpaUpdatePolicy
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecVpaRecommendersItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec vpa recommenders items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        name
+    """
+
+
+    name: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecVpaResourcePolicy:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec vpa resource policy
+
+    Attributes
+    ----------
+    containerPolicies : [OperatorVictoriametricsComV1beta1VMAuthSpecVpaResourcePolicyContainerPoliciesItems0], default is Undefined, optional
+        container policies
+    """
+
+
+    containerPolicies?: [OperatorVictoriametricsComV1beta1VMAuthSpecVpaResourcePolicyContainerPoliciesItems0]
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecVpaResourcePolicyContainerPoliciesItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec vpa resource policy container policies items0
+
+    Attributes
+    ----------
+    containerName : str, default is Undefined, optional
+        container name
+    controlledResources : [str], default is Undefined, optional
+        controlled resources
+    controlledValues : str, default is Undefined, optional
+        controlled values
+    maxAllowed : {str:int | str}, default is Undefined, optional
+        max allowed
+    minAllowed : {str:int | str}, default is Undefined, optional
+        min allowed
+    mode : str, default is Undefined, optional
+        mode
+    """
+
+
+    containerName?: str
+
+    controlledResources?: [str]
+
+    controlledValues?: "RequestsAndLimits" | "RequestsOnly"
+
+    maxAllowed?: {str:int | str}
+
+    minAllowed?: {str:int | str}
+
+    mode?: "Auto" | "Off"
+
+
+    check:
+        all _, maxAllowed in maxAllowed { _regex_match(str(maxAllowed), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if maxAllowed } if maxAllowed
+        all _, minAllowed in minAllowed { _regex_match(str(minAllowed), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if minAllowed } if minAllowed
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecVpaUpdatePolicy:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec vpa update policy
+
+    Attributes
+    ----------
+    evictionRequirements : [OperatorVictoriametricsComV1beta1VMAuthSpecVpaUpdatePolicyEvictionRequirementsItems0], default is Undefined, optional
+        eviction requirements
+    minReplicas : int, default is Undefined, optional
+        min replicas
+    updateMode : str, default is Undefined, optional
+        update mode
+    """
+
+
+    evictionRequirements?: [OperatorVictoriametricsComV1beta1VMAuthSpecVpaUpdatePolicyEvictionRequirementsItems0]
+
+    minReplicas?: int
+
+    updateMode?: "Off" | "Initial" | "Recreate" | "InPlaceOrRecreate" | "Auto"
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthSpecVpaUpdatePolicyEvictionRequirementsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM auth spec vpa update policy eviction requirements items0
+
+    Attributes
+    ----------
+    changeRequirement : str, default is Undefined, required
+        change requirement
+    resources : [str], default is Undefined, required
+        resources
+    """
+
+
+    changeRequirement: "TargetHigherThanRequests" | "TargetLowerThanRequests"
+
+    resources: [str]
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthStatus:
+    r"""
+    operator victoriametrics com v1beta1 VM auth status
+
+    Attributes
+    ----------
+    conditions : [OperatorVictoriametricsComV1beta1VMAuthStatusConditionsItems0], default is Undefined, optional
+        conditions
+    observedGeneration : int, default is Undefined, optional
+        observed generation
+    reason : str, default is Undefined, optional
+        reason
+    updateStatus : str, default is Undefined, optional
+        update status
+    """
+
+
+    conditions?: [OperatorVictoriametricsComV1beta1VMAuthStatusConditionsItems0]
+
+    observedGeneration?: int
 
     reason?: str
 
     updateStatus?: str
+
+
+schema OperatorVictoriametricsComV1beta1VMAuthStatusConditionsItems0:
+    r"""
+    operator victoriametrics com v1beta1 VM auth status conditions items0
+
+    Attributes
+    ----------
+    lastTransitionTime : str, default is Undefined, required
+        last transition time
+    lastUpdateTime : str, default is Undefined, required
+        last update time
+    message : str, default is Undefined, optional
+        message
+    observedGeneration : int, default is Undefined, optional
+        observed generation
+    reason : str, default is Undefined, required
+        reason
+    status : str, default is Undefined, required
+        status
+    $type : str, default is Undefined, required
+        type
+    """
+
+
+    lastTransitionTime: str
+
+    lastUpdateTime: str
+
+    message?: str
+
+    observedGeneration?: int
+
+    reason: str
+
+    status: "True" | "False" | "Unknown"
+
+    $type: str
+
+
+    check:
+        len(message) <= 32768 if message
+        observedGeneration >= 0 if observedGeneration not in [None, Undefined]
+        len(reason) <= 1024
+        len(reason) >= 1
+        len($type) <= 316
 
 

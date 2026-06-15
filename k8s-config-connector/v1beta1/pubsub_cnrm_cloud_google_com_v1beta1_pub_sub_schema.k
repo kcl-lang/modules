@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema PubSubSchema:
-    """
+    r"""
     pubsub cnrm cloud google com v1beta1 pub sub schema
 
     Attributes
@@ -36,7 +36,7 @@ schema PubSubSchema:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubSchemaSpec:
-    """
+    r"""
     pubsub cnrm cloud google com v1beta1 pub sub schema spec
 
     Attributes
@@ -64,7 +64,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubSchemaSpec:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubSchemaSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -86,7 +86,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubSchemaSpecProjectRef:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubSchemaStatus:
-    """
+    r"""
     pubsub cnrm cloud google com v1beta1 pub sub schema status
 
     Attributes
@@ -104,7 +104,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubSchemaStatus:
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubSchemaStatusConditionsItems0:
-    """
+    r"""
     pubsub cnrm cloud google com v1beta1 pub sub schema status conditions items0
 
     Attributes

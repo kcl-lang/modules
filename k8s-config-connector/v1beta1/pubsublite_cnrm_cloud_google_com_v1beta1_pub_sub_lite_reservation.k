@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema PubSubLiteReservation:
-    """
+    r"""
     pubsublite cnrm cloud google com v1beta1 pub sub lite reservation
 
     Attributes
@@ -36,7 +36,7 @@ schema PubSubLiteReservation:
 
 
 schema PubsubliteCnrmCloudGoogleComV1beta1PubSubLiteReservationSpec:
-    """
+    r"""
     pubsublite cnrm cloud google com v1beta1 pub sub lite reservation spec
 
     Attributes
@@ -64,7 +64,7 @@ schema PubsubliteCnrmCloudGoogleComV1beta1PubSubLiteReservationSpec:
 
 
 schema PubsubliteCnrmCloudGoogleComV1beta1PubSubLiteReservationSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -86,7 +86,7 @@ schema PubsubliteCnrmCloudGoogleComV1beta1PubSubLiteReservationSpecProjectRef:
 
 
 schema PubsubliteCnrmCloudGoogleComV1beta1PubSubLiteReservationStatus:
-    """
+    r"""
     pubsublite cnrm cloud google com v1beta1 pub sub lite reservation status
 
     Attributes
@@ -104,7 +104,7 @@ schema PubsubliteCnrmCloudGoogleComV1beta1PubSubLiteReservationStatus:
 
 
 schema PubsubliteCnrmCloudGoogleComV1beta1PubSubLiteReservationStatusConditionsItems0:
-    """
+    r"""
     pubsublite cnrm cloud google com v1beta1 pub sub lite reservation status conditions items0
 
     Attributes

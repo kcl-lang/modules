@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IdentityPlatformProjectDefaultConfig:
-    """
+    r"""
     identityplatform cnrm cloud google com v1alpha1 identity platform project default config
 
     Attributes
@@ -36,7 +36,7 @@ schema IdentityPlatformProjectDefaultConfig:
 
 
 schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformProjectDefaultConfigSpec:
-    """
+    r"""
     identityplatform cnrm cloud google com v1alpha1 identity platform project default config spec
 
     Attributes
@@ -58,7 +58,7 @@ schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformProjectDefaultC
 
 
 schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformProjectDefaultConfigSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -80,7 +80,7 @@ schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformProjectDefaultC
 
 
 schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformProjectDefaultConfigSpecSignIn:
-    """
+    r"""
     Configuration related to local sign in methods.
 
     Attributes
@@ -110,7 +110,7 @@ schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformProjectDefaultC
 
 
 schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformProjectDefaultConfigSpecSignInAnonymous:
-    """
+    r"""
     Configuration options related to authenticating an anonymous user.
 
     Attributes
@@ -124,7 +124,7 @@ schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformProjectDefaultC
 
 
 schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformProjectDefaultConfigSpecSignInEmail:
-    """
+    r"""
     Configuration options related to authenticating a user by their email address.
 
     Attributes
@@ -144,7 +144,7 @@ schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformProjectDefaultC
 
 
 schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformProjectDefaultConfigSpecSignInHashConfigItems0:
-    """
+    r"""
     identityplatform cnrm cloud google com v1alpha1 identity platform project default config spec sign in hash config items0
 
     Attributes
@@ -174,7 +174,7 @@ schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformProjectDefaultC
 
 
 schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformProjectDefaultConfigSpecSignInPhoneNumber:
-    """
+    r"""
     Configuration options related to authenticated a user by their phone number.
 
     Attributes
@@ -192,7 +192,7 @@ schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformProjectDefaultC
 
 
 schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformProjectDefaultConfigStatus:
-    """
+    r"""
     identityplatform cnrm cloud google com v1alpha1 identity platform project default config status
 
     Attributes
@@ -214,7 +214,7 @@ schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformProjectDefaultC
 
 
 schema IdentityplatformCnrmCloudGoogleComV1alpha1IdentityPlatformProjectDefaultConfigStatusConditionsItems0:
-    """
+    r"""
     identityplatform cnrm cloud google com v1alpha1 identity platform project default config status conditions items0
 
     Attributes

@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DataCatalogPolicyTag:
-    """
-    datacatalog cnrm cloud google com v1beta1 data catalog policy tag
+    r"""
+    DataCatalogPolicyTag is the Schema for the DataCatalogPolicyTag API
 
     Attributes
     ----------
@@ -36,20 +36,15 @@ schema DataCatalogPolicyTag:
 
 
 schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogPolicyTagSpec:
-    """
-    datacatalog cnrm cloud google com v1beta1 data catalog policy tag spec
+    r"""
+    DataCatalogPolicyTagSpec defines the desired state of DataCatalogPolicyTag
 
     Attributes
     ----------
     description : str, default is Undefined, optional
-        Description of this policy tag. It must: contain only unicode characters, tabs,
-        newlines, carriage returns and page breaks; and be at most 2000 bytes long when
-        encoded in UTF-8. If not set, defaults to an empty description.
-        If not set, defaults to an empty description.
+        Description of this policy tag. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description. If not set, defaults to an empty description.
     displayName : str, default is Undefined, required
-        User defined name of this policy tag. It must: be unique within the parent
-        taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces;
-        not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
+        User defined name of this policy tag. It must: be unique within the parent taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
     parentPolicyTagRef : DatacatalogCnrmCloudGoogleComV1beta1DataCatalogPolicyTagSpecParentPolicyTagRef, default is Undefined, optional
         parent policy tag ref
     resourceID : str, default is Undefined, optional
@@ -71,17 +66,17 @@ schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogPolicyTagSpec:
 
 
 schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogPolicyTagSpecParentPolicyTagRef:
-    """
-    datacatalog cnrm cloud google com v1beta1 data catalog policy tag spec parent policy tag ref
+    r"""
+    PolicyTagRef defines the resource reference to DataCatalogPolicyTag, which "External" field holds the GCP identifier for the KRM object.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `DataCatalogPolicyTag` resource.
+        A reference to an externally managed DataCatalogPolicyTag resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/taxonomies/{{taxonomyID}}/policyTags/{{policytagID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a DataCatalogPolicyTag resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a DataCatalogPolicyTag resource.
     """
 
 
@@ -93,17 +88,17 @@ schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogPolicyTagSpecParentPolicyT
 
 
 schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogPolicyTagSpecTaxonomyRef:
-    """
-    datacatalog cnrm cloud google com v1beta1 data catalog policy tag spec taxonomy ref
+    r"""
+    TaxonomyRef defines the resource reference to DataCatalogTaxonomy, which "External" field holds the GCP identifier for the KRM object.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `DataCatalogTaxonomy` resource.
+        A reference to an externally managed DataCatalogTaxonomy resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/taxonomies/{{taxonomyID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a DataCatalogTaxonomy resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a DataCatalogTaxonomy resource.
     """
 
 
@@ -115,20 +110,23 @@ schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogPolicyTagSpecTaxonomyRef:
 
 
 schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogPolicyTagStatus:
-    """
-    datacatalog cnrm cloud google com v1beta1 data catalog policy tag status
+    r"""
+    DataCatalogPolicyTagStatus defines the config connector machine state of DataCatalogPolicyTag
 
     Attributes
     ----------
     childPolicyTags : [str], default is Undefined, optional
         Resource names of child policy tags of this policy tag.
     conditions : [DatacatalogCnrmCloudGoogleComV1beta1DataCatalogPolicyTagStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the DataCatalogPolicyTag resource in GCP.
     name : str, default is Undefined, optional
-        Resource name of this policy tag, whose format is:
-        "projects/{project}/locations/{region}/taxonomies/{taxonomy}/policyTags/{policytag}".
+        Resource name of this policy tag, whose format is: "projects/{project}/locations/{region}/taxonomies/{taxonomy}/policyTags/{policytag}".
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : any, default is Undefined, optional
+        ObservedState is the state of the resource as most recently observed in GCP.
     """
 
 
@@ -136,13 +134,17 @@ schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogPolicyTagStatus:
 
     conditions?: [DatacatalogCnrmCloudGoogleComV1beta1DataCatalogPolicyTagStatusConditionsItems0]
 
+    externalRef?: str
+
     name?: str
 
     observedGeneration?: int
 
+    observedState?: any
+
 
 schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogPolicyTagStatusConditionsItems0:
-    """
+    r"""
     datacatalog cnrm cloud google com v1beta1 data catalog policy tag status conditions items0
 
     Attributes

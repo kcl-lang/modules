@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema MonitoringUptimeCheckConfig:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring uptime check config
 
     Attributes
@@ -36,7 +36,7 @@ schema MonitoringUptimeCheckConfig:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpec:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring uptime check config spec
 
     Attributes
@@ -90,7 +90,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpec:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecContentMatchersItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring uptime check config spec content matchers items0
 
     Attributes
@@ -108,7 +108,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecContent
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecHTTPCheck:
-    """
+    r"""
     Contains information needed to make an HTTP or HTTPS check.
 
     Attributes
@@ -158,7 +158,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecHTTPChe
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecHTTPCheckAuthInfo:
-    """
+    r"""
     The authentication information. Optional when creating an HTTP check; defaults to empty.
 
     Attributes
@@ -176,7 +176,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecHTTPChe
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecHTTPCheckAuthInfoPassword:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring uptime check config spec HTTP check auth info password
 
     Attributes
@@ -194,7 +194,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecHTTPChe
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecHTTPCheckAuthInfoPasswordValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -208,7 +208,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecHTTPChe
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecHTTPCheckAuthInfoPasswordValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -226,7 +226,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecHTTPChe
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecMonitoredResource:
-    """
+    r"""
     Immutable. The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for Uptime checks:   `uptime_url`,   `gce_instance`,   `gae_app`,   `aws_ec2_instance`,   `aws_elb_load_balancer`
 
     Attributes
@@ -244,7 +244,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecMonitor
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -268,7 +268,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecProject
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecResourceGroup:
-    """
+    r"""
     Immutable. The group resource associated with the configuration.
 
     Attributes
@@ -286,7 +286,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecResourc
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecResourceGroupGroupRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -310,7 +310,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecResourc
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecTCPCheck:
-    """
+    r"""
     Contains information needed to make a TCP check.
 
     Attributes
@@ -324,7 +324,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecTCPChec
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigStatus:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring uptime check config status
 
     Attributes
@@ -342,7 +342,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigStatus:
 
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigStatusConditionsItems0:
-    """
+    r"""
     monitoring cnrm cloud google com v1beta1 monitoring uptime check config status conditions items0
 
     Attributes

@@ -82,7 +82,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateMetadata:
         queryable and should be preserved when modifying objects.
         More info: http://kubernetes.io/docs/user-guide/annotations
     labels : {str:str}, default is Undefined, optional
-        Map of string keys and values that can be used to organize and categorize
+        labels is a map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and services.
         More info: http://kubernetes.io/docs/user-guide/labels
@@ -232,6 +232,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecAddit
     ----------
     arn : str, default is Undefined, optional
         ARN of resource.
+
         Deprecated: This field has no function and is going to be removed in the next release.
     filters : [InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecAdditionalSecurityGroupsItems0FiltersItems0], default is Undefined, optional
         Filters is a set of key/value pairs used to identify a resource
@@ -446,6 +447,7 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecSubne
     ----------
     arn : str, default is Undefined, optional
         ARN of resource.
+
         Deprecated: This field has no function and is going to be removed in the next release.
     filters : [InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateSpecTemplateSpecSubnetFiltersItems0], default is Undefined, optional
         Filters is a set of key/value pairs used to identify a resource
@@ -498,6 +500,6 @@ schema InfrastructureClusterxK8sIoV1beta1AWSMachineTemplateStatus:
 
 
     check:
-        all _, capacity in capacity { _regex_match(str(capacity), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if capacity } if capacity
+        all _, k in capacity { _regex_match(str(k), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if k } if capacity
 
 

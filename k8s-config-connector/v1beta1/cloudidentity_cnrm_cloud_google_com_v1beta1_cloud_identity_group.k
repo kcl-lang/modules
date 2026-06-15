@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema CloudIdentityGroup:
-    """
-    cloudidentity cnrm cloud google com v1beta1 cloud identity group
+    r"""
+    CloudIdentityGroup is the Schema for the CloudIdentityGroup API
 
     Attributes
     ----------
@@ -36,42 +36,25 @@ schema CloudIdentityGroup:
 
 
 schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityGroupSpec:
-    """
-    cloudidentity cnrm cloud google com v1beta1 cloud identity group spec
+    r"""
+    CloudIdentityGroupSpec defines the desired state of CloudIdentityGroup
 
     Attributes
     ----------
     description : str, default is Undefined, optional
-        An extended description to help users determine the purpose of a Group.
-        Must not be longer than 4,096 characters.
+        An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
     displayName : str, default is Undefined, optional
-        The display name of the Group.
+        The display name of the `Group`.
     groupKey : CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityGroupSpecGroupKey, default is Undefined, required
         group key
     initialGroupConfig : str, default is Undefined, optional
-        Immutable. The initial configuration options for creating a Group.
-
-        See the
-        [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
-        for possible values. Default value: "EMPTY" Possible values: ["INITIAL_GROUP_CONFIG_UNSPECIFIED", "WITH_INITIAL_OWNER", "EMPTY"].
+        Immutable. The initial configuration options for creating a Group. See the [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig) for possible values. Default value: "EMPTY" Possible values: ["INITIAL_GROUP_CONFIG_UNSPECIFIED", "WITH_INITIAL_OWNER", "EMPTY"].
     labels : {str:str}, default is Undefined, required
-        One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
-
-        Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
-
-        Existing Google Groups can have an additional label with a key of cloudidentity.googleapis.com/groups.security and an empty value added to them. This is an immutable change and the security label cannot be removed once added.
-
-        Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
-
-        Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
+        One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value. Existing Google Groups can have an additional label with a key of cloudidentity.googleapis.com/groups.security and an empty value added to them. This is an immutable change and the security label cannot be removed once added. Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic. Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
     parent : str, default is Undefined, required
-        Immutable. The resource name of the entity under which this Group resides in the
-        Cloud Identity resource hierarchy.
-
-        Must be of the form identitysources/{identity_source_id} for external-identity-mapped
-        groups or customers/{customer_id} for Google Groups.
+        Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source}` for external [identity-mapped groups](https://support.google.com/a/answer/9039510) or `customers/{customer_id}` for Google Groups. The `customer_id` must begin with "C" (for example, 'C046psxkn'). [Find your customer ID.] (https://support.google.com/cloudidentity/answer/10070793)
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
+        Immutable. Optional. The service-generated name of the resource. Format: groups/{groupID} or {groupID}. Used for acquisition only. Leave unset to create a new resource.
     """
 
 
@@ -91,30 +74,15 @@ schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityGroupSpec:
 
 
 schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityGroupSpecGroupKey:
-    """
+    r"""
     Immutable. EntityKey of the Group.
 
     Attributes
     ----------
     id : str, default is Undefined, required
-        Immutable. The ID of the entity.
-
-        For Google-managed entities, the id must be the email address of an existing
-        group or user.
-
-        For external-identity-mapped entities, the id must be a string conforming
-        to the Identity Source's requirements.
-
-        Must be unique within a namespace.
+        Immutable. The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
     namespace : str, default is Undefined, optional
-        Immutable. The namespace in which the entity exists.
-
-        If not specified, the EntityKey represents a Google-managed entity
-        such as a Google user or a Google Group.
-
-        If specified, the EntityKey represents an external-identity-mapped group.
-        The namespace must correspond to an identity source created in Admin Console
-        and must be in the form of 'identitysources/{identity_source_id}'.
+        Immutable. The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
     """
 
 
@@ -124,22 +92,25 @@ schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityGroupSpecGroupKey:
 
 
 schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityGroupStatus:
-    """
-    cloudidentity cnrm cloud google com v1beta1 cloud identity group status
+    r"""
+    CloudIdentityGroupStatus defines the config connector machine state of CloudIdentityGroup
 
     Attributes
     ----------
     conditions : [CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityGroupStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     createTime : str, default is Undefined, optional
-        The time when the Group was created.
+        The time when the `Group` was created.
+    externalRef : str, default is Undefined, optional
+        A unique Config Connector specifier for the resource in GCP.
     name : str, default is Undefined, optional
-        Resource name of the Group in the format: groups/{group_id}, where group_id
-        is the unique ID assigned to the Group.
+        The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the form `groups/{group_id}`.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityGroupStatusObservedState, default is Undefined, optional
+        observed state
     updateTime : str, default is Undefined, optional
-        The time when the Group was last updated.
+        The time when the `Group` was last updated.
     """
 
 
@@ -147,15 +118,19 @@ schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityGroupStatus:
 
     createTime?: str
 
+    externalRef?: str
+
     name?: str
 
     observedGeneration?: int
+
+    observedState?: CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityGroupStatusObservedState
 
     updateTime?: str
 
 
 schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityGroupStatusConditionsItems0:
-    """
+    r"""
     cloudidentity cnrm cloud google com v1beta1 cloud identity group status conditions items0
 
     Attributes
@@ -182,5 +157,37 @@ schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityGroupStatusConditionsI
     status?: str
 
     $type?: str
+
+
+schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityGroupStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    additionalGroupKeys : [CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityGroupStatusObservedStateAdditionalGroupKeysItems0], default is Undefined, optional
+        Additional group keys associated with the Group.
+    """
+
+
+    additionalGroupKeys?: [CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityGroupStatusObservedStateAdditionalGroupKeysItems0]
+
+
+schema CloudidentityCnrmCloudGoogleComV1beta1CloudIdentityGroupStatusObservedStateAdditionalGroupKeysItems0:
+    r"""
+    cloudidentity cnrm cloud google com v1beta1 cloud identity group status observed state additional group keys items0
+
+    Attributes
+    ----------
+    id : str, default is Undefined, required
+        Immutable. The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
+    namespace : str, default is Undefined, optional
+        Immutable. The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
+    """
+
+
+    id: str
+
+    namespace?: str
 
 

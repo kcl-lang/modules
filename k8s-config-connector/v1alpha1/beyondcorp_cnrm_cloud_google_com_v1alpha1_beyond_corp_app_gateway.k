@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BeyondCorpAppGateway:
-    """
+    r"""
     beyondcorp cnrm cloud google com v1alpha1 beyond corp app gateway
 
     Attributes
@@ -36,7 +36,7 @@ schema BeyondCorpAppGateway:
 
 
 schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppGatewaySpec:
-    """
+    r"""
     beyondcorp cnrm cloud google com v1alpha1 beyond corp app gateway spec
 
     Attributes
@@ -70,7 +70,7 @@ schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppGatewaySpec:
 
 
 schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppGatewaySpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -92,7 +92,7 @@ schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppGatewaySpecProjectRef:
 
 
 schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppGatewayStatus:
-    """
+    r"""
     beyondcorp cnrm cloud google com v1alpha1 beyond corp app gateway status
 
     Attributes
@@ -122,7 +122,7 @@ schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppGatewayStatus:
 
 
 schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppGatewayStatusAllocatedConnectionsItems0:
-    """
+    r"""
     beyondcorp cnrm cloud google com v1alpha1 beyond corp app gateway status allocated connections items0
 
     Attributes
@@ -140,7 +140,7 @@ schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppGatewayStatusAllocatedCo
 
 
 schema BeyondcorpCnrmCloudGoogleComV1alpha1BeyondCorpAppGatewayStatusConditionsItems0:
-    """
+    r"""
     beyondcorp cnrm cloud google com v1alpha1 beyond corp app gateway status conditions items0
 
     Attributes

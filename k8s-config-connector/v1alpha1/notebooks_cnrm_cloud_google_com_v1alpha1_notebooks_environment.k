@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema NotebooksEnvironment:
-    """
-    notebooks cnrm cloud google com v1alpha1 notebooks environment
+    r"""
+    NotebooksEnvironment is the Schema for the NotebooksEnvironment API
 
     Attributes
     ----------
@@ -36,8 +36,8 @@ schema NotebooksEnvironment:
 
 
 schema NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentSpec:
-    """
-    notebooks cnrm cloud google com v1alpha1 notebooks environment spec
+    r"""
+    NotebooksEnvironmentSpec defines the desired state of NotebooksEnvironment
 
     Attributes
     ----------
@@ -47,15 +47,14 @@ schema NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentSpec:
         A brief description of this environment.
     displayName : str, default is Undefined, optional
         Display name of this environment for the UI.
-    locationRef : NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentSpecLocationRef, default is Undefined, required
-        location ref
+    location : str, default is Undefined, required
+        The location for the resource.
     postStartupScript : str, default is Undefined, optional
-        Path to a Bash script that automatically runs after a notebook instance fully boots up.
-        The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name".
+        Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
     projectRef : NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentSpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The NotebooksEnvironment name. If not given, the metadata.name will be used.
     vmImage : NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentSpecVMImage, default is Undefined, optional
         vm image
     """
@@ -67,7 +66,7 @@ schema NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentSpec:
 
     displayName?: str
 
-    locationRef: NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentSpecLocationRef
+    location: str
 
     postStartupScript?: str
 
@@ -79,62 +78,43 @@ schema NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentSpec:
 
 
 schema NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentSpecContainerImage:
-    """
+    r"""
     Use a container image to start the notebook instance.
 
     Attributes
     ----------
-    repository : str, default is Undefined, required
-        The path to the container image repository.
-        For example: gcr.io/{project_id}/{imageName}.
+    repository : str, default is Undefined, optional
+        Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
     tag : str, default is Undefined, optional
         The tag of the container image. If not specified, this defaults to the latest tag.
     """
 
 
-    repository: str
+    repository?: str
 
     tag?: str
 
 
-schema NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentSpecLocationRef:
-    """
-    notebooks cnrm cloud google com v1alpha1 notebooks environment spec location ref
-
-    Attributes
-    ----------
-    external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `NotebooksLocation` resource.
-    name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-    namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
-    """
-
-
-    external?: str
-
-    name?: str
-
-    namespace?: str
-
-
 schema NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentSpecProjectRef:
-    """
-    The project that this resource belongs to.
+    r"""
+    The Project that this resource belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
     external?: str
+
+    kind?: str
 
     name?: str
 
@@ -142,7 +122,7 @@ schema NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentSpecProjectRef:
 
 
 schema NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentSpecVMImage:
-    """
+    r"""
     Use a Compute Engine VM image to start the notebook instance.
 
     Attributes
@@ -151,9 +131,8 @@ schema NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentSpecVMImage:
         Use this VM image family to find the image; the newest image in this family will be used.
     imageName : str, default is Undefined, optional
         Use VM image name to find the image.
-    project : str, default is Undefined, required
-        The name of the Google Cloud project that this VM image belongs to.
-        Format: projects/{project_id}.
+    project : str, default is Undefined, optional
+        Required. The name of the Google Cloud project that this VM image belongs to. Format: `{project_id}`
     """
 
 
@@ -161,33 +140,37 @@ schema NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentSpecVMImage:
 
     imageName?: str
 
-    project: str
+    project?: str
 
 
 schema NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentStatus:
-    """
-    notebooks cnrm cloud google com v1alpha1 notebooks environment status
+    r"""
+    NotebooksEnvironmentStatus defines the config connector machine state of NotebooksEnvironment
 
     Attributes
     ----------
     conditions : [NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
-    createTime : str, default is Undefined, optional
-        Instance creation time.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the NotebooksEnvironment resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentStatusConditionsItems0]
 
-    createTime?: str
+    externalRef?: str
 
     observedGeneration?: int
 
+    observedState?: NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentStatusObservedState
+
 
 schema NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentStatusConditionsItems0:
-    """
+    r"""
     notebooks cnrm cloud google com v1alpha1 notebooks environment status conditions items0
 
     Attributes
@@ -214,5 +197,19 @@ schema NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentStatusConditionsIt
     status?: str
 
     $type?: str
+
+
+schema NotebooksCnrmCloudGoogleComV1alpha1NotebooksEnvironmentStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    createTime : str, default is Undefined, optional
+        Output only. The time at which this environment was created.
+    """
+
+
+    createTime?: str
 
 

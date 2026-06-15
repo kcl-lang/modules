@@ -9,6 +9,10 @@ schema EKSConfig:
     r"""
     EKSConfig is the schema for the Amazon EKS Machine Bootstrap Configuration API.
 
+    Deprecated: EKSConfig is deprecated and will be removed in a future release.
+    Amazon Linux 2 (AL2) reaches end-of-life in June 2026 see: https://aws.amazon.com/amazon-linux-2/faqs/
+    Please use NodeadmConfig with Amazon Linux 2023 (AL2023) instead.
+
     Attributes
     ----------
     apiVersion : str, default is "bootstrap.cluster.x-k8s.io/v1beta2", required
@@ -432,14 +436,14 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
-        Last time the condition transitioned from one status to another.
+        lastTransitionTime is the last time the condition transitioned from one status to another.
         This should be when the underlying condition changed. If that is not known, then using the time when
         the API field changed is acceptable.
     message : str, default is Undefined, optional
-        A human readable message indicating details about the transition.
+        message is a human readable message indicating details about the transition.
         This field may be empty.
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition in CamelCase.
+        reason is the reason for the condition's last transition in CamelCase.
         The specific API may choose whether or not this field is considered a guaranteed API.
         This field may be empty.
     severity : str, default is Undefined, optional
@@ -466,5 +470,15 @@ schema BootstrapClusterxK8sIoV1beta2EKSConfigStatusConditionsItems0:
     status: str
 
     $type: str
+
+
+    check:
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
+        len($type) <= 256
+        len($type) >= 1
 
 

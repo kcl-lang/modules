@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema FilestoreSnapshot:
-    """
+    r"""
     filestore cnrm cloud google com v1alpha1 filestore snapshot
 
     Attributes
@@ -36,7 +36,7 @@ schema FilestoreSnapshot:
 
 
 schema FilestoreCnrmCloudGoogleComV1alpha1FilestoreSnapshotSpec:
-    """
+    r"""
     filestore cnrm cloud google com v1alpha1 filestore snapshot spec
 
     Attributes
@@ -66,7 +66,7 @@ schema FilestoreCnrmCloudGoogleComV1alpha1FilestoreSnapshotSpec:
 
 
 schema FilestoreCnrmCloudGoogleComV1alpha1FilestoreSnapshotSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -88,7 +88,7 @@ schema FilestoreCnrmCloudGoogleComV1alpha1FilestoreSnapshotSpecProjectRef:
 
 
 schema FilestoreCnrmCloudGoogleComV1alpha1FilestoreSnapshotStatus:
-    """
+    r"""
     filestore cnrm cloud google com v1alpha1 filestore snapshot status
 
     Attributes
@@ -118,7 +118,7 @@ schema FilestoreCnrmCloudGoogleComV1alpha1FilestoreSnapshotStatus:
 
 
 schema FilestoreCnrmCloudGoogleComV1alpha1FilestoreSnapshotStatusConditionsItems0:
-    """
+    r"""
     filestore cnrm cloud google com v1alpha1 filestore snapshot status conditions items0
 
     Attributes

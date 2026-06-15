@@ -91,7 +91,7 @@ schema RealmKeycloakCrossplaneIoV1alpha1RequiredActionSpecForProvider:
     Attributes
     ----------
     alias : str, default is Undefined, optional
-        The alias of the action to attach as a required action.
+        The alias of the action to attach as a required action. Case sensitive.
     config : {str:str}, default is Undefined, optional
         The configuration. Keys are specific to each configurable required action and not checked when applying.
     defaultAction : bool, default is Undefined, optional
@@ -99,9 +99,9 @@ schema RealmKeycloakCrossplaneIoV1alpha1RequiredActionSpecForProvider:
     enabled : bool, default is Undefined, optional
         When false, the required action is not enabled for new users. Defaults to false.
     name : str, default is Undefined, optional
-        The name of the required action.
+        The name of the required action to use in the UI.
     priority : float, default is Undefined, optional
-        The priority of the required action.
+        An integer to specify the running order of required actions with lower numbers meaning higher precedence.
     realmId : str, default is Undefined, optional
         The realm the required action exists in.
     realmIdRef : RealmKeycloakCrossplaneIoV1alpha1RequiredActionSpecForProviderRealmIDRef, default is Undefined, optional
@@ -235,7 +235,7 @@ schema RealmKeycloakCrossplaneIoV1alpha1RequiredActionSpecInitProvider:
     Attributes
     ----------
     alias : str, default is Undefined, optional
-        The alias of the action to attach as a required action.
+        The alias of the action to attach as a required action. Case sensitive.
     config : {str:str}, default is Undefined, optional
         The configuration. Keys are specific to each configurable required action and not checked when applying.
     defaultAction : bool, default is Undefined, optional
@@ -243,9 +243,9 @@ schema RealmKeycloakCrossplaneIoV1alpha1RequiredActionSpecInitProvider:
     enabled : bool, default is Undefined, optional
         When false, the required action is not enabled for new users. Defaults to false.
     name : str, default is Undefined, optional
-        The name of the required action.
+        The name of the required action to use in the UI.
     priority : float, default is Undefined, optional
-        The priority of the required action.
+        An integer to specify the running order of required actions with lower numbers meaning higher precedence.
     realmId : str, default is Undefined, optional
         The realm the required action exists in.
     realmIdRef : RealmKeycloakCrossplaneIoV1alpha1RequiredActionSpecInitProviderRealmIDRef, default is Undefined, optional
@@ -459,7 +459,7 @@ schema RealmKeycloakCrossplaneIoV1alpha1RequiredActionStatusAtProvider:
     Attributes
     ----------
     alias : str, default is Undefined, optional
-        The alias of the action to attach as a required action.
+        The alias of the action to attach as a required action. Case sensitive.
     config : {str:str}, default is Undefined, optional
         The configuration. Keys are specific to each configurable required action and not checked when applying.
     defaultAction : bool, default is Undefined, optional
@@ -469,9 +469,9 @@ schema RealmKeycloakCrossplaneIoV1alpha1RequiredActionStatusAtProvider:
     id : str, default is Undefined, optional
         id
     name : str, default is Undefined, optional
-        The name of the required action.
+        The name of the required action to use in the UI.
     priority : float, default is Undefined, optional
-        The priority of the required action.
+        An integer to specify the running order of required actions with lower numbers meaning higher precedence.
     realmId : str, default is Undefined, optional
         The realm the required action exists in.
     """

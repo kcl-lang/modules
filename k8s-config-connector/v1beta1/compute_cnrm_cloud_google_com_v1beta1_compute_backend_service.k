@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeBackendService:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute backend service
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeBackendService:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute backend service spec
 
     Attributes
@@ -255,7 +255,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecBackendItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute backend service spec backend items0
 
     Attributes
@@ -357,7 +357,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecBackendItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecBackendItems0Group:
-    """
+    r"""
     Reference to a ComputeInstanceGroup or ComputeNetworkEndpointGroup
     resource. In case of instance group this defines the list of
     instances that serve traffic. Member virtual machine instances from
@@ -390,7 +390,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecBackendItems0Gro
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecBackendItems0GroupInstanceGroupRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute backend service spec backend items0 group instance group ref
 
     Attributes
@@ -412,7 +412,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecBackendItems0Gro
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecBackendItems0GroupNetworkEndpointGroupRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute backend service spec backend items0 group network endpoint group ref
 
     Attributes
@@ -434,7 +434,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecBackendItems0Gro
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecCdnPolicy:
-    """
+    r"""
     Cloud CDN configuration for this BackendService.
 
     Attributes
@@ -497,7 +497,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecCdnPolicy:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecCdnPolicyBypassCacheOnRequestHeadersItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute backend service spec cdn policy bypass cache on request headers items0
 
     Attributes
@@ -511,7 +511,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecCdnPolicyBypassC
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecCdnPolicyCacheKeyPolicy:
-    """
+    r"""
     The CacheKeyPolicy for this CdnPolicy.
 
     Attributes
@@ -566,7 +566,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecCdnPolicyCacheKe
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecCdnPolicyNegativeCachingPolicyItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute backend service spec cdn policy negative caching policy items0
 
     Attributes
@@ -586,7 +586,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecCdnPolicyNegativ
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecCircuitBreakers:
-    """
+    r"""
     Settings controlling the volume of connections to a backend service. This field
     is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
 
@@ -628,7 +628,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecCircuitBreakers:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecCircuitBreakersConnectTimeout:
-    """
+    r"""
     The timeout for new network connections to hosts.
 
     Attributes
@@ -650,7 +650,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecCircuitBreakersC
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecConnectionTrackingPolicy:
-    """
+    r"""
     Connection Tracking configuration for this BackendService.
     This is available only for Layer 4 Internal Load Balancing and
     Network Load Balancing.
@@ -703,7 +703,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecConnectionTracki
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecConsistentHash:
-    """
+    r"""
     Consistent Hash-based load balancing can be used to provide soft session
     affinity based on HTTP headers, cookies or other properties. This load balancing
     policy is applicable only for HTTP connections. The affinity to a particular
@@ -738,7 +738,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecConsistentHash:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecConsistentHashHTTPCookie:
-    """
+    r"""
     Hash is based on HTTP Cookie. This field describes a HTTP cookie
     that will be used as the hash key for the consistent hash load
     balancer. If the cookie is not present, it will be generated.
@@ -763,7 +763,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecConsistentHashHT
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecConsistentHashHTTPCookieTTL:
-    """
+    r"""
     Lifetime of the cookie.
 
     Attributes
@@ -785,7 +785,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecConsistentHashHT
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecEdgeSecurityPolicyRef:
-    """
+    r"""
     The resource URL for the edge security policy associated with this
     backend service.
 
@@ -808,7 +808,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecEdgeSecurityPoli
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecFailoverPolicy:
-    """
+    r"""
     Policy for failovers.
 
     Attributes
@@ -847,7 +847,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecFailoverPolicy:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecHealthChecksItems0:
-    """
+    r"""
     The health check resources for health checking this
     ComputeBackendService. Currently at most one health check can be
     specified, and a health check is required.
@@ -867,7 +867,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecHealthChecksItem
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecHealthChecksItems0HTTPHealthCheckRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute backend service spec health checks items0 HTTP health check ref
 
     Attributes
@@ -889,7 +889,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecHealthChecksItem
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecHealthChecksItems0HealthCheckRef:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute backend service spec health checks items0 health check ref
 
     Attributes
@@ -911,7 +911,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecHealthChecksItem
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecIap:
-    """
+    r"""
     Settings for enabling Cloud Identity Aware Proxy.
 
     Attributes
@@ -937,7 +937,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecIap:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecIapOauth2ClientIDRef:
-    """
+    r"""
     OAuth2 Client ID for IAP.
 
     Attributes
@@ -959,7 +959,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecIapOauth2ClientI
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecIapOauth2ClientSecret:
-    """
+    r"""
     OAuth2 Client Secret for IAP.
 
     Attributes
@@ -977,7 +977,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecIapOauth2ClientS
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecIapOauth2ClientSecretValueFrom:
-    """
+    r"""
     Source for the field's value. Cannot be used if 'value' is specified.
 
     Attributes
@@ -991,7 +991,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecIapOauth2ClientS
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecIapOauth2ClientSecretValueFromSecretKeyRef:
-    """
+    r"""
     Reference to a value with the given key in the given Secret in the resource's namespace.
 
     Attributes
@@ -1009,7 +1009,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecIapOauth2ClientS
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecLocalityLbPoliciesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute backend service spec locality lb policies items0
 
     Attributes
@@ -1027,7 +1027,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecLocalityLbPolici
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecLocalityLbPoliciesItems0CustomPolicy:
-    """
+    r"""
     The configuration for a custom policy implemented by the user and
     deployed with the client.
 
@@ -1055,7 +1055,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecLocalityLbPolici
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecLocalityLbPoliciesItems0Policy:
-    """
+    r"""
     The configuration for a built-in load balancing policy.
 
     Attributes
@@ -1103,7 +1103,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecLocalityLbPolici
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecLogConfig:
-    """
+    r"""
     This field denotes the logging options for the load balancer traffic served by this backend service.
     If logging is enabled, logs will be exported to Stackdriver.
 
@@ -1125,7 +1125,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecLogConfig:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecNetworkRef:
-    """
+    r"""
     The network to which this backend service belongs.  This field can
     only be specified when the load balancing scheme is set to
     INTERNAL.
@@ -1149,7 +1149,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecNetworkRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecOutlierDetection:
-    """
+    r"""
     Settings controlling eviction of unhealthy hosts from the load balancing pool.
     This field is applicable only when the load_balancing_scheme is set
     to INTERNAL_SELF_MANAGED.
@@ -1228,7 +1228,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecOutlierDetection
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecOutlierDetectionBaseEjectionTime:
-    """
+    r"""
     The base time that a host is ejected for. The real time is equal to the base
     time multiplied by the number of times the host has been ejected. Defaults to
     30000ms or 30s.
@@ -1251,7 +1251,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecOutlierDetection
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecOutlierDetectionInterval:
-    """
+    r"""
     Time interval between ejection sweep analysis. This can result in both new
     ejections as well as hosts being returned to service. Defaults to 10 seconds.
 
@@ -1273,7 +1273,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecOutlierDetection
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecSecurityPolicyRef:
-    """
+    r"""
     The security policy associated with this backend service.
 
     Attributes
@@ -1295,7 +1295,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecSecurityPolicyRe
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecSecuritySettings:
-    """
+    r"""
     The security settings that apply to this backend service. This field is applicable to either
     a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
     load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
@@ -1318,7 +1318,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecSecuritySettings
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecSecuritySettingsClientTLSPolicyRef:
-    """
+    r"""
     ClientTlsPolicy is a resource that specifies how a client should
     authenticate connections to backends of a service. This resource itself
     does not affect configuration unless it is attached to a backend
@@ -1327,7 +1327,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecSecuritySettings
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `NetworkSecurityClientTLSPolicy` resource.
+        Allowed value: string of the format `//networksecurity.googleapis.com/projects/{{project}}/locations/{{location}}/clientTlsPolicies/{{value}}`, where {{value}} is the `name` field of a `NetworkSecurityClientTLSPolicy` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -1343,7 +1343,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecSecuritySettings
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecSubsetting:
-    """
+    r"""
     Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
 
     Attributes
@@ -1357,7 +1357,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceSpecSubsetting:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute backend service status
 
     Attributes
@@ -1392,7 +1392,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendServiceStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute backend service status conditions items0
 
     Attributes

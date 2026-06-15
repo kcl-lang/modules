@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DialogflowCXWebhook:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x webhook
 
     Attributes
@@ -36,7 +36,7 @@ schema DialogflowCXWebhook:
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXWebhookSpec:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x webhook spec
 
     Attributes
@@ -87,7 +87,7 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXWebhookSpec:
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXWebhookSpecGenericWebService:
-    """
+    r"""
     Configuration for a generic web service.
 
     Attributes
@@ -109,7 +109,7 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXWebhookSpecGenericWebSe
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXWebhookSpecServiceDirectory:
-    """
+    r"""
     Configuration for a Service Directory service.
 
     Attributes
@@ -127,7 +127,7 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXWebhookSpecServiceDirec
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXWebhookSpecServiceDirectoryGenericWebService:
-    """
+    r"""
     The name of Service Directory service.
 
     Attributes
@@ -149,7 +149,7 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXWebhookSpecServiceDirec
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXWebhookStatus:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x webhook status
 
     Attributes
@@ -176,7 +176,7 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXWebhookStatus:
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXWebhookStatusConditionsItems0:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x webhook status conditions items0
 
     Attributes

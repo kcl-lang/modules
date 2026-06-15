@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema CloudFunctionsFunction:
-    """
+    r"""
     cloudfunctions cnrm cloud google com v1beta1 cloud functions function
 
     Attributes
@@ -36,7 +36,7 @@ schema CloudFunctionsFunction:
 
 
 schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionSpec:
-    """
+    r"""
     cloudfunctions cnrm cloud google com v1beta1 cloud functions function spec
 
     Attributes
@@ -133,7 +133,7 @@ schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionSpec:
 
 
 schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionSpecEventTrigger:
-    """
+    r"""
     Immutable. A source that fires events in response to a condition in another service.
 
     Attributes
@@ -176,7 +176,7 @@ schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionSpecEventTri
 
 
 schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionSpecEventTriggerResourceRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -224,7 +224,7 @@ schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionSpecEventTri
 
 
 schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionSpecHTTPSTrigger:
-    """
+    r"""
     Immutable. An HTTPS endpoint type of source that can be triggered via URL.
 
     Attributes
@@ -238,7 +238,7 @@ schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionSpecHTTPSTri
 
 
 schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionSpecProjectRef:
-    """
+    r"""
     Immutable. The Project that this resource belongs to.
 
     Attributes
@@ -262,7 +262,7 @@ schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionSpecProjectR
 
 
 schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionSpecServiceAccountRef:
-    """
+    r"""
     Immutable.
 
     Attributes
@@ -287,7 +287,7 @@ schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionSpecServiceA
 
 
 schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionSpecSourceRepository:
-    """
+    r"""
     Immutable. Represents parameters related to source repository where a function is hosted.
 
     Attributes
@@ -313,7 +313,7 @@ schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionSpecSourceRe
 
 
 schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionSpecVpcConnectorRef:
-    """
+    r"""
     cloudfunctions cnrm cloud google com v1beta1 cloud functions function spec vpc connector ref
 
     Attributes
@@ -340,7 +340,7 @@ schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionSpecVpcConne
 
 
 schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionStatus:
-    """
+    r"""
     cloudfunctions cnrm cloud google com v1beta1 cloud functions function status
 
     Attributes
@@ -379,7 +379,7 @@ schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionStatus:
 
 
 schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionStatusConditionsItems0:
-    """
+    r"""
     cloudfunctions cnrm cloud google com v1beta1 cloud functions function status conditions items0
 
     Attributes
@@ -409,7 +409,7 @@ schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionStatusCondit
 
 
 schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionStatusHTTPSTrigger:
-    """
+    r"""
     cloudfunctions cnrm cloud google com v1beta1 cloud functions function status HTTPS trigger
 
     Attributes
@@ -423,7 +423,7 @@ schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionStatusHTTPST
 
 
 schema CloudfunctionsCnrmCloudGoogleComV1beta1CloudFunctionsFunctionStatusSourceRepository:
-    """
+    r"""
     cloudfunctions cnrm cloud google com v1beta1 cloud functions function status source repository
 
     Attributes

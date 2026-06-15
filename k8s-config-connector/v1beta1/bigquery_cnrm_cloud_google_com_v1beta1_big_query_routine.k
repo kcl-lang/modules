@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema BigQueryRoutine:
-    """
+    r"""
     bigquery cnrm cloud google com v1beta1 big query routine
 
     Attributes
@@ -36,7 +36,7 @@ schema BigQueryRoutine:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryRoutineSpec:
-    """
+    r"""
     bigquery cnrm cloud google com v1beta1 big query routine spec
 
     Attributes
@@ -108,7 +108,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryRoutineSpec:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryRoutineSpecArgumentsItems0:
-    """
+    r"""
     bigquery cnrm cloud google com v1beta1 big query routine spec arguments items0
 
     Attributes
@@ -140,7 +140,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryRoutineSpecArgumentsItems0:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryRoutineSpecDatasetRef:
-    """
+    r"""
     The ID of the dataset containing this routine.
 
     Attributes
@@ -162,7 +162,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryRoutineSpecDatasetRef:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryRoutineSpecProjectRef:
-    """
+    r"""
     The project that this resource belongs to.
 
     Attributes
@@ -184,7 +184,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryRoutineSpecProjectRef:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryRoutineStatus:
-    """
+    r"""
     bigquery cnrm cloud google com v1beta1 big query routine status
 
     Attributes
@@ -212,7 +212,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryRoutineStatus:
 
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryRoutineStatusConditionsItems0:
-    """
+    r"""
     bigquery cnrm cloud google com v1beta1 big query routine status conditions items0
 
     Attributes

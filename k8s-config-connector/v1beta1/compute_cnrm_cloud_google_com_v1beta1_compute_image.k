@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeImage:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute image
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeImage:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute image spec
 
     Attributes
@@ -102,7 +102,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecDiskRef:
-    """
+    r"""
     The source disk to create this image based on.
     You must provide either this property or the
     rawDisk.source property but not both to create an image.
@@ -126,7 +126,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecDiskRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecGuestOsFeaturesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute image spec guest os features items0
 
     Attributes
@@ -140,7 +140,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecGuestOsFeaturesItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecImageEncryptionKey:
-    """
+    r"""
     Immutable. Encrypts the image using a customer-supplied encryption key.
 
     After you encrypt an image with a customer-supplied key, you must
@@ -162,7 +162,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecImageEncryptionKey:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecImageEncryptionKeyKmsKeySelfLinkRef:
-    """
+    r"""
     The self link of the encryption key that is stored in Google Cloud
     KMS.
 
@@ -185,7 +185,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecImageEncryptionKeyKmsKeyS
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecImageEncryptionKeyKmsKeyServiceAccountRef:
-    """
+    r"""
     The service account being used for the encryption request for the
     given KMS key. If absent, the Compute Engine default service account
     is used.
@@ -209,7 +209,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecImageEncryptionKeyKmsKeyS
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecRawDisk:
-    """
+    r"""
     Immutable. The parameters of the raw disk image.
 
     Attributes
@@ -237,7 +237,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecRawDisk:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecSourceImageRef:
-    """
+    r"""
     The source image used to create this image.
 
     Attributes
@@ -259,7 +259,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecSourceImageRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecSourceSnapshotRef:
-    """
+    r"""
     The source snapshot used to create this image.
 
     Attributes
@@ -281,7 +281,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecSourceSnapshotRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeImageStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute image status
 
     Attributes
@@ -317,7 +317,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeImageStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeImageStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute image status conditions items0
 
     Attributes

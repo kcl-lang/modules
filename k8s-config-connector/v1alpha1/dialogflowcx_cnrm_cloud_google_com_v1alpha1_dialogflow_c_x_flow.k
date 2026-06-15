@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DialogflowCXFlow:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x flow
 
     Attributes
@@ -36,7 +36,7 @@ schema DialogflowCXFlow:
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpec:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x flow spec
 
     Attributes
@@ -101,7 +101,7 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpec:
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x flow spec event handlers items0
 
     Attributes
@@ -133,15 +133,19 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersIt
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillment:
-    """
+    r"""
     The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
 
     Attributes
     ----------
+    conditionalCases : [DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentConditionalCasesItems0], default is Undefined, optional
+        Conditional cases for this fulfillment.
     messages : [DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0], default is Undefined, optional
         The list of rich message responses to present to the user.
     returnPartialResponses : bool, default is Undefined, optional
         Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+    setParameterActions : [DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentSetParameterActionsItems0], default is Undefined, optional
+        Set parameter values before executing the webhook.
     tag : str, default is Undefined, optional
         The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
     webhook : str, default is Undefined, optional
@@ -149,31 +153,168 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersIt
     """
 
 
+    conditionalCases?: [DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentConditionalCasesItems0]
+
     messages?: [DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0]
 
     returnPartialResponses?: bool
+
+    setParameterActions?: [DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentSetParameterActionsItems0]
 
     tag?: str
 
     webhook?: str
 
 
-schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0:
+schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentConditionalCasesItems0:
+    r"""
+    dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x flow spec event handlers items0 trigger fulfillment conditional cases items0
+
+    Attributes
+    ----------
+    cases : str, default is Undefined, optional
+        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
     """
+
+
+    cases?: str
+
+
+schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0:
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x flow spec event handlers items0 trigger fulfillment messages items0
 
     Attributes
     ----------
+    channel : str, default is Undefined, optional
+        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+    conversationSuccess : DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0ConversationSuccess, default is Undefined, optional
+        conversation success
+    liveAgentHandoff : DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0LiveAgentHandoff, default is Undefined, optional
+        live agent handoff
+    outputAudioText : DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0OutputAudioText, default is Undefined, optional
+        output audio text
+    payload : str, default is Undefined, optional
+        A custom, platform-specific payload.
+    playAudio : DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0PlayAudio, default is Undefined, optional
+        play audio
+    telephonyTransferCall : DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0TelephonyTransferCall, default is Undefined, optional
+        telephony transfer call
     text : DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0Text, default is Undefined, optional
         text
     """
 
 
+    channel?: str
+
+    conversationSuccess?: DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0ConversationSuccess
+
+    liveAgentHandoff?: DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0LiveAgentHandoff
+
+    outputAudioText?: DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0OutputAudioText
+
+    payload?: str
+
+    playAudio?: DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0PlayAudio
+
+    telephonyTransferCall?: DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0TelephonyTransferCall
+
     text?: DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0Text
 
 
-schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0Text:
+schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0ConversationSuccess:
+    r"""
+    Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+    Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+    You may set this, for example:
+    * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+    * In a webhook response when you determine that you handled the customer issue.
+
+    Attributes
+    ----------
+    metadata : str, default is Undefined, optional
+        Custom metadata. Dialogflow doesn't impose any structure on this.
     """
+
+
+    metadata?: str
+
+
+schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0LiveAgentHandoff:
+    r"""
+    Indicates that the conversation should be handed off to a live agent.
+    Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+    You may set this, for example:
+    * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+    * In a webhook response when you determine that the customer issue can only be handled by a human.
+
+    Attributes
+    ----------
+    metadata : str, default is Undefined, optional
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+    """
+
+
+    metadata?: str
+
+
+schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0OutputAudioText:
+    r"""
+    A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+
+    Attributes
+    ----------
+    allowPlaybackInterruption : bool, default is Undefined, optional
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+    ssml : str, default is Undefined, optional
+        The SSML text to be synthesized. For more information, see SSML.
+    text : str, default is Undefined, optional
+        The raw text to be synthesized.
+    """
+
+
+    allowPlaybackInterruption?: bool
+
+    ssml?: str
+
+    text?: str
+
+
+schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0PlayAudio:
+    r"""
+    Specifies an audio clip to be played by the client as part of the response.
+
+    Attributes
+    ----------
+    allowPlaybackInterruption : bool, default is Undefined, optional
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+    audioUri : str, default is Undefined, required
+        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+    """
+
+
+    allowPlaybackInterruption?: bool
+
+    audioUri: str
+
+
+schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0TelephonyTransferCall:
+    r"""
+    Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+
+    Attributes
+    ----------
+    phoneNumber : str, default is Undefined, required
+        Transfer the call to a phone number in E.164 format.
+    """
+
+
+    phoneNumber: str
+
+
+schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentMessagesItems0Text:
+    r"""
     The text response message.
 
     Attributes
@@ -190,8 +331,26 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersIt
     text?: [str]
 
 
-schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecNluSettings:
+schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecEventHandlersItems0TriggerFulfillmentSetParameterActionsItems0:
+    r"""
+    dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x flow spec event handlers items0 trigger fulfillment set parameter actions items0
+
+    Attributes
+    ----------
+    parameter : str, default is Undefined, optional
+        Display name of the parameter.
+    value : str, default is Undefined, optional
+        The new JSON-encoded value of the parameter. A null value clears the parameter.
     """
+
+
+    parameter?: str
+
+    value?: str
+
+
+schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecNluSettings:
+    r"""
     NLU related settings of the flow.
 
     Attributes
@@ -218,7 +377,7 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecNluSettings:
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x flow spec transition routes items0
 
     Attributes
@@ -256,15 +415,19 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoute
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillment:
-    """
+    r"""
     The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
 
     Attributes
     ----------
+    conditionalCases : [DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentConditionalCasesItems0], default is Undefined, optional
+        Conditional cases for this fulfillment.
     messages : [DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0], default is Undefined, optional
         The list of rich message responses to present to the user.
     returnPartialResponses : bool, default is Undefined, optional
         Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+    setParameterActions : [DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentSetParameterActionsItems0], default is Undefined, optional
+        Set parameter values before executing the webhook.
     tag : str, default is Undefined, optional
         The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
     webhook : str, default is Undefined, optional
@@ -272,31 +435,168 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoute
     """
 
 
+    conditionalCases?: [DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentConditionalCasesItems0]
+
     messages?: [DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0]
 
     returnPartialResponses?: bool
+
+    setParameterActions?: [DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentSetParameterActionsItems0]
 
     tag?: str
 
     webhook?: str
 
 
-schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0:
+schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentConditionalCasesItems0:
+    r"""
+    dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x flow spec transition routes items0 trigger fulfillment conditional cases items0
+
+    Attributes
+    ----------
+    cases : str, default is Undefined, optional
+        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
     """
+
+
+    cases?: str
+
+
+schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0:
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x flow spec transition routes items0 trigger fulfillment messages items0
 
     Attributes
     ----------
+    channel : str, default is Undefined, optional
+        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+    conversationSuccess : DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0ConversationSuccess, default is Undefined, optional
+        conversation success
+    liveAgentHandoff : DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0LiveAgentHandoff, default is Undefined, optional
+        live agent handoff
+    outputAudioText : DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0OutputAudioText, default is Undefined, optional
+        output audio text
+    payload : str, default is Undefined, optional
+        A custom, platform-specific payload.
+    playAudio : DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0PlayAudio, default is Undefined, optional
+        play audio
+    telephonyTransferCall : DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0TelephonyTransferCall, default is Undefined, optional
+        telephony transfer call
     text : DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0Text, default is Undefined, optional
         text
     """
 
 
+    channel?: str
+
+    conversationSuccess?: DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0ConversationSuccess
+
+    liveAgentHandoff?: DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0LiveAgentHandoff
+
+    outputAudioText?: DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0OutputAudioText
+
+    payload?: str
+
+    playAudio?: DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0PlayAudio
+
+    telephonyTransferCall?: DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0TelephonyTransferCall
+
     text?: DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0Text
 
 
-schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0Text:
+schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0ConversationSuccess:
+    r"""
+    Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+    Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+    You may set this, for example:
+    * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+    * In a webhook response when you determine that you handled the customer issue.
+
+    Attributes
+    ----------
+    metadata : str, default is Undefined, optional
+        Custom metadata. Dialogflow doesn't impose any structure on this.
     """
+
+
+    metadata?: str
+
+
+schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0LiveAgentHandoff:
+    r"""
+    Indicates that the conversation should be handed off to a live agent.
+    Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+    You may set this, for example:
+    * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+    * In a webhook response when you determine that the customer issue can only be handled by a human.
+
+    Attributes
+    ----------
+    metadata : str, default is Undefined, optional
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+    """
+
+
+    metadata?: str
+
+
+schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0OutputAudioText:
+    r"""
+    A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+
+    Attributes
+    ----------
+    allowPlaybackInterruption : bool, default is Undefined, optional
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+    ssml : str, default is Undefined, optional
+        The SSML text to be synthesized. For more information, see SSML.
+    text : str, default is Undefined, optional
+        The raw text to be synthesized.
+    """
+
+
+    allowPlaybackInterruption?: bool
+
+    ssml?: str
+
+    text?: str
+
+
+schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0PlayAudio:
+    r"""
+    Specifies an audio clip to be played by the client as part of the response.
+
+    Attributes
+    ----------
+    allowPlaybackInterruption : bool, default is Undefined, optional
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+    audioUri : str, default is Undefined, required
+        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+    """
+
+
+    allowPlaybackInterruption?: bool
+
+    audioUri: str
+
+
+schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0TelephonyTransferCall:
+    r"""
+    Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+
+    Attributes
+    ----------
+    phoneNumber : str, default is Undefined, required
+        Transfer the call to a phone number in E.164 format.
+    """
+
+
+    phoneNumber: str
+
+
+schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentMessagesItems0Text:
+    r"""
     The text response message.
 
     Attributes
@@ -313,8 +613,26 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoute
     text?: [str]
 
 
-schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowStatus:
+schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowSpecTransitionRoutesItems0TriggerFulfillmentSetParameterActionsItems0:
+    r"""
+    dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x flow spec transition routes items0 trigger fulfillment set parameter actions items0
+
+    Attributes
+    ----------
+    parameter : str, default is Undefined, optional
+        Display name of the parameter.
+    value : str, default is Undefined, optional
+        The new JSON-encoded value of the parameter. A null value clears the parameter.
     """
+
+
+    parameter?: str
+
+    value?: str
+
+
+schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowStatus:
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x flow status
 
     Attributes
@@ -337,7 +655,7 @@ schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowStatus:
 
 
 schema DialogflowcxCnrmCloudGoogleComV1alpha1DialogflowCXFlowStatusConditionsItems0:
-    """
+    r"""
     dialogflowcx cnrm cloud google com v1alpha1 dialogflow c x flow status conditions items0
 
     Attributes

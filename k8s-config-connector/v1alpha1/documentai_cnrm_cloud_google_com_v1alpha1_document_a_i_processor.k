@@ -6,8 +6,8 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema DocumentAIProcessor:
-    """
-    documentai cnrm cloud google com v1alpha1 document a i processor
+    r"""
+    DocumentAIProcessor is the Schema for the DocumentAIProcessor API
 
     Attributes
     ----------
@@ -36,29 +36,29 @@ schema DocumentAIProcessor:
 
 
 schema DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorSpec:
-    """
-    documentai cnrm cloud google com v1alpha1 document a i processor spec
+    r"""
+    DocumentAIProcessorSpec defines the desired state of DocumentAIProcessor
 
     Attributes
     ----------
-    displayName : str, default is Undefined, required
-        Immutable. The display name. Must be unique.
-    kmsKeyName : str, default is Undefined, optional
-        Immutable. The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+    displayName : str, default is Undefined, optional
+        The display name of the processor.
+    kmsKeyRef : DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorSpecKmsKeyRef, default is Undefined, optional
+        kms key ref
     location : str, default is Undefined, required
-        Immutable. The location of the resource.
+        location
     projectRef : DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorSpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
-    $type : str, default is Undefined, required
-        Immutable. The type of processor. For possible types see the [official list](https://cloud.google.com/document-ai/docs/reference/rest/v1/projects.locations/fetchProcessorTypes#google.cloud.documentai.v1.DocumentProcessorService.FetchProcessorTypes).
+        The GCP resource identifier. If not given, the metadata.name will be used.
+    $type : str, default is Undefined, optional
+        The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see [FetchProcessorTypes][google.cloud.documentai.v1.DocumentProcessorService.FetchProcessorTypes].
     """
 
 
-    displayName: str
+    displayName?: str
 
-    kmsKeyName?: str
+    kmsKeyRef?: DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorSpecKmsKeyRef
 
     location: str
 
@@ -66,21 +66,21 @@ schema DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorSpec:
 
     resourceID?: str
 
-    $type: str
+    $type?: str
 
 
-schema DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorSpecProjectRef:
-    """
-    The project that this resource belongs to.
+schema DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorSpecKmsKeyRef:
+    r"""
+    The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK scenarios.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` of a `KMSCryptoKey` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` of a `KMSCryptoKey` resource.
     """
 
 
@@ -91,30 +91,60 @@ schema DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorSpecProjectRef:
     namespace?: str
 
 
-schema DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorStatus:
+schema DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorSpecProjectRef:
+    r"""
+    The Project that this resource belongs to.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
+    name : str, default is Undefined, optional
+        The `name` field of a `Project` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `Project` resource.
     """
-    documentai cnrm cloud google com v1alpha1 document a i processor status
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorStatus:
+    r"""
+    DocumentAIProcessorStatus defines the config connector machine state of DocumentAIProcessor
 
     Attributes
     ----------
     conditions : [DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
-    name : str, default is Undefined, optional
-        The resource name of the processor.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the DocumentAIProcessor resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorStatusConditionsItems0]
 
-    name?: str
+    externalRef?: str
 
     observedGeneration?: int
 
+    observedState?: DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorStatusObservedState
+
 
 schema DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorStatusConditionsItems0:
-    """
+    r"""
     documentai cnrm cloud google com v1alpha1 document a i processor status conditions items0
 
     Attributes
@@ -141,5 +171,57 @@ schema DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorStatusConditionsIt
     status?: str
 
     $type?: str
+
+
+schema DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    createTime : str, default is Undefined, optional
+        The time the processor was created.
+    defaultProcessorVersion : str, default is Undefined, optional
+        The default processor version.
+    name : str, default is Undefined, optional
+        Output only. Immutable. The resource name of the processor. Format: `projects/{project}/locations/{location}/processors/{processor}`
+    processEndpoint : str, default is Undefined, optional
+        Output only. Immutable. The http endpoint that can be called to invoke processing.
+    processorVersionAliases : [DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorStatusObservedStateProcessorVersionAliasesItems0], default is Undefined, optional
+        Output only. The processor version aliases.
+    state : str, default is Undefined, optional
+        Output only. The state of the processor.
+    """
+
+
+    createTime?: str
+
+    defaultProcessorVersion?: str
+
+    name?: str
+
+    processEndpoint?: str
+
+    processorVersionAliases?: [DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorStatusObservedStateProcessorVersionAliasesItems0]
+
+    state?: str
+
+
+schema DocumentaiCnrmCloudGoogleComV1alpha1DocumentAIProcessorStatusObservedStateProcessorVersionAliasesItems0:
+    r"""
+    documentai cnrm cloud google com v1alpha1 document a i processor status observed state processor version aliases items0
+
+    Attributes
+    ----------
+    alias : str, default is Undefined, optional
+        The alias in the form of `processor_version` resource name.
+    processorVersion : str, default is Undefined, optional
+        The resource name of aliased processor version.
+    """
+
+
+    alias?: str
+
+    processorVersion?: str
 
 

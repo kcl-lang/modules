@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ServiceDirectoryEndpoint:
-    """
+    r"""
     servicedirectory cnrm cloud google com v1beta1 service directory endpoint
 
     Attributes
@@ -36,7 +36,7 @@ schema ServiceDirectoryEndpoint:
 
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointSpec:
-    """
+    r"""
     servicedirectory cnrm cloud google com v1beta1 service directory endpoint spec
 
     Attributes
@@ -67,7 +67,7 @@ schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointSpec:
 
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointSpecAddressRef:
-    """
+    r"""
     servicedirectory cnrm cloud google com v1beta1 service directory endpoint spec address ref
 
     Attributes
@@ -89,7 +89,7 @@ schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointSpecAddr
 
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointSpecNetworkRef:
-    """
+    r"""
     Only the `external` field is supported to configure the reference.
 
     Immutable. The Google Compute Engine network (VPC) of the endpoint in the format
@@ -118,7 +118,7 @@ schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointSpecNetw
 
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointSpecServiceRef:
-    """
+    r"""
     The ServiceDirectoryService that this endpoint belongs to.
 
     Attributes
@@ -140,7 +140,7 @@ schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointSpecServ
 
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointStatus:
-    """
+    r"""
     servicedirectory cnrm cloud google com v1beta1 service directory endpoint status
 
     Attributes
@@ -163,7 +163,7 @@ schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointStatus:
 
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointStatusConditionsItems0:
-    """
+    r"""
     servicedirectory cnrm cloud google com v1beta1 service directory endpoint status conditions items0
 
     Attributes

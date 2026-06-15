@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema IAMCustomRole:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m custom role
 
     Attributes
@@ -36,7 +36,7 @@ schema IAMCustomRole:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMCustomRoleSpec:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m custom role spec
 
     Attributes
@@ -66,7 +66,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMCustomRoleSpec:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMCustomRoleStatus:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m custom role status
 
     Attributes
@@ -92,7 +92,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMCustomRoleStatus:
 
 
 schema IamCnrmCloudGoogleComV1beta1IAMCustomRoleStatusConditionsItems0:
-    """
+    r"""
     iam cnrm cloud google com v1beta1 i a m custom role status conditions items0
 
     Attributes

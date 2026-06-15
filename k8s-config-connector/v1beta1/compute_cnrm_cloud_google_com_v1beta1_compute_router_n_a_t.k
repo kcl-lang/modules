@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeRouterNAT:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router n a t
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeRouterNAT:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router n a t spec
 
     Attributes
@@ -145,7 +145,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecDrainNatIpsItems0:
-    """
+    r"""
     A list of IP resources to be drained. These IPs must be valid
     static external IPs that have been assigned to the NAT.
 
@@ -168,7 +168,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecDrainNatIpsItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecLogConfig:
-    """
+    r"""
     Configuration for logging on NAT.
 
     Attributes
@@ -186,7 +186,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecLogConfig:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecNatIpsItems0:
-    """
+    r"""
     NAT IPs. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
 
     Attributes
@@ -208,7 +208,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecNatIpsItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRouterRef:
-    """
+    r"""
     The Cloud Router in which this NAT will be configured.
 
     Attributes
@@ -230,7 +230,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRouterRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router n a t spec rules items0
 
     Attributes
@@ -268,7 +268,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0Action:
-    """
+    r"""
     The action to be enforced for traffic that matches this rule.
 
     Attributes
@@ -286,7 +286,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0Action:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0ActionSourceNatActiveIpsRefsItems0:
-    """
+    r"""
     A list of URLs of the IP resources used for this NAT rule. These IP
     addresses must be valid static external IP addresses assigned to the
     project. This field is used for public NAT.
@@ -310,7 +310,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0ActionSour
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0ActionSourceNatDrainIpsRefsItems0:
-    """
+    r"""
     A list of URLs of the IP resources to be drained. These IPs must be
     valid static external IPs that have been assigned to the NAT. These
     IPs should be used for updating/patching a NAT rule only. This field
@@ -335,7 +335,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0ActionSour
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecSubnetworkItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router n a t spec subnetwork items0
 
     Attributes
@@ -363,7 +363,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecSubnetworkItems0:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecSubnetworkItems0SubnetworkRef:
-    """
+    r"""
     The subnetwork to NAT.
 
     Attributes
@@ -385,7 +385,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecSubnetworkItems0Subne
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router n a t status
 
     Attributes
@@ -403,7 +403,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute router n a t status conditions items0
 
     Attributes

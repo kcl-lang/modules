@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ComputeBackendBucket:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute backend bucket
 
     Attributes
@@ -36,7 +36,7 @@ schema ComputeBackendBucket:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketSpec:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute backend bucket spec
 
     Attributes
@@ -79,7 +79,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketSpec:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketSpecBucketRef:
-    """
+    r"""
     Reference to the bucket.
 
     Attributes
@@ -101,7 +101,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketSpecBucketRef:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketSpecCdnPolicy:
-    """
+    r"""
     Cloud CDN configuration for this Backend Bucket.
 
     Attributes
@@ -165,7 +165,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketSpecCdnPolicy:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketSpecCdnPolicyBypassCacheOnRequestHeadersItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute backend bucket spec cdn policy bypass cache on request headers items0
 
     Attributes
@@ -179,7 +179,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketSpecCdnPolicyBypassCa
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketSpecCdnPolicyCacheKeyPolicy:
-    """
+    r"""
     The CacheKeyPolicy for this CdnPolicy.
 
     Attributes
@@ -200,7 +200,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketSpecCdnPolicyCacheKey
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketSpecCdnPolicyNegativeCachingPolicyItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute backend bucket spec cdn policy negative caching policy items0
 
     Attributes
@@ -220,7 +220,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketSpecCdnPolicyNegative
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketStatus:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute backend bucket status
 
     Attributes
@@ -246,7 +246,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketStatus:
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketStatusConditionsItems0:
-    """
+    r"""
     compute cnrm cloud google com v1beta1 compute backend bucket status conditions items0
 
     Attributes

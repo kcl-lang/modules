@@ -98,6 +98,12 @@ schema AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecForProvider:
         parent flow alias ref
     parentFlowAliasSelector : AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecForProviderParentFlowAliasSelector, default is Undefined, optional
         parent flow alias selector
+    parentSubflowAlias : str, default is Undefined, optional
+        parent subflow alias
+    parentSubflowAliasRef : AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecForProviderParentSubflowAliasRef, default is Undefined, optional
+        parent subflow alias ref
+    parentSubflowAliasSelector : AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecForProviderParentSubflowAliasSelector, default is Undefined, optional
+        parent subflow alias selector
     priority : float, default is Undefined, optional
         The authenticator priority. Lower values will be executed prior higher values (Only supported by Keycloak >= 25).
     realmId : str, default is Undefined, optional
@@ -118,6 +124,12 @@ schema AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecForProvider:
     parentFlowAliasRef?: AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecForProviderParentFlowAliasRef
 
     parentFlowAliasSelector?: AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecForProviderParentFlowAliasSelector
+
+    parentSubflowAlias?: str
+
+    parentSubflowAliasRef?: AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecForProviderParentSubflowAliasRef
+
+    parentSubflowAliasSelector?: AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecForProviderParentSubflowAliasSelector
 
     priority?: float
 
@@ -196,6 +208,95 @@ schema AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecForProviderPar
 
 
 schema AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecForProviderParentFlowAliasSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecForProviderParentSubflowAliasRef:
+    r"""
+    Reference to a Subflow in authenticationflow to populate parentSubflowAlias.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecForProviderParentSubflowAliasRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecForProviderParentSubflowAliasRefPolicy
+
+
+schema AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecForProviderParentSubflowAliasRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecForProviderParentSubflowAliasSelector:
+    r"""
+    Selector for a Subflow in authenticationflow to populate parentSubflowAlias.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecForProviderParentSubflowAliasSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecForProviderParentSubflowAliasSelectorPolicy
+
+
+schema AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecForProviderParentSubflowAliasSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -331,6 +432,12 @@ schema AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecInitProvider:
         parent flow alias ref
     parentFlowAliasSelector : AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecInitProviderParentFlowAliasSelector, default is Undefined, optional
         parent flow alias selector
+    parentSubflowAlias : str, default is Undefined, optional
+        parent subflow alias
+    parentSubflowAliasRef : AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecInitProviderParentSubflowAliasRef, default is Undefined, optional
+        parent subflow alias ref
+    parentSubflowAliasSelector : AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecInitProviderParentSubflowAliasSelector, default is Undefined, optional
+        parent subflow alias selector
     priority : float, default is Undefined, optional
         The authenticator priority. Lower values will be executed prior higher values (Only supported by Keycloak >= 25).
     realmId : str, default is Undefined, optional
@@ -351,6 +458,12 @@ schema AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecInitProvider:
     parentFlowAliasRef?: AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecInitProviderParentFlowAliasRef
 
     parentFlowAliasSelector?: AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecInitProviderParentFlowAliasSelector
+
+    parentSubflowAlias?: str
+
+    parentSubflowAliasRef?: AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecInitProviderParentSubflowAliasRef
+
+    parentSubflowAliasSelector?: AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecInitProviderParentSubflowAliasSelector
 
     priority?: float
 
@@ -429,6 +542,95 @@ schema AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecInitProviderPa
 
 
 schema AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecInitProviderParentFlowAliasSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecInitProviderParentSubflowAliasRef:
+    r"""
+    Reference to a Subflow in authenticationflow to populate parentSubflowAlias.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecInitProviderParentSubflowAliasRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecInitProviderParentSubflowAliasRefPolicy
+
+
+schema AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecInitProviderParentSubflowAliasRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecInitProviderParentSubflowAliasSelector:
+    r"""
+    Selector for a Subflow in authenticationflow to populate parentSubflowAlias.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecInitProviderParentSubflowAliasSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecInitProviderParentSubflowAliasSelectorPolicy
+
+
+schema AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionSpecInitProviderParentSubflowAliasSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -642,6 +844,8 @@ schema AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionStatusAtProvider:
         id
     parentFlowAlias : str, default is Undefined, optional
         The alias of the flow this execution is attached to.
+    parentSubflowAlias : str, default is Undefined, optional
+        parent subflow alias
     priority : float, default is Undefined, optional
         The authenticator priority. Lower values will be executed prior higher values (Only supported by Keycloak >= 25).
     realmId : str, default is Undefined, optional
@@ -656,6 +860,8 @@ schema AuthenticationflowKeycloakCrossplaneIoV1alpha1ExecutionStatusAtProvider:
     id?: str
 
     parentFlowAlias?: str
+
+    parentSubflowAlias?: str
 
     priority?: float
 

@@ -6,7 +6,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 
 schema ApigeeNATAddress:
-    """
+    r"""
     apigee cnrm cloud google com v1alpha1 apigee n a t address
 
     Attributes
@@ -36,7 +36,7 @@ schema ApigeeNATAddress:
 
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeNATAddressSpec:
-    """
+    r"""
     apigee cnrm cloud google com v1alpha1 apigee n a t address spec
 
     Attributes
@@ -55,7 +55,7 @@ schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeNATAddressSpec:
 
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeNATAddressStatus:
-    """
+    r"""
     apigee cnrm cloud google com v1alpha1 apigee n a t address status
 
     Attributes
@@ -81,7 +81,7 @@ schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeNATAddressStatus:
 
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeNATAddressStatusConditionsItems0:
-    """
+    r"""
     apigee cnrm cloud google com v1alpha1 apigee n a t address status conditions items0
 
     Attributes
