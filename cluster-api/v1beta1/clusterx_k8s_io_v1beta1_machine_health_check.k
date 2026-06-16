@@ -72,6 +72,10 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpec:
         unhealthyConditions contains a list of the conditions that determine
         whether a node is considered unhealthy.  The conditions are combined in a
         logical OR, i.e. if any of the conditions is met, the node is unhealthy.
+    unhealthyMachineConditions : [ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyMachineConditionsItems0], default is Undefined, optional
+        unhealthyMachineConditions contains a list of the machine conditions that determine
+        whether a machine is considered unhealthy.  The conditions are combined in a
+        logical OR, i.e. if any of the conditions is met, the machine is unhealthy.
     unhealthyRange : str, default is Undefined, optional
         unhealthyRange specifies the range of unhealthy machines allowed.
         Any further remediation is only allowed if the number of machines selected by "selector" as not healthy
@@ -96,6 +100,8 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpec:
 
     unhealthyConditions?: [ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyConditionsItems0]
 
+    unhealthyMachineConditions?: [ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyMachineConditionsItems0]
+
     unhealthyRange?: str
 
 
@@ -103,8 +109,10 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpec:
         len(clusterName) <= 63
         len(clusterName) >= 1
         len(unhealthyConditions) <= 100 if unhealthyConditions
-        len(unhealthyRange) <= 32 if unhealthyRange
-        len(unhealthyRange) >= 1 if unhealthyRange
+        len(unhealthyMachineConditions) >= 1 if unhealthyMachineConditions
+        len(unhealthyMachineConditions) <= 100 if unhealthyMachineConditions
+        len(unhealthyRange) <= 32 if unhealthyRange not in [None, Undefined]
+        len(unhealthyRange) >= 1 if unhealthyRange not in [None, Undefined]
         _regex_match(str(unhealthyRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyRange
 
 
@@ -241,6 +249,39 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyConditionsItems0:
         len($type) >= 1
 
 
+schema ClusterxK8sIoV1beta1MachineHealthCheckSpecUnhealthyMachineConditionsItems0:
+    r"""
+    UnhealthyMachineCondition represents a Machine condition type and value with a timeout
+    specified as a duration.  When the named condition has been in the given
+    status for at least the timeout value, a machine is considered unhealthy.
+
+    Attributes
+    ----------
+    status : str, default is Undefined, required
+        status of the condition, one of True, False, Unknown.
+    timeout : str, default is Undefined, required
+        timeout is the duration that a Machine must be in a given status for,
+        after which the Machine is considered unhealthy.
+        For example, with a value of "1h", the Machine must match the status
+        for at least 1 hour before being considered unhealthy.
+    $type : str, default is Undefined, required
+        type of Machine condition
+    """
+
+
+    status: "True" | "False" | "Unknown"
+
+    timeout: str
+
+    $type: str
+
+
+    check:
+        len($type) <= 316
+        len($type) >= 1
+        _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+
+
 schema ClusterxK8sIoV1beta1MachineHealthCheckStatus:
     r"""
     status is the most recently observed status of MachineHealthCheck resource
@@ -285,8 +326,8 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckStatus:
         expectedMachines >= 0 if expectedMachines not in [None, Undefined]
         remediationsAllowed >= 0 if remediationsAllowed not in [None, Undefined]
         len(targets) <= 10000 if targets
-        all targets in targets { len(targets) <= 253 if targets not in [None, Undefined] } if targets
-        all targets in targets { len(targets) >= 1 if targets not in [None, Undefined] } if targets
+        all i in targets { len(i) <= 253 if i not in [None, Undefined] } if targets
+        all i in targets { len(i) >= 1 if i not in [None, Undefined] } if targets
 
 
 schema ClusterxK8sIoV1beta1MachineHealthCheckStatusConditionsItems0:
@@ -333,11 +374,11 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckStatusConditionsItems0:
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 

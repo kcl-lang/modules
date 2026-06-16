@@ -94,8 +94,8 @@ schema ClusterxK8sIoV1beta2ClusterClassSpec:
         len(availabilityGates) <= 32 if availabilityGates
         len(kubernetesVersions) >= 1 if kubernetesVersions
         len(kubernetesVersions) <= 100 if kubernetesVersions
-        all kubernetesVersions in kubernetesVersions { len(kubernetesVersions) <= 256 if kubernetesVersions not in [None, Undefined] } if kubernetesVersions
-        all kubernetesVersions in kubernetesVersions { len(kubernetesVersions) >= 1 if kubernetesVersions not in [None, Undefined] } if kubernetesVersions
+        all i in kubernetesVersions { len(i) <= 256 if i not in [None, Undefined] } if kubernetesVersions
+        all i in kubernetesVersions { len(i) >= 1 if i not in [None, Undefined] } if kubernetesVersions
         len(patches) >= 1 if patches
         len(patches) <= 1000 if patches
         len(variables) >= 1 if variables
@@ -159,6 +159,16 @@ schema ClusterxK8sIoV1beta2ClusterClassSpecControlPlane:
         such list overrides readinessGates defined in this field.
         NOTE: Specific control plane provider implementations might automatically extend the list of readinessGates;
         e.g. the kubeadm control provider adds ReadinessGates for the APIServerPodHealthy, SchedulerPodHealthy conditions, etc.
+    taints : [ClusterxK8sIoV1beta2ClusterClassSpecControlPlaneTaintsItems0], default is Undefined, optional
+        taints are the node taints that Cluster API will manage.
+        This list is not necessarily complete: other Kubernetes components may add or remove other taints from nodes,
+        e.g. the node controller might add the node.kubernetes.io/not-ready taint.
+        Only those taints defined in this list will be added or removed by core Cluster API controllers.
+
+        There can be at most 64 taints.
+        A pod would have to tolerate all existing taints to run on the corresponding node.
+
+        NOTE: This list is implemented as a "map" type, meaning that individual elements can be managed by different owners.
     templateRef : ClusterxK8sIoV1beta2ClusterClassSpecControlPlaneTemplateRef, default is Undefined, required
         template ref
     """
@@ -176,12 +186,16 @@ schema ClusterxK8sIoV1beta2ClusterClassSpecControlPlane:
 
     readinessGates?: [ClusterxK8sIoV1beta2ClusterClassSpecControlPlaneReadinessGatesItems0]
 
+    taints?: [ClusterxK8sIoV1beta2ClusterClassSpecControlPlaneTaintsItems0]
+
     templateRef: ClusterxK8sIoV1beta2ClusterClassSpecControlPlaneTemplateRef
 
 
     check:
         len(readinessGates) >= 1 if readinessGates
         len(readinessGates) <= 32 if readinessGates
+        len(taints) >= 1 if taints
+        len(taints) <= 64 if taints
 
 
 schema ClusterxK8sIoV1beta2ClusterClassSpecControlPlaneDeletion:
@@ -454,8 +468,8 @@ schema ClusterxK8sIoV1beta2ClusterClassSpecControlPlaneHealthCheckRemediationTri
 
 
     check:
-        len(unhealthyInRange) <= 32 if unhealthyInRange
-        len(unhealthyInRange) >= 1 if unhealthyInRange
+        len(unhealthyInRange) <= 32 if unhealthyInRange not in [None, Undefined]
+        len(unhealthyInRange) >= 1 if unhealthyInRange not in [None, Undefined]
         _regex_match(str(unhealthyInRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyInRange
 
 
@@ -565,8 +579,8 @@ schema ClusterxK8sIoV1beta2ClusterClassSpecControlPlaneNaming:
 
 
     check:
-        len(template) <= 1024 if template
-        len(template) >= 1 if template
+        len(template) <= 1024 if template not in [None, Undefined]
+        len(template) >= 1 if template not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta2ClusterClassSpecControlPlaneReadinessGatesItems0:
@@ -597,6 +611,48 @@ schema ClusterxK8sIoV1beta2ClusterClassSpecControlPlaneReadinessGatesItems0:
         len(conditionType) <= 316
         len(conditionType) >= 1
         _regex_match(str(conditionType), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+
+
+schema ClusterxK8sIoV1beta2ClusterClassSpecControlPlaneTaintsItems0:
+    r"""
+    MachineTaint defines a taint equivalent to corev1.Taint, but additionally having a propagation field.
+
+    Attributes
+    ----------
+    effect : str, default is Undefined, required
+        effect is the effect for the taint. Valid values are NoSchedule, PreferNoSchedule and NoExecute.
+    key : str, default is Undefined, required
+        key is the taint key to be applied to a node.
+        Must be a valid qualified name of maximum size 63 characters
+        with an optional subdomain prefix of maximum size 253 characters,
+        separated by a `/`.
+    propagation : str, default is Undefined, required
+        propagation defines how this taint should be propagated to nodes.
+        Valid values are 'Always' and 'OnInitialization'.
+        Always: The taint will be continuously reconciled. If it is not set for a node, it will be added during reconciliation.
+        OnInitialization: The taint will be added during node initialization. If it gets removed from the node later on it will not get added again.
+    value : str, default is Undefined, optional
+        value is the taint value corresponding to the taint key.
+        It must be a valid label value of maximum size 63 characters.
+    """
+
+
+    effect: "NoSchedule" | "PreferNoSchedule" | "NoExecute"
+
+    key: str
+
+    propagation: "Always" | "OnInitialization"
+
+    value?: str
+
+
+    check:
+        len(key) <= 317
+        len(key) >= 1
+        _regex_match(str(key), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/)?([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$")
+        len(value) <= 63 if value not in [None, Undefined]
+        len(value) >= 1 if value not in [None, Undefined]
+        _regex_match(str(value), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if value
 
 
 schema ClusterxK8sIoV1beta2ClusterClassSpecControlPlaneTemplateRef:
@@ -676,8 +732,8 @@ schema ClusterxK8sIoV1beta2ClusterClassSpecInfrastructureNaming:
 
 
     check:
-        len(template) <= 1024 if template
-        len(template) >= 1 if template
+        len(template) <= 1024 if template not in [None, Undefined]
+        len(template) >= 1 if template not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta2ClusterClassSpecInfrastructureTemplateRef:
@@ -755,10 +811,10 @@ schema ClusterxK8sIoV1beta2ClusterClassSpecPatchesItems0:
 
     check:
         len(definitions) <= 100 if definitions
-        len(description) <= 1024 if description
-        len(description) >= 1 if description
-        len(enabledIf) <= 256 if enabledIf
-        len(enabledIf) >= 1 if enabledIf
+        len(description) <= 1024 if description not in [None, Undefined]
+        len(description) >= 1 if description not in [None, Undefined]
+        len(enabledIf) <= 256 if enabledIf not in [None, Undefined]
+        len(enabledIf) >= 1 if enabledIf not in [None, Undefined]
         len(name) <= 256
         len(name) >= 1
 
@@ -854,10 +910,10 @@ schema ClusterxK8sIoV1beta2ClusterClassSpecPatchesItems0DefinitionsItems0JSONPat
 
 
     check:
-        len(template) <= 10240 if template
-        len(template) >= 1 if template
-        len(variable) <= 256 if variable
-        len(variable) >= 1 if variable
+        len(template) <= 10240 if template not in [None, Undefined]
+        len(template) >= 1 if template not in [None, Undefined]
+        len(variable) <= 256 if variable not in [None, Undefined]
+        len(variable) >= 1 if variable not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta2ClusterClassSpecPatchesItems0DefinitionsItems0Selector:
@@ -938,8 +994,8 @@ schema ClusterxK8sIoV1beta2ClusterClassSpecPatchesItems0DefinitionsItems0Selecto
 
     check:
         len(names) <= 100 if names
-        all names in names { len(names) <= 256 if names not in [None, Undefined] } if names
-        all names in names { len(names) >= 1 if names not in [None, Undefined] } if names
+        all i in names { len(i) <= 256 if i not in [None, Undefined] } if names
+        all i in names { len(i) >= 1 if i not in [None, Undefined] } if names
 
 
 schema ClusterxK8sIoV1beta2ClusterClassSpecPatchesItems0DefinitionsItems0SelectorMatchResourcesMachinePoolClass:
@@ -959,8 +1015,8 @@ schema ClusterxK8sIoV1beta2ClusterClassSpecPatchesItems0DefinitionsItems0Selecto
 
     check:
         len(names) <= 100 if names
-        all names in names { len(names) <= 256 if names not in [None, Undefined] } if names
-        all names in names { len(names) >= 1 if names not in [None, Undefined] } if names
+        all i in names { len(i) <= 256 if i not in [None, Undefined] } if names
+        all i in names { len(i) >= 1 if i not in [None, Undefined] } if names
 
 
 schema ClusterxK8sIoV1beta2ClusterClassSpecPatchesItems0External:
@@ -993,12 +1049,12 @@ schema ClusterxK8sIoV1beta2ClusterClassSpecPatchesItems0External:
 
 
     check:
-        len(discoverVariablesExtension) <= 512 if discoverVariablesExtension
-        len(discoverVariablesExtension) >= 1 if discoverVariablesExtension
-        len(generatePatchesExtension) <= 512 if generatePatchesExtension
-        len(generatePatchesExtension) >= 1 if generatePatchesExtension
-        len(validateTopologyExtension) <= 512 if validateTopologyExtension
-        len(validateTopologyExtension) >= 1 if validateTopologyExtension
+        len(discoverVariablesExtension) <= 512 if discoverVariablesExtension not in [None, Undefined]
+        len(discoverVariablesExtension) >= 1 if discoverVariablesExtension not in [None, Undefined]
+        len(generatePatchesExtension) <= 512 if generatePatchesExtension not in [None, Undefined]
+        len(generatePatchesExtension) >= 1 if generatePatchesExtension not in [None, Undefined]
+        len(validateTopologyExtension) <= 512 if validateTopologyExtension not in [None, Undefined]
+        len(validateTopologyExtension) >= 1 if validateTopologyExtension not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta2ClusterClassSpecUpgrade:
@@ -1030,8 +1086,8 @@ schema ClusterxK8sIoV1beta2ClusterClassSpecUpgradeExternal:
 
 
     check:
-        len(generateUpgradePlanExtension) <= 512 if generateUpgradePlanExtension
-        len(generateUpgradePlanExtension) >= 1 if generateUpgradePlanExtension
+        len(generateUpgradePlanExtension) <= 512 if generateUpgradePlanExtension not in [None, Undefined]
+        len(generateUpgradePlanExtension) >= 1 if generateUpgradePlanExtension not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta2ClusterClassSpecVariablesItems0:
@@ -1297,17 +1353,17 @@ schema ClusterxK8sIoV1beta2ClusterClassSpecVariablesItems0SchemaOpenAPIV3Schema:
 
 
     check:
-        len(description) <= 4096 if description
-        len(description) >= 1 if description
+        len(description) <= 4096 if description not in [None, Undefined]
+        len(description) >= 1 if description not in [None, Undefined]
         len(enum) <= 100 if enum
-        len(format) <= 32 if format
-        len(format) >= 1 if format
-        len(pattern) <= 512 if pattern
-        len(pattern) >= 1 if pattern
+        len(format) <= 32 if format not in [None, Undefined]
+        len(format) >= 1 if format not in [None, Undefined]
+        len(pattern) <= 512 if pattern not in [None, Undefined]
+        len(pattern) >= 1 if pattern not in [None, Undefined]
         len(required) >= 1 if required
         len(required) <= 1000 if required
-        all required in required { len(required) <= 256 if required not in [None, Undefined] } if required
-        all required in required { len(required) >= 1 if required not in [None, Undefined] } if required
+        all i in required { len(i) <= 256 if i not in [None, Undefined] } if required
+        all i in required { len(i) >= 1 if i not in [None, Undefined] } if required
         True  # Skip validations for "x-kubernetes-validations"
 
 
@@ -1409,12 +1465,12 @@ schema ClusterxK8sIoV1beta2ClusterClassSpecVariablesItems0SchemaOpenAPIV3SchemaX
 
 
     check:
-        len(fieldPath) <= 512 if fieldPath
-        len(fieldPath) >= 1 if fieldPath
-        len(message) <= 512 if message
-        len(message) >= 1 if message
-        len(messageExpression) <= 1024 if messageExpression
-        len(messageExpression) >= 1 if messageExpression
+        len(fieldPath) <= 512 if fieldPath not in [None, Undefined]
+        len(fieldPath) >= 1 if fieldPath not in [None, Undefined]
+        len(message) <= 512 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(messageExpression) <= 1024 if messageExpression not in [None, Undefined]
+        len(messageExpression) >= 1 if messageExpression not in [None, Undefined]
         len($rule) <= 4096
         len($rule) >= 1
 
@@ -1513,6 +1569,16 @@ schema ClusterxK8sIoV1beta2ClusterClassSpecWorkersMachineDeploymentsItems0:
         such list overrides readinessGates defined in this field.
     rollout : ClusterxK8sIoV1beta2ClusterClassSpecWorkersMachineDeploymentsItems0Rollout, default is Undefined, optional
         rollout
+    taints : [ClusterxK8sIoV1beta2ClusterClassSpecWorkersMachineDeploymentsItems0TaintsItems0], default is Undefined, optional
+        taints are the node taints that Cluster API will manage.
+        This list is not necessarily complete: other Kubernetes components may add or remove other taints from nodes,
+        e.g. the node controller might add the node.kubernetes.io/not-ready taint.
+        Only those taints defined in this list will be added or removed by core Cluster API controllers.
+
+        There can be at most 64 taints.
+        A pod would have to tolerate all existing taints to run on the corresponding node.
+
+        NOTE: This list is implemented as a "map" type, meaning that individual elements can be managed by different owners.
     """
 
 
@@ -1538,15 +1604,19 @@ schema ClusterxK8sIoV1beta2ClusterClassSpecWorkersMachineDeploymentsItems0:
 
     rollout?: ClusterxK8sIoV1beta2ClusterClassSpecWorkersMachineDeploymentsItems0Rollout
 
+    taints?: [ClusterxK8sIoV1beta2ClusterClassSpecWorkersMachineDeploymentsItems0TaintsItems0]
+
 
     check:
         len(class) <= 256
         len(class) >= 1
-        len(failureDomain) <= 256 if failureDomain
-        len(failureDomain) >= 1 if failureDomain
+        len(failureDomain) <= 256 if failureDomain not in [None, Undefined]
+        len(failureDomain) >= 1 if failureDomain not in [None, Undefined]
         minReadySeconds >= 0 if minReadySeconds not in [None, Undefined]
         len(readinessGates) >= 1 if readinessGates
         len(readinessGates) <= 32 if readinessGates
+        len(taints) >= 1 if taints
+        len(taints) <= 64 if taints
 
 
 schema ClusterxK8sIoV1beta2ClusterClassSpecWorkersMachineDeploymentsItems0Bootstrap:
@@ -1891,8 +1961,8 @@ schema ClusterxK8sIoV1beta2ClusterClassSpecWorkersMachineDeploymentsItems0Health
 
 
     check:
-        len(unhealthyInRange) <= 32 if unhealthyInRange
-        len(unhealthyInRange) >= 1 if unhealthyInRange
+        len(unhealthyInRange) <= 32 if unhealthyInRange not in [None, Undefined]
+        len(unhealthyInRange) >= 1 if unhealthyInRange not in [None, Undefined]
         _regex_match(str(unhealthyInRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyInRange
 
 
@@ -1995,8 +2065,8 @@ schema ClusterxK8sIoV1beta2ClusterClassSpecWorkersMachineDeploymentsItems0Naming
 
 
     check:
-        len(template) <= 1024 if template
-        len(template) >= 1 if template
+        len(template) <= 1024 if template not in [None, Undefined]
+        len(template) >= 1 if template not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta2ClusterClassSpecWorkersMachineDeploymentsItems0ReadinessGatesItems0:
@@ -2105,6 +2175,48 @@ schema ClusterxK8sIoV1beta2ClusterClassSpecWorkersMachineDeploymentsItems0Rollou
     maxUnavailable?: int | str
 
 
+schema ClusterxK8sIoV1beta2ClusterClassSpecWorkersMachineDeploymentsItems0TaintsItems0:
+    r"""
+    MachineTaint defines a taint equivalent to corev1.Taint, but additionally having a propagation field.
+
+    Attributes
+    ----------
+    effect : str, default is Undefined, required
+        effect is the effect for the taint. Valid values are NoSchedule, PreferNoSchedule and NoExecute.
+    key : str, default is Undefined, required
+        key is the taint key to be applied to a node.
+        Must be a valid qualified name of maximum size 63 characters
+        with an optional subdomain prefix of maximum size 253 characters,
+        separated by a `/`.
+    propagation : str, default is Undefined, required
+        propagation defines how this taint should be propagated to nodes.
+        Valid values are 'Always' and 'OnInitialization'.
+        Always: The taint will be continuously reconciled. If it is not set for a node, it will be added during reconciliation.
+        OnInitialization: The taint will be added during node initialization. If it gets removed from the node later on it will not get added again.
+    value : str, default is Undefined, optional
+        value is the taint value corresponding to the taint key.
+        It must be a valid label value of maximum size 63 characters.
+    """
+
+
+    effect: "NoSchedule" | "PreferNoSchedule" | "NoExecute"
+
+    key: str
+
+    propagation: "Always" | "OnInitialization"
+
+    value?: str
+
+
+    check:
+        len(key) <= 317
+        len(key) >= 1
+        _regex_match(str(key), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/)?([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$")
+        len(value) <= 63 if value not in [None, Undefined]
+        len(value) >= 1 if value not in [None, Undefined]
+        _regex_match(str(value), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if value
+
+
 schema ClusterxK8sIoV1beta2ClusterClassSpecWorkersMachinePoolsItems0:
     r"""
     MachinePoolClass serves as a template to define a pool of worker nodes of the cluster
@@ -2136,6 +2248,16 @@ schema ClusterxK8sIoV1beta2ClusterClassSpecWorkersMachinePoolsItems0:
         NOTE: This value can be overridden while defining a Cluster.Topology using this MachinePoolClass.
     naming : ClusterxK8sIoV1beta2ClusterClassSpecWorkersMachinePoolsItems0Naming, default is Undefined, optional
         naming
+    taints : [ClusterxK8sIoV1beta2ClusterClassSpecWorkersMachinePoolsItems0TaintsItems0], default is Undefined, optional
+        taints are the node taints that Cluster API will manage.
+        This list is not necessarily complete: other Kubernetes components may add or remove other taints from nodes,
+        e.g. the node controller might add the node.kubernetes.io/not-ready taint.
+        Only those taints defined in this list will be added or removed by core Cluster API controllers.
+
+        There can be at most 64 taints.
+        A pod would have to tolerate all existing taints to run on the corresponding node.
+
+        NOTE: This list is implemented as a "map" type, meaning that individual elements can be managed by different owners.
     """
 
 
@@ -2155,14 +2277,18 @@ schema ClusterxK8sIoV1beta2ClusterClassSpecWorkersMachinePoolsItems0:
 
     naming?: ClusterxK8sIoV1beta2ClusterClassSpecWorkersMachinePoolsItems0Naming
 
+    taints?: [ClusterxK8sIoV1beta2ClusterClassSpecWorkersMachinePoolsItems0TaintsItems0]
+
 
     check:
         len(class) <= 256
         len(class) >= 1
         len(failureDomains) <= 100 if failureDomains
-        all failureDomains in failureDomains { len(failureDomains) <= 256 if failureDomains not in [None, Undefined] } if failureDomains
-        all failureDomains in failureDomains { len(failureDomains) >= 1 if failureDomains not in [None, Undefined] } if failureDomains
+        all i in failureDomains { len(i) <= 256 if i not in [None, Undefined] } if failureDomains
+        all i in failureDomains { len(i) >= 1 if i not in [None, Undefined] } if failureDomains
         minReadySeconds >= 0 if minReadySeconds not in [None, Undefined]
+        len(taints) >= 1 if taints
+        len(taints) <= 64 if taints
 
 
 schema ClusterxK8sIoV1beta2ClusterClassSpecWorkersMachinePoolsItems0Bootstrap:
@@ -2352,8 +2478,50 @@ schema ClusterxK8sIoV1beta2ClusterClassSpecWorkersMachinePoolsItems0Naming:
 
 
     check:
-        len(template) <= 1024 if template
-        len(template) >= 1 if template
+        len(template) <= 1024 if template not in [None, Undefined]
+        len(template) >= 1 if template not in [None, Undefined]
+
+
+schema ClusterxK8sIoV1beta2ClusterClassSpecWorkersMachinePoolsItems0TaintsItems0:
+    r"""
+    MachineTaint defines a taint equivalent to corev1.Taint, but additionally having a propagation field.
+
+    Attributes
+    ----------
+    effect : str, default is Undefined, required
+        effect is the effect for the taint. Valid values are NoSchedule, PreferNoSchedule and NoExecute.
+    key : str, default is Undefined, required
+        key is the taint key to be applied to a node.
+        Must be a valid qualified name of maximum size 63 characters
+        with an optional subdomain prefix of maximum size 253 characters,
+        separated by a `/`.
+    propagation : str, default is Undefined, required
+        propagation defines how this taint should be propagated to nodes.
+        Valid values are 'Always' and 'OnInitialization'.
+        Always: The taint will be continuously reconciled. If it is not set for a node, it will be added during reconciliation.
+        OnInitialization: The taint will be added during node initialization. If it gets removed from the node later on it will not get added again.
+    value : str, default is Undefined, optional
+        value is the taint value corresponding to the taint key.
+        It must be a valid label value of maximum size 63 characters.
+    """
+
+
+    effect: "NoSchedule" | "PreferNoSchedule" | "NoExecute"
+
+    key: str
+
+    propagation: "Always" | "OnInitialization"
+
+    value?: str
+
+
+    check:
+        len(key) <= 317
+        len(key) >= 1
+        _regex_match(str(key), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/)?([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$")
+        len(value) <= 63 if value not in [None, Undefined]
+        len(value) >= 1 if value not in [None, Undefined]
+        _regex_match(str(value), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if value
 
 
 schema ClusterxK8sIoV1beta2ClusterClassStatus:
@@ -2475,6 +2643,8 @@ schema ClusterxK8sIoV1beta2ClusterClassStatusDeprecatedV1beta1ConditionsItems0:
     r"""
     Condition defines an observation of a Cluster API resource operational state.
 
+    Deprecated: This type is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
+
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
@@ -2515,11 +2685,11 @@ schema ClusterxK8sIoV1beta2ClusterClassStatusDeprecatedV1beta1ConditionsItems0:
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 
@@ -2817,17 +2987,17 @@ schema ClusterxK8sIoV1beta2ClusterClassStatusVariablesItems0DefinitionsItems0Sch
 
 
     check:
-        len(description) <= 4096 if description
-        len(description) >= 1 if description
+        len(description) <= 4096 if description not in [None, Undefined]
+        len(description) >= 1 if description not in [None, Undefined]
         len(enum) <= 100 if enum
-        len(format) <= 32 if format
-        len(format) >= 1 if format
-        len(pattern) <= 512 if pattern
-        len(pattern) >= 1 if pattern
+        len(format) <= 32 if format not in [None, Undefined]
+        len(format) >= 1 if format not in [None, Undefined]
+        len(pattern) <= 512 if pattern not in [None, Undefined]
+        len(pattern) >= 1 if pattern not in [None, Undefined]
         len(required) >= 1 if required
         len(required) <= 1000 if required
-        all required in required { len(required) <= 256 if required not in [None, Undefined] } if required
-        all required in required { len(required) >= 1 if required not in [None, Undefined] } if required
+        all i in required { len(i) <= 256 if i not in [None, Undefined] } if required
+        all i in required { len(i) >= 1 if i not in [None, Undefined] } if required
         True  # Skip validations for "x-kubernetes-validations"
 
 
@@ -2929,12 +3099,12 @@ schema ClusterxK8sIoV1beta2ClusterClassStatusVariablesItems0DefinitionsItems0Sch
 
 
     check:
-        len(fieldPath) <= 512 if fieldPath
-        len(fieldPath) >= 1 if fieldPath
-        len(message) <= 512 if message
-        len(message) >= 1 if message
-        len(messageExpression) <= 1024 if messageExpression
-        len(messageExpression) >= 1 if messageExpression
+        len(fieldPath) <= 512 if fieldPath not in [None, Undefined]
+        len(fieldPath) >= 1 if fieldPath not in [None, Undefined]
+        len(message) <= 512 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(messageExpression) <= 1024 if messageExpression not in [None, Undefined]
+        len(messageExpression) >= 1 if messageExpression not in [None, Undefined]
         len($rule) <= 4096
         len($rule) >= 1
 

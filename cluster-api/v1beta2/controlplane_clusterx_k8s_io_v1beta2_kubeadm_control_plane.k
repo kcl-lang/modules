@@ -160,24 +160,24 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpec:
     check:
         len(bootCommands) >= 1 if bootCommands
         len(bootCommands) <= 1000 if bootCommands
-        all cmd in bootCommands { len(cmd) <= 10240 if cmd not in [None, Undefined] } if bootCommands
-        all cmd in bootCommands { len(cmd) >= 1 if cmd not in [None, Undefined] } if bootCommands
+        all i in bootCommands { len(i) <= 10240 if i not in [None, Undefined] } if bootCommands
+        all i in bootCommands { len(i) >= 1 if i not in [None, Undefined] } if bootCommands
         len(files) >= 1 if files
         len(files) <= 200 if files
         len(mounts) >= 1 if mounts
         len(mounts) <= 100 if mounts
-        all mount in mounts { len(mount) >= 1 if mount not in [None, Undefined] } if mounts
-        all mount in mounts { len(mount) <= 100 if mount not in [None, Undefined] } if mounts
-        all mount in mounts { all s in mount { len(s) >= 1 if s not in [None, Undefined] } if mount not in [None, Undefined] } if mounts
-        all mount in mounts { all s in mount { len(s) <= 512 if s not in [None, Undefined] } if mount not in [None, Undefined] } if mounts
+        all i in mounts { len(i) >= 1 if i } if mounts
+        all i in mounts { len(i) <= 100 if i } if mounts
+        all i in mounts { all ii in i { len(ii) <= 512 if ii not in [None, Undefined] } if i } if mounts
+        all i in mounts { all ii in i { len(ii) >= 1 if ii not in [None, Undefined] } if i } if mounts
         len(postKubeadmCommands) >= 1 if postKubeadmCommands
         len(postKubeadmCommands) <= 1000 if postKubeadmCommands
-        all cmd in postKubeadmCommands { len(cmd) <= 10240 if cmd not in [None, Undefined] } if postKubeadmCommands
-        all cmd in postKubeadmCommands { len(cmd) >= 1 if cmd not in [None, Undefined] } if postKubeadmCommands
+        all i in postKubeadmCommands { len(i) <= 10240 if i not in [None, Undefined] } if postKubeadmCommands
+        all i in postKubeadmCommands { len(i) >= 1 if i not in [None, Undefined] } if postKubeadmCommands
         len(preKubeadmCommands) >= 1 if preKubeadmCommands
         len(preKubeadmCommands) <= 1000 if preKubeadmCommands
-        all cmd in preKubeadmCommands { len(cmd) <= 10240 if cmd not in [None, Undefined] } if preKubeadmCommands
-        all cmd in preKubeadmCommands { len(cmd) >= 1 if cmd not in [None, Undefined] } if preKubeadmCommands
+        all i in preKubeadmCommands { len(i) <= 10240 if i not in [None, Undefined] } if preKubeadmCommands
+        all i in preKubeadmCommands { len(i) >= 1 if i not in [None, Undefined] } if preKubeadmCommands
         len(users) >= 1 if users
         len(users) <= 100 if users
 
@@ -268,12 +268,12 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecC
         caCertificateValidityPeriodDays >= 1 if caCertificateValidityPeriodDays not in [None, Undefined]
         certificateValidityPeriodDays <= 1095 if certificateValidityPeriodDays not in [None, Undefined]
         certificateValidityPeriodDays >= 1 if certificateValidityPeriodDays not in [None, Undefined]
-        len(certificatesDir) <= 512 if certificatesDir
-        len(certificatesDir) >= 1 if certificatesDir
-        len(controlPlaneEndpoint) <= 512 if controlPlaneEndpoint
-        len(controlPlaneEndpoint) >= 1 if controlPlaneEndpoint
-        len(imageRepository) <= 512 if imageRepository
-        len(imageRepository) >= 1 if imageRepository
+        len(certificatesDir) <= 512 if certificatesDir not in [None, Undefined]
+        len(certificatesDir) >= 1 if certificatesDir not in [None, Undefined]
+        len(controlPlaneEndpoint) <= 512 if controlPlaneEndpoint not in [None, Undefined]
+        len(controlPlaneEndpoint) >= 1 if controlPlaneEndpoint not in [None, Undefined]
+        len(imageRepository) <= 512 if imageRepository not in [None, Undefined]
+        len(imageRepository) >= 1 if imageRepository not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationAPIServer:
@@ -309,8 +309,8 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecC
     check:
         len(certSANs) >= 1 if certSANs
         len(certSANs) <= 100 if certSANs
-        all certSANs in certSANs { len(certSANs) <= 253 if certSANs not in [None, Undefined] } if certSANs
-        all certSANs in certSANs { len(certSANs) >= 1 if certSANs not in [None, Undefined] } if certSANs
+        all i in certSANs { len(i) <= 253 if i not in [None, Undefined] } if certSANs
+        all i in certSANs { len(i) >= 1 if i not in [None, Undefined] } if certSANs
         len(extraArgs) >= 1 if extraArgs
         len(extraArgs) <= 100 if extraArgs
         len(extraEnvs) >= 1 if extraEnvs
@@ -357,9 +357,9 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecC
         Variable references $(VAR_NAME) are expanded
         using the previously defined environment variables in the container and
         any service environment variables. If a variable cannot be resolved,
-        the reference in the input string will be unchanged. Double $ are reduced
+        the reference in the input string will be unchanged. Double $$ are reduced
         to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e.
-        "$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
+        "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
         Escaped references will never be expanded, regardless of whether the variable
         exists or not.
         Defaults to "".
@@ -653,9 +653,9 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecC
         Variable references $(VAR_NAME) are expanded
         using the previously defined environment variables in the container and
         any service environment variables. If a variable cannot be resolved,
-        the reference in the input string will be unchanged. Double $ are reduced
+        the reference in the input string will be unchanged. Double $$ are reduced
         to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e.
-        "$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
+        "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
         Escaped references will never be expanded, regardless of whether the variable
         exists or not.
         Defaults to "".
@@ -897,10 +897,10 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecC
 
 
     check:
-        len(imageRepository) <= 512 if imageRepository
-        len(imageRepository) >= 1 if imageRepository
-        len(imageTag) <= 256 if imageTag
-        len(imageTag) >= 1 if imageTag
+        len(imageRepository) <= 512 if imageRepository not in [None, Undefined]
+        len(imageRepository) >= 1 if imageRepository not in [None, Undefined]
+        len(imageTag) <= 256 if imageTag not in [None, Undefined]
+        len(imageTag) >= 1 if imageTag not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationEtcd:
@@ -959,8 +959,8 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecC
         len(certFile) >= 1
         len(endpoints) >= 1
         len(endpoints) <= 50
-        all endpoints in endpoints { len(endpoints) <= 512 if endpoints not in [None, Undefined] } if endpoints
-        all endpoints in endpoints { len(endpoints) >= 1 if endpoints not in [None, Undefined] } if endpoints
+        all i in endpoints { len(i) <= 512 if i not in [None, Undefined] } if endpoints
+        all i in endpoints { len(i) >= 1 if i not in [None, Undefined] } if endpoints
         len(keyFile) <= 512
         len(keyFile) >= 1
 
@@ -1012,24 +1012,24 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecC
 
 
     check:
-        len(dataDir) <= 512 if dataDir
-        len(dataDir) >= 1 if dataDir
+        len(dataDir) <= 512 if dataDir not in [None, Undefined]
+        len(dataDir) >= 1 if dataDir not in [None, Undefined]
         len(extraArgs) >= 1 if extraArgs
         len(extraArgs) <= 100 if extraArgs
         len(extraEnvs) >= 1 if extraEnvs
         len(extraEnvs) <= 100 if extraEnvs
-        len(imageRepository) <= 512 if imageRepository
-        len(imageRepository) >= 1 if imageRepository
-        len(imageTag) <= 256 if imageTag
-        len(imageTag) >= 1 if imageTag
+        len(imageRepository) <= 512 if imageRepository not in [None, Undefined]
+        len(imageRepository) >= 1 if imageRepository not in [None, Undefined]
+        len(imageTag) <= 256 if imageTag not in [None, Undefined]
+        len(imageTag) >= 1 if imageTag not in [None, Undefined]
         len(peerCertSANs) >= 1 if peerCertSANs
         len(peerCertSANs) <= 100 if peerCertSANs
-        all peerCertSANs in peerCertSANs { len(peerCertSANs) <= 253 if peerCertSANs not in [None, Undefined] } if peerCertSANs
-        all peerCertSANs in peerCertSANs { len(peerCertSANs) >= 1 if peerCertSANs not in [None, Undefined] } if peerCertSANs
+        all i in peerCertSANs { len(i) <= 253 if i not in [None, Undefined] } if peerCertSANs
+        all i in peerCertSANs { len(i) >= 1 if i not in [None, Undefined] } if peerCertSANs
         len(serverCertSANs) >= 1 if serverCertSANs
         len(serverCertSANs) <= 100 if serverCertSANs
-        all serverCertSANs in serverCertSANs { len(serverCertSANs) <= 253 if serverCertSANs not in [None, Undefined] } if serverCertSANs
-        all serverCertSANs in serverCertSANs { len(serverCertSANs) >= 1 if serverCertSANs not in [None, Undefined] } if serverCertSANs
+        all i in serverCertSANs { len(i) <= 253 if i not in [None, Undefined] } if serverCertSANs
+        all i in serverCertSANs { len(i) >= 1 if i not in [None, Undefined] } if serverCertSANs
 
 
 schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecClusterConfigurationEtcdLocalExtraArgsItems0:
@@ -1070,9 +1070,9 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecC
         Variable references $(VAR_NAME) are expanded
         using the previously defined environment variables in the container and
         any service environment variables. If a variable cannot be resolved,
-        the reference in the input string will be unchanged. Double $ are reduced
+        the reference in the input string will be unchanged. Double $$ are reduced
         to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e.
-        "$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
+        "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
         Escaped references will never be expanded, regardless of whether the variable
         exists or not.
         Defaults to "".
@@ -1325,9 +1325,9 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecC
         Variable references $(VAR_NAME) are expanded
         using the previously defined environment variables in the container and
         any service environment variables. If a variable cannot be resolved,
-        the reference in the input string will be unchanged. Double $ are reduced
+        the reference in the input string will be unchanged. Double $$ are reduced
         to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e.
-        "$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
+        "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
         Escaped references will never be expanded, regardless of whether the variable
         exists or not.
         Defaults to "".
@@ -1615,16 +1615,16 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecD
         len(device) <= 256
         len(device) >= 1
         len(extraOpts) <= 100 if extraOpts
-        all extraOpts in extraOpts { len(extraOpts) <= 256 if extraOpts not in [None, Undefined] } if extraOpts
-        all extraOpts in extraOpts { len(extraOpts) >= 1 if extraOpts not in [None, Undefined] } if extraOpts
+        all i in extraOpts { len(i) <= 256 if i not in [None, Undefined] } if extraOpts
+        all i in extraOpts { len(i) >= 1 if i not in [None, Undefined] } if extraOpts
         len(filesystem) <= 128
         len(filesystem) >= 1
-        len(label) <= 512 if label
-        len(label) >= 1 if label
-        len(partition) <= 128 if partition
-        len(partition) >= 1 if partition
-        len(replaceFS) <= 128 if replaceFS
-        len(replaceFS) >= 1 if replaceFS
+        len(label) <= 512 if label not in [None, Undefined]
+        len(label) >= 1 if label not in [None, Undefined]
+        len(partition) <= 128 if partition not in [None, Undefined]
+        len(partition) >= 1 if partition not in [None, Undefined]
+        len(replaceFS) <= 128 if replaceFS not in [None, Undefined]
+        len(replaceFS) >= 1 if replaceFS not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecDiskSetupPartitionsItems0:
@@ -1635,10 +1635,16 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecD
     ----------
     device : str, default is Undefined, required
         device is the name of the device.
-    layout : bool, default is Undefined, required
+    diskLayout : [ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecDiskSetupPartitionsItems0DiskLayoutItems0], default is Undefined, optional
+        diskLayout specifies an ordered list of partitions, where each item defines the
+        percentage of disk space and optional partition type for that partition.
+        The sum of all partition percentages must not be greater than 100.
+        Mutually exclusive with layout.
+    layout : bool, default is Undefined, optional
         layout specifies the device layout.
         If it is true, a single partition will be created for the entire device.
         When layout is false, it means don't partition or ignore existing partitioning.
+        Mutually exclusive with diskLayout.
     overwrite : bool, default is Undefined, optional
         overwrite describes whether to skip checks and create the partition if a partition or filesystem is found on the device.
         Use with caution. Default is 'false'.
@@ -1651,7 +1657,9 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecD
 
     device: str
 
-    layout: bool
+    diskLayout?: [ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecDiskSetupPartitionsItems0DiskLayoutItems0]
+
+    layout?: bool
 
     overwrite?: bool
 
@@ -1661,6 +1669,36 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecD
     check:
         len(device) <= 256
         len(device) >= 1
+        len(diskLayout) >= 1 if diskLayout
+        len(diskLayout) <= 100 if diskLayout
+
+
+schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecDiskSetupPartitionsItems0DiskLayoutItems0:
+    r"""
+    PartitionSpec defines the size and optional type for a partition.
+
+    Attributes
+    ----------
+    partitionType : str, default is Undefined, optional
+        partitionType is the partition type (optional).
+        Supported values are Linux, LinuxSwap, LinuxRAID, LVM, Fat32, NTFS,
+        and LinuxExtended. These are translated to cloud-init partition type codes.
+        A full GPT partition GUID is also supported as a passthrough value.
+    percentage : int, default is Undefined, required
+        percentage of disk that partition will take (1-100)
+    """
+
+
+    partitionType?: str
+
+    percentage: int
+
+
+    check:
+        len(partitionType) <= 36 if partitionType not in [None, Undefined]
+        len(partitionType) >= 1 if partitionType not in [None, Undefined]
+        percentage <= 100
+        percentage >= 1
 
 
 schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecFilesItems0:
@@ -1702,14 +1740,14 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecF
 
 
     check:
-        len(content) <= 10240 if content
-        len(content) >= 1 if content
-        len(owner) <= 256 if owner
-        len(owner) >= 1 if owner
+        len(content) <= 10240 if content not in [None, Undefined]
+        len(content) >= 1 if content not in [None, Undefined]
+        len(owner) <= 256 if owner not in [None, Undefined]
+        len(owner) >= 1 if owner not in [None, Undefined]
         len(path) <= 512
         len(path) >= 1
-        len(permissions) <= 16 if permissions
-        len(permissions) >= 1 if permissions
+        len(permissions) <= 16 if permissions not in [None, Undefined]
+        len(permissions) >= 1 if permissions not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecFilesItems0ContentFrom:
@@ -1787,8 +1825,8 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecI
 
 
     check:
-        len(additionalConfig) <= 32768 if additionalConfig
-        len(additionalConfig) >= 1 if additionalConfig
+        len(additionalConfig) <= 32768 if additionalConfig not in [None, Undefined]
+        len(additionalConfig) >= 1 if additionalConfig not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecInitConfiguration:
@@ -1833,8 +1871,8 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecI
         len(bootstrapTokens) <= 100 if bootstrapTokens
         len(skipPhases) >= 1 if skipPhases
         len(skipPhases) <= 50 if skipPhases
-        all skipPhases in skipPhases { len(skipPhases) <= 256 if skipPhases not in [None, Undefined] } if skipPhases
-        all skipPhases in skipPhases { len(skipPhases) >= 1 if skipPhases not in [None, Undefined] } if skipPhases
+        all i in skipPhases { len(i) <= 256 if i not in [None, Undefined] } if skipPhases
+        all i in skipPhases { len(i) >= 1 if i not in [None, Undefined] } if skipPhases
 
 
 schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecInitConfigurationBootstrapTokensItems0:
@@ -1878,19 +1916,19 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecI
 
 
     check:
-        len(description) <= 512 if description
-        len(description) >= 1 if description
+        len(description) <= 512 if description not in [None, Undefined]
+        len(description) >= 1 if description not in [None, Undefined]
         len(groups) >= 1 if groups
         len(groups) <= 100 if groups
-        all groups in groups { len(groups) <= 256 if groups not in [None, Undefined] } if groups
-        all groups in groups { len(groups) >= 1 if groups not in [None, Undefined] } if groups
+        all i in groups { len(i) <= 256 if i not in [None, Undefined] } if groups
+        all i in groups { len(i) >= 1 if i not in [None, Undefined] } if groups
         len(token) <= 23
         len(token) >= 1
         ttlSeconds >= 0 if ttlSeconds not in [None, Undefined]
         len(usages) >= 1 if usages
         len(usages) <= 100 if usages
-        all usages in usages { len(usages) <= 256 if usages not in [None, Undefined] } if usages
-        all usages in usages { len(usages) >= 1 if usages not in [None, Undefined] } if usages
+        all i in usages { len(i) <= 256 if i not in [None, Undefined] } if usages
+        all i in usages { len(i) >= 1 if i not in [None, Undefined] } if usages
 
 
 schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecInitConfigurationLocalAPIEndpoint:
@@ -1918,8 +1956,8 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecI
 
 
     check:
-        len(advertiseAddress) <= 39 if advertiseAddress
-        len(advertiseAddress) >= 1 if advertiseAddress
+        len(advertiseAddress) <= 39 if advertiseAddress not in [None, Undefined]
+        len(advertiseAddress) >= 1 if advertiseAddress not in [None, Undefined]
         bindPort >= 1 if bindPort not in [None, Undefined]
 
 
@@ -1976,16 +2014,16 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecI
 
 
     check:
-        len(criSocket) <= 512 if criSocket
-        len(criSocket) >= 1 if criSocket
+        len(criSocket) <= 512 if criSocket not in [None, Undefined]
+        len(criSocket) >= 1 if criSocket not in [None, Undefined]
         len(ignorePreflightErrors) >= 1 if ignorePreflightErrors
         len(ignorePreflightErrors) <= 50 if ignorePreflightErrors
-        all ignorePreflightErrors in ignorePreflightErrors { len(ignorePreflightErrors) <= 512 if ignorePreflightErrors not in [None, Undefined] } if ignorePreflightErrors
-        all ignorePreflightErrors in ignorePreflightErrors { len(ignorePreflightErrors) >= 1 if ignorePreflightErrors not in [None, Undefined] } if ignorePreflightErrors
+        all i in ignorePreflightErrors { len(i) <= 512 if i not in [None, Undefined] } if ignorePreflightErrors
+        all i in ignorePreflightErrors { len(i) >= 1 if i not in [None, Undefined] } if ignorePreflightErrors
         len(kubeletExtraArgs) >= 1 if kubeletExtraArgs
         len(kubeletExtraArgs) <= 100 if kubeletExtraArgs
-        len(name) <= 253 if name
-        len(name) >= 1 if name
+        len(name) <= 253 if name not in [None, Undefined]
+        len(name) >= 1 if name not in [None, Undefined]
         len(taints) >= 0 if taints
         len(taints) <= 100 if taints
 
@@ -2069,8 +2107,8 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecI
 
 
     check:
-        len(directory) <= 512 if directory
-        len(directory) >= 1 if directory
+        len(directory) <= 512 if directory not in [None, Undefined]
+        len(directory) >= 1 if directory not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecInitConfigurationTimeouts:
@@ -2171,12 +2209,12 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecJ
 
 
     check:
-        len(caCertPath) <= 512 if caCertPath
-        len(caCertPath) >= 1 if caCertPath
+        len(caCertPath) <= 512 if caCertPath not in [None, Undefined]
+        len(caCertPath) >= 1 if caCertPath not in [None, Undefined]
         len(skipPhases) >= 1 if skipPhases
         len(skipPhases) <= 50 if skipPhases
-        all skipPhases in skipPhases { len(skipPhases) <= 256 if skipPhases not in [None, Undefined] } if skipPhases
-        all skipPhases in skipPhases { len(skipPhases) >= 1 if skipPhases not in [None, Undefined] } if skipPhases
+        all i in skipPhases { len(i) <= 256 if i not in [None, Undefined] } if skipPhases
+        all i in skipPhases { len(i) >= 1 if i not in [None, Undefined] } if skipPhases
 
 
 schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationControlPlane:
@@ -2214,8 +2252,8 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecJ
 
 
     check:
-        len(advertiseAddress) <= 39 if advertiseAddress
-        len(advertiseAddress) >= 1 if advertiseAddress
+        len(advertiseAddress) <= 39 if advertiseAddress not in [None, Undefined]
+        len(advertiseAddress) >= 1 if advertiseAddress not in [None, Undefined]
         bindPort >= 1 if bindPort not in [None, Undefined]
 
 
@@ -2244,8 +2282,8 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecJ
 
 
     check:
-        len(tlsBootstrapToken) <= 512 if tlsBootstrapToken
-        len(tlsBootstrapToken) >= 1 if tlsBootstrapToken
+        len(tlsBootstrapToken) <= 512 if tlsBootstrapToken not in [None, Undefined]
+        len(tlsBootstrapToken) >= 1 if tlsBootstrapToken not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationDiscoveryBootstrapToken:
@@ -2286,14 +2324,14 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecJ
 
 
     check:
-        len(apiServerEndpoint) <= 512 if apiServerEndpoint
-        len(apiServerEndpoint) >= 1 if apiServerEndpoint
+        len(apiServerEndpoint) <= 512 if apiServerEndpoint not in [None, Undefined]
+        len(apiServerEndpoint) >= 1 if apiServerEndpoint not in [None, Undefined]
         len(caCertHashes) >= 1 if caCertHashes
         len(caCertHashes) <= 100 if caCertHashes
-        all caCertHashes in caCertHashes { len(caCertHashes) <= 512 if caCertHashes not in [None, Undefined] } if caCertHashes
-        all caCertHashes in caCertHashes { len(caCertHashes) >= 1 if caCertHashes not in [None, Undefined] } if caCertHashes
-        len(token) <= 512 if token
-        len(token) >= 1 if token
+        all i in caCertHashes { len(i) <= 512 if i not in [None, Undefined] } if caCertHashes
+        all i in caCertHashes { len(i) >= 1 if i not in [None, Undefined] } if caCertHashes
+        len(token) <= 512 if token not in [None, Undefined]
+        len(token) >= 1 if token not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationDiscoveryFile:
@@ -2389,14 +2427,14 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecJ
 
 
     check:
-        len(certificateAuthorityData) <= 51200 if certificateAuthorityData
-        len(certificateAuthorityData) >= 1 if certificateAuthorityData
-        len(proxyURL) <= 512 if proxyURL
-        len(proxyURL) >= 1 if proxyURL
-        len(server) <= 512 if server
-        len(server) >= 1 if server
-        len(tlsServerName) <= 512 if tlsServerName
-        len(tlsServerName) >= 1 if tlsServerName
+        len(certificateAuthorityData) <= 51200 if certificateAuthorityData not in [None, Undefined]
+        len(certificateAuthorityData) >= 1 if certificateAuthorityData not in [None, Undefined]
+        len(proxyURL) <= 512 if proxyURL not in [None, Undefined]
+        len(proxyURL) >= 1 if proxyURL not in [None, Undefined]
+        len(server) <= 512 if server not in [None, Undefined]
+        len(server) >= 1 if server not in [None, Undefined]
+        len(tlsServerName) <= 512 if tlsServerName not in [None, Undefined]
+        len(tlsServerName) >= 1 if tlsServerName not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationDiscoveryFileKubeConfigUser:
@@ -2480,12 +2518,12 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecJ
 
 
     check:
-        len(apiVersion) <= 512 if apiVersion
-        len(apiVersion) >= 1 if apiVersion
+        len(apiVersion) <= 512 if apiVersion not in [None, Undefined]
+        len(apiVersion) >= 1 if apiVersion not in [None, Undefined]
         len(args) >= 1 if args
         len(args) <= 100 if args
-        all args in args { len(args) <= 512 if args not in [None, Undefined] } if args
-        all args in args { len(args) >= 1 if args not in [None, Undefined] } if args
+        all i in args { len(i) <= 512 if i not in [None, Undefined] } if args
+        all i in args { len(i) >= 1 if i not in [None, Undefined] } if args
         len(command) <= 1024
         len(command) >= 1
         len(env) >= 1 if env
@@ -2571,16 +2609,16 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecJ
 
 
     check:
-        len(criSocket) <= 512 if criSocket
-        len(criSocket) >= 1 if criSocket
+        len(criSocket) <= 512 if criSocket not in [None, Undefined]
+        len(criSocket) >= 1 if criSocket not in [None, Undefined]
         len(ignorePreflightErrors) >= 1 if ignorePreflightErrors
         len(ignorePreflightErrors) <= 50 if ignorePreflightErrors
-        all ignorePreflightErrors in ignorePreflightErrors { len(ignorePreflightErrors) <= 512 if ignorePreflightErrors not in [None, Undefined] } if ignorePreflightErrors
-        all ignorePreflightErrors in ignorePreflightErrors { len(ignorePreflightErrors) >= 1 if ignorePreflightErrors not in [None, Undefined] } if ignorePreflightErrors
+        all i in ignorePreflightErrors { len(i) <= 512 if i not in [None, Undefined] } if ignorePreflightErrors
+        all i in ignorePreflightErrors { len(i) >= 1 if i not in [None, Undefined] } if ignorePreflightErrors
         len(kubeletExtraArgs) >= 1 if kubeletExtraArgs
         len(kubeletExtraArgs) <= 100 if kubeletExtraArgs
-        len(name) <= 253 if name
-        len(name) >= 1 if name
+        len(name) <= 253 if name not in [None, Undefined]
+        len(name) >= 1 if name not in [None, Undefined]
         len(taints) >= 0 if taints
         len(taints) <= 100 if taints
 
@@ -2664,8 +2702,8 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecJ
 
 
     check:
-        len(directory) <= 512 if directory
-        len(directory) >= 1 if directory
+        len(directory) <= 512 if directory not in [None, Undefined]
+        len(directory) >= 1 if directory not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecJoinConfigurationTimeouts:
@@ -2743,8 +2781,8 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecN
 
     check:
         len(servers) <= 100 if servers
-        all servers in servers { len(servers) <= 512 if servers not in [None, Undefined] } if servers
-        all servers in servers { len(servers) >= 1 if servers not in [None, Undefined] } if servers
+        all i in servers { len(i) <= 512 if i not in [None, Undefined] } if servers
+        all i in servers { len(i) >= 1 if i not in [None, Undefined] } if servers
 
 
 schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecUsersItems0:
@@ -2806,25 +2844,25 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecU
 
 
     check:
-        len(gecos) <= 256 if gecos
-        len(gecos) >= 1 if gecos
-        len(groups) <= 256 if groups
-        len(groups) >= 1 if groups
-        len(homeDir) <= 256 if homeDir
-        len(homeDir) >= 1 if homeDir
+        len(gecos) <= 256 if gecos not in [None, Undefined]
+        len(gecos) >= 1 if gecos not in [None, Undefined]
+        len(groups) <= 256 if groups not in [None, Undefined]
+        len(groups) >= 1 if groups not in [None, Undefined]
+        len(homeDir) <= 256 if homeDir not in [None, Undefined]
+        len(homeDir) >= 1 if homeDir not in [None, Undefined]
         len(name) <= 256
         len(name) >= 1
-        len(passwd) <= 256 if passwd
-        len(passwd) >= 1 if passwd
-        len(primaryGroup) <= 256 if primaryGroup
-        len(primaryGroup) >= 1 if primaryGroup
-        len(shell) <= 256 if shell
-        len(shell) >= 1 if shell
+        len(passwd) <= 256 if passwd not in [None, Undefined]
+        len(passwd) >= 1 if passwd not in [None, Undefined]
+        len(primaryGroup) <= 256 if primaryGroup not in [None, Undefined]
+        len(primaryGroup) >= 1 if primaryGroup not in [None, Undefined]
+        len(shell) <= 256 if shell not in [None, Undefined]
+        len(shell) >= 1 if shell not in [None, Undefined]
         len(sshAuthorizedKeys) <= 100 if sshAuthorizedKeys
-        all sshAuthorizedKeys in sshAuthorizedKeys { len(sshAuthorizedKeys) <= 2048 if sshAuthorizedKeys not in [None, Undefined] } if sshAuthorizedKeys
-        all sshAuthorizedKeys in sshAuthorizedKeys { len(sshAuthorizedKeys) >= 1 if sshAuthorizedKeys not in [None, Undefined] } if sshAuthorizedKeys
-        len(sudo) <= 256 if sudo
-        len(sudo) >= 1 if sudo
+        all i in sshAuthorizedKeys { len(i) <= 2048 if i not in [None, Undefined] } if sshAuthorizedKeys
+        all i in sshAuthorizedKeys { len(i) >= 1 if i not in [None, Undefined] } if sshAuthorizedKeys
+        len(sudo) <= 256 if sudo not in [None, Undefined]
+        len(sudo) >= 1 if sudo not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecKubeadmConfigSpecUsersItems0PasswdFrom:
@@ -2891,8 +2929,8 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecMachineNaming:
 
 
     check:
-        len(template) <= 256 if template
-        len(template) >= 1 if template
+        len(template) <= 256 if template not in [None, Undefined]
+        len(template) >= 1 if template not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecMachineTemplate:
@@ -2953,11 +2991,21 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecMachineTemplateSpe
     readinessGates : [ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecMachineTemplateSpecReadinessGatesItems0], default is Undefined, optional
         readinessGates specifies additional conditions to include when evaluating Machine Ready condition;
         KubeadmControlPlane will always add readinessGates for the condition it is setting on the Machine:
-        APIServerPodHealthy, SchedulerPodHealthy, ControllerManagerPodHealthy, and if etcd is managed by CKP also
+        NodeKubeadmLabelsAndTaintsSet, APIServerPodHealthy, SchedulerPodHealthy, ControllerManagerPodHealthy, and if etcd is managed by CKP also
         EtcdPodHealthy, EtcdMemberHealthy.
 
         This field can be used e.g. to instruct the machine controller to include in the computation for Machine's ready
         computation a condition, managed by an external controllers, reporting the status of special software/hardware installed on the Machine.
+    taints : [ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecMachineTemplateSpecTaintsItems0], default is Undefined, optional
+        taints are the node taints that Cluster API will manage.
+        This list is not necessarily complete: other Kubernetes components may add or remove other taints from nodes,
+        e.g. the node controller might add the node.kubernetes.io/not-ready taint.
+        Only those taints defined in this list will be added or removed by core Cluster API controllers.
+
+        There can be at most 64 taints.
+        A pod would have to tolerate all existing taints to run on the corresponding node.
+
+        NOTE: This list is implemented as a "map" type, meaning that individual elements can be managed by different owners.
     """
 
 
@@ -2967,10 +3015,14 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecMachineTemplateSpe
 
     readinessGates?: [ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecMachineTemplateSpecReadinessGatesItems0]
 
+    taints?: [ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecMachineTemplateSpecTaintsItems0]
+
 
     check:
         len(readinessGates) >= 1 if readinessGates
         len(readinessGates) <= 32 if readinessGates
+        len(taints) >= 1 if taints
+        len(taints) <= 64 if taints
 
 
 schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecMachineTemplateSpecDeletion:
@@ -3074,6 +3126,48 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecMachineTemplateSpe
         len(conditionType) <= 316
         len(conditionType) >= 1
         _regex_match(str(conditionType), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+
+
+schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecMachineTemplateSpecTaintsItems0:
+    r"""
+    MachineTaint defines a taint equivalent to corev1.Taint, but additionally having a propagation field.
+
+    Attributes
+    ----------
+    effect : str, default is Undefined, required
+        effect is the effect for the taint. Valid values are NoSchedule, PreferNoSchedule and NoExecute.
+    key : str, default is Undefined, required
+        key is the taint key to be applied to a node.
+        Must be a valid qualified name of maximum size 63 characters
+        with an optional subdomain prefix of maximum size 253 characters,
+        separated by a `/`.
+    propagation : str, default is Undefined, required
+        propagation defines how this taint should be propagated to nodes.
+        Valid values are 'Always' and 'OnInitialization'.
+        Always: The taint will be continuously reconciled. If it is not set for a node, it will be added during reconciliation.
+        OnInitialization: The taint will be added during node initialization. If it gets removed from the node later on it will not get added again.
+    value : str, default is Undefined, optional
+        value is the taint value corresponding to the taint key.
+        It must be a valid label value of maximum size 63 characters.
+    """
+
+
+    effect: "NoSchedule" | "PreferNoSchedule" | "NoExecute"
+
+    key: str
+
+    propagation: "Always" | "OnInitialization"
+
+    value?: str
+
+
+    check:
+        len(key) <= 317
+        len(key) >= 1
+        _regex_match(str(key), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/)?([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$")
+        len(value) <= 63 if value not in [None, Undefined]
+        len(value) >= 1 if value not in [None, Undefined]
+        _regex_match(str(value), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if value
 
 
 schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneSpecRemediation:
@@ -3287,10 +3381,10 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneStatus:
     check:
         len(conditions) <= 32 if conditions
         observedGeneration >= 1 if observedGeneration not in [None, Undefined]
-        len(selector) <= 4096 if selector
-        len(selector) >= 1 if selector
-        len(version) <= 256 if version
-        len(version) >= 1 if version
+        len(selector) <= 4096 if selector not in [None, Undefined]
+        len(selector) >= 1 if selector not in [None, Undefined]
+        len(version) <= 256 if version not in [None, Undefined]
+        len(version) >= 1 if version not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneStatusConditionsItems0:
@@ -3414,13 +3508,15 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneStatusDeprecatedV1beta
 
 
     check:
-        len(failureMessage) <= 10240 if failureMessage
-        len(failureMessage) >= 1 if failureMessage
+        len(failureMessage) <= 10240 if failureMessage not in [None, Undefined]
+        len(failureMessage) >= 1 if failureMessage not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneStatusDeprecatedV1beta1ConditionsItems0:
     r"""
     Condition defines an observation of a Cluster API resource operational state.
+
+    Deprecated: This type is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
 
     Attributes
     ----------
@@ -3462,11 +3558,11 @@ schema ControlplaneClusterxK8sIoV1beta2KubeadmControlPlaneStatusDeprecatedV1beta
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 

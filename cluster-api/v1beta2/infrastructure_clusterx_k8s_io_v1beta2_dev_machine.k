@@ -56,8 +56,8 @@ schema InfrastructureClusterxK8sIoV1beta2DevMachineSpec:
 
 
     check:
-        len(providerID) <= 512 if providerID
-        len(providerID) >= 1 if providerID
+        len(providerID) <= 512 if providerID not in [None, Undefined]
+        len(providerID) >= 1 if providerID not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta2DevMachineSpecBackend:
@@ -86,7 +86,7 @@ schema InfrastructureClusterxK8sIoV1beta2DevMachineSpecBackendDocker:
     ----------
     bootstrapTimeout : str, default is Undefined, optional
         bootstrapTimeout is the total amount of time to wait for the machine to bootstrap before timing out.
-        The default value is 3m.
+        The default value is 5m.
     bootstrapped : bool, default is Undefined, optional
         bootstrapped is true when the kubeadm bootstrapping has been run
         against this machine
@@ -323,6 +323,8 @@ schema InfrastructureClusterxK8sIoV1beta2DevMachineStatus:
         ControlPlaneInitialized, BootstrapExecSucceeded, LoadBalancerAvailable, ContainerProvisioned and Paused.
     deprecated : InfrastructureClusterxK8sIoV1beta2DevMachineStatusDeprecated, default is Undefined, optional
         deprecated
+    failureDomain : str, default is Undefined, optional
+        failureDomain is the unique identifier of the failure domain where this Machine has been placed in.
     initialization : InfrastructureClusterxK8sIoV1beta2DevMachineStatusInitialization, default is Undefined, optional
         initialization
     """
@@ -336,11 +338,15 @@ schema InfrastructureClusterxK8sIoV1beta2DevMachineStatus:
 
     deprecated?: InfrastructureClusterxK8sIoV1beta2DevMachineStatusDeprecated
 
+    failureDomain?: str
+
     initialization?: InfrastructureClusterxK8sIoV1beta2DevMachineStatusInitialization
 
 
     check:
         len(conditions) <= 32 if conditions
+        len(failureDomain) <= 256 if failureDomain not in [None, Undefined]
+        len(failureDomain) >= 1 if failureDomain not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta2DevMachineStatusAddressesItems0:
@@ -481,6 +487,8 @@ schema InfrastructureClusterxK8sIoV1beta2DevMachineStatusDeprecatedV1beta1Condit
     r"""
     Condition defines an observation of a Cluster API resource operational state.
 
+    Deprecated: This type is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
+
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
@@ -521,11 +529,11 @@ schema InfrastructureClusterxK8sIoV1beta2DevMachineStatusDeprecatedV1beta1Condit
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 

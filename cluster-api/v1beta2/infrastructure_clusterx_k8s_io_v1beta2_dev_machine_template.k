@@ -113,8 +113,8 @@ schema InfrastructureClusterxK8sIoV1beta2DevMachineTemplateSpecTemplateSpec:
 
 
     check:
-        len(providerID) <= 512 if providerID
-        len(providerID) >= 1 if providerID
+        len(providerID) <= 512 if providerID not in [None, Undefined]
+        len(providerID) >= 1 if providerID not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta2DevMachineTemplateSpecTemplateSpecBackend:
@@ -143,7 +143,7 @@ schema InfrastructureClusterxK8sIoV1beta2DevMachineTemplateSpecTemplateSpecBacke
     ----------
     bootstrapTimeout : str, default is Undefined, optional
         bootstrapTimeout is the total amount of time to wait for the machine to bootstrap before timing out.
-        The default value is 3m.
+        The default value is 5m.
     bootstrapped : bool, default is Undefined, optional
         bootstrapped is true when the kubeadm bootstrapping has been run
         against this machine
@@ -381,6 +381,6 @@ schema InfrastructureClusterxK8sIoV1beta2DevMachineTemplateStatus:
 
 
     check:
-        all _, capacity in capacity { _regex_match(str(capacity), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if capacity } if capacity
+        all _, k in capacity { _regex_match(str(k), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if k } if capacity
 
 

@@ -142,8 +142,8 @@ schema ClusterxK8sIoV1beta1ClusterSpecClusterNetwork:
 
 
     check:
-        len(serviceDomain) <= 253 if serviceDomain
-        len(serviceDomain) >= 1 if serviceDomain
+        len(serviceDomain) <= 253 if serviceDomain not in [None, Undefined]
+        len(serviceDomain) >= 1 if serviceDomain not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecClusterNetworkPods:
@@ -162,8 +162,8 @@ schema ClusterxK8sIoV1beta1ClusterSpecClusterNetworkPods:
 
     check:
         len(cidrBlocks) <= 100
-        all cidrBlocks in cidrBlocks { len(cidrBlocks) <= 43 if cidrBlocks not in [None, Undefined] } if cidrBlocks
-        all cidrBlocks in cidrBlocks { len(cidrBlocks) >= 1 if cidrBlocks not in [None, Undefined] } if cidrBlocks
+        all i in cidrBlocks { len(i) <= 43 if i not in [None, Undefined] } if cidrBlocks
+        all i in cidrBlocks { len(i) >= 1 if i not in [None, Undefined] } if cidrBlocks
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecClusterNetworkServices:
@@ -182,8 +182,8 @@ schema ClusterxK8sIoV1beta1ClusterSpecClusterNetworkServices:
 
     check:
         len(cidrBlocks) <= 100
-        all cidrBlocks in cidrBlocks { len(cidrBlocks) <= 43 if cidrBlocks not in [None, Undefined] } if cidrBlocks
-        all cidrBlocks in cidrBlocks { len(cidrBlocks) >= 1 if cidrBlocks not in [None, Undefined] } if cidrBlocks
+        all i in cidrBlocks { len(i) <= 43 if i not in [None, Undefined] } if cidrBlocks
+        all i in cidrBlocks { len(i) >= 1 if i not in [None, Undefined] } if cidrBlocks
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecControlPlaneEndpoint:
@@ -192,20 +192,20 @@ schema ClusterxK8sIoV1beta1ClusterSpecControlPlaneEndpoint:
 
     Attributes
     ----------
-    host : str, default is Undefined, required
+    host : str, default is Undefined, optional
         host is the hostname on which the API server is serving.
-    port : int, default is Undefined, required
+    port : int, default is Undefined, optional
         port is the port on which the API server is serving.
     """
 
 
-    host: str
+    host?: str
 
-    port: int
+    port?: int
 
 
     check:
-        len(host) <= 512
+        len(host) <= 512 if host not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecControlPlaneRef:
@@ -312,8 +312,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopology:
     r"""
     topology encapsulates the topology for the cluster.
     NOTE: It is required to enable the ClusterTopology
-    feature gate flag to activate managed topologies support;
-    this feature is highly experimental, and parts of it might still be not implemented.
+    feature gate flag to activate managed topologies support.
 
     Attributes
     ----------
@@ -361,8 +360,8 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopology:
     check:
         len(class) <= 253
         len(class) >= 1
-        len(classNamespace) <= 63 if classNamespace
-        len(classNamespace) >= 1 if classNamespace
+        len(classNamespace) <= 63 if classNamespace not in [None, Undefined]
+        len(classNamespace) >= 1 if classNamespace not in [None, Undefined]
         _regex_match(str(classNamespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if classNamespace
         len(variables) <= 1000 if variables
         len(version) <= 256
@@ -406,6 +405,18 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlane:
         If the value is nil, the ControlPlane object is created without the number of Replicas
         and it's assumed that the control plane controller does not implement support for this field.
         When specified against a control plane provider that lacks support for this field, this value will be ignored.
+    rollout : ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneRollout, default is Undefined, optional
+        rollout
+    taints : [ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneTaintsItems0], default is Undefined, optional
+        taints are the node taints that Cluster API will manage.
+        This list is not necessarily complete: other Kubernetes components may add or remove other taints from nodes,
+        e.g. the node controller might add the node.kubernetes.io/not-ready taint.
+        Only those taints defined in this list will be added or removed by core Cluster API controllers.
+
+        There can be at most 64 taints.
+        A pod would have to tolerate all existing taints to run on the corresponding node.
+
+        NOTE: This list is implemented as a "map" type, meaning that individual elements can be managed by different owners.
     variables : ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariables, default is Undefined, optional
         variables
     """
@@ -425,11 +436,17 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlane:
 
     replicas?: int
 
+    rollout?: ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneRollout
+
+    taints?: [ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneTaintsItems0]
+
     variables?: ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariables
 
 
     check:
         len(readinessGates) <= 32 if readinessGates
+        len(taints) >= 1 if taints
+        len(taints) <= 64 if taints
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheck:
@@ -472,6 +489,10 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheck:
         unhealthyConditions contains a list of the conditions that determine
         whether a node is considered unhealthy. The conditions are combined in a
         logical OR, i.e. if any of the conditions is met, the node is unhealthy.
+    unhealthyMachineConditions : [ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheckUnhealthyMachineConditionsItems0], default is Undefined, optional
+        unhealthyMachineConditions contains a list of the machine conditions that determine
+        whether a machine is considered unhealthy.  The conditions are combined in a
+        logical OR, i.e. if any of the conditions is met, the machine is unhealthy.
     unhealthyRange : str, default is Undefined, optional
         unhealthyRange specifies the range of unhealthy machines allowed.
         Any further remediation is only allowed if the number of machines selected by "selector" as not healthy
@@ -492,13 +513,17 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheck:
 
     unhealthyConditions?: [ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheckUnhealthyConditionsItems0]
 
+    unhealthyMachineConditions?: [ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheckUnhealthyMachineConditionsItems0]
+
     unhealthyRange?: str
 
 
     check:
         len(unhealthyConditions) <= 100 if unhealthyConditions
-        len(unhealthyRange) <= 32 if unhealthyRange
-        len(unhealthyRange) >= 1 if unhealthyRange
+        len(unhealthyMachineConditions) >= 1 if unhealthyMachineConditions
+        len(unhealthyMachineConditions) <= 100 if unhealthyMachineConditions
+        len(unhealthyRange) <= 32 if unhealthyRange not in [None, Undefined]
+        len(unhealthyRange) >= 1 if unhealthyRange not in [None, Undefined]
         _regex_match(str(unhealthyRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyRange
 
 
@@ -588,6 +613,39 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheckUnhe
         len($type) >= 1
 
 
+schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheckUnhealthyMachineConditionsItems0:
+    r"""
+    UnhealthyMachineCondition represents a Machine condition type and value with a timeout
+    specified as a duration.  When the named condition has been in the given
+    status for at least the timeout value, a machine is considered unhealthy.
+
+    Attributes
+    ----------
+    status : str, default is Undefined, required
+        status of the condition, one of True, False, Unknown.
+    timeout : str, default is Undefined, required
+        timeout is the duration that a Machine must be in a given status for,
+        after which the Machine is considered unhealthy.
+        For example, with a value of "1h", the Machine must match the status
+        for at least 1 hour before being considered unhealthy.
+    $type : str, default is Undefined, required
+        type of Machine condition
+    """
+
+
+    status: "True" | "False" | "Unknown"
+
+    timeout: str
+
+    $type: str
+
+
+    check:
+        len($type) <= 316
+        len($type) >= 1
+        _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+
+
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMetadata:
     r"""
     metadata is the metadata applied to the ControlPlane and the Machines of the ControlPlane
@@ -645,6 +703,66 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneReadinessGatesItems0:
         _regex_match(str(conditionType), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
 
 
+schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneRollout:
+    r"""
+    rollout allows you to configure the behavior of rolling updates to the control plane.
+
+    Attributes
+    ----------
+    after : str, default is Undefined, optional
+        after is a field to indicate a rollout should be performed
+        after the specified time even if no changes have been made to the ControlPlane.
+        Example: In the YAML the time can be specified in the RFC3339 format.
+        To specify the rolloutAfter target as March 9, 2023, at 9 am UTC
+        use "2023-03-09T09:00:00Z".
+    """
+
+
+    after?: str
+
+
+schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneTaintsItems0:
+    r"""
+    MachineTaint defines a taint equivalent to corev1.Taint, but additionally having a propagation field.
+
+    Attributes
+    ----------
+    effect : str, default is Undefined, required
+        effect is the effect for the taint. Valid values are NoSchedule, PreferNoSchedule and NoExecute.
+    key : str, default is Undefined, required
+        key is the taint key to be applied to a node.
+        Must be a valid qualified name of maximum size 63 characters
+        with an optional subdomain prefix of maximum size 253 characters,
+        separated by a `/`.
+    propagation : str, default is Undefined, required
+        propagation defines how this taint should be propagated to nodes.
+        Valid values are 'Always' and 'OnInitialization'.
+        Always: The taint will be continuously reconciled. If it is not set for a node, it will be added during reconciliation.
+        OnInitialization: The taint will be added during node initialization. If it gets removed from the node later on it will not get added again.
+    value : str, default is Undefined, optional
+        value is the taint value corresponding to the taint key.
+        It must be a valid label value of maximum size 63 characters.
+    """
+
+
+    effect: "NoSchedule" | "PreferNoSchedule" | "NoExecute"
+
+    key: str
+
+    propagation: "Always" | "OnInitialization"
+
+    value?: str
+
+
+    check:
+        len(key) <= 317
+        len(key) >= 1
+        _regex_match(str(key), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/)?([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$")
+        len(value) <= 63 if value not in [None, Undefined]
+        len(value) >= 1 if value not in [None, Undefined]
+        _regex_match(str(value), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if value
+
+
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariables:
     r"""
     variables can be used to customize the ControlPlane through patches.
@@ -695,7 +813,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariablesOverridesItem
 
 
     check:
-        len(definitionFrom) <= 256 if definitionFrom
+        len(definitionFrom) <= 256 if definitionFrom not in [None, Undefined]
         len(name) <= 256
         len(name) >= 1
 
@@ -732,7 +850,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyVariablesItems0:
 
 
     check:
-        len(definitionFrom) <= 256 if definitionFrom
+        len(definitionFrom) <= 256 if definitionFrom not in [None, Undefined]
         len(name) <= 256
         len(name) >= 1
 
@@ -814,8 +932,20 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0:
         If the value is nil, the MachineDeployment is created without the number of Replicas (defaulting to 1)
         and it's assumed that an external entity (like cluster autoscaler) is responsible for the management
         of this value.
+    rollout : ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Rollout, default is Undefined, optional
+        rollout
     strategy : ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Strategy, default is Undefined, optional
         strategy
+    taints : [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0TaintsItems0], default is Undefined, optional
+        taints are the node taints that Cluster API will manage.
+        This list is not necessarily complete: other Kubernetes components may add or remove other taints from nodes,
+        e.g. the node controller might add the node.kubernetes.io/not-ready taint.
+        Only those taints defined in this list will be added or removed by core Cluster API controllers.
+
+        There can be at most 64 taints.
+        A pod would have to tolerate all existing taints to run on the corresponding node.
+
+        NOTE: This list is implemented as a "map" type, meaning that individual elements can be managed by different owners.
     variables : ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Variables, default is Undefined, optional
         variables
     """
@@ -843,7 +973,11 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0:
 
     replicas?: int
 
+    rollout?: ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Rollout
+
     strategy?: ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Strategy
+
+    taints?: [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0TaintsItems0]
 
     variables?: ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Variables
 
@@ -851,11 +985,13 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0:
     check:
         len(class) <= 256
         len(class) >= 1
-        len(failureDomain) <= 256 if failureDomain
-        len(failureDomain) >= 1 if failureDomain
+        len(failureDomain) <= 256 if failureDomain not in [None, Undefined]
+        len(failureDomain) >= 1 if failureDomain not in [None, Undefined]
         len(name) <= 63
         len(name) >= 1
         len(readinessGates) <= 32 if readinessGates
+        len(taints) >= 1 if taints
+        len(taints) <= 64 if taints
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0MachineHealthCheck:
@@ -898,6 +1034,10 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Mac
         unhealthyConditions contains a list of the conditions that determine
         whether a node is considered unhealthy. The conditions are combined in a
         logical OR, i.e. if any of the conditions is met, the node is unhealthy.
+    unhealthyMachineConditions : [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0MachineHealthCheckUnhealthyMachineConditionsItems0], default is Undefined, optional
+        unhealthyMachineConditions contains a list of the machine conditions that determine
+        whether a machine is considered unhealthy.  The conditions are combined in a
+        logical OR, i.e. if any of the conditions is met, the machine is unhealthy.
     unhealthyRange : str, default is Undefined, optional
         unhealthyRange specifies the range of unhealthy machines allowed.
         Any further remediation is only allowed if the number of machines selected by "selector" as not healthy
@@ -918,13 +1058,17 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Mac
 
     unhealthyConditions?: [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0MachineHealthCheckUnhealthyConditionsItems0]
 
+    unhealthyMachineConditions?: [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0MachineHealthCheckUnhealthyMachineConditionsItems0]
+
     unhealthyRange?: str
 
 
     check:
         len(unhealthyConditions) <= 100 if unhealthyConditions
-        len(unhealthyRange) <= 32 if unhealthyRange
-        len(unhealthyRange) >= 1 if unhealthyRange
+        len(unhealthyMachineConditions) >= 1 if unhealthyMachineConditions
+        len(unhealthyMachineConditions) <= 100 if unhealthyMachineConditions
+        len(unhealthyRange) <= 32 if unhealthyRange not in [None, Undefined]
+        len(unhealthyRange) >= 1 if unhealthyRange not in [None, Undefined]
         _regex_match(str(unhealthyRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyRange
 
 
@@ -1014,6 +1158,39 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Mac
         len($type) >= 1
 
 
+schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0MachineHealthCheckUnhealthyMachineConditionsItems0:
+    r"""
+    UnhealthyMachineCondition represents a Machine condition type and value with a timeout
+    specified as a duration.  When the named condition has been in the given
+    status for at least the timeout value, a machine is considered unhealthy.
+
+    Attributes
+    ----------
+    status : str, default is Undefined, required
+        status of the condition, one of True, False, Unknown.
+    timeout : str, default is Undefined, required
+        timeout is the duration that a Machine must be in a given status for,
+        after which the Machine is considered unhealthy.
+        For example, with a value of "1h", the Machine must match the status
+        for at least 1 hour before being considered unhealthy.
+    $type : str, default is Undefined, required
+        type of Machine condition
+    """
+
+
+    status: "True" | "False" | "Unknown"
+
+    timeout: str
+
+    $type: str
+
+
+    check:
+        len($type) <= 316
+        len($type) >= 1
+        _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+
+
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Metadata:
     r"""
     metadata is the metadata applied to the MachineDeployment and the machines of the MachineDeployment.
@@ -1067,6 +1244,26 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Rea
         len(conditionType) <= 316
         len(conditionType) >= 1
         _regex_match(str(conditionType), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+
+
+schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Rollout:
+    r"""
+    rollout allows you to configure the behaviour of rolling updates to the MachineDeployment Machines.
+    It allows you to define the strategy used during rolling replacements.
+
+    Attributes
+    ----------
+    after : str, default is Undefined, optional
+        after is a field to indicate a rollout should be performed
+        after the specified time even if no changes have been made to the
+        MachineDeployment.
+        Example: In the YAML the time can be specified in the RFC3339 format.
+        To specify the rolloutAfter target as March 9, 2023, at 9 am UTC
+        use "2023-03-09T09:00:00Z".
+    """
+
+
+    after?: str
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Strategy:
@@ -1169,6 +1366,48 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Str
     maxUnavailable?: int | str
 
 
+schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0TaintsItems0:
+    r"""
+    MachineTaint defines a taint equivalent to corev1.Taint, but additionally having a propagation field.
+
+    Attributes
+    ----------
+    effect : str, default is Undefined, required
+        effect is the effect for the taint. Valid values are NoSchedule, PreferNoSchedule and NoExecute.
+    key : str, default is Undefined, required
+        key is the taint key to be applied to a node.
+        Must be a valid qualified name of maximum size 63 characters
+        with an optional subdomain prefix of maximum size 253 characters,
+        separated by a `/`.
+    propagation : str, default is Undefined, required
+        propagation defines how this taint should be propagated to nodes.
+        Valid values are 'Always' and 'OnInitialization'.
+        Always: The taint will be continuously reconciled. If it is not set for a node, it will be added during reconciliation.
+        OnInitialization: The taint will be added during node initialization. If it gets removed from the node later on it will not get added again.
+    value : str, default is Undefined, optional
+        value is the taint value corresponding to the taint key.
+        It must be a valid label value of maximum size 63 characters.
+    """
+
+
+    effect: "NoSchedule" | "PreferNoSchedule" | "NoExecute"
+
+    key: str
+
+    propagation: "Always" | "OnInitialization"
+
+    value?: str
+
+
+    check:
+        len(key) <= 317
+        len(key) >= 1
+        _regex_match(str(key), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/)?([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$")
+        len(value) <= 63 if value not in [None, Undefined]
+        len(value) >= 1 if value not in [None, Undefined]
+        _regex_match(str(value), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if value
+
+
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Variables:
     r"""
     variables can be used to customize the MachineDeployment through patches.
@@ -1219,7 +1458,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Var
 
 
     check:
-        len(definitionFrom) <= 256 if definitionFrom
+        len(definitionFrom) <= 256 if definitionFrom not in [None, Undefined]
         len(name) <= 256
         len(name) >= 1
 
@@ -1266,6 +1505,16 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0:
         If the value is nil, the MachinePool is created without the number of Replicas (defaulting to 1)
         and it's assumed that an external entity (like cluster autoscaler) is responsible for the management
         of this value.
+    taints : [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0TaintsItems0], default is Undefined, optional
+        taints are the node taints that Cluster API will manage.
+        This list is not necessarily complete: other Kubernetes components may add or remove other taints from nodes,
+        e.g. the node controller might add the node.kubernetes.io/not-ready taint.
+        Only those taints defined in this list will be added or removed by core Cluster API controllers.
+
+        There can be at most 64 taints.
+        A pod would have to tolerate all existing taints to run on the corresponding node.
+
+        NOTE: This list is implemented as a "map" type, meaning that individual elements can be managed by different owners.
     variables : ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Variables, default is Undefined, optional
         variables
     """
@@ -1289,6 +1538,8 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0:
 
     replicas?: int
 
+    taints?: [ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0TaintsItems0]
+
     variables?: ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Variables
 
 
@@ -1296,10 +1547,12 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0:
         len(class) <= 256
         len(class) >= 1
         len(failureDomains) <= 100 if failureDomains
-        all failureDomains in failureDomains { len(failureDomains) <= 256 if failureDomains not in [None, Undefined] } if failureDomains
-        all failureDomains in failureDomains { len(failureDomains) >= 1 if failureDomains not in [None, Undefined] } if failureDomains
+        all i in failureDomains { len(i) <= 256 if i not in [None, Undefined] } if failureDomains
+        all i in failureDomains { len(i) >= 1 if i not in [None, Undefined] } if failureDomains
         len(name) <= 63
         len(name) >= 1
+        len(taints) >= 1 if taints
+        len(taints) <= 64 if taints
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Metadata:
@@ -1325,6 +1578,48 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Metadata:
     annotations?: {str:str}
 
     labels?: {str:str}
+
+
+schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0TaintsItems0:
+    r"""
+    MachineTaint defines a taint equivalent to corev1.Taint, but additionally having a propagation field.
+
+    Attributes
+    ----------
+    effect : str, default is Undefined, required
+        effect is the effect for the taint. Valid values are NoSchedule, PreferNoSchedule and NoExecute.
+    key : str, default is Undefined, required
+        key is the taint key to be applied to a node.
+        Must be a valid qualified name of maximum size 63 characters
+        with an optional subdomain prefix of maximum size 253 characters,
+        separated by a `/`.
+    propagation : str, default is Undefined, required
+        propagation defines how this taint should be propagated to nodes.
+        Valid values are 'Always' and 'OnInitialization'.
+        Always: The taint will be continuously reconciled. If it is not set for a node, it will be added during reconciliation.
+        OnInitialization: The taint will be added during node initialization. If it gets removed from the node later on it will not get added again.
+    value : str, default is Undefined, optional
+        value is the taint value corresponding to the taint key.
+        It must be a valid label value of maximum size 63 characters.
+    """
+
+
+    effect: "NoSchedule" | "PreferNoSchedule" | "NoExecute"
+
+    key: str
+
+    propagation: "Always" | "OnInitialization"
+
+    value?: str
+
+
+    check:
+        len(key) <= 317
+        len(key) >= 1
+        _regex_match(str(key), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/)?([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$")
+        len(value) <= 63 if value not in [None, Undefined]
+        len(value) >= 1 if value not in [None, Undefined]
+        _regex_match(str(value), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if value
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Variables:
@@ -1377,7 +1672,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Variables
 
 
     check:
-        len(definitionFrom) <= 256 if definitionFrom
+        len(definitionFrom) <= 256 if definitionFrom not in [None, Undefined]
         len(name) <= 256
         len(name) >= 1
 
@@ -1402,13 +1697,13 @@ schema ClusterxK8sIoV1beta1ClusterStatus:
         failureMessage indicates that there is a fatal problem reconciling the
         state, and will be set to a descriptive error message.
 
-        Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
+        Deprecated: This field is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
     failureReason : str, default is Undefined, optional
         failureReason indicates that there is a fatal problem reconciling the
         state, and will be set to a token value suitable for
         programmatic interpretation.
 
-        Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
+        Deprecated: This field is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
     infrastructureReady : bool, default is Undefined, optional
         infrastructureReady is the state of the infrastructure provider.
     observedGeneration : int, default is Undefined, optional
@@ -1440,8 +1735,8 @@ schema ClusterxK8sIoV1beta1ClusterStatus:
 
 
     check:
-        len(failureMessage) <= 10240 if failureMessage
-        len(failureMessage) >= 1 if failureMessage
+        len(failureMessage) <= 10240 if failureMessage not in [None, Undefined]
+        len(failureMessage) >= 1 if failureMessage not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta1ClusterStatusConditionsItems0:
@@ -1488,11 +1783,11 @@ schema ClusterxK8sIoV1beta1ClusterStatusConditionsItems0:
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 

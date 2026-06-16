@@ -252,6 +252,8 @@ schema AddonsClusterxK8sIoV1beta2ClusterResourceSetStatusDeprecatedV1beta1Condit
     r"""
     Condition defines an observation of a Cluster API resource operational state.
 
+    Deprecated: This type is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
+
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
@@ -292,11 +294,11 @@ schema AddonsClusterxK8sIoV1beta2ClusterResourceSetStatusDeprecatedV1beta1Condit
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 
