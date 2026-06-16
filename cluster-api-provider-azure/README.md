@@ -49,6 +49,12 @@
   - [InfrastructureClusterxK8sIoV1alpha3AzureUserAssignedIdentitySpecAllowedNamespacesMatchExpressionsItems0](#infrastructureclusterxk8siov1alpha3azureuserassignedidentityspecallowednamespacesmatchexpressionsitems0)
   - [InfrastructureClusterxK8sIoV1alpha3AzureUserAssignedIdentitySpecSecretRef](#infrastructureclusterxk8siov1alpha3azureuserassignedidentityspecsecretref)
 - v1beta1
+  - [AzureASOManagedCluster](#azureasomanagedcluster)
+  - [AzureASOManagedClusterTemplate](#azureasomanagedclustertemplate)
+  - [AzureASOManagedControlPlane](#azureasomanagedcontrolplane)
+  - [AzureASOManagedControlPlaneTemplate](#azureasomanagedcontrolplanetemplate)
+  - [AzureASOManagedMachinePool](#azureasomanagedmachinepool)
+  - [AzureASOManagedMachinePoolTemplate](#azureasomanagedmachinepooltemplate)
   - [AzureCluster](#azurecluster)
   - [AzureClusterIdentity](#azureclusteridentity)
   - [AzureClusterTemplate](#azureclustertemplate)
@@ -62,6 +68,29 @@
   - [AzureManagedControlPlaneTemplate](#azuremanagedcontrolplanetemplate)
   - [AzureManagedMachinePool](#azuremanagedmachinepool)
   - [AzureManagedMachinePoolTemplate](#azuremanagedmachinepooltemplate)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterSpec](#infrastructureclusterxk8siov1beta1azureasomanagedclusterspec)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterSpecControlPlaneEndpoint](#infrastructureclusterxk8siov1beta1azureasomanagedclusterspeccontrolplaneendpoint)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterStatus](#infrastructureclusterxk8siov1beta1azureasomanagedclusterstatus)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterStatusResourcesItems0](#infrastructureclusterxk8siov1beta1azureasomanagedclusterstatusresourcesitems0)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterStatusResourcesItems0Resource](#infrastructureclusterxk8siov1beta1azureasomanagedclusterstatusresourcesitems0resource)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterTemplateSpec](#infrastructureclusterxk8siov1beta1azureasomanagedclustertemplatespec)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterTemplateSpecTemplate](#infrastructureclusterxk8siov1beta1azureasomanagedclustertemplatespectemplate)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1beta1azureasomanagedclustertemplatespectemplatespec)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneSpec](#infrastructureclusterxk8siov1beta1azureasomanagedcontrolplanespec)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatus](#infrastructureclusterxk8siov1beta1azureasomanagedcontrolplanestatus)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatusControlPlaneEndpoint](#infrastructureclusterxk8siov1beta1azureasomanagedcontrolplanestatuscontrolplaneendpoint)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatusResourcesItems0](#infrastructureclusterxk8siov1beta1azureasomanagedcontrolplanestatusresourcesitems0)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatusResourcesItems0Resource](#infrastructureclusterxk8siov1beta1azureasomanagedcontrolplanestatusresourcesitems0resource)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneTemplateSpec](#infrastructureclusterxk8siov1beta1azureasomanagedcontrolplanetemplatespec)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneTemplateSpecTemplate](#infrastructureclusterxk8siov1beta1azureasomanagedcontrolplanetemplatespectemplate)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1beta1azureasomanagedcontrolplanetemplatespectemplatespec)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedMachinePoolSpec](#infrastructureclusterxk8siov1beta1azureasomanagedmachinepoolspec)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedMachinePoolStatus](#infrastructureclusterxk8siov1beta1azureasomanagedmachinepoolstatus)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedMachinePoolStatusResourcesItems0](#infrastructureclusterxk8siov1beta1azureasomanagedmachinepoolstatusresourcesitems0)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedMachinePoolStatusResourcesItems0Resource](#infrastructureclusterxk8siov1beta1azureasomanagedmachinepoolstatusresourcesitems0resource)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedMachinePoolTemplateSpec](#infrastructureclusterxk8siov1beta1azureasomanagedmachinepooltemplatespec)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedMachinePoolTemplateSpecTemplate](#infrastructureclusterxk8siov1beta1azureasomanagedmachinepooltemplatespectemplate)
+  - [InfrastructureClusterxK8sIoV1beta1AzureASOManagedMachinePoolTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1beta1azureasomanagedmachinepooltemplatespectemplatespec)
   - [InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpec](#infrastructureclusterxk8siov1beta1azureclusteridentityspec)
   - [InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecAllowedNamespaces](#infrastructureclusterxk8siov1beta1azureclusteridentityspecallowednamespaces)
   - [InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecAllowedNamespacesSelector](#infrastructureclusterxk8siov1beta1azureclusteridentityspecallowednamespacesselector)
@@ -270,6 +299,8 @@
   - [InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecSystemAssignedIdentityRole](#infrastructureclusterxk8siov1beta1azuremachinetemplatespectemplatespecsystemassignedidentityrole)
   - [InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecUserAssignedIdentitiesItems0](#infrastructureclusterxk8siov1beta1azuremachinetemplatespectemplatespecuserassignedidentitiesitems0)
   - [InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecVMExtensionsItems0](#infrastructureclusterxk8siov1beta1azuremachinetemplatespectemplatespecvmextensionsitems0)
+  - [InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateStatus](#infrastructureclusterxk8siov1beta1azuremachinetemplatestatus)
+  - [InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateStatusNodeInfo](#infrastructureclusterxk8siov1beta1azuremachinetemplatestatusnodeinfo)
   - [InfrastructureClusterxK8sIoV1beta1AzureManagedClusterSpec](#infrastructureclusterxk8siov1beta1azuremanagedclusterspec)
   - [InfrastructureClusterxK8sIoV1beta1AzureManagedClusterSpecControlPlaneEndpoint](#infrastructureclusterxk8siov1beta1azuremanagedclusterspeccontrolplaneendpoint)
   - [InfrastructureClusterxK8sIoV1beta1AzureManagedClusterStatus](#infrastructureclusterxk8siov1beta1azuremanagedclusterstatus)
@@ -449,8 +480,8 @@ ControlPlaneEndpoint is the location of the API server within the control plane.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**host** `required`|str|host is the hostname on which the API server is serving.||
-|**port** `required`|int|port is the port on which the API server is serving.||
+|**host**|str|host is the hostname on which the API server is serving.||
+|**port**|int|port is the port on which the API server is serving.||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedClusterStatus
 
 AzureASOManagedClusterStatus defines the observed state of AzureASOManagedCluster.
@@ -541,8 +572,8 @@ ControlPlaneEndpoint represents the endpoint for the cluster's API server.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**host** `required`|str|host is the hostname on which the API server is serving.||
-|**port** `required`|int|port is the port on which the API server is serving.||
+|**host**|str|host is the hostname on which the API server is serving.||
+|**port**|int|port is the port on which the API server is serving.||
 ### InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatusResourcesItems0
 
 ResourceStatus represents the status of a resource.
@@ -826,6 +857,81 @@ Reference to a secret containing the credentials. The secret should contain the 
 | --- | --- | --- | --- |
 |**name**|str|Name is unique within a namespace to reference a secret resource.||
 |**namespace**|str|Namespace defines the space within which the secret name must be unique.||
+### AzureASOManagedCluster
+
+AzureASOManagedCluster is the Schema for the azureasomanagedclusters API.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion** `required` `readOnly`|"infrastructure.cluster.x-k8s.io/v1beta1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"infrastructure.cluster.x-k8s.io/v1beta1"|
+|**kind** `required` `readOnly`|"AzureASOManagedCluster"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"AzureASOManagedCluster"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec**|[InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterSpec](#infrastructureclusterxk8siov1beta1azureasomanagedclusterspec)|spec||
+|**status**|[InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterStatus](#infrastructureclusterxk8siov1beta1azureasomanagedclusterstatus)|status||
+### AzureASOManagedClusterTemplate
+
+AzureASOManagedClusterTemplate is the Schema for the azureasomanagedclustertemplates API.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion** `required` `readOnly`|"infrastructure.cluster.x-k8s.io/v1beta1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"infrastructure.cluster.x-k8s.io/v1beta1"|
+|**kind** `required` `readOnly`|"AzureASOManagedClusterTemplate"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"AzureASOManagedClusterTemplate"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec**|[InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterTemplateSpec](#infrastructureclusterxk8siov1beta1azureasomanagedclustertemplatespec)|spec||
+### AzureASOManagedControlPlane
+
+AzureASOManagedControlPlane is the Schema for the azureasomanagedcontrolplanes API.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion** `required` `readOnly`|"infrastructure.cluster.x-k8s.io/v1beta1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"infrastructure.cluster.x-k8s.io/v1beta1"|
+|**kind** `required` `readOnly`|"AzureASOManagedControlPlane"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"AzureASOManagedControlPlane"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec**|[InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneSpec](#infrastructureclusterxk8siov1beta1azureasomanagedcontrolplanespec)|spec||
+|**status**|[InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatus](#infrastructureclusterxk8siov1beta1azureasomanagedcontrolplanestatus)|status||
+### AzureASOManagedControlPlaneTemplate
+
+AzureASOManagedControlPlaneTemplate is the Schema for the azureasomanagedcontrolplanetemplates API.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion** `required` `readOnly`|"infrastructure.cluster.x-k8s.io/v1beta1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"infrastructure.cluster.x-k8s.io/v1beta1"|
+|**kind** `required` `readOnly`|"AzureASOManagedControlPlaneTemplate"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"AzureASOManagedControlPlaneTemplate"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec**|[InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneTemplateSpec](#infrastructureclusterxk8siov1beta1azureasomanagedcontrolplanetemplatespec)|spec||
+### AzureASOManagedMachinePool
+
+AzureASOManagedMachinePool is the Schema for the azureasomanagedmachinepools API.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion** `required` `readOnly`|"infrastructure.cluster.x-k8s.io/v1beta1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"infrastructure.cluster.x-k8s.io/v1beta1"|
+|**kind** `required` `readOnly`|"AzureASOManagedMachinePool"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"AzureASOManagedMachinePool"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec**|[InfrastructureClusterxK8sIoV1beta1AzureASOManagedMachinePoolSpec](#infrastructureclusterxk8siov1beta1azureasomanagedmachinepoolspec)|spec||
+|**status**|[InfrastructureClusterxK8sIoV1beta1AzureASOManagedMachinePoolStatus](#infrastructureclusterxk8siov1beta1azureasomanagedmachinepoolstatus)|status||
+### AzureASOManagedMachinePoolTemplate
+
+AzureASOManagedMachinePoolTemplate is the Schema for the azureasomanagedmachinepooltemplates API.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiVersion** `required` `readOnly`|"infrastructure.cluster.x-k8s.io/v1beta1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"infrastructure.cluster.x-k8s.io/v1beta1"|
+|**kind** `required` `readOnly`|"AzureASOManagedMachinePoolTemplate"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"AzureASOManagedMachinePoolTemplate"|
+|**metadata**|[ObjectMeta](#objectmeta)|metadata||
+|**spec**|[InfrastructureClusterxK8sIoV1beta1AzureASOManagedMachinePoolTemplateSpec](#infrastructureclusterxk8siov1beta1azureasomanagedmachinepooltemplatespec)|spec||
 ### AzureCluster
 
 AzureCluster is the Schema for the azureclusters API.
@@ -915,6 +1021,7 @@ AzureMachineTemplate is the Schema for the azuremachinetemplates API.
 |**kind** `required` `readOnly`|"AzureMachineTemplate"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"AzureMachineTemplate"|
 |**metadata**|[ObjectMeta](#objectmeta)|metadata||
 |**spec**|[InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpec](#infrastructureclusterxk8siov1beta1azuremachinetemplatespec)|spec||
+|**status**|[InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateStatus](#infrastructureclusterxk8siov1beta1azuremachinetemplatestatus)|status||
 ### AzureManagedCluster
 
 AzureManagedCluster is the Schema for the azuremanagedclusters API.
@@ -990,6 +1097,239 @@ AzureManagedMachinePoolTemplate is the Schema for the AzureManagedMachinePoolTem
 |**kind** `required` `readOnly`|"AzureManagedMachinePoolTemplate"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"AzureManagedMachinePoolTemplate"|
 |**metadata**|[ObjectMeta](#objectmeta)|metadata||
 |**spec**|[InfrastructureClusterxK8sIoV1beta1AzureManagedMachinePoolTemplateSpec](#infrastructureclusterxk8siov1beta1azuremanagedmachinepooltemplatespec)|spec||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterSpec
+
+AzureASOManagedClusterSpec defines the desired state of AzureASOManagedCluster.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**controlPlaneEndpoint**|[InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterSpecControlPlaneEndpoint](#infrastructureclusterxk8siov1beta1azureasomanagedclusterspeccontrolplaneendpoint)|control plane endpoint||
+|**resources**|[]|Resources are embedded ASO resources to be managed by this resource.||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterSpecControlPlaneEndpoint
+
+ControlPlaneEndpoint is the location of the API server within the control plane. CAPZ manages this field and it should not be set by the user. It fulfills Cluster API's cluster infrastructure provider contract. Because this field is programmatically set by CAPZ after resource creation, we define it as +optional in the API schema to permit resource admission.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**host**|str|host is the hostname on which the API server is serving.||
+|**port**|int|port is the port on which the API server is serving.||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterStatus
+
+AzureASOManagedClusterStatus defines the observed state of AzureASOManagedCluster.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**ready**|bool|Ready represents whether or not the cluster has been provisioned and is ready. It fulfills Cluster<br />API's cluster infrastructure provider contract.||
+|**resources**|[[InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterStatusResourcesItems0](#infrastructureclusterxk8siov1beta1azureasomanagedclusterstatusresourcesitems0)]|resources||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterStatusResourcesItems0
+
+ResourceStatus represents the status of a resource.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**ready** `required`|bool|ready||
+|**resource** `required`|[InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterStatusResourcesItems0Resource](#infrastructureclusterxk8siov1beta1azureasomanagedclusterstatusresourcesitems0resource)|resource||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterStatusResourcesItems0Resource
+
+StatusResource is a handle to a resource.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**group** `required`|str|group||
+|**kind** `required`|str|kind||
+|**name** `required`|str|name||
+|**version** `required`|str|version||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterTemplateSpec
+
+AzureASOManagedClusterTemplateSpec defines the desired state of AzureASOManagedClusterTemplate.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**template** `required`|[InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterTemplateSpecTemplate](#infrastructureclusterxk8siov1beta1azureasomanagedclustertemplatespectemplate)|template||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterTemplateSpecTemplate
+
+AzureASOManagedClusterTemplateResource defines the templated resource.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**spec**|[InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1beta1azureasomanagedclustertemplatespectemplatespec)|spec||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedClusterTemplateSpecTemplateSpec
+
+AzureASOManagedClusterTemplateResourceSpec defines the desired state of the templated resource.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**resources**|[]|Resources are embedded ASO resources to be managed by this resource.||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneSpec
+
+AzureASOManagedControlPlaneSpec defines the desired state of AzureASOManagedControlPlane.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**resources**|[]|Resources are embedded ASO resources to be managed by this resource.||
+|**version**|str|Version is the Kubernetes version of the control plane. It fulfills Cluster API's control plane<br />provider contract.||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatus
+
+AzureASOManagedControlPlaneStatus defines the observed state of AzureASOManagedControlPlane.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**controlPlaneEndpoint**|[InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatusControlPlaneEndpoint](#infrastructureclusterxk8siov1beta1azureasomanagedcontrolplanestatuscontrolplaneendpoint)|control plane endpoint||
+|**initialized**|bool|Initialized represents whether or not the API server has been provisioned. It fulfills Cluster API's<br />control plane provider contract. For AKS, this is equivalent to `ready`.||
+|**ready**|bool|Ready represents whether or not the API server is ready to receive requests. It fulfills Cluster API's<br />control plane provider contract. For AKS, this is equivalent to `initialized`.||
+|**resources**|[[InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatusResourcesItems0](#infrastructureclusterxk8siov1beta1azureasomanagedcontrolplanestatusresourcesitems0)]|resources||
+|**version**|str|Version is the observed Kubernetes version of the control plane. It fulfills Cluster API's control<br />plane provider contract.||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatusControlPlaneEndpoint
+
+ControlPlaneEndpoint represents the endpoint for the cluster's API server.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**host**|str|host is the hostname on which the API server is serving.||
+|**port**|int|port is the port on which the API server is serving.||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatusResourcesItems0
+
+ResourceStatus represents the status of a resource.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**ready** `required`|bool|ready||
+|**resource** `required`|[InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatusResourcesItems0Resource](#infrastructureclusterxk8siov1beta1azureasomanagedcontrolplanestatusresourcesitems0resource)|resource||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatusResourcesItems0Resource
+
+StatusResource is a handle to a resource.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**group** `required`|str|group||
+|**kind** `required`|str|kind||
+|**name** `required`|str|name||
+|**version** `required`|str|version||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneTemplateSpec
+
+AzureASOManagedControlPlaneTemplateSpec defines the desired state of AzureASOManagedControlPlane.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**template** `required`|[InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneTemplateSpecTemplate](#infrastructureclusterxk8siov1beta1azureasomanagedcontrolplanetemplatespectemplate)|template||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneTemplateSpecTemplate
+
+AzureASOManagedControlPlaneResource defines the templated resource.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**spec**|[InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1beta1azureasomanagedcontrolplanetemplatespectemplatespec)|spec||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneTemplateSpecTemplateSpec
+
+AzureASOManagedControlPlaneTemplateResourceSpec defines the desired state of the templated resource.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**resources**|[]|Resources are embedded ASO resources to be managed by this resource.||
+|**version**|str|Version is the Kubernetes version of the control plane. It fulfills Cluster API's control plane<br />provider contract.||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedMachinePoolSpec
+
+AzureASOManagedMachinePoolSpec defines the desired state of AzureASOManagedMachinePool.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**providerIDList**|[str]|ProviderIDList is the list of cloud provider IDs for the instances. It fulfills Cluster API's machine<br />pool infrastructure provider contract.||
+|**resources**|[]|Resources are embedded ASO resources to be managed by this resource.||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedMachinePoolStatus
+
+AzureASOManagedMachinePoolStatus defines the observed state of AzureASOManagedMachinePool.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**ready**|bool|Ready represents whether or not the infrastructure is ready to be used. It fulfills Cluster API's<br />machine pool infrastructure provider contract.||
+|**replicas**|int|Replicas is the current number of provisioned replicas. It fulfills Cluster API's machine pool<br />infrastructure provider contract.||
+|**resources**|[[InfrastructureClusterxK8sIoV1beta1AzureASOManagedMachinePoolStatusResourcesItems0](#infrastructureclusterxk8siov1beta1azureasomanagedmachinepoolstatusresourcesitems0)]|resources||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedMachinePoolStatusResourcesItems0
+
+ResourceStatus represents the status of a resource.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**ready** `required`|bool|ready||
+|**resource** `required`|[InfrastructureClusterxK8sIoV1beta1AzureASOManagedMachinePoolStatusResourcesItems0Resource](#infrastructureclusterxk8siov1beta1azureasomanagedmachinepoolstatusresourcesitems0resource)|resource||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedMachinePoolStatusResourcesItems0Resource
+
+StatusResource is a handle to a resource.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**group** `required`|str|group||
+|**kind** `required`|str|kind||
+|**name** `required`|str|name||
+|**version** `required`|str|version||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedMachinePoolTemplateSpec
+
+AzureASOManagedMachinePoolTemplateSpec defines the desired state of AzureASOManagedMachinePoolTemplate.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**template** `required`|[InfrastructureClusterxK8sIoV1beta1AzureASOManagedMachinePoolTemplateSpecTemplate](#infrastructureclusterxk8siov1beta1azureasomanagedmachinepooltemplatespectemplate)|template||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedMachinePoolTemplateSpecTemplate
+
+AzureASOManagedControlPlaneResource defines the templated resource.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**spec**|[InfrastructureClusterxK8sIoV1beta1AzureASOManagedMachinePoolTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1beta1azureasomanagedmachinepooltemplatespectemplatespec)|spec||
+### InfrastructureClusterxK8sIoV1beta1AzureASOManagedMachinePoolTemplateSpecTemplateSpec
+
+AzureASOManagedControlPlaneTemplateResourceSpec defines the desired state of the templated resource.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**resources**|[]|Resources are embedded ASO resources to be managed by this resource.||
+|**version**|str|Version is the Kubernetes version of the control plane. It fulfills Cluster API's control plane<br />provider contract.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpec
 
 AzureClusterIdentitySpec defines the parameters that are used to create an AzureIdentity.
@@ -1015,7 +1355,7 @@ AllowedNamespaces is used to identify the namespaces the clusters are allowed to
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**list**|[str]|A nil or empty list indicates that AzureCluster cannot use the identity from any namespace.||
+|**list**|[str]|An empty list indicates that AzureCluster cannot use the identity from any namespace.||
 |**selector**|[InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecAllowedNamespacesSelector](#infrastructureclusterxk8siov1beta1azureclusteridentityspecallowednamespacesselector)|selector||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecAllowedNamespacesSelector
 
@@ -1163,6 +1503,7 @@ NatGateway associated with this subnet.
 |**id**|str|ID is the Azure resource ID of the NAT gateway.<br />READ-ONLY||
 |**ip**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetNatGatewayIP](#infrastructureclusterxk8siov1beta1azureclusterspecbastionspecazurebastionsubnetnatgatewayip)|ip||
 |**name** `required`|str|name||
+|**zones**|[str]|Zones mentions the list of zones the NAT gateway should be a part of.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetNatGatewayIP
 
 PublicIPSpec defines the inputs to create an Azure public IP address.
@@ -1316,8 +1657,8 @@ ControlPlaneEndpoint represents the endpoint used to communicate with the contro
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**host** `required`|str|host is the hostname on which the API server is serving.||
-|**port** `required`|int|port is the port on which the API server is serving.||
+|**host**|str|host is the hostname on which the API server is serving.||
+|**port**|int|port is the port on which the API server is serving.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecExtendedLocation
 
 ExtendedLocation is an optional set of ExtendedLocation properties for clusters on Azure public MEC.
@@ -1365,6 +1706,7 @@ NetworkSpec encapsulates all things related to Azure network.
 |**apiServerLB**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecAPIServerLB](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspecapiserverlb)|api server l b||
 |**controlPlaneOutboundLB**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlaneOutboundLB](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspeccontrolplaneoutboundlb)|control plane outbound l b||
 |**nodeOutboundLB**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecNodeOutboundLB](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspecnodeoutboundlb)|node outbound l b||
+|**privateDNSZone**|"System" | "None"|PrivateDNSZone enables private dns zone creation modes for a private cluster.<br />When unspecified, it defaults to PrivateDNSZoneModeSystem which creates a private DNS zone.||
 |**privateDNSZoneName**|str|PrivateDNSZoneName defines the zone name for the Azure Private DNS.||
 |**privateDNSZoneResourceGroup**|str|PrivateDNSZoneResourceGroup defines the resource group to be used for Azure Private DNS Zone.<br />If not specified, the resource group of the cluster will be used to create the Azure Private DNS Zone.||
 |**subnets**|[[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspecsubnetsitems0)]|Subnets is the configuration for the control-plane subnet and the node subnet.||
@@ -1578,6 +1920,7 @@ NatGateway associated with this subnet.
 |**id**|str|ID is the Azure resource ID of the NAT gateway.<br />READ-ONLY||
 |**ip**|[InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0NatGatewayIP](#infrastructureclusterxk8siov1beta1azureclusterspecnetworkspecsubnetsitems0natgatewayip)|ip||
 |**name** `required`|str|name||
+|**zones**|[str]|Zones mentions the list of zones the NAT gateway should be a part of.||
 ### InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0NatGatewayIP
 
 PublicIPSpec defines the inputs to create an Azure public IP address.
@@ -2483,7 +2826,7 @@ Marketplace specifies an image to use from the Azure Marketplace
 |**version** `required`|str|Version specifies the version of an image sku. The allowed formats<br />are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers.<br />Specify 'latest' to use the latest version of an image available at deploy time.<br />Even if you use 'latest', the VM image will not automatically update after deploy<br />time even if a new version becomes available.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolSpecTemplateImageSharedGallery
 
-SharedGallery specifies an image to use from an Azure Shared Image Gallery Deprecated: use ComputeGallery instead.
+SharedGallery specifies an image to use from an Azure Shared Image Gallery  Deprecated: use ComputeGallery instead.
 
 #### Attributes
 
@@ -2708,7 +3051,7 @@ Marketplace specifies an image to use from the Azure Marketplace
 |**version** `required`|str|Version specifies the version of an image sku. The allowed formats<br />are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers.<br />Specify 'latest' to use the latest version of an image available at deploy time.<br />Even if you use 'latest', the VM image will not automatically update after deploy<br />time even if a new version becomes available.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachinePoolStatusImageSharedGallery
 
-SharedGallery specifies an image to use from an Azure Shared Image Gallery Deprecated: use ComputeGallery instead.
+SharedGallery specifies an image to use from an Azure Shared Image Gallery  Deprecated: use ComputeGallery instead.
 
 #### Attributes
 
@@ -2924,7 +3267,7 @@ Marketplace specifies an image to use from the Azure Marketplace
 |**version** `required`|str|Version specifies the version of an image sku. The allowed formats<br />are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers.<br />Specify 'latest' to use the latest version of an image available at deploy time.<br />Even if you use 'latest', the VM image will not automatically update after deploy<br />time even if a new version becomes available.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineSpecImageSharedGallery
 
-SharedGallery specifies an image to use from an Azure Shared Image Gallery Deprecated: use ComputeGallery instead.
+SharedGallery specifies an image to use from an Azure Shared Image Gallery  Deprecated: use ComputeGallery instead.
 
 #### Attributes
 
@@ -3331,7 +3674,7 @@ Marketplace specifies an image to use from the Azure Marketplace
 |**version** `required`|str|Version specifies the version of an image sku. The allowed formats<br />are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers.<br />Specify 'latest' to use the latest version of an image available at deploy time.<br />Even if you use 'latest', the VM image will not automatically update after deploy<br />time even if a new version becomes available.||
 ### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecImageSharedGallery
 
-SharedGallery specifies an image to use from an Azure Shared Image Gallery Deprecated: use ComputeGallery instead.
+SharedGallery specifies an image to use from an Azure Shared Image Gallery  Deprecated: use ComputeGallery instead.
 
 #### Attributes
 
@@ -3482,6 +3825,26 @@ VMExtension specifies the parameters for a custom VM extension.
 |**publisher** `required`|str|Publisher is the name of the extension handler publisher.||
 |**settings**|{str:str}|Settings is a JSON formatted public settings for the extension.||
 |**version** `required`|str|Version specifies the version of the script handler.||
+### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateStatus
+
+AzureMachineTemplateStatus defines the observed state of AzureMachineTemplate.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**capacity**|{str:int | str}|Capacity defines the resource capacity for this machine.<br />This value is used for autoscaling from zero operations as defined in:<br />https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20210310-opt-in-autoscaling-from-zero.md||
+|**nodeInfo**|[InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateStatusNodeInfo](#infrastructureclusterxk8siov1beta1azuremachinetemplatestatusnodeinfo)|node info||
+### InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateStatusNodeInfo
+
+NodeInfo contains information about the node's architecture and operating system. This value is used for autoscaling from zero operations as defined in: https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20210310-opt-in-autoscaling-from-zero.md
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**architecture**|"amd64" | "arm64"|Architecture is the CPU architecture of the node.<br />Its underlying type is a string and its value can be any of amd64, arm64.||
+|**operatingSystem**|"linux" | "windows"|OperatingSystem is the operating system of the node.<br />Its underlying type is a string and its value can be any of linux, windows.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedClusterSpec
 
 AzureManagedClusterSpec defines the desired state of AzureManagedCluster.
@@ -3499,8 +3862,8 @@ ControlPlaneEndpoint represents the endpoint used to communicate with the contro
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**host** `required`|str|host is the hostname on which the API server is serving.||
-|**port** `required`|int|port is the port on which the API server is serving.||
+|**host**|str|host is the hostname on which the API server is serving.||
+|**port**|int|port is the port on which the API server is serving.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedClusterStatus
 
 AzureManagedClusterStatus defines the observed state of AzureManagedCluster.
@@ -3648,8 +4011,8 @@ ControlPlaneEndpoint represents the endpoint used to communicate with the contro
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**host** `required`|str|host is the hostname on which the API server is serving.||
-|**port** `required`|int|port is the port on which the API server is serving.||
+|**host**|str|host is the hostname on which the API server is serving.||
+|**port**|int|port is the port on which the API server is serving.||
 ### InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecExtensionsItems0
 
 AKSExtension represents the configuration for an AKS cluster extension. See also [AKS doc].  [AKS doc]: https://learn.microsoft.com/en-us/azure/aks/cluster-extensions

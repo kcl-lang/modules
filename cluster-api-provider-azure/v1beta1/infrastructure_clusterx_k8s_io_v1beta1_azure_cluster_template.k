@@ -280,7 +280,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBas
 
 
     check:
-        len(requestMessage) <= 140 if requestMessage
+        len(requestMessage) <= 140 if requestMessage not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecBastionSpecAzureBastionSubnetSecurityGroup:
@@ -823,7 +823,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNet
 
 
     check:
-        len(requestMessage) <= 140 if requestMessage
+        len(requestMessage) <= 140 if requestMessage not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterTemplateSpecTemplateSpecNetworkSpecSubnetsItems0SecurityGroup:

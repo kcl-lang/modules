@@ -264,6 +264,8 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastion
         ip
     name : str, default is Undefined, required
         name
+    zones : [str], default is Undefined, optional
+        Zones mentions the list of zones the NAT gateway should be a part of.
     """
 
 
@@ -272,6 +274,8 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastion
     ip?: InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetNatGatewayIP
 
     name: str
+
+    zones?: [str]
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetNatGatewayIP:
@@ -382,7 +386,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastion
 
 
     check:
-        len(requestMessage) <= 140 if requestMessage
+        len(requestMessage) <= 140 if requestMessage not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecBastionSpecAzureBastionSubnetRouteTable:
@@ -625,20 +629,20 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecControlPlaneEndpoint:
 
     Attributes
     ----------
-    host : str, default is Undefined, required
+    host : str, default is Undefined, optional
         host is the hostname on which the API server is serving.
-    port : int, default is Undefined, required
+    port : int, default is Undefined, optional
         port is the port on which the API server is serving.
     """
 
 
-    host: str
+    host?: str
 
-    port: int
+    port?: int
 
 
     check:
-        len(host) <= 512
+        len(host) <= 512 if host not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecExtendedLocation:
@@ -742,6 +746,9 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpec:
         control plane outbound l b
     nodeOutboundLB : InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecNodeOutboundLB, default is Undefined, optional
         node outbound l b
+    privateDNSZone : str, default is Undefined, optional
+        PrivateDNSZone enables private dns zone creation modes for a private cluster.
+        When unspecified, it defaults to PrivateDNSZoneModeSystem which creates a private DNS zone.
     privateDNSZoneName : str, default is Undefined, optional
         PrivateDNSZoneName defines the zone name for the Azure Private DNS.
     privateDNSZoneResourceGroup : str, default is Undefined, optional
@@ -761,6 +768,8 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpec:
     controlPlaneOutboundLB?: InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecControlPlaneOutboundLB
 
     nodeOutboundLB?: InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecNodeOutboundLB
+
+    privateDNSZone?: "System" | "None"
 
     privateDNSZoneName?: str
 
@@ -1222,6 +1231,8 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems
         ip
     name : str, default is Undefined, required
         name
+    zones : [str], default is Undefined, optional
+        Zones mentions the list of zones the NAT gateway should be a part of.
     """
 
 
@@ -1230,6 +1241,8 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems
     ip?: InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0NatGatewayIP
 
     name: str
+
+    zones?: [str]
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0NatGatewayIP:
@@ -1340,7 +1353,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems
 
 
     check:
-        len(requestMessage) <= 140 if requestMessage
+        len(requestMessage) <= 140 if requestMessage not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureClusterSpecNetworkSpecSubnetsItems0RouteTable:
@@ -1665,11 +1678,11 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterStatusConditionsItems0:
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 

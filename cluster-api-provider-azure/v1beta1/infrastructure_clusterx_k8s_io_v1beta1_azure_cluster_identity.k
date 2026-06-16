@@ -101,7 +101,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecAllowedNamespac
     Attributes
     ----------
     list : [str], default is Undefined, optional
-        A nil or empty list indicates that AzureCluster cannot use the identity from any namespace.
+        An empty list indicates that AzureCluster cannot use the identity from any namespace.
     selector : InfrastructureClusterxK8sIoV1beta1AzureClusterIdentitySpecAllowedNamespacesSelector, default is Undefined, optional
         selector
     """
@@ -241,11 +241,11 @@ schema InfrastructureClusterxK8sIoV1beta1AzureClusterIdentityStatusConditionsIte
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 
