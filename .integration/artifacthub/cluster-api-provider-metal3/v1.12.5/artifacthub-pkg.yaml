@@ -1,0 +1,26 @@
+version: v1.12.5
+name: cluster-api-provider-metal3
+displayName: cluster-api-provider-metal3
+createdAt: "2026-06-16T16:46:27Z"
+description: KCL package for https://github.com/metal3-io/cluster-api-provider-metal3
+  CRDs
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `cluster-api-provider-metal3` with tag `v1.12.5` as dependency
+  ```
+  kcl mod add cluster-api-provider-metal3:v1.12.5
+  ```
+
+  #### Pull `cluster-api-provider-metal3` with tag `v1.12.5` to local
+  ```
+  kcl mod pull cluster-api-provider-metal3:v1.12.5
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
