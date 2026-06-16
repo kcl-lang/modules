@@ -49,12 +49,17 @@
 - v1beta1
   - [InfrastructureClusterxK8sIoV1beta1Metal3ClusterSpec](#infrastructureclusterxk8siov1beta1metal3clusterspec)
   - [InfrastructureClusterxK8sIoV1beta1Metal3ClusterSpecControlPlaneEndpoint](#infrastructureclusterxk8siov1beta1metal3clusterspeccontrolplaneendpoint)
+  - [InfrastructureClusterxK8sIoV1beta1Metal3ClusterSpecFailureDomainsAnon](#infrastructureclusterxk8siov1beta1metal3clusterspecfailuredomainsanon)
   - [InfrastructureClusterxK8sIoV1beta1Metal3ClusterStatus](#infrastructureclusterxk8siov1beta1metal3clusterstatus)
   - [InfrastructureClusterxK8sIoV1beta1Metal3ClusterStatusConditionsItems0](#infrastructureclusterxk8siov1beta1metal3clusterstatusconditionsitems0)
+  - [InfrastructureClusterxK8sIoV1beta1Metal3ClusterStatusFailureDomainsAnon](#infrastructureclusterxk8siov1beta1metal3clusterstatusfailuredomainsanon)
+  - [InfrastructureClusterxK8sIoV1beta1Metal3ClusterStatusV1beta2](#infrastructureclusterxk8siov1beta1metal3clusterstatusv1beta2)
+  - [InfrastructureClusterxK8sIoV1beta1Metal3ClusterStatusV1beta2ConditionsItems0](#infrastructureclusterxk8siov1beta1metal3clusterstatusv1beta2conditionsitems0)
   - [InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpec](#infrastructureclusterxk8siov1beta1metal3clustertemplatespec)
   - [InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpecTemplate](#infrastructureclusterxk8siov1beta1metal3clustertemplatespectemplate)
   - [InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1beta1metal3clustertemplatespectemplatespec)
   - [InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpecTemplateSpecControlPlaneEndpoint](#infrastructureclusterxk8siov1beta1metal3clustertemplatespectemplatespeccontrolplaneendpoint)
+  - [InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpecTemplateSpecFailureDomainsAnon](#infrastructureclusterxk8siov1beta1metal3clustertemplatespectemplatespecfailuredomainsanon)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataClaimSpec](#infrastructureclusterxk8siov1beta1metal3dataclaimspec)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataClaimSpecTemplate](#infrastructureclusterxk8siov1beta1metal3dataclaimspectemplate)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataClaimStatus](#infrastructureclusterxk8siov1beta1metal3dataclaimstatus)
@@ -93,24 +98,36 @@
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4DHCPItems0](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv4dhcpitems0)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4DHCPItems0RoutesItems0](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv4dhcpitems0routesitems0)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4DHCPItems0RoutesItems0Gateway](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv4dhcpitems0routesitems0gateway)
+  - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4DHCPItems0RoutesItems0GatewayFromPoolAnnotation](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv4dhcpitems0routesitems0gatewayfrompoolannotation)
+  - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4DHCPItems0RoutesItems0GatewayFromPoolRef](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv4dhcpitems0routesitems0gatewayfrompoolref)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4DHCPItems0RoutesItems0Services](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv4dhcpitems0routesitems0services)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv4items0)
+  - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0FromPoolAnnotation](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv4items0frompoolannotation)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0FromPoolRef](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv4items0frompoolref)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0RoutesItems0](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv4items0routesitems0)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0RoutesItems0Gateway](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv4items0routesitems0gateway)
+  - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0RoutesItems0GatewayFromPoolAnnotation](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv4items0routesitems0gatewayfrompoolannotation)
+  - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0RoutesItems0GatewayFromPoolRef](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv4items0routesitems0gatewayfrompoolref)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0RoutesItems0Services](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv4items0routesitems0services)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6dhcpitems0)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0RoutesItems0](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6dhcpitems0routesitems0)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0RoutesItems0Gateway](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6dhcpitems0routesitems0gateway)
+  - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0RoutesItems0GatewayFromPoolAnnotation](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6dhcpitems0routesitems0gatewayfrompoolannotation)
+  - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0RoutesItems0GatewayFromPoolRef](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6dhcpitems0routesitems0gatewayfrompoolref)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0RoutesItems0Services](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6dhcpitems0routesitems0services)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6items0)
+  - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0FromPoolAnnotation](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6items0frompoolannotation)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0FromPoolRef](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6items0frompoolref)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0RoutesItems0](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6items0routesitems0)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0RoutesItems0Gateway](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6items0routesitems0gateway)
+  - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0RoutesItems0GatewayFromPoolAnnotation](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6items0routesitems0gatewayfrompoolannotation)
+  - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0RoutesItems0GatewayFromPoolRef](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6items0routesitems0gatewayfrompoolref)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0RoutesItems0Services](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6items0routesitems0services)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6slaacitems0)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0RoutesItems0](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6slaacitems0routesitems0)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0RoutesItems0Gateway](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6slaacitems0routesitems0gateway)
+  - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0RoutesItems0GatewayFromPoolAnnotation](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6slaacitems0routesitems0gatewayfrompoolannotation)
+  - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0RoutesItems0GatewayFromPoolRef](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6slaacitems0routesitems0gatewayfrompoolref)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0RoutesItems0Services](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6slaacitems0routesitems0services)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataServices](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdataservices)
   - [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateStatus](#infrastructureclusterxk8siov1beta1metal3datatemplatestatus)
@@ -130,6 +147,8 @@
   - [InfrastructureClusterxK8sIoV1beta1Metal3MachineStatusNetworkData](#infrastructureclusterxk8siov1beta1metal3machinestatusnetworkdata)
   - [InfrastructureClusterxK8sIoV1beta1Metal3MachineStatusRenderedData](#infrastructureclusterxk8siov1beta1metal3machinestatusrendereddata)
   - [InfrastructureClusterxK8sIoV1beta1Metal3MachineStatusUserData](#infrastructureclusterxk8siov1beta1metal3machinestatususerdata)
+  - [InfrastructureClusterxK8sIoV1beta1Metal3MachineStatusV1beta2](#infrastructureclusterxk8siov1beta1metal3machinestatusv1beta2)
+  - [InfrastructureClusterxK8sIoV1beta1Metal3MachineStatusV1beta2ConditionsItems0](#infrastructureclusterxk8siov1beta1metal3machinestatusv1beta2conditionsitems0)
   - [InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpec](#infrastructureclusterxk8siov1beta1metal3machinetemplatespec)
   - [InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplate](#infrastructureclusterxk8siov1beta1metal3machinetemplatespectemplate)
   - [InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpec](#infrastructureclusterxk8siov1beta1metal3machinetemplatespectemplatespec)
@@ -721,6 +740,7 @@ Metal3ClusterSpec defines the desired state of Metal3Cluster.
 | --- | --- | --- | --- |
 |**cloudProviderEnabled**|bool|Determines if the cluster is to be deployed with an external cloud provider.<br />If set to false, CAPM3 will use node labels to set providerID on the kubernetes nodes.<br />If set to true, providerID is set on nodes by other entities and CAPM3 uses the value of the providerID on the m3m resource.<br />Default value is true, it is set in the webhook.||
 |**controlPlaneEndpoint**|[InfrastructureClusterxK8sIoV1beta1Metal3ClusterSpecControlPlaneEndpoint](#infrastructureclusterxk8siov1beta1metal3clusterspeccontrolplaneendpoint)|control plane endpoint||
+|**failureDomains**|{str:[InfrastructureClusterxK8sIoV1beta1Metal3ClusterSpecFailureDomainsAnon](#infrastructureclusterxk8siov1beta1metal3clusterspecfailuredomainsanon)}|FailureDomains specifies a list fo failure zones that can be used||
 |**noCloudProvider**|bool|Determines if the cluster is not to be deployed with an external cloud provider.<br />If set to true, CAPM3 will use node labels to set providerID on the kubernetes nodes.<br />If set to false, providerID is set on nodes by other entities and CAPM3 uses the value of the providerID on the m3m resource.<br /><br />Deprecated: This field is deprecated, use cloudProviderEnabled instead||
 ### InfrastructureClusterxK8sIoV1beta1Metal3ClusterSpecControlPlaneEndpoint
 
@@ -732,6 +752,16 @@ ControlPlaneEndpoint represents the endpoint used to communicate with the contro
 | --- | --- | --- | --- |
 |**host** `required`|str|Host is the hostname on which the API server is serving.||
 |**port** `required`|int|Port is the port on which the API server is serving.||
+### InfrastructureClusterxK8sIoV1beta1Metal3ClusterSpecFailureDomainsAnon
+
+FailureDomainSpec is the Schema for Cluster API failure domains. It allows controllers to understand how many failure domains a cluster can optionally span across.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**attributes**|{str:str}|attributes is a free form map of attributes an infrastructure provider might use or require.||
+|**controlPlane**|bool|controlPlane determines if this failure domain is suitable for use by control plane machines.||
 ### InfrastructureClusterxK8sIoV1beta1Metal3ClusterStatus
 
 Metal3ClusterStatus defines the observed state of Metal3Cluster.
@@ -741,10 +771,12 @@ Metal3ClusterStatus defines the observed state of Metal3Cluster.
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**conditions**|[[InfrastructureClusterxK8sIoV1beta1Metal3ClusterStatusConditionsItems0](#infrastructureclusterxk8siov1beta1metal3clusterstatusconditionsitems0)]|Conditions defines current service state of the Metal3Cluster.||
+|**failureDomains**|{str:[InfrastructureClusterxK8sIoV1beta1Metal3ClusterStatusFailureDomainsAnon](#infrastructureclusterxk8siov1beta1metal3clusterstatusfailuredomainsanon)}|FailureDomains specifies a list fo failure zones that can be used||
 |**failureMessage**|str|FailureMessage indicates that there is a fatal problem reconciling the<br />state, and will be set to a descriptive error message.||
 |**failureReason**|str|FailureReason indicates that there is a fatal problem reconciling the<br />state, and will be set to a token value suitable for<br />programmatic interpretation.||
 |**lastUpdated**|str|LastUpdated identifies when this status was last observed.||
 |**ready**|bool|Ready denotes that the Metal3 cluster (infrastructure) is ready. In<br />Baremetal case, it does not mean anything for now as no infrastructure<br />steps need to be performed. Required by Cluster API. Set to True by the<br />metal3Cluster controller after creation.||
+|**v1beta2**|[InfrastructureClusterxK8sIoV1beta1Metal3ClusterStatusV1beta2](#infrastructureclusterxk8siov1beta1metal3clusterstatusv1beta2)|v1beta2||
 ### InfrastructureClusterxK8sIoV1beta1Metal3ClusterStatusConditionsItems0
 
 Condition defines an observation of a Cluster API resource operational state.
@@ -758,6 +790,39 @@ Condition defines an observation of a Cluster API resource operational state.
 |**reason**|str|reason is the reason for the condition's last transition in CamelCase.<br />The specific API may choose whether or not this field is considered a guaranteed API.<br />This field may be empty.||
 |**severity**|str|severity provides an explicit classification of Reason code, so the users or machines can immediately<br />understand the current situation and act accordingly.<br />The Severity field MUST be set only when Status=False.||
 |**status** `required`|str|status of the condition, one of True, False, Unknown.||
+|**type** `required`|str|||
+### InfrastructureClusterxK8sIoV1beta1Metal3ClusterStatusFailureDomainsAnon
+
+FailureDomainSpec is the Schema for Cluster API failure domains. It allows controllers to understand how many failure domains a cluster can optionally span across.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**attributes**|{str:str}|attributes is a free form map of attributes an infrastructure provider might use or require.||
+|**controlPlane**|bool|controlPlane determines if this failure domain is suitable for use by control plane machines.||
+### InfrastructureClusterxK8sIoV1beta1Metal3ClusterStatusV1beta2
+
+v1beta2 groups all the fields that will be added or modified in Metal3Cluster's status with the V1Beta2 version.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**conditions**|[[InfrastructureClusterxK8sIoV1beta1Metal3ClusterStatusV1beta2ConditionsItems0](#infrastructureclusterxk8siov1beta1metal3clusterstatusv1beta2conditionsitems0)]|conditions represents the observations of a Metal3Cluster's current state.<br />Known condition types are Ready, and Paused, BareMetalInfraStructureReady.||
+### InfrastructureClusterxK8sIoV1beta1Metal3ClusterStatusV1beta2ConditionsItems0
+
+Condition contains details for one aspect of the current state of this API Resource.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.||
+|**message** `required`|str|message is a human readable message indicating details about the transition.<br />This may be an empty string.||
+|**observedGeneration**|int|observedGeneration represents the .metadata.generation that the condition was set based upon.<br />For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date<br />with respect to the current state of the instance.||
+|**reason** `required`|str|reason contains a programmatic identifier indicating the reason for the condition's last transition.<br />Producers of specific condition types may define expected values and meanings for this field,<br />and whether the values are considered a guaranteed API.<br />The value should be a CamelCase string.<br />This field may not be empty.||
+|**status** `required`|"True" | "False" | "Unknown"|status of the condition, one of True, False, Unknown.||
 |**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpec
 
@@ -787,6 +852,7 @@ Metal3ClusterSpec defines the desired state of Metal3Cluster.
 | --- | --- | --- | --- |
 |**cloudProviderEnabled**|bool|Determines if the cluster is to be deployed with an external cloud provider.<br />If set to false, CAPM3 will use node labels to set providerID on the kubernetes nodes.<br />If set to true, providerID is set on nodes by other entities and CAPM3 uses the value of the providerID on the m3m resource.<br />Default value is true, it is set in the webhook.||
 |**controlPlaneEndpoint**|[InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpecTemplateSpecControlPlaneEndpoint](#infrastructureclusterxk8siov1beta1metal3clustertemplatespectemplatespeccontrolplaneendpoint)|control plane endpoint||
+|**failureDomains**|{str:[InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpecTemplateSpecFailureDomainsAnon](#infrastructureclusterxk8siov1beta1metal3clustertemplatespectemplatespecfailuredomainsanon)}|FailureDomains specifies a list fo failure zones that can be used||
 |**noCloudProvider**|bool|Determines if the cluster is not to be deployed with an external cloud provider.<br />If set to true, CAPM3 will use node labels to set providerID on the kubernetes nodes.<br />If set to false, providerID is set on nodes by other entities and CAPM3 uses the value of the providerID on the m3m resource.<br /><br />Deprecated: This field is deprecated, use cloudProviderEnabled instead||
 ### InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpecTemplateSpecControlPlaneEndpoint
 
@@ -798,6 +864,16 @@ ControlPlaneEndpoint represents the endpoint used to communicate with the contro
 | --- | --- | --- | --- |
 |**host** `required`|str|Host is the hostname on which the API server is serving.||
 |**port** `required`|int|Port is the port on which the API server is serving.||
+### InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpecTemplateSpecFailureDomainsAnon
+
+FailureDomainSpec is the Schema for Cluster API failure domains. It allows controllers to understand how many failure domains a cluster can optionally span across.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**attributes**|{str:str}|attributes is a free form map of attributes an infrastructure provider might use or require.||
+|**controlPlane**|bool|controlPlane determines if this failure domain is suitable for use by control plane machines.||
 ### InfrastructureClusterxK8sIoV1beta1Metal3DataClaimSpec
 
 Metal3DataClaimSpec defines the desired state of Metal3DataClaim.
@@ -1110,6 +1186,7 @@ NetworkDataLinkBond represents a bond link object.
 |**id** `required`|str|Id is the ID of the interface (used for naming)||
 |**macAddress** `required`|[InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksBondsItems0MacAddress](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatalinksbondsitems0macaddress)|mac address||
 |**mtu**|int|MTU is the MTU of the interface|1500|
+|**parameters**|{str:}|params blob passed without any validation/modifications into cloud-init config||
 ### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksBondsItems0MacAddress
 
 MACAddress is the MAC address of the interface, containing the object used to render it.
@@ -1243,7 +1320,30 @@ Gateway is the IPv4 address of the gateway
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**fromIPPool**|str|FromIPPool is the name of the IPPool to fetch the gateway from||
+|**fromPoolAnnotation**|[InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4DHCPItems0RoutesItems0GatewayFromPoolAnnotation](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv4dhcpitems0routesitems0gatewayfrompoolannotation)|from pool annotation||
+|**fromPoolRef**|[InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4DHCPItems0RoutesItems0GatewayFromPoolRef](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv4dhcpitems0routesitems0gatewayfrompoolref)|from pool ref||
 |**string**|str|String is the gateway given as a string||
+### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4DHCPItems0RoutesItems0GatewayFromPoolAnnotation
+
+FromPoolAnnotation allows specifying the pool name via an annotation on a Machine, Metal3Machine, or BareMetalHost object. When set, FromIPPool and FromPoolRef are ignored.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**annotation** `required`|str|Annotation is the key of the annotation that contains the pool name.<br />The annotation value should be a string containing the pool name.||
+|**object** `required`|"machine" | "metal3machine" | "baremetalhost"|Object is the type of the object from which we retrieve the annotation||
+### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4DHCPItems0RoutesItems0GatewayFromPoolRef
+
+FromPoolRef is a reference to a IP pool to fetch the gateway from
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiGroup**|str|APIGroup is the group for the resource being referenced.<br />If APIGroup is not specified, the specified Kind must be in the core API group.<br />For any other third-party types, APIGroup is required.||
+|**kind** `required`|str|Kind is the type of resource being referenced||
+|**name** `required`|str|Name is the name of resource being referenced||
 ### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4DHCPItems0RoutesItems0Services
 
 Services is a list of IPv4 services
@@ -1262,11 +1362,22 @@ NetworkDataIPv4 represents an ipv4 static network object.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**fromPoolAnnotation**|[InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0FromPoolAnnotation](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv4items0frompoolannotation)|from pool annotation||
 |**fromPoolRef**|[InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0FromPoolRef](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv4items0frompoolref)|from pool ref||
 |**id** `required`|str|ID is the network ID (name)||
 |**ipAddressFromIPPool**|str|IPAddressFromIPPool contains the name of the IP pool to use to get an ip address||
 |**link** `required`|str|Link is the link on which the network applies||
 |**routes**|[[InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0RoutesItems0](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv4items0routesitems0)]|Routes contains a list of IPv4 routes||
+### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0FromPoolAnnotation
+
+FromPoolAnnotation allows specifying the pool reference via an annotation on a Machine, Metal3Machine, or BareMetalHost object. When set, IPAddressFromIPPool and FromPoolRef are ignored.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**annotation** `required`|str|Annotation is the key of the annotation that contains the pool name.<br />The annotation value should be a string containing the pool name.||
+|**object** `required`|"machine" | "metal3machine" | "baremetalhost"|Object is the type of the object from which we retrieve the annotation||
 ### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0FromPoolRef
 
 FromPoolRef is a reference to a IP pool to allocate an address from.
@@ -1299,7 +1410,30 @@ Gateway is the IPv4 address of the gateway
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**fromIPPool**|str|FromIPPool is the name of the IPPool to fetch the gateway from||
+|**fromPoolAnnotation**|[InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0RoutesItems0GatewayFromPoolAnnotation](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv4items0routesitems0gatewayfrompoolannotation)|from pool annotation||
+|**fromPoolRef**|[InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0RoutesItems0GatewayFromPoolRef](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv4items0routesitems0gatewayfrompoolref)|from pool ref||
 |**string**|str|String is the gateway given as a string||
+### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0RoutesItems0GatewayFromPoolAnnotation
+
+FromPoolAnnotation allows specifying the pool name via an annotation on a Machine, Metal3Machine, or BareMetalHost object. When set, FromIPPool and FromPoolRef are ignored.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**annotation** `required`|str|Annotation is the key of the annotation that contains the pool name.<br />The annotation value should be a string containing the pool name.||
+|**object** `required`|"machine" | "metal3machine" | "baremetalhost"|Object is the type of the object from which we retrieve the annotation||
+### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0RoutesItems0GatewayFromPoolRef
+
+FromPoolRef is a reference to a IP pool to fetch the gateway from
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiGroup**|str|APIGroup is the group for the resource being referenced.<br />If APIGroup is not specified, the specified Kind must be in the core API group.<br />For any other third-party types, APIGroup is required.||
+|**kind** `required`|str|Kind is the type of resource being referenced||
+|**name** `required`|str|Name is the name of resource being referenced||
 ### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0RoutesItems0Services
 
 Services is a list of IPv4 services
@@ -1342,7 +1476,30 @@ Gateway is the IPv6 address of the gateway
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**fromIPPool**|str|FromIPPool is the name of the IPPool to fetch the gateway from||
+|**fromPoolAnnotation**|[InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0RoutesItems0GatewayFromPoolAnnotation](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6dhcpitems0routesitems0gatewayfrompoolannotation)|from pool annotation||
+|**fromPoolRef**|[InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0RoutesItems0GatewayFromPoolRef](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6dhcpitems0routesitems0gatewayfrompoolref)|from pool ref||
 |**string**|str|String is the gateway given as a string||
+### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0RoutesItems0GatewayFromPoolAnnotation
+
+FromPoolAnnotation allows specifying the pool name via an annotation on a Machine, Metal3Machine, or BareMetalHost object. When set, FromIPPool and FromPoolRef are ignored.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**annotation** `required`|str|Annotation is the key of the annotation that contains the pool name.<br />The annotation value should be a string containing the pool name.||
+|**object** `required`|"machine" | "metal3machine" | "baremetalhost"|Object is the type of the object from which we retrieve the annotation||
+### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0RoutesItems0GatewayFromPoolRef
+
+FromPoolRef is a reference to a IP pool to fetch the gateway from
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiGroup**|str|APIGroup is the group for the resource being referenced.<br />If APIGroup is not specified, the specified Kind must be in the core API group.<br />For any other third-party types, APIGroup is required.||
+|**kind** `required`|str|Kind is the type of resource being referenced||
+|**name** `required`|str|Name is the name of resource being referenced||
 ### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0RoutesItems0Services
 
 Services is a list of IPv6 services
@@ -1361,11 +1518,22 @@ NetworkDataIPv6 represents an ipv6 static network object.
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
+|**fromPoolAnnotation**|[InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0FromPoolAnnotation](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6items0frompoolannotation)|from pool annotation||
 |**fromPoolRef**|[InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0FromPoolRef](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6items0frompoolref)|from pool ref||
 |**id** `required`|str|ID is the network ID (name)||
 |**ipAddressFromIPPool** `required`|str|IPAddressFromIPPool contains the name of the IPPool to use to get an ip address||
 |**link** `required`|str|Link is the link on which the network applies||
 |**routes**|[[InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0RoutesItems0](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6items0routesitems0)]|Routes contains a list of IPv6 routes||
+### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0FromPoolAnnotation
+
+FromPoolAnnotation allows specifying the pool reference via an annotation on a Machine, Metal3Machine, or BareMetalHost object. When set, IPAddressFromIPPool and FromPoolRef are ignored.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**annotation** `required`|str|Annotation is the key of the annotation that contains the pool name.<br />The annotation value should be a string containing the pool name.||
+|**object** `required`|"machine" | "metal3machine" | "baremetalhost"|Object is the type of the object from which we retrieve the annotation||
 ### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0FromPoolRef
 
 FromPoolRef is a reference to a IP pool to allocate an address from.
@@ -1398,7 +1566,30 @@ Gateway is the IPv6 address of the gateway
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**fromIPPool**|str|FromIPPool is the name of the IPPool to fetch the gateway from||
+|**fromPoolAnnotation**|[InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0RoutesItems0GatewayFromPoolAnnotation](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6items0routesitems0gatewayfrompoolannotation)|from pool annotation||
+|**fromPoolRef**|[InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0RoutesItems0GatewayFromPoolRef](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6items0routesitems0gatewayfrompoolref)|from pool ref||
 |**string**|str|String is the gateway given as a string||
+### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0RoutesItems0GatewayFromPoolAnnotation
+
+FromPoolAnnotation allows specifying the pool name via an annotation on a Machine, Metal3Machine, or BareMetalHost object. When set, FromIPPool and FromPoolRef are ignored.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**annotation** `required`|str|Annotation is the key of the annotation that contains the pool name.<br />The annotation value should be a string containing the pool name.||
+|**object** `required`|"machine" | "metal3machine" | "baremetalhost"|Object is the type of the object from which we retrieve the annotation||
+### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0RoutesItems0GatewayFromPoolRef
+
+FromPoolRef is a reference to a IP pool to fetch the gateway from
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiGroup**|str|APIGroup is the group for the resource being referenced.<br />If APIGroup is not specified, the specified Kind must be in the core API group.<br />For any other third-party types, APIGroup is required.||
+|**kind** `required`|str|Kind is the type of resource being referenced||
+|**name** `required`|str|Name is the name of resource being referenced||
 ### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0RoutesItems0Services
 
 Services is a list of IPv6 services
@@ -1441,7 +1632,30 @@ Gateway is the IPv6 address of the gateway
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**fromIPPool**|str|FromIPPool is the name of the IPPool to fetch the gateway from||
+|**fromPoolAnnotation**|[InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0RoutesItems0GatewayFromPoolAnnotation](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6slaacitems0routesitems0gatewayfrompoolannotation)|from pool annotation||
+|**fromPoolRef**|[InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0RoutesItems0GatewayFromPoolRef](#infrastructureclusterxk8siov1beta1metal3datatemplatespecnetworkdatanetworksipv6slaacitems0routesitems0gatewayfrompoolref)|from pool ref||
 |**string**|str|String is the gateway given as a string||
+### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0RoutesItems0GatewayFromPoolAnnotation
+
+FromPoolAnnotation allows specifying the pool name via an annotation on a Machine, Metal3Machine, or BareMetalHost object. When set, FromIPPool and FromPoolRef are ignored.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**annotation** `required`|str|Annotation is the key of the annotation that contains the pool name.<br />The annotation value should be a string containing the pool name.||
+|**object** `required`|"machine" | "metal3machine" | "baremetalhost"|Object is the type of the object from which we retrieve the annotation||
+### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0RoutesItems0GatewayFromPoolRef
+
+FromPoolRef is a reference to a IP pool to fetch the gateway from
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**apiGroup**|str|APIGroup is the group for the resource being referenced.<br />If APIGroup is not specified, the specified Kind must be in the core API group.<br />For any other third-party types, APIGroup is required.||
+|**kind** `required`|str|Kind is the type of resource being referenced||
+|**name** `required`|str|Name is the name of resource being referenced||
 ### InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0RoutesItems0Services
 
 Services is a list of IPv6 services
@@ -1483,6 +1697,7 @@ Metal3MachineSpec defines the desired state of Metal3Machine.
 |**automatedCleaningMode**|"metadata" | "disabled"|When set to disabled, automated cleaning of host disks will be skipped<br />during provisioning and deprovisioning.||
 |**customDeploy**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineSpecCustomDeploy](#infrastructureclusterxk8siov1beta1metal3machinespeccustomdeploy)|custom deploy||
 |**dataTemplate**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineSpecDataTemplate](#infrastructureclusterxk8siov1beta1metal3machinespecdatatemplate)|data template||
+|**failureDomain**|str|FailureDomain is the failure domain unique identifier this Machine should be attached to, as defined in Cluster API.||
 |**hostSelector**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineSpecHostSelector](#infrastructureclusterxk8siov1beta1metal3machinespechostselector)|host selector||
 |**image**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineSpecImage](#infrastructureclusterxk8siov1beta1metal3machinespecimage)|image||
 |**metaData**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineSpecMetaData](#infrastructureclusterxk8siov1beta1metal3machinespecmetadata)|meta data||
@@ -1595,6 +1810,7 @@ Metal3MachineStatus defines the observed state of Metal3Machine.
 |**ready**|bool|Ready is the state of the metal3.<br />mhrivnak: " it would be good to document what this means, how to interpret<br />it, under what circumstances the value changes, etc."||
 |**renderedData**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineStatusRenderedData](#infrastructureclusterxk8siov1beta1metal3machinestatusrendereddata)|rendered data||
 |**userData**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineStatusUserData](#infrastructureclusterxk8siov1beta1metal3machinestatususerdata)|user data||
+|**v1beta2**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineStatusV1beta2](#infrastructureclusterxk8siov1beta1metal3machinestatusv1beta2)|v1beta2||
 ### InfrastructureClusterxK8sIoV1beta1Metal3MachineStatusAddressesItems0
 
 MachineAddress contains information for the node's address.
@@ -1664,6 +1880,29 @@ UserData references the Secret that holds user data needed by the bare metal ope
 | --- | --- | --- | --- |
 |**name**|str|name is unique within a namespace to reference a secret resource.||
 |**namespace**|str|namespace defines the space within which the secret name must be unique.||
+### InfrastructureClusterxK8sIoV1beta1Metal3MachineStatusV1beta2
+
+v1beta2 groups all the fields that will be added or modified in Metal3Machine's status with the V1Beta2 version.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**conditions**|[[InfrastructureClusterxK8sIoV1beta1Metal3MachineStatusV1beta2ConditionsItems0](#infrastructureclusterxk8siov1beta1metal3machinestatusv1beta2conditionsitems0)]|conditions represents the observations of a Metal3Machine's current state.<br />Known condition types are Ready, AssociateBareMetalHost, KubernetesNodeReady, Metal3DataReady and Paused.||
+### InfrastructureClusterxK8sIoV1beta1Metal3MachineStatusV1beta2ConditionsItems0
+
+Condition contains details for one aspect of the current state of this API Resource.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**lastTransitionTime** `required`|str|lastTransitionTime is the last time the condition transitioned from one status to another.<br />This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.||
+|**message** `required`|str|message is a human readable message indicating details about the transition.<br />This may be an empty string.||
+|**observedGeneration**|int|observedGeneration represents the .metadata.generation that the condition was set based upon.<br />For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date<br />with respect to the current state of the instance.||
+|**reason** `required`|str|reason contains a programmatic identifier indicating the reason for the condition's last transition.<br />Producers of specific condition types may define expected values and meanings for this field,<br />and whether the values are considered a guaranteed API.<br />The value should be a CamelCase string.<br />This field may not be empty.||
+|**status** `required`|"True" | "False" | "Unknown"|status of the condition, one of True, False, Unknown.||
+|**type** `required`|str|||
 ### InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpec
 
 Metal3MachineTemplateSpec defines the desired state of Metal3MachineTemplate.
@@ -1694,6 +1933,7 @@ Spec is the specification of the desired behavior of the machine.
 |**automatedCleaningMode**|"metadata" | "disabled"|When set to disabled, automated cleaning of host disks will be skipped<br />during provisioning and deprovisioning.||
 |**customDeploy**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecCustomDeploy](#infrastructureclusterxk8siov1beta1metal3machinetemplatespectemplatespeccustomdeploy)|custom deploy||
 |**dataTemplate**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecDataTemplate](#infrastructureclusterxk8siov1beta1metal3machinetemplatespectemplatespecdatatemplate)|data template||
+|**failureDomain**|str|FailureDomain is the failure domain unique identifier this Machine should be attached to, as defined in Cluster API.||
 |**hostSelector**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecHostSelector](#infrastructureclusterxk8siov1beta1metal3machinetemplatespectemplatespechostselector)|host selector||
 |**image**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecImage](#infrastructureclusterxk8siov1beta1metal3machinetemplatespectemplatespecimage)|image||
 |**metaData**|[InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecMetaData](#infrastructureclusterxk8siov1beta1metal3machinetemplatespectemplatespecmetadata)|meta data||

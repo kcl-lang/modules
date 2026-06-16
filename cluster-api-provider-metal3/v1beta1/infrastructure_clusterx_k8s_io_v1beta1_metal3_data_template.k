@@ -442,6 +442,8 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksB
         mac address
     mtu : int, default is 1500, optional
         MTU is the MTU of the interface
+    parameters : {str:any}, default is Undefined, optional
+        params blob passed without any validation/modifications into cloud-init config
     """
 
 
@@ -456,6 +458,8 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksB
     macAddress: InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataLinksBondsItems0MacAddress
 
     mtu?: int = 1500
+
+    parameters?: {str:any}
 
 
     check:
@@ -748,6 +752,10 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
     ----------
     fromIPPool : str, default is Undefined, optional
         FromIPPool is the name of the IPPool to fetch the gateway from
+    fromPoolAnnotation : InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4DHCPItems0RoutesItems0GatewayFromPoolAnnotation, default is Undefined, optional
+        from pool annotation
+    fromPoolRef : InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4DHCPItems0RoutesItems0GatewayFromPoolRef, default is Undefined, optional
+        from pool ref
     string : str, default is Undefined, optional
         String is the gateway given as a string
     """
@@ -755,11 +763,60 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
     fromIPPool?: str
 
+    fromPoolAnnotation?: InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4DHCPItems0RoutesItems0GatewayFromPoolAnnotation
+
+    fromPoolRef?: InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4DHCPItems0RoutesItems0GatewayFromPoolRef
+
     string?: str
 
 
     check:
         _regex_match(str(string), r"^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))$") if string
+
+
+schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4DHCPItems0RoutesItems0GatewayFromPoolAnnotation:
+    r"""
+    FromPoolAnnotation allows specifying the pool name via an annotation on
+    a Machine, Metal3Machine, or BareMetalHost object.
+    When set, FromIPPool and FromPoolRef are ignored.
+
+    Attributes
+    ----------
+    annotation : str, default is Undefined, required
+        Annotation is the key of the annotation that contains the pool name.
+        The annotation value should be a string containing the pool name.
+    object : str, default is Undefined, required
+        Object is the type of the object from which we retrieve the annotation
+    """
+
+
+    annotation: str
+
+    object: "machine" | "metal3machine" | "baremetalhost"
+
+
+schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4DHCPItems0RoutesItems0GatewayFromPoolRef:
+    r"""
+    FromPoolRef is a reference to a IP pool to fetch the gateway from
+
+    Attributes
+    ----------
+    apiGroup : str, default is Undefined, optional
+        APIGroup is the group for the resource being referenced.
+        If APIGroup is not specified, the specified Kind must be in the core API group.
+        For any other third-party types, APIGroup is required.
+    kind : str, default is Undefined, required
+        Kind is the type of resource being referenced
+    name : str, default is Undefined, required
+        Name is the name of resource being referenced
+    """
+
+
+    apiGroup?: str
+
+    kind: str
+
+    name: str
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4DHCPItems0RoutesItems0Services:
@@ -781,7 +838,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
     check:
-        all dns in dns { _regex_match(str(dns), r"^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))$") if dns } if dns
+        all i in dns { _regex_match(str(i), r"^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))$") if i } if dns
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0:
@@ -790,6 +847,8 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
     Attributes
     ----------
+    fromPoolAnnotation : InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0FromPoolAnnotation, default is Undefined, optional
+        from pool annotation
     fromPoolRef : InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0FromPoolRef, default is Undefined, optional
         from pool ref
     id : str, default is Undefined, required
@@ -803,6 +862,8 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
     """
 
 
+    fromPoolAnnotation?: InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0FromPoolAnnotation
+
     fromPoolRef?: InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0FromPoolRef
 
     id: str
@@ -812,6 +873,27 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
     link: str
 
     routes?: [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0RoutesItems0]
+
+
+schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0FromPoolAnnotation:
+    r"""
+    FromPoolAnnotation allows specifying the pool reference via an annotation on
+    a Machine, Metal3Machine, or BareMetalHost object.
+    When set, IPAddressFromIPPool and FromPoolRef are ignored.
+
+    Attributes
+    ----------
+    annotation : str, default is Undefined, required
+        Annotation is the key of the annotation that contains the pool name.
+        The annotation value should be a string containing the pool name.
+    object : str, default is Undefined, required
+        Object is the type of the object from which we retrieve the annotation
+    """
+
+
+    annotation: str
+
+    object: "machine" | "metal3machine" | "baremetalhost"
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0FromPoolRef:
@@ -877,6 +959,10 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
     ----------
     fromIPPool : str, default is Undefined, optional
         FromIPPool is the name of the IPPool to fetch the gateway from
+    fromPoolAnnotation : InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0RoutesItems0GatewayFromPoolAnnotation, default is Undefined, optional
+        from pool annotation
+    fromPoolRef : InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0RoutesItems0GatewayFromPoolRef, default is Undefined, optional
+        from pool ref
     string : str, default is Undefined, optional
         String is the gateway given as a string
     """
@@ -884,11 +970,60 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
     fromIPPool?: str
 
+    fromPoolAnnotation?: InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0RoutesItems0GatewayFromPoolAnnotation
+
+    fromPoolRef?: InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0RoutesItems0GatewayFromPoolRef
+
     string?: str
 
 
     check:
         _regex_match(str(string), r"^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))$") if string
+
+
+schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0RoutesItems0GatewayFromPoolAnnotation:
+    r"""
+    FromPoolAnnotation allows specifying the pool name via an annotation on
+    a Machine, Metal3Machine, or BareMetalHost object.
+    When set, FromIPPool and FromPoolRef are ignored.
+
+    Attributes
+    ----------
+    annotation : str, default is Undefined, required
+        Annotation is the key of the annotation that contains the pool name.
+        The annotation value should be a string containing the pool name.
+    object : str, default is Undefined, required
+        Object is the type of the object from which we retrieve the annotation
+    """
+
+
+    annotation: str
+
+    object: "machine" | "metal3machine" | "baremetalhost"
+
+
+schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0RoutesItems0GatewayFromPoolRef:
+    r"""
+    FromPoolRef is a reference to a IP pool to fetch the gateway from
+
+    Attributes
+    ----------
+    apiGroup : str, default is Undefined, optional
+        APIGroup is the group for the resource being referenced.
+        If APIGroup is not specified, the specified Kind must be in the core API group.
+        For any other third-party types, APIGroup is required.
+    kind : str, default is Undefined, required
+        Kind is the type of resource being referenced
+    name : str, default is Undefined, required
+        Name is the name of resource being referenced
+    """
+
+
+    apiGroup?: str
+
+    kind: str
+
+    name: str
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV4Items0RoutesItems0Services:
@@ -910,7 +1045,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
     check:
-        all dns in dns { _regex_match(str(dns), r"^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))$") if dns } if dns
+        all i in dns { _regex_match(str(i), r"^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))$") if i } if dns
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0:
@@ -974,6 +1109,10 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
     ----------
     fromIPPool : str, default is Undefined, optional
         FromIPPool is the name of the IPPool to fetch the gateway from
+    fromPoolAnnotation : InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0RoutesItems0GatewayFromPoolAnnotation, default is Undefined, optional
+        from pool annotation
+    fromPoolRef : InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0RoutesItems0GatewayFromPoolRef, default is Undefined, optional
+        from pool ref
     string : str, default is Undefined, optional
         String is the gateway given as a string
     """
@@ -981,11 +1120,60 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
     fromIPPool?: str
 
+    fromPoolAnnotation?: InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0RoutesItems0GatewayFromPoolAnnotation
+
+    fromPoolRef?: InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0RoutesItems0GatewayFromPoolRef
+
     string?: str
 
 
     check:
         _regex_match(str(string), r"^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$") if string
+
+
+schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0RoutesItems0GatewayFromPoolAnnotation:
+    r"""
+    FromPoolAnnotation allows specifying the pool name via an annotation on
+    a Machine, Metal3Machine, or BareMetalHost object.
+    When set, FromIPPool and FromPoolRef are ignored.
+
+    Attributes
+    ----------
+    annotation : str, default is Undefined, required
+        Annotation is the key of the annotation that contains the pool name.
+        The annotation value should be a string containing the pool name.
+    object : str, default is Undefined, required
+        Object is the type of the object from which we retrieve the annotation
+    """
+
+
+    annotation: str
+
+    object: "machine" | "metal3machine" | "baremetalhost"
+
+
+schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0RoutesItems0GatewayFromPoolRef:
+    r"""
+    FromPoolRef is a reference to a IP pool to fetch the gateway from
+
+    Attributes
+    ----------
+    apiGroup : str, default is Undefined, optional
+        APIGroup is the group for the resource being referenced.
+        If APIGroup is not specified, the specified Kind must be in the core API group.
+        For any other third-party types, APIGroup is required.
+    kind : str, default is Undefined, required
+        Kind is the type of resource being referenced
+    name : str, default is Undefined, required
+        Name is the name of resource being referenced
+    """
+
+
+    apiGroup?: str
+
+    kind: str
+
+    name: str
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6DHCPItems0RoutesItems0Services:
@@ -1007,7 +1195,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
     check:
-        all dns in dns { _regex_match(str(dns), r"^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$") if dns } if dns
+        all i in dns { _regex_match(str(i), r"^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$") if i } if dns
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0:
@@ -1016,6 +1204,8 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
     Attributes
     ----------
+    fromPoolAnnotation : InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0FromPoolAnnotation, default is Undefined, optional
+        from pool annotation
     fromPoolRef : InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0FromPoolRef, default is Undefined, optional
         from pool ref
     id : str, default is Undefined, required
@@ -1029,6 +1219,8 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
     """
 
 
+    fromPoolAnnotation?: InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0FromPoolAnnotation
+
     fromPoolRef?: InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0FromPoolRef
 
     id: str
@@ -1038,6 +1230,27 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
     link: str
 
     routes?: [InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0RoutesItems0]
+
+
+schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0FromPoolAnnotation:
+    r"""
+    FromPoolAnnotation allows specifying the pool reference via an annotation on
+    a Machine, Metal3Machine, or BareMetalHost object.
+    When set, IPAddressFromIPPool and FromPoolRef are ignored.
+
+    Attributes
+    ----------
+    annotation : str, default is Undefined, required
+        Annotation is the key of the annotation that contains the pool name.
+        The annotation value should be a string containing the pool name.
+    object : str, default is Undefined, required
+        Object is the type of the object from which we retrieve the annotation
+    """
+
+
+    annotation: str
+
+    object: "machine" | "metal3machine" | "baremetalhost"
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0FromPoolRef:
@@ -1103,6 +1316,10 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
     ----------
     fromIPPool : str, default is Undefined, optional
         FromIPPool is the name of the IPPool to fetch the gateway from
+    fromPoolAnnotation : InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0RoutesItems0GatewayFromPoolAnnotation, default is Undefined, optional
+        from pool annotation
+    fromPoolRef : InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0RoutesItems0GatewayFromPoolRef, default is Undefined, optional
+        from pool ref
     string : str, default is Undefined, optional
         String is the gateway given as a string
     """
@@ -1110,11 +1327,60 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
     fromIPPool?: str
 
+    fromPoolAnnotation?: InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0RoutesItems0GatewayFromPoolAnnotation
+
+    fromPoolRef?: InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0RoutesItems0GatewayFromPoolRef
+
     string?: str
 
 
     check:
         _regex_match(str(string), r"^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$") if string
+
+
+schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0RoutesItems0GatewayFromPoolAnnotation:
+    r"""
+    FromPoolAnnotation allows specifying the pool name via an annotation on
+    a Machine, Metal3Machine, or BareMetalHost object.
+    When set, FromIPPool and FromPoolRef are ignored.
+
+    Attributes
+    ----------
+    annotation : str, default is Undefined, required
+        Annotation is the key of the annotation that contains the pool name.
+        The annotation value should be a string containing the pool name.
+    object : str, default is Undefined, required
+        Object is the type of the object from which we retrieve the annotation
+    """
+
+
+    annotation: str
+
+    object: "machine" | "metal3machine" | "baremetalhost"
+
+
+schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0RoutesItems0GatewayFromPoolRef:
+    r"""
+    FromPoolRef is a reference to a IP pool to fetch the gateway from
+
+    Attributes
+    ----------
+    apiGroup : str, default is Undefined, optional
+        APIGroup is the group for the resource being referenced.
+        If APIGroup is not specified, the specified Kind must be in the core API group.
+        For any other third-party types, APIGroup is required.
+    kind : str, default is Undefined, required
+        Kind is the type of resource being referenced
+    name : str, default is Undefined, required
+        Name is the name of resource being referenced
+    """
+
+
+    apiGroup?: str
+
+    kind: str
+
+    name: str
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6Items0RoutesItems0Services:
@@ -1136,7 +1402,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
     check:
-        all dns in dns { _regex_match(str(dns), r"^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$") if dns } if dns
+        all i in dns { _regex_match(str(i), r"^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$") if i } if dns
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0:
@@ -1200,6 +1466,10 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
     ----------
     fromIPPool : str, default is Undefined, optional
         FromIPPool is the name of the IPPool to fetch the gateway from
+    fromPoolAnnotation : InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0RoutesItems0GatewayFromPoolAnnotation, default is Undefined, optional
+        from pool annotation
+    fromPoolRef : InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0RoutesItems0GatewayFromPoolRef, default is Undefined, optional
+        from pool ref
     string : str, default is Undefined, optional
         String is the gateway given as a string
     """
@@ -1207,11 +1477,60 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
     fromIPPool?: str
 
+    fromPoolAnnotation?: InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0RoutesItems0GatewayFromPoolAnnotation
+
+    fromPoolRef?: InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0RoutesItems0GatewayFromPoolRef
+
     string?: str
 
 
     check:
         _regex_match(str(string), r"^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$") if string
+
+
+schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0RoutesItems0GatewayFromPoolAnnotation:
+    r"""
+    FromPoolAnnotation allows specifying the pool name via an annotation on
+    a Machine, Metal3Machine, or BareMetalHost object.
+    When set, FromIPPool and FromPoolRef are ignored.
+
+    Attributes
+    ----------
+    annotation : str, default is Undefined, required
+        Annotation is the key of the annotation that contains the pool name.
+        The annotation value should be a string containing the pool name.
+    object : str, default is Undefined, required
+        Object is the type of the object from which we retrieve the annotation
+    """
+
+
+    annotation: str
+
+    object: "machine" | "metal3machine" | "baremetalhost"
+
+
+schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0RoutesItems0GatewayFromPoolRef:
+    r"""
+    FromPoolRef is a reference to a IP pool to fetch the gateway from
+
+    Attributes
+    ----------
+    apiGroup : str, default is Undefined, optional
+        APIGroup is the group for the resource being referenced.
+        If APIGroup is not specified, the specified Kind must be in the core API group.
+        For any other third-party types, APIGroup is required.
+    kind : str, default is Undefined, required
+        Kind is the type of resource being referenced
+    name : str, default is Undefined, required
+        Name is the name of resource being referenced
+    """
+
+
+    apiGroup?: str
+
+    kind: str
+
+    name: str
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetworksIPV6SLAACItems0RoutesItems0Services:
@@ -1233,7 +1552,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataNetwor
 
 
     check:
-        all dns in dns { _regex_match(str(dns), r"^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$") if dns } if dns
+        all i in dns { _regex_match(str(i), r"^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$") if i } if dns
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataServices:
@@ -1255,7 +1574,7 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateSpecNetworkDataServic
 
 
     check:
-        all dns in dns { _regex_match(str(dns), r"((^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))$)|(^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$))") if dns } if dns
+        all i in dns { _regex_match(str(i), r"((^((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))$)|(^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:))$))") if i } if dns
 
 
 schema InfrastructureClusterxK8sIoV1beta1Metal3DataTemplateStatus:

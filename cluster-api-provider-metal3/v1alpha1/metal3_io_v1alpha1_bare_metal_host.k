@@ -350,7 +350,7 @@ schema Metal3IoV1alpha1BareMetalHostSpecRaidHardwareRAIDVolumesItems0:
 
 
     check:
-        len(name) <= 64 if name
+        len(name) <= 64 if name not in [None, Undefined]
         numberOfPhysicalDisks >= 1 if numberOfPhysicalDisks not in [None, Undefined]
         sizeGibibytes >= 0 if sizeGibibytes not in [None, Undefined]
 
@@ -1142,7 +1142,7 @@ schema Metal3IoV1alpha1BareMetalHostStatusProvisioningRaidHardwareRAIDVolumesIte
 
 
     check:
-        len(name) <= 64 if name
+        len(name) <= 64 if name not in [None, Undefined]
         numberOfPhysicalDisks >= 1 if numberOfPhysicalDisks not in [None, Undefined]
         sizeGibibytes >= 0 if sizeGibibytes not in [None, Undefined]
 
