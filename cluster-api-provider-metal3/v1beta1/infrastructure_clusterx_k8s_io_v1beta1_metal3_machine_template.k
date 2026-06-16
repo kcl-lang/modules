@@ -77,6 +77,8 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpec:
         custom deploy
     dataTemplate : InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecDataTemplate, default is Undefined, optional
         data template
+    failureDomain : str, default is Undefined, optional
+        FailureDomain is the failure domain unique identifier this Machine should be attached to, as defined in Cluster API.
     hostSelector : InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecHostSelector, default is Undefined, optional
         host selector
     image : InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecImage, default is Undefined, optional
@@ -98,6 +100,8 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpec:
     customDeploy?: InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecCustomDeploy
 
     dataTemplate?: InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecDataTemplate
+
+    failureDomain?: str
 
     hostSelector?: InfrastructureClusterxK8sIoV1beta1Metal3MachineTemplateSpecTemplateSpecHostSelector
 

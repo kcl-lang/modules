@@ -72,6 +72,8 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpecTemplateSpec:
         Default value is true, it is set in the webhook.
     controlPlaneEndpoint : InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpecTemplateSpecControlPlaneEndpoint, default is Undefined, optional
         control plane endpoint
+    failureDomains : {str:InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpecTemplateSpecFailureDomainsAnon}, default is Undefined, optional
+        FailureDomains specifies a list fo failure zones that can be used
     noCloudProvider : bool, default is Undefined, optional
         Determines if the cluster is not to be deployed with an external cloud provider.
         If set to true, CAPM3 will use node labels to set providerID on the kubernetes nodes.
@@ -84,6 +86,8 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpecTemplateSpec:
     cloudProviderEnabled?: bool
 
     controlPlaneEndpoint?: InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpecTemplateSpecControlPlaneEndpoint
+
+    failureDomains?: {str:InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpecTemplateSpecFailureDomainsAnon}
 
     noCloudProvider?: bool
 
@@ -104,5 +108,24 @@ schema InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpecTemplateSpecCo
     host: str
 
     port: int
+
+
+schema InfrastructureClusterxK8sIoV1beta1Metal3ClusterTemplateSpecTemplateSpecFailureDomainsAnon:
+    r"""
+    FailureDomainSpec is the Schema for Cluster API failure domains.
+    It allows controllers to understand how many failure domains a cluster can optionally span across.
+
+    Attributes
+    ----------
+    attributes : {str:str}, default is Undefined, optional
+        attributes is a free form map of attributes an infrastructure provider might use or require.
+    controlPlane : bool, default is Undefined, optional
+        controlPlane determines if this failure domain is suitable for use by control plane machines.
+    """
+
+
+    attributes?: {str:str}
+
+    controlPlane?: bool
 
 
