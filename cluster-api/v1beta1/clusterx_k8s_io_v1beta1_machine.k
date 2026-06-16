@@ -89,6 +89,16 @@ schema ClusterxK8sIoV1beta1MachineSpec:
         readiness gates condition are reporting the same message, when computing the Machine's Ready condition those
         readinessGates will be replaced by a single entry reporting "Control plane components: " + message.
         This helps to improve readability of conditions bubbling up to the Machine's owner resource / to the Cluster).
+    taints : [ClusterxK8sIoV1beta1MachineSpecTaintsItems0], default is Undefined, optional
+        taints are the node taints that Cluster API will manage.
+        This list is not necessarily complete: other Kubernetes components may add or remove other taints from nodes,
+        e.g. the node controller might add the node.kubernetes.io/not-ready taint.
+        Only those taints defined in this list will be added or removed by core Cluster API controllers.
+
+        There can be at most 64 taints.
+        A pod would have to tolerate all existing taints to run on the corresponding node.
+
+        NOTE: This list is implemented as a "map" type, meaning that individual elements can be managed by different owners.
     version : str, default is Undefined, optional
         version defines the desired Kubernetes version.
         This field is meant to be optionally used by bootstrap providers.
@@ -113,19 +123,23 @@ schema ClusterxK8sIoV1beta1MachineSpec:
 
     readinessGates?: [ClusterxK8sIoV1beta1MachineSpecReadinessGatesItems0]
 
+    taints?: [ClusterxK8sIoV1beta1MachineSpecTaintsItems0]
+
     version?: str
 
 
     check:
         len(clusterName) <= 63
         len(clusterName) >= 1
-        len(failureDomain) <= 256 if failureDomain
-        len(failureDomain) >= 1 if failureDomain
-        len(providerID) <= 512 if providerID
-        len(providerID) >= 1 if providerID
+        len(failureDomain) <= 256 if failureDomain not in [None, Undefined]
+        len(failureDomain) >= 1 if failureDomain not in [None, Undefined]
+        len(providerID) <= 512 if providerID not in [None, Undefined]
+        len(providerID) >= 1 if providerID not in [None, Undefined]
         len(readinessGates) <= 32 if readinessGates
-        len(version) <= 256 if version
-        len(version) >= 1 if version
+        len(taints) >= 1 if taints
+        len(taints) <= 64 if taints
+        len(version) <= 256 if version not in [None, Undefined]
+        len(version) >= 1 if version not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta1MachineSpecBootstrap:
@@ -149,8 +163,8 @@ schema ClusterxK8sIoV1beta1MachineSpecBootstrap:
 
 
     check:
-        len(dataSecretName) <= 253 if dataSecretName
-        len(dataSecretName) >= 0 if dataSecretName
+        len(dataSecretName) <= 253 if dataSecretName not in [None, Undefined]
+        len(dataSecretName) >= 0 if dataSecretName not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta1MachineSpecBootstrapConfigRef:
@@ -285,6 +299,48 @@ schema ClusterxK8sIoV1beta1MachineSpecReadinessGatesItems0:
         _regex_match(str(conditionType), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
 
 
+schema ClusterxK8sIoV1beta1MachineSpecTaintsItems0:
+    r"""
+    MachineTaint defines a taint equivalent to corev1.Taint, but additionally having a propagation field.
+
+    Attributes
+    ----------
+    effect : str, default is Undefined, required
+        effect is the effect for the taint. Valid values are NoSchedule, PreferNoSchedule and NoExecute.
+    key : str, default is Undefined, required
+        key is the taint key to be applied to a node.
+        Must be a valid qualified name of maximum size 63 characters
+        with an optional subdomain prefix of maximum size 253 characters,
+        separated by a `/`.
+    propagation : str, default is Undefined, required
+        propagation defines how this taint should be propagated to nodes.
+        Valid values are 'Always' and 'OnInitialization'.
+        Always: The taint will be continuously reconciled. If it is not set for a node, it will be added during reconciliation.
+        OnInitialization: The taint will be added during node initialization. If it gets removed from the node later on it will not get added again.
+    value : str, default is Undefined, optional
+        value is the taint value corresponding to the taint key.
+        It must be a valid label value of maximum size 63 characters.
+    """
+
+
+    effect: "NoSchedule" | "PreferNoSchedule" | "NoExecute"
+
+    key: str
+
+    propagation: "Always" | "OnInitialization"
+
+    value?: str
+
+
+    check:
+        len(key) <= 317
+        len(key) >= 1
+        _regex_match(str(key), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/)?([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$")
+        len(value) <= 63 if value not in [None, Undefined]
+        len(value) >= 1 if value not in [None, Undefined]
+        _regex_match(str(value), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if value
+
+
 schema ClusterxK8sIoV1beta1MachineStatus:
     r"""
     status is the observed state of Machine.
@@ -321,7 +377,7 @@ schema ClusterxK8sIoV1beta1MachineStatus:
         can be added as events to the Machine object and/or logged in the
         controller's output.
 
-        Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
+        Deprecated: This field is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
     failureReason : str, default is Undefined, optional
         failureReason will be set in the event that there is a terminal problem
         reconciling the Machine and will contain a succinct value suitable
@@ -340,7 +396,7 @@ schema ClusterxK8sIoV1beta1MachineStatus:
         can be added as events to the Machine object and/or logged in the
         controller's output.
 
-        Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
+        Deprecated: This field is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
     infrastructureReady : bool, default is Undefined, optional
         infrastructureReady is the state of the infrastructure provider.
     lastUpdated : str, default is Undefined, optional
@@ -388,8 +444,8 @@ schema ClusterxK8sIoV1beta1MachineStatus:
 
 
     check:
-        len(failureMessage) <= 10240 if failureMessage
-        len(failureMessage) >= 1 if failureMessage
+        len(failureMessage) <= 10240 if failureMessage not in [None, Undefined]
+        len(failureMessage) >= 1 if failureMessage not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta1MachineStatusAddressesItems0:
@@ -459,11 +515,11 @@ schema ClusterxK8sIoV1beta1MachineStatusConditionsItems0:
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 
@@ -520,6 +576,8 @@ schema ClusterxK8sIoV1beta1MachineStatusNodeInfo:
         The Operating System reported by the node
     osImage : str, default is Undefined, required
         OS Image reported by the node from /etc/os-release (e.g. Debian GNU/Linux 7 (wheezy)).
+    swap : ClusterxK8sIoV1beta1MachineStatusNodeInfoSwap, default is Undefined, optional
+        swap
     systemUUID : str, default is Undefined, required
         SystemUUID reported by the node. For unique machine identification
         MachineID is preferred. This field is specific to Red Hat hosts
@@ -545,7 +603,23 @@ schema ClusterxK8sIoV1beta1MachineStatusNodeInfo:
 
     osImage: str
 
+    swap?: ClusterxK8sIoV1beta1MachineStatusNodeInfoSwap
+
     systemUUID: str
+
+
+schema ClusterxK8sIoV1beta1MachineStatusNodeInfoSwap:
+    r"""
+    Swap Info reported by the node.
+
+    Attributes
+    ----------
+    capacity : int, default is Undefined, optional
+        Total amount of swap memory in bytes.
+    """
+
+
+    capacity?: int
 
 
 schema ClusterxK8sIoV1beta1MachineStatusNodeRef:

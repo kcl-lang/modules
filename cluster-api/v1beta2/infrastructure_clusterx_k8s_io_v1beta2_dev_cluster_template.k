@@ -246,8 +246,8 @@ schema InfrastructureClusterxK8sIoV1beta2DevClusterTemplateSpecTemplateSpecContr
 
 
     check:
-        len(host) <= 512 if host
-        len(host) >= 1 if host
+        len(host) <= 512 if host not in [None, Undefined]
+        len(host) >= 1 if host not in [None, Undefined]
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
 

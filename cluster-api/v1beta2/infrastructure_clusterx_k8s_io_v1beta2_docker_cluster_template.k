@@ -9,6 +9,8 @@ schema DockerClusterTemplate:
     r"""
     DockerClusterTemplate is the Schema for the dockerclustertemplates API.
 
+    Deprecated: DockerClusterTemplate is deprecated. Use DevClusterTemplate instead.
+
     Attributes
     ----------
     apiVersion : str, default is "infrastructure.cluster.x-k8s.io/v1beta2", required
@@ -137,8 +139,8 @@ schema InfrastructureClusterxK8sIoV1beta2DockerClusterTemplateSpecTemplateSpecCo
 
 
     check:
-        len(host) <= 512 if host
-        len(host) >= 1 if host
+        len(host) <= 512 if host not in [None, Undefined]
+        len(host) >= 1 if host not in [None, Undefined]
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
 

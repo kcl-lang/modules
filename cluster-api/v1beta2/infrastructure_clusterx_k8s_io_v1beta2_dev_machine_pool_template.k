@@ -5,67 +5,65 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 import k8s.apimachinery.pkg.apis.meta.v1
 
 
-schema DockerMachinePoolTemplate:
+schema DevMachinePoolTemplate:
     r"""
-    DockerMachinePoolTemplate is the Schema for the dockermachinepooltemplates API.
-
-    Deprecated: DockerMachinePoolTemplate is deprecated. Use DevMachinePoolTemplate instead.
+    DevMachinePoolTemplate is the Schema for the devmachinepooltemplates API.
 
     Attributes
     ----------
     apiVersion : str, default is "infrastructure.cluster.x-k8s.io/v1beta2", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-    kind : str, default is "DockerMachinePoolTemplate", required
+    kind : str, default is "DevMachinePoolTemplate", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : InfrastructureClusterxK8sIoV1beta2DockerMachinePoolTemplateSpec, default is Undefined, optional
+    spec : InfrastructureClusterxK8sIoV1beta2DevMachinePoolTemplateSpec, default is Undefined, optional
         spec
     """
 
 
     apiVersion: "infrastructure.cluster.x-k8s.io/v1beta2" = "infrastructure.cluster.x-k8s.io/v1beta2"
 
-    kind: "DockerMachinePoolTemplate" = "DockerMachinePoolTemplate"
+    kind: "DevMachinePoolTemplate" = "DevMachinePoolTemplate"
 
     metadata?: v1.ObjectMeta
 
-    spec?: InfrastructureClusterxK8sIoV1beta2DockerMachinePoolTemplateSpec
+    spec?: InfrastructureClusterxK8sIoV1beta2DevMachinePoolTemplateSpec
 
 
-schema InfrastructureClusterxK8sIoV1beta2DockerMachinePoolTemplateSpec:
+schema InfrastructureClusterxK8sIoV1beta2DevMachinePoolTemplateSpec:
     r"""
-    DockerMachinePoolTemplateSpec defines the desired state of DockerMachinePoolTemplate.
+    DevMachinePoolTemplateSpec defines the desired state of DevMachinePoolTemplate.
 
     Attributes
     ----------
-    template : InfrastructureClusterxK8sIoV1beta2DockerMachinePoolTemplateSpecTemplate, default is Undefined, required
+    template : InfrastructureClusterxK8sIoV1beta2DevMachinePoolTemplateSpecTemplate, default is Undefined, required
         template
     """
 
 
-    template: InfrastructureClusterxK8sIoV1beta2DockerMachinePoolTemplateSpecTemplate
+    template: InfrastructureClusterxK8sIoV1beta2DevMachinePoolTemplateSpecTemplate
 
 
-schema InfrastructureClusterxK8sIoV1beta2DockerMachinePoolTemplateSpecTemplate:
+schema InfrastructureClusterxK8sIoV1beta2DevMachinePoolTemplateSpecTemplate:
     r"""
-    DockerMachinePoolTemplateResource describes the data needed to create a DockerMachine from a template.
+    DevMachinePoolTemplateResource describes the data needed to create a DevMachine from a template.
 
     Attributes
     ----------
-    metadata : InfrastructureClusterxK8sIoV1beta2DockerMachinePoolTemplateSpecTemplateMetadata, default is Undefined, optional
+    metadata : InfrastructureClusterxK8sIoV1beta2DevMachinePoolTemplateSpecTemplateMetadata, default is Undefined, optional
         metadata
-    spec : InfrastructureClusterxK8sIoV1beta2DockerMachinePoolTemplateSpecTemplateSpec, default is Undefined, required
+    spec : InfrastructureClusterxK8sIoV1beta2DevMachinePoolTemplateSpecTemplateSpec, default is Undefined, required
         spec
     """
 
 
-    metadata?: InfrastructureClusterxK8sIoV1beta2DockerMachinePoolTemplateSpecTemplateMetadata
+    metadata?: InfrastructureClusterxK8sIoV1beta2DevMachinePoolTemplateSpecTemplateMetadata
 
-    spec: InfrastructureClusterxK8sIoV1beta2DockerMachinePoolTemplateSpecTemplateSpec
+    spec: InfrastructureClusterxK8sIoV1beta2DevMachinePoolTemplateSpecTemplateSpec
 
 
-schema InfrastructureClusterxK8sIoV1beta2DockerMachinePoolTemplateSpecTemplateMetadata:
+schema InfrastructureClusterxK8sIoV1beta2DevMachinePoolTemplateSpecTemplateMetadata:
     r"""
     Standard object's metadata.
     More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
@@ -90,38 +88,52 @@ schema InfrastructureClusterxK8sIoV1beta2DockerMachinePoolTemplateSpecTemplateMe
     labels?: {str:str}
 
 
-schema InfrastructureClusterxK8sIoV1beta2DockerMachinePoolTemplateSpecTemplateSpec:
+schema InfrastructureClusterxK8sIoV1beta2DevMachinePoolTemplateSpecTemplateSpec:
     r"""
-    DockerMachinePoolSpec defines the desired state of DockerMachinePool.
+    DevMachinePoolSpec defines the desired state of DevMachinePool.
 
     Attributes
     ----------
+    backend : InfrastructureClusterxK8sIoV1beta2DevMachinePoolTemplateSpecTemplateSpecBackend, default is Undefined, optional
+        backend
     providerID : str, default is Undefined, optional
         ProviderID is the identification ID of the Machine Pool
     providerIDList : [str], default is Undefined, optional
         ProviderIDList is the list of identification IDs of machine instances managed by this Machine Pool
-    template : InfrastructureClusterxK8sIoV1beta2DockerMachinePoolTemplateSpecTemplateSpecTemplate, default is Undefined, optional
-        template
     """
 
+
+    backend?: InfrastructureClusterxK8sIoV1beta2DevMachinePoolTemplateSpecTemplateSpecBackend
 
     providerID?: str
 
     providerIDList?: [str]
 
-    template?: InfrastructureClusterxK8sIoV1beta2DockerMachinePoolTemplateSpecTemplateSpecTemplate
 
-
-schema InfrastructureClusterxK8sIoV1beta2DockerMachinePoolTemplateSpecTemplateSpecTemplate:
+schema InfrastructureClusterxK8sIoV1beta2DevMachinePoolTemplateSpecTemplateSpecBackend:
     r"""
-    Template contains the details used to build a replica machine within the Machine Pool
+    backend contains the details used to build a replica machine within the Machine Pool
+
+    Attributes
+    ----------
+    docker : InfrastructureClusterxK8sIoV1beta2DevMachinePoolTemplateSpecTemplateSpecBackendDocker, default is Undefined, optional
+        docker
+    """
+
+
+    docker?: InfrastructureClusterxK8sIoV1beta2DevMachinePoolTemplateSpecTemplateSpecBackendDocker
+
+
+schema InfrastructureClusterxK8sIoV1beta2DevMachinePoolTemplateSpecTemplateSpecBackendDocker:
+    r"""
+    docker defines a backend for a DevMachinePool using docker containers.
 
     Attributes
     ----------
     customImage : str, default is Undefined, optional
         CustomImage allows customizing the container image that is used for
         running the machine
-    extraMounts : [InfrastructureClusterxK8sIoV1beta2DockerMachinePoolTemplateSpecTemplateSpecTemplateExtraMountsItems0], default is Undefined, optional
+    extraMounts : [InfrastructureClusterxK8sIoV1beta2DevMachinePoolTemplateSpecTemplateSpecBackendDockerExtraMountsItems0], default is Undefined, optional
         ExtraMounts describes additional mount points for the node container
         These may be used to bind a hostPath
     preLoadImages : [str], default is Undefined, optional
@@ -132,12 +144,12 @@ schema InfrastructureClusterxK8sIoV1beta2DockerMachinePoolTemplateSpecTemplateSp
 
     customImage?: str
 
-    extraMounts?: [InfrastructureClusterxK8sIoV1beta2DockerMachinePoolTemplateSpecTemplateSpecTemplateExtraMountsItems0]
+    extraMounts?: [InfrastructureClusterxK8sIoV1beta2DevMachinePoolTemplateSpecTemplateSpecBackendDockerExtraMountsItems0]
 
     preLoadImages?: [str]
 
 
-schema InfrastructureClusterxK8sIoV1beta2DockerMachinePoolTemplateSpecTemplateSpecTemplateExtraMountsItems0:
+schema InfrastructureClusterxK8sIoV1beta2DevMachinePoolTemplateSpecTemplateSpecBackendDockerExtraMountsItems0:
     r"""
     Mount specifies a host volume to mount into a container.
     This is a simplified version of kind v1alpha4.Mount types.

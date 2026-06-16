@@ -56,8 +56,8 @@ schema IpamClusterxK8sIoV1beta1IPAddressClaimSpec:
 
 
     check:
-        len(clusterName) <= 63 if clusterName
-        len(clusterName) >= 1 if clusterName
+        len(clusterName) <= 63 if clusterName not in [None, Undefined]
+        len(clusterName) >= 1 if clusterName not in [None, Undefined]
 
 
 schema IpamClusterxK8sIoV1beta1IPAddressClaimSpecPoolRef:
@@ -168,11 +168,11 @@ schema IpamClusterxK8sIoV1beta1IPAddressClaimStatusConditionsItems0:
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 

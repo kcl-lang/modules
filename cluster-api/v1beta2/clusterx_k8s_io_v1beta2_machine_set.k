@@ -138,8 +138,8 @@ schema ClusterxK8sIoV1beta2MachineSetSpecMachineNaming:
 
 
     check:
-        len(template) <= 256 if template
-        len(template) >= 1 if template
+        len(template) <= 256 if template not in [None, Undefined]
+        len(template) >= 1 if template not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta2MachineSetSpecSelector:
@@ -323,17 +323,17 @@ schema ClusterxK8sIoV1beta2MachineSetSpecTemplateSpec:
     check:
         len(clusterName) <= 63
         len(clusterName) >= 1
-        len(failureDomain) <= 256 if failureDomain
-        len(failureDomain) >= 1 if failureDomain
+        len(failureDomain) <= 256 if failureDomain not in [None, Undefined]
+        len(failureDomain) >= 1 if failureDomain not in [None, Undefined]
         minReadySeconds >= 0 if minReadySeconds not in [None, Undefined]
-        len(providerID) <= 512 if providerID
-        len(providerID) >= 1 if providerID
+        len(providerID) <= 512 if providerID not in [None, Undefined]
+        len(providerID) >= 1 if providerID not in [None, Undefined]
         len(readinessGates) >= 1 if readinessGates
         len(readinessGates) <= 32 if readinessGates
         len(taints) >= 1 if taints
         len(taints) <= 64 if taints
-        len(version) <= 256 if version
-        len(version) >= 1 if version
+        len(version) <= 256 if version not in [None, Undefined]
+        len(version) >= 1 if version not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta2MachineSetSpecTemplateSpecBootstrap:
@@ -357,8 +357,8 @@ schema ClusterxK8sIoV1beta2MachineSetSpecTemplateSpecBootstrap:
 
 
     check:
-        len(dataSecretName) <= 253 if dataSecretName
-        len(dataSecretName) >= 0 if dataSecretName
+        len(dataSecretName) <= 253 if dataSecretName not in [None, Undefined]
+        len(dataSecretName) >= 0 if dataSecretName not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta2MachineSetSpecTemplateSpecBootstrapConfigRef:
@@ -543,8 +543,8 @@ schema ClusterxK8sIoV1beta2MachineSetSpecTemplateSpecTaintsItems0:
         len(key) <= 317
         len(key) >= 1
         _regex_match(str(key), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/)?([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$")
-        len(value) <= 63 if value
-        len(value) >= 1 if value
+        len(value) <= 63 if value not in [None, Undefined]
+        len(value) >= 1 if value not in [None, Undefined]
         _regex_match(str(value), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if value
 
 
@@ -596,8 +596,8 @@ schema ClusterxK8sIoV1beta2MachineSetStatus:
     check:
         len(conditions) <= 32 if conditions
         observedGeneration >= 1 if observedGeneration not in [None, Undefined]
-        len(selector) <= 4096 if selector
-        len(selector) >= 1 if selector
+        len(selector) <= 4096 if selector not in [None, Undefined]
+        len(selector) >= 1 if selector not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta2MachineSetStatusConditionsItems0:
@@ -736,13 +736,15 @@ schema ClusterxK8sIoV1beta2MachineSetStatusDeprecatedV1beta1:
 
 
     check:
-        len(failureMessage) <= 10240 if failureMessage
-        len(failureMessage) >= 1 if failureMessage
+        len(failureMessage) <= 10240 if failureMessage not in [None, Undefined]
+        len(failureMessage) >= 1 if failureMessage not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta2MachineSetStatusDeprecatedV1beta1ConditionsItems0:
     r"""
     Condition defines an observation of a Cluster API resource operational state.
+
+    Deprecated: This type is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
 
     Attributes
     ----------
@@ -784,11 +786,11 @@ schema ClusterxK8sIoV1beta2MachineSetStatusDeprecatedV1beta1ConditionsItems0:
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 

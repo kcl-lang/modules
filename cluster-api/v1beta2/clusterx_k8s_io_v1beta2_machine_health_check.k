@@ -282,8 +282,8 @@ schema ClusterxK8sIoV1beta2MachineHealthCheckSpecRemediationTriggerIf:
 
 
     check:
-        len(unhealthyInRange) <= 32 if unhealthyInRange
-        len(unhealthyInRange) >= 1 if unhealthyInRange
+        len(unhealthyInRange) <= 32 if unhealthyInRange not in [None, Undefined]
+        len(unhealthyInRange) >= 1 if unhealthyInRange not in [None, Undefined]
         _regex_match(str(unhealthyInRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyInRange
 
 
@@ -381,8 +381,8 @@ schema ClusterxK8sIoV1beta2MachineHealthCheckStatus:
         observedGeneration >= 1 if observedGeneration not in [None, Undefined]
         remediationsAllowed >= 0 if remediationsAllowed not in [None, Undefined]
         len(targets) <= 10000 if targets
-        all targets in targets { len(targets) <= 253 if targets not in [None, Undefined] } if targets
-        all targets in targets { len(targets) >= 1 if targets not in [None, Undefined] } if targets
+        all i in targets { len(i) <= 253 if i not in [None, Undefined] } if targets
+        all i in targets { len(i) >= 1 if i not in [None, Undefined] } if targets
 
 
 schema ClusterxK8sIoV1beta2MachineHealthCheckStatusConditionsItems0:
@@ -471,6 +471,8 @@ schema ClusterxK8sIoV1beta2MachineHealthCheckStatusDeprecatedV1beta1ConditionsIt
     r"""
     Condition defines an observation of a Cluster API resource operational state.
 
+    Deprecated: This type is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
+
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, required
@@ -511,11 +513,11 @@ schema ClusterxK8sIoV1beta2MachineHealthCheckStatusDeprecatedV1beta1ConditionsIt
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 
