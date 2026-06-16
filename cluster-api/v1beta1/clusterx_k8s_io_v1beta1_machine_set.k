@@ -129,8 +129,8 @@ schema ClusterxK8sIoV1beta1MachineSetSpecMachineNamingStrategy:
 
 
     check:
-        len(template) <= 256 if template
-        len(template) >= 1 if template
+        len(template) <= 256 if template not in [None, Undefined]
+        len(template) >= 1 if template not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta1MachineSetSpecSelector:
@@ -311,13 +311,13 @@ schema ClusterxK8sIoV1beta1MachineSetSpecTemplateSpec:
     check:
         len(clusterName) <= 63
         len(clusterName) >= 1
-        len(failureDomain) <= 256 if failureDomain
-        len(failureDomain) >= 1 if failureDomain
-        len(providerID) <= 512 if providerID
-        len(providerID) >= 1 if providerID
+        len(failureDomain) <= 256 if failureDomain not in [None, Undefined]
+        len(failureDomain) >= 1 if failureDomain not in [None, Undefined]
+        len(providerID) <= 512 if providerID not in [None, Undefined]
+        len(providerID) >= 1 if providerID not in [None, Undefined]
         len(readinessGates) <= 32 if readinessGates
-        len(version) <= 256 if version
-        len(version) >= 1 if version
+        len(version) <= 256 if version not in [None, Undefined]
+        len(version) >= 1 if version not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta1MachineSetSpecTemplateSpecBootstrap:
@@ -341,8 +341,8 @@ schema ClusterxK8sIoV1beta1MachineSetSpecTemplateSpecBootstrap:
 
 
     check:
-        len(dataSecretName) <= 253 if dataSecretName
-        len(dataSecretName) >= 0 if dataSecretName
+        len(dataSecretName) <= 253 if dataSecretName not in [None, Undefined]
+        len(dataSecretName) >= 0 if dataSecretName not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta1MachineSetSpecTemplateSpecBootstrapConfigRef:
@@ -492,7 +492,7 @@ schema ClusterxK8sIoV1beta1MachineSetStatus:
         reconciling the Machine and will contain a more verbose string suitable
         for logging and human consumption.
 
-        Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
+        Deprecated: This field is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
     failureReason : str, default is Undefined, optional
         failureReason will be set in the event that there is a terminal problem
         reconciling the Machine and will contain a succinct value suitable
@@ -517,11 +517,11 @@ schema ClusterxK8sIoV1beta1MachineSetStatus:
         can be added as events to the MachineSet object and/or logged in the
         controller's output.
 
-        Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
+        Deprecated: This field is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
     fullyLabeledReplicas : int, default is Undefined, optional
         fullyLabeledReplicas is the number of replicas that have labels matching the labels of the machine template of the MachineSet.
 
-        Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
+        Deprecated: This field is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
     observedGeneration : int, default is Undefined, optional
         observedGeneration reflects the generation of the most recently observed MachineSet.
     readyReplicas : int, default is Undefined, optional
@@ -559,10 +559,10 @@ schema ClusterxK8sIoV1beta1MachineSetStatus:
 
 
     check:
-        len(failureMessage) <= 10240 if failureMessage
-        len(failureMessage) >= 1 if failureMessage
-        len(selector) <= 4096 if selector
-        len(selector) >= 1 if selector
+        len(failureMessage) <= 10240 if failureMessage not in [None, Undefined]
+        len(failureMessage) >= 1 if failureMessage not in [None, Undefined]
+        len(selector) <= 4096 if selector not in [None, Undefined]
+        len(selector) >= 1 if selector not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta1MachineSetStatusConditionsItems0:
@@ -609,11 +609,11 @@ schema ClusterxK8sIoV1beta1MachineSetStatusConditionsItems0:
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 

@@ -168,17 +168,17 @@ schema InfrastructureClusterxK8sIoV1beta1DevClusterSpecControlPlaneEndpoint:
 
     Attributes
     ----------
-    host : str, default is Undefined, required
+    host : str, default is Undefined, optional
         Host is the hostname on which the API server is serving.
-    port : int, default is Undefined, required
+    port : int, default is Undefined, optional
         Port is the port on which the API server is serving.
         Defaults to 6443 if not set.
     """
 
 
-    host: str
+    host?: str
 
-    port: int
+    port?: int
 
 
 schema InfrastructureClusterxK8sIoV1beta1DevClusterStatus:
@@ -252,11 +252,11 @@ schema InfrastructureClusterxK8sIoV1beta1DevClusterStatusConditionsItems0:
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 

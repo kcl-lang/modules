@@ -395,6 +395,8 @@ schema ClusterxK8sIoV1alpha4MachineStatusNodeInfo:
         The Operating System reported by the node
     osImage : str, default is Undefined, required
         OS Image reported by the node from /etc/os-release (e.g. Debian GNU/Linux 7 (wheezy)).
+    swap : ClusterxK8sIoV1alpha4MachineStatusNodeInfoSwap, default is Undefined, optional
+        swap
     systemUUID : str, default is Undefined, required
         SystemUUID reported by the node. For unique machine identification
         MachineID is preferred. This field is specific to Red Hat hosts
@@ -420,7 +422,23 @@ schema ClusterxK8sIoV1alpha4MachineStatusNodeInfo:
 
     osImage: str
 
+    swap?: ClusterxK8sIoV1alpha4MachineStatusNodeInfoSwap
+
     systemUUID: str
+
+
+schema ClusterxK8sIoV1alpha4MachineStatusNodeInfoSwap:
+    r"""
+    Swap Info reported by the node.
+
+    Attributes
+    ----------
+    capacity : int, default is Undefined, optional
+        Total amount of swap memory in bytes.
+    """
+
+
+    capacity?: int
 
 
 schema ClusterxK8sIoV1alpha4MachineStatusNodeRef:

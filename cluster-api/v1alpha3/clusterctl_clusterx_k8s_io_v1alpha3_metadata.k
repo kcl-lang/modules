@@ -18,7 +18,7 @@ schema Metadata:
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
     releaseSeries : [ClusterctlClusterxK8sIoV1alpha3MetadataReleaseSeriesItems0], default is Undefined, optional
-        releaseSeries maps a provider release series (major/minor) with an API Version of Cluster API (contract).
+        releaseSeries maps a provider release series (major/minor) with a Cluster API contract version.
     """
 
 
@@ -33,7 +33,7 @@ schema Metadata:
 
 schema ClusterctlClusterxK8sIoV1alpha3MetadataReleaseSeriesItems0:
     r"""
-    ReleaseSeries maps a provider release series (major/minor) with a API Version of Cluster API (contract).
+    ReleaseSeries maps a provider release series (major/minor) with a Cluster API contract version.
 
     Attributes
     ----------

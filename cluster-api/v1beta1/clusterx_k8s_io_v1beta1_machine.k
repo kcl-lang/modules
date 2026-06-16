@@ -119,13 +119,13 @@ schema ClusterxK8sIoV1beta1MachineSpec:
     check:
         len(clusterName) <= 63
         len(clusterName) >= 1
-        len(failureDomain) <= 256 if failureDomain
-        len(failureDomain) >= 1 if failureDomain
-        len(providerID) <= 512 if providerID
-        len(providerID) >= 1 if providerID
+        len(failureDomain) <= 256 if failureDomain not in [None, Undefined]
+        len(failureDomain) >= 1 if failureDomain not in [None, Undefined]
+        len(providerID) <= 512 if providerID not in [None, Undefined]
+        len(providerID) >= 1 if providerID not in [None, Undefined]
         len(readinessGates) <= 32 if readinessGates
-        len(version) <= 256 if version
-        len(version) >= 1 if version
+        len(version) <= 256 if version not in [None, Undefined]
+        len(version) >= 1 if version not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta1MachineSpecBootstrap:
@@ -149,8 +149,8 @@ schema ClusterxK8sIoV1beta1MachineSpecBootstrap:
 
 
     check:
-        len(dataSecretName) <= 253 if dataSecretName
-        len(dataSecretName) >= 0 if dataSecretName
+        len(dataSecretName) <= 253 if dataSecretName not in [None, Undefined]
+        len(dataSecretName) >= 0 if dataSecretName not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta1MachineSpecBootstrapConfigRef:
@@ -321,7 +321,7 @@ schema ClusterxK8sIoV1beta1MachineStatus:
         can be added as events to the Machine object and/or logged in the
         controller's output.
 
-        Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
+        Deprecated: This field is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
     failureReason : str, default is Undefined, optional
         failureReason will be set in the event that there is a terminal problem
         reconciling the Machine and will contain a succinct value suitable
@@ -340,7 +340,7 @@ schema ClusterxK8sIoV1beta1MachineStatus:
         can be added as events to the Machine object and/or logged in the
         controller's output.
 
-        Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
+        Deprecated: This field is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
     infrastructureReady : bool, default is Undefined, optional
         infrastructureReady is the state of the infrastructure provider.
     lastUpdated : str, default is Undefined, optional
@@ -388,8 +388,8 @@ schema ClusterxK8sIoV1beta1MachineStatus:
 
 
     check:
-        len(failureMessage) <= 10240 if failureMessage
-        len(failureMessage) >= 1 if failureMessage
+        len(failureMessage) <= 10240 if failureMessage not in [None, Undefined]
+        len(failureMessage) >= 1 if failureMessage not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta1MachineStatusAddressesItems0:
@@ -459,11 +459,11 @@ schema ClusterxK8sIoV1beta1MachineStatusConditionsItems0:
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 
@@ -520,6 +520,8 @@ schema ClusterxK8sIoV1beta1MachineStatusNodeInfo:
         The Operating System reported by the node
     osImage : str, default is Undefined, required
         OS Image reported by the node from /etc/os-release (e.g. Debian GNU/Linux 7 (wheezy)).
+    swap : ClusterxK8sIoV1beta1MachineStatusNodeInfoSwap, default is Undefined, optional
+        swap
     systemUUID : str, default is Undefined, required
         SystemUUID reported by the node. For unique machine identification
         MachineID is preferred. This field is specific to Red Hat hosts
@@ -545,7 +547,23 @@ schema ClusterxK8sIoV1beta1MachineStatusNodeInfo:
 
     osImage: str
 
+    swap?: ClusterxK8sIoV1beta1MachineStatusNodeInfoSwap
+
     systemUUID: str
+
+
+schema ClusterxK8sIoV1beta1MachineStatusNodeInfoSwap:
+    r"""
+    Swap Info reported by the node.
+
+    Attributes
+    ----------
+    capacity : int, default is Undefined, optional
+        Total amount of swap memory in bytes.
+    """
+
+
+    capacity?: int
 
 
 schema ClusterxK8sIoV1beta1MachineStatusNodeRef:

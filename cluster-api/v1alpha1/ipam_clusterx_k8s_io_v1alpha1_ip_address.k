@@ -64,8 +64,8 @@ schema IpamClusterxK8sIoV1alpha1IPAddressSpec:
     check:
         len(address) <= 39
         len(address) >= 1
-        len(gateway) <= 39 if gateway
-        len(gateway) >= 1 if gateway
+        len(gateway) <= 39 if gateway not in [None, Undefined]
+        len(gateway) >= 1 if gateway not in [None, Undefined]
 
 
 schema IpamClusterxK8sIoV1alpha1IPAddressSpecClaimRef:

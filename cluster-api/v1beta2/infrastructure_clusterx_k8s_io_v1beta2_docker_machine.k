@@ -45,7 +45,7 @@ schema InfrastructureClusterxK8sIoV1beta2DockerMachineSpec:
     ----------
     bootstrapTimeout : str, default is Undefined, optional
         BootstrapTimeout is the total amount of time to wait for the machine to bootstrap before timing out.
-        The default value is 3m.
+        The default value is 5m.
     bootstrapped : bool, default is Undefined, optional
         Bootstrapped is true when the kubeadm bootstrapping has been run
         against this machine
@@ -80,8 +80,8 @@ schema InfrastructureClusterxK8sIoV1beta2DockerMachineSpec:
 
 
     check:
-        len(providerID) <= 512 if providerID
-        len(providerID) >= 1 if providerID
+        len(providerID) <= 512 if providerID not in [None, Undefined]
+        len(providerID) >= 1 if providerID not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta2DockerMachineSpecExtraMountsItems0:
@@ -295,11 +295,11 @@ schema InfrastructureClusterxK8sIoV1beta2DockerMachineStatusDeprecatedV1beta1Con
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 

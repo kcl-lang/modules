@@ -159,8 +159,8 @@ schema ClusterxK8sIoV1beta1MachineDeploymentSpecMachineNamingStrategy:
 
 
     check:
-        len(template) <= 256 if template
-        len(template) >= 1 if template
+        len(template) <= 256 if template not in [None, Undefined]
+        len(template) >= 1 if template not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta1MachineDeploymentSpecSelector:
@@ -438,13 +438,13 @@ schema ClusterxK8sIoV1beta1MachineDeploymentSpecTemplateSpec:
     check:
         len(clusterName) <= 63
         len(clusterName) >= 1
-        len(failureDomain) <= 256 if failureDomain
-        len(failureDomain) >= 1 if failureDomain
-        len(providerID) <= 512 if providerID
-        len(providerID) >= 1 if providerID
+        len(failureDomain) <= 256 if failureDomain not in [None, Undefined]
+        len(failureDomain) >= 1 if failureDomain not in [None, Undefined]
+        len(providerID) <= 512 if providerID not in [None, Undefined]
+        len(providerID) >= 1 if providerID not in [None, Undefined]
         len(readinessGates) <= 32 if readinessGates
-        len(version) <= 256 if version
-        len(version) >= 1 if version
+        len(version) <= 256 if version not in [None, Undefined]
+        len(version) >= 1 if version not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta1MachineDeploymentSpecTemplateSpecBootstrap:
@@ -468,8 +468,8 @@ schema ClusterxK8sIoV1beta1MachineDeploymentSpecTemplateSpecBootstrap:
 
 
     check:
-        len(dataSecretName) <= 253 if dataSecretName
-        len(dataSecretName) >= 0 if dataSecretName
+        len(dataSecretName) <= 253 if dataSecretName not in [None, Undefined]
+        len(dataSecretName) >= 0 if dataSecretName not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta1MachineDeploymentSpecTemplateSpecBootstrapConfigRef:
@@ -635,7 +635,7 @@ schema ClusterxK8sIoV1beta1MachineDeploymentStatus:
         be machines that are running but not yet available or machines
         that still have not been created.
 
-        Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
+        Deprecated: This field is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
     updatedReplicas : int, default is Undefined, optional
         updatedReplicas is the total number of non-terminated machines targeted by this deployment
         that have the desired template spec.
@@ -666,8 +666,8 @@ schema ClusterxK8sIoV1beta1MachineDeploymentStatus:
 
 
     check:
-        len(selector) <= 4096 if selector
-        len(selector) >= 1 if selector
+        len(selector) <= 4096 if selector not in [None, Undefined]
+        len(selector) >= 1 if selector not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta1MachineDeploymentStatusConditionsItems0:
@@ -714,11 +714,11 @@ schema ClusterxK8sIoV1beta1MachineDeploymentStatusConditionsItems0:
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 

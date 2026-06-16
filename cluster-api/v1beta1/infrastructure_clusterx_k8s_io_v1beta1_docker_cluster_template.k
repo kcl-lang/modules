@@ -119,17 +119,17 @@ schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecCo
 
     Attributes
     ----------
-    host : str, default is Undefined, required
+    host : str, default is Undefined, optional
         Host is the hostname on which the API server is serving.
-    port : int, default is Undefined, required
+    port : int, default is Undefined, optional
         Port is the port on which the API server is serving.
         Defaults to 6443 if not set.
     """
 
 
-    host: str
+    host?: str
 
-    port: int
+    port?: int
 
 
 schema InfrastructureClusterxK8sIoV1beta1DockerClusterTemplateSpecTemplateSpecFailureDomainsAnon:

@@ -222,16 +222,18 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
     check:
         len(bootCommands) <= 1000 if bootCommands
-        all bootCommands in bootCommands { len(bootCommands) <= 10240 if bootCommands not in [None, Undefined] } if bootCommands
-        all bootCommands in bootCommands { len(bootCommands) >= 1 if bootCommands not in [None, Undefined] } if bootCommands
+        all i in bootCommands { len(i) <= 10240 if i not in [None, Undefined] } if bootCommands
+        all i in bootCommands { len(i) >= 1 if i not in [None, Undefined] } if bootCommands
         len(files) <= 200 if files
         len(mounts) <= 100 if mounts
+        all i in mounts { all ii in i { len(ii) <= 512 if ii not in [None, Undefined] } if i } if mounts
+        all i in mounts { all ii in i { len(ii) >= 1 if ii not in [None, Undefined] } if i } if mounts
         len(postKubeadmCommands) <= 1000 if postKubeadmCommands
-        all postKubeadmCommands in postKubeadmCommands { len(postKubeadmCommands) <= 10240 if postKubeadmCommands not in [None, Undefined] } if postKubeadmCommands
-        all postKubeadmCommands in postKubeadmCommands { len(postKubeadmCommands) >= 1 if postKubeadmCommands not in [None, Undefined] } if postKubeadmCommands
+        all i in postKubeadmCommands { len(i) <= 10240 if i not in [None, Undefined] } if postKubeadmCommands
+        all i in postKubeadmCommands { len(i) >= 1 if i not in [None, Undefined] } if postKubeadmCommands
         len(preKubeadmCommands) <= 1000 if preKubeadmCommands
-        all preKubeadmCommands in preKubeadmCommands { len(preKubeadmCommands) <= 10240 if preKubeadmCommands not in [None, Undefined] } if preKubeadmCommands
-        all preKubeadmCommands in preKubeadmCommands { len(preKubeadmCommands) >= 1 if preKubeadmCommands not in [None, Undefined] } if preKubeadmCommands
+        all i in preKubeadmCommands { len(i) <= 10240 if i not in [None, Undefined] } if preKubeadmCommands
+        all i in preKubeadmCommands { len(i) >= 1 if i not in [None, Undefined] } if preKubeadmCommands
         len(users) <= 100 if users
 
 
@@ -332,16 +334,16 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 
     check:
-        len(certificatesDir) <= 512 if certificatesDir
-        len(certificatesDir) >= 1 if certificatesDir
-        len(clusterName) <= 63 if clusterName
-        len(clusterName) >= 1 if clusterName
-        len(controlPlaneEndpoint) <= 512 if controlPlaneEndpoint
-        len(controlPlaneEndpoint) >= 1 if controlPlaneEndpoint
-        len(imageRepository) <= 512 if imageRepository
-        len(imageRepository) >= 1 if imageRepository
-        len(kubernetesVersion) <= 256 if kubernetesVersion
-        len(kubernetesVersion) >= 1 if kubernetesVersion
+        len(certificatesDir) <= 512 if certificatesDir not in [None, Undefined]
+        len(certificatesDir) >= 1 if certificatesDir not in [None, Undefined]
+        len(clusterName) <= 63 if clusterName not in [None, Undefined]
+        len(clusterName) >= 1 if clusterName not in [None, Undefined]
+        len(controlPlaneEndpoint) <= 512 if controlPlaneEndpoint not in [None, Undefined]
+        len(controlPlaneEndpoint) >= 1 if controlPlaneEndpoint not in [None, Undefined]
+        len(imageRepository) <= 512 if imageRepository not in [None, Undefined]
+        len(imageRepository) >= 1 if imageRepository not in [None, Undefined]
+        len(kubernetesVersion) <= 256 if kubernetesVersion not in [None, Undefined]
+        len(kubernetesVersion) >= 1 if kubernetesVersion not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationAPIServer:
@@ -378,8 +380,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
     check:
         len(certSANs) <= 100 if certSANs
-        all certSANs in certSANs { len(certSANs) <= 253 if certSANs not in [None, Undefined] } if certSANs
-        all certSANs in certSANs { len(certSANs) >= 1 if certSANs not in [None, Undefined] } if certSANs
+        all i in certSANs { len(i) <= 253 if i not in [None, Undefined] } if certSANs
+        all i in certSANs { len(i) >= 1 if i not in [None, Undefined] } if certSANs
         len(extraEnvs) <= 100 if extraEnvs
         len(extraVolumes) <= 100 if extraVolumes
 
@@ -391,7 +393,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of the environment variable. Must be a C_IDENTIFIER.
+        Name of the environment variable.
+        May consist of any printable ASCII characters except '='.
     value : str, default is Undefined, optional
         Variable references $(VAR_NAME) are expanded
         using the previously defined environment variables in the container and
@@ -424,6 +427,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
         config map key ref
     fieldRef : ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationAPIServerExtraEnvsItems0ValueFromFieldRef, default is Undefined, optional
         field ref
+    fileKeyRef : ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationAPIServerExtraEnvsItems0ValueFromFileKeyRef, default is Undefined, optional
+        file key ref
     resourceFieldRef : ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationAPIServerExtraEnvsItems0ValueFromResourceFieldRef, default is Undefined, optional
         resource field ref
     secretKeyRef : ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationAPIServerExtraEnvsItems0ValueFromSecretKeyRef, default is Undefined, optional
@@ -434,6 +439,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     configMapKeyRef?: ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationAPIServerExtraEnvsItems0ValueFromConfigMapKeyRef
 
     fieldRef?: ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationAPIServerExtraEnvsItems0ValueFromFieldRef
+
+    fileKeyRef?: ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationAPIServerExtraEnvsItems0ValueFromFileKeyRef
 
     resourceFieldRef?: ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationAPIServerExtraEnvsItems0ValueFromResourceFieldRef
 
@@ -483,6 +490,42 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     apiVersion?: str
 
     fieldPath: str
+
+
+schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationAPIServerExtraEnvsItems0ValueFromFileKeyRef:
+    r"""
+    FileKeyRef selects a key of the env file.
+    Requires the EnvFiles feature gate to be enabled.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key within the env file. An invalid key will prevent the pod from starting.
+        The keys defined within a source may consist of any printable ASCII characters except '='.
+        During Alpha stage of the EnvFiles feature gate, the key size is limited to 128 characters.
+    optional : bool, default is Undefined, optional
+        Specify whether the file or its key must be defined. If the file or key
+        does not exist, then the env var is not published.
+        If optional is set to true and the specified key does not exist,
+        the environment variable will not be set in the Pod's containers.
+
+        If optional is set to false and the specified key does not exist,
+        an error will be returned during Pod creation.
+    path : str, default is Undefined, required
+        The path within the volume from which to select the file.
+        Must be relative and may not contain the '..' path or start with '..'.
+    volumeName : str, default is Undefined, required
+        The name of the volume mount containing the env file.
+    """
+
+
+    key: str
+
+    optional?: bool = False
+
+    path: str
+
+    volumeName: str
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationAPIServerExtraEnvsItems0ValueFromResourceFieldRef:
@@ -615,7 +658,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of the environment variable. Must be a C_IDENTIFIER.
+        Name of the environment variable.
+        May consist of any printable ASCII characters except '='.
     value : str, default is Undefined, optional
         Variable references $(VAR_NAME) are expanded
         using the previously defined environment variables in the container and
@@ -648,6 +692,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
         config map key ref
     fieldRef : ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationControllerManagerExtraEnvsItems0ValueFromFieldRef, default is Undefined, optional
         field ref
+    fileKeyRef : ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationControllerManagerExtraEnvsItems0ValueFromFileKeyRef, default is Undefined, optional
+        file key ref
     resourceFieldRef : ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationControllerManagerExtraEnvsItems0ValueFromResourceFieldRef, default is Undefined, optional
         resource field ref
     secretKeyRef : ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationControllerManagerExtraEnvsItems0ValueFromSecretKeyRef, default is Undefined, optional
@@ -658,6 +704,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     configMapKeyRef?: ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationControllerManagerExtraEnvsItems0ValueFromConfigMapKeyRef
 
     fieldRef?: ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationControllerManagerExtraEnvsItems0ValueFromFieldRef
+
+    fileKeyRef?: ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationControllerManagerExtraEnvsItems0ValueFromFileKeyRef
 
     resourceFieldRef?: ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationControllerManagerExtraEnvsItems0ValueFromResourceFieldRef
 
@@ -707,6 +755,42 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     apiVersion?: str
 
     fieldPath: str
+
+
+schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationControllerManagerExtraEnvsItems0ValueFromFileKeyRef:
+    r"""
+    FileKeyRef selects a key of the env file.
+    Requires the EnvFiles feature gate to be enabled.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key within the env file. An invalid key will prevent the pod from starting.
+        The keys defined within a source may consist of any printable ASCII characters except '='.
+        During Alpha stage of the EnvFiles feature gate, the key size is limited to 128 characters.
+    optional : bool, default is Undefined, optional
+        Specify whether the file or its key must be defined. If the file or key
+        does not exist, then the env var is not published.
+        If optional is set to true and the specified key does not exist,
+        the environment variable will not be set in the Pod's containers.
+
+        If optional is set to false and the specified key does not exist,
+        an error will be returned during Pod creation.
+    path : str, default is Undefined, required
+        The path within the volume from which to select the file.
+        Must be relative and may not contain the '..' path or start with '..'.
+    volumeName : str, default is Undefined, required
+        The name of the volume mount containing the env file.
+    """
+
+
+    key: str
+
+    optional?: bool = False
+
+    path: str
+
+    volumeName: str
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationControllerManagerExtraEnvsItems0ValueFromResourceFieldRef:
@@ -824,10 +908,10 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 
     check:
-        len(imageRepository) <= 512 if imageRepository
-        len(imageRepository) >= 1 if imageRepository
-        len(imageTag) <= 256 if imageTag
-        len(imageTag) >= 1 if imageTag
+        len(imageRepository) <= 512 if imageRepository not in [None, Undefined]
+        len(imageRepository) >= 1 if imageRepository not in [None, Undefined]
+        len(imageTag) <= 256 if imageTag not in [None, Undefined]
+        len(imageTag) >= 1 if imageTag not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationEtcd:
@@ -885,8 +969,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
         len(certFile) <= 512
         len(certFile) >= 1
         len(endpoints) <= 50
-        all endpoints in endpoints { len(endpoints) <= 512 if endpoints not in [None, Undefined] } if endpoints
-        all endpoints in endpoints { len(endpoints) >= 1 if endpoints not in [None, Undefined] } if endpoints
+        all i in endpoints { len(i) <= 512 if i not in [None, Undefined] } if endpoints
+        all i in endpoints { len(i) >= 1 if i not in [None, Undefined] } if endpoints
         len(keyFile) <= 512
         len(keyFile) >= 1
 
@@ -937,19 +1021,19 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 
     check:
-        len(dataDir) <= 512 if dataDir
-        len(dataDir) >= 1 if dataDir
+        len(dataDir) <= 512 if dataDir not in [None, Undefined]
+        len(dataDir) >= 1 if dataDir not in [None, Undefined]
         len(extraEnvs) <= 100 if extraEnvs
-        len(imageRepository) <= 512 if imageRepository
-        len(imageRepository) >= 1 if imageRepository
-        len(imageTag) <= 256 if imageTag
-        len(imageTag) >= 1 if imageTag
+        len(imageRepository) <= 512 if imageRepository not in [None, Undefined]
+        len(imageRepository) >= 1 if imageRepository not in [None, Undefined]
+        len(imageTag) <= 256 if imageTag not in [None, Undefined]
+        len(imageTag) >= 1 if imageTag not in [None, Undefined]
         len(peerCertSANs) <= 100 if peerCertSANs
-        all peerCertSANs in peerCertSANs { len(peerCertSANs) <= 253 if peerCertSANs not in [None, Undefined] } if peerCertSANs
-        all peerCertSANs in peerCertSANs { len(peerCertSANs) >= 1 if peerCertSANs not in [None, Undefined] } if peerCertSANs
+        all i in peerCertSANs { len(i) <= 253 if i not in [None, Undefined] } if peerCertSANs
+        all i in peerCertSANs { len(i) >= 1 if i not in [None, Undefined] } if peerCertSANs
         len(serverCertSANs) <= 100 if serverCertSANs
-        all serverCertSANs in serverCertSANs { len(serverCertSANs) <= 253 if serverCertSANs not in [None, Undefined] } if serverCertSANs
-        all serverCertSANs in serverCertSANs { len(serverCertSANs) >= 1 if serverCertSANs not in [None, Undefined] } if serverCertSANs
+        all i in serverCertSANs { len(i) <= 253 if i not in [None, Undefined] } if serverCertSANs
+        all i in serverCertSANs { len(i) >= 1 if i not in [None, Undefined] } if serverCertSANs
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationEtcdLocalExtraEnvsItems0:
@@ -959,7 +1043,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of the environment variable. Must be a C_IDENTIFIER.
+        Name of the environment variable.
+        May consist of any printable ASCII characters except '='.
     value : str, default is Undefined, optional
         Variable references $(VAR_NAME) are expanded
         using the previously defined environment variables in the container and
@@ -992,6 +1077,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
         config map key ref
     fieldRef : ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationEtcdLocalExtraEnvsItems0ValueFromFieldRef, default is Undefined, optional
         field ref
+    fileKeyRef : ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationEtcdLocalExtraEnvsItems0ValueFromFileKeyRef, default is Undefined, optional
+        file key ref
     resourceFieldRef : ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationEtcdLocalExtraEnvsItems0ValueFromResourceFieldRef, default is Undefined, optional
         resource field ref
     secretKeyRef : ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationEtcdLocalExtraEnvsItems0ValueFromSecretKeyRef, default is Undefined, optional
@@ -1002,6 +1089,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     configMapKeyRef?: ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationEtcdLocalExtraEnvsItems0ValueFromConfigMapKeyRef
 
     fieldRef?: ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationEtcdLocalExtraEnvsItems0ValueFromFieldRef
+
+    fileKeyRef?: ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationEtcdLocalExtraEnvsItems0ValueFromFileKeyRef
 
     resourceFieldRef?: ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationEtcdLocalExtraEnvsItems0ValueFromResourceFieldRef
 
@@ -1051,6 +1140,42 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     apiVersion?: str
 
     fieldPath: str
+
+
+schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationEtcdLocalExtraEnvsItems0ValueFromFileKeyRef:
+    r"""
+    FileKeyRef selects a key of the env file.
+    Requires the EnvFiles feature gate to be enabled.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key within the env file. An invalid key will prevent the pod from starting.
+        The keys defined within a source may consist of any printable ASCII characters except '='.
+        During Alpha stage of the EnvFiles feature gate, the key size is limited to 128 characters.
+    optional : bool, default is Undefined, optional
+        Specify whether the file or its key must be defined. If the file or key
+        does not exist, then the env var is not published.
+        If optional is set to true and the specified key does not exist,
+        the environment variable will not be set in the Pod's containers.
+
+        If optional is set to false and the specified key does not exist,
+        an error will be returned during Pod creation.
+    path : str, default is Undefined, required
+        The path within the volume from which to select the file.
+        Must be relative and may not contain the '..' path or start with '..'.
+    volumeName : str, default is Undefined, required
+        The name of the volume mount containing the env file.
+    """
+
+
+    key: str
+
+    optional?: bool = False
+
+    path: str
+
+    volumeName: str
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationEtcdLocalExtraEnvsItems0ValueFromResourceFieldRef:
@@ -1134,12 +1259,12 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 
     check:
-        len(dnsDomain) <= 253 if dnsDomain
-        len(dnsDomain) >= 1 if dnsDomain
-        len(podSubnet) <= 1024 if podSubnet
-        len(podSubnet) >= 1 if podSubnet
-        len(serviceSubnet) <= 1024 if serviceSubnet
-        len(serviceSubnet) >= 1 if serviceSubnet
+        len(dnsDomain) <= 253 if dnsDomain not in [None, Undefined]
+        len(dnsDomain) >= 1 if dnsDomain not in [None, Undefined]
+        len(podSubnet) <= 1024 if podSubnet not in [None, Undefined]
+        len(podSubnet) >= 1 if podSubnet not in [None, Undefined]
+        len(serviceSubnet) <= 1024 if serviceSubnet not in [None, Undefined]
+        len(serviceSubnet) >= 1 if serviceSubnet not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationScheduler:
@@ -1178,7 +1303,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of the environment variable. Must be a C_IDENTIFIER.
+        Name of the environment variable.
+        May consist of any printable ASCII characters except '='.
     value : str, default is Undefined, optional
         Variable references $(VAR_NAME) are expanded
         using the previously defined environment variables in the container and
@@ -1211,6 +1337,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
         config map key ref
     fieldRef : ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationSchedulerExtraEnvsItems0ValueFromFieldRef, default is Undefined, optional
         field ref
+    fileKeyRef : ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationSchedulerExtraEnvsItems0ValueFromFileKeyRef, default is Undefined, optional
+        file key ref
     resourceFieldRef : ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationSchedulerExtraEnvsItems0ValueFromResourceFieldRef, default is Undefined, optional
         resource field ref
     secretKeyRef : ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationSchedulerExtraEnvsItems0ValueFromSecretKeyRef, default is Undefined, optional
@@ -1221,6 +1349,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     configMapKeyRef?: ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationSchedulerExtraEnvsItems0ValueFromConfigMapKeyRef
 
     fieldRef?: ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationSchedulerExtraEnvsItems0ValueFromFieldRef
+
+    fileKeyRef?: ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationSchedulerExtraEnvsItems0ValueFromFileKeyRef
 
     resourceFieldRef?: ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationSchedulerExtraEnvsItems0ValueFromResourceFieldRef
 
@@ -1270,6 +1400,42 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     apiVersion?: str
 
     fieldPath: str
+
+
+schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationSchedulerExtraEnvsItems0ValueFromFileKeyRef:
+    r"""
+    FileKeyRef selects a key of the env file.
+    Requires the EnvFiles feature gate to be enabled.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key within the env file. An invalid key will prevent the pod from starting.
+        The keys defined within a source may consist of any printable ASCII characters except '='.
+        During Alpha stage of the EnvFiles feature gate, the key size is limited to 128 characters.
+    optional : bool, default is Undefined, optional
+        Specify whether the file or its key must be defined. If the file or key
+        does not exist, then the env var is not published.
+        If optional is set to true and the specified key does not exist,
+        the environment variable will not be set in the Pod's containers.
+
+        If optional is set to false and the specified key does not exist,
+        an error will be returned during Pod creation.
+    path : str, default is Undefined, required
+        The path within the volume from which to select the file.
+        Must be relative and may not contain the '..' path or start with '..'.
+    volumeName : str, default is Undefined, required
+        The name of the volume mount containing the env file.
+    """
+
+
+    key: str
+
+    optional?: bool = False
+
+    path: str
+
+    volumeName: str
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecClusterConfigurationSchedulerExtraEnvsItems0ValueFromResourceFieldRef:
@@ -1433,16 +1599,16 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
         len(device) <= 256
         len(device) >= 1
         len(extraOpts) <= 100 if extraOpts
-        all extraOpts in extraOpts { len(extraOpts) <= 256 if extraOpts not in [None, Undefined] } if extraOpts
-        all extraOpts in extraOpts { len(extraOpts) >= 1 if extraOpts not in [None, Undefined] } if extraOpts
+        all i in extraOpts { len(i) <= 256 if i not in [None, Undefined] } if extraOpts
+        all i in extraOpts { len(i) >= 1 if i not in [None, Undefined] } if extraOpts
         len(filesystem) <= 128
         len(filesystem) >= 1
-        len(label) <= 512 if label
-        len(label) >= 1 if label
-        len(partition) <= 128 if partition
-        len(partition) >= 1 if partition
-        len(replaceFS) <= 128 if replaceFS
-        len(replaceFS) >= 1 if replaceFS
+        len(label) <= 512 if label not in [None, Undefined]
+        len(label) >= 1 if label not in [None, Undefined]
+        len(partition) <= 128 if partition not in [None, Undefined]
+        len(partition) >= 1 if partition not in [None, Undefined]
+        len(replaceFS) <= 128 if replaceFS not in [None, Undefined]
+        len(replaceFS) >= 1 if replaceFS not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecDiskSetupPartitionsItems0:
@@ -1520,14 +1686,14 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 
     check:
-        len(content) <= 10240 if content
-        len(content) >= 1 if content
-        len(owner) <= 256 if owner
-        len(owner) >= 1 if owner
+        len(content) <= 10240 if content not in [None, Undefined]
+        len(content) >= 1 if content not in [None, Undefined]
+        len(owner) <= 256 if owner not in [None, Undefined]
+        len(owner) >= 1 if owner not in [None, Undefined]
         len(path) <= 512
         len(path) >= 1
-        len(permissions) <= 16 if permissions
-        len(permissions) >= 1 if permissions
+        len(permissions) <= 16 if permissions not in [None, Undefined]
+        len(permissions) >= 1 if permissions not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecFilesItems0ContentFrom:
@@ -1605,8 +1771,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 
     check:
-        len(additionalConfig) <= 32768 if additionalConfig
-        len(additionalConfig) >= 1 if additionalConfig
+        len(additionalConfig) <= 32768 if additionalConfig not in [None, Undefined]
+        len(additionalConfig) >= 1 if additionalConfig not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecInitConfiguration:
@@ -1660,8 +1826,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
     check:
         len(bootstrapTokens) <= 100 if bootstrapTokens
         len(skipPhases) <= 50 if skipPhases
-        all skipPhases in skipPhases { len(skipPhases) <= 256 if skipPhases not in [None, Undefined] } if skipPhases
-        all skipPhases in skipPhases { len(skipPhases) >= 1 if skipPhases not in [None, Undefined] } if skipPhases
+        all i in skipPhases { len(i) <= 256 if i not in [None, Undefined] } if skipPhases
+        all i in skipPhases { len(i) >= 1 if i not in [None, Undefined] } if skipPhases
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecInitConfigurationBootstrapTokensItems0:
@@ -1705,14 +1871,14 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 
     check:
-        len(description) <= 512 if description
-        len(description) >= 1 if description
+        len(description) <= 512 if description not in [None, Undefined]
+        len(description) >= 1 if description not in [None, Undefined]
         len(groups) <= 100 if groups
-        all groups in groups { len(groups) <= 256 if groups not in [None, Undefined] } if groups
-        all groups in groups { len(groups) >= 1 if groups not in [None, Undefined] } if groups
+        all i in groups { len(i) <= 256 if i not in [None, Undefined] } if groups
+        all i in groups { len(i) >= 1 if i not in [None, Undefined] } if groups
         len(usages) <= 100 if usages
-        all usages in usages { len(usages) <= 256 if usages not in [None, Undefined] } if usages
-        all usages in usages { len(usages) >= 1 if usages not in [None, Undefined] } if usages
+        all i in usages { len(i) <= 256 if i not in [None, Undefined] } if usages
+        all i in usages { len(i) >= 1 if i not in [None, Undefined] } if usages
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecInitConfigurationLocalAPIEndpoint:
@@ -1740,8 +1906,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 
     check:
-        len(advertiseAddress) <= 39 if advertiseAddress
-        len(advertiseAddress) >= 1 if advertiseAddress
+        len(advertiseAddress) <= 39 if advertiseAddress not in [None, Undefined]
+        len(advertiseAddress) >= 1 if advertiseAddress not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecInitConfigurationNodeRegistration:
@@ -1797,13 +1963,13 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 
     check:
-        len(criSocket) <= 512 if criSocket
-        len(criSocket) >= 1 if criSocket
+        len(criSocket) <= 512 if criSocket not in [None, Undefined]
+        len(criSocket) >= 1 if criSocket not in [None, Undefined]
         len(ignorePreflightErrors) <= 50 if ignorePreflightErrors
-        all ignorePreflightErrors in ignorePreflightErrors { len(ignorePreflightErrors) <= 512 if ignorePreflightErrors not in [None, Undefined] } if ignorePreflightErrors
-        all ignorePreflightErrors in ignorePreflightErrors { len(ignorePreflightErrors) >= 1 if ignorePreflightErrors not in [None, Undefined] } if ignorePreflightErrors
-        len(name) <= 253 if name
-        len(name) >= 1 if name
+        all i in ignorePreflightErrors { len(i) <= 512 if i not in [None, Undefined] } if ignorePreflightErrors
+        all i in ignorePreflightErrors { len(i) >= 1 if i not in [None, Undefined] } if ignorePreflightErrors
+        len(name) <= 253 if name not in [None, Undefined]
+        len(name) >= 1 if name not in [None, Undefined]
         len(taints) <= 100 if taints
 
 
@@ -1822,7 +1988,6 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
         Required. The taint key to be applied to a node.
     timeAdded : str, default is Undefined, optional
         TimeAdded represents the time at which the taint was added.
-        It is only written for NoExecute taints.
     value : str, default is Undefined, optional
         The taint value corresponding to the taint key.
     """
@@ -1862,8 +2027,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 
     check:
-        len(directory) <= 512 if directory
-        len(directory) >= 1 if directory
+        len(directory) <= 512 if directory not in [None, Undefined]
+        len(directory) >= 1 if directory not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfiguration:
@@ -1920,11 +2085,11 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 
     check:
-        len(caCertPath) <= 512 if caCertPath
-        len(caCertPath) >= 1 if caCertPath
+        len(caCertPath) <= 512 if caCertPath not in [None, Undefined]
+        len(caCertPath) >= 1 if caCertPath not in [None, Undefined]
         len(skipPhases) <= 50 if skipPhases
-        all skipPhases in skipPhases { len(skipPhases) <= 256 if skipPhases not in [None, Undefined] } if skipPhases
-        all skipPhases in skipPhases { len(skipPhases) >= 1 if skipPhases not in [None, Undefined] } if skipPhases
+        all i in skipPhases { len(i) <= 256 if i not in [None, Undefined] } if skipPhases
+        all i in skipPhases { len(i) >= 1 if i not in [None, Undefined] } if skipPhases
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfigurationControlPlane:
@@ -1962,8 +2127,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 
     check:
-        len(advertiseAddress) <= 39 if advertiseAddress
-        len(advertiseAddress) >= 1 if advertiseAddress
+        len(advertiseAddress) <= 39 if advertiseAddress not in [None, Undefined]
+        len(advertiseAddress) >= 1 if advertiseAddress not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfigurationDiscovery:
@@ -1995,8 +2160,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 
     check:
-        len(tlsBootstrapToken) <= 512 if tlsBootstrapToken
-        len(tlsBootstrapToken) >= 1 if tlsBootstrapToken
+        len(tlsBootstrapToken) <= 512 if tlsBootstrapToken not in [None, Undefined]
+        len(tlsBootstrapToken) >= 1 if tlsBootstrapToken not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfigurationDiscoveryBootstrapToken:
@@ -2037,13 +2202,13 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 
     check:
-        len(apiServerEndpoint) <= 512 if apiServerEndpoint
-        len(apiServerEndpoint) >= 1 if apiServerEndpoint
+        len(apiServerEndpoint) <= 512 if apiServerEndpoint not in [None, Undefined]
+        len(apiServerEndpoint) >= 1 if apiServerEndpoint not in [None, Undefined]
         len(caCertHashes) <= 100 if caCertHashes
-        all caCertHashes in caCertHashes { len(caCertHashes) <= 512 if caCertHashes not in [None, Undefined] } if caCertHashes
-        all caCertHashes in caCertHashes { len(caCertHashes) >= 1 if caCertHashes not in [None, Undefined] } if caCertHashes
-        len(token) <= 512 if token
-        len(token) >= 1 if token
+        all i in caCertHashes { len(i) <= 512 if i not in [None, Undefined] } if caCertHashes
+        all i in caCertHashes { len(i) >= 1 if i not in [None, Undefined] } if caCertHashes
+        len(token) <= 512 if token not in [None, Undefined]
+        len(token) >= 1 if token not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfigurationDiscoveryFile:
@@ -2139,14 +2304,14 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 
     check:
-        len(certificateAuthorityData) <= 51200 if certificateAuthorityData
-        len(certificateAuthorityData) >= 1 if certificateAuthorityData
-        len(proxyURL) <= 512 if proxyURL
-        len(proxyURL) >= 1 if proxyURL
-        len(server) <= 512 if server
-        len(server) >= 1 if server
-        len(tlsServerName) <= 512 if tlsServerName
-        len(tlsServerName) >= 1 if tlsServerName
+        len(certificateAuthorityData) <= 51200 if certificateAuthorityData not in [None, Undefined]
+        len(certificateAuthorityData) >= 1 if certificateAuthorityData not in [None, Undefined]
+        len(proxyURL) <= 512 if proxyURL not in [None, Undefined]
+        len(proxyURL) >= 1 if proxyURL not in [None, Undefined]
+        len(server) <= 512 if server not in [None, Undefined]
+        len(server) >= 1 if server not in [None, Undefined]
+        len(tlsServerName) <= 512 if tlsServerName not in [None, Undefined]
+        len(tlsServerName) >= 1 if tlsServerName not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecJoinConfigurationDiscoveryFileKubeConfigUser:
@@ -2230,11 +2395,11 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 
     check:
-        len(apiVersion) <= 512 if apiVersion
-        len(apiVersion) >= 1 if apiVersion
+        len(apiVersion) <= 512 if apiVersion not in [None, Undefined]
+        len(apiVersion) >= 1 if apiVersion not in [None, Undefined]
         len(args) <= 100 if args
-        all args in args { len(args) <= 512 if args not in [None, Undefined] } if args
-        all args in args { len(args) >= 1 if args not in [None, Undefined] } if args
+        all i in args { len(i) <= 512 if i not in [None, Undefined] } if args
+        all i in args { len(i) >= 1 if i not in [None, Undefined] } if args
         len(command) <= 1024
         len(command) >= 1
         len(env) <= 100 if env
@@ -2319,13 +2484,13 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 
     check:
-        len(criSocket) <= 512 if criSocket
-        len(criSocket) >= 1 if criSocket
+        len(criSocket) <= 512 if criSocket not in [None, Undefined]
+        len(criSocket) >= 1 if criSocket not in [None, Undefined]
         len(ignorePreflightErrors) <= 50 if ignorePreflightErrors
-        all ignorePreflightErrors in ignorePreflightErrors { len(ignorePreflightErrors) <= 512 if ignorePreflightErrors not in [None, Undefined] } if ignorePreflightErrors
-        all ignorePreflightErrors in ignorePreflightErrors { len(ignorePreflightErrors) >= 1 if ignorePreflightErrors not in [None, Undefined] } if ignorePreflightErrors
-        len(name) <= 253 if name
-        len(name) >= 1 if name
+        all i in ignorePreflightErrors { len(i) <= 512 if i not in [None, Undefined] } if ignorePreflightErrors
+        all i in ignorePreflightErrors { len(i) >= 1 if i not in [None, Undefined] } if ignorePreflightErrors
+        len(name) <= 253 if name not in [None, Undefined]
+        len(name) >= 1 if name not in [None, Undefined]
         len(taints) <= 100 if taints
 
 
@@ -2344,7 +2509,6 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
         Required. The taint key to be applied to a node.
     timeAdded : str, default is Undefined, optional
         TimeAdded represents the time at which the taint was added.
-        It is only written for NoExecute taints.
     value : str, default is Undefined, optional
         The taint value corresponding to the taint key.
     """
@@ -2384,8 +2548,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 
     check:
-        len(directory) <= 512 if directory
-        len(directory) >= 1 if directory
+        len(directory) <= 512 if directory not in [None, Undefined]
+        len(directory) >= 1 if directory not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecNtp:
@@ -2408,8 +2572,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
     check:
         len(servers) <= 100 if servers
-        all servers in servers { len(servers) <= 512 if servers not in [None, Undefined] } if servers
-        all servers in servers { len(servers) >= 1 if servers not in [None, Undefined] } if servers
+        all i in servers { len(i) <= 512 if i not in [None, Undefined] } if servers
+        all i in servers { len(i) >= 1 if i not in [None, Undefined] } if servers
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecUsersItems0:
@@ -2471,25 +2635,25 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 
     check:
-        len(gecos) <= 256 if gecos
-        len(gecos) >= 1 if gecos
-        len(groups) <= 256 if groups
-        len(groups) >= 1 if groups
-        len(homeDir) <= 256 if homeDir
-        len(homeDir) >= 1 if homeDir
+        len(gecos) <= 256 if gecos not in [None, Undefined]
+        len(gecos) >= 1 if gecos not in [None, Undefined]
+        len(groups) <= 256 if groups not in [None, Undefined]
+        len(groups) >= 1 if groups not in [None, Undefined]
+        len(homeDir) <= 256 if homeDir not in [None, Undefined]
+        len(homeDir) >= 1 if homeDir not in [None, Undefined]
         len(name) <= 256
         len(name) >= 1
-        len(passwd) <= 256 if passwd
-        len(passwd) >= 1 if passwd
-        len(primaryGroup) <= 256 if primaryGroup
-        len(primaryGroup) >= 1 if primaryGroup
-        len(shell) <= 256 if shell
-        len(shell) >= 1 if shell
+        len(passwd) <= 256 if passwd not in [None, Undefined]
+        len(passwd) >= 1 if passwd not in [None, Undefined]
+        len(primaryGroup) <= 256 if primaryGroup not in [None, Undefined]
+        len(primaryGroup) >= 1 if primaryGroup not in [None, Undefined]
+        len(shell) <= 256 if shell not in [None, Undefined]
+        len(shell) >= 1 if shell not in [None, Undefined]
         len(sshAuthorizedKeys) <= 100 if sshAuthorizedKeys
-        all sshAuthorizedKeys in sshAuthorizedKeys { len(sshAuthorizedKeys) <= 2048 if sshAuthorizedKeys not in [None, Undefined] } if sshAuthorizedKeys
-        all sshAuthorizedKeys in sshAuthorizedKeys { len(sshAuthorizedKeys) >= 1 if sshAuthorizedKeys not in [None, Undefined] } if sshAuthorizedKeys
-        len(sudo) <= 256 if sudo
-        len(sudo) >= 1 if sudo
+        all i in sshAuthorizedKeys { len(i) <= 2048 if i not in [None, Undefined] } if sshAuthorizedKeys
+        all i in sshAuthorizedKeys { len(i) >= 1 if i not in [None, Undefined] } if sshAuthorizedKeys
+        len(sudo) <= 256 if sudo not in [None, Undefined]
+        len(sudo) >= 1 if sudo not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecKubeadmConfigSpecUsersItems0PasswdFrom:
@@ -2556,8 +2720,8 @@ schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSp
 
 
     check:
-        len(template) <= 256 if template
-        len(template) >= 1 if template
+        len(template) <= 256 if template not in [None, Undefined]
+        len(template) >= 1 if template not in [None, Undefined]
 
 
 schema ControlplaneClusterxK8sIoV1beta1KubeadmControlPlaneTemplateSpecTemplateSpecMachineTemplate:

@@ -52,8 +52,8 @@ schema AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpec:
 
     check:
         len(bindings) <= 100 if bindings
-        len(clusterName) <= 63 if clusterName
-        len(clusterName) >= 1 if clusterName
+        len(clusterName) <= 63 if clusterName not in [None, Undefined]
+        len(clusterName) >= 1 if clusterName not in [None, Undefined]
 
 
 schema AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpecBindingsItems0:
@@ -112,8 +112,8 @@ schema AddonsClusterxK8sIoV1beta1ClusterResourceSetBindingSpecBindingsItems0Reso
 
 
     check:
-        len(hash) <= 256 if hash
-        len(hash) >= 1 if hash
+        len(hash) <= 256 if hash not in [None, Undefined]
+        len(hash) >= 1 if hash not in [None, Undefined]
         len(name) <= 253
         len(name) >= 1
 

@@ -99,10 +99,10 @@ schema RuntimeClusterxK8sIoV1beta2ExtensionConfigSpecClientConfig:
 
 
     check:
-        len(caBundle) <= 51200 if caBundle
-        len(caBundle) >= 1 if caBundle
-        len(url) <= 512 if url
-        len(url) >= 1 if url
+        len(caBundle) <= 51200 if caBundle not in [None, Undefined]
+        len(caBundle) >= 1 if caBundle not in [None, Undefined]
+        len(url) <= 512 if url not in [None, Undefined]
+        len(url) >= 1 if url not in [None, Undefined]
 
 
 schema RuntimeClusterxK8sIoV1beta2ExtensionConfigSpecClientConfigService:
@@ -142,8 +142,8 @@ schema RuntimeClusterxK8sIoV1beta2ExtensionConfigSpecClientConfigService:
         len(name) >= 1
         len(namespace) <= 63
         len(namespace) >= 1
-        len(path) <= 512 if path
-        len(path) >= 1 if path
+        len(path) <= 512 if path not in [None, Undefined]
+        len(path) >= 1 if path not in [None, Undefined]
 
 
 schema RuntimeClusterxK8sIoV1beta2ExtensionConfigSpecNamespaceSelector:
@@ -351,11 +351,11 @@ schema RuntimeClusterxK8sIoV1beta2ExtensionConfigStatusDeprecatedV1beta1Conditio
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 
