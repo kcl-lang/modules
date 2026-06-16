@@ -143,8 +143,8 @@ schema ClusterxK8sIoV1beta2ClusterSpecClusterNetwork:
     check:
         apiServerPort <= 65535 if apiServerPort not in [None, Undefined]
         apiServerPort >= 1 if apiServerPort not in [None, Undefined]
-        len(serviceDomain) <= 253 if serviceDomain
-        len(serviceDomain) >= 1 if serviceDomain
+        len(serviceDomain) <= 253 if serviceDomain not in [None, Undefined]
+        len(serviceDomain) >= 1 if serviceDomain not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta2ClusterSpecClusterNetworkPods:
@@ -164,8 +164,8 @@ schema ClusterxK8sIoV1beta2ClusterSpecClusterNetworkPods:
     check:
         len(cidrBlocks) >= 1
         len(cidrBlocks) <= 100
-        all cidrBlocks in cidrBlocks { len(cidrBlocks) <= 43 if cidrBlocks not in [None, Undefined] } if cidrBlocks
-        all cidrBlocks in cidrBlocks { len(cidrBlocks) >= 1 if cidrBlocks not in [None, Undefined] } if cidrBlocks
+        all i in cidrBlocks { len(i) <= 43 if i not in [None, Undefined] } if cidrBlocks
+        all i in cidrBlocks { len(i) >= 1 if i not in [None, Undefined] } if cidrBlocks
 
 
 schema ClusterxK8sIoV1beta2ClusterSpecClusterNetworkServices:
@@ -185,8 +185,8 @@ schema ClusterxK8sIoV1beta2ClusterSpecClusterNetworkServices:
     check:
         len(cidrBlocks) >= 1
         len(cidrBlocks) <= 100
-        all cidrBlocks in cidrBlocks { len(cidrBlocks) <= 43 if cidrBlocks not in [None, Undefined] } if cidrBlocks
-        all cidrBlocks in cidrBlocks { len(cidrBlocks) >= 1 if cidrBlocks not in [None, Undefined] } if cidrBlocks
+        all i in cidrBlocks { len(i) <= 43 if i not in [None, Undefined] } if cidrBlocks
+        all i in cidrBlocks { len(i) >= 1 if i not in [None, Undefined] } if cidrBlocks
 
 
 schema ClusterxK8sIoV1beta2ClusterSpecControlPlaneEndpoint:
@@ -208,8 +208,8 @@ schema ClusterxK8sIoV1beta2ClusterSpecControlPlaneEndpoint:
 
 
     check:
-        len(host) <= 512 if host
-        len(host) >= 1 if host
+        len(host) <= 512 if host not in [None, Undefined]
+        len(host) >= 1 if host not in [None, Undefined]
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
 
@@ -365,8 +365,8 @@ schema ClusterxK8sIoV1beta2ClusterSpecTopologyClassRef:
         len(name) <= 253
         len(name) >= 1
         _regex_match(str(name), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
         _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
 
 
@@ -706,8 +706,8 @@ schema ClusterxK8sIoV1beta2ClusterSpecTopologyControlPlaneHealthCheckRemediation
 
 
     check:
-        len(unhealthyInRange) <= 32 if unhealthyInRange
-        len(unhealthyInRange) >= 1 if unhealthyInRange
+        len(unhealthyInRange) <= 32 if unhealthyInRange not in [None, Undefined]
+        len(unhealthyInRange) >= 1 if unhealthyInRange not in [None, Undefined]
         _regex_match(str(unhealthyInRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyInRange
 
 
@@ -948,8 +948,8 @@ schema ClusterxK8sIoV1beta2ClusterSpecTopologyWorkersMachineDeploymentsItems0:
     check:
         len(class) <= 256
         len(class) >= 1
-        len(failureDomain) <= 256 if failureDomain
-        len(failureDomain) >= 1 if failureDomain
+        len(failureDomain) <= 256 if failureDomain not in [None, Undefined]
+        len(failureDomain) >= 1 if failureDomain not in [None, Undefined]
         minReadySeconds >= 0 if minReadySeconds not in [None, Undefined]
         len(name) <= 63
         len(name) >= 1
@@ -1266,8 +1266,8 @@ schema ClusterxK8sIoV1beta2ClusterSpecTopologyWorkersMachineDeploymentsItems0Hea
 
 
     check:
-        len(unhealthyInRange) <= 32 if unhealthyInRange
-        len(unhealthyInRange) >= 1 if unhealthyInRange
+        len(unhealthyInRange) <= 32 if unhealthyInRange not in [None, Undefined]
+        len(unhealthyInRange) >= 1 if unhealthyInRange not in [None, Undefined]
         _regex_match(str(unhealthyInRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyInRange
 
 
@@ -1511,8 +1511,8 @@ schema ClusterxK8sIoV1beta2ClusterSpecTopologyWorkersMachinePoolsItems0:
         len(class) >= 1
         len(failureDomains) >= 1 if failureDomains
         len(failureDomains) <= 100 if failureDomains
-        all failureDomains in failureDomains { len(failureDomains) <= 256 if failureDomains not in [None, Undefined] } if failureDomains
-        all failureDomains in failureDomains { len(failureDomains) >= 1 if failureDomains not in [None, Undefined] } if failureDomains
+        all i in failureDomains { len(i) <= 256 if i not in [None, Undefined] } if failureDomains
+        all i in failureDomains { len(i) >= 1 if i not in [None, Undefined] } if failureDomains
         minReadySeconds >= 0 if minReadySeconds not in [None, Undefined]
         len(name) <= 63
         len(name) >= 1
@@ -1807,8 +1807,8 @@ schema ClusterxK8sIoV1beta2ClusterStatusDeprecatedV1beta1:
 
 
     check:
-        len(failureMessage) <= 10240 if failureMessage
-        len(failureMessage) >= 1 if failureMessage
+        len(failureMessage) <= 10240 if failureMessage not in [None, Undefined]
+        len(failureMessage) >= 1 if failureMessage not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta2ClusterStatusDeprecatedV1beta1ConditionsItems0:
@@ -1855,11 +1855,11 @@ schema ClusterxK8sIoV1beta2ClusterStatusDeprecatedV1beta1ConditionsItems0:
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 

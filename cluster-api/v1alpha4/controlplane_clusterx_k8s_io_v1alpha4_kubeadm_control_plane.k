@@ -840,7 +840,6 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
         Required. The taint key to be applied to a node.
     timeAdded : str, default is Undefined, optional
         TimeAdded represents the time at which the taint was added.
-        It is only written for NoExecute taints.
     value : str, default is Undefined, optional
         The taint value corresponding to the taint key.
     """
@@ -1065,7 +1064,6 @@ schema ControlplaneClusterxK8sIoV1alpha4KubeadmControlPlaneSpecKubeadmConfigSpec
         Required. The taint key to be applied to a node.
     timeAdded : str, default is Undefined, optional
         TimeAdded represents the time at which the taint was added.
-        It is only written for NoExecute taints.
     value : str, default is Undefined, optional
         The taint value corresponding to the taint key.
     """

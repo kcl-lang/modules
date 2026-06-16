@@ -142,8 +142,8 @@ schema ClusterxK8sIoV1beta1ClusterSpecClusterNetwork:
 
 
     check:
-        len(serviceDomain) <= 253 if serviceDomain
-        len(serviceDomain) >= 1 if serviceDomain
+        len(serviceDomain) <= 253 if serviceDomain not in [None, Undefined]
+        len(serviceDomain) >= 1 if serviceDomain not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecClusterNetworkPods:
@@ -162,8 +162,8 @@ schema ClusterxK8sIoV1beta1ClusterSpecClusterNetworkPods:
 
     check:
         len(cidrBlocks) <= 100
-        all cidrBlocks in cidrBlocks { len(cidrBlocks) <= 43 if cidrBlocks not in [None, Undefined] } if cidrBlocks
-        all cidrBlocks in cidrBlocks { len(cidrBlocks) >= 1 if cidrBlocks not in [None, Undefined] } if cidrBlocks
+        all i in cidrBlocks { len(i) <= 43 if i not in [None, Undefined] } if cidrBlocks
+        all i in cidrBlocks { len(i) >= 1 if i not in [None, Undefined] } if cidrBlocks
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecClusterNetworkServices:
@@ -182,8 +182,8 @@ schema ClusterxK8sIoV1beta1ClusterSpecClusterNetworkServices:
 
     check:
         len(cidrBlocks) <= 100
-        all cidrBlocks in cidrBlocks { len(cidrBlocks) <= 43 if cidrBlocks not in [None, Undefined] } if cidrBlocks
-        all cidrBlocks in cidrBlocks { len(cidrBlocks) >= 1 if cidrBlocks not in [None, Undefined] } if cidrBlocks
+        all i in cidrBlocks { len(i) <= 43 if i not in [None, Undefined] } if cidrBlocks
+        all i in cidrBlocks { len(i) >= 1 if i not in [None, Undefined] } if cidrBlocks
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecControlPlaneEndpoint:
@@ -192,20 +192,20 @@ schema ClusterxK8sIoV1beta1ClusterSpecControlPlaneEndpoint:
 
     Attributes
     ----------
-    host : str, default is Undefined, required
+    host : str, default is Undefined, optional
         host is the hostname on which the API server is serving.
-    port : int, default is Undefined, required
+    port : int, default is Undefined, optional
         port is the port on which the API server is serving.
     """
 
 
-    host: str
+    host?: str
 
-    port: int
+    port?: int
 
 
     check:
-        len(host) <= 512
+        len(host) <= 512 if host not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta1ClusterSpecControlPlaneRef:
@@ -361,8 +361,8 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopology:
     check:
         len(class) <= 253
         len(class) >= 1
-        len(classNamespace) <= 63 if classNamespace
-        len(classNamespace) >= 1 if classNamespace
+        len(classNamespace) <= 63 if classNamespace not in [None, Undefined]
+        len(classNamespace) >= 1 if classNamespace not in [None, Undefined]
         _regex_match(str(classNamespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if classNamespace
         len(variables) <= 1000 if variables
         len(version) <= 256
@@ -497,8 +497,8 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneMachineHealthCheck:
 
     check:
         len(unhealthyConditions) <= 100 if unhealthyConditions
-        len(unhealthyRange) <= 32 if unhealthyRange
-        len(unhealthyRange) >= 1 if unhealthyRange
+        len(unhealthyRange) <= 32 if unhealthyRange not in [None, Undefined]
+        len(unhealthyRange) >= 1 if unhealthyRange not in [None, Undefined]
         _regex_match(str(unhealthyRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyRange
 
 
@@ -695,7 +695,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyControlPlaneVariablesOverridesItem
 
 
     check:
-        len(definitionFrom) <= 256 if definitionFrom
+        len(definitionFrom) <= 256 if definitionFrom not in [None, Undefined]
         len(name) <= 256
         len(name) >= 1
 
@@ -732,7 +732,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyVariablesItems0:
 
 
     check:
-        len(definitionFrom) <= 256 if definitionFrom
+        len(definitionFrom) <= 256 if definitionFrom not in [None, Undefined]
         len(name) <= 256
         len(name) >= 1
 
@@ -851,8 +851,8 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0:
     check:
         len(class) <= 256
         len(class) >= 1
-        len(failureDomain) <= 256 if failureDomain
-        len(failureDomain) >= 1 if failureDomain
+        len(failureDomain) <= 256 if failureDomain not in [None, Undefined]
+        len(failureDomain) >= 1 if failureDomain not in [None, Undefined]
         len(name) <= 63
         len(name) >= 1
         len(readinessGates) <= 32 if readinessGates
@@ -923,8 +923,8 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Mac
 
     check:
         len(unhealthyConditions) <= 100 if unhealthyConditions
-        len(unhealthyRange) <= 32 if unhealthyRange
-        len(unhealthyRange) >= 1 if unhealthyRange
+        len(unhealthyRange) <= 32 if unhealthyRange not in [None, Undefined]
+        len(unhealthyRange) >= 1 if unhealthyRange not in [None, Undefined]
         _regex_match(str(unhealthyRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyRange
 
 
@@ -1219,7 +1219,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachineDeploymentsItems0Var
 
 
     check:
-        len(definitionFrom) <= 256 if definitionFrom
+        len(definitionFrom) <= 256 if definitionFrom not in [None, Undefined]
         len(name) <= 256
         len(name) >= 1
 
@@ -1296,8 +1296,8 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0:
         len(class) <= 256
         len(class) >= 1
         len(failureDomains) <= 100 if failureDomains
-        all failureDomains in failureDomains { len(failureDomains) <= 256 if failureDomains not in [None, Undefined] } if failureDomains
-        all failureDomains in failureDomains { len(failureDomains) >= 1 if failureDomains not in [None, Undefined] } if failureDomains
+        all i in failureDomains { len(i) <= 256 if i not in [None, Undefined] } if failureDomains
+        all i in failureDomains { len(i) >= 1 if i not in [None, Undefined] } if failureDomains
         len(name) <= 63
         len(name) >= 1
 
@@ -1377,7 +1377,7 @@ schema ClusterxK8sIoV1beta1ClusterSpecTopologyWorkersMachinePoolsItems0Variables
 
 
     check:
-        len(definitionFrom) <= 256 if definitionFrom
+        len(definitionFrom) <= 256 if definitionFrom not in [None, Undefined]
         len(name) <= 256
         len(name) >= 1
 
@@ -1402,13 +1402,13 @@ schema ClusterxK8sIoV1beta1ClusterStatus:
         failureMessage indicates that there is a fatal problem reconciling the
         state, and will be set to a descriptive error message.
 
-        Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
+        Deprecated: This field is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
     failureReason : str, default is Undefined, optional
         failureReason indicates that there is a fatal problem reconciling the
         state, and will be set to a token value suitable for
         programmatic interpretation.
 
-        Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
+        Deprecated: This field is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
     infrastructureReady : bool, default is Undefined, optional
         infrastructureReady is the state of the infrastructure provider.
     observedGeneration : int, default is Undefined, optional
@@ -1440,8 +1440,8 @@ schema ClusterxK8sIoV1beta1ClusterStatus:
 
 
     check:
-        len(failureMessage) <= 10240 if failureMessage
-        len(failureMessage) >= 1 if failureMessage
+        len(failureMessage) <= 10240 if failureMessage not in [None, Undefined]
+        len(failureMessage) >= 1 if failureMessage not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta1ClusterStatusConditionsItems0:
@@ -1488,11 +1488,11 @@ schema ClusterxK8sIoV1beta1ClusterStatusConditionsItems0:
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 

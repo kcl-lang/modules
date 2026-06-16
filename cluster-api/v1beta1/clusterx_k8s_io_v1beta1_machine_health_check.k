@@ -103,8 +103,8 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckSpec:
         len(clusterName) <= 63
         len(clusterName) >= 1
         len(unhealthyConditions) <= 100 if unhealthyConditions
-        len(unhealthyRange) <= 32 if unhealthyRange
-        len(unhealthyRange) >= 1 if unhealthyRange
+        len(unhealthyRange) <= 32 if unhealthyRange not in [None, Undefined]
+        len(unhealthyRange) >= 1 if unhealthyRange not in [None, Undefined]
         _regex_match(str(unhealthyRange), r"^\[[0-9]+-[0-9]+\]$") if unhealthyRange
 
 
@@ -285,8 +285,8 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckStatus:
         expectedMachines >= 0 if expectedMachines not in [None, Undefined]
         remediationsAllowed >= 0 if remediationsAllowed not in [None, Undefined]
         len(targets) <= 10000 if targets
-        all targets in targets { len(targets) <= 253 if targets not in [None, Undefined] } if targets
-        all targets in targets { len(targets) >= 1 if targets not in [None, Undefined] } if targets
+        all i in targets { len(i) <= 253 if i not in [None, Undefined] } if targets
+        all i in targets { len(i) >= 1 if i not in [None, Undefined] } if targets
 
 
 schema ClusterxK8sIoV1beta1MachineHealthCheckStatusConditionsItems0:
@@ -333,11 +333,11 @@ schema ClusterxK8sIoV1beta1MachineHealthCheckStatusConditionsItems0:
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 

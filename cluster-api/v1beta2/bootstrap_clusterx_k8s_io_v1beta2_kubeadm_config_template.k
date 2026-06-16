@@ -167,24 +167,24 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpec:
     check:
         len(bootCommands) >= 1 if bootCommands
         len(bootCommands) <= 1000 if bootCommands
-        all cmd in bootCommands { len(cmd) <= 10240 if cmd not in [None, Undefined] } if bootCommands
-        all cmd in bootCommands { len(cmd) >= 1 if cmd not in [None, Undefined] } if bootCommands
+        all i in bootCommands { len(i) <= 10240 if i not in [None, Undefined] } if bootCommands
+        all i in bootCommands { len(i) >= 1 if i not in [None, Undefined] } if bootCommands
         len(files) >= 1 if files
         len(files) <= 200 if files
         len(mounts) >= 1 if mounts
         len(mounts) <= 100 if mounts
-        all mount in mounts { len(mount) >= 1 if mount not in [None, Undefined] } if mounts
-        all mount in mounts { len(mount) <= 100 if mount not in [None, Undefined] } if mounts
-        all mount in mounts { all s in mount { len(s) >= 1 if s not in [None, Undefined] } if mount not in [None, Undefined] } if mounts
-        all mount in mounts { all s in mount { len(s) <= 512 if s not in [None, Undefined] } if mount not in [None, Undefined] } if mounts
+        all i in mounts { len(i) >= 1 if i } if mounts
+        all i in mounts { len(i) <= 100 if i } if mounts
+        all i in mounts { all ii in i { len(ii) <= 512 if ii not in [None, Undefined] } if i } if mounts
+        all i in mounts { all ii in i { len(ii) >= 1 if ii not in [None, Undefined] } if i } if mounts
         len(postKubeadmCommands) >= 1 if postKubeadmCommands
         len(postKubeadmCommands) <= 1000 if postKubeadmCommands
-        all cmd in postKubeadmCommands { len(cmd) <= 10240 if cmd not in [None, Undefined] } if postKubeadmCommands
-        all cmd in postKubeadmCommands { len(cmd) >= 1 if cmd not in [None, Undefined] } if postKubeadmCommands
+        all i in postKubeadmCommands { len(i) <= 10240 if i not in [None, Undefined] } if postKubeadmCommands
+        all i in postKubeadmCommands { len(i) >= 1 if i not in [None, Undefined] } if postKubeadmCommands
         len(preKubeadmCommands) >= 1 if preKubeadmCommands
         len(preKubeadmCommands) <= 1000 if preKubeadmCommands
-        all cmd in preKubeadmCommands { len(cmd) <= 10240 if cmd not in [None, Undefined] } if preKubeadmCommands
-        all cmd in preKubeadmCommands { len(cmd) >= 1 if cmd not in [None, Undefined] } if preKubeadmCommands
+        all i in preKubeadmCommands { len(i) <= 10240 if i not in [None, Undefined] } if preKubeadmCommands
+        all i in preKubeadmCommands { len(i) >= 1 if i not in [None, Undefined] } if preKubeadmCommands
         len(users) >= 1 if users
         len(users) <= 100 if users
 
@@ -275,12 +275,12 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecCluster
         caCertificateValidityPeriodDays >= 1 if caCertificateValidityPeriodDays not in [None, Undefined]
         certificateValidityPeriodDays <= 1095 if certificateValidityPeriodDays not in [None, Undefined]
         certificateValidityPeriodDays >= 1 if certificateValidityPeriodDays not in [None, Undefined]
-        len(certificatesDir) <= 512 if certificatesDir
-        len(certificatesDir) >= 1 if certificatesDir
-        len(controlPlaneEndpoint) <= 512 if controlPlaneEndpoint
-        len(controlPlaneEndpoint) >= 1 if controlPlaneEndpoint
-        len(imageRepository) <= 512 if imageRepository
-        len(imageRepository) >= 1 if imageRepository
+        len(certificatesDir) <= 512 if certificatesDir not in [None, Undefined]
+        len(certificatesDir) >= 1 if certificatesDir not in [None, Undefined]
+        len(controlPlaneEndpoint) <= 512 if controlPlaneEndpoint not in [None, Undefined]
+        len(controlPlaneEndpoint) >= 1 if controlPlaneEndpoint not in [None, Undefined]
+        len(imageRepository) <= 512 if imageRepository not in [None, Undefined]
+        len(imageRepository) >= 1 if imageRepository not in [None, Undefined]
 
 
 schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationAPIServer:
@@ -316,8 +316,8 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecCluster
     check:
         len(certSANs) >= 1 if certSANs
         len(certSANs) <= 100 if certSANs
-        all certSANs in certSANs { len(certSANs) <= 253 if certSANs not in [None, Undefined] } if certSANs
-        all certSANs in certSANs { len(certSANs) >= 1 if certSANs not in [None, Undefined] } if certSANs
+        all i in certSANs { len(i) <= 253 if i not in [None, Undefined] } if certSANs
+        all i in certSANs { len(i) >= 1 if i not in [None, Undefined] } if certSANs
         len(extraArgs) >= 1 if extraArgs
         len(extraArgs) <= 100 if extraArgs
         len(extraEnvs) >= 1 if extraEnvs
@@ -364,9 +364,9 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecCluster
         Variable references $(VAR_NAME) are expanded
         using the previously defined environment variables in the container and
         any service environment variables. If a variable cannot be resolved,
-        the reference in the input string will be unchanged. Double $ are reduced
+        the reference in the input string will be unchanged. Double $$ are reduced
         to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e.
-        "$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
+        "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
         Escaped references will never be expanded, regardless of whether the variable
         exists or not.
         Defaults to "".
@@ -660,9 +660,9 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecCluster
         Variable references $(VAR_NAME) are expanded
         using the previously defined environment variables in the container and
         any service environment variables. If a variable cannot be resolved,
-        the reference in the input string will be unchanged. Double $ are reduced
+        the reference in the input string will be unchanged. Double $$ are reduced
         to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e.
-        "$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
+        "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
         Escaped references will never be expanded, regardless of whether the variable
         exists or not.
         Defaults to "".
@@ -904,10 +904,10 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecCluster
 
 
     check:
-        len(imageRepository) <= 512 if imageRepository
-        len(imageRepository) >= 1 if imageRepository
-        len(imageTag) <= 256 if imageTag
-        len(imageTag) >= 1 if imageTag
+        len(imageRepository) <= 512 if imageRepository not in [None, Undefined]
+        len(imageRepository) >= 1 if imageRepository not in [None, Undefined]
+        len(imageTag) <= 256 if imageTag not in [None, Undefined]
+        len(imageTag) >= 1 if imageTag not in [None, Undefined]
 
 
 schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationEtcd:
@@ -966,8 +966,8 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecCluster
         len(certFile) >= 1
         len(endpoints) >= 1
         len(endpoints) <= 50
-        all endpoints in endpoints { len(endpoints) <= 512 if endpoints not in [None, Undefined] } if endpoints
-        all endpoints in endpoints { len(endpoints) >= 1 if endpoints not in [None, Undefined] } if endpoints
+        all i in endpoints { len(i) <= 512 if i not in [None, Undefined] } if endpoints
+        all i in endpoints { len(i) >= 1 if i not in [None, Undefined] } if endpoints
         len(keyFile) <= 512
         len(keyFile) >= 1
 
@@ -1019,24 +1019,24 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecCluster
 
 
     check:
-        len(dataDir) <= 512 if dataDir
-        len(dataDir) >= 1 if dataDir
+        len(dataDir) <= 512 if dataDir not in [None, Undefined]
+        len(dataDir) >= 1 if dataDir not in [None, Undefined]
         len(extraArgs) >= 1 if extraArgs
         len(extraArgs) <= 100 if extraArgs
         len(extraEnvs) >= 1 if extraEnvs
         len(extraEnvs) <= 100 if extraEnvs
-        len(imageRepository) <= 512 if imageRepository
-        len(imageRepository) >= 1 if imageRepository
-        len(imageTag) <= 256 if imageTag
-        len(imageTag) >= 1 if imageTag
+        len(imageRepository) <= 512 if imageRepository not in [None, Undefined]
+        len(imageRepository) >= 1 if imageRepository not in [None, Undefined]
+        len(imageTag) <= 256 if imageTag not in [None, Undefined]
+        len(imageTag) >= 1 if imageTag not in [None, Undefined]
         len(peerCertSANs) >= 1 if peerCertSANs
         len(peerCertSANs) <= 100 if peerCertSANs
-        all peerCertSANs in peerCertSANs { len(peerCertSANs) <= 253 if peerCertSANs not in [None, Undefined] } if peerCertSANs
-        all peerCertSANs in peerCertSANs { len(peerCertSANs) >= 1 if peerCertSANs not in [None, Undefined] } if peerCertSANs
+        all i in peerCertSANs { len(i) <= 253 if i not in [None, Undefined] } if peerCertSANs
+        all i in peerCertSANs { len(i) >= 1 if i not in [None, Undefined] } if peerCertSANs
         len(serverCertSANs) >= 1 if serverCertSANs
         len(serverCertSANs) <= 100 if serverCertSANs
-        all serverCertSANs in serverCertSANs { len(serverCertSANs) <= 253 if serverCertSANs not in [None, Undefined] } if serverCertSANs
-        all serverCertSANs in serverCertSANs { len(serverCertSANs) >= 1 if serverCertSANs not in [None, Undefined] } if serverCertSANs
+        all i in serverCertSANs { len(i) <= 253 if i not in [None, Undefined] } if serverCertSANs
+        all i in serverCertSANs { len(i) >= 1 if i not in [None, Undefined] } if serverCertSANs
 
 
 schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecClusterConfigurationEtcdLocalExtraArgsItems0:
@@ -1077,9 +1077,9 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecCluster
         Variable references $(VAR_NAME) are expanded
         using the previously defined environment variables in the container and
         any service environment variables. If a variable cannot be resolved,
-        the reference in the input string will be unchanged. Double $ are reduced
+        the reference in the input string will be unchanged. Double $$ are reduced
         to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e.
-        "$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
+        "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
         Escaped references will never be expanded, regardless of whether the variable
         exists or not.
         Defaults to "".
@@ -1332,9 +1332,9 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecCluster
         Variable references $(VAR_NAME) are expanded
         using the previously defined environment variables in the container and
         any service environment variables. If a variable cannot be resolved,
-        the reference in the input string will be unchanged. Double $ are reduced
+        the reference in the input string will be unchanged. Double $$ are reduced
         to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e.
-        "$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
+        "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)".
         Escaped references will never be expanded, regardless of whether the variable
         exists or not.
         Defaults to "".
@@ -1622,16 +1622,16 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecDiskSet
         len(device) <= 256
         len(device) >= 1
         len(extraOpts) <= 100 if extraOpts
-        all extraOpts in extraOpts { len(extraOpts) <= 256 if extraOpts not in [None, Undefined] } if extraOpts
-        all extraOpts in extraOpts { len(extraOpts) >= 1 if extraOpts not in [None, Undefined] } if extraOpts
+        all i in extraOpts { len(i) <= 256 if i not in [None, Undefined] } if extraOpts
+        all i in extraOpts { len(i) >= 1 if i not in [None, Undefined] } if extraOpts
         len(filesystem) <= 128
         len(filesystem) >= 1
-        len(label) <= 512 if label
-        len(label) >= 1 if label
-        len(partition) <= 128 if partition
-        len(partition) >= 1 if partition
-        len(replaceFS) <= 128 if replaceFS
-        len(replaceFS) >= 1 if replaceFS
+        len(label) <= 512 if label not in [None, Undefined]
+        len(label) >= 1 if label not in [None, Undefined]
+        len(partition) <= 128 if partition not in [None, Undefined]
+        len(partition) >= 1 if partition not in [None, Undefined]
+        len(replaceFS) <= 128 if replaceFS not in [None, Undefined]
+        len(replaceFS) >= 1 if replaceFS not in [None, Undefined]
 
 
 schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecDiskSetupPartitionsItems0:
@@ -1709,14 +1709,14 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecFilesIt
 
 
     check:
-        len(content) <= 10240 if content
-        len(content) >= 1 if content
-        len(owner) <= 256 if owner
-        len(owner) >= 1 if owner
+        len(content) <= 10240 if content not in [None, Undefined]
+        len(content) >= 1 if content not in [None, Undefined]
+        len(owner) <= 256 if owner not in [None, Undefined]
+        len(owner) >= 1 if owner not in [None, Undefined]
         len(path) <= 512
         len(path) >= 1
-        len(permissions) <= 16 if permissions
-        len(permissions) >= 1 if permissions
+        len(permissions) <= 16 if permissions not in [None, Undefined]
+        len(permissions) >= 1 if permissions not in [None, Undefined]
 
 
 schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecFilesItems0ContentFrom:
@@ -1794,8 +1794,8 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecIgnitio
 
 
     check:
-        len(additionalConfig) <= 32768 if additionalConfig
-        len(additionalConfig) >= 1 if additionalConfig
+        len(additionalConfig) <= 32768 if additionalConfig not in [None, Undefined]
+        len(additionalConfig) >= 1 if additionalConfig not in [None, Undefined]
 
 
 schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecInitConfiguration:
@@ -1840,8 +1840,8 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecInitCon
         len(bootstrapTokens) <= 100 if bootstrapTokens
         len(skipPhases) >= 1 if skipPhases
         len(skipPhases) <= 50 if skipPhases
-        all skipPhases in skipPhases { len(skipPhases) <= 256 if skipPhases not in [None, Undefined] } if skipPhases
-        all skipPhases in skipPhases { len(skipPhases) >= 1 if skipPhases not in [None, Undefined] } if skipPhases
+        all i in skipPhases { len(i) <= 256 if i not in [None, Undefined] } if skipPhases
+        all i in skipPhases { len(i) >= 1 if i not in [None, Undefined] } if skipPhases
 
 
 schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecInitConfigurationBootstrapTokensItems0:
@@ -1885,19 +1885,19 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecInitCon
 
 
     check:
-        len(description) <= 512 if description
-        len(description) >= 1 if description
+        len(description) <= 512 if description not in [None, Undefined]
+        len(description) >= 1 if description not in [None, Undefined]
         len(groups) >= 1 if groups
         len(groups) <= 100 if groups
-        all groups in groups { len(groups) <= 256 if groups not in [None, Undefined] } if groups
-        all groups in groups { len(groups) >= 1 if groups not in [None, Undefined] } if groups
+        all i in groups { len(i) <= 256 if i not in [None, Undefined] } if groups
+        all i in groups { len(i) >= 1 if i not in [None, Undefined] } if groups
         len(token) <= 23
         len(token) >= 1
         ttlSeconds >= 0 if ttlSeconds not in [None, Undefined]
         len(usages) >= 1 if usages
         len(usages) <= 100 if usages
-        all usages in usages { len(usages) <= 256 if usages not in [None, Undefined] } if usages
-        all usages in usages { len(usages) >= 1 if usages not in [None, Undefined] } if usages
+        all i in usages { len(i) <= 256 if i not in [None, Undefined] } if usages
+        all i in usages { len(i) >= 1 if i not in [None, Undefined] } if usages
 
 
 schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecInitConfigurationLocalAPIEndpoint:
@@ -1925,8 +1925,8 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecInitCon
 
 
     check:
-        len(advertiseAddress) <= 39 if advertiseAddress
-        len(advertiseAddress) >= 1 if advertiseAddress
+        len(advertiseAddress) <= 39 if advertiseAddress not in [None, Undefined]
+        len(advertiseAddress) >= 1 if advertiseAddress not in [None, Undefined]
         bindPort >= 1 if bindPort not in [None, Undefined]
 
 
@@ -1983,16 +1983,16 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecInitCon
 
 
     check:
-        len(criSocket) <= 512 if criSocket
-        len(criSocket) >= 1 if criSocket
+        len(criSocket) <= 512 if criSocket not in [None, Undefined]
+        len(criSocket) >= 1 if criSocket not in [None, Undefined]
         len(ignorePreflightErrors) >= 1 if ignorePreflightErrors
         len(ignorePreflightErrors) <= 50 if ignorePreflightErrors
-        all ignorePreflightErrors in ignorePreflightErrors { len(ignorePreflightErrors) <= 512 if ignorePreflightErrors not in [None, Undefined] } if ignorePreflightErrors
-        all ignorePreflightErrors in ignorePreflightErrors { len(ignorePreflightErrors) >= 1 if ignorePreflightErrors not in [None, Undefined] } if ignorePreflightErrors
+        all i in ignorePreflightErrors { len(i) <= 512 if i not in [None, Undefined] } if ignorePreflightErrors
+        all i in ignorePreflightErrors { len(i) >= 1 if i not in [None, Undefined] } if ignorePreflightErrors
         len(kubeletExtraArgs) >= 1 if kubeletExtraArgs
         len(kubeletExtraArgs) <= 100 if kubeletExtraArgs
-        len(name) <= 253 if name
-        len(name) >= 1 if name
+        len(name) <= 253 if name not in [None, Undefined]
+        len(name) >= 1 if name not in [None, Undefined]
         len(taints) >= 0 if taints
         len(taints) <= 100 if taints
 
@@ -2076,8 +2076,8 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecInitCon
 
 
     check:
-        len(directory) <= 512 if directory
-        len(directory) >= 1 if directory
+        len(directory) <= 512 if directory not in [None, Undefined]
+        len(directory) >= 1 if directory not in [None, Undefined]
 
 
 schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecInitConfigurationTimeouts:
@@ -2178,12 +2178,12 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecJoinCon
 
 
     check:
-        len(caCertPath) <= 512 if caCertPath
-        len(caCertPath) >= 1 if caCertPath
+        len(caCertPath) <= 512 if caCertPath not in [None, Undefined]
+        len(caCertPath) >= 1 if caCertPath not in [None, Undefined]
         len(skipPhases) >= 1 if skipPhases
         len(skipPhases) <= 50 if skipPhases
-        all skipPhases in skipPhases { len(skipPhases) <= 256 if skipPhases not in [None, Undefined] } if skipPhases
-        all skipPhases in skipPhases { len(skipPhases) >= 1 if skipPhases not in [None, Undefined] } if skipPhases
+        all i in skipPhases { len(i) <= 256 if i not in [None, Undefined] } if skipPhases
+        all i in skipPhases { len(i) >= 1 if i not in [None, Undefined] } if skipPhases
 
 
 schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationControlPlane:
@@ -2221,8 +2221,8 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecJoinCon
 
 
     check:
-        len(advertiseAddress) <= 39 if advertiseAddress
-        len(advertiseAddress) >= 1 if advertiseAddress
+        len(advertiseAddress) <= 39 if advertiseAddress not in [None, Undefined]
+        len(advertiseAddress) >= 1 if advertiseAddress not in [None, Undefined]
         bindPort >= 1 if bindPort not in [None, Undefined]
 
 
@@ -2251,8 +2251,8 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecJoinCon
 
 
     check:
-        len(tlsBootstrapToken) <= 512 if tlsBootstrapToken
-        len(tlsBootstrapToken) >= 1 if tlsBootstrapToken
+        len(tlsBootstrapToken) <= 512 if tlsBootstrapToken not in [None, Undefined]
+        len(tlsBootstrapToken) >= 1 if tlsBootstrapToken not in [None, Undefined]
 
 
 schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationDiscoveryBootstrapToken:
@@ -2293,14 +2293,14 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecJoinCon
 
 
     check:
-        len(apiServerEndpoint) <= 512 if apiServerEndpoint
-        len(apiServerEndpoint) >= 1 if apiServerEndpoint
+        len(apiServerEndpoint) <= 512 if apiServerEndpoint not in [None, Undefined]
+        len(apiServerEndpoint) >= 1 if apiServerEndpoint not in [None, Undefined]
         len(caCertHashes) >= 1 if caCertHashes
         len(caCertHashes) <= 100 if caCertHashes
-        all caCertHashes in caCertHashes { len(caCertHashes) <= 512 if caCertHashes not in [None, Undefined] } if caCertHashes
-        all caCertHashes in caCertHashes { len(caCertHashes) >= 1 if caCertHashes not in [None, Undefined] } if caCertHashes
-        len(token) <= 512 if token
-        len(token) >= 1 if token
+        all i in caCertHashes { len(i) <= 512 if i not in [None, Undefined] } if caCertHashes
+        all i in caCertHashes { len(i) >= 1 if i not in [None, Undefined] } if caCertHashes
+        len(token) <= 512 if token not in [None, Undefined]
+        len(token) >= 1 if token not in [None, Undefined]
 
 
 schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationDiscoveryFile:
@@ -2396,14 +2396,14 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecJoinCon
 
 
     check:
-        len(certificateAuthorityData) <= 51200 if certificateAuthorityData
-        len(certificateAuthorityData) >= 1 if certificateAuthorityData
-        len(proxyURL) <= 512 if proxyURL
-        len(proxyURL) >= 1 if proxyURL
-        len(server) <= 512 if server
-        len(server) >= 1 if server
-        len(tlsServerName) <= 512 if tlsServerName
-        len(tlsServerName) >= 1 if tlsServerName
+        len(certificateAuthorityData) <= 51200 if certificateAuthorityData not in [None, Undefined]
+        len(certificateAuthorityData) >= 1 if certificateAuthorityData not in [None, Undefined]
+        len(proxyURL) <= 512 if proxyURL not in [None, Undefined]
+        len(proxyURL) >= 1 if proxyURL not in [None, Undefined]
+        len(server) <= 512 if server not in [None, Undefined]
+        len(server) >= 1 if server not in [None, Undefined]
+        len(tlsServerName) <= 512 if tlsServerName not in [None, Undefined]
+        len(tlsServerName) >= 1 if tlsServerName not in [None, Undefined]
 
 
 schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationDiscoveryFileKubeConfigUser:
@@ -2487,12 +2487,12 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecJoinCon
 
 
     check:
-        len(apiVersion) <= 512 if apiVersion
-        len(apiVersion) >= 1 if apiVersion
+        len(apiVersion) <= 512 if apiVersion not in [None, Undefined]
+        len(apiVersion) >= 1 if apiVersion not in [None, Undefined]
         len(args) >= 1 if args
         len(args) <= 100 if args
-        all args in args { len(args) <= 512 if args not in [None, Undefined] } if args
-        all args in args { len(args) >= 1 if args not in [None, Undefined] } if args
+        all i in args { len(i) <= 512 if i not in [None, Undefined] } if args
+        all i in args { len(i) >= 1 if i not in [None, Undefined] } if args
         len(command) <= 1024
         len(command) >= 1
         len(env) >= 1 if env
@@ -2578,16 +2578,16 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecJoinCon
 
 
     check:
-        len(criSocket) <= 512 if criSocket
-        len(criSocket) >= 1 if criSocket
+        len(criSocket) <= 512 if criSocket not in [None, Undefined]
+        len(criSocket) >= 1 if criSocket not in [None, Undefined]
         len(ignorePreflightErrors) >= 1 if ignorePreflightErrors
         len(ignorePreflightErrors) <= 50 if ignorePreflightErrors
-        all ignorePreflightErrors in ignorePreflightErrors { len(ignorePreflightErrors) <= 512 if ignorePreflightErrors not in [None, Undefined] } if ignorePreflightErrors
-        all ignorePreflightErrors in ignorePreflightErrors { len(ignorePreflightErrors) >= 1 if ignorePreflightErrors not in [None, Undefined] } if ignorePreflightErrors
+        all i in ignorePreflightErrors { len(i) <= 512 if i not in [None, Undefined] } if ignorePreflightErrors
+        all i in ignorePreflightErrors { len(i) >= 1 if i not in [None, Undefined] } if ignorePreflightErrors
         len(kubeletExtraArgs) >= 1 if kubeletExtraArgs
         len(kubeletExtraArgs) <= 100 if kubeletExtraArgs
-        len(name) <= 253 if name
-        len(name) >= 1 if name
+        len(name) <= 253 if name not in [None, Undefined]
+        len(name) >= 1 if name not in [None, Undefined]
         len(taints) >= 0 if taints
         len(taints) <= 100 if taints
 
@@ -2671,8 +2671,8 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecJoinCon
 
 
     check:
-        len(directory) <= 512 if directory
-        len(directory) >= 1 if directory
+        len(directory) <= 512 if directory not in [None, Undefined]
+        len(directory) >= 1 if directory not in [None, Undefined]
 
 
 schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecJoinConfigurationTimeouts:
@@ -2750,8 +2750,8 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecNtp:
 
     check:
         len(servers) <= 100 if servers
-        all servers in servers { len(servers) <= 512 if servers not in [None, Undefined] } if servers
-        all servers in servers { len(servers) >= 1 if servers not in [None, Undefined] } if servers
+        all i in servers { len(i) <= 512 if i not in [None, Undefined] } if servers
+        all i in servers { len(i) >= 1 if i not in [None, Undefined] } if servers
 
 
 schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecUsersItems0:
@@ -2813,25 +2813,25 @@ schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecUsersIt
 
 
     check:
-        len(gecos) <= 256 if gecos
-        len(gecos) >= 1 if gecos
-        len(groups) <= 256 if groups
-        len(groups) >= 1 if groups
-        len(homeDir) <= 256 if homeDir
-        len(homeDir) >= 1 if homeDir
+        len(gecos) <= 256 if gecos not in [None, Undefined]
+        len(gecos) >= 1 if gecos not in [None, Undefined]
+        len(groups) <= 256 if groups not in [None, Undefined]
+        len(groups) >= 1 if groups not in [None, Undefined]
+        len(homeDir) <= 256 if homeDir not in [None, Undefined]
+        len(homeDir) >= 1 if homeDir not in [None, Undefined]
         len(name) <= 256
         len(name) >= 1
-        len(passwd) <= 256 if passwd
-        len(passwd) >= 1 if passwd
-        len(primaryGroup) <= 256 if primaryGroup
-        len(primaryGroup) >= 1 if primaryGroup
-        len(shell) <= 256 if shell
-        len(shell) >= 1 if shell
+        len(passwd) <= 256 if passwd not in [None, Undefined]
+        len(passwd) >= 1 if passwd not in [None, Undefined]
+        len(primaryGroup) <= 256 if primaryGroup not in [None, Undefined]
+        len(primaryGroup) >= 1 if primaryGroup not in [None, Undefined]
+        len(shell) <= 256 if shell not in [None, Undefined]
+        len(shell) >= 1 if shell not in [None, Undefined]
         len(sshAuthorizedKeys) <= 100 if sshAuthorizedKeys
-        all sshAuthorizedKeys in sshAuthorizedKeys { len(sshAuthorizedKeys) <= 2048 if sshAuthorizedKeys not in [None, Undefined] } if sshAuthorizedKeys
-        all sshAuthorizedKeys in sshAuthorizedKeys { len(sshAuthorizedKeys) >= 1 if sshAuthorizedKeys not in [None, Undefined] } if sshAuthorizedKeys
-        len(sudo) <= 256 if sudo
-        len(sudo) >= 1 if sudo
+        all i in sshAuthorizedKeys { len(i) <= 2048 if i not in [None, Undefined] } if sshAuthorizedKeys
+        all i in sshAuthorizedKeys { len(i) >= 1 if i not in [None, Undefined] } if sshAuthorizedKeys
+        len(sudo) <= 256 if sudo not in [None, Undefined]
+        len(sudo) >= 1 if sudo not in [None, Undefined]
 
 
 schema BootstrapClusterxK8sIoV1beta2KubeadmConfigTemplateSpecTemplateSpecUsersItems0PasswdFrom:

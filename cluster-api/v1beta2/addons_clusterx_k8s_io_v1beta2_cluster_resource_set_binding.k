@@ -111,8 +111,8 @@ schema AddonsClusterxK8sIoV1beta2ClusterResourceSetBindingSpecBindingsItems0Reso
 
 
     check:
-        len(hash) <= 256 if hash
-        len(hash) >= 1 if hash
+        len(hash) <= 256 if hash not in [None, Undefined]
+        len(hash) >= 1 if hash not in [None, Undefined]
         len(name) <= 253
         len(name) >= 1
 

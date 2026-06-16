@@ -80,11 +80,11 @@ schema ClusterxK8sIoV1beta1MachinePoolSpec:
         len(clusterName) <= 63
         len(clusterName) >= 1
         len(failureDomains) <= 100 if failureDomains
-        all failureDomains in failureDomains { len(failureDomains) <= 256 if failureDomains not in [None, Undefined] } if failureDomains
-        all failureDomains in failureDomains { len(failureDomains) >= 1 if failureDomains not in [None, Undefined] } if failureDomains
+        all i in failureDomains { len(i) <= 256 if i not in [None, Undefined] } if failureDomains
+        all i in failureDomains { len(i) >= 1 if i not in [None, Undefined] } if failureDomains
         len(providerIDList) <= 10000 if providerIDList
-        all providerIDList in providerIDList { len(providerIDList) <= 512 if providerIDList not in [None, Undefined] } if providerIDList
-        all providerIDList in providerIDList { len(providerIDList) >= 1 if providerIDList not in [None, Undefined] } if providerIDList
+        all i in providerIDList { len(i) <= 512 if i not in [None, Undefined] } if providerIDList
+        all i in providerIDList { len(i) >= 1 if i not in [None, Undefined] } if providerIDList
 
 
 schema ClusterxK8sIoV1beta1MachinePoolSpecTemplate:
@@ -213,13 +213,13 @@ schema ClusterxK8sIoV1beta1MachinePoolSpecTemplateSpec:
     check:
         len(clusterName) <= 63
         len(clusterName) >= 1
-        len(failureDomain) <= 256 if failureDomain
-        len(failureDomain) >= 1 if failureDomain
-        len(providerID) <= 512 if providerID
-        len(providerID) >= 1 if providerID
+        len(failureDomain) <= 256 if failureDomain not in [None, Undefined]
+        len(failureDomain) >= 1 if failureDomain not in [None, Undefined]
+        len(providerID) <= 512 if providerID not in [None, Undefined]
+        len(providerID) >= 1 if providerID not in [None, Undefined]
         len(readinessGates) <= 32 if readinessGates
-        len(version) <= 256 if version
-        len(version) >= 1 if version
+        len(version) <= 256 if version not in [None, Undefined]
+        len(version) >= 1 if version not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta1MachinePoolSpecTemplateSpecBootstrap:
@@ -243,8 +243,8 @@ schema ClusterxK8sIoV1beta1MachinePoolSpecTemplateSpecBootstrap:
 
 
     check:
-        len(dataSecretName) <= 253 if dataSecretName
-        len(dataSecretName) >= 0 if dataSecretName
+        len(dataSecretName) <= 253 if dataSecretName not in [None, Undefined]
+        len(dataSecretName) >= 0 if dataSecretName not in [None, Undefined]
 
 
 schema ClusterxK8sIoV1beta1MachinePoolSpecTemplateSpecBootstrapConfigRef:
@@ -395,12 +395,12 @@ schema ClusterxK8sIoV1beta1MachinePoolStatus:
         failureMessage indicates that there is a problem reconciling the state,
         and will be set to a descriptive error message.
 
-        Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
+        Deprecated: This field is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
     failureReason : str, default is Undefined, optional
         failureReason indicates that there is a problem reconciling the state, and
         will be set to a token value suitable for programmatic interpretation.
 
-        Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
+        Deprecated: This field is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
     infrastructureReady : bool, default is Undefined, optional
         infrastructureReady is the state of the infrastructure provider.
     nodeRefs : [ClusterxK8sIoV1beta1MachinePoolStatusNodeRefsItems0], default is Undefined, optional
@@ -420,7 +420,7 @@ schema ClusterxK8sIoV1beta1MachinePoolStatus:
         be machine instances that are running but not yet available or machine instances
         that still have not been created.
 
-        Deprecated: This field is deprecated and is going to be removed in the next apiVersion. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
+        Deprecated: This field is deprecated and is going to be removed when support for v1beta1 will be dropped. Please see https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240916-improve-status-in-CAPI-resources.md for more details.
     v1beta2 : ClusterxK8sIoV1beta1MachinePoolStatusV1beta2, default is Undefined, optional
         v1beta2
     """
@@ -454,8 +454,8 @@ schema ClusterxK8sIoV1beta1MachinePoolStatus:
 
 
     check:
-        len(failureMessage) <= 10240 if failureMessage
-        len(failureMessage) >= 1 if failureMessage
+        len(failureMessage) <= 10240 if failureMessage not in [None, Undefined]
+        len(failureMessage) >= 1 if failureMessage not in [None, Undefined]
         len(nodeRefs) <= 10000 if nodeRefs
 
 
@@ -503,11 +503,11 @@ schema ClusterxK8sIoV1beta1MachinePoolStatusConditionsItems0:
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 
