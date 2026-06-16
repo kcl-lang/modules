@@ -398,8 +398,8 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTem
     check:
         _regex_match(str(maxGracefulTerminationSec), r"^(\d+)$") if maxGracefulTerminationSec
         _regex_match(str(maxNodeProvisionTime), r"^(\d+)m$") if maxNodeProvisionTime
-        len(maxTotalUnreadyPercentage) <= 3 if maxTotalUnreadyPercentage
-        len(maxTotalUnreadyPercentage) >= 1 if maxTotalUnreadyPercentage
+        len(maxTotalUnreadyPercentage) <= 3 if maxTotalUnreadyPercentage not in [None, Undefined]
+        len(maxTotalUnreadyPercentage) >= 1 if maxTotalUnreadyPercentage not in [None, Undefined]
         _regex_match(str(maxTotalUnreadyPercentage), r"^(\d+)$") if maxTotalUnreadyPercentage
         _regex_match(str(okTotalUnreadyCount), r"^(\d+)$") if okTotalUnreadyCount
         _regex_match(str(scaleDownDelayAfterAdd), r"^(\d+)m$") if scaleDownDelayAfterAdd
@@ -942,7 +942,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTem
 
 
     check:
-        len(requestMessage) <= 140 if requestMessage
+        len(requestMessage) <= 140 if requestMessage not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneTemplateSpecTemplateSpecVirtualNetworkSubnetServiceEndpointsItems0:

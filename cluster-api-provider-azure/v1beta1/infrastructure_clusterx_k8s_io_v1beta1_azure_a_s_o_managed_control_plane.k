@@ -11,31 +11,31 @@ schema AzureASOManagedControlPlane:
 
     Attributes
     ----------
-    apiVersion : str, default is "infrastructure.cluster.x-k8s.io/v1alpha1", required
+    apiVersion : str, default is "infrastructure.cluster.x-k8s.io/v1beta1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
     kind : str, default is "AzureASOManagedControlPlane", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneSpec, default is Undefined, optional
+    spec : InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneSpec, default is Undefined, optional
         spec
-    status : InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatus, default is Undefined, optional
+    status : InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatus, default is Undefined, optional
         status
     """
 
 
-    apiVersion: "infrastructure.cluster.x-k8s.io/v1alpha1" = "infrastructure.cluster.x-k8s.io/v1alpha1"
+    apiVersion: "infrastructure.cluster.x-k8s.io/v1beta1" = "infrastructure.cluster.x-k8s.io/v1beta1"
 
     kind: "AzureASOManagedControlPlane" = "AzureASOManagedControlPlane"
 
     metadata?: v1.ObjectMeta
 
-    spec?: InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneSpec
+    spec?: InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneSpec
 
-    status?: InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatus
+    status?: InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatus
 
 
-schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneSpec:
+schema InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneSpec:
     r"""
     AzureASOManagedControlPlaneSpec defines the desired state of AzureASOManagedControlPlane.
 
@@ -54,13 +54,13 @@ schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneSpec:
     version?: str
 
 
-schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatus:
+schema InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatus:
     r"""
     AzureASOManagedControlPlaneStatus defines the observed state of AzureASOManagedControlPlane.
 
     Attributes
     ----------
-    controlPlaneEndpoint : InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatusControlPlaneEndpoint, default is Undefined, optional
+    controlPlaneEndpoint : InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatusControlPlaneEndpoint, default is Undefined, optional
         control plane endpoint
     initialized : bool, default is Undefined, optional
         Initialized represents whether or not the API server has been provisioned. It fulfills Cluster API's
@@ -68,7 +68,7 @@ schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatus:
     ready : bool, default is Undefined, optional
         Ready represents whether or not the API server is ready to receive requests. It fulfills Cluster API's
         control plane provider contract. For AKS, this is equivalent to `initialized`.
-    resources : [InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatusResourcesItems0], default is Undefined, optional
+    resources : [InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatusResourcesItems0], default is Undefined, optional
         resources
     version : str, default is Undefined, optional
         Version is the observed Kubernetes version of the control plane. It fulfills Cluster API's control
@@ -76,18 +76,18 @@ schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatus:
     """
 
 
-    controlPlaneEndpoint?: InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatusControlPlaneEndpoint
+    controlPlaneEndpoint?: InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatusControlPlaneEndpoint
 
     initialized?: bool
 
     ready?: bool
 
-    resources?: [InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatusResourcesItems0]
+    resources?: [InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatusResourcesItems0]
 
     version?: str
 
 
-schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatusControlPlaneEndpoint:
+schema InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatusControlPlaneEndpoint:
     r"""
     ControlPlaneEndpoint represents the endpoint for the cluster's API server.
 
@@ -109,7 +109,7 @@ schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatusContr
         len(host) <= 512 if host not in [None, Undefined]
 
 
-schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatusResourcesItems0:
+schema InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatusResourcesItems0:
     r"""
     ResourceStatus represents the status of a resource.
 
@@ -117,17 +117,17 @@ schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatusResou
     ----------
     ready : bool, default is Undefined, required
         ready
-    resource : InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatusResourcesItems0Resource, default is Undefined, required
+    resource : InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatusResourcesItems0Resource, default is Undefined, required
         resource
     """
 
 
     ready: bool
 
-    resource: InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatusResourcesItems0Resource
+    resource: InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatusResourcesItems0Resource
 
 
-schema InfrastructureClusterxK8sIoV1alpha1AzureASOManagedControlPlaneStatusResourcesItems0Resource:
+schema InfrastructureClusterxK8sIoV1beta1AzureASOManagedControlPlaneStatusResourcesItems0Resource:
     r"""
     StatusResource is a handle to a resource.
 

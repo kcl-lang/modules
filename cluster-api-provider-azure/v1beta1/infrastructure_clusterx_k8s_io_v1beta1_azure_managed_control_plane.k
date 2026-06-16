@@ -396,8 +396,8 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecAutoscalerP
     check:
         _regex_match(str(maxGracefulTerminationSec), r"^(\d+)$") if maxGracefulTerminationSec
         _regex_match(str(maxNodeProvisionTime), r"^(\d+)m$") if maxNodeProvisionTime
-        len(maxTotalUnreadyPercentage) <= 3 if maxTotalUnreadyPercentage
-        len(maxTotalUnreadyPercentage) >= 1 if maxTotalUnreadyPercentage
+        len(maxTotalUnreadyPercentage) <= 3 if maxTotalUnreadyPercentage not in [None, Undefined]
+        len(maxTotalUnreadyPercentage) >= 1 if maxTotalUnreadyPercentage not in [None, Undefined]
         _regex_match(str(maxTotalUnreadyPercentage), r"^(\d+)$") if maxTotalUnreadyPercentage
         _regex_match(str(okTotalUnreadyCount), r"^(\d+)$") if okTotalUnreadyCount
         _regex_match(str(scaleDownDelayAfterAdd), r"^(\d+)m$") if scaleDownDelayAfterAdd
@@ -415,20 +415,20 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecControlPlan
 
     Attributes
     ----------
-    host : str, default is Undefined, required
+    host : str, default is Undefined, optional
         host is the hostname on which the API server is serving.
-    port : int, default is Undefined, required
+    port : int, default is Undefined, optional
         port is the port on which the API server is serving.
     """
 
 
-    host: str
+    host?: str
 
-    port: int
+    port?: int
 
 
     check:
-        len(host) <= 512
+        len(host) <= 512 if host not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecExtensionsItems0:
@@ -967,7 +967,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetw
 
 
     check:
-        len(requestMessage) <= 140 if requestMessage
+        len(requestMessage) <= 140 if requestMessage not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneSpecVirtualNetworkSubnetServiceEndpointsItems0:
@@ -1030,7 +1030,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneStatus:
 
 
     check:
-        len(autoUpgradeVersion) >= 2 if autoUpgradeVersion
+        len(autoUpgradeVersion) >= 2 if autoUpgradeVersion not in [None, Undefined]
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneStatusConditionsItems0:
@@ -1077,11 +1077,11 @@ schema InfrastructureClusterxK8sIoV1beta1AzureManagedControlPlaneStatusCondition
 
 
     check:
-        len(message) <= 10240 if message
-        len(message) >= 1 if message
-        len(reason) <= 256 if reason
-        len(reason) >= 1 if reason
-        len(severity) <= 32 if severity
+        len(message) <= 10240 if message not in [None, Undefined]
+        len(message) >= 1 if message not in [None, Undefined]
+        len(reason) <= 256 if reason not in [None, Undefined]
+        len(reason) >= 1 if reason not in [None, Undefined]
+        len(severity) <= 32 if severity not in [None, Undefined]
         len($type) <= 256
         len($type) >= 1
 

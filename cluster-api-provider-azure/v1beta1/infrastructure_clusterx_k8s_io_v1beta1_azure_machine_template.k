@@ -21,6 +21,8 @@ schema AzureMachineTemplate:
         metadata
     spec : InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpec, default is Undefined, optional
         spec
+    status : InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateStatus, default is Undefined, optional
+        status
     """
 
 
@@ -31,6 +33,8 @@ schema AzureMachineTemplate:
     metadata?: v1.ObjectMeta
 
     spec?: InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpec
+
+    status?: InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateStatus
 
 
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpec:
@@ -581,6 +585,7 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecIma
 schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecImageSharedGallery:
     r"""
     SharedGallery specifies an image to use from an Azure Shared Image Gallery
+
     Deprecated: use ComputeGallery instead.
 
     Attributes
@@ -933,5 +938,51 @@ schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateSpecTemplateSpecVME
     settings?: {str:str}
 
     version: str
+
+
+schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateStatus:
+    r"""
+    AzureMachineTemplateStatus defines the observed state of AzureMachineTemplate.
+
+    Attributes
+    ----------
+    capacity : {str:int | str}, default is Undefined, optional
+        Capacity defines the resource capacity for this machine.
+        This value is used for autoscaling from zero operations as defined in:
+        https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20210310-opt-in-autoscaling-from-zero.md
+    nodeInfo : InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateStatusNodeInfo, default is Undefined, optional
+        node info
+    """
+
+
+    capacity?: {str:int | str}
+
+    nodeInfo?: InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateStatusNodeInfo
+
+
+    check:
+        all _, k in capacity { _regex_match(str(k), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if k } if capacity
+
+
+schema InfrastructureClusterxK8sIoV1beta1AzureMachineTemplateStatusNodeInfo:
+    r"""
+    NodeInfo contains information about the node's architecture and operating system.
+    This value is used for autoscaling from zero operations as defined in:
+    https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20210310-opt-in-autoscaling-from-zero.md
+
+    Attributes
+    ----------
+    architecture : str, default is Undefined, optional
+        Architecture is the CPU architecture of the node.
+        Its underlying type is a string and its value can be any of amd64, arm64.
+    operatingSystem : str, default is Undefined, optional
+        OperatingSystem is the operating system of the node.
+        Its underlying type is a string and its value can be any of linux, windows.
+    """
+
+
+    architecture?: "amd64" | "arm64"
+
+    operatingSystem?: "linux" | "windows"
 
 
