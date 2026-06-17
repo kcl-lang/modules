@@ -474,6 +474,8 @@
   - [KafkaStrimziIoV1KafkaBridgeSpecConsumer](#kafkastrimziiov1kafkabridgespecconsumer)
   - [KafkaStrimziIoV1KafkaBridgeSpecHTTP](#kafkastrimziiov1kafkabridgespechttp)
   - [KafkaStrimziIoV1KafkaBridgeSpecHTTPCors](#kafkastrimziiov1kafkabridgespechttpcors)
+  - [KafkaStrimziIoV1KafkaBridgeSpecHTTPTLS](#kafkastrimziiov1kafkabridgespechttptls)
+  - [KafkaStrimziIoV1KafkaBridgeSpecHTTPTLSCertificateAndKey](#kafkastrimziiov1kafkabridgespechttptlscertificateandkey)
   - [KafkaStrimziIoV1KafkaBridgeSpecJvmOptions](#kafkastrimziiov1kafkabridgespecjvmoptions)
   - [KafkaStrimziIoV1KafkaBridgeSpecJvmOptionsJavaSystemPropertiesItems0](#kafkastrimziiov1kafkabridgespecjvmoptionsjavasystempropertiesitems0)
   - [KafkaStrimziIoV1KafkaBridgeSpecLivenessProbe](#kafkastrimziiov1kafkabridgespeclivenessprobe)
@@ -1622,12 +1624,6 @@
   - [Order](#order)
   - [StrimziPodSet](#strimzipodset)
 - v1alpha1
-  - [AccessStrimziIoV1alpha1KafkaAccessSpec](#accessstrimziiov1alpha1kafkaaccessspec)
-  - [AccessStrimziIoV1alpha1KafkaAccessSpecKafka](#accessstrimziiov1alpha1kafkaaccessspeckafka)
-  - [AccessStrimziIoV1alpha1KafkaAccessSpecUser](#accessstrimziiov1alpha1kafkaaccessspecuser)
-  - [AccessStrimziIoV1alpha1KafkaAccessStatus](#accessstrimziiov1alpha1kafkaaccessstatus)
-  - [AccessStrimziIoV1alpha1KafkaAccessStatusBinding](#accessstrimziiov1alpha1kafkaaccessstatusbinding)
-  - [AccessStrimziIoV1alpha1KafkaAccessStatusConditionsItems0](#accessstrimziiov1alpha1kafkaaccessstatusconditionsitems0)
   - [CrdgeneratorStrimziIoV1alpha1ExampleAffinity](#crdgeneratorstrimziiov1alpha1exampleaffinity)
   - [CrdgeneratorStrimziIoV1alpha1ExampleAffinityNodeAffinity](#crdgeneratorstrimziiov1alpha1exampleaffinitynodeaffinity)
   - [CrdgeneratorStrimziIoV1alpha1ExampleAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0](#crdgeneratorstrimziiov1alpha1exampleaffinitynodeaffinitypreferredduringschedulingignoredduringexecutionitems0)
@@ -1666,10 +1662,10 @@
   - [CrdgeneratorStrimziIoV1alpha1ExampleListOfPolymorphicItems0](#crdgeneratorstrimziiov1alpha1examplelistofpolymorphicitems0)
   - [CrdgeneratorStrimziIoV1alpha1ExampleObjectProperty](#crdgeneratorstrimziiov1alpha1exampleobjectproperty)
   - [CrdgeneratorStrimziIoV1alpha1ExamplePolymorphicProperty](#crdgeneratorstrimziiov1alpha1examplepolymorphicproperty)
+  - [CrdgeneratorStrimziIoV1alpha1ExamplePolymorphicWithOptionalType](#crdgeneratorstrimziiov1alpha1examplepolymorphicwithoptionaltype)
   - [Example](#example)
   - [ExampleWithSubresources](#examplewithsubresources)
   - [Instrumentation](#instrumentation)
-  - [KafkaAccess](#kafkaaccess)
   - [KafkaStrimziIoV1alpha1KafkaTopicSpec](#kafkastrimziiov1alpha1kafkatopicspec)
   - [KafkaStrimziIoV1alpha1KafkaTopicStatus](#kafkastrimziiov1alpha1kafkatopicstatus)
   - [KafkaStrimziIoV1alpha1KafkaTopicStatusConditionsItems0](#kafkastrimziiov1alpha1kafkatopicstatusconditionsitems0)
@@ -2620,6 +2616,7 @@
   - [CrdgeneratorStrimziIoV1beta1ExampleListOfPolymorphicItems0](#crdgeneratorstrimziiov1beta1examplelistofpolymorphicitems0)
   - [CrdgeneratorStrimziIoV1beta1ExampleObjectProperty](#crdgeneratorstrimziiov1beta1exampleobjectproperty)
   - [CrdgeneratorStrimziIoV1beta1ExamplePolymorphicProperty](#crdgeneratorstrimziiov1beta1examplepolymorphicproperty)
+  - [CrdgeneratorStrimziIoV1beta1ExamplePolymorphicWithOptionalType](#crdgeneratorstrimziiov1beta1examplepolymorphicwithoptionaltype)
   - [Example](#example)
   - [ExampleWithSubresources](#examplewithsubresources)
   - [KafkaStrimziIoV1beta1KafkaTopicSpec](#kafkastrimziiov1beta1kafkatopicspec)
@@ -3032,6 +3029,8 @@
   - [KafkaStrimziIoV1beta2KafkaBridgeSpecConsumer](#kafkastrimziiov1beta2kafkabridgespecconsumer)
   - [KafkaStrimziIoV1beta2KafkaBridgeSpecHTTP](#kafkastrimziiov1beta2kafkabridgespechttp)
   - [KafkaStrimziIoV1beta2KafkaBridgeSpecHTTPCors](#kafkastrimziiov1beta2kafkabridgespechttpcors)
+  - [KafkaStrimziIoV1beta2KafkaBridgeSpecHTTPTLS](#kafkastrimziiov1beta2kafkabridgespechttptls)
+  - [KafkaStrimziIoV1beta2KafkaBridgeSpecHTTPTLSCertificateAndKey](#kafkastrimziiov1beta2kafkabridgespechttptlscertificateandkey)
   - [KafkaStrimziIoV1beta2KafkaBridgeSpecJvmOptions](#kafkastrimziiov1beta2kafkabridgespecjvmoptions)
   - [KafkaStrimziIoV1beta2KafkaBridgeSpecJvmOptionsJavaSystemPropertiesItems0](#kafkastrimziiov1beta2kafkabridgespecjvmoptionsjavasystempropertiesitems0)
   - [KafkaStrimziIoV1beta2KafkaBridgeSpecLivenessProbe](#kafkastrimziiov1beta2kafkabridgespeclivenessprobe)
@@ -9499,17 +9498,17 @@ A ClusterIssuer represents a certificate issuing authority which can be referenc
 |**status**|[CertManagerIoV1ClusterIssuerStatus](#certmanageriov1clusterissuerstatus)|status||
 ### CoreStrimziIoV1StrimziPodSetSpec
 
-The specification of the StrimziPodSet.
+core strimzi io v1 strimzi pod set spec
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**pods** `required`|[]|The Pods managed by this StrimziPodSet.||
+|**pods** `required`|[]|pods||
 |**selector** `required`|[CoreStrimziIoV1StrimziPodSetSpecSelector](#corestrimziiov1strimzipodsetspecselector)|selector||
 ### CoreStrimziIoV1StrimziPodSetSpecSelector
 
-Selector is a label query which matches all the pods managed by this `StrimziPodSet`. Only `matchLabels` is supported. If `matchExpressions` is set, it will be ignored.
+core strimzi io v1 strimzi pod set spec selector
 
 #### Attributes
 
@@ -9530,17 +9529,17 @@ core strimzi io v1 strimzi pod set spec selector match expressions items0
 |**values**|[str]|values||
 ### CoreStrimziIoV1StrimziPodSetStatus
 
-The status of the StrimziPodSet.
+core strimzi io v1 strimzi pod set status
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**conditions**|[[CoreStrimziIoV1StrimziPodSetStatusConditionsItems0](#corestrimziiov1strimzipodsetstatusconditionsitems0)]|List of status conditions.||
-|**currentPods**|int|Number of pods managed by this `StrimziPodSet` resource that have the current revision.||
-|**observedGeneration**|int|The generation of the CRD that was last reconciled by the operator.||
-|**pods**|int|Number of pods managed by this `StrimziPodSet` resource.||
-|**readyPods**|int|Number of pods managed by this `StrimziPodSet` resource that are ready.||
+|**conditions**|[[CoreStrimziIoV1StrimziPodSetStatusConditionsItems0](#corestrimziiov1strimzipodsetstatusconditionsitems0)]|conditions||
+|**currentPods**|int|current pods||
+|**observedGeneration**|int|observed generation||
+|**pods**|int|pods||
+|**readyPods**|int|ready pods||
 ### CoreStrimziIoV1StrimziPodSetStatusConditionsItems0
 
 core strimzi io v1 strimzi pod set status conditions items0
@@ -9549,10 +9548,10 @@ core strimzi io v1 strimzi pod set status conditions items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.||
-|**message**|str|Human-readable message indicating details about the condition's last transition.||
-|**reason**|str|The reason for the condition's last transition (a single word in CamelCase).||
-|**status**|str|The status of the condition, either True, False or Unknown.||
+|**lastTransitionTime**|str|last transition time||
+|**message**|str|message||
+|**reason**|str|reason||
+|**status**|str|status||
 |**type**|str|||
 ### Example
 
@@ -9677,7 +9676,7 @@ kafka strimzi io v1 kafka rebalance
 |**status**|[KafkaStrimziIoV1KafkaRebalanceStatus](#kafkastrimziiov1kafkarebalancestatus)|status||
 ### KafkaStrimziIoV1KafkaBridgeSpec
 
-The specification of the HTTP Bridge.
+kafka strimzi io v1 kafka bridge spec
 
 #### Attributes
 
@@ -9685,11 +9684,12 @@ The specification of the HTTP Bridge.
 | --- | --- | --- | --- |
 |**adminClient**|[KafkaStrimziIoV1KafkaBridgeSpecAdminClient](#kafkastrimziiov1kafkabridgespecadminclient)|admin client||
 |**authentication**|[KafkaStrimziIoV1KafkaBridgeSpecAuthentication](#kafkastrimziiov1kafkabridgespecauthentication)|authentication||
-|**bootstrapServers** `required`|str|A list of host:port pairs for establishing the initial connection to the Kafka cluster.||
-|**clientRackInitImage**|str|The image of the init container used for initializing the `client.rack`.||
+|**bootstrapServers** `required`|str|bootstrap servers||
+|**clientRackInitImage**|str|client rack init image||
+|**config**|any|config||
 |**consumer**|[KafkaStrimziIoV1KafkaBridgeSpecConsumer](#kafkastrimziiov1kafkabridgespecconsumer)|consumer||
 |**http**|[KafkaStrimziIoV1KafkaBridgeSpecHTTP](#kafkastrimziiov1kafkabridgespechttp)|http||
-|**image**|str|The container image used for HTTP Bridge pods. If no image name is explicitly specified, the image name corresponds to the image specified in the Cluster Operator configuration. If an image name is not defined in the Cluster Operator configuration, a default value is used.||
+|**image**|str|image||
 |**jvmOptions**|[KafkaStrimziIoV1KafkaBridgeSpecJvmOptions](#kafkastrimziiov1kafkabridgespecjvmoptions)|jvm options||
 |**livenessProbe**|[KafkaStrimziIoV1KafkaBridgeSpecLivenessProbe](#kafkastrimziiov1kafkabridgespeclivenessprobe)|liveness probe||
 |**logging**|[KafkaStrimziIoV1KafkaBridgeSpecLogging](#kafkastrimziiov1kafkabridgespeclogging)|logging||
@@ -9697,89 +9697,111 @@ The specification of the HTTP Bridge.
 |**producer**|[KafkaStrimziIoV1KafkaBridgeSpecProducer](#kafkastrimziiov1kafkabridgespecproducer)|producer||
 |**rack**|[KafkaStrimziIoV1KafkaBridgeSpecRack](#kafkastrimziiov1kafkabridgespecrack)|rack||
 |**readinessProbe**|[KafkaStrimziIoV1KafkaBridgeSpecReadinessProbe](#kafkastrimziiov1kafkabridgespecreadinessprobe)|readiness probe||
-|**replicas** `required`|int|The number of pods in the `Deployment`. Required in the `v1` version of the Strimzi API. Defaults to `1` in the `v1beta2` version of the Strimzi API.||
+|**replicas** `required`|int|replicas||
 |**resources**|[KafkaStrimziIoV1KafkaBridgeSpecResources](#kafkastrimziiov1kafkabridgespecresources)|resources||
 |**template**|[KafkaStrimziIoV1KafkaBridgeSpecTemplate](#kafkastrimziiov1kafkabridgespectemplate)|template||
 |**tls**|[KafkaStrimziIoV1KafkaBridgeSpecTLS](#kafkastrimziiov1kafkabridgespectls)|tls||
 |**tracing**|[KafkaStrimziIoV1KafkaBridgeSpecTracing](#kafkastrimziiov1kafkabridgespectracing)|tracing||
 ### KafkaStrimziIoV1KafkaBridgeSpecAdminClient
 
-Kafka AdminClient related configuration.
+kafka strimzi io v1 kafka bridge spec admin client
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**config**|any|The Kafka AdminClient configuration used for AdminClient instances created by the bridge.||
+|**config**|any|config||
 ### KafkaStrimziIoV1KafkaBridgeSpecAuthentication
 
-Authentication configuration for connecting to the cluster.
+kafka strimzi io v1 kafka bridge spec authentication
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**certificateAndKey**|[KafkaStrimziIoV1KafkaBridgeSpecAuthenticationCertificateAndKey](#kafkastrimziiov1kafkabridgespecauthenticationcertificateandkey)|certificate and key||
-|**config**|any|Configuration for the custom authentication mechanism. Only properties with the `sasl.` and `ssl.keystore.` prefixes are allowed. Specify other options in the regular configuration section of the custom resource.||
+|**config**|any|config||
 |**passwordSecret**|[KafkaStrimziIoV1KafkaBridgeSpecAuthenticationPasswordSecret](#kafkastrimziiov1kafkabridgespecauthenticationpasswordsecret)|password secret||
-|**sasl**|bool|Enable or disable SASL on this authentication mechanism.||
+|**sasl**|bool|sasl||
 |**type** `required`|"tls" | "scram-sha-256" | "scram-sha-512" | "plain" | "custom"|||
-|**username**|str|Username used for the authentication.||
+|**username**|str|username||
 ### KafkaStrimziIoV1KafkaBridgeSpecAuthenticationCertificateAndKey
 
-Reference to the `Secret` which holds the certificate and private key pair.
+kafka strimzi io v1 kafka bridge spec authentication certificate and key
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate** `required`|str|The name of the file certificate in the Secret.||
-|**key** `required`|str|The name of the private key in the secret. The private key must be in unencrypted PKCS #8 format. For more information, see RFC 5208: https://datatracker.ietf.org/doc/html/rfc5208.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate** `required`|str|certificate||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1KafkaBridgeSpecAuthenticationPasswordSecret
 
-Reference to the `Secret` which holds the password.
+kafka strimzi io v1 kafka bridge spec authentication password secret
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**password** `required`|str|The name of the key in the Secret under which the password is stored.||
-|**secretName** `required`|str|The name of the Secret containing the password.||
+|**password** `required`|str|password||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1KafkaBridgeSpecConsumer
 
-Kafka consumer related configuration.
+kafka strimzi io v1 kafka bridge spec consumer
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**config**|any|The Kafka consumer configuration used for consumer instances created by the bridge. Properties with the following prefixes cannot be set: ssl., bootstrap.servers, group.id, sasl., security. (with the exception of: ssl.endpoint.identification.algorithm, ssl.cipher.suites, ssl.protocol, ssl.enabled.protocols).||
-|**enabled**|bool|Whether the HTTP consumer should be enabled or disabled. The default is enabled (`true`).||
-|**timeoutSeconds**|int|The timeout in seconds for deleting inactive consumers, default is -1 (disabled).||
+|**config**|any|config||
+|**enabled**|bool|enabled||
+|**timeoutSeconds**|int|timeout seconds||
 ### KafkaStrimziIoV1KafkaBridgeSpecHTTP
 
-The HTTP related configuration.
+kafka strimzi io v1 kafka bridge spec HTTP
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**cors**|[KafkaStrimziIoV1KafkaBridgeSpecHTTPCors](#kafkastrimziiov1kafkabridgespechttpcors)|cors||
-|**port**|int|Port the server listens on.||
+|**port**|int|port||
+|**tls**|[KafkaStrimziIoV1KafkaBridgeSpecHTTPTLS](#kafkastrimziiov1kafkabridgespechttptls)|tls||
 ### KafkaStrimziIoV1KafkaBridgeSpecHTTPCors
 
-CORS configuration for the HTTP Bridge.
+kafka strimzi io v1 kafka bridge spec HTTP cors
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**allowedMethods** `required`|[str]|List of allowed HTTP methods.||
-|**allowedOrigins** `required`|[str]|List of allowed origins. Java regular expressions can be used.||
+|**allowedMethods** `required`|[str]|allowed methods||
+|**allowedOrigins** `required`|[str]|allowed origins||
+### KafkaStrimziIoV1KafkaBridgeSpecHTTPTLS
+
+kafka strimzi io v1 kafka bridge spec HTTP TLS
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**certificateAndKey** `required`|[KafkaStrimziIoV1KafkaBridgeSpecHTTPTLSCertificateAndKey](#kafkastrimziiov1kafkabridgespechttptlscertificateandkey)|certificate and key||
+|**config**|any|config||
+### KafkaStrimziIoV1KafkaBridgeSpecHTTPTLSCertificateAndKey
+
+kafka strimzi io v1 kafka bridge spec HTTP TLS certificate and key
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**certificate** `required`|str|certificate||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1KafkaBridgeSpecJvmOptions
 
-JVM Options for pods.
+kafka strimzi io v1 kafka bridge spec jvm options
 
 #### Attributes
 
@@ -9788,8 +9810,8 @@ JVM Options for pods.
 |**-XX**|{str:str}|||
 |**-Xms**|str|||
 |**-Xmx**|str|||
-|**gcLoggingEnabled**|bool|Specifies whether the Garbage Collection logging is enabled. The default is false.||
-|**javaSystemProperties**|[[KafkaStrimziIoV1KafkaBridgeSpecJvmOptionsJavaSystemPropertiesItems0](#kafkastrimziiov1kafkabridgespecjvmoptionsjavasystempropertiesitems0)]|A map of additional system properties which will be passed using the `-D` option to the JVM.||
+|**gcLoggingEnabled**|bool|gc logging enabled||
+|**javaSystemProperties**|[[KafkaStrimziIoV1KafkaBridgeSpecJvmOptionsJavaSystemPropertiesItems0](#kafkastrimziiov1kafkabridgespecjvmoptionsjavasystempropertiesitems0)]|java system properties||
 ### KafkaStrimziIoV1KafkaBridgeSpecJvmOptionsJavaSystemPropertiesItems0
 
 kafka strimzi io v1 kafka bridge spec jvm options java system properties items0
@@ -9798,35 +9820,35 @@ kafka strimzi io v1 kafka bridge spec jvm options java system properties items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The system property name.||
-|**value**|str|The system property value.||
+|**name**|str|name||
+|**value**|str|value||
 ### KafkaStrimziIoV1KafkaBridgeSpecLivenessProbe
 
-Pod liveness checking.
+kafka strimzi io v1 kafka bridge spec liveness probe
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**failureThreshold**|int|Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.||
-|**initialDelaySeconds**|int|The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.||
-|**periodSeconds**|int|How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.||
-|**successThreshold**|int|Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.||
-|**timeoutSeconds**|int|The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.||
+|**failureThreshold**|int|failure threshold||
+|**initialDelaySeconds**|int|initial delay seconds||
+|**periodSeconds**|int|period seconds||
+|**successThreshold**|int|success threshold||
+|**timeoutSeconds**|int|timeout seconds||
 ### KafkaStrimziIoV1KafkaBridgeSpecLogging
 
-Logging configuration for HTTP Bridge.
+kafka strimzi io v1 kafka bridge spec logging
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**loggers**|{str:str}|A Map from logger name to logger level.||
+|**loggers**|{str:str}|loggers||
 |**type** `required`|"inline" | "external"|||
 |**valueFrom**|[KafkaStrimziIoV1KafkaBridgeSpecLoggingValueFrom](#kafkastrimziiov1kafkabridgespecloggingvaluefrom)|value from||
 ### KafkaStrimziIoV1KafkaBridgeSpecLoggingValueFrom
 
-`ConfigMap` entry where the logging configuration is stored.
+kafka strimzi io v1 kafka bridge spec logging value from
 
 #### Attributes
 
@@ -9835,7 +9857,7 @@ Logging configuration for HTTP Bridge.
 |**configMapKeyRef**|[KafkaStrimziIoV1KafkaBridgeSpecLoggingValueFromConfigMapKeyRef](#kafkastrimziiov1kafkabridgespecloggingvaluefromconfigmapkeyref)|config map key ref||
 ### KafkaStrimziIoV1KafkaBridgeSpecLoggingValueFromConfigMapKeyRef
 
-Reference to the key in the ConfigMap containing the configuration.
+kafka strimzi io v1 kafka bridge spec logging value from config map key ref
 
 #### Attributes
 
@@ -9846,7 +9868,7 @@ Reference to the key in the ConfigMap containing the configuration.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaBridgeSpecMetricsConfig
 
-Metrics configuration.
+kafka strimzi io v1 kafka bridge spec metrics config
 
 #### Attributes
 
@@ -9857,7 +9879,7 @@ Metrics configuration.
 |**values**|[KafkaStrimziIoV1KafkaBridgeSpecMetricsConfigValues](#kafkastrimziiov1kafkabridgespecmetricsconfigvalues)|values||
 ### KafkaStrimziIoV1KafkaBridgeSpecMetricsConfigValueFrom
 
-ConfigMap entry where the Prometheus JMX Exporter configuration is stored.
+kafka strimzi io v1 kafka bridge spec metrics config value from
 
 #### Attributes
 
@@ -9866,7 +9888,7 @@ ConfigMap entry where the Prometheus JMX Exporter configuration is stored.
 |**configMapKeyRef**|[KafkaStrimziIoV1KafkaBridgeSpecMetricsConfigValueFromConfigMapKeyRef](#kafkastrimziiov1kafkabridgespecmetricsconfigvaluefromconfigmapkeyref)|config map key ref||
 ### KafkaStrimziIoV1KafkaBridgeSpecMetricsConfigValueFromConfigMapKeyRef
 
-Reference to the key in the ConfigMap containing the configuration.
+kafka strimzi io v1 kafka bridge spec metrics config value from config map key ref
 
 #### Attributes
 
@@ -9877,48 +9899,50 @@ Reference to the key in the ConfigMap containing the configuration.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaBridgeSpecMetricsConfigValues
 
-Configuration values for the Strimzi Metrics Reporter.
+kafka strimzi io v1 kafka bridge spec metrics config values
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**allowList**|[str]|A list of regex patterns to filter the metrics to collect. Should contain at least one element.||
+|**allowList**|[str]|allow list||
 ### KafkaStrimziIoV1KafkaBridgeSpecProducer
 
-Kafka producer related configuration.
+kafka strimzi io v1 kafka bridge spec producer
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**config**|any|The Kafka producer configuration used for producer instances created by the bridge. Properties with the following prefixes cannot be set: ssl., bootstrap.servers, sasl., security. (with the exception of: ssl.endpoint.identification.algorithm, ssl.cipher.suites, ssl.protocol, ssl.enabled.protocols).||
-|**enabled**|bool|Whether the HTTP producer should be enabled or disabled. The default is enabled (`true`).||
+|**config**|any|config||
+|**enabled**|bool|enabled||
 ### KafkaStrimziIoV1KafkaBridgeSpecRack
 
-Configuration of the node label which will be used as the client.rack consumer configuration.
+kafka strimzi io v1 kafka bridge spec rack
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**topologyKey** `required`|str|A key that matches labels assigned to the Kubernetes cluster nodes. The value of the label is used to set a broker's `broker.rack` config, and the `client.rack` config for Kafka Connect or MirrorMaker 2.||
+|**envVarName**|str|env var name||
+|**topologyKey**|str|topology key||
+|**type**|"topology-label" | "environment-variable"|||
 ### KafkaStrimziIoV1KafkaBridgeSpecReadinessProbe
 
-Pod readiness checking.
+kafka strimzi io v1 kafka bridge spec readiness probe
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**failureThreshold**|int|Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.||
-|**initialDelaySeconds**|int|The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.||
-|**periodSeconds**|int|How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.||
-|**successThreshold**|int|Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.||
-|**timeoutSeconds**|int|The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.||
+|**failureThreshold**|int|failure threshold||
+|**initialDelaySeconds**|int|initial delay seconds||
+|**periodSeconds**|int|period seconds||
+|**successThreshold**|int|success threshold||
+|**timeoutSeconds**|int|timeout seconds||
 ### KafkaStrimziIoV1KafkaBridgeSpecResources
 
-CPU and memory resources to reserve.
+kafka strimzi io v1 kafka bridge spec resources
 
 #### Attributes
 
@@ -9939,13 +9963,13 @@ kafka strimzi io v1 kafka bridge spec resources claims items0
 |**request**|str|request||
 ### KafkaStrimziIoV1KafkaBridgeSpecTLS
 
-TLS configuration for connecting HTTP Bridge to the cluster.
+kafka strimzi io v1 kafka bridge spec TLS
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**trustedCertificates**|[[KafkaStrimziIoV1KafkaBridgeSpecTLSTrustedCertificatesItems0](#kafkastrimziiov1kafkabridgespectlstrustedcertificatesitems0)]|Trusted certificates for TLS connection.||
+|**trustedCertificates**|[[KafkaStrimziIoV1KafkaBridgeSpecTLSTrustedCertificatesItems0](#kafkastrimziiov1kafkabridgespectlstrustedcertificatesitems0)]|trusted certificates||
 ### KafkaStrimziIoV1KafkaBridgeSpecTLSTrustedCertificatesItems0
 
 kafka strimzi io v1 kafka bridge spec TLS trusted certificates items0
@@ -9954,12 +9978,12 @@ kafka strimzi io v1 kafka bridge spec TLS trusted certificates items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate**|str|The name of the file certificate in the secret.||
-|**pattern**|str|Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate**|str|certificate||
+|**pattern**|str|pattern||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplate
 
-Template for HTTP Bridge resources. The template allows users to specify how a `Deployment` and `Pod` is generated.
+kafka strimzi io v1 kafka bridge spec template
 
 #### Attributes
 
@@ -9975,36 +9999,36 @@ Template for HTTP Bridge resources. The template allows users to specify how a `
 |**serviceAccount**|[KafkaStrimziIoV1KafkaBridgeSpecTemplateServiceAccount](#kafkastrimziiov1kafkabridgespectemplateserviceaccount)|service account||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplateAPIService
 
-Template for HTTP Bridge API `Service`.
+kafka strimzi io v1 kafka bridge spec template API service
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**ipFamilies**|[str]|Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6`. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting.||
-|**ipFamilyPolicy**|"SingleStack" | "PreferDualStack" | "RequireDualStack"|Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`. `SingleStack` is for a single IP family. `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters. `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters. If unspecified, Kubernetes will choose the default value based on the service type.||
+|**ipFamilies**|[str]|ip families||
+|**ipFamilyPolicy**|"SingleStack" | "PreferDualStack" | "RequireDualStack"|ip family policy||
 |**metadata**|[KafkaStrimziIoV1KafkaBridgeSpecTemplateAPIServiceMetadata](#kafkastrimziiov1kafkabridgespectemplateapiservicemetadata)|metadata||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplateAPIServiceMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka bridge spec template API service metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplateBridgeContainer
 
-Template for the HTTP Bridge container.
+kafka strimzi io v1 kafka bridge spec template bridge container
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**env**|[[KafkaStrimziIoV1KafkaBridgeSpecTemplateBridgeContainerEnvItems0](#kafkastrimziiov1kafkabridgespectemplatebridgecontainerenvitems0)]|Environment variables which should be applied to the container.||
+|**env**|[[KafkaStrimziIoV1KafkaBridgeSpecTemplateBridgeContainerEnvItems0](#kafkastrimziiov1kafkabridgespectemplatebridgecontainerenvitems0)]|env||
 |**securityContext**|[KafkaStrimziIoV1KafkaBridgeSpecTemplateBridgeContainerSecurityContext](#kafkastrimziiov1kafkabridgespectemplatebridgecontainersecuritycontext)|security context||
-|**volumeMounts**|[[KafkaStrimziIoV1KafkaBridgeSpecTemplateBridgeContainerVolumeMountsItems0](#kafkastrimziiov1kafkabridgespectemplatebridgecontainervolumemountsitems0)]|Additional volume mounts which should be applied to the container.||
+|**volumeMounts**|[[KafkaStrimziIoV1KafkaBridgeSpecTemplateBridgeContainerVolumeMountsItems0](#kafkastrimziiov1kafkabridgespectemplatebridgecontainervolumemountsitems0)]|volume mounts||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplateBridgeContainerEnvItems0
 
 kafka strimzi io v1 kafka bridge spec template bridge container env items0
@@ -10013,12 +10037,12 @@ kafka strimzi io v1 kafka bridge spec template bridge container env items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The environment variable key.||
-|**value**|str|The environment variable value.||
+|**name**|str|name||
+|**value**|str|value||
 |**valueFrom**|[KafkaStrimziIoV1KafkaBridgeSpecTemplateBridgeContainerEnvItems0ValueFrom](#kafkastrimziiov1kafkabridgespectemplatebridgecontainerenvitems0valuefrom)|value from||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplateBridgeContainerEnvItems0ValueFrom
 
-Reference to the secret or config map property to which the environment variable is set.
+kafka strimzi io v1 kafka bridge spec template bridge container env items0 value from
 
 #### Attributes
 
@@ -10028,7 +10052,7 @@ Reference to the secret or config map property to which the environment variable
 |**secretKeyRef**|[KafkaStrimziIoV1KafkaBridgeSpecTemplateBridgeContainerEnvItems0ValueFromSecretKeyRef](#kafkastrimziiov1kafkabridgespectemplatebridgecontainerenvitems0valuefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplateBridgeContainerEnvItems0ValueFromConfigMapKeyRef
 
-Reference to a key in a config map.
+kafka strimzi io v1 kafka bridge spec template bridge container env items0 value from config map key ref
 
 #### Attributes
 
@@ -10039,7 +10063,7 @@ Reference to a key in a config map.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplateBridgeContainerEnvItems0ValueFromSecretKeyRef
 
-Reference to a key in a secret.
+kafka strimzi io v1 kafka bridge spec template bridge container env items0 value from secret key ref
 
 #### Attributes
 
@@ -10050,7 +10074,7 @@ Reference to a key in a secret.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplateBridgeContainerSecurityContext
 
-Security context for the container.
+kafka strimzi io v1 kafka bridge spec template bridge container security context
 
 #### Attributes
 
@@ -10139,7 +10163,7 @@ kafka strimzi io v1 kafka bridge spec template bridge container volume mounts it
 |**subPathExpr**|str|sub path expr||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplateClusterRoleBinding
 
-Template for the HTTP Bridge ClusterRoleBinding.
+kafka strimzi io v1 kafka bridge spec template cluster role binding
 
 #### Attributes
 
@@ -10148,45 +10172,45 @@ Template for the HTTP Bridge ClusterRoleBinding.
 |**metadata**|[KafkaStrimziIoV1KafkaBridgeSpecTemplateClusterRoleBindingMetadata](#kafkastrimziiov1kafkabridgespectemplateclusterrolebindingmetadata)|metadata||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplateClusterRoleBindingMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka bridge spec template cluster role binding metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplateDeployment
 
-Template for HTTP Bridge `Deployment`.
+kafka strimzi io v1 kafka bridge spec template deployment
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**deploymentStrategy**|"RollingUpdate" | "Recreate"|Pod replacement strategy for deployment configuration changes. Valid values are `RollingUpdate` and `Recreate`. Defaults to `RollingUpdate`.||
+|**deploymentStrategy**|"RollingUpdate" | "Recreate"|deployment strategy||
 |**metadata**|[KafkaStrimziIoV1KafkaBridgeSpecTemplateDeploymentMetadata](#kafkastrimziiov1kafkabridgespectemplatedeploymentmetadata)|metadata||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplateDeploymentMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka bridge spec template deployment metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplateInitContainer
 
-Template for the HTTP Bridge init container.
+kafka strimzi io v1 kafka bridge spec template init container
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**env**|[[KafkaStrimziIoV1KafkaBridgeSpecTemplateInitContainerEnvItems0](#kafkastrimziiov1kafkabridgespectemplateinitcontainerenvitems0)]|Environment variables which should be applied to the container.||
+|**env**|[[KafkaStrimziIoV1KafkaBridgeSpecTemplateInitContainerEnvItems0](#kafkastrimziiov1kafkabridgespectemplateinitcontainerenvitems0)]|env||
 |**securityContext**|[KafkaStrimziIoV1KafkaBridgeSpecTemplateInitContainerSecurityContext](#kafkastrimziiov1kafkabridgespectemplateinitcontainersecuritycontext)|security context||
-|**volumeMounts**|[[KafkaStrimziIoV1KafkaBridgeSpecTemplateInitContainerVolumeMountsItems0](#kafkastrimziiov1kafkabridgespectemplateinitcontainervolumemountsitems0)]|Additional volume mounts which should be applied to the container.||
+|**volumeMounts**|[[KafkaStrimziIoV1KafkaBridgeSpecTemplateInitContainerVolumeMountsItems0](#kafkastrimziiov1kafkabridgespectemplateinitcontainervolumemountsitems0)]|volume mounts||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplateInitContainerEnvItems0
 
 kafka strimzi io v1 kafka bridge spec template init container env items0
@@ -10195,12 +10219,12 @@ kafka strimzi io v1 kafka bridge spec template init container env items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The environment variable key.||
-|**value**|str|The environment variable value.||
+|**name**|str|name||
+|**value**|str|value||
 |**valueFrom**|[KafkaStrimziIoV1KafkaBridgeSpecTemplateInitContainerEnvItems0ValueFrom](#kafkastrimziiov1kafkabridgespectemplateinitcontainerenvitems0valuefrom)|value from||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplateInitContainerEnvItems0ValueFrom
 
-Reference to the secret or config map property to which the environment variable is set.
+kafka strimzi io v1 kafka bridge spec template init container env items0 value from
 
 #### Attributes
 
@@ -10210,7 +10234,7 @@ Reference to the secret or config map property to which the environment variable
 |**secretKeyRef**|[KafkaStrimziIoV1KafkaBridgeSpecTemplateInitContainerEnvItems0ValueFromSecretKeyRef](#kafkastrimziiov1kafkabridgespectemplateinitcontainerenvitems0valuefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplateInitContainerEnvItems0ValueFromConfigMapKeyRef
 
-Reference to a key in a config map.
+kafka strimzi io v1 kafka bridge spec template init container env items0 value from config map key ref
 
 #### Attributes
 
@@ -10221,7 +10245,7 @@ Reference to a key in a config map.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplateInitContainerEnvItems0ValueFromSecretKeyRef
 
-Reference to a key in a secret.
+kafka strimzi io v1 kafka bridge spec template init container env items0 value from secret key ref
 
 #### Attributes
 
@@ -10232,7 +10256,7 @@ Reference to a key in a secret.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplateInitContainerSecurityContext
 
-Security context for the container.
+kafka strimzi io v1 kafka bridge spec template init container security context
 
 #### Attributes
 
@@ -10321,7 +10345,7 @@ kafka strimzi io v1 kafka bridge spec template init container volume mounts item
 |**subPathExpr**|str|sub path expr||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplatePod
 
-Template for HTTP Bridge `Pods`.
+kafka strimzi io v1 kafka bridge spec template pod
 
 #### Attributes
 
@@ -10329,23 +10353,23 @@ Template for HTTP Bridge `Pods`.
 | --- | --- | --- | --- |
 |**affinity**|[KafkaStrimziIoV1KafkaBridgeSpecTemplatePodAffinity](#kafkastrimziiov1kafkabridgespectemplatepodaffinity)|affinity||
 |**dnsConfig**|[KafkaStrimziIoV1KafkaBridgeSpecTemplatePodDNSConfig](#kafkastrimziiov1kafkabridgespectemplatepoddnsconfig)|dns config||
-|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.||
-|**enableServiceLinks**|bool|Indicates whether information about services should be injected into Pod's environment variables.||
-|**hostAliases**|[[KafkaStrimziIoV1KafkaBridgeSpecTemplatePodHostAliasesItems0](#kafkastrimziiov1kafkabridgespectemplatepodhostaliasesitems0)]|The pod's HostAliases. HostAliases is an optional list of hosts and IPs that will be injected into the Pod's hosts file if specified.||
-|**hostUsers**|bool|Use the host user namespace. Optional. Defaults to `true`. When `true` or not set, the pod runs in the host user namespace. This is required when the pod needs features available only in the host namespace, such as loading kernel modules with `CAP_SYS_MODULE`.When set to `false`, the pod runs in a new user namespace. Setting `false` helps mitigate container breakout vulnerabilities and allows containers to run as `root` without granting `root` privileges on the host. This property is alpha-level in Kubernetes and is supported only by Kubernetes clusters that enable the `UserNamespacesSupport` feature.||
-|**imagePullSecrets**|[[KafkaStrimziIoV1KafkaBridgeSpecTemplatePodImagePullSecretsItems0](#kafkastrimziiov1kafkabridgespectemplatepodimagepullsecretsitems0)]|List of references to secrets in the same namespace to use for pulling any of the images used by this Pod. When the `STRIMZI_IMAGE_PULL_SECRETS` environment variable in Cluster Operator and the `imagePullSecrets` option are specified, only the `imagePullSecrets` variable is used and the `STRIMZI_IMAGE_PULL_SECRETS` variable is ignored.||
+|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|dns policy||
+|**enableServiceLinks**|bool|enable service links||
+|**hostAliases**|[[KafkaStrimziIoV1KafkaBridgeSpecTemplatePodHostAliasesItems0](#kafkastrimziiov1kafkabridgespectemplatepodhostaliasesitems0)]|host aliases||
+|**hostUsers**|bool|host users||
+|**imagePullSecrets**|[[KafkaStrimziIoV1KafkaBridgeSpecTemplatePodImagePullSecretsItems0](#kafkastrimziiov1kafkabridgespectemplatepodimagepullsecretsitems0)]|image pull secrets||
 |**metadata**|[KafkaStrimziIoV1KafkaBridgeSpecTemplatePodMetadata](#kafkastrimziiov1kafkabridgespectemplatepodmetadata)|metadata||
-|**priorityClassName**|str|The name of the priority class used to assign priority to the pods.||
-|**schedulerName**|str|The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.||
+|**priorityClassName**|str|priority class name||
+|**schedulerName**|str|scheduler name||
 |**securityContext**|[KafkaStrimziIoV1KafkaBridgeSpecTemplatePodSecurityContext](#kafkastrimziiov1kafkabridgespectemplatepodsecuritycontext)|security context||
-|**terminationGracePeriodSeconds**|int|The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.||
-|**tmpDirSizeLimit**|str|Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.||
-|**tolerations**|[[KafkaStrimziIoV1KafkaBridgeSpecTemplatePodTolerationsItems0](#kafkastrimziiov1kafkabridgespectemplatepodtolerationsitems0)]|The pod's tolerations.||
-|**topologySpreadConstraints**|[[KafkaStrimziIoV1KafkaBridgeSpecTemplatePodTopologySpreadConstraintsItems0](#kafkastrimziiov1kafkabridgespectemplatepodtopologyspreadconstraintsitems0)]|The pod's topology spread constraints.||
-|**volumes**|[[KafkaStrimziIoV1KafkaBridgeSpecTemplatePodVolumesItems0](#kafkastrimziiov1kafkabridgespectemplatepodvolumesitems0)]|Additional volumes that can be mounted to the pod.||
+|**terminationGracePeriodSeconds**|int|termination grace period seconds||
+|**tmpDirSizeLimit**|str|tmp dir size limit||
+|**tolerations**|[[KafkaStrimziIoV1KafkaBridgeSpecTemplatePodTolerationsItems0](#kafkastrimziiov1kafkabridgespectemplatepodtolerationsitems0)]|tolerations||
+|**topologySpreadConstraints**|[[KafkaStrimziIoV1KafkaBridgeSpecTemplatePodTopologySpreadConstraintsItems0](#kafkastrimziiov1kafkabridgespectemplatepodtopologyspreadconstraintsitems0)]|topology spread constraints||
+|**volumes**|[[KafkaStrimziIoV1KafkaBridgeSpecTemplatePodVolumesItems0](#kafkastrimziiov1kafkabridgespectemplatepodvolumesitems0)]|volumes||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplatePodAffinity
 
-The pod's affinity rules.
+kafka strimzi io v1 kafka bridge spec template pod affinity
 
 #### Attributes
 
@@ -10713,7 +10737,7 @@ kafka strimzi io v1 kafka bridge spec template pod affinity pod anti affinity re
 |**values**|[str]|values||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplatePodDNSConfig
 
-The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.
+kafka strimzi io v1 kafka bridge spec template pod DNS config
 
 #### Attributes
 
@@ -10734,24 +10758,24 @@ kafka strimzi io v1 kafka bridge spec template pod DNS config options items0
 |**value**|str|value||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplatePodDisruptionBudget
 
-Template for HTTP Bridge `PodDisruptionBudget`.
+kafka strimzi io v1 kafka bridge spec template pod disruption budget
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**maxUnavailable**|int|Maximum number of unavailable pods to allow automatic Pod eviction. A Pod eviction is allowed when the `maxUnavailable` number of pods or fewer are unavailable after the eviction. Setting this value to 0 prevents all voluntary evictions, so the pods must be evicted manually. Defaults to 1.||
+|**maxUnavailable**|int|max unavailable||
 |**metadata**|[KafkaStrimziIoV1KafkaBridgeSpecTemplatePodDisruptionBudgetMetadata](#kafkastrimziiov1kafkabridgespectemplatepoddisruptionbudgetmetadata)|metadata||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplatePodDisruptionBudgetMetadata
 
-Metadata to apply to the `PodDisruptionBudgetTemplate` resource.
+kafka strimzi io v1 kafka bridge spec template pod disruption budget metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplatePodHostAliasesItems0
 
 kafka strimzi io v1 kafka bridge spec template pod host aliases items0
@@ -10773,17 +10797,17 @@ kafka strimzi io v1 kafka bridge spec template pod image pull secrets items0
 |**name**|str|name||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplatePodMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka bridge spec template pod metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplatePodSecurityContext
 
-Configures pod-level security attributes and common container settings.
+kafka strimzi io v1 kafka bridge spec template pod security context
 
 #### Attributes
 
@@ -10918,12 +10942,12 @@ kafka strimzi io v1 kafka bridge spec template pod volumes items0
 |**csi**|[KafkaStrimziIoV1KafkaBridgeSpecTemplatePodVolumesItems0Csi](#kafkastrimziiov1kafkabridgespectemplatepodvolumesitems0csi)|csi||
 |**emptyDir**|[KafkaStrimziIoV1KafkaBridgeSpecTemplatePodVolumesItems0EmptyDir](#kafkastrimziiov1kafkabridgespectemplatepodvolumesitems0emptydir)|empty dir||
 |**image**|[KafkaStrimziIoV1KafkaBridgeSpecTemplatePodVolumesItems0Image](#kafkastrimziiov1kafkabridgespectemplatepodvolumesitems0image)|image||
-|**name**|str|Name to use for the volume. Required.||
+|**name**|str|name||
 |**persistentVolumeClaim**|[KafkaStrimziIoV1KafkaBridgeSpecTemplatePodVolumesItems0PersistentVolumeClaim](#kafkastrimziiov1kafkabridgespectemplatepodvolumesitems0persistentvolumeclaim)|persistent volume claim||
 |**secret**|[KafkaStrimziIoV1KafkaBridgeSpecTemplatePodVolumesItems0Secret](#kafkastrimziiov1kafkabridgespectemplatepodvolumesitems0secret)|secret||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplatePodVolumesItems0ConfigMap
 
-`ConfigMap` to use to populate the volume.
+kafka strimzi io v1 kafka bridge spec template pod volumes items0 config map
 
 #### Attributes
 
@@ -10946,7 +10970,7 @@ kafka strimzi io v1 kafka bridge spec template pod volumes items0 config map ite
 |**path**|str|path||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplatePodVolumesItems0Csi
 
-`CSIVolumeSource` object to use to populate the volume.
+kafka strimzi io v1 kafka bridge spec template pod volumes items0 csi
 
 #### Attributes
 
@@ -10968,17 +10992,17 @@ kafka strimzi io v1 kafka bridge spec template pod volumes items0 csi node publi
 |**name**|str|name||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplatePodVolumesItems0EmptyDir
 
-`EmptyDir` to use to populate the volume.
+kafka strimzi io v1 kafka bridge spec template pod volumes items0 empty dir
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**medium** `readOnly`|"Memory"|Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.|"Memory"|
-|**sizeLimit**|str|The total amount of local storage required for this EmptyDir volume (for example 1Gi).||
+|**medium** `readOnly`|"Memory"|medium|"Memory"|
+|**sizeLimit**|str|size limit||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplatePodVolumesItems0Image
 
-`ImageVolumeSource` object to use to populate the volume.
+kafka strimzi io v1 kafka bridge spec template pod volumes items0 image
 
 #### Attributes
 
@@ -10988,7 +11012,7 @@ kafka strimzi io v1 kafka bridge spec template pod volumes items0 csi node publi
 |**reference**|str|reference||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplatePodVolumesItems0PersistentVolumeClaim
 
-`PersistentVolumeClaim` object to use to populate the volume.
+kafka strimzi io v1 kafka bridge spec template pod volumes items0 persistent volume claim
 
 #### Attributes
 
@@ -10998,7 +11022,7 @@ kafka strimzi io v1 kafka bridge spec template pod volumes items0 csi node publi
 |**readOnly**|bool|read only||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplatePodVolumesItems0Secret
 
-`Secret` to use to populate the volume.
+kafka strimzi io v1 kafka bridge spec template pod volumes items0 secret
 
 #### Attributes
 
@@ -11021,7 +11045,7 @@ kafka strimzi io v1 kafka bridge spec template pod volumes items0 secret items i
 |**path**|str|path||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplateServiceAccount
 
-Template for the HTTP Bridge service account.
+kafka strimzi io v1 kafka bridge spec template service account
 
 #### Attributes
 
@@ -11030,17 +11054,17 @@ Template for the HTTP Bridge service account.
 |**metadata**|[KafkaStrimziIoV1KafkaBridgeSpecTemplateServiceAccountMetadata](#kafkastrimziiov1kafkabridgespectemplateserviceaccountmetadata)|metadata||
 ### KafkaStrimziIoV1KafkaBridgeSpecTemplateServiceAccountMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka bridge spec template service account metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaBridgeSpecTracing
 
-The configuration of tracing in HTTP Bridge.
+kafka strimzi io v1 kafka bridge spec tracing
 
 #### Attributes
 
@@ -11049,17 +11073,17 @@ The configuration of tracing in HTTP Bridge.
 |**type** `required` `readOnly`|"opentelemetry"||"opentelemetry"|
 ### KafkaStrimziIoV1KafkaBridgeStatus
 
-The status of the HTTP Bridge.
+kafka strimzi io v1 kafka bridge status
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**conditions**|[[KafkaStrimziIoV1KafkaBridgeStatusConditionsItems0](#kafkastrimziiov1kafkabridgestatusconditionsitems0)]|List of status conditions.||
-|**labelSelector**|str|Label selector for pods providing this resource.||
-|**observedGeneration**|int|The generation of the CRD that was last reconciled by the operator.||
-|**replicas**|int|The current number of pods being used to provide this resource.||
-|**url**|str|The URL at which external client applications can access the HTTP Bridge.||
+|**conditions**|[[KafkaStrimziIoV1KafkaBridgeStatusConditionsItems0](#kafkastrimziiov1kafkabridgestatusconditionsitems0)]|conditions||
+|**labelSelector**|str|label selector||
+|**observedGeneration**|int|observed generation||
+|**replicas**|int|replicas||
+|**url**|str|url||
 ### KafkaStrimziIoV1KafkaBridgeStatusConditionsItems0
 
 kafka strimzi io v1 kafka bridge status conditions items0
@@ -11068,101 +11092,101 @@ kafka strimzi io v1 kafka bridge status conditions items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.||
-|**message**|str|Human-readable message indicating details about the condition's last transition.||
-|**reason**|str|The reason for the condition's last transition (a single word in CamelCase).||
-|**status**|str|The status of the condition, either True, False or Unknown.||
+|**lastTransitionTime**|str|last transition time||
+|**message**|str|message||
+|**reason**|str|reason||
+|**status**|str|status||
 |**type**|str|||
 ### KafkaStrimziIoV1KafkaConnectSpec
 
-The specification of the Kafka Connect cluster.
+kafka strimzi io v1 kafka connect spec
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**authentication**|[KafkaStrimziIoV1KafkaConnectSpecAuthentication](#kafkastrimziiov1kafkaconnectspecauthentication)|authentication||
-|**bootstrapServers** `required`|str|Bootstrap servers to connect to. This should be given as a comma separated list of _<hostname>_:_<port>_ pairs.||
+|**bootstrapServers** `required`|str|bootstrap servers||
 |**build**|[KafkaStrimziIoV1KafkaConnectSpecBuild](#kafkastrimziiov1kafkaconnectspecbuild)|build||
-|**clientRackInitImage**|str|The image of the init container used for initializing the `client.rack`.||
-|**config**|any|The Kafka Connect configuration. Properties with the following prefixes cannot be set: ssl., sasl., security., listeners, plugin.path, rest., bootstrap.servers, consumer.interceptor.classes, producer.interceptor.classes, prometheus.metrics.reporter. (with the exception of: ssl.endpoint.identification.algorithm, ssl.cipher.suites, ssl.protocol, ssl.enabled.protocols).||
-|**configStorageTopic** `required`|str|The name of the Kafka topic where connector configurations are stored.||
-|**groupId** `required`|str|A unique ID that identifies the Connect cluster group.||
-|**image**|str|The container image used for Kafka Connect pods. If no image name is explicitly specified, it is determined based on the `spec.version` configuration. The image names are specifically mapped to corresponding versions in the Cluster Operator configuration.||
+|**clientRackInitImage**|str|client rack init image||
+|**config**|any|config||
+|**configStorageTopic** `required`|str|config storage topic||
+|**groupId** `required`|str|group Id||
+|**image**|str|image||
 |**jmxOptions**|[KafkaStrimziIoV1KafkaConnectSpecJmxOptions](#kafkastrimziiov1kafkaconnectspecjmxoptions)|jmx options||
 |**jvmOptions**|[KafkaStrimziIoV1KafkaConnectSpecJvmOptions](#kafkastrimziiov1kafkaconnectspecjvmoptions)|jvm options||
 |**livenessProbe**|[KafkaStrimziIoV1KafkaConnectSpecLivenessProbe](#kafkastrimziiov1kafkaconnectspeclivenessprobe)|liveness probe||
 |**logging**|[KafkaStrimziIoV1KafkaConnectSpecLogging](#kafkastrimziiov1kafkaconnectspeclogging)|logging||
 |**metricsConfig**|[KafkaStrimziIoV1KafkaConnectSpecMetricsConfig](#kafkastrimziiov1kafkaconnectspecmetricsconfig)|metrics config||
-|**offsetStorageTopic** `required`|str|The name of the Kafka topic where source connector offsets are stored.||
-|**plugins**|[[KafkaStrimziIoV1KafkaConnectSpecPluginsItems0](#kafkastrimziiov1kafkaconnectspecpluginsitems0)]|List of connector plugins to mount into the `KafkaConnect` pod.||
+|**offsetStorageTopic** `required`|str|offset storage topic||
+|**plugins**|[[KafkaStrimziIoV1KafkaConnectSpecPluginsItems0](#kafkastrimziiov1kafkaconnectspecpluginsitems0)]|plugins||
 |**rack**|[KafkaStrimziIoV1KafkaConnectSpecRack](#kafkastrimziiov1kafkaconnectspecrack)|rack||
 |**readinessProbe**|[KafkaStrimziIoV1KafkaConnectSpecReadinessProbe](#kafkastrimziiov1kafkaconnectspecreadinessprobe)|readiness probe||
-|**replicas** `required`|int|The number of pods in the Kafka Connect group. Required in the `v1` version of the Strimzi API. Defaults to `3` in the `v1beta2` version of the Strimzi API.||
+|**replicas** `required`|int|replicas||
 |**resources**|[KafkaStrimziIoV1KafkaConnectSpecResources](#kafkastrimziiov1kafkaconnectspecresources)|resources||
-|**statusStorageTopic** `required`|str|The name of the Kafka topic where connector and task status are stored.||
+|**statusStorageTopic** `required`|str|status storage topic||
 |**template**|[KafkaStrimziIoV1KafkaConnectSpecTemplate](#kafkastrimziiov1kafkaconnectspectemplate)|template||
 |**tls**|[KafkaStrimziIoV1KafkaConnectSpecTLS](#kafkastrimziiov1kafkaconnectspectls)|tls||
 |**tracing**|[KafkaStrimziIoV1KafkaConnectSpecTracing](#kafkastrimziiov1kafkaconnectspectracing)|tracing||
-|**version**|str|The Kafka Connect version. Defaults to the latest version. Consult the user documentation to understand the process required to upgrade or downgrade the version.||
+|**version**|str|version||
 ### KafkaStrimziIoV1KafkaConnectSpecAuthentication
 
-Authentication configuration for Kafka Connect.
+kafka strimzi io v1 kafka connect spec authentication
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**certificateAndKey**|[KafkaStrimziIoV1KafkaConnectSpecAuthenticationCertificateAndKey](#kafkastrimziiov1kafkaconnectspecauthenticationcertificateandkey)|certificate and key||
-|**config**|any|Configuration for the custom authentication mechanism. Only properties with the `sasl.` and `ssl.keystore.` prefixes are allowed. Specify other options in the regular configuration section of the custom resource.||
+|**config**|any|config||
 |**passwordSecret**|[KafkaStrimziIoV1KafkaConnectSpecAuthenticationPasswordSecret](#kafkastrimziiov1kafkaconnectspecauthenticationpasswordsecret)|password secret||
-|**sasl**|bool|Enable or disable SASL on this authentication mechanism.||
+|**sasl**|bool|sasl||
 |**type** `required`|"tls" | "scram-sha-256" | "scram-sha-512" | "plain" | "custom"|||
-|**username**|str|Username used for the authentication.||
+|**username**|str|username||
 ### KafkaStrimziIoV1KafkaConnectSpecAuthenticationCertificateAndKey
 
-Reference to the `Secret` which holds the certificate and private key pair.
+kafka strimzi io v1 kafka connect spec authentication certificate and key
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate** `required`|str|The name of the file certificate in the Secret.||
-|**key** `required`|str|The name of the private key in the secret. The private key must be in unencrypted PKCS #8 format. For more information, see RFC 5208: https://datatracker.ietf.org/doc/html/rfc5208.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate** `required`|str|certificate||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1KafkaConnectSpecAuthenticationPasswordSecret
 
-Reference to the `Secret` which holds the password.
+kafka strimzi io v1 kafka connect spec authentication password secret
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**password** `required`|str|The name of the key in the Secret under which the password is stored.||
-|**secretName** `required`|str|The name of the Secret containing the password.||
+|**password** `required`|str|password||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1KafkaConnectSpecBuild
 
-Configures how the Connect container image should be built. Optional.
+kafka strimzi io v1 kafka connect spec build
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**output** `required`|[KafkaStrimziIoV1KafkaConnectSpecBuildOutput](#kafkastrimziiov1kafkaconnectspecbuildoutput)|output||
-|**plugins** `required`|[[KafkaStrimziIoV1KafkaConnectSpecBuildPluginsItems0](#kafkastrimziiov1kafkaconnectspecbuildpluginsitems0)]|List of connector plugins which should be added to the Kafka Connect. Required.||
+|**plugins** `required`|[[KafkaStrimziIoV1KafkaConnectSpecBuildPluginsItems0](#kafkastrimziiov1kafkaconnectspecbuildpluginsitems0)]|plugins||
 |**resources**|[KafkaStrimziIoV1KafkaConnectSpecBuildResources](#kafkastrimziiov1kafkaconnectspecbuildresources)|resources||
 ### KafkaStrimziIoV1KafkaConnectSpecBuildOutput
 
-Configures where should the newly built image be stored. Required.
+kafka strimzi io v1 kafka connect spec build output
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**additionalBuildOptions**|[str]|Configures additional options to pass to the `build` command of either Kaniko or Buildah (depending on the feature gate setting) when building a new Kafka Connect image. Allowed Kaniko options: --customPlatform, --custom-platform, --insecure, --insecure-pull, --insecure-registry, --log-format, --log-timestamp, --registry-mirror, --reproducible, --single-snapshot, --skip-tls-verify, --skip-tls-verify-pull, --skip-tls-verify-registry, --verbosity, --snapshotMode, --use-new-run, --registry-certificate, --registry-client-cert, --ignore-path. Allowed Buildah `build` options: --authfile, --cert-dir, --creds, --decryption-key, --retry, --retry-delay, --tls-verify. Those options are used only on Kubernetes, where Kaniko and Buildah are available. They are ignored on OpenShift. For more information, see the link:https://github.com/GoogleContainerTools/kaniko[Kaniko GitHub repository^] or the link:https://github.com/containers/buildah/blob/main/docs/buildah-build.1.md[Buildah build document^]. Changing this field does not trigger a rebuild of the Kafka Connect image.||
-|**additionalPushOptions**|[str]|Configures additional options to pass to the Buildah `push` command when pushing a new Connect image. Allowed options: --authfile, --cert-dir, --creds, --quiet, --retry, --retry-delay, --tls-verify. Those options are used only on Kubernetes, where Buildah is available. They are ignored on OpenShift. For more information, see the link:https://github.com/containers/buildah/blob/main/docs/buildah-push.1.md[Buildah push document^]. Changing this field does not trigger a rebuild of the Kafka Connect image.||
-|**image** `required`|str|The name of the image which will be built. Required.||
-|**pushSecret**|str|Container Registry Secret with the credentials for pushing the newly built image.||
+|**additionalBuildOptions**|[str]|additional build options||
+|**additionalPushOptions**|[str]|additional push options||
+|**image** `required`|str|image||
+|**pushSecret**|str|push secret||
 |**type** `required`|"docker" | "imagestream"|||
 ### KafkaStrimziIoV1KafkaConnectSpecBuildPluginsItems0
 
@@ -11172,8 +11196,8 @@ kafka strimzi io v1 kafka connect spec build plugins items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**artifacts** `required`|[[KafkaStrimziIoV1KafkaConnectSpecBuildPluginsItems0ArtifactsItems0](#kafkastrimziiov1kafkaconnectspecbuildpluginsitems0artifactsitems0)]|List of artifacts which belong to this connector plugin. Required.||
-|**name** `required`|str|The unique name of the connector plugin. Will be used to generate the path where the connector artifacts will be stored. The name has to be unique within the KafkaConnect resource. The name has to follow the following pattern: `^[a-z][-_a-z0-9]*[a-z]$`. Required.||
+|**artifacts** `required`|[[KafkaStrimziIoV1KafkaConnectSpecBuildPluginsItems0ArtifactsItems0](#kafkastrimziiov1kafkaconnectspecbuildpluginsitems0artifactsitems0)]|artifacts||
+|**name** `required`|str|name||
 ### KafkaStrimziIoV1KafkaConnectSpecBuildPluginsItems0ArtifactsItems0
 
 kafka strimzi io v1 kafka connect spec build plugins items0 artifacts items0
@@ -11182,18 +11206,18 @@ kafka strimzi io v1 kafka connect spec build plugins items0 artifacts items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**artifact**|str|Maven artifact id. Applicable to the `maven` artifact type only.||
-|**fileName**|str|Name under which the artifact will be stored.||
-|**group**|str|Maven group id. Applicable to the `maven` artifact type only.||
-|**insecure**|bool|By default, connections using TLS are verified to check they are secure. The server certificate used must be valid, trusted, and contain the server name. By setting this option to `true`, all TLS verification is disabled and the artifact will be downloaded, even when the server is considered insecure.||
-|**repository**|str|Maven repository to download the artifact from. Applicable to the `maven` artifact type only.||
-|**sha512sum**|str|SHA512 checksum of the artifact. Optional. If specified, the checksum will be verified while building the new container. If not specified, the downloaded artifact will not be verified. Not applicable to the `maven` artifact type.||
+|**artifact**|str|artifact||
+|**fileName**|str|file name||
+|**group**|str|group||
+|**insecure**|bool|insecure||
+|**repository**|str|repository||
+|**sha512sum**|str|sha512sum||
 |**type** `required`|"jar" | "tgz" | "zip" | "maven" | "other"|||
-|**url**|str|URL of the artifact which will be downloaded. Strimzi does not do any security scanning of the downloaded artifacts. For security reasons, you should first verify the artifacts manually and configure the checksum verification to make sure the same artifact is used in the automated build. Required for `jar`, `zip`, `tgz` and `other` artifacts. Not applicable to the `maven` artifact type.||
-|**version**|str|Maven version number. Applicable to the `maven` artifact type only.||
+|**url**|str|url||
+|**version**|str|version||
 ### KafkaStrimziIoV1KafkaConnectSpecBuildResources
 
-CPU and memory resources to reserve for the build.
+kafka strimzi io v1 kafka connect spec build resources
 
 #### Attributes
 
@@ -11214,7 +11238,7 @@ kafka strimzi io v1 kafka connect spec build resources claims items0
 |**request**|str|request||
 ### KafkaStrimziIoV1KafkaConnectSpecJmxOptions
 
-JMX Options.
+kafka strimzi io v1 kafka connect spec jmx options
 
 #### Attributes
 
@@ -11223,7 +11247,7 @@ JMX Options.
 |**authentication**|[KafkaStrimziIoV1KafkaConnectSpecJmxOptionsAuthentication](#kafkastrimziiov1kafkaconnectspecjmxoptionsauthentication)|authentication||
 ### KafkaStrimziIoV1KafkaConnectSpecJmxOptionsAuthentication
 
-Authentication configuration for connecting to the JMX port.
+kafka strimzi io v1 kafka connect spec jmx options authentication
 
 #### Attributes
 
@@ -11232,7 +11256,7 @@ Authentication configuration for connecting to the JMX port.
 |**type** `required` `readOnly`|"password"||"password"|
 ### KafkaStrimziIoV1KafkaConnectSpecJvmOptions
 
-JVM Options for pods.
+kafka strimzi io v1 kafka connect spec jvm options
 
 #### Attributes
 
@@ -11241,8 +11265,8 @@ JVM Options for pods.
 |**-XX**|{str:str}|||
 |**-Xms**|str|||
 |**-Xmx**|str|||
-|**gcLoggingEnabled**|bool|Specifies whether the Garbage Collection logging is enabled. The default is false.||
-|**javaSystemProperties**|[[KafkaStrimziIoV1KafkaConnectSpecJvmOptionsJavaSystemPropertiesItems0](#kafkastrimziiov1kafkaconnectspecjvmoptionsjavasystempropertiesitems0)]|A map of additional system properties which will be passed using the `-D` option to the JVM.||
+|**gcLoggingEnabled**|bool|gc logging enabled||
+|**javaSystemProperties**|[[KafkaStrimziIoV1KafkaConnectSpecJvmOptionsJavaSystemPropertiesItems0](#kafkastrimziiov1kafkaconnectspecjvmoptionsjavasystempropertiesitems0)]|java system properties||
 ### KafkaStrimziIoV1KafkaConnectSpecJvmOptionsJavaSystemPropertiesItems0
 
 kafka strimzi io v1 kafka connect spec jvm options java system properties items0
@@ -11251,35 +11275,35 @@ kafka strimzi io v1 kafka connect spec jvm options java system properties items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The system property name.||
-|**value**|str|The system property value.||
+|**name**|str|name||
+|**value**|str|value||
 ### KafkaStrimziIoV1KafkaConnectSpecLivenessProbe
 
-Pod liveness checking.
+kafka strimzi io v1 kafka connect spec liveness probe
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**failureThreshold**|int|Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.||
-|**initialDelaySeconds**|int|The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.||
-|**periodSeconds**|int|How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.||
-|**successThreshold**|int|Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.||
-|**timeoutSeconds**|int|The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.||
+|**failureThreshold**|int|failure threshold||
+|**initialDelaySeconds**|int|initial delay seconds||
+|**periodSeconds**|int|period seconds||
+|**successThreshold**|int|success threshold||
+|**timeoutSeconds**|int|timeout seconds||
 ### KafkaStrimziIoV1KafkaConnectSpecLogging
 
-Logging configuration for Kafka Connect.
+kafka strimzi io v1 kafka connect spec logging
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**loggers**|{str:str}|A Map from logger name to logger level.||
+|**loggers**|{str:str}|loggers||
 |**type** `required`|"inline" | "external"|||
 |**valueFrom**|[KafkaStrimziIoV1KafkaConnectSpecLoggingValueFrom](#kafkastrimziiov1kafkaconnectspecloggingvaluefrom)|value from||
 ### KafkaStrimziIoV1KafkaConnectSpecLoggingValueFrom
 
-`ConfigMap` entry where the logging configuration is stored.
+kafka strimzi io v1 kafka connect spec logging value from
 
 #### Attributes
 
@@ -11288,7 +11312,7 @@ Logging configuration for Kafka Connect.
 |**configMapKeyRef**|[KafkaStrimziIoV1KafkaConnectSpecLoggingValueFromConfigMapKeyRef](#kafkastrimziiov1kafkaconnectspecloggingvaluefromconfigmapkeyref)|config map key ref||
 ### KafkaStrimziIoV1KafkaConnectSpecLoggingValueFromConfigMapKeyRef
 
-Reference to the key in the ConfigMap containing the configuration.
+kafka strimzi io v1 kafka connect spec logging value from config map key ref
 
 #### Attributes
 
@@ -11299,7 +11323,7 @@ Reference to the key in the ConfigMap containing the configuration.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaConnectSpecMetricsConfig
 
-Metrics configuration.
+kafka strimzi io v1 kafka connect spec metrics config
 
 #### Attributes
 
@@ -11310,7 +11334,7 @@ Metrics configuration.
 |**values**|[KafkaStrimziIoV1KafkaConnectSpecMetricsConfigValues](#kafkastrimziiov1kafkaconnectspecmetricsconfigvalues)|values||
 ### KafkaStrimziIoV1KafkaConnectSpecMetricsConfigValueFrom
 
-ConfigMap entry where the Prometheus JMX Exporter configuration is stored.
+kafka strimzi io v1 kafka connect spec metrics config value from
 
 #### Attributes
 
@@ -11319,7 +11343,7 @@ ConfigMap entry where the Prometheus JMX Exporter configuration is stored.
 |**configMapKeyRef**|[KafkaStrimziIoV1KafkaConnectSpecMetricsConfigValueFromConfigMapKeyRef](#kafkastrimziiov1kafkaconnectspecmetricsconfigvaluefromconfigmapkeyref)|config map key ref||
 ### KafkaStrimziIoV1KafkaConnectSpecMetricsConfigValueFromConfigMapKeyRef
 
-Reference to the key in the ConfigMap containing the configuration.
+kafka strimzi io v1 kafka connect spec metrics config value from config map key ref
 
 #### Attributes
 
@@ -11330,13 +11354,13 @@ Reference to the key in the ConfigMap containing the configuration.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaConnectSpecMetricsConfigValues
 
-Configuration values for the Strimzi Metrics Reporter.
+kafka strimzi io v1 kafka connect spec metrics config values
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**allowList**|[str]|A list of regex patterns to filter the metrics to collect. Should contain at least one element.||
+|**allowList**|[str]|allow list||
 ### KafkaStrimziIoV1KafkaConnectSpecPluginsItems0
 
 kafka strimzi io v1 kafka connect spec plugins items0
@@ -11345,8 +11369,8 @@ kafka strimzi io v1 kafka connect spec plugins items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**artifacts** `required`|[[KafkaStrimziIoV1KafkaConnectSpecPluginsItems0ArtifactsItems0](#kafkastrimziiov1kafkaconnectspecpluginsitems0artifactsitems0)]|List of artifacts associated with this connector plugin. Required.||
-|**name** `required`|str|A unique name for the connector plugin. This name is used to generate the mount path for the connector artifacts. The name has to be unique within the KafkaConnect resource. The name must be unique within the `KafkaConnect` resource and match the pattern: `^[a-z][-_a-z0-9]*[a-z]$`. Required.||
+|**artifacts** `required`|[[KafkaStrimziIoV1KafkaConnectSpecPluginsItems0ArtifactsItems0](#kafkastrimziiov1kafkaconnectspecpluginsitems0artifactsitems0)]|artifacts||
+|**name** `required`|str|name||
 ### KafkaStrimziIoV1KafkaConnectSpecPluginsItems0ArtifactsItems0
 
 kafka strimzi io v1 kafka connect spec plugins items0 artifacts items0
@@ -11355,34 +11379,36 @@ kafka strimzi io v1 kafka connect spec plugins items0 artifacts items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**pullPolicy**|str|Policy that determines when the container image (OCI artifact) is pulled.<br /><br />Possible values are:<br /><br />* `Always`: Always pull the image. If the pull fails, container creation fails.<br />* `Never`: Never pull the image. Use only a locally available image. Container creation fails if the image isn’t present.<br />* `IfNotPresent`: Pull the image only if it’s not already available locally. Container creation fails if the image isn’t present and the pull fails.<br /><br />Defaults to `Always` if `:latest` tag is specified, or `IfNotPresent` otherwise.||
-|**reference** `required`|str|Reference to the container image (OCI artifact) containing the Kafka Connect plugin. The image is mounted as a volume and provides the plugin binary. Required.||
+|**pullPolicy**|str|pull policy||
+|**reference** `required`|str|reference||
 |**type** `required` `readOnly`|"image"||"image"|
 ### KafkaStrimziIoV1KafkaConnectSpecRack
 
-Configuration of the node label which will be used as the `client.rack` consumer configuration.
+kafka strimzi io v1 kafka connect spec rack
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**topologyKey** `required`|str|A key that matches labels assigned to the Kubernetes cluster nodes. The value of the label is used to set a broker's `broker.rack` config, and the `client.rack` config for Kafka Connect or MirrorMaker 2.||
+|**envVarName**|str|env var name||
+|**topologyKey**|str|topology key||
+|**type**|"topology-label" | "environment-variable"|||
 ### KafkaStrimziIoV1KafkaConnectSpecReadinessProbe
 
-Pod readiness checking.
+kafka strimzi io v1 kafka connect spec readiness probe
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**failureThreshold**|int|Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.||
-|**initialDelaySeconds**|int|The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.||
-|**periodSeconds**|int|How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.||
-|**successThreshold**|int|Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.||
-|**timeoutSeconds**|int|The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.||
+|**failureThreshold**|int|failure threshold||
+|**initialDelaySeconds**|int|initial delay seconds||
+|**periodSeconds**|int|period seconds||
+|**successThreshold**|int|success threshold||
+|**timeoutSeconds**|int|timeout seconds||
 ### KafkaStrimziIoV1KafkaConnectSpecResources
 
-The maximum limits for CPU and memory resources and the requested initial resources.
+kafka strimzi io v1 kafka connect spec resources
 
 #### Attributes
 
@@ -11403,13 +11429,13 @@ kafka strimzi io v1 kafka connect spec resources claims items0
 |**request**|str|request||
 ### KafkaStrimziIoV1KafkaConnectSpecTLS
 
-TLS configuration.
+kafka strimzi io v1 kafka connect spec TLS
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**trustedCertificates**|[[KafkaStrimziIoV1KafkaConnectSpecTLSTrustedCertificatesItems0](#kafkastrimziiov1kafkaconnectspectlstrustedcertificatesitems0)]|Trusted certificates for TLS connection.||
+|**trustedCertificates**|[[KafkaStrimziIoV1KafkaConnectSpecTLSTrustedCertificatesItems0](#kafkastrimziiov1kafkaconnectspectlstrustedcertificatesitems0)]|trusted certificates||
 ### KafkaStrimziIoV1KafkaConnectSpecTLSTrustedCertificatesItems0
 
 kafka strimzi io v1 kafka connect spec TLS trusted certificates items0
@@ -11418,12 +11444,12 @@ kafka strimzi io v1 kafka connect spec TLS trusted certificates items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate**|str|The name of the file certificate in the secret.||
-|**pattern**|str|Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate**|str|certificate||
+|**pattern**|str|pattern||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplate
 
-Template for Kafka Connect and Kafka MirrorMaker 2 resources. The template allows users to specify how the `Pods`, `Service`, and other services are generated.
+kafka strimzi io v1 kafka connect spec template
 
 #### Attributes
 
@@ -11445,56 +11471,56 @@ Template for Kafka Connect and Kafka MirrorMaker 2 resources. The template allow
 |**serviceAccount**|[KafkaStrimziIoV1KafkaConnectSpecTemplateServiceAccount](#kafkastrimziiov1kafkaconnectspectemplateserviceaccount)|service account||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateAPIService
 
-Template for Kafka Connect API `Service`.
+kafka strimzi io v1 kafka connect spec template API service
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**ipFamilies**|[str]|Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6`. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting.||
-|**ipFamilyPolicy**|"SingleStack" | "PreferDualStack" | "RequireDualStack"|Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`. `SingleStack` is for a single IP family. `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters. `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters. If unspecified, Kubernetes will choose the default value based on the service type.||
+|**ipFamilies**|[str]|ip families||
+|**ipFamilyPolicy**|"SingleStack" | "PreferDualStack" | "RequireDualStack"|ip family policy||
 |**metadata**|[KafkaStrimziIoV1KafkaConnectSpecTemplateAPIServiceMetadata](#kafkastrimziiov1kafkaconnectspectemplateapiservicemetadata)|metadata||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateAPIServiceMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka connect spec template API service metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateBuildConfig
 
-Template for the Kafka Connect BuildConfig used to build new container images. The BuildConfig is used only on OpenShift.
+kafka strimzi io v1 kafka connect spec template build config
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**metadata**|[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildConfigMetadata](#kafkastrimziiov1kafkaconnectspectemplatebuildconfigmetadata)|metadata||
-|**pullSecret**|str|Container Registry Secret with the credentials for pulling the base image.||
+|**pullSecret**|str|pull secret||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateBuildConfigMetadata
 
-Metadata to apply to the `PodDisruptionBudgetTemplate` resource.
+kafka strimzi io v1 kafka connect spec template build config metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateBuildContainer
 
-Template for the Kafka Connect Build container. The build container is used only on Kubernetes.
+kafka strimzi io v1 kafka connect spec template build container
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**env**|[[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildContainerEnvItems0](#kafkastrimziiov1kafkaconnectspectemplatebuildcontainerenvitems0)]|Environment variables which should be applied to the container.||
+|**env**|[[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildContainerEnvItems0](#kafkastrimziiov1kafkaconnectspectemplatebuildcontainerenvitems0)]|env||
 |**securityContext**|[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildContainerSecurityContext](#kafkastrimziiov1kafkaconnectspectemplatebuildcontainersecuritycontext)|security context||
-|**volumeMounts**|[[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildContainerVolumeMountsItems0](#kafkastrimziiov1kafkaconnectspectemplatebuildcontainervolumemountsitems0)]|Additional volume mounts which should be applied to the container.||
+|**volumeMounts**|[[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildContainerVolumeMountsItems0](#kafkastrimziiov1kafkaconnectspectemplatebuildcontainervolumemountsitems0)]|volume mounts||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateBuildContainerEnvItems0
 
 kafka strimzi io v1 kafka connect spec template build container env items0
@@ -11503,12 +11529,12 @@ kafka strimzi io v1 kafka connect spec template build container env items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The environment variable key.||
-|**value**|str|The environment variable value.||
+|**name**|str|name||
+|**value**|str|value||
 |**valueFrom**|[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildContainerEnvItems0ValueFrom](#kafkastrimziiov1kafkaconnectspectemplatebuildcontainerenvitems0valuefrom)|value from||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateBuildContainerEnvItems0ValueFrom
 
-Reference to the secret or config map property to which the environment variable is set.
+kafka strimzi io v1 kafka connect spec template build container env items0 value from
 
 #### Attributes
 
@@ -11518,7 +11544,7 @@ Reference to the secret or config map property to which the environment variable
 |**secretKeyRef**|[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildContainerEnvItems0ValueFromSecretKeyRef](#kafkastrimziiov1kafkaconnectspectemplatebuildcontainerenvitems0valuefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateBuildContainerEnvItems0ValueFromConfigMapKeyRef
 
-Reference to a key in a config map.
+kafka strimzi io v1 kafka connect spec template build container env items0 value from config map key ref
 
 #### Attributes
 
@@ -11529,7 +11555,7 @@ Reference to a key in a config map.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateBuildContainerEnvItems0ValueFromSecretKeyRef
 
-Reference to a key in a secret.
+kafka strimzi io v1 kafka connect spec template build container env items0 value from secret key ref
 
 #### Attributes
 
@@ -11540,7 +11566,7 @@ Reference to a key in a secret.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateBuildContainerSecurityContext
 
-Security context for the container.
+kafka strimzi io v1 kafka connect spec template build container security context
 
 #### Attributes
 
@@ -11629,7 +11655,7 @@ kafka strimzi io v1 kafka connect spec template build container volume mounts it
 |**subPathExpr**|str|sub path expr||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPod
 
-Template for Kafka Connect Build `Pods`. The build pod is used only on Kubernetes.
+kafka strimzi io v1 kafka connect spec template build pod
 
 #### Attributes
 
@@ -11637,23 +11663,23 @@ Template for Kafka Connect Build `Pods`. The build pod is used only on Kubernete
 | --- | --- | --- | --- |
 |**affinity**|[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodAffinity](#kafkastrimziiov1kafkaconnectspectemplatebuildpodaffinity)|affinity||
 |**dnsConfig**|[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodDNSConfig](#kafkastrimziiov1kafkaconnectspectemplatebuildpoddnsconfig)|dns config||
-|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.||
-|**enableServiceLinks**|bool|Indicates whether information about services should be injected into Pod's environment variables.||
-|**hostAliases**|[[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodHostAliasesItems0](#kafkastrimziiov1kafkaconnectspectemplatebuildpodhostaliasesitems0)]|The pod's HostAliases. HostAliases is an optional list of hosts and IPs that will be injected into the Pod's hosts file if specified.||
-|**hostUsers**|bool|Use the host user namespace. Optional. Defaults to `true`. When `true` or not set, the pod runs in the host user namespace. This is required when the pod needs features available only in the host namespace, such as loading kernel modules with `CAP_SYS_MODULE`.When set to `false`, the pod runs in a new user namespace. Setting `false` helps mitigate container breakout vulnerabilities and allows containers to run as `root` without granting `root` privileges on the host. This property is alpha-level in Kubernetes and is supported only by Kubernetes clusters that enable the `UserNamespacesSupport` feature.||
-|**imagePullSecrets**|[[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodImagePullSecretsItems0](#kafkastrimziiov1kafkaconnectspectemplatebuildpodimagepullsecretsitems0)]|List of references to secrets in the same namespace to use for pulling any of the images used by this Pod. When the `STRIMZI_IMAGE_PULL_SECRETS` environment variable in Cluster Operator and the `imagePullSecrets` option are specified, only the `imagePullSecrets` variable is used and the `STRIMZI_IMAGE_PULL_SECRETS` variable is ignored.||
+|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|dns policy||
+|**enableServiceLinks**|bool|enable service links||
+|**hostAliases**|[[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodHostAliasesItems0](#kafkastrimziiov1kafkaconnectspectemplatebuildpodhostaliasesitems0)]|host aliases||
+|**hostUsers**|bool|host users||
+|**imagePullSecrets**|[[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodImagePullSecretsItems0](#kafkastrimziiov1kafkaconnectspectemplatebuildpodimagepullsecretsitems0)]|image pull secrets||
 |**metadata**|[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodMetadata](#kafkastrimziiov1kafkaconnectspectemplatebuildpodmetadata)|metadata||
-|**priorityClassName**|str|The name of the priority class used to assign priority to the pods.||
-|**schedulerName**|str|The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.||
+|**priorityClassName**|str|priority class name||
+|**schedulerName**|str|scheduler name||
 |**securityContext**|[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodSecurityContext](#kafkastrimziiov1kafkaconnectspectemplatebuildpodsecuritycontext)|security context||
-|**terminationGracePeriodSeconds**|int|The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.||
-|**tmpDirSizeLimit**|str|Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.||
-|**tolerations**|[[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodTolerationsItems0](#kafkastrimziiov1kafkaconnectspectemplatebuildpodtolerationsitems0)]|The pod's tolerations.||
-|**topologySpreadConstraints**|[[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodTopologySpreadConstraintsItems0](#kafkastrimziiov1kafkaconnectspectemplatebuildpodtopologyspreadconstraintsitems0)]|The pod's topology spread constraints.||
-|**volumes**|[[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodVolumesItems0](#kafkastrimziiov1kafkaconnectspectemplatebuildpodvolumesitems0)]|Additional volumes that can be mounted to the pod.||
+|**terminationGracePeriodSeconds**|int|termination grace period seconds||
+|**tmpDirSizeLimit**|str|tmp dir size limit||
+|**tolerations**|[[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodTolerationsItems0](#kafkastrimziiov1kafkaconnectspectemplatebuildpodtolerationsitems0)]|tolerations||
+|**topologySpreadConstraints**|[[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodTopologySpreadConstraintsItems0](#kafkastrimziiov1kafkaconnectspectemplatebuildpodtopologyspreadconstraintsitems0)]|topology spread constraints||
+|**volumes**|[[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodVolumesItems0](#kafkastrimziiov1kafkaconnectspectemplatebuildpodvolumesitems0)]|volumes||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodAffinity
 
-The pod's affinity rules.
+kafka strimzi io v1 kafka connect spec template build pod affinity
 
 #### Attributes
 
@@ -12021,7 +12047,7 @@ kafka strimzi io v1 kafka connect spec template build pod affinity pod anti affi
 |**values**|[str]|values||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodDNSConfig
 
-The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.
+kafka strimzi io v1 kafka connect spec template build pod DNS config
 
 #### Attributes
 
@@ -12061,17 +12087,17 @@ kafka strimzi io v1 kafka connect spec template build pod image pull secrets ite
 |**name**|str|name||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka connect spec template build pod metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodSecurityContext
 
-Configures pod-level security attributes and common container settings.
+kafka strimzi io v1 kafka connect spec template build pod security context
 
 #### Attributes
 
@@ -12206,12 +12232,12 @@ kafka strimzi io v1 kafka connect spec template build pod volumes items0
 |**csi**|[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodVolumesItems0Csi](#kafkastrimziiov1kafkaconnectspectemplatebuildpodvolumesitems0csi)|csi||
 |**emptyDir**|[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodVolumesItems0EmptyDir](#kafkastrimziiov1kafkaconnectspectemplatebuildpodvolumesitems0emptydir)|empty dir||
 |**image**|[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodVolumesItems0Image](#kafkastrimziiov1kafkaconnectspectemplatebuildpodvolumesitems0image)|image||
-|**name**|str|Name to use for the volume. Required.||
+|**name**|str|name||
 |**persistentVolumeClaim**|[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodVolumesItems0PersistentVolumeClaim](#kafkastrimziiov1kafkaconnectspectemplatebuildpodvolumesitems0persistentvolumeclaim)|persistent volume claim||
 |**secret**|[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodVolumesItems0Secret](#kafkastrimziiov1kafkaconnectspectemplatebuildpodvolumesitems0secret)|secret||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodVolumesItems0ConfigMap
 
-`ConfigMap` to use to populate the volume.
+kafka strimzi io v1 kafka connect spec template build pod volumes items0 config map
 
 #### Attributes
 
@@ -12234,7 +12260,7 @@ kafka strimzi io v1 kafka connect spec template build pod volumes items0 config 
 |**path**|str|path||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodVolumesItems0Csi
 
-`CSIVolumeSource` object to use to populate the volume.
+kafka strimzi io v1 kafka connect spec template build pod volumes items0 csi
 
 #### Attributes
 
@@ -12256,17 +12282,17 @@ kafka strimzi io v1 kafka connect spec template build pod volumes items0 csi nod
 |**name**|str|name||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodVolumesItems0EmptyDir
 
-`EmptyDir` to use to populate the volume.
+kafka strimzi io v1 kafka connect spec template build pod volumes items0 empty dir
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**medium** `readOnly`|"Memory"|Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.|"Memory"|
-|**sizeLimit**|str|The total amount of local storage required for this EmptyDir volume (for example 1Gi).||
+|**medium** `readOnly`|"Memory"|medium|"Memory"|
+|**sizeLimit**|str|size limit||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodVolumesItems0Image
 
-`ImageVolumeSource` object to use to populate the volume.
+kafka strimzi io v1 kafka connect spec template build pod volumes items0 image
 
 #### Attributes
 
@@ -12276,7 +12302,7 @@ kafka strimzi io v1 kafka connect spec template build pod volumes items0 csi nod
 |**reference**|str|reference||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodVolumesItems0PersistentVolumeClaim
 
-`PersistentVolumeClaim` object to use to populate the volume.
+kafka strimzi io v1 kafka connect spec template build pod volumes items0 persistent volume claim
 
 #### Attributes
 
@@ -12286,7 +12312,7 @@ kafka strimzi io v1 kafka connect spec template build pod volumes items0 csi nod
 |**readOnly**|bool|read only||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateBuildPodVolumesItems0Secret
 
-`Secret` to use to populate the volume.
+kafka strimzi io v1 kafka connect spec template build pod volumes items0 secret
 
 #### Attributes
 
@@ -12309,7 +12335,7 @@ kafka strimzi io v1 kafka connect spec template build pod volumes items0 secret 
 |**path**|str|path||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateBuildServiceAccount
 
-Template for the Kafka Connect Build service account.
+kafka strimzi io v1 kafka connect spec template build service account
 
 #### Attributes
 
@@ -12318,17 +12344,17 @@ Template for the Kafka Connect Build service account.
 |**metadata**|[KafkaStrimziIoV1KafkaConnectSpecTemplateBuildServiceAccountMetadata](#kafkastrimziiov1kafkaconnectspectemplatebuildserviceaccountmetadata)|metadata||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateBuildServiceAccountMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka connect spec template build service account metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateClusterRoleBinding
 
-Template for the Kafka Connect ClusterRoleBinding.
+kafka strimzi io v1 kafka connect spec template cluster role binding
 
 #### Attributes
 
@@ -12337,25 +12363,25 @@ Template for the Kafka Connect ClusterRoleBinding.
 |**metadata**|[KafkaStrimziIoV1KafkaConnectSpecTemplateClusterRoleBindingMetadata](#kafkastrimziiov1kafkaconnectspectemplateclusterrolebindingmetadata)|metadata||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateClusterRoleBindingMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka connect spec template cluster role binding metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateConnectContainer
 
-Template for the Kafka Connect container.
+kafka strimzi io v1 kafka connect spec template connect container
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**env**|[[KafkaStrimziIoV1KafkaConnectSpecTemplateConnectContainerEnvItems0](#kafkastrimziiov1kafkaconnectspectemplateconnectcontainerenvitems0)]|Environment variables which should be applied to the container.||
+|**env**|[[KafkaStrimziIoV1KafkaConnectSpecTemplateConnectContainerEnvItems0](#kafkastrimziiov1kafkaconnectspectemplateconnectcontainerenvitems0)]|env||
 |**securityContext**|[KafkaStrimziIoV1KafkaConnectSpecTemplateConnectContainerSecurityContext](#kafkastrimziiov1kafkaconnectspectemplateconnectcontainersecuritycontext)|security context||
-|**volumeMounts**|[[KafkaStrimziIoV1KafkaConnectSpecTemplateConnectContainerVolumeMountsItems0](#kafkastrimziiov1kafkaconnectspectemplateconnectcontainervolumemountsitems0)]|Additional volume mounts which should be applied to the container.||
+|**volumeMounts**|[[KafkaStrimziIoV1KafkaConnectSpecTemplateConnectContainerVolumeMountsItems0](#kafkastrimziiov1kafkaconnectspectemplateconnectcontainervolumemountsitems0)]|volume mounts||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateConnectContainerEnvItems0
 
 kafka strimzi io v1 kafka connect spec template connect container env items0
@@ -12364,12 +12390,12 @@ kafka strimzi io v1 kafka connect spec template connect container env items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The environment variable key.||
-|**value**|str|The environment variable value.||
+|**name**|str|name||
+|**value**|str|value||
 |**valueFrom**|[KafkaStrimziIoV1KafkaConnectSpecTemplateConnectContainerEnvItems0ValueFrom](#kafkastrimziiov1kafkaconnectspectemplateconnectcontainerenvitems0valuefrom)|value from||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateConnectContainerEnvItems0ValueFrom
 
-Reference to the secret or config map property to which the environment variable is set.
+kafka strimzi io v1 kafka connect spec template connect container env items0 value from
 
 #### Attributes
 
@@ -12379,7 +12405,7 @@ Reference to the secret or config map property to which the environment variable
 |**secretKeyRef**|[KafkaStrimziIoV1KafkaConnectSpecTemplateConnectContainerEnvItems0ValueFromSecretKeyRef](#kafkastrimziiov1kafkaconnectspectemplateconnectcontainerenvitems0valuefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateConnectContainerEnvItems0ValueFromConfigMapKeyRef
 
-Reference to a key in a config map.
+kafka strimzi io v1 kafka connect spec template connect container env items0 value from config map key ref
 
 #### Attributes
 
@@ -12390,7 +12416,7 @@ Reference to a key in a config map.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateConnectContainerEnvItems0ValueFromSecretKeyRef
 
-Reference to a key in a secret.
+kafka strimzi io v1 kafka connect spec template connect container env items0 value from secret key ref
 
 #### Attributes
 
@@ -12401,7 +12427,7 @@ Reference to a key in a secret.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateConnectContainerSecurityContext
 
-Security context for the container.
+kafka strimzi io v1 kafka connect spec template connect container security context
 
 #### Attributes
 
@@ -12490,36 +12516,36 @@ kafka strimzi io v1 kafka connect spec template connect container volume mounts 
 |**subPathExpr**|str|sub path expr||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateHeadlessService
 
-Template for Kafka Connect headless `Service`.
+kafka strimzi io v1 kafka connect spec template headless service
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**ipFamilies**|[str]|Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6`. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting.||
-|**ipFamilyPolicy**|"SingleStack" | "PreferDualStack" | "RequireDualStack"|Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`. `SingleStack` is for a single IP family. `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters. `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters. If unspecified, Kubernetes will choose the default value based on the service type.||
+|**ipFamilies**|[str]|ip families||
+|**ipFamilyPolicy**|"SingleStack" | "PreferDualStack" | "RequireDualStack"|ip family policy||
 |**metadata**|[KafkaStrimziIoV1KafkaConnectSpecTemplateHeadlessServiceMetadata](#kafkastrimziiov1kafkaconnectspectemplateheadlessservicemetadata)|metadata||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateHeadlessServiceMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka connect spec template headless service metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateInitContainer
 
-Template for the Kafka init container.
+kafka strimzi io v1 kafka connect spec template init container
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**env**|[[KafkaStrimziIoV1KafkaConnectSpecTemplateInitContainerEnvItems0](#kafkastrimziiov1kafkaconnectspectemplateinitcontainerenvitems0)]|Environment variables which should be applied to the container.||
+|**env**|[[KafkaStrimziIoV1KafkaConnectSpecTemplateInitContainerEnvItems0](#kafkastrimziiov1kafkaconnectspectemplateinitcontainerenvitems0)]|env||
 |**securityContext**|[KafkaStrimziIoV1KafkaConnectSpecTemplateInitContainerSecurityContext](#kafkastrimziiov1kafkaconnectspectemplateinitcontainersecuritycontext)|security context||
-|**volumeMounts**|[[KafkaStrimziIoV1KafkaConnectSpecTemplateInitContainerVolumeMountsItems0](#kafkastrimziiov1kafkaconnectspectemplateinitcontainervolumemountsitems0)]|Additional volume mounts which should be applied to the container.||
+|**volumeMounts**|[[KafkaStrimziIoV1KafkaConnectSpecTemplateInitContainerVolumeMountsItems0](#kafkastrimziiov1kafkaconnectspectemplateinitcontainervolumemountsitems0)]|volume mounts||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateInitContainerEnvItems0
 
 kafka strimzi io v1 kafka connect spec template init container env items0
@@ -12528,12 +12554,12 @@ kafka strimzi io v1 kafka connect spec template init container env items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The environment variable key.||
-|**value**|str|The environment variable value.||
+|**name**|str|name||
+|**value**|str|value||
 |**valueFrom**|[KafkaStrimziIoV1KafkaConnectSpecTemplateInitContainerEnvItems0ValueFrom](#kafkastrimziiov1kafkaconnectspectemplateinitcontainerenvitems0valuefrom)|value from||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateInitContainerEnvItems0ValueFrom
 
-Reference to the secret or config map property to which the environment variable is set.
+kafka strimzi io v1 kafka connect spec template init container env items0 value from
 
 #### Attributes
 
@@ -12543,7 +12569,7 @@ Reference to the secret or config map property to which the environment variable
 |**secretKeyRef**|[KafkaStrimziIoV1KafkaConnectSpecTemplateInitContainerEnvItems0ValueFromSecretKeyRef](#kafkastrimziiov1kafkaconnectspectemplateinitcontainerenvitems0valuefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateInitContainerEnvItems0ValueFromConfigMapKeyRef
 
-Reference to a key in a config map.
+kafka strimzi io v1 kafka connect spec template init container env items0 value from config map key ref
 
 #### Attributes
 
@@ -12554,7 +12580,7 @@ Reference to a key in a config map.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateInitContainerEnvItems0ValueFromSecretKeyRef
 
-Reference to a key in a secret.
+kafka strimzi io v1 kafka connect spec template init container env items0 value from secret key ref
 
 #### Attributes
 
@@ -12565,7 +12591,7 @@ Reference to a key in a secret.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateInitContainerSecurityContext
 
-Security context for the container.
+kafka strimzi io v1 kafka connect spec template init container security context
 
 #### Attributes
 
@@ -12654,7 +12680,7 @@ kafka strimzi io v1 kafka connect spec template init container volume mounts ite
 |**subPathExpr**|str|sub path expr||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateJmxSecret
 
-Template for Secret of the Kafka Connect Cluster JMX authentication.
+kafka strimzi io v1 kafka connect spec template jmx secret
 
 #### Attributes
 
@@ -12663,17 +12689,17 @@ Template for Secret of the Kafka Connect Cluster JMX authentication.
 |**metadata**|[KafkaStrimziIoV1KafkaConnectSpecTemplateJmxSecretMetadata](#kafkastrimziiov1kafkaconnectspectemplatejmxsecretmetadata)|metadata||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateJmxSecretMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka connect spec template jmx secret metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplatePod
 
-Template for Kafka Connect `Pods`.
+kafka strimzi io v1 kafka connect spec template pod
 
 #### Attributes
 
@@ -12681,23 +12707,23 @@ Template for Kafka Connect `Pods`.
 | --- | --- | --- | --- |
 |**affinity**|[KafkaStrimziIoV1KafkaConnectSpecTemplatePodAffinity](#kafkastrimziiov1kafkaconnectspectemplatepodaffinity)|affinity||
 |**dnsConfig**|[KafkaStrimziIoV1KafkaConnectSpecTemplatePodDNSConfig](#kafkastrimziiov1kafkaconnectspectemplatepoddnsconfig)|dns config||
-|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.||
-|**enableServiceLinks**|bool|Indicates whether information about services should be injected into Pod's environment variables.||
-|**hostAliases**|[[KafkaStrimziIoV1KafkaConnectSpecTemplatePodHostAliasesItems0](#kafkastrimziiov1kafkaconnectspectemplatepodhostaliasesitems0)]|The pod's HostAliases. HostAliases is an optional list of hosts and IPs that will be injected into the Pod's hosts file if specified.||
-|**hostUsers**|bool|Use the host user namespace. Optional. Defaults to `true`. When `true` or not set, the pod runs in the host user namespace. This is required when the pod needs features available only in the host namespace, such as loading kernel modules with `CAP_SYS_MODULE`.When set to `false`, the pod runs in a new user namespace. Setting `false` helps mitigate container breakout vulnerabilities and allows containers to run as `root` without granting `root` privileges on the host. This property is alpha-level in Kubernetes and is supported only by Kubernetes clusters that enable the `UserNamespacesSupport` feature.||
-|**imagePullSecrets**|[[KafkaStrimziIoV1KafkaConnectSpecTemplatePodImagePullSecretsItems0](#kafkastrimziiov1kafkaconnectspectemplatepodimagepullsecretsitems0)]|List of references to secrets in the same namespace to use for pulling any of the images used by this Pod. When the `STRIMZI_IMAGE_PULL_SECRETS` environment variable in Cluster Operator and the `imagePullSecrets` option are specified, only the `imagePullSecrets` variable is used and the `STRIMZI_IMAGE_PULL_SECRETS` variable is ignored.||
+|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|dns policy||
+|**enableServiceLinks**|bool|enable service links||
+|**hostAliases**|[[KafkaStrimziIoV1KafkaConnectSpecTemplatePodHostAliasesItems0](#kafkastrimziiov1kafkaconnectspectemplatepodhostaliasesitems0)]|host aliases||
+|**hostUsers**|bool|host users||
+|**imagePullSecrets**|[[KafkaStrimziIoV1KafkaConnectSpecTemplatePodImagePullSecretsItems0](#kafkastrimziiov1kafkaconnectspectemplatepodimagepullsecretsitems0)]|image pull secrets||
 |**metadata**|[KafkaStrimziIoV1KafkaConnectSpecTemplatePodMetadata](#kafkastrimziiov1kafkaconnectspectemplatepodmetadata)|metadata||
-|**priorityClassName**|str|The name of the priority class used to assign priority to the pods.||
-|**schedulerName**|str|The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.||
+|**priorityClassName**|str|priority class name||
+|**schedulerName**|str|scheduler name||
 |**securityContext**|[KafkaStrimziIoV1KafkaConnectSpecTemplatePodSecurityContext](#kafkastrimziiov1kafkaconnectspectemplatepodsecuritycontext)|security context||
-|**terminationGracePeriodSeconds**|int|The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.||
-|**tmpDirSizeLimit**|str|Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.||
-|**tolerations**|[[KafkaStrimziIoV1KafkaConnectSpecTemplatePodTolerationsItems0](#kafkastrimziiov1kafkaconnectspectemplatepodtolerationsitems0)]|The pod's tolerations.||
-|**topologySpreadConstraints**|[[KafkaStrimziIoV1KafkaConnectSpecTemplatePodTopologySpreadConstraintsItems0](#kafkastrimziiov1kafkaconnectspectemplatepodtopologyspreadconstraintsitems0)]|The pod's topology spread constraints.||
-|**volumes**|[[KafkaStrimziIoV1KafkaConnectSpecTemplatePodVolumesItems0](#kafkastrimziiov1kafkaconnectspectemplatepodvolumesitems0)]|Additional volumes that can be mounted to the pod.||
+|**terminationGracePeriodSeconds**|int|termination grace period seconds||
+|**tmpDirSizeLimit**|str|tmp dir size limit||
+|**tolerations**|[[KafkaStrimziIoV1KafkaConnectSpecTemplatePodTolerationsItems0](#kafkastrimziiov1kafkaconnectspectemplatepodtolerationsitems0)]|tolerations||
+|**topologySpreadConstraints**|[[KafkaStrimziIoV1KafkaConnectSpecTemplatePodTopologySpreadConstraintsItems0](#kafkastrimziiov1kafkaconnectspectemplatepodtopologyspreadconstraintsitems0)]|topology spread constraints||
+|**volumes**|[[KafkaStrimziIoV1KafkaConnectSpecTemplatePodVolumesItems0](#kafkastrimziiov1kafkaconnectspectemplatepodvolumesitems0)]|volumes||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplatePodAffinity
 
-The pod's affinity rules.
+kafka strimzi io v1 kafka connect spec template pod affinity
 
 #### Attributes
 
@@ -13065,7 +13091,7 @@ kafka strimzi io v1 kafka connect spec template pod affinity pod anti affinity r
 |**values**|[str]|values||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplatePodDNSConfig
 
-The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.
+kafka strimzi io v1 kafka connect spec template pod DNS config
 
 #### Attributes
 
@@ -13086,24 +13112,24 @@ kafka strimzi io v1 kafka connect spec template pod DNS config options items0
 |**value**|str|value||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplatePodDisruptionBudget
 
-Template for Kafka Connect `PodDisruptionBudget`.
+kafka strimzi io v1 kafka connect spec template pod disruption budget
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**maxUnavailable**|int|Maximum number of unavailable pods to allow automatic Pod eviction. A Pod eviction is allowed when the `maxUnavailable` number of pods or fewer are unavailable after the eviction. Setting this value to 0 prevents all voluntary evictions, so the pods must be evicted manually. Defaults to 1.||
+|**maxUnavailable**|int|max unavailable||
 |**metadata**|[KafkaStrimziIoV1KafkaConnectSpecTemplatePodDisruptionBudgetMetadata](#kafkastrimziiov1kafkaconnectspectemplatepoddisruptionbudgetmetadata)|metadata||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplatePodDisruptionBudgetMetadata
 
-Metadata to apply to the `PodDisruptionBudgetTemplate` resource.
+kafka strimzi io v1 kafka connect spec template pod disruption budget metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplatePodHostAliasesItems0
 
 kafka strimzi io v1 kafka connect spec template pod host aliases items0
@@ -13125,17 +13151,17 @@ kafka strimzi io v1 kafka connect spec template pod image pull secrets items0
 |**name**|str|name||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplatePodMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka connect spec template pod metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplatePodSecurityContext
 
-Configures pod-level security attributes and common container settings.
+kafka strimzi io v1 kafka connect spec template pod security context
 
 #### Attributes
 
@@ -13210,7 +13236,7 @@ kafka strimzi io v1 kafka connect spec template pod security context windows opt
 |**runAsUserName**|str|run as user name||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplatePodSet
 
-Template for Kafka Connect `StrimziPodSet` resource.
+kafka strimzi io v1 kafka connect spec template pod set
 
 #### Attributes
 
@@ -13219,14 +13245,14 @@ Template for Kafka Connect `StrimziPodSet` resource.
 |**metadata**|[KafkaStrimziIoV1KafkaConnectSpecTemplatePodSetMetadata](#kafkastrimziiov1kafkaconnectspectemplatepodsetmetadata)|metadata||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplatePodSetMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka connect spec template pod set metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplatePodTolerationsItems0
 
 kafka strimzi io v1 kafka connect spec template pod tolerations items0
@@ -13289,12 +13315,12 @@ kafka strimzi io v1 kafka connect spec template pod volumes items0
 |**csi**|[KafkaStrimziIoV1KafkaConnectSpecTemplatePodVolumesItems0Csi](#kafkastrimziiov1kafkaconnectspectemplatepodvolumesitems0csi)|csi||
 |**emptyDir**|[KafkaStrimziIoV1KafkaConnectSpecTemplatePodVolumesItems0EmptyDir](#kafkastrimziiov1kafkaconnectspectemplatepodvolumesitems0emptydir)|empty dir||
 |**image**|[KafkaStrimziIoV1KafkaConnectSpecTemplatePodVolumesItems0Image](#kafkastrimziiov1kafkaconnectspectemplatepodvolumesitems0image)|image||
-|**name**|str|Name to use for the volume. Required.||
+|**name**|str|name||
 |**persistentVolumeClaim**|[KafkaStrimziIoV1KafkaConnectSpecTemplatePodVolumesItems0PersistentVolumeClaim](#kafkastrimziiov1kafkaconnectspectemplatepodvolumesitems0persistentvolumeclaim)|persistent volume claim||
 |**secret**|[KafkaStrimziIoV1KafkaConnectSpecTemplatePodVolumesItems0Secret](#kafkastrimziiov1kafkaconnectspectemplatepodvolumesitems0secret)|secret||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplatePodVolumesItems0ConfigMap
 
-`ConfigMap` to use to populate the volume.
+kafka strimzi io v1 kafka connect spec template pod volumes items0 config map
 
 #### Attributes
 
@@ -13317,7 +13343,7 @@ kafka strimzi io v1 kafka connect spec template pod volumes items0 config map it
 |**path**|str|path||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplatePodVolumesItems0Csi
 
-`CSIVolumeSource` object to use to populate the volume.
+kafka strimzi io v1 kafka connect spec template pod volumes items0 csi
 
 #### Attributes
 
@@ -13339,17 +13365,17 @@ kafka strimzi io v1 kafka connect spec template pod volumes items0 csi node publ
 |**name**|str|name||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplatePodVolumesItems0EmptyDir
 
-`EmptyDir` to use to populate the volume.
+kafka strimzi io v1 kafka connect spec template pod volumes items0 empty dir
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**medium** `readOnly`|"Memory"|Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.|"Memory"|
-|**sizeLimit**|str|The total amount of local storage required for this EmptyDir volume (for example 1Gi).||
+|**medium** `readOnly`|"Memory"|medium|"Memory"|
+|**sizeLimit**|str|size limit||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplatePodVolumesItems0Image
 
-`ImageVolumeSource` object to use to populate the volume.
+kafka strimzi io v1 kafka connect spec template pod volumes items0 image
 
 #### Attributes
 
@@ -13359,7 +13385,7 @@ kafka strimzi io v1 kafka connect spec template pod volumes items0 csi node publ
 |**reference**|str|reference||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplatePodVolumesItems0PersistentVolumeClaim
 
-`PersistentVolumeClaim` object to use to populate the volume.
+kafka strimzi io v1 kafka connect spec template pod volumes items0 persistent volume claim
 
 #### Attributes
 
@@ -13369,7 +13395,7 @@ kafka strimzi io v1 kafka connect spec template pod volumes items0 csi node publ
 |**readOnly**|bool|read only||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplatePodVolumesItems0Secret
 
-`Secret` to use to populate the volume.
+kafka strimzi io v1 kafka connect spec template pod volumes items0 secret
 
 #### Attributes
 
@@ -13392,7 +13418,7 @@ kafka strimzi io v1 kafka connect spec template pod volumes items0 secret items 
 |**path**|str|path||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateServiceAccount
 
-Template for the Kafka Connect service account.
+kafka strimzi io v1 kafka connect spec template service account
 
 #### Attributes
 
@@ -13401,17 +13427,17 @@ Template for the Kafka Connect service account.
 |**metadata**|[KafkaStrimziIoV1KafkaConnectSpecTemplateServiceAccountMetadata](#kafkastrimziiov1kafkaconnectspectemplateserviceaccountmetadata)|metadata||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplateServiceAccountMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka connect spec template service account metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaConnectSpecTracing
 
-The configuration of tracing in Kafka Connect.
+kafka strimzi io v1 kafka connect spec tracing
 
 #### Attributes
 
@@ -13420,18 +13446,18 @@ The configuration of tracing in Kafka Connect.
 |**type** `required` `readOnly`|"opentelemetry"||"opentelemetry"|
 ### KafkaStrimziIoV1KafkaConnectStatus
 
-The status of the Kafka Connect cluster.
+kafka strimzi io v1 kafka connect status
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**conditions**|[[KafkaStrimziIoV1KafkaConnectStatusConditionsItems0](#kafkastrimziiov1kafkaconnectstatusconditionsitems0)]|List of status conditions.||
-|**connectorPlugins**|[[KafkaStrimziIoV1KafkaConnectStatusConnectorPluginsItems0](#kafkastrimziiov1kafkaconnectstatusconnectorpluginsitems0)]|The list of connector plugins available in this Kafka Connect deployment.||
-|**labelSelector**|str|Label selector for pods providing this resource.||
-|**observedGeneration**|int|The generation of the CRD that was last reconciled by the operator.||
-|**replicas**|int|The current number of pods being used to provide this resource.||
-|**url**|str|The URL of the REST API endpoint for managing and monitoring Kafka Connect connectors.||
+|**conditions**|[[KafkaStrimziIoV1KafkaConnectStatusConditionsItems0](#kafkastrimziiov1kafkaconnectstatusconditionsitems0)]|conditions||
+|**connectorPlugins**|[[KafkaStrimziIoV1KafkaConnectStatusConnectorPluginsItems0](#kafkastrimziiov1kafkaconnectstatusconnectorpluginsitems0)]|connector plugins||
+|**labelSelector**|str|label selector||
+|**observedGeneration**|int|observed generation||
+|**replicas**|int|replicas||
+|**url**|str|url||
 ### KafkaStrimziIoV1KafkaConnectStatusConditionsItems0
 
 kafka strimzi io v1 kafka connect status conditions items0
@@ -13440,10 +13466,10 @@ kafka strimzi io v1 kafka connect status conditions items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.||
-|**message**|str|Human-readable message indicating details about the condition's last transition.||
-|**reason**|str|The reason for the condition's last transition (a single word in CamelCase).||
-|**status**|str|The status of the condition, either True, False or Unknown.||
+|**lastTransitionTime**|str|last transition time||
+|**message**|str|message||
+|**reason**|str|reason||
+|**status**|str|status||
 |**type**|str|||
 ### KafkaStrimziIoV1KafkaConnectStatusConnectorPluginsItems0
 
@@ -13453,12 +13479,12 @@ kafka strimzi io v1 kafka connect status connector plugins items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**class**|str|The class of the connector plugin.||
+|**class**|str|class||
 |**type**|str|||
-|**version**|str|The version of the connector plugin.||
+|**version**|str|version||
 ### KafkaStrimziIoV1KafkaConnectorSpec
 
-The specification of the Kafka Connector.
+kafka strimzi io v1 kafka connector spec
 
 #### Attributes
 
@@ -13466,15 +13492,15 @@ The specification of the Kafka Connector.
 | --- | --- | --- | --- |
 |**alterOffsets**|[KafkaStrimziIoV1KafkaConnectorSpecAlterOffsets](#kafkastrimziiov1kafkaconnectorspecalteroffsets)|alter offsets||
 |**autoRestart**|[KafkaStrimziIoV1KafkaConnectorSpecAutoRestart](#kafkastrimziiov1kafkaconnectorspecautorestart)|auto restart||
-|**class**|str|The Class for the Kafka Connector.||
-|**config**|any|The Kafka Connector configuration. The following properties cannot be set: name, connector.class, tasks.max, connector.plugin.version.||
+|**class**|str|class||
+|**config**|any|config||
 |**listOffsets**|[KafkaStrimziIoV1KafkaConnectorSpecListOffsets](#kafkastrimziiov1kafkaconnectorspeclistoffsets)|list offsets||
-|**state**|"paused" | "stopped" | "running"|The state the connector should be in. Defaults to running.||
-|**tasksMax**|int|The maximum number of tasks for the Kafka Connector.||
-|**version**|str|Desired version or version range to respect when starting the Kafka Connector. This is only supported when using Kafka Connect version 4.1.0 and higher.||
+|**state**|"paused" | "stopped" | "running"|state||
+|**tasksMax**|int|tasks max||
+|**version**|str|version||
 ### KafkaStrimziIoV1KafkaConnectorSpecAlterOffsets
 
-Configuration for altering offsets.
+kafka strimzi io v1 kafka connector spec alter offsets
 
 #### Attributes
 
@@ -13483,7 +13509,7 @@ Configuration for altering offsets.
 |**fromConfigMap** `required`|[KafkaStrimziIoV1KafkaConnectorSpecAlterOffsetsFromConfigMap](#kafkastrimziiov1kafkaconnectorspecalteroffsetsfromconfigmap)|from config map||
 ### KafkaStrimziIoV1KafkaConnectorSpecAlterOffsetsFromConfigMap
 
-Reference to the ConfigMap where the new offsets are stored.
+kafka strimzi io v1 kafka connector spec alter offsets from config map
 
 #### Attributes
 
@@ -13492,17 +13518,17 @@ Reference to the ConfigMap where the new offsets are stored.
 |**name**|str|name||
 ### KafkaStrimziIoV1KafkaConnectorSpecAutoRestart
 
-Automatic restart of connector and tasks configuration.
+kafka strimzi io v1 kafka connector spec auto restart
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**enabled**|bool|Whether automatic restart for failed connectors and tasks should be enabled or disabled.||
-|**maxRestarts**|int|The maximum number of connector restarts that the operator will try. If the connector remains in a failed state after reaching this limit, it must be restarted manually by the user. Defaults to an unlimited number of restarts.||
+|**enabled**|bool|enabled||
+|**maxRestarts**|int|max restarts||
 ### KafkaStrimziIoV1KafkaConnectorSpecListOffsets
 
-Configuration for listing offsets.
+kafka strimzi io v1 kafka connector spec list offsets
 
 #### Attributes
 
@@ -13511,7 +13537,7 @@ Configuration for listing offsets.
 |**toConfigMap** `required`|[KafkaStrimziIoV1KafkaConnectorSpecListOffsetsToConfigMap](#kafkastrimziiov1kafkaconnectorspeclistoffsetstoconfigmap)|to config map||
 ### KafkaStrimziIoV1KafkaConnectorSpecListOffsetsToConfigMap
 
-Reference to the ConfigMap where the list of offsets will be written to.
+kafka strimzi io v1 kafka connector spec list offsets to config map
 
 #### Attributes
 
@@ -13520,29 +13546,29 @@ Reference to the ConfigMap where the list of offsets will be written to.
 |**name**|str|name||
 ### KafkaStrimziIoV1KafkaConnectorStatus
 
-The status of the Kafka Connector.
+kafka strimzi io v1 kafka connector status
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**autoRestart**|[KafkaStrimziIoV1KafkaConnectorStatusAutoRestart](#kafkastrimziiov1kafkaconnectorstatusautorestart)|auto restart||
-|**conditions**|[[KafkaStrimziIoV1KafkaConnectorStatusConditionsItems0](#kafkastrimziiov1kafkaconnectorstatusconditionsitems0)]|List of status conditions.||
-|**connectorStatus**|any|The connector status, as reported by the Kafka Connect REST API.||
-|**observedGeneration**|int|The generation of the CRD that was last reconciled by the operator.||
-|**tasksMax**|int|The maximum number of tasks for the Kafka Connector.||
-|**topics**|[str]|The list of topics used by the Kafka Connector.||
+|**conditions**|[[KafkaStrimziIoV1KafkaConnectorStatusConditionsItems0](#kafkastrimziiov1kafkaconnectorstatusconditionsitems0)]|conditions||
+|**connectorStatus**|any|connector status||
+|**observedGeneration**|int|observed generation||
+|**tasksMax**|int|tasks max||
+|**topics**|[str]|topics||
 ### KafkaStrimziIoV1KafkaConnectorStatusAutoRestart
 
-The auto restart status.
+kafka strimzi io v1 kafka connector status auto restart
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**connectorName**|str|The name of the connector being restarted.||
-|**count**|int|The number of times the connector or task is restarted.||
-|**lastRestartTimestamp**|str|The last time the automatic restart was attempted. The required format is 'yyyy-MM-ddTHH:mm:ssZ' in the UTC time zone.||
+|**connectorName**|str|connector name||
+|**count**|int|count||
+|**lastRestartTimestamp**|str|last restart timestamp||
 ### KafkaStrimziIoV1KafkaConnectorStatusConditionsItems0
 
 kafka strimzi io v1 kafka connector status conditions items0
@@ -13551,38 +13577,38 @@ kafka strimzi io v1 kafka connector status conditions items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.||
-|**message**|str|Human-readable message indicating details about the condition's last transition.||
-|**reason**|str|The reason for the condition's last transition (a single word in CamelCase).||
-|**status**|str|The status of the condition, either True, False or Unknown.||
+|**lastTransitionTime**|str|last transition time||
+|**message**|str|message||
+|**reason**|str|reason||
+|**status**|str|status||
 |**type**|str|||
 ### KafkaStrimziIoV1KafkaMirrorMaker2Spec
 
-The specification of the Kafka MirrorMaker 2 cluster.
+kafka strimzi io v1 kafka mirror maker2 spec
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**clientRackInitImage**|str|The image of the init container used for initializing the `client.rack`.||
-|**image**|str|The container image used for Kafka Connect pods. If no image name is explicitly specified, it is determined based on the `spec.version` configuration. The image names are specifically mapped to corresponding versions in the Cluster Operator configuration.||
+|**clientRackInitImage**|str|client rack init image||
+|**image**|str|image||
 |**jmxOptions**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecJmxOptions](#kafkastrimziiov1kafkamirrormaker2specjmxoptions)|jmx options||
 |**jvmOptions**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecJvmOptions](#kafkastrimziiov1kafkamirrormaker2specjvmoptions)|jvm options||
 |**livenessProbe**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecLivenessProbe](#kafkastrimziiov1kafkamirrormaker2speclivenessprobe)|liveness probe||
 |**logging**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecLogging](#kafkastrimziiov1kafkamirrormaker2speclogging)|logging||
 |**metricsConfig**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecMetricsConfig](#kafkastrimziiov1kafkamirrormaker2specmetricsconfig)|metrics config||
-|**mirrors** `required`|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0](#kafkastrimziiov1kafkamirrormaker2specmirrorsitems0)]|Configuration of the MirrorMaker 2 connectors.||
+|**mirrors** `required`|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0](#kafkastrimziiov1kafkamirrormaker2specmirrorsitems0)]|mirrors||
 |**rack**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecRack](#kafkastrimziiov1kafkamirrormaker2specrack)|rack||
 |**readinessProbe**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecReadinessProbe](#kafkastrimziiov1kafkamirrormaker2specreadinessprobe)|readiness probe||
-|**replicas** `required`|int|The number of pods in the Kafka Connect group. Required in the `v1` version of the Strimzi API. Defaults to `3` in the `v1beta2` version of the Strimzi API.||
+|**replicas** `required`|int|replicas||
 |**resources**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecResources](#kafkastrimziiov1kafkamirrormaker2specresources)|resources||
 |**target** `required`|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTarget](#kafkastrimziiov1kafkamirrormaker2spectarget)|target||
 |**template**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplate](#kafkastrimziiov1kafkamirrormaker2spectemplate)|template||
 |**tracing**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTracing](#kafkastrimziiov1kafkamirrormaker2spectracing)|tracing||
-|**version**|str|The Kafka Connect version. Defaults to the latest version. Consult the user documentation to understand the process required to upgrade or downgrade the version.||
+|**version**|str|version||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecJmxOptions
 
-JMX Options.
+kafka strimzi io v1 kafka mirror maker2 spec jmx options
 
 #### Attributes
 
@@ -13591,7 +13617,7 @@ JMX Options.
 |**authentication**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecJmxOptionsAuthentication](#kafkastrimziiov1kafkamirrormaker2specjmxoptionsauthentication)|authentication||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecJmxOptionsAuthentication
 
-Authentication configuration for connecting to the JMX port.
+kafka strimzi io v1 kafka mirror maker2 spec jmx options authentication
 
 #### Attributes
 
@@ -13600,7 +13626,7 @@ Authentication configuration for connecting to the JMX port.
 |**type** `required` `readOnly`|"password"||"password"|
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecJvmOptions
 
-JVM Options for pods.
+kafka strimzi io v1 kafka mirror maker2 spec jvm options
 
 #### Attributes
 
@@ -13609,8 +13635,8 @@ JVM Options for pods.
 |**-XX**|{str:str}|||
 |**-Xms**|str|||
 |**-Xmx**|str|||
-|**gcLoggingEnabled**|bool|Specifies whether the Garbage Collection logging is enabled. The default is false.||
-|**javaSystemProperties**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecJvmOptionsJavaSystemPropertiesItems0](#kafkastrimziiov1kafkamirrormaker2specjvmoptionsjavasystempropertiesitems0)]|A map of additional system properties which will be passed using the `-D` option to the JVM.||
+|**gcLoggingEnabled**|bool|gc logging enabled||
+|**javaSystemProperties**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecJvmOptionsJavaSystemPropertiesItems0](#kafkastrimziiov1kafkamirrormaker2specjvmoptionsjavasystempropertiesitems0)]|java system properties||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecJvmOptionsJavaSystemPropertiesItems0
 
 kafka strimzi io v1 kafka mirror maker2 spec jvm options java system properties items0
@@ -13619,35 +13645,35 @@ kafka strimzi io v1 kafka mirror maker2 spec jvm options java system properties 
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The system property name.||
-|**value**|str|The system property value.||
+|**name**|str|name||
+|**value**|str|value||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecLivenessProbe
 
-Pod liveness checking.
+kafka strimzi io v1 kafka mirror maker2 spec liveness probe
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**failureThreshold**|int|Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.||
-|**initialDelaySeconds**|int|The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.||
-|**periodSeconds**|int|How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.||
-|**successThreshold**|int|Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.||
-|**timeoutSeconds**|int|The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.||
+|**failureThreshold**|int|failure threshold||
+|**initialDelaySeconds**|int|initial delay seconds||
+|**periodSeconds**|int|period seconds||
+|**successThreshold**|int|success threshold||
+|**timeoutSeconds**|int|timeout seconds||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecLogging
 
-Logging configuration for Kafka Connect.
+kafka strimzi io v1 kafka mirror maker2 spec logging
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**loggers**|{str:str}|A Map from logger name to logger level.||
+|**loggers**|{str:str}|loggers||
 |**type** `required`|"inline" | "external"|||
 |**valueFrom**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecLoggingValueFrom](#kafkastrimziiov1kafkamirrormaker2specloggingvaluefrom)|value from||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecLoggingValueFrom
 
-`ConfigMap` entry where the logging configuration is stored.
+kafka strimzi io v1 kafka mirror maker2 spec logging value from
 
 #### Attributes
 
@@ -13656,7 +13682,7 @@ Logging configuration for Kafka Connect.
 |**configMapKeyRef**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecLoggingValueFromConfigMapKeyRef](#kafkastrimziiov1kafkamirrormaker2specloggingvaluefromconfigmapkeyref)|config map key ref||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecLoggingValueFromConfigMapKeyRef
 
-Reference to the key in the ConfigMap containing the configuration.
+kafka strimzi io v1 kafka mirror maker2 spec logging value from config map key ref
 
 #### Attributes
 
@@ -13667,7 +13693,7 @@ Reference to the key in the ConfigMap containing the configuration.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMetricsConfig
 
-Metrics configuration.
+kafka strimzi io v1 kafka mirror maker2 spec metrics config
 
 #### Attributes
 
@@ -13678,7 +13704,7 @@ Metrics configuration.
 |**values**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecMetricsConfigValues](#kafkastrimziiov1kafkamirrormaker2specmetricsconfigvalues)|values||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMetricsConfigValueFrom
 
-ConfigMap entry where the Prometheus JMX Exporter configuration is stored.
+kafka strimzi io v1 kafka mirror maker2 spec metrics config value from
 
 #### Attributes
 
@@ -13687,7 +13713,7 @@ ConfigMap entry where the Prometheus JMX Exporter configuration is stored.
 |**configMapKeyRef**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecMetricsConfigValueFromConfigMapKeyRef](#kafkastrimziiov1kafkamirrormaker2specmetricsconfigvaluefromconfigmapkeyref)|config map key ref||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMetricsConfigValueFromConfigMapKeyRef
 
-Reference to the key in the ConfigMap containing the configuration.
+kafka strimzi io v1 kafka mirror maker2 spec metrics config value from config map key ref
 
 #### Attributes
 
@@ -13698,13 +13724,13 @@ Reference to the key in the ConfigMap containing the configuration.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMetricsConfigValues
 
-Configuration values for the Strimzi Metrics Reporter.
+kafka strimzi io v1 kafka mirror maker2 spec metrics config values
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**allowList**|[str]|A list of regex patterns to filter the metrics to collect. Should contain at least one element.||
+|**allowList**|[str]|allow list||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0
 
 kafka strimzi io v1 kafka mirror maker2 spec mirrors items0
@@ -13714,15 +13740,15 @@ kafka strimzi io v1 kafka mirror maker2 spec mirrors items0
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**checkpointConnector**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnector](#kafkastrimziiov1kafkamirrormaker2specmirrorsitems0checkpointconnector)|checkpoint connector||
-|**groupsExcludePattern**|str|A regular expression matching the consumer groups to exclude from mirroring. Comma-separated lists are also supported.||
-|**groupsPattern**|str|A regular expression matching the consumer groups to be mirrored. Comma-separated lists are also supported.||
+|**groupsExcludePattern**|str|groups exclude pattern||
+|**groupsPattern**|str|groups pattern||
 |**source** `required`|[KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0Source](#kafkastrimziiov1kafkamirrormaker2specmirrorsitems0source)|source||
 |**sourceConnector**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnector](#kafkastrimziiov1kafkamirrormaker2specmirrorsitems0sourceconnector)|source connector||
-|**topicsExcludePattern**|str|A regular expression matching the topics to exclude from mirroring. Comma-separated lists are also supported.||
-|**topicsPattern**|str|A regular expression matching the topics to be mirrored, for example, "topic1\\|topic2\\|topic3". Comma-separated lists are also supported.||
+|**topicsExcludePattern**|str|topics exclude pattern||
+|**topicsPattern**|str|topics pattern||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnector
 
-The specification of the Kafka MirrorMaker 2 checkpoint connector.
+kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 checkpoint connector
 
 #### Attributes
 
@@ -13730,14 +13756,14 @@ The specification of the Kafka MirrorMaker 2 checkpoint connector.
 | --- | --- | --- | --- |
 |**alterOffsets**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorAlterOffsets](#kafkastrimziiov1kafkamirrormaker2specmirrorsitems0checkpointconnectoralteroffsets)|alter offsets||
 |**autoRestart**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorAutoRestart](#kafkastrimziiov1kafkamirrormaker2specmirrorsitems0checkpointconnectorautorestart)|auto restart||
-|**config**|any|The Kafka Connector configuration. The following properties cannot be set: name, connector.class, tasks.max, connector.plugin.version.||
+|**config**|any|config||
 |**listOffsets**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorListOffsets](#kafkastrimziiov1kafkamirrormaker2specmirrorsitems0checkpointconnectorlistoffsets)|list offsets||
-|**state**|"paused" | "stopped" | "running"|The state the connector should be in. Defaults to running.||
-|**tasksMax**|int|The maximum number of tasks for the Kafka Connector.||
-|**version**|str|Desired version or version range to respect when starting the Kafka Connector. This is only supported when using Kafka Connect version 4.1.0 and higher.||
+|**state**|"paused" | "stopped" | "running"|state||
+|**tasksMax**|int|tasks max||
+|**version**|str|version||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorAlterOffsets
 
-Configuration for altering offsets.
+kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 checkpoint connector alter offsets
 
 #### Attributes
 
@@ -13746,7 +13772,7 @@ Configuration for altering offsets.
 |**fromConfigMap** `required`|[KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorAlterOffsetsFromConfigMap](#kafkastrimziiov1kafkamirrormaker2specmirrorsitems0checkpointconnectoralteroffsetsfromconfigmap)|from config map||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorAlterOffsetsFromConfigMap
 
-Reference to the ConfigMap where the new offsets are stored.
+kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 checkpoint connector alter offsets from config map
 
 #### Attributes
 
@@ -13755,17 +13781,17 @@ Reference to the ConfigMap where the new offsets are stored.
 |**name**|str|name||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorAutoRestart
 
-Automatic restart of connector and tasks configuration.
+kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 checkpoint connector auto restart
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**enabled**|bool|Whether automatic restart for failed connectors and tasks should be enabled or disabled.||
-|**maxRestarts**|int|The maximum number of connector restarts that the operator will try. If the connector remains in a failed state after reaching this limit, it must be restarted manually by the user. Defaults to an unlimited number of restarts.||
+|**enabled**|bool|enabled||
+|**maxRestarts**|int|max restarts||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorListOffsets
 
-Configuration for listing offsets.
+kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 checkpoint connector list offsets
 
 #### Attributes
 
@@ -13774,7 +13800,7 @@ Configuration for listing offsets.
 |**toConfigMap** `required`|[KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorListOffsetsToConfigMap](#kafkastrimziiov1kafkamirrormaker2specmirrorsitems0checkpointconnectorlistoffsetstoconfigmap)|to config map||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorListOffsetsToConfigMap
 
-Reference to the ConfigMap where the list of offsets will be written to.
+kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 checkpoint connector list offsets to config map
 
 #### Attributes
 
@@ -13783,55 +13809,55 @@ Reference to the ConfigMap where the list of offsets will be written to.
 |**name**|str|name||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0Source
 
-The source Apache Kafka cluster. The source Kafka cluster is used by the Kafka MirrorMaker 2 connectors.
+kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**alias** `required`|str|Alias used to reference the Kafka cluster.||
+|**alias** `required`|str|alias||
 |**authentication**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceAuthentication](#kafkastrimziiov1kafkamirrormaker2specmirrorsitems0sourceauthentication)|authentication||
-|**bootstrapServers** `required`|str|A comma-separated list of `host:port` pairs for establishing the connection to the Kafka cluster.||
-|**config**|any|The MirrorMaker 2 cluster config. Properties with the following prefixes cannot be set: ssl., sasl., security., listeners, plugin.path, rest., bootstrap.servers, consumer.interceptor.classes, producer.interceptor.classes (with the exception of: ssl.endpoint.identification.algorithm, ssl.cipher.suites, ssl.protocol, ssl.enabled.protocols).||
+|**bootstrapServers** `required`|str|bootstrap servers||
+|**config**|any|config||
 |**tls**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceTLS](#kafkastrimziiov1kafkamirrormaker2specmirrorsitems0sourcetls)|tls||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceAuthentication
 
-Authentication configuration for connecting to the cluster.
+kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source authentication
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**certificateAndKey**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationCertificateAndKey](#kafkastrimziiov1kafkamirrormaker2specmirrorsitems0sourceauthenticationcertificateandkey)|certificate and key||
-|**config**|any|Configuration for the custom authentication mechanism. Only properties with the `sasl.` and `ssl.keystore.` prefixes are allowed. Specify other options in the regular configuration section of the custom resource.||
+|**config**|any|config||
 |**passwordSecret**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationPasswordSecret](#kafkastrimziiov1kafkamirrormaker2specmirrorsitems0sourceauthenticationpasswordsecret)|password secret||
-|**sasl**|bool|Enable or disable SASL on this authentication mechanism.||
+|**sasl**|bool|sasl||
 |**type** `required`|"tls" | "scram-sha-256" | "scram-sha-512" | "plain" | "custom"|||
-|**username**|str|Username used for the authentication.||
+|**username**|str|username||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationCertificateAndKey
 
-Reference to the `Secret` which holds the certificate and private key pair.
+kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source authentication certificate and key
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate** `required`|str|The name of the file certificate in the Secret.||
-|**key** `required`|str|The name of the private key in the secret. The private key must be in unencrypted PKCS #8 format. For more information, see RFC 5208: https://datatracker.ietf.org/doc/html/rfc5208.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate** `required`|str|certificate||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationPasswordSecret
 
-Reference to the `Secret` which holds the password.
+kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source authentication password secret
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**password** `required`|str|The name of the key in the Secret under which the password is stored.||
-|**secretName** `required`|str|The name of the Secret containing the password.||
+|**password** `required`|str|password||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnector
 
-The specification of the Kafka MirrorMaker 2 source connector.
+kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source connector
 
 #### Attributes
 
@@ -13839,14 +13865,14 @@ The specification of the Kafka MirrorMaker 2 source connector.
 | --- | --- | --- | --- |
 |**alterOffsets**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorAlterOffsets](#kafkastrimziiov1kafkamirrormaker2specmirrorsitems0sourceconnectoralteroffsets)|alter offsets||
 |**autoRestart**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorAutoRestart](#kafkastrimziiov1kafkamirrormaker2specmirrorsitems0sourceconnectorautorestart)|auto restart||
-|**config**|any|The Kafka Connector configuration. The following properties cannot be set: name, connector.class, tasks.max, connector.plugin.version.||
+|**config**|any|config||
 |**listOffsets**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorListOffsets](#kafkastrimziiov1kafkamirrormaker2specmirrorsitems0sourceconnectorlistoffsets)|list offsets||
-|**state**|"paused" | "stopped" | "running"|The state the connector should be in. Defaults to running.||
-|**tasksMax**|int|The maximum number of tasks for the Kafka Connector.||
-|**version**|str|Desired version or version range to respect when starting the Kafka Connector. This is only supported when using Kafka Connect version 4.1.0 and higher.||
+|**state**|"paused" | "stopped" | "running"|state||
+|**tasksMax**|int|tasks max||
+|**version**|str|version||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorAlterOffsets
 
-Configuration for altering offsets.
+kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source connector alter offsets
 
 #### Attributes
 
@@ -13855,7 +13881,7 @@ Configuration for altering offsets.
 |**fromConfigMap** `required`|[KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorAlterOffsetsFromConfigMap](#kafkastrimziiov1kafkamirrormaker2specmirrorsitems0sourceconnectoralteroffsetsfromconfigmap)|from config map||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorAlterOffsetsFromConfigMap
 
-Reference to the ConfigMap where the new offsets are stored.
+kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source connector alter offsets from config map
 
 #### Attributes
 
@@ -13864,17 +13890,17 @@ Reference to the ConfigMap where the new offsets are stored.
 |**name**|str|name||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorAutoRestart
 
-Automatic restart of connector and tasks configuration.
+kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source connector auto restart
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**enabled**|bool|Whether automatic restart for failed connectors and tasks should be enabled or disabled.||
-|**maxRestarts**|int|The maximum number of connector restarts that the operator will try. If the connector remains in a failed state after reaching this limit, it must be restarted manually by the user. Defaults to an unlimited number of restarts.||
+|**enabled**|bool|enabled||
+|**maxRestarts**|int|max restarts||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorListOffsets
 
-Configuration for listing offsets.
+kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source connector list offsets
 
 #### Attributes
 
@@ -13883,7 +13909,7 @@ Configuration for listing offsets.
 |**toConfigMap** `required`|[KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorListOffsetsToConfigMap](#kafkastrimziiov1kafkamirrormaker2specmirrorsitems0sourceconnectorlistoffsetstoconfigmap)|to config map||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorListOffsetsToConfigMap
 
-Reference to the ConfigMap where the list of offsets will be written to.
+kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source connector list offsets to config map
 
 #### Attributes
 
@@ -13892,13 +13918,13 @@ Reference to the ConfigMap where the list of offsets will be written to.
 |**name**|str|name||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceTLS
 
-TLS configuration for connecting MirrorMaker 2 connectors to a cluster.
+kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source TLS
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**trustedCertificates**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceTLSTrustedCertificatesItems0](#kafkastrimziiov1kafkamirrormaker2specmirrorsitems0sourcetlstrustedcertificatesitems0)]|Trusted certificates for TLS connection.||
+|**trustedCertificates**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceTLSTrustedCertificatesItems0](#kafkastrimziiov1kafkamirrormaker2specmirrorsitems0sourcetlstrustedcertificatesitems0)]|trusted certificates||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceTLSTrustedCertificatesItems0
 
 kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source TLS trusted certificates items0
@@ -13907,34 +13933,36 @@ kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source TLS trusted c
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate**|str|The name of the file certificate in the secret.||
-|**pattern**|str|Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate**|str|certificate||
+|**pattern**|str|pattern||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecRack
 
-Configuration of the node label which will be used as the `client.rack` consumer configuration.
+kafka strimzi io v1 kafka mirror maker2 spec rack
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**topologyKey** `required`|str|A key that matches labels assigned to the Kubernetes cluster nodes. The value of the label is used to set a broker's `broker.rack` config, and the `client.rack` config for Kafka Connect or MirrorMaker 2.||
+|**envVarName**|str|env var name||
+|**topologyKey**|str|topology key||
+|**type**|"topology-label" | "environment-variable"|||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecReadinessProbe
 
-Pod readiness checking.
+kafka strimzi io v1 kafka mirror maker2 spec readiness probe
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**failureThreshold**|int|Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.||
-|**initialDelaySeconds**|int|The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.||
-|**periodSeconds**|int|How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.||
-|**successThreshold**|int|Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.||
-|**timeoutSeconds**|int|The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.||
+|**failureThreshold**|int|failure threshold||
+|**initialDelaySeconds**|int|initial delay seconds||
+|**periodSeconds**|int|period seconds||
+|**successThreshold**|int|success threshold||
+|**timeoutSeconds**|int|timeout seconds||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecResources
 
-The maximum limits for CPU and memory resources and the requested initial resources.
+kafka strimzi io v1 kafka mirror maker2 spec resources
 
 #### Attributes
 
@@ -13955,65 +13983,65 @@ kafka strimzi io v1 kafka mirror maker2 spec resources claims items0
 |**request**|str|request||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTarget
 
-The target Apache Kafka cluster. The target Kafka cluster is used by the underlying Kafka Connect framework for its internal topics.
+kafka strimzi io v1 kafka mirror maker2 spec target
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**alias** `required`|str|Alias used to reference the Kafka cluster.||
+|**alias** `required`|str|alias||
 |**authentication**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetAuthentication](#kafkastrimziiov1kafkamirrormaker2spectargetauthentication)|authentication||
-|**bootstrapServers** `required`|str|A comma-separated list of `host:port` pairs for establishing the connection to the Kafka cluster.||
-|**config**|any|The MirrorMaker 2 cluster config. Properties with the following prefixes cannot be set: ssl., sasl., security., listeners, plugin.path, rest., bootstrap.servers, consumer.interceptor.classes, producer.interceptor.classes (with the exception of: ssl.endpoint.identification.algorithm, ssl.cipher.suites, ssl.protocol, ssl.enabled.protocols).||
-|**configStorageTopic** `required`|str|The name of the Kafka topic where connector configurations are stored. Required.||
-|**groupId** `required`|str|A unique ID that identifies the Connect cluster group. Required.||
-|**offsetStorageTopic** `required`|str|The name of the Kafka topic where source connector offsets are stored. Required.||
-|**statusStorageTopic** `required`|str|The name of the Kafka topic where connector and task statuses are stored. Required.||
+|**bootstrapServers** `required`|str|bootstrap servers||
+|**config**|any|config||
+|**configStorageTopic** `required`|str|config storage topic||
+|**groupId** `required`|str|group Id||
+|**offsetStorageTopic** `required`|str|offset storage topic||
+|**statusStorageTopic** `required`|str|status storage topic||
 |**tls**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetTLS](#kafkastrimziiov1kafkamirrormaker2spectargettls)|tls||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetAuthentication
 
-Authentication configuration for connecting to the cluster.
+kafka strimzi io v1 kafka mirror maker2 spec target authentication
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**certificateAndKey**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetAuthenticationCertificateAndKey](#kafkastrimziiov1kafkamirrormaker2spectargetauthenticationcertificateandkey)|certificate and key||
-|**config**|any|Configuration for the custom authentication mechanism. Only properties with the `sasl.` and `ssl.keystore.` prefixes are allowed. Specify other options in the regular configuration section of the custom resource.||
+|**config**|any|config||
 |**passwordSecret**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetAuthenticationPasswordSecret](#kafkastrimziiov1kafkamirrormaker2spectargetauthenticationpasswordsecret)|password secret||
-|**sasl**|bool|Enable or disable SASL on this authentication mechanism.||
+|**sasl**|bool|sasl||
 |**type** `required`|"tls" | "scram-sha-256" | "scram-sha-512" | "plain" | "custom"|||
-|**username**|str|Username used for the authentication.||
+|**username**|str|username||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetAuthenticationCertificateAndKey
 
-Reference to the `Secret` which holds the certificate and private key pair.
+kafka strimzi io v1 kafka mirror maker2 spec target authentication certificate and key
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate** `required`|str|The name of the file certificate in the Secret.||
-|**key** `required`|str|The name of the private key in the secret. The private key must be in unencrypted PKCS #8 format. For more information, see RFC 5208: https://datatracker.ietf.org/doc/html/rfc5208.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate** `required`|str|certificate||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetAuthenticationPasswordSecret
 
-Reference to the `Secret` which holds the password.
+kafka strimzi io v1 kafka mirror maker2 spec target authentication password secret
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**password** `required`|str|The name of the key in the Secret under which the password is stored.||
-|**secretName** `required`|str|The name of the Secret containing the password.||
+|**password** `required`|str|password||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetTLS
 
-TLS configuration for connecting MirrorMaker 2 connectors to a cluster.
+kafka strimzi io v1 kafka mirror maker2 spec target TLS
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**trustedCertificates**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetTLSTrustedCertificatesItems0](#kafkastrimziiov1kafkamirrormaker2spectargettlstrustedcertificatesitems0)]|Trusted certificates for TLS connection.||
+|**trustedCertificates**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetTLSTrustedCertificatesItems0](#kafkastrimziiov1kafkamirrormaker2spectargettlstrustedcertificatesitems0)]|trusted certificates||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetTLSTrustedCertificatesItems0
 
 kafka strimzi io v1 kafka mirror maker2 spec target TLS trusted certificates items0
@@ -14022,12 +14050,12 @@ kafka strimzi io v1 kafka mirror maker2 spec target TLS trusted certificates ite
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate**|str|The name of the file certificate in the secret.||
-|**pattern**|str|Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate**|str|certificate||
+|**pattern**|str|pattern||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplate
 
-Template for Kafka Connect and Kafka MirrorMaker 2 resources. The template allows users to specify how the `Pods`, `Service`, and other services are generated.
+kafka strimzi io v1 kafka mirror maker2 spec template
 
 #### Attributes
 
@@ -14049,56 +14077,56 @@ Template for Kafka Connect and Kafka MirrorMaker 2 resources. The template allow
 |**serviceAccount**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateServiceAccount](#kafkastrimziiov1kafkamirrormaker2spectemplateserviceaccount)|service account||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateAPIService
 
-Template for Kafka Connect API `Service`.
+kafka strimzi io v1 kafka mirror maker2 spec template API service
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**ipFamilies**|[str]|Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6`. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting.||
-|**ipFamilyPolicy**|"SingleStack" | "PreferDualStack" | "RequireDualStack"|Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`. `SingleStack` is for a single IP family. `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters. `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters. If unspecified, Kubernetes will choose the default value based on the service type.||
+|**ipFamilies**|[str]|ip families||
+|**ipFamilyPolicy**|"SingleStack" | "PreferDualStack" | "RequireDualStack"|ip family policy||
 |**metadata**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateAPIServiceMetadata](#kafkastrimziiov1kafkamirrormaker2spectemplateapiservicemetadata)|metadata||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateAPIServiceMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka mirror maker2 spec template API service metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildConfig
 
-Template for the Kafka Connect BuildConfig used to build new container images. The BuildConfig is used only on OpenShift.
+kafka strimzi io v1 kafka mirror maker2 spec template build config
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**metadata**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildConfigMetadata](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildconfigmetadata)|metadata||
-|**pullSecret**|str|Container Registry Secret with the credentials for pulling the base image.||
+|**pullSecret**|str|pull secret||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildConfigMetadata
 
-Metadata to apply to the `PodDisruptionBudgetTemplate` resource.
+kafka strimzi io v1 kafka mirror maker2 spec template build config metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainer
 
-Template for the Kafka Connect Build container. The build container is used only on Kubernetes.
+kafka strimzi io v1 kafka mirror maker2 spec template build container
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**env**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildcontainerenvitems0)]|Environment variables which should be applied to the container.||
+|**env**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildcontainerenvitems0)]|env||
 |**securityContext**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerSecurityContext](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildcontainersecuritycontext)|security context||
-|**volumeMounts**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerVolumeMountsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildcontainervolumemountsitems0)]|Additional volume mounts which should be applied to the container.||
+|**volumeMounts**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerVolumeMountsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildcontainervolumemountsitems0)]|volume mounts||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0
 
 kafka strimzi io v1 kafka mirror maker2 spec template build container env items0
@@ -14107,12 +14135,12 @@ kafka strimzi io v1 kafka mirror maker2 spec template build container env items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The environment variable key.||
-|**value**|str|The environment variable value.||
+|**name**|str|name||
+|**value**|str|value||
 |**valueFrom**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0ValueFrom](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildcontainerenvitems0valuefrom)|value from||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0ValueFrom
 
-Reference to the secret or config map property to which the environment variable is set.
+kafka strimzi io v1 kafka mirror maker2 spec template build container env items0 value from
 
 #### Attributes
 
@@ -14122,7 +14150,7 @@ Reference to the secret or config map property to which the environment variable
 |**secretKeyRef**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0ValueFromSecretKeyRef](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildcontainerenvitems0valuefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0ValueFromConfigMapKeyRef
 
-Reference to a key in a config map.
+kafka strimzi io v1 kafka mirror maker2 spec template build container env items0 value from config map key ref
 
 #### Attributes
 
@@ -14133,7 +14161,7 @@ Reference to a key in a config map.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0ValueFromSecretKeyRef
 
-Reference to a key in a secret.
+kafka strimzi io v1 kafka mirror maker2 spec template build container env items0 value from secret key ref
 
 #### Attributes
 
@@ -14144,7 +14172,7 @@ Reference to a key in a secret.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerSecurityContext
 
-Security context for the container.
+kafka strimzi io v1 kafka mirror maker2 spec template build container security context
 
 #### Attributes
 
@@ -14233,7 +14261,7 @@ kafka strimzi io v1 kafka mirror maker2 spec template build container volume mou
 |**subPathExpr**|str|sub path expr||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPod
 
-Template for Kafka Connect Build `Pods`. The build pod is used only on Kubernetes.
+kafka strimzi io v1 kafka mirror maker2 spec template build pod
 
 #### Attributes
 
@@ -14241,23 +14269,23 @@ Template for Kafka Connect Build `Pods`. The build pod is used only on Kubernete
 | --- | --- | --- | --- |
 |**affinity**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodAffinity](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildpodaffinity)|affinity||
 |**dnsConfig**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodDNSConfig](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildpoddnsconfig)|dns config||
-|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.||
-|**enableServiceLinks**|bool|Indicates whether information about services should be injected into Pod's environment variables.||
-|**hostAliases**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodHostAliasesItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildpodhostaliasesitems0)]|The pod's HostAliases. HostAliases is an optional list of hosts and IPs that will be injected into the Pod's hosts file if specified.||
-|**hostUsers**|bool|Use the host user namespace. Optional. Defaults to `true`. When `true` or not set, the pod runs in the host user namespace. This is required when the pod needs features available only in the host namespace, such as loading kernel modules with `CAP_SYS_MODULE`.When set to `false`, the pod runs in a new user namespace. Setting `false` helps mitigate container breakout vulnerabilities and allows containers to run as `root` without granting `root` privileges on the host. This property is alpha-level in Kubernetes and is supported only by Kubernetes clusters that enable the `UserNamespacesSupport` feature.||
-|**imagePullSecrets**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodImagePullSecretsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildpodimagepullsecretsitems0)]|List of references to secrets in the same namespace to use for pulling any of the images used by this Pod. When the `STRIMZI_IMAGE_PULL_SECRETS` environment variable in Cluster Operator and the `imagePullSecrets` option are specified, only the `imagePullSecrets` variable is used and the `STRIMZI_IMAGE_PULL_SECRETS` variable is ignored.||
+|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|dns policy||
+|**enableServiceLinks**|bool|enable service links||
+|**hostAliases**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodHostAliasesItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildpodhostaliasesitems0)]|host aliases||
+|**hostUsers**|bool|host users||
+|**imagePullSecrets**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodImagePullSecretsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildpodimagepullsecretsitems0)]|image pull secrets||
 |**metadata**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodMetadata](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildpodmetadata)|metadata||
-|**priorityClassName**|str|The name of the priority class used to assign priority to the pods.||
-|**schedulerName**|str|The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.||
+|**priorityClassName**|str|priority class name||
+|**schedulerName**|str|scheduler name||
 |**securityContext**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodSecurityContext](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildpodsecuritycontext)|security context||
-|**terminationGracePeriodSeconds**|int|The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.||
-|**tmpDirSizeLimit**|str|Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.||
-|**tolerations**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodTolerationsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildpodtolerationsitems0)]|The pod's tolerations.||
-|**topologySpreadConstraints**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodTopologySpreadConstraintsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildpodtopologyspreadconstraintsitems0)]|The pod's topology spread constraints.||
-|**volumes**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildpodvolumesitems0)]|Additional volumes that can be mounted to the pod.||
+|**terminationGracePeriodSeconds**|int|termination grace period seconds||
+|**tmpDirSizeLimit**|str|tmp dir size limit||
+|**tolerations**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodTolerationsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildpodtolerationsitems0)]|tolerations||
+|**topologySpreadConstraints**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodTopologySpreadConstraintsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildpodtopologyspreadconstraintsitems0)]|topology spread constraints||
+|**volumes**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildpodvolumesitems0)]|volumes||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodAffinity
 
-The pod's affinity rules.
+kafka strimzi io v1 kafka mirror maker2 spec template build pod affinity
 
 #### Attributes
 
@@ -14625,7 +14653,7 @@ kafka strimzi io v1 kafka mirror maker2 spec template build pod affinity pod ant
 |**values**|[str]|values||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodDNSConfig
 
-The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.
+kafka strimzi io v1 kafka mirror maker2 spec template build pod DNS config
 
 #### Attributes
 
@@ -14665,17 +14693,17 @@ kafka strimzi io v1 kafka mirror maker2 spec template build pod image pull secre
 |**name**|str|name||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka mirror maker2 spec template build pod metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodSecurityContext
 
-Configures pod-level security attributes and common container settings.
+kafka strimzi io v1 kafka mirror maker2 spec template build pod security context
 
 #### Attributes
 
@@ -14810,12 +14838,12 @@ kafka strimzi io v1 kafka mirror maker2 spec template build pod volumes items0
 |**csi**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0Csi](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildpodvolumesitems0csi)|csi||
 |**emptyDir**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0EmptyDir](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildpodvolumesitems0emptydir)|empty dir||
 |**image**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0Image](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildpodvolumesitems0image)|image||
-|**name**|str|Name to use for the volume. Required.||
+|**name**|str|name||
 |**persistentVolumeClaim**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0PersistentVolumeClaim](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildpodvolumesitems0persistentvolumeclaim)|persistent volume claim||
 |**secret**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0Secret](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildpodvolumesitems0secret)|secret||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0ConfigMap
 
-`ConfigMap` to use to populate the volume.
+kafka strimzi io v1 kafka mirror maker2 spec template build pod volumes items0 config map
 
 #### Attributes
 
@@ -14838,7 +14866,7 @@ kafka strimzi io v1 kafka mirror maker2 spec template build pod volumes items0 c
 |**path**|str|path||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0Csi
 
-`CSIVolumeSource` object to use to populate the volume.
+kafka strimzi io v1 kafka mirror maker2 spec template build pod volumes items0 csi
 
 #### Attributes
 
@@ -14860,17 +14888,17 @@ kafka strimzi io v1 kafka mirror maker2 spec template build pod volumes items0 c
 |**name**|str|name||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0EmptyDir
 
-`EmptyDir` to use to populate the volume.
+kafka strimzi io v1 kafka mirror maker2 spec template build pod volumes items0 empty dir
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**medium** `readOnly`|"Memory"|Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.|"Memory"|
-|**sizeLimit**|str|The total amount of local storage required for this EmptyDir volume (for example 1Gi).||
+|**medium** `readOnly`|"Memory"|medium|"Memory"|
+|**sizeLimit**|str|size limit||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0Image
 
-`ImageVolumeSource` object to use to populate the volume.
+kafka strimzi io v1 kafka mirror maker2 spec template build pod volumes items0 image
 
 #### Attributes
 
@@ -14880,7 +14908,7 @@ kafka strimzi io v1 kafka mirror maker2 spec template build pod volumes items0 c
 |**reference**|str|reference||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0PersistentVolumeClaim
 
-`PersistentVolumeClaim` object to use to populate the volume.
+kafka strimzi io v1 kafka mirror maker2 spec template build pod volumes items0 persistent volume claim
 
 #### Attributes
 
@@ -14890,7 +14918,7 @@ kafka strimzi io v1 kafka mirror maker2 spec template build pod volumes items0 c
 |**readOnly**|bool|read only||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0Secret
 
-`Secret` to use to populate the volume.
+kafka strimzi io v1 kafka mirror maker2 spec template build pod volumes items0 secret
 
 #### Attributes
 
@@ -14913,7 +14941,7 @@ kafka strimzi io v1 kafka mirror maker2 spec template build pod volumes items0 s
 |**path**|str|path||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildServiceAccount
 
-Template for the Kafka Connect Build service account.
+kafka strimzi io v1 kafka mirror maker2 spec template build service account
 
 #### Attributes
 
@@ -14922,17 +14950,17 @@ Template for the Kafka Connect Build service account.
 |**metadata**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildServiceAccountMetadata](#kafkastrimziiov1kafkamirrormaker2spectemplatebuildserviceaccountmetadata)|metadata||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildServiceAccountMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka mirror maker2 spec template build service account metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateClusterRoleBinding
 
-Template for the Kafka Connect ClusterRoleBinding.
+kafka strimzi io v1 kafka mirror maker2 spec template cluster role binding
 
 #### Attributes
 
@@ -14941,25 +14969,25 @@ Template for the Kafka Connect ClusterRoleBinding.
 |**metadata**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateClusterRoleBindingMetadata](#kafkastrimziiov1kafkamirrormaker2spectemplateclusterrolebindingmetadata)|metadata||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateClusterRoleBindingMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka mirror maker2 spec template cluster role binding metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainer
 
-Template for the Kafka Connect container.
+kafka strimzi io v1 kafka mirror maker2 spec template connect container
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**env**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0](#kafkastrimziiov1kafkamirrormaker2spectemplateconnectcontainerenvitems0)]|Environment variables which should be applied to the container.||
+|**env**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0](#kafkastrimziiov1kafkamirrormaker2spectemplateconnectcontainerenvitems0)]|env||
 |**securityContext**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerSecurityContext](#kafkastrimziiov1kafkamirrormaker2spectemplateconnectcontainersecuritycontext)|security context||
-|**volumeMounts**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerVolumeMountsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplateconnectcontainervolumemountsitems0)]|Additional volume mounts which should be applied to the container.||
+|**volumeMounts**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerVolumeMountsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplateconnectcontainervolumemountsitems0)]|volume mounts||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0
 
 kafka strimzi io v1 kafka mirror maker2 spec template connect container env items0
@@ -14968,12 +14996,12 @@ kafka strimzi io v1 kafka mirror maker2 spec template connect container env item
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The environment variable key.||
-|**value**|str|The environment variable value.||
+|**name**|str|name||
+|**value**|str|value||
 |**valueFrom**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0ValueFrom](#kafkastrimziiov1kafkamirrormaker2spectemplateconnectcontainerenvitems0valuefrom)|value from||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0ValueFrom
 
-Reference to the secret or config map property to which the environment variable is set.
+kafka strimzi io v1 kafka mirror maker2 spec template connect container env items0 value from
 
 #### Attributes
 
@@ -14983,7 +15011,7 @@ Reference to the secret or config map property to which the environment variable
 |**secretKeyRef**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0ValueFromSecretKeyRef](#kafkastrimziiov1kafkamirrormaker2spectemplateconnectcontainerenvitems0valuefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0ValueFromConfigMapKeyRef
 
-Reference to a key in a config map.
+kafka strimzi io v1 kafka mirror maker2 spec template connect container env items0 value from config map key ref
 
 #### Attributes
 
@@ -14994,7 +15022,7 @@ Reference to a key in a config map.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0ValueFromSecretKeyRef
 
-Reference to a key in a secret.
+kafka strimzi io v1 kafka mirror maker2 spec template connect container env items0 value from secret key ref
 
 #### Attributes
 
@@ -15005,7 +15033,7 @@ Reference to a key in a secret.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerSecurityContext
 
-Security context for the container.
+kafka strimzi io v1 kafka mirror maker2 spec template connect container security context
 
 #### Attributes
 
@@ -15094,36 +15122,36 @@ kafka strimzi io v1 kafka mirror maker2 spec template connect container volume m
 |**subPathExpr**|str|sub path expr||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateHeadlessService
 
-Template for Kafka Connect headless `Service`.
+kafka strimzi io v1 kafka mirror maker2 spec template headless service
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**ipFamilies**|[str]|Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6`. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting.||
-|**ipFamilyPolicy**|"SingleStack" | "PreferDualStack" | "RequireDualStack"|Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`. `SingleStack` is for a single IP family. `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters. `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters. If unspecified, Kubernetes will choose the default value based on the service type.||
+|**ipFamilies**|[str]|ip families||
+|**ipFamilyPolicy**|"SingleStack" | "PreferDualStack" | "RequireDualStack"|ip family policy||
 |**metadata**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateHeadlessServiceMetadata](#kafkastrimziiov1kafkamirrormaker2spectemplateheadlessservicemetadata)|metadata||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateHeadlessServiceMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka mirror maker2 spec template headless service metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainer
 
-Template for the Kafka init container.
+kafka strimzi io v1 kafka mirror maker2 spec template init container
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**env**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0](#kafkastrimziiov1kafkamirrormaker2spectemplateinitcontainerenvitems0)]|Environment variables which should be applied to the container.||
+|**env**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0](#kafkastrimziiov1kafkamirrormaker2spectemplateinitcontainerenvitems0)]|env||
 |**securityContext**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerSecurityContext](#kafkastrimziiov1kafkamirrormaker2spectemplateinitcontainersecuritycontext)|security context||
-|**volumeMounts**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerVolumeMountsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplateinitcontainervolumemountsitems0)]|Additional volume mounts which should be applied to the container.||
+|**volumeMounts**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerVolumeMountsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplateinitcontainervolumemountsitems0)]|volume mounts||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0
 
 kafka strimzi io v1 kafka mirror maker2 spec template init container env items0
@@ -15132,12 +15160,12 @@ kafka strimzi io v1 kafka mirror maker2 spec template init container env items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The environment variable key.||
-|**value**|str|The environment variable value.||
+|**name**|str|name||
+|**value**|str|value||
 |**valueFrom**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0ValueFrom](#kafkastrimziiov1kafkamirrormaker2spectemplateinitcontainerenvitems0valuefrom)|value from||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0ValueFrom
 
-Reference to the secret or config map property to which the environment variable is set.
+kafka strimzi io v1 kafka mirror maker2 spec template init container env items0 value from
 
 #### Attributes
 
@@ -15147,7 +15175,7 @@ Reference to the secret or config map property to which the environment variable
 |**secretKeyRef**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0ValueFromSecretKeyRef](#kafkastrimziiov1kafkamirrormaker2spectemplateinitcontainerenvitems0valuefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0ValueFromConfigMapKeyRef
 
-Reference to a key in a config map.
+kafka strimzi io v1 kafka mirror maker2 spec template init container env items0 value from config map key ref
 
 #### Attributes
 
@@ -15158,7 +15186,7 @@ Reference to a key in a config map.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0ValueFromSecretKeyRef
 
-Reference to a key in a secret.
+kafka strimzi io v1 kafka mirror maker2 spec template init container env items0 value from secret key ref
 
 #### Attributes
 
@@ -15169,7 +15197,7 @@ Reference to a key in a secret.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerSecurityContext
 
-Security context for the container.
+kafka strimzi io v1 kafka mirror maker2 spec template init container security context
 
 #### Attributes
 
@@ -15258,7 +15286,7 @@ kafka strimzi io v1 kafka mirror maker2 spec template init container volume moun
 |**subPathExpr**|str|sub path expr||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateJmxSecret
 
-Template for Secret of the Kafka Connect Cluster JMX authentication.
+kafka strimzi io v1 kafka mirror maker2 spec template jmx secret
 
 #### Attributes
 
@@ -15267,17 +15295,17 @@ Template for Secret of the Kafka Connect Cluster JMX authentication.
 |**metadata**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateJmxSecretMetadata](#kafkastrimziiov1kafkamirrormaker2spectemplatejmxsecretmetadata)|metadata||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateJmxSecretMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka mirror maker2 spec template jmx secret metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePod
 
-Template for Kafka Connect `Pods`.
+kafka strimzi io v1 kafka mirror maker2 spec template pod
 
 #### Attributes
 
@@ -15285,23 +15313,23 @@ Template for Kafka Connect `Pods`.
 | --- | --- | --- | --- |
 |**affinity**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodAffinity](#kafkastrimziiov1kafkamirrormaker2spectemplatepodaffinity)|affinity||
 |**dnsConfig**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodDNSConfig](#kafkastrimziiov1kafkamirrormaker2spectemplatepoddnsconfig)|dns config||
-|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.||
-|**enableServiceLinks**|bool|Indicates whether information about services should be injected into Pod's environment variables.||
-|**hostAliases**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodHostAliasesItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatepodhostaliasesitems0)]|The pod's HostAliases. HostAliases is an optional list of hosts and IPs that will be injected into the Pod's hosts file if specified.||
-|**hostUsers**|bool|Use the host user namespace. Optional. Defaults to `true`. When `true` or not set, the pod runs in the host user namespace. This is required when the pod needs features available only in the host namespace, such as loading kernel modules with `CAP_SYS_MODULE`.When set to `false`, the pod runs in a new user namespace. Setting `false` helps mitigate container breakout vulnerabilities and allows containers to run as `root` without granting `root` privileges on the host. This property is alpha-level in Kubernetes and is supported only by Kubernetes clusters that enable the `UserNamespacesSupport` feature.||
-|**imagePullSecrets**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodImagePullSecretsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatepodimagepullsecretsitems0)]|List of references to secrets in the same namespace to use for pulling any of the images used by this Pod. When the `STRIMZI_IMAGE_PULL_SECRETS` environment variable in Cluster Operator and the `imagePullSecrets` option are specified, only the `imagePullSecrets` variable is used and the `STRIMZI_IMAGE_PULL_SECRETS` variable is ignored.||
+|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|dns policy||
+|**enableServiceLinks**|bool|enable service links||
+|**hostAliases**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodHostAliasesItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatepodhostaliasesitems0)]|host aliases||
+|**hostUsers**|bool|host users||
+|**imagePullSecrets**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodImagePullSecretsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatepodimagepullsecretsitems0)]|image pull secrets||
 |**metadata**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodMetadata](#kafkastrimziiov1kafkamirrormaker2spectemplatepodmetadata)|metadata||
-|**priorityClassName**|str|The name of the priority class used to assign priority to the pods.||
-|**schedulerName**|str|The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.||
+|**priorityClassName**|str|priority class name||
+|**schedulerName**|str|scheduler name||
 |**securityContext**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodSecurityContext](#kafkastrimziiov1kafkamirrormaker2spectemplatepodsecuritycontext)|security context||
-|**terminationGracePeriodSeconds**|int|The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.||
-|**tmpDirSizeLimit**|str|Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.||
-|**tolerations**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTolerationsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatepodtolerationsitems0)]|The pod's tolerations.||
-|**topologySpreadConstraints**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTopologySpreadConstraintsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatepodtopologyspreadconstraintsitems0)]|The pod's topology spread constraints.||
-|**volumes**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatepodvolumesitems0)]|Additional volumes that can be mounted to the pod.||
+|**terminationGracePeriodSeconds**|int|termination grace period seconds||
+|**tmpDirSizeLimit**|str|tmp dir size limit||
+|**tolerations**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTolerationsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatepodtolerationsitems0)]|tolerations||
+|**topologySpreadConstraints**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTopologySpreadConstraintsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatepodtopologyspreadconstraintsitems0)]|topology spread constraints||
+|**volumes**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatepodvolumesitems0)]|volumes||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodAffinity
 
-The pod's affinity rules.
+kafka strimzi io v1 kafka mirror maker2 spec template pod affinity
 
 #### Attributes
 
@@ -15669,7 +15697,7 @@ kafka strimzi io v1 kafka mirror maker2 spec template pod affinity pod anti affi
 |**values**|[str]|values||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodDNSConfig
 
-The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.
+kafka strimzi io v1 kafka mirror maker2 spec template pod DNS config
 
 #### Attributes
 
@@ -15690,24 +15718,24 @@ kafka strimzi io v1 kafka mirror maker2 spec template pod DNS config options ite
 |**value**|str|value||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodDisruptionBudget
 
-Template for Kafka Connect `PodDisruptionBudget`.
+kafka strimzi io v1 kafka mirror maker2 spec template pod disruption budget
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**maxUnavailable**|int|Maximum number of unavailable pods to allow automatic Pod eviction. A Pod eviction is allowed when the `maxUnavailable` number of pods or fewer are unavailable after the eviction. Setting this value to 0 prevents all voluntary evictions, so the pods must be evicted manually. Defaults to 1.||
+|**maxUnavailable**|int|max unavailable||
 |**metadata**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodDisruptionBudgetMetadata](#kafkastrimziiov1kafkamirrormaker2spectemplatepoddisruptionbudgetmetadata)|metadata||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodDisruptionBudgetMetadata
 
-Metadata to apply to the `PodDisruptionBudgetTemplate` resource.
+kafka strimzi io v1 kafka mirror maker2 spec template pod disruption budget metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodHostAliasesItems0
 
 kafka strimzi io v1 kafka mirror maker2 spec template pod host aliases items0
@@ -15729,17 +15757,17 @@ kafka strimzi io v1 kafka mirror maker2 spec template pod image pull secrets ite
 |**name**|str|name||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka mirror maker2 spec template pod metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodSecurityContext
 
-Configures pod-level security attributes and common container settings.
+kafka strimzi io v1 kafka mirror maker2 spec template pod security context
 
 #### Attributes
 
@@ -15814,7 +15842,7 @@ kafka strimzi io v1 kafka mirror maker2 spec template pod security context windo
 |**runAsUserName**|str|run as user name||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodSet
 
-Template for Kafka Connect `StrimziPodSet` resource.
+kafka strimzi io v1 kafka mirror maker2 spec template pod set
 
 #### Attributes
 
@@ -15823,14 +15851,14 @@ Template for Kafka Connect `StrimziPodSet` resource.
 |**metadata**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodSetMetadata](#kafkastrimziiov1kafkamirrormaker2spectemplatepodsetmetadata)|metadata||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodSetMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka mirror maker2 spec template pod set metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTolerationsItems0
 
 kafka strimzi io v1 kafka mirror maker2 spec template pod tolerations items0
@@ -15893,12 +15921,12 @@ kafka strimzi io v1 kafka mirror maker2 spec template pod volumes items0
 |**csi**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0Csi](#kafkastrimziiov1kafkamirrormaker2spectemplatepodvolumesitems0csi)|csi||
 |**emptyDir**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0EmptyDir](#kafkastrimziiov1kafkamirrormaker2spectemplatepodvolumesitems0emptydir)|empty dir||
 |**image**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0Image](#kafkastrimziiov1kafkamirrormaker2spectemplatepodvolumesitems0image)|image||
-|**name**|str|Name to use for the volume. Required.||
+|**name**|str|name||
 |**persistentVolumeClaim**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0PersistentVolumeClaim](#kafkastrimziiov1kafkamirrormaker2spectemplatepodvolumesitems0persistentvolumeclaim)|persistent volume claim||
 |**secret**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0Secret](#kafkastrimziiov1kafkamirrormaker2spectemplatepodvolumesitems0secret)|secret||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0ConfigMap
 
-`ConfigMap` to use to populate the volume.
+kafka strimzi io v1 kafka mirror maker2 spec template pod volumes items0 config map
 
 #### Attributes
 
@@ -15921,7 +15949,7 @@ kafka strimzi io v1 kafka mirror maker2 spec template pod volumes items0 config 
 |**path**|str|path||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0Csi
 
-`CSIVolumeSource` object to use to populate the volume.
+kafka strimzi io v1 kafka mirror maker2 spec template pod volumes items0 csi
 
 #### Attributes
 
@@ -15943,17 +15971,17 @@ kafka strimzi io v1 kafka mirror maker2 spec template pod volumes items0 csi nod
 |**name**|str|name||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0EmptyDir
 
-`EmptyDir` to use to populate the volume.
+kafka strimzi io v1 kafka mirror maker2 spec template pod volumes items0 empty dir
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**medium** `readOnly`|"Memory"|Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.|"Memory"|
-|**sizeLimit**|str|The total amount of local storage required for this EmptyDir volume (for example 1Gi).||
+|**medium** `readOnly`|"Memory"|medium|"Memory"|
+|**sizeLimit**|str|size limit||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0Image
 
-`ImageVolumeSource` object to use to populate the volume.
+kafka strimzi io v1 kafka mirror maker2 spec template pod volumes items0 image
 
 #### Attributes
 
@@ -15963,7 +15991,7 @@ kafka strimzi io v1 kafka mirror maker2 spec template pod volumes items0 csi nod
 |**reference**|str|reference||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0PersistentVolumeClaim
 
-`PersistentVolumeClaim` object to use to populate the volume.
+kafka strimzi io v1 kafka mirror maker2 spec template pod volumes items0 persistent volume claim
 
 #### Attributes
 
@@ -15973,7 +16001,7 @@ kafka strimzi io v1 kafka mirror maker2 spec template pod volumes items0 csi nod
 |**readOnly**|bool|read only||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0Secret
 
-`Secret` to use to populate the volume.
+kafka strimzi io v1 kafka mirror maker2 spec template pod volumes items0 secret
 
 #### Attributes
 
@@ -15996,7 +16024,7 @@ kafka strimzi io v1 kafka mirror maker2 spec template pod volumes items0 secret 
 |**path**|str|path||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateServiceAccount
 
-Template for the Kafka Connect service account.
+kafka strimzi io v1 kafka mirror maker2 spec template service account
 
 #### Attributes
 
@@ -16005,17 +16033,17 @@ Template for the Kafka Connect service account.
 |**metadata**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateServiceAccountMetadata](#kafkastrimziiov1kafkamirrormaker2spectemplateserviceaccountmetadata)|metadata||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateServiceAccountMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka mirror maker2 spec template service account metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTracing
 
-The configuration of tracing in Kafka Connect.
+kafka strimzi io v1 kafka mirror maker2 spec tracing
 
 #### Attributes
 
@@ -16024,20 +16052,20 @@ The configuration of tracing in Kafka Connect.
 |**type** `required` `readOnly`|"opentelemetry"||"opentelemetry"|
 ### KafkaStrimziIoV1KafkaMirrorMaker2Status
 
-The status of the Kafka MirrorMaker 2 cluster.
+kafka strimzi io v1 kafka mirror maker2 status
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**autoRestartStatuses**|[[KafkaStrimziIoV1KafkaMirrorMaker2StatusAutoRestartStatusesItems0](#kafkastrimziiov1kafkamirrormaker2statusautorestartstatusesitems0)]|List of MirrorMaker 2 connector auto restart statuses.||
-|**conditions**|[[KafkaStrimziIoV1KafkaMirrorMaker2StatusConditionsItems0](#kafkastrimziiov1kafkamirrormaker2statusconditionsitems0)]|List of status conditions.||
-|**connectorPlugins**|[[KafkaStrimziIoV1KafkaMirrorMaker2StatusConnectorPluginsItems0](#kafkastrimziiov1kafkamirrormaker2statusconnectorpluginsitems0)]|The list of connector plugins available in this Kafka Connect deployment.||
-|**connectors**|[]|List of MirrorMaker 2 connector statuses, as reported by the Kafka Connect REST API.||
-|**labelSelector**|str|Label selector for pods providing this resource.||
-|**observedGeneration**|int|The generation of the CRD that was last reconciled by the operator.||
-|**replicas**|int|The current number of pods being used to provide this resource.||
-|**url**|str|The URL of the REST API endpoint for managing and monitoring Kafka Connect connectors.||
+|**autoRestartStatuses**|[[KafkaStrimziIoV1KafkaMirrorMaker2StatusAutoRestartStatusesItems0](#kafkastrimziiov1kafkamirrormaker2statusautorestartstatusesitems0)]|auto restart statuses||
+|**conditions**|[[KafkaStrimziIoV1KafkaMirrorMaker2StatusConditionsItems0](#kafkastrimziiov1kafkamirrormaker2statusconditionsitems0)]|conditions||
+|**connectorPlugins**|[[KafkaStrimziIoV1KafkaMirrorMaker2StatusConnectorPluginsItems0](#kafkastrimziiov1kafkamirrormaker2statusconnectorpluginsitems0)]|connector plugins||
+|**connectors**|[]|connectors||
+|**labelSelector**|str|label selector||
+|**observedGeneration**|int|observed generation||
+|**replicas**|int|replicas||
+|**url**|str|url||
 ### KafkaStrimziIoV1KafkaMirrorMaker2StatusAutoRestartStatusesItems0
 
 kafka strimzi io v1 kafka mirror maker2 status auto restart statuses items0
@@ -16046,9 +16074,9 @@ kafka strimzi io v1 kafka mirror maker2 status auto restart statuses items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**connectorName**|str|The name of the connector being restarted.||
-|**count**|int|The number of times the connector or task is restarted.||
-|**lastRestartTimestamp**|str|The last time the automatic restart was attempted. The required format is 'yyyy-MM-ddTHH:mm:ssZ' in the UTC time zone.||
+|**connectorName**|str|connector name||
+|**count**|int|count||
+|**lastRestartTimestamp**|str|last restart timestamp||
 ### KafkaStrimziIoV1KafkaMirrorMaker2StatusConditionsItems0
 
 kafka strimzi io v1 kafka mirror maker2 status conditions items0
@@ -16057,10 +16085,10 @@ kafka strimzi io v1 kafka mirror maker2 status conditions items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.||
-|**message**|str|Human-readable message indicating details about the condition's last transition.||
-|**reason**|str|The reason for the condition's last transition (a single word in CamelCase).||
-|**status**|str|The status of the condition, either True, False or Unknown.||
+|**lastTransitionTime**|str|last transition time||
+|**message**|str|message||
+|**reason**|str|reason||
+|**status**|str|status||
 |**type**|str|||
 ### KafkaStrimziIoV1KafkaMirrorMaker2StatusConnectorPluginsItems0
 
@@ -16070,26 +16098,26 @@ kafka strimzi io v1 kafka mirror maker2 status connector plugins items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**class**|str|The class of the connector plugin.||
+|**class**|str|class||
 |**type**|str|||
-|**version**|str|The version of the connector plugin.||
+|**version**|str|version||
 ### KafkaStrimziIoV1KafkaNodePoolSpec
 
-The specification of the KafkaNodePool.
+kafka strimzi io v1 kafka node pool spec
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**jvmOptions**|[KafkaStrimziIoV1KafkaNodePoolSpecJvmOptions](#kafkastrimziiov1kafkanodepoolspecjvmoptions)|jvm options||
-|**replicas** `required`|int|The number of pods in the pool.||
+|**replicas** `required`|int|replicas||
 |**resources**|[KafkaStrimziIoV1KafkaNodePoolSpecResources](#kafkastrimziiov1kafkanodepoolspecresources)|resources||
-|**roles** `required`|[str]|The roles assigned to the node pool. Supported values are `broker` and `controller`. This property is required.||
+|**roles** `required`|[str]|roles||
 |**storage** `required`|[KafkaStrimziIoV1KafkaNodePoolSpecStorage](#kafkastrimziiov1kafkanodepoolspecstorage)|storage||
 |**template**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplate](#kafkastrimziiov1kafkanodepoolspectemplate)|template||
 ### KafkaStrimziIoV1KafkaNodePoolSpecJvmOptions
 
-JVM Options for pods.
+kafka strimzi io v1 kafka node pool spec jvm options
 
 #### Attributes
 
@@ -16098,8 +16126,8 @@ JVM Options for pods.
 |**-XX**|{str:str}|||
 |**-Xms**|str|||
 |**-Xmx**|str|||
-|**gcLoggingEnabled**|bool|Specifies whether the Garbage Collection logging is enabled. The default is false.||
-|**javaSystemProperties**|[[KafkaStrimziIoV1KafkaNodePoolSpecJvmOptionsJavaSystemPropertiesItems0](#kafkastrimziiov1kafkanodepoolspecjvmoptionsjavasystempropertiesitems0)]|A map of additional system properties which will be passed using the `-D` option to the JVM.||
+|**gcLoggingEnabled**|bool|gc logging enabled||
+|**javaSystemProperties**|[[KafkaStrimziIoV1KafkaNodePoolSpecJvmOptionsJavaSystemPropertiesItems0](#kafkastrimziiov1kafkanodepoolspecjvmoptionsjavasystempropertiesitems0)]|java system properties||
 ### KafkaStrimziIoV1KafkaNodePoolSpecJvmOptionsJavaSystemPropertiesItems0
 
 kafka strimzi io v1 kafka node pool spec jvm options java system properties items0
@@ -16108,11 +16136,11 @@ kafka strimzi io v1 kafka node pool spec jvm options java system properties item
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The system property name.||
-|**value**|str|The system property value.||
+|**name**|str|name||
+|**value**|str|value||
 ### KafkaStrimziIoV1KafkaNodePoolSpecResources
 
-CPU and memory resources to reserve.
+kafka strimzi io v1 kafka node pool spec resources
 
 #### Attributes
 
@@ -16133,22 +16161,22 @@ kafka strimzi io v1 kafka node pool spec resources claims items0
 |**request**|str|request||
 ### KafkaStrimziIoV1KafkaNodePoolSpecStorage
 
-Storage configuration (disk). Cannot be updated.
+kafka strimzi io v1 kafka node pool spec storage
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**class**|str|The storage class to use for dynamic volume allocation.||
-|**deleteClaim**|bool|Specifies whether the persistent volume claim is deleted when a Kafka node is deleted. Optional. Defaults to `false`.||
-|**id**|int|Storage identification number. It is mandatory only for storage volumes defined in a storage of type 'jbod'.||
-|**kraftMetadata** `readOnly`|"shared"|Specifies whether this volume should be used for storing KRaft metadata. This property is optional. When set, the only currently supported value is `shared`. At most one volume can have this property set.|"shared"|
-|**selector**|{str:str}|Specifies a specific persistent volume to use. It contains key:value pairs representing labels for selecting such a volume.||
-|**size**|str|When `type=persistent-claim`, defines the size of the persistent volume claim, such as 100Gi. Mandatory when `type=persistent-claim`.||
-|**sizeLimit**|str|When type=ephemeral, defines the total amount of local storage required for this EmptyDir volume (for example 1Gi).||
+|**class**|str|class||
+|**deleteClaim**|bool|delete claim||
+|**id**|int|id||
+|**kraftMetadata** `readOnly`|"shared"|kraft metadata|"shared"|
+|**selector**|{str:str}|selector||
+|**size**|str|size||
+|**sizeLimit**|str|size limit||
 |**type** `required`|"ephemeral" | "persistent-claim" | "jbod"|||
-|**volumeAttributesClass**|str|Specifies `VolumeAttributeClass` name for dynamically configuring storage attributes.||
-|**volumes**|[[KafkaStrimziIoV1KafkaNodePoolSpecStorageVolumesItems0](#kafkastrimziiov1kafkanodepoolspecstoragevolumesitems0)]|List of volumes as Storage objects representing the JBOD disks array.||
+|**volumeAttributesClass**|str|volume attributes class||
+|**volumes**|[[KafkaStrimziIoV1KafkaNodePoolSpecStorageVolumesItems0](#kafkastrimziiov1kafkanodepoolspecstoragevolumesitems0)]|volumes||
 ### KafkaStrimziIoV1KafkaNodePoolSpecStorageVolumesItems0
 
 kafka strimzi io v1 kafka node pool spec storage volumes items0
@@ -16157,18 +16185,18 @@ kafka strimzi io v1 kafka node pool spec storage volumes items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**class**|str|The storage class to use for dynamic volume allocation.||
-|**deleteClaim**|bool|Specifies whether the persistent volume claim is deleted when a Kafka node is deleted. Optional. Defaults to `false`.||
-|**id**|int|Storage identification number. Mandatory for storage volumes defined with a `jbod` storage type configuration.||
-|**kraftMetadata** `readOnly`|"shared"|Specifies whether this volume should be used for storing KRaft metadata. This property is optional. When set, the only currently supported value is `shared`. At most one volume can have this property set.|"shared"|
-|**selector**|{str:str}|Specifies a specific persistent volume to use. It contains key:value pairs representing labels for selecting such a volume.||
-|**size**|str|When `type=persistent-claim`, defines the size of the persistent volume claim, such as 100Gi. Mandatory when `type=persistent-claim`.||
-|**sizeLimit**|str|When type=ephemeral, defines the total amount of local storage required for this EmptyDir volume (for example 1Gi).||
+|**class**|str|class||
+|**deleteClaim**|bool|delete claim||
+|**id**|int|id||
+|**kraftMetadata** `readOnly`|"shared"|kraft metadata|"shared"|
+|**selector**|{str:str}|selector||
+|**size**|str|size||
+|**sizeLimit**|str|size limit||
 |**type** `required`|"ephemeral" | "persistent-claim"|||
-|**volumeAttributesClass**|str|Specifies `VolumeAttributeClass` name for dynamically configuring storage attributes.||
+|**volumeAttributesClass**|str|volume attributes class||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplate
 
-Template for pool resources. The template allows users to specify how the resources belonging to this pool are generated.
+kafka strimzi io v1 kafka node pool spec template
 
 #### Attributes
 
@@ -16184,15 +16212,15 @@ Template for pool resources. The template allows users to specify how the resour
 |**podSet**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodSet](#kafkastrimziiov1kafkanodepoolspectemplatepodset)|pod set||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainer
 
-Template for the Kafka init container.
+kafka strimzi io v1 kafka node pool spec template init container
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**env**|[[KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerEnvItems0](#kafkastrimziiov1kafkanodepoolspectemplateinitcontainerenvitems0)]|Environment variables which should be applied to the container.||
+|**env**|[[KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerEnvItems0](#kafkastrimziiov1kafkanodepoolspectemplateinitcontainerenvitems0)]|env||
 |**securityContext**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerSecurityContext](#kafkastrimziiov1kafkanodepoolspectemplateinitcontainersecuritycontext)|security context||
-|**volumeMounts**|[[KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerVolumeMountsItems0](#kafkastrimziiov1kafkanodepoolspectemplateinitcontainervolumemountsitems0)]|Additional volume mounts which should be applied to the container.||
+|**volumeMounts**|[[KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerVolumeMountsItems0](#kafkastrimziiov1kafkanodepoolspectemplateinitcontainervolumemountsitems0)]|volume mounts||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerEnvItems0
 
 kafka strimzi io v1 kafka node pool spec template init container env items0
@@ -16201,12 +16229,12 @@ kafka strimzi io v1 kafka node pool spec template init container env items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The environment variable key.||
-|**value**|str|The environment variable value.||
+|**name**|str|name||
+|**value**|str|value||
 |**valueFrom**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerEnvItems0ValueFrom](#kafkastrimziiov1kafkanodepoolspectemplateinitcontainerenvitems0valuefrom)|value from||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerEnvItems0ValueFrom
 
-Reference to the secret or config map property to which the environment variable is set.
+kafka strimzi io v1 kafka node pool spec template init container env items0 value from
 
 #### Attributes
 
@@ -16216,7 +16244,7 @@ Reference to the secret or config map property to which the environment variable
 |**secretKeyRef**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerEnvItems0ValueFromSecretKeyRef](#kafkastrimziiov1kafkanodepoolspectemplateinitcontainerenvitems0valuefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerEnvItems0ValueFromConfigMapKeyRef
 
-Reference to a key in a config map.
+kafka strimzi io v1 kafka node pool spec template init container env items0 value from config map key ref
 
 #### Attributes
 
@@ -16227,7 +16255,7 @@ Reference to a key in a config map.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerEnvItems0ValueFromSecretKeyRef
 
-Reference to a key in a secret.
+kafka strimzi io v1 kafka node pool spec template init container env items0 value from secret key ref
 
 #### Attributes
 
@@ -16238,7 +16266,7 @@ Reference to a key in a secret.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerSecurityContext
 
-Security context for the container.
+kafka strimzi io v1 kafka node pool spec template init container security context
 
 #### Attributes
 
@@ -16327,15 +16355,15 @@ kafka strimzi io v1 kafka node pool spec template init container volume mounts i
 |**subPathExpr**|str|sub path expr||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainer
 
-Template for the Kafka broker container.
+kafka strimzi io v1 kafka node pool spec template kafka container
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**env**|[[KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerEnvItems0](#kafkastrimziiov1kafkanodepoolspectemplatekafkacontainerenvitems0)]|Environment variables which should be applied to the container.||
+|**env**|[[KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerEnvItems0](#kafkastrimziiov1kafkanodepoolspectemplatekafkacontainerenvitems0)]|env||
 |**securityContext**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerSecurityContext](#kafkastrimziiov1kafkanodepoolspectemplatekafkacontainersecuritycontext)|security context||
-|**volumeMounts**|[[KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerVolumeMountsItems0](#kafkastrimziiov1kafkanodepoolspectemplatekafkacontainervolumemountsitems0)]|Additional volume mounts which should be applied to the container.||
+|**volumeMounts**|[[KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerVolumeMountsItems0](#kafkastrimziiov1kafkanodepoolspectemplatekafkacontainervolumemountsitems0)]|volume mounts||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerEnvItems0
 
 kafka strimzi io v1 kafka node pool spec template kafka container env items0
@@ -16344,12 +16372,12 @@ kafka strimzi io v1 kafka node pool spec template kafka container env items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The environment variable key.||
-|**value**|str|The environment variable value.||
+|**name**|str|name||
+|**value**|str|value||
 |**valueFrom**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerEnvItems0ValueFrom](#kafkastrimziiov1kafkanodepoolspectemplatekafkacontainerenvitems0valuefrom)|value from||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerEnvItems0ValueFrom
 
-Reference to the secret or config map property to which the environment variable is set.
+kafka strimzi io v1 kafka node pool spec template kafka container env items0 value from
 
 #### Attributes
 
@@ -16359,7 +16387,7 @@ Reference to the secret or config map property to which the environment variable
 |**secretKeyRef**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerEnvItems0ValueFromSecretKeyRef](#kafkastrimziiov1kafkanodepoolspectemplatekafkacontainerenvitems0valuefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerEnvItems0ValueFromConfigMapKeyRef
 
-Reference to a key in a config map.
+kafka strimzi io v1 kafka node pool spec template kafka container env items0 value from config map key ref
 
 #### Attributes
 
@@ -16370,7 +16398,7 @@ Reference to a key in a config map.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerEnvItems0ValueFromSecretKeyRef
 
-Reference to a key in a secret.
+kafka strimzi io v1 kafka node pool spec template kafka container env items0 value from secret key ref
 
 #### Attributes
 
@@ -16381,7 +16409,7 @@ Reference to a key in a secret.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerSecurityContext
 
-Security context for the container.
+kafka strimzi io v1 kafka node pool spec template kafka container security context
 
 #### Attributes
 
@@ -16470,7 +16498,7 @@ kafka strimzi io v1 kafka node pool spec template kafka container volume mounts 
 |**subPathExpr**|str|sub path expr||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePerPodIngress
 
-Template for Kafka per-pod `Ingress` used for access from outside of Kubernetes.
+kafka strimzi io v1 kafka node pool spec template per pod ingress
 
 #### Attributes
 
@@ -16479,17 +16507,17 @@ Template for Kafka per-pod `Ingress` used for access from outside of Kubernetes.
 |**metadata**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePerPodIngressMetadata](#kafkastrimziiov1kafkanodepoolspectemplateperpodingressmetadata)|metadata||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePerPodIngressMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka node pool spec template per pod ingress metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePerPodRoute
 
-Template for Kafka per-pod `Routes` used for access from outside of OpenShift.
+kafka strimzi io v1 kafka node pool spec template per pod route
 
 #### Attributes
 
@@ -16498,17 +16526,17 @@ Template for Kafka per-pod `Routes` used for access from outside of OpenShift.
 |**metadata**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePerPodRouteMetadata](#kafkastrimziiov1kafkanodepoolspectemplateperpodroutemetadata)|metadata||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePerPodRouteMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka node pool spec template per pod route metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePerPodService
 
-Template for Kafka per-pod `Services` used for access from outside of Kubernetes.
+kafka strimzi io v1 kafka node pool spec template per pod service
 
 #### Attributes
 
@@ -16517,17 +16545,17 @@ Template for Kafka per-pod `Services` used for access from outside of Kubernetes
 |**metadata**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePerPodServiceMetadata](#kafkastrimziiov1kafkanodepoolspectemplateperpodservicemetadata)|metadata||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePerPodServiceMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka node pool spec template per pod service metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePersistentVolumeClaim
 
-Template for all Kafka `PersistentVolumeClaims`.
+kafka strimzi io v1 kafka node pool spec template persistent volume claim
 
 #### Attributes
 
@@ -16536,17 +16564,17 @@ Template for all Kafka `PersistentVolumeClaims`.
 |**metadata**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePersistentVolumeClaimMetadata](#kafkastrimziiov1kafkanodepoolspectemplatepersistentvolumeclaimmetadata)|metadata||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePersistentVolumeClaimMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka node pool spec template persistent volume claim metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePod
 
-Template for Kafka `Pods`.
+kafka strimzi io v1 kafka node pool spec template pod
 
 #### Attributes
 
@@ -16554,23 +16582,23 @@ Template for Kafka `Pods`.
 | --- | --- | --- | --- |
 |**affinity**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodAffinity](#kafkastrimziiov1kafkanodepoolspectemplatepodaffinity)|affinity||
 |**dnsConfig**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodDNSConfig](#kafkastrimziiov1kafkanodepoolspectemplatepoddnsconfig)|dns config||
-|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.||
-|**enableServiceLinks**|bool|Indicates whether information about services should be injected into Pod's environment variables.||
-|**hostAliases**|[[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodHostAliasesItems0](#kafkastrimziiov1kafkanodepoolspectemplatepodhostaliasesitems0)]|The pod's HostAliases. HostAliases is an optional list of hosts and IPs that will be injected into the Pod's hosts file if specified.||
-|**hostUsers**|bool|Use the host user namespace. Optional. Defaults to `true`. When `true` or not set, the pod runs in the host user namespace. This is required when the pod needs features available only in the host namespace, such as loading kernel modules with `CAP_SYS_MODULE`.When set to `false`, the pod runs in a new user namespace. Setting `false` helps mitigate container breakout vulnerabilities and allows containers to run as `root` without granting `root` privileges on the host. This property is alpha-level in Kubernetes and is supported only by Kubernetes clusters that enable the `UserNamespacesSupport` feature.||
-|**imagePullSecrets**|[[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodImagePullSecretsItems0](#kafkastrimziiov1kafkanodepoolspectemplatepodimagepullsecretsitems0)]|List of references to secrets in the same namespace to use for pulling any of the images used by this Pod. When the `STRIMZI_IMAGE_PULL_SECRETS` environment variable in Cluster Operator and the `imagePullSecrets` option are specified, only the `imagePullSecrets` variable is used and the `STRIMZI_IMAGE_PULL_SECRETS` variable is ignored.||
+|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|dns policy||
+|**enableServiceLinks**|bool|enable service links||
+|**hostAliases**|[[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodHostAliasesItems0](#kafkastrimziiov1kafkanodepoolspectemplatepodhostaliasesitems0)]|host aliases||
+|**hostUsers**|bool|host users||
+|**imagePullSecrets**|[[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodImagePullSecretsItems0](#kafkastrimziiov1kafkanodepoolspectemplatepodimagepullsecretsitems0)]|image pull secrets||
 |**metadata**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodMetadata](#kafkastrimziiov1kafkanodepoolspectemplatepodmetadata)|metadata||
-|**priorityClassName**|str|The name of the priority class used to assign priority to the pods.||
-|**schedulerName**|str|The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.||
+|**priorityClassName**|str|priority class name||
+|**schedulerName**|str|scheduler name||
 |**securityContext**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodSecurityContext](#kafkastrimziiov1kafkanodepoolspectemplatepodsecuritycontext)|security context||
-|**terminationGracePeriodSeconds**|int|The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.||
-|**tmpDirSizeLimit**|str|Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.||
-|**tolerations**|[[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTolerationsItems0](#kafkastrimziiov1kafkanodepoolspectemplatepodtolerationsitems0)]|The pod's tolerations.||
-|**topologySpreadConstraints**|[[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTopologySpreadConstraintsItems0](#kafkastrimziiov1kafkanodepoolspectemplatepodtopologyspreadconstraintsitems0)]|The pod's topology spread constraints.||
-|**volumes**|[[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0](#kafkastrimziiov1kafkanodepoolspectemplatepodvolumesitems0)]|Additional volumes that can be mounted to the pod.||
+|**terminationGracePeriodSeconds**|int|termination grace period seconds||
+|**tmpDirSizeLimit**|str|tmp dir size limit||
+|**tolerations**|[[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTolerationsItems0](#kafkastrimziiov1kafkanodepoolspectemplatepodtolerationsitems0)]|tolerations||
+|**topologySpreadConstraints**|[[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTopologySpreadConstraintsItems0](#kafkastrimziiov1kafkanodepoolspectemplatepodtopologyspreadconstraintsitems0)]|topology spread constraints||
+|**volumes**|[[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0](#kafkastrimziiov1kafkanodepoolspectemplatepodvolumesitems0)]|volumes||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodAffinity
 
-The pod's affinity rules.
+kafka strimzi io v1 kafka node pool spec template pod affinity
 
 #### Attributes
 
@@ -16938,7 +16966,7 @@ kafka strimzi io v1 kafka node pool spec template pod affinity pod anti affinity
 |**values**|[str]|values||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodDNSConfig
 
-The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.
+kafka strimzi io v1 kafka node pool spec template pod DNS config
 
 #### Attributes
 
@@ -16978,17 +17006,17 @@ kafka strimzi io v1 kafka node pool spec template pod image pull secrets items0
 |**name**|str|name||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka node pool spec template pod metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodSecurityContext
 
-Configures pod-level security attributes and common container settings.
+kafka strimzi io v1 kafka node pool spec template pod security context
 
 #### Attributes
 
@@ -17063,7 +17091,7 @@ kafka strimzi io v1 kafka node pool spec template pod security context windows o
 |**runAsUserName**|str|run as user name||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodSet
 
-Template for Kafka `StrimziPodSet` resource.
+kafka strimzi io v1 kafka node pool spec template pod set
 
 #### Attributes
 
@@ -17072,14 +17100,14 @@ Template for Kafka `StrimziPodSet` resource.
 |**metadata**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodSetMetadata](#kafkastrimziiov1kafkanodepoolspectemplatepodsetmetadata)|metadata||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodSetMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1 kafka node pool spec template pod set metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTolerationsItems0
 
 kafka strimzi io v1 kafka node pool spec template pod tolerations items0
@@ -17142,12 +17170,12 @@ kafka strimzi io v1 kafka node pool spec template pod volumes items0
 |**csi**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0Csi](#kafkastrimziiov1kafkanodepoolspectemplatepodvolumesitems0csi)|csi||
 |**emptyDir**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0EmptyDir](#kafkastrimziiov1kafkanodepoolspectemplatepodvolumesitems0emptydir)|empty dir||
 |**image**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0Image](#kafkastrimziiov1kafkanodepoolspectemplatepodvolumesitems0image)|image||
-|**name**|str|Name to use for the volume. Required.||
+|**name**|str|name||
 |**persistentVolumeClaim**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0PersistentVolumeClaim](#kafkastrimziiov1kafkanodepoolspectemplatepodvolumesitems0persistentvolumeclaim)|persistent volume claim||
 |**secret**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0Secret](#kafkastrimziiov1kafkanodepoolspectemplatepodvolumesitems0secret)|secret||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0ConfigMap
 
-`ConfigMap` to use to populate the volume.
+kafka strimzi io v1 kafka node pool spec template pod volumes items0 config map
 
 #### Attributes
 
@@ -17170,7 +17198,7 @@ kafka strimzi io v1 kafka node pool spec template pod volumes items0 config map 
 |**path**|str|path||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0Csi
 
-`CSIVolumeSource` object to use to populate the volume.
+kafka strimzi io v1 kafka node pool spec template pod volumes items0 csi
 
 #### Attributes
 
@@ -17192,17 +17220,17 @@ kafka strimzi io v1 kafka node pool spec template pod volumes items0 csi node pu
 |**name**|str|name||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0EmptyDir
 
-`EmptyDir` to use to populate the volume.
+kafka strimzi io v1 kafka node pool spec template pod volumes items0 empty dir
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**medium** `readOnly`|"Memory"|Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.|"Memory"|
-|**sizeLimit**|str|The total amount of local storage required for this EmptyDir volume (for example 1Gi).||
+|**medium** `readOnly`|"Memory"|medium|"Memory"|
+|**sizeLimit**|str|size limit||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0Image
 
-`ImageVolumeSource` object to use to populate the volume.
+kafka strimzi io v1 kafka node pool spec template pod volumes items0 image
 
 #### Attributes
 
@@ -17212,7 +17240,7 @@ kafka strimzi io v1 kafka node pool spec template pod volumes items0 csi node pu
 |**reference**|str|reference||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0PersistentVolumeClaim
 
-`PersistentVolumeClaim` object to use to populate the volume.
+kafka strimzi io v1 kafka node pool spec template pod volumes items0 persistent volume claim
 
 #### Attributes
 
@@ -17222,7 +17250,7 @@ kafka strimzi io v1 kafka node pool spec template pod volumes items0 csi node pu
 |**readOnly**|bool|read only||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0Secret
 
-`Secret` to use to populate the volume.
+kafka strimzi io v1 kafka node pool spec template pod volumes items0 secret
 
 #### Attributes
 
@@ -17245,19 +17273,19 @@ kafka strimzi io v1 kafka node pool spec template pod volumes items0 secret item
 |**path**|str|path||
 ### KafkaStrimziIoV1KafkaNodePoolStatus
 
-The status of the KafkaNodePool.
+kafka strimzi io v1 kafka node pool status
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**clusterId**|str|Kafka cluster ID.||
-|**conditions**|[[KafkaStrimziIoV1KafkaNodePoolStatusConditionsItems0](#kafkastrimziiov1kafkanodepoolstatusconditionsitems0)]|List of status conditions.||
-|**labelSelector**|str|Label selector for pods providing this resource.||
-|**nodeIds**|[int]|Node IDs used by Kafka nodes in this pool.||
-|**observedGeneration**|int|The generation of the CRD that was last reconciled by the operator.||
-|**replicas**|int|The current number of pods being used to provide this resource.||
-|**roles**|[str]|The roles currently assigned to this pool.||
+|**clusterId**|str|cluster Id||
+|**conditions**|[[KafkaStrimziIoV1KafkaNodePoolStatusConditionsItems0](#kafkastrimziiov1kafkanodepoolstatusconditionsitems0)]|conditions||
+|**labelSelector**|str|label selector||
+|**nodeIds**|[int]|node ids||
+|**observedGeneration**|int|observed generation||
+|**replicas**|int|replicas||
+|**roles**|[str]|roles||
 ### KafkaStrimziIoV1KafkaNodePoolStatusConditionsItems0
 
 kafka strimzi io v1 kafka node pool status conditions items0
@@ -17266,31 +17294,31 @@ kafka strimzi io v1 kafka node pool status conditions items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.||
-|**message**|str|Human-readable message indicating details about the condition's last transition.||
-|**reason**|str|The reason for the condition's last transition (a single word in CamelCase).||
-|**status**|str|The status of the condition, either True, False or Unknown.||
+|**lastTransitionTime**|str|last transition time||
+|**message**|str|message||
+|**reason**|str|reason||
+|**status**|str|status||
 |**type**|str|||
 ### KafkaStrimziIoV1KafkaRebalanceSpec
 
-The specification of the Kafka rebalance.
+kafka strimzi io v1 kafka rebalance spec
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**brokers**|[int]|The list of newly added brokers in case of scaling up or the ones to be removed in case of scaling down to use for rebalancing. This list can be used only with rebalancing mode `add-brokers` and `removed-brokers`. It is ignored with `full` mode.||
-|**concurrentIntraBrokerPartitionMovements**|int|The upper bound of ongoing partition replica movements between disks within each broker. Default is 2.||
-|**concurrentLeaderMovements**|int|The upper bound of ongoing partition leadership movements. Default is 1000.||
-|**concurrentPartitionMovementsPerBroker**|int|The upper bound of ongoing partition replica movements going into/out of each broker. Default is 5.||
-|**excludedTopics**|str|A regular expression where any matching topics will be excluded from the calculation of optimization proposals. This expression will be parsed by the java.util.regex.Pattern class; for more information on the supported format consult the documentation for that class.||
-|**goals**|[str]|A list of goals, ordered by decreasing priority, to use for generating and executing the rebalance proposal. The supported goals are available at https://github.com/linkedin/cruise-control#goals. If an empty goals list is provided, the goals declared in the default.goals Cruise Control configuration parameter are used.||
-|**mode**|"full" | "add-brokers" | "remove-brokers" | "remove-disks"|Mode to run the rebalancing. The supported modes are `full`, `add-brokers`, `remove-brokers`.<br />If not specified, the `full` mode is used by default.<br /><br />* `full` mode runs the rebalancing across all the brokers in the cluster.<br />* `add-brokers` mode can be used after scaling up the cluster to move some replicas to the newly added brokers.<br />* `remove-brokers` mode can be used before scaling down the cluster to move replicas out of the brokers to be removed.<br />* `remove-disks` mode can be used to move data across the volumes within the same broker<br />.||
-|**moveReplicasOffVolumes**|[[KafkaStrimziIoV1KafkaRebalanceSpecMoveReplicasOffVolumesItems0](#kafkastrimziiov1kafkarebalancespecmovereplicasoffvolumesitems0)]|List of brokers and their corresponding volumes from which replicas need to be moved.||
-|**rebalanceDisk**|bool|Enables intra-broker disk balancing, which balances disk space utilization between disks on the same broker. Only applies to Kafka deployments that use JBOD storage with multiple disks. When enabled, inter-broker balancing is disabled. Default is false.||
-|**replicaMovementStrategies**|[str]|A list of strategy class names used to determine the execution order for the replica movements in the generated optimization proposal. By default BaseReplicaMovementStrategy is used, which will execute the replica movements in the order that they were generated.||
-|**replicationThrottle**|int|The upper bound, in bytes per second, on the bandwidth used to move replicas. There is no limit by default.||
-|**skipHardGoalCheck**|bool|Whether to allow the hard goals specified in the Kafka CR to be skipped in optimization proposal generation. This can be useful when some of those hard goals are preventing a balance solution being found. Default is false.||
+|**brokers**|[int]|brokers||
+|**concurrentIntraBrokerPartitionMovements**|int|concurrent intra broker partition movements||
+|**concurrentLeaderMovements**|int|concurrent leader movements||
+|**concurrentPartitionMovementsPerBroker**|int|concurrent partition movements per broker||
+|**excludedTopics**|str|excluded topics||
+|**goals**|[str]|goals||
+|**mode**|"full" | "add-brokers" | "remove-brokers" | "remove-disks"|mode||
+|**moveReplicasOffVolumes**|[[KafkaStrimziIoV1KafkaRebalanceSpecMoveReplicasOffVolumesItems0](#kafkastrimziiov1kafkarebalancespecmovereplicasoffvolumesitems0)]|move replicas off volumes||
+|**rebalanceDisk**|bool|rebalance disk||
+|**replicaMovementStrategies**|[str]|replica movement strategies||
+|**replicationThrottle**|int|replication throttle||
+|**skipHardGoalCheck**|bool|skip hard goal check||
 ### KafkaStrimziIoV1KafkaRebalanceSpecMoveReplicasOffVolumesItems0
 
 kafka strimzi io v1 kafka rebalance spec move replicas off volumes items0
@@ -17299,21 +17327,21 @@ kafka strimzi io v1 kafka rebalance spec move replicas off volumes items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**brokerId**|int|ID of the broker that contains the disk from which you want to move the partition replicas.||
-|**volumeIds**|[int]|IDs of the disks from which the partition replicas need to be moved.||
+|**brokerId**|int|broker Id||
+|**volumeIds**|[int]|volume ids||
 ### KafkaStrimziIoV1KafkaRebalanceStatus
 
-The status of the Kafka rebalance.
+kafka strimzi io v1 kafka rebalance status
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**conditions**|[[KafkaStrimziIoV1KafkaRebalanceStatusConditionsItems0](#kafkastrimziiov1kafkarebalancestatusconditionsitems0)]|List of status conditions.||
-|**observedGeneration**|int|The generation of the CRD that was last reconciled by the operator.||
-|**optimizationResult**|any|A JSON object describing the optimization result.||
+|**conditions**|[[KafkaStrimziIoV1KafkaRebalanceStatusConditionsItems0](#kafkastrimziiov1kafkarebalancestatusconditionsitems0)]|conditions||
+|**observedGeneration**|int|observed generation||
+|**optimizationResult**|any|optimization result||
 |**progress**|[KafkaStrimziIoV1KafkaRebalanceStatusProgress](#kafkastrimziiov1kafkarebalancestatusprogress)|progress||
-|**sessionId**|str|The session identifier for requests to Cruise Control pertaining to this KafkaRebalance resource. This is used by the Kafka Rebalance operator to track the status of ongoing rebalancing operations.||
+|**sessionId**|str|session Id||
 ### KafkaStrimziIoV1KafkaRebalanceStatusConditionsItems0
 
 kafka strimzi io v1 kafka rebalance status conditions items0
@@ -17322,20 +17350,20 @@ kafka strimzi io v1 kafka rebalance status conditions items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.||
-|**message**|str|Human-readable message indicating details about the condition's last transition.||
-|**reason**|str|The reason for the condition's last transition (a single word in CamelCase).||
-|**status**|str|The status of the condition, either True, False or Unknown.||
+|**lastTransitionTime**|str|last transition time||
+|**message**|str|message||
+|**reason**|str|reason||
+|**status**|str|status||
 |**type**|str|||
 ### KafkaStrimziIoV1KafkaRebalanceStatusProgress
 
-A reference to Config Map with the progress information.
+kafka strimzi io v1 kafka rebalance status progress
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**rebalanceProgressConfigMap**|str|The name of the `ConfigMap` containing information related to the progress of a partition rebalance.||
+|**rebalanceProgressConfigMap**|str|rebalance progress config map||
 ### KafkaStrimziIoV1KafkaSpec
 
 kafka strimzi io v1 kafka spec
@@ -20962,6 +20990,7 @@ kafka strimzi io v1 kafka spec kafka listeners items0 configuration
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**advertisedHostTemplate**|str|advertised host template||
+|**advertisedPortTemplate**|str|advertised port template||
 |**allocateLoadBalancerNodePorts**|bool|allocate load balancer node ports||
 |**bootstrap**|[KafkaStrimziIoV1KafkaSpecKafkaListenersItems0ConfigurationBootstrap](#kafkastrimziiov1kafkaspeckafkalistenersitems0configurationbootstrap)|bootstrap||
 |**brokerCertChainAndKey**|[KafkaStrimziIoV1KafkaSpecKafkaListenersItems0ConfigurationBrokerCertChainAndKey](#kafkastrimziiov1kafkaspeckafkalistenersitems0configurationbrokercertchainandkey)|broker cert chain and key||
@@ -21193,7 +21222,9 @@ kafka strimzi io v1 kafka spec kafka rack
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**topologyKey** `required`|str|topology key||
+|**envVarName**|str|env var name||
+|**topologyKey**|str|topology key||
+|**type**|"topology-label" | "environment-variable"|||
 ### KafkaStrimziIoV1KafkaSpecKafkaReadinessProbe
 
 kafka strimzi io v1 kafka spec kafka readiness probe
@@ -22843,73 +22874,6 @@ core strimzi io v1 strimzi pod set
 |**metadata**|[ObjectMeta](#objectmeta)|metadata||
 |**spec** `required`|[CoreStrimziIoV1StrimziPodSetSpec](#corestrimziiov1strimzipodsetspec)|spec||
 |**status**|[CoreStrimziIoV1StrimziPodSetStatus](#corestrimziiov1strimzipodsetstatus)|status||
-### AccessStrimziIoV1alpha1KafkaAccessSpec
-
-access strimzi io v1alpha1 kafka access spec
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**kafka** `required`|[AccessStrimziIoV1alpha1KafkaAccessSpecKafka](#accessstrimziiov1alpha1kafkaaccessspeckafka)|kafka||
-|**secretName**|str|secret name||
-|**user**|[AccessStrimziIoV1alpha1KafkaAccessSpecUser](#accessstrimziiov1alpha1kafkaaccessspecuser)|user||
-### AccessStrimziIoV1alpha1KafkaAccessSpecKafka
-
-access strimzi io v1alpha1 kafka access spec kafka
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**listener**|str|listener||
-|**name** `required`|str|name||
-|**namespace**|str|namespace||
-### AccessStrimziIoV1alpha1KafkaAccessSpecUser
-
-access strimzi io v1alpha1 kafka access spec user
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**apiGroup** `required`|str|api group||
-|**kind** `required`|str|kind||
-|**name** `required`|str|name||
-|**namespace**|str|namespace||
-### AccessStrimziIoV1alpha1KafkaAccessStatus
-
-access strimzi io v1alpha1 kafka access status
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**binding**|[AccessStrimziIoV1alpha1KafkaAccessStatusBinding](#accessstrimziiov1alpha1kafkaaccessstatusbinding)|binding||
-|**conditions**|[[AccessStrimziIoV1alpha1KafkaAccessStatusConditionsItems0](#accessstrimziiov1alpha1kafkaaccessstatusconditionsitems0)]|conditions||
-|**observedGeneration**|int|observed generation||
-### AccessStrimziIoV1alpha1KafkaAccessStatusBinding
-
-access strimzi io v1alpha1 kafka access status binding
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**name**|str|name||
-### AccessStrimziIoV1alpha1KafkaAccessStatusConditionsItems0
-
-access strimzi io v1alpha1 kafka access status conditions items0
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**lastTransitionTime**|str|last transition time||
-|**message**|str|message||
-|**reason**|str|reason||
-|**status**|str|status||
-|**type**|str|||
 ### CrdgeneratorStrimziIoV1alpha1ExampleAffinity
 
 crdgenerator strimzi io v1alpha1 example affinity
@@ -23298,8 +23262,8 @@ crdgenerator strimzi io v1alpha1 example list of polymorphic items0
 | --- | --- | --- | --- |
 |**commonProperty**|str|common property||
 |**discrim** `required`|"left" | "right"|discrim||
-|**leftProperty**|str|left property||
-|**rightProperty**|str|right property||
+|**leftProperty**|str|when descrim=left, the left-hand property.||
+|**rightProperty**|str|when descrim=right, the right-hand property.||
 ### CrdgeneratorStrimziIoV1alpha1ExampleObjectProperty
 
 crdgenerator strimzi io v1alpha1 example object property
@@ -23320,8 +23284,20 @@ crdgenerator strimzi io v1alpha1 example polymorphic property
 | --- | --- | --- | --- |
 |**commonProperty**|str|common property||
 |**discrim** `required`|"left" | "right"|discrim||
-|**leftProperty**|str|left property||
-|**rightProperty**|str|right property||
+|**leftProperty**|str|when descrim=left, the left-hand property.||
+|**rightProperty**|str|when descrim=right, the right-hand property.||
+### CrdgeneratorStrimziIoV1alpha1ExamplePolymorphicWithOptionalType
+
+crdgenerator strimzi io v1alpha1 example polymorphic with optional type
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**commonProperty**|str|common property||
+|**discrim**|"left" | "right"|discrim||
+|**leftProperty**|str|when descrim=left, the left-hand property.||
+|**rightProperty**|str|when descrim=right, the right-hand property.||
 ### Example
 
 crdgenerator strimzi io v1alpha1 example
@@ -23342,8 +23318,9 @@ crdgenerator strimzi io v1alpha1 example
 |**booleanProperty** `required`|bool|boolean property||
 |**customisedEnum**|"one" | "two"|customised enum||
 |**either**|str|either||
-|**fieldProperty**|str|field property||
-|**intProperty**|int|int property||
+|**external**|str|external||
+|**fieldProperty**|str|Example of field property.||
+|**intProperty**|int|An example int property.||
 |**kind** `required` `readOnly`|"Example"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"Example"|
 |**listOfArray**|[[str]]|list of array||
 |**listOfBoundTypeVar**|[]|list of bound type var||
@@ -23361,7 +23338,7 @@ crdgenerator strimzi io v1alpha1 example
 |**listOfWildcardTypeVar2**|[]|list of wildcard type var2||
 |**listOfWildcardTypeVar3**|[]|list of wildcard type var3||
 |**listOfWildcardTypeVar4**|[[]]|list of wildcard type var4||
-|**longProperty**|int|long property||
+|**longProperty**|int|An example long property.||
 |**mapStringObject**|any|map string object||
 |**mapStringQuantity**|{str:int | str}|map string quantity||
 |**mapStringString**|{str:str}|map string string||
@@ -23370,6 +23347,7 @@ crdgenerator strimzi io v1alpha1 example
 |**objectProperty**|[CrdgeneratorStrimziIoV1alpha1ExampleObjectProperty](#crdgeneratorstrimziiov1alpha1exampleobjectproperty)|object property||
 |**or**|str|||
 |**polymorphicProperty**|[CrdgeneratorStrimziIoV1alpha1ExamplePolymorphicProperty](#crdgeneratorstrimziiov1alpha1examplepolymorphicproperty)|polymorphic property||
+|**polymorphicWithOptionalType**|[CrdgeneratorStrimziIoV1alpha1ExamplePolymorphicWithOptionalType](#crdgeneratorstrimziiov1alpha1examplepolymorphicwithoptionaltype)|polymorphic with optional type||
 |**rawList**|[]|raw list||
 |**spec**|any|spec||
 |**status**|any|status||
@@ -23401,44 +23379,31 @@ opentelemetry io v1alpha1 instrumentation
 |**metadata**|[ObjectMeta](#objectmeta)|metadata||
 |**spec**|[OpentelemetryIoV1alpha1InstrumentationSpec](#opentelemetryiov1alpha1instrumentationspec)|spec||
 |**status**|any|status||
-### KafkaAccess
-
-access strimzi io v1alpha1 kafka access
-
-#### Attributes
-
-| name | type | description | default value |
-| --- | --- | --- | --- |
-|**apiVersion** `required` `readOnly`|"access.strimzi.io/v1alpha1"|APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources|"access.strimzi.io/v1alpha1"|
-|**kind** `required` `readOnly`|"KafkaAccess"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"KafkaAccess"|
-|**metadata**|[ObjectMeta](#objectmeta)|metadata||
-|**spec**|[AccessStrimziIoV1alpha1KafkaAccessSpec](#accessstrimziiov1alpha1kafkaaccessspec)|spec||
-|**status**|[AccessStrimziIoV1alpha1KafkaAccessStatus](#accessstrimziiov1alpha1kafkaaccessstatus)|status||
 ### KafkaStrimziIoV1alpha1KafkaTopicSpec
 
-The specification of the topic.
+kafka strimzi io v1alpha1 kafka topic spec
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**config**|any|The topic configuration.||
-|**partitions**|int|The number of partitions the topic should have. This cannot be decreased after topic creation. It can be increased after topic creation, but it is important to understand the consequences that has, especially for topics with semantic partitioning. When absent this will default to the broker configuration for `num.partitions`.||
-|**replicas**|int|The number of replicas the topic should have. When absent this will default to the broker configuration for `default.replication.factor`.||
-|**topicName**|str|The name of the topic. When absent this will default to the metadata.name of the topic. It is recommended to not set this unless the topic name is not a valid Kubernetes resource name.||
+|**config**|any|config||
+|**partitions**|int|partitions||
+|**replicas**|int|replicas||
+|**topicName**|str|topic name||
 ### KafkaStrimziIoV1alpha1KafkaTopicStatus
 
-The status of the topic.
+kafka strimzi io v1alpha1 kafka topic status
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**conditions**|[[KafkaStrimziIoV1alpha1KafkaTopicStatusConditionsItems0](#kafkastrimziiov1alpha1kafkatopicstatusconditionsitems0)]|List of status conditions.||
-|**observedGeneration**|int|The generation of the CRD that was last reconciled by the operator.||
+|**conditions**|[[KafkaStrimziIoV1alpha1KafkaTopicStatusConditionsItems0](#kafkastrimziiov1alpha1kafkatopicstatusconditionsitems0)]|conditions||
+|**observedGeneration**|int|observed generation||
 |**replicasChange**|[KafkaStrimziIoV1alpha1KafkaTopicStatusReplicasChange](#kafkastrimziiov1alpha1kafkatopicstatusreplicaschange)|replicas change||
-|**topicId**|str|The topic's id. For a KafkaTopic with the ready condition, this will change only if the topic gets deleted and recreated with the same name.||
-|**topicName**|str|Topic name.||
+|**topicId**|str|topic Id||
+|**topicName**|str|topic name||
 ### KafkaStrimziIoV1alpha1KafkaTopicStatusConditionsItems0
 
 kafka strimzi io v1alpha1 kafka topic status conditions items0
@@ -23447,26 +23412,26 @@ kafka strimzi io v1alpha1 kafka topic status conditions items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.||
-|**message**|str|Human-readable message indicating details about the condition's last transition.||
-|**reason**|str|The reason for the condition's last transition (a single word in CamelCase).||
-|**status**|str|The status of the condition, either True, False or Unknown.||
+|**lastTransitionTime**|str|last transition time||
+|**message**|str|message||
+|**reason**|str|reason||
+|**status**|str|status||
 |**type**|str|||
 ### KafkaStrimziIoV1alpha1KafkaTopicStatusReplicasChange
 
-Replication factor change status.
+kafka strimzi io v1alpha1 kafka topic status replicas change
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**message**|str|Message for the user related to the replicas change request. This may contain transient error messages that would disappear on periodic reconciliations.||
-|**sessionId**|str|The session identifier for replicas change requests pertaining to this KafkaTopic resource. This is used by the Topic Operator to track the status of `ongoing` replicas change operations.||
-|**state**|"pending" | "ongoing"|Current state of the replicas change operation. This can be `pending`, when the change has been requested, or `ongoing`, when the change has been successfully submitted to Cruise Control.||
-|**targetReplicas**|int|The target replicas value requested by the user. This may be different from .spec.replicas when a change is ongoing.||
+|**message**|str|message||
+|**sessionId**|str|session Id||
+|**state**|"pending" | "ongoing"|state||
+|**targetReplicas**|int|target replicas||
 ### KafkaStrimziIoV1alpha1KafkaUserSpec
 
-The specification of the user.
+kafka strimzi io v1alpha1 kafka user spec
 
 #### Attributes
 
@@ -23478,7 +23443,7 @@ The specification of the user.
 |**template**|[KafkaStrimziIoV1alpha1KafkaUserSpecTemplate](#kafkastrimziiov1alpha1kafkauserspectemplate)|template||
 ### KafkaStrimziIoV1alpha1KafkaUserSpecAuthentication
 
-Authentication mechanism enabled for this Kafka user. The supported authentication mechanisms are `scram-sha-512`, `tls`, and `tls-external`.  * `scram-sha-512` generates a secret with SASL SCRAM-SHA-512 credentials. * `tls` generates a secret with user certificate for mutual TLS authentication. * `tls-external` does not generate a user certificate.   But prepares the user for using mutual TLS authentication using a user certificate generated outside the User Operator. ACLs and quotas set for this user are configured in the `CN=<username>` format.  Authentication is optional. If authentication is not configured, no credentials are generated. ACLs and quotas set for the user are configured in the `<username>` format suitable for SASL authentication.
+kafka strimzi io v1alpha1 kafka user spec authentication
 
 #### Attributes
 
@@ -23488,7 +23453,7 @@ Authentication mechanism enabled for this Kafka user. The supported authenticati
 |**type** `required`|"tls" | "tls-external" | "scram-sha-512"|||
 ### KafkaStrimziIoV1alpha1KafkaUserSpecAuthenticationPassword
 
-Specify the password for the user. If not set, a new password is generated by the User Operator.
+kafka strimzi io v1alpha1 kafka user spec authentication password
 
 #### Attributes
 
@@ -23497,7 +23462,7 @@ Specify the password for the user. If not set, a new password is generated by th
 |**valueFrom** `required`|[KafkaStrimziIoV1alpha1KafkaUserSpecAuthenticationPasswordValueFrom](#kafkastrimziiov1alpha1kafkauserspecauthenticationpasswordvaluefrom)|value from||
 ### KafkaStrimziIoV1alpha1KafkaUserSpecAuthenticationPasswordValueFrom
 
-Secret from which the password should be read.
+kafka strimzi io v1alpha1 kafka user spec authentication password value from
 
 #### Attributes
 
@@ -23506,7 +23471,7 @@ Secret from which the password should be read.
 |**secretKeyRef**|[KafkaStrimziIoV1alpha1KafkaUserSpecAuthenticationPasswordValueFromSecretKeyRef](#kafkastrimziiov1alpha1kafkauserspecauthenticationpasswordvaluefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1alpha1KafkaUserSpecAuthenticationPasswordValueFromSecretKeyRef
 
-Selects a key of a Secret in the resource's namespace.
+kafka strimzi io v1alpha1 kafka user spec authentication password value from secret key ref
 
 #### Attributes
 
@@ -23517,13 +23482,13 @@ Selects a key of a Secret in the resource's namespace.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1alpha1KafkaUserSpecAuthorization
 
-Authorization rules for this Kafka user.
+kafka strimzi io v1alpha1 kafka user spec authorization
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**acls** `required`|[[KafkaStrimziIoV1alpha1KafkaUserSpecAuthorizationAclsItems0](#kafkastrimziiov1alpha1kafkauserspecauthorizationaclsitems0)]|List of ACL rules which should be applied to this user.||
+|**acls** `required`|[[KafkaStrimziIoV1alpha1KafkaUserSpecAuthorizationAclsItems0](#kafkastrimziiov1alpha1kafkauserspecauthorizationaclsitems0)]|acls||
 |**type** `required` `readOnly`|"simple"||"simple"|
 ### KafkaStrimziIoV1alpha1KafkaUserSpecAuthorizationAclsItems0
 
@@ -23533,37 +23498,37 @@ kafka strimzi io v1alpha1 kafka user spec authorization acls items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**host**|str|The host from which the action described in the ACL rule is allowed or denied. If not set, it defaults to `*`, allowing or denying the action from any host.||
-|**operation**|"Read" | "Write" | "Create" | "Delete" | "Alter" | "Describe" | "ClusterAction" | "AlterConfigs" | "DescribeConfigs" | "IdempotentWrite" | "All"|Operation which will be allowed or denied. Supported operations are: Read, Write, Create, Delete, Alter, Describe, ClusterAction, AlterConfigs, DescribeConfigs, IdempotentWrite and All.||
-|**operations**|[str]|List of operations to allow or deny. Supported operations are: Read, Write, Create, Delete, Alter, Describe, ClusterAction, AlterConfigs, DescribeConfigs, IdempotentWrite and All. Only certain operations work with the specified resource.||
+|**host**|str|host||
+|**operation**|"Read" | "Write" | "Create" | "Delete" | "Alter" | "Describe" | "ClusterAction" | "AlterConfigs" | "DescribeConfigs" | "IdempotentWrite" | "All"|operation||
+|**operations**|[str]|operations||
 |**resource** `required`|[KafkaStrimziIoV1alpha1KafkaUserSpecAuthorizationAclsItems0Resource](#kafkastrimziiov1alpha1kafkauserspecauthorizationaclsitems0resource)|resource||
 |**type**|"allow" | "deny"|||
 ### KafkaStrimziIoV1alpha1KafkaUserSpecAuthorizationAclsItems0Resource
 
-Indicates the resource for which given ACL rule applies.
+kafka strimzi io v1alpha1 kafka user spec authorization acls items0 resource
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|Name of resource for which given ACL rule applies. Can be combined with `patternType` field to use prefix pattern.||
-|**patternType**|"literal" | "prefix"|Describes the pattern used in the resource field. The supported types are `literal` and `prefix`. With `literal` pattern type, the resource field will be used as a definition of a full name. With `prefix` pattern type, the resource name will be used only as a prefix. Default value is `literal`.||
+|**name**|str|name||
+|**patternType**|"literal" | "prefix"|pattern type||
 |**type** `required`|"topic" | "group" | "cluster" | "transactionalId"|||
 ### KafkaStrimziIoV1alpha1KafkaUserSpecQuotas
 
-Quotas on requests to control the broker resources used by clients. Network bandwidth and request rate quotas can be enforced. For more information, see the Apache Kafka design documentation about quotas.
+kafka strimzi io v1alpha1 kafka user spec quotas
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**consumerByteRate**|int|A quota on the maximum bytes per-second that each client group can fetch from a broker before the clients in the group are throttled. Defined on a per-broker basis.||
-|**controllerMutationRate**|float|A quota on the rate at which mutations are accepted for the create topics request, the create partitions request and the delete topics request. The rate is accumulated by the number of partitions created or deleted.||
-|**producerByteRate**|int|A quota on the maximum bytes per-second that each client group can publish to a broker before the clients in the group are throttled. Defined on a per-broker basis.||
-|**requestPercentage**|int|A quota on the maximum CPU utilization of each client group as a percentage of network and I/O threads.||
+|**consumerByteRate**|int|consumer byte rate||
+|**controllerMutationRate**|float|controller mutation rate||
+|**producerByteRate**|int|producer byte rate||
+|**requestPercentage**|int|request percentage||
 ### KafkaStrimziIoV1alpha1KafkaUserSpecTemplate
 
-Template to specify how Kafka User `Secrets` are generated.
+kafka strimzi io v1alpha1 kafka user spec template
 
 #### Attributes
 
@@ -23572,7 +23537,7 @@ Template to specify how Kafka User `Secrets` are generated.
 |**secret**|[KafkaStrimziIoV1alpha1KafkaUserSpecTemplateSecret](#kafkastrimziiov1alpha1kafkauserspectemplatesecret)|secret||
 ### KafkaStrimziIoV1alpha1KafkaUserSpecTemplateSecret
 
-Template for KafkaUser resources. The template allows users to specify how the `Secret` with password or TLS certificates is generated.
+kafka strimzi io v1alpha1 kafka user spec template secret
 
 #### Attributes
 
@@ -23581,26 +23546,26 @@ Template for KafkaUser resources. The template allows users to specify how the `
 |**metadata**|[KafkaStrimziIoV1alpha1KafkaUserSpecTemplateSecretMetadata](#kafkastrimziiov1alpha1kafkauserspectemplatesecretmetadata)|metadata||
 ### KafkaStrimziIoV1alpha1KafkaUserSpecTemplateSecretMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1alpha1 kafka user spec template secret metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1alpha1KafkaUserStatus
 
-The status of the Kafka User.
+kafka strimzi io v1alpha1 kafka user status
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**conditions**|[[KafkaStrimziIoV1alpha1KafkaUserStatusConditionsItems0](#kafkastrimziiov1alpha1kafkauserstatusconditionsitems0)]|List of status conditions.||
-|**observedGeneration**|int|The generation of the CRD that was last reconciled by the operator.||
-|**secret**|str|The name of `Secret` where the credentials are stored.||
-|**username**|str|Username.||
+|**conditions**|[[KafkaStrimziIoV1alpha1KafkaUserStatusConditionsItems0](#kafkastrimziiov1alpha1kafkauserstatusconditionsitems0)]|conditions||
+|**observedGeneration**|int|observed generation||
+|**secret**|str|secret||
+|**username**|str|username||
 ### KafkaStrimziIoV1alpha1KafkaUserStatusConditionsItems0
 
 kafka strimzi io v1alpha1 kafka user status conditions items0
@@ -23609,10 +23574,10 @@ kafka strimzi io v1alpha1 kafka user status conditions items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.||
-|**message**|str|Human-readable message indicating details about the condition's last transition.||
-|**reason**|str|The reason for the condition's last transition (a single word in CamelCase).||
-|**status**|str|The status of the condition, either True, False or Unknown.||
+|**lastTransitionTime**|str|last transition time||
+|**message**|str|message||
+|**reason**|str|reason||
+|**status**|str|status||
 |**type**|str|||
 ### KafkaTopic
 
@@ -34370,7 +34335,7 @@ crdgenerator strimzi io v1beta1 example list of polymorphic items0
 | --- | --- | --- | --- |
 |**commonProperty**|str|common property||
 |**discrim** `required` `readOnly`|"left"|discrim|"left"|
-|**leftProperty**|str|left property||
+|**leftProperty**|str|when descrim=left, the left-hand property.||
 ### CrdgeneratorStrimziIoV1beta1ExampleObjectProperty
 
 crdgenerator strimzi io v1beta1 example object property
@@ -34391,7 +34356,18 @@ crdgenerator strimzi io v1beta1 example polymorphic property
 | --- | --- | --- | --- |
 |**commonProperty**|str|common property||
 |**discrim** `required` `readOnly`|"left"|discrim|"left"|
-|**leftProperty**|str|left property||
+|**leftProperty**|str|when descrim=left, the left-hand property.||
+### CrdgeneratorStrimziIoV1beta1ExamplePolymorphicWithOptionalType
+
+crdgenerator strimzi io v1beta1 example polymorphic with optional type
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**commonProperty**|str|common property||
+|**discrim** `readOnly`|"left"|discrim|"left"|
+|**leftProperty**|str|when descrim=left, the left-hand property.||
 ### Example
 
 crdgenerator strimzi io v1beta1 example
@@ -34412,8 +34388,9 @@ crdgenerator strimzi io v1beta1 example
 |**booleanProperty**|bool|boolean property||
 |**customisedEnum**|"one" | "two"|customised enum||
 |**either**|str|either||
-|**fieldProperty**|str|field property||
-|**intProperty**|int|int property||
+|**external**|str|external||
+|**fieldProperty**|str|Example of field property.||
+|**intProperty**|int|An example int property.||
 |**kind** `required` `readOnly`|"Example"|Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds|"Example"|
 |**listOfArray**|[[str]]|list of array||
 |**listOfBoundTypeVar**|[]|list of bound type var||
@@ -34431,7 +34408,7 @@ crdgenerator strimzi io v1beta1 example
 |**listOfWildcardTypeVar2**|[]|list of wildcard type var2||
 |**listOfWildcardTypeVar3**|[]|list of wildcard type var3||
 |**listOfWildcardTypeVar4**|[[]]|list of wildcard type var4||
-|**longProperty**|int|long property||
+|**longProperty**|int|An example long property.||
 |**mapStringObject**|any|map string object||
 |**mapStringQuantity**|{str:int | str}|map string quantity||
 |**mapStringString**|{str:str}|map string string||
@@ -34440,6 +34417,7 @@ crdgenerator strimzi io v1beta1 example
 |**objectProperty**|[CrdgeneratorStrimziIoV1beta1ExampleObjectProperty](#crdgeneratorstrimziiov1beta1exampleobjectproperty)|object property||
 |**or**|str|||
 |**polymorphicProperty**|[CrdgeneratorStrimziIoV1beta1ExamplePolymorphicProperty](#crdgeneratorstrimziiov1beta1examplepolymorphicproperty)|polymorphic property||
+|**polymorphicWithOptionalType**|[CrdgeneratorStrimziIoV1beta1ExamplePolymorphicWithOptionalType](#crdgeneratorstrimziiov1beta1examplepolymorphicwithoptionaltype)|polymorphic with optional type||
 |**rawList**|[]|raw list||
 |**spec**|any|spec||
 |**status**|any|status||
@@ -34460,29 +34438,29 @@ crdgenerator strimzi io v1beta1 example with subresources
 |**status**|any|status||
 ### KafkaStrimziIoV1beta1KafkaTopicSpec
 
-The specification of the topic.
+kafka strimzi io v1beta1 kafka topic spec
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**config**|any|The topic configuration.||
-|**partitions**|int|The number of partitions the topic should have. This cannot be decreased after topic creation. It can be increased after topic creation, but it is important to understand the consequences that has, especially for topics with semantic partitioning. When absent this will default to the broker configuration for `num.partitions`.||
-|**replicas**|int|The number of replicas the topic should have. When absent this will default to the broker configuration for `default.replication.factor`.||
-|**topicName**|str|The name of the topic. When absent this will default to the metadata.name of the topic. It is recommended to not set this unless the topic name is not a valid Kubernetes resource name.||
+|**config**|any|config||
+|**partitions**|int|partitions||
+|**replicas**|int|replicas||
+|**topicName**|str|topic name||
 ### KafkaStrimziIoV1beta1KafkaTopicStatus
 
-The status of the topic.
+kafka strimzi io v1beta1 kafka topic status
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**conditions**|[[KafkaStrimziIoV1beta1KafkaTopicStatusConditionsItems0](#kafkastrimziiov1beta1kafkatopicstatusconditionsitems0)]|List of status conditions.||
-|**observedGeneration**|int|The generation of the CRD that was last reconciled by the operator.||
+|**conditions**|[[KafkaStrimziIoV1beta1KafkaTopicStatusConditionsItems0](#kafkastrimziiov1beta1kafkatopicstatusconditionsitems0)]|conditions||
+|**observedGeneration**|int|observed generation||
 |**replicasChange**|[KafkaStrimziIoV1beta1KafkaTopicStatusReplicasChange](#kafkastrimziiov1beta1kafkatopicstatusreplicaschange)|replicas change||
-|**topicId**|str|The topic's id. For a KafkaTopic with the ready condition, this will change only if the topic gets deleted and recreated with the same name.||
-|**topicName**|str|Topic name.||
+|**topicId**|str|topic Id||
+|**topicName**|str|topic name||
 ### KafkaStrimziIoV1beta1KafkaTopicStatusConditionsItems0
 
 kafka strimzi io v1beta1 kafka topic status conditions items0
@@ -34491,26 +34469,26 @@ kafka strimzi io v1beta1 kafka topic status conditions items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.||
-|**message**|str|Human-readable message indicating details about the condition's last transition.||
-|**reason**|str|The reason for the condition's last transition (a single word in CamelCase).||
-|**status**|str|The status of the condition, either True, False or Unknown.||
+|**lastTransitionTime**|str|last transition time||
+|**message**|str|message||
+|**reason**|str|reason||
+|**status**|str|status||
 |**type**|str|||
 ### KafkaStrimziIoV1beta1KafkaTopicStatusReplicasChange
 
-Replication factor change status.
+kafka strimzi io v1beta1 kafka topic status replicas change
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**message**|str|Message for the user related to the replicas change request. This may contain transient error messages that would disappear on periodic reconciliations.||
-|**sessionId**|str|The session identifier for replicas change requests pertaining to this KafkaTopic resource. This is used by the Topic Operator to track the status of `ongoing` replicas change operations.||
-|**state**|"pending" | "ongoing"|Current state of the replicas change operation. This can be `pending`, when the change has been requested, or `ongoing`, when the change has been successfully submitted to Cruise Control.||
-|**targetReplicas**|int|The target replicas value requested by the user. This may be different from .spec.replicas when a change is ongoing.||
+|**message**|str|message||
+|**sessionId**|str|session Id||
+|**state**|"pending" | "ongoing"|state||
+|**targetReplicas**|int|target replicas||
 ### KafkaStrimziIoV1beta1KafkaUserSpec
 
-The specification of the user.
+kafka strimzi io v1beta1 kafka user spec
 
 #### Attributes
 
@@ -34522,7 +34500,7 @@ The specification of the user.
 |**template**|[KafkaStrimziIoV1beta1KafkaUserSpecTemplate](#kafkastrimziiov1beta1kafkauserspectemplate)|template||
 ### KafkaStrimziIoV1beta1KafkaUserSpecAuthentication
 
-Authentication mechanism enabled for this Kafka user. The supported authentication mechanisms are `scram-sha-512`, `tls`, and `tls-external`.  * `scram-sha-512` generates a secret with SASL SCRAM-SHA-512 credentials. * `tls` generates a secret with user certificate for mutual TLS authentication. * `tls-external` does not generate a user certificate.   But prepares the user for using mutual TLS authentication using a user certificate generated outside the User Operator. ACLs and quotas set for this user are configured in the `CN=<username>` format.  Authentication is optional. If authentication is not configured, no credentials are generated. ACLs and quotas set for the user are configured in the `<username>` format suitable for SASL authentication.
+kafka strimzi io v1beta1 kafka user spec authentication
 
 #### Attributes
 
@@ -34532,7 +34510,7 @@ Authentication mechanism enabled for this Kafka user. The supported authenticati
 |**type** `required`|"tls" | "tls-external" | "scram-sha-512"|||
 ### KafkaStrimziIoV1beta1KafkaUserSpecAuthenticationPassword
 
-Specify the password for the user. If not set, a new password is generated by the User Operator.
+kafka strimzi io v1beta1 kafka user spec authentication password
 
 #### Attributes
 
@@ -34541,7 +34519,7 @@ Specify the password for the user. If not set, a new password is generated by th
 |**valueFrom** `required`|[KafkaStrimziIoV1beta1KafkaUserSpecAuthenticationPasswordValueFrom](#kafkastrimziiov1beta1kafkauserspecauthenticationpasswordvaluefrom)|value from||
 ### KafkaStrimziIoV1beta1KafkaUserSpecAuthenticationPasswordValueFrom
 
-Secret from which the password should be read.
+kafka strimzi io v1beta1 kafka user spec authentication password value from
 
 #### Attributes
 
@@ -34550,7 +34528,7 @@ Secret from which the password should be read.
 |**secretKeyRef**|[KafkaStrimziIoV1beta1KafkaUserSpecAuthenticationPasswordValueFromSecretKeyRef](#kafkastrimziiov1beta1kafkauserspecauthenticationpasswordvaluefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1beta1KafkaUserSpecAuthenticationPasswordValueFromSecretKeyRef
 
-Selects a key of a Secret in the resource's namespace.
+kafka strimzi io v1beta1 kafka user spec authentication password value from secret key ref
 
 #### Attributes
 
@@ -34561,13 +34539,13 @@ Selects a key of a Secret in the resource's namespace.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta1KafkaUserSpecAuthorization
 
-Authorization rules for this Kafka user.
+kafka strimzi io v1beta1 kafka user spec authorization
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**acls** `required`|[[KafkaStrimziIoV1beta1KafkaUserSpecAuthorizationAclsItems0](#kafkastrimziiov1beta1kafkauserspecauthorizationaclsitems0)]|List of ACL rules which should be applied to this user.||
+|**acls** `required`|[[KafkaStrimziIoV1beta1KafkaUserSpecAuthorizationAclsItems0](#kafkastrimziiov1beta1kafkauserspecauthorizationaclsitems0)]|acls||
 |**type** `required` `readOnly`|"simple"||"simple"|
 ### KafkaStrimziIoV1beta1KafkaUserSpecAuthorizationAclsItems0
 
@@ -34577,37 +34555,37 @@ kafka strimzi io v1beta1 kafka user spec authorization acls items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**host**|str|The host from which the action described in the ACL rule is allowed or denied. If not set, it defaults to `*`, allowing or denying the action from any host.||
-|**operation**|"Read" | "Write" | "Create" | "Delete" | "Alter" | "Describe" | "ClusterAction" | "AlterConfigs" | "DescribeConfigs" | "IdempotentWrite" | "All"|Operation which will be allowed or denied. Supported operations are: Read, Write, Create, Delete, Alter, Describe, ClusterAction, AlterConfigs, DescribeConfigs, IdempotentWrite and All.||
-|**operations**|[str]|List of operations to allow or deny. Supported operations are: Read, Write, Create, Delete, Alter, Describe, ClusterAction, AlterConfigs, DescribeConfigs, IdempotentWrite and All. Only certain operations work with the specified resource.||
+|**host**|str|host||
+|**operation**|"Read" | "Write" | "Create" | "Delete" | "Alter" | "Describe" | "ClusterAction" | "AlterConfigs" | "DescribeConfigs" | "IdempotentWrite" | "All"|operation||
+|**operations**|[str]|operations||
 |**resource** `required`|[KafkaStrimziIoV1beta1KafkaUserSpecAuthorizationAclsItems0Resource](#kafkastrimziiov1beta1kafkauserspecauthorizationaclsitems0resource)|resource||
 |**type**|"allow" | "deny"|||
 ### KafkaStrimziIoV1beta1KafkaUserSpecAuthorizationAclsItems0Resource
 
-Indicates the resource for which given ACL rule applies.
+kafka strimzi io v1beta1 kafka user spec authorization acls items0 resource
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|Name of resource for which given ACL rule applies. Can be combined with `patternType` field to use prefix pattern.||
-|**patternType**|"literal" | "prefix"|Describes the pattern used in the resource field. The supported types are `literal` and `prefix`. With `literal` pattern type, the resource field will be used as a definition of a full name. With `prefix` pattern type, the resource name will be used only as a prefix. Default value is `literal`.||
+|**name**|str|name||
+|**patternType**|"literal" | "prefix"|pattern type||
 |**type** `required`|"topic" | "group" | "cluster" | "transactionalId"|||
 ### KafkaStrimziIoV1beta1KafkaUserSpecQuotas
 
-Quotas on requests to control the broker resources used by clients. Network bandwidth and request rate quotas can be enforced. For more information, see the Apache Kafka design documentation about quotas.
+kafka strimzi io v1beta1 kafka user spec quotas
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**consumerByteRate**|int|A quota on the maximum bytes per-second that each client group can fetch from a broker before the clients in the group are throttled. Defined on a per-broker basis.||
-|**controllerMutationRate**|float|A quota on the rate at which mutations are accepted for the create topics request, the create partitions request and the delete topics request. The rate is accumulated by the number of partitions created or deleted.||
-|**producerByteRate**|int|A quota on the maximum bytes per-second that each client group can publish to a broker before the clients in the group are throttled. Defined on a per-broker basis.||
-|**requestPercentage**|int|A quota on the maximum CPU utilization of each client group as a percentage of network and I/O threads.||
+|**consumerByteRate**|int|consumer byte rate||
+|**controllerMutationRate**|float|controller mutation rate||
+|**producerByteRate**|int|producer byte rate||
+|**requestPercentage**|int|request percentage||
 ### KafkaStrimziIoV1beta1KafkaUserSpecTemplate
 
-Template to specify how Kafka User `Secrets` are generated.
+kafka strimzi io v1beta1 kafka user spec template
 
 #### Attributes
 
@@ -34616,7 +34594,7 @@ Template to specify how Kafka User `Secrets` are generated.
 |**secret**|[KafkaStrimziIoV1beta1KafkaUserSpecTemplateSecret](#kafkastrimziiov1beta1kafkauserspectemplatesecret)|secret||
 ### KafkaStrimziIoV1beta1KafkaUserSpecTemplateSecret
 
-Template for KafkaUser resources. The template allows users to specify how the `Secret` with password or TLS certificates is generated.
+kafka strimzi io v1beta1 kafka user spec template secret
 
 #### Attributes
 
@@ -34625,26 +34603,26 @@ Template for KafkaUser resources. The template allows users to specify how the `
 |**metadata**|[KafkaStrimziIoV1beta1KafkaUserSpecTemplateSecretMetadata](#kafkastrimziiov1beta1kafkauserspectemplatesecretmetadata)|metadata||
 ### KafkaStrimziIoV1beta1KafkaUserSpecTemplateSecretMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta1 kafka user spec template secret metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta1KafkaUserStatus
 
-The status of the Kafka User.
+kafka strimzi io v1beta1 kafka user status
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**conditions**|[[KafkaStrimziIoV1beta1KafkaUserStatusConditionsItems0](#kafkastrimziiov1beta1kafkauserstatusconditionsitems0)]|List of status conditions.||
-|**observedGeneration**|int|The generation of the CRD that was last reconciled by the operator.||
-|**secret**|str|The name of `Secret` where the credentials are stored.||
-|**username**|str|Username.||
+|**conditions**|[[KafkaStrimziIoV1beta1KafkaUserStatusConditionsItems0](#kafkastrimziiov1beta1kafkauserstatusconditionsitems0)]|conditions||
+|**observedGeneration**|int|observed generation||
+|**secret**|str|secret||
+|**username**|str|username||
 ### KafkaStrimziIoV1beta1KafkaUserStatusConditionsItems0
 
 kafka strimzi io v1beta1 kafka user status conditions items0
@@ -34653,10 +34631,10 @@ kafka strimzi io v1beta1 kafka user status conditions items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.||
-|**message**|str|Human-readable message indicating details about the condition's last transition.||
-|**reason**|str|The reason for the condition's last transition (a single word in CamelCase).||
-|**status**|str|The status of the condition, either True, False or Unknown.||
+|**lastTransitionTime**|str|last transition time||
+|**message**|str|message||
+|**reason**|str|reason||
+|**status**|str|status||
 |**type**|str|||
 ### KafkaTopic
 
@@ -38913,17 +38891,17 @@ opentelemetry io v1beta1 open telemetry collector status scale
 |**statusReplicas**|str|status replicas||
 ### CoreStrimziIoV1beta2StrimziPodSetSpec
 
-The specification of the StrimziPodSet.
+core strimzi io v1beta2 strimzi pod set spec
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**pods** `required`|[]|The Pods managed by this StrimziPodSet.||
+|**pods** `required`|[]|pods||
 |**selector** `required`|[CoreStrimziIoV1beta2StrimziPodSetSpecSelector](#corestrimziiov1beta2strimzipodsetspecselector)|selector||
 ### CoreStrimziIoV1beta2StrimziPodSetSpecSelector
 
-Selector is a label query which matches all the pods managed by this `StrimziPodSet`. Only `matchLabels` is supported. If `matchExpressions` is set, it will be ignored.
+core strimzi io v1beta2 strimzi pod set spec selector
 
 #### Attributes
 
@@ -38944,17 +38922,17 @@ core strimzi io v1beta2 strimzi pod set spec selector match expressions items0
 |**values**|[str]|values||
 ### CoreStrimziIoV1beta2StrimziPodSetStatus
 
-The status of the StrimziPodSet.
+core strimzi io v1beta2 strimzi pod set status
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**conditions**|[[CoreStrimziIoV1beta2StrimziPodSetStatusConditionsItems0](#corestrimziiov1beta2strimzipodsetstatusconditionsitems0)]|List of status conditions.||
-|**currentPods**|int|Number of pods managed by this `StrimziPodSet` resource that have the current revision.||
-|**observedGeneration**|int|The generation of the CRD that was last reconciled by the operator.||
-|**pods**|int|Number of pods managed by this `StrimziPodSet` resource.||
-|**readyPods**|int|Number of pods managed by this `StrimziPodSet` resource that are ready.||
+|**conditions**|[[CoreStrimziIoV1beta2StrimziPodSetStatusConditionsItems0](#corestrimziiov1beta2strimzipodsetstatusconditionsitems0)]|conditions||
+|**currentPods**|int|current pods||
+|**observedGeneration**|int|observed generation||
+|**pods**|int|pods||
+|**readyPods**|int|ready pods||
 ### CoreStrimziIoV1beta2StrimziPodSetStatusConditionsItems0
 
 core strimzi io v1beta2 strimzi pod set status conditions items0
@@ -38963,10 +38941,10 @@ core strimzi io v1beta2 strimzi pod set status conditions items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.||
-|**message**|str|Human-readable message indicating details about the condition's last transition.||
-|**reason**|str|The reason for the condition's last transition (a single word in CamelCase).||
-|**status**|str|The status of the condition, either True, False or Unknown.||
+|**lastTransitionTime**|str|last transition time||
+|**message**|str|message||
+|**reason**|str|reason||
+|**status**|str|status||
 |**type**|str|||
 ### Kafka
 
@@ -39061,7 +39039,7 @@ kafka strimzi io v1beta2 kafka rebalance
 |**status**|[KafkaStrimziIoV1beta2KafkaRebalanceStatus](#kafkastrimziiov1beta2kafkarebalancestatus)|status||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpec
 
-The specification of the HTTP Bridge.
+kafka strimzi io v1beta2 kafka bridge spec
 
 #### Attributes
 
@@ -39069,12 +39047,13 @@ The specification of the HTTP Bridge.
 | --- | --- | --- | --- |
 |**adminClient**|[KafkaStrimziIoV1beta2KafkaBridgeSpecAdminClient](#kafkastrimziiov1beta2kafkabridgespecadminclient)|admin client||
 |**authentication**|[KafkaStrimziIoV1beta2KafkaBridgeSpecAuthentication](#kafkastrimziiov1beta2kafkabridgespecauthentication)|authentication||
-|**bootstrapServers** `required`|str|A list of host:port pairs for establishing the initial connection to the Kafka cluster.||
-|**clientRackInitImage**|str|The image of the init container used for initializing the `client.rack`.||
+|**bootstrapServers** `required`|str|bootstrap servers||
+|**clientRackInitImage**|str|client rack init image||
+|**config**|any|config||
 |**consumer**|[KafkaStrimziIoV1beta2KafkaBridgeSpecConsumer](#kafkastrimziiov1beta2kafkabridgespecconsumer)|consumer||
-|**enableMetrics**|bool|Enable the metrics for the HTTP Bridge. Default is false.||
+|**enableMetrics**|bool|enable metrics||
 |**http**|[KafkaStrimziIoV1beta2KafkaBridgeSpecHTTP](#kafkastrimziiov1beta2kafkabridgespechttp)|http||
-|**image**|str|The container image used for HTTP Bridge pods. If no image name is explicitly specified, the image name corresponds to the image specified in the Cluster Operator configuration. If an image name is not defined in the Cluster Operator configuration, a default value is used.||
+|**image**|str|image||
 |**jvmOptions**|[KafkaStrimziIoV1beta2KafkaBridgeSpecJvmOptions](#kafkastrimziiov1beta2kafkabridgespecjvmoptions)|jvm options||
 |**livenessProbe**|[KafkaStrimziIoV1beta2KafkaBridgeSpecLivenessProbe](#kafkastrimziiov1beta2kafkabridgespeclivenessprobe)|liveness probe||
 |**logging**|[KafkaStrimziIoV1beta2KafkaBridgeSpecLogging](#kafkastrimziiov1beta2kafkabridgespeclogging)|logging||
@@ -39082,118 +39061,118 @@ The specification of the HTTP Bridge.
 |**producer**|[KafkaStrimziIoV1beta2KafkaBridgeSpecProducer](#kafkastrimziiov1beta2kafkabridgespecproducer)|producer||
 |**rack**|[KafkaStrimziIoV1beta2KafkaBridgeSpecRack](#kafkastrimziiov1beta2kafkabridgespecrack)|rack||
 |**readinessProbe**|[KafkaStrimziIoV1beta2KafkaBridgeSpecReadinessProbe](#kafkastrimziiov1beta2kafkabridgespecreadinessprobe)|readiness probe||
-|**replicas**|int|The number of pods in the `Deployment`. Required in the `v1` version of the Strimzi API. Defaults to `1` in the `v1beta2` version of the Strimzi API.||
+|**replicas**|int|replicas||
 |**resources**|[KafkaStrimziIoV1beta2KafkaBridgeSpecResources](#kafkastrimziiov1beta2kafkabridgespecresources)|resources||
 |**template**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplate](#kafkastrimziiov1beta2kafkabridgespectemplate)|template||
 |**tls**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTLS](#kafkastrimziiov1beta2kafkabridgespectls)|tls||
 |**tracing**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTracing](#kafkastrimziiov1beta2kafkabridgespectracing)|tracing||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecAdminClient
 
-Kafka AdminClient related configuration.
+kafka strimzi io v1beta2 kafka bridge spec admin client
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**config**|any|The Kafka AdminClient configuration used for AdminClient instances created by the bridge.||
+|**config**|any|config||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecAuthentication
 
-Authentication configuration for connecting to the cluster.
+kafka strimzi io v1beta2 kafka bridge spec authentication
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**accessToken**|[KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationAccessToken](#kafkastrimziiov1beta2kafkabridgespecauthenticationaccesstoken)|access token||
-|**accessTokenIsJwt**|bool|Configure whether access token should be treated as JWT. This should be set to `false` if the authorization server returns opaque tokens. Defaults to `true`.||
-|**accessTokenLocation**|str|Path to the token file containing an access token to be used for authentication.||
-|**audience**|str|OAuth audience to use when authenticating against the authorization server. Some authorization servers require the audience to be explicitly set. The possible values depend on how the authorization server is configured. By default, `audience` is not specified when performing the token endpoint request.||
+|**accessTokenIsJwt**|bool|access token is jwt||
+|**accessTokenLocation**|str|access token location||
+|**audience**|str|audience||
 |**certificateAndKey**|[KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationCertificateAndKey](#kafkastrimziiov1beta2kafkabridgespecauthenticationcertificateandkey)|certificate and key||
 |**clientAssertion**|[KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationClientAssertion](#kafkastrimziiov1beta2kafkabridgespecauthenticationclientassertion)|client assertion||
-|**clientAssertionLocation**|str|Path to the file containing the client assertion to be used for authentication.||
-|**clientAssertionType**|str|The client assertion type. If not set, and either `clientAssertion` or `clientAssertionLocation` is configured, this value defaults to `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`.||
-|**clientId**|str|OAuth Client ID which the Kafka client can use to authenticate against the OAuth server and use the token endpoint URI.||
+|**clientAssertionLocation**|str|client assertion location||
+|**clientAssertionType**|str|client assertion type||
+|**clientId**|str|client Id||
 |**clientSecret**|[KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationClientSecret](#kafkastrimziiov1beta2kafkabridgespecauthenticationclientsecret)|client secret||
-|**config**|any|Configuration for the custom authentication mechanism. Only properties with the `sasl.` and `ssl.keystore.` prefixes are allowed. Specify other options in the regular configuration section of the custom resource.||
-|**connectTimeoutSeconds**|int|The connect timeout in seconds when connecting to authorization server. If not set, the effective connect timeout is 60 seconds.||
-|**disableTlsHostnameVerification**|bool|Enable or disable TLS hostname verification. Default value is `false`.||
-|**enableMetrics**|bool|Enable or disable OAuth metrics. Default value is `false`.||
-|**grantType**|str|A custom OAuth grant type to use when authenticating against the authorization server with `clientId` and one of `clientSecret` or `clientAssertion`. The value defaults to `client_credentials` in these cases. This is optional configuration, only used with custom authorization server implementations.||
-|**httpRetries**|int|The maximum number of retries to attempt if an initial HTTP request fails. If not set, the default is to not attempt any retries.||
-|**httpRetryPauseMs**|int|The pause to take before retrying a failed HTTP request. If not set, the default is to not pause at all but to immediately repeat a request.||
-|**includeAcceptHeader**|bool|Whether the Accept header should be set in requests to the authorization servers. The default value is `true`.||
-|**maxTokenExpirySeconds**|int|Set or limit time-to-live of the access tokens to the specified number of seconds. This should be set if the authorization server returns opaque tokens.||
+|**config**|any|config||
+|**connectTimeoutSeconds**|int|connect timeout seconds||
+|**disableTlsHostnameVerification**|bool|disable Tls hostname verification||
+|**enableMetrics**|bool|enable metrics||
+|**grantType**|str|grant type||
+|**httpRetries**|int|http retries||
+|**httpRetryPauseMs**|int|http retry pause ms||
+|**includeAcceptHeader**|bool|include accept header||
+|**maxTokenExpirySeconds**|int|max token expiry seconds||
 |**passwordSecret**|[KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationPasswordSecret](#kafkastrimziiov1beta2kafkabridgespecauthenticationpasswordsecret)|password secret||
-|**readTimeoutSeconds**|int|The read timeout in seconds when connecting to authorization server. If not set, the effective read timeout is 60 seconds.||
+|**readTimeoutSeconds**|int|read timeout seconds||
 |**refreshToken**|[KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationRefreshToken](#kafkastrimziiov1beta2kafkabridgespecauthenticationrefreshtoken)|refresh token||
-|**sasl**|bool|Enable or disable SASL on this authentication mechanism.||
-|**saslExtensions**|{str:str}|SASL extensions parameters.||
-|**scope**|str|OAuth scope to use when authenticating against the authorization server. Some authorization servers require this to be set. The possible values depend on how authorization server is configured. By default `scope` is not specified when doing the token endpoint request.||
-|**tlsTrustedCertificates**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationTLSTrustedCertificatesItems0](#kafkastrimziiov1beta2kafkabridgespecauthenticationtlstrustedcertificatesitems0)]|Trusted certificates for TLS connection to the OAuth server.||
-|**tokenEndpointUri**|str|Authorization server token endpoint URI.||
+|**sasl**|bool|sasl||
+|**saslExtensions**|{str:str}|sasl extensions||
+|**scope**|str|scope||
+|**tlsTrustedCertificates**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationTLSTrustedCertificatesItems0](#kafkastrimziiov1beta2kafkabridgespecauthenticationtlstrustedcertificatesitems0)]|tls trusted certificates||
+|**tokenEndpointUri**|str|token endpoint Uri||
 |**type** `required`|"tls" | "scram-sha-256" | "scram-sha-512" | "plain" | "oauth" | "custom"|||
-|**username**|str|Username used for the authentication.||
+|**username**|str|username||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationAccessToken
 
-Link to Kubernetes Secret containing the access token which was obtained from the authorization server.
+kafka strimzi io v1beta2 kafka bridge spec authentication access token
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**key** `required`|str|The key under which the secret value is stored in the Kubernetes Secret.||
-|**secretName** `required`|str|The name of the Kubernetes Secret containing the secret value.||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationCertificateAndKey
 
-Reference to the `Secret` which holds the certificate and private key pair.
+kafka strimzi io v1beta2 kafka bridge spec authentication certificate and key
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate** `required`|str|The name of the file certificate in the Secret.||
-|**key** `required`|str|The name of the private key in the secret. The private key must be in unencrypted PKCS #8 format. For more information, see RFC 5208: https://datatracker.ietf.org/doc/html/rfc5208.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate** `required`|str|certificate||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationClientAssertion
 
-Link to Kubernetes secret containing the client assertion which was manually configured for the client.
+kafka strimzi io v1beta2 kafka bridge spec authentication client assertion
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**key** `required`|str|The key under which the secret value is stored in the Kubernetes Secret.||
-|**secretName** `required`|str|The name of the Kubernetes Secret containing the secret value.||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationClientSecret
 
-Link to Kubernetes Secret containing the OAuth client secret which the Kafka client can use to authenticate against the OAuth server and use the token endpoint URI.
+kafka strimzi io v1beta2 kafka bridge spec authentication client secret
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**key** `required`|str|The key under which the secret value is stored in the Kubernetes Secret.||
-|**secretName** `required`|str|The name of the Kubernetes Secret containing the secret value.||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationPasswordSecret
 
-Reference to the `Secret` which holds the password.
+kafka strimzi io v1beta2 kafka bridge spec authentication password secret
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**password** `required`|str|The name of the key in the Secret under which the password is stored.||
-|**secretName** `required`|str|The name of the Secret containing the password.||
+|**password** `required`|str|password||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationRefreshToken
 
-Link to Kubernetes Secret containing the refresh token which can be used to obtain access token from the authorization server.
+kafka strimzi io v1beta2 kafka bridge spec authentication refresh token
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**key** `required`|str|The key under which the secret value is stored in the Kubernetes Secret.||
-|**secretName** `required`|str|The name of the Kubernetes Secret containing the secret value.||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecAuthenticationTLSTrustedCertificatesItems0
 
 kafka strimzi io v1beta2 kafka bridge spec authentication TLS trusted certificates items0
@@ -39202,43 +39181,65 @@ kafka strimzi io v1beta2 kafka bridge spec authentication TLS trusted certificat
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate**|str|The name of the file certificate in the secret.||
-|**pattern**|str|Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate**|str|certificate||
+|**pattern**|str|pattern||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecConsumer
 
-Kafka consumer related configuration.
+kafka strimzi io v1beta2 kafka bridge spec consumer
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**config**|any|The Kafka consumer configuration used for consumer instances created by the bridge. Properties with the following prefixes cannot be set: ssl., bootstrap.servers, group.id, sasl., security. (with the exception of: ssl.endpoint.identification.algorithm, ssl.cipher.suites, ssl.protocol, ssl.enabled.protocols).||
-|**enabled**|bool|Whether the HTTP consumer should be enabled or disabled. The default is enabled (`true`).||
-|**timeoutSeconds**|int|The timeout in seconds for deleting inactive consumers, default is -1 (disabled).||
+|**config**|any|config||
+|**enabled**|bool|enabled||
+|**timeoutSeconds**|int|timeout seconds||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecHTTP
 
-The HTTP related configuration.
+kafka strimzi io v1beta2 kafka bridge spec HTTP
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**cors**|[KafkaStrimziIoV1beta2KafkaBridgeSpecHTTPCors](#kafkastrimziiov1beta2kafkabridgespechttpcors)|cors||
-|**port**|int|Port the server listens on.||
+|**port**|int|port||
+|**tls**|[KafkaStrimziIoV1beta2KafkaBridgeSpecHTTPTLS](#kafkastrimziiov1beta2kafkabridgespechttptls)|tls||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecHTTPCors
 
-CORS configuration for the HTTP Bridge.
+kafka strimzi io v1beta2 kafka bridge spec HTTP cors
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**allowedMethods** `required`|[str]|List of allowed HTTP methods.||
-|**allowedOrigins** `required`|[str]|List of allowed origins. Java regular expressions can be used.||
+|**allowedMethods** `required`|[str]|allowed methods||
+|**allowedOrigins** `required`|[str]|allowed origins||
+### KafkaStrimziIoV1beta2KafkaBridgeSpecHTTPTLS
+
+kafka strimzi io v1beta2 kafka bridge spec HTTP TLS
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**certificateAndKey** `required`|[KafkaStrimziIoV1beta2KafkaBridgeSpecHTTPTLSCertificateAndKey](#kafkastrimziiov1beta2kafkabridgespechttptlscertificateandkey)|certificate and key||
+|**config**|any|config||
+### KafkaStrimziIoV1beta2KafkaBridgeSpecHTTPTLSCertificateAndKey
+
+kafka strimzi io v1beta2 kafka bridge spec HTTP TLS certificate and key
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**certificate** `required`|str|certificate||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecJvmOptions
 
-JVM Options for pods.
+kafka strimzi io v1beta2 kafka bridge spec jvm options
 
 #### Attributes
 
@@ -39247,8 +39248,8 @@ JVM Options for pods.
 |**-XX**|{str:str}|||
 |**-Xms**|str|||
 |**-Xmx**|str|||
-|**gcLoggingEnabled**|bool|Specifies whether the Garbage Collection logging is enabled. The default is false.||
-|**javaSystemProperties**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecJvmOptionsJavaSystemPropertiesItems0](#kafkastrimziiov1beta2kafkabridgespecjvmoptionsjavasystempropertiesitems0)]|A map of additional system properties which will be passed using the `-D` option to the JVM.||
+|**gcLoggingEnabled**|bool|gc logging enabled||
+|**javaSystemProperties**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecJvmOptionsJavaSystemPropertiesItems0](#kafkastrimziiov1beta2kafkabridgespecjvmoptionsjavasystempropertiesitems0)]|java system properties||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecJvmOptionsJavaSystemPropertiesItems0
 
 kafka strimzi io v1beta2 kafka bridge spec jvm options java system properties items0
@@ -39257,35 +39258,35 @@ kafka strimzi io v1beta2 kafka bridge spec jvm options java system properties it
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The system property name.||
-|**value**|str|The system property value.||
+|**name**|str|name||
+|**value**|str|value||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecLivenessProbe
 
-Pod liveness checking.
+kafka strimzi io v1beta2 kafka bridge spec liveness probe
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**failureThreshold**|int|Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.||
-|**initialDelaySeconds**|int|The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.||
-|**periodSeconds**|int|How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.||
-|**successThreshold**|int|Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.||
-|**timeoutSeconds**|int|The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.||
+|**failureThreshold**|int|failure threshold||
+|**initialDelaySeconds**|int|initial delay seconds||
+|**periodSeconds**|int|period seconds||
+|**successThreshold**|int|success threshold||
+|**timeoutSeconds**|int|timeout seconds||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecLogging
 
-Logging configuration for HTTP Bridge.
+kafka strimzi io v1beta2 kafka bridge spec logging
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**loggers**|{str:str}|A Map from logger name to logger level.||
+|**loggers**|{str:str}|loggers||
 |**type** `required`|"inline" | "external"|||
 |**valueFrom**|[KafkaStrimziIoV1beta2KafkaBridgeSpecLoggingValueFrom](#kafkastrimziiov1beta2kafkabridgespecloggingvaluefrom)|value from||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecLoggingValueFrom
 
-`ConfigMap` entry where the logging configuration is stored.
+kafka strimzi io v1beta2 kafka bridge spec logging value from
 
 #### Attributes
 
@@ -39294,7 +39295,7 @@ Logging configuration for HTTP Bridge.
 |**configMapKeyRef**|[KafkaStrimziIoV1beta2KafkaBridgeSpecLoggingValueFromConfigMapKeyRef](#kafkastrimziiov1beta2kafkabridgespecloggingvaluefromconfigmapkeyref)|config map key ref||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecLoggingValueFromConfigMapKeyRef
 
-Reference to the key in the ConfigMap containing the configuration.
+kafka strimzi io v1beta2 kafka bridge spec logging value from config map key ref
 
 #### Attributes
 
@@ -39305,7 +39306,7 @@ Reference to the key in the ConfigMap containing the configuration.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecMetricsConfig
 
-Metrics configuration.
+kafka strimzi io v1beta2 kafka bridge spec metrics config
 
 #### Attributes
 
@@ -39316,7 +39317,7 @@ Metrics configuration.
 |**values**|[KafkaStrimziIoV1beta2KafkaBridgeSpecMetricsConfigValues](#kafkastrimziiov1beta2kafkabridgespecmetricsconfigvalues)|values||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecMetricsConfigValueFrom
 
-ConfigMap entry where the Prometheus JMX Exporter configuration is stored.
+kafka strimzi io v1beta2 kafka bridge spec metrics config value from
 
 #### Attributes
 
@@ -39325,7 +39326,7 @@ ConfigMap entry where the Prometheus JMX Exporter configuration is stored.
 |**configMapKeyRef**|[KafkaStrimziIoV1beta2KafkaBridgeSpecMetricsConfigValueFromConfigMapKeyRef](#kafkastrimziiov1beta2kafkabridgespecmetricsconfigvaluefromconfigmapkeyref)|config map key ref||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecMetricsConfigValueFromConfigMapKeyRef
 
-Reference to the key in the ConfigMap containing the configuration.
+kafka strimzi io v1beta2 kafka bridge spec metrics config value from config map key ref
 
 #### Attributes
 
@@ -39336,48 +39337,50 @@ Reference to the key in the ConfigMap containing the configuration.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecMetricsConfigValues
 
-Configuration values for the Strimzi Metrics Reporter.
+kafka strimzi io v1beta2 kafka bridge spec metrics config values
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**allowList**|[str]|A list of regex patterns to filter the metrics to collect. Should contain at least one element.||
+|**allowList**|[str]|allow list||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecProducer
 
-Kafka producer related configuration.
+kafka strimzi io v1beta2 kafka bridge spec producer
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**config**|any|The Kafka producer configuration used for producer instances created by the bridge. Properties with the following prefixes cannot be set: ssl., bootstrap.servers, sasl., security. (with the exception of: ssl.endpoint.identification.algorithm, ssl.cipher.suites, ssl.protocol, ssl.enabled.protocols).||
-|**enabled**|bool|Whether the HTTP producer should be enabled or disabled. The default is enabled (`true`).||
+|**config**|any|config||
+|**enabled**|bool|enabled||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecRack
 
-Configuration of the node label which will be used as the client.rack consumer configuration.
+kafka strimzi io v1beta2 kafka bridge spec rack
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**topologyKey** `required`|str|A key that matches labels assigned to the Kubernetes cluster nodes. The value of the label is used to set a broker's `broker.rack` config, and the `client.rack` config for Kafka Connect or MirrorMaker 2.||
+|**envVarName**|str|env var name||
+|**topologyKey**|str|topology key||
+|**type**|"topology-label" | "environment-variable"|||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecReadinessProbe
 
-Pod readiness checking.
+kafka strimzi io v1beta2 kafka bridge spec readiness probe
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**failureThreshold**|int|Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.||
-|**initialDelaySeconds**|int|The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.||
-|**periodSeconds**|int|How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.||
-|**successThreshold**|int|Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.||
-|**timeoutSeconds**|int|The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.||
+|**failureThreshold**|int|failure threshold||
+|**initialDelaySeconds**|int|initial delay seconds||
+|**periodSeconds**|int|period seconds||
+|**successThreshold**|int|success threshold||
+|**timeoutSeconds**|int|timeout seconds||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecResources
 
-CPU and memory resources to reserve.
+kafka strimzi io v1beta2 kafka bridge spec resources
 
 #### Attributes
 
@@ -39398,13 +39401,13 @@ kafka strimzi io v1beta2 kafka bridge spec resources claims items0
 |**request**|str|request||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTLS
 
-TLS configuration for connecting HTTP Bridge to the cluster.
+kafka strimzi io v1beta2 kafka bridge spec TLS
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**trustedCertificates**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecTLSTrustedCertificatesItems0](#kafkastrimziiov1beta2kafkabridgespectlstrustedcertificatesitems0)]|Trusted certificates for TLS connection.||
+|**trustedCertificates**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecTLSTrustedCertificatesItems0](#kafkastrimziiov1beta2kafkabridgespectlstrustedcertificatesitems0)]|trusted certificates||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTLSTrustedCertificatesItems0
 
 kafka strimzi io v1beta2 kafka bridge spec TLS trusted certificates items0
@@ -39413,12 +39416,12 @@ kafka strimzi io v1beta2 kafka bridge spec TLS trusted certificates items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate**|str|The name of the file certificate in the secret.||
-|**pattern**|str|Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate**|str|certificate||
+|**pattern**|str|pattern||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplate
 
-Template for HTTP Bridge resources. The template allows users to specify how a `Deployment` and `Pod` is generated.
+kafka strimzi io v1beta2 kafka bridge spec template
 
 #### Attributes
 
@@ -39434,36 +39437,36 @@ Template for HTTP Bridge resources. The template allows users to specify how a `
 |**serviceAccount**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateServiceAccount](#kafkastrimziiov1beta2kafkabridgespectemplateserviceaccount)|service account||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateAPIService
 
-Template for HTTP Bridge API `Service`.
+kafka strimzi io v1beta2 kafka bridge spec template API service
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**ipFamilies**|[str]|Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6`. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting.||
-|**ipFamilyPolicy**|"SingleStack" | "PreferDualStack" | "RequireDualStack"|Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`. `SingleStack` is for a single IP family. `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters. `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters. If unspecified, Kubernetes will choose the default value based on the service type.||
+|**ipFamilies**|[str]|ip families||
+|**ipFamilyPolicy**|"SingleStack" | "PreferDualStack" | "RequireDualStack"|ip family policy||
 |**metadata**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateAPIServiceMetadata](#kafkastrimziiov1beta2kafkabridgespectemplateapiservicemetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateAPIServiceMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka bridge spec template API service metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainer
 
-Template for the HTTP Bridge container.
+kafka strimzi io v1beta2 kafka bridge spec template bridge container
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**env**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerEnvItems0](#kafkastrimziiov1beta2kafkabridgespectemplatebridgecontainerenvitems0)]|Environment variables which should be applied to the container.||
+|**env**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerEnvItems0](#kafkastrimziiov1beta2kafkabridgespectemplatebridgecontainerenvitems0)]|env||
 |**securityContext**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerSecurityContext](#kafkastrimziiov1beta2kafkabridgespectemplatebridgecontainersecuritycontext)|security context||
-|**volumeMounts**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerVolumeMountsItems0](#kafkastrimziiov1beta2kafkabridgespectemplatebridgecontainervolumemountsitems0)]|Additional volume mounts which should be applied to the container.||
+|**volumeMounts**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerVolumeMountsItems0](#kafkastrimziiov1beta2kafkabridgespectemplatebridgecontainervolumemountsitems0)]|volume mounts||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerEnvItems0
 
 kafka strimzi io v1beta2 kafka bridge spec template bridge container env items0
@@ -39472,12 +39475,12 @@ kafka strimzi io v1beta2 kafka bridge spec template bridge container env items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The environment variable key.||
-|**value**|str|The environment variable value.||
+|**name**|str|name||
+|**value**|str|value||
 |**valueFrom**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerEnvItems0ValueFrom](#kafkastrimziiov1beta2kafkabridgespectemplatebridgecontainerenvitems0valuefrom)|value from||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerEnvItems0ValueFrom
 
-Reference to the secret or config map property to which the environment variable is set.
+kafka strimzi io v1beta2 kafka bridge spec template bridge container env items0 value from
 
 #### Attributes
 
@@ -39487,7 +39490,7 @@ Reference to the secret or config map property to which the environment variable
 |**secretKeyRef**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerEnvItems0ValueFromSecretKeyRef](#kafkastrimziiov1beta2kafkabridgespectemplatebridgecontainerenvitems0valuefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerEnvItems0ValueFromConfigMapKeyRef
 
-Reference to a key in a config map.
+kafka strimzi io v1beta2 kafka bridge spec template bridge container env items0 value from config map key ref
 
 #### Attributes
 
@@ -39498,7 +39501,7 @@ Reference to a key in a config map.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerEnvItems0ValueFromSecretKeyRef
 
-Reference to a key in a secret.
+kafka strimzi io v1beta2 kafka bridge spec template bridge container env items0 value from secret key ref
 
 #### Attributes
 
@@ -39509,7 +39512,7 @@ Reference to a key in a secret.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateBridgeContainerSecurityContext
 
-Security context for the container.
+kafka strimzi io v1beta2 kafka bridge spec template bridge container security context
 
 #### Attributes
 
@@ -39598,7 +39601,7 @@ kafka strimzi io v1beta2 kafka bridge spec template bridge container volume moun
 |**subPathExpr**|str|sub path expr||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateClusterRoleBinding
 
-Template for the HTTP Bridge ClusterRoleBinding.
+kafka strimzi io v1beta2 kafka bridge spec template cluster role binding
 
 #### Attributes
 
@@ -39607,45 +39610,45 @@ Template for the HTTP Bridge ClusterRoleBinding.
 |**metadata**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateClusterRoleBindingMetadata](#kafkastrimziiov1beta2kafkabridgespectemplateclusterrolebindingmetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateClusterRoleBindingMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka bridge spec template cluster role binding metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateDeployment
 
-Template for HTTP Bridge `Deployment`.
+kafka strimzi io v1beta2 kafka bridge spec template deployment
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**deploymentStrategy**|"RollingUpdate" | "Recreate"|Pod replacement strategy for deployment configuration changes. Valid values are `RollingUpdate` and `Recreate`. Defaults to `RollingUpdate`.||
+|**deploymentStrategy**|"RollingUpdate" | "Recreate"|deployment strategy||
 |**metadata**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateDeploymentMetadata](#kafkastrimziiov1beta2kafkabridgespectemplatedeploymentmetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateDeploymentMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka bridge spec template deployment metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainer
 
-Template for the HTTP Bridge init container.
+kafka strimzi io v1beta2 kafka bridge spec template init container
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**env**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerEnvItems0](#kafkastrimziiov1beta2kafkabridgespectemplateinitcontainerenvitems0)]|Environment variables which should be applied to the container.||
+|**env**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerEnvItems0](#kafkastrimziiov1beta2kafkabridgespectemplateinitcontainerenvitems0)]|env||
 |**securityContext**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerSecurityContext](#kafkastrimziiov1beta2kafkabridgespectemplateinitcontainersecuritycontext)|security context||
-|**volumeMounts**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerVolumeMountsItems0](#kafkastrimziiov1beta2kafkabridgespectemplateinitcontainervolumemountsitems0)]|Additional volume mounts which should be applied to the container.||
+|**volumeMounts**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerVolumeMountsItems0](#kafkastrimziiov1beta2kafkabridgespectemplateinitcontainervolumemountsitems0)]|volume mounts||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerEnvItems0
 
 kafka strimzi io v1beta2 kafka bridge spec template init container env items0
@@ -39654,12 +39657,12 @@ kafka strimzi io v1beta2 kafka bridge spec template init container env items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The environment variable key.||
-|**value**|str|The environment variable value.||
+|**name**|str|name||
+|**value**|str|value||
 |**valueFrom**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerEnvItems0ValueFrom](#kafkastrimziiov1beta2kafkabridgespectemplateinitcontainerenvitems0valuefrom)|value from||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerEnvItems0ValueFrom
 
-Reference to the secret or config map property to which the environment variable is set.
+kafka strimzi io v1beta2 kafka bridge spec template init container env items0 value from
 
 #### Attributes
 
@@ -39669,7 +39672,7 @@ Reference to the secret or config map property to which the environment variable
 |**secretKeyRef**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerEnvItems0ValueFromSecretKeyRef](#kafkastrimziiov1beta2kafkabridgespectemplateinitcontainerenvitems0valuefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerEnvItems0ValueFromConfigMapKeyRef
 
-Reference to a key in a config map.
+kafka strimzi io v1beta2 kafka bridge spec template init container env items0 value from config map key ref
 
 #### Attributes
 
@@ -39680,7 +39683,7 @@ Reference to a key in a config map.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerEnvItems0ValueFromSecretKeyRef
 
-Reference to a key in a secret.
+kafka strimzi io v1beta2 kafka bridge spec template init container env items0 value from secret key ref
 
 #### Attributes
 
@@ -39691,7 +39694,7 @@ Reference to a key in a secret.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateInitContainerSecurityContext
 
-Security context for the container.
+kafka strimzi io v1beta2 kafka bridge spec template init container security context
 
 #### Attributes
 
@@ -39780,7 +39783,7 @@ kafka strimzi io v1beta2 kafka bridge spec template init container volume mounts
 |**subPathExpr**|str|sub path expr||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePod
 
-Template for HTTP Bridge `Pods`.
+kafka strimzi io v1beta2 kafka bridge spec template pod
 
 #### Attributes
 
@@ -39788,23 +39791,23 @@ Template for HTTP Bridge `Pods`.
 | --- | --- | --- | --- |
 |**affinity**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinity](#kafkastrimziiov1beta2kafkabridgespectemplatepodaffinity)|affinity||
 |**dnsConfig**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodDNSConfig](#kafkastrimziiov1beta2kafkabridgespectemplatepoddnsconfig)|dns config||
-|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.||
-|**enableServiceLinks**|bool|Indicates whether information about services should be injected into Pod's environment variables.||
-|**hostAliases**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodHostAliasesItems0](#kafkastrimziiov1beta2kafkabridgespectemplatepodhostaliasesitems0)]|The pod's HostAliases. HostAliases is an optional list of hosts and IPs that will be injected into the Pod's hosts file if specified.||
-|**hostUsers**|bool|Use the host user namespace. Optional. Defaults to `true`. When `true` or not set, the pod runs in the host user namespace. This is required when the pod needs features available only in the host namespace, such as loading kernel modules with `CAP_SYS_MODULE`.When set to `false`, the pod runs in a new user namespace. Setting `false` helps mitigate container breakout vulnerabilities and allows containers to run as `root` without granting `root` privileges on the host. This property is alpha-level in Kubernetes and is supported only by Kubernetes clusters that enable the `UserNamespacesSupport` feature.||
-|**imagePullSecrets**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodImagePullSecretsItems0](#kafkastrimziiov1beta2kafkabridgespectemplatepodimagepullsecretsitems0)]|List of references to secrets in the same namespace to use for pulling any of the images used by this Pod. When the `STRIMZI_IMAGE_PULL_SECRETS` environment variable in Cluster Operator and the `imagePullSecrets` option are specified, only the `imagePullSecrets` variable is used and the `STRIMZI_IMAGE_PULL_SECRETS` variable is ignored.||
+|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|dns policy||
+|**enableServiceLinks**|bool|enable service links||
+|**hostAliases**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodHostAliasesItems0](#kafkastrimziiov1beta2kafkabridgespectemplatepodhostaliasesitems0)]|host aliases||
+|**hostUsers**|bool|host users||
+|**imagePullSecrets**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodImagePullSecretsItems0](#kafkastrimziiov1beta2kafkabridgespectemplatepodimagepullsecretsitems0)]|image pull secrets||
 |**metadata**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodMetadata](#kafkastrimziiov1beta2kafkabridgespectemplatepodmetadata)|metadata||
-|**priorityClassName**|str|The name of the priority class used to assign priority to the pods.||
-|**schedulerName**|str|The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.||
+|**priorityClassName**|str|priority class name||
+|**schedulerName**|str|scheduler name||
 |**securityContext**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContext](#kafkastrimziiov1beta2kafkabridgespectemplatepodsecuritycontext)|security context||
-|**terminationGracePeriodSeconds**|int|The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.||
-|**tmpDirSizeLimit**|str|Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.||
-|**tolerations**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodTolerationsItems0](#kafkastrimziiov1beta2kafkabridgespectemplatepodtolerationsitems0)]|The pod's tolerations.||
-|**topologySpreadConstraints**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodTopologySpreadConstraintsItems0](#kafkastrimziiov1beta2kafkabridgespectemplatepodtopologyspreadconstraintsitems0)]|The pod's topology spread constraints.||
-|**volumes**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0](#kafkastrimziiov1beta2kafkabridgespectemplatepodvolumesitems0)]|Additional volumes that can be mounted to the pod.||
+|**terminationGracePeriodSeconds**|int|termination grace period seconds||
+|**tmpDirSizeLimit**|str|tmp dir size limit||
+|**tolerations**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodTolerationsItems0](#kafkastrimziiov1beta2kafkabridgespectemplatepodtolerationsitems0)]|tolerations||
+|**topologySpreadConstraints**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodTopologySpreadConstraintsItems0](#kafkastrimziiov1beta2kafkabridgespectemplatepodtopologyspreadconstraintsitems0)]|topology spread constraints||
+|**volumes**|[[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0](#kafkastrimziiov1beta2kafkabridgespectemplatepodvolumesitems0)]|volumes||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodAffinity
 
-The pod's affinity rules.
+kafka strimzi io v1beta2 kafka bridge spec template pod affinity
 
 #### Attributes
 
@@ -40172,7 +40175,7 @@ kafka strimzi io v1beta2 kafka bridge spec template pod affinity pod anti affini
 |**values**|[str]|values||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodDNSConfig
 
-The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.
+kafka strimzi io v1beta2 kafka bridge spec template pod DNS config
 
 #### Attributes
 
@@ -40193,24 +40196,24 @@ kafka strimzi io v1beta2 kafka bridge spec template pod DNS config options items
 |**value**|str|value||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodDisruptionBudget
 
-Template for HTTP Bridge `PodDisruptionBudget`.
+kafka strimzi io v1beta2 kafka bridge spec template pod disruption budget
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**maxUnavailable**|int|Maximum number of unavailable pods to allow automatic Pod eviction. A Pod eviction is allowed when the `maxUnavailable` number of pods or fewer are unavailable after the eviction. Setting this value to 0 prevents all voluntary evictions, so the pods must be evicted manually. Defaults to 1.||
+|**maxUnavailable**|int|max unavailable||
 |**metadata**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodDisruptionBudgetMetadata](#kafkastrimziiov1beta2kafkabridgespectemplatepoddisruptionbudgetmetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodDisruptionBudgetMetadata
 
-Metadata to apply to the `PodDisruptionBudgetTemplate` resource.
+kafka strimzi io v1beta2 kafka bridge spec template pod disruption budget metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodHostAliasesItems0
 
 kafka strimzi io v1beta2 kafka bridge spec template pod host aliases items0
@@ -40232,17 +40235,17 @@ kafka strimzi io v1beta2 kafka bridge spec template pod image pull secrets items
 |**name**|str|name||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka bridge spec template pod metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodSecurityContext
 
-Configures pod-level security attributes and common container settings.
+kafka strimzi io v1beta2 kafka bridge spec template pod security context
 
 #### Attributes
 
@@ -40377,12 +40380,12 @@ kafka strimzi io v1beta2 kafka bridge spec template pod volumes items0
 |**csi**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0Csi](#kafkastrimziiov1beta2kafkabridgespectemplatepodvolumesitems0csi)|csi||
 |**emptyDir**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0EmptyDir](#kafkastrimziiov1beta2kafkabridgespectemplatepodvolumesitems0emptydir)|empty dir||
 |**image**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0Image](#kafkastrimziiov1beta2kafkabridgespectemplatepodvolumesitems0image)|image||
-|**name**|str|Name to use for the volume. Required.||
+|**name**|str|name||
 |**persistentVolumeClaim**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0PersistentVolumeClaim](#kafkastrimziiov1beta2kafkabridgespectemplatepodvolumesitems0persistentvolumeclaim)|persistent volume claim||
 |**secret**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0Secret](#kafkastrimziiov1beta2kafkabridgespectemplatepodvolumesitems0secret)|secret||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0ConfigMap
 
-`ConfigMap` to use to populate the volume.
+kafka strimzi io v1beta2 kafka bridge spec template pod volumes items0 config map
 
 #### Attributes
 
@@ -40405,7 +40408,7 @@ kafka strimzi io v1beta2 kafka bridge spec template pod volumes items0 config ma
 |**path**|str|path||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0Csi
 
-`CSIVolumeSource` object to use to populate the volume.
+kafka strimzi io v1beta2 kafka bridge spec template pod volumes items0 csi
 
 #### Attributes
 
@@ -40427,17 +40430,17 @@ kafka strimzi io v1beta2 kafka bridge spec template pod volumes items0 csi node 
 |**name**|str|name||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0EmptyDir
 
-`EmptyDir` to use to populate the volume.
+kafka strimzi io v1beta2 kafka bridge spec template pod volumes items0 empty dir
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**medium** `readOnly`|"Memory"|Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.|"Memory"|
-|**sizeLimit**|str|The total amount of local storage required for this EmptyDir volume (for example 1Gi).||
+|**medium** `readOnly`|"Memory"|medium|"Memory"|
+|**sizeLimit**|str|size limit||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0Image
 
-`ImageVolumeSource` object to use to populate the volume.
+kafka strimzi io v1beta2 kafka bridge spec template pod volumes items0 image
 
 #### Attributes
 
@@ -40447,7 +40450,7 @@ kafka strimzi io v1beta2 kafka bridge spec template pod volumes items0 csi node 
 |**reference**|str|reference||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0PersistentVolumeClaim
 
-`PersistentVolumeClaim` object to use to populate the volume.
+kafka strimzi io v1beta2 kafka bridge spec template pod volumes items0 persistent volume claim
 
 #### Attributes
 
@@ -40457,7 +40460,7 @@ kafka strimzi io v1beta2 kafka bridge spec template pod volumes items0 csi node 
 |**readOnly**|bool|read only||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplatePodVolumesItems0Secret
 
-`Secret` to use to populate the volume.
+kafka strimzi io v1beta2 kafka bridge spec template pod volumes items0 secret
 
 #### Attributes
 
@@ -40480,7 +40483,7 @@ kafka strimzi io v1beta2 kafka bridge spec template pod volumes items0 secret it
 |**path**|str|path||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateServiceAccount
 
-Template for the HTTP Bridge service account.
+kafka strimzi io v1beta2 kafka bridge spec template service account
 
 #### Attributes
 
@@ -40489,17 +40492,17 @@ Template for the HTTP Bridge service account.
 |**metadata**|[KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateServiceAccountMetadata](#kafkastrimziiov1beta2kafkabridgespectemplateserviceaccountmetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTemplateServiceAccountMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka bridge spec template service account metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaBridgeSpecTracing
 
-The configuration of tracing in HTTP Bridge.
+kafka strimzi io v1beta2 kafka bridge spec tracing
 
 #### Attributes
 
@@ -40508,17 +40511,17 @@ The configuration of tracing in HTTP Bridge.
 |**type** `required`|"jaeger" | "opentelemetry"|||
 ### KafkaStrimziIoV1beta2KafkaBridgeStatus
 
-The status of the HTTP Bridge.
+kafka strimzi io v1beta2 kafka bridge status
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**conditions**|[[KafkaStrimziIoV1beta2KafkaBridgeStatusConditionsItems0](#kafkastrimziiov1beta2kafkabridgestatusconditionsitems0)]|List of status conditions.||
-|**labelSelector**|str|Label selector for pods providing this resource.||
-|**observedGeneration**|int|The generation of the CRD that was last reconciled by the operator.||
-|**replicas**|int|The current number of pods being used to provide this resource.||
-|**url**|str|The URL at which external client applications can access the HTTP Bridge.||
+|**conditions**|[[KafkaStrimziIoV1beta2KafkaBridgeStatusConditionsItems0](#kafkastrimziiov1beta2kafkabridgestatusconditionsitems0)]|conditions||
+|**labelSelector**|str|label selector||
+|**observedGeneration**|int|observed generation||
+|**replicas**|int|replicas||
+|**url**|str|url||
 ### KafkaStrimziIoV1beta2KafkaBridgeStatusConditionsItems0
 
 kafka strimzi io v1beta2 kafka bridge status conditions items0
@@ -40527,142 +40530,142 @@ kafka strimzi io v1beta2 kafka bridge status conditions items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.||
-|**message**|str|Human-readable message indicating details about the condition's last transition.||
-|**reason**|str|The reason for the condition's last transition (a single word in CamelCase).||
-|**status**|str|The status of the condition, either True, False or Unknown.||
+|**lastTransitionTime**|str|last transition time||
+|**message**|str|message||
+|**reason**|str|reason||
+|**status**|str|status||
 |**type**|str|||
 ### KafkaStrimziIoV1beta2KafkaConnectSpec
 
-The specification of the Kafka Connect cluster.
+kafka strimzi io v1beta2 kafka connect spec
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**authentication**|[KafkaStrimziIoV1beta2KafkaConnectSpecAuthentication](#kafkastrimziiov1beta2kafkaconnectspecauthentication)|authentication||
-|**bootstrapServers** `required`|str|Bootstrap servers to connect to. This should be given as a comma separated list of _<hostname>_:_<port>_ pairs.||
+|**bootstrapServers** `required`|str|bootstrap servers||
 |**build**|[KafkaStrimziIoV1beta2KafkaConnectSpecBuild](#kafkastrimziiov1beta2kafkaconnectspecbuild)|build||
-|**clientRackInitImage**|str|The image of the init container used for initializing the `client.rack`.||
-|**config**|any|The Kafka Connect configuration. Properties with the following prefixes cannot be set: ssl., sasl., security., listeners, plugin.path, rest., bootstrap.servers, consumer.interceptor.classes, producer.interceptor.classes, prometheus.metrics.reporter. (with the exception of: ssl.endpoint.identification.algorithm, ssl.cipher.suites, ssl.protocol, ssl.enabled.protocols).||
-|**configStorageTopic**|str|The name of the Kafka topic where connector configurations are stored.||
+|**clientRackInitImage**|str|client rack init image||
+|**config**|any|config||
+|**configStorageTopic**|str|config storage topic||
 |**externalConfiguration**|[KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfiguration](#kafkastrimziiov1beta2kafkaconnectspecexternalconfiguration)|external configuration||
-|**groupId**|str|A unique ID that identifies the Connect cluster group.||
-|**image**|str|The container image used for Kafka Connect pods. If no image name is explicitly specified, it is determined based on the `spec.version` configuration. The image names are specifically mapped to corresponding versions in the Cluster Operator configuration.||
+|**groupId**|str|group Id||
+|**image**|str|image||
 |**jmxOptions**|[KafkaStrimziIoV1beta2KafkaConnectSpecJmxOptions](#kafkastrimziiov1beta2kafkaconnectspecjmxoptions)|jmx options||
 |**jvmOptions**|[KafkaStrimziIoV1beta2KafkaConnectSpecJvmOptions](#kafkastrimziiov1beta2kafkaconnectspecjvmoptions)|jvm options||
 |**livenessProbe**|[KafkaStrimziIoV1beta2KafkaConnectSpecLivenessProbe](#kafkastrimziiov1beta2kafkaconnectspeclivenessprobe)|liveness probe||
 |**logging**|[KafkaStrimziIoV1beta2KafkaConnectSpecLogging](#kafkastrimziiov1beta2kafkaconnectspeclogging)|logging||
 |**metricsConfig**|[KafkaStrimziIoV1beta2KafkaConnectSpecMetricsConfig](#kafkastrimziiov1beta2kafkaconnectspecmetricsconfig)|metrics config||
-|**offsetStorageTopic**|str|The name of the Kafka topic where source connector offsets are stored.||
-|**plugins**|[[KafkaStrimziIoV1beta2KafkaConnectSpecPluginsItems0](#kafkastrimziiov1beta2kafkaconnectspecpluginsitems0)]|List of connector plugins to mount into the `KafkaConnect` pod.||
+|**offsetStorageTopic**|str|offset storage topic||
+|**plugins**|[[KafkaStrimziIoV1beta2KafkaConnectSpecPluginsItems0](#kafkastrimziiov1beta2kafkaconnectspecpluginsitems0)]|plugins||
 |**rack**|[KafkaStrimziIoV1beta2KafkaConnectSpecRack](#kafkastrimziiov1beta2kafkaconnectspecrack)|rack||
 |**readinessProbe**|[KafkaStrimziIoV1beta2KafkaConnectSpecReadinessProbe](#kafkastrimziiov1beta2kafkaconnectspecreadinessprobe)|readiness probe||
-|**replicas**|int|The number of pods in the Kafka Connect group. Required in the `v1` version of the Strimzi API. Defaults to `3` in the `v1beta2` version of the Strimzi API.||
+|**replicas**|int|replicas||
 |**resources**|[KafkaStrimziIoV1beta2KafkaConnectSpecResources](#kafkastrimziiov1beta2kafkaconnectspecresources)|resources||
-|**statusStorageTopic**|str|The name of the Kafka topic where connector and task status are stored.||
+|**statusStorageTopic**|str|status storage topic||
 |**template**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplate](#kafkastrimziiov1beta2kafkaconnectspectemplate)|template||
 |**tls**|[KafkaStrimziIoV1beta2KafkaConnectSpecTLS](#kafkastrimziiov1beta2kafkaconnectspectls)|tls||
 |**tracing**|[KafkaStrimziIoV1beta2KafkaConnectSpecTracing](#kafkastrimziiov1beta2kafkaconnectspectracing)|tracing||
-|**version**|str|The Kafka Connect version. Defaults to the latest version. Consult the user documentation to understand the process required to upgrade or downgrade the version.||
+|**version**|str|version||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecAuthentication
 
-Authentication configuration for Kafka Connect.
+kafka strimzi io v1beta2 kafka connect spec authentication
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**accessToken**|[KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationAccessToken](#kafkastrimziiov1beta2kafkaconnectspecauthenticationaccesstoken)|access token||
-|**accessTokenIsJwt**|bool|Configure whether access token should be treated as JWT. This should be set to `false` if the authorization server returns opaque tokens. Defaults to `true`.||
-|**accessTokenLocation**|str|Path to the token file containing an access token to be used for authentication.||
-|**audience**|str|OAuth audience to use when authenticating against the authorization server. Some authorization servers require the audience to be explicitly set. The possible values depend on how the authorization server is configured. By default, `audience` is not specified when performing the token endpoint request.||
+|**accessTokenIsJwt**|bool|access token is jwt||
+|**accessTokenLocation**|str|access token location||
+|**audience**|str|audience||
 |**certificateAndKey**|[KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationCertificateAndKey](#kafkastrimziiov1beta2kafkaconnectspecauthenticationcertificateandkey)|certificate and key||
 |**clientAssertion**|[KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationClientAssertion](#kafkastrimziiov1beta2kafkaconnectspecauthenticationclientassertion)|client assertion||
-|**clientAssertionLocation**|str|Path to the file containing the client assertion to be used for authentication.||
-|**clientAssertionType**|str|The client assertion type. If not set, and either `clientAssertion` or `clientAssertionLocation` is configured, this value defaults to `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`.||
-|**clientId**|str|OAuth Client ID which the Kafka client can use to authenticate against the OAuth server and use the token endpoint URI.||
+|**clientAssertionLocation**|str|client assertion location||
+|**clientAssertionType**|str|client assertion type||
+|**clientId**|str|client Id||
 |**clientSecret**|[KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationClientSecret](#kafkastrimziiov1beta2kafkaconnectspecauthenticationclientsecret)|client secret||
-|**config**|any|Configuration for the custom authentication mechanism. Only properties with the `sasl.` and `ssl.keystore.` prefixes are allowed. Specify other options in the regular configuration section of the custom resource.||
-|**connectTimeoutSeconds**|int|The connect timeout in seconds when connecting to authorization server. If not set, the effective connect timeout is 60 seconds.||
-|**disableTlsHostnameVerification**|bool|Enable or disable TLS hostname verification. Default value is `false`.||
-|**enableMetrics**|bool|Enable or disable OAuth metrics. Default value is `false`.||
-|**grantType**|str|A custom OAuth grant type to use when authenticating against the authorization server with `clientId` and one of `clientSecret` or `clientAssertion`. The value defaults to `client_credentials` in these cases. This is optional configuration, only used with custom authorization server implementations.||
-|**httpRetries**|int|The maximum number of retries to attempt if an initial HTTP request fails. If not set, the default is to not attempt any retries.||
-|**httpRetryPauseMs**|int|The pause to take before retrying a failed HTTP request. If not set, the default is to not pause at all but to immediately repeat a request.||
-|**includeAcceptHeader**|bool|Whether the Accept header should be set in requests to the authorization servers. The default value is `true`.||
-|**maxTokenExpirySeconds**|int|Set or limit time-to-live of the access tokens to the specified number of seconds. This should be set if the authorization server returns opaque tokens.||
+|**config**|any|config||
+|**connectTimeoutSeconds**|int|connect timeout seconds||
+|**disableTlsHostnameVerification**|bool|disable Tls hostname verification||
+|**enableMetrics**|bool|enable metrics||
+|**grantType**|str|grant type||
+|**httpRetries**|int|http retries||
+|**httpRetryPauseMs**|int|http retry pause ms||
+|**includeAcceptHeader**|bool|include accept header||
+|**maxTokenExpirySeconds**|int|max token expiry seconds||
 |**passwordSecret**|[KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationPasswordSecret](#kafkastrimziiov1beta2kafkaconnectspecauthenticationpasswordsecret)|password secret||
-|**readTimeoutSeconds**|int|The read timeout in seconds when connecting to authorization server. If not set, the effective read timeout is 60 seconds.||
+|**readTimeoutSeconds**|int|read timeout seconds||
 |**refreshToken**|[KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationRefreshToken](#kafkastrimziiov1beta2kafkaconnectspecauthenticationrefreshtoken)|refresh token||
-|**sasl**|bool|Enable or disable SASL on this authentication mechanism.||
-|**saslExtensions**|{str:str}|SASL extensions parameters.||
-|**scope**|str|OAuth scope to use when authenticating against the authorization server. Some authorization servers require this to be set. The possible values depend on how authorization server is configured. By default `scope` is not specified when doing the token endpoint request.||
-|**tlsTrustedCertificates**|[[KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationTLSTrustedCertificatesItems0](#kafkastrimziiov1beta2kafkaconnectspecauthenticationtlstrustedcertificatesitems0)]|Trusted certificates for TLS connection to the OAuth server.||
-|**tokenEndpointUri**|str|Authorization server token endpoint URI.||
+|**sasl**|bool|sasl||
+|**saslExtensions**|{str:str}|sasl extensions||
+|**scope**|str|scope||
+|**tlsTrustedCertificates**|[[KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationTLSTrustedCertificatesItems0](#kafkastrimziiov1beta2kafkaconnectspecauthenticationtlstrustedcertificatesitems0)]|tls trusted certificates||
+|**tokenEndpointUri**|str|token endpoint Uri||
 |**type** `required`|"tls" | "scram-sha-256" | "scram-sha-512" | "plain" | "oauth" | "custom"|||
-|**username**|str|Username used for the authentication.||
+|**username**|str|username||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationAccessToken
 
-Link to Kubernetes Secret containing the access token which was obtained from the authorization server.
+kafka strimzi io v1beta2 kafka connect spec authentication access token
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**key** `required`|str|The key under which the secret value is stored in the Kubernetes Secret.||
-|**secretName** `required`|str|The name of the Kubernetes Secret containing the secret value.||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationCertificateAndKey
 
-Reference to the `Secret` which holds the certificate and private key pair.
+kafka strimzi io v1beta2 kafka connect spec authentication certificate and key
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate** `required`|str|The name of the file certificate in the Secret.||
-|**key** `required`|str|The name of the private key in the secret. The private key must be in unencrypted PKCS #8 format. For more information, see RFC 5208: https://datatracker.ietf.org/doc/html/rfc5208.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate** `required`|str|certificate||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationClientAssertion
 
-Link to Kubernetes secret containing the client assertion which was manually configured for the client.
+kafka strimzi io v1beta2 kafka connect spec authentication client assertion
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**key** `required`|str|The key under which the secret value is stored in the Kubernetes Secret.||
-|**secretName** `required`|str|The name of the Kubernetes Secret containing the secret value.||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationClientSecret
 
-Link to Kubernetes Secret containing the OAuth client secret which the Kafka client can use to authenticate against the OAuth server and use the token endpoint URI.
+kafka strimzi io v1beta2 kafka connect spec authentication client secret
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**key** `required`|str|The key under which the secret value is stored in the Kubernetes Secret.||
-|**secretName** `required`|str|The name of the Kubernetes Secret containing the secret value.||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationPasswordSecret
 
-Reference to the `Secret` which holds the password.
+kafka strimzi io v1beta2 kafka connect spec authentication password secret
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**password** `required`|str|The name of the key in the Secret under which the password is stored.||
-|**secretName** `required`|str|The name of the Secret containing the password.||
+|**password** `required`|str|password||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationRefreshToken
 
-Link to Kubernetes Secret containing the refresh token which can be used to obtain access token from the authorization server.
+kafka strimzi io v1beta2 kafka connect spec authentication refresh token
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**key** `required`|str|The key under which the secret value is stored in the Kubernetes Secret.||
-|**secretName** `required`|str|The name of the Kubernetes Secret containing the secret value.||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationTLSTrustedCertificatesItems0
 
 kafka strimzi io v1beta2 kafka connect spec authentication TLS trusted certificates items0
@@ -40671,33 +40674,33 @@ kafka strimzi io v1beta2 kafka connect spec authentication TLS trusted certifica
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate**|str|The name of the file certificate in the secret.||
-|**pattern**|str|Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate**|str|certificate||
+|**pattern**|str|pattern||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecBuild
 
-Configures how the Connect container image should be built. Optional.
+kafka strimzi io v1beta2 kafka connect spec build
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**output** `required`|[KafkaStrimziIoV1beta2KafkaConnectSpecBuildOutput](#kafkastrimziiov1beta2kafkaconnectspecbuildoutput)|output||
-|**plugins** `required`|[[KafkaStrimziIoV1beta2KafkaConnectSpecBuildPluginsItems0](#kafkastrimziiov1beta2kafkaconnectspecbuildpluginsitems0)]|List of connector plugins which should be added to the Kafka Connect. Required.||
+|**plugins** `required`|[[KafkaStrimziIoV1beta2KafkaConnectSpecBuildPluginsItems0](#kafkastrimziiov1beta2kafkaconnectspecbuildpluginsitems0)]|plugins||
 |**resources**|[KafkaStrimziIoV1beta2KafkaConnectSpecBuildResources](#kafkastrimziiov1beta2kafkaconnectspecbuildresources)|resources||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecBuildOutput
 
-Configures where should the newly built image be stored. Required.
+kafka strimzi io v1beta2 kafka connect spec build output
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**additionalBuildOptions**|[str]|Configures additional options to pass to the `build` command of either Kaniko or Buildah (depending on the feature gate setting) when building a new Kafka Connect image. Allowed Kaniko options: --customPlatform, --custom-platform, --insecure, --insecure-pull, --insecure-registry, --log-format, --log-timestamp, --registry-mirror, --reproducible, --single-snapshot, --skip-tls-verify, --skip-tls-verify-pull, --skip-tls-verify-registry, --verbosity, --snapshotMode, --use-new-run, --registry-certificate, --registry-client-cert, --ignore-path. Allowed Buildah `build` options: --authfile, --cert-dir, --creds, --decryption-key, --retry, --retry-delay, --tls-verify. Those options are used only on Kubernetes, where Kaniko and Buildah are available. They are ignored on OpenShift. For more information, see the link:https://github.com/GoogleContainerTools/kaniko[Kaniko GitHub repository^] or the link:https://github.com/containers/buildah/blob/main/docs/buildah-build.1.md[Buildah build document^]. Changing this field does not trigger a rebuild of the Kafka Connect image.||
-|**additionalKanikoOptions**|[str]|Configures additional options which will be passed to the Kaniko executor when building the new Connect image. Allowed options are: --customPlatform, --custom-platform, --insecure, --insecure-pull, --insecure-registry, --log-format, --log-timestamp, --registry-mirror, --reproducible, --single-snapshot, --skip-tls-verify, --skip-tls-verify-pull, --skip-tls-verify-registry, --verbosity, --snapshotMode, --use-new-run, --registry-certificate, --registry-client-cert, --ignore-path. These options will be used only on Kubernetes where the Kaniko executor is used. They will be ignored on OpenShift. The options are described in the link:https://github.com/GoogleContainerTools/kaniko[Kaniko GitHub repository^]. Changing this field does not trigger new build of the Kafka Connect image.||
-|**additionalPushOptions**|[str]|Configures additional options to pass to the Buildah `push` command when pushing a new Connect image. Allowed options: --authfile, --cert-dir, --creds, --quiet, --retry, --retry-delay, --tls-verify. Those options are used only on Kubernetes, where Buildah is available. They are ignored on OpenShift. For more information, see the link:https://github.com/containers/buildah/blob/main/docs/buildah-push.1.md[Buildah push document^]. Changing this field does not trigger a rebuild of the Kafka Connect image.||
-|**image** `required`|str|The name of the image which will be built. Required.||
-|**pushSecret**|str|Container Registry Secret with the credentials for pushing the newly built image.||
+|**additionalBuildOptions**|[str]|additional build options||
+|**additionalKanikoOptions**|[str]|additional kaniko options||
+|**additionalPushOptions**|[str]|additional push options||
+|**image** `required`|str|image||
+|**pushSecret**|str|push secret||
 |**type** `required`|"docker" | "imagestream"|||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecBuildPluginsItems0
 
@@ -40707,8 +40710,8 @@ kafka strimzi io v1beta2 kafka connect spec build plugins items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**artifacts** `required`|[[KafkaStrimziIoV1beta2KafkaConnectSpecBuildPluginsItems0ArtifactsItems0](#kafkastrimziiov1beta2kafkaconnectspecbuildpluginsitems0artifactsitems0)]|List of artifacts which belong to this connector plugin. Required.||
-|**name** `required`|str|The unique name of the connector plugin. Will be used to generate the path where the connector artifacts will be stored. The name has to be unique within the KafkaConnect resource. The name has to follow the following pattern: `^[a-z][-_a-z0-9]*[a-z]$`. Required.||
+|**artifacts** `required`|[[KafkaStrimziIoV1beta2KafkaConnectSpecBuildPluginsItems0ArtifactsItems0](#kafkastrimziiov1beta2kafkaconnectspecbuildpluginsitems0artifactsitems0)]|artifacts||
+|**name** `required`|str|name||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecBuildPluginsItems0ArtifactsItems0
 
 kafka strimzi io v1beta2 kafka connect spec build plugins items0 artifacts items0
@@ -40717,18 +40720,18 @@ kafka strimzi io v1beta2 kafka connect spec build plugins items0 artifacts items
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**artifact**|str|Maven artifact id. Applicable to the `maven` artifact type only.||
-|**fileName**|str|Name under which the artifact will be stored.||
-|**group**|str|Maven group id. Applicable to the `maven` artifact type only.||
-|**insecure**|bool|By default, connections using TLS are verified to check they are secure. The server certificate used must be valid, trusted, and contain the server name. By setting this option to `true`, all TLS verification is disabled and the artifact will be downloaded, even when the server is considered insecure.||
-|**repository**|str|Maven repository to download the artifact from. Applicable to the `maven` artifact type only.||
-|**sha512sum**|str|SHA512 checksum of the artifact. Optional. If specified, the checksum will be verified while building the new container. If not specified, the downloaded artifact will not be verified. Not applicable to the `maven` artifact type.||
+|**artifact**|str|artifact||
+|**fileName**|str|file name||
+|**group**|str|group||
+|**insecure**|bool|insecure||
+|**repository**|str|repository||
+|**sha512sum**|str|sha512sum||
 |**type** `required`|"jar" | "tgz" | "zip" | "maven" | "other"|||
-|**url**|str|URL of the artifact which will be downloaded. Strimzi does not do any security scanning of the downloaded artifacts. For security reasons, you should first verify the artifacts manually and configure the checksum verification to make sure the same artifact is used in the automated build. Required for `jar`, `zip`, `tgz` and `other` artifacts. Not applicable to the `maven` artifact type.||
-|**version**|str|Maven version number. Applicable to the `maven` artifact type only.||
+|**url**|str|url||
+|**version**|str|version||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecBuildResources
 
-CPU and memory resources to reserve for the build.
+kafka strimzi io v1beta2 kafka connect spec build resources
 
 #### Attributes
 
@@ -40749,14 +40752,14 @@ kafka strimzi io v1beta2 kafka connect spec build resources claims items0
 |**request**|str|request||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfiguration
 
-Pass data from Secrets or ConfigMaps to the Kafka Connect pods and use them to configure connectors.
+kafka strimzi io v1beta2 kafka connect spec external configuration
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**env**|[[KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationEnvItems0](#kafkastrimziiov1beta2kafkaconnectspecexternalconfigurationenvitems0)]|Makes data from a Secret or ConfigMap available in the Kafka Connect pods as environment variables.||
-|**volumes**|[[KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationVolumesItems0](#kafkastrimziiov1beta2kafkaconnectspecexternalconfigurationvolumesitems0)]|Makes data from a Secret or ConfigMap available in the Kafka Connect pods as volumes.||
+|**env**|[[KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationEnvItems0](#kafkastrimziiov1beta2kafkaconnectspecexternalconfigurationenvitems0)]|env||
+|**volumes**|[[KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationVolumesItems0](#kafkastrimziiov1beta2kafkaconnectspecexternalconfigurationvolumesitems0)]|volumes||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationEnvItems0
 
 kafka strimzi io v1beta2 kafka connect spec external configuration env items0
@@ -40765,11 +40768,11 @@ kafka strimzi io v1beta2 kafka connect spec external configuration env items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name** `required`|str|Name of the environment variable which will be passed to the Kafka Connect pods. The name of the environment variable cannot start with `KAFKA_` or `STRIMZI_`.||
+|**name** `required`|str|name||
 |**valueFrom** `required`|[KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationEnvItems0ValueFrom](#kafkastrimziiov1beta2kafkaconnectspecexternalconfigurationenvitems0valuefrom)|value from||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationEnvItems0ValueFrom
 
-Value of the environment variable which will be passed to the Kafka Connect pods. It can be passed either as a reference to Secret or ConfigMap field. The field has to specify exactly one Secret or ConfigMap.
+kafka strimzi io v1beta2 kafka connect spec external configuration env items0 value from
 
 #### Attributes
 
@@ -40779,7 +40782,7 @@ Value of the environment variable which will be passed to the Kafka Connect pods
 |**secretKeyRef**|[KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationEnvItems0ValueFromSecretKeyRef](#kafkastrimziiov1beta2kafkaconnectspecexternalconfigurationenvitems0valuefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationEnvItems0ValueFromConfigMapKeyRef
 
-Reference to a key in a ConfigMap.
+kafka strimzi io v1beta2 kafka connect spec external configuration env items0 value from config map key ref
 
 #### Attributes
 
@@ -40790,7 +40793,7 @@ Reference to a key in a ConfigMap.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationEnvItems0ValueFromSecretKeyRef
 
-Reference to a key in a Secret.
+kafka strimzi io v1beta2 kafka connect spec external configuration env items0 value from secret key ref
 
 #### Attributes
 
@@ -40808,11 +40811,11 @@ kafka strimzi io v1beta2 kafka connect spec external configuration volumes items
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**configMap**|[KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationVolumesItems0ConfigMap](#kafkastrimziiov1beta2kafkaconnectspecexternalconfigurationvolumesitems0configmap)|config map||
-|**name** `required`|str|Name of the volume which will be added to the Kafka Connect pods.||
+|**name** `required`|str|name||
 |**secret**|[KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationVolumesItems0Secret](#kafkastrimziiov1beta2kafkaconnectspecexternalconfigurationvolumesitems0secret)|secret||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationVolumesItems0ConfigMap
 
-Reference to a key in a ConfigMap. Exactly one Secret or ConfigMap has to be specified.
+kafka strimzi io v1beta2 kafka connect spec external configuration volumes items0 config map
 
 #### Attributes
 
@@ -40835,7 +40838,7 @@ kafka strimzi io v1beta2 kafka connect spec external configuration volumes items
 |**path**|str|path||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationVolumesItems0Secret
 
-Reference to a key in a Secret. Exactly one Secret or ConfigMap has to be specified.
+kafka strimzi io v1beta2 kafka connect spec external configuration volumes items0 secret
 
 #### Attributes
 
@@ -40858,7 +40861,7 @@ kafka strimzi io v1beta2 kafka connect spec external configuration volumes items
 |**path**|str|path||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecJmxOptions
 
-JMX Options.
+kafka strimzi io v1beta2 kafka connect spec jmx options
 
 #### Attributes
 
@@ -40867,7 +40870,7 @@ JMX Options.
 |**authentication**|[KafkaStrimziIoV1beta2KafkaConnectSpecJmxOptionsAuthentication](#kafkastrimziiov1beta2kafkaconnectspecjmxoptionsauthentication)|authentication||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecJmxOptionsAuthentication
 
-Authentication configuration for connecting to the JMX port.
+kafka strimzi io v1beta2 kafka connect spec jmx options authentication
 
 #### Attributes
 
@@ -40876,7 +40879,7 @@ Authentication configuration for connecting to the JMX port.
 |**type** `required` `readOnly`|"password"||"password"|
 ### KafkaStrimziIoV1beta2KafkaConnectSpecJvmOptions
 
-JVM Options for pods.
+kafka strimzi io v1beta2 kafka connect spec jvm options
 
 #### Attributes
 
@@ -40885,8 +40888,8 @@ JVM Options for pods.
 |**-XX**|{str:str}|||
 |**-Xms**|str|||
 |**-Xmx**|str|||
-|**gcLoggingEnabled**|bool|Specifies whether the Garbage Collection logging is enabled. The default is false.||
-|**javaSystemProperties**|[[KafkaStrimziIoV1beta2KafkaConnectSpecJvmOptionsJavaSystemPropertiesItems0](#kafkastrimziiov1beta2kafkaconnectspecjvmoptionsjavasystempropertiesitems0)]|A map of additional system properties which will be passed using the `-D` option to the JVM.||
+|**gcLoggingEnabled**|bool|gc logging enabled||
+|**javaSystemProperties**|[[KafkaStrimziIoV1beta2KafkaConnectSpecJvmOptionsJavaSystemPropertiesItems0](#kafkastrimziiov1beta2kafkaconnectspecjvmoptionsjavasystempropertiesitems0)]|java system properties||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecJvmOptionsJavaSystemPropertiesItems0
 
 kafka strimzi io v1beta2 kafka connect spec jvm options java system properties items0
@@ -40895,35 +40898,35 @@ kafka strimzi io v1beta2 kafka connect spec jvm options java system properties i
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The system property name.||
-|**value**|str|The system property value.||
+|**name**|str|name||
+|**value**|str|value||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecLivenessProbe
 
-Pod liveness checking.
+kafka strimzi io v1beta2 kafka connect spec liveness probe
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**failureThreshold**|int|Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.||
-|**initialDelaySeconds**|int|The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.||
-|**periodSeconds**|int|How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.||
-|**successThreshold**|int|Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.||
-|**timeoutSeconds**|int|The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.||
+|**failureThreshold**|int|failure threshold||
+|**initialDelaySeconds**|int|initial delay seconds||
+|**periodSeconds**|int|period seconds||
+|**successThreshold**|int|success threshold||
+|**timeoutSeconds**|int|timeout seconds||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecLogging
 
-Logging configuration for Kafka Connect.
+kafka strimzi io v1beta2 kafka connect spec logging
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**loggers**|{str:str}|A Map from logger name to logger level.||
+|**loggers**|{str:str}|loggers||
 |**type** `required`|"inline" | "external"|||
 |**valueFrom**|[KafkaStrimziIoV1beta2KafkaConnectSpecLoggingValueFrom](#kafkastrimziiov1beta2kafkaconnectspecloggingvaluefrom)|value from||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecLoggingValueFrom
 
-`ConfigMap` entry where the logging configuration is stored.
+kafka strimzi io v1beta2 kafka connect spec logging value from
 
 #### Attributes
 
@@ -40932,7 +40935,7 @@ Logging configuration for Kafka Connect.
 |**configMapKeyRef**|[KafkaStrimziIoV1beta2KafkaConnectSpecLoggingValueFromConfigMapKeyRef](#kafkastrimziiov1beta2kafkaconnectspecloggingvaluefromconfigmapkeyref)|config map key ref||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecLoggingValueFromConfigMapKeyRef
 
-Reference to the key in the ConfigMap containing the configuration.
+kafka strimzi io v1beta2 kafka connect spec logging value from config map key ref
 
 #### Attributes
 
@@ -40943,7 +40946,7 @@ Reference to the key in the ConfigMap containing the configuration.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecMetricsConfig
 
-Metrics configuration.
+kafka strimzi io v1beta2 kafka connect spec metrics config
 
 #### Attributes
 
@@ -40954,7 +40957,7 @@ Metrics configuration.
 |**values**|[KafkaStrimziIoV1beta2KafkaConnectSpecMetricsConfigValues](#kafkastrimziiov1beta2kafkaconnectspecmetricsconfigvalues)|values||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecMetricsConfigValueFrom
 
-ConfigMap entry where the Prometheus JMX Exporter configuration is stored.
+kafka strimzi io v1beta2 kafka connect spec metrics config value from
 
 #### Attributes
 
@@ -40963,7 +40966,7 @@ ConfigMap entry where the Prometheus JMX Exporter configuration is stored.
 |**configMapKeyRef**|[KafkaStrimziIoV1beta2KafkaConnectSpecMetricsConfigValueFromConfigMapKeyRef](#kafkastrimziiov1beta2kafkaconnectspecmetricsconfigvaluefromconfigmapkeyref)|config map key ref||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecMetricsConfigValueFromConfigMapKeyRef
 
-Reference to the key in the ConfigMap containing the configuration.
+kafka strimzi io v1beta2 kafka connect spec metrics config value from config map key ref
 
 #### Attributes
 
@@ -40974,13 +40977,13 @@ Reference to the key in the ConfigMap containing the configuration.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecMetricsConfigValues
 
-Configuration values for the Strimzi Metrics Reporter.
+kafka strimzi io v1beta2 kafka connect spec metrics config values
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**allowList**|[str]|A list of regex patterns to filter the metrics to collect. Should contain at least one element.||
+|**allowList**|[str]|allow list||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecPluginsItems0
 
 kafka strimzi io v1beta2 kafka connect spec plugins items0
@@ -40989,8 +40992,8 @@ kafka strimzi io v1beta2 kafka connect spec plugins items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**artifacts** `required`|[[KafkaStrimziIoV1beta2KafkaConnectSpecPluginsItems0ArtifactsItems0](#kafkastrimziiov1beta2kafkaconnectspecpluginsitems0artifactsitems0)]|List of artifacts associated with this connector plugin. Required.||
-|**name** `required`|str|A unique name for the connector plugin. This name is used to generate the mount path for the connector artifacts. The name has to be unique within the KafkaConnect resource. The name must be unique within the `KafkaConnect` resource and match the pattern: `^[a-z][-_a-z0-9]*[a-z]$`. Required.||
+|**artifacts** `required`|[[KafkaStrimziIoV1beta2KafkaConnectSpecPluginsItems0ArtifactsItems0](#kafkastrimziiov1beta2kafkaconnectspecpluginsitems0artifactsitems0)]|artifacts||
+|**name** `required`|str|name||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecPluginsItems0ArtifactsItems0
 
 kafka strimzi io v1beta2 kafka connect spec plugins items0 artifacts items0
@@ -40999,34 +41002,36 @@ kafka strimzi io v1beta2 kafka connect spec plugins items0 artifacts items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**pullPolicy**|str|Policy that determines when the container image (OCI artifact) is pulled.<br /><br />Possible values are:<br /><br />* `Always`: Always pull the image. If the pull fails, container creation fails.<br />* `Never`: Never pull the image. Use only a locally available image. Container creation fails if the image isn’t present.<br />* `IfNotPresent`: Pull the image only if it’s not already available locally. Container creation fails if the image isn’t present and the pull fails.<br /><br />Defaults to `Always` if `:latest` tag is specified, or `IfNotPresent` otherwise.||
-|**reference** `required`|str|Reference to the container image (OCI artifact) containing the Kafka Connect plugin. The image is mounted as a volume and provides the plugin binary. Required.||
+|**pullPolicy**|str|pull policy||
+|**reference** `required`|str|reference||
 |**type** `required` `readOnly`|"image"||"image"|
 ### KafkaStrimziIoV1beta2KafkaConnectSpecRack
 
-Configuration of the node label which will be used as the `client.rack` consumer configuration.
+kafka strimzi io v1beta2 kafka connect spec rack
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**topologyKey** `required`|str|A key that matches labels assigned to the Kubernetes cluster nodes. The value of the label is used to set a broker's `broker.rack` config, and the `client.rack` config for Kafka Connect or MirrorMaker 2.||
+|**envVarName**|str|env var name||
+|**topologyKey**|str|topology key||
+|**type**|"topology-label" | "environment-variable"|||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecReadinessProbe
 
-Pod readiness checking.
+kafka strimzi io v1beta2 kafka connect spec readiness probe
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**failureThreshold**|int|Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.||
-|**initialDelaySeconds**|int|The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.||
-|**periodSeconds**|int|How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.||
-|**successThreshold**|int|Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.||
-|**timeoutSeconds**|int|The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.||
+|**failureThreshold**|int|failure threshold||
+|**initialDelaySeconds**|int|initial delay seconds||
+|**periodSeconds**|int|period seconds||
+|**successThreshold**|int|success threshold||
+|**timeoutSeconds**|int|timeout seconds||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecResources
 
-The maximum limits for CPU and memory resources and the requested initial resources.
+kafka strimzi io v1beta2 kafka connect spec resources
 
 #### Attributes
 
@@ -41047,13 +41052,13 @@ kafka strimzi io v1beta2 kafka connect spec resources claims items0
 |**request**|str|request||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTLS
 
-TLS configuration.
+kafka strimzi io v1beta2 kafka connect spec TLS
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**trustedCertificates**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTLSTrustedCertificatesItems0](#kafkastrimziiov1beta2kafkaconnectspectlstrustedcertificatesitems0)]|Trusted certificates for TLS connection.||
+|**trustedCertificates**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTLSTrustedCertificatesItems0](#kafkastrimziiov1beta2kafkaconnectspectlstrustedcertificatesitems0)]|trusted certificates||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTLSTrustedCertificatesItems0
 
 kafka strimzi io v1beta2 kafka connect spec TLS trusted certificates items0
@@ -41062,12 +41067,12 @@ kafka strimzi io v1beta2 kafka connect spec TLS trusted certificates items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate**|str|The name of the file certificate in the secret.||
-|**pattern**|str|Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate**|str|certificate||
+|**pattern**|str|pattern||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplate
 
-Template for Kafka Connect and Kafka MirrorMaker 2 resources. The template allows users to specify how the `Pods`, `Service`, and other services are generated.
+kafka strimzi io v1beta2 kafka connect spec template
 
 #### Attributes
 
@@ -41090,56 +41095,56 @@ Template for Kafka Connect and Kafka MirrorMaker 2 resources. The template allow
 |**serviceAccount**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateServiceAccount](#kafkastrimziiov1beta2kafkaconnectspectemplateserviceaccount)|service account||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateAPIService
 
-Template for Kafka Connect API `Service`.
+kafka strimzi io v1beta2 kafka connect spec template API service
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**ipFamilies**|[str]|Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6`. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting.||
-|**ipFamilyPolicy**|"SingleStack" | "PreferDualStack" | "RequireDualStack"|Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`. `SingleStack` is for a single IP family. `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters. `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters. If unspecified, Kubernetes will choose the default value based on the service type.||
+|**ipFamilies**|[str]|ip families||
+|**ipFamilyPolicy**|"SingleStack" | "PreferDualStack" | "RequireDualStack"|ip family policy||
 |**metadata**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateAPIServiceMetadata](#kafkastrimziiov1beta2kafkaconnectspectemplateapiservicemetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateAPIServiceMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka connect spec template API service metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildConfig
 
-Template for the Kafka Connect BuildConfig used to build new container images. The BuildConfig is used only on OpenShift.
+kafka strimzi io v1beta2 kafka connect spec template build config
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**metadata**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildConfigMetadata](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildconfigmetadata)|metadata||
-|**pullSecret**|str|Container Registry Secret with the credentials for pulling the base image.||
+|**pullSecret**|str|pull secret||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildConfigMetadata
 
-Metadata to apply to the `PodDisruptionBudgetTemplate` resource.
+kafka strimzi io v1beta2 kafka connect spec template build config metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainer
 
-Template for the Kafka Connect Build container. The build container is used only on Kubernetes.
+kafka strimzi io v1beta2 kafka connect spec template build container
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**env**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerEnvItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildcontainerenvitems0)]|Environment variables which should be applied to the container.||
+|**env**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerEnvItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildcontainerenvitems0)]|env||
 |**securityContext**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerSecurityContext](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildcontainersecuritycontext)|security context||
-|**volumeMounts**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerVolumeMountsItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildcontainervolumemountsitems0)]|Additional volume mounts which should be applied to the container.||
+|**volumeMounts**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerVolumeMountsItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildcontainervolumemountsitems0)]|volume mounts||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerEnvItems0
 
 kafka strimzi io v1beta2 kafka connect spec template build container env items0
@@ -41148,12 +41153,12 @@ kafka strimzi io v1beta2 kafka connect spec template build container env items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The environment variable key.||
-|**value**|str|The environment variable value.||
+|**name**|str|name||
+|**value**|str|value||
 |**valueFrom**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerEnvItems0ValueFrom](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildcontainerenvitems0valuefrom)|value from||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerEnvItems0ValueFrom
 
-Reference to the secret or config map property to which the environment variable is set.
+kafka strimzi io v1beta2 kafka connect spec template build container env items0 value from
 
 #### Attributes
 
@@ -41163,7 +41168,7 @@ Reference to the secret or config map property to which the environment variable
 |**secretKeyRef**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerEnvItems0ValueFromSecretKeyRef](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildcontainerenvitems0valuefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerEnvItems0ValueFromConfigMapKeyRef
 
-Reference to a key in a config map.
+kafka strimzi io v1beta2 kafka connect spec template build container env items0 value from config map key ref
 
 #### Attributes
 
@@ -41174,7 +41179,7 @@ Reference to a key in a config map.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerEnvItems0ValueFromSecretKeyRef
 
-Reference to a key in a secret.
+kafka strimzi io v1beta2 kafka connect spec template build container env items0 value from secret key ref
 
 #### Attributes
 
@@ -41185,7 +41190,7 @@ Reference to a key in a secret.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerSecurityContext
 
-Security context for the container.
+kafka strimzi io v1beta2 kafka connect spec template build container security context
 
 #### Attributes
 
@@ -41274,7 +41279,7 @@ kafka strimzi io v1beta2 kafka connect spec template build container volume moun
 |**subPathExpr**|str|sub path expr||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPod
 
-Template for Kafka Connect Build `Pods`. The build pod is used only on Kubernetes.
+kafka strimzi io v1beta2 kafka connect spec template build pod
 
 #### Attributes
 
@@ -41282,23 +41287,23 @@ Template for Kafka Connect Build `Pods`. The build pod is used only on Kubernete
 | --- | --- | --- | --- |
 |**affinity**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodAffinity](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildpodaffinity)|affinity||
 |**dnsConfig**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodDNSConfig](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildpoddnsconfig)|dns config||
-|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.||
-|**enableServiceLinks**|bool|Indicates whether information about services should be injected into Pod's environment variables.||
-|**hostAliases**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodHostAliasesItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildpodhostaliasesitems0)]|The pod's HostAliases. HostAliases is an optional list of hosts and IPs that will be injected into the Pod's hosts file if specified.||
-|**hostUsers**|bool|Use the host user namespace. Optional. Defaults to `true`. When `true` or not set, the pod runs in the host user namespace. This is required when the pod needs features available only in the host namespace, such as loading kernel modules with `CAP_SYS_MODULE`.When set to `false`, the pod runs in a new user namespace. Setting `false` helps mitigate container breakout vulnerabilities and allows containers to run as `root` without granting `root` privileges on the host. This property is alpha-level in Kubernetes and is supported only by Kubernetes clusters that enable the `UserNamespacesSupport` feature.||
-|**imagePullSecrets**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodImagePullSecretsItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildpodimagepullsecretsitems0)]|List of references to secrets in the same namespace to use for pulling any of the images used by this Pod. When the `STRIMZI_IMAGE_PULL_SECRETS` environment variable in Cluster Operator and the `imagePullSecrets` option are specified, only the `imagePullSecrets` variable is used and the `STRIMZI_IMAGE_PULL_SECRETS` variable is ignored.||
+|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|dns policy||
+|**enableServiceLinks**|bool|enable service links||
+|**hostAliases**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodHostAliasesItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildpodhostaliasesitems0)]|host aliases||
+|**hostUsers**|bool|host users||
+|**imagePullSecrets**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodImagePullSecretsItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildpodimagepullsecretsitems0)]|image pull secrets||
 |**metadata**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodMetadata](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildpodmetadata)|metadata||
-|**priorityClassName**|str|The name of the priority class used to assign priority to the pods.||
-|**schedulerName**|str|The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.||
+|**priorityClassName**|str|priority class name||
+|**schedulerName**|str|scheduler name||
 |**securityContext**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodSecurityContext](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildpodsecuritycontext)|security context||
-|**terminationGracePeriodSeconds**|int|The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.||
-|**tmpDirSizeLimit**|str|Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.||
-|**tolerations**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodTolerationsItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildpodtolerationsitems0)]|The pod's tolerations.||
-|**topologySpreadConstraints**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodTopologySpreadConstraintsItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildpodtopologyspreadconstraintsitems0)]|The pod's topology spread constraints.||
-|**volumes**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildpodvolumesitems0)]|Additional volumes that can be mounted to the pod.||
+|**terminationGracePeriodSeconds**|int|termination grace period seconds||
+|**tmpDirSizeLimit**|str|tmp dir size limit||
+|**tolerations**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodTolerationsItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildpodtolerationsitems0)]|tolerations||
+|**topologySpreadConstraints**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodTopologySpreadConstraintsItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildpodtopologyspreadconstraintsitems0)]|topology spread constraints||
+|**volumes**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildpodvolumesitems0)]|volumes||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodAffinity
 
-The pod's affinity rules.
+kafka strimzi io v1beta2 kafka connect spec template build pod affinity
 
 #### Attributes
 
@@ -41666,7 +41671,7 @@ kafka strimzi io v1beta2 kafka connect spec template build pod affinity pod anti
 |**values**|[str]|values||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodDNSConfig
 
-The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.
+kafka strimzi io v1beta2 kafka connect spec template build pod DNS config
 
 #### Attributes
 
@@ -41706,17 +41711,17 @@ kafka strimzi io v1beta2 kafka connect spec template build pod image pull secret
 |**name**|str|name||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka connect spec template build pod metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodSecurityContext
 
-Configures pod-level security attributes and common container settings.
+kafka strimzi io v1beta2 kafka connect spec template build pod security context
 
 #### Attributes
 
@@ -41851,12 +41856,12 @@ kafka strimzi io v1beta2 kafka connect spec template build pod volumes items0
 |**csi**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0Csi](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildpodvolumesitems0csi)|csi||
 |**emptyDir**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0EmptyDir](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildpodvolumesitems0emptydir)|empty dir||
 |**image**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0Image](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildpodvolumesitems0image)|image||
-|**name**|str|Name to use for the volume. Required.||
+|**name**|str|name||
 |**persistentVolumeClaim**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0PersistentVolumeClaim](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildpodvolumesitems0persistentvolumeclaim)|persistent volume claim||
 |**secret**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0Secret](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildpodvolumesitems0secret)|secret||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0ConfigMap
 
-`ConfigMap` to use to populate the volume.
+kafka strimzi io v1beta2 kafka connect spec template build pod volumes items0 config map
 
 #### Attributes
 
@@ -41879,7 +41884,7 @@ kafka strimzi io v1beta2 kafka connect spec template build pod volumes items0 co
 |**path**|str|path||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0Csi
 
-`CSIVolumeSource` object to use to populate the volume.
+kafka strimzi io v1beta2 kafka connect spec template build pod volumes items0 csi
 
 #### Attributes
 
@@ -41901,17 +41906,17 @@ kafka strimzi io v1beta2 kafka connect spec template build pod volumes items0 cs
 |**name**|str|name||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0EmptyDir
 
-`EmptyDir` to use to populate the volume.
+kafka strimzi io v1beta2 kafka connect spec template build pod volumes items0 empty dir
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**medium** `readOnly`|"Memory"|Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.|"Memory"|
-|**sizeLimit**|str|The total amount of local storage required for this EmptyDir volume (for example 1Gi).||
+|**medium** `readOnly`|"Memory"|medium|"Memory"|
+|**sizeLimit**|str|size limit||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0Image
 
-`ImageVolumeSource` object to use to populate the volume.
+kafka strimzi io v1beta2 kafka connect spec template build pod volumes items0 image
 
 #### Attributes
 
@@ -41921,7 +41926,7 @@ kafka strimzi io v1beta2 kafka connect spec template build pod volumes items0 cs
 |**reference**|str|reference||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0PersistentVolumeClaim
 
-`PersistentVolumeClaim` object to use to populate the volume.
+kafka strimzi io v1beta2 kafka connect spec template build pod volumes items0 persistent volume claim
 
 #### Attributes
 
@@ -41931,7 +41936,7 @@ kafka strimzi io v1beta2 kafka connect spec template build pod volumes items0 cs
 |**readOnly**|bool|read only||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0Secret
 
-`Secret` to use to populate the volume.
+kafka strimzi io v1beta2 kafka connect spec template build pod volumes items0 secret
 
 #### Attributes
 
@@ -41954,7 +41959,7 @@ kafka strimzi io v1beta2 kafka connect spec template build pod volumes items0 se
 |**path**|str|path||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildServiceAccount
 
-Template for the Kafka Connect Build service account.
+kafka strimzi io v1beta2 kafka connect spec template build service account
 
 #### Attributes
 
@@ -41963,17 +41968,17 @@ Template for the Kafka Connect Build service account.
 |**metadata**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildServiceAccountMetadata](#kafkastrimziiov1beta2kafkaconnectspectemplatebuildserviceaccountmetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildServiceAccountMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka connect spec template build service account metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateClusterRoleBinding
 
-Template for the Kafka Connect ClusterRoleBinding.
+kafka strimzi io v1beta2 kafka connect spec template cluster role binding
 
 #### Attributes
 
@@ -41982,25 +41987,25 @@ Template for the Kafka Connect ClusterRoleBinding.
 |**metadata**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateClusterRoleBindingMetadata](#kafkastrimziiov1beta2kafkaconnectspectemplateclusterrolebindingmetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateClusterRoleBindingMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka connect spec template cluster role binding metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainer
 
-Template for the Kafka Connect container.
+kafka strimzi io v1beta2 kafka connect spec template connect container
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**env**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerEnvItems0](#kafkastrimziiov1beta2kafkaconnectspectemplateconnectcontainerenvitems0)]|Environment variables which should be applied to the container.||
+|**env**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerEnvItems0](#kafkastrimziiov1beta2kafkaconnectspectemplateconnectcontainerenvitems0)]|env||
 |**securityContext**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerSecurityContext](#kafkastrimziiov1beta2kafkaconnectspectemplateconnectcontainersecuritycontext)|security context||
-|**volumeMounts**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerVolumeMountsItems0](#kafkastrimziiov1beta2kafkaconnectspectemplateconnectcontainervolumemountsitems0)]|Additional volume mounts which should be applied to the container.||
+|**volumeMounts**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerVolumeMountsItems0](#kafkastrimziiov1beta2kafkaconnectspectemplateconnectcontainervolumemountsitems0)]|volume mounts||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerEnvItems0
 
 kafka strimzi io v1beta2 kafka connect spec template connect container env items0
@@ -42009,12 +42014,12 @@ kafka strimzi io v1beta2 kafka connect spec template connect container env items
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The environment variable key.||
-|**value**|str|The environment variable value.||
+|**name**|str|name||
+|**value**|str|value||
 |**valueFrom**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerEnvItems0ValueFrom](#kafkastrimziiov1beta2kafkaconnectspectemplateconnectcontainerenvitems0valuefrom)|value from||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerEnvItems0ValueFrom
 
-Reference to the secret or config map property to which the environment variable is set.
+kafka strimzi io v1beta2 kafka connect spec template connect container env items0 value from
 
 #### Attributes
 
@@ -42024,7 +42029,7 @@ Reference to the secret or config map property to which the environment variable
 |**secretKeyRef**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerEnvItems0ValueFromSecretKeyRef](#kafkastrimziiov1beta2kafkaconnectspectemplateconnectcontainerenvitems0valuefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerEnvItems0ValueFromConfigMapKeyRef
 
-Reference to a key in a config map.
+kafka strimzi io v1beta2 kafka connect spec template connect container env items0 value from config map key ref
 
 #### Attributes
 
@@ -42035,7 +42040,7 @@ Reference to a key in a config map.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerEnvItems0ValueFromSecretKeyRef
 
-Reference to a key in a secret.
+kafka strimzi io v1beta2 kafka connect spec template connect container env items0 value from secret key ref
 
 #### Attributes
 
@@ -42046,7 +42051,7 @@ Reference to a key in a secret.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerSecurityContext
 
-Security context for the container.
+kafka strimzi io v1beta2 kafka connect spec template connect container security context
 
 #### Attributes
 
@@ -42135,56 +42140,56 @@ kafka strimzi io v1beta2 kafka connect spec template connect container volume mo
 |**subPathExpr**|str|sub path expr||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateDeployment
 
-Template for Kafka Connect `Deployment`.
+kafka strimzi io v1beta2 kafka connect spec template deployment
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**deploymentStrategy**|"RollingUpdate" | "Recreate"|Pod replacement strategy for deployment configuration changes. Valid values are `RollingUpdate` and `Recreate`. Defaults to `RollingUpdate`.||
+|**deploymentStrategy**|"RollingUpdate" | "Recreate"|deployment strategy||
 |**metadata**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateDeploymentMetadata](#kafkastrimziiov1beta2kafkaconnectspectemplatedeploymentmetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateDeploymentMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka connect spec template deployment metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateHeadlessService
 
-Template for Kafka Connect headless `Service`.
+kafka strimzi io v1beta2 kafka connect spec template headless service
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**ipFamilies**|[str]|Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6`. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting.||
-|**ipFamilyPolicy**|"SingleStack" | "PreferDualStack" | "RequireDualStack"|Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`. `SingleStack` is for a single IP family. `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters. `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters. If unspecified, Kubernetes will choose the default value based on the service type.||
+|**ipFamilies**|[str]|ip families||
+|**ipFamilyPolicy**|"SingleStack" | "PreferDualStack" | "RequireDualStack"|ip family policy||
 |**metadata**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateHeadlessServiceMetadata](#kafkastrimziiov1beta2kafkaconnectspectemplateheadlessservicemetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateHeadlessServiceMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka connect spec template headless service metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainer
 
-Template for the Kafka init container.
+kafka strimzi io v1beta2 kafka connect spec template init container
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**env**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerEnvItems0](#kafkastrimziiov1beta2kafkaconnectspectemplateinitcontainerenvitems0)]|Environment variables which should be applied to the container.||
+|**env**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerEnvItems0](#kafkastrimziiov1beta2kafkaconnectspectemplateinitcontainerenvitems0)]|env||
 |**securityContext**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerSecurityContext](#kafkastrimziiov1beta2kafkaconnectspectemplateinitcontainersecuritycontext)|security context||
-|**volumeMounts**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerVolumeMountsItems0](#kafkastrimziiov1beta2kafkaconnectspectemplateinitcontainervolumemountsitems0)]|Additional volume mounts which should be applied to the container.||
+|**volumeMounts**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerVolumeMountsItems0](#kafkastrimziiov1beta2kafkaconnectspectemplateinitcontainervolumemountsitems0)]|volume mounts||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerEnvItems0
 
 kafka strimzi io v1beta2 kafka connect spec template init container env items0
@@ -42193,12 +42198,12 @@ kafka strimzi io v1beta2 kafka connect spec template init container env items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The environment variable key.||
-|**value**|str|The environment variable value.||
+|**name**|str|name||
+|**value**|str|value||
 |**valueFrom**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerEnvItems0ValueFrom](#kafkastrimziiov1beta2kafkaconnectspectemplateinitcontainerenvitems0valuefrom)|value from||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerEnvItems0ValueFrom
 
-Reference to the secret or config map property to which the environment variable is set.
+kafka strimzi io v1beta2 kafka connect spec template init container env items0 value from
 
 #### Attributes
 
@@ -42208,7 +42213,7 @@ Reference to the secret or config map property to which the environment variable
 |**secretKeyRef**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerEnvItems0ValueFromSecretKeyRef](#kafkastrimziiov1beta2kafkaconnectspectemplateinitcontainerenvitems0valuefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerEnvItems0ValueFromConfigMapKeyRef
 
-Reference to a key in a config map.
+kafka strimzi io v1beta2 kafka connect spec template init container env items0 value from config map key ref
 
 #### Attributes
 
@@ -42219,7 +42224,7 @@ Reference to a key in a config map.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerEnvItems0ValueFromSecretKeyRef
 
-Reference to a key in a secret.
+kafka strimzi io v1beta2 kafka connect spec template init container env items0 value from secret key ref
 
 #### Attributes
 
@@ -42230,7 +42235,7 @@ Reference to a key in a secret.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerSecurityContext
 
-Security context for the container.
+kafka strimzi io v1beta2 kafka connect spec template init container security context
 
 #### Attributes
 
@@ -42319,7 +42324,7 @@ kafka strimzi io v1beta2 kafka connect spec template init container volume mount
 |**subPathExpr**|str|sub path expr||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateJmxSecret
 
-Template for Secret of the Kafka Connect Cluster JMX authentication.
+kafka strimzi io v1beta2 kafka connect spec template jmx secret
 
 #### Attributes
 
@@ -42328,17 +42333,17 @@ Template for Secret of the Kafka Connect Cluster JMX authentication.
 |**metadata**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateJmxSecretMetadata](#kafkastrimziiov1beta2kafkaconnectspectemplatejmxsecretmetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateJmxSecretMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka connect spec template jmx secret metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePod
 
-Template for Kafka Connect `Pods`.
+kafka strimzi io v1beta2 kafka connect spec template pod
 
 #### Attributes
 
@@ -42346,23 +42351,23 @@ Template for Kafka Connect `Pods`.
 | --- | --- | --- | --- |
 |**affinity**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodAffinity](#kafkastrimziiov1beta2kafkaconnectspectemplatepodaffinity)|affinity||
 |**dnsConfig**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodDNSConfig](#kafkastrimziiov1beta2kafkaconnectspectemplatepoddnsconfig)|dns config||
-|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.||
-|**enableServiceLinks**|bool|Indicates whether information about services should be injected into Pod's environment variables.||
-|**hostAliases**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodHostAliasesItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatepodhostaliasesitems0)]|The pod's HostAliases. HostAliases is an optional list of hosts and IPs that will be injected into the Pod's hosts file if specified.||
-|**hostUsers**|bool|Use the host user namespace. Optional. Defaults to `true`. When `true` or not set, the pod runs in the host user namespace. This is required when the pod needs features available only in the host namespace, such as loading kernel modules with `CAP_SYS_MODULE`.When set to `false`, the pod runs in a new user namespace. Setting `false` helps mitigate container breakout vulnerabilities and allows containers to run as `root` without granting `root` privileges on the host. This property is alpha-level in Kubernetes and is supported only by Kubernetes clusters that enable the `UserNamespacesSupport` feature.||
-|**imagePullSecrets**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodImagePullSecretsItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatepodimagepullsecretsitems0)]|List of references to secrets in the same namespace to use for pulling any of the images used by this Pod. When the `STRIMZI_IMAGE_PULL_SECRETS` environment variable in Cluster Operator and the `imagePullSecrets` option are specified, only the `imagePullSecrets` variable is used and the `STRIMZI_IMAGE_PULL_SECRETS` variable is ignored.||
+|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|dns policy||
+|**enableServiceLinks**|bool|enable service links||
+|**hostAliases**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodHostAliasesItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatepodhostaliasesitems0)]|host aliases||
+|**hostUsers**|bool|host users||
+|**imagePullSecrets**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodImagePullSecretsItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatepodimagepullsecretsitems0)]|image pull secrets||
 |**metadata**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodMetadata](#kafkastrimziiov1beta2kafkaconnectspectemplatepodmetadata)|metadata||
-|**priorityClassName**|str|The name of the priority class used to assign priority to the pods.||
-|**schedulerName**|str|The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.||
+|**priorityClassName**|str|priority class name||
+|**schedulerName**|str|scheduler name||
 |**securityContext**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodSecurityContext](#kafkastrimziiov1beta2kafkaconnectspectemplatepodsecuritycontext)|security context||
-|**terminationGracePeriodSeconds**|int|The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.||
-|**tmpDirSizeLimit**|str|Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.||
-|**tolerations**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodTolerationsItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatepodtolerationsitems0)]|The pod's tolerations.||
-|**topologySpreadConstraints**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodTopologySpreadConstraintsItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatepodtopologyspreadconstraintsitems0)]|The pod's topology spread constraints.||
-|**volumes**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatepodvolumesitems0)]|Additional volumes that can be mounted to the pod.||
+|**terminationGracePeriodSeconds**|int|termination grace period seconds||
+|**tmpDirSizeLimit**|str|tmp dir size limit||
+|**tolerations**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodTolerationsItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatepodtolerationsitems0)]|tolerations||
+|**topologySpreadConstraints**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodTopologySpreadConstraintsItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatepodtopologyspreadconstraintsitems0)]|topology spread constraints||
+|**volumes**|[[KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0](#kafkastrimziiov1beta2kafkaconnectspectemplatepodvolumesitems0)]|volumes||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodAffinity
 
-The pod's affinity rules.
+kafka strimzi io v1beta2 kafka connect spec template pod affinity
 
 #### Attributes
 
@@ -42730,7 +42735,7 @@ kafka strimzi io v1beta2 kafka connect spec template pod affinity pod anti affin
 |**values**|[str]|values||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodDNSConfig
 
-The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.
+kafka strimzi io v1beta2 kafka connect spec template pod DNS config
 
 #### Attributes
 
@@ -42751,24 +42756,24 @@ kafka strimzi io v1beta2 kafka connect spec template pod DNS config options item
 |**value**|str|value||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodDisruptionBudget
 
-Template for Kafka Connect `PodDisruptionBudget`.
+kafka strimzi io v1beta2 kafka connect spec template pod disruption budget
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**maxUnavailable**|int|Maximum number of unavailable pods to allow automatic Pod eviction. A Pod eviction is allowed when the `maxUnavailable` number of pods or fewer are unavailable after the eviction. Setting this value to 0 prevents all voluntary evictions, so the pods must be evicted manually. Defaults to 1.||
+|**maxUnavailable**|int|max unavailable||
 |**metadata**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodDisruptionBudgetMetadata](#kafkastrimziiov1beta2kafkaconnectspectemplatepoddisruptionbudgetmetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodDisruptionBudgetMetadata
 
-Metadata to apply to the `PodDisruptionBudgetTemplate` resource.
+kafka strimzi io v1beta2 kafka connect spec template pod disruption budget metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodHostAliasesItems0
 
 kafka strimzi io v1beta2 kafka connect spec template pod host aliases items0
@@ -42790,17 +42795,17 @@ kafka strimzi io v1beta2 kafka connect spec template pod image pull secrets item
 |**name**|str|name||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka connect spec template pod metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodSecurityContext
 
-Configures pod-level security attributes and common container settings.
+kafka strimzi io v1beta2 kafka connect spec template pod security context
 
 #### Attributes
 
@@ -42875,7 +42880,7 @@ kafka strimzi io v1beta2 kafka connect spec template pod security context window
 |**runAsUserName**|str|run as user name||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodSet
 
-Template for Kafka Connect `StrimziPodSet` resource.
+kafka strimzi io v1beta2 kafka connect spec template pod set
 
 #### Attributes
 
@@ -42884,14 +42889,14 @@ Template for Kafka Connect `StrimziPodSet` resource.
 |**metadata**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodSetMetadata](#kafkastrimziiov1beta2kafkaconnectspectemplatepodsetmetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodSetMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka connect spec template pod set metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodTolerationsItems0
 
 kafka strimzi io v1beta2 kafka connect spec template pod tolerations items0
@@ -42954,12 +42959,12 @@ kafka strimzi io v1beta2 kafka connect spec template pod volumes items0
 |**csi**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0Csi](#kafkastrimziiov1beta2kafkaconnectspectemplatepodvolumesitems0csi)|csi||
 |**emptyDir**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0EmptyDir](#kafkastrimziiov1beta2kafkaconnectspectemplatepodvolumesitems0emptydir)|empty dir||
 |**image**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0Image](#kafkastrimziiov1beta2kafkaconnectspectemplatepodvolumesitems0image)|image||
-|**name**|str|Name to use for the volume. Required.||
+|**name**|str|name||
 |**persistentVolumeClaim**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0PersistentVolumeClaim](#kafkastrimziiov1beta2kafkaconnectspectemplatepodvolumesitems0persistentvolumeclaim)|persistent volume claim||
 |**secret**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0Secret](#kafkastrimziiov1beta2kafkaconnectspectemplatepodvolumesitems0secret)|secret||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0ConfigMap
 
-`ConfigMap` to use to populate the volume.
+kafka strimzi io v1beta2 kafka connect spec template pod volumes items0 config map
 
 #### Attributes
 
@@ -42982,7 +42987,7 @@ kafka strimzi io v1beta2 kafka connect spec template pod volumes items0 config m
 |**path**|str|path||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0Csi
 
-`CSIVolumeSource` object to use to populate the volume.
+kafka strimzi io v1beta2 kafka connect spec template pod volumes items0 csi
 
 #### Attributes
 
@@ -43004,17 +43009,17 @@ kafka strimzi io v1beta2 kafka connect spec template pod volumes items0 csi node
 |**name**|str|name||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0EmptyDir
 
-`EmptyDir` to use to populate the volume.
+kafka strimzi io v1beta2 kafka connect spec template pod volumes items0 empty dir
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**medium** `readOnly`|"Memory"|Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.|"Memory"|
-|**sizeLimit**|str|The total amount of local storage required for this EmptyDir volume (for example 1Gi).||
+|**medium** `readOnly`|"Memory"|medium|"Memory"|
+|**sizeLimit**|str|size limit||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0Image
 
-`ImageVolumeSource` object to use to populate the volume.
+kafka strimzi io v1beta2 kafka connect spec template pod volumes items0 image
 
 #### Attributes
 
@@ -43024,7 +43029,7 @@ kafka strimzi io v1beta2 kafka connect spec template pod volumes items0 csi node
 |**reference**|str|reference||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0PersistentVolumeClaim
 
-`PersistentVolumeClaim` object to use to populate the volume.
+kafka strimzi io v1beta2 kafka connect spec template pod volumes items0 persistent volume claim
 
 #### Attributes
 
@@ -43034,7 +43039,7 @@ kafka strimzi io v1beta2 kafka connect spec template pod volumes items0 csi node
 |**readOnly**|bool|read only||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0Secret
 
-`Secret` to use to populate the volume.
+kafka strimzi io v1beta2 kafka connect spec template pod volumes items0 secret
 
 #### Attributes
 
@@ -43057,7 +43062,7 @@ kafka strimzi io v1beta2 kafka connect spec template pod volumes items0 secret i
 |**path**|str|path||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateServiceAccount
 
-Template for the Kafka Connect service account.
+kafka strimzi io v1beta2 kafka connect spec template service account
 
 #### Attributes
 
@@ -43066,17 +43071,17 @@ Template for the Kafka Connect service account.
 |**metadata**|[KafkaStrimziIoV1beta2KafkaConnectSpecTemplateServiceAccountMetadata](#kafkastrimziiov1beta2kafkaconnectspectemplateserviceaccountmetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTemplateServiceAccountMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka connect spec template service account metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaConnectSpecTracing
 
-The configuration of tracing in Kafka Connect.
+kafka strimzi io v1beta2 kafka connect spec tracing
 
 #### Attributes
 
@@ -43085,18 +43090,18 @@ The configuration of tracing in Kafka Connect.
 |**type** `required`|"jaeger" | "opentelemetry"|||
 ### KafkaStrimziIoV1beta2KafkaConnectStatus
 
-The status of the Kafka Connect cluster.
+kafka strimzi io v1beta2 kafka connect status
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**conditions**|[[KafkaStrimziIoV1beta2KafkaConnectStatusConditionsItems0](#kafkastrimziiov1beta2kafkaconnectstatusconditionsitems0)]|List of status conditions.||
-|**connectorPlugins**|[[KafkaStrimziIoV1beta2KafkaConnectStatusConnectorPluginsItems0](#kafkastrimziiov1beta2kafkaconnectstatusconnectorpluginsitems0)]|The list of connector plugins available in this Kafka Connect deployment.||
-|**labelSelector**|str|Label selector for pods providing this resource.||
-|**observedGeneration**|int|The generation of the CRD that was last reconciled by the operator.||
-|**replicas**|int|The current number of pods being used to provide this resource.||
-|**url**|str|The URL of the REST API endpoint for managing and monitoring Kafka Connect connectors.||
+|**conditions**|[[KafkaStrimziIoV1beta2KafkaConnectStatusConditionsItems0](#kafkastrimziiov1beta2kafkaconnectstatusconditionsitems0)]|conditions||
+|**connectorPlugins**|[[KafkaStrimziIoV1beta2KafkaConnectStatusConnectorPluginsItems0](#kafkastrimziiov1beta2kafkaconnectstatusconnectorpluginsitems0)]|connector plugins||
+|**labelSelector**|str|label selector||
+|**observedGeneration**|int|observed generation||
+|**replicas**|int|replicas||
+|**url**|str|url||
 ### KafkaStrimziIoV1beta2KafkaConnectStatusConditionsItems0
 
 kafka strimzi io v1beta2 kafka connect status conditions items0
@@ -43105,10 +43110,10 @@ kafka strimzi io v1beta2 kafka connect status conditions items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.||
-|**message**|str|Human-readable message indicating details about the condition's last transition.||
-|**reason**|str|The reason for the condition's last transition (a single word in CamelCase).||
-|**status**|str|The status of the condition, either True, False or Unknown.||
+|**lastTransitionTime**|str|last transition time||
+|**message**|str|message||
+|**reason**|str|reason||
+|**status**|str|status||
 |**type**|str|||
 ### KafkaStrimziIoV1beta2KafkaConnectStatusConnectorPluginsItems0
 
@@ -43118,12 +43123,12 @@ kafka strimzi io v1beta2 kafka connect status connector plugins items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**class**|str|The class of the connector plugin.||
+|**class**|str|class||
 |**type**|str|||
-|**version**|str|The version of the connector plugin.||
+|**version**|str|version||
 ### KafkaStrimziIoV1beta2KafkaConnectorSpec
 
-The specification of the Kafka Connector.
+kafka strimzi io v1beta2 kafka connector spec
 
 #### Attributes
 
@@ -43131,16 +43136,16 @@ The specification of the Kafka Connector.
 | --- | --- | --- | --- |
 |**alterOffsets**|[KafkaStrimziIoV1beta2KafkaConnectorSpecAlterOffsets](#kafkastrimziiov1beta2kafkaconnectorspecalteroffsets)|alter offsets||
 |**autoRestart**|[KafkaStrimziIoV1beta2KafkaConnectorSpecAutoRestart](#kafkastrimziiov1beta2kafkaconnectorspecautorestart)|auto restart||
-|**class**|str|The Class for the Kafka Connector.||
-|**config**|any|The Kafka Connector configuration. The following properties cannot be set: name, connector.class, tasks.max, connector.plugin.version.||
+|**class**|str|class||
+|**config**|any|config||
 |**listOffsets**|[KafkaStrimziIoV1beta2KafkaConnectorSpecListOffsets](#kafkastrimziiov1beta2kafkaconnectorspeclistoffsets)|list offsets||
-|**pause**|bool|Whether the connector should be paused. Defaults to false.||
-|**state**|"paused" | "stopped" | "running"|The state the connector should be in. Defaults to running.||
-|**tasksMax**|int|The maximum number of tasks for the Kafka Connector.||
-|**version**|str|Desired version or version range to respect when starting the Kafka Connector. This is only supported when using Kafka Connect version 4.1.0 and higher.||
+|**pause**|bool|pause||
+|**state**|"paused" | "stopped" | "running"|state||
+|**tasksMax**|int|tasks max||
+|**version**|str|version||
 ### KafkaStrimziIoV1beta2KafkaConnectorSpecAlterOffsets
 
-Configuration for altering offsets.
+kafka strimzi io v1beta2 kafka connector spec alter offsets
 
 #### Attributes
 
@@ -43149,7 +43154,7 @@ Configuration for altering offsets.
 |**fromConfigMap** `required`|[KafkaStrimziIoV1beta2KafkaConnectorSpecAlterOffsetsFromConfigMap](#kafkastrimziiov1beta2kafkaconnectorspecalteroffsetsfromconfigmap)|from config map||
 ### KafkaStrimziIoV1beta2KafkaConnectorSpecAlterOffsetsFromConfigMap
 
-Reference to the ConfigMap where the new offsets are stored.
+kafka strimzi io v1beta2 kafka connector spec alter offsets from config map
 
 #### Attributes
 
@@ -43158,17 +43163,17 @@ Reference to the ConfigMap where the new offsets are stored.
 |**name**|str|name||
 ### KafkaStrimziIoV1beta2KafkaConnectorSpecAutoRestart
 
-Automatic restart of connector and tasks configuration.
+kafka strimzi io v1beta2 kafka connector spec auto restart
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**enabled**|bool|Whether automatic restart for failed connectors and tasks should be enabled or disabled.||
-|**maxRestarts**|int|The maximum number of connector restarts that the operator will try. If the connector remains in a failed state after reaching this limit, it must be restarted manually by the user. Defaults to an unlimited number of restarts.||
+|**enabled**|bool|enabled||
+|**maxRestarts**|int|max restarts||
 ### KafkaStrimziIoV1beta2KafkaConnectorSpecListOffsets
 
-Configuration for listing offsets.
+kafka strimzi io v1beta2 kafka connector spec list offsets
 
 #### Attributes
 
@@ -43177,7 +43182,7 @@ Configuration for listing offsets.
 |**toConfigMap** `required`|[KafkaStrimziIoV1beta2KafkaConnectorSpecListOffsetsToConfigMap](#kafkastrimziiov1beta2kafkaconnectorspeclistoffsetstoconfigmap)|to config map||
 ### KafkaStrimziIoV1beta2KafkaConnectorSpecListOffsetsToConfigMap
 
-Reference to the ConfigMap where the list of offsets will be written to.
+kafka strimzi io v1beta2 kafka connector spec list offsets to config map
 
 #### Attributes
 
@@ -43186,29 +43191,29 @@ Reference to the ConfigMap where the list of offsets will be written to.
 |**name**|str|name||
 ### KafkaStrimziIoV1beta2KafkaConnectorStatus
 
-The status of the Kafka Connector.
+kafka strimzi io v1beta2 kafka connector status
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**autoRestart**|[KafkaStrimziIoV1beta2KafkaConnectorStatusAutoRestart](#kafkastrimziiov1beta2kafkaconnectorstatusautorestart)|auto restart||
-|**conditions**|[[KafkaStrimziIoV1beta2KafkaConnectorStatusConditionsItems0](#kafkastrimziiov1beta2kafkaconnectorstatusconditionsitems0)]|List of status conditions.||
-|**connectorStatus**|any|The connector status, as reported by the Kafka Connect REST API.||
-|**observedGeneration**|int|The generation of the CRD that was last reconciled by the operator.||
-|**tasksMax**|int|The maximum number of tasks for the Kafka Connector.||
-|**topics**|[str]|The list of topics used by the Kafka Connector.||
+|**conditions**|[[KafkaStrimziIoV1beta2KafkaConnectorStatusConditionsItems0](#kafkastrimziiov1beta2kafkaconnectorstatusconditionsitems0)]|conditions||
+|**connectorStatus**|any|connector status||
+|**observedGeneration**|int|observed generation||
+|**tasksMax**|int|tasks max||
+|**topics**|[str]|topics||
 ### KafkaStrimziIoV1beta2KafkaConnectorStatusAutoRestart
 
-The auto restart status.
+kafka strimzi io v1beta2 kafka connector status auto restart
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**connectorName**|str|The name of the connector being restarted.||
-|**count**|int|The number of times the connector or task is restarted.||
-|**lastRestartTimestamp**|str|The last time the automatic restart was attempted. The required format is 'yyyy-MM-ddTHH:mm:ssZ' in the UTC time zone.||
+|**connectorName**|str|connector name||
+|**count**|int|count||
+|**lastRestartTimestamp**|str|last restart timestamp||
 ### KafkaStrimziIoV1beta2KafkaConnectorStatusConditionsItems0
 
 kafka strimzi io v1beta2 kafka connector status conditions items0
@@ -43217,38 +43222,38 @@ kafka strimzi io v1beta2 kafka connector status conditions items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.||
-|**message**|str|Human-readable message indicating details about the condition's last transition.||
-|**reason**|str|The reason for the condition's last transition (a single word in CamelCase).||
-|**status**|str|The status of the condition, either True, False or Unknown.||
+|**lastTransitionTime**|str|last transition time||
+|**message**|str|message||
+|**reason**|str|reason||
+|**status**|str|status||
 |**type**|str|||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2Spec
 
-The specification of the Kafka MirrorMaker 2 cluster.
+kafka strimzi io v1beta2 kafka mirror maker2 spec
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**clientRackInitImage**|str|The image of the init container used for initializing the `client.rack`.||
-|**clusters**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0](#kafkastrimziiov1beta2kafkamirrormaker2specclustersitems0)]|Kafka clusters for mirroring.||
-|**connectCluster**|str|The cluster alias used for Kafka Connect. The value must match the alias of the *target* Kafka cluster as specified in the `spec.clusters` configuration. The target Kafka cluster is used by the underlying Kafka Connect framework for its internal topics.||
+|**clientRackInitImage**|str|client rack init image||
+|**clusters**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0](#kafkastrimziiov1beta2kafkamirrormaker2specclustersitems0)]|clusters||
+|**connectCluster**|str|connect cluster||
 |**externalConfiguration**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecExternalConfiguration](#kafkastrimziiov1beta2kafkamirrormaker2specexternalconfiguration)|external configuration||
-|**image**|str|The container image used for Kafka Connect pods. If no image name is explicitly specified, it is determined based on the `spec.version` configuration. The image names are specifically mapped to corresponding versions in the Cluster Operator configuration.||
+|**image**|str|image||
 |**jmxOptions**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecJmxOptions](#kafkastrimziiov1beta2kafkamirrormaker2specjmxoptions)|jmx options||
 |**jvmOptions**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecJvmOptions](#kafkastrimziiov1beta2kafkamirrormaker2specjvmoptions)|jvm options||
 |**livenessProbe**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecLivenessProbe](#kafkastrimziiov1beta2kafkamirrormaker2speclivenessprobe)|liveness probe||
 |**logging**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecLogging](#kafkastrimziiov1beta2kafkamirrormaker2speclogging)|logging||
 |**metricsConfig**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMetricsConfig](#kafkastrimziiov1beta2kafkamirrormaker2specmetricsconfig)|metrics config||
-|**mirrors**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0)]|Configuration of the MirrorMaker 2 connectors.||
+|**mirrors**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0)]|mirrors||
 |**rack**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecRack](#kafkastrimziiov1beta2kafkamirrormaker2specrack)|rack||
 |**readinessProbe**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecReadinessProbe](#kafkastrimziiov1beta2kafkamirrormaker2specreadinessprobe)|readiness probe||
-|**replicas**|int|The number of pods in the Kafka Connect group. Required in the `v1` version of the Strimzi API. Defaults to `3` in the `v1beta2` version of the Strimzi API.||
+|**replicas**|int|replicas||
 |**resources**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecResources](#kafkastrimziiov1beta2kafkamirrormaker2specresources)|resources||
 |**target**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTarget](#kafkastrimziiov1beta2kafkamirrormaker2spectarget)|target||
 |**template**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplate](#kafkastrimziiov1beta2kafkamirrormaker2spectemplate)|template||
 |**tracing**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTracing](#kafkastrimziiov1beta2kafkamirrormaker2spectracing)|tracing||
-|**version**|str|The Kafka Connect version. Defaults to the latest version. Consult the user documentation to understand the process required to upgrade or downgrade the version.||
+|**version**|str|version||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0
 
 kafka strimzi io v1beta2 kafka mirror maker2 spec clusters items0
@@ -43257,109 +43262,109 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec clusters items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**alias** `required`|str|Alias used to reference the Kafka cluster.||
+|**alias** `required`|str|alias||
 |**authentication**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0Authentication](#kafkastrimziiov1beta2kafkamirrormaker2specclustersitems0authentication)|authentication||
-|**bootstrapServers** `required`|str|A comma-separated list of `host:port` pairs for establishing the connection to the Kafka cluster.||
-|**config**|any|The MirrorMaker 2 cluster config. Properties with the following prefixes cannot be set: ssl., sasl., security., listeners, plugin.path, rest., bootstrap.servers, consumer.interceptor.classes, producer.interceptor.classes (with the exception of: ssl.endpoint.identification.algorithm, ssl.cipher.suites, ssl.protocol, ssl.enabled.protocols).||
+|**bootstrapServers** `required`|str|bootstrap servers||
+|**config**|any|config||
 |**tls**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0TLS](#kafkastrimziiov1beta2kafkamirrormaker2specclustersitems0tls)|tls||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0Authentication
 
-Authentication configuration for connecting to the cluster.
+kafka strimzi io v1beta2 kafka mirror maker2 spec clusters items0 authentication
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**accessToken**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0AuthenticationAccessToken](#kafkastrimziiov1beta2kafkamirrormaker2specclustersitems0authenticationaccesstoken)|access token||
-|**accessTokenIsJwt**|bool|Configure whether access token should be treated as JWT. This should be set to `false` if the authorization server returns opaque tokens. Defaults to `true`.||
-|**accessTokenLocation**|str|Path to the token file containing an access token to be used for authentication.||
-|**audience**|str|OAuth audience to use when authenticating against the authorization server. Some authorization servers require the audience to be explicitly set. The possible values depend on how the authorization server is configured. By default, `audience` is not specified when performing the token endpoint request.||
+|**accessTokenIsJwt**|bool|access token is jwt||
+|**accessTokenLocation**|str|access token location||
+|**audience**|str|audience||
 |**certificateAndKey**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0AuthenticationCertificateAndKey](#kafkastrimziiov1beta2kafkamirrormaker2specclustersitems0authenticationcertificateandkey)|certificate and key||
 |**clientAssertion**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0AuthenticationClientAssertion](#kafkastrimziiov1beta2kafkamirrormaker2specclustersitems0authenticationclientassertion)|client assertion||
-|**clientAssertionLocation**|str|Path to the file containing the client assertion to be used for authentication.||
-|**clientAssertionType**|str|The client assertion type. If not set, and either `clientAssertion` or `clientAssertionLocation` is configured, this value defaults to `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`.||
-|**clientId**|str|OAuth Client ID which the Kafka client can use to authenticate against the OAuth server and use the token endpoint URI.||
+|**clientAssertionLocation**|str|client assertion location||
+|**clientAssertionType**|str|client assertion type||
+|**clientId**|str|client Id||
 |**clientSecret**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0AuthenticationClientSecret](#kafkastrimziiov1beta2kafkamirrormaker2specclustersitems0authenticationclientsecret)|client secret||
-|**config**|any|Configuration for the custom authentication mechanism. Only properties with the `sasl.` and `ssl.keystore.` prefixes are allowed. Specify other options in the regular configuration section of the custom resource.||
-|**connectTimeoutSeconds**|int|The connect timeout in seconds when connecting to authorization server. If not set, the effective connect timeout is 60 seconds.||
-|**disableTlsHostnameVerification**|bool|Enable or disable TLS hostname verification. Default value is `false`.||
-|**enableMetrics**|bool|Enable or disable OAuth metrics. Default value is `false`.||
-|**grantType**|str|A custom OAuth grant type to use when authenticating against the authorization server with `clientId` and one of `clientSecret` or `clientAssertion`. The value defaults to `client_credentials` in these cases. This is optional configuration, only used with custom authorization server implementations.||
-|**httpRetries**|int|The maximum number of retries to attempt if an initial HTTP request fails. If not set, the default is to not attempt any retries.||
-|**httpRetryPauseMs**|int|The pause to take before retrying a failed HTTP request. If not set, the default is to not pause at all but to immediately repeat a request.||
-|**includeAcceptHeader**|bool|Whether the Accept header should be set in requests to the authorization servers. The default value is `true`.||
-|**maxTokenExpirySeconds**|int|Set or limit time-to-live of the access tokens to the specified number of seconds. This should be set if the authorization server returns opaque tokens.||
+|**config**|any|config||
+|**connectTimeoutSeconds**|int|connect timeout seconds||
+|**disableTlsHostnameVerification**|bool|disable Tls hostname verification||
+|**enableMetrics**|bool|enable metrics||
+|**grantType**|str|grant type||
+|**httpRetries**|int|http retries||
+|**httpRetryPauseMs**|int|http retry pause ms||
+|**includeAcceptHeader**|bool|include accept header||
+|**maxTokenExpirySeconds**|int|max token expiry seconds||
 |**passwordSecret**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0AuthenticationPasswordSecret](#kafkastrimziiov1beta2kafkamirrormaker2specclustersitems0authenticationpasswordsecret)|password secret||
-|**readTimeoutSeconds**|int|The read timeout in seconds when connecting to authorization server. If not set, the effective read timeout is 60 seconds.||
+|**readTimeoutSeconds**|int|read timeout seconds||
 |**refreshToken**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0AuthenticationRefreshToken](#kafkastrimziiov1beta2kafkamirrormaker2specclustersitems0authenticationrefreshtoken)|refresh token||
-|**sasl**|bool|Enable or disable SASL on this authentication mechanism.||
-|**saslExtensions**|{str:str}|SASL extensions parameters.||
-|**scope**|str|OAuth scope to use when authenticating against the authorization server. Some authorization servers require this to be set. The possible values depend on how authorization server is configured. By default `scope` is not specified when doing the token endpoint request.||
-|**tlsTrustedCertificates**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0AuthenticationTLSTrustedCertificatesItems0](#kafkastrimziiov1beta2kafkamirrormaker2specclustersitems0authenticationtlstrustedcertificatesitems0)]|Trusted certificates for TLS connection to the OAuth server.||
-|**tokenEndpointUri**|str|Authorization server token endpoint URI.||
+|**sasl**|bool|sasl||
+|**saslExtensions**|{str:str}|sasl extensions||
+|**scope**|str|scope||
+|**tlsTrustedCertificates**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0AuthenticationTLSTrustedCertificatesItems0](#kafkastrimziiov1beta2kafkamirrormaker2specclustersitems0authenticationtlstrustedcertificatesitems0)]|tls trusted certificates||
+|**tokenEndpointUri**|str|token endpoint Uri||
 |**type** `required`|"tls" | "scram-sha-256" | "scram-sha-512" | "plain" | "oauth" | "custom"|||
-|**username**|str|Username used for the authentication.||
+|**username**|str|username||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0AuthenticationAccessToken
 
-Link to Kubernetes Secret containing the access token which was obtained from the authorization server.
+kafka strimzi io v1beta2 kafka mirror maker2 spec clusters items0 authentication access token
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**key** `required`|str|The key under which the secret value is stored in the Kubernetes Secret.||
-|**secretName** `required`|str|The name of the Kubernetes Secret containing the secret value.||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0AuthenticationCertificateAndKey
 
-Reference to the `Secret` which holds the certificate and private key pair.
+kafka strimzi io v1beta2 kafka mirror maker2 spec clusters items0 authentication certificate and key
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate** `required`|str|The name of the file certificate in the Secret.||
-|**key** `required`|str|The name of the private key in the secret. The private key must be in unencrypted PKCS #8 format. For more information, see RFC 5208: https://datatracker.ietf.org/doc/html/rfc5208.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate** `required`|str|certificate||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0AuthenticationClientAssertion
 
-Link to Kubernetes secret containing the client assertion which was manually configured for the client.
+kafka strimzi io v1beta2 kafka mirror maker2 spec clusters items0 authentication client assertion
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**key** `required`|str|The key under which the secret value is stored in the Kubernetes Secret.||
-|**secretName** `required`|str|The name of the Kubernetes Secret containing the secret value.||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0AuthenticationClientSecret
 
-Link to Kubernetes Secret containing the OAuth client secret which the Kafka client can use to authenticate against the OAuth server and use the token endpoint URI.
+kafka strimzi io v1beta2 kafka mirror maker2 spec clusters items0 authentication client secret
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**key** `required`|str|The key under which the secret value is stored in the Kubernetes Secret.||
-|**secretName** `required`|str|The name of the Kubernetes Secret containing the secret value.||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0AuthenticationPasswordSecret
 
-Reference to the `Secret` which holds the password.
+kafka strimzi io v1beta2 kafka mirror maker2 spec clusters items0 authentication password secret
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**password** `required`|str|The name of the key in the Secret under which the password is stored.||
-|**secretName** `required`|str|The name of the Secret containing the password.||
+|**password** `required`|str|password||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0AuthenticationRefreshToken
 
-Link to Kubernetes Secret containing the refresh token which can be used to obtain access token from the authorization server.
+kafka strimzi io v1beta2 kafka mirror maker2 spec clusters items0 authentication refresh token
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**key** `required`|str|The key under which the secret value is stored in the Kubernetes Secret.||
-|**secretName** `required`|str|The name of the Kubernetes Secret containing the secret value.||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0AuthenticationTLSTrustedCertificatesItems0
 
 kafka strimzi io v1beta2 kafka mirror maker2 spec clusters items0 authentication TLS trusted certificates items0
@@ -43368,18 +43373,18 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec clusters items0 authentication
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate**|str|The name of the file certificate in the secret.||
-|**pattern**|str|Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate**|str|certificate||
+|**pattern**|str|pattern||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0TLS
 
-TLS configuration for connecting MirrorMaker 2 connectors to a cluster.
+kafka strimzi io v1beta2 kafka mirror maker2 spec clusters items0 TLS
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**trustedCertificates**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0TLSTrustedCertificatesItems0](#kafkastrimziiov1beta2kafkamirrormaker2specclustersitems0tlstrustedcertificatesitems0)]|Trusted certificates for TLS connection.||
+|**trustedCertificates**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0TLSTrustedCertificatesItems0](#kafkastrimziiov1beta2kafkamirrormaker2specclustersitems0tlstrustedcertificatesitems0)]|trusted certificates||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecClustersItems0TLSTrustedCertificatesItems0
 
 kafka strimzi io v1beta2 kafka mirror maker2 spec clusters items0 TLS trusted certificates items0
@@ -43388,19 +43393,19 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec clusters items0 TLS trusted ce
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate**|str|The name of the file certificate in the secret.||
-|**pattern**|str|Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate**|str|certificate||
+|**pattern**|str|pattern||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecExternalConfiguration
 
-Pass data from Secrets or ConfigMaps to the Kafka Connect pods and use them to configure connectors.
+kafka strimzi io v1beta2 kafka mirror maker2 spec external configuration
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**env**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecExternalConfigurationEnvItems0](#kafkastrimziiov1beta2kafkamirrormaker2specexternalconfigurationenvitems0)]|Makes data from a Secret or ConfigMap available in the Kafka Connect pods as environment variables.||
-|**volumes**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecExternalConfigurationVolumesItems0](#kafkastrimziiov1beta2kafkamirrormaker2specexternalconfigurationvolumesitems0)]|Makes data from a Secret or ConfigMap available in the Kafka Connect pods as volumes.||
+|**env**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecExternalConfigurationEnvItems0](#kafkastrimziiov1beta2kafkamirrormaker2specexternalconfigurationenvitems0)]|env||
+|**volumes**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecExternalConfigurationVolumesItems0](#kafkastrimziiov1beta2kafkamirrormaker2specexternalconfigurationvolumesitems0)]|volumes||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecExternalConfigurationEnvItems0
 
 kafka strimzi io v1beta2 kafka mirror maker2 spec external configuration env items0
@@ -43409,11 +43414,11 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec external configuration env ite
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name** `required`|str|Name of the environment variable which will be passed to the Kafka Connect pods. The name of the environment variable cannot start with `KAFKA_` or `STRIMZI_`.||
+|**name** `required`|str|name||
 |**valueFrom** `required`|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecExternalConfigurationEnvItems0ValueFrom](#kafkastrimziiov1beta2kafkamirrormaker2specexternalconfigurationenvitems0valuefrom)|value from||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecExternalConfigurationEnvItems0ValueFrom
 
-Value of the environment variable which will be passed to the Kafka Connect pods. It can be passed either as a reference to Secret or ConfigMap field. The field has to specify exactly one Secret or ConfigMap.
+kafka strimzi io v1beta2 kafka mirror maker2 spec external configuration env items0 value from
 
 #### Attributes
 
@@ -43423,7 +43428,7 @@ Value of the environment variable which will be passed to the Kafka Connect pods
 |**secretKeyRef**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecExternalConfigurationEnvItems0ValueFromSecretKeyRef](#kafkastrimziiov1beta2kafkamirrormaker2specexternalconfigurationenvitems0valuefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecExternalConfigurationEnvItems0ValueFromConfigMapKeyRef
 
-Reference to a key in a ConfigMap.
+kafka strimzi io v1beta2 kafka mirror maker2 spec external configuration env items0 value from config map key ref
 
 #### Attributes
 
@@ -43434,7 +43439,7 @@ Reference to a key in a ConfigMap.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecExternalConfigurationEnvItems0ValueFromSecretKeyRef
 
-Reference to a key in a Secret.
+kafka strimzi io v1beta2 kafka mirror maker2 spec external configuration env items0 value from secret key ref
 
 #### Attributes
 
@@ -43452,11 +43457,11 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec external configuration volumes
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**configMap**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecExternalConfigurationVolumesItems0ConfigMap](#kafkastrimziiov1beta2kafkamirrormaker2specexternalconfigurationvolumesitems0configmap)|config map||
-|**name** `required`|str|Name of the volume which will be added to the Kafka Connect pods.||
+|**name** `required`|str|name||
 |**secret**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecExternalConfigurationVolumesItems0Secret](#kafkastrimziiov1beta2kafkamirrormaker2specexternalconfigurationvolumesitems0secret)|secret||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecExternalConfigurationVolumesItems0ConfigMap
 
-Reference to a key in a ConfigMap. Exactly one Secret or ConfigMap has to be specified.
+kafka strimzi io v1beta2 kafka mirror maker2 spec external configuration volumes items0 config map
 
 #### Attributes
 
@@ -43479,7 +43484,7 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec external configuration volumes
 |**path**|str|path||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecExternalConfigurationVolumesItems0Secret
 
-Reference to a key in a Secret. Exactly one Secret or ConfigMap has to be specified.
+kafka strimzi io v1beta2 kafka mirror maker2 spec external configuration volumes items0 secret
 
 #### Attributes
 
@@ -43502,7 +43507,7 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec external configuration volumes
 |**path**|str|path||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecJmxOptions
 
-JMX Options.
+kafka strimzi io v1beta2 kafka mirror maker2 spec jmx options
 
 #### Attributes
 
@@ -43511,7 +43516,7 @@ JMX Options.
 |**authentication**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecJmxOptionsAuthentication](#kafkastrimziiov1beta2kafkamirrormaker2specjmxoptionsauthentication)|authentication||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecJmxOptionsAuthentication
 
-Authentication configuration for connecting to the JMX port.
+kafka strimzi io v1beta2 kafka mirror maker2 spec jmx options authentication
 
 #### Attributes
 
@@ -43520,7 +43525,7 @@ Authentication configuration for connecting to the JMX port.
 |**type** `required` `readOnly`|"password"||"password"|
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecJvmOptions
 
-JVM Options for pods.
+kafka strimzi io v1beta2 kafka mirror maker2 spec jvm options
 
 #### Attributes
 
@@ -43529,8 +43534,8 @@ JVM Options for pods.
 |**-XX**|{str:str}|||
 |**-Xms**|str|||
 |**-Xmx**|str|||
-|**gcLoggingEnabled**|bool|Specifies whether the Garbage Collection logging is enabled. The default is false.||
-|**javaSystemProperties**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecJvmOptionsJavaSystemPropertiesItems0](#kafkastrimziiov1beta2kafkamirrormaker2specjvmoptionsjavasystempropertiesitems0)]|A map of additional system properties which will be passed using the `-D` option to the JVM.||
+|**gcLoggingEnabled**|bool|gc logging enabled||
+|**javaSystemProperties**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecJvmOptionsJavaSystemPropertiesItems0](#kafkastrimziiov1beta2kafkamirrormaker2specjvmoptionsjavasystempropertiesitems0)]|java system properties||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecJvmOptionsJavaSystemPropertiesItems0
 
 kafka strimzi io v1beta2 kafka mirror maker2 spec jvm options java system properties items0
@@ -43539,35 +43544,35 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec jvm options java system proper
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The system property name.||
-|**value**|str|The system property value.||
+|**name**|str|name||
+|**value**|str|value||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecLivenessProbe
 
-Pod liveness checking.
+kafka strimzi io v1beta2 kafka mirror maker2 spec liveness probe
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**failureThreshold**|int|Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.||
-|**initialDelaySeconds**|int|The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.||
-|**periodSeconds**|int|How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.||
-|**successThreshold**|int|Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.||
-|**timeoutSeconds**|int|The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.||
+|**failureThreshold**|int|failure threshold||
+|**initialDelaySeconds**|int|initial delay seconds||
+|**periodSeconds**|int|period seconds||
+|**successThreshold**|int|success threshold||
+|**timeoutSeconds**|int|timeout seconds||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecLogging
 
-Logging configuration for Kafka Connect.
+kafka strimzi io v1beta2 kafka mirror maker2 spec logging
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**loggers**|{str:str}|A Map from logger name to logger level.||
+|**loggers**|{str:str}|loggers||
 |**type** `required`|"inline" | "external"|||
 |**valueFrom**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecLoggingValueFrom](#kafkastrimziiov1beta2kafkamirrormaker2specloggingvaluefrom)|value from||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecLoggingValueFrom
 
-`ConfigMap` entry where the logging configuration is stored.
+kafka strimzi io v1beta2 kafka mirror maker2 spec logging value from
 
 #### Attributes
 
@@ -43576,7 +43581,7 @@ Logging configuration for Kafka Connect.
 |**configMapKeyRef**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecLoggingValueFromConfigMapKeyRef](#kafkastrimziiov1beta2kafkamirrormaker2specloggingvaluefromconfigmapkeyref)|config map key ref||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecLoggingValueFromConfigMapKeyRef
 
-Reference to the key in the ConfigMap containing the configuration.
+kafka strimzi io v1beta2 kafka mirror maker2 spec logging value from config map key ref
 
 #### Attributes
 
@@ -43587,7 +43592,7 @@ Reference to the key in the ConfigMap containing the configuration.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMetricsConfig
 
-Metrics configuration.
+kafka strimzi io v1beta2 kafka mirror maker2 spec metrics config
 
 #### Attributes
 
@@ -43598,7 +43603,7 @@ Metrics configuration.
 |**values**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMetricsConfigValues](#kafkastrimziiov1beta2kafkamirrormaker2specmetricsconfigvalues)|values||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMetricsConfigValueFrom
 
-ConfigMap entry where the Prometheus JMX Exporter configuration is stored.
+kafka strimzi io v1beta2 kafka mirror maker2 spec metrics config value from
 
 #### Attributes
 
@@ -43607,7 +43612,7 @@ ConfigMap entry where the Prometheus JMX Exporter configuration is stored.
 |**configMapKeyRef**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMetricsConfigValueFromConfigMapKeyRef](#kafkastrimziiov1beta2kafkamirrormaker2specmetricsconfigvaluefromconfigmapkeyref)|config map key ref||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMetricsConfigValueFromConfigMapKeyRef
 
-Reference to the key in the ConfigMap containing the configuration.
+kafka strimzi io v1beta2 kafka mirror maker2 spec metrics config value from config map key ref
 
 #### Attributes
 
@@ -43618,13 +43623,13 @@ Reference to the key in the ConfigMap containing the configuration.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMetricsConfigValues
 
-Configuration values for the Strimzi Metrics Reporter.
+kafka strimzi io v1beta2 kafka mirror maker2 spec metrics config values
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**allowList**|[str]|A list of regex patterns to filter the metrics to collect. Should contain at least one element.||
+|**allowList**|[str]|allow list||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0
 
 kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0
@@ -43634,20 +43639,20 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**checkpointConnector**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnector](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0checkpointconnector)|checkpoint connector||
-|**groupsBlacklistPattern**|str|A regular expression matching the consumer groups to exclude from mirroring. Comma-separated lists are also supported.||
-|**groupsExcludePattern**|str|A regular expression matching the consumer groups to exclude from mirroring. Comma-separated lists are also supported.||
-|**groupsPattern**|str|A regular expression matching the consumer groups to be mirrored. Comma-separated lists are also supported.||
+|**groupsBlacklistPattern**|str|groups blacklist pattern||
+|**groupsExcludePattern**|str|groups exclude pattern||
+|**groupsPattern**|str|groups pattern||
 |**heartbeatConnector**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0HeartbeatConnector](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0heartbeatconnector)|heartbeat connector||
 |**source**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0Source](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0source)|source||
-|**sourceCluster**|str|The alias of the source cluster used by the Kafka MirrorMaker 2 connectors. The alias must match a cluster in the list at `spec.clusters`.||
+|**sourceCluster**|str|source cluster||
 |**sourceConnector**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceConnector](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0sourceconnector)|source connector||
-|**targetCluster**|str|The alias of the target cluster used by the Kafka MirrorMaker 2 connectors. The alias must match a cluster in the list at `spec.clusters`.||
-|**topicsBlacklistPattern**|str|A regular expression matching the topics to exclude from mirroring. Comma-separated lists are also supported.||
-|**topicsExcludePattern**|str|A regular expression matching the topics to exclude from mirroring. Comma-separated lists are also supported.||
-|**topicsPattern**|str|A regular expression matching the topics to be mirrored, for example, "topic1\\|topic2\\|topic3". Comma-separated lists are also supported.||
+|**targetCluster**|str|target cluster||
+|**topicsBlacklistPattern**|str|topics blacklist pattern||
+|**topicsExcludePattern**|str|topics exclude pattern||
+|**topicsPattern**|str|topics pattern||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnector
 
-The specification of the Kafka MirrorMaker 2 checkpoint connector.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 checkpoint connector
 
 #### Attributes
 
@@ -43655,15 +43660,15 @@ The specification of the Kafka MirrorMaker 2 checkpoint connector.
 | --- | --- | --- | --- |
 |**alterOffsets**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorAlterOffsets](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0checkpointconnectoralteroffsets)|alter offsets||
 |**autoRestart**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorAutoRestart](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0checkpointconnectorautorestart)|auto restart||
-|**config**|any|The Kafka Connector configuration. The following properties cannot be set: name, connector.class, tasks.max, connector.plugin.version.||
+|**config**|any|config||
 |**listOffsets**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorListOffsets](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0checkpointconnectorlistoffsets)|list offsets||
-|**pause**|bool|Whether the connector should be paused. Defaults to false.||
-|**state**|"paused" | "stopped" | "running"|The state the connector should be in. Defaults to running.||
-|**tasksMax**|int|The maximum number of tasks for the Kafka Connector.||
-|**version**|str|Desired version or version range to respect when starting the Kafka Connector. This is only supported when using Kafka Connect version 4.1.0 and higher.||
+|**pause**|bool|pause||
+|**state**|"paused" | "stopped" | "running"|state||
+|**tasksMax**|int|tasks max||
+|**version**|str|version||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorAlterOffsets
 
-Configuration for altering offsets.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 checkpoint connector alter offsets
 
 #### Attributes
 
@@ -43672,7 +43677,7 @@ Configuration for altering offsets.
 |**fromConfigMap** `required`|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorAlterOffsetsFromConfigMap](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0checkpointconnectoralteroffsetsfromconfigmap)|from config map||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorAlterOffsetsFromConfigMap
 
-Reference to the ConfigMap where the new offsets are stored.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 checkpoint connector alter offsets from config map
 
 #### Attributes
 
@@ -43681,17 +43686,17 @@ Reference to the ConfigMap where the new offsets are stored.
 |**name**|str|name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorAutoRestart
 
-Automatic restart of connector and tasks configuration.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 checkpoint connector auto restart
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**enabled**|bool|Whether automatic restart for failed connectors and tasks should be enabled or disabled.||
-|**maxRestarts**|int|The maximum number of connector restarts that the operator will try. If the connector remains in a failed state after reaching this limit, it must be restarted manually by the user. Defaults to an unlimited number of restarts.||
+|**enabled**|bool|enabled||
+|**maxRestarts**|int|max restarts||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorListOffsets
 
-Configuration for listing offsets.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 checkpoint connector list offsets
 
 #### Attributes
 
@@ -43700,7 +43705,7 @@ Configuration for listing offsets.
 |**toConfigMap** `required`|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorListOffsetsToConfigMap](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0checkpointconnectorlistoffsetstoconfigmap)|to config map||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorListOffsetsToConfigMap
 
-Reference to the ConfigMap where the list of offsets will be written to.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 checkpoint connector list offsets to config map
 
 #### Attributes
 
@@ -43709,7 +43714,7 @@ Reference to the ConfigMap where the list of offsets will be written to.
 |**name**|str|name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0HeartbeatConnector
 
-The specification of the Kafka MirrorMaker 2 heartbeat connector.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 heartbeat connector
 
 #### Attributes
 
@@ -43717,15 +43722,15 @@ The specification of the Kafka MirrorMaker 2 heartbeat connector.
 | --- | --- | --- | --- |
 |**alterOffsets**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0HeartbeatConnectorAlterOffsets](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0heartbeatconnectoralteroffsets)|alter offsets||
 |**autoRestart**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0HeartbeatConnectorAutoRestart](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0heartbeatconnectorautorestart)|auto restart||
-|**config**|any|The Kafka Connector configuration. The following properties cannot be set: name, connector.class, tasks.max, connector.plugin.version.||
+|**config**|any|config||
 |**listOffsets**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0HeartbeatConnectorListOffsets](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0heartbeatconnectorlistoffsets)|list offsets||
-|**pause**|bool|Whether the connector should be paused. Defaults to false.||
-|**state**|"paused" | "stopped" | "running"|The state the connector should be in. Defaults to running.||
-|**tasksMax**|int|The maximum number of tasks for the Kafka Connector.||
-|**version**|str|Desired version or version range to respect when starting the Kafka Connector. This is only supported when using Kafka Connect version 4.1.0 and higher.||
+|**pause**|bool|pause||
+|**state**|"paused" | "stopped" | "running"|state||
+|**tasksMax**|int|tasks max||
+|**version**|str|version||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0HeartbeatConnectorAlterOffsets
 
-Configuration for altering offsets.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 heartbeat connector alter offsets
 
 #### Attributes
 
@@ -43734,7 +43739,7 @@ Configuration for altering offsets.
 |**fromConfigMap** `required`|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0HeartbeatConnectorAlterOffsetsFromConfigMap](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0heartbeatconnectoralteroffsetsfromconfigmap)|from config map||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0HeartbeatConnectorAlterOffsetsFromConfigMap
 
-Reference to the ConfigMap where the new offsets are stored.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 heartbeat connector alter offsets from config map
 
 #### Attributes
 
@@ -43743,17 +43748,17 @@ Reference to the ConfigMap where the new offsets are stored.
 |**name**|str|name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0HeartbeatConnectorAutoRestart
 
-Automatic restart of connector and tasks configuration.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 heartbeat connector auto restart
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**enabled**|bool|Whether automatic restart for failed connectors and tasks should be enabled or disabled.||
-|**maxRestarts**|int|The maximum number of connector restarts that the operator will try. If the connector remains in a failed state after reaching this limit, it must be restarted manually by the user. Defaults to an unlimited number of restarts.||
+|**enabled**|bool|enabled||
+|**maxRestarts**|int|max restarts||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0HeartbeatConnectorListOffsets
 
-Configuration for listing offsets.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 heartbeat connector list offsets
 
 #### Attributes
 
@@ -43762,7 +43767,7 @@ Configuration for listing offsets.
 |**toConfigMap** `required`|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0HeartbeatConnectorListOffsetsToConfigMap](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0heartbeatconnectorlistoffsetstoconfigmap)|to config map||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0HeartbeatConnectorListOffsetsToConfigMap
 
-Reference to the ConfigMap where the list of offsets will be written to.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 heartbeat connector list offsets to config map
 
 #### Attributes
 
@@ -43771,115 +43776,115 @@ Reference to the ConfigMap where the list of offsets will be written to.
 |**name**|str|name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0Source
 
-The source Apache Kafka cluster. The source Kafka cluster is used by the Kafka MirrorMaker 2 connectors.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 source
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**alias** `required`|str|Alias used to reference the Kafka cluster.||
+|**alias** `required`|str|alias||
 |**authentication**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceAuthentication](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0sourceauthentication)|authentication||
-|**bootstrapServers** `required`|str|A comma-separated list of `host:port` pairs for establishing the connection to the Kafka cluster.||
-|**config**|any|The MirrorMaker 2 cluster config. Properties with the following prefixes cannot be set: ssl., sasl., security., listeners, plugin.path, rest., bootstrap.servers, consumer.interceptor.classes, producer.interceptor.classes (with the exception of: ssl.endpoint.identification.algorithm, ssl.cipher.suites, ssl.protocol, ssl.enabled.protocols).||
+|**bootstrapServers** `required`|str|bootstrap servers||
+|**config**|any|config||
 |**tls**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceTLS](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0sourcetls)|tls||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceAuthentication
 
-Authentication configuration for connecting to the cluster.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 source authentication
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**accessToken**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationAccessToken](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0sourceauthenticationaccesstoken)|access token||
-|**accessTokenIsJwt**|bool|Configure whether access token should be treated as JWT. This should be set to `false` if the authorization server returns opaque tokens. Defaults to `true`.||
-|**accessTokenLocation**|str|Path to the token file containing an access token to be used for authentication.||
-|**audience**|str|OAuth audience to use when authenticating against the authorization server. Some authorization servers require the audience to be explicitly set. The possible values depend on how the authorization server is configured. By default, `audience` is not specified when performing the token endpoint request.||
+|**accessTokenIsJwt**|bool|access token is jwt||
+|**accessTokenLocation**|str|access token location||
+|**audience**|str|audience||
 |**certificateAndKey**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationCertificateAndKey](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0sourceauthenticationcertificateandkey)|certificate and key||
 |**clientAssertion**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationClientAssertion](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0sourceauthenticationclientassertion)|client assertion||
-|**clientAssertionLocation**|str|Path to the file containing the client assertion to be used for authentication.||
-|**clientAssertionType**|str|The client assertion type. If not set, and either `clientAssertion` or `clientAssertionLocation` is configured, this value defaults to `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`.||
-|**clientId**|str|OAuth Client ID which the Kafka client can use to authenticate against the OAuth server and use the token endpoint URI.||
+|**clientAssertionLocation**|str|client assertion location||
+|**clientAssertionType**|str|client assertion type||
+|**clientId**|str|client Id||
 |**clientSecret**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationClientSecret](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0sourceauthenticationclientsecret)|client secret||
-|**config**|any|Configuration for the custom authentication mechanism. Only properties with the `sasl.` and `ssl.keystore.` prefixes are allowed. Specify other options in the regular configuration section of the custom resource.||
-|**connectTimeoutSeconds**|int|The connect timeout in seconds when connecting to authorization server. If not set, the effective connect timeout is 60 seconds.||
-|**disableTlsHostnameVerification**|bool|Enable or disable TLS hostname verification. Default value is `false`.||
-|**enableMetrics**|bool|Enable or disable OAuth metrics. Default value is `false`.||
-|**grantType**|str|A custom OAuth grant type to use when authenticating against the authorization server with `clientId` and one of `clientSecret` or `clientAssertion`. The value defaults to `client_credentials` in these cases. This is optional configuration, only used with custom authorization server implementations.||
-|**httpRetries**|int|The maximum number of retries to attempt if an initial HTTP request fails. If not set, the default is to not attempt any retries.||
-|**httpRetryPauseMs**|int|The pause to take before retrying a failed HTTP request. If not set, the default is to not pause at all but to immediately repeat a request.||
-|**includeAcceptHeader**|bool|Whether the Accept header should be set in requests to the authorization servers. The default value is `true`.||
-|**maxTokenExpirySeconds**|int|Set or limit time-to-live of the access tokens to the specified number of seconds. This should be set if the authorization server returns opaque tokens.||
+|**config**|any|config||
+|**connectTimeoutSeconds**|int|connect timeout seconds||
+|**disableTlsHostnameVerification**|bool|disable Tls hostname verification||
+|**enableMetrics**|bool|enable metrics||
+|**grantType**|str|grant type||
+|**httpRetries**|int|http retries||
+|**httpRetryPauseMs**|int|http retry pause ms||
+|**includeAcceptHeader**|bool|include accept header||
+|**maxTokenExpirySeconds**|int|max token expiry seconds||
 |**passwordSecret**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationPasswordSecret](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0sourceauthenticationpasswordsecret)|password secret||
-|**readTimeoutSeconds**|int|The read timeout in seconds when connecting to authorization server. If not set, the effective read timeout is 60 seconds.||
+|**readTimeoutSeconds**|int|read timeout seconds||
 |**refreshToken**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationRefreshToken](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0sourceauthenticationrefreshtoken)|refresh token||
-|**sasl**|bool|Enable or disable SASL on this authentication mechanism.||
-|**saslExtensions**|{str:str}|SASL extensions parameters.||
-|**scope**|str|OAuth scope to use when authenticating against the authorization server. Some authorization servers require this to be set. The possible values depend on how authorization server is configured. By default `scope` is not specified when doing the token endpoint request.||
-|**tlsTrustedCertificates**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationTLSTrustedCertificatesItems0](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0sourceauthenticationtlstrustedcertificatesitems0)]|Trusted certificates for TLS connection to the OAuth server.||
-|**tokenEndpointUri**|str|Authorization server token endpoint URI.||
+|**sasl**|bool|sasl||
+|**saslExtensions**|{str:str}|sasl extensions||
+|**scope**|str|scope||
+|**tlsTrustedCertificates**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationTLSTrustedCertificatesItems0](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0sourceauthenticationtlstrustedcertificatesitems0)]|tls trusted certificates||
+|**tokenEndpointUri**|str|token endpoint Uri||
 |**type** `required`|"tls" | "scram-sha-256" | "scram-sha-512" | "plain" | "oauth" | "custom"|||
-|**username**|str|Username used for the authentication.||
+|**username**|str|username||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationAccessToken
 
-Link to Kubernetes Secret containing the access token which was obtained from the authorization server.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 source authentication access token
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**key** `required`|str|The key under which the secret value is stored in the Kubernetes Secret.||
-|**secretName** `required`|str|The name of the Kubernetes Secret containing the secret value.||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationCertificateAndKey
 
-Reference to the `Secret` which holds the certificate and private key pair.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 source authentication certificate and key
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate** `required`|str|The name of the file certificate in the Secret.||
-|**key** `required`|str|The name of the private key in the secret. The private key must be in unencrypted PKCS #8 format. For more information, see RFC 5208: https://datatracker.ietf.org/doc/html/rfc5208.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate** `required`|str|certificate||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationClientAssertion
 
-Link to Kubernetes secret containing the client assertion which was manually configured for the client.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 source authentication client assertion
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**key** `required`|str|The key under which the secret value is stored in the Kubernetes Secret.||
-|**secretName** `required`|str|The name of the Kubernetes Secret containing the secret value.||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationClientSecret
 
-Link to Kubernetes Secret containing the OAuth client secret which the Kafka client can use to authenticate against the OAuth server and use the token endpoint URI.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 source authentication client secret
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**key** `required`|str|The key under which the secret value is stored in the Kubernetes Secret.||
-|**secretName** `required`|str|The name of the Kubernetes Secret containing the secret value.||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationPasswordSecret
 
-Reference to the `Secret` which holds the password.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 source authentication password secret
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**password** `required`|str|The name of the key in the Secret under which the password is stored.||
-|**secretName** `required`|str|The name of the Secret containing the password.||
+|**password** `required`|str|password||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationRefreshToken
 
-Link to Kubernetes Secret containing the refresh token which can be used to obtain access token from the authorization server.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 source authentication refresh token
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**key** `required`|str|The key under which the secret value is stored in the Kubernetes Secret.||
-|**secretName** `required`|str|The name of the Kubernetes Secret containing the secret value.||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationTLSTrustedCertificatesItems0
 
 kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 source authentication TLS trusted certificates items0
@@ -43888,12 +43893,12 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 source authenti
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate**|str|The name of the file certificate in the secret.||
-|**pattern**|str|Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate**|str|certificate||
+|**pattern**|str|pattern||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceConnector
 
-The specification of the Kafka MirrorMaker 2 source connector.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 source connector
 
 #### Attributes
 
@@ -43901,15 +43906,15 @@ The specification of the Kafka MirrorMaker 2 source connector.
 | --- | --- | --- | --- |
 |**alterOffsets**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorAlterOffsets](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0sourceconnectoralteroffsets)|alter offsets||
 |**autoRestart**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorAutoRestart](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0sourceconnectorautorestart)|auto restart||
-|**config**|any|The Kafka Connector configuration. The following properties cannot be set: name, connector.class, tasks.max, connector.plugin.version.||
+|**config**|any|config||
 |**listOffsets**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorListOffsets](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0sourceconnectorlistoffsets)|list offsets||
-|**pause**|bool|Whether the connector should be paused. Defaults to false.||
-|**state**|"paused" | "stopped" | "running"|The state the connector should be in. Defaults to running.||
-|**tasksMax**|int|The maximum number of tasks for the Kafka Connector.||
-|**version**|str|Desired version or version range to respect when starting the Kafka Connector. This is only supported when using Kafka Connect version 4.1.0 and higher.||
+|**pause**|bool|pause||
+|**state**|"paused" | "stopped" | "running"|state||
+|**tasksMax**|int|tasks max||
+|**version**|str|version||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorAlterOffsets
 
-Configuration for altering offsets.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 source connector alter offsets
 
 #### Attributes
 
@@ -43918,7 +43923,7 @@ Configuration for altering offsets.
 |**fromConfigMap** `required`|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorAlterOffsetsFromConfigMap](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0sourceconnectoralteroffsetsfromconfigmap)|from config map||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorAlterOffsetsFromConfigMap
 
-Reference to the ConfigMap where the new offsets are stored.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 source connector alter offsets from config map
 
 #### Attributes
 
@@ -43927,17 +43932,17 @@ Reference to the ConfigMap where the new offsets are stored.
 |**name**|str|name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorAutoRestart
 
-Automatic restart of connector and tasks configuration.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 source connector auto restart
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**enabled**|bool|Whether automatic restart for failed connectors and tasks should be enabled or disabled.||
-|**maxRestarts**|int|The maximum number of connector restarts that the operator will try. If the connector remains in a failed state after reaching this limit, it must be restarted manually by the user. Defaults to an unlimited number of restarts.||
+|**enabled**|bool|enabled||
+|**maxRestarts**|int|max restarts||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorListOffsets
 
-Configuration for listing offsets.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 source connector list offsets
 
 #### Attributes
 
@@ -43946,7 +43951,7 @@ Configuration for listing offsets.
 |**toConfigMap** `required`|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorListOffsetsToConfigMap](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0sourceconnectorlistoffsetstoconfigmap)|to config map||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorListOffsetsToConfigMap
 
-Reference to the ConfigMap where the list of offsets will be written to.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 source connector list offsets to config map
 
 #### Attributes
 
@@ -43955,13 +43960,13 @@ Reference to the ConfigMap where the list of offsets will be written to.
 |**name**|str|name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceTLS
 
-TLS configuration for connecting MirrorMaker 2 connectors to a cluster.
+kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 source TLS
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**trustedCertificates**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceTLSTrustedCertificatesItems0](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0sourcetlstrustedcertificatesitems0)]|Trusted certificates for TLS connection.||
+|**trustedCertificates**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceTLSTrustedCertificatesItems0](#kafkastrimziiov1beta2kafkamirrormaker2specmirrorsitems0sourcetlstrustedcertificatesitems0)]|trusted certificates||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecMirrorsItems0SourceTLSTrustedCertificatesItems0
 
 kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 source TLS trusted certificates items0
@@ -43970,34 +43975,36 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec mirrors items0 source TLS trus
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate**|str|The name of the file certificate in the secret.||
-|**pattern**|str|Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate**|str|certificate||
+|**pattern**|str|pattern||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecRack
 
-Configuration of the node label which will be used as the `client.rack` consumer configuration.
+kafka strimzi io v1beta2 kafka mirror maker2 spec rack
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**topologyKey** `required`|str|A key that matches labels assigned to the Kubernetes cluster nodes. The value of the label is used to set a broker's `broker.rack` config, and the `client.rack` config for Kafka Connect or MirrorMaker 2.||
+|**envVarName**|str|env var name||
+|**topologyKey**|str|topology key||
+|**type**|"topology-label" | "environment-variable"|||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecReadinessProbe
 
-Pod readiness checking.
+kafka strimzi io v1beta2 kafka mirror maker2 spec readiness probe
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**failureThreshold**|int|Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.||
-|**initialDelaySeconds**|int|The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.||
-|**periodSeconds**|int|How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.||
-|**successThreshold**|int|Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.||
-|**timeoutSeconds**|int|The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.||
+|**failureThreshold**|int|failure threshold||
+|**initialDelaySeconds**|int|initial delay seconds||
+|**periodSeconds**|int|period seconds||
+|**successThreshold**|int|success threshold||
+|**timeoutSeconds**|int|timeout seconds||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecResources
 
-The maximum limits for CPU and memory resources and the requested initial resources.
+kafka strimzi io v1beta2 kafka mirror maker2 spec resources
 
 #### Attributes
 
@@ -44018,119 +44025,119 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec resources claims items0
 |**request**|str|request||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTarget
 
-The target Apache Kafka cluster. The target Kafka cluster is used by the underlying Kafka Connect framework for its internal topics.
+kafka strimzi io v1beta2 kafka mirror maker2 spec target
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**alias** `required`|str|Alias used to reference the Kafka cluster.||
+|**alias** `required`|str|alias||
 |**authentication**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTargetAuthentication](#kafkastrimziiov1beta2kafkamirrormaker2spectargetauthentication)|authentication||
-|**bootstrapServers** `required`|str|A comma-separated list of `host:port` pairs for establishing the connection to the Kafka cluster.||
-|**config**|any|The MirrorMaker 2 cluster config. Properties with the following prefixes cannot be set: ssl., sasl., security., listeners, plugin.path, rest., bootstrap.servers, consumer.interceptor.classes, producer.interceptor.classes (with the exception of: ssl.endpoint.identification.algorithm, ssl.cipher.suites, ssl.protocol, ssl.enabled.protocols).||
-|**configStorageTopic** `required`|str|The name of the Kafka topic where connector configurations are stored. Required.||
-|**groupId** `required`|str|A unique ID that identifies the Connect cluster group. Required.||
-|**offsetStorageTopic** `required`|str|The name of the Kafka topic where source connector offsets are stored. Required.||
-|**statusStorageTopic** `required`|str|The name of the Kafka topic where connector and task statuses are stored. Required.||
+|**bootstrapServers** `required`|str|bootstrap servers||
+|**config**|any|config||
+|**configStorageTopic** `required`|str|config storage topic||
+|**groupId** `required`|str|group Id||
+|**offsetStorageTopic** `required`|str|offset storage topic||
+|**statusStorageTopic** `required`|str|status storage topic||
 |**tls**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTargetTLS](#kafkastrimziiov1beta2kafkamirrormaker2spectargettls)|tls||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTargetAuthentication
 
-Authentication configuration for connecting to the cluster.
+kafka strimzi io v1beta2 kafka mirror maker2 spec target authentication
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**accessToken**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTargetAuthenticationAccessToken](#kafkastrimziiov1beta2kafkamirrormaker2spectargetauthenticationaccesstoken)|access token||
-|**accessTokenIsJwt**|bool|Configure whether access token should be treated as JWT. This should be set to `false` if the authorization server returns opaque tokens. Defaults to `true`.||
-|**accessTokenLocation**|str|Path to the token file containing an access token to be used for authentication.||
-|**audience**|str|OAuth audience to use when authenticating against the authorization server. Some authorization servers require the audience to be explicitly set. The possible values depend on how the authorization server is configured. By default, `audience` is not specified when performing the token endpoint request.||
+|**accessTokenIsJwt**|bool|access token is jwt||
+|**accessTokenLocation**|str|access token location||
+|**audience**|str|audience||
 |**certificateAndKey**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTargetAuthenticationCertificateAndKey](#kafkastrimziiov1beta2kafkamirrormaker2spectargetauthenticationcertificateandkey)|certificate and key||
 |**clientAssertion**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTargetAuthenticationClientAssertion](#kafkastrimziiov1beta2kafkamirrormaker2spectargetauthenticationclientassertion)|client assertion||
-|**clientAssertionLocation**|str|Path to the file containing the client assertion to be used for authentication.||
-|**clientAssertionType**|str|The client assertion type. If not set, and either `clientAssertion` or `clientAssertionLocation` is configured, this value defaults to `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`.||
-|**clientId**|str|OAuth Client ID which the Kafka client can use to authenticate against the OAuth server and use the token endpoint URI.||
+|**clientAssertionLocation**|str|client assertion location||
+|**clientAssertionType**|str|client assertion type||
+|**clientId**|str|client Id||
 |**clientSecret**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTargetAuthenticationClientSecret](#kafkastrimziiov1beta2kafkamirrormaker2spectargetauthenticationclientsecret)|client secret||
-|**config**|any|Configuration for the custom authentication mechanism. Only properties with the `sasl.` and `ssl.keystore.` prefixes are allowed. Specify other options in the regular configuration section of the custom resource.||
-|**connectTimeoutSeconds**|int|The connect timeout in seconds when connecting to authorization server. If not set, the effective connect timeout is 60 seconds.||
-|**disableTlsHostnameVerification**|bool|Enable or disable TLS hostname verification. Default value is `false`.||
-|**enableMetrics**|bool|Enable or disable OAuth metrics. Default value is `false`.||
-|**grantType**|str|A custom OAuth grant type to use when authenticating against the authorization server with `clientId` and one of `clientSecret` or `clientAssertion`. The value defaults to `client_credentials` in these cases. This is optional configuration, only used with custom authorization server implementations.||
-|**httpRetries**|int|The maximum number of retries to attempt if an initial HTTP request fails. If not set, the default is to not attempt any retries.||
-|**httpRetryPauseMs**|int|The pause to take before retrying a failed HTTP request. If not set, the default is to not pause at all but to immediately repeat a request.||
-|**includeAcceptHeader**|bool|Whether the Accept header should be set in requests to the authorization servers. The default value is `true`.||
-|**maxTokenExpirySeconds**|int|Set or limit time-to-live of the access tokens to the specified number of seconds. This should be set if the authorization server returns opaque tokens.||
+|**config**|any|config||
+|**connectTimeoutSeconds**|int|connect timeout seconds||
+|**disableTlsHostnameVerification**|bool|disable Tls hostname verification||
+|**enableMetrics**|bool|enable metrics||
+|**grantType**|str|grant type||
+|**httpRetries**|int|http retries||
+|**httpRetryPauseMs**|int|http retry pause ms||
+|**includeAcceptHeader**|bool|include accept header||
+|**maxTokenExpirySeconds**|int|max token expiry seconds||
 |**passwordSecret**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTargetAuthenticationPasswordSecret](#kafkastrimziiov1beta2kafkamirrormaker2spectargetauthenticationpasswordsecret)|password secret||
-|**readTimeoutSeconds**|int|The read timeout in seconds when connecting to authorization server. If not set, the effective read timeout is 60 seconds.||
+|**readTimeoutSeconds**|int|read timeout seconds||
 |**refreshToken**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTargetAuthenticationRefreshToken](#kafkastrimziiov1beta2kafkamirrormaker2spectargetauthenticationrefreshtoken)|refresh token||
-|**sasl**|bool|Enable or disable SASL on this authentication mechanism.||
-|**saslExtensions**|{str:str}|SASL extensions parameters.||
-|**scope**|str|OAuth scope to use when authenticating against the authorization server. Some authorization servers require this to be set. The possible values depend on how authorization server is configured. By default `scope` is not specified when doing the token endpoint request.||
-|**tlsTrustedCertificates**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTargetAuthenticationTLSTrustedCertificatesItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectargetauthenticationtlstrustedcertificatesitems0)]|Trusted certificates for TLS connection to the OAuth server.||
-|**tokenEndpointUri**|str|Authorization server token endpoint URI.||
+|**sasl**|bool|sasl||
+|**saslExtensions**|{str:str}|sasl extensions||
+|**scope**|str|scope||
+|**tlsTrustedCertificates**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTargetAuthenticationTLSTrustedCertificatesItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectargetauthenticationtlstrustedcertificatesitems0)]|tls trusted certificates||
+|**tokenEndpointUri**|str|token endpoint Uri||
 |**type** `required`|"tls" | "scram-sha-256" | "scram-sha-512" | "plain" | "oauth" | "custom"|||
-|**username**|str|Username used for the authentication.||
+|**username**|str|username||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTargetAuthenticationAccessToken
 
-Link to Kubernetes Secret containing the access token which was obtained from the authorization server.
+kafka strimzi io v1beta2 kafka mirror maker2 spec target authentication access token
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**key** `required`|str|The key under which the secret value is stored in the Kubernetes Secret.||
-|**secretName** `required`|str|The name of the Kubernetes Secret containing the secret value.||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTargetAuthenticationCertificateAndKey
 
-Reference to the `Secret` which holds the certificate and private key pair.
+kafka strimzi io v1beta2 kafka mirror maker2 spec target authentication certificate and key
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate** `required`|str|The name of the file certificate in the Secret.||
-|**key** `required`|str|The name of the private key in the secret. The private key must be in unencrypted PKCS #8 format. For more information, see RFC 5208: https://datatracker.ietf.org/doc/html/rfc5208.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate** `required`|str|certificate||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTargetAuthenticationClientAssertion
 
-Link to Kubernetes secret containing the client assertion which was manually configured for the client.
+kafka strimzi io v1beta2 kafka mirror maker2 spec target authentication client assertion
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**key** `required`|str|The key under which the secret value is stored in the Kubernetes Secret.||
-|**secretName** `required`|str|The name of the Kubernetes Secret containing the secret value.||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTargetAuthenticationClientSecret
 
-Link to Kubernetes Secret containing the OAuth client secret which the Kafka client can use to authenticate against the OAuth server and use the token endpoint URI.
+kafka strimzi io v1beta2 kafka mirror maker2 spec target authentication client secret
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**key** `required`|str|The key under which the secret value is stored in the Kubernetes Secret.||
-|**secretName** `required`|str|The name of the Kubernetes Secret containing the secret value.||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTargetAuthenticationPasswordSecret
 
-Reference to the `Secret` which holds the password.
+kafka strimzi io v1beta2 kafka mirror maker2 spec target authentication password secret
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**password** `required`|str|The name of the key in the Secret under which the password is stored.||
-|**secretName** `required`|str|The name of the Secret containing the password.||
+|**password** `required`|str|password||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTargetAuthenticationRefreshToken
 
-Link to Kubernetes Secret containing the refresh token which can be used to obtain access token from the authorization server.
+kafka strimzi io v1beta2 kafka mirror maker2 spec target authentication refresh token
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**key** `required`|str|The key under which the secret value is stored in the Kubernetes Secret.||
-|**secretName** `required`|str|The name of the Kubernetes Secret containing the secret value.||
+|**key** `required`|str|key||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTargetAuthenticationTLSTrustedCertificatesItems0
 
 kafka strimzi io v1beta2 kafka mirror maker2 spec target authentication TLS trusted certificates items0
@@ -44139,18 +44146,18 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec target authentication TLS trus
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate**|str|The name of the file certificate in the secret.||
-|**pattern**|str|Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate**|str|certificate||
+|**pattern**|str|pattern||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTargetTLS
 
-TLS configuration for connecting MirrorMaker 2 connectors to a cluster.
+kafka strimzi io v1beta2 kafka mirror maker2 spec target TLS
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**trustedCertificates**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTargetTLSTrustedCertificatesItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectargettlstrustedcertificatesitems0)]|Trusted certificates for TLS connection.||
+|**trustedCertificates**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTargetTLSTrustedCertificatesItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectargettlstrustedcertificatesitems0)]|trusted certificates||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTargetTLSTrustedCertificatesItems0
 
 kafka strimzi io v1beta2 kafka mirror maker2 spec target TLS trusted certificates items0
@@ -44159,12 +44166,12 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec target TLS trusted certificate
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**certificate**|str|The name of the file certificate in the secret.||
-|**pattern**|str|Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.||
-|**secretName** `required`|str|The name of the Secret containing the certificate.||
+|**certificate**|str|certificate||
+|**pattern**|str|pattern||
+|**secretName** `required`|str|secret name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplate
 
-Template for Kafka Connect and Kafka MirrorMaker 2 resources. The template allows users to specify how the `Pods`, `Service`, and other services are generated.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template
 
 #### Attributes
 
@@ -44187,56 +44194,56 @@ Template for Kafka Connect and Kafka MirrorMaker 2 resources. The template allow
 |**serviceAccount**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateServiceAccount](#kafkastrimziiov1beta2kafkamirrormaker2spectemplateserviceaccount)|service account||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateAPIService
 
-Template for Kafka Connect API `Service`.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template API service
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**ipFamilies**|[str]|Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6`. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting.||
-|**ipFamilyPolicy**|"SingleStack" | "PreferDualStack" | "RequireDualStack"|Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`. `SingleStack` is for a single IP family. `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters. `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters. If unspecified, Kubernetes will choose the default value based on the service type.||
+|**ipFamilies**|[str]|ip families||
+|**ipFamilyPolicy**|"SingleStack" | "PreferDualStack" | "RequireDualStack"|ip family policy||
 |**metadata**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateAPIServiceMetadata](#kafkastrimziiov1beta2kafkamirrormaker2spectemplateapiservicemetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateAPIServiceMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template API service metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildConfig
 
-Template for the Kafka Connect BuildConfig used to build new container images. The BuildConfig is used only on OpenShift.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template build config
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**metadata**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildConfigMetadata](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildconfigmetadata)|metadata||
-|**pullSecret**|str|Container Registry Secret with the credentials for pulling the base image.||
+|**pullSecret**|str|pull secret||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildConfigMetadata
 
-Metadata to apply to the `PodDisruptionBudgetTemplate` resource.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template build config metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildContainer
 
-Template for the Kafka Connect Build container. The build container is used only on Kubernetes.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template build container
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**env**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildcontainerenvitems0)]|Environment variables which should be applied to the container.||
+|**env**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildcontainerenvitems0)]|env||
 |**securityContext**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildContainerSecurityContext](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildcontainersecuritycontext)|security context||
-|**volumeMounts**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildContainerVolumeMountsItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildcontainervolumemountsitems0)]|Additional volume mounts which should be applied to the container.||
+|**volumeMounts**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildContainerVolumeMountsItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildcontainervolumemountsitems0)]|volume mounts||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0
 
 kafka strimzi io v1beta2 kafka mirror maker2 spec template build container env items0
@@ -44245,12 +44252,12 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template build container env i
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The environment variable key.||
-|**value**|str|The environment variable value.||
+|**name**|str|name||
+|**value**|str|value||
 |**valueFrom**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0ValueFrom](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildcontainerenvitems0valuefrom)|value from||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0ValueFrom
 
-Reference to the secret or config map property to which the environment variable is set.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template build container env items0 value from
 
 #### Attributes
 
@@ -44260,7 +44267,7 @@ Reference to the secret or config map property to which the environment variable
 |**secretKeyRef**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0ValueFromSecretKeyRef](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildcontainerenvitems0valuefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0ValueFromConfigMapKeyRef
 
-Reference to a key in a config map.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template build container env items0 value from config map key ref
 
 #### Attributes
 
@@ -44271,7 +44278,7 @@ Reference to a key in a config map.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0ValueFromSecretKeyRef
 
-Reference to a key in a secret.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template build container env items0 value from secret key ref
 
 #### Attributes
 
@@ -44282,7 +44289,7 @@ Reference to a key in a secret.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildContainerSecurityContext
 
-Security context for the container.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template build container security context
 
 #### Attributes
 
@@ -44371,7 +44378,7 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template build container volum
 |**subPathExpr**|str|sub path expr||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPod
 
-Template for Kafka Connect Build `Pods`. The build pod is used only on Kubernetes.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template build pod
 
 #### Attributes
 
@@ -44379,23 +44386,23 @@ Template for Kafka Connect Build `Pods`. The build pod is used only on Kubernete
 | --- | --- | --- | --- |
 |**affinity**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodAffinity](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildpodaffinity)|affinity||
 |**dnsConfig**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodDNSConfig](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildpoddnsconfig)|dns config||
-|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.||
-|**enableServiceLinks**|bool|Indicates whether information about services should be injected into Pod's environment variables.||
-|**hostAliases**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodHostAliasesItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildpodhostaliasesitems0)]|The pod's HostAliases. HostAliases is an optional list of hosts and IPs that will be injected into the Pod's hosts file if specified.||
-|**hostUsers**|bool|Use the host user namespace. Optional. Defaults to `true`. When `true` or not set, the pod runs in the host user namespace. This is required when the pod needs features available only in the host namespace, such as loading kernel modules with `CAP_SYS_MODULE`.When set to `false`, the pod runs in a new user namespace. Setting `false` helps mitigate container breakout vulnerabilities and allows containers to run as `root` without granting `root` privileges on the host. This property is alpha-level in Kubernetes and is supported only by Kubernetes clusters that enable the `UserNamespacesSupport` feature.||
-|**imagePullSecrets**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodImagePullSecretsItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildpodimagepullsecretsitems0)]|List of references to secrets in the same namespace to use for pulling any of the images used by this Pod. When the `STRIMZI_IMAGE_PULL_SECRETS` environment variable in Cluster Operator and the `imagePullSecrets` option are specified, only the `imagePullSecrets` variable is used and the `STRIMZI_IMAGE_PULL_SECRETS` variable is ignored.||
+|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|dns policy||
+|**enableServiceLinks**|bool|enable service links||
+|**hostAliases**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodHostAliasesItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildpodhostaliasesitems0)]|host aliases||
+|**hostUsers**|bool|host users||
+|**imagePullSecrets**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodImagePullSecretsItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildpodimagepullsecretsitems0)]|image pull secrets||
 |**metadata**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodMetadata](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildpodmetadata)|metadata||
-|**priorityClassName**|str|The name of the priority class used to assign priority to the pods.||
-|**schedulerName**|str|The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.||
+|**priorityClassName**|str|priority class name||
+|**schedulerName**|str|scheduler name||
 |**securityContext**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodSecurityContext](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildpodsecuritycontext)|security context||
-|**terminationGracePeriodSeconds**|int|The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.||
-|**tmpDirSizeLimit**|str|Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.||
-|**tolerations**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodTolerationsItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildpodtolerationsitems0)]|The pod's tolerations.||
-|**topologySpreadConstraints**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodTopologySpreadConstraintsItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildpodtopologyspreadconstraintsitems0)]|The pod's topology spread constraints.||
-|**volumes**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildpodvolumesitems0)]|Additional volumes that can be mounted to the pod.||
+|**terminationGracePeriodSeconds**|int|termination grace period seconds||
+|**tmpDirSizeLimit**|str|tmp dir size limit||
+|**tolerations**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodTolerationsItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildpodtolerationsitems0)]|tolerations||
+|**topologySpreadConstraints**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodTopologySpreadConstraintsItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildpodtopologyspreadconstraintsitems0)]|topology spread constraints||
+|**volumes**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildpodvolumesitems0)]|volumes||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodAffinity
 
-The pod's affinity rules.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template build pod affinity
 
 #### Attributes
 
@@ -44763,7 +44770,7 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template build pod affinity po
 |**values**|[str]|values||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodDNSConfig
 
-The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template build pod DNS config
 
 #### Attributes
 
@@ -44803,17 +44810,17 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template build pod image pull 
 |**name**|str|name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template build pod metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodSecurityContext
 
-Configures pod-level security attributes and common container settings.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template build pod security context
 
 #### Attributes
 
@@ -44948,12 +44955,12 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template build pod volumes ite
 |**csi**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0Csi](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildpodvolumesitems0csi)|csi||
 |**emptyDir**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0EmptyDir](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildpodvolumesitems0emptydir)|empty dir||
 |**image**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0Image](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildpodvolumesitems0image)|image||
-|**name**|str|Name to use for the volume. Required.||
+|**name**|str|name||
 |**persistentVolumeClaim**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0PersistentVolumeClaim](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildpodvolumesitems0persistentvolumeclaim)|persistent volume claim||
 |**secret**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0Secret](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildpodvolumesitems0secret)|secret||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0ConfigMap
 
-`ConfigMap` to use to populate the volume.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template build pod volumes items0 config map
 
 #### Attributes
 
@@ -44976,7 +44983,7 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template build pod volumes ite
 |**path**|str|path||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0Csi
 
-`CSIVolumeSource` object to use to populate the volume.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template build pod volumes items0 csi
 
 #### Attributes
 
@@ -44998,17 +45005,17 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template build pod volumes ite
 |**name**|str|name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0EmptyDir
 
-`EmptyDir` to use to populate the volume.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template build pod volumes items0 empty dir
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**medium** `readOnly`|"Memory"|Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.|"Memory"|
-|**sizeLimit**|str|The total amount of local storage required for this EmptyDir volume (for example 1Gi).||
+|**medium** `readOnly`|"Memory"|medium|"Memory"|
+|**sizeLimit**|str|size limit||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0Image
 
-`ImageVolumeSource` object to use to populate the volume.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template build pod volumes items0 image
 
 #### Attributes
 
@@ -45018,7 +45025,7 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template build pod volumes ite
 |**reference**|str|reference||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0PersistentVolumeClaim
 
-`PersistentVolumeClaim` object to use to populate the volume.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template build pod volumes items0 persistent volume claim
 
 #### Attributes
 
@@ -45028,7 +45035,7 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template build pod volumes ite
 |**readOnly**|bool|read only||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0Secret
 
-`Secret` to use to populate the volume.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template build pod volumes items0 secret
 
 #### Attributes
 
@@ -45051,7 +45058,7 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template build pod volumes ite
 |**path**|str|path||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildServiceAccount
 
-Template for the Kafka Connect Build service account.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template build service account
 
 #### Attributes
 
@@ -45060,17 +45067,17 @@ Template for the Kafka Connect Build service account.
 |**metadata**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildServiceAccountMetadata](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatebuildserviceaccountmetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateBuildServiceAccountMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template build service account metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateClusterRoleBinding
 
-Template for the Kafka Connect ClusterRoleBinding.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template cluster role binding
 
 #### Attributes
 
@@ -45079,25 +45086,25 @@ Template for the Kafka Connect ClusterRoleBinding.
 |**metadata**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateClusterRoleBindingMetadata](#kafkastrimziiov1beta2kafkamirrormaker2spectemplateclusterrolebindingmetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateClusterRoleBindingMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template cluster role binding metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateConnectContainer
 
-Template for the Kafka Connect container.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template connect container
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**env**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplateconnectcontainerenvitems0)]|Environment variables which should be applied to the container.||
+|**env**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplateconnectcontainerenvitems0)]|env||
 |**securityContext**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateConnectContainerSecurityContext](#kafkastrimziiov1beta2kafkamirrormaker2spectemplateconnectcontainersecuritycontext)|security context||
-|**volumeMounts**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateConnectContainerVolumeMountsItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplateconnectcontainervolumemountsitems0)]|Additional volume mounts which should be applied to the container.||
+|**volumeMounts**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateConnectContainerVolumeMountsItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplateconnectcontainervolumemountsitems0)]|volume mounts||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0
 
 kafka strimzi io v1beta2 kafka mirror maker2 spec template connect container env items0
@@ -45106,12 +45113,12 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template connect container env
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The environment variable key.||
-|**value**|str|The environment variable value.||
+|**name**|str|name||
+|**value**|str|value||
 |**valueFrom**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0ValueFrom](#kafkastrimziiov1beta2kafkamirrormaker2spectemplateconnectcontainerenvitems0valuefrom)|value from||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0ValueFrom
 
-Reference to the secret or config map property to which the environment variable is set.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template connect container env items0 value from
 
 #### Attributes
 
@@ -45121,7 +45128,7 @@ Reference to the secret or config map property to which the environment variable
 |**secretKeyRef**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0ValueFromSecretKeyRef](#kafkastrimziiov1beta2kafkamirrormaker2spectemplateconnectcontainerenvitems0valuefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0ValueFromConfigMapKeyRef
 
-Reference to a key in a config map.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template connect container env items0 value from config map key ref
 
 #### Attributes
 
@@ -45132,7 +45139,7 @@ Reference to a key in a config map.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0ValueFromSecretKeyRef
 
-Reference to a key in a secret.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template connect container env items0 value from secret key ref
 
 #### Attributes
 
@@ -45143,7 +45150,7 @@ Reference to a key in a secret.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateConnectContainerSecurityContext
 
-Security context for the container.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template connect container security context
 
 #### Attributes
 
@@ -45232,56 +45239,56 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template connect container vol
 |**subPathExpr**|str|sub path expr||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateDeployment
 
-Template for Kafka Connect `Deployment`.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template deployment
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**deploymentStrategy**|"RollingUpdate" | "Recreate"|Pod replacement strategy for deployment configuration changes. Valid values are `RollingUpdate` and `Recreate`. Defaults to `RollingUpdate`.||
+|**deploymentStrategy**|"RollingUpdate" | "Recreate"|deployment strategy||
 |**metadata**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateDeploymentMetadata](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatedeploymentmetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateDeploymentMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template deployment metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateHeadlessService
 
-Template for Kafka Connect headless `Service`.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template headless service
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**ipFamilies**|[str]|Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6`. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting.||
-|**ipFamilyPolicy**|"SingleStack" | "PreferDualStack" | "RequireDualStack"|Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`. `SingleStack` is for a single IP family. `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters. `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters. If unspecified, Kubernetes will choose the default value based on the service type.||
+|**ipFamilies**|[str]|ip families||
+|**ipFamilyPolicy**|"SingleStack" | "PreferDualStack" | "RequireDualStack"|ip family policy||
 |**metadata**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateHeadlessServiceMetadata](#kafkastrimziiov1beta2kafkamirrormaker2spectemplateheadlessservicemetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateHeadlessServiceMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template headless service metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateInitContainer
 
-Template for the Kafka init container.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template init container
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**env**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplateinitcontainerenvitems0)]|Environment variables which should be applied to the container.||
+|**env**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplateinitcontainerenvitems0)]|env||
 |**securityContext**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateInitContainerSecurityContext](#kafkastrimziiov1beta2kafkamirrormaker2spectemplateinitcontainersecuritycontext)|security context||
-|**volumeMounts**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateInitContainerVolumeMountsItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplateinitcontainervolumemountsitems0)]|Additional volume mounts which should be applied to the container.||
+|**volumeMounts**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateInitContainerVolumeMountsItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplateinitcontainervolumemountsitems0)]|volume mounts||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0
 
 kafka strimzi io v1beta2 kafka mirror maker2 spec template init container env items0
@@ -45290,12 +45297,12 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template init container env it
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The environment variable key.||
-|**value**|str|The environment variable value.||
+|**name**|str|name||
+|**value**|str|value||
 |**valueFrom**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0ValueFrom](#kafkastrimziiov1beta2kafkamirrormaker2spectemplateinitcontainerenvitems0valuefrom)|value from||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0ValueFrom
 
-Reference to the secret or config map property to which the environment variable is set.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template init container env items0 value from
 
 #### Attributes
 
@@ -45305,7 +45312,7 @@ Reference to the secret or config map property to which the environment variable
 |**secretKeyRef**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0ValueFromSecretKeyRef](#kafkastrimziiov1beta2kafkamirrormaker2spectemplateinitcontainerenvitems0valuefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0ValueFromConfigMapKeyRef
 
-Reference to a key in a config map.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template init container env items0 value from config map key ref
 
 #### Attributes
 
@@ -45316,7 +45323,7 @@ Reference to a key in a config map.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0ValueFromSecretKeyRef
 
-Reference to a key in a secret.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template init container env items0 value from secret key ref
 
 #### Attributes
 
@@ -45327,7 +45334,7 @@ Reference to a key in a secret.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateInitContainerSecurityContext
 
-Security context for the container.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template init container security context
 
 #### Attributes
 
@@ -45416,7 +45423,7 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template init container volume
 |**subPathExpr**|str|sub path expr||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateJmxSecret
 
-Template for Secret of the Kafka Connect Cluster JMX authentication.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template jmx secret
 
 #### Attributes
 
@@ -45425,17 +45432,17 @@ Template for Secret of the Kafka Connect Cluster JMX authentication.
 |**metadata**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateJmxSecretMetadata](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatejmxsecretmetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateJmxSecretMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template jmx secret metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePod
 
-Template for Kafka Connect `Pods`.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template pod
 
 #### Attributes
 
@@ -45443,23 +45450,23 @@ Template for Kafka Connect `Pods`.
 | --- | --- | --- | --- |
 |**affinity**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodAffinity](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatepodaffinity)|affinity||
 |**dnsConfig**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodDNSConfig](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatepoddnsconfig)|dns config||
-|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.||
-|**enableServiceLinks**|bool|Indicates whether information about services should be injected into Pod's environment variables.||
-|**hostAliases**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodHostAliasesItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatepodhostaliasesitems0)]|The pod's HostAliases. HostAliases is an optional list of hosts and IPs that will be injected into the Pod's hosts file if specified.||
-|**hostUsers**|bool|Use the host user namespace. Optional. Defaults to `true`. When `true` or not set, the pod runs in the host user namespace. This is required when the pod needs features available only in the host namespace, such as loading kernel modules with `CAP_SYS_MODULE`.When set to `false`, the pod runs in a new user namespace. Setting `false` helps mitigate container breakout vulnerabilities and allows containers to run as `root` without granting `root` privileges on the host. This property is alpha-level in Kubernetes and is supported only by Kubernetes clusters that enable the `UserNamespacesSupport` feature.||
-|**imagePullSecrets**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodImagePullSecretsItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatepodimagepullsecretsitems0)]|List of references to secrets in the same namespace to use for pulling any of the images used by this Pod. When the `STRIMZI_IMAGE_PULL_SECRETS` environment variable in Cluster Operator and the `imagePullSecrets` option are specified, only the `imagePullSecrets` variable is used and the `STRIMZI_IMAGE_PULL_SECRETS` variable is ignored.||
+|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|dns policy||
+|**enableServiceLinks**|bool|enable service links||
+|**hostAliases**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodHostAliasesItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatepodhostaliasesitems0)]|host aliases||
+|**hostUsers**|bool|host users||
+|**imagePullSecrets**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodImagePullSecretsItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatepodimagepullsecretsitems0)]|image pull secrets||
 |**metadata**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodMetadata](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatepodmetadata)|metadata||
-|**priorityClassName**|str|The name of the priority class used to assign priority to the pods.||
-|**schedulerName**|str|The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.||
+|**priorityClassName**|str|priority class name||
+|**schedulerName**|str|scheduler name||
 |**securityContext**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodSecurityContext](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatepodsecuritycontext)|security context||
-|**terminationGracePeriodSeconds**|int|The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.||
-|**tmpDirSizeLimit**|str|Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.||
-|**tolerations**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodTolerationsItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatepodtolerationsitems0)]|The pod's tolerations.||
-|**topologySpreadConstraints**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodTopologySpreadConstraintsItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatepodtopologyspreadconstraintsitems0)]|The pod's topology spread constraints.||
-|**volumes**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodVolumesItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatepodvolumesitems0)]|Additional volumes that can be mounted to the pod.||
+|**terminationGracePeriodSeconds**|int|termination grace period seconds||
+|**tmpDirSizeLimit**|str|tmp dir size limit||
+|**tolerations**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodTolerationsItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatepodtolerationsitems0)]|tolerations||
+|**topologySpreadConstraints**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodTopologySpreadConstraintsItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatepodtopologyspreadconstraintsitems0)]|topology spread constraints||
+|**volumes**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodVolumesItems0](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatepodvolumesitems0)]|volumes||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodAffinity
 
-The pod's affinity rules.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template pod affinity
 
 #### Attributes
 
@@ -45827,7 +45834,7 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template pod affinity pod anti
 |**values**|[str]|values||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodDNSConfig
 
-The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template pod DNS config
 
 #### Attributes
 
@@ -45848,24 +45855,24 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template pod DNS config option
 |**value**|str|value||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodDisruptionBudget
 
-Template for Kafka Connect `PodDisruptionBudget`.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template pod disruption budget
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**maxUnavailable**|int|Maximum number of unavailable pods to allow automatic Pod eviction. A Pod eviction is allowed when the `maxUnavailable` number of pods or fewer are unavailable after the eviction. Setting this value to 0 prevents all voluntary evictions, so the pods must be evicted manually. Defaults to 1.||
+|**maxUnavailable**|int|max unavailable||
 |**metadata**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodDisruptionBudgetMetadata](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatepoddisruptionbudgetmetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodDisruptionBudgetMetadata
 
-Metadata to apply to the `PodDisruptionBudgetTemplate` resource.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template pod disruption budget metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodHostAliasesItems0
 
 kafka strimzi io v1beta2 kafka mirror maker2 spec template pod host aliases items0
@@ -45887,17 +45894,17 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template pod image pull secret
 |**name**|str|name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template pod metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodSecurityContext
 
-Configures pod-level security attributes and common container settings.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template pod security context
 
 #### Attributes
 
@@ -45972,7 +45979,7 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template pod security context 
 |**runAsUserName**|str|run as user name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodSet
 
-Template for Kafka Connect `StrimziPodSet` resource.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template pod set
 
 #### Attributes
 
@@ -45981,14 +45988,14 @@ Template for Kafka Connect `StrimziPodSet` resource.
 |**metadata**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodSetMetadata](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatepodsetmetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodSetMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template pod set metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodTolerationsItems0
 
 kafka strimzi io v1beta2 kafka mirror maker2 spec template pod tolerations items0
@@ -46051,12 +46058,12 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template pod volumes items0
 |**csi**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodVolumesItems0Csi](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatepodvolumesitems0csi)|csi||
 |**emptyDir**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodVolumesItems0EmptyDir](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatepodvolumesitems0emptydir)|empty dir||
 |**image**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodVolumesItems0Image](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatepodvolumesitems0image)|image||
-|**name**|str|Name to use for the volume. Required.||
+|**name**|str|name||
 |**persistentVolumeClaim**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodVolumesItems0PersistentVolumeClaim](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatepodvolumesitems0persistentvolumeclaim)|persistent volume claim||
 |**secret**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodVolumesItems0Secret](#kafkastrimziiov1beta2kafkamirrormaker2spectemplatepodvolumesitems0secret)|secret||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodVolumesItems0ConfigMap
 
-`ConfigMap` to use to populate the volume.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template pod volumes items0 config map
 
 #### Attributes
 
@@ -46079,7 +46086,7 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template pod volumes items0 co
 |**path**|str|path||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodVolumesItems0Csi
 
-`CSIVolumeSource` object to use to populate the volume.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template pod volumes items0 csi
 
 #### Attributes
 
@@ -46101,17 +46108,17 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template pod volumes items0 cs
 |**name**|str|name||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodVolumesItems0EmptyDir
 
-`EmptyDir` to use to populate the volume.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template pod volumes items0 empty dir
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**medium** `readOnly`|"Memory"|Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.|"Memory"|
-|**sizeLimit**|str|The total amount of local storage required for this EmptyDir volume (for example 1Gi).||
+|**medium** `readOnly`|"Memory"|medium|"Memory"|
+|**sizeLimit**|str|size limit||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodVolumesItems0Image
 
-`ImageVolumeSource` object to use to populate the volume.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template pod volumes items0 image
 
 #### Attributes
 
@@ -46121,7 +46128,7 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template pod volumes items0 cs
 |**reference**|str|reference||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodVolumesItems0PersistentVolumeClaim
 
-`PersistentVolumeClaim` object to use to populate the volume.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template pod volumes items0 persistent volume claim
 
 #### Attributes
 
@@ -46131,7 +46138,7 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template pod volumes items0 cs
 |**readOnly**|bool|read only||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplatePodVolumesItems0Secret
 
-`Secret` to use to populate the volume.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template pod volumes items0 secret
 
 #### Attributes
 
@@ -46154,7 +46161,7 @@ kafka strimzi io v1beta2 kafka mirror maker2 spec template pod volumes items0 se
 |**path**|str|path||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateServiceAccount
 
-Template for the Kafka Connect service account.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template service account
 
 #### Attributes
 
@@ -46163,17 +46170,17 @@ Template for the Kafka Connect service account.
 |**metadata**|[KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateServiceAccountMetadata](#kafkastrimziiov1beta2kafkamirrormaker2spectemplateserviceaccountmetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTemplateServiceAccountMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka mirror maker2 spec template service account metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2SpecTracing
 
-The configuration of tracing in Kafka Connect.
+kafka strimzi io v1beta2 kafka mirror maker2 spec tracing
 
 #### Attributes
 
@@ -46182,20 +46189,20 @@ The configuration of tracing in Kafka Connect.
 |**type** `required`|"jaeger" | "opentelemetry"|||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2Status
 
-The status of the Kafka MirrorMaker 2 cluster.
+kafka strimzi io v1beta2 kafka mirror maker2 status
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**autoRestartStatuses**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2StatusAutoRestartStatusesItems0](#kafkastrimziiov1beta2kafkamirrormaker2statusautorestartstatusesitems0)]|List of MirrorMaker 2 connector auto restart statuses.||
-|**conditions**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2StatusConditionsItems0](#kafkastrimziiov1beta2kafkamirrormaker2statusconditionsitems0)]|List of status conditions.||
-|**connectorPlugins**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2StatusConnectorPluginsItems0](#kafkastrimziiov1beta2kafkamirrormaker2statusconnectorpluginsitems0)]|The list of connector plugins available in this Kafka Connect deployment.||
-|**connectors**|[]|List of MirrorMaker 2 connector statuses, as reported by the Kafka Connect REST API.||
-|**labelSelector**|str|Label selector for pods providing this resource.||
-|**observedGeneration**|int|The generation of the CRD that was last reconciled by the operator.||
-|**replicas**|int|The current number of pods being used to provide this resource.||
-|**url**|str|The URL of the REST API endpoint for managing and monitoring Kafka Connect connectors.||
+|**autoRestartStatuses**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2StatusAutoRestartStatusesItems0](#kafkastrimziiov1beta2kafkamirrormaker2statusautorestartstatusesitems0)]|auto restart statuses||
+|**conditions**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2StatusConditionsItems0](#kafkastrimziiov1beta2kafkamirrormaker2statusconditionsitems0)]|conditions||
+|**connectorPlugins**|[[KafkaStrimziIoV1beta2KafkaMirrorMaker2StatusConnectorPluginsItems0](#kafkastrimziiov1beta2kafkamirrormaker2statusconnectorpluginsitems0)]|connector plugins||
+|**connectors**|[]|connectors||
+|**labelSelector**|str|label selector||
+|**observedGeneration**|int|observed generation||
+|**replicas**|int|replicas||
+|**url**|str|url||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2StatusAutoRestartStatusesItems0
 
 kafka strimzi io v1beta2 kafka mirror maker2 status auto restart statuses items0
@@ -46204,9 +46211,9 @@ kafka strimzi io v1beta2 kafka mirror maker2 status auto restart statuses items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**connectorName**|str|The name of the connector being restarted.||
-|**count**|int|The number of times the connector or task is restarted.||
-|**lastRestartTimestamp**|str|The last time the automatic restart was attempted. The required format is 'yyyy-MM-ddTHH:mm:ssZ' in the UTC time zone.||
+|**connectorName**|str|connector name||
+|**count**|int|count||
+|**lastRestartTimestamp**|str|last restart timestamp||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2StatusConditionsItems0
 
 kafka strimzi io v1beta2 kafka mirror maker2 status conditions items0
@@ -46215,10 +46222,10 @@ kafka strimzi io v1beta2 kafka mirror maker2 status conditions items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.||
-|**message**|str|Human-readable message indicating details about the condition's last transition.||
-|**reason**|str|The reason for the condition's last transition (a single word in CamelCase).||
-|**status**|str|The status of the condition, either True, False or Unknown.||
+|**lastTransitionTime**|str|last transition time||
+|**message**|str|message||
+|**reason**|str|reason||
+|**status**|str|status||
 |**type**|str|||
 ### KafkaStrimziIoV1beta2KafkaMirrorMaker2StatusConnectorPluginsItems0
 
@@ -46228,26 +46235,26 @@ kafka strimzi io v1beta2 kafka mirror maker2 status connector plugins items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**class**|str|The class of the connector plugin.||
+|**class**|str|class||
 |**type**|str|||
-|**version**|str|The version of the connector plugin.||
+|**version**|str|version||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpec
 
-The specification of the KafkaNodePool.
+kafka strimzi io v1beta2 kafka node pool spec
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**jvmOptions**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecJvmOptions](#kafkastrimziiov1beta2kafkanodepoolspecjvmoptions)|jvm options||
-|**replicas** `required`|int|The number of pods in the pool.||
+|**replicas** `required`|int|replicas||
 |**resources**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecResources](#kafkastrimziiov1beta2kafkanodepoolspecresources)|resources||
-|**roles** `required`|[str]|The roles assigned to the node pool. Supported values are `broker` and `controller`. This property is required.||
+|**roles** `required`|[str]|roles||
 |**storage** `required`|[KafkaStrimziIoV1beta2KafkaNodePoolSpecStorage](#kafkastrimziiov1beta2kafkanodepoolspecstorage)|storage||
 |**template**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplate](#kafkastrimziiov1beta2kafkanodepoolspectemplate)|template||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecJvmOptions
 
-JVM Options for pods.
+kafka strimzi io v1beta2 kafka node pool spec jvm options
 
 #### Attributes
 
@@ -46256,8 +46263,8 @@ JVM Options for pods.
 |**-XX**|{str:str}|||
 |**-Xms**|str|||
 |**-Xmx**|str|||
-|**gcLoggingEnabled**|bool|Specifies whether the Garbage Collection logging is enabled. The default is false.||
-|**javaSystemProperties**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecJvmOptionsJavaSystemPropertiesItems0](#kafkastrimziiov1beta2kafkanodepoolspecjvmoptionsjavasystempropertiesitems0)]|A map of additional system properties which will be passed using the `-D` option to the JVM.||
+|**gcLoggingEnabled**|bool|gc logging enabled||
+|**javaSystemProperties**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecJvmOptionsJavaSystemPropertiesItems0](#kafkastrimziiov1beta2kafkanodepoolspecjvmoptionsjavasystempropertiesitems0)]|java system properties||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecJvmOptionsJavaSystemPropertiesItems0
 
 kafka strimzi io v1beta2 kafka node pool spec jvm options java system properties items0
@@ -46266,11 +46273,11 @@ kafka strimzi io v1beta2 kafka node pool spec jvm options java system properties
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The system property name.||
-|**value**|str|The system property value.||
+|**name**|str|name||
+|**value**|str|value||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecResources
 
-CPU and memory resources to reserve.
+kafka strimzi io v1beta2 kafka node pool spec resources
 
 #### Attributes
 
@@ -46291,23 +46298,23 @@ kafka strimzi io v1beta2 kafka node pool spec resources claims items0
 |**request**|str|request||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecStorage
 
-Storage configuration (disk). Cannot be updated.
+kafka strimzi io v1beta2 kafka node pool spec storage
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**class**|str|The storage class to use for dynamic volume allocation.||
-|**deleteClaim**|bool|Specifies whether the persistent volume claim is deleted when a Kafka node is deleted. Optional. Defaults to `false`.||
-|**id**|int|Storage identification number. It is mandatory only for storage volumes defined in a storage of type 'jbod'.||
-|**kraftMetadata** `readOnly`|"shared"|Specifies whether this volume should be used for storing KRaft metadata. This property is optional. When set, the only currently supported value is `shared`. At most one volume can have this property set.|"shared"|
-|**overrides**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecStorageOverridesItems0](#kafkastrimziiov1beta2kafkanodepoolspecstorageoverridesitems0)]|As of Strimzi 0.46.0, the storage overrides for individual brokers are not supported anymore and this option is ignored.||
-|**selector**|{str:str}|Specifies a specific persistent volume to use. It contains key:value pairs representing labels for selecting such a volume.||
-|**size**|str|When `type=persistent-claim`, defines the size of the persistent volume claim, such as 100Gi. Mandatory when `type=persistent-claim`.||
-|**sizeLimit**|str|When type=ephemeral, defines the total amount of local storage required for this EmptyDir volume (for example 1Gi).||
+|**class**|str|class||
+|**deleteClaim**|bool|delete claim||
+|**id**|int|id||
+|**kraftMetadata** `readOnly`|"shared"|kraft metadata|"shared"|
+|**overrides**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecStorageOverridesItems0](#kafkastrimziiov1beta2kafkanodepoolspecstorageoverridesitems0)]|overrides||
+|**selector**|{str:str}|selector||
+|**size**|str|size||
+|**sizeLimit**|str|size limit||
 |**type** `required`|"ephemeral" | "persistent-claim" | "jbod"|||
-|**volumeAttributesClass**|str|Specifies `VolumeAttributeClass` name for dynamically configuring storage attributes.||
-|**volumes**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecStorageVolumesItems0](#kafkastrimziiov1beta2kafkanodepoolspecstoragevolumesitems0)]|List of volumes as Storage objects representing the JBOD disks array.||
+|**volumeAttributesClass**|str|volume attributes class||
+|**volumes**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecStorageVolumesItems0](#kafkastrimziiov1beta2kafkanodepoolspecstoragevolumesitems0)]|volumes||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecStorageOverridesItems0
 
 kafka strimzi io v1beta2 kafka node pool spec storage overrides items0
@@ -46316,8 +46323,8 @@ kafka strimzi io v1beta2 kafka node pool spec storage overrides items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**broker**|int|Id of the kafka broker (broker identifier).||
-|**class**|str|The storage class to use for dynamic volume allocation for this broker.||
+|**broker**|int|broker||
+|**class**|str|class||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecStorageVolumesItems0
 
 kafka strimzi io v1beta2 kafka node pool spec storage volumes items0
@@ -46326,16 +46333,16 @@ kafka strimzi io v1beta2 kafka node pool spec storage volumes items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**class**|str|The storage class to use for dynamic volume allocation.||
-|**deleteClaim**|bool|Specifies whether the persistent volume claim is deleted when a Kafka node is deleted. Optional. Defaults to `false`.||
-|**id**|int|Storage identification number. Mandatory for storage volumes defined with a `jbod` storage type configuration.||
-|**kraftMetadata** `readOnly`|"shared"|Specifies whether this volume should be used for storing KRaft metadata. This property is optional. When set, the only currently supported value is `shared`. At most one volume can have this property set.|"shared"|
-|**overrides**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecStorageVolumesItems0OverridesItems0](#kafkastrimziiov1beta2kafkanodepoolspecstoragevolumesitems0overridesitems0)]|As of Strimzi 0.46.0, the storage overrides for individual brokers are not supported anymore and this option is ignored.||
-|**selector**|{str:str}|Specifies a specific persistent volume to use. It contains key:value pairs representing labels for selecting such a volume.||
-|**size**|str|When `type=persistent-claim`, defines the size of the persistent volume claim, such as 100Gi. Mandatory when `type=persistent-claim`.||
-|**sizeLimit**|str|When type=ephemeral, defines the total amount of local storage required for this EmptyDir volume (for example 1Gi).||
+|**class**|str|class||
+|**deleteClaim**|bool|delete claim||
+|**id**|int|id||
+|**kraftMetadata** `readOnly`|"shared"|kraft metadata|"shared"|
+|**overrides**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecStorageVolumesItems0OverridesItems0](#kafkastrimziiov1beta2kafkanodepoolspecstoragevolumesitems0overridesitems0)]|overrides||
+|**selector**|{str:str}|selector||
+|**size**|str|size||
+|**sizeLimit**|str|size limit||
 |**type** `required`|"ephemeral" | "persistent-claim"|||
-|**volumeAttributesClass**|str|Specifies `VolumeAttributeClass` name for dynamically configuring storage attributes.||
+|**volumeAttributesClass**|str|volume attributes class||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecStorageVolumesItems0OverridesItems0
 
 kafka strimzi io v1beta2 kafka node pool spec storage volumes items0 overrides items0
@@ -46344,11 +46351,11 @@ kafka strimzi io v1beta2 kafka node pool spec storage volumes items0 overrides i
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**broker**|int|Id of the kafka broker (broker identifier).||
-|**class**|str|The storage class to use for dynamic volume allocation for this broker.||
+|**broker**|int|broker||
+|**class**|str|class||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplate
 
-Template for pool resources. The template allows users to specify how the resources belonging to this pool are generated.
+kafka strimzi io v1beta2 kafka node pool spec template
 
 #### Attributes
 
@@ -46364,15 +46371,15 @@ Template for pool resources. The template allows users to specify how the resour
 |**podSet**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodSet](#kafkastrimziiov1beta2kafkanodepoolspectemplatepodset)|pod set||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateInitContainer
 
-Template for the Kafka init container.
+kafka strimzi io v1beta2 kafka node pool spec template init container
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**env**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateInitContainerEnvItems0](#kafkastrimziiov1beta2kafkanodepoolspectemplateinitcontainerenvitems0)]|Environment variables which should be applied to the container.||
+|**env**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateInitContainerEnvItems0](#kafkastrimziiov1beta2kafkanodepoolspectemplateinitcontainerenvitems0)]|env||
 |**securityContext**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateInitContainerSecurityContext](#kafkastrimziiov1beta2kafkanodepoolspectemplateinitcontainersecuritycontext)|security context||
-|**volumeMounts**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateInitContainerVolumeMountsItems0](#kafkastrimziiov1beta2kafkanodepoolspectemplateinitcontainervolumemountsitems0)]|Additional volume mounts which should be applied to the container.||
+|**volumeMounts**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateInitContainerVolumeMountsItems0](#kafkastrimziiov1beta2kafkanodepoolspectemplateinitcontainervolumemountsitems0)]|volume mounts||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateInitContainerEnvItems0
 
 kafka strimzi io v1beta2 kafka node pool spec template init container env items0
@@ -46381,12 +46388,12 @@ kafka strimzi io v1beta2 kafka node pool spec template init container env items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The environment variable key.||
-|**value**|str|The environment variable value.||
+|**name**|str|name||
+|**value**|str|value||
 |**valueFrom**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateInitContainerEnvItems0ValueFrom](#kafkastrimziiov1beta2kafkanodepoolspectemplateinitcontainerenvitems0valuefrom)|value from||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateInitContainerEnvItems0ValueFrom
 
-Reference to the secret or config map property to which the environment variable is set.
+kafka strimzi io v1beta2 kafka node pool spec template init container env items0 value from
 
 #### Attributes
 
@@ -46396,7 +46403,7 @@ Reference to the secret or config map property to which the environment variable
 |**secretKeyRef**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateInitContainerEnvItems0ValueFromSecretKeyRef](#kafkastrimziiov1beta2kafkanodepoolspectemplateinitcontainerenvitems0valuefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateInitContainerEnvItems0ValueFromConfigMapKeyRef
 
-Reference to a key in a config map.
+kafka strimzi io v1beta2 kafka node pool spec template init container env items0 value from config map key ref
 
 #### Attributes
 
@@ -46407,7 +46414,7 @@ Reference to a key in a config map.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateInitContainerEnvItems0ValueFromSecretKeyRef
 
-Reference to a key in a secret.
+kafka strimzi io v1beta2 kafka node pool spec template init container env items0 value from secret key ref
 
 #### Attributes
 
@@ -46418,7 +46425,7 @@ Reference to a key in a secret.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateInitContainerSecurityContext
 
-Security context for the container.
+kafka strimzi io v1beta2 kafka node pool spec template init container security context
 
 #### Attributes
 
@@ -46507,15 +46514,15 @@ kafka strimzi io v1beta2 kafka node pool spec template init container volume mou
 |**subPathExpr**|str|sub path expr||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateKafkaContainer
 
-Template for the Kafka broker container.
+kafka strimzi io v1beta2 kafka node pool spec template kafka container
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**env**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateKafkaContainerEnvItems0](#kafkastrimziiov1beta2kafkanodepoolspectemplatekafkacontainerenvitems0)]|Environment variables which should be applied to the container.||
+|**env**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateKafkaContainerEnvItems0](#kafkastrimziiov1beta2kafkanodepoolspectemplatekafkacontainerenvitems0)]|env||
 |**securityContext**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateKafkaContainerSecurityContext](#kafkastrimziiov1beta2kafkanodepoolspectemplatekafkacontainersecuritycontext)|security context||
-|**volumeMounts**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateKafkaContainerVolumeMountsItems0](#kafkastrimziiov1beta2kafkanodepoolspectemplatekafkacontainervolumemountsitems0)]|Additional volume mounts which should be applied to the container.||
+|**volumeMounts**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateKafkaContainerVolumeMountsItems0](#kafkastrimziiov1beta2kafkanodepoolspectemplatekafkacontainervolumemountsitems0)]|volume mounts||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateKafkaContainerEnvItems0
 
 kafka strimzi io v1beta2 kafka node pool spec template kafka container env items0
@@ -46524,12 +46531,12 @@ kafka strimzi io v1beta2 kafka node pool spec template kafka container env items
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|The environment variable key.||
-|**value**|str|The environment variable value.||
+|**name**|str|name||
+|**value**|str|value||
 |**valueFrom**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateKafkaContainerEnvItems0ValueFrom](#kafkastrimziiov1beta2kafkanodepoolspectemplatekafkacontainerenvitems0valuefrom)|value from||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateKafkaContainerEnvItems0ValueFrom
 
-Reference to the secret or config map property to which the environment variable is set.
+kafka strimzi io v1beta2 kafka node pool spec template kafka container env items0 value from
 
 #### Attributes
 
@@ -46539,7 +46546,7 @@ Reference to the secret or config map property to which the environment variable
 |**secretKeyRef**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateKafkaContainerEnvItems0ValueFromSecretKeyRef](#kafkastrimziiov1beta2kafkanodepoolspectemplatekafkacontainerenvitems0valuefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateKafkaContainerEnvItems0ValueFromConfigMapKeyRef
 
-Reference to a key in a config map.
+kafka strimzi io v1beta2 kafka node pool spec template kafka container env items0 value from config map key ref
 
 #### Attributes
 
@@ -46550,7 +46557,7 @@ Reference to a key in a config map.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateKafkaContainerEnvItems0ValueFromSecretKeyRef
 
-Reference to a key in a secret.
+kafka strimzi io v1beta2 kafka node pool spec template kafka container env items0 value from secret key ref
 
 #### Attributes
 
@@ -46561,7 +46568,7 @@ Reference to a key in a secret.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplateKafkaContainerSecurityContext
 
-Security context for the container.
+kafka strimzi io v1beta2 kafka node pool spec template kafka container security context
 
 #### Attributes
 
@@ -46650,7 +46657,7 @@ kafka strimzi io v1beta2 kafka node pool spec template kafka container volume mo
 |**subPathExpr**|str|sub path expr||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePerPodIngress
 
-Template for Kafka per-pod `Ingress` used for access from outside of Kubernetes.
+kafka strimzi io v1beta2 kafka node pool spec template per pod ingress
 
 #### Attributes
 
@@ -46659,17 +46666,17 @@ Template for Kafka per-pod `Ingress` used for access from outside of Kubernetes.
 |**metadata**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePerPodIngressMetadata](#kafkastrimziiov1beta2kafkanodepoolspectemplateperpodingressmetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePerPodIngressMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka node pool spec template per pod ingress metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePerPodRoute
 
-Template for Kafka per-pod `Routes` used for access from outside of OpenShift.
+kafka strimzi io v1beta2 kafka node pool spec template per pod route
 
 #### Attributes
 
@@ -46678,17 +46685,17 @@ Template for Kafka per-pod `Routes` used for access from outside of OpenShift.
 |**metadata**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePerPodRouteMetadata](#kafkastrimziiov1beta2kafkanodepoolspectemplateperpodroutemetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePerPodRouteMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka node pool spec template per pod route metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePerPodService
 
-Template for Kafka per-pod `Services` used for access from outside of Kubernetes.
+kafka strimzi io v1beta2 kafka node pool spec template per pod service
 
 #### Attributes
 
@@ -46697,17 +46704,17 @@ Template for Kafka per-pod `Services` used for access from outside of Kubernetes
 |**metadata**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePerPodServiceMetadata](#kafkastrimziiov1beta2kafkanodepoolspectemplateperpodservicemetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePerPodServiceMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka node pool spec template per pod service metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePersistentVolumeClaim
 
-Template for all Kafka `PersistentVolumeClaims`.
+kafka strimzi io v1beta2 kafka node pool spec template persistent volume claim
 
 #### Attributes
 
@@ -46716,17 +46723,17 @@ Template for all Kafka `PersistentVolumeClaims`.
 |**metadata**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePersistentVolumeClaimMetadata](#kafkastrimziiov1beta2kafkanodepoolspectemplatepersistentvolumeclaimmetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePersistentVolumeClaimMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka node pool spec template persistent volume claim metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePod
 
-Template for Kafka `Pods`.
+kafka strimzi io v1beta2 kafka node pool spec template pod
 
 #### Attributes
 
@@ -46734,23 +46741,23 @@ Template for Kafka `Pods`.
 | --- | --- | --- | --- |
 |**affinity**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodAffinity](#kafkastrimziiov1beta2kafkanodepoolspectemplatepodaffinity)|affinity||
 |**dnsConfig**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodDNSConfig](#kafkastrimziiov1beta2kafkanodepoolspectemplatepoddnsconfig)|dns config||
-|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.||
-|**enableServiceLinks**|bool|Indicates whether information about services should be injected into Pod's environment variables.||
-|**hostAliases**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodHostAliasesItems0](#kafkastrimziiov1beta2kafkanodepoolspectemplatepodhostaliasesitems0)]|The pod's HostAliases. HostAliases is an optional list of hosts and IPs that will be injected into the Pod's hosts file if specified.||
-|**hostUsers**|bool|Use the host user namespace. Optional. Defaults to `true`. When `true` or not set, the pod runs in the host user namespace. This is required when the pod needs features available only in the host namespace, such as loading kernel modules with `CAP_SYS_MODULE`.When set to `false`, the pod runs in a new user namespace. Setting `false` helps mitigate container breakout vulnerabilities and allows containers to run as `root` without granting `root` privileges on the host. This property is alpha-level in Kubernetes and is supported only by Kubernetes clusters that enable the `UserNamespacesSupport` feature.||
-|**imagePullSecrets**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodImagePullSecretsItems0](#kafkastrimziiov1beta2kafkanodepoolspectemplatepodimagepullsecretsitems0)]|List of references to secrets in the same namespace to use for pulling any of the images used by this Pod. When the `STRIMZI_IMAGE_PULL_SECRETS` environment variable in Cluster Operator and the `imagePullSecrets` option are specified, only the `imagePullSecrets` variable is used and the `STRIMZI_IMAGE_PULL_SECRETS` variable is ignored.||
+|**dnsPolicy**|"ClusterFirst" | "ClusterFirstWithHostNet" | "Default" | "None"|dns policy||
+|**enableServiceLinks**|bool|enable service links||
+|**hostAliases**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodHostAliasesItems0](#kafkastrimziiov1beta2kafkanodepoolspectemplatepodhostaliasesitems0)]|host aliases||
+|**hostUsers**|bool|host users||
+|**imagePullSecrets**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodImagePullSecretsItems0](#kafkastrimziiov1beta2kafkanodepoolspectemplatepodimagepullsecretsitems0)]|image pull secrets||
 |**metadata**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodMetadata](#kafkastrimziiov1beta2kafkanodepoolspectemplatepodmetadata)|metadata||
-|**priorityClassName**|str|The name of the priority class used to assign priority to the pods.||
-|**schedulerName**|str|The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.||
+|**priorityClassName**|str|priority class name||
+|**schedulerName**|str|scheduler name||
 |**securityContext**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodSecurityContext](#kafkastrimziiov1beta2kafkanodepoolspectemplatepodsecuritycontext)|security context||
-|**terminationGracePeriodSeconds**|int|The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.||
-|**tmpDirSizeLimit**|str|Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.||
-|**tolerations**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodTolerationsItems0](#kafkastrimziiov1beta2kafkanodepoolspectemplatepodtolerationsitems0)]|The pod's tolerations.||
-|**topologySpreadConstraints**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodTopologySpreadConstraintsItems0](#kafkastrimziiov1beta2kafkanodepoolspectemplatepodtopologyspreadconstraintsitems0)]|The pod's topology spread constraints.||
-|**volumes**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodVolumesItems0](#kafkastrimziiov1beta2kafkanodepoolspectemplatepodvolumesitems0)]|Additional volumes that can be mounted to the pod.||
+|**terminationGracePeriodSeconds**|int|termination grace period seconds||
+|**tmpDirSizeLimit**|str|tmp dir size limit||
+|**tolerations**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodTolerationsItems0](#kafkastrimziiov1beta2kafkanodepoolspectemplatepodtolerationsitems0)]|tolerations||
+|**topologySpreadConstraints**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodTopologySpreadConstraintsItems0](#kafkastrimziiov1beta2kafkanodepoolspectemplatepodtopologyspreadconstraintsitems0)]|topology spread constraints||
+|**volumes**|[[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodVolumesItems0](#kafkastrimziiov1beta2kafkanodepoolspectemplatepodvolumesitems0)]|volumes||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodAffinity
 
-The pod's affinity rules.
+kafka strimzi io v1beta2 kafka node pool spec template pod affinity
 
 #### Attributes
 
@@ -47118,7 +47125,7 @@ kafka strimzi io v1beta2 kafka node pool spec template pod affinity pod anti aff
 |**values**|[str]|values||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodDNSConfig
 
-The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.
+kafka strimzi io v1beta2 kafka node pool spec template pod DNS config
 
 #### Attributes
 
@@ -47158,17 +47165,17 @@ kafka strimzi io v1beta2 kafka node pool spec template pod image pull secrets it
 |**name**|str|name||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka node pool spec template pod metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodSecurityContext
 
-Configures pod-level security attributes and common container settings.
+kafka strimzi io v1beta2 kafka node pool spec template pod security context
 
 #### Attributes
 
@@ -47243,7 +47250,7 @@ kafka strimzi io v1beta2 kafka node pool spec template pod security context wind
 |**runAsUserName**|str|run as user name||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodSet
 
-Template for Kafka `StrimziPodSet` resource.
+kafka strimzi io v1beta2 kafka node pool spec template pod set
 
 #### Attributes
 
@@ -47252,14 +47259,14 @@ Template for Kafka `StrimziPodSet` resource.
 |**metadata**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodSetMetadata](#kafkastrimziiov1beta2kafkanodepoolspectemplatepodsetmetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodSetMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka node pool spec template pod set metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodTolerationsItems0
 
 kafka strimzi io v1beta2 kafka node pool spec template pod tolerations items0
@@ -47322,12 +47329,12 @@ kafka strimzi io v1beta2 kafka node pool spec template pod volumes items0
 |**csi**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodVolumesItems0Csi](#kafkastrimziiov1beta2kafkanodepoolspectemplatepodvolumesitems0csi)|csi||
 |**emptyDir**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodVolumesItems0EmptyDir](#kafkastrimziiov1beta2kafkanodepoolspectemplatepodvolumesitems0emptydir)|empty dir||
 |**image**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodVolumesItems0Image](#kafkastrimziiov1beta2kafkanodepoolspectemplatepodvolumesitems0image)|image||
-|**name**|str|Name to use for the volume. Required.||
+|**name**|str|name||
 |**persistentVolumeClaim**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodVolumesItems0PersistentVolumeClaim](#kafkastrimziiov1beta2kafkanodepoolspectemplatepodvolumesitems0persistentvolumeclaim)|persistent volume claim||
 |**secret**|[KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodVolumesItems0Secret](#kafkastrimziiov1beta2kafkanodepoolspectemplatepodvolumesitems0secret)|secret||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodVolumesItems0ConfigMap
 
-`ConfigMap` to use to populate the volume.
+kafka strimzi io v1beta2 kafka node pool spec template pod volumes items0 config map
 
 #### Attributes
 
@@ -47350,7 +47357,7 @@ kafka strimzi io v1beta2 kafka node pool spec template pod volumes items0 config
 |**path**|str|path||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodVolumesItems0Csi
 
-`CSIVolumeSource` object to use to populate the volume.
+kafka strimzi io v1beta2 kafka node pool spec template pod volumes items0 csi
 
 #### Attributes
 
@@ -47372,17 +47379,17 @@ kafka strimzi io v1beta2 kafka node pool spec template pod volumes items0 csi no
 |**name**|str|name||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodVolumesItems0EmptyDir
 
-`EmptyDir` to use to populate the volume.
+kafka strimzi io v1beta2 kafka node pool spec template pod volumes items0 empty dir
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**medium** `readOnly`|"Memory"|Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.|"Memory"|
-|**sizeLimit**|str|The total amount of local storage required for this EmptyDir volume (for example 1Gi).||
+|**medium** `readOnly`|"Memory"|medium|"Memory"|
+|**sizeLimit**|str|size limit||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodVolumesItems0Image
 
-`ImageVolumeSource` object to use to populate the volume.
+kafka strimzi io v1beta2 kafka node pool spec template pod volumes items0 image
 
 #### Attributes
 
@@ -47392,7 +47399,7 @@ kafka strimzi io v1beta2 kafka node pool spec template pod volumes items0 csi no
 |**reference**|str|reference||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodVolumesItems0PersistentVolumeClaim
 
-`PersistentVolumeClaim` object to use to populate the volume.
+kafka strimzi io v1beta2 kafka node pool spec template pod volumes items0 persistent volume claim
 
 #### Attributes
 
@@ -47402,7 +47409,7 @@ kafka strimzi io v1beta2 kafka node pool spec template pod volumes items0 csi no
 |**readOnly**|bool|read only||
 ### KafkaStrimziIoV1beta2KafkaNodePoolSpecTemplatePodVolumesItems0Secret
 
-`Secret` to use to populate the volume.
+kafka strimzi io v1beta2 kafka node pool spec template pod volumes items0 secret
 
 #### Attributes
 
@@ -47425,19 +47432,19 @@ kafka strimzi io v1beta2 kafka node pool spec template pod volumes items0 secret
 |**path**|str|path||
 ### KafkaStrimziIoV1beta2KafkaNodePoolStatus
 
-The status of the KafkaNodePool.
+kafka strimzi io v1beta2 kafka node pool status
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**clusterId**|str|Kafka cluster ID.||
-|**conditions**|[[KafkaStrimziIoV1beta2KafkaNodePoolStatusConditionsItems0](#kafkastrimziiov1beta2kafkanodepoolstatusconditionsitems0)]|List of status conditions.||
-|**labelSelector**|str|Label selector for pods providing this resource.||
-|**nodeIds**|[int]|Node IDs used by Kafka nodes in this pool.||
-|**observedGeneration**|int|The generation of the CRD that was last reconciled by the operator.||
-|**replicas**|int|The current number of pods being used to provide this resource.||
-|**roles**|[str]|The roles currently assigned to this pool.||
+|**clusterId**|str|cluster Id||
+|**conditions**|[[KafkaStrimziIoV1beta2KafkaNodePoolStatusConditionsItems0](#kafkastrimziiov1beta2kafkanodepoolstatusconditionsitems0)]|conditions||
+|**labelSelector**|str|label selector||
+|**nodeIds**|[int]|node ids||
+|**observedGeneration**|int|observed generation||
+|**replicas**|int|replicas||
+|**roles**|[str]|roles||
 ### KafkaStrimziIoV1beta2KafkaNodePoolStatusConditionsItems0
 
 kafka strimzi io v1beta2 kafka node pool status conditions items0
@@ -47446,31 +47453,31 @@ kafka strimzi io v1beta2 kafka node pool status conditions items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.||
-|**message**|str|Human-readable message indicating details about the condition's last transition.||
-|**reason**|str|The reason for the condition's last transition (a single word in CamelCase).||
-|**status**|str|The status of the condition, either True, False or Unknown.||
+|**lastTransitionTime**|str|last transition time||
+|**message**|str|message||
+|**reason**|str|reason||
+|**status**|str|status||
 |**type**|str|||
 ### KafkaStrimziIoV1beta2KafkaRebalanceSpec
 
-The specification of the Kafka rebalance.
+kafka strimzi io v1beta2 kafka rebalance spec
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**brokers**|[int]|The list of newly added brokers in case of scaling up or the ones to be removed in case of scaling down to use for rebalancing. This list can be used only with rebalancing mode `add-brokers` and `removed-brokers`. It is ignored with `full` mode.||
-|**concurrentIntraBrokerPartitionMovements**|int|The upper bound of ongoing partition replica movements between disks within each broker. Default is 2.||
-|**concurrentLeaderMovements**|int|The upper bound of ongoing partition leadership movements. Default is 1000.||
-|**concurrentPartitionMovementsPerBroker**|int|The upper bound of ongoing partition replica movements going into/out of each broker. Default is 5.||
-|**excludedTopics**|str|A regular expression where any matching topics will be excluded from the calculation of optimization proposals. This expression will be parsed by the java.util.regex.Pattern class; for more information on the supported format consult the documentation for that class.||
-|**goals**|[str]|A list of goals, ordered by decreasing priority, to use for generating and executing the rebalance proposal. The supported goals are available at https://github.com/linkedin/cruise-control#goals. If an empty goals list is provided, the goals declared in the default.goals Cruise Control configuration parameter are used.||
-|**mode**|"full" | "add-brokers" | "remove-brokers" | "remove-disks"|Mode to run the rebalancing. The supported modes are `full`, `add-brokers`, `remove-brokers`.<br />If not specified, the `full` mode is used by default.<br /><br />* `full` mode runs the rebalancing across all the brokers in the cluster.<br />* `add-brokers` mode can be used after scaling up the cluster to move some replicas to the newly added brokers.<br />* `remove-brokers` mode can be used before scaling down the cluster to move replicas out of the brokers to be removed.<br />* `remove-disks` mode can be used to move data across the volumes within the same broker<br />.||
-|**moveReplicasOffVolumes**|[[KafkaStrimziIoV1beta2KafkaRebalanceSpecMoveReplicasOffVolumesItems0](#kafkastrimziiov1beta2kafkarebalancespecmovereplicasoffvolumesitems0)]|List of brokers and their corresponding volumes from which replicas need to be moved.||
-|**rebalanceDisk**|bool|Enables intra-broker disk balancing, which balances disk space utilization between disks on the same broker. Only applies to Kafka deployments that use JBOD storage with multiple disks. When enabled, inter-broker balancing is disabled. Default is false.||
-|**replicaMovementStrategies**|[str]|A list of strategy class names used to determine the execution order for the replica movements in the generated optimization proposal. By default BaseReplicaMovementStrategy is used, which will execute the replica movements in the order that they were generated.||
-|**replicationThrottle**|int|The upper bound, in bytes per second, on the bandwidth used to move replicas. There is no limit by default.||
-|**skipHardGoalCheck**|bool|Whether to allow the hard goals specified in the Kafka CR to be skipped in optimization proposal generation. This can be useful when some of those hard goals are preventing a balance solution being found. Default is false.||
+|**brokers**|[int]|brokers||
+|**concurrentIntraBrokerPartitionMovements**|int|concurrent intra broker partition movements||
+|**concurrentLeaderMovements**|int|concurrent leader movements||
+|**concurrentPartitionMovementsPerBroker**|int|concurrent partition movements per broker||
+|**excludedTopics**|str|excluded topics||
+|**goals**|[str]|goals||
+|**mode**|"full" | "add-brokers" | "remove-brokers" | "remove-disks"|mode||
+|**moveReplicasOffVolumes**|[[KafkaStrimziIoV1beta2KafkaRebalanceSpecMoveReplicasOffVolumesItems0](#kafkastrimziiov1beta2kafkarebalancespecmovereplicasoffvolumesitems0)]|move replicas off volumes||
+|**rebalanceDisk**|bool|rebalance disk||
+|**replicaMovementStrategies**|[str]|replica movement strategies||
+|**replicationThrottle**|int|replication throttle||
+|**skipHardGoalCheck**|bool|skip hard goal check||
 ### KafkaStrimziIoV1beta2KafkaRebalanceSpecMoveReplicasOffVolumesItems0
 
 kafka strimzi io v1beta2 kafka rebalance spec move replicas off volumes items0
@@ -47479,21 +47486,21 @@ kafka strimzi io v1beta2 kafka rebalance spec move replicas off volumes items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**brokerId**|int|ID of the broker that contains the disk from which you want to move the partition replicas.||
-|**volumeIds**|[int]|IDs of the disks from which the partition replicas need to be moved.||
+|**brokerId**|int|broker Id||
+|**volumeIds**|[int]|volume ids||
 ### KafkaStrimziIoV1beta2KafkaRebalanceStatus
 
-The status of the Kafka rebalance.
+kafka strimzi io v1beta2 kafka rebalance status
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**conditions**|[[KafkaStrimziIoV1beta2KafkaRebalanceStatusConditionsItems0](#kafkastrimziiov1beta2kafkarebalancestatusconditionsitems0)]|List of status conditions.||
-|**observedGeneration**|int|The generation of the CRD that was last reconciled by the operator.||
-|**optimizationResult**|any|A JSON object describing the optimization result.||
+|**conditions**|[[KafkaStrimziIoV1beta2KafkaRebalanceStatusConditionsItems0](#kafkastrimziiov1beta2kafkarebalancestatusconditionsitems0)]|conditions||
+|**observedGeneration**|int|observed generation||
+|**optimizationResult**|any|optimization result||
 |**progress**|[KafkaStrimziIoV1beta2KafkaRebalanceStatusProgress](#kafkastrimziiov1beta2kafkarebalancestatusprogress)|progress||
-|**sessionId**|str|The session identifier for requests to Cruise Control pertaining to this KafkaRebalance resource. This is used by the Kafka Rebalance operator to track the status of ongoing rebalancing operations.||
+|**sessionId**|str|session Id||
 ### KafkaStrimziIoV1beta2KafkaRebalanceStatusConditionsItems0
 
 kafka strimzi io v1beta2 kafka rebalance status conditions items0
@@ -47502,20 +47509,20 @@ kafka strimzi io v1beta2 kafka rebalance status conditions items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.||
-|**message**|str|Human-readable message indicating details about the condition's last transition.||
-|**reason**|str|The reason for the condition's last transition (a single word in CamelCase).||
-|**status**|str|The status of the condition, either True, False or Unknown.||
+|**lastTransitionTime**|str|last transition time||
+|**message**|str|message||
+|**reason**|str|reason||
+|**status**|str|status||
 |**type**|str|||
 ### KafkaStrimziIoV1beta2KafkaRebalanceStatusProgress
 
-A reference to Config Map with the progress information.
+kafka strimzi io v1beta2 kafka rebalance status progress
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**rebalanceProgressConfigMap**|str|The name of the `ConfigMap` containing information related to the progress of a partition rebalance.||
+|**rebalanceProgressConfigMap**|str|rebalance progress config map||
 ### KafkaStrimziIoV1beta2KafkaSpec
 
 kafka strimzi io v1beta2 kafka spec
@@ -52621,6 +52628,7 @@ kafka strimzi io v1beta2 kafka spec kafka listeners items0 configuration
 | name | type | description | default value |
 | --- | --- | --- | --- |
 |**advertisedHostTemplate**|str|advertised host template||
+|**advertisedPortTemplate**|str|advertised port template||
 |**allocateLoadBalancerNodePorts**|bool|allocate load balancer node ports||
 |**bootstrap**|[KafkaStrimziIoV1beta2KafkaSpecKafkaListenersItems0ConfigurationBootstrap](#kafkastrimziiov1beta2kafkaspeckafkalistenersitems0configurationbootstrap)|bootstrap||
 |**brokerCertChainAndKey**|[KafkaStrimziIoV1beta2KafkaSpecKafkaListenersItems0ConfigurationBrokerCertChainAndKey](#kafkastrimziiov1beta2kafkaspeckafkalistenersitems0configurationbrokercertchainandkey)|broker cert chain and key||
@@ -52852,7 +52860,9 @@ kafka strimzi io v1beta2 kafka spec kafka rack
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**topologyKey** `required`|str|topology key||
+|**envVarName**|str|env var name||
+|**topologyKey**|str|topology key||
+|**type**|"topology-label" | "environment-variable"|||
 ### KafkaStrimziIoV1beta2KafkaSpecKafkaReadinessProbe
 
 kafka strimzi io v1beta2 kafka spec kafka readiness probe
@@ -55561,29 +55571,29 @@ kafka strimzi io v1beta2 kafka status listeners items0 addresses items0
 |**port**|int|port||
 ### KafkaStrimziIoV1beta2KafkaTopicSpec
 
-The specification of the topic.
+kafka strimzi io v1beta2 kafka topic spec
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**config**|any|The topic configuration.||
-|**partitions**|int|The number of partitions the topic should have. This cannot be decreased after topic creation. It can be increased after topic creation, but it is important to understand the consequences that has, especially for topics with semantic partitioning. When absent this will default to the broker configuration for `num.partitions`.||
-|**replicas**|int|The number of replicas the topic should have. When absent this will default to the broker configuration for `default.replication.factor`.||
-|**topicName**|str|The name of the topic. When absent this will default to the metadata.name of the topic. It is recommended to not set this unless the topic name is not a valid Kubernetes resource name.||
+|**config**|any|config||
+|**partitions**|int|partitions||
+|**replicas**|int|replicas||
+|**topicName**|str|topic name||
 ### KafkaStrimziIoV1beta2KafkaTopicStatus
 
-The status of the topic.
+kafka strimzi io v1beta2 kafka topic status
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**conditions**|[[KafkaStrimziIoV1beta2KafkaTopicStatusConditionsItems0](#kafkastrimziiov1beta2kafkatopicstatusconditionsitems0)]|List of status conditions.||
-|**observedGeneration**|int|The generation of the CRD that was last reconciled by the operator.||
+|**conditions**|[[KafkaStrimziIoV1beta2KafkaTopicStatusConditionsItems0](#kafkastrimziiov1beta2kafkatopicstatusconditionsitems0)]|conditions||
+|**observedGeneration**|int|observed generation||
 |**replicasChange**|[KafkaStrimziIoV1beta2KafkaTopicStatusReplicasChange](#kafkastrimziiov1beta2kafkatopicstatusreplicaschange)|replicas change||
-|**topicId**|str|The topic's id. For a KafkaTopic with the ready condition, this will change only if the topic gets deleted and recreated with the same name.||
-|**topicName**|str|Topic name.||
+|**topicId**|str|topic Id||
+|**topicName**|str|topic name||
 ### KafkaStrimziIoV1beta2KafkaTopicStatusConditionsItems0
 
 kafka strimzi io v1beta2 kafka topic status conditions items0
@@ -55592,26 +55602,26 @@ kafka strimzi io v1beta2 kafka topic status conditions items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.||
-|**message**|str|Human-readable message indicating details about the condition's last transition.||
-|**reason**|str|The reason for the condition's last transition (a single word in CamelCase).||
-|**status**|str|The status of the condition, either True, False or Unknown.||
+|**lastTransitionTime**|str|last transition time||
+|**message**|str|message||
+|**reason**|str|reason||
+|**status**|str|status||
 |**type**|str|||
 ### KafkaStrimziIoV1beta2KafkaTopicStatusReplicasChange
 
-Replication factor change status.
+kafka strimzi io v1beta2 kafka topic status replicas change
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**message**|str|Message for the user related to the replicas change request. This may contain transient error messages that would disappear on periodic reconciliations.||
-|**sessionId**|str|The session identifier for replicas change requests pertaining to this KafkaTopic resource. This is used by the Topic Operator to track the status of `ongoing` replicas change operations.||
-|**state**|"pending" | "ongoing"|Current state of the replicas change operation. This can be `pending`, when the change has been requested, or `ongoing`, when the change has been successfully submitted to Cruise Control.||
-|**targetReplicas**|int|The target replicas value requested by the user. This may be different from .spec.replicas when a change is ongoing.||
+|**message**|str|message||
+|**sessionId**|str|session Id||
+|**state**|"pending" | "ongoing"|state||
+|**targetReplicas**|int|target replicas||
 ### KafkaStrimziIoV1beta2KafkaUserSpec
 
-The specification of the user.
+kafka strimzi io v1beta2 kafka user spec
 
 #### Attributes
 
@@ -55623,7 +55633,7 @@ The specification of the user.
 |**template**|[KafkaStrimziIoV1beta2KafkaUserSpecTemplate](#kafkastrimziiov1beta2kafkauserspectemplate)|template||
 ### KafkaStrimziIoV1beta2KafkaUserSpecAuthentication
 
-Authentication mechanism enabled for this Kafka user. The supported authentication mechanisms are `scram-sha-512`, `tls`, and `tls-external`.  * `scram-sha-512` generates a secret with SASL SCRAM-SHA-512 credentials. * `tls` generates a secret with user certificate for mutual TLS authentication. * `tls-external` does not generate a user certificate.   But prepares the user for using mutual TLS authentication using a user certificate generated outside the User Operator. ACLs and quotas set for this user are configured in the `CN=<username>` format.  Authentication is optional. If authentication is not configured, no credentials are generated. ACLs and quotas set for the user are configured in the `<username>` format suitable for SASL authentication.
+kafka strimzi io v1beta2 kafka user spec authentication
 
 #### Attributes
 
@@ -55633,7 +55643,7 @@ Authentication mechanism enabled for this Kafka user. The supported authenticati
 |**type** `required`|"tls" | "tls-external" | "scram-sha-512"|||
 ### KafkaStrimziIoV1beta2KafkaUserSpecAuthenticationPassword
 
-Specify the password for the user. If not set, a new password is generated by the User Operator.
+kafka strimzi io v1beta2 kafka user spec authentication password
 
 #### Attributes
 
@@ -55642,7 +55652,7 @@ Specify the password for the user. If not set, a new password is generated by th
 |**valueFrom** `required`|[KafkaStrimziIoV1beta2KafkaUserSpecAuthenticationPasswordValueFrom](#kafkastrimziiov1beta2kafkauserspecauthenticationpasswordvaluefrom)|value from||
 ### KafkaStrimziIoV1beta2KafkaUserSpecAuthenticationPasswordValueFrom
 
-Secret from which the password should be read.
+kafka strimzi io v1beta2 kafka user spec authentication password value from
 
 #### Attributes
 
@@ -55651,7 +55661,7 @@ Secret from which the password should be read.
 |**secretKeyRef**|[KafkaStrimziIoV1beta2KafkaUserSpecAuthenticationPasswordValueFromSecretKeyRef](#kafkastrimziiov1beta2kafkauserspecauthenticationpasswordvaluefromsecretkeyref)|secret key ref||
 ### KafkaStrimziIoV1beta2KafkaUserSpecAuthenticationPasswordValueFromSecretKeyRef
 
-Selects a key of a Secret in the resource's namespace.
+kafka strimzi io v1beta2 kafka user spec authentication password value from secret key ref
 
 #### Attributes
 
@@ -55662,13 +55672,13 @@ Selects a key of a Secret in the resource's namespace.
 |**optional**|bool|optional||
 ### KafkaStrimziIoV1beta2KafkaUserSpecAuthorization
 
-Authorization rules for this Kafka user.
+kafka strimzi io v1beta2 kafka user spec authorization
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**acls** `required`|[[KafkaStrimziIoV1beta2KafkaUserSpecAuthorizationAclsItems0](#kafkastrimziiov1beta2kafkauserspecauthorizationaclsitems0)]|List of ACL rules which should be applied to this user.||
+|**acls** `required`|[[KafkaStrimziIoV1beta2KafkaUserSpecAuthorizationAclsItems0](#kafkastrimziiov1beta2kafkauserspecauthorizationaclsitems0)]|acls||
 |**type** `required` `readOnly`|"simple"||"simple"|
 ### KafkaStrimziIoV1beta2KafkaUserSpecAuthorizationAclsItems0
 
@@ -55678,37 +55688,37 @@ kafka strimzi io v1beta2 kafka user spec authorization acls items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**host**|str|The host from which the action described in the ACL rule is allowed or denied. If not set, it defaults to `*`, allowing or denying the action from any host.||
-|**operation**|"Read" | "Write" | "Create" | "Delete" | "Alter" | "Describe" | "ClusterAction" | "AlterConfigs" | "DescribeConfigs" | "IdempotentWrite" | "All"|Operation which will be allowed or denied. Supported operations are: Read, Write, Create, Delete, Alter, Describe, ClusterAction, AlterConfigs, DescribeConfigs, IdempotentWrite and All.||
-|**operations**|[str]|List of operations to allow or deny. Supported operations are: Read, Write, Create, Delete, Alter, Describe, ClusterAction, AlterConfigs, DescribeConfigs, IdempotentWrite and All. Only certain operations work with the specified resource.||
+|**host**|str|host||
+|**operation**|"Read" | "Write" | "Create" | "Delete" | "Alter" | "Describe" | "ClusterAction" | "AlterConfigs" | "DescribeConfigs" | "IdempotentWrite" | "All"|operation||
+|**operations**|[str]|operations||
 |**resource** `required`|[KafkaStrimziIoV1beta2KafkaUserSpecAuthorizationAclsItems0Resource](#kafkastrimziiov1beta2kafkauserspecauthorizationaclsitems0resource)|resource||
 |**type**|"allow" | "deny"|||
 ### KafkaStrimziIoV1beta2KafkaUserSpecAuthorizationAclsItems0Resource
 
-Indicates the resource for which given ACL rule applies.
+kafka strimzi io v1beta2 kafka user spec authorization acls items0 resource
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**name**|str|Name of resource for which given ACL rule applies. Can be combined with `patternType` field to use prefix pattern.||
-|**patternType**|"literal" | "prefix"|Describes the pattern used in the resource field. The supported types are `literal` and `prefix`. With `literal` pattern type, the resource field will be used as a definition of a full name. With `prefix` pattern type, the resource name will be used only as a prefix. Default value is `literal`.||
+|**name**|str|name||
+|**patternType**|"literal" | "prefix"|pattern type||
 |**type** `required`|"topic" | "group" | "cluster" | "transactionalId"|||
 ### KafkaStrimziIoV1beta2KafkaUserSpecQuotas
 
-Quotas on requests to control the broker resources used by clients. Network bandwidth and request rate quotas can be enforced. For more information, see the Apache Kafka design documentation about quotas.
+kafka strimzi io v1beta2 kafka user spec quotas
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**consumerByteRate**|int|A quota on the maximum bytes per-second that each client group can fetch from a broker before the clients in the group are throttled. Defined on a per-broker basis.||
-|**controllerMutationRate**|float|A quota on the rate at which mutations are accepted for the create topics request, the create partitions request and the delete topics request. The rate is accumulated by the number of partitions created or deleted.||
-|**producerByteRate**|int|A quota on the maximum bytes per-second that each client group can publish to a broker before the clients in the group are throttled. Defined on a per-broker basis.||
-|**requestPercentage**|int|A quota on the maximum CPU utilization of each client group as a percentage of network and I/O threads.||
+|**consumerByteRate**|int|consumer byte rate||
+|**controllerMutationRate**|float|controller mutation rate||
+|**producerByteRate**|int|producer byte rate||
+|**requestPercentage**|int|request percentage||
 ### KafkaStrimziIoV1beta2KafkaUserSpecTemplate
 
-Template to specify how Kafka User `Secrets` are generated.
+kafka strimzi io v1beta2 kafka user spec template
 
 #### Attributes
 
@@ -55717,7 +55727,7 @@ Template to specify how Kafka User `Secrets` are generated.
 |**secret**|[KafkaStrimziIoV1beta2KafkaUserSpecTemplateSecret](#kafkastrimziiov1beta2kafkauserspectemplatesecret)|secret||
 ### KafkaStrimziIoV1beta2KafkaUserSpecTemplateSecret
 
-Template for KafkaUser resources. The template allows users to specify how the `Secret` with password or TLS certificates is generated.
+kafka strimzi io v1beta2 kafka user spec template secret
 
 #### Attributes
 
@@ -55726,26 +55736,26 @@ Template for KafkaUser resources. The template allows users to specify how the `
 |**metadata**|[KafkaStrimziIoV1beta2KafkaUserSpecTemplateSecretMetadata](#kafkastrimziiov1beta2kafkauserspectemplatesecretmetadata)|metadata||
 ### KafkaStrimziIoV1beta2KafkaUserSpecTemplateSecretMetadata
 
-Metadata applied to the resource.
+kafka strimzi io v1beta2 kafka user spec template secret metadata
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
-|**labels**|{str:str}|Labels added to the Kubernetes resource.||
+|**annotations**|{str:str}|annotations||
+|**labels**|{str:str}|labels||
 ### KafkaStrimziIoV1beta2KafkaUserStatus
 
-The status of the Kafka User.
+kafka strimzi io v1beta2 kafka user status
 
 #### Attributes
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**conditions**|[[KafkaStrimziIoV1beta2KafkaUserStatusConditionsItems0](#kafkastrimziiov1beta2kafkauserstatusconditionsitems0)]|List of status conditions.||
-|**observedGeneration**|int|The generation of the CRD that was last reconciled by the operator.||
-|**secret**|str|The name of `Secret` where the credentials are stored.||
-|**username**|str|Username.||
+|**conditions**|[[KafkaStrimziIoV1beta2KafkaUserStatusConditionsItems0](#kafkastrimziiov1beta2kafkauserstatusconditionsitems0)]|conditions||
+|**observedGeneration**|int|observed generation||
+|**secret**|str|secret||
+|**username**|str|username||
 ### KafkaStrimziIoV1beta2KafkaUserStatusConditionsItems0
 
 kafka strimzi io v1beta2 kafka user status conditions items0
@@ -55754,10 +55764,10 @@ kafka strimzi io v1beta2 kafka user status conditions items0
 
 | name | type | description | default value |
 | --- | --- | --- | --- |
-|**lastTransitionTime**|str|Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.||
-|**message**|str|Human-readable message indicating details about the condition's last transition.||
-|**reason**|str|The reason for the condition's last transition (a single word in CamelCase).||
-|**status**|str|The status of the condition, either True, False or Unknown.||
+|**lastTransitionTime**|str|last transition time||
+|**message**|str|message||
+|**reason**|str|reason||
+|**status**|str|status||
 |**type**|str|||
 ### KafkaTopic
 

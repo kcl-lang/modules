@@ -37,7 +37,7 @@ schema KafkaConnector:
 
 schema KafkaStrimziIoV1beta2KafkaConnectorSpec:
     r"""
-    The specification of the Kafka Connector.
+    kafka strimzi io v1beta2 kafka connector spec
 
     Attributes
     ----------
@@ -46,19 +46,19 @@ schema KafkaStrimziIoV1beta2KafkaConnectorSpec:
     autoRestart : KafkaStrimziIoV1beta2KafkaConnectorSpecAutoRestart, default is Undefined, optional
         auto restart
     class : str, default is Undefined, optional
-        The Class for the Kafka Connector.
+        class
     config : any, default is Undefined, optional
-        The Kafka Connector configuration. The following properties cannot be set: name, connector.class, tasks.max, connector.plugin.version.
+        config
     listOffsets : KafkaStrimziIoV1beta2KafkaConnectorSpecListOffsets, default is Undefined, optional
         list offsets
     pause : bool, default is Undefined, optional
-        Whether the connector should be paused. Defaults to false.
+        pause
     state : str, default is Undefined, optional
-        The state the connector should be in. Defaults to running.
+        state
     tasksMax : int, default is Undefined, optional
-        The maximum number of tasks for the Kafka Connector.
+        tasks max
     version : str, default is Undefined, optional
-        Desired version or version range to respect when starting the Kafka Connector. This is only supported when using Kafka Connect version 4.1.0 and higher.
+        version
     """
 
 
@@ -87,7 +87,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectorSpec:
 
 schema KafkaStrimziIoV1beta2KafkaConnectorSpecAlterOffsets:
     r"""
-    Configuration for altering offsets.
+    kafka strimzi io v1beta2 kafka connector spec alter offsets
 
     Attributes
     ----------
@@ -101,7 +101,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectorSpecAlterOffsets:
 
 schema KafkaStrimziIoV1beta2KafkaConnectorSpecAlterOffsetsFromConfigMap:
     r"""
-    Reference to the ConfigMap where the new offsets are stored.
+    kafka strimzi io v1beta2 kafka connector spec alter offsets from config map
 
     Attributes
     ----------
@@ -115,14 +115,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectorSpecAlterOffsetsFromConfigMap:
 
 schema KafkaStrimziIoV1beta2KafkaConnectorSpecAutoRestart:
     r"""
-    Automatic restart of connector and tasks configuration.
+    kafka strimzi io v1beta2 kafka connector spec auto restart
 
     Attributes
     ----------
     enabled : bool, default is Undefined, optional
-        Whether automatic restart for failed connectors and tasks should be enabled or disabled.
+        enabled
     maxRestarts : int, default is Undefined, optional
-        The maximum number of connector restarts that the operator will try. If the connector remains in a failed state after reaching this limit, it must be restarted manually by the user. Defaults to an unlimited number of restarts.
+        max restarts
     """
 
 
@@ -133,7 +133,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectorSpecAutoRestart:
 
 schema KafkaStrimziIoV1beta2KafkaConnectorSpecListOffsets:
     r"""
-    Configuration for listing offsets.
+    kafka strimzi io v1beta2 kafka connector spec list offsets
 
     Attributes
     ----------
@@ -147,7 +147,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectorSpecListOffsets:
 
 schema KafkaStrimziIoV1beta2KafkaConnectorSpecListOffsetsToConfigMap:
     r"""
-    Reference to the ConfigMap where the list of offsets will be written to.
+    kafka strimzi io v1beta2 kafka connector spec list offsets to config map
 
     Attributes
     ----------
@@ -161,22 +161,22 @@ schema KafkaStrimziIoV1beta2KafkaConnectorSpecListOffsetsToConfigMap:
 
 schema KafkaStrimziIoV1beta2KafkaConnectorStatus:
     r"""
-    The status of the Kafka Connector.
+    kafka strimzi io v1beta2 kafka connector status
 
     Attributes
     ----------
     autoRestart : KafkaStrimziIoV1beta2KafkaConnectorStatusAutoRestart, default is Undefined, optional
         auto restart
     conditions : [KafkaStrimziIoV1beta2KafkaConnectorStatusConditionsItems0], default is Undefined, optional
-        List of status conditions.
+        conditions
     connectorStatus : any, default is Undefined, optional
-        The connector status, as reported by the Kafka Connect REST API.
+        connector status
     observedGeneration : int, default is Undefined, optional
-        The generation of the CRD that was last reconciled by the operator.
+        observed generation
     tasksMax : int, default is Undefined, optional
-        The maximum number of tasks for the Kafka Connector.
+        tasks max
     topics : [str], default is Undefined, optional
-        The list of topics used by the Kafka Connector.
+        topics
     """
 
 
@@ -195,16 +195,16 @@ schema KafkaStrimziIoV1beta2KafkaConnectorStatus:
 
 schema KafkaStrimziIoV1beta2KafkaConnectorStatusAutoRestart:
     r"""
-    The auto restart status.
+    kafka strimzi io v1beta2 kafka connector status auto restart
 
     Attributes
     ----------
     connectorName : str, default is Undefined, optional
-        The name of the connector being restarted.
+        connector name
     count : int, default is Undefined, optional
-        The number of times the connector or task is restarted.
+        count
     lastRestartTimestamp : str, default is Undefined, optional
-        The last time the automatic restart was attempted. The required format is 'yyyy-MM-ddTHH:mm:ssZ' in the UTC time zone.
+        last restart timestamp
     """
 
 
@@ -222,15 +222,15 @@ schema KafkaStrimziIoV1beta2KafkaConnectorStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.
+        last transition time
     message : str, default is Undefined, optional
-        Human-readable message indicating details about the condition's last transition.
+        message
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition (a single word in CamelCase).
+        reason
     status : str, default is Undefined, optional
-        The status of the condition, either True, False or Unknown.
+        status
     $type : str, default is Undefined, optional
-        The unique identifier of a condition, used to distinguish between other conditions in the resource.
+        type
     """
 
 

@@ -7759,6 +7759,8 @@ schema KafkaStrimziIoV1KafkaSpecKafkaListenersItems0Configuration:
     ----------
     advertisedHostTemplate : str, default is Undefined, optional
         advertised host template
+    advertisedPortTemplate : str, default is Undefined, optional
+        advertised port template
     allocateLoadBalancerNodePorts : bool, default is Undefined, optional
         allocate load balancer node ports
     bootstrap : KafkaStrimziIoV1KafkaSpecKafkaListenersItems0ConfigurationBootstrap, default is Undefined, optional
@@ -7797,6 +7799,8 @@ schema KafkaStrimziIoV1KafkaSpecKafkaListenersItems0Configuration:
 
 
     advertisedHostTemplate?: str
+
+    advertisedPortTemplate?: str
 
     allocateLoadBalancerNodePorts?: bool
 
@@ -8285,12 +8289,20 @@ schema KafkaStrimziIoV1KafkaSpecKafkaRack:
 
     Attributes
     ----------
-    topologyKey : str, default is Undefined, required
+    envVarName : str, default is Undefined, optional
+        env var name
+    topologyKey : str, default is Undefined, optional
         topology key
+    $type : str, default is Undefined, optional
+        type
     """
 
 
-    topologyKey: str
+    envVarName?: str
+
+    topologyKey?: str
+
+    $type?: "topology-label" | "environment-variable"
 
 
 schema KafkaStrimziIoV1KafkaSpecKafkaReadinessProbe:
