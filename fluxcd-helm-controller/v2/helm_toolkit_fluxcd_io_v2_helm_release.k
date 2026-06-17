@@ -47,12 +47,20 @@ schema HelmToolkitFluxcdIoV2HelmReleaseSpec:
         chart
     chartRef : HelmToolkitFluxcdIoV2HelmReleaseSpecChartRef, default is Undefined, optional
         chart ref
+    commonMetadata : HelmToolkitFluxcdIoV2HelmReleaseSpecCommonMetadata, default is Undefined, optional
+        common metadata
     dependsOn : [HelmToolkitFluxcdIoV2HelmReleaseSpecDependsOnItems0], default is Undefined, optional
-        DependsOn may contain a meta.NamespacedObjectReference slice with
+        DependsOn may contain a DependencyReference slice with
         references to HelmRelease resources that must be ready before this HelmRelease
         can be reconciled.
     driftDetection : HelmToolkitFluxcdIoV2HelmReleaseSpecDriftDetection, default is Undefined, optional
         drift detection
+    healthCheckExprs : [HelmToolkitFluxcdIoV2HelmReleaseSpecHealthCheckExprsItems0], default is Undefined, optional
+        HealthCheckExprs is a list of healthcheck expressions for evaluating the
+        health of custom resources using Common Expression Language (CEL).
+        The expressions are evaluated only when the specific Helm action
+        taking place has wait enabled, i.e. DisableWait is false, and the
+        'poller' WaitStrategy is used.
     install : HelmToolkitFluxcdIoV2HelmReleaseSpecInstall, default is Undefined, optional
         install
     interval : str, default is Undefined, required
@@ -108,6 +116,8 @@ schema HelmToolkitFluxcdIoV2HelmReleaseSpec:
     valuesFrom : [HelmToolkitFluxcdIoV2HelmReleaseSpecValuesFromItems0], default is Undefined, optional
         ValuesFrom holds references to resources containing Helm values for this HelmRelease,
         and information about how they should be merged.
+    waitStrategy : HelmToolkitFluxcdIoV2HelmReleaseSpecWaitStrategy, default is Undefined, optional
+        wait strategy
     """
 
 
@@ -115,9 +125,13 @@ schema HelmToolkitFluxcdIoV2HelmReleaseSpec:
 
     chartRef?: HelmToolkitFluxcdIoV2HelmReleaseSpecChartRef
 
+    commonMetadata?: HelmToolkitFluxcdIoV2HelmReleaseSpecCommonMetadata
+
     dependsOn?: [HelmToolkitFluxcdIoV2HelmReleaseSpecDependsOnItems0]
 
     driftDetection?: HelmToolkitFluxcdIoV2HelmReleaseSpecDriftDetection
+
+    healthCheckExprs?: [HelmToolkitFluxcdIoV2HelmReleaseSpecHealthCheckExprsItems0]
 
     install?: HelmToolkitFluxcdIoV2HelmReleaseSpecInstall
 
@@ -155,17 +169,19 @@ schema HelmToolkitFluxcdIoV2HelmReleaseSpec:
 
     valuesFrom?: [HelmToolkitFluxcdIoV2HelmReleaseSpecValuesFromItems0]
 
+    waitStrategy?: HelmToolkitFluxcdIoV2HelmReleaseSpecWaitStrategy
+
 
     check:
         _regex_match(str(interval), r"^([0-9]+(\.[0-9]+)?(ms|s|m|h))+$")
-        len(releaseName) <= 53 if releaseName
-        len(releaseName) >= 1 if releaseName
-        len(serviceAccountName) <= 253 if serviceAccountName
-        len(serviceAccountName) >= 1 if serviceAccountName
-        len(storageNamespace) <= 63 if storageNamespace
-        len(storageNamespace) >= 1 if storageNamespace
-        len(targetNamespace) <= 63 if targetNamespace
-        len(targetNamespace) >= 1 if targetNamespace
+        len(releaseName) <= 53 if releaseName not in [None, Undefined]
+        len(releaseName) >= 1 if releaseName not in [None, Undefined]
+        len(serviceAccountName) <= 253 if serviceAccountName not in [None, Undefined]
+        len(serviceAccountName) >= 1 if serviceAccountName not in [None, Undefined]
+        len(storageNamespace) <= 63 if storageNamespace not in [None, Undefined]
+        len(storageNamespace) >= 1 if storageNamespace not in [None, Undefined]
+        len(targetNamespace) <= 63 if targetNamespace not in [None, Undefined]
+        len(targetNamespace) >= 1 if targetNamespace not in [None, Undefined]
         _regex_match(str(timeout), r"^([0-9]+(\.[0-9]+)?(ms|s|m|h))+$") if timeout
 
 
@@ -232,7 +248,7 @@ schema HelmToolkitFluxcdIoV2HelmReleaseSpecChartRef:
 
     apiVersion?: str
 
-    kind: "OCIRepository" | "HelmChart"
+    kind: "OCIRepository" | "HelmChart" | "ExternalArtifact"
 
     name: str
 
@@ -242,8 +258,8 @@ schema HelmToolkitFluxcdIoV2HelmReleaseSpecChartRef:
     check:
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
 
 
 schema HelmToolkitFluxcdIoV2HelmReleaseSpecChartSpec:
@@ -331,8 +347,8 @@ schema HelmToolkitFluxcdIoV2HelmReleaseSpecChartSpecSourceRef:
     check:
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
 
 
 schema HelmToolkitFluxcdIoV2HelmReleaseSpecChartSpecVerify:
@@ -373,23 +389,51 @@ schema HelmToolkitFluxcdIoV2HelmReleaseSpecChartSpecVerifySecretRef:
     name: str
 
 
+schema HelmToolkitFluxcdIoV2HelmReleaseSpecCommonMetadata:
+    r"""
+    CommonMetadata specifies the common labels and annotations that are
+    applied to all resources. Any existing label or annotation will be
+    overridden if its key matches a common one.
+
+    Attributes
+    ----------
+    annotations : {str:str}, default is Undefined, optional
+        Annotations to be added to the object's metadata.
+    labels : {str:str}, default is Undefined, optional
+        Labels to be added to the object's metadata.
+    """
+
+
+    annotations?: {str:str}
+
+    labels?: {str:str}
+
+
 schema HelmToolkitFluxcdIoV2HelmReleaseSpecDependsOnItems0:
     r"""
-    NamespacedObjectReference contains enough information to locate the referenced Kubernetes resource object in any
-    namespace.
+    DependencyReference defines a HelmRelease dependency on another HelmRelease resource.
 
     Attributes
     ----------
     name : str, default is Undefined, required
         Name of the referent.
     namespace : str, default is Undefined, optional
-        Namespace of the referent, when not specified it acts as LocalObjectReference.
+        Namespace of the referent, defaults to the namespace of the HelmRelease
+        resource object that contains the reference.
+    readyExpr : str, default is Undefined, optional
+        ReadyExpr is a CEL expression that can be used to assess the readiness
+        of a dependency. When specified, the built-in readiness check
+        is replaced by the logic defined in the CEL expression.
+        To make the CEL expression additive to the built-in readiness check,
+        the feature gate `AdditiveCELDependencyCheck` must be set to `true`.
     """
 
 
     name: str
 
     namespace?: str
+
+    readyExpr?: str
 
 
 schema HelmToolkitFluxcdIoV2HelmReleaseSpecDriftDetection:
@@ -487,6 +531,39 @@ schema HelmToolkitFluxcdIoV2HelmReleaseSpecDriftDetectionIgnoreItems0Target:
     version?: str
 
 
+schema HelmToolkitFluxcdIoV2HelmReleaseSpecHealthCheckExprsItems0:
+    r"""
+    CustomHealthCheck defines the health check for custom resources.
+
+    Attributes
+    ----------
+    apiVersion : str, default is Undefined, required
+        APIVersion of the custom resource under evaluation.
+    current : str, default is Undefined, required
+        Current is the CEL expression that determines if the status
+        of the custom resource has reached the desired state.
+    failed : str, default is Undefined, optional
+        Failed is the CEL expression that determines if the status
+        of the custom resource has failed to reach the desired state.
+    inProgress : str, default is Undefined, optional
+        InProgress is the CEL expression that determines if the status
+        of the custom resource has not yet reached the desired state.
+    kind : str, default is Undefined, required
+        Kind of the custom resource under evaluation.
+    """
+
+
+    apiVersion: str
+
+    current: str
+
+    failed?: str
+
+    inProgress?: str
+
+    kind: str
+
+
 schema HelmToolkitFluxcdIoV2HelmReleaseSpecInstall:
     r"""
     Install holds the configuration for Helm install actions for this HelmRelease.
@@ -536,11 +613,16 @@ schema HelmToolkitFluxcdIoV2HelmReleaseSpecInstall:
     replace : bool, default is Undefined, optional
         Replace tells the Helm install action to re-use the 'ReleaseName', but only
         if that name is a deleted release which remains in the history.
+    serverSideApply : bool, default is Undefined, optional
+        ServerSideApply enables server-side apply for resources during install.
+        Defaults to true (or false when UseHelm3Defaults feature gate is enabled).
     skipCRDs : bool, default is Undefined, optional
         SkipCRDs tells the Helm install action to not install any CRDs. By default,
         CRDs are installed if not already present.
 
         Deprecated use CRD policy (`crds`) attribute with value `Skip` instead.
+    strategy : HelmToolkitFluxcdIoV2HelmReleaseSpecInstallStrategy, default is Undefined, optional
+        strategy
     timeout : str, default is Undefined, optional
         Timeout is the time to wait for any individual Kubernetes operation (like
         Jobs for hooks) during the performance of a Helm install action. Defaults to
@@ -568,7 +650,11 @@ schema HelmToolkitFluxcdIoV2HelmReleaseSpecInstall:
 
     replace?: bool
 
+    serverSideApply?: bool
+
     skipCRDs?: bool
+
+    strategy?: HelmToolkitFluxcdIoV2HelmReleaseSpecInstallStrategy
 
     timeout?: str
 
@@ -605,6 +691,32 @@ schema HelmToolkitFluxcdIoV2HelmReleaseSpecInstallRemediation:
     retries?: int
 
 
+schema HelmToolkitFluxcdIoV2HelmReleaseSpecInstallStrategy:
+    r"""
+    Strategy defines the install strategy to use for this HelmRelease.
+    Defaults to 'RemediateOnFailure', or 'RetryOnFailure' when the
+    DefaultToRetryOnFailure feature gate is enabled.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the install strategy.
+    retryInterval : str, default is Undefined, optional
+        RetryInterval is the interval at which to retry a failed install.
+        Can be used only when Name is set to RetryOnFailure.
+        Defaults to '5m'.
+    """
+
+
+    name: "RemediateOnFailure" | "RetryOnFailure"
+
+    retryInterval?: str
+
+
+    check:
+        _regex_match(str(retryInterval), r"^([0-9]+(\.[0-9]+)?(ms|s|m|h))+$") if retryInterval
+
+
 schema HelmToolkitFluxcdIoV2HelmReleaseSpecKubeConfig:
     r"""
     KubeConfig for reconciling the HelmRelease on a remote cluster.
@@ -617,24 +729,70 @@ schema HelmToolkitFluxcdIoV2HelmReleaseSpecKubeConfig:
 
     Attributes
     ----------
-    secretRef : HelmToolkitFluxcdIoV2HelmReleaseSpecKubeConfigSecretRef, default is Undefined, required
+    configMapRef : HelmToolkitFluxcdIoV2HelmReleaseSpecKubeConfigConfigMapRef, default is Undefined, optional
+        config map ref
+    secretRef : HelmToolkitFluxcdIoV2HelmReleaseSpecKubeConfigSecretRef, default is Undefined, optional
         secret ref
     """
 
 
-    secretRef: HelmToolkitFluxcdIoV2HelmReleaseSpecKubeConfigSecretRef
+    configMapRef?: HelmToolkitFluxcdIoV2HelmReleaseSpecKubeConfigConfigMapRef
+
+    secretRef?: HelmToolkitFluxcdIoV2HelmReleaseSpecKubeConfigSecretRef
+
+
+schema HelmToolkitFluxcdIoV2HelmReleaseSpecKubeConfigConfigMapRef:
+    r"""
+    ConfigMapRef holds an optional name of a ConfigMap that contains
+    the following keys:
+
+    - `provider`: the provider to use. One of `aws`, `azure`, `gcp`, or
+       `generic`. Required.
+    - `cluster`: the fully qualified resource name of the Kubernetes
+       cluster in the cloud provider API. Not used by the `generic`
+       provider. Required when one of `address` or `ca.crt` is not set.
+    - `address`: the address of the Kubernetes API server. Required
+       for `generic`. For the other providers, if not specified, the
+       first address in the cluster resource will be used, and if
+       specified, it must match one of the addresses in the cluster
+       resource.
+       If audiences is not set, will be used as the audience for the
+       `generic` provider.
+    - `ca.crt`: the optional PEM-encoded CA certificate for the
+       Kubernetes API server. If not set, the controller will use the
+       CA certificate from the cluster resource.
+    - `audiences`: the optional audiences as a list of
+       line-break-separated strings for the Kubernetes ServiceAccount
+       token. Defaults to the `address` for the `generic` provider, or
+       to specific values for the other providers depending on the
+       provider.
+    -  `serviceAccountName`: the optional name of the Kubernetes
+       ServiceAccount in the same namespace that should be used
+       for authentication. If not specified, the controller
+       ServiceAccount will be used.
+
+    Mutually exclusive with SecretRef.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referent.
+    """
+
+
+    name: str
 
 
 schema HelmToolkitFluxcdIoV2HelmReleaseSpecKubeConfigSecretRef:
     r"""
-    SecretRef holds the name of a secret that contains a key with
+    SecretRef holds an optional name of a secret that contains a key with
     the kubeconfig file as the value. If no key is set, the key will default
-    to 'value'.
+    to 'value'. Mutually exclusive with ConfigMapRef.
     It is recommended that the kubeconfig is self-contained, and the secret
     is regularly updated if credentials such as a cloud-access-token expire.
     Cloud specific `cmd-path` auth helpers will not function without adding
     binaries and credentials to the Pod that is responsible for reconciling
-    Kubernetes resources.
+    Kubernetes resources. Supported only for the generic provider.
 
     Attributes
     ----------
@@ -799,9 +957,25 @@ schema HelmToolkitFluxcdIoV2HelmReleaseSpecRollback:
         DisableWaitForJobs disables waiting for jobs to complete after a Helm
         rollback has been performed.
     force : bool, default is Undefined, optional
-        Force forces resource updates through a replacement strategy.
+        Force forces resource updates through a replacement strategy
+        that avoids 3-way merge conflicts on client-side apply.
+        This field is ignored for server-side apply (which always
+        forces conflicts with other field managers).
     recreate : bool, default is Undefined, optional
-        Recreate performs pod restarts for the resource if applicable.
+        Recreate performs pod restarts for any managed workloads.
+
+        Deprecated: This behavior was deprecated in Helm 3:
+          - Deprecation: https://github.com/helm/helm/pull/6463
+          - Removal: https://github.com/helm/helm/pull/31023
+        After helm-controller was upgraded to the Helm 4 SDK,
+        this field is no longer functional and will print a
+        warning if set to true. It will also be removed in a
+        future release.
+    serverSideApply : str, default is Undefined, optional
+        ServerSideApply enables server-side apply for resources during rollback.
+        Can be "enabled", "disabled", or "auto".
+        When "auto", server-side apply usage will be based on the release's previous usage.
+        Defaults to "auto".
     timeout : str, default is Undefined, optional
         Timeout is the time to wait for any individual Kubernetes operation (like
         Jobs for hooks) during the performance of a Helm rollback action. Defaults to
@@ -820,6 +994,8 @@ schema HelmToolkitFluxcdIoV2HelmReleaseSpecRollback:
     force?: bool
 
     recreate?: bool
+
+    serverSideApply?: "enabled" | "disabled" | "auto"
 
     timeout?: str
 
@@ -967,13 +1143,23 @@ schema HelmToolkitFluxcdIoV2HelmReleaseSpecUpgrade:
         DisableWaitForJobs disables waiting for jobs to complete after a Helm
         upgrade has been performed.
     force : bool, default is Undefined, optional
-        Force forces resource updates through a replacement strategy.
+        Force forces resource updates through a replacement strategy
+        that avoids 3-way merge conflicts on client-side apply.
+        This field is ignored for server-side apply (which always
+        forces conflicts with other field managers).
     preserveValues : bool, default is Undefined, optional
         PreserveValues will make Helm reuse the last release's values and merge in
         overrides from 'Values'. Setting this flag makes the HelmRelease
         non-declarative.
     remediation : HelmToolkitFluxcdIoV2HelmReleaseSpecUpgradeRemediation, default is Undefined, optional
         remediation
+    serverSideApply : str, default is Undefined, optional
+        ServerSideApply enables server-side apply for resources during upgrade.
+        Can be "enabled", "disabled", or "auto".
+        When "auto", server-side apply usage will be based on the release's previous usage.
+        Defaults to "auto".
+    strategy : HelmToolkitFluxcdIoV2HelmReleaseSpecUpgradeStrategy, default is Undefined, optional
+        strategy
     timeout : str, default is Undefined, optional
         Timeout is the time to wait for any individual Kubernetes operation (like
         Jobs for hooks) during the performance of a Helm upgrade action. Defaults to
@@ -1002,6 +1188,10 @@ schema HelmToolkitFluxcdIoV2HelmReleaseSpecUpgrade:
     preserveValues?: bool
 
     remediation?: HelmToolkitFluxcdIoV2HelmReleaseSpecUpgradeRemediation
+
+    serverSideApply?: "enabled" | "disabled" | "auto"
+
+    strategy?: HelmToolkitFluxcdIoV2HelmReleaseSpecUpgradeStrategy
 
     timeout?: str
 
@@ -1040,6 +1230,32 @@ schema HelmToolkitFluxcdIoV2HelmReleaseSpecUpgradeRemediation:
     retries?: int
 
     strategy?: "rollback" | "uninstall"
+
+
+schema HelmToolkitFluxcdIoV2HelmReleaseSpecUpgradeStrategy:
+    r"""
+    Strategy defines the upgrade strategy to use for this HelmRelease.
+    Defaults to 'RemediateOnFailure', or 'RetryOnFailure' when the
+    DefaultToRetryOnFailure feature gate is enabled.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the upgrade strategy.
+    retryInterval : str, default is Undefined, optional
+        RetryInterval is the interval at which to retry a failed upgrade.
+        Can be used only when Name is set to RetryOnFailure.
+        Defaults to '5m'.
+    """
+
+
+    name: "RemediateOnFailure" | "RetryOnFailure"
+
+    retryInterval?: str
+
+
+    check:
+        _regex_match(str(retryInterval), r"^([0-9]+(\.[0-9]+)?(ms|s|m|h))+$") if retryInterval
 
 
 schema HelmToolkitFluxcdIoV2HelmReleaseSpecValuesFromItems0:
@@ -1082,10 +1298,30 @@ schema HelmToolkitFluxcdIoV2HelmReleaseSpecValuesFromItems0:
     check:
         len(name) <= 253
         len(name) >= 1
-        len(targetPath) <= 250 if targetPath
+        len(targetPath) <= 250 if targetPath not in [None, Undefined]
         _regex_match(str(targetPath), r"^([a-zA-Z0-9_\-.\\\/]|\[[0-9]{1,5}\])+$") if targetPath
-        len(valuesKey) <= 253 if valuesKey
+        len(valuesKey) <= 253 if valuesKey not in [None, Undefined]
         _regex_match(str(valuesKey), r"^[\-._a-zA-Z0-9]+$") if valuesKey
+
+
+schema HelmToolkitFluxcdIoV2HelmReleaseSpecWaitStrategy:
+    r"""
+    WaitStrategy defines Helm's wait strategy for waiting for applied
+    resources to become ready.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name is Helm's wait strategy for waiting for applied resources to
+        become ready. One of 'poller' or 'legacy'. The 'poller' strategy uses
+        kstatus to poll resource statuses, while the 'legacy' strategy uses
+        Helm v3's waiting logic.
+        Defaults to 'poller', or to 'legacy' when UseHelm3Defaults feature
+        gate is enabled.
+    """
+
+
+    name: "poller" | "legacy"
 
 
 schema HelmToolkitFluxcdIoV2HelmReleaseStatus:
@@ -1108,6 +1344,8 @@ schema HelmToolkitFluxcdIoV2HelmReleaseStatus:
     installFailures : int, default is Undefined, optional
         InstallFailures is the install failure count against the latest desired
         state. It is reset after a successful reconciliation.
+    inventory : HelmToolkitFluxcdIoV2HelmReleaseStatusInventory, default is Undefined, optional
+        inventory
     lastAttemptedConfigDigest : str, default is Undefined, optional
         LastAttemptedConfigDigest is the digest for the config (better known as
         "values") of the last reconciliation attempt.
@@ -1116,7 +1354,11 @@ schema HelmToolkitFluxcdIoV2HelmReleaseStatus:
         to reconcile.
     lastAttemptedReleaseAction : str, default is Undefined, optional
         LastAttemptedReleaseAction is the last release action performed for this
-        HelmRelease. It is used to determine the active remediation strategy.
+        HelmRelease. It is used to determine the active retry or remediation
+        strategy.
+    lastAttemptedReleaseActionDuration : str, default is Undefined, optional
+        LastAttemptedReleaseActionDuration is the duration of the last
+        release action performed for this HelmRelease.
     lastAttemptedRevision : str, default is Undefined, optional
         LastAttemptedRevision is the Source revision of the last reconciliation
         attempt. For OCIRepository  sources, the 12 first characters of the digest are
@@ -1127,10 +1369,12 @@ schema HelmToolkitFluxcdIoV2HelmReleaseStatus:
     lastAttemptedValuesChecksum : str, default is Undefined, optional
         LastAttemptedValuesChecksum is the SHA1 checksum for the values of the last
         reconciliation attempt.
+
         Deprecated: Use LastAttemptedConfigDigest instead.
     lastHandledForceAt : str, default is Undefined, optional
-        LastHandledForceAt holds the value of the most recent force request
-        value, so a change of the annotation value can be detected.
+        LastHandledForceAt holds the value of the most recent
+        force request value, so a change of the annotation value
+        can be detected.
     lastHandledReconcileAt : str, default is Undefined, optional
         LastHandledReconcileAt holds the value of the most recent
         reconcile request value, so a change of the annotation value
@@ -1140,7 +1384,11 @@ schema HelmToolkitFluxcdIoV2HelmReleaseStatus:
         value, so a change of the annotation value can be detected.
     lastReleaseRevision : int, default is Undefined, optional
         LastReleaseRevision is the revision of the last successful Helm release.
+
         Deprecated: Use History instead.
+    observedCommonMetadataDigest : str, default is Undefined, optional
+        ObservedCommonMetadataDigest is the digest for the common metadata of
+        the last successful reconciliation attempt.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the last observed generation.
     observedPostRenderersDigest : str, default is Undefined, optional
@@ -1165,11 +1413,15 @@ schema HelmToolkitFluxcdIoV2HelmReleaseStatus:
 
     installFailures?: int
 
+    inventory?: HelmToolkitFluxcdIoV2HelmReleaseStatusInventory
+
     lastAttemptedConfigDigest?: str
 
     lastAttemptedGeneration?: int
 
     lastAttemptedReleaseAction?: "install" | "upgrade"
+
+    lastAttemptedReleaseActionDuration?: str
 
     lastAttemptedRevision?: str
 
@@ -1185,6 +1437,8 @@ schema HelmToolkitFluxcdIoV2HelmReleaseStatus:
 
     lastReleaseRevision?: int
 
+    observedCommonMetadataDigest?: str
+
     observedGeneration?: int
 
     observedPostRenderersDigest?: str
@@ -1195,8 +1449,8 @@ schema HelmToolkitFluxcdIoV2HelmReleaseStatus:
 
 
     check:
-        len(storageNamespace) <= 63 if storageNamespace
-        len(storageNamespace) >= 1 if storageNamespace
+        len(storageNamespace) <= 63 if storageNamespace not in [None, Undefined]
+        len(storageNamespace) >= 1 if storageNamespace not in [None, Undefined]
 
 
 schema HelmToolkitFluxcdIoV2HelmReleaseStatusConditionsItems0:
@@ -1258,10 +1512,12 @@ schema HelmToolkitFluxcdIoV2HelmReleaseStatusHistoryItems0:
 
     Attributes
     ----------
+    action : str, default is Undefined, optional
+        Action is the action that resulted in this snapshot being created.
     apiVersion : str, default is Undefined, optional
         APIVersion is the API version of the Snapshot.
-        Provisional: when the calculation method of the Digest field is changed,
-        this field will be used to distinguish between the old and new methods.
+        When the calculation method of the Digest field is changed, this
+        field will be used to distinguish between the old and new methods.
     appVersion : str, default is Undefined, optional
         AppVersion is the chart app version of the release object in storage.
     chartName : str, default is Undefined, required
@@ -1297,6 +1553,8 @@ schema HelmToolkitFluxcdIoV2HelmReleaseStatusHistoryItems0:
         Version is the version of the release object in storage.
     """
 
+
+    action?: str
 
     apiVersion?: str
 
@@ -1350,5 +1608,39 @@ schema HelmToolkitFluxcdIoV2HelmReleaseStatusHistoryItems0TestHooksAnon:
     lastStarted?: str
 
     phase?: str
+
+
+schema HelmToolkitFluxcdIoV2HelmReleaseStatusInventory:
+    r"""
+    Inventory contains the list of Kubernetes resource object references
+    that have been applied for this release.
+
+    Attributes
+    ----------
+    entries : [HelmToolkitFluxcdIoV2HelmReleaseStatusInventoryEntriesItems0], default is Undefined, required
+        Entries of Kubernetes resource object references.
+    """
+
+
+    entries: [HelmToolkitFluxcdIoV2HelmReleaseStatusInventoryEntriesItems0]
+
+
+schema HelmToolkitFluxcdIoV2HelmReleaseStatusInventoryEntriesItems0:
+    r"""
+    ResourceRef contains the information necessary to locate a resource within a cluster.
+
+    Attributes
+    ----------
+    id : str, default is Undefined, required
+        ID is the string representation of the Kubernetes resource object's metadata,
+        in the format '<namespace>_<name>_<group>_<kind>'.
+    v : str, default is Undefined, required
+        Version is the API version of the Kubernetes resource object's kind.
+    """
+
+
+    id: str
+
+    v: str
 
 
