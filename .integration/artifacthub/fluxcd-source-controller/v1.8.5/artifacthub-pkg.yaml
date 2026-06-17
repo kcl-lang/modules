@@ -1,0 +1,25 @@
+version: v1.8.5
+name: fluxcd-source-controller
+displayName: fluxcd-source-controller
+createdAt: "2026-06-17T13:27:07Z"
+description: KCL package for https://github.com/fluxcd/source-controller CRDs
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `fluxcd-source-controller` with tag `v1.8.5` as dependency
+  ```
+  kcl mod add fluxcd-source-controller:v1.8.5
+  ```
+
+  #### Pull `fluxcd-source-controller` with tag `v1.8.5` to local
+  ```
+  kcl mod pull fluxcd-source-controller:v1.8.5
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
