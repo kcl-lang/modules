@@ -247,7 +247,7 @@ schema SourceToolkitFluxcdIoV1HelmChartStatusArtifact:
 
     Attributes
     ----------
-    digest : str, default is Undefined, optional
+    digest : str, default is Undefined, required
         Digest is the digest of the file in the form of '<algorithm>:<checksum>'.
     lastUpdateTime : str, default is Undefined, required
         LastUpdateTime is the timestamp corresponding to the last update of the
@@ -270,7 +270,7 @@ schema SourceToolkitFluxcdIoV1HelmChartStatusArtifact:
     """
 
 
-    digest?: str
+    digest: str
 
     lastUpdateTime: str
 
@@ -286,7 +286,7 @@ schema SourceToolkitFluxcdIoV1HelmChartStatusArtifact:
 
 
     check:
-        _regex_match(str(digest), r"^[a-z0-9]+(?:[.+_-][a-z0-9]+)*:[a-zA-Z0-9=_-]+$") if digest
+        _regex_match(str(digest), r"^[a-z0-9]+(?:[.+_-][a-z0-9]+)*:[a-zA-Z0-9=_-]+$")
 
 
 schema SourceToolkitFluxcdIoV1HelmChartStatusConditionsItems0:

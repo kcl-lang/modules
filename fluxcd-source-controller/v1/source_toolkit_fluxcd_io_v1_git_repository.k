@@ -67,6 +67,9 @@ schema SourceToolkitFluxcdIoV1GitRepositorySpec:
         ref
     secretRef : SourceToolkitFluxcdIoV1GitRepositorySpecSecretRef, default is Undefined, optional
         secret ref
+    serviceAccountName : str, default is Undefined, optional
+        ServiceAccountName is the name of the Kubernetes ServiceAccount used to
+        authenticate to the GitRepository. This field is only supported for 'azure' provider.
     sparseCheckout : [str], default is Undefined, optional
         SparseCheckout specifies a list of directories to checkout when cloning
         the repository. If specified, only these directories are included in the
@@ -98,6 +101,8 @@ schema SourceToolkitFluxcdIoV1GitRepositorySpec:
     ref?: SourceToolkitFluxcdIoV1GitRepositorySpecRef
 
     secretRef?: SourceToolkitFluxcdIoV1GitRepositorySpecSecretRef
+
+    serviceAccountName?: str
 
     sparseCheckout?: [str]
 
@@ -330,7 +335,7 @@ schema SourceToolkitFluxcdIoV1GitRepositoryStatusArtifact:
 
     Attributes
     ----------
-    digest : str, default is Undefined, optional
+    digest : str, default is Undefined, required
         Digest is the digest of the file in the form of '<algorithm>:<checksum>'.
     lastUpdateTime : str, default is Undefined, required
         LastUpdateTime is the timestamp corresponding to the last update of the
@@ -353,7 +358,7 @@ schema SourceToolkitFluxcdIoV1GitRepositoryStatusArtifact:
     """
 
 
-    digest?: str
+    digest: str
 
     lastUpdateTime: str
 
@@ -369,7 +374,7 @@ schema SourceToolkitFluxcdIoV1GitRepositoryStatusArtifact:
 
 
     check:
-        _regex_match(str(digest), r"^[a-z0-9]+(?:[.+_-][a-z0-9]+)*:[a-zA-Z0-9=_-]+$") if digest
+        _regex_match(str(digest), r"^[a-z0-9]+(?:[.+_-][a-z0-9]+)*:[a-zA-Z0-9=_-]+$")
 
 
 schema SourceToolkitFluxcdIoV1GitRepositoryStatusConditionsItems0:
@@ -430,7 +435,7 @@ schema SourceToolkitFluxcdIoV1GitRepositoryStatusIncludedArtifactsItems0:
 
     Attributes
     ----------
-    digest : str, default is Undefined, optional
+    digest : str, default is Undefined, required
         Digest is the digest of the file in the form of '<algorithm>:<checksum>'.
     lastUpdateTime : str, default is Undefined, required
         LastUpdateTime is the timestamp corresponding to the last update of the
@@ -453,7 +458,7 @@ schema SourceToolkitFluxcdIoV1GitRepositoryStatusIncludedArtifactsItems0:
     """
 
 
-    digest?: str
+    digest: str
 
     lastUpdateTime: str
 
@@ -469,7 +474,7 @@ schema SourceToolkitFluxcdIoV1GitRepositoryStatusIncludedArtifactsItems0:
 
 
     check:
-        _regex_match(str(digest), r"^[a-z0-9]+(?:[.+_-][a-z0-9]+)*:[a-zA-Z0-9=_-]+$") if digest
+        _regex_match(str(digest), r"^[a-z0-9]+(?:[.+_-][a-z0-9]+)*:[a-zA-Z0-9=_-]+$")
 
 
 schema SourceToolkitFluxcdIoV1GitRepositoryStatusObservedIncludeItems0:

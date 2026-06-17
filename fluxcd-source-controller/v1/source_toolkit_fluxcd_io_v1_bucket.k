@@ -72,6 +72,11 @@ schema SourceToolkitFluxcdIoV1BucketSpec:
         Region of the Endpoint where the BucketName is located in.
     secretRef : SourceToolkitFluxcdIoV1BucketSpecSecretRef, default is Undefined, optional
         secret ref
+    serviceAccountName : str, default is Undefined, optional
+        ServiceAccountName is the name of the Kubernetes ServiceAccount used to authenticate
+        the bucket. This field is only supported for the 'gcp' and 'aws' providers.
+        For more information about workload identity:
+        https://fluxcd.io/flux/components/source/buckets/#workload-identity
     sts : SourceToolkitFluxcdIoV1BucketSpecSts, default is Undefined, optional
         sts
     suspend : bool, default is Undefined, optional
@@ -103,6 +108,8 @@ schema SourceToolkitFluxcdIoV1BucketSpec:
     region?: str
 
     secretRef?: SourceToolkitFluxcdIoV1BucketSpecSecretRef
+
+    serviceAccountName?: str
 
     sts?: SourceToolkitFluxcdIoV1BucketSpecSts
 
@@ -296,7 +303,7 @@ schema SourceToolkitFluxcdIoV1BucketStatusArtifact:
 
     Attributes
     ----------
-    digest : str, default is Undefined, optional
+    digest : str, default is Undefined, required
         Digest is the digest of the file in the form of '<algorithm>:<checksum>'.
     lastUpdateTime : str, default is Undefined, required
         LastUpdateTime is the timestamp corresponding to the last update of the
@@ -319,7 +326,7 @@ schema SourceToolkitFluxcdIoV1BucketStatusArtifact:
     """
 
 
-    digest?: str
+    digest: str
 
     lastUpdateTime: str
 
@@ -335,7 +342,7 @@ schema SourceToolkitFluxcdIoV1BucketStatusArtifact:
 
 
     check:
-        _regex_match(str(digest), r"^[a-z0-9]+(?:[.+_-][a-z0-9]+)*:[a-zA-Z0-9=_-]+$") if digest
+        _regex_match(str(digest), r"^[a-z0-9]+(?:[.+_-][a-z0-9]+)*:[a-zA-Z0-9=_-]+$")
 
 
 schema SourceToolkitFluxcdIoV1BucketStatusConditionsItems0:
