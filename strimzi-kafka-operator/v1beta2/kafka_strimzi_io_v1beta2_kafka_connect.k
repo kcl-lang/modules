@@ -39,28 +39,28 @@ schema KafkaConnect:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpec:
     r"""
-    The specification of the Kafka Connect cluster.
+    kafka strimzi io v1beta2 kafka connect spec
 
     Attributes
     ----------
     authentication : KafkaStrimziIoV1beta2KafkaConnectSpecAuthentication, default is Undefined, optional
         authentication
     bootstrapServers : str, default is Undefined, required
-        Bootstrap servers to connect to. This should be given as a comma separated list of _<hostname>_:_<port>_ pairs.
+        bootstrap servers
     build : KafkaStrimziIoV1beta2KafkaConnectSpecBuild, default is Undefined, optional
         build
     clientRackInitImage : str, default is Undefined, optional
-        The image of the init container used for initializing the `client.rack`.
+        client rack init image
     config : any, default is Undefined, optional
-        The Kafka Connect configuration. Properties with the following prefixes cannot be set: ssl., sasl., security., listeners, plugin.path, rest., bootstrap.servers, consumer.interceptor.classes, producer.interceptor.classes, prometheus.metrics.reporter. (with the exception of: ssl.endpoint.identification.algorithm, ssl.cipher.suites, ssl.protocol, ssl.enabled.protocols).
+        config
     configStorageTopic : str, default is Undefined, optional
-        The name of the Kafka topic where connector configurations are stored.
+        config storage topic
     externalConfiguration : KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfiguration, default is Undefined, optional
         external configuration
     groupId : str, default is Undefined, optional
-        A unique ID that identifies the Connect cluster group.
+        group Id
     image : str, default is Undefined, optional
-        The container image used for Kafka Connect pods. If no image name is explicitly specified, it is determined based on the `spec.version` configuration. The image names are specifically mapped to corresponding versions in the Cluster Operator configuration.
+        image
     jmxOptions : KafkaStrimziIoV1beta2KafkaConnectSpecJmxOptions, default is Undefined, optional
         jmx options
     jvmOptions : KafkaStrimziIoV1beta2KafkaConnectSpecJvmOptions, default is Undefined, optional
@@ -72,19 +72,19 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpec:
     metricsConfig : KafkaStrimziIoV1beta2KafkaConnectSpecMetricsConfig, default is Undefined, optional
         metrics config
     offsetStorageTopic : str, default is Undefined, optional
-        The name of the Kafka topic where source connector offsets are stored.
+        offset storage topic
     plugins : [KafkaStrimziIoV1beta2KafkaConnectSpecPluginsItems0], default is Undefined, optional
-        List of connector plugins to mount into the `KafkaConnect` pod.
+        plugins
     rack : KafkaStrimziIoV1beta2KafkaConnectSpecRack, default is Undefined, optional
         rack
     readinessProbe : KafkaStrimziIoV1beta2KafkaConnectSpecReadinessProbe, default is Undefined, optional
         readiness probe
     replicas : int, default is Undefined, optional
-        The number of pods in the Kafka Connect group. Required in the `v1` version of the Strimzi API. Defaults to `3` in the `v1beta2` version of the Strimzi API.
+        replicas
     resources : KafkaStrimziIoV1beta2KafkaConnectSpecResources, default is Undefined, optional
         resources
     statusStorageTopic : str, default is Undefined, optional
-        The name of the Kafka topic where connector and task status are stored.
+        status storage topic
     template : KafkaStrimziIoV1beta2KafkaConnectSpecTemplate, default is Undefined, optional
         template
     tls : KafkaStrimziIoV1beta2KafkaConnectSpecTLS, default is Undefined, optional
@@ -92,7 +92,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpec:
     tracing : KafkaStrimziIoV1beta2KafkaConnectSpecTracing, default is Undefined, optional
         tracing
     version : str, default is Undefined, optional
-        The Kafka Connect version. Defaults to the latest version. Consult the user documentation to understand the process required to upgrade or downgrade the version.
+        version
     """
 
 
@@ -149,68 +149,68 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpec:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecAuthentication:
     r"""
-    Authentication configuration for Kafka Connect.
+    kafka strimzi io v1beta2 kafka connect spec authentication
 
     Attributes
     ----------
     accessToken : KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationAccessToken, default is Undefined, optional
         access token
     accessTokenIsJwt : bool, default is Undefined, optional
-        Configure whether access token should be treated as JWT. This should be set to `false` if the authorization server returns opaque tokens. Defaults to `true`.
+        access token is jwt
     accessTokenLocation : str, default is Undefined, optional
-        Path to the token file containing an access token to be used for authentication.
+        access token location
     audience : str, default is Undefined, optional
-        OAuth audience to use when authenticating against the authorization server. Some authorization servers require the audience to be explicitly set. The possible values depend on how the authorization server is configured. By default, `audience` is not specified when performing the token endpoint request.
+        audience
     certificateAndKey : KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationCertificateAndKey, default is Undefined, optional
         certificate and key
     clientAssertion : KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationClientAssertion, default is Undefined, optional
         client assertion
     clientAssertionLocation : str, default is Undefined, optional
-        Path to the file containing the client assertion to be used for authentication.
+        client assertion location
     clientAssertionType : str, default is Undefined, optional
-        The client assertion type. If not set, and either `clientAssertion` or `clientAssertionLocation` is configured, this value defaults to `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`.
+        client assertion type
     clientId : str, default is Undefined, optional
-        OAuth Client ID which the Kafka client can use to authenticate against the OAuth server and use the token endpoint URI.
+        client Id
     clientSecret : KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationClientSecret, default is Undefined, optional
         client secret
     config : any, default is Undefined, optional
-        Configuration for the custom authentication mechanism. Only properties with the `sasl.` and `ssl.keystore.` prefixes are allowed. Specify other options in the regular configuration section of the custom resource.
+        config
     connectTimeoutSeconds : int, default is Undefined, optional
-        The connect timeout in seconds when connecting to authorization server. If not set, the effective connect timeout is 60 seconds.
+        connect timeout seconds
     disableTlsHostnameVerification : bool, default is Undefined, optional
-        Enable or disable TLS hostname verification. Default value is `false`.
+        disable Tls hostname verification
     enableMetrics : bool, default is Undefined, optional
-        Enable or disable OAuth metrics. Default value is `false`.
+        enable metrics
     grantType : str, default is Undefined, optional
-        A custom OAuth grant type to use when authenticating against the authorization server with `clientId` and one of `clientSecret` or `clientAssertion`. The value defaults to `client_credentials` in these cases. This is optional configuration, only used with custom authorization server implementations.
+        grant type
     httpRetries : int, default is Undefined, optional
-        The maximum number of retries to attempt if an initial HTTP request fails. If not set, the default is to not attempt any retries.
+        http retries
     httpRetryPauseMs : int, default is Undefined, optional
-        The pause to take before retrying a failed HTTP request. If not set, the default is to not pause at all but to immediately repeat a request.
+        http retry pause ms
     includeAcceptHeader : bool, default is Undefined, optional
-        Whether the Accept header should be set in requests to the authorization servers. The default value is `true`.
+        include accept header
     maxTokenExpirySeconds : int, default is Undefined, optional
-        Set or limit time-to-live of the access tokens to the specified number of seconds. This should be set if the authorization server returns opaque tokens.
+        max token expiry seconds
     passwordSecret : KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationPasswordSecret, default is Undefined, optional
         password secret
     readTimeoutSeconds : int, default is Undefined, optional
-        The read timeout in seconds when connecting to authorization server. If not set, the effective read timeout is 60 seconds.
+        read timeout seconds
     refreshToken : KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationRefreshToken, default is Undefined, optional
         refresh token
     sasl : bool, default is Undefined, optional
-        Enable or disable SASL on this authentication mechanism.
+        sasl
     saslExtensions : {str:str}, default is Undefined, optional
-        SASL extensions parameters.
+        sasl extensions
     scope : str, default is Undefined, optional
-        OAuth scope to use when authenticating against the authorization server. Some authorization servers require this to be set. The possible values depend on how authorization server is configured. By default `scope` is not specified when doing the token endpoint request.
+        scope
     tlsTrustedCertificates : [KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationTLSTrustedCertificatesItems0], default is Undefined, optional
-        Trusted certificates for TLS connection to the OAuth server.
+        tls trusted certificates
     tokenEndpointUri : str, default is Undefined, optional
-        Authorization server token endpoint URI.
+        token endpoint Uri
     $type : str, default is Undefined, required
-        Specifies the authentication type. Supported types are `tls`, `scram-sha-256`, `scram-sha-512`, `plain`, 'oauth', and `custom`. `tls` uses TLS client authentication and is supported only over TLS connections. `scram-sha-256` and `scram-sha-512` use SASL SCRAM-SHA-256 and SASL SCRAM-SHA-512 authentication, respectively. `plain` uses SASL PLAIN authentication. `oauth` uses SASL OAUTHBEARER authentication. `custom` allows you to configure a custom authentication mechanism. As of Strimzi 0.49.0, `oauth` type is deprecated and will be removed in the `v1` API version. Please use `custom` type instead.
+        type
     username : str, default is Undefined, optional
-        Username used for the authentication.
+        username
     """
 
 
@@ -275,14 +275,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecAuthentication:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationAccessToken:
     r"""
-    Link to Kubernetes Secret containing the access token which was obtained from the authorization server.
+    kafka strimzi io v1beta2 kafka connect spec authentication access token
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key under which the secret value is stored in the Kubernetes Secret.
+        key
     secretName : str, default is Undefined, required
-        The name of the Kubernetes Secret containing the secret value.
+        secret name
     """
 
 
@@ -293,16 +293,16 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationAccessToken:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationCertificateAndKey:
     r"""
-    Reference to the `Secret` which holds the certificate and private key pair.
+    kafka strimzi io v1beta2 kafka connect spec authentication certificate and key
 
     Attributes
     ----------
     certificate : str, default is Undefined, required
-        The name of the file certificate in the Secret.
+        certificate
     key : str, default is Undefined, required
-        The name of the private key in the secret. The private key must be in unencrypted PKCS #8 format. For more information, see RFC 5208: https://datatracker.ietf.org/doc/html/rfc5208.
+        key
     secretName : str, default is Undefined, required
-        The name of the Secret containing the certificate.
+        secret name
     """
 
 
@@ -315,14 +315,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationCertificateAndKey:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationClientAssertion:
     r"""
-    Link to Kubernetes secret containing the client assertion which was manually configured for the client.
+    kafka strimzi io v1beta2 kafka connect spec authentication client assertion
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key under which the secret value is stored in the Kubernetes Secret.
+        key
     secretName : str, default is Undefined, required
-        The name of the Kubernetes Secret containing the secret value.
+        secret name
     """
 
 
@@ -333,14 +333,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationClientAssertion:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationClientSecret:
     r"""
-    Link to Kubernetes Secret containing the OAuth client secret which the Kafka client can use to authenticate against the OAuth server and use the token endpoint URI.
+    kafka strimzi io v1beta2 kafka connect spec authentication client secret
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key under which the secret value is stored in the Kubernetes Secret.
+        key
     secretName : str, default is Undefined, required
-        The name of the Kubernetes Secret containing the secret value.
+        secret name
     """
 
 
@@ -351,14 +351,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationClientSecret:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationPasswordSecret:
     r"""
-    Reference to the `Secret` which holds the password.
+    kafka strimzi io v1beta2 kafka connect spec authentication password secret
 
     Attributes
     ----------
     password : str, default is Undefined, required
-        The name of the key in the Secret under which the password is stored.
+        password
     secretName : str, default is Undefined, required
-        The name of the Secret containing the password.
+        secret name
     """
 
 
@@ -369,14 +369,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationPasswordSecret:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationRefreshToken:
     r"""
-    Link to Kubernetes Secret containing the refresh token which can be used to obtain access token from the authorization server.
+    kafka strimzi io v1beta2 kafka connect spec authentication refresh token
 
     Attributes
     ----------
     key : str, default is Undefined, required
-        The key under which the secret value is stored in the Kubernetes Secret.
+        key
     secretName : str, default is Undefined, required
-        The name of the Kubernetes Secret containing the secret value.
+        secret name
     """
 
 
@@ -392,11 +392,11 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationTLSTrustedCertificates
     Attributes
     ----------
     certificate : str, default is Undefined, optional
-        The name of the file certificate in the secret.
+        certificate
     pattern : str, default is Undefined, optional
-        Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.
+        pattern
     secretName : str, default is Undefined, required
-        The name of the Secret containing the certificate.
+        secret name
     """
 
 
@@ -409,14 +409,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecAuthenticationTLSTrustedCertificates
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecBuild:
     r"""
-    Configures how the Connect container image should be built. Optional.
+    kafka strimzi io v1beta2 kafka connect spec build
 
     Attributes
     ----------
     output : KafkaStrimziIoV1beta2KafkaConnectSpecBuildOutput, default is Undefined, required
         output
     plugins : [KafkaStrimziIoV1beta2KafkaConnectSpecBuildPluginsItems0], default is Undefined, required
-        List of connector plugins which should be added to the Kafka Connect. Required.
+        plugins
     resources : KafkaStrimziIoV1beta2KafkaConnectSpecBuildResources, default is Undefined, optional
         resources
     """
@@ -431,22 +431,22 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecBuild:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecBuildOutput:
     r"""
-    Configures where should the newly built image be stored. Required.
+    kafka strimzi io v1beta2 kafka connect spec build output
 
     Attributes
     ----------
     additionalBuildOptions : [str], default is Undefined, optional
-        Configures additional options to pass to the `build` command of either Kaniko or Buildah (depending on the feature gate setting) when building a new Kafka Connect image. Allowed Kaniko options: --customPlatform, --custom-platform, --insecure, --insecure-pull, --insecure-registry, --log-format, --log-timestamp, --registry-mirror, --reproducible, --single-snapshot, --skip-tls-verify, --skip-tls-verify-pull, --skip-tls-verify-registry, --verbosity, --snapshotMode, --use-new-run, --registry-certificate, --registry-client-cert, --ignore-path. Allowed Buildah `build` options: --authfile, --cert-dir, --creds, --decryption-key, --retry, --retry-delay, --tls-verify. Those options are used only on Kubernetes, where Kaniko and Buildah are available. They are ignored on OpenShift. For more information, see the link:https://github.com/GoogleContainerTools/kaniko[Kaniko GitHub repository^] or the link:https://github.com/containers/buildah/blob/main/docs/buildah-build.1.md[Buildah build document^]. Changing this field does not trigger a rebuild of the Kafka Connect image.
+        additional build options
     additionalKanikoOptions : [str], default is Undefined, optional
-        Configures additional options which will be passed to the Kaniko executor when building the new Connect image. Allowed options are: --customPlatform, --custom-platform, --insecure, --insecure-pull, --insecure-registry, --log-format, --log-timestamp, --registry-mirror, --reproducible, --single-snapshot, --skip-tls-verify, --skip-tls-verify-pull, --skip-tls-verify-registry, --verbosity, --snapshotMode, --use-new-run, --registry-certificate, --registry-client-cert, --ignore-path. These options will be used only on Kubernetes where the Kaniko executor is used. They will be ignored on OpenShift. The options are described in the link:https://github.com/GoogleContainerTools/kaniko[Kaniko GitHub repository^]. Changing this field does not trigger new build of the Kafka Connect image.
+        additional kaniko options
     additionalPushOptions : [str], default is Undefined, optional
-        Configures additional options to pass to the Buildah `push` command when pushing a new Connect image. Allowed options: --authfile, --cert-dir, --creds, --quiet, --retry, --retry-delay, --tls-verify. Those options are used only on Kubernetes, where Buildah is available. They are ignored on OpenShift. For more information, see the link:https://github.com/containers/buildah/blob/main/docs/buildah-push.1.md[Buildah push document^]. Changing this field does not trigger a rebuild of the Kafka Connect image.
+        additional push options
     image : str, default is Undefined, required
-        The name of the image which will be built. Required.
+        image
     pushSecret : str, default is Undefined, optional
-        Container Registry Secret with the credentials for pushing the newly built image.
+        push secret
     $type : str, default is Undefined, required
-        Output type. Must be either `docker` for pushing the newly build image to Docker compatible registry or `imagestream` for pushing the image to OpenShift ImageStream. Required.
+        type
     """
 
 
@@ -470,9 +470,9 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecBuildPluginsItems0:
     Attributes
     ----------
     artifacts : [KafkaStrimziIoV1beta2KafkaConnectSpecBuildPluginsItems0ArtifactsItems0], default is Undefined, required
-        List of artifacts which belong to this connector plugin. Required.
+        artifacts
     name : str, default is Undefined, required
-        The unique name of the connector plugin. Will be used to generate the path where the connector artifacts will be stored. The name has to be unique within the KafkaConnect resource. The name has to follow the following pattern: `^[a-z][-_a-z0-9]*[a-z]$`. Required.
+        name
     """
 
 
@@ -492,23 +492,23 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecBuildPluginsItems0ArtifactsItems0:
     Attributes
     ----------
     artifact : str, default is Undefined, optional
-        Maven artifact id. Applicable to the `maven` artifact type only.
+        artifact
     fileName : str, default is Undefined, optional
-        Name under which the artifact will be stored.
+        file name
     group : str, default is Undefined, optional
-        Maven group id. Applicable to the `maven` artifact type only.
+        group
     insecure : bool, default is Undefined, optional
-        By default, connections using TLS are verified to check they are secure. The server certificate used must be valid, trusted, and contain the server name. By setting this option to `true`, all TLS verification is disabled and the artifact will be downloaded, even when the server is considered insecure.
+        insecure
     repository : str, default is Undefined, optional
-        Maven repository to download the artifact from. Applicable to the `maven` artifact type only.
+        repository
     sha512sum : str, default is Undefined, optional
-        SHA512 checksum of the artifact. Optional. If specified, the checksum will be verified while building the new container. If not specified, the downloaded artifact will not be verified. Not applicable to the `maven` artifact type. 
+        sha512sum
     $type : str, default is Undefined, required
-        Artifact type. Currently, the supported artifact types are `tgz`, `jar`, `zip`, `other` and `maven`.
+        type
     url : str, default is Undefined, optional
-        URL of the artifact which will be downloaded. Strimzi does not do any security scanning of the downloaded artifacts. For security reasons, you should first verify the artifacts manually and configure the checksum verification to make sure the same artifact is used in the automated build. Required for `jar`, `zip`, `tgz` and `other` artifacts. Not applicable to the `maven` artifact type.
+        url
     version : str, default is Undefined, optional
-        Maven version number. Applicable to the `maven` artifact type only.
+        version
     """
 
 
@@ -537,7 +537,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecBuildPluginsItems0ArtifactsItems0:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecBuildResources:
     r"""
-    CPU and memory resources to reserve for the build.
+    kafka strimzi io v1beta2 kafka connect spec build resources
 
     Attributes
     ----------
@@ -582,14 +582,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecBuildResourcesClaimsItems0:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfiguration:
     r"""
-    Pass data from Secrets or ConfigMaps to the Kafka Connect pods and use them to configure connectors.
+    kafka strimzi io v1beta2 kafka connect spec external configuration
 
     Attributes
     ----------
     env : [KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationEnvItems0], default is Undefined, optional
-        Makes data from a Secret or ConfigMap available in the Kafka Connect pods as environment variables.
+        env
     volumes : [KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationVolumesItems0], default is Undefined, optional
-        Makes data from a Secret or ConfigMap available in the Kafka Connect pods as volumes.
+        volumes
     """
 
 
@@ -605,7 +605,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationEnvItems0:
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of the environment variable which will be passed to the Kafka Connect pods. The name of the environment variable cannot start with `KAFKA_` or `STRIMZI_`.
+        name
     valueFrom : KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationEnvItems0ValueFrom, default is Undefined, required
         value from
     """
@@ -618,7 +618,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationEnvItems0:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationEnvItems0ValueFrom:
     r"""
-    Value of the environment variable which will be passed to the Kafka Connect pods. It can be passed either as a reference to Secret or ConfigMap field. The field has to specify exactly one Secret or ConfigMap.
+    kafka strimzi io v1beta2 kafka connect spec external configuration env items0 value from
 
     Attributes
     ----------
@@ -636,7 +636,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationEnvItems0ValueF
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationEnvItems0ValueFromConfigMapKeyRef:
     r"""
-    Reference to a key in a ConfigMap.
+    kafka strimzi io v1beta2 kafka connect spec external configuration env items0 value from config map key ref
 
     Attributes
     ----------
@@ -658,7 +658,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationEnvItems0ValueF
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationEnvItems0ValueFromSecretKeyRef:
     r"""
-    Reference to a key in a Secret.
+    kafka strimzi io v1beta2 kafka connect spec external configuration env items0 value from secret key ref
 
     Attributes
     ----------
@@ -687,7 +687,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationVolumesItems0:
     configMap : KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationVolumesItems0ConfigMap, default is Undefined, optional
         config map
     name : str, default is Undefined, required
-        Name of the volume which will be added to the Kafka Connect pods.
+        name
     secret : KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationVolumesItems0Secret, default is Undefined, optional
         secret
     """
@@ -702,7 +702,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationVolumesItems0:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationVolumesItems0ConfigMap:
     r"""
-    Reference to a key in a ConfigMap. Exactly one Secret or ConfigMap has to be specified.
+    kafka strimzi io v1beta2 kafka connect spec external configuration volumes items0 config map
 
     Attributes
     ----------
@@ -750,7 +750,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationVolumesItems0Co
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationVolumesItems0Secret:
     r"""
-    Reference to a key in a Secret. Exactly one Secret or ConfigMap has to be specified.
+    kafka strimzi io v1beta2 kafka connect spec external configuration volumes items0 secret
 
     Attributes
     ----------
@@ -798,7 +798,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecExternalConfigurationVolumesItems0Se
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecJmxOptions:
     r"""
-    JMX Options.
+    kafka strimzi io v1beta2 kafka connect spec jmx options
 
     Attributes
     ----------
@@ -812,12 +812,12 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecJmxOptions:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecJmxOptionsAuthentication:
     r"""
-    Authentication configuration for connecting to the JMX port.
+    kafka strimzi io v1beta2 kafka connect spec jmx options authentication
 
     Attributes
     ----------
     $type : str, default is Undefined, required
-        Authentication type. Currently the only supported types are `password`.`password` type creates a username and protected port with no TLS.
+        type
     """
 
 
@@ -826,20 +826,20 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecJmxOptionsAuthentication:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecJvmOptions:
     r"""
-    JVM Options for pods.
+    kafka strimzi io v1beta2 kafka connect spec jvm options
 
     Attributes
     ----------
     "-XX" : {str:str}, default is Undefined, optional
-        A map of -XX options to the JVM.
+        x x
     "-Xms" : str, default is Undefined, optional
-        -Xms option to to the JVM.
+        xms
     "-Xmx" : str, default is Undefined, optional
-        -Xmx option to to the JVM.
+        xmx
     gcLoggingEnabled : bool, default is Undefined, optional
-        Specifies whether the Garbage Collection logging is enabled. The default is false.
+        gc logging enabled
     javaSystemProperties : [KafkaStrimziIoV1beta2KafkaConnectSpecJvmOptionsJavaSystemPropertiesItems0], default is Undefined, optional
-        A map of additional system properties which will be passed using the `-D` option to the JVM.
+        java system properties
     """
 
 
@@ -867,9 +867,9 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecJvmOptionsJavaSystemPropertiesItems0
     Attributes
     ----------
     name : str, default is Undefined, optional
-        The system property name.
+        name
     value : str, default is Undefined, optional
-        The system property value.
+        value
     """
 
 
@@ -880,20 +880,20 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecJvmOptionsJavaSystemPropertiesItems0
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecLivenessProbe:
     r"""
-    Pod liveness checking.
+    kafka strimzi io v1beta2 kafka connect spec liveness probe
 
     Attributes
     ----------
     failureThreshold : int, default is Undefined, optional
-        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        failure threshold
     initialDelaySeconds : int, default is Undefined, optional
-        The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.
+        initial delay seconds
     periodSeconds : int, default is Undefined, optional
-        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+        period seconds
     successThreshold : int, default is Undefined, optional
-        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
+        success threshold
     timeoutSeconds : int, default is Undefined, optional
-        The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.
+        timeout seconds
     """
 
 
@@ -918,14 +918,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecLivenessProbe:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecLogging:
     r"""
-    Logging configuration for Kafka Connect.
+    kafka strimzi io v1beta2 kafka connect spec logging
 
     Attributes
     ----------
     loggers : {str:str}, default is Undefined, optional
-        A Map from logger name to logger level.
+        loggers
     $type : str, default is Undefined, required
-        Logging type, must be either 'inline' or 'external'.
+        type
     valueFrom : KafkaStrimziIoV1beta2KafkaConnectSpecLoggingValueFrom, default is Undefined, optional
         value from
     """
@@ -940,7 +940,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecLogging:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecLoggingValueFrom:
     r"""
-    `ConfigMap` entry where the logging configuration is stored. 
+    kafka strimzi io v1beta2 kafka connect spec logging value from
 
     Attributes
     ----------
@@ -954,7 +954,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecLoggingValueFrom:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecLoggingValueFromConfigMapKeyRef:
     r"""
-    Reference to the key in the ConfigMap containing the configuration.
+    kafka strimzi io v1beta2 kafka connect spec logging value from config map key ref
 
     Attributes
     ----------
@@ -976,12 +976,12 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecLoggingValueFromConfigMapKeyRef:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecMetricsConfig:
     r"""
-    Metrics configuration.
+    kafka strimzi io v1beta2 kafka connect spec metrics config
 
     Attributes
     ----------
     $type : str, default is Undefined, required
-        Metrics type. The supported types are `jmxPrometheusExporter` and `strimziMetricsReporter`. Type `jmxPrometheusExporter` uses the Prometheus JMX Exporter to expose Kafka JMX metrics in Prometheus format through an HTTP endpoint. Type `strimziMetricsReporter` uses the Strimzi Metrics Reporter to directly expose Kafka metrics in Prometheus format through an HTTP endpoint.
+        type
     valueFrom : KafkaStrimziIoV1beta2KafkaConnectSpecMetricsConfigValueFrom, default is Undefined, optional
         value from
     values : KafkaStrimziIoV1beta2KafkaConnectSpecMetricsConfigValues, default is Undefined, optional
@@ -998,7 +998,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecMetricsConfig:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecMetricsConfigValueFrom:
     r"""
-    ConfigMap entry where the Prometheus JMX Exporter configuration is stored.
+    kafka strimzi io v1beta2 kafka connect spec metrics config value from
 
     Attributes
     ----------
@@ -1012,7 +1012,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecMetricsConfigValueFrom:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecMetricsConfigValueFromConfigMapKeyRef:
     r"""
-    Reference to the key in the ConfigMap containing the configuration.
+    kafka strimzi io v1beta2 kafka connect spec metrics config value from config map key ref
 
     Attributes
     ----------
@@ -1034,12 +1034,12 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecMetricsConfigValueFromConfigMapKeyRe
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecMetricsConfigValues:
     r"""
-    Configuration values for the Strimzi Metrics Reporter.
+    kafka strimzi io v1beta2 kafka connect spec metrics config values
 
     Attributes
     ----------
     allowList : [str], default is Undefined, optional
-        A list of regex patterns to filter the metrics to collect. Should contain at least one element.
+        allow list
     """
 
 
@@ -1053,9 +1053,9 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecPluginsItems0:
     Attributes
     ----------
     artifacts : [KafkaStrimziIoV1beta2KafkaConnectSpecPluginsItems0ArtifactsItems0], default is Undefined, required
-        List of artifacts associated with this connector plugin. Required.
+        artifacts
     name : str, default is Undefined, required
-        A unique name for the connector plugin. This name is used to generate the mount path for the connector artifacts. The name has to be unique within the KafkaConnect resource. The name must be unique within the `KafkaConnect` resource and match the pattern: `^[a-z][-_a-z0-9]*[a-z]$`. Required.
+        name
     """
 
 
@@ -1075,19 +1075,11 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecPluginsItems0ArtifactsItems0:
     Attributes
     ----------
     pullPolicy : str, default is Undefined, optional
-        Policy that determines when the container image (OCI artifact) is pulled.
-
-        Possible values are:
-
-        * `Always`: Always pull the image. If the pull fails, container creation fails.
-        * `Never`: Never pull the image. Use only a locally available image. Container creation fails if the image isn’t present.
-        * `IfNotPresent`: Pull the image only if it’s not already available locally. Container creation fails if the image isn’t present and the pull fails.
-
-        Defaults to `Always` if `:latest` tag is specified, or `IfNotPresent` otherwise.
+        pull policy
     reference : str, default is Undefined, required
-        Reference to the container image (OCI artifact) containing the Kafka Connect plugin. The image is mounted as a volume and provides the plugin binary. Required.
+        reference
     $type : str, default is Undefined, required
-        Artifact type. Currently, the only supported artifact type is `image`.
+        type
     """
 
 
@@ -1100,34 +1092,42 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecPluginsItems0ArtifactsItems0:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecRack:
     r"""
-    Configuration of the node label which will be used as the `client.rack` consumer configuration.
+    kafka strimzi io v1beta2 kafka connect spec rack
 
     Attributes
     ----------
-    topologyKey : str, default is Undefined, required
-        A key that matches labels assigned to the Kubernetes cluster nodes. The value of the label is used to set a broker's `broker.rack` config, and the `client.rack` config for Kafka Connect or MirrorMaker 2.
+    envVarName : str, default is Undefined, optional
+        env var name
+    topologyKey : str, default is Undefined, optional
+        topology key
+    $type : str, default is Undefined, optional
+        type
     """
 
 
-    topologyKey: str
+    envVarName?: str
+
+    topologyKey?: str
+
+    $type?: "topology-label" | "environment-variable"
 
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecReadinessProbe:
     r"""
-    Pod readiness checking.
+    kafka strimzi io v1beta2 kafka connect spec readiness probe
 
     Attributes
     ----------
     failureThreshold : int, default is Undefined, optional
-        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        failure threshold
     initialDelaySeconds : int, default is Undefined, optional
-        The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.
+        initial delay seconds
     periodSeconds : int, default is Undefined, optional
-        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+        period seconds
     successThreshold : int, default is Undefined, optional
-        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
+        success threshold
     timeoutSeconds : int, default is Undefined, optional
-        The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.
+        timeout seconds
     """
 
 
@@ -1152,7 +1152,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecReadinessProbe:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecResources:
     r"""
-    The maximum limits for CPU and memory resources and the requested initial resources.
+    kafka strimzi io v1beta2 kafka connect spec resources
 
     Attributes
     ----------
@@ -1197,12 +1197,12 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecResourcesClaimsItems0:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTLS:
     r"""
-    TLS configuration.
+    kafka strimzi io v1beta2 kafka connect spec TLS
 
     Attributes
     ----------
     trustedCertificates : [KafkaStrimziIoV1beta2KafkaConnectSpecTLSTrustedCertificatesItems0], default is Undefined, optional
-        Trusted certificates for TLS connection.
+        trusted certificates
     """
 
 
@@ -1216,11 +1216,11 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTLSTrustedCertificatesItems0:
     Attributes
     ----------
     certificate : str, default is Undefined, optional
-        The name of the file certificate in the secret.
+        certificate
     pattern : str, default is Undefined, optional
-        Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.
+        pattern
     secretName : str, default is Undefined, required
-        The name of the Secret containing the certificate.
+        secret name
     """
 
 
@@ -1233,7 +1233,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTLSTrustedCertificatesItems0:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplate:
     r"""
-    Template for Kafka Connect and Kafka MirrorMaker 2 resources. The template allows users to specify how the `Pods`, `Service`, and other services are generated.
+    kafka strimzi io v1beta2 kafka connect spec template
 
     Attributes
     ----------
@@ -1303,14 +1303,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplate:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateAPIService:
     r"""
-    Template for Kafka Connect API `Service`.
+    kafka strimzi io v1beta2 kafka connect spec template API service
 
     Attributes
     ----------
     ipFamilies : [str], default is Undefined, optional
-        Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6`. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting.
+        ip families
     ipFamilyPolicy : str, default is Undefined, optional
-        Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`. `SingleStack` is for a single IP family. `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters. `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters. If unspecified, Kubernetes will choose the default value based on the service type.
+        ip family policy
     metadata : KafkaStrimziIoV1beta2KafkaConnectSpecTemplateAPIServiceMetadata, default is Undefined, optional
         metadata
     """
@@ -1325,14 +1325,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateAPIService:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateAPIServiceMetadata:
     r"""
-    Metadata applied to the resource.
+    kafka strimzi io v1beta2 kafka connect spec template API service metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations added to the Kubernetes resource.
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels added to the Kubernetes resource.
+        labels
     """
 
 
@@ -1343,14 +1343,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateAPIServiceMetadata:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildConfig:
     r"""
-    Template for the Kafka Connect BuildConfig used to build new container images. The BuildConfig is used only on OpenShift.
+    kafka strimzi io v1beta2 kafka connect spec template build config
 
     Attributes
     ----------
     metadata : KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildConfigMetadata, default is Undefined, optional
         metadata
     pullSecret : str, default is Undefined, optional
-        Container Registry Secret with the credentials for pulling the base image.
+        pull secret
     """
 
 
@@ -1361,14 +1361,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildConfig:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildConfigMetadata:
     r"""
-    Metadata to apply to the `PodDisruptionBudgetTemplate` resource.
+    kafka strimzi io v1beta2 kafka connect spec template build config metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations added to the Kubernetes resource.
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels added to the Kubernetes resource.
+        labels
     """
 
 
@@ -1379,16 +1379,16 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildConfigMetadata:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainer:
     r"""
-    Template for the Kafka Connect Build container. The build container is used only on Kubernetes.
+    kafka strimzi io v1beta2 kafka connect spec template build container
 
     Attributes
     ----------
     env : [KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerEnvItems0], default is Undefined, optional
-        Environment variables which should be applied to the container.
+        env
     securityContext : KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerSecurityContext, default is Undefined, optional
         security context
     volumeMounts : [KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerVolumeMountsItems0], default is Undefined, optional
-        Additional volume mounts which should be applied to the container.
+        volume mounts
     """
 
 
@@ -1406,9 +1406,9 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerEnvItems0:
     Attributes
     ----------
     name : str, default is Undefined, optional
-        The environment variable key.
+        name
     value : str, default is Undefined, optional
-        The environment variable value.
+        value
     valueFrom : KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -1423,7 +1423,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerEnvItems0:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerEnvItems0ValueFrom:
     r"""
-    Reference to the secret or config map property to which the environment variable is set.
+    kafka strimzi io v1beta2 kafka connect spec template build container env items0 value from
 
     Attributes
     ----------
@@ -1441,7 +1441,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerEnvItems0Value
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerEnvItems0ValueFromConfigMapKeyRef:
     r"""
-    Reference to a key in a config map.
+    kafka strimzi io v1beta2 kafka connect spec template build container env items0 value from config map key ref
 
     Attributes
     ----------
@@ -1463,7 +1463,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerEnvItems0Value
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerEnvItems0ValueFromSecretKeyRef:
     r"""
-    Reference to a key in a secret.
+    kafka strimzi io v1beta2 kafka connect spec template build container env items0 value from secret key ref
 
     Attributes
     ----------
@@ -1485,7 +1485,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerEnvItems0Value
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerSecurityContext:
     r"""
-    Security context for the container.
+    kafka strimzi io v1beta2 kafka connect spec template build container security context
 
     Attributes
     ----------
@@ -1687,7 +1687,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildContainerVolumeMountsIt
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPod:
     r"""
-    Template for Kafka Connect Build `Pods`. The build pod is used only on Kubernetes.
+    kafka strimzi io v1beta2 kafka connect spec template build pod
 
     Attributes
     ----------
@@ -1696,33 +1696,33 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPod:
     dnsConfig : KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodDNSConfig, default is Undefined, optional
         dns config
     dnsPolicy : str, default is Undefined, optional
-        The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.
+        dns policy
     enableServiceLinks : bool, default is Undefined, optional
-        Indicates whether information about services should be injected into Pod's environment variables.
+        enable service links
     hostAliases : [KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodHostAliasesItems0], default is Undefined, optional
-        The pod's HostAliases. HostAliases is an optional list of hosts and IPs that will be injected into the Pod's hosts file if specified.
+        host aliases
     hostUsers : bool, default is Undefined, optional
-        Use the host user namespace. Optional. Defaults to `true`. When `true` or not set, the pod runs in the host user namespace. This is required when the pod needs features available only in the host namespace, such as loading kernel modules with `CAP_SYS_MODULE`.When set to `false`, the pod runs in a new user namespace. Setting `false` helps mitigate container breakout vulnerabilities and allows containers to run as `root` without granting `root` privileges on the host. This property is alpha-level in Kubernetes and is supported only by Kubernetes clusters that enable the `UserNamespacesSupport` feature.
+        host users
     imagePullSecrets : [KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodImagePullSecretsItems0], default is Undefined, optional
-        List of references to secrets in the same namespace to use for pulling any of the images used by this Pod. When the `STRIMZI_IMAGE_PULL_SECRETS` environment variable in Cluster Operator and the `imagePullSecrets` option are specified, only the `imagePullSecrets` variable is used and the `STRIMZI_IMAGE_PULL_SECRETS` variable is ignored.
+        image pull secrets
     metadata : KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodMetadata, default is Undefined, optional
         metadata
     priorityClassName : str, default is Undefined, optional
-        The name of the priority class used to assign priority to the pods. 
+        priority class name
     schedulerName : str, default is Undefined, optional
-        The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.
+        scheduler name
     securityContext : KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodSecurityContext, default is Undefined, optional
         security context
     terminationGracePeriodSeconds : int, default is Undefined, optional
-        The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.
+        termination grace period seconds
     tmpDirSizeLimit : str, default is Undefined, optional
-        Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.
+        tmp dir size limit
     tolerations : [KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodTolerationsItems0], default is Undefined, optional
-        The pod's tolerations.
+        tolerations
     topologySpreadConstraints : [KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodTopologySpreadConstraintsItems0], default is Undefined, optional
-        The pod's topology spread constraints.
+        topology spread constraints
     volumes : [KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0], default is Undefined, optional
-        Additional volumes that can be mounted to the pod.
+        volumes
     """
 
 
@@ -1766,7 +1766,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPod:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodAffinity:
     r"""
-    The pod's affinity rules.
+    kafka strimzi io v1beta2 kafka connect spec template build pod affinity
 
     Attributes
     ----------
@@ -2490,7 +2490,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodAffinityPodAntiAffin
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodDNSConfig:
     r"""
-    The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.
+    kafka strimzi io v1beta2 kafka connect spec template build pod DNS config
 
     Attributes
     ----------
@@ -2562,14 +2562,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodImagePullSecretsItem
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodMetadata:
     r"""
-    Metadata applied to the resource.
+    kafka strimzi io v1beta2 kafka connect spec template build pod metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations added to the Kubernetes resource.
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels added to the Kubernetes resource.
+        labels
     """
 
 
@@ -2580,7 +2580,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodMetadata:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodSecurityContext:
     r"""
-    Configures pod-level security attributes and common container settings.
+    kafka strimzi io v1beta2 kafka connect spec template build pod security context
 
     Attributes
     ----------
@@ -2873,7 +2873,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0:
     image : KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0Image, default is Undefined, optional
         image
     name : str, default is Undefined, optional
-        Name to use for the volume. Required.
+        name
     persistentVolumeClaim : KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0PersistentVolumeClaim, default is Undefined, optional
         persistent volume claim
     secret : KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0Secret, default is Undefined, optional
@@ -2898,7 +2898,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0ConfigMap:
     r"""
-    `ConfigMap` to use to populate the volume.
+    kafka strimzi io v1beta2 kafka connect spec template build pod volumes items0 config map
 
     Attributes
     ----------
@@ -2946,7 +2946,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0ConfigM
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0Csi:
     r"""
-    `CSIVolumeSource` object to use to populate the volume.
+    kafka strimzi io v1beta2 kafka connect spec template build pod volumes items0 csi
 
     Attributes
     ----------
@@ -2990,14 +2990,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0CsiNode
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0EmptyDir:
     r"""
-    `EmptyDir` to use to populate the volume.
+    kafka strimzi io v1beta2 kafka connect spec template build pod volumes items0 empty dir
 
     Attributes
     ----------
     medium : str, default is Undefined, optional
-        Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.
+        medium
     sizeLimit : str, default is Undefined, optional
-        The total amount of local storage required for this EmptyDir volume (for example 1Gi).
+        size limit
     """
 
 
@@ -3012,7 +3012,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0EmptyDi
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0Image:
     r"""
-    `ImageVolumeSource` object to use to populate the volume.
+    kafka strimzi io v1beta2 kafka connect spec template build pod volumes items0 image
 
     Attributes
     ----------
@@ -3030,7 +3030,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0Image:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0PersistentVolumeClaim:
     r"""
-    `PersistentVolumeClaim` object to use to populate the volume.
+    kafka strimzi io v1beta2 kafka connect spec template build pod volumes items0 persistent volume claim
 
     Attributes
     ----------
@@ -3048,7 +3048,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0Persist
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0Secret:
     r"""
-    `Secret` to use to populate the volume.
+    kafka strimzi io v1beta2 kafka connect spec template build pod volumes items0 secret
 
     Attributes
     ----------
@@ -3096,7 +3096,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildPodVolumesItems0SecretI
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildServiceAccount:
     r"""
-    Template for the Kafka Connect Build service account.
+    kafka strimzi io v1beta2 kafka connect spec template build service account
 
     Attributes
     ----------
@@ -3110,14 +3110,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildServiceAccount:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildServiceAccountMetadata:
     r"""
-    Metadata applied to the resource.
+    kafka strimzi io v1beta2 kafka connect spec template build service account metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations added to the Kubernetes resource.
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels added to the Kubernetes resource.
+        labels
     """
 
 
@@ -3128,7 +3128,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateBuildServiceAccountMetadata:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateClusterRoleBinding:
     r"""
-    Template for the Kafka Connect ClusterRoleBinding.
+    kafka strimzi io v1beta2 kafka connect spec template cluster role binding
 
     Attributes
     ----------
@@ -3142,14 +3142,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateClusterRoleBinding:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateClusterRoleBindingMetadata:
     r"""
-    Metadata applied to the resource.
+    kafka strimzi io v1beta2 kafka connect spec template cluster role binding metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations added to the Kubernetes resource.
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels added to the Kubernetes resource.
+        labels
     """
 
 
@@ -3160,16 +3160,16 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateClusterRoleBindingMetadata:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainer:
     r"""
-    Template for the Kafka Connect container.
+    kafka strimzi io v1beta2 kafka connect spec template connect container
 
     Attributes
     ----------
     env : [KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerEnvItems0], default is Undefined, optional
-        Environment variables which should be applied to the container.
+        env
     securityContext : KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerSecurityContext, default is Undefined, optional
         security context
     volumeMounts : [KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerVolumeMountsItems0], default is Undefined, optional
-        Additional volume mounts which should be applied to the container.
+        volume mounts
     """
 
 
@@ -3187,9 +3187,9 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerEnvItems0:
     Attributes
     ----------
     name : str, default is Undefined, optional
-        The environment variable key.
+        name
     value : str, default is Undefined, optional
-        The environment variable value.
+        value
     valueFrom : KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -3204,7 +3204,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerEnvItems0:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerEnvItems0ValueFrom:
     r"""
-    Reference to the secret or config map property to which the environment variable is set.
+    kafka strimzi io v1beta2 kafka connect spec template connect container env items0 value from
 
     Attributes
     ----------
@@ -3222,7 +3222,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerEnvItems0Val
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerEnvItems0ValueFromConfigMapKeyRef:
     r"""
-    Reference to a key in a config map.
+    kafka strimzi io v1beta2 kafka connect spec template connect container env items0 value from config map key ref
 
     Attributes
     ----------
@@ -3244,7 +3244,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerEnvItems0Val
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerEnvItems0ValueFromSecretKeyRef:
     r"""
-    Reference to a key in a secret.
+    kafka strimzi io v1beta2 kafka connect spec template connect container env items0 value from secret key ref
 
     Attributes
     ----------
@@ -3266,7 +3266,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerEnvItems0Val
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerSecurityContext:
     r"""
-    Security context for the container.
+    kafka strimzi io v1beta2 kafka connect spec template connect container security context
 
     Attributes
     ----------
@@ -3468,12 +3468,12 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateConnectContainerVolumeMounts
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateDeployment:
     r"""
-    Template for Kafka Connect `Deployment`.
+    kafka strimzi io v1beta2 kafka connect spec template deployment
 
     Attributes
     ----------
     deploymentStrategy : str, default is Undefined, optional
-        Pod replacement strategy for deployment configuration changes. Valid values are `RollingUpdate` and `Recreate`. Defaults to `RollingUpdate`.
+        deployment strategy
     metadata : KafkaStrimziIoV1beta2KafkaConnectSpecTemplateDeploymentMetadata, default is Undefined, optional
         metadata
     """
@@ -3486,14 +3486,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateDeployment:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateDeploymentMetadata:
     r"""
-    Metadata applied to the resource.
+    kafka strimzi io v1beta2 kafka connect spec template deployment metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations added to the Kubernetes resource.
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels added to the Kubernetes resource.
+        labels
     """
 
 
@@ -3504,14 +3504,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateDeploymentMetadata:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateHeadlessService:
     r"""
-    Template for Kafka Connect headless `Service`.
+    kafka strimzi io v1beta2 kafka connect spec template headless service
 
     Attributes
     ----------
     ipFamilies : [str], default is Undefined, optional
-        Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6`. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting.
+        ip families
     ipFamilyPolicy : str, default is Undefined, optional
-        Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`. `SingleStack` is for a single IP family. `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters. `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters. If unspecified, Kubernetes will choose the default value based on the service type.
+        ip family policy
     metadata : KafkaStrimziIoV1beta2KafkaConnectSpecTemplateHeadlessServiceMetadata, default is Undefined, optional
         metadata
     """
@@ -3526,14 +3526,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateHeadlessService:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateHeadlessServiceMetadata:
     r"""
-    Metadata applied to the resource.
+    kafka strimzi io v1beta2 kafka connect spec template headless service metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations added to the Kubernetes resource.
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels added to the Kubernetes resource.
+        labels
     """
 
 
@@ -3544,16 +3544,16 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateHeadlessServiceMetadata:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainer:
     r"""
-    Template for the Kafka init container.
+    kafka strimzi io v1beta2 kafka connect spec template init container
 
     Attributes
     ----------
     env : [KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerEnvItems0], default is Undefined, optional
-        Environment variables which should be applied to the container.
+        env
     securityContext : KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerSecurityContext, default is Undefined, optional
         security context
     volumeMounts : [KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerVolumeMountsItems0], default is Undefined, optional
-        Additional volume mounts which should be applied to the container.
+        volume mounts
     """
 
 
@@ -3571,9 +3571,9 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerEnvItems0:
     Attributes
     ----------
     name : str, default is Undefined, optional
-        The environment variable key.
+        name
     value : str, default is Undefined, optional
-        The environment variable value.
+        value
     valueFrom : KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -3588,7 +3588,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerEnvItems0:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerEnvItems0ValueFrom:
     r"""
-    Reference to the secret or config map property to which the environment variable is set.
+    kafka strimzi io v1beta2 kafka connect spec template init container env items0 value from
 
     Attributes
     ----------
@@ -3606,7 +3606,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerEnvItems0ValueF
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerEnvItems0ValueFromConfigMapKeyRef:
     r"""
-    Reference to a key in a config map.
+    kafka strimzi io v1beta2 kafka connect spec template init container env items0 value from config map key ref
 
     Attributes
     ----------
@@ -3628,7 +3628,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerEnvItems0ValueF
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerEnvItems0ValueFromSecretKeyRef:
     r"""
-    Reference to a key in a secret.
+    kafka strimzi io v1beta2 kafka connect spec template init container env items0 value from secret key ref
 
     Attributes
     ----------
@@ -3650,7 +3650,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerEnvItems0ValueF
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerSecurityContext:
     r"""
-    Security context for the container.
+    kafka strimzi io v1beta2 kafka connect spec template init container security context
 
     Attributes
     ----------
@@ -3852,7 +3852,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateInitContainerVolumeMountsIte
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateJmxSecret:
     r"""
-    Template for Secret of the Kafka Connect Cluster JMX authentication.
+    kafka strimzi io v1beta2 kafka connect spec template jmx secret
 
     Attributes
     ----------
@@ -3866,14 +3866,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateJmxSecret:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateJmxSecretMetadata:
     r"""
-    Metadata applied to the resource.
+    kafka strimzi io v1beta2 kafka connect spec template jmx secret metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations added to the Kubernetes resource.
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels added to the Kubernetes resource.
+        labels
     """
 
 
@@ -3884,7 +3884,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateJmxSecretMetadata:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePod:
     r"""
-    Template for Kafka Connect `Pods`.
+    kafka strimzi io v1beta2 kafka connect spec template pod
 
     Attributes
     ----------
@@ -3893,33 +3893,33 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePod:
     dnsConfig : KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodDNSConfig, default is Undefined, optional
         dns config
     dnsPolicy : str, default is Undefined, optional
-        The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.
+        dns policy
     enableServiceLinks : bool, default is Undefined, optional
-        Indicates whether information about services should be injected into Pod's environment variables.
+        enable service links
     hostAliases : [KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodHostAliasesItems0], default is Undefined, optional
-        The pod's HostAliases. HostAliases is an optional list of hosts and IPs that will be injected into the Pod's hosts file if specified.
+        host aliases
     hostUsers : bool, default is Undefined, optional
-        Use the host user namespace. Optional. Defaults to `true`. When `true` or not set, the pod runs in the host user namespace. This is required when the pod needs features available only in the host namespace, such as loading kernel modules with `CAP_SYS_MODULE`.When set to `false`, the pod runs in a new user namespace. Setting `false` helps mitigate container breakout vulnerabilities and allows containers to run as `root` without granting `root` privileges on the host. This property is alpha-level in Kubernetes and is supported only by Kubernetes clusters that enable the `UserNamespacesSupport` feature.
+        host users
     imagePullSecrets : [KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodImagePullSecretsItems0], default is Undefined, optional
-        List of references to secrets in the same namespace to use for pulling any of the images used by this Pod. When the `STRIMZI_IMAGE_PULL_SECRETS` environment variable in Cluster Operator and the `imagePullSecrets` option are specified, only the `imagePullSecrets` variable is used and the `STRIMZI_IMAGE_PULL_SECRETS` variable is ignored.
+        image pull secrets
     metadata : KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodMetadata, default is Undefined, optional
         metadata
     priorityClassName : str, default is Undefined, optional
-        The name of the priority class used to assign priority to the pods. 
+        priority class name
     schedulerName : str, default is Undefined, optional
-        The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.
+        scheduler name
     securityContext : KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodSecurityContext, default is Undefined, optional
         security context
     terminationGracePeriodSeconds : int, default is Undefined, optional
-        The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.
+        termination grace period seconds
     tmpDirSizeLimit : str, default is Undefined, optional
-        Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.
+        tmp dir size limit
     tolerations : [KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodTolerationsItems0], default is Undefined, optional
-        The pod's tolerations.
+        tolerations
     topologySpreadConstraints : [KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodTopologySpreadConstraintsItems0], default is Undefined, optional
-        The pod's topology spread constraints.
+        topology spread constraints
     volumes : [KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0], default is Undefined, optional
-        Additional volumes that can be mounted to the pod.
+        volumes
     """
 
 
@@ -3963,7 +3963,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePod:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodAffinity:
     r"""
-    The pod's affinity rules.
+    kafka strimzi io v1beta2 kafka connect spec template pod affinity
 
     Attributes
     ----------
@@ -4687,7 +4687,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodAffinityPodAntiAffinityRe
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodDNSConfig:
     r"""
-    The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.
+    kafka strimzi io v1beta2 kafka connect spec template pod DNS config
 
     Attributes
     ----------
@@ -4727,12 +4727,12 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodDNSConfigOptionsItems0:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodDisruptionBudget:
     r"""
-    Template for Kafka Connect `PodDisruptionBudget`.
+    kafka strimzi io v1beta2 kafka connect spec template pod disruption budget
 
     Attributes
     ----------
     maxUnavailable : int, default is Undefined, optional
-        Maximum number of unavailable pods to allow automatic Pod eviction. A Pod eviction is allowed when the `maxUnavailable` number of pods or fewer are unavailable after the eviction. Setting this value to 0 prevents all voluntary evictions, so the pods must be evicted manually. Defaults to 1.
+        max unavailable
     metadata : KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodDisruptionBudgetMetadata, default is Undefined, optional
         metadata
     """
@@ -4749,14 +4749,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodDisruptionBudget:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodDisruptionBudgetMetadata:
     r"""
-    Metadata to apply to the `PodDisruptionBudgetTemplate` resource.
+    kafka strimzi io v1beta2 kafka connect spec template pod disruption budget metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations added to the Kubernetes resource.
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels added to the Kubernetes resource.
+        labels
     """
 
 
@@ -4799,14 +4799,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodImagePullSecretsItems0:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodMetadata:
     r"""
-    Metadata applied to the resource.
+    kafka strimzi io v1beta2 kafka connect spec template pod metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations added to the Kubernetes resource.
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels added to the Kubernetes resource.
+        labels
     """
 
 
@@ -4817,7 +4817,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodMetadata:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodSecurityContext:
     r"""
-    Configures pod-level security attributes and common container settings.
+    kafka strimzi io v1beta2 kafka connect spec template pod security context
 
     Attributes
     ----------
@@ -4985,7 +4985,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodSecurityContextWindowsOpt
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodSet:
     r"""
-    Template for Kafka Connect `StrimziPodSet` resource.
+    kafka strimzi io v1beta2 kafka connect spec template pod set
 
     Attributes
     ----------
@@ -4999,14 +4999,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodSet:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodSetMetadata:
     r"""
-    Metadata applied to the resource.
+    kafka strimzi io v1beta2 kafka connect spec template pod set metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations added to the Kubernetes resource.
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels added to the Kubernetes resource.
+        labels
     """
 
 
@@ -5142,7 +5142,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0:
     image : KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0Image, default is Undefined, optional
         image
     name : str, default is Undefined, optional
-        Name to use for the volume. Required.
+        name
     persistentVolumeClaim : KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0PersistentVolumeClaim, default is Undefined, optional
         persistent volume claim
     secret : KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0Secret, default is Undefined, optional
@@ -5167,7 +5167,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0ConfigMap:
     r"""
-    `ConfigMap` to use to populate the volume.
+    kafka strimzi io v1beta2 kafka connect spec template pod volumes items0 config map
 
     Attributes
     ----------
@@ -5215,7 +5215,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0ConfigMapIte
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0Csi:
     r"""
-    `CSIVolumeSource` object to use to populate the volume.
+    kafka strimzi io v1beta2 kafka connect spec template pod volumes items0 csi
 
     Attributes
     ----------
@@ -5259,14 +5259,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0CsiNodePubli
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0EmptyDir:
     r"""
-    `EmptyDir` to use to populate the volume.
+    kafka strimzi io v1beta2 kafka connect spec template pod volumes items0 empty dir
 
     Attributes
     ----------
     medium : str, default is Undefined, optional
-        Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.
+        medium
     sizeLimit : str, default is Undefined, optional
-        The total amount of local storage required for this EmptyDir volume (for example 1Gi).
+        size limit
     """
 
 
@@ -5281,7 +5281,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0EmptyDir:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0Image:
     r"""
-    `ImageVolumeSource` object to use to populate the volume.
+    kafka strimzi io v1beta2 kafka connect spec template pod volumes items0 image
 
     Attributes
     ----------
@@ -5299,7 +5299,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0Image:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0PersistentVolumeClaim:
     r"""
-    `PersistentVolumeClaim` object to use to populate the volume.
+    kafka strimzi io v1beta2 kafka connect spec template pod volumes items0 persistent volume claim
 
     Attributes
     ----------
@@ -5317,7 +5317,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0PersistentVo
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0Secret:
     r"""
-    `Secret` to use to populate the volume.
+    kafka strimzi io v1beta2 kafka connect spec template pod volumes items0 secret
 
     Attributes
     ----------
@@ -5365,7 +5365,7 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplatePodVolumesItems0SecretItemsI
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateServiceAccount:
     r"""
-    Template for the Kafka Connect service account.
+    kafka strimzi io v1beta2 kafka connect spec template service account
 
     Attributes
     ----------
@@ -5379,14 +5379,14 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateServiceAccount:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateServiceAccountMetadata:
     r"""
-    Metadata applied to the resource.
+    kafka strimzi io v1beta2 kafka connect spec template service account metadata
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        Annotations added to the Kubernetes resource.
+        annotations
     labels : {str:str}, default is Undefined, optional
-        Labels added to the Kubernetes resource.
+        labels
     """
 
 
@@ -5397,12 +5397,12 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTemplateServiceAccountMetadata:
 
 schema KafkaStrimziIoV1beta2KafkaConnectSpecTracing:
     r"""
-    The configuration of tracing in Kafka Connect.
+    kafka strimzi io v1beta2 kafka connect spec tracing
 
     Attributes
     ----------
     $type : str, default is Undefined, required
-        Type of the tracing used. Currently the only supported type is `opentelemetry` for OpenTelemetry tracing. As of Strimzi 0.37.0, `jaeger` type is not supported anymore and this option is ignored.
+        type
     """
 
 
@@ -5411,22 +5411,22 @@ schema KafkaStrimziIoV1beta2KafkaConnectSpecTracing:
 
 schema KafkaStrimziIoV1beta2KafkaConnectStatus:
     r"""
-    The status of the Kafka Connect cluster.
+    kafka strimzi io v1beta2 kafka connect status
 
     Attributes
     ----------
     conditions : [KafkaStrimziIoV1beta2KafkaConnectStatusConditionsItems0], default is Undefined, optional
-        List of status conditions.
+        conditions
     connectorPlugins : [KafkaStrimziIoV1beta2KafkaConnectStatusConnectorPluginsItems0], default is Undefined, optional
-        The list of connector plugins available in this Kafka Connect deployment.
+        connector plugins
     labelSelector : str, default is Undefined, optional
-        Label selector for pods providing this resource.
+        label selector
     observedGeneration : int, default is Undefined, optional
-        The generation of the CRD that was last reconciled by the operator.
+        observed generation
     replicas : int, default is Undefined, optional
-        The current number of pods being used to provide this resource.
+        replicas
     url : str, default is Undefined, optional
-        The URL of the REST API endpoint for managing and monitoring Kafka Connect connectors.
+        url
     """
 
 
@@ -5450,15 +5450,15 @@ schema KafkaStrimziIoV1beta2KafkaConnectStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.
+        last transition time
     message : str, default is Undefined, optional
-        Human-readable message indicating details about the condition's last transition.
+        message
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition (a single word in CamelCase).
+        reason
     status : str, default is Undefined, optional
-        The status of the condition, either True, False or Unknown.
+        status
     $type : str, default is Undefined, optional
-        The unique identifier of a condition, used to distinguish between other conditions in the resource.
+        type
     """
 
 
@@ -5480,11 +5480,11 @@ schema KafkaStrimziIoV1beta2KafkaConnectStatusConnectorPluginsItems0:
     Attributes
     ----------
     class : str, default is Undefined, optional
-        The class of the connector plugin.
+        class
     $type : str, default is Undefined, optional
-        The type of the connector plugin. The available types are `sink` and `source`.
+        type
     version : str, default is Undefined, optional
-        The version of the connector plugin.
+        version
     """
 
 

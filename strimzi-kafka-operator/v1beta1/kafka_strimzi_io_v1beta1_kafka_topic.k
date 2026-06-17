@@ -37,18 +37,18 @@ schema KafkaTopic:
 
 schema KafkaStrimziIoV1beta1KafkaTopicSpec:
     r"""
-    The specification of the topic.
+    kafka strimzi io v1beta1 kafka topic spec
 
     Attributes
     ----------
     config : any, default is Undefined, optional
-        The topic configuration.
+        config
     partitions : int, default is Undefined, optional
-        The number of partitions the topic should have. This cannot be decreased after topic creation. It can be increased after topic creation, but it is important to understand the consequences that has, especially for topics with semantic partitioning. When absent this will default to the broker configuration for `num.partitions`.
+        partitions
     replicas : int, default is Undefined, optional
-        The number of replicas the topic should have. When absent this will default to the broker configuration for `default.replication.factor`.
+        replicas
     topicName : str, default is Undefined, optional
-        The name of the topic. When absent this will default to the metadata.name of the topic. It is recommended to not set this unless the topic name is not a valid Kubernetes resource name.
+        topic name
     """
 
 
@@ -69,20 +69,20 @@ schema KafkaStrimziIoV1beta1KafkaTopicSpec:
 
 schema KafkaStrimziIoV1beta1KafkaTopicStatus:
     r"""
-    The status of the topic.
+    kafka strimzi io v1beta1 kafka topic status
 
     Attributes
     ----------
     conditions : [KafkaStrimziIoV1beta1KafkaTopicStatusConditionsItems0], default is Undefined, optional
-        List of status conditions.
+        conditions
     observedGeneration : int, default is Undefined, optional
-        The generation of the CRD that was last reconciled by the operator.
+        observed generation
     replicasChange : KafkaStrimziIoV1beta1KafkaTopicStatusReplicasChange, default is Undefined, optional
         replicas change
     topicId : str, default is Undefined, optional
-        The topic's id. For a KafkaTopic with the ready condition, this will change only if the topic gets deleted and recreated with the same name.
+        topic Id
     topicName : str, default is Undefined, optional
-        Topic name.
+        topic name
     """
 
 
@@ -104,15 +104,15 @@ schema KafkaStrimziIoV1beta1KafkaTopicStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.
+        last transition time
     message : str, default is Undefined, optional
-        Human-readable message indicating details about the condition's last transition.
+        message
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition (a single word in CamelCase).
+        reason
     status : str, default is Undefined, optional
-        The status of the condition, either True, False or Unknown.
+        status
     $type : str, default is Undefined, optional
-        The unique identifier of a condition, used to distinguish between other conditions in the resource.
+        type
     """
 
 
@@ -129,18 +129,18 @@ schema KafkaStrimziIoV1beta1KafkaTopicStatusConditionsItems0:
 
 schema KafkaStrimziIoV1beta1KafkaTopicStatusReplicasChange:
     r"""
-    Replication factor change status.
+    kafka strimzi io v1beta1 kafka topic status replicas change
 
     Attributes
     ----------
     message : str, default is Undefined, optional
-        Message for the user related to the replicas change request. This may contain transient error messages that would disappear on periodic reconciliations.
+        message
     sessionId : str, default is Undefined, optional
-        The session identifier for replicas change requests pertaining to this KafkaTopic resource. This is used by the Topic Operator to track the status of `ongoing` replicas change operations.
+        session Id
     state : str, default is Undefined, optional
-        Current state of the replicas change operation. This can be `pending`, when the change has been requested, or `ongoing`, when the change has been successfully submitted to Cruise Control.
+        state
     targetReplicas : int, default is Undefined, optional
-        The target replicas value requested by the user. This may be different from .spec.replicas when a change is ongoing.
+        target replicas
     """
 
 

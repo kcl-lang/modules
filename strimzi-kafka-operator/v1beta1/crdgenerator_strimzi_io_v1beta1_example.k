@@ -37,10 +37,12 @@ schema Example:
         customised enum
     either : str, default is Undefined, optional
         either
+    external : str, default is Undefined, optional
+        external
     fieldProperty : str, default is Undefined, optional
-        field property
+        Example of field property.
     intProperty : int, default is Undefined, optional
-        int property
+        An example int property.
     kind : str, default is "Example", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     listOfArray : [[str]], default is Undefined, optional
@@ -76,7 +78,7 @@ schema Example:
     listOfWildcardTypeVar4 : [[any]], default is Undefined, optional
         list of wildcard type var4
     longProperty : int, default is Undefined, optional
-        long property
+        An example long property.
     mapStringObject : any, default is Undefined, optional
         map string object
     mapStringQuantity : {str:int | str}, default is Undefined, optional
@@ -93,6 +95,8 @@ schema Example:
         or
     polymorphicProperty : CrdgeneratorStrimziIoV1beta1ExamplePolymorphicProperty, default is Undefined, optional
         polymorphic property
+    polymorphicWithOptionalType : CrdgeneratorStrimziIoV1beta1ExamplePolymorphicWithOptionalType, default is Undefined, optional
+        polymorphic with optional type
     rawList : [any], default is Undefined, optional
         raw list
     spec : any, default is Undefined, optional
@@ -127,6 +131,8 @@ schema Example:
     customisedEnum?: "one" | "two"
 
     either?: str
+
+    external?: str
 
     fieldProperty?: str
 
@@ -183,6 +189,8 @@ schema Example:
     $or?: str
 
     polymorphicProperty?: CrdgeneratorStrimziIoV1beta1ExamplePolymorphicProperty
+
+    polymorphicWithOptionalType?: CrdgeneratorStrimziIoV1beta1ExamplePolymorphicWithOptionalType
 
     rawList?: [any]
 
@@ -954,7 +962,7 @@ schema CrdgeneratorStrimziIoV1beta1ExampleListOfPolymorphicItems0:
     discrim : str, default is Undefined, required
         discrim
     leftProperty : str, default is Undefined, optional
-        left property
+        when descrim=left, the left-hand property.
     """
 
 
@@ -994,13 +1002,35 @@ schema CrdgeneratorStrimziIoV1beta1ExamplePolymorphicProperty:
     discrim : str, default is Undefined, required
         discrim
     leftProperty : str, default is Undefined, optional
-        left property
+        when descrim=left, the left-hand property.
     """
 
 
     commonProperty?: str
 
     discrim: "left"
+
+    leftProperty?: str
+
+
+schema CrdgeneratorStrimziIoV1beta1ExamplePolymorphicWithOptionalType:
+    r"""
+    crdgenerator strimzi io v1beta1 example polymorphic with optional type
+
+    Attributes
+    ----------
+    commonProperty : str, default is Undefined, optional
+        common property
+    discrim : str, default is Undefined, optional
+        discrim
+    leftProperty : str, default is Undefined, optional
+        when descrim=left, the left-hand property.
+    """
+
+
+    commonProperty?: str
+
+    discrim?: "left"
 
     leftProperty?: str
 

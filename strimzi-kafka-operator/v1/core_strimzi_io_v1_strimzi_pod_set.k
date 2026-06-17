@@ -37,12 +37,12 @@ schema StrimziPodSet:
 
 schema CoreStrimziIoV1StrimziPodSetSpec:
     r"""
-    The specification of the StrimziPodSet.
+    core strimzi io v1 strimzi pod set spec
 
     Attributes
     ----------
     pods : [any], default is Undefined, required
-        The Pods managed by this StrimziPodSet.
+        pods
     selector : CoreStrimziIoV1StrimziPodSetSpecSelector, default is Undefined, required
         selector
     """
@@ -55,7 +55,7 @@ schema CoreStrimziIoV1StrimziPodSetSpec:
 
 schema CoreStrimziIoV1StrimziPodSetSpecSelector:
     r"""
-    Selector is a label query which matches all the pods managed by this `StrimziPodSet`. Only `matchLabels` is supported. If `matchExpressions` is set, it will be ignored.
+    core strimzi io v1 strimzi pod set spec selector
 
     Attributes
     ----------
@@ -95,20 +95,20 @@ schema CoreStrimziIoV1StrimziPodSetSpecSelectorMatchExpressionsItems0:
 
 schema CoreStrimziIoV1StrimziPodSetStatus:
     r"""
-    The status of the StrimziPodSet.
+    core strimzi io v1 strimzi pod set status
 
     Attributes
     ----------
     conditions : [CoreStrimziIoV1StrimziPodSetStatusConditionsItems0], default is Undefined, optional
-        List of status conditions.
+        conditions
     currentPods : int, default is Undefined, optional
-        Number of pods managed by this `StrimziPodSet` resource that have the current revision.
+        current pods
     observedGeneration : int, default is Undefined, optional
-        The generation of the CRD that was last reconciled by the operator.
+        observed generation
     pods : int, default is Undefined, optional
-        Number of pods managed by this `StrimziPodSet` resource.
+        pods
     readyPods : int, default is Undefined, optional
-        Number of pods managed by this `StrimziPodSet` resource that are ready.
+        ready pods
     """
 
 
@@ -130,15 +130,15 @@ schema CoreStrimziIoV1StrimziPodSetStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.
+        last transition time
     message : str, default is Undefined, optional
-        Human-readable message indicating details about the condition's last transition.
+        message
     reason : str, default is Undefined, optional
-        The reason for the condition's last transition (a single word in CamelCase).
+        reason
     status : str, default is Undefined, optional
-        The status of the condition, either True, False or Unknown.
+        status
     $type : str, default is Undefined, optional
-        The unique identifier of a condition, used to distinguish between other conditions in the resource.
+        type
     """
 
 
