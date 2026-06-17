@@ -47,7 +47,7 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpec:
     commonMetadata : KustomizeToolkitFluxcdIoV1KustomizationSpecCommonMetadata, default is Undefined, optional
         common metadata
     components : [str], default is Undefined, optional
-        Components specifies relative paths to specifications of other Components.
+        Components specifies relative paths to kustomize Components.
     decryption : KustomizeToolkitFluxcdIoV1KustomizationSpecDecryption, default is Undefined, optional
         decryption
     deletionPolicy : str, default is Undefined, optional
@@ -56,7 +56,7 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpec:
         'WaitForTermination', 'Orphan'). 'MirrorPrune' mirrors the Prune field
         (orphan if false, delete if true). Defaults to 'MirrorPrune'.
     dependsOn : [KustomizeToolkitFluxcdIoV1KustomizationSpecDependsOnItems0], default is Undefined, optional
-        DependsOn may contain a meta.NamespacedObjectReference slice
+        DependsOn may contain a DependencyReference slice
         with references to Kustomization resources that must be ready before this
         Kustomization can be reconciled.
     force : bool, default is Undefined, optional
@@ -68,6 +68,10 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpec:
         The expressions are evaluated only when Wait or HealthChecks are specified.
     healthChecks : [KustomizeToolkitFluxcdIoV1KustomizationSpecHealthChecksItems0], default is Undefined, optional
         A list of resources to be included in the health assessment.
+    ignoreMissingComponents : bool, default is Undefined, optional
+        IgnoreMissingComponents instructs the controller to ignore Components paths
+        not found in source by removing them from the generated kustomization.yaml
+        before running kustomize build.
     images : [KustomizeToolkitFluxcdIoV1KustomizationSpecImagesItems0], default is Undefined, optional
         Images is a list of (image name, new name, new tag or digest)
         for changing image names, tags or digests. This can also be achieved with a
@@ -133,6 +137,8 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpec:
 
     healthChecks?: [KustomizeToolkitFluxcdIoV1KustomizationSpecHealthChecksItems0]
 
+    ignoreMissingComponents?: bool
+
     images?: [KustomizeToolkitFluxcdIoV1KustomizationSpecImagesItems0]
 
     interval: str
@@ -168,13 +174,13 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpec:
 
     check:
         _regex_match(str(interval), r"^([0-9]+(\.[0-9]+)?(ms|s|m|h))+$")
-        len(namePrefix) <= 200 if namePrefix
-        len(namePrefix) >= 1 if namePrefix
-        len(nameSuffix) <= 200 if nameSuffix
-        len(nameSuffix) >= 1 if nameSuffix
+        len(namePrefix) <= 200 if namePrefix not in [None, Undefined]
+        len(namePrefix) >= 1 if namePrefix not in [None, Undefined]
+        len(nameSuffix) <= 200 if nameSuffix not in [None, Undefined]
+        len(nameSuffix) >= 1 if nameSuffix not in [None, Undefined]
         _regex_match(str(retryInterval), r"^([0-9]+(\.[0-9]+)?(ms|s|m|h))+$") if retryInterval
-        len(targetNamespace) <= 63 if targetNamespace
-        len(targetNamespace) >= 1 if targetNamespace
+        len(targetNamespace) <= 63 if targetNamespace not in [None, Undefined]
+        len(targetNamespace) >= 1 if targetNamespace not in [None, Undefined]
         _regex_match(str(timeout), r"^([0-9]+(\.[0-9]+)?(ms|s|m|h))+$") if timeout
 
 
@@ -243,21 +249,29 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpecDecryptionSecretRef:
 
 schema KustomizeToolkitFluxcdIoV1KustomizationSpecDependsOnItems0:
     r"""
-    NamespacedObjectReference contains enough information to locate the referenced Kubernetes resource object in any
-    namespace.
+    DependencyReference defines a Kustomization dependency on another Kustomization resource.
 
     Attributes
     ----------
     name : str, default is Undefined, required
         Name of the referent.
     namespace : str, default is Undefined, optional
-        Namespace of the referent, when not specified it acts as LocalObjectReference.
+        Namespace of the referent, defaults to the namespace of the Kustomization
+        resource object that contains the reference.
+    readyExpr : str, default is Undefined, optional
+        ReadyExpr is a CEL expression that can be used to assess the readiness
+        of a dependency. When specified, the built-in readiness check
+        is replaced by the logic defined in the CEL expression.
+        To make the CEL expression additive to the built-in readiness check,
+        the feature gate `AdditiveCELDependencyCheck` must be set to `true`.
     """
 
 
     name: str
 
     namespace?: str
+
+    readyExpr?: str
 
 
 schema KustomizeToolkitFluxcdIoV1KustomizationSpecHealthCheckExprsItems0:
@@ -359,24 +373,70 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpecKubeConfig:
 
     Attributes
     ----------
-    secretRef : KustomizeToolkitFluxcdIoV1KustomizationSpecKubeConfigSecretRef, default is Undefined, required
+    configMapRef : KustomizeToolkitFluxcdIoV1KustomizationSpecKubeConfigConfigMapRef, default is Undefined, optional
+        config map ref
+    secretRef : KustomizeToolkitFluxcdIoV1KustomizationSpecKubeConfigSecretRef, default is Undefined, optional
         secret ref
     """
 
 
-    secretRef: KustomizeToolkitFluxcdIoV1KustomizationSpecKubeConfigSecretRef
+    configMapRef?: KustomizeToolkitFluxcdIoV1KustomizationSpecKubeConfigConfigMapRef
+
+    secretRef?: KustomizeToolkitFluxcdIoV1KustomizationSpecKubeConfigSecretRef
+
+
+schema KustomizeToolkitFluxcdIoV1KustomizationSpecKubeConfigConfigMapRef:
+    r"""
+    ConfigMapRef holds an optional name of a ConfigMap that contains
+    the following keys:
+
+    - `provider`: the provider to use. One of `aws`, `azure`, `gcp`, or
+       `generic`. Required.
+    - `cluster`: the fully qualified resource name of the Kubernetes
+       cluster in the cloud provider API. Not used by the `generic`
+       provider. Required when one of `address` or `ca.crt` is not set.
+    - `address`: the address of the Kubernetes API server. Required
+       for `generic`. For the other providers, if not specified, the
+       first address in the cluster resource will be used, and if
+       specified, it must match one of the addresses in the cluster
+       resource.
+       If audiences is not set, will be used as the audience for the
+       `generic` provider.
+    - `ca.crt`: the optional PEM-encoded CA certificate for the
+       Kubernetes API server. If not set, the controller will use the
+       CA certificate from the cluster resource.
+    - `audiences`: the optional audiences as a list of
+       line-break-separated strings for the Kubernetes ServiceAccount
+       token. Defaults to the `address` for the `generic` provider, or
+       to specific values for the other providers depending on the
+       provider.
+    -  `serviceAccountName`: the optional name of the Kubernetes
+       ServiceAccount in the same namespace that should be used
+       for authentication. If not specified, the controller
+       ServiceAccount will be used.
+
+    Mutually exclusive with SecretRef.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referent.
+    """
+
+
+    name: str
 
 
 schema KustomizeToolkitFluxcdIoV1KustomizationSpecKubeConfigSecretRef:
     r"""
-    SecretRef holds the name of a secret that contains a key with
+    SecretRef holds an optional name of a secret that contains a key with
     the kubeconfig file as the value. If no key is set, the key will default
-    to 'value'.
+    to 'value'. Mutually exclusive with ConfigMapRef.
     It is recommended that the kubeconfig is self-contained, and the secret
     is regularly updated if credentials such as a cloud-access-token expire.
     Cloud specific `cmd-path` auth helpers will not function without adding
     binaries and credentials to the Pod that is responsible for reconciling
-    Kubernetes resources.
+    Kubernetes resources. Supported only for the generic provider.
 
     Attributes
     ----------
@@ -539,7 +599,7 @@ schema KustomizeToolkitFluxcdIoV1KustomizationSpecSourceRef:
 
     apiVersion?: str
 
-    kind: "OCIRepository" | "GitRepository" | "Bucket"
+    kind: "OCIRepository" | "GitRepository" | "Bucket" | "ExternalArtifact"
 
     name: str
 
@@ -554,6 +614,9 @@ schema KustomizeToolkitFluxcdIoV1KustomizationStatus:
     ----------
     conditions : [KustomizeToolkitFluxcdIoV1KustomizationStatusConditionsItems0], default is Undefined, optional
         conditions
+    history : [KustomizeToolkitFluxcdIoV1KustomizationStatusHistoryItems0], default is Undefined, optional
+        History contains a set of snapshots of the last reconciliation attempts
+        tracking the revision, the state and the duration of each attempt.
     inventory : KustomizeToolkitFluxcdIoV1KustomizationStatusInventory, default is Undefined, optional
         inventory
     lastAppliedOriginRevision : str, default is Undefined, optional
@@ -577,6 +640,8 @@ schema KustomizeToolkitFluxcdIoV1KustomizationStatus:
 
 
     conditions?: [KustomizeToolkitFluxcdIoV1KustomizationStatusConditionsItems0]
+
+    history?: [KustomizeToolkitFluxcdIoV1KustomizationStatusHistoryItems0]
 
     inventory?: KustomizeToolkitFluxcdIoV1KustomizationStatusInventory
 
@@ -641,6 +706,45 @@ schema KustomizeToolkitFluxcdIoV1KustomizationStatusConditionsItems0:
         _regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
         len($type) <= 316
         _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+
+
+schema KustomizeToolkitFluxcdIoV1KustomizationStatusHistoryItems0:
+    r"""
+    Snapshot represents a point-in-time record of a group of resources reconciliation,
+    including timing information, status, and a unique digest identifier.
+
+    Attributes
+    ----------
+    digest : str, default is Undefined, required
+        Digest is the checksum in the format `<algo>:<hex>` of the resources in this snapshot.
+    firstReconciled : str, default is Undefined, required
+        FirstReconciled is the time when this revision was first reconciled to the cluster.
+    lastReconciled : str, default is Undefined, required
+        LastReconciled is the time when this revision was last reconciled to the cluster.
+    lastReconciledDuration : str, default is Undefined, required
+        LastReconciledDuration is time it took to reconcile the resources in this revision.
+    lastReconciledStatus : str, default is Undefined, required
+        LastReconciledStatus is the status of the last reconciliation.
+    metadata : {str:str}, default is Undefined, optional
+        Metadata contains additional information about the snapshot.
+    totalReconciliations : int, default is Undefined, required
+        TotalReconciliations is the total number of reconciliations that have occurred for this snapshot.
+    """
+
+
+    digest: str
+
+    firstReconciled: str
+
+    lastReconciled: str
+
+    lastReconciledDuration: str
+
+    lastReconciledStatus: str
+
+    metadata?: {str:str}
+
+    totalReconciliations: int
 
 
 schema KustomizeToolkitFluxcdIoV1KustomizationStatusInventory:
