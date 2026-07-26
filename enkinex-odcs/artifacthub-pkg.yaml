@@ -1,0 +1,25 @@
+version: 3.1.0
+name: enkinex-odcs
+displayName: enkinex-odcs
+createdAt: "2026-07-24T19:00:00Z"
+description: 'Enkinex ODCS is the Open Data Contract Standard spec definition'
+links:
+- name: enkinex-odcs homepage
+  url: https://odcs.enkinex.org
+- name: enkinex-odcs repo
+  url: https://github.com/enkinex/enkinex-odcs
+install: |
+  #### Add `enkinex-odcs` with tag `3.1.0` as dependency
+  ```
+  kcl mod add enkinex-odcs:3.1.0
+  ```
+
+  #### Pull `enkinex-odcs` with tag `3.1.0` to local
+  ```
+  kcl mod pull enkinex-odcs:3.1.0
+  ```
+maintainers:
+- name: enkinex
+  email: platform@enkinex.com
+provider:
+  name: enkinex.org
