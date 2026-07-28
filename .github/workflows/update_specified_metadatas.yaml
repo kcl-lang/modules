@@ -1,10 +1,10 @@
 name: Republish Specified Packages
 
-on: 
+on:
   workflow_dispatch:
     inputs:
       myInput:
-        description: 'Enter the package path'     
+        description: 'Enter the package path'
         required: true
         default: ''
 
@@ -20,7 +20,7 @@ jobs:
     # - For more flexibility and no limitations see "Using local .git history" above.
 
     runs-on: ubuntu-latest
-    name: Update Package Info on AH 
+    name: Update Package Info on AH
     steps:
       - uses: actions/checkout@v4
         with:
@@ -34,30 +34,71 @@ jobs:
       - name: Install kpm
         run: go install kcl-lang.io/kpm@latest
 
-      - name: Login
+      # Reset the Docker credential helper so `kpm login` can persist
+      # credentials to plain `~/.docker/config.json`. Recent GitHub-hosted
+      # Ubuntu 24.04 images ship a `credsStore` (e.g. `desktop`) that rejects
+      # plaintext storage with `putting plaintext credentials is disabled`,
+      # which previously failed the docker.io login and skipped every step
+      # below it (issue #378).
+      - name: Reset Docker credsStore
+        run: |
+          mkdir -p "$HOME/.docker"
+          if [ -f "$HOME/.docker/config.json" ]; then
+            python -c "import json,sys; p='$HOME/.docker/config.json'; c=json.load(open(p)); c.pop('credsStore', None); c.pop('credHelpers', None); open(p,'w').write(json.dumps(c, indent=2))"
+          else
+            echo '{}' > "$HOME/.docker/config.json"
+          fi
+
+      - name: Login to docker.io
         run: kpm login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} docker.io
 
+      # Republish to docker.io. `continue-on-error` plus `if: always()` on the
+      # ghcr.io step ensures a docker.io failure can no longer skip the
+      # ghcr.io push (issue #378).
       - name: Republish to docker.io
+        id: publish-docker
+        if: github.event.inputs.myInput != ''
+        continue-on-error: true
         run: |
           find ${{ github.event.inputs.myInput }} -name "kcl.mod" -execdir bash -c 'echo Pushing in directory: "$PWD" && kpm push || echo Failed to push in directory: "$PWD"' \;
 
+      - name: Login to ghcr.io
+        if: always()
+        run: kpm login -u ${{ secrets.DEPLOY_ACCESS_NAME }} -p ${{ secrets.DEPLOY_ACCESS_TOKEN }} ghcr.io
+
       - name: Republish to ghcr.io
-        run: |
-          kpm login -u ${{ secrets.DEPLOY_ACCESS_NAME }} -p ${{ secrets.DEPLOY_ACCESS_TOKEN }} ghcr.io
-          find ${{ github.event.inputs.myInput }} -name "kcl.mod" -execdir bash -c 'echo Pushing in directory: "$PWD" && kpm push || echo Failed to push in directory: "$PWD"' \;
+        id: publish-ghcr
+        if: always()
+        continue-on-error: true
         env:
           KPM_REG: "ghcr.io"
           KPM_REPO: "kcl-lang"
+        run: |
+          find ${{ github.event.inputs.myInput }} -name "kcl.mod" -execdir bash -c 'echo Pushing in directory: "$PWD" && kpm push || echo Failed to push in directory: "$PWD"' \;
+
+      - name: Verify at least one publish succeeded
+        if: always()
+        run: |
+          docker_ok="${{ steps.publish-docker.conclusion }}"
+          ghcr_ok="${{ steps.publish-ghcr.conclusion }}"
+          if [[ "$docker_ok" == "success" || "$ghcr_ok" == "success" ]]; then
+            echo "At least one publish succeeded (docker.io=$docker_ok, ghcr.io=$ghcr_ok)."
+          else
+            echo "::error::Both docker.io and ghcr.io publishes failed (docker.io=$docker_ok, ghcr.io=$ghcr_ok)."
+            exit 1
+          fi
 
       - name: Regenerate artifacthub-pkg.yaml
+        if: always()
         run: |
           find ${{ github.event.inputs.myInput }} -name "kcl.mod" -exec bash -c 'file="{}" && echo Running for file: "$file" && go run main.go "$file" || echo Failed to run for file: "$file"' \;
 
       - name: Commit and push changes
+        if: always()
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
 
           git add .
-          git commit -m "Regenerate artifacthub-pkg.yaml for all packages"
+          git commit -m "Regenerate artifacthub-pkg.yaml for all packages" || echo "Nothing to commit"
           git push
