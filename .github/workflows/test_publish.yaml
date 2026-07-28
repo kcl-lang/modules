@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Install kcl
         run: wget -q https://kcl-lang.io/script/install-cli.sh -O - | /bin/bash
-        
+
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -26,12 +26,17 @@ jobs:
         uses: tj-actions/changed-files@v41
 
       - name: test
+        env:
+          KPM_REG: "localhost:5001"
+          KPM_REPO: "test"
+          LOGIN_WITH_KCL: "1"
         run: |
-          export KPM_REG="localhost:5001"
-          export KPM_REPO="test"
-          export LOGIN_WITH_KCL=1
           ./scripts/reg.sh
-          kcl registry login -u test -p 1234 localhost:5001
+          # Local registry is plain HTTP (no TLS), so we must skip TLS
+          # verification when storing credentials — otherwise `kcl registry
+          # login` fails with: http: server gave HTTP response to HTTPS
+          # client. See issue #378.
+          kcl registry login --insecure-skip-tls-verify -u test -p 1234 localhost:5001
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             ./scripts/push_pkg_from.sh $file
           done
