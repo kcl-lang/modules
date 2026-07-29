@@ -34,34 +34,35 @@ jobs:
         with:
           go-version-file: go.mod
 
-      # Reset the Docker credential helper so `kcl registry login` can persist
-      # credentials to the plain `~/.docker/config.json`. Recent GitHub-hosted
-      # Ubuntu 24.04 images ship a `credsStore` (e.g. `desktop`) that rejects
-      # plaintext storage with `putting plaintext credentials is disabled`,
-      # which previously failed the docker.io login and skipped every step
-      # below it (including the ghcr.io publish — see issue #378).
-      - name: Reset Docker credsStore
+      # Write credentials directly into kpm's config file
+      # (~/.kpm/config/config.json) in the standard Docker `auths` format.
+      # `kcl registry login` cannot be used here because the underlying ORAS
+      # store requires `AllowPlaintextPut: true`, which is only enabled when
+      # `OCI_REG_PLAIN_HTTP=on` is set — and that flag also forces the
+      # registry to plain HTTP, which breaks HTTPS-only registries like
+      # docker.io and ghcr.io. See issue #378.
+      - name: Configure kpm credentials
         run: |
-          mkdir -p "$HOME/.docker"
-          if [ -f "$HOME/.docker/config.json" ]; then
-            # Strip any credsStore / credHelpers entries that would block
-            # plaintext credential storage.
-            python -c "import json,sys; p='$HOME/.docker/config.json'; c=json.load(open(p)); c.pop('credsStore', None); c.pop('credHelpers', None); open(p,'w').write(json.dumps(c, indent=2))"
-          else
-            echo '{}' > "$HOME/.docker/config.json"
-          fi
+          mkdir -p "$HOME/.kpm/config"
+          DOCKER_AUTH=$(printf '%s:%s' "${{ secrets.DOCKER_USERNAME }}" "${{ secrets.DOCKER_PASSWORD }}" | base64 -w0)
+          GHCR_AUTH=$(printf '%s:%s' "${{ secrets.DEPLOY_ACCESS_NAME }}" "${{ secrets.DEPLOY_ACCESS_TOKEN }}" | base64 -w0)
+          cat > "$HOME/.kpm/config/config.json" <<EOF
+          {
+            "auths": {
+              "https://index.docker.io/v1/": { "auth": "${DOCKER_AUTH}" },
+              "ghcr.io":                       { "auth": "${GHCR_AUTH}" }
+            }
+          }
+          EOF
 
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v41
 
-      - name: Login to docker.io
-        run: kcl registry login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} docker.io
-
-      # Publish to docker.io. Publishing has its own `continue-on-error` so a
-      # docker.io failure can no longer skip the ghcr.io push (the root cause
-      # of issue #378, where the module ended up on Artifact Hub but never
-      # reached the OCI registries).
+      # Publish to docker.io. `continue-on-error` plus `if: always()` on the
+      # ghcr.io step ensures a docker.io failure can no longer skip the
+      # ghcr.io push (the root cause of issue #378, where the module ended
+      # up on Artifact Hub but never reached the OCI registries).
       - name: Publish to docker.io
         id: publish-docker
         if: steps.changed-files.outputs.all_changed_files != ''
@@ -72,10 +73,6 @@ jobs:
               ./scripts/push_pkg_from.sh $file
             done
           fi
-
-      - name: Login to ghcr.io
-        if: always()
-        run: kcl registry login -u ${{ secrets.DEPLOY_ACCESS_NAME }} -p ${{ secrets.DEPLOY_ACCESS_TOKEN }} ghcr.io
 
       - name: Publish to ghcr.io
         id: publish-ghcr
@@ -91,8 +88,8 @@ jobs:
             done
           fi
 
-      # Optional hardening (issue #378: "fail the AH metadata job loudly ... so
-      # a module never reaches Artifact Hub without a matching registry
+      # Optional hardening (issue #378: "fail the AH metadata job loudly ...
+      # so a module never reaches Artifact Hub without a matching registry
       # artifact"). If neither registry publish succeeded for the changed
       # kcl.mod files, fail the job so the resulting artifacthub-pkg.yaml
       # changes are not committed and Artifact Hub is not refreshed for a
