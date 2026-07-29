@@ -41,6 +41,10 @@ jobs:
       # `OCI_REG_PLAIN_HTTP=on` is set — and that flag also forces the
       # registry to plain HTTP, which breaks HTTPS-only registries like
       # docker.io and ghcr.io. See issue #378.
+      #
+      # ORAS's credential lookup uses the hostname as the key (e.g. `docker.io`)
+      # and matches it against the auths map. We also include the legacy
+      # `https://index.docker.io/v1/` key as a fallback for older code paths.
       - name: Configure kpm credentials
         run: |
           mkdir -p "$HOME/.kpm/config"
@@ -49,11 +53,14 @@ jobs:
           cat > "$HOME/.kpm/config/config.json" <<EOF
           {
             "auths": {
-              "https://index.docker.io/v1/": { "auth": "${DOCKER_AUTH}" },
-              "ghcr.io":                       { "auth": "${GHCR_AUTH}" }
+              "docker.io":                       { "auth": "${DOCKER_AUTH}" },
+              "https://index.docker.io/v1/":      { "auth": "${DOCKER_AUTH}" },
+              "ghcr.io":                         { "auth": "${GHCR_AUTH}" }
             }
           }
           EOF
+          echo "Wrote credentials to $HOME/.kpm/config/config.json"
+          cat "$HOME/.kpm/config/config.json" | sed 's/"auth": "[^"]*"/"auth": "<redacted>"/'
 
       - name: Get changed files
         id: changed-files
