@@ -30,13 +30,16 @@ jobs:
           KPM_REG: "localhost:5001"
           KPM_REPO: "test"
           LOGIN_WITH_KCL: "1"
+          # Local registry is plain HTTP (no TLS), so kcl registry login /
+          # kcl mod push must use plain HTTP transport — otherwise the
+          # HTTPS dial fails with: http: server gave HTTP response to
+          # HTTPS client. `--insecure-skip-tls-verify` alone does not
+          # help: it only disables certificate verification, not the
+          # scheme. See issues #378 and #384.
+          OCI_REG_PLAIN_HTTP: "on"
         run: |
           ./scripts/reg.sh
-          # Local registry is plain HTTP (no TLS), so we must skip TLS
-          # verification when storing credentials — otherwise `kcl registry
-          # login` fails with: http: server gave HTTP response to HTTPS
-          # client. See issue #378.
-          kcl registry login --insecure-skip-tls-verify -u test -p 1234 localhost:5001
+          kcl registry login -u test -p 1234 localhost:5001
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             ./scripts/push_pkg_from.sh $file
           done

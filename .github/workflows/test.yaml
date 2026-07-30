@@ -23,4 +23,14 @@ jobs:
       run: go get -v -t -d ./...
 
     - name: Test
+      # Pin a shared kpm config dir so the `kcl registry login` invoked
+      # by Integrate-Checksum/TestMainFunc → mock/test_script/{push,pull}_pkg.sh
+      # (which installs the latest kcl and therefore uses the kpm v0.12.x
+      # default of $XDG_DATA_HOME/kcl/modules) writes credentials to the
+      # same place that the in-process kpmClient (kpm v0.11.1 from go.mod,
+      # defaulting to ~/.kcl/kpm) reads from. Without this, the Go test
+      # reports "basic credential not found" because the two processes
+      # disagree on where the credential file lives.
+      env:
+        KCL_PKG_PATH: /tmp/kcl-modules-test-kpm
       run: go test -v ./...
