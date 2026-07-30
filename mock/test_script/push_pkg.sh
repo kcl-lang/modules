@@ -18,6 +18,11 @@ fi
 
 export KPM_REG="localhost:5001"
 export KPM_REPO="test"
+# The local registry started by scripts/reg.sh is plain HTTP (no TLS).
+# OCI_REG_PLAIN_HTTP=on forces kcl/kpm to use plain HTTP transport,
+# otherwise kcl registry login fails with: http: server gave HTTP
+# response to HTTPS client. See issue #384.
+export OCI_REG_PLAIN_HTTP="on"
 
 # Prepare the package on the registry
 current_dir=$(pwd)
