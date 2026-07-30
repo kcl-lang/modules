@@ -1,0 +1,29 @@
+version: 1.0.0
+name: enkinex-odps
+displayName: Enkinex ODPS Library
+createdAt: "2026-07-29T23:30:00Z"
+description: 'Enkinex ODPS is the Open Data Product Standard spec definition'
+logoURL: https://enkinex.org/img/social/enkinex-avatar.png
+keywords:
+  - governance
+  - odcs
+links:
+- name: enkinex-odps homepage
+  url: https://odps.enkinex.org
+- name: enkinex-odps repo
+  url: https://github.com/enkinex/enkinex-odps
+install: |
+  #### Add `enkinex-odps` with tag `1.0.0` as dependency
+  ```
+  kcl mod add enkinex-odps:1.0.0
+  ```
+
+  #### Pull `enkinex-odps` with tag `1.0.0` to local
+  ```
+  kcl mod pull enkinex-odps:1.0.0
+  ```
+maintainers:
+- name: enkinex
+  email: platform@enkinex.com
+provider:
+  name: enkinex.org
