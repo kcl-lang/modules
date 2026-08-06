@@ -64,8 +64,6 @@ schema HTTPCrossplaneIoV1alpha2DisposableRequestSpec:
         and this one: https://github.com/crossplane/crossplane/blob/444267e84783136daa93568b364a5f01228cacbe/design/one-pager-ignore-changes.md
     providerConfigRef : HTTPCrossplaneIoV1alpha2DisposableRequestSpecProviderConfigRef, default is Undefined, optional
         provider config ref
-    publishConnectionDetailsTo : HTTPCrossplaneIoV1alpha2DisposableRequestSpecPublishConnectionDetailsTo, default is Undefined, optional
-        publish connection details to
     writeConnectionSecretToRef : HTTPCrossplaneIoV1alpha2DisposableRequestSpecWriteConnectionSecretToRef, default is Undefined, optional
         write connection secret to ref
     """
@@ -79,8 +77,6 @@ schema HTTPCrossplaneIoV1alpha2DisposableRequestSpec:
 
     providerConfigRef?: HTTPCrossplaneIoV1alpha2DisposableRequestSpecProviderConfigRef
 
-    publishConnectionDetailsTo?: HTTPCrossplaneIoV1alpha2DisposableRequestSpecPublishConnectionDetailsTo
-
     writeConnectionSecretToRef?: HTTPCrossplaneIoV1alpha2DisposableRequestSpecWriteConnectionSecretToRef
 
 
@@ -90,6 +86,10 @@ schema HTTPCrossplaneIoV1alpha2DisposableRequestSpecForProvider:
 
     Attributes
     ----------
+    allowedStatusCodes : [int], default is Undefined, optional
+        AllowedStatusCodes specifies HTTP status codes that should not be treated as errors.
+        By default, status codes 400-599 are considered errors. This field allows users to
+        override that behavior for specific status codes (e.g., treating 404 as valid).
     body : str, default is Undefined, optional
         body
     expectedResponse : str, default is Undefined, optional
@@ -99,7 +99,8 @@ schema HTTPCrossplaneIoV1alpha2DisposableRequestSpecForProvider:
     headers : {str:[str]}, default is Undefined, optional
         headers
     insecureSkipTLSVerify : bool, default is Undefined, optional
-        InsecureSkipTLSVerify, when set to true, skips TLS certificate checks for the HTTP request
+        InsecureSkipTLSVerify, when set to true, skips TLS certificate checks for the HTTP request.
+        This field is mutually exclusive with TLSConfig.
     method : str, default is Undefined, required
         method
     nextReconcile : str, default is Undefined, optional
@@ -110,12 +111,16 @@ schema HTTPCrossplaneIoV1alpha2DisposableRequestSpecForProvider:
         SecretInjectionConfig specifies the secrets receiving patches from response data.
     shouldLoopInfinitely : bool, default is Undefined, optional
         ShouldLoopInfinitely specifies whether the reconciliation should loop indefinitely.
+    tlsConfig : HTTPCrossplaneIoV1alpha2DisposableRequestSpecForProviderTLSConfig, default is Undefined, optional
+        tls config
     url : str, default is Undefined, required
         url
     waitTimeout : str, default is Undefined, optional
         WaitTimeout specifies the maximum time duration for waiting.
     """
 
+
+    allowedStatusCodes?: [int]
 
     body?: str
 
@@ -134,6 +139,8 @@ schema HTTPCrossplaneIoV1alpha2DisposableRequestSpecForProvider:
     secretInjectionConfigs?: [HTTPCrossplaneIoV1alpha2DisposableRequestSpecForProviderSecretInjectionConfigsItems0]
 
     shouldLoopInfinitely?: bool
+
+    tlsConfig?: HTTPCrossplaneIoV1alpha2DisposableRequestSpecForProviderTLSConfig
 
     url: str
 
@@ -182,12 +189,20 @@ schema HTTPCrossplaneIoV1alpha2DisposableRequestSpecForProviderSecretInjectionCo
 
     Attributes
     ----------
+    missingFieldStrategy : str, default is "delete", optional
+        MissingFieldStrategy determines how to handle cases where the field is missing from the response.
+        Possible values are:
+        - "preserve": keeps the existing value in the secret
+        - "setEmpty": sets the value to the empty string
+        - "delete": removes the key from the s
     responseJQ : str, default is Undefined, required
         ResponseJQ is a jq filter expression representing the path in the response where the secret value will be extracted from.
     secretKey : str, default is Undefined, required
         SecretKey is the key within the Kubernetes secret where the data will be injected.
     """
 
+
+    missingFieldStrategy?: "preserve" | "setEmpty" | "delete" = "delete"
 
     responseJQ: str
 
@@ -224,6 +239,108 @@ schema HTTPCrossplaneIoV1alpha2DisposableRequestSpecForProviderSecretInjectionCo
         Namespace is the namespace of the Kubernetes secret.
     """
 
+
+    name: str
+
+    namespace: str
+
+
+schema HTTPCrossplaneIoV1alpha2DisposableRequestSpecForProviderTLSConfig:
+    r"""
+    TLSConfig allows overriding the TLS configuration from ProviderConfig for this specific request.
+    This field is mutually exclusive with InsecureSkipTLSVerify.
+
+    Attributes
+    ----------
+    caBundle : str, default is Undefined, optional
+        CABundle is a PEM encoded CA bundle which will be used to validate the server certificate.
+        If empty, system root CAs will be used.
+    caCertSecretRef : HTTPCrossplaneIoV1alpha2DisposableRequestSpecForProviderTLSConfigCaCertSecretRef, default is Undefined, optional
+        ca cert secret ref
+    clientCertSecretRef : HTTPCrossplaneIoV1alpha2DisposableRequestSpecForProviderTLSConfigClientCertSecretRef, default is Undefined, optional
+        client cert secret ref
+    clientKeySecretRef : HTTPCrossplaneIoV1alpha2DisposableRequestSpecForProviderTLSConfigClientKeySecretRef, default is Undefined, optional
+        client key secret ref
+    insecureSkipVerify : bool, default is Undefined, optional
+        InsecureSkipVerify controls whether the client verifies the server's certificate chain and host name.
+        If true, any certificate presented by the server and any host name in that certificate is accepted.
+    """
+
+
+    caBundle?: str
+
+    caCertSecretRef?: HTTPCrossplaneIoV1alpha2DisposableRequestSpecForProviderTLSConfigCaCertSecretRef
+
+    clientCertSecretRef?: HTTPCrossplaneIoV1alpha2DisposableRequestSpecForProviderTLSConfigClientCertSecretRef
+
+    clientKeySecretRef?: HTTPCrossplaneIoV1alpha2DisposableRequestSpecForProviderTLSConfigClientKeySecretRef
+
+    insecureSkipVerify?: bool
+
+
+schema HTTPCrossplaneIoV1alpha2DisposableRequestSpecForProviderTLSConfigCaCertSecretRef:
+    r"""
+    CACertSecretRef is a reference to a secret containing the CA certificate(s).
+    The secret must contain a key specified in the SecretKeySelector.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key to select.
+    name : str, default is Undefined, required
+        Name of the secret.
+    namespace : str, default is Undefined, required
+        Namespace of the secret.
+    """
+
+
+    key: str
+
+    name: str
+
+    namespace: str
+
+
+schema HTTPCrossplaneIoV1alpha2DisposableRequestSpecForProviderTLSConfigClientCertSecretRef:
+    r"""
+    ClientCertSecretRef is a reference to a secret containing the client certificate.
+    The secret must contain a key specified in the SecretKeySelector.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key to select.
+    name : str, default is Undefined, required
+        Name of the secret.
+    namespace : str, default is Undefined, required
+        Namespace of the secret.
+    """
+
+
+    key: str
+
+    name: str
+
+    namespace: str
+
+
+schema HTTPCrossplaneIoV1alpha2DisposableRequestSpecForProviderTLSConfigClientKeySecretRef:
+    r"""
+    ClientKeySecretRef is a reference to a secret containing the client private key.
+    The secret must contain a key specified in the SecretKeySelector.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key to select.
+    name : str, default is Undefined, required
+        Name of the secret.
+    namespace : str, default is Undefined, required
+        Namespace of the secret.
+    """
+
+
+    key: str
 
     name: str
 
@@ -274,112 +391,12 @@ schema HTTPCrossplaneIoV1alpha2DisposableRequestSpecProviderConfigRefPolicy:
     resolve?: "Always" | "IfNotPresent"
 
 
-schema HTTPCrossplaneIoV1alpha2DisposableRequestSpecPublishConnectionDetailsTo:
-    r"""
-    PublishConnectionDetailsTo specifies the connection secret config which
-    contains a name, metadata and a reference to secret store config to
-    which any connection details for this managed resource should be written.
-    Connection details frequently include the endpoint, username,
-    and password required to connect to the managed resource.
-
-    Attributes
-    ----------
-    configRef : HTTPCrossplaneIoV1alpha2DisposableRequestSpecPublishConnectionDetailsToConfigRef, default is Undefined, optional
-        config ref
-    metadata : HTTPCrossplaneIoV1alpha2DisposableRequestSpecPublishConnectionDetailsToMetadata, default is Undefined, optional
-        metadata
-    name : str, default is Undefined, required
-        Name is the name of the connection secret.
-    """
-
-
-    configRef?: HTTPCrossplaneIoV1alpha2DisposableRequestSpecPublishConnectionDetailsToConfigRef
-
-    metadata?: HTTPCrossplaneIoV1alpha2DisposableRequestSpecPublishConnectionDetailsToMetadata
-
-    name: str
-
-
-schema HTTPCrossplaneIoV1alpha2DisposableRequestSpecPublishConnectionDetailsToConfigRef:
-    r"""
-    SecretStoreConfigRef specifies which secret store config should be used
-    for this ConnectionSecret.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, required
-        Name of the referenced object.
-    policy : HTTPCrossplaneIoV1alpha2DisposableRequestSpecPublishConnectionDetailsToConfigRefPolicy, default is Undefined, optional
-        policy
-    """
-
-
-    name: str
-
-    policy?: HTTPCrossplaneIoV1alpha2DisposableRequestSpecPublishConnectionDetailsToConfigRefPolicy
-
-
-schema HTTPCrossplaneIoV1alpha2DisposableRequestSpecPublishConnectionDetailsToConfigRefPolicy:
-    r"""
-    Policies for referencing.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
-
-
-schema HTTPCrossplaneIoV1alpha2DisposableRequestSpecPublishConnectionDetailsToMetadata:
-    r"""
-    Metadata is the metadata for connection secret.
-
-    Attributes
-    ----------
-    annotations : {str:str}, default is Undefined, optional
-        Annotations are the annotations to be added to connection secret.
-        - For Kubernetes secrets, this will be used as "metadata.annotations".
-        - It is up to Secret Store implementation for others store types.
-    labels : {str:str}, default is Undefined, optional
-        Labels are the labels/tags to be added to connection secret.
-        - For Kubernetes secrets, this will be used as "metadata.labels".
-        - It is up to Secret Store implementation for others store types.
-    $type : str, default is Undefined, optional
-        Type is the SecretType for the connection secret.
-        - Only valid for Kubernetes Secret Stores.
-    """
-
-
-    annotations?: {str:str}
-
-    labels?: {str:str}
-
-    $type?: str
-
-
 schema HTTPCrossplaneIoV1alpha2DisposableRequestSpecWriteConnectionSecretToRef:
     r"""
     WriteConnectionSecretToReference specifies the namespace and name of a
     Secret to which any connection details for this managed resource should
     be written. Connection details frequently include the endpoint, username,
     and password required to connect to the managed resource.
-    This field is planned to be replaced in a future release in favor of
-    PublishConnectionDetailsTo. Currently, both could be set independently
-    and connection details would be published to both without affecting
-    each other.
 
     Attributes
     ----------
