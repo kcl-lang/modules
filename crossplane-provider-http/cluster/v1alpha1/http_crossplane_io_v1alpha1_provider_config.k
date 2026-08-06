@@ -43,10 +43,14 @@ schema HTTPCrossplaneIoV1alpha1ProviderConfigSpec:
     ----------
     credentials : HTTPCrossplaneIoV1alpha1ProviderConfigSpecCredentials, default is Undefined, required
         credentials
+    tls : HTTPCrossplaneIoV1alpha1ProviderConfigSpecTLS, default is Undefined, optional
+        tls
     """
 
 
     credentials: HTTPCrossplaneIoV1alpha1ProviderConfigSpecCredentials
+
+    tls?: HTTPCrossplaneIoV1alpha1ProviderConfigSpecTLS
 
 
 schema HTTPCrossplaneIoV1alpha1ProviderConfigSpecCredentials:
@@ -109,6 +113,107 @@ schema HTTPCrossplaneIoV1alpha1ProviderConfigSpecCredentialsSecretRef:
     r"""
     A SecretRef is a reference to a secret key that contains the credentials
     that must be used to connect to the provider.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key to select.
+    name : str, default is Undefined, required
+        Name of the secret.
+    namespace : str, default is Undefined, required
+        Namespace of the secret.
+    """
+
+
+    key: str
+
+    name: str
+
+    namespace: str
+
+
+schema HTTPCrossplaneIoV1alpha1ProviderConfigSpecTLS:
+    r"""
+    TLS configuration for HTTPS requests.
+
+    Attributes
+    ----------
+    caBundle : str, default is Undefined, optional
+        CABundle is a PEM encoded CA bundle which will be used to validate the server certificate.
+        If empty, system root CAs will be used.
+    caCertSecretRef : HTTPCrossplaneIoV1alpha1ProviderConfigSpecTLSCaCertSecretRef, default is Undefined, optional
+        ca cert secret ref
+    clientCertSecretRef : HTTPCrossplaneIoV1alpha1ProviderConfigSpecTLSClientCertSecretRef, default is Undefined, optional
+        client cert secret ref
+    clientKeySecretRef : HTTPCrossplaneIoV1alpha1ProviderConfigSpecTLSClientKeySecretRef, default is Undefined, optional
+        client key secret ref
+    insecureSkipVerify : bool, default is Undefined, optional
+        InsecureSkipVerify controls whether the client verifies the server's certificate chain and host name.
+        If true, any certificate presented by the server and any host name in that certificate is accepted.
+    """
+
+
+    caBundle?: str
+
+    caCertSecretRef?: HTTPCrossplaneIoV1alpha1ProviderConfigSpecTLSCaCertSecretRef
+
+    clientCertSecretRef?: HTTPCrossplaneIoV1alpha1ProviderConfigSpecTLSClientCertSecretRef
+
+    clientKeySecretRef?: HTTPCrossplaneIoV1alpha1ProviderConfigSpecTLSClientKeySecretRef
+
+    insecureSkipVerify?: bool
+
+
+schema HTTPCrossplaneIoV1alpha1ProviderConfigSpecTLSCaCertSecretRef:
+    r"""
+    CACertSecretRef is a reference to a secret containing the CA certificate(s).
+    The secret must contain a key specified in the SecretKeySelector.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key to select.
+    name : str, default is Undefined, required
+        Name of the secret.
+    namespace : str, default is Undefined, required
+        Namespace of the secret.
+    """
+
+
+    key: str
+
+    name: str
+
+    namespace: str
+
+
+schema HTTPCrossplaneIoV1alpha1ProviderConfigSpecTLSClientCertSecretRef:
+    r"""
+    ClientCertSecretRef is a reference to a secret containing the client certificate.
+    The secret must contain a key specified in the SecretKeySelector.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        The key to select.
+    name : str, default is Undefined, required
+        Name of the secret.
+    namespace : str, default is Undefined, required
+        Namespace of the secret.
+    """
+
+
+    key: str
+
+    name: str
+
+    namespace: str
+
+
+schema HTTPCrossplaneIoV1alpha1ProviderConfigSpecTLSClientKeySecretRef:
+    r"""
+    ClientKeySecretRef is a reference to a secret containing the client private key.
+    The secret must contain a key specified in the SecretKeySelector.
 
     Attributes
     ----------
