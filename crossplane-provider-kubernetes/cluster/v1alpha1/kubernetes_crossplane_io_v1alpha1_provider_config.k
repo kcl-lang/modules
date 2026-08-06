@@ -162,7 +162,7 @@ schema KubernetesCrossplaneIoV1alpha1ProviderConfigSpecIdentity:
 
     source: "None" | "Secret" | "InjectedIdentity" | "Environment" | "Filesystem"
 
-    $type: "GoogleApplicationCredentials" | "AzureServicePrincipalCredentials" | "AzureWorkloadIdentityCredentials" | "UpboundTokens"
+    $type: "GoogleApplicationCredentials" | "AzureServicePrincipalCredentials" | "AzureWorkloadIdentityCredentials" | "UpboundTokens" | "AWSWebIdentityCredentials"
 
 
 schema KubernetesCrossplaneIoV1alpha1ProviderConfigSpecIdentityEnv:

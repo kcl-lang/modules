@@ -1,7 +1,7 @@
 [package]
 name = "crossplane-provider-kubernetes"
-version = "0.18.0"
-description = "`crossplane-provider-kubernetes` is the crossplane-provider-kubernetes spec definition"
+edition = "v0.12.3"
+version = "1.2.1"
 
 [dependencies]
 k8s = "1.32.4"
