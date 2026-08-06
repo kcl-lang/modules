@@ -83,7 +83,7 @@ for group in "${namespaced_groups[@]}" ; do (
         project=namespaced
     fi
 
-    kcl import -m crd -p "$project" "${crd_dir}/"+([a-z])".${group}${namespaced_apis}.yaml"
+    kcl import -m crd -p "$project" "${crd_dir}/"+([a-z0-9])".${group}${namespaced_apis}.yaml"
     ) 
 done
 
@@ -99,7 +99,7 @@ for group in "${cluster_groups[@]}" ; do (
         project=cluster
     fi
 
-    kcl import -m crd -p "$project" "${crd_dir}/"+([a-z])".${group}${cluster_apis}.yaml"
+    kcl import -m crd -p "$project" "${crd_dir}/"+([a-z0-9])".${group}${cluster_apis}.yaml"
     ) 
 done
 
