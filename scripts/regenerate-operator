@@ -1,0 +1,161 @@
+#!/usr/bin/env bash
+
+# Universal script to generate KCL schemas from any Kubernetes operator CRDs hosted on GitHub.
+# Downloads individual CRD YAML files from a GitHub repository path, groups them by API group,
+# and generates KCL schemas.
+#
+# Requirements: gh (GitHub CLI), kcl
+#
+# Usage:
+#   regenerate-operator <github-repo> <version> [crds-path] [output-dir]
+#
+# Examples:
+#   regenerate-operator external-secrets/external-secrets v2.9.0
+#   regenerate-operator external-secrets/external-secrets v2.9.0 config/crds/bases external-secrets
+
+set -e
+shopt -s extglob
+
+if (( $# < 2 || $# > 4 )); then
+    echo "Usage: $0 <github-repo> <version> [crds-path] [output-dir]"
+    echo ""
+    echo "  github-repo  GitHub repo in owner/name format (e.g. external-secrets/external-secrets)"
+    echo "  version      Git tag or ref to use (e.g. v2.9.0)"
+    echo "  crds-path    Path to CRD files inside the repo (default: config/crds/bases)"
+    echo "  output-dir   Output directory name or absolute path (default: basename of repo)"
+    echo ""
+    echo "Example:"
+    echo "  $0 external-secrets/external-secrets v2.9.0 config/crds/bases external-secrets"
+    exit 1
+fi
+
+repo="$1"
+version="$2"
+crds_gh_path="${3:-config/crds/bases}"
+output_name="${4:-$(echo "$repo" | sed 's|.*/||')}"
+
+for tool in gh kcl; do
+    if ! type $tool &>/dev/null; then
+        echo "missing required tool: $tool"
+        exit 1
+    fi
+done
+
+cd "$(git rev-parse --show-toplevel)"
+root="$(git rev-parse --show-toplevel)"
+
+kcl_dir="$output_name"
+[[ "$kcl_dir" = /* ]] || kcl_dir="$root/$kcl_dir"
+
+work_dir="$(mktemp -d)"
+# trap 'rm -rf "$work_dir"' EXIT
+crd_dir="${work_dir}/crds"
+mkdir -p "$crd_dir"
+
+# ── 1. Download CRD files from GitHub ─────────────────────────────────────────
+echo "Downloading CRDs from https://github.com/$repo at $version ($crds_gh_path) ..."
+while IFS= read -r filename; do
+    [[ "$filename" == *.yaml && "$filename" != kustomization.yaml ]] || continue
+    echo "  → $filename"
+    gh api "/repos/$repo/contents/$crds_gh_path/$filename?ref=$version" --jq '.content' \
+        | base64 -d > "$crd_dir/$filename"
+done < <(gh api "/repos/$repo/contents/$crds_gh_path?ref=$version" --jq '.[].name')
+
+# ── 2. Rename group_resource.yaml → resource.group.yaml ───────────────────────
+# Input:  external-secrets.io_clusterexternalsecrets.yaml
+# Output: clusterexternalsecrets.external-secrets.io.yaml
+echo "Renaming CRD files ..."
+for f in "$crd_dir"/*.yaml; do
+    base=$(basename "$f")
+    group="${base%%_*}"
+    resource="${base#*_}"
+    resource="${resource%.yaml}"
+    mv "$f" "${crd_dir}/${resource}.${group}.yaml"
+done
+
+# ── 3. Setup KCL module ────────────────────────────────────────────────────────
+[[ -d "$kcl_dir" ]] && rm -rf "$kcl_dir"
+mkdir -p "$kcl_dir"
+cd "$kcl_dir"
+kcl mod init --version "${version#v}"
+kcl mod add k8s
+
+# ── 4. Discover unique API groups ─────────────────────────────────────────────
+mapfile -t groups < <(
+    find "$crd_dir" -name "*.yaml" -exec basename {} \; \
+        | sed -E 's/^[^.]+\.//' \
+        | sed -E 's/\.yaml$//' \
+        | sort | uniq
+)
+
+# Convert API group name to a valid KCL package identifier
+# e.g. generators.external-secrets.io → generators_external_secrets_io
+group_to_pkg() {
+    echo "$1" | tr '.-' '__'
+}
+
+# ── 5. Generate KCL schemas per API group ─────────────────────────────────────
+# Run kcl import from kcl_dir root — it creates $pkg/ itself, no double nesting
+echo "Generating KCL schemas ..."
+for group in "${groups[@]}"; do
+    [[ -z "$group" ]] && continue
+    pkg=$(group_to_pkg "$group")
+    echo "  $pkg  (group: $group)"
+    (
+        cd "$kcl_dir"
+        kcl import -m crd -p "$pkg" "$crd_dir/"+([a-z0-9-])".${group}.yaml"
+    )
+done
+
+# ── 6. Cleanup auto-generated sub-module files ─────────────────────────────────
+find . '(' -path './*/**k8s**' -o -path './*/**kcl.mod' ')' -delete
+
+# ── 7. Fix acronym splitting in filenames ──────────────────────────────────────
+# kcl import splits uppercase acronyms letter-by-letter:
+#   ACRAccessToken → a_c_r_access_token.k  (should be acr_access_token.k)
+#   MFA            → m_f_a.k               (should be mfa.k)
+#   SSHKey         → s_s_h_key.k           (should be ssh_key.k)
+# Strategy: split filename by '_', collapse runs of single-char segments into one.
+echo "Fixing acronym filenames ..."
+python3 - "$kcl_dir" <<'PYEOF'
+import os, sys
+
+def collapse_acronyms(name):
+    stem, _, ext = name.rpartition('.')
+    parts = stem.split('_')
+    result = []
+    i = 0
+    while i < len(parts):
+        # Start collecting a single-char run only when transitioning from multi-char segment
+        if len(parts[i]) == 1 and (not result or len(result[-1]) > 1):
+            acronym = parts[i]
+            j = i + 1
+            while j < len(parts) and len(parts[j]) == 1:
+                acronym += parts[j]
+                j += 1
+            result.append(acronym)
+            i = j
+        else:
+            result.append(parts[i])
+            i += 1
+    new_stem = '_'.join(result)
+    return f"{new_stem}.{ext}" if ext else new_stem
+
+root = sys.argv[1]
+for dirpath, _, filenames in os.walk(root):
+    for fname in filenames:
+        if not fname.endswith('.k'):
+            continue
+        new_fname = collapse_acronyms(fname)
+        if new_fname != fname:
+            old = os.path.join(dirpath, fname)
+            new = os.path.join(dirpath, new_fname)
+            print(f"  {fname} → {new_fname}")
+            os.rename(old, new)
+PYEOF
+
+echo ""
+echo "Done! KCL schemas generated in: $kcl_dir"
+echo ""
+echo "Structure:"
+find "$kcl_dir" -name "*.k" | sort | sed "s|$kcl_dir/||"
