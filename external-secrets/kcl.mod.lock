@@ -1,8 +1,4 @@
 [dependencies]
-  [dependencies.ivosights]
-    name = "ivosights"
-    full_name = "ivosights_0.0.1"
-    version = "0.0.1"
   [dependencies.k8s]
     name = "k8s"
     full_name = "k8s_1.32.4"
