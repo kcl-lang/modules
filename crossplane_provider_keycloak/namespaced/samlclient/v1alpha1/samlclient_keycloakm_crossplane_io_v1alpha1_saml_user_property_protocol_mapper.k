@@ -5,162 +5,160 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 import k8s.apimachinery.pkg.apis.meta.v1
 
 
-schema Group:
+schema SamlUserPropertyProtocolMapper:
     r"""
-    Group is the Schema for the Groups API.
+    SamlUserPropertyProtocolMapper is the Schema for the SamlUserPropertyProtocolMappers API.
 
     Attributes
     ----------
-    apiVersion : str, default is "group.keycloak.crossplane.io/v1alpha1", required
+    apiVersion : str, default is "samlclient.keycloak.m.crossplane.io/v1alpha1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-    kind : str, default is "Group", required
+    kind : str, default is "SamlUserPropertyProtocolMapper", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : GroupKeycloakCrossplaneIoV1alpha1GroupSpec, default is Undefined, required
+    spec : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpec, default is Undefined, required
         spec
-    status : GroupKeycloakCrossplaneIoV1alpha1GroupStatus, default is Undefined, optional
+    status : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperStatus, default is Undefined, optional
         status
     """
 
 
-    apiVersion: "group.keycloak.crossplane.io/v1alpha1" = "group.keycloak.crossplane.io/v1alpha1"
+    apiVersion: "samlclient.keycloak.m.crossplane.io/v1alpha1" = "samlclient.keycloak.m.crossplane.io/v1alpha1"
 
-    kind: "Group" = "Group"
+    kind: "SamlUserPropertyProtocolMapper" = "SamlUserPropertyProtocolMapper"
 
     metadata?: v1.ObjectMeta
 
-    spec: GroupKeycloakCrossplaneIoV1alpha1GroupSpec
+    spec: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpec
 
-    status?: GroupKeycloakCrossplaneIoV1alpha1GroupStatus
+    status?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperStatus
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpec:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpec:
     r"""
-    GroupSpec defines the desired state of Group
+    SamlUserPropertyProtocolMapperSpec defines the desired state of SamlUserPropertyProtocolMapper
 
     Attributes
     ----------
-    deletionPolicy : str, default is "Delete", optional
-        DeletionPolicy specifies what will happen to the underlying external
-        when this managed resource is deleted - either "Delete" or "Orphan" the
-        external resource.
-        This field is planned to be deprecated in favor of the ManagementPolicies
-        field in a future release. Currently, both could be set independently and
-        non-default values would be honored if the feature flag is enabled.
-        See the design doc for more information: https://github.com/crossplane/crossplane/blob/499895a25d1a1a0ba1604944ef98ac7a1a71f197/design/design-doc-observe-only-resources.md?plain=1#L223
-    forProvider : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProvider, default is Undefined, required
+    forProvider : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProvider, default is Undefined, required
         for provider
-    initProvider : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProvider, default is Undefined, optional
+    initProvider : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProvider, default is Undefined, optional
         init provider
     managementPolicies : [str], default is ["*"], optional
         THIS IS A BETA FIELD. It is on by default but can be opted out
         through a Crossplane feature flag.
         ManagementPolicies specify the array of actions Crossplane is allowed to
         take on the managed and external resources.
-        This field is planned to replace the DeletionPolicy field in a future
-        release. Currently, both could be set independently and non-default
-        values would be honored if the feature flag is enabled. If both are
-        custom, the DeletionPolicy field will be ignored.
         See the design doc for more information: https://github.com/crossplane/crossplane/blob/499895a25d1a1a0ba1604944ef98ac7a1a71f197/design/design-doc-observe-only-resources.md?plain=1#L223
         and this one: https://github.com/crossplane/crossplane/blob/444267e84783136daa93568b364a5f01228cacbe/design/one-pager-ignore-changes.md
-    providerConfigRef : GroupKeycloakCrossplaneIoV1alpha1GroupSpecProviderConfigRef, default is Undefined, optional
+    providerConfigRef : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecProviderConfigRef, default is Undefined, optional
         provider config ref
-    writeConnectionSecretToRef : GroupKeycloakCrossplaneIoV1alpha1GroupSpecWriteConnectionSecretToRef, default is Undefined, optional
+    writeConnectionSecretToRef : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecWriteConnectionSecretToRef, default is Undefined, optional
         write connection secret to ref
     """
 
 
-    deletionPolicy?: "Orphan" | "Delete" = "Delete"
+    forProvider: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProvider
 
-    forProvider: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProvider
-
-    initProvider?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProvider
+    initProvider?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProvider
 
     managementPolicies?: [str] = ["*"]
 
-    providerConfigRef?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecProviderConfigRef
+    providerConfigRef?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecProviderConfigRef
 
-    writeConnectionSecretToRef?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecWriteConnectionSecretToRef
+    writeConnectionSecretToRef?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecWriteConnectionSecretToRef
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProvider:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProvider:
     r"""
-    group keycloak crossplane io v1alpha1 group spec for provider
+    samlclient keycloakm crossplane io v1alpha1 saml user property protocol mapper spec for provider
 
     Attributes
     ----------
-    attributes : {str:str}, default is Undefined, optional
-        A map representing attributes for the group. In order to add multivalued attributes, use ## to separate the values. Max length for each value is 255 chars
-    description : str, default is Undefined, optional
-        description
+    clientId : str, default is Undefined, optional
+        The client this protocol mapper should be attached to. Conflicts with client_scope_id. One of client_id or client_scope_id must be specified.
+    clientIdRef : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientIDRef, default is Undefined, optional
+        client Id ref
+    clientIdSelector : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientIDSelector, default is Undefined, optional
+        client Id selector
+    clientScopeId : str, default is Undefined, optional
+        The client scope this protocol mapper should be attached to. Conflicts with client_id. One of client_id or client_scope_id must be specified.
+    clientScopeIdRef : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientScopeIDRef, default is Undefined, optional
+        client scope Id ref
+    clientScopeIdSelector : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientScopeIDSelector, default is Undefined, optional
+        client scope Id selector
+    friendlyName : str, default is Undefined, optional
+        An optional human-friendly name for this attribute.
     name : str, default is Undefined, optional
-        The name of the group.
-    organizationId : str, default is Undefined, optional
-        The organization this group exists in. If omitted, this group will be managed as a realm group. Organization groups require Keycloak 26.6.0 or later.
-    organizationIdRef : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDRef, default is Undefined, optional
-        organization Id ref
-    organizationIdSelector : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDSelector, default is Undefined, optional
-        organization Id selector
-    parentId : str, default is Undefined, optional
-        The ID of this group's parent. If omitted, this group will be defined at the root level.
-    parentIdRef : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDRef, default is Undefined, optional
-        parent Id ref
-    parentIdSelector : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDSelector, default is Undefined, optional
-        parent Id selector
+        The display name of this protocol mapper in the GUI.
     realmId : str, default is Undefined, optional
-        The realm this group exists in.
-    realmIdRef : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDRef, default is Undefined, optional
+        The realm this protocol mapper exists within.
+    realmIdRef : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderRealmIDRef, default is Undefined, optional
         realm Id ref
-    realmIdSelector : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDSelector, default is Undefined, optional
+    realmIdSelector : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
+    samlAttributeName : str, default is Undefined, optional
+        The name of the SAML attribute.
+    samlAttributeNameFormat : str, default is Undefined, optional
+        The SAML attribute Name Format. Can be one of Unspecified, Basic, or URI Reference.
+    userProperty : str, default is Undefined, optional
+        The property of the Keycloak user model to map.
     """
 
 
-    attributes?: {str:str}
+    clientId?: str
 
-    description?: str
+    clientIdRef?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientIDRef
+
+    clientIdSelector?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientIDSelector
+
+    clientScopeId?: str
+
+    clientScopeIdRef?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientScopeIDRef
+
+    clientScopeIdSelector?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientScopeIDSelector
+
+    friendlyName?: str
 
     name?: str
 
-    organizationId?: str
-
-    organizationIdRef?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDRef
-
-    organizationIdSelector?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDSelector
-
-    parentId?: str
-
-    parentIdRef?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDRef
-
-    parentIdSelector?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDSelector
-
     realmId?: str
 
-    realmIdRef?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDRef
+    realmIdRef?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderRealmIDRef
 
-    realmIdSelector?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDSelector
+    realmIdSelector?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderRealmIDSelector
+
+    samlAttributeName?: str
+
+    samlAttributeNameFormat?: str
+
+    userProperty?: str
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDRef:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientIDRef:
     r"""
-    Reference to a Organization in organization to populate organizationId.
+    Reference to a Client in samlclient to populate clientId.
 
     Attributes
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDRefPolicy, default is Undefined, optional
+    namespace : str, default is Undefined, optional
+        Namespace of the referenced object
+    policy : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientIDRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDRefPolicy
+    namespace?: str
+
+    policy?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientIDRefPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDRefPolicy:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientIDRefPolicy:
     r"""
     Policies for referencing.
 
@@ -184,9 +182,9 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDRefPol
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDSelector:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientIDSelector:
     r"""
-    Selector for a Organization in organization to populate organizationId.
+    Selector for a Client in samlclient to populate clientId.
 
     Attributes
     ----------
@@ -195,7 +193,9 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDSelect
         as the selecting object is selected.
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels ensures an object with matching labels is selected.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDSelectorPolicy, default is Undefined, optional
+    namespace : str, default is Undefined, optional
+        Namespace for the selector
+    policy : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientIDSelectorPolicy, default is Undefined, optional
         policy
     """
 
@@ -204,10 +204,12 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDSelect
 
     matchLabels?: {str:str}
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDSelectorPolicy
+    namespace?: str
+
+    policy?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientIDSelectorPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDSelectorPolicy:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientIDSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -231,25 +233,29 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDSelect
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDRef:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientScopeIDRef:
     r"""
-    Reference to a Group in group to populate parentId.
+    Reference to a ClientScope in samlclient to populate clientScopeId.
 
     Attributes
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDRefPolicy, default is Undefined, optional
+    namespace : str, default is Undefined, optional
+        Namespace of the referenced object
+    policy : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientScopeIDRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDRefPolicy
+    namespace?: str
+
+    policy?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientScopeIDRefPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDRefPolicy:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientScopeIDRefPolicy:
     r"""
     Policies for referencing.
 
@@ -273,9 +279,9 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDRefPolicy:
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDSelector:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientScopeIDSelector:
     r"""
-    Selector for a Group in group to populate parentId.
+    Selector for a ClientScope in samlclient to populate clientScopeId.
 
     Attributes
     ----------
@@ -284,7 +290,9 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDSelector:
         as the selecting object is selected.
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels ensures an object with matching labels is selected.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDSelectorPolicy, default is Undefined, optional
+    namespace : str, default is Undefined, optional
+        Namespace for the selector
+    policy : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientScopeIDSelectorPolicy, default is Undefined, optional
         policy
     """
 
@@ -293,10 +301,12 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDSelector:
 
     matchLabels?: {str:str}
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDSelectorPolicy
+    namespace?: str
+
+    policy?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientScopeIDSelectorPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDSelectorPolicy:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderClientScopeIDSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -320,7 +330,7 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDSelectorPoli
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDRef:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderRealmIDRef:
     r"""
     Reference to a Realm in realm to populate realmId.
 
@@ -328,17 +338,21 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDRef:
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDRefPolicy, default is Undefined, optional
+    namespace : str, default is Undefined, optional
+        Namespace of the referenced object
+    policy : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderRealmIDRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDRefPolicy
+    namespace?: str
+
+    policy?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderRealmIDRefPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDRefPolicy:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderRealmIDRefPolicy:
     r"""
     Policies for referencing.
 
@@ -362,7 +376,7 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDRefPolicy:
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDSelector:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderRealmIDSelector:
     r"""
     Selector for a Realm in realm to populate realmId.
 
@@ -373,7 +387,9 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDSelector:
         as the selecting object is selected.
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels ensures an object with matching labels is selected.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDSelectorPolicy, default is Undefined, optional
+    namespace : str, default is Undefined, optional
+        Namespace for the selector
+    policy : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderRealmIDSelectorPolicy, default is Undefined, optional
         policy
     """
 
@@ -382,10 +398,12 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDSelector:
 
     matchLabels?: {str:str}
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDSelectorPolicy
+    namespace?: str
+
+    policy?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderRealmIDSelectorPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDSelectorPolicy:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecForProviderRealmIDSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -409,7 +427,7 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDSelectorPolic
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProvider:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProvider:
     r"""
     THIS IS A BETA FIELD. It will be honored
     unless the Management Policies feature flag is disabled.
@@ -424,77 +442,89 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProvider:
 
     Attributes
     ----------
-    attributes : {str:str}, default is Undefined, optional
-        A map representing attributes for the group. In order to add multivalued attributes, use ## to separate the values. Max length for each value is 255 chars
-    description : str, default is Undefined, optional
-        description
+    clientId : str, default is Undefined, optional
+        The client this protocol mapper should be attached to. Conflicts with client_scope_id. One of client_id or client_scope_id must be specified.
+    clientIdRef : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientIDRef, default is Undefined, optional
+        client Id ref
+    clientIdSelector : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientIDSelector, default is Undefined, optional
+        client Id selector
+    clientScopeId : str, default is Undefined, optional
+        The client scope this protocol mapper should be attached to. Conflicts with client_id. One of client_id or client_scope_id must be specified.
+    clientScopeIdRef : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientScopeIDRef, default is Undefined, optional
+        client scope Id ref
+    clientScopeIdSelector : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientScopeIDSelector, default is Undefined, optional
+        client scope Id selector
+    friendlyName : str, default is Undefined, optional
+        An optional human-friendly name for this attribute.
     name : str, default is Undefined, optional
-        The name of the group.
-    organizationId : str, default is Undefined, optional
-        The organization this group exists in. If omitted, this group will be managed as a realm group. Organization groups require Keycloak 26.6.0 or later.
-    organizationIdRef : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDRef, default is Undefined, optional
-        organization Id ref
-    organizationIdSelector : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDSelector, default is Undefined, optional
-        organization Id selector
-    parentId : str, default is Undefined, optional
-        The ID of this group's parent. If omitted, this group will be defined at the root level.
-    parentIdRef : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDRef, default is Undefined, optional
-        parent Id ref
-    parentIdSelector : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDSelector, default is Undefined, optional
-        parent Id selector
+        The display name of this protocol mapper in the GUI.
     realmId : str, default is Undefined, optional
-        The realm this group exists in.
-    realmIdRef : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDRef, default is Undefined, optional
+        The realm this protocol mapper exists within.
+    realmIdRef : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderRealmIDRef, default is Undefined, optional
         realm Id ref
-    realmIdSelector : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDSelector, default is Undefined, optional
+    realmIdSelector : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
+    samlAttributeName : str, default is Undefined, optional
+        The name of the SAML attribute.
+    samlAttributeNameFormat : str, default is Undefined, optional
+        The SAML attribute Name Format. Can be one of Unspecified, Basic, or URI Reference.
+    userProperty : str, default is Undefined, optional
+        The property of the Keycloak user model to map.
     """
 
 
-    attributes?: {str:str}
+    clientId?: str
 
-    description?: str
+    clientIdRef?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientIDRef
+
+    clientIdSelector?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientIDSelector
+
+    clientScopeId?: str
+
+    clientScopeIdRef?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientScopeIDRef
+
+    clientScopeIdSelector?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientScopeIDSelector
+
+    friendlyName?: str
 
     name?: str
 
-    organizationId?: str
-
-    organizationIdRef?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDRef
-
-    organizationIdSelector?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDSelector
-
-    parentId?: str
-
-    parentIdRef?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDRef
-
-    parentIdSelector?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDSelector
-
     realmId?: str
 
-    realmIdRef?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDRef
+    realmIdRef?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderRealmIDRef
 
-    realmIdSelector?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDSelector
+    realmIdSelector?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderRealmIDSelector
+
+    samlAttributeName?: str
+
+    samlAttributeNameFormat?: str
+
+    userProperty?: str
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDRef:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientIDRef:
     r"""
-    Reference to a Organization in organization to populate organizationId.
+    Reference to a Client in samlclient to populate clientId.
 
     Attributes
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDRefPolicy, default is Undefined, optional
+    namespace : str, default is Undefined, optional
+        Namespace of the referenced object
+    policy : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientIDRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDRefPolicy
+    namespace?: str
+
+    policy?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientIDRefPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDRefPolicy:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientIDRefPolicy:
     r"""
     Policies for referencing.
 
@@ -518,9 +548,9 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDRefPo
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDSelector:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientIDSelector:
     r"""
-    Selector for a Organization in organization to populate organizationId.
+    Selector for a Client in samlclient to populate clientId.
 
     Attributes
     ----------
@@ -529,7 +559,9 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDSelec
         as the selecting object is selected.
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels ensures an object with matching labels is selected.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDSelectorPolicy, default is Undefined, optional
+    namespace : str, default is Undefined, optional
+        Namespace for the selector
+    policy : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientIDSelectorPolicy, default is Undefined, optional
         policy
     """
 
@@ -538,10 +570,12 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDSelec
 
     matchLabels?: {str:str}
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDSelectorPolicy
+    namespace?: str
+
+    policy?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientIDSelectorPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDSelectorPolicy:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientIDSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -565,25 +599,29 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDSelec
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDRef:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientScopeIDRef:
     r"""
-    Reference to a Group in group to populate parentId.
+    Reference to a ClientScope in samlclient to populate clientScopeId.
 
     Attributes
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDRefPolicy, default is Undefined, optional
+    namespace : str, default is Undefined, optional
+        Namespace of the referenced object
+    policy : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientScopeIDRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDRefPolicy
+    namespace?: str
+
+    policy?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientScopeIDRefPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDRefPolicy:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientScopeIDRefPolicy:
     r"""
     Policies for referencing.
 
@@ -607,9 +645,9 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDRefPolicy:
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDSelector:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientScopeIDSelector:
     r"""
-    Selector for a Group in group to populate parentId.
+    Selector for a ClientScope in samlclient to populate clientScopeId.
 
     Attributes
     ----------
@@ -618,7 +656,9 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDSelector:
         as the selecting object is selected.
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels ensures an object with matching labels is selected.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDSelectorPolicy, default is Undefined, optional
+    namespace : str, default is Undefined, optional
+        Namespace for the selector
+    policy : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientScopeIDSelectorPolicy, default is Undefined, optional
         policy
     """
 
@@ -627,10 +667,12 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDSelector:
 
     matchLabels?: {str:str}
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDSelectorPolicy
+    namespace?: str
+
+    policy?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientScopeIDSelectorPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDSelectorPolicy:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderClientScopeIDSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -654,7 +696,7 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDSelectorPol
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDRef:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderRealmIDRef:
     r"""
     Reference to a Realm in realm to populate realmId.
 
@@ -662,17 +704,21 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDRef:
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDRefPolicy, default is Undefined, optional
+    namespace : str, default is Undefined, optional
+        Namespace of the referenced object
+    policy : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderRealmIDRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDRefPolicy
+    namespace?: str
+
+    policy?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderRealmIDRefPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDRefPolicy:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderRealmIDRefPolicy:
     r"""
     Policies for referencing.
 
@@ -696,7 +742,7 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDRefPolicy:
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDSelector:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderRealmIDSelector:
     r"""
     Selector for a Realm in realm to populate realmId.
 
@@ -707,7 +753,9 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDSelector:
         as the selecting object is selected.
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels ensures an object with matching labels is selected.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDSelectorPolicy, default is Undefined, optional
+    namespace : str, default is Undefined, optional
+        Namespace for the selector
+    policy : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderRealmIDSelectorPolicy, default is Undefined, optional
         policy
     """
 
@@ -716,10 +764,12 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDSelector:
 
     matchLabels?: {str:str}
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDSelectorPolicy
+    namespace?: str
+
+    policy?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderRealmIDSelectorPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDSelectorPolicy:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecInitProviderRealmIDSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -743,7 +793,7 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDSelectorPoli
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecProviderConfigRef:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecProviderConfigRef:
     r"""
     ProviderConfigReference specifies how the provider that will be used to
     create, observe, update, and delete this managed resource should be
@@ -751,43 +801,19 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecProviderConfigRef:
 
     Attributes
     ----------
+    kind : str, default is Undefined, required
+        Kind of the referenced object.
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecProviderConfigRefPolicy, default is Undefined, optional
-        policy
     """
 
+
+    kind: str
 
     name: str
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecProviderConfigRefPolicy
 
-
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecProviderConfigRefPolicy:
-    r"""
-    Policies for referencing.
-
-    Attributes
-    ----------
-    resolution : str, default is "Required", optional
-        Resolution specifies whether resolution of this reference is required.
-        The default is 'Required', which means the reconcile will fail if the
-        reference cannot be resolved. 'Optional' means this reference will be
-        a no-op if it cannot be resolved.
-    resolve : str, default is Undefined, optional
-        Resolve specifies when this reference should be resolved. The default
-        is 'IfNotPresent', which will attempt to resolve the reference only when
-        the corresponding field is not present. Use 'Always' to resolve the
-        reference on every reconcile.
-    """
-
-
-    resolution?: "Required" | "Optional" = "Required"
-
-    resolve?: "Always" | "IfNotPresent"
-
-
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecWriteConnectionSecretToRef:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperSpecWriteConnectionSecretToRef:
     r"""
     WriteConnectionSecretToReference specifies the namespace and name of a
     Secret to which any connection details for this managed resource should
@@ -798,25 +824,21 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecWriteConnectionSecretToRef:
     ----------
     name : str, default is Undefined, required
         Name of the secret.
-    namespace : str, default is Undefined, required
-        Namespace of the secret.
     """
 
 
     name: str
 
-    namespace: str
 
-
-schema GroupKeycloakCrossplaneIoV1alpha1GroupStatus:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperStatus:
     r"""
-    GroupStatus defines the observed state of Group.
+    SamlUserPropertyProtocolMapperStatus defines the observed state of SamlUserPropertyProtocolMapper.
 
     Attributes
     ----------
-    atProvider : GroupKeycloakCrossplaneIoV1alpha1GroupStatusAtProvider, default is Undefined, optional
+    atProvider : SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperStatusAtProvider, default is Undefined, optional
         at provider
-    conditions : [GroupKeycloakCrossplaneIoV1alpha1GroupStatusConditionsItems0], default is Undefined, optional
+    conditions : [SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperStatusConditionsItems0], default is Undefined, optional
         Conditions of the resource.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the latest metadata.generation
@@ -825,56 +847,60 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupStatus:
     """
 
 
-    atProvider?: GroupKeycloakCrossplaneIoV1alpha1GroupStatusAtProvider
+    atProvider?: SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperStatusAtProvider
 
-    conditions?: [GroupKeycloakCrossplaneIoV1alpha1GroupStatusConditionsItems0]
+    conditions?: [SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperStatusConditionsItems0]
 
     observedGeneration?: int
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupStatusAtProvider:
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperStatusAtProvider:
     r"""
-    group keycloak crossplane io v1alpha1 group status at provider
+    samlclient keycloakm crossplane io v1alpha1 saml user property protocol mapper status at provider
 
     Attributes
     ----------
-    attributes : {str:str}, default is Undefined, optional
-        A map representing attributes for the group. In order to add multivalued attributes, use ## to separate the values. Max length for each value is 255 chars
-    description : str, default is Undefined, optional
-        description
+    clientId : str, default is Undefined, optional
+        The client this protocol mapper should be attached to. Conflicts with client_scope_id. One of client_id or client_scope_id must be specified.
+    clientScopeId : str, default is Undefined, optional
+        The client scope this protocol mapper should be attached to. Conflicts with client_id. One of client_id or client_scope_id must be specified.
+    friendlyName : str, default is Undefined, optional
+        An optional human-friendly name for this attribute.
     id : str, default is Undefined, optional
         id
     name : str, default is Undefined, optional
-        The name of the group.
-    organizationId : str, default is Undefined, optional
-        The organization this group exists in. If omitted, this group will be managed as a realm group. Organization groups require Keycloak 26.6.0 or later.
-    parentId : str, default is Undefined, optional
-        The ID of this group's parent. If omitted, this group will be defined at the root level.
-    path : str, default is Undefined, optional
-        (Computed) The complete path of the group. For example, the child group's path in the example configuration would be /parent-group/child-group.
+        The display name of this protocol mapper in the GUI.
     realmId : str, default is Undefined, optional
-        The realm this group exists in.
+        The realm this protocol mapper exists within.
+    samlAttributeName : str, default is Undefined, optional
+        The name of the SAML attribute.
+    samlAttributeNameFormat : str, default is Undefined, optional
+        The SAML attribute Name Format. Can be one of Unspecified, Basic, or URI Reference.
+    userProperty : str, default is Undefined, optional
+        The property of the Keycloak user model to map.
     """
 
 
-    attributes?: {str:str}
+    clientId?: str
 
-    description?: str
+    clientScopeId?: str
+
+    friendlyName?: str
 
     id?: str
 
     name?: str
 
-    organizationId?: str
-
-    parentId?: str
-
-    path?: str
-
     realmId?: str
 
+    samlAttributeName?: str
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupStatusConditionsItems0:
+    samlAttributeNameFormat?: str
+
+    userProperty?: str
+
+
+schema SamlclientKeycloakmCrossplaneIoV1alpha1SamlUserPropertyProtocolMapperStatusConditionsItems0:
     r"""
     A Condition that may apply to a resource.
 

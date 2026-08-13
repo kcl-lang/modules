@@ -90,10 +90,22 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpec
 
     Attributes
     ----------
+    clientPolicies : [str], default is Undefined, optional
+        A list of policy IDs that must be applied to the scopes defined by this permission.
+    clientPoliciesRefs : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderClientPoliciesRefsItems0], default is Undefined, optional
+        References to ClientClientPolicy in openidclient to populate clientPolicies.
+    clientPoliciesSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderClientPoliciesSelector, default is Undefined, optional
+        client policies selector
     decisionStrategy : str, default is Undefined, optional
         The decision strategy, can be one of UNANIMOUS, AFFIRMATIVE, or CONSENSUS. Defaults to UNANIMOUS.
     description : str, default is Undefined, optional
         A description for the authorization permission.
+    groupPolicies : [str], default is Undefined, optional
+        A list of policy IDs that must be applied to the scopes defined by this permission.
+    groupPoliciesRefs : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderGroupPoliciesRefsItems0], default is Undefined, optional
+        References to ClientGroupPolicy in openidclient to populate groupPolicies.
+    groupPoliciesSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderGroupPoliciesSelector, default is Undefined, optional
+        group policies selector
     name : str, default is Undefined, optional
         The name of the permission.
     policies : [str], default is Undefined, optional
@@ -104,6 +116,12 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpec
         realm Id ref
     realmIdSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
+    regexPolicies : [str], default is Undefined, optional
+        A list of policy IDs that must be applied to the scopes defined by this permission.
+    regexPoliciesRefs : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRegexPoliciesRefsItems0], default is Undefined, optional
+        References to ClientRegexPolicy in openidclient to populate regexPolicies.
+    regexPoliciesSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRegexPoliciesSelector, default is Undefined, optional
+        regex policies selector
     resourceServerId : str, default is Undefined, optional
         The ID of the resource server.
     resourceServerIdRef : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderResourceServerIDRef, default is Undefined, optional
@@ -114,16 +132,44 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpec
         When specified, this permission will be evaluated for all instances of a given resource type. Conflicts with resources.
     resources : [str], default is Undefined, optional
         A list of resource IDs that this permission must be applied to. Conflicts with resource_type.
+    resourcesRefs : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderResourcesRefsItems0], default is Undefined, optional
+        References to ClientAuthorizationResource in openidclient to populate resources.
+    resourcesSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderResourcesSelector, default is Undefined, optional
+        resources selector
+    rolePolicies : [str], default is Undefined, optional
+        A list of policy IDs that must be applied to the scopes defined by this permission.
+    rolePoliciesRefs : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRolePoliciesRefsItems0], default is Undefined, optional
+        References to ClientRolePolicy in openidclient to populate rolePolicies.
+    rolePoliciesSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRolePoliciesSelector, default is Undefined, optional
+        role policies selector
     scopes : [str], default is Undefined, optional
         A list of scope IDs that this permission must be applied to.
     $type : str, default is Undefined, optional
         The type of permission, can be one of resource or scope.
+    userPolicies : [str], default is Undefined, optional
+        A list of policy IDs that must be applied to the scopes defined by this permission.
+    userPoliciesRefs : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderUserPoliciesRefsItems0], default is Undefined, optional
+        References to ClientUserPolicy in openidclient to populate userPolicies.
+    userPoliciesSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderUserPoliciesSelector, default is Undefined, optional
+        user policies selector
     """
 
+
+    clientPolicies?: [str]
+
+    clientPoliciesRefs?: [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderClientPoliciesRefsItems0]
+
+    clientPoliciesSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderClientPoliciesSelector
 
     decisionStrategy?: str
 
     description?: str
+
+    groupPolicies?: [str]
+
+    groupPoliciesRefs?: [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderGroupPoliciesRefsItems0]
+
+    groupPoliciesSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderGroupPoliciesSelector
 
     name?: str
 
@@ -135,6 +181,12 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpec
 
     realmIdSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRealmIDSelector
 
+    regexPolicies?: [str]
+
+    regexPoliciesRefs?: [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRegexPoliciesRefsItems0]
+
+    regexPoliciesSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRegexPoliciesSelector
+
     resourceServerId?: str
 
     resourceServerIdRef?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderResourceServerIDRef
@@ -145,9 +197,203 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpec
 
     resources?: [str]
 
+    resourcesRefs?: [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderResourcesRefsItems0]
+
+    resourcesSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderResourcesSelector
+
+    rolePolicies?: [str]
+
+    rolePoliciesRefs?: [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRolePoliciesRefsItems0]
+
+    rolePoliciesSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRolePoliciesSelector
+
     scopes?: [str]
 
     $type?: str
+
+    userPolicies?: [str]
+
+    userPoliciesRefs?: [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderUserPoliciesRefsItems0]
+
+    userPoliciesSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderUserPoliciesSelector
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderClientPoliciesRefsItems0:
+    r"""
+    A Reference to a named object.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderClientPoliciesRefsItems0Policy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderClientPoliciesRefsItems0Policy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderClientPoliciesRefsItems0Policy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderClientPoliciesSelector:
+    r"""
+    Selector for a list of ClientClientPolicy in openidclient to populate clientPolicies.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderClientPoliciesSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderClientPoliciesSelectorPolicy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderClientPoliciesSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderGroupPoliciesRefsItems0:
+    r"""
+    A Reference to a named object.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderGroupPoliciesRefsItems0Policy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderGroupPoliciesRefsItems0Policy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderGroupPoliciesRefsItems0Policy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderGroupPoliciesSelector:
+    r"""
+    Selector for a list of ClientGroupPolicy in openidclient to populate groupPolicies.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderGroupPoliciesSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderGroupPoliciesSelectorPolicy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderGroupPoliciesSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
 
 
 schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRealmIDRef:
@@ -216,6 +462,95 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpec
 
 
 schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRealmIDSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRegexPoliciesRefsItems0:
+    r"""
+    A Reference to a named object.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRegexPoliciesRefsItems0Policy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRegexPoliciesRefsItems0Policy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRegexPoliciesRefsItems0Policy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRegexPoliciesSelector:
+    r"""
+    Selector for a list of ClientRegexPolicy in openidclient to populate regexPolicies.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRegexPoliciesSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRegexPoliciesSelectorPolicy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRegexPoliciesSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -328,6 +663,273 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpec
     resolve?: "Always" | "IfNotPresent"
 
 
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderResourcesRefsItems0:
+    r"""
+    A Reference to a named object.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderResourcesRefsItems0Policy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderResourcesRefsItems0Policy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderResourcesRefsItems0Policy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderResourcesSelector:
+    r"""
+    Selector for a list of ClientAuthorizationResource in openidclient to populate resources.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderResourcesSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderResourcesSelectorPolicy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderResourcesSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRolePoliciesRefsItems0:
+    r"""
+    A Reference to a named object.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRolePoliciesRefsItems0Policy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRolePoliciesRefsItems0Policy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRolePoliciesRefsItems0Policy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRolePoliciesSelector:
+    r"""
+    Selector for a list of ClientRolePolicy in openidclient to populate rolePolicies.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRolePoliciesSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRolePoliciesSelectorPolicy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderRolePoliciesSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderUserPoliciesRefsItems0:
+    r"""
+    A Reference to a named object.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderUserPoliciesRefsItems0Policy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderUserPoliciesRefsItems0Policy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderUserPoliciesRefsItems0Policy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderUserPoliciesSelector:
+    r"""
+    Selector for a list of ClientUserPolicy in openidclient to populate userPolicies.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderUserPoliciesSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderUserPoliciesSelectorPolicy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecForProviderUserPoliciesSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
 schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProvider:
     r"""
     THIS IS A BETA FIELD. It will be honored
@@ -343,10 +945,22 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpec
 
     Attributes
     ----------
+    clientPolicies : [str], default is Undefined, optional
+        A list of policy IDs that must be applied to the scopes defined by this permission.
+    clientPoliciesRefs : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderClientPoliciesRefsItems0], default is Undefined, optional
+        References to ClientClientPolicy in openidclient to populate clientPolicies.
+    clientPoliciesSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderClientPoliciesSelector, default is Undefined, optional
+        client policies selector
     decisionStrategy : str, default is Undefined, optional
         The decision strategy, can be one of UNANIMOUS, AFFIRMATIVE, or CONSENSUS. Defaults to UNANIMOUS.
     description : str, default is Undefined, optional
         A description for the authorization permission.
+    groupPolicies : [str], default is Undefined, optional
+        A list of policy IDs that must be applied to the scopes defined by this permission.
+    groupPoliciesRefs : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderGroupPoliciesRefsItems0], default is Undefined, optional
+        References to ClientGroupPolicy in openidclient to populate groupPolicies.
+    groupPoliciesSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderGroupPoliciesSelector, default is Undefined, optional
+        group policies selector
     name : str, default is Undefined, optional
         The name of the permission.
     policies : [str], default is Undefined, optional
@@ -357,6 +971,12 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpec
         realm Id ref
     realmIdSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
+    regexPolicies : [str], default is Undefined, optional
+        A list of policy IDs that must be applied to the scopes defined by this permission.
+    regexPoliciesRefs : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRegexPoliciesRefsItems0], default is Undefined, optional
+        References to ClientRegexPolicy in openidclient to populate regexPolicies.
+    regexPoliciesSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRegexPoliciesSelector, default is Undefined, optional
+        regex policies selector
     resourceServerId : str, default is Undefined, optional
         The ID of the resource server.
     resourceServerIdRef : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderResourceServerIDRef, default is Undefined, optional
@@ -367,16 +987,44 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpec
         When specified, this permission will be evaluated for all instances of a given resource type. Conflicts with resources.
     resources : [str], default is Undefined, optional
         A list of resource IDs that this permission must be applied to. Conflicts with resource_type.
+    resourcesRefs : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderResourcesRefsItems0], default is Undefined, optional
+        References to ClientAuthorizationResource in openidclient to populate resources.
+    resourcesSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderResourcesSelector, default is Undefined, optional
+        resources selector
+    rolePolicies : [str], default is Undefined, optional
+        A list of policy IDs that must be applied to the scopes defined by this permission.
+    rolePoliciesRefs : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRolePoliciesRefsItems0], default is Undefined, optional
+        References to ClientRolePolicy in openidclient to populate rolePolicies.
+    rolePoliciesSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRolePoliciesSelector, default is Undefined, optional
+        role policies selector
     scopes : [str], default is Undefined, optional
         A list of scope IDs that this permission must be applied to.
     $type : str, default is Undefined, optional
         The type of permission, can be one of resource or scope.
+    userPolicies : [str], default is Undefined, optional
+        A list of policy IDs that must be applied to the scopes defined by this permission.
+    userPoliciesRefs : [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderUserPoliciesRefsItems0], default is Undefined, optional
+        References to ClientUserPolicy in openidclient to populate userPolicies.
+    userPoliciesSelector : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderUserPoliciesSelector, default is Undefined, optional
+        user policies selector
     """
 
+
+    clientPolicies?: [str]
+
+    clientPoliciesRefs?: [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderClientPoliciesRefsItems0]
+
+    clientPoliciesSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderClientPoliciesSelector
 
     decisionStrategy?: str
 
     description?: str
+
+    groupPolicies?: [str]
+
+    groupPoliciesRefs?: [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderGroupPoliciesRefsItems0]
+
+    groupPoliciesSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderGroupPoliciesSelector
 
     name?: str
 
@@ -388,6 +1036,12 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpec
 
     realmIdSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRealmIDSelector
 
+    regexPolicies?: [str]
+
+    regexPoliciesRefs?: [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRegexPoliciesRefsItems0]
+
+    regexPoliciesSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRegexPoliciesSelector
+
     resourceServerId?: str
 
     resourceServerIdRef?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderResourceServerIDRef
@@ -398,9 +1052,203 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpec
 
     resources?: [str]
 
+    resourcesRefs?: [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderResourcesRefsItems0]
+
+    resourcesSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderResourcesSelector
+
+    rolePolicies?: [str]
+
+    rolePoliciesRefs?: [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRolePoliciesRefsItems0]
+
+    rolePoliciesSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRolePoliciesSelector
+
     scopes?: [str]
 
     $type?: str
+
+    userPolicies?: [str]
+
+    userPoliciesRefs?: [OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderUserPoliciesRefsItems0]
+
+    userPoliciesSelector?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderUserPoliciesSelector
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderClientPoliciesRefsItems0:
+    r"""
+    A Reference to a named object.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderClientPoliciesRefsItems0Policy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderClientPoliciesRefsItems0Policy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderClientPoliciesRefsItems0Policy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderClientPoliciesSelector:
+    r"""
+    Selector for a list of ClientClientPolicy in openidclient to populate clientPolicies.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderClientPoliciesSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderClientPoliciesSelectorPolicy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderClientPoliciesSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderGroupPoliciesRefsItems0:
+    r"""
+    A Reference to a named object.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderGroupPoliciesRefsItems0Policy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderGroupPoliciesRefsItems0Policy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderGroupPoliciesRefsItems0Policy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderGroupPoliciesSelector:
+    r"""
+    Selector for a list of ClientGroupPolicy in openidclient to populate groupPolicies.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderGroupPoliciesSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderGroupPoliciesSelectorPolicy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderGroupPoliciesSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
 
 
 schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRealmIDRef:
@@ -492,6 +1340,95 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpec
     resolve?: "Always" | "IfNotPresent"
 
 
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRegexPoliciesRefsItems0:
+    r"""
+    A Reference to a named object.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRegexPoliciesRefsItems0Policy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRegexPoliciesRefsItems0Policy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRegexPoliciesRefsItems0Policy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRegexPoliciesSelector:
+    r"""
+    Selector for a list of ClientRegexPolicy in openidclient to populate regexPolicies.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRegexPoliciesSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRegexPoliciesSelectorPolicy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRegexPoliciesSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
 schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderResourceServerIDRef:
     r"""
     Reference to a Client in openidclient to populate resourceServerId.
@@ -558,6 +1495,273 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpec
 
 
 schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderResourceServerIDSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderResourcesRefsItems0:
+    r"""
+    A Reference to a named object.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderResourcesRefsItems0Policy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderResourcesRefsItems0Policy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderResourcesRefsItems0Policy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderResourcesSelector:
+    r"""
+    Selector for a list of ClientAuthorizationResource in openidclient to populate resources.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderResourcesSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderResourcesSelectorPolicy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderResourcesSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRolePoliciesRefsItems0:
+    r"""
+    A Reference to a named object.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRolePoliciesRefsItems0Policy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRolePoliciesRefsItems0Policy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRolePoliciesRefsItems0Policy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRolePoliciesSelector:
+    r"""
+    Selector for a list of ClientRolePolicy in openidclient to populate rolePolicies.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRolePoliciesSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRolePoliciesSelectorPolicy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderRolePoliciesSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderUserPoliciesRefsItems0:
+    r"""
+    A Reference to a named object.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderUserPoliciesRefsItems0Policy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderUserPoliciesRefsItems0Policy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderUserPoliciesRefsItems0Policy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderUserPoliciesSelector:
+    r"""
+    Selector for a list of ClientUserPolicy in openidclient to populate userPolicies.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderUserPoliciesSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderUserPoliciesSelectorPolicy
+
+
+schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionSpecInitProviderUserPoliciesSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -676,10 +1880,14 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionStat
 
     Attributes
     ----------
+    clientPolicies : [str], default is Undefined, optional
+        A list of policy IDs that must be applied to the scopes defined by this permission.
     decisionStrategy : str, default is Undefined, optional
         The decision strategy, can be one of UNANIMOUS, AFFIRMATIVE, or CONSENSUS. Defaults to UNANIMOUS.
     description : str, default is Undefined, optional
         A description for the authorization permission.
+    groupPolicies : [str], default is Undefined, optional
+        A list of policy IDs that must be applied to the scopes defined by this permission.
     id : str, default is Undefined, optional
         Permission ID representing the permission.
     name : str, default is Undefined, optional
@@ -688,22 +1896,32 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionStat
         A list of policy IDs that must be applied to the scopes defined by this permission.
     realmId : str, default is Undefined, optional
         The realm this group exists in.
+    regexPolicies : [str], default is Undefined, optional
+        A list of policy IDs that must be applied to the scopes defined by this permission.
     resourceServerId : str, default is Undefined, optional
         The ID of the resource server.
     resourceType : str, default is Undefined, optional
         When specified, this permission will be evaluated for all instances of a given resource type. Conflicts with resources.
     resources : [str], default is Undefined, optional
         A list of resource IDs that this permission must be applied to. Conflicts with resource_type.
+    rolePolicies : [str], default is Undefined, optional
+        A list of policy IDs that must be applied to the scopes defined by this permission.
     scopes : [str], default is Undefined, optional
         A list of scope IDs that this permission must be applied to.
     $type : str, default is Undefined, optional
         The type of permission, can be one of resource or scope.
+    userPolicies : [str], default is Undefined, optional
+        A list of policy IDs that must be applied to the scopes defined by this permission.
     """
 
+
+    clientPolicies?: [str]
 
     decisionStrategy?: str
 
     description?: str
+
+    groupPolicies?: [str]
 
     id?: str
 
@@ -713,15 +1931,21 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionStat
 
     realmId?: str
 
+    regexPolicies?: [str]
+
     resourceServerId?: str
 
     resourceType?: str
 
     resources?: [str]
 
+    rolePolicies?: [str]
+
     scopes?: [str]
 
     $type?: str
+
+    userPolicies?: [str]
 
 
 schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientAuthorizationPermissionStatusConditionsItems0:

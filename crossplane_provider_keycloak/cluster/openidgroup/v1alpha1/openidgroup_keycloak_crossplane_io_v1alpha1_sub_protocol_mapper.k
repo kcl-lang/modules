@@ -5,39 +5,39 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 import k8s.apimachinery.pkg.apis.meta.v1
 
 
-schema Group:
+schema SubProtocolMapper:
     r"""
-    Group is the Schema for the Groups API.
+    SubProtocolMapper is the Schema for the SubProtocolMappers API.
 
     Attributes
     ----------
-    apiVersion : str, default is "group.keycloak.crossplane.io/v1alpha1", required
+    apiVersion : str, default is "openidgroup.keycloak.crossplane.io/v1alpha1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-    kind : str, default is "Group", required
+    kind : str, default is "SubProtocolMapper", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : GroupKeycloakCrossplaneIoV1alpha1GroupSpec, default is Undefined, required
+    spec : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpec, default is Undefined, required
         spec
-    status : GroupKeycloakCrossplaneIoV1alpha1GroupStatus, default is Undefined, optional
+    status : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperStatus, default is Undefined, optional
         status
     """
 
 
-    apiVersion: "group.keycloak.crossplane.io/v1alpha1" = "group.keycloak.crossplane.io/v1alpha1"
+    apiVersion: "openidgroup.keycloak.crossplane.io/v1alpha1" = "openidgroup.keycloak.crossplane.io/v1alpha1"
 
-    kind: "Group" = "Group"
+    kind: "SubProtocolMapper" = "SubProtocolMapper"
 
     metadata?: v1.ObjectMeta
 
-    spec: GroupKeycloakCrossplaneIoV1alpha1GroupSpec
+    spec: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpec
 
-    status?: GroupKeycloakCrossplaneIoV1alpha1GroupStatus
+    status?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperStatus
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpec:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpec:
     r"""
-    GroupSpec defines the desired state of Group
+    SubProtocolMapperSpec defines the desired state of SubProtocolMapper
 
     Attributes
     ----------
@@ -49,9 +49,9 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpec:
         field in a future release. Currently, both could be set independently and
         non-default values would be honored if the feature flag is enabled.
         See the design doc for more information: https://github.com/crossplane/crossplane/blob/499895a25d1a1a0ba1604944ef98ac7a1a71f197/design/design-doc-observe-only-resources.md?plain=1#L223
-    forProvider : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProvider, default is Undefined, required
+    forProvider : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProvider, default is Undefined, required
         for provider
-    initProvider : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProvider, default is Undefined, optional
+    initProvider : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProvider, default is Undefined, optional
         init provider
     managementPolicies : [str], default is ["*"], optional
         THIS IS A BETA FIELD. It is on by default but can be opted out
@@ -64,103 +64,109 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpec:
         custom, the DeletionPolicy field will be ignored.
         See the design doc for more information: https://github.com/crossplane/crossplane/blob/499895a25d1a1a0ba1604944ef98ac7a1a71f197/design/design-doc-observe-only-resources.md?plain=1#L223
         and this one: https://github.com/crossplane/crossplane/blob/444267e84783136daa93568b364a5f01228cacbe/design/one-pager-ignore-changes.md
-    providerConfigRef : GroupKeycloakCrossplaneIoV1alpha1GroupSpecProviderConfigRef, default is Undefined, optional
+    providerConfigRef : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecProviderConfigRef, default is Undefined, optional
         provider config ref
-    writeConnectionSecretToRef : GroupKeycloakCrossplaneIoV1alpha1GroupSpecWriteConnectionSecretToRef, default is Undefined, optional
+    writeConnectionSecretToRef : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecWriteConnectionSecretToRef, default is Undefined, optional
         write connection secret to ref
     """
 
 
     deletionPolicy?: "Orphan" | "Delete" = "Delete"
 
-    forProvider: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProvider
+    forProvider: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProvider
 
-    initProvider?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProvider
+    initProvider?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProvider
 
     managementPolicies?: [str] = ["*"]
 
-    providerConfigRef?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecProviderConfigRef
+    providerConfigRef?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecProviderConfigRef
 
-    writeConnectionSecretToRef?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecWriteConnectionSecretToRef
+    writeConnectionSecretToRef?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecWriteConnectionSecretToRef
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProvider:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProvider:
     r"""
-    group keycloak crossplane io v1alpha1 group spec for provider
+    openidgroup keycloak crossplane io v1alpha1 sub protocol mapper spec for provider
 
     Attributes
     ----------
-    attributes : {str:str}, default is Undefined, optional
-        A map representing attributes for the group. In order to add multivalued attributes, use ## to separate the values. Max length for each value is 255 chars
-    description : str, default is Undefined, optional
-        description
+    addToAccessToken : bool, default is Undefined, optional
+        Indicates if the sub claim should be added to the access token. Defaults to true.
+        Indicates if the attribute should be a claim in the access token.
+    addToTokenIntrospection : bool, default is Undefined, optional
+        Indicates if the sub claim should be added to the token introspection response. Defaults to true.
+        Indicates if the attribute should be a claim in the token introspection response body.
+    clientId : str, default is Undefined, optional
+        The client this protocol mapper should be attached to. Conflicts with client_scope_id. One of client_id or client_scope_id must be specified.
+        The mapper's associated client. Cannot be used at the same time as client_scope_id.
+    clientIdRef : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientIDRef, default is Undefined, optional
+        client Id ref
+    clientIdSelector : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientIDSelector, default is Undefined, optional
+        client Id selector
+    clientScopeId : str, default is Undefined, optional
+        The client scope this protocol mapper should be attached to. Conflicts with client_id. One of client_id or client_scope_id must be specified.
+        The mapper's associated client scope. Cannot be used at the same time as client_id.
+    clientScopeIdRef : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientScopeIDRef, default is Undefined, optional
+        client scope Id ref
+    clientScopeIdSelector : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientScopeIDSelector, default is Undefined, optional
+        client scope Id selector
     name : str, default is Undefined, optional
-        The name of the group.
-    organizationId : str, default is Undefined, optional
-        The organization this group exists in. If omitted, this group will be managed as a realm group. Organization groups require Keycloak 26.6.0 or later.
-    organizationIdRef : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDRef, default is Undefined, optional
-        organization Id ref
-    organizationIdSelector : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDSelector, default is Undefined, optional
-        organization Id selector
-    parentId : str, default is Undefined, optional
-        The ID of this group's parent. If omitted, this group will be defined at the root level.
-    parentIdRef : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDRef, default is Undefined, optional
-        parent Id ref
-    parentIdSelector : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDSelector, default is Undefined, optional
-        parent Id selector
+        The display name of this protocol mapper in the GUI.
+        A human-friendly name that will appear in the Keycloak console.
     realmId : str, default is Undefined, optional
-        The realm this group exists in.
-    realmIdRef : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDRef, default is Undefined, optional
+        The realm this protocol mapper exists within.
+        The realm id where the associated client or client scope exists.
+    realmIdRef : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderRealmIDRef, default is Undefined, optional
         realm Id ref
-    realmIdSelector : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDSelector, default is Undefined, optional
+    realmIdSelector : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
     """
 
 
-    attributes?: {str:str}
+    addToAccessToken?: bool
 
-    description?: str
+    addToTokenIntrospection?: bool
+
+    clientId?: str
+
+    clientIdRef?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientIDRef
+
+    clientIdSelector?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientIDSelector
+
+    clientScopeId?: str
+
+    clientScopeIdRef?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientScopeIDRef
+
+    clientScopeIdSelector?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientScopeIDSelector
 
     name?: str
 
-    organizationId?: str
-
-    organizationIdRef?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDRef
-
-    organizationIdSelector?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDSelector
-
-    parentId?: str
-
-    parentIdRef?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDRef
-
-    parentIdSelector?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDSelector
-
     realmId?: str
 
-    realmIdRef?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDRef
+    realmIdRef?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderRealmIDRef
 
-    realmIdSelector?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDSelector
+    realmIdSelector?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderRealmIDSelector
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDRef:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientIDRef:
     r"""
-    Reference to a Organization in organization to populate organizationId.
+    Reference to a Client in openidclient to populate clientId.
 
     Attributes
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDRefPolicy, default is Undefined, optional
+    policy : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientIDRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDRefPolicy
+    policy?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientIDRefPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDRefPolicy:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientIDRefPolicy:
     r"""
     Policies for referencing.
 
@@ -184,9 +190,9 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDRefPol
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDSelector:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientIDSelector:
     r"""
-    Selector for a Organization in organization to populate organizationId.
+    Selector for a Client in openidclient to populate clientId.
 
     Attributes
     ----------
@@ -195,7 +201,7 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDSelect
         as the selecting object is selected.
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels ensures an object with matching labels is selected.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDSelectorPolicy, default is Undefined, optional
+    policy : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientIDSelectorPolicy, default is Undefined, optional
         policy
     """
 
@@ -204,10 +210,10 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDSelect
 
     matchLabels?: {str:str}
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDSelectorPolicy
+    policy?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientIDSelectorPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDSelectorPolicy:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientIDSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -231,25 +237,25 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderOrganizationIDSelect
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDRef:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientScopeIDRef:
     r"""
-    Reference to a Group in group to populate parentId.
+    Reference to a ClientScope in openidclient to populate clientScopeId.
 
     Attributes
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDRefPolicy, default is Undefined, optional
+    policy : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientScopeIDRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDRefPolicy
+    policy?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientScopeIDRefPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDRefPolicy:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientScopeIDRefPolicy:
     r"""
     Policies for referencing.
 
@@ -273,9 +279,9 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDRefPolicy:
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDSelector:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientScopeIDSelector:
     r"""
-    Selector for a Group in group to populate parentId.
+    Selector for a ClientScope in openidclient to populate clientScopeId.
 
     Attributes
     ----------
@@ -284,7 +290,7 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDSelector:
         as the selecting object is selected.
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels ensures an object with matching labels is selected.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDSelectorPolicy, default is Undefined, optional
+    policy : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientScopeIDSelectorPolicy, default is Undefined, optional
         policy
     """
 
@@ -293,10 +299,10 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDSelector:
 
     matchLabels?: {str:str}
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDSelectorPolicy
+    policy?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientScopeIDSelectorPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDSelectorPolicy:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderClientScopeIDSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -320,7 +326,7 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderParentIDSelectorPoli
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDRef:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderRealmIDRef:
     r"""
     Reference to a Realm in realm to populate realmId.
 
@@ -328,17 +334,17 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDRef:
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDRefPolicy, default is Undefined, optional
+    policy : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderRealmIDRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDRefPolicy
+    policy?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderRealmIDRefPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDRefPolicy:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderRealmIDRefPolicy:
     r"""
     Policies for referencing.
 
@@ -362,7 +368,7 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDRefPolicy:
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDSelector:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderRealmIDSelector:
     r"""
     Selector for a Realm in realm to populate realmId.
 
@@ -373,7 +379,7 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDSelector:
         as the selecting object is selected.
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels ensures an object with matching labels is selected.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDSelectorPolicy, default is Undefined, optional
+    policy : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderRealmIDSelectorPolicy, default is Undefined, optional
         policy
     """
 
@@ -382,10 +388,10 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDSelector:
 
     matchLabels?: {str:str}
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDSelectorPolicy
+    policy?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderRealmIDSelectorPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDSelectorPolicy:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecForProviderRealmIDSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -409,7 +415,7 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecForProviderRealmIDSelectorPolic
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProvider:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProvider:
     r"""
     THIS IS A BETA FIELD. It will be honored
     unless the Management Policies feature flag is disabled.
@@ -424,77 +430,83 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProvider:
 
     Attributes
     ----------
-    attributes : {str:str}, default is Undefined, optional
-        A map representing attributes for the group. In order to add multivalued attributes, use ## to separate the values. Max length for each value is 255 chars
-    description : str, default is Undefined, optional
-        description
+    addToAccessToken : bool, default is Undefined, optional
+        Indicates if the sub claim should be added to the access token. Defaults to true.
+        Indicates if the attribute should be a claim in the access token.
+    addToTokenIntrospection : bool, default is Undefined, optional
+        Indicates if the sub claim should be added to the token introspection response. Defaults to true.
+        Indicates if the attribute should be a claim in the token introspection response body.
+    clientId : str, default is Undefined, optional
+        The client this protocol mapper should be attached to. Conflicts with client_scope_id. One of client_id or client_scope_id must be specified.
+        The mapper's associated client. Cannot be used at the same time as client_scope_id.
+    clientIdRef : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientIDRef, default is Undefined, optional
+        client Id ref
+    clientIdSelector : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientIDSelector, default is Undefined, optional
+        client Id selector
+    clientScopeId : str, default is Undefined, optional
+        The client scope this protocol mapper should be attached to. Conflicts with client_id. One of client_id or client_scope_id must be specified.
+        The mapper's associated client scope. Cannot be used at the same time as client_id.
+    clientScopeIdRef : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientScopeIDRef, default is Undefined, optional
+        client scope Id ref
+    clientScopeIdSelector : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientScopeIDSelector, default is Undefined, optional
+        client scope Id selector
     name : str, default is Undefined, optional
-        The name of the group.
-    organizationId : str, default is Undefined, optional
-        The organization this group exists in. If omitted, this group will be managed as a realm group. Organization groups require Keycloak 26.6.0 or later.
-    organizationIdRef : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDRef, default is Undefined, optional
-        organization Id ref
-    organizationIdSelector : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDSelector, default is Undefined, optional
-        organization Id selector
-    parentId : str, default is Undefined, optional
-        The ID of this group's parent. If omitted, this group will be defined at the root level.
-    parentIdRef : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDRef, default is Undefined, optional
-        parent Id ref
-    parentIdSelector : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDSelector, default is Undefined, optional
-        parent Id selector
+        The display name of this protocol mapper in the GUI.
+        A human-friendly name that will appear in the Keycloak console.
     realmId : str, default is Undefined, optional
-        The realm this group exists in.
-    realmIdRef : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDRef, default is Undefined, optional
+        The realm this protocol mapper exists within.
+        The realm id where the associated client or client scope exists.
+    realmIdRef : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderRealmIDRef, default is Undefined, optional
         realm Id ref
-    realmIdSelector : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDSelector, default is Undefined, optional
+    realmIdSelector : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderRealmIDSelector, default is Undefined, optional
         realm Id selector
     """
 
 
-    attributes?: {str:str}
+    addToAccessToken?: bool
 
-    description?: str
+    addToTokenIntrospection?: bool
+
+    clientId?: str
+
+    clientIdRef?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientIDRef
+
+    clientIdSelector?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientIDSelector
+
+    clientScopeId?: str
+
+    clientScopeIdRef?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientScopeIDRef
+
+    clientScopeIdSelector?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientScopeIDSelector
 
     name?: str
 
-    organizationId?: str
-
-    organizationIdRef?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDRef
-
-    organizationIdSelector?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDSelector
-
-    parentId?: str
-
-    parentIdRef?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDRef
-
-    parentIdSelector?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDSelector
-
     realmId?: str
 
-    realmIdRef?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDRef
+    realmIdRef?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderRealmIDRef
 
-    realmIdSelector?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDSelector
+    realmIdSelector?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderRealmIDSelector
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDRef:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientIDRef:
     r"""
-    Reference to a Organization in organization to populate organizationId.
+    Reference to a Client in openidclient to populate clientId.
 
     Attributes
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDRefPolicy, default is Undefined, optional
+    policy : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientIDRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDRefPolicy
+    policy?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientIDRefPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDRefPolicy:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientIDRefPolicy:
     r"""
     Policies for referencing.
 
@@ -518,9 +530,9 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDRefPo
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDSelector:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientIDSelector:
     r"""
-    Selector for a Organization in organization to populate organizationId.
+    Selector for a Client in openidclient to populate clientId.
 
     Attributes
     ----------
@@ -529,7 +541,7 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDSelec
         as the selecting object is selected.
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels ensures an object with matching labels is selected.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDSelectorPolicy, default is Undefined, optional
+    policy : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientIDSelectorPolicy, default is Undefined, optional
         policy
     """
 
@@ -538,10 +550,10 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDSelec
 
     matchLabels?: {str:str}
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDSelectorPolicy
+    policy?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientIDSelectorPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDSelectorPolicy:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientIDSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -565,25 +577,25 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderOrganizationIDSelec
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDRef:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientScopeIDRef:
     r"""
-    Reference to a Group in group to populate parentId.
+    Reference to a ClientScope in openidclient to populate clientScopeId.
 
     Attributes
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDRefPolicy, default is Undefined, optional
+    policy : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientScopeIDRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDRefPolicy
+    policy?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientScopeIDRefPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDRefPolicy:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientScopeIDRefPolicy:
     r"""
     Policies for referencing.
 
@@ -607,9 +619,9 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDRefPolicy:
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDSelector:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientScopeIDSelector:
     r"""
-    Selector for a Group in group to populate parentId.
+    Selector for a ClientScope in openidclient to populate clientScopeId.
 
     Attributes
     ----------
@@ -618,7 +630,7 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDSelector:
         as the selecting object is selected.
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels ensures an object with matching labels is selected.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDSelectorPolicy, default is Undefined, optional
+    policy : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientScopeIDSelectorPolicy, default is Undefined, optional
         policy
     """
 
@@ -627,10 +639,10 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDSelector:
 
     matchLabels?: {str:str}
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDSelectorPolicy
+    policy?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientScopeIDSelectorPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDSelectorPolicy:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderClientScopeIDSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -654,7 +666,7 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderParentIDSelectorPol
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDRef:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderRealmIDRef:
     r"""
     Reference to a Realm in realm to populate realmId.
 
@@ -662,17 +674,17 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDRef:
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDRefPolicy, default is Undefined, optional
+    policy : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderRealmIDRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDRefPolicy
+    policy?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderRealmIDRefPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDRefPolicy:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderRealmIDRefPolicy:
     r"""
     Policies for referencing.
 
@@ -696,7 +708,7 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDRefPolicy:
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDSelector:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderRealmIDSelector:
     r"""
     Selector for a Realm in realm to populate realmId.
 
@@ -707,7 +719,7 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDSelector:
         as the selecting object is selected.
     matchLabels : {str:str}, default is Undefined, optional
         MatchLabels ensures an object with matching labels is selected.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDSelectorPolicy, default is Undefined, optional
+    policy : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderRealmIDSelectorPolicy, default is Undefined, optional
         policy
     """
 
@@ -716,10 +728,10 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDSelector:
 
     matchLabels?: {str:str}
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDSelectorPolicy
+    policy?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderRealmIDSelectorPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDSelectorPolicy:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecInitProviderRealmIDSelectorPolicy:
     r"""
     Policies for selection.
 
@@ -743,7 +755,7 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecInitProviderRealmIDSelectorPoli
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecProviderConfigRef:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecProviderConfigRef:
     r"""
     ProviderConfigReference specifies how the provider that will be used to
     create, observe, update, and delete this managed resource should be
@@ -753,17 +765,17 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecProviderConfigRef:
     ----------
     name : str, default is Undefined, required
         Name of the referenced object.
-    policy : GroupKeycloakCrossplaneIoV1alpha1GroupSpecProviderConfigRefPolicy, default is Undefined, optional
+    policy : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecProviderConfigRefPolicy, default is Undefined, optional
         policy
     """
 
 
     name: str
 
-    policy?: GroupKeycloakCrossplaneIoV1alpha1GroupSpecProviderConfigRefPolicy
+    policy?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecProviderConfigRefPolicy
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecProviderConfigRefPolicy:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecProviderConfigRefPolicy:
     r"""
     Policies for referencing.
 
@@ -787,7 +799,7 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecProviderConfigRefPolicy:
     resolve?: "Always" | "IfNotPresent"
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecWriteConnectionSecretToRef:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperSpecWriteConnectionSecretToRef:
     r"""
     WriteConnectionSecretToReference specifies the namespace and name of a
     Secret to which any connection details for this managed resource should
@@ -808,15 +820,15 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupSpecWriteConnectionSecretToRef:
     namespace: str
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupStatus:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperStatus:
     r"""
-    GroupStatus defines the observed state of Group.
+    SubProtocolMapperStatus defines the observed state of SubProtocolMapper.
 
     Attributes
     ----------
-    atProvider : GroupKeycloakCrossplaneIoV1alpha1GroupStatusAtProvider, default is Undefined, optional
+    atProvider : OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperStatusAtProvider, default is Undefined, optional
         at provider
-    conditions : [GroupKeycloakCrossplaneIoV1alpha1GroupStatusConditionsItems0], default is Undefined, optional
+    conditions : [OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperStatusConditionsItems0], default is Undefined, optional
         Conditions of the resource.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the latest metadata.generation
@@ -825,56 +837,58 @@ schema GroupKeycloakCrossplaneIoV1alpha1GroupStatus:
     """
 
 
-    atProvider?: GroupKeycloakCrossplaneIoV1alpha1GroupStatusAtProvider
+    atProvider?: OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperStatusAtProvider
 
-    conditions?: [GroupKeycloakCrossplaneIoV1alpha1GroupStatusConditionsItems0]
+    conditions?: [OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperStatusConditionsItems0]
 
     observedGeneration?: int
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupStatusAtProvider:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperStatusAtProvider:
     r"""
-    group keycloak crossplane io v1alpha1 group status at provider
+    openidgroup keycloak crossplane io v1alpha1 sub protocol mapper status at provider
 
     Attributes
     ----------
-    attributes : {str:str}, default is Undefined, optional
-        A map representing attributes for the group. In order to add multivalued attributes, use ## to separate the values. Max length for each value is 255 chars
-    description : str, default is Undefined, optional
-        description
+    addToAccessToken : bool, default is Undefined, optional
+        Indicates if the sub claim should be added to the access token. Defaults to true.
+        Indicates if the attribute should be a claim in the access token.
+    addToTokenIntrospection : bool, default is Undefined, optional
+        Indicates if the sub claim should be added to the token introspection response. Defaults to true.
+        Indicates if the attribute should be a claim in the token introspection response body.
+    clientId : str, default is Undefined, optional
+        The client this protocol mapper should be attached to. Conflicts with client_scope_id. One of client_id or client_scope_id must be specified.
+        The mapper's associated client. Cannot be used at the same time as client_scope_id.
+    clientScopeId : str, default is Undefined, optional
+        The client scope this protocol mapper should be attached to. Conflicts with client_id. One of client_id or client_scope_id must be specified.
+        The mapper's associated client scope. Cannot be used at the same time as client_id.
     id : str, default is Undefined, optional
         id
     name : str, default is Undefined, optional
-        The name of the group.
-    organizationId : str, default is Undefined, optional
-        The organization this group exists in. If omitted, this group will be managed as a realm group. Organization groups require Keycloak 26.6.0 or later.
-    parentId : str, default is Undefined, optional
-        The ID of this group's parent. If omitted, this group will be defined at the root level.
-    path : str, default is Undefined, optional
-        (Computed) The complete path of the group. For example, the child group's path in the example configuration would be /parent-group/child-group.
+        The display name of this protocol mapper in the GUI.
+        A human-friendly name that will appear in the Keycloak console.
     realmId : str, default is Undefined, optional
-        The realm this group exists in.
+        The realm this protocol mapper exists within.
+        The realm id where the associated client or client scope exists.
     """
 
 
-    attributes?: {str:str}
+    addToAccessToken?: bool
 
-    description?: str
+    addToTokenIntrospection?: bool
+
+    clientId?: str
+
+    clientScopeId?: str
 
     id?: str
 
     name?: str
 
-    organizationId?: str
-
-    parentId?: str
-
-    path?: str
-
     realmId?: str
 
 
-schema GroupKeycloakCrossplaneIoV1alpha1GroupStatusConditionsItems0:
+schema OpenidgroupKeycloakCrossplaneIoV1alpha1SubProtocolMapperStatusConditionsItems0:
     r"""
     A Condition that may apply to a resource.
 

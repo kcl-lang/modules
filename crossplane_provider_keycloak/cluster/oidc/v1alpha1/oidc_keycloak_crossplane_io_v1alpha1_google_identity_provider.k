@@ -138,6 +138,9 @@ schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProvider:
     linkOnly : bool, default is Undefined, optional
         When true, users cannot sign-in using this provider, but their existing accounts will be linked when possible. Defaults to false.
         If true, users cannot log in through this provider.  They can only link to this provider.  This is useful if you don't want to allow login from the provider, but want to integrate with a provider
+    loginHint : str, default is Undefined, optional
+        Pass login_hint to the Google identity provider. Set to "true" to forward the login_hint query parameter from the inbound OIDC request to Google. The underlying Keycloak attribute loginHint is a boolean string, so the value should be "true" or "false".
+        Pass login_hint to identity provider. Set to "true" to forward the login_hint client note (the underlying loginHint config attribute is a boolean string).
     orgDomain : str, default is Undefined, optional
         org domain
     orgRedirectModeEmailMatches : bool, default is Undefined, optional
@@ -214,6 +217,8 @@ schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecForProvider:
     hostedDomain?: str
 
     linkOnly?: bool
+
+    loginHint?: str
 
     orgDomain?: str
 
@@ -622,6 +627,9 @@ schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProvider:
     linkOnly : bool, default is Undefined, optional
         When true, users cannot sign-in using this provider, but their existing accounts will be linked when possible. Defaults to false.
         If true, users cannot log in through this provider.  They can only link to this provider.  This is useful if you don't want to allow login from the provider, but want to integrate with a provider
+    loginHint : str, default is Undefined, optional
+        Pass login_hint to the Google identity provider. Set to "true" to forward the login_hint query parameter from the inbound OIDC request to Google. The underlying Keycloak attribute loginHint is a boolean string, so the value should be "true" or "false".
+        Pass login_hint to identity provider. Set to "true" to forward the login_hint client note (the underlying loginHint config attribute is a boolean string).
     orgDomain : str, default is Undefined, optional
         org domain
     orgRedirectModeEmailMatches : bool, default is Undefined, optional
@@ -698,6 +706,8 @@ schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderSpecInitProvider:
     hostedDomain?: str
 
     linkOnly?: bool
+
+    loginHint?: str
 
     orgDomain?: str
 
@@ -1183,6 +1193,9 @@ schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderStatusAtProvider:
     linkOnly : bool, default is Undefined, optional
         When true, users cannot sign-in using this provider, but their existing accounts will be linked when possible. Defaults to false.
         If true, users cannot log in through this provider.  They can only link to this provider.  This is useful if you don't want to allow login from the provider, but want to integrate with a provider
+    loginHint : str, default is Undefined, optional
+        Pass login_hint to the Google identity provider. Set to "true" to forward the login_hint query parameter from the inbound OIDC request to Google. The underlying Keycloak attribute loginHint is a boolean string, so the value should be "true" or "false".
+        Pass login_hint to identity provider. Set to "true" to forward the login_hint client note (the underlying loginHint config attribute is a boolean string).
     orgDomain : str, default is Undefined, optional
         org domain
     orgRedirectModeEmailMatches : bool, default is Undefined, optional
@@ -1247,6 +1260,8 @@ schema OidcKeycloakCrossplaneIoV1alpha1GoogleIdentityProviderStatusAtProvider:
     internalId?: str
 
     linkOnly?: bool
+
+    loginHint?: str
 
     orgDomain?: str
 
