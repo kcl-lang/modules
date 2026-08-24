@@ -126,6 +126,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1UserProfileSpecForProviderAttributeItems
     ----------
     annotations : {str:str}, default is Undefined, optional
         A map of annotations for the attribute. Values can be a String or a json object.
+    defaultValue : str, default is Undefined, optional
+        The default value of the attribute. Only applied with Keycloak 26.4.0 or later.
     displayName : str, default is Undefined, optional
         The display name of the attribute.
     enabledWhenScope : [str], default is Undefined, optional
@@ -148,6 +150,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1UserProfileSpecForProviderAttributeItems
 
 
     annotations?: {str:str}
+
+    defaultValue?: str
 
     displayName?: str
 
@@ -370,6 +374,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1UserProfileSpecInitProviderAttributeItem
     ----------
     annotations : {str:str}, default is Undefined, optional
         A map of annotations for the attribute. Values can be a String or a json object.
+    defaultValue : str, default is Undefined, optional
+        The default value of the attribute. Only applied with Keycloak 26.4.0 or later.
     displayName : str, default is Undefined, optional
         The display name of the attribute.
     enabledWhenScope : [str], default is Undefined, optional
@@ -392,6 +398,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1UserProfileSpecInitProviderAttributeItem
 
 
     annotations?: {str:str}
+
+    defaultValue?: str
 
     displayName?: str
 
@@ -690,6 +698,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1UserProfileStatusAtProviderAttributeItem
     ----------
     annotations : {str:str}, default is Undefined, optional
         A map of annotations for the attribute. Values can be a String or a json object.
+    defaultValue : str, default is Undefined, optional
+        The default value of the attribute. Only applied with Keycloak 26.4.0 or later.
     displayName : str, default is Undefined, optional
         The display name of the attribute.
     enabledWhenScope : [str], default is Undefined, optional
@@ -712,6 +722,8 @@ schema RealmKeycloakCrossplaneIoV1alpha1UserProfileStatusAtProviderAttributeItem
 
 
     annotations?: {str:str}
+
+    defaultValue?: str
 
     displayName?: str
 

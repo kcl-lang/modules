@@ -172,6 +172,10 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProvider:
         The maximum amount of time a client has to finish the device code flow before it expires.
     oauth2DevicePollingInterval : str, default is Undefined, optional
         The minimum amount of time in seconds that the client should wait between polling requests to the token endpoint.
+    oauth2JwtAuthorizationGrantEnabled : bool, default is Undefined, optional
+        When false, this client will not be able to initiate a login or obtain access tokens. Defaults to true.
+    oauth2JwtAuthorizationGrantIdp : str, default is Undefined, optional
+        oauth2 jwt authorization grant idp
     pkceCodeChallengeMethod : str, default is Undefined, optional
         The challenge method to use for Proof Key for Code Exchange. Can be either plain or S256 or set to empty value “.
     realmId : str, default is Undefined, optional
@@ -284,6 +288,10 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecForProvider:
     oauth2DeviceCodeLifespan?: str
 
     oauth2DevicePollingInterval?: str
+
+    oauth2JwtAuthorizationGrantEnabled?: bool
+
+    oauth2JwtAuthorizationGrantIdp?: str
 
     pkceCodeChallengeMethod?: str
 
@@ -783,6 +791,10 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProvider:
         The maximum amount of time a client has to finish the device code flow before it expires.
     oauth2DevicePollingInterval : str, default is Undefined, optional
         The minimum amount of time in seconds that the client should wait between polling requests to the token endpoint.
+    oauth2JwtAuthorizationGrantEnabled : bool, default is Undefined, optional
+        When false, this client will not be able to initiate a login or obtain access tokens. Defaults to true.
+    oauth2JwtAuthorizationGrantIdp : str, default is Undefined, optional
+        oauth2 jwt authorization grant idp
     pkceCodeChallengeMethod : str, default is Undefined, optional
         The challenge method to use for Proof Key for Code Exchange. Can be either plain or S256 or set to empty value “.
     realmId : str, default is Undefined, optional
@@ -895,6 +907,10 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientSpecInitProvider:
     oauth2DeviceCodeLifespan?: str
 
     oauth2DevicePollingInterval?: str
+
+    oauth2JwtAuthorizationGrantEnabled?: bool
+
+    oauth2JwtAuthorizationGrantIdp?: str
 
     pkceCodeChallengeMethod?: str
 
@@ -1472,6 +1488,10 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientStatusAtProvider:
         The maximum amount of time a client has to finish the device code flow before it expires.
     oauth2DevicePollingInterval : str, default is Undefined, optional
         The minimum amount of time in seconds that the client should wait between polling requests to the token endpoint.
+    oauth2JwtAuthorizationGrantEnabled : bool, default is Undefined, optional
+        When false, this client will not be able to initiate a login or obtain access tokens. Defaults to true.
+    oauth2JwtAuthorizationGrantIdp : str, default is Undefined, optional
+        oauth2 jwt authorization grant idp
     pkceCodeChallengeMethod : str, default is Undefined, optional
         The challenge method to use for Proof Key for Code Exchange. Can be either plain or S256 or set to empty value “.
     realmId : str, default is Undefined, optional
@@ -1582,6 +1602,10 @@ schema OpenidclientKeycloakCrossplaneIoV1alpha1ClientStatusAtProvider:
     oauth2DeviceCodeLifespan?: str
 
     oauth2DevicePollingInterval?: str
+
+    oauth2JwtAuthorizationGrantEnabled?: bool
+
+    oauth2JwtAuthorizationGrantIdp?: str
 
     pkceCodeChallengeMethod?: str
 

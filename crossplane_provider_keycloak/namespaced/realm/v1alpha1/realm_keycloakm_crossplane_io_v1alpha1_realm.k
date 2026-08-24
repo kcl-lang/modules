@@ -356,6 +356,8 @@ schema RealmKeycloakmCrossplaneIoV1alpha1RealmSpecForProviderOtpPolicyItems0:
     algorithm : str, default is Undefined, optional
         What hashing algorithm should be used to generate the OTP, Valid options are HmacSHA1,HmacSHA256 and HmacSHA512. Defaults to HmacSHA1.
         What hashing algorithm should be used to generate the OTP.
+    codeReusable : bool, default is Undefined, optional
+        Possibility to use the same OTP code again after successful authentication. Defaults to false.
     digits : float, default is Undefined, optional
         How many digits the OTP have. Defaults to 6.
     initialCounter : float, default is Undefined, optional
@@ -371,6 +373,8 @@ schema RealmKeycloakmCrossplaneIoV1alpha1RealmSpecForProviderOtpPolicyItems0:
 
 
     algorithm?: str
+
+    codeReusable?: bool
 
     digits?: float
 
@@ -390,7 +394,7 @@ schema RealmKeycloakmCrossplaneIoV1alpha1RealmSpecForProviderSMTPServerItems0:
     Attributes
     ----------
     allowUtf8 : bool, default is Undefined, optional
-        allow Utf8
+        When true, allows UTF-8 in the local part of the email address. Defaults to false.
     auth : [RealmKeycloakmCrossplaneIoV1alpha1RealmSpecForProviderSMTPServerItems0AuthItems0], default is Undefined, optional
         Enables authentication to the SMTP server. Cannot be set alongside token_auth. This block supports the following arguments:
     envelopeFrom : str, default is Undefined, optional
@@ -549,6 +553,8 @@ schema RealmKeycloakmCrossplaneIoV1alpha1RealmSpecForProviderSecurityDefensesIte
 
     Attributes
     ----------
+    bruteForceStrategy : str, default is Undefined, optional
+        brute force strategy
     failureResetTimeSeconds : float, default is Undefined, optional
         When will failure count be reset?
     maxFailureWaitSeconds : float, default is Undefined, optional
@@ -567,6 +573,8 @@ schema RealmKeycloakmCrossplaneIoV1alpha1RealmSpecForProviderSecurityDefensesIte
         This represents the amount of time a user should be locked out when the login failure threshold has been met.
     """
 
+
+    bruteForceStrategy?: str
 
     failureResetTimeSeconds?: float
 
@@ -647,6 +655,9 @@ schema RealmKeycloakmCrossplaneIoV1alpha1RealmSpecForProviderWebAuthnPasswordles
         The timeout value for creating a user's public key credential in seconds. When set to 0, this timeout option is not adapted. Defaults to 0.
     extraOrigins : [str], default is Undefined, optional
         A set of extra origins for non-web applications.
+    passwordlessPasskeysEnabled : bool, default is Undefined, optional
+        When true, Keycloak will enable passwordless passkey support. This attribute is only valid inside a web_authn_passwordless_policy block and requires a Keycloak version that supports passwordless passkeys. Defaults to false.
+        Enable passkeys for passwordless WebAuthn authentication
     relyingPartyEntityName : str, default is Undefined, optional
         A human-readable server name for the WebAuthn Relying Party. Defaults to keycloak.
     relyingPartyId : str, default is Undefined, optional
@@ -674,6 +685,8 @@ schema RealmKeycloakmCrossplaneIoV1alpha1RealmSpecForProviderWebAuthnPasswordles
     createTimeout?: float
 
     extraOrigins?: [str]
+
+    passwordlessPasskeysEnabled?: bool
 
     relyingPartyEntityName?: str
 
@@ -1040,6 +1053,8 @@ schema RealmKeycloakmCrossplaneIoV1alpha1RealmSpecInitProviderOtpPolicyItems0:
     algorithm : str, default is Undefined, optional
         What hashing algorithm should be used to generate the OTP, Valid options are HmacSHA1,HmacSHA256 and HmacSHA512. Defaults to HmacSHA1.
         What hashing algorithm should be used to generate the OTP.
+    codeReusable : bool, default is Undefined, optional
+        Possibility to use the same OTP code again after successful authentication. Defaults to false.
     digits : float, default is Undefined, optional
         How many digits the OTP have. Defaults to 6.
     initialCounter : float, default is Undefined, optional
@@ -1055,6 +1070,8 @@ schema RealmKeycloakmCrossplaneIoV1alpha1RealmSpecInitProviderOtpPolicyItems0:
 
 
     algorithm?: str
+
+    codeReusable?: bool
 
     digits?: float
 
@@ -1074,7 +1091,7 @@ schema RealmKeycloakmCrossplaneIoV1alpha1RealmSpecInitProviderSMTPServerItems0:
     Attributes
     ----------
     allowUtf8 : bool, default is Undefined, optional
-        allow Utf8
+        When true, allows UTF-8 in the local part of the email address. Defaults to false.
     auth : [RealmKeycloakmCrossplaneIoV1alpha1RealmSpecInitProviderSMTPServerItems0AuthItems0], default is Undefined, optional
         Enables authentication to the SMTP server. Cannot be set alongside token_auth. This block supports the following arguments:
     envelopeFrom : str, default is Undefined, optional
@@ -1233,6 +1250,8 @@ schema RealmKeycloakmCrossplaneIoV1alpha1RealmSpecInitProviderSecurityDefensesIt
 
     Attributes
     ----------
+    bruteForceStrategy : str, default is Undefined, optional
+        brute force strategy
     failureResetTimeSeconds : float, default is Undefined, optional
         When will failure count be reset?
     maxFailureWaitSeconds : float, default is Undefined, optional
@@ -1251,6 +1270,8 @@ schema RealmKeycloakmCrossplaneIoV1alpha1RealmSpecInitProviderSecurityDefensesIt
         This represents the amount of time a user should be locked out when the login failure threshold has been met.
     """
 
+
+    bruteForceStrategy?: str
 
     failureResetTimeSeconds?: float
 
@@ -1331,6 +1352,9 @@ schema RealmKeycloakmCrossplaneIoV1alpha1RealmSpecInitProviderWebAuthnPasswordle
         The timeout value for creating a user's public key credential in seconds. When set to 0, this timeout option is not adapted. Defaults to 0.
     extraOrigins : [str], default is Undefined, optional
         A set of extra origins for non-web applications.
+    passwordlessPasskeysEnabled : bool, default is Undefined, optional
+        When true, Keycloak will enable passwordless passkey support. This attribute is only valid inside a web_authn_passwordless_policy block and requires a Keycloak version that supports passwordless passkeys. Defaults to false.
+        Enable passkeys for passwordless WebAuthn authentication
     relyingPartyEntityName : str, default is Undefined, optional
         A human-readable server name for the WebAuthn Relying Party. Defaults to keycloak.
     relyingPartyId : str, default is Undefined, optional
@@ -1358,6 +1382,8 @@ schema RealmKeycloakmCrossplaneIoV1alpha1RealmSpecInitProviderWebAuthnPasswordle
     createTimeout?: float
 
     extraOrigins?: [str]
+
+    passwordlessPasskeysEnabled?: bool
 
     relyingPartyEntityName?: str
 
@@ -1780,6 +1806,8 @@ schema RealmKeycloakmCrossplaneIoV1alpha1RealmStatusAtProviderOtpPolicyItems0:
     algorithm : str, default is Undefined, optional
         What hashing algorithm should be used to generate the OTP, Valid options are HmacSHA1,HmacSHA256 and HmacSHA512. Defaults to HmacSHA1.
         What hashing algorithm should be used to generate the OTP.
+    codeReusable : bool, default is Undefined, optional
+        Possibility to use the same OTP code again after successful authentication. Defaults to false.
     digits : float, default is Undefined, optional
         How many digits the OTP have. Defaults to 6.
     initialCounter : float, default is Undefined, optional
@@ -1795,6 +1823,8 @@ schema RealmKeycloakmCrossplaneIoV1alpha1RealmStatusAtProviderOtpPolicyItems0:
 
 
     algorithm?: str
+
+    codeReusable?: bool
 
     digits?: float
 
@@ -1814,7 +1844,7 @@ schema RealmKeycloakmCrossplaneIoV1alpha1RealmStatusAtProviderSMTPServerItems0:
     Attributes
     ----------
     allowUtf8 : bool, default is Undefined, optional
-        allow Utf8
+        When true, allows UTF-8 in the local part of the email address. Defaults to false.
     auth : [RealmKeycloakmCrossplaneIoV1alpha1RealmStatusAtProviderSMTPServerItems0AuthItems0], default is Undefined, optional
         Enables authentication to the SMTP server. Cannot be set alongside token_auth. This block supports the following arguments:
     envelopeFrom : str, default is Undefined, optional
@@ -1929,6 +1959,8 @@ schema RealmKeycloakmCrossplaneIoV1alpha1RealmStatusAtProviderSecurityDefensesIt
 
     Attributes
     ----------
+    bruteForceStrategy : str, default is Undefined, optional
+        brute force strategy
     failureResetTimeSeconds : float, default is Undefined, optional
         When will failure count be reset?
     maxFailureWaitSeconds : float, default is Undefined, optional
@@ -1947,6 +1979,8 @@ schema RealmKeycloakmCrossplaneIoV1alpha1RealmStatusAtProviderSecurityDefensesIt
         This represents the amount of time a user should be locked out when the login failure threshold has been met.
     """
 
+
+    bruteForceStrategy?: str
 
     failureResetTimeSeconds?: float
 
@@ -2027,6 +2061,9 @@ schema RealmKeycloakmCrossplaneIoV1alpha1RealmStatusAtProviderWebAuthnPasswordle
         The timeout value for creating a user's public key credential in seconds. When set to 0, this timeout option is not adapted. Defaults to 0.
     extraOrigins : [str], default is Undefined, optional
         A set of extra origins for non-web applications.
+    passwordlessPasskeysEnabled : bool, default is Undefined, optional
+        When true, Keycloak will enable passwordless passkey support. This attribute is only valid inside a web_authn_passwordless_policy block and requires a Keycloak version that supports passwordless passkeys. Defaults to false.
+        Enable passkeys for passwordless WebAuthn authentication
     relyingPartyEntityName : str, default is Undefined, optional
         A human-readable server name for the WebAuthn Relying Party. Defaults to keycloak.
     relyingPartyId : str, default is Undefined, optional
@@ -2054,6 +2091,8 @@ schema RealmKeycloakmCrossplaneIoV1alpha1RealmStatusAtProviderWebAuthnPasswordle
     createTimeout?: float
 
     extraOrigins?: [str]
+
+    passwordlessPasskeysEnabled?: bool
 
     relyingPartyEntityName?: str
 
