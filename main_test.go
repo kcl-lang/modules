@@ -31,6 +31,12 @@ func TestK8sPackages(t *testing.T) {
 		expectFilepath string
 		expect         string
 		packagePath    string
+		// requiredSchemaFiles, if non-empty, lists schema files (relative
+		// to the package root) that must exist for the test to run. Tests
+		// are skipped when a required schema is absent in the targeted
+		// k8s version (e.g. networking.k8s.io/v1 Ingress only exists from
+		// k8s 1.19, while the v1beta1 copy exists in earlier versions).
+		requiredSchemaFiles []string
 	}
 	var cases []testCase
 
@@ -40,9 +46,40 @@ func TestK8sPackages(t *testing.T) {
 		t.Fatal(err)
 	}
 	var versions []string
+	// Versions 1.14 - 1.31 had a bug where `apimachinery.pkg.apis.meta.v1`
+	// was imported without an alias, which broke schema lookups when the
+	// parent package was itself imported via `as <alias>`. The fix renames
+	// the bare import to `import ... as metav1` and rewrites all `v1.<Type>`
+	// references to `metav1.<Type>`. These tests guard against regressions.
+	versions = append(versions, "1.14")
+	versions = append(versions, "1.15")
+	versions = append(versions, "1.16")
+	versions = append(versions, "1.17")
+	versions = append(versions, "1.18")
+	versions = append(versions, "1.19")
+	versions = append(versions, "1.20")
+	versions = append(versions, "1.21")
+	versions = append(versions, "1.22")
+	versions = append(versions, "1.23")
+	versions = append(versions, "1.24")
+	versions = append(versions, "1.25")
+	versions = append(versions, "1.26")
+	versions = append(versions, "1.27")
+	versions = append(versions, "1.28")
+	versions = append(versions, "1.29")
+	versions = append(versions, "1.30")
 	versions = append(versions, "1.31")
 	versions = append(versions, "1.32")
 	versions = append(versions, "1.33")
+
+	// Per-case required-schema gates. An empty entry means the test runs
+	// against every version (the schema exists in all 1.14+ versions).
+	requiredByCase := map[string][]string{
+		"configmap":   {"api/core/v1/config_map.k"},
+		"deplyoment":  {"api/apps/v1/deployment.k"},
+		"ingress":     {"api/networking/v1/ingress.k"},
+		"networkpolicy": {"api/networking/v1/network_policy.k"},
+	}
 
 	for _, v := range versions {
 		packagePath := filepath.Join("k8s", v)
@@ -50,17 +87,24 @@ func TestK8sPackages(t *testing.T) {
 			input := filepath.Join(casesPath, caseFile.Name(), "input.k")
 			expectFilepath := filepath.Join(casesPath, caseFile.Name(), "expect.yaml")
 			cases = append(cases, testCase{
-				name:           v + "_" + caseFile.Name(),
-				input:          readFileString(t, input),
-				expectFilepath: expectFilepath,
-				expect:         readFileString(t, expectFilepath),
-				packagePath:    packagePath,
+				name:                v + "_" + caseFile.Name(),
+				input:               readFileString(t, input),
+				expectFilepath:      expectFilepath,
+				expect:              readFileString(t, expectFilepath),
+				packagePath:         packagePath,
+				requiredSchemaFiles: requiredByCase[caseFile.Name()],
 			})
 		}
 	}
 
 	for _, testcase := range cases {
 		t.Run(testcase.name, func(t *testing.T) {
+			for _, rel := range testcase.requiredSchemaFiles {
+				abs := filepath.Join(testcase.packagePath, rel)
+				if _, err := os.Stat(abs); err != nil {
+					t.Skipf("schema %s not available in %s: %v", rel, testcase.packagePath, err)
+				}
+			}
 			yaml := kcl.MustRun("main.k", kcl.WithCode(testcase.input), kcl.WithExternalPkgs("k8s="+testcase.packagePath)).GetRawYamlResult()
 			if err != nil {
 				t.Fatal(err)
