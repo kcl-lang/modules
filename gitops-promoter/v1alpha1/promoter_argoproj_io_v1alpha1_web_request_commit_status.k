@@ -626,7 +626,7 @@ schema PromoterArgoprojIoV1alpha1WebRequestCommitStatusSpecSuccess:
 
 schema PromoterArgoprojIoV1alpha1WebRequestCommitStatusSpecSuccessWhen:
     r"""
-    When is evaluated every reconcile. See WhenWithOutputSpec.Expression.
+    When is evaluated every reconcile. See SuccessSpec for return values and WhenWithOutputSpec.Expression for variables.
 
     Attributes
     ----------
@@ -739,6 +739,10 @@ schema PromoterArgoprojIoV1alpha1WebRequestCommitStatusStatus:
     environments : [PromoterArgoprojIoV1alpha1WebRequestCommitStatusStatusEnvironmentsItems0], default is Undefined, optional
         Environments holds the status of each environment when context is "environments".
         When context is "promotionstrategy", this slice is empty and PromotionStrategyContext is used instead.
+    instanceID : str, default is Undefined, optional
+        InstanceID mirrors metadata.labels[promoter.argoproj.io/instance-id] stamped on each
+        reconcile attempt by this install's controller, including when Ready=False; omitted
+        when the resource has no instance-id label (default install).
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the .metadata.generation that this status was reconciled from.
         Because status is written via Server-Side Apply with ForceOwnership (which has no
@@ -753,9 +757,17 @@ schema PromoterArgoprojIoV1alpha1WebRequestCommitStatusStatus:
 
     environments?: [PromoterArgoprojIoV1alpha1WebRequestCommitStatusStatusEnvironmentsItems0]
 
+    instanceID?: str
+
     observedGeneration?: int
 
     promotionStrategyContext?: PromoterArgoprojIoV1alpha1WebRequestCommitStatusStatusPromotionStrategyContext
+
+
+    check:
+        len(instanceID) <= 63 if instanceID
+        len(instanceID) >= 1 if instanceID
+        _regex_match(str(instanceID), r"^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$") if instanceID
 
 
 schema PromoterArgoprojIoV1alpha1WebRequestCommitStatusStatusConditionsItems0:
@@ -830,7 +842,8 @@ schema PromoterArgoprojIoV1alpha1WebRequestCommitStatusStatusEnvironmentsItems0:
         Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     phase : str, default is Undefined, required
         Phase represents the current phase of the validation.
-        This controller sets only "pending" or "success"; it never sets "failure" (failure is allowed by the enum for API consistency).
+        A boolean success expression yields only "pending" or "success"; "failure" requires the { phase } object
+        return form documented on SuccessSpec.
     reportedSha : str, default is Undefined, optional
         ReportedSha is the commit SHA being reported on for this environment.
         This is determined by the reportOn field (proposed or active).
