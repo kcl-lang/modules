@@ -176,6 +176,10 @@ schema PromoterArgoprojIoV1alpha1GitCommitStatusStatus:
         but the CommitStatus is always reported on the PROPOSED commit for promotion gating.
         Each environment entry tracks both the ProposedHydratedSha (where status is reported) and the
         ActiveHydratedSha, with TargetedSha indicating which one was actually evaluated.
+    instanceID : str, default is Undefined, optional
+        InstanceID mirrors metadata.labels[promoter.argoproj.io/instance-id] stamped on each
+        reconcile attempt by this install's controller, including when Ready=False; omitted
+        when the resource has no instance-id label (default install).
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the .metadata.generation that this status was reconciled from.
         Because status is written via Server-Side Apply with ForceOwnership (which has no
@@ -188,7 +192,15 @@ schema PromoterArgoprojIoV1alpha1GitCommitStatusStatus:
 
     environments?: [PromoterArgoprojIoV1alpha1GitCommitStatusStatusEnvironmentsItems0]
 
+    instanceID?: str
+
     observedGeneration?: int
+
+
+    check:
+        len(instanceID) <= 63 if instanceID
+        len(instanceID) >= 1 if instanceID
+        _regex_match(str(instanceID), r"^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$") if instanceID
 
 
 schema PromoterArgoprojIoV1alpha1GitCommitStatusStatusConditionsItems0:

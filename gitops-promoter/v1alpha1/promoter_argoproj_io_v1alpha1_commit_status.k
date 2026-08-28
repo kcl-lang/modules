@@ -113,6 +113,10 @@ schema PromoterArgoprojIoV1alpha1CommitStatusStatus:
         Conditions Represents the observations of the current state.
     id : str, default is Undefined, optional
         Id is the unique identifier of the commit status, set by the SCM
+    instanceID : str, default is Undefined, optional
+        InstanceID mirrors metadata.labels[promoter.argoproj.io/instance-id] stamped on each
+        reconcile attempt by this install's controller, including when Ready=False; omitted
+        when the resource has no instance-id label (default install).
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the .metadata.generation that this status was reconciled from.
         Because status is written via Server-Side Apply with ForceOwnership (which has no
@@ -130,6 +134,8 @@ schema PromoterArgoprojIoV1alpha1CommitStatusStatus:
 
     id?: str
 
+    instanceID?: str
+
     observedGeneration?: int
 
     phase?: "pending" | "success" | "failure" | "" = "pending"
@@ -138,6 +144,9 @@ schema PromoterArgoprojIoV1alpha1CommitStatusStatus:
 
 
     check:
+        len(instanceID) <= 63 if instanceID
+        len(instanceID) >= 1 if instanceID
+        _regex_match(str(instanceID), r"^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$") if instanceID
         len(sha) <= 64 if sha
         _regex_match(str(sha), r"^([a-f0-9]{40}|[a-f0-9]{64})$") if sha
 

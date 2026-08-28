@@ -45,6 +45,7 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicySpec:
     ----------
     activeBranch : str, default is Undefined, required
         ActiveBranch staging hydrated branch
+        Must not start with '-', contain ':', or contain '..'.
     activeCommitStatuses : [PromoterArgoprojIoV1alpha1ChangeTransferPolicySpecActiveCommitStatusesItems0], default is Undefined, optional
         ActiveCommitStatuses lists the statuses to be monitored on the active branch
     activePath : str, default is Undefined, optional
@@ -56,8 +57,11 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicySpec:
         git repository ref
     proposedBranch : str, default is Undefined, required
         ProposedBranch staging hydrated branch
+        Must not start with '-', contain ':', or contain '..'.
     proposedCommitStatuses : [PromoterArgoprojIoV1alpha1ChangeTransferPolicySpecProposedCommitStatusesItems0], default is Undefined, optional
         ProposedCommitStatuses lists the statuses to be monitored on the proposed branch
+    pullRequest : PromoterArgoprojIoV1alpha1ChangeTransferPolicySpecPullRequest, default is Undefined, optional
+        pull request
     """
 
 
@@ -75,10 +79,14 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicySpec:
 
     proposedCommitStatuses?: [PromoterArgoprojIoV1alpha1ChangeTransferPolicySpecProposedCommitStatusesItems0]
 
+    pullRequest?: PromoterArgoprojIoV1alpha1ChangeTransferPolicySpecPullRequest
+
 
     check:
+        len(activeBranch) <= 100
         len(activeBranch) >= 1
         len(activePath) >= 1 if activePath
+        len(proposedBranch) <= 100
         len(proposedBranch) >= 1
 
 
@@ -142,6 +150,49 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicySpecProposedCommitStatusesI
         _regex_match(str(key), r"([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]")
 
 
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicySpecPullRequest:
+    r"""
+    PullRequest configures SCM pull request behavior for this change transfer policy.
+    Copied from the owning PromotionStrategy by the PromotionStrategy controller.
+
+    Attributes
+    ----------
+    labels : PromoterArgoprojIoV1alpha1ChangeTransferPolicySpecPullRequestLabels, default is Undefined, optional
+        labels
+    """
+
+
+    labels?: PromoterArgoprojIoV1alpha1ChangeTransferPolicySpecPullRequestLabels
+
+
+schema PromoterArgoprojIoV1alpha1ChangeTransferPolicySpecPullRequestLabels:
+    r"""
+    Labels configures dynamic SCM labels applied to promotion pull requests.
+
+    Attributes
+    ----------
+    expression : str, default is Undefined, required
+        Expression is evaluated using the expr library (github.com/expr-lang/expr) against
+        ChangeTransferPolicy status and spec. It must return a list of SCM label name strings.
+
+        Available variables:
+          - Status: ChangeTransferPolicy status (Proposed/Active commit statuses, branch SHAs, etc.)
+          - Spec: ChangeTransferPolicy spec (ActiveBranch, ProposedBranch, etc.)
+          - PromotionStrategy: owning PromotionStrategy spec and status when available
+
+        Each returned label name must satisfy the same validation as PullRequest.spec.labels
+        (non-empty, max 50 characters, no newlines, max 10 labels, unique).
+    """
+
+
+    expression: str
+
+
+    check:
+        len(expression) <= 8192
+        len(expression) >= 1
+
+
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatus:
     r"""
     ChangeTransferPolicyStatus defines the observed state of ChangeTransferPolicy
@@ -158,6 +209,10 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatus:
         The history length is hard-coded to be at most 5 entries. This may change in the future.
         History is constructed on a best-effort basis and should be used for informational purposes only.
         History is in reverse chronological order (newest is first).
+    instanceID : str, default is Undefined, optional
+        InstanceID mirrors metadata.labels[promoter.argoproj.io/instance-id] stamped on each
+        reconcile attempt by this install's controller, including when Ready=False; omitted
+        when the resource has no instance-id label (default install).
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the .metadata.generation that this status was reconciled from.
         Because status is written via Server-Side Apply with ForceOwnership (which has no
@@ -176,11 +231,19 @@ schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatus:
 
     history?: [PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusHistoryItems0]
 
+    instanceID?: str
+
     observedGeneration?: int
 
     proposed?: PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusProposed
 
     pullRequest?: PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusPullRequest
+
+
+    check:
+        len(instanceID) <= 63 if instanceID
+        len(instanceID) >= 1 if instanceID
+        _regex_match(str(instanceID), r"^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$") if instanceID
 
 
 schema PromoterArgoprojIoV1alpha1ChangeTransferPolicyStatusActive:

@@ -120,6 +120,10 @@ schema PromoterArgoprojIoV1alpha1TimedCommitStatusStatus:
         Conditions represent the latest available observations of an object's state
     environments : [PromoterArgoprojIoV1alpha1TimedCommitStatusStatusEnvironmentsItems0], default is Undefined, optional
         Environments holds the status of each environment being tracked.
+    instanceID : str, default is Undefined, optional
+        InstanceID mirrors metadata.labels[promoter.argoproj.io/instance-id] stamped on each
+        reconcile attempt by this install's controller, including when Ready=False; omitted
+        when the resource has no instance-id label (default install).
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the .metadata.generation that this status was reconciled from.
         Because status is written via Server-Side Apply with ForceOwnership (which has no
@@ -132,7 +136,15 @@ schema PromoterArgoprojIoV1alpha1TimedCommitStatusStatus:
 
     environments?: [PromoterArgoprojIoV1alpha1TimedCommitStatusStatusEnvironmentsItems0]
 
+    instanceID?: str
+
     observedGeneration?: int
+
+
+    check:
+        len(instanceID) <= 63 if instanceID
+        len(instanceID) >= 1 if instanceID
+        _regex_match(str(instanceID), r"^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$") if instanceID
 
 
 schema PromoterArgoprojIoV1alpha1TimedCommitStatusStatusConditionsItems0:

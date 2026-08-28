@@ -202,6 +202,10 @@ schema PromoterArgoprojIoV1alpha1ArgoCDCommitStatusStatus:
         This field is sorted by environment (same order as the referenced PromotionStrategy), then namespace, then name.
     conditions : [PromoterArgoprojIoV1alpha1ArgoCDCommitStatusStatusConditionsItems0], default is Undefined, optional
         Conditions Represents the observations of the current state.
+    instanceID : str, default is Undefined, optional
+        InstanceID mirrors metadata.labels[promoter.argoproj.io/instance-id] stamped on each
+        reconcile attempt by this install's controller, including when Ready=False; omitted
+        when the resource has no instance-id label (default install).
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the .metadata.generation that this status was reconciled from.
         Because status is written via Server-Side Apply with ForceOwnership (which has no
@@ -214,7 +218,15 @@ schema PromoterArgoprojIoV1alpha1ArgoCDCommitStatusStatus:
 
     conditions?: [PromoterArgoprojIoV1alpha1ArgoCDCommitStatusStatusConditionsItems0]
 
+    instanceID?: str
+
     observedGeneration?: int
+
+
+    check:
+        len(instanceID) <= 63 if instanceID
+        len(instanceID) >= 1 if instanceID
+        _regex_match(str(instanceID), r"^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$") if instanceID
 
 
 schema PromoterArgoprojIoV1alpha1ArgoCDCommitStatusStatusApplicationsSelectedItems0:

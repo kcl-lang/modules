@@ -49,17 +49,22 @@ schema PromoterArgoprojIoV1alpha1PullRequestSpec:
         Description is the description body of the pull/merge request
     gitRepositoryRef : PromoterArgoprojIoV1alpha1PullRequestSpecGitRepositoryRef, default is Undefined, required
         git repository ref
+    labels : [str], default is Undefined, optional
+        Labels is the desired set of SCM pull request labels (not Kubernetes metadata labels).
+        Written by the ChangeTransferPolicy controller from pullRequest.labels.expression evaluation.
     mergeSha : str, default is Undefined, required
         MergeSha is the commit SHA that the head branch must match before the PR can be merged.
         This prevents a race condition where a PR is merged with a different commit than intended.
         Supports both SHA-1 (40 chars) and SHA-256 (64 chars) Git hash formats.
     sourceBranch : str, default is Undefined, required
         SourceBranch is the base the git reference that we are merging into Head ---> Base
+        Must not start with '-', contain ':', or contain '..'.
     state : str, default is "open", required
         State of the pull request (closed, merged, or open). Must always be "open" when creating a new pull request.
         This value may not be changed to "closed" or "merged" unless the pull request status.id is set.
     targetBranch : str, default is Undefined, required
         TargetBranch is the head the git reference we are merging from Head ---> Base
+        Must not start with '-', contain ':', or contain '..'.
     title : str, default is Undefined, required
         Title is the title of the pull request.
     """
@@ -70,6 +75,8 @@ schema PromoterArgoprojIoV1alpha1PullRequestSpec:
     description?: str
 
     gitRepositoryRef: PromoterArgoprojIoV1alpha1PullRequestSpecGitRepositoryRef
+
+    labels?: [str]
 
     mergeSha: str
 
@@ -83,9 +90,17 @@ schema PromoterArgoprojIoV1alpha1PullRequestSpec:
 
 
     check:
+        len(labels) <= 10 if labels
+        all labels in labels { len(labels) <= 50 if labels not in [None, Undefined] } if labels
+        all labels in labels { len(labels) >= 1 if labels not in [None, Undefined] } if labels
+        all labels in labels { _regex_match(str(labels), r"^[^\n\r\x00]+$") if labels } if labels
         len(mergeSha) <= 64
         len(mergeSha) >= 40
         _regex_match(str(mergeSha), r"^([a-f0-9]{40}|[a-f0-9]{64})$")
+        len(sourceBranch) <= 100
+        len(sourceBranch) >= 1
+        len(targetBranch) <= 100
+        len(targetBranch) >= 1
         len(title) >= 1
 
 
@@ -129,6 +144,8 @@ schema PromoterArgoprojIoV1alpha1PullRequestStatus:
 
     Attributes
     ----------
+    appliedLabels : [str], default is Undefined, optional
+        AppliedLabels lists SCM labels successfully applied by gitops-promoter (for sync and retraction).
     conditions : [PromoterArgoprojIoV1alpha1PullRequestStatusConditionsItems0], default is Undefined, optional
         Conditions Represents the observations of the current state.
     externallyMergedOrClosed : bool, default is Undefined, optional
@@ -141,6 +158,10 @@ schema PromoterArgoprojIoV1alpha1PullRequestStatus:
         preserved in the owning ChangeTransferPolicy to maintain a record.
     id : str, default is Undefined, optional
         ID the id of the pull request
+    instanceID : str, default is Undefined, optional
+        InstanceID mirrors metadata.labels[promoter.argoproj.io/instance-id] stamped on each
+        reconcile attempt by this install's controller, including when Ready=False; omitted
+        when the resource has no instance-id label (default install).
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the .metadata.generation that this status was reconciled from.
         Because status is written via Server-Side Apply with ForceOwnership (which has no
@@ -148,6 +169,9 @@ schema PromoterArgoprojIoV1alpha1PullRequestStatus:
         status writes: compare status.observedGeneration with metadata.generation.
     prCreationTime : str, default is Undefined, optional
         PRCreationTime the time the PR was created
+    scmSyncedSpecDigest : str, default is Undefined, optional
+        SCMSyncedSpecDigest fingerprints title and description last successfully synced
+        to the SCM via provider.Update on an open pull request.
     state : str, default is Undefined, optional
         State of the merge request closed/merged/open
     url : str, default is Undefined, optional
@@ -155,15 +179,21 @@ schema PromoterArgoprojIoV1alpha1PullRequestStatus:
     """
 
 
+    appliedLabels?: [str]
+
     conditions?: [PromoterArgoprojIoV1alpha1PullRequestStatusConditionsItems0]
 
     externallyMergedOrClosed?: bool
 
     id?: str
 
+    instanceID?: str
+
     observedGeneration?: int
 
     prCreationTime?: str
+
+    scmSyncedSpecDigest?: str
 
     state?: "" | "closed" | "merged" | "open"
 
@@ -171,6 +201,13 @@ schema PromoterArgoprojIoV1alpha1PullRequestStatus:
 
 
     check:
+        len(appliedLabels) <= 10 if appliedLabels
+        all appliedLabels in appliedLabels { len(appliedLabels) <= 50 if appliedLabels not in [None, Undefined] } if appliedLabels
+        all appliedLabels in appliedLabels { len(appliedLabels) >= 1 if appliedLabels not in [None, Undefined] } if appliedLabels
+        all appliedLabels in appliedLabels { _regex_match(str(appliedLabels), r"^[^\n\r\x00]+$") if appliedLabels } if appliedLabels
+        len(instanceID) <= 63 if instanceID
+        len(instanceID) >= 1 if instanceID
+        _regex_match(str(instanceID), r"^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?$") if instanceID
         _regex_match(str(url), r"^(https?://.*)?$") if url
 
 
