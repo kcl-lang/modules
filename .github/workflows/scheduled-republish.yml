@@ -1,0 +1,58 @@
+name: Scheduled Republish
+
+# Recovers OCI registry state when a PR was merged but the per-PR publish
+# workflow failed to push to ghcr.io (see issue #273). Runs nightly and on
+# manual dispatch.
+
+on:
+  schedule:
+    # 03:17 UTC daily. The off-peak minute avoids GitHub Actions runner
+    # queues that pile up on round hours.
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: scheduled-republish
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  republish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    name: Repush packages missing from ghcr.io/kcl-lang
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install kcl
+        run: wget -q https://kcl-lang.io/script/install-cli.sh -O - | /bin/bash
+
+      - name: Login to ghcr.io
+        env:
+          KPM_REG: ghcr.io
+          KPM_REPO: kcl-lang
+          DEPLOY_ACCESS_NAME: ${{ secrets.DEPLOY_ACCESS_NAME }}
+          DEPLOY_ACCESS_TOKEN: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
+        run: kcl registry login -u "$DEPLOY_ACCESS_NAME" -p "$DEPLOY_ACCESS_TOKEN" ghcr.io
+
+      - name: Find and repush missing packages
+        id: repush
+        env:
+          KPM_REG: ghcr.io
+          KPM_REPO: kcl-lang
+        run: ./scripts/repush_not_exist.sh
+
+      - name: Annotate summary with run metadata
+        if: always()
+        run: |
+          {
+            echo
+            echo "_Run: [${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})_"
+            echo "_Trigger: ${{ github.event_name }}_"
+          } >> "$GITHUB_STEP_SUMMARY"
