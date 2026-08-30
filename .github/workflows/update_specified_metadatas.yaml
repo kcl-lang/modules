@@ -60,33 +60,54 @@ jobs:
           username: ${{ secrets.DEPLOY_ACCESS_NAME }}
           password: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
 
-      # Republish to docker.io. `continue-on-error` plus `if: always()` on the
-      # ghcr.io step ensures a docker.io failure can no longer skip the
-      # ghcr.io push (issue #378).
+      # Capture the actual push outcome via a step output instead of
+      # `continue-on-error` + `steps.<id>.conclusion`. With
+      # `continue-on-error: true`, the step's `conclusion` is always
+      # `success` regardless of the underlying script's exit code, so
+      # the verify step below would never trip — exactly the bug
+      # behind issue #395. The ghcr.io step uses `if: always()` so a
+      # docker.io failure can no longer skip the ghcr.io push.
       - name: Republish to docker.io
         id: publish-docker
         if: github.event.inputs.myInput != ''
-        continue-on-error: true
         run: |
-          find ${{ github.event.inputs.myInput }} -name "kcl.mod" -execdir bash -c 'echo Pushing in directory: "$PWD" && kpm push || echo Failed to push in directory: "$PWD"' \;
+          docker_ok="true"
+          while IFS= read -r -d '' modfile; do
+            dir=$(dirname "$modfile")
+            echo "Pushing in directory: $dir"
+            if ! (cd "$dir" && kpm push); then
+              echo "::warning::docker.io push failed in $dir"
+              docker_ok="false"
+            fi
+          done < <(find "${{ github.event.inputs.myInput }}" -name "kcl.mod" -print0)
+          echo "docker_ok=$docker_ok" >> "$GITHUB_OUTPUT"
 
       - name: Republish to ghcr.io
         id: publish-ghcr
         if: always()
-        continue-on-error: true
         env:
           KPM_REG: "ghcr.io"
           KPM_REPO: "kcl-lang"
         run: |
-          find ${{ github.event.inputs.myInput }} -name "kcl.mod" -execdir bash -c 'echo Pushing in directory: "$PWD" && kpm push || echo Failed to push in directory: "$PWD"' \;
+          ghcr_ok="true"
+          while IFS= read -r -d '' modfile; do
+            dir=$(dirname "$modfile")
+            echo "Pushing in directory: $dir"
+            if ! (cd "$dir" && kpm push); then
+              echo "::warning::ghcr.io push failed in $dir"
+              ghcr_ok="false"
+            fi
+          done < <(find "${{ github.event.inputs.myInput }}" -name "kcl.mod" -print0)
+          echo "ghcr_ok=$ghcr_ok" >> "$GITHUB_OUTPUT"
 
       - name: Verify at least one publish succeeded
         if: always()
         run: |
-          docker_ok="${{ steps.publish-docker.conclusion }}"
-          ghcr_ok="${{ steps.publish-ghcr.conclusion }}"
-          if [[ "$docker_ok" == "success" || "$ghcr_ok" == "success" ]]; then
-            echo "At least one publish succeeded (docker.io=$docker_ok, ghcr.io=$ghcr_ok)."
+          docker_ok="${{ steps.publish-docker.outputs.docker_ok }}"
+          ghcr_ok="${{ steps.publish-ghcr.outputs.ghcr_ok }}"
+          echo "docker.io=$docker_ok, ghcr.io=$ghcr_ok"
+          if [[ "$docker_ok" == "true" || "$ghcr_ok" == "true" ]]; then
+            echo "At least one publish succeeded."
           else
             echo "::error::Both docker.io and ghcr.io publishes failed (docker.io=$docker_ok, ghcr.io=$ghcr_ok)."
             exit 1

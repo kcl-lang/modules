@@ -34,23 +34,35 @@ jobs:
         with:
           go-version-file: go.mod
 
-      # Write credentials directly into kpm's config file
-      # (~/.kpm/config/config.json) in the standard Docker `auths` format.
-      # `kcl registry login` cannot be used here because the underlying ORAS
-      # store requires `AllowPlaintextPut: true`, which is only enabled when
-      # `OCI_REG_PLAIN_HTTP=on` is set — and that flag also forces the
-      # registry to plain HTTP, which breaks HTTPS-only registries like
-      # docker.io and ghcr.io. See issue #378.
+      # Write credentials into BOTH:
+      #   * `~/.docker/config.json` (the file ORAS reads by default)
+      #   * `~/.kpm/config/config.json` (the file kpm's own store reads)
       #
-      # ORAS's credential lookup uses the hostname as the key (e.g. `docker.io`)
-      # and matches it against the auths map. We also include the legacy
-      # `https://index.docker.io/v1/` key as a fallback for older code paths.
-      - name: Configure kpm credentials
+      # The previous version only wrote to `~/.kpm/config/config.json`,
+      # which ORAS does not consult — so docker.io and ghcr.io pushes
+      # silently fell back to anonymous auth and got 401/403, while the
+      # `continue-on-error: true` on the publish steps masked the
+      # failure as `conclusion=success`. That is the root cause of
+      # issue #395 ("no packages since end of July were published").
+      #
+      # `kcl registry login` cannot be used here because the underlying
+      # ORAS store requires `AllowPlaintextPut: true`, which is only
+      # enabled when `OCI_REG_PLAIN_HTTP=on` is set — and that flag also
+      # forces the registry to plain HTTP, which breaks HTTPS-only
+      # registries like docker.io and ghcr.io. See issue #378.
+      #
+      # ORAS's credential lookup uses the hostname as the key (e.g.
+      # `docker.io`) and matches it against the auths map. We also
+      # include the legacy `https://index.docker.io/v1/` key as a
+      # fallback for older code paths.
+      - name: Configure registry credentials
         run: |
-          mkdir -p "$HOME/.kpm/config"
+          mkdir -p "$HOME/.docker" "$HOME/.kpm/config"
           DOCKER_AUTH=$(printf '%s:%s' "${{ secrets.DOCKER_USERNAME }}" "${{ secrets.DOCKER_PASSWORD }}" | base64 -w0)
           GHCR_AUTH=$(printf '%s:%s' "${{ secrets.DEPLOY_ACCESS_NAME }}" "${{ secrets.DEPLOY_ACCESS_TOKEN }}" | base64 -w0)
-          cat > "$HOME/.kpm/config/config.json" <<EOF
+
+          # ORAS reads this. Must be present for both registries.
+          cat > "$HOME/.docker/config.json" <<EOF
           {
             "auths": {
               "docker.io":                       { "auth": "${DOCKER_AUTH}" },
@@ -59,55 +71,74 @@ jobs:
             }
           }
           EOF
-          echo "Wrote credentials to $HOME/.kpm/config/config.json"
-          cat "$HOME/.kpm/config/config.json" | sed 's/"auth": "[^"]*"/"auth": "<redacted>"/'
+
+          # kpm's own store reads this. Mirror of the above so any code
+          # path that consults kpm's store first still finds the creds.
+          cp "$HOME/.docker/config.json" "$HOME/.kpm/config/config.json"
+
+          echo "Wrote credentials to $HOME/.docker/config.json and $HOME/.kpm/config/config.json"
+          cat "$HOME/.docker/config.json" | sed 's/"auth": "[^"]*"/"auth": "<redacted>"/'
 
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v41
 
-      # Publish to docker.io. `continue-on-error` plus `if: always()` on the
-      # ghcr.io step ensures a docker.io failure can no longer skip the
-      # ghcr.io push (the root cause of issue #378, where the module ended
-      # up on Artifact Hub but never reached the OCI registries).
+      # Capture the actual push outcome via a step output instead of
+      # `continue-on-error` + `steps.<id>.conclusion`. With
+      # `continue-on-error: true`, the step's `conclusion` is always
+      # `success` regardless of the underlying script's exit code, so
+      # the verify step below would never trip — exactly the bug
+      # behind issue #395. The ghcr.io step uses `if: always()` so a
+      # docker.io failure can no longer skip the ghcr.io push.
       - name: Publish to docker.io
         id: publish-docker
         if: steps.changed-files.outputs.all_changed_files != ''
-        continue-on-error: true
         run: |
+          docker_ok="false"
           if echo "${{ steps.changed-files.outputs.all_changed_files }}" | grep -q 'kcl.mod'; then
             for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-              ./scripts/push_pkg_from.sh $file
+              if ./scripts/push_pkg_from.sh "$file"; then
+                docker_ok="true"
+              else
+                echo "::warning::docker.io push failed for $file (see log above)"
+              fi
             done
           fi
+          echo "docker_ok=$docker_ok" >> "$GITHUB_OUTPUT"
 
       - name: Publish to ghcr.io
         id: publish-ghcr
         if: always()
-        continue-on-error: true
         env:
           KPM_REG: "ghcr.io"
           KPM_REPO: "kcl-lang"
         run: |
+          ghcr_ok="false"
           if echo "${{ steps.changed-files.outputs.all_changed_files }}" | grep -q 'kcl.mod'; then
             for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-              ./scripts/push_pkg_from.sh $file
+              if ./scripts/push_pkg_from.sh "$file"; then
+                ghcr_ok="true"
+              else
+                echo "::warning::ghcr.io push failed for $file (see log above)"
+              fi
             done
           fi
+          echo "ghcr_ok=$ghcr_ok" >> "$GITHUB_OUTPUT"
 
-      # Optional hardening (issue #378: "fail the AH metadata job loudly ...
-      # so a module never reaches Artifact Hub without a matching registry
-      # artifact"). If neither registry publish succeeded for the changed
-      # kcl.mod files, fail the job so the resulting artifacthub-pkg.yaml
-      # changes are not committed and Artifact Hub is not refreshed for a
-      # module that does not actually exist in the registry.
+      # Hardening (issue #378: keep Artifact Hub in sync with the
+      # registries). If neither registry publish succeeded for the
+      # changed kcl.mod files, fail the job so the resulting
+      # artifacthub-pkg.yaml changes are not committed and Artifact Hub
+      # is not refreshed for a module that does not actually exist in
+      # the registry.
       - name: Verify at least one publish succeeded
         if: always()
         run: |
-          docker_ok="${{ steps.publish-docker.conclusion }}"
-          ghcr_ok="${{ steps.publish-ghcr.conclusion }}"
-          if [[ "$docker_ok" == "success" || "$ghcr_ok" == "success" ]]; then
-            echo "At least one publish succeeded (docker.io=$docker_ok, ghcr.io=$ghcr_ok)."
+          docker_ok="${{ steps.publish-docker.outputs.docker_ok }}"
+          ghcr_ok="${{ steps.publish-ghcr.outputs.ghcr_ok }}"
+          echo "docker.io=$docker_ok, ghcr.io=$ghcr_ok"
+          if [[ "$docker_ok" == "true" || "$ghcr_ok" == "true" ]]; then
+            echo "At least one publish succeeded."
           else
             echo "::error::Both docker.io and ghcr.io publishes failed (docker.io=$docker_ok, ghcr.io=$ghcr_ok). Aborting to keep Artifact Hub in sync with the registries."
             exit 1
