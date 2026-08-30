@@ -138,7 +138,7 @@ schema SecretmanagerGcpUpboundIoV1beta1SecretSpecForProvider:
     versionAliases : {str:str}, default is Undefined, optional
         Mapping from version alias to version name.
         A version alias is a string with a maximum length of 63 characters and can contain
-        uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
+        uppercase and lowercase letters, numerals, and the hyphen (-) and underscore _
         characters. An alias string must start with a letter and cannot be the string
         'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
         An object containing a list of "key": value pairs. Example:
@@ -356,7 +356,7 @@ schema SecretmanagerGcpUpboundIoV1beta1SecretSpecInitProvider:
     versionAliases : {str:str}, default is Undefined, optional
         Mapping from version alias to version name.
         A version alias is a string with a maximum length of 63 characters and can contain
-        uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
+        uppercase and lowercase letters, numerals, and the hyphen (-) and underscore _
         characters. An alias string must start with a letter and cannot be the string
         'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
         An object containing a list of "key": value pairs. Example:
@@ -762,7 +762,7 @@ schema SecretmanagerGcpUpboundIoV1beta1SecretStatusAtProvider:
     versionAliases : {str:str}, default is Undefined, optional
         Mapping from version alias to version name.
         A version alias is a string with a maximum length of 63 characters and can contain
-        uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
+        uppercase and lowercase letters, numerals, and the hyphen (-) and underscore _
         characters. An alias string must start with a letter and cannot be the string
         'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
         An object containing a list of "key": value pairs. Example:

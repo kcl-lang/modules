@@ -860,7 +860,7 @@ schema BigqueryGcpUpboundIoV1beta1JobSpecForProviderLoadItems0:
         To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
         the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the
         data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator.
-        The default value is a comma (',').
+        The default value is a comma ,.
     ignoreUnknownValues : bool, default is Undefined, optional
         Indicates if BigQuery should allow extra values that are not represented in the table schema.
         If true, the extra values are ignored. If false, records with extra columns are treated as bad records,
@@ -876,7 +876,7 @@ schema BigqueryGcpUpboundIoV1beta1JobSpecForProviderLoadItems0:
         The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
         an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
     nullMarker : str, default is Undefined, optional
-        Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value
+        Specifies a string that represents a null value in a CSV file. For example, if you specify "\\N", BigQuery interprets "\\N" as a null value
         when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
         empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
         an empty value.
@@ -890,7 +890,7 @@ schema BigqueryGcpUpboundIoV1beta1JobSpecForProviderLoadItems0:
     quote : str, default is Undefined, optional
         The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding,
         and then uses the first byte of the encoded string to split the data in its raw, binary state.
-        The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string.
+        The default value is a double-quote \". If your data does not contain quoted sections, set the property value to an empty string.
         If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
     schemaUpdateOptions : [str], default is Undefined, optional
         Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
@@ -2539,7 +2539,7 @@ schema BigqueryGcpUpboundIoV1beta1JobSpecInitProviderLoadItems0:
         To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
         the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the
         data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator.
-        The default value is a comma (',').
+        The default value is a comma ,.
     ignoreUnknownValues : bool, default is Undefined, optional
         Indicates if BigQuery should allow extra values that are not represented in the table schema.
         If true, the extra values are ignored. If false, records with extra columns are treated as bad records,
@@ -2555,7 +2555,7 @@ schema BigqueryGcpUpboundIoV1beta1JobSpecInitProviderLoadItems0:
         The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
         an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
     nullMarker : str, default is Undefined, optional
-        Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value
+        Specifies a string that represents a null value in a CSV file. For example, if you specify "\\N", BigQuery interprets "\\N" as a null value
         when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
         empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
         an empty value.
@@ -2569,7 +2569,7 @@ schema BigqueryGcpUpboundIoV1beta1JobSpecInitProviderLoadItems0:
     quote : str, default is Undefined, optional
         The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding,
         and then uses the first byte of the encoded string to split the data in its raw, binary state.
-        The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string.
+        The default value is a double-quote \". If your data does not contain quoted sections, set the property value to an empty string.
         If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
     schemaUpdateOptions : [str], default is Undefined, optional
         Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
@@ -3940,7 +3940,7 @@ schema BigqueryGcpUpboundIoV1beta1JobStatusAtProviderLoadItems0:
         To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
         the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the
         data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator.
-        The default value is a comma (',').
+        The default value is a comma ,.
     ignoreUnknownValues : bool, default is Undefined, optional
         Indicates if BigQuery should allow extra values that are not represented in the table schema.
         If true, the extra values are ignored. If false, records with extra columns are treated as bad records,
@@ -3956,7 +3956,7 @@ schema BigqueryGcpUpboundIoV1beta1JobStatusAtProviderLoadItems0:
         The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value,
         an invalid error is returned in the job result. The default value is 0, which requires that all records are valid.
     nullMarker : str, default is Undefined, optional
-        Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value
+        Specifies a string that represents a null value in a CSV file. For example, if you specify "\\N", BigQuery interprets "\\N" as a null value
         when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
         empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
         an empty value.
@@ -3970,7 +3970,7 @@ schema BigqueryGcpUpboundIoV1beta1JobStatusAtProviderLoadItems0:
     quote : str, default is Undefined, optional
         The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding,
         and then uses the first byte of the encoded string to split the data in its raw, binary state.
-        The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string.
+        The default value is a double-quote \". If your data does not contain quoted sections, set the property value to an empty string.
         If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
     schemaUpdateOptions : [str], default is Undefined, optional
         Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or

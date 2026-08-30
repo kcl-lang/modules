@@ -1,6 +1,6 @@
 [package]
 name = "crossplane-provider-upjet-gcp"
-version = "1.0.5"
+version = "1.0.6"
 description = "`crossplane-provider-upjet-gcp` is the crossplane-provider-gcp-upjet spec definition from https://github.com/crossplane-contrib/provider-upjet-gcp/"
 
 [dependencies]
