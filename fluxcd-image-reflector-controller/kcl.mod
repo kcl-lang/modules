@@ -1,8 +1,8 @@
 [package]
-name = "image-reflector-controller"
-edition = "*"
-version = "v0.35.2"
-description = "KCL package for https://github.com/fluxcd/image-reflector-controller CRDs"
+name = "fluxcd-image-reflector-controller"
+edition = "v0.11.2"
+version = "1.2.4"
+description = "`fluxcd-image-reflector-controller` is the fluxcd/image-reflector-controller spec definition"
 
 [dependencies]
 k8s = "1.32.4"
