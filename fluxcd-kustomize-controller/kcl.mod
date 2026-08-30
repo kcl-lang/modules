@@ -1,8 +1,8 @@
 [package]
-name = "fluxcd-kustomize-controller"
-edition = "*"
-version = "v1.8.5"
-description = "KCL package for https://github.com/fluxcd/kustomize-controller CRDs"
+name = "kustomize-controller"
+edition = "v0.11.2"
+version = "1.9.4"
+description = "`kustomize-controller` is the fluxcd/kustomize-controller spec definition"
 
 [dependencies]
-k8s = "1.35"
+k8s = "1.32.4"

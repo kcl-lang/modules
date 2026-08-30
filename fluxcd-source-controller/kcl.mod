@@ -1,8 +1,8 @@
 [package]
 name = "fluxcd-source-controller"
-edition = "*"
-version = "v1.8.5"
-description = "KCL package for https://github.com/fluxcd/source-controller CRDs"
+edition = "v0.11.2"
+version = "1.9.4"
+description = "`fluxcd-source-controller` is the fluxcd/source-controller spec definition"
 
 [dependencies]
-k8s = "1.35"
+k8s = "1.32.4"
