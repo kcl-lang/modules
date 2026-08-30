@@ -43,6 +43,17 @@ schema MqAwsCrossplaneIoV1alpha1BrokerSpec:
     ----------
     deletionPolicy : str, default is "Delete", optional
         DeletionPolicy specifies what will happen to the underlying external when this managed resource is deleted - either "Delete" or "Orphan" the external resource.
+    managementPolicies : [str], default is ["*"], optional
+        THIS IS A BETA FIELD. It is on by default but can be opted out
+        through a Crossplane feature flag.
+        ManagementPolicies specify the array of actions Crossplane is allowed to
+        take on the managed and external resources.
+        This field is planned to replace the DeletionPolicy field in a future
+        release. Currently, both could be set independently and non-default
+        values would be honored if the feature gate is enabled. If both are
+        custom, the DeletionPolicy field will be ignored.
+        See the design doc for more information: https://github.com/crossplane/crossplane/blob/499895a25d1a1a0ba1604944ef98ac7a1a71f197/design/design-doc-observe-only-resources.md?plain=1#L223
+        and this one: https://github.com/crossplane/crossplane/blob/444267e84783136daa93568b364a5f01228cacbe/design/one-pager-ignore-changes.md
     forProvider : MqAwsCrossplaneIoV1alpha1BrokerSpecForProvider, default is Undefined, required
         for provider
     providerConfigRef : MqAwsCrossplaneIoV1alpha1BrokerSpecProviderConfigRef, default is Undefined, optional
@@ -57,6 +68,8 @@ schema MqAwsCrossplaneIoV1alpha1BrokerSpec:
 
 
     deletionPolicy?: "Orphan" | "Delete" = "Delete"
+    managementPolicies?: [str] = ["*"]
+
 
     forProvider: MqAwsCrossplaneIoV1alpha1BrokerSpecForProvider
 
