@@ -12,6 +12,12 @@ env:
   KPM_REG: "docker.io"
   KPM_REPO: "kcllang"
 
+# Same group as the "Publish Package" workflow: both commit regenerated
+# artifacthub-pkg.yaml files back to main and must not race on `git push`.
+concurrency:
+  group: publish-package
+  cancel-in-progress: false
+
 jobs:
   publish_pkg:
     # NOTE:
@@ -126,4 +132,9 @@ jobs:
 
           git add .
           git commit -m "Regenerate artifacthub-pkg.yaml for all packages" || echo "Nothing to commit"
+
+          # main may have moved since checkout (see the "Publish Package"
+          # workflow) — rebase before pushing or the push is rejected
+          # with "fetch first" and the commit is lost (issue #395).
+          git pull --rebase origin main
           git push

@@ -11,6 +11,18 @@ env:
   KPM_REG: "docker.io"
   KPM_REPO: "kcllang"
 
+# Serialize publish runs. When several PRs touching *.mod merge in quick
+# succession, each push triggers a run, and every run commits its
+# artifacthub-pkg.yaml changes back to main. Without this group the runs
+# race on `git push` and every one of them gets rejected with
+# "! [rejected] main -> main (fetch first)" — the metadata commits are
+# then silently lost and Artifact Hub never learns about the new versions
+# (see issue #395). cancel-in-progress is false on purpose: a cancelled
+# run would skip the very publish it was created for.
+concurrency:
+  group: publish-package
+  cancel-in-progress: false
+
 jobs:
   publish_pkg:
     # NOTE:
@@ -165,5 +177,12 @@ jobs:
 
             git add .
             git commit -m "chore: update artifacthub-pkg.yaml" || echo "Nothing to commit"
+
+            # main may have moved since checkout (e.g. a previous publish
+            # run in the same concurrency group already pushed its metadata
+            # commit, or another workflow pushed). Rebase our metadata
+            # commit on top before pushing, otherwise the push is rejected
+            # with "fetch first" and the commit is lost (issue #395).
+            git pull --rebase origin main
             git push
           fi
