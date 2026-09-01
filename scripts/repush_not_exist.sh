@@ -9,6 +9,14 @@
 #   REG_HOST   OCI registry host (default: ghcr.io)
 #   REG_NS     registry namespace / org (default: kcl-lang)
 #   REG_SCHEME http(s) scheme for manifest lookup (default: https)
+#   REG_USER   optional registry username, REG_TOKEN the matching token.
+#              When set, the probe fetches its access token authenticated,
+#              so packages with restricted visibility (private on ghcr.io)
+#              are recognized as existing. Anonymous probes cannot tell a
+#              private package from a missing one and flag it for repush
+#              on every run; kpm's push then (correctly) rejects it with
+#              "package version already exists". kpm's own ContainsTag
+#              lists tags authenticated for the same reason.
 
 set -u
 set -o pipefail
@@ -16,6 +24,8 @@ set -o pipefail
 REG_HOST="${REG_HOST:-ghcr.io}"
 REG_NS="${REG_NS:-kcl-lang}"
 REG_SCHEME="${REG_SCHEME:-https}"
+REG_USER="${REG_USER:-}"
+REG_TOKEN="${REG_TOKEN:-}"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PUSH_SCRIPT="$SCRIPT_DIR/push_pkg_from.sh"
@@ -60,10 +70,13 @@ parse_kcl_mod() {
 #   with 401 + a WWW-Authenticate bearer challenge even for public
 #   packages, and return 401 for both existing and missing tags — a bare
 #   probe therefore cannot distinguish anything. Follow the challenge to
-#   obtain an anonymous pull token and re-probe with it. A denied token
-#   request (ghcr.io: HTTP 403, body {"errors":[{"code":"DENIED"}]} for a
-#   nonexistent repository) also counts as missing: every package in this
-#   org is public, so an inaccessible repo is a repo that is not there.
+#   obtain an anonymous pull token and re-probe with it. When REG_USER /
+#   REG_TOKEN are set the token request authenticates, so packages with
+#   restricted visibility are probed like kpm's own ContainsTag does. A
+#   denied token request (ghcr.io: HTTP 403, body
+#   {"errors":[{"code":"DENIED"}]}) counts as missing: with credentials
+#   supplied it means the repository does not exist; without them it can
+#   also mean the package is private, so pass credentials when in doubt.
 image_exists() {
     local name="$1" version="$2"
     local url="${REG_SCHEME}://${REG_HOST}/v2/${REG_NS}/$1/manifests/$2"
@@ -91,8 +104,13 @@ image_exists() {
     service=$(printf '%s\n' "$auth_header" | sed -n 's/.*service="\([^"]*\)".*/\1/p')
 
     token_url="${realm}?service=${service}&scope=repository:${REG_NS}/${name}:pull"
-    token=$(curl -sS --max-time 30 "$token_url" 2>/dev/null \
-                | sed -n 's/.*"token"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p')
+    if [ -n "$REG_USER" ] && [ -n "$REG_TOKEN" ]; then
+        token=$(curl -sS -u "${REG_USER}:${REG_TOKEN}" --max-time 30 "$token_url" 2>/dev/null \
+                    | sed -n 's/.*"token"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p')
+    else
+        token=$(curl -sS --max-time 30 "$token_url" 2>/dev/null \
+                    | sed -n 's/.*"token"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p')
+    fi
     if [ -z "$token" ]; then
         return 1
     fi

@@ -71,6 +71,14 @@ jobs:
         env:
           KPM_REG: ghcr.io
           KPM_REPO: kcl-lang
+          # The probe authenticates with the same credentials kpm pushes
+          # with. Without them a package with restricted visibility on
+          # ghcr.io is indistinguishable from a missing one: the probe
+          # flags it, and kpm's push then rejects the repush with
+          # "package version already exists" (observed for gitlab-ci,
+          # gke.secret-sync and enkinex-odcs on the first run).
+          REG_USER: ${{ secrets.DEPLOY_ACCESS_NAME }}
+          REG_TOKEN: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
         run: ./scripts/repush_not_exist.sh
 
       - name: Annotate summary with run metadata
