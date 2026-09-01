@@ -33,13 +33,38 @@ jobs:
       - name: Install kcl
         run: wget -q https://kcl-lang.io/script/install-cli.sh -O - | /bin/bash
 
-      - name: Login to ghcr.io
+      # Write ghcr.io credentials into BOTH (same workaround as the
+      # "Publish Package" workflow, see #397 and issue #378):
+      #   * `~/.docker/config.json` (the file ORAS reads by default)
+      #   * `~/.kpm/config/config.json` (the file kpm's own store reads)
+      #
+      # `kcl registry login` cannot be used here. On a headless CI runner
+      # there is no credential helper (no keyring), so the ORAS store it
+      # backs onto refuses to persist credentials and the command fails
+      # with "putting plaintext credentials is disabled" (the nightly run
+      # linked in issue #395). kpm only enables ORAS's
+      # `AllowPlaintextPut: true` when `OCI_REG_PLAIN_HTTP=on` is set,
+      # and that flag also forces plain-HTTP transport, which does not
+      # work against HTTPS-only registries like ghcr.io.
+      - name: Configure registry credentials
         env:
-          KPM_REG: ghcr.io
-          KPM_REPO: kcl-lang
           DEPLOY_ACCESS_NAME: ${{ secrets.DEPLOY_ACCESS_NAME }}
           DEPLOY_ACCESS_TOKEN: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
-        run: kcl registry login -u "$DEPLOY_ACCESS_NAME" -p "$DEPLOY_ACCESS_TOKEN" ghcr.io
+        run: |
+          mkdir -p "$HOME/.docker" "$HOME/.kpm/config"
+          GHCR_AUTH=$(printf '%s:%s' "$DEPLOY_ACCESS_NAME" "$DEPLOY_ACCESS_TOKEN" | base64 -w0)
+
+          cat > "$HOME/.docker/config.json" <<EOF
+          {
+            "auths": {
+              "ghcr.io": { "auth": "${GHCR_AUTH}" }
+            }
+          }
+          EOF
+
+          cp "$HOME/.docker/config.json" "$HOME/.kpm/config/config.json"
+
+          echo "Wrote ghcr.io credentials to $HOME/.docker/config.json and $HOME/.kpm/config/config.json"
 
       - name: Find and repush missing packages
         id: repush
