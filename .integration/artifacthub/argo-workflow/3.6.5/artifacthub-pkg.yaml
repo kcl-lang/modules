@@ -1,0 +1,25 @@
+version: 3.6.5
+name: argo-workflow
+displayName: argo-workflow
+createdAt: "2025-04-18T10:47:12Z"
+description: '`argo-workflow` is the argo-workflow spec definition'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `argo-workflow` with tag `3.6.5` as dependency
+  ```
+  kcl mod add argo-workflow:3.6.5
+  ```
+
+  #### Pull `argo-workflow` with tag `3.6.5` to local
+  ```
+  kcl mod pull argo-workflow:3.6.5
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

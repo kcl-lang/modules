@@ -1,0 +1,25 @@
+version: v1.6.0
+name: notification-controller
+displayName: notification-controller
+createdAt: "2025-06-30T14:01:25Z"
+description: KCL package for https://github.com/fluxcd/notification-controller CRDs
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `notification-controller` with tag `v1.6.0` as dependency
+  ```
+  kcl mod add notification-controller:v1.6.0
+  ```
+
+  #### Pull `notification-controller` with tag `v1.6.0` to local
+  ```
+  kcl mod pull notification-controller:v1.6.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

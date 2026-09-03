@@ -1,0 +1,25 @@
+version: v1.5.5
+name: fluxcd-helm-controller
+displayName: fluxcd-helm-controller
+createdAt: "2026-06-17T13:25:29Z"
+description: KCL package for https://github.com/fluxcd/helm-controller CRDs
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `fluxcd-helm-controller` with tag `v1.5.5` as dependency
+  ```
+  kcl mod add fluxcd-helm-controller:v1.5.5
+  ```
+
+  #### Pull `fluxcd-helm-controller` with tag `v1.5.5` to local
+  ```
+  kcl mod pull fluxcd-helm-controller:v1.5.5
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
