@@ -1,0 +1,26 @@
+version: v1.23.2
+name: cluster-api-provider-azure
+displayName: cluster-api-provider-azure
+createdAt: "2026-06-16T16:46:11Z"
+description: KCL package for https://github.com/kubernetes-sigs/cluster-api-provider-azure
+  CRDs
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `cluster-api-provider-azure` with tag `v1.23.2` as dependency
+  ```
+  kcl mod add cluster-api-provider-azure:v1.23.2
+  ```
+
+  #### Pull `cluster-api-provider-azure` with tag `v1.23.2` to local
+  ```
+  kcl mod pull cluster-api-provider-azure:v1.23.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

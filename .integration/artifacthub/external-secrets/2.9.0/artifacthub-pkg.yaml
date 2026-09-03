@@ -1,0 +1,25 @@
+version: 2.9.0
+name: external-secrets
+displayName: external-secrets
+createdAt: "2026-09-01T03:03:50Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `external-secrets` with tag `2.9.0` as dependency
+  ```
+  kcl mod add external-secrets:2.9.0
+  ```
+
+  #### Pull `external-secrets` with tag `2.9.0` to local
+  ```
+  kcl mod pull external-secrets:2.9.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
