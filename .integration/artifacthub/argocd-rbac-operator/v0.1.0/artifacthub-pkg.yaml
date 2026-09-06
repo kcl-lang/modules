@@ -1,0 +1,25 @@
+version: v0.1.0
+name: argocd-rbac-operator
+displayName: argocd-rbac-operator
+createdAt: "2025-01-17T12:16:34Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `argocd-rbac-operator` with tag `v0.1.0` as dependency
+  ```
+  kcl mod add argocd-rbac-operator:v0.1.0
+  ```
+
+  #### Pull `argocd-rbac-operator` with tag `v0.1.0` to local
+  ```
+  kcl mod pull argocd-rbac-operator:v0.1.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

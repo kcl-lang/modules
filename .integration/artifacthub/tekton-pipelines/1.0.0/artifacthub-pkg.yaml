@@ -1,0 +1,25 @@
+version: 1.0.0
+name: tekton-pipelines
+displayName: tekton-pipelines
+createdAt: "2025-05-22T14:33:53Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `tekton-pipelines` with tag `1.0.0` as dependency
+  ```
+  kcl mod add tekton-pipelines:1.0.0
+  ```
+
+  #### Pull `tekton-pipelines` with tag `1.0.0` to local
+  ```
+  kcl mod pull tekton-pipelines:1.0.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

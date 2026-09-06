@@ -1,0 +1,25 @@
+version: v0.10.2
+name: baremetal-operator
+displayName: baremetal-operator
+createdAt: "2025-06-30T14:01:03Z"
+description: KCL package for https://github.com/metal3-io/baremetal-operator CRDs
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `baremetal-operator` with tag `v0.10.2` as dependency
+  ```
+  kcl mod add baremetal-operator:v0.10.2
+  ```
+
+  #### Pull `baremetal-operator` with tag `v0.10.2` to local
+  ```
+  kcl mod pull baremetal-operator:v0.10.2
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

@@ -1,0 +1,25 @@
+version: 0.1.1
+name: svc-require-encryption-aws-loadbalancers
+displayName: svc-require-encryption-aws-loadbalancers
+createdAt: "2026-09-01T03:02:47Z"
+description: '`svc-require-encryption-aws-loadbalancers` is a kcl validation package'
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `svc-require-encryption-aws-loadbalancers` with tag `0.1.1` as dependency
+  ```
+  kcl mod add svc-require-encryption-aws-loadbalancers:0.1.1
+  ```
+
+  #### Pull `svc-require-encryption-aws-loadbalancers` with tag `0.1.1` to local
+  ```
+  kcl mod pull svc-require-encryption-aws-loadbalancers:0.1.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

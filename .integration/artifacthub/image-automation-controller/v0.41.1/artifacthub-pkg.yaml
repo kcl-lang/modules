@@ -1,0 +1,26 @@
+version: v0.41.1
+name: image-automation-controller
+displayName: image-automation-controller
+createdAt: "2025-06-30T14:00:16Z"
+description: KCL package for https://github.com/fluxcd/image-automation-controller
+  CRDs
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `image-automation-controller` with tag `v0.41.1` as dependency
+  ```
+  kcl mod add image-automation-controller:v0.41.1
+  ```
+
+  #### Pull `image-automation-controller` with tag `v0.41.1` to local
+  ```
+  kcl mod pull image-automation-controller:v0.41.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io

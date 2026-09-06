@@ -1,0 +1,25 @@
+version: 1.20.1
+name: percona-server-mongodb-operator
+displayName: percona-server-mongodb-operator
+createdAt: "2025-07-21T09:08:01Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `percona-server-mongodb-operator` with tag `1.20.1` as dependency
+  ```
+  kcl mod add percona-server-mongodb-operator:1.20.1
+  ```
+
+  #### Pull `percona-server-mongodb-operator` with tag `1.20.1` to local
+  ```
+  kcl mod pull percona-server-mongodb-operator:1.20.1
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
