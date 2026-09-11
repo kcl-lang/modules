@@ -97,6 +97,8 @@ schema K8sMariadbComV1alpha1GrantSpecMariaDbRef:
 
     Attributes
     ----------
+    kind : str, default is Undefined, optional
+        Kind of the referent.
     name : str, default is Undefined, optional
         name
     namespace : str, default is Undefined, optional
@@ -105,6 +107,8 @@ schema K8sMariadbComV1alpha1GrantSpecMariaDbRef:
         WaitForIt indicates whether the controller using this reference should wait for MariaDB to be ready.
     """
 
+
+    kind?: str
 
     name?: str
 
@@ -121,10 +125,15 @@ schema K8sMariadbComV1alpha1GrantStatus:
     ----------
     conditions : [K8sMariadbComV1alpha1GrantStatusConditionsItems0], default is Undefined, optional
         Conditions for the Grant object.
+    currentPrivileges : [str], default is Undefined, optional
+        CurrentPrivileges is the list of current privileges used in the Grant.
+        It allows to detect the divergence from the desired privileges.
     """
 
 
     conditions?: [K8sMariadbComV1alpha1GrantStatusConditionsItems0]
+
+    currentPrivileges?: [str]
 
 
 schema K8sMariadbComV1alpha1GrantStatusConditionsItems0:

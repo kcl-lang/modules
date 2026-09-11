@@ -7,101 +7,97 @@ import k8s.apimachinery.pkg.apis.meta.v1
 _regex_match = regex.match
 
 
-schema Backup:
+schema PhysicalBackup:
     r"""
-    Backup is the Schema for the backups API. It is used to define backup jobs and its storage.
+    PhysicalBackup is the Schema for the physicalbackups API. It is used to define physical backup jobs and its storage.
 
     Attributes
     ----------
     apiVersion : str, default is "k8s.mariadb.com/v1alpha1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-    kind : str, default is "Backup", required
+    kind : str, default is "PhysicalBackup", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : K8sMariadbComV1alpha1BackupSpec, default is Undefined, optional
+    spec : K8sMariadbComV1alpha1PhysicalBackupSpec, default is Undefined, optional
         spec
-    status : K8sMariadbComV1alpha1BackupStatus, default is Undefined, optional
+    status : K8sMariadbComV1alpha1PhysicalBackupStatus, default is Undefined, optional
         status
     """
 
 
     apiVersion: "k8s.mariadb.com/v1alpha1" = "k8s.mariadb.com/v1alpha1"
 
-    kind: "Backup" = "Backup"
+    kind: "PhysicalBackup" = "PhysicalBackup"
 
     metadata?: v1.ObjectMeta
 
-    spec?: K8sMariadbComV1alpha1BackupSpec
+    spec?: K8sMariadbComV1alpha1PhysicalBackupSpec
 
-    status?: K8sMariadbComV1alpha1BackupStatus
+    status?: K8sMariadbComV1alpha1PhysicalBackupStatus
 
 
-schema K8sMariadbComV1alpha1BackupSpec:
+schema K8sMariadbComV1alpha1PhysicalBackupSpec:
     r"""
-    BackupSpec defines the desired state of Backup
+    PhysicalBackupSpec defines the desired state of PhysicalBackup.
 
     Attributes
     ----------
-    affinity : K8sMariadbComV1alpha1BackupSpecAffinity, default is Undefined, optional
-        affinity
     args : [str], default is Undefined, optional
         Args to be used in the Container.
     backoffLimit : int, default is Undefined, optional
-        BackoffLimit defines the maximum number of attempts to successfully take a Backup.
+        BackoffLimit defines the maximum number of attempts to successfully take a PhysicalBackup.
     compression : str, default is Undefined, optional
         Compression algorithm to be used in the Backup.
-    databases : [str], default is Undefined, optional
-        Databases defines the logical databases to be backed up. If not provided, all databases are backed up.
     failedJobsHistoryLimit : int, default is Undefined, optional
-        FailedJobsHistoryLimit defines the maximum number of failed Jobs to be displayed.
-    ignoreGlobalPriv : bool, default is Undefined, optional
-        IgnoreGlobalPriv indicates to ignore the mysql.global_priv in backups.
-        If not provided, it will default to true when the referred MariaDB instance has Galera enabled and otherwise to false.
-        See: https://github.com/mariadb-operator/mariadb-operator/issues/556
-    imagePullSecrets : [K8sMariadbComV1alpha1BackupSpecImagePullSecretsItems0], default is Undefined, optional
+        FailedJobsHistoryLimit defines the maximum number of failed Jobs to be displayed. It defaults to 5.
+    imagePullSecrets : [K8sMariadbComV1alpha1PhysicalBackupSpecImagePullSecretsItems0], default is Undefined, optional
         ImagePullSecrets is the list of pull Secrets to be used to pull the image.
-    inheritMetadata : K8sMariadbComV1alpha1BackupSpecInheritMetadata, default is Undefined, optional
+    inheritMetadata : K8sMariadbComV1alpha1PhysicalBackupSpecInheritMetadata, default is Undefined, optional
         inherit metadata
     logLevel : str, default is "info", optional
-        LogLevel to be used in the Backup Job. It defaults to 'info'.
-    mariaDbRef : K8sMariadbComV1alpha1BackupSpecMariaDbRef, default is Undefined, required
+        LogLevel to be used in the PhysicalBackup Job. It defaults to 'info'.
+    mariaDbRef : K8sMariadbComV1alpha1PhysicalBackupSpecMariaDbRef, default is Undefined, required
         maria db ref
     maxRetention : str, default is Undefined, optional
         MaxRetention defines the retention policy for backups. Old backups will be cleaned up by the Backup Job.
         It defaults to 30 days.
-    nodeSelector : {str:str}, default is Undefined, optional
-        NodeSelector to be used in the Pod.
-    podMetadata : K8sMariadbComV1alpha1BackupSpecPodMetadata, default is Undefined, optional
+    podAffinity : bool, default is Undefined, optional
+        PodAffinity indicates whether the Jobs should run in the same Node as the MariaDB Pods to be able to attach the PVC.
+        It defaults to true.
+    podMetadata : K8sMariadbComV1alpha1PhysicalBackupSpecPodMetadata, default is Undefined, optional
         pod metadata
-    podSecurityContext : K8sMariadbComV1alpha1BackupSpecPodSecurityContext, default is Undefined, optional
+    podSecurityContext : K8sMariadbComV1alpha1PhysicalBackupSpecPodSecurityContext, default is Undefined, optional
         pod security context
     priorityClassName : str, default is Undefined, optional
         PriorityClassName to be used in the Pod.
-    resources : K8sMariadbComV1alpha1BackupSpecResources, default is Undefined, optional
+    resources : K8sMariadbComV1alpha1PhysicalBackupSpecResources, default is Undefined, optional
         resources
     restartPolicy : str, default is "OnFailure", optional
-        RestartPolicy to be added to the Backup Pod.
-    schedule : K8sMariadbComV1alpha1BackupSpecSchedule, default is Undefined, optional
+        RestartPolicy to be added to the PhysicalBackup Pod.
+    schedule : K8sMariadbComV1alpha1PhysicalBackupSpecSchedule, default is Undefined, optional
         schedule
-    securityContext : K8sMariadbComV1alpha1BackupSpecSecurityContext, default is Undefined, optional
+    securityContext : K8sMariadbComV1alpha1PhysicalBackupSpecSecurityContext, default is Undefined, optional
         security context
     serviceAccountName : str, default is Undefined, optional
         ServiceAccountName is the name of the ServiceAccount to be used by the Pods.
-    stagingStorage : K8sMariadbComV1alpha1BackupSpecStagingStorage, default is Undefined, optional
+    stagingStorage : K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorage, default is Undefined, optional
         staging storage
-    storage : K8sMariadbComV1alpha1BackupSpecStorage, default is Undefined, required
+    storage : K8sMariadbComV1alpha1PhysicalBackupSpecStorage, default is Undefined, required
         storage
     successfulJobsHistoryLimit : int, default is Undefined, optional
-        SuccessfulJobsHistoryLimit defines the maximum number of successful Jobs to be displayed.
-    timeZone : str, default is Undefined, optional
-        TimeZone defines the timezone associated with the cron expression.
-    tolerations : [K8sMariadbComV1alpha1BackupSpecTolerationsItems0], default is Undefined, optional
+        SuccessfulJobsHistoryLimit defines the maximum number of successful Jobs to be displayed. It defaults to 5.
+    target : str, default is Undefined, optional
+        Target defines in which Pod the physical backups will be taken. It defaults to "Replica", meaning that the physical backups will only be taken in ready replicas.
+    timeout : str, default is Undefined, optional
+        Timeout defines the maximum duration of a PhysicalBackup job or snapshot.
+        If this duration is exceeded, the job or snapshot is considered expired and is deleted by the operator.
+        A new job or snapshot will then be created according to the schedule.
+        It defaults to 1 hour.
+    tolerations : [K8sMariadbComV1alpha1PhysicalBackupSpecTolerationsItems0], default is Undefined, optional
         Tolerations to be used in the Pod.
     """
 
-
-    affinity?: K8sMariadbComV1alpha1BackupSpecAffinity
 
     args?: [str]
 
@@ -109,49 +105,47 @@ schema K8sMariadbComV1alpha1BackupSpec:
 
     compression?: "none" | "bzip2" | "gzip"
 
-    databases?: [str]
-
     failedJobsHistoryLimit?: int
 
-    ignoreGlobalPriv?: bool
+    imagePullSecrets?: [K8sMariadbComV1alpha1PhysicalBackupSpecImagePullSecretsItems0]
 
-    imagePullSecrets?: [K8sMariadbComV1alpha1BackupSpecImagePullSecretsItems0]
-
-    inheritMetadata?: K8sMariadbComV1alpha1BackupSpecInheritMetadata
+    inheritMetadata?: K8sMariadbComV1alpha1PhysicalBackupSpecInheritMetadata
 
     logLevel?: "debug" | "info" | "warn" | "error" | "dpanic" | "panic" | "fatal" = "info"
 
-    mariaDbRef: K8sMariadbComV1alpha1BackupSpecMariaDbRef
+    mariaDbRef: K8sMariadbComV1alpha1PhysicalBackupSpecMariaDbRef
 
     maxRetention?: str
 
-    nodeSelector?: {str:str}
+    podAffinity?: bool
 
-    podMetadata?: K8sMariadbComV1alpha1BackupSpecPodMetadata
+    podMetadata?: K8sMariadbComV1alpha1PhysicalBackupSpecPodMetadata
 
-    podSecurityContext?: K8sMariadbComV1alpha1BackupSpecPodSecurityContext
+    podSecurityContext?: K8sMariadbComV1alpha1PhysicalBackupSpecPodSecurityContext
 
     priorityClassName?: str
 
-    resources?: K8sMariadbComV1alpha1BackupSpecResources
+    resources?: K8sMariadbComV1alpha1PhysicalBackupSpecResources
 
     restartPolicy?: "Always" | "OnFailure" | "Never" = "OnFailure"
 
-    schedule?: K8sMariadbComV1alpha1BackupSpecSchedule
+    schedule?: K8sMariadbComV1alpha1PhysicalBackupSpecSchedule
 
-    securityContext?: K8sMariadbComV1alpha1BackupSpecSecurityContext
+    securityContext?: K8sMariadbComV1alpha1PhysicalBackupSpecSecurityContext
 
     serviceAccountName?: str
 
-    stagingStorage?: K8sMariadbComV1alpha1BackupSpecStagingStorage
+    stagingStorage?: K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorage
 
-    storage: K8sMariadbComV1alpha1BackupSpecStorage
+    storage: K8sMariadbComV1alpha1PhysicalBackupSpecStorage
 
     successfulJobsHistoryLimit?: int
 
-    timeZone?: str
+    target?: "Replica" | "PreferReplica"
 
-    tolerations?: [K8sMariadbComV1alpha1BackupSpecTolerationsItems0]
+    timeout?: str
+
+    tolerations?: [K8sMariadbComV1alpha1PhysicalBackupSpecTolerationsItems0]
 
 
     check:
@@ -159,360 +153,7 @@ schema K8sMariadbComV1alpha1BackupSpec:
         successfulJobsHistoryLimit >= 0 if successfulJobsHistoryLimit not in [None, Undefined]
 
 
-schema K8sMariadbComV1alpha1BackupSpecAffinity:
-    r"""
-    Affinity to be used in the Pod.
-
-    Attributes
-    ----------
-    antiAffinityEnabled : bool, default is Undefined, optional
-        AntiAffinityEnabled configures PodAntiAffinity so each Pod is scheduled in a different Node, enabling HA.
-        Make sure you have at least as many Nodes available as the replicas to not end up with unscheduled Pods.
-    nodeAffinity : K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinity, default is Undefined, optional
-        node affinity
-    podAntiAffinity : K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinity, default is Undefined, optional
-        pod anti affinity
-    """
-
-
-    antiAffinityEnabled?: bool
-
-    nodeAffinity?: K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinity
-
-    podAntiAffinity?: K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinity
-
-
-schema K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinity:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeaffinity-v1-core
-
-    Attributes
-    ----------
-    preferredDuringSchedulingIgnoredDuringExecution : [K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0], default is Undefined, optional
-        preferred during scheduling ignored during execution
-    requiredDuringSchedulingIgnoredDuringExecution : K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution, default is Undefined, optional
-        required during scheduling ignored during execution
-    """
-
-
-    preferredDuringSchedulingIgnoredDuringExecution?: [K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0]
-
-    requiredDuringSchedulingIgnoredDuringExecution?: K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution
-
-
-schema K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#preferredschedulingterm-v1-core
-
-    Attributes
-    ----------
-    preference : K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference, default is Undefined, required
-        preference
-    weight : int, default is Undefined, required
-        weight
-    """
-
-
-    preference: K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference
-
-    weight: int
-
-
-schema K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorterm-v1-core
-
-    Attributes
-    ----------
-    matchExpressions : [K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0], default is Undefined, optional
-        match expressions
-    matchFields : [K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0], default is Undefined, optional
-        match fields
-    """
-
-
-    matchExpressions?: [K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0]
-
-    matchFields?: [K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0]
-
-
-schema K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        key
-    operator : str, default is Undefined, required
-        A node selector operator is the set of operators that can be used in
-        a node selector requirement.
-    values : [str], default is Undefined, optional
-        values
-    """
-
-
-    key: str
-
-    operator: str
-
-    values?: [str]
-
-
-schema K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        key
-    operator : str, default is Undefined, required
-        A node selector operator is the set of operators that can be used in
-        a node selector requirement.
-    values : [str], default is Undefined, optional
-        values
-    """
-
-
-    key: str
-
-    operator: str
-
-    values?: [str]
-
-
-schema K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselector-v1-core
-
-    Attributes
-    ----------
-    nodeSelectorTerms : [K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0], default is Undefined, required
-        node selector terms
-    """
-
-
-    nodeSelectorTerms: [K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0]
-
-
-schema K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorterm-v1-core
-
-    Attributes
-    ----------
-    matchExpressions : [K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0], default is Undefined, optional
-        match expressions
-    matchFields : [K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0], default is Undefined, optional
-        match fields
-    """
-
-
-    matchExpressions?: [K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0]
-
-    matchFields?: [K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0]
-
-
-schema K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        key
-    operator : str, default is Undefined, required
-        A node selector operator is the set of operators that can be used in
-        a node selector requirement.
-    values : [str], default is Undefined, optional
-        values
-    """
-
-
-    key: str
-
-    operator: str
-
-    values?: [str]
-
-
-schema K8sMariadbComV1alpha1BackupSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        key
-    operator : str, default is Undefined, required
-        A node selector operator is the set of operators that can be used in
-        a node selector requirement.
-    values : [str], default is Undefined, optional
-        values
-    """
-
-
-    key: str
-
-    operator: str
-
-    values?: [str]
-
-
-schema K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinity:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podantiaffinity-v1-core.
-
-    Attributes
-    ----------
-    preferredDuringSchedulingIgnoredDuringExecution : [K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0], default is Undefined, optional
-        preferred during scheduling ignored during execution
-    requiredDuringSchedulingIgnoredDuringExecution : [K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0], default is Undefined, optional
-        required during scheduling ignored during execution
-    """
-
-
-    preferredDuringSchedulingIgnoredDuringExecution?: [K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0]
-
-    requiredDuringSchedulingIgnoredDuringExecution?: [K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0]
-
-
-schema K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#weightedpodaffinityterm-v1-core.
-
-    Attributes
-    ----------
-    podAffinityTerm : K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm, default is Undefined, required
-        pod affinity term
-    weight : int, default is Undefined, required
-        weight
-    """
-
-
-    podAffinityTerm: K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm
-
-    weight: int
-
-
-schema K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podaffinityterm-v1-core.
-
-    Attributes
-    ----------
-    labelSelector : K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector, default is Undefined, optional
-        label selector
-    topologyKey : str, default is Undefined, required
-        topology key
-    """
-
-
-    labelSelector?: K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
-
-    topologyKey: str
-
-
-schema K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselector-v1-meta
-
-    Attributes
-    ----------
-    matchExpressions : [K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0], default is Undefined, optional
-        match expressions
-    matchLabels : {str:str}, default is Undefined, optional
-        match labels
-    """
-
-
-    matchExpressions?: [K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0]
-
-    matchLabels?: {str:str}
-
-
-schema K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselectorrequirement-v1-meta
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        key
-    operator : str, default is Undefined, required
-        A label selector operator is the set of operators that can be used in a selector requirement.
-    values : [str], default is Undefined, optional
-        values
-    """
-
-
-    key: str
-
-    operator: str
-
-    values?: [str]
-
-
-schema K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podaffinityterm-v1-core.
-
-    Attributes
-    ----------
-    labelSelector : K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector, default is Undefined, optional
-        label selector
-    topologyKey : str, default is Undefined, required
-        topology key
-    """
-
-
-    labelSelector?: K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
-
-    topologyKey: str
-
-
-schema K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselector-v1-meta
-
-    Attributes
-    ----------
-    matchExpressions : [K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0], default is Undefined, optional
-        match expressions
-    matchLabels : {str:str}, default is Undefined, optional
-        match labels
-    """
-
-
-    matchExpressions?: [K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0]
-
-    matchLabels?: {str:str}
-
-
-schema K8sMariadbComV1alpha1BackupSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselectorrequirement-v1-meta
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        key
-    operator : str, default is Undefined, required
-        A label selector operator is the set of operators that can be used in a selector requirement.
-    values : [str], default is Undefined, optional
-        values
-    """
-
-
-    key: str
-
-    operator: str
-
-    values?: [str]
-
-
-schema K8sMariadbComV1alpha1BackupSpecImagePullSecretsItems0:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecImagePullSecretsItems0:
     r"""
     Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
@@ -526,7 +167,7 @@ schema K8sMariadbComV1alpha1BackupSpecImagePullSecretsItems0:
     name?: str = ""
 
 
-schema K8sMariadbComV1alpha1BackupSpecInheritMetadata:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecInheritMetadata:
     r"""
     InheritMetadata defines the metadata to be inherited by children resources.
 
@@ -544,7 +185,7 @@ schema K8sMariadbComV1alpha1BackupSpecInheritMetadata:
     labels?: {str:str}
 
 
-schema K8sMariadbComV1alpha1BackupSpecMariaDbRef:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecMariaDbRef:
     r"""
     MariaDBRef is a reference to a MariaDB object.
 
@@ -570,7 +211,7 @@ schema K8sMariadbComV1alpha1BackupSpecMariaDbRef:
     waitForIt?: bool = True
 
 
-schema K8sMariadbComV1alpha1BackupSpecPodMetadata:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecPodMetadata:
     r"""
     PodMetadata defines extra metadata for the Pod.
 
@@ -588,13 +229,13 @@ schema K8sMariadbComV1alpha1BackupSpecPodMetadata:
     labels?: {str:str}
 
 
-schema K8sMariadbComV1alpha1BackupSpecPodSecurityContext:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecPodSecurityContext:
     r"""
     SecurityContext holds pod-level security attributes and common container settings.
 
     Attributes
     ----------
-    appArmorProfile : K8sMariadbComV1alpha1BackupSpecPodSecurityContextAppArmorProfile, default is Undefined, optional
+    appArmorProfile : K8sMariadbComV1alpha1PhysicalBackupSpecPodSecurityContextAppArmorProfile, default is Undefined, optional
         app armor profile
     fsGroup : int, default is Undefined, optional
         fs group
@@ -607,16 +248,16 @@ schema K8sMariadbComV1alpha1BackupSpecPodSecurityContext:
         run as non root
     runAsUser : int, default is Undefined, optional
         run as user
-    seLinuxOptions : K8sMariadbComV1alpha1BackupSpecPodSecurityContextSeLinuxOptions, default is Undefined, optional
+    seLinuxOptions : K8sMariadbComV1alpha1PhysicalBackupSpecPodSecurityContextSeLinuxOptions, default is Undefined, optional
         se linux options
-    seccompProfile : K8sMariadbComV1alpha1BackupSpecPodSecurityContextSeccompProfile, default is Undefined, optional
+    seccompProfile : K8sMariadbComV1alpha1PhysicalBackupSpecPodSecurityContextSeccompProfile, default is Undefined, optional
         seccomp profile
     supplementalGroups : [int], default is Undefined, optional
         supplemental groups
     """
 
 
-    appArmorProfile?: K8sMariadbComV1alpha1BackupSpecPodSecurityContextAppArmorProfile
+    appArmorProfile?: K8sMariadbComV1alpha1PhysicalBackupSpecPodSecurityContextAppArmorProfile
 
     fsGroup?: int
 
@@ -628,14 +269,14 @@ schema K8sMariadbComV1alpha1BackupSpecPodSecurityContext:
 
     runAsUser?: int
 
-    seLinuxOptions?: K8sMariadbComV1alpha1BackupSpecPodSecurityContextSeLinuxOptions
+    seLinuxOptions?: K8sMariadbComV1alpha1PhysicalBackupSpecPodSecurityContextSeLinuxOptions
 
-    seccompProfile?: K8sMariadbComV1alpha1BackupSpecPodSecurityContextSeccompProfile
+    seccompProfile?: K8sMariadbComV1alpha1PhysicalBackupSpecPodSecurityContextSeccompProfile
 
     supplementalGroups?: [int]
 
 
-schema K8sMariadbComV1alpha1BackupSpecPodSecurityContextAppArmorProfile:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecPodSecurityContextAppArmorProfile:
     r"""
     AppArmorProfile defines a pod or container's AppArmor settings.
 
@@ -660,7 +301,7 @@ schema K8sMariadbComV1alpha1BackupSpecPodSecurityContextAppArmorProfile:
     $type: str
 
 
-schema K8sMariadbComV1alpha1BackupSpecPodSecurityContextSeLinuxOptions:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecPodSecurityContextSeLinuxOptions:
     r"""
     SELinuxOptions are the labels to be applied to the container
 
@@ -686,7 +327,7 @@ schema K8sMariadbComV1alpha1BackupSpecPodSecurityContextSeLinuxOptions:
     user?: str
 
 
-schema K8sMariadbComV1alpha1BackupSpecPodSecurityContextSeccompProfile:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecPodSecurityContextSeccompProfile:
     r"""
     SeccompProfile defines a pod/container's seccomp profile settings.
     Only one profile source may be set.
@@ -713,7 +354,7 @@ schema K8sMariadbComV1alpha1BackupSpecPodSecurityContextSeccompProfile:
     $type: str
 
 
-schema K8sMariadbComV1alpha1BackupSpecResources:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecResources:
     r"""
     Resources describes the compute resource requirements.
 
@@ -736,25 +377,34 @@ schema K8sMariadbComV1alpha1BackupSpecResources:
         all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
-schema K8sMariadbComV1alpha1BackupSpecSchedule:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecSchedule:
     r"""
-    Schedule defines when the Backup will be taken.
+    Schedule defines when the PhysicalBackup will be taken.
 
     Attributes
     ----------
-    cron : str, default is Undefined, required
+    cron : str, default is Undefined, optional
         Cron is a cron expression that defines the schedule.
+    immediate : bool, default is Undefined, optional
+        Immediate indicates whether the first backup should be taken immediately after creating the PhysicalBackup.
+    onDemand : str, default is Undefined, optional
+        OnDemand is an identifier used to trigger an on-demand backup.
+        If the identifier is different than the one tracked under status.lastScheduleOnDemand, a new physical backup will be triggered.
     suspend : bool, default is Undefined, optional
         Suspend defines whether the schedule is active or not.
     """
 
 
-    cron: str
+    cron?: str
+
+    immediate?: bool
+
+    onDemand?: str
 
     suspend?: bool = False
 
 
-schema K8sMariadbComV1alpha1BackupSpecSecurityContext:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecSecurityContext:
     r"""
     SecurityContext holds security configuration that will be applied to a container.
 
@@ -762,7 +412,7 @@ schema K8sMariadbComV1alpha1BackupSpecSecurityContext:
     ----------
     allowPrivilegeEscalation : bool, default is Undefined, optional
         allow privilege escalation
-    capabilities : K8sMariadbComV1alpha1BackupSpecSecurityContextCapabilities, default is Undefined, optional
+    capabilities : K8sMariadbComV1alpha1PhysicalBackupSpecSecurityContextCapabilities, default is Undefined, optional
         capabilities
     privileged : bool, default is Undefined, optional
         privileged
@@ -779,7 +429,7 @@ schema K8sMariadbComV1alpha1BackupSpecSecurityContext:
 
     allowPrivilegeEscalation?: bool
 
-    capabilities?: K8sMariadbComV1alpha1BackupSpecSecurityContextCapabilities
+    capabilities?: K8sMariadbComV1alpha1PhysicalBackupSpecSecurityContextCapabilities
 
     privileged?: bool
 
@@ -792,7 +442,7 @@ schema K8sMariadbComV1alpha1BackupSpecSecurityContext:
     runAsUser?: int
 
 
-schema K8sMariadbComV1alpha1BackupSpecSecurityContextCapabilities:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecSecurityContextCapabilities:
     r"""
     Adds and removes POSIX capabilities from running containers.
 
@@ -810,27 +460,27 @@ schema K8sMariadbComV1alpha1BackupSpecSecurityContextCapabilities:
     drop?: [str]
 
 
-schema K8sMariadbComV1alpha1BackupSpecStagingStorage:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorage:
     r"""
     StagingStorage defines the temporary storage used to keep external backups (i.e. S3) while they are being processed.
-    It defaults to an emptyDir volume, meaning that the backups will be temporarily stored in the node where the Backup Job is scheduled.
+    It defaults to an emptyDir volume, meaning that the backups will be temporarily stored in the node where the PhysicalBackup Job is scheduled.
     The staging area gets cleaned up after each backup is completed, consider this for sizing it appropriately.
 
     Attributes
     ----------
-    persistentVolumeClaim : K8sMariadbComV1alpha1BackupSpecStagingStoragePersistentVolumeClaim, default is Undefined, optional
+    persistentVolumeClaim : K8sMariadbComV1alpha1PhysicalBackupSpecStagingStoragePersistentVolumeClaim, default is Undefined, optional
         persistent volume claim
-    volume : K8sMariadbComV1alpha1BackupSpecStagingStorageVolume, default is Undefined, optional
+    volume : K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorageVolume, default is Undefined, optional
         volume
     """
 
 
-    persistentVolumeClaim?: K8sMariadbComV1alpha1BackupSpecStagingStoragePersistentVolumeClaim
+    persistentVolumeClaim?: K8sMariadbComV1alpha1PhysicalBackupSpecStagingStoragePersistentVolumeClaim
 
-    volume?: K8sMariadbComV1alpha1BackupSpecStagingStorageVolume
+    volume?: K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorageVolume
 
 
-schema K8sMariadbComV1alpha1BackupSpecStagingStoragePersistentVolumeClaim:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStagingStoragePersistentVolumeClaim:
     r"""
     PersistentVolumeClaim is a Kubernetes PVC specification.
 
@@ -838,9 +488,9 @@ schema K8sMariadbComV1alpha1BackupSpecStagingStoragePersistentVolumeClaim:
     ----------
     accessModes : [str], default is Undefined, optional
         access modes
-    resources : K8sMariadbComV1alpha1BackupSpecStagingStoragePersistentVolumeClaimResources, default is Undefined, optional
+    resources : K8sMariadbComV1alpha1PhysicalBackupSpecStagingStoragePersistentVolumeClaimResources, default is Undefined, optional
         resources
-    selector : K8sMariadbComV1alpha1BackupSpecStagingStoragePersistentVolumeClaimSelector, default is Undefined, optional
+    selector : K8sMariadbComV1alpha1PhysicalBackupSpecStagingStoragePersistentVolumeClaimSelector, default is Undefined, optional
         selector
     storageClassName : str, default is Undefined, optional
         storage class name
@@ -849,14 +499,14 @@ schema K8sMariadbComV1alpha1BackupSpecStagingStoragePersistentVolumeClaim:
 
     accessModes?: [str]
 
-    resources?: K8sMariadbComV1alpha1BackupSpecStagingStoragePersistentVolumeClaimResources
+    resources?: K8sMariadbComV1alpha1PhysicalBackupSpecStagingStoragePersistentVolumeClaimResources
 
-    selector?: K8sMariadbComV1alpha1BackupSpecStagingStoragePersistentVolumeClaimSelector
+    selector?: K8sMariadbComV1alpha1PhysicalBackupSpecStagingStoragePersistentVolumeClaimSelector
 
     storageClassName?: str
 
 
-schema K8sMariadbComV1alpha1BackupSpecStagingStoragePersistentVolumeClaimResources:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStagingStoragePersistentVolumeClaimResources:
     r"""
     VolumeResourceRequirements describes the storage resource requirements for a volume.
 
@@ -883,7 +533,7 @@ schema K8sMariadbComV1alpha1BackupSpecStagingStoragePersistentVolumeClaimResourc
         all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
-schema K8sMariadbComV1alpha1BackupSpecStagingStoragePersistentVolumeClaimSelector:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStagingStoragePersistentVolumeClaimSelector:
     r"""
     A label selector is a label query over a set of resources. The result of matchLabels and
     matchExpressions are ANDed. An empty label selector matches all objects. A null
@@ -891,7 +541,7 @@ schema K8sMariadbComV1alpha1BackupSpecStagingStoragePersistentVolumeClaimSelecto
 
     Attributes
     ----------
-    matchExpressions : [K8sMariadbComV1alpha1BackupSpecStagingStoragePersistentVolumeClaimSelectorMatchExpressionsItems0], default is Undefined, optional
+    matchExpressions : [K8sMariadbComV1alpha1PhysicalBackupSpecStagingStoragePersistentVolumeClaimSelectorMatchExpressionsItems0], default is Undefined, optional
         matchExpressions is a list of label selector requirements. The requirements are ANDed.
     matchLabels : {str:str}, default is Undefined, optional
         matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
@@ -900,12 +550,12 @@ schema K8sMariadbComV1alpha1BackupSpecStagingStoragePersistentVolumeClaimSelecto
     """
 
 
-    matchExpressions?: [K8sMariadbComV1alpha1BackupSpecStagingStoragePersistentVolumeClaimSelectorMatchExpressionsItems0]
+    matchExpressions?: [K8sMariadbComV1alpha1PhysicalBackupSpecStagingStoragePersistentVolumeClaimSelectorMatchExpressionsItems0]
 
     matchLabels?: {str:str}
 
 
-schema K8sMariadbComV1alpha1BackupSpecStagingStoragePersistentVolumeClaimSelectorMatchExpressionsItems0:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStagingStoragePersistentVolumeClaimSelectorMatchExpressionsItems0:
     r"""
     A label selector requirement is a selector that contains values, a key, and an operator that
     relates the key and values.
@@ -932,37 +582,37 @@ schema K8sMariadbComV1alpha1BackupSpecStagingStoragePersistentVolumeClaimSelecto
     values?: [str]
 
 
-schema K8sMariadbComV1alpha1BackupSpecStagingStorageVolume:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorageVolume:
     r"""
     Volume is a Kubernetes volume specification.
 
     Attributes
     ----------
-    csi : K8sMariadbComV1alpha1BackupSpecStagingStorageVolumeCsi, default is Undefined, optional
+    csi : K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorageVolumeCsi, default is Undefined, optional
         csi
-    emptyDir : K8sMariadbComV1alpha1BackupSpecStagingStorageVolumeEmptyDir, default is Undefined, optional
+    emptyDir : K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorageVolumeEmptyDir, default is Undefined, optional
         empty dir
-    hostPath : K8sMariadbComV1alpha1BackupSpecStagingStorageVolumeHostPath, default is Undefined, optional
+    hostPath : K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorageVolumeHostPath, default is Undefined, optional
         host path
-    nfs : K8sMariadbComV1alpha1BackupSpecStagingStorageVolumeNfs, default is Undefined, optional
+    nfs : K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorageVolumeNfs, default is Undefined, optional
         nfs
-    persistentVolumeClaim : K8sMariadbComV1alpha1BackupSpecStagingStorageVolumePersistentVolumeClaim, default is Undefined, optional
+    persistentVolumeClaim : K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorageVolumePersistentVolumeClaim, default is Undefined, optional
         persistent volume claim
     """
 
 
-    csi?: K8sMariadbComV1alpha1BackupSpecStagingStorageVolumeCsi
+    csi?: K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorageVolumeCsi
 
-    emptyDir?: K8sMariadbComV1alpha1BackupSpecStagingStorageVolumeEmptyDir
+    emptyDir?: K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorageVolumeEmptyDir
 
-    hostPath?: K8sMariadbComV1alpha1BackupSpecStagingStorageVolumeHostPath
+    hostPath?: K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorageVolumeHostPath
 
-    nfs?: K8sMariadbComV1alpha1BackupSpecStagingStorageVolumeNfs
+    nfs?: K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorageVolumeNfs
 
-    persistentVolumeClaim?: K8sMariadbComV1alpha1BackupSpecStagingStorageVolumePersistentVolumeClaim
+    persistentVolumeClaim?: K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorageVolumePersistentVolumeClaim
 
 
-schema K8sMariadbComV1alpha1BackupSpecStagingStorageVolumeCsi:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorageVolumeCsi:
     r"""
     Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#csivolumesource-v1-core.
 
@@ -972,7 +622,7 @@ schema K8sMariadbComV1alpha1BackupSpecStagingStorageVolumeCsi:
         driver
     fsType : str, default is Undefined, optional
         fs type
-    nodePublishSecretRef : K8sMariadbComV1alpha1BackupSpecStagingStorageVolumeCsiNodePublishSecretRef, default is Undefined, optional
+    nodePublishSecretRef : K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorageVolumeCsiNodePublishSecretRef, default is Undefined, optional
         node publish secret ref
     readOnly : bool, default is Undefined, optional
         read only
@@ -985,14 +635,14 @@ schema K8sMariadbComV1alpha1BackupSpecStagingStorageVolumeCsi:
 
     fsType?: str
 
-    nodePublishSecretRef?: K8sMariadbComV1alpha1BackupSpecStagingStorageVolumeCsiNodePublishSecretRef
+    nodePublishSecretRef?: K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorageVolumeCsiNodePublishSecretRef
 
     readOnly?: bool
 
     volumeAttributes?: {str:str}
 
 
-schema K8sMariadbComV1alpha1BackupSpecStagingStorageVolumeCsiNodePublishSecretRef:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorageVolumeCsiNodePublishSecretRef:
     r"""
     Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
@@ -1006,7 +656,7 @@ schema K8sMariadbComV1alpha1BackupSpecStagingStorageVolumeCsiNodePublishSecretRe
     name?: str = ""
 
 
-schema K8sMariadbComV1alpha1BackupSpecStagingStorageVolumeEmptyDir:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorageVolumeEmptyDir:
     r"""
     Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#emptydirvolumesource-v1-core.
 
@@ -1028,7 +678,7 @@ schema K8sMariadbComV1alpha1BackupSpecStagingStorageVolumeEmptyDir:
         _regex_match(str(sizeLimit), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if sizeLimit
 
 
-schema K8sMariadbComV1alpha1BackupSpecStagingStorageVolumeHostPath:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorageVolumeHostPath:
     r"""
     Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#hostpathvolumesource-v1-core
 
@@ -1046,7 +696,7 @@ schema K8sMariadbComV1alpha1BackupSpecStagingStorageVolumeHostPath:
     $type?: str
 
 
-schema K8sMariadbComV1alpha1BackupSpecStagingStorageVolumeNfs:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorageVolumeNfs:
     r"""
     Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nfsvolumesource-v1-core.
 
@@ -1068,7 +718,7 @@ schema K8sMariadbComV1alpha1BackupSpecStagingStorageVolumeNfs:
     server: str
 
 
-schema K8sMariadbComV1alpha1BackupSpecStagingStorageVolumePersistentVolumeClaim:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStagingStorageVolumePersistentVolumeClaim:
     r"""
     Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#persistentvolumeclaimvolumesource-v1-core.
 
@@ -1086,179 +736,73 @@ schema K8sMariadbComV1alpha1BackupSpecStagingStorageVolumePersistentVolumeClaim:
     readOnly?: bool
 
 
-schema K8sMariadbComV1alpha1BackupSpecStorage:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStorage:
     r"""
     Storage defines the final storage for backups.
 
     Attributes
     ----------
-    persistentVolumeClaim : K8sMariadbComV1alpha1BackupSpecStoragePersistentVolumeClaim, default is Undefined, optional
+    azureBlob : K8sMariadbComV1alpha1PhysicalBackupSpecStorageAzureBlob, default is Undefined, optional
+        azure blob
+    persistentVolumeClaim : K8sMariadbComV1alpha1PhysicalBackupSpecStoragePersistentVolumeClaim, default is Undefined, optional
         persistent volume claim
-    s3 : K8sMariadbComV1alpha1BackupSpecStorageS3, default is Undefined, optional
+    s3 : K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3, default is Undefined, optional
         s3
-    volume : K8sMariadbComV1alpha1BackupSpecStorageVolume, default is Undefined, optional
+    volume : K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolume, default is Undefined, optional
         volume
+    volumeSnapshot : K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumeSnapshot, default is Undefined, optional
+        volume snapshot
     """
 
 
-    persistentVolumeClaim?: K8sMariadbComV1alpha1BackupSpecStoragePersistentVolumeClaim
+    azureBlob?: K8sMariadbComV1alpha1PhysicalBackupSpecStorageAzureBlob
 
-    s3?: K8sMariadbComV1alpha1BackupSpecStorageS3
+    persistentVolumeClaim?: K8sMariadbComV1alpha1PhysicalBackupSpecStoragePersistentVolumeClaim
 
-    volume?: K8sMariadbComV1alpha1BackupSpecStorageVolume
+    s3?: K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3
+
+    volume?: K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolume
+
+    volumeSnapshot?: K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumeSnapshot
 
 
-schema K8sMariadbComV1alpha1BackupSpecStoragePersistentVolumeClaim:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStorageAzureBlob:
     r"""
-    PersistentVolumeClaim is a Kubernetes PVC specification.
+    AzureBlob defines the configuration to store backups in a AzureBlob compatible storage.
 
     Attributes
     ----------
-    accessModes : [str], default is Undefined, optional
-        access modes
-    resources : K8sMariadbComV1alpha1BackupSpecStoragePersistentVolumeClaimResources, default is Undefined, optional
-        resources
-    selector : K8sMariadbComV1alpha1BackupSpecStoragePersistentVolumeClaimSelector, default is Undefined, optional
-        selector
-    storageClassName : str, default is Undefined, optional
-        storage class name
-    """
-
-
-    accessModes?: [str]
-
-    resources?: K8sMariadbComV1alpha1BackupSpecStoragePersistentVolumeClaimResources
-
-    selector?: K8sMariadbComV1alpha1BackupSpecStoragePersistentVolumeClaimSelector
-
-    storageClassName?: str
-
-
-schema K8sMariadbComV1alpha1BackupSpecStoragePersistentVolumeClaimResources:
-    r"""
-    VolumeResourceRequirements describes the storage resource requirements for a volume.
-
-    Attributes
-    ----------
-    limits : {str:int | str}, default is Undefined, optional
-        Limits describes the maximum amount of compute resources allowed.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
-    requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum amount of compute resources required.
-        If Requests is omitted for a container, it defaults to Limits if that is explicitly specified,
-        otherwise to an implementation-defined value. Requests cannot exceed Limits.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
-    """
-
-
-    limits?: {str:int | str}
-
-    requests?: {str:int | str}
-
-
-    check:
-        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
-
-
-schema K8sMariadbComV1alpha1BackupSpecStoragePersistentVolumeClaimSelector:
-    r"""
-    A label selector is a label query over a set of resources. The result of matchLabels and
-    matchExpressions are ANDed. An empty label selector matches all objects. A null
-    label selector matches no objects.
-
-    Attributes
-    ----------
-    matchExpressions : [K8sMariadbComV1alpha1BackupSpecStoragePersistentVolumeClaimSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
-    matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
-    """
-
-
-    matchExpressions?: [K8sMariadbComV1alpha1BackupSpecStoragePersistentVolumeClaimSelectorMatchExpressionsItems0]
-
-    matchLabels?: {str:str}
-
-
-schema K8sMariadbComV1alpha1BackupSpecStoragePersistentVolumeClaimSelectorMatchExpressionsItems0:
-    r"""
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        key is the label key that the selector applies to.
-    operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
-    values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
-    """
-
-
-    key: str
-
-    operator: str
-
-    values?: [str]
-
-
-schema K8sMariadbComV1alpha1BackupSpecStorageS3:
-    r"""
-    S3 defines the configuration to store backups in a S3 compatible storage.
-
-    Attributes
-    ----------
-    accessKeyIdSecretKeyRef : K8sMariadbComV1alpha1BackupSpecStorageS3AccessKeyIDSecretKeyRef, default is Undefined, optional
-        access key Id secret key ref
-    bucket : str, default is Undefined, required
-        Bucket is the name Name of the bucket to store backups.
-    endpoint : str, default is Undefined, required
-        Endpoint is the S3 API endpoint without scheme.
+    containerName : str, default is Undefined, required
+        ContainerName is the name of the storage container.
     prefix : str, default is Undefined, optional
-        Prefix indicates a folder/subfolder in the bucket. For example: mariadb/ or mariadb/backups. A trailing slash '/' is added if not provided.
-    region : str, default is Undefined, optional
-        Region is the S3 region name to use.
-    secretAccessKeySecretKeyRef : K8sMariadbComV1alpha1BackupSpecStorageS3SecretAccessKeySecretKeyRef, default is Undefined, optional
-        secret access key secret key ref
-    sessionTokenSecretKeyRef : K8sMariadbComV1alpha1BackupSpecStorageS3SessionTokenSecretKeyRef, default is Undefined, optional
-        session token secret key ref
-    ssec : K8sMariadbComV1alpha1BackupSpecStorageS3Ssec, default is Undefined, optional
-        ssec
-    tls : K8sMariadbComV1alpha1BackupSpecStorageS3TLS, default is Undefined, optional
+        Prefix indicates a folder/subfolder in the container. For example: mariadb/ or mariadb/backups. A trailing slash '/' is added if not provided.
+    serviceURL : str, default is Undefined, required
+        ServiceURL is the full URL for connecting to Azure, usually in the form: http(s)://<account>.blob.core.windows.net/.
+    storageAccountKey : K8sMariadbComV1alpha1PhysicalBackupSpecStorageAzureBlobStorageAccountKey, default is Undefined, optional
+        storage account key
+    storageAccountName : str, default is Undefined, optional
+        StorageAccountName is the name of the storage account. Pairs with StorageAccountKey for static credential authentication
+    tls : K8sMariadbComV1alpha1PhysicalBackupSpecStorageAzureBlobTLS, default is Undefined, optional
         tls
     """
 
 
-    accessKeyIdSecretKeyRef?: K8sMariadbComV1alpha1BackupSpecStorageS3AccessKeyIDSecretKeyRef
-
-    bucket: str
-
-    endpoint: str
+    containerName: str
 
     prefix?: str
 
-    region?: str
+    serviceURL: str
 
-    secretAccessKeySecretKeyRef?: K8sMariadbComV1alpha1BackupSpecStorageS3SecretAccessKeySecretKeyRef
+    storageAccountKey?: K8sMariadbComV1alpha1PhysicalBackupSpecStorageAzureBlobStorageAccountKey
 
-    sessionTokenSecretKeyRef?: K8sMariadbComV1alpha1BackupSpecStorageS3SessionTokenSecretKeyRef
+    storageAccountName?: str
 
-    ssec?: K8sMariadbComV1alpha1BackupSpecStorageS3Ssec
-
-    tls?: K8sMariadbComV1alpha1BackupSpecStorageS3TLS
+    tls?: K8sMariadbComV1alpha1PhysicalBackupSpecStorageAzureBlobTLS
 
 
-schema K8sMariadbComV1alpha1BackupSpecStorageS3AccessKeyIDSecretKeyRef:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStorageAzureBlobStorageAccountKey:
     r"""
-    AccessKeyIdSecretKeyRef is a reference to a Secret key containing the S3 access key id.
+    StorageAccountKey is a reference to a Secret key containing the Azure Blob Storage Storage account Key. Pairs with StorageAccountKey for static credential authentication
 
     Attributes
     ----------
@@ -1274,96 +818,25 @@ schema K8sMariadbComV1alpha1BackupSpecStorageS3AccessKeyIDSecretKeyRef:
     name?: str = ""
 
 
-schema K8sMariadbComV1alpha1BackupSpecStorageS3SecretAccessKeySecretKeyRef:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStorageAzureBlobTLS:
     r"""
-    AccessKeyIdSecretKeyRef is a reference to a Secret key containing the S3 secret key.
+    TLS provides the configuration required to establish TLS connections with Azure Blob Storage.
 
     Attributes
     ----------
-    key : str, default is Undefined, required
-        key
-    name : str, default is Undefined, optional
-        name
-    """
-
-
-    key: str
-
-    name?: str = ""
-
-
-schema K8sMariadbComV1alpha1BackupSpecStorageS3SessionTokenSecretKeyRef:
-    r"""
-    SessionTokenSecretKeyRef is a reference to a Secret key containing the S3 session token.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        key
-    name : str, default is Undefined, optional
-        name
-    """
-
-
-    key: str
-
-    name?: str = ""
-
-
-schema K8sMariadbComV1alpha1BackupSpecStorageS3Ssec:
-    r"""
-    SSEC is a reference to a Secret containing the SSE-C (Server-Side Encryption with Customer-Provided Keys) key.
-    The secret must contain a 32-byte key (256 bits) in the specified key.
-    This enables server-side encryption where you provide and manage the encryption key.
-
-    Attributes
-    ----------
-    customerKeySecretKeyRef : K8sMariadbComV1alpha1BackupSpecStorageS3SsecCustomerKeySecretKeyRef, default is Undefined, required
-        customer key secret key ref
-    """
-
-
-    customerKeySecretKeyRef: K8sMariadbComV1alpha1BackupSpecStorageS3SsecCustomerKeySecretKeyRef
-
-
-schema K8sMariadbComV1alpha1BackupSpecStorageS3SsecCustomerKeySecretKeyRef:
-    r"""
-    CustomerKeySecretKeyRef is a reference to a Secret key containing the SSE-C customer-provided encryption key.
-    The key must be a 32-byte (256-bit) key encoded in base64.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        key
-    name : str, default is Undefined, optional
-        name
-    """
-
-
-    key: str
-
-    name?: str = ""
-
-
-schema K8sMariadbComV1alpha1BackupSpecStorageS3TLS:
-    r"""
-    TLS provides the configuration required to establish TLS connections with S3.
-
-    Attributes
-    ----------
-    caSecretKeyRef : K8sMariadbComV1alpha1BackupSpecStorageS3TLSCaSecretKeyRef, default is Undefined, optional
+    caSecretKeyRef : K8sMariadbComV1alpha1PhysicalBackupSpecStorageAzureBlobTLSCaSecretKeyRef, default is Undefined, optional
         ca secret key ref
     enabled : bool, default is Undefined, optional
         Enabled is a flag to enable TLS.
     """
 
 
-    caSecretKeyRef?: K8sMariadbComV1alpha1BackupSpecStorageS3TLSCaSecretKeyRef
+    caSecretKeyRef?: K8sMariadbComV1alpha1PhysicalBackupSpecStorageAzureBlobTLSCaSecretKeyRef
 
     enabled?: bool
 
 
-schema K8sMariadbComV1alpha1BackupSpecStorageS3TLSCaSecretKeyRef:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStorageAzureBlobTLSCaSecretKeyRef:
     r"""
     CASecretKeyRef is a reference to a Secret key containing a CA bundle in PEM format used to establish TLS connections with S3.
     By default, the system trust chain will be used, but you can use this field to add more CAs to the bundle.
@@ -1382,37 +855,311 @@ schema K8sMariadbComV1alpha1BackupSpecStorageS3TLSCaSecretKeyRef:
     name?: str = ""
 
 
-schema K8sMariadbComV1alpha1BackupSpecStorageVolume:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStoragePersistentVolumeClaim:
+    r"""
+    PersistentVolumeClaim is a Kubernetes PVC specification.
+
+    Attributes
+    ----------
+    accessModes : [str], default is Undefined, optional
+        access modes
+    resources : K8sMariadbComV1alpha1PhysicalBackupSpecStoragePersistentVolumeClaimResources, default is Undefined, optional
+        resources
+    selector : K8sMariadbComV1alpha1PhysicalBackupSpecStoragePersistentVolumeClaimSelector, default is Undefined, optional
+        selector
+    storageClassName : str, default is Undefined, optional
+        storage class name
+    """
+
+
+    accessModes?: [str]
+
+    resources?: K8sMariadbComV1alpha1PhysicalBackupSpecStoragePersistentVolumeClaimResources
+
+    selector?: K8sMariadbComV1alpha1PhysicalBackupSpecStoragePersistentVolumeClaimSelector
+
+    storageClassName?: str
+
+
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStoragePersistentVolumeClaimResources:
+    r"""
+    VolumeResourceRequirements describes the storage resource requirements for a volume.
+
+    Attributes
+    ----------
+    limits : {str:int | str}, default is Undefined, optional
+        Limits describes the maximum amount of compute resources allowed.
+        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+    requests : {str:int | str}, default is Undefined, optional
+        Requests describes the minimum amount of compute resources required.
+        If Requests is omitted for a container, it defaults to Limits if that is explicitly specified,
+        otherwise to an implementation-defined value. Requests cannot exceed Limits.
+        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+    """
+
+
+    limits?: {str:int | str}
+
+    requests?: {str:int | str}
+
+
+    check:
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+
+
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStoragePersistentVolumeClaimSelector:
+    r"""
+    A label selector is a label query over a set of resources. The result of matchLabels and
+    matchExpressions are ANDed. An empty label selector matches all objects. A null
+    label selector matches no objects.
+
+    Attributes
+    ----------
+    matchExpressions : [K8sMariadbComV1alpha1PhysicalBackupSpecStoragePersistentVolumeClaimSelectorMatchExpressionsItems0], default is Undefined, optional
+        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+    matchLabels : {str:str}, default is Undefined, optional
+        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
+        map is equivalent to an element of matchExpressions, whose key field is "key", the
+        operator is "In", and the values array contains only "value". The requirements are ANDed.
+    """
+
+
+    matchExpressions?: [K8sMariadbComV1alpha1PhysicalBackupSpecStoragePersistentVolumeClaimSelectorMatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStoragePersistentVolumeClaimSelectorMatchExpressionsItems0:
+    r"""
+    A label selector requirement is a selector that contains values, a key, and an operator that
+    relates the key and values.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key is the label key that the selector applies to.
+    operator : str, default is Undefined, required
+        operator represents a key's relationship to a set of values.
+        Valid operators are In, NotIn, Exists and DoesNotExist.
+    values : [str], default is Undefined, optional
+        values is an array of string values. If the operator is In or NotIn,
+        the values array must be non-empty. If the operator is Exists or DoesNotExist,
+        the values array must be empty. This array is replaced during a strategic
+        merge patch.
+    """
+
+
+    key: str
+
+    operator: str
+
+    values?: [str]
+
+
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3:
+    r"""
+    S3 defines the configuration to store backups in a S3 compatible storage.
+
+    Attributes
+    ----------
+    accessKeyIdSecretKeyRef : K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3AccessKeyIDSecretKeyRef, default is Undefined, optional
+        access key Id secret key ref
+    bucket : str, default is Undefined, required
+        Bucket is the name Name of the bucket to store backups.
+    endpoint : str, default is Undefined, required
+        Endpoint is the S3 API endpoint without scheme.
+    prefix : str, default is Undefined, optional
+        Prefix indicates a folder/subfolder in the bucket. For example: mariadb/ or mariadb/backups. A trailing slash '/' is added if not provided.
+    region : str, default is Undefined, optional
+        Region is the S3 region name to use.
+    secretAccessKeySecretKeyRef : K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3SecretAccessKeySecretKeyRef, default is Undefined, optional
+        secret access key secret key ref
+    sessionTokenSecretKeyRef : K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3SessionTokenSecretKeyRef, default is Undefined, optional
+        session token secret key ref
+    ssec : K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3Ssec, default is Undefined, optional
+        ssec
+    tls : K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3TLS, default is Undefined, optional
+        tls
+    """
+
+
+    accessKeyIdSecretKeyRef?: K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3AccessKeyIDSecretKeyRef
+
+    bucket: str
+
+    endpoint: str
+
+    prefix?: str
+
+    region?: str
+
+    secretAccessKeySecretKeyRef?: K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3SecretAccessKeySecretKeyRef
+
+    sessionTokenSecretKeyRef?: K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3SessionTokenSecretKeyRef
+
+    ssec?: K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3Ssec
+
+    tls?: K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3TLS
+
+
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3AccessKeyIDSecretKeyRef:
+    r"""
+    AccessKeyIdSecretKeyRef is a reference to a Secret key containing the S3 access key id.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3SecretAccessKeySecretKeyRef:
+    r"""
+    AccessKeyIdSecretKeyRef is a reference to a Secret key containing the S3 secret key.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3SessionTokenSecretKeyRef:
+    r"""
+    SessionTokenSecretKeyRef is a reference to a Secret key containing the S3 session token.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3Ssec:
+    r"""
+    SSEC is a reference to a Secret containing the SSE-C (Server-Side Encryption with Customer-Provided Keys) key.
+    The secret must contain a 32-byte key (256 bits) in the specified key.
+    This enables server-side encryption where you provide and manage the encryption key.
+
+    Attributes
+    ----------
+    customerKeySecretKeyRef : K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3SsecCustomerKeySecretKeyRef, default is Undefined, required
+        customer key secret key ref
+    """
+
+
+    customerKeySecretKeyRef: K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3SsecCustomerKeySecretKeyRef
+
+
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3SsecCustomerKeySecretKeyRef:
+    r"""
+    CustomerKeySecretKeyRef is a reference to a Secret key containing the SSE-C customer-provided encryption key.
+    The key must be a 32-byte (256-bit) key encoded in base64.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3TLS:
+    r"""
+    TLS provides the configuration required to establish TLS connections with S3.
+
+    Attributes
+    ----------
+    caSecretKeyRef : K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3TLSCaSecretKeyRef, default is Undefined, optional
+        ca secret key ref
+    enabled : bool, default is Undefined, optional
+        Enabled is a flag to enable TLS.
+    """
+
+
+    caSecretKeyRef?: K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3TLSCaSecretKeyRef
+
+    enabled?: bool
+
+
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStorageS3TLSCaSecretKeyRef:
+    r"""
+    CASecretKeyRef is a reference to a Secret key containing a CA bundle in PEM format used to establish TLS connections with S3.
+    By default, the system trust chain will be used, but you can use this field to add more CAs to the bundle.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolume:
     r"""
     Volume is a Kubernetes volume specification.
 
     Attributes
     ----------
-    csi : K8sMariadbComV1alpha1BackupSpecStorageVolumeCsi, default is Undefined, optional
+    csi : K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumeCsi, default is Undefined, optional
         csi
-    emptyDir : K8sMariadbComV1alpha1BackupSpecStorageVolumeEmptyDir, default is Undefined, optional
+    emptyDir : K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumeEmptyDir, default is Undefined, optional
         empty dir
-    hostPath : K8sMariadbComV1alpha1BackupSpecStorageVolumeHostPath, default is Undefined, optional
+    hostPath : K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumeHostPath, default is Undefined, optional
         host path
-    nfs : K8sMariadbComV1alpha1BackupSpecStorageVolumeNfs, default is Undefined, optional
+    nfs : K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumeNfs, default is Undefined, optional
         nfs
-    persistentVolumeClaim : K8sMariadbComV1alpha1BackupSpecStorageVolumePersistentVolumeClaim, default is Undefined, optional
+    persistentVolumeClaim : K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumePersistentVolumeClaim, default is Undefined, optional
         persistent volume claim
     """
 
 
-    csi?: K8sMariadbComV1alpha1BackupSpecStorageVolumeCsi
+    csi?: K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumeCsi
 
-    emptyDir?: K8sMariadbComV1alpha1BackupSpecStorageVolumeEmptyDir
+    emptyDir?: K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumeEmptyDir
 
-    hostPath?: K8sMariadbComV1alpha1BackupSpecStorageVolumeHostPath
+    hostPath?: K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumeHostPath
 
-    nfs?: K8sMariadbComV1alpha1BackupSpecStorageVolumeNfs
+    nfs?: K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumeNfs
 
-    persistentVolumeClaim?: K8sMariadbComV1alpha1BackupSpecStorageVolumePersistentVolumeClaim
+    persistentVolumeClaim?: K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumePersistentVolumeClaim
 
 
-schema K8sMariadbComV1alpha1BackupSpecStorageVolumeCsi:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumeCsi:
     r"""
     Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#csivolumesource-v1-core.
 
@@ -1422,7 +1169,7 @@ schema K8sMariadbComV1alpha1BackupSpecStorageVolumeCsi:
         driver
     fsType : str, default is Undefined, optional
         fs type
-    nodePublishSecretRef : K8sMariadbComV1alpha1BackupSpecStorageVolumeCsiNodePublishSecretRef, default is Undefined, optional
+    nodePublishSecretRef : K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumeCsiNodePublishSecretRef, default is Undefined, optional
         node publish secret ref
     readOnly : bool, default is Undefined, optional
         read only
@@ -1435,14 +1182,14 @@ schema K8sMariadbComV1alpha1BackupSpecStorageVolumeCsi:
 
     fsType?: str
 
-    nodePublishSecretRef?: K8sMariadbComV1alpha1BackupSpecStorageVolumeCsiNodePublishSecretRef
+    nodePublishSecretRef?: K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumeCsiNodePublishSecretRef
 
     readOnly?: bool
 
     volumeAttributes?: {str:str}
 
 
-schema K8sMariadbComV1alpha1BackupSpecStorageVolumeCsiNodePublishSecretRef:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumeCsiNodePublishSecretRef:
     r"""
     Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
@@ -1456,7 +1203,7 @@ schema K8sMariadbComV1alpha1BackupSpecStorageVolumeCsiNodePublishSecretRef:
     name?: str = ""
 
 
-schema K8sMariadbComV1alpha1BackupSpecStorageVolumeEmptyDir:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumeEmptyDir:
     r"""
     Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#emptydirvolumesource-v1-core.
 
@@ -1478,7 +1225,7 @@ schema K8sMariadbComV1alpha1BackupSpecStorageVolumeEmptyDir:
         _regex_match(str(sizeLimit), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if sizeLimit
 
 
-schema K8sMariadbComV1alpha1BackupSpecStorageVolumeHostPath:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumeHostPath:
     r"""
     Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#hostpathvolumesource-v1-core
 
@@ -1496,7 +1243,7 @@ schema K8sMariadbComV1alpha1BackupSpecStorageVolumeHostPath:
     $type?: str
 
 
-schema K8sMariadbComV1alpha1BackupSpecStorageVolumeNfs:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumeNfs:
     r"""
     Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nfsvolumesource-v1-core.
 
@@ -1518,7 +1265,7 @@ schema K8sMariadbComV1alpha1BackupSpecStorageVolumeNfs:
     server: str
 
 
-schema K8sMariadbComV1alpha1BackupSpecStorageVolumePersistentVolumeClaim:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumePersistentVolumeClaim:
     r"""
     Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#persistentvolumeclaimvolumesource-v1-core.
 
@@ -1536,7 +1283,43 @@ schema K8sMariadbComV1alpha1BackupSpecStorageVolumePersistentVolumeClaim:
     readOnly?: bool
 
 
-schema K8sMariadbComV1alpha1BackupSpecTolerationsItems0:
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumeSnapshot:
+    r"""
+    VolumeSnapshot is a Kubernetes VolumeSnapshot specification.
+
+    Attributes
+    ----------
+    metadata : K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumeSnapshotMetadata, default is Undefined, optional
+        metadata
+    volumeSnapshotClassName : str, default is Undefined, required
+        VolumeSnapshotClassName is the VolumeSnapshot class to be used to take snapshots.
+    """
+
+
+    metadata?: K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumeSnapshotMetadata
+
+    volumeSnapshotClassName: str
+
+
+schema K8sMariadbComV1alpha1PhysicalBackupSpecStorageVolumeSnapshotMetadata:
+    r"""
+    Metadata is extra metadata to the added to the VolumeSnapshot objects.
+
+    Attributes
+    ----------
+    annotations : {str:str}, default is Undefined, optional
+        Annotations to be added to children resources.
+    labels : {str:str}, default is Undefined, optional
+        Labels to be added to children resources.
+    """
+
+
+    annotations?: {str:str}
+
+    labels?: {str:str}
+
+
+schema K8sMariadbComV1alpha1PhysicalBackupSpecTolerationsItems0:
     r"""
     The pod this Toleration is attached to tolerates any taint that matches
     the triple <key,value,effect> using the matching operator <operator>.
@@ -1577,21 +1360,37 @@ schema K8sMariadbComV1alpha1BackupSpecTolerationsItems0:
     value?: str
 
 
-schema K8sMariadbComV1alpha1BackupStatus:
+schema K8sMariadbComV1alpha1PhysicalBackupStatus:
     r"""
-    BackupStatus defines the observed state of Backup
+    PhysicalBackupStatus defines the observed state of PhysicalBackup.
 
     Attributes
     ----------
-    conditions : [K8sMariadbComV1alpha1BackupStatusConditionsItems0], default is Undefined, optional
-        Conditions for the Backup object.
+    conditions : [K8sMariadbComV1alpha1PhysicalBackupStatusConditionsItems0], default is Undefined, optional
+        Conditions for the PhysicalBackup object.
+    lastScheduleCheckTime : str, default is Undefined, optional
+        LastScheduleCheckTime is the last time that the schedule was checked.
+    lastScheduleOnDemand : str, default is Undefined, optional
+        LastScheduleOnDemand is the last on-demand schedule identifier.
+    lastScheduleTime : str, default is Undefined, optional
+        LastScheduleTime is the last time that a backup was scheduled.
+    nextScheduleTime : str, default is Undefined, optional
+        NextScheduleTime is the next time that a backup will be scheduled.
     """
 
 
-    conditions?: [K8sMariadbComV1alpha1BackupStatusConditionsItems0]
+    conditions?: [K8sMariadbComV1alpha1PhysicalBackupStatusConditionsItems0]
+
+    lastScheduleCheckTime?: str
+
+    lastScheduleOnDemand?: str
+
+    lastScheduleTime?: str
+
+    nextScheduleTime?: str
 
 
-schema K8sMariadbComV1alpha1BackupStatusConditionsItems0:
+schema K8sMariadbComV1alpha1PhysicalBackupStatusConditionsItems0:
     r"""
     Condition contains details for one aspect of the current state of this API Resource.
 

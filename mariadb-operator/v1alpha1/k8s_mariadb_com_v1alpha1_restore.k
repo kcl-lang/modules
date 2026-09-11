@@ -106,7 +106,7 @@ schema K8sMariadbComV1alpha1RestoreSpec:
 
     inheritMetadata?: K8sMariadbComV1alpha1RestoreSpecInheritMetadata
 
-    logLevel?: str = "info"
+    logLevel?: "debug" | "info" | "warn" | "error" | "dpanic" | "panic" | "fatal" = "info"
 
     mariaDbRef: K8sMariadbComV1alpha1RestoreSpecMariaDbRef
 
@@ -162,7 +162,7 @@ schema K8sMariadbComV1alpha1RestoreSpecAffinity:
 
 schema K8sMariadbComV1alpha1RestoreSpecAffinityNodeAffinity:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeaffinity-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeaffinity-v1-core
 
     Attributes
     ----------
@@ -180,7 +180,7 @@ schema K8sMariadbComV1alpha1RestoreSpecAffinityNodeAffinity:
 
 schema K8sMariadbComV1alpha1RestoreSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#preferredschedulingterm-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#preferredschedulingterm-v1-core
 
     Attributes
     ----------
@@ -198,7 +198,7 @@ schema K8sMariadbComV1alpha1RestoreSpecAffinityNodeAffinityPreferredDuringSchedu
 
 schema K8sMariadbComV1alpha1RestoreSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorterm-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorterm-v1-core
 
     Attributes
     ----------
@@ -216,7 +216,7 @@ schema K8sMariadbComV1alpha1RestoreSpecAffinityNodeAffinityPreferredDuringSchedu
 
 schema K8sMariadbComV1alpha1RestoreSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -239,7 +239,7 @@ schema K8sMariadbComV1alpha1RestoreSpecAffinityNodeAffinityPreferredDuringSchedu
 
 schema K8sMariadbComV1alpha1RestoreSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -262,7 +262,7 @@ schema K8sMariadbComV1alpha1RestoreSpecAffinityNodeAffinityPreferredDuringSchedu
 
 schema K8sMariadbComV1alpha1RestoreSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselector-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselector-v1-core
 
     Attributes
     ----------
@@ -276,7 +276,7 @@ schema K8sMariadbComV1alpha1RestoreSpecAffinityNodeAffinityRequiredDuringSchedul
 
 schema K8sMariadbComV1alpha1RestoreSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorterm-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorterm-v1-core
 
     Attributes
     ----------
@@ -294,7 +294,7 @@ schema K8sMariadbComV1alpha1RestoreSpecAffinityNodeAffinityRequiredDuringSchedul
 
 schema K8sMariadbComV1alpha1RestoreSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -317,7 +317,7 @@ schema K8sMariadbComV1alpha1RestoreSpecAffinityNodeAffinityRequiredDuringSchedul
 
 schema K8sMariadbComV1alpha1RestoreSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -340,7 +340,7 @@ schema K8sMariadbComV1alpha1RestoreSpecAffinityNodeAffinityRequiredDuringSchedul
 
 schema K8sMariadbComV1alpha1RestoreSpecAffinityPodAntiAffinity:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podantiaffinity-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podantiaffinity-v1-core.
 
     Attributes
     ----------
@@ -358,7 +358,7 @@ schema K8sMariadbComV1alpha1RestoreSpecAffinityPodAntiAffinity:
 
 schema K8sMariadbComV1alpha1RestoreSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#weightedpodaffinityterm-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#weightedpodaffinityterm-v1-core.
 
     Attributes
     ----------
@@ -376,7 +376,7 @@ schema K8sMariadbComV1alpha1RestoreSpecAffinityPodAntiAffinityPreferredDuringSch
 
 schema K8sMariadbComV1alpha1RestoreSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podaffinityterm-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podaffinityterm-v1-core.
 
     Attributes
     ----------
@@ -394,7 +394,7 @@ schema K8sMariadbComV1alpha1RestoreSpecAffinityPodAntiAffinityPreferredDuringSch
 
 schema K8sMariadbComV1alpha1RestoreSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselector-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselector-v1-meta
 
     Attributes
     ----------
@@ -412,7 +412,7 @@ schema K8sMariadbComV1alpha1RestoreSpecAffinityPodAntiAffinityPreferredDuringSch
 
 schema K8sMariadbComV1alpha1RestoreSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselectorrequirement-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselectorrequirement-v1-meta
 
     Attributes
     ----------
@@ -434,7 +434,7 @@ schema K8sMariadbComV1alpha1RestoreSpecAffinityPodAntiAffinityPreferredDuringSch
 
 schema K8sMariadbComV1alpha1RestoreSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podaffinityterm-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podaffinityterm-v1-core.
 
     Attributes
     ----------
@@ -452,7 +452,7 @@ schema K8sMariadbComV1alpha1RestoreSpecAffinityPodAntiAffinityRequiredDuringSche
 
 schema K8sMariadbComV1alpha1RestoreSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselector-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselector-v1-meta
 
     Attributes
     ----------
@@ -470,7 +470,7 @@ schema K8sMariadbComV1alpha1RestoreSpecAffinityPodAntiAffinityRequiredDuringSche
 
 schema K8sMariadbComV1alpha1RestoreSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselectorrequirement-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselectorrequirement-v1-meta
 
     Attributes
     ----------
@@ -506,7 +506,7 @@ schema K8sMariadbComV1alpha1RestoreSpecBackupRef:
 
 schema K8sMariadbComV1alpha1RestoreSpecImagePullSecretsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#localobjectreference-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
     Attributes
     ----------
@@ -542,6 +542,8 @@ schema K8sMariadbComV1alpha1RestoreSpecMariaDbRef:
 
     Attributes
     ----------
+    kind : str, default is Undefined, optional
+        Kind of the referent.
     name : str, default is Undefined, optional
         name
     namespace : str, default is Undefined, optional
@@ -550,6 +552,8 @@ schema K8sMariadbComV1alpha1RestoreSpecMariaDbRef:
         WaitForIt indicates whether the controller using this reference should wait for MariaDB to be ready.
     """
 
+
+    kind?: str
 
     name?: str
 
@@ -703,7 +707,7 @@ schema K8sMariadbComV1alpha1RestoreSpecPodSecurityContextSeccompProfile:
 
 schema K8sMariadbComV1alpha1RestoreSpecResources:
     r"""
-    Resouces describes the compute resource requirements.
+    Resources describes the compute resource requirements.
 
     Attributes
     ----------
@@ -744,6 +748,8 @@ schema K8sMariadbComV1alpha1RestoreSpecS3:
         secret access key secret key ref
     sessionTokenSecretKeyRef : K8sMariadbComV1alpha1RestoreSpecS3SessionTokenSecretKeyRef, default is Undefined, optional
         session token secret key ref
+    ssec : K8sMariadbComV1alpha1RestoreSpecS3Ssec, default is Undefined, optional
+        ssec
     tls : K8sMariadbComV1alpha1RestoreSpecS3TLS, default is Undefined, optional
         tls
     """
@@ -762,6 +768,8 @@ schema K8sMariadbComV1alpha1RestoreSpecS3:
     secretAccessKeySecretKeyRef?: K8sMariadbComV1alpha1RestoreSpecS3SecretAccessKeySecretKeyRef
 
     sessionTokenSecretKeyRef?: K8sMariadbComV1alpha1RestoreSpecS3SessionTokenSecretKeyRef
+
+    ssec?: K8sMariadbComV1alpha1RestoreSpecS3Ssec
 
     tls?: K8sMariadbComV1alpha1RestoreSpecS3TLS
 
@@ -805,6 +813,41 @@ schema K8sMariadbComV1alpha1RestoreSpecS3SecretAccessKeySecretKeyRef:
 schema K8sMariadbComV1alpha1RestoreSpecS3SessionTokenSecretKeyRef:
     r"""
     SessionTokenSecretKeyRef is a reference to a Secret key containing the S3 session token.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+
+schema K8sMariadbComV1alpha1RestoreSpecS3Ssec:
+    r"""
+    SSEC is a reference to a Secret containing the SSE-C (Server-Side Encryption with Customer-Provided Keys) key.
+    The secret must contain a 32-byte key (256 bits) in the specified key.
+    This enables server-side encryption where you provide and manage the encryption key.
+
+    Attributes
+    ----------
+    customerKeySecretKeyRef : K8sMariadbComV1alpha1RestoreSpecS3SsecCustomerKeySecretKeyRef, default is Undefined, required
+        customer key secret key ref
+    """
+
+
+    customerKeySecretKeyRef: K8sMariadbComV1alpha1RestoreSpecS3SsecCustomerKeySecretKeyRef
+
+
+schema K8sMariadbComV1alpha1RestoreSpecS3SsecCustomerKeySecretKeyRef:
+    r"""
+    CustomerKeySecretKeyRef is a reference to a Secret key containing the SSE-C customer-provided encryption key.
+    The key must be a 32-byte (256-bit) key encoded in base64.
 
     Attributes
     ----------
@@ -1066,7 +1109,7 @@ schema K8sMariadbComV1alpha1RestoreSpecStagingStorageVolume:
 
 schema K8sMariadbComV1alpha1RestoreSpecStagingStorageVolumeCsi:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#csivolumesource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#csivolumesource-v1-core.
 
     Attributes
     ----------
@@ -1096,7 +1139,7 @@ schema K8sMariadbComV1alpha1RestoreSpecStagingStorageVolumeCsi:
 
 schema K8sMariadbComV1alpha1RestoreSpecStagingStorageVolumeCsiNodePublishSecretRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#localobjectreference-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
     Attributes
     ----------
@@ -1110,7 +1153,7 @@ schema K8sMariadbComV1alpha1RestoreSpecStagingStorageVolumeCsiNodePublishSecretR
 
 schema K8sMariadbComV1alpha1RestoreSpecStagingStorageVolumeEmptyDir:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#emptydirvolumesource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#emptydirvolumesource-v1-core.
 
     Attributes
     ----------
@@ -1132,7 +1175,7 @@ schema K8sMariadbComV1alpha1RestoreSpecStagingStorageVolumeEmptyDir:
 
 schema K8sMariadbComV1alpha1RestoreSpecStagingStorageVolumeHostPath:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#hostpathvolumesource-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#hostpathvolumesource-v1-core
 
     Attributes
     ----------
@@ -1150,7 +1193,7 @@ schema K8sMariadbComV1alpha1RestoreSpecStagingStorageVolumeHostPath:
 
 schema K8sMariadbComV1alpha1RestoreSpecStagingStorageVolumeNfs:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nfsvolumesource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nfsvolumesource-v1-core.
 
     Attributes
     ----------
@@ -1172,7 +1215,7 @@ schema K8sMariadbComV1alpha1RestoreSpecStagingStorageVolumeNfs:
 
 schema K8sMariadbComV1alpha1RestoreSpecStagingStorageVolumePersistentVolumeClaim:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#persistentvolumeclaimvolumesource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#persistentvolumeclaimvolumesource-v1-core.
 
     Attributes
     ----------
@@ -1203,9 +1246,10 @@ schema K8sMariadbComV1alpha1RestoreSpecTolerationsItems0:
         If the key is empty, operator must be Exists; this combination means to match all values and all keys.
     operator : str, default is Undefined, optional
         Operator represents a key's relationship to the value.
-        Valid operators are Exists and Equal. Defaults to Equal.
+        Valid operators are Exists, Equal, Lt, and Gt. Defaults to Equal.
         Exists is equivalent to wildcard for value, so that a pod can
         tolerate all taints of a particular category.
+        Lt and Gt perform numeric comparisons (requires feature gate TaintTolerationComparisonOperators).
     tolerationSeconds : int, default is Undefined, optional
         TolerationSeconds represents the period of time the toleration (which must be
         of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default,
@@ -1260,7 +1304,7 @@ schema K8sMariadbComV1alpha1RestoreSpecVolume:
 
 schema K8sMariadbComV1alpha1RestoreSpecVolumeCsi:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#csivolumesource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#csivolumesource-v1-core.
 
     Attributes
     ----------
@@ -1290,7 +1334,7 @@ schema K8sMariadbComV1alpha1RestoreSpecVolumeCsi:
 
 schema K8sMariadbComV1alpha1RestoreSpecVolumeCsiNodePublishSecretRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#localobjectreference-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
     Attributes
     ----------
@@ -1304,7 +1348,7 @@ schema K8sMariadbComV1alpha1RestoreSpecVolumeCsiNodePublishSecretRef:
 
 schema K8sMariadbComV1alpha1RestoreSpecVolumeEmptyDir:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#emptydirvolumesource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#emptydirvolumesource-v1-core.
 
     Attributes
     ----------
@@ -1326,7 +1370,7 @@ schema K8sMariadbComV1alpha1RestoreSpecVolumeEmptyDir:
 
 schema K8sMariadbComV1alpha1RestoreSpecVolumeHostPath:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#hostpathvolumesource-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#hostpathvolumesource-v1-core
 
     Attributes
     ----------
@@ -1344,7 +1388,7 @@ schema K8sMariadbComV1alpha1RestoreSpecVolumeHostPath:
 
 schema K8sMariadbComV1alpha1RestoreSpecVolumeNfs:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nfsvolumesource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nfsvolumesource-v1-core.
 
     Attributes
     ----------
@@ -1366,7 +1410,7 @@ schema K8sMariadbComV1alpha1RestoreSpecVolumeNfs:
 
 schema K8sMariadbComV1alpha1RestoreSpecVolumePersistentVolumeClaim:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#persistentvolumeclaimvolumesource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#persistentvolumeclaimvolumesource-v1-core.
 
     Attributes
     ----------

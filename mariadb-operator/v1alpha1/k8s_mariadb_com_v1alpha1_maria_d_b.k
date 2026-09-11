@@ -49,12 +49,16 @@ schema K8sMariadbComV1alpha1MariaDBSpec:
         Args to be used in the Container.
     bootstrapFrom : K8sMariadbComV1alpha1MariaDBSpecBootstrapFrom, default is Undefined, optional
         bootstrap from
+    cleanupPolicy : str, default is Undefined, optional
+        CleanupPolicy defines the behavior for cleaning up the initial User, Database, and Grant created by the operator.
     command : [str], default is Undefined, optional
         Command to be used in the Container.
     connection : K8sMariadbComV1alpha1MariaDBSpecConnection, default is Undefined, optional
         connection
     database : str, default is Undefined, optional
         Database is the name of the initial Database.
+    enableServiceLinks : bool, default is Undefined, optional
+        EnableServiceLinks to be used in the Pod.
     env : [K8sMariadbComV1alpha1MariaDBSpecEnvItems0], default is Undefined, optional
         Env represents the environment variables to be injected in a container.
     envFrom : [K8sMariadbComV1alpha1MariaDBSpecEnvFromItems0], default is Undefined, optional
@@ -72,14 +76,18 @@ schema K8sMariadbComV1alpha1MariaDBSpec:
         inherit metadata
     initContainers : [K8sMariadbComV1alpha1MariaDBSpecInitContainersItems0], default is Undefined, optional
         InitContainers to be used in the Pod.
+    lifecycle : K8sMariadbComV1alpha1MariaDBSpecLifecycle, default is Undefined, optional
+        lifecycle
     livenessProbe : K8sMariadbComV1alpha1MariaDBSpecLivenessProbe, default is Undefined, optional
         liveness probe
-    maxScale : K8sMariadbComV1alpha1MariaDBSpecMaxScale, default is Undefined, optional
-        max scale
+    maintenance : K8sMariadbComV1alpha1MariaDBSpecMaintenance, default is Undefined, optional
+        maintenance
     maxScaleRef : K8sMariadbComV1alpha1MariaDBSpecMaxScaleRef, default is Undefined, optional
         max scale ref
     metrics : K8sMariadbComV1alpha1MariaDBSpecMetrics, default is Undefined, optional
         metrics
+    multiCluster : K8sMariadbComV1alpha1MariaDBSpecMultiCluster, default is Undefined, optional
+        multi cluster
     myCnf : str, default is Undefined, optional
         MyCnf allows to specify the my.cnf file mounted by Mariadb.
         Updating this field will trigger an update to the Mariadb resource.
@@ -99,6 +107,8 @@ schema K8sMariadbComV1alpha1MariaDBSpec:
         pod metadata
     podSecurityContext : K8sMariadbComV1alpha1MariaDBSpecPodSecurityContext, default is Undefined, optional
         pod security context
+    pointInTimeRecoveryRef : K8sMariadbComV1alpha1MariaDBSpecPointInTimeRecoveryRef, default is Undefined, optional
+        point in time recovery ref
     port : int, default is 3306, optional
         Port where the instances will be listening for connections.
     primaryConnection : K8sMariadbComV1alpha1MariaDBSpecPrimaryConnection, default is Undefined, optional
@@ -142,6 +152,8 @@ schema K8sMariadbComV1alpha1MariaDBSpec:
     suspend : bool, default is Undefined, optional
         Suspend indicates whether the current resource should be suspended or not.
         This can be useful for maintenance, as disabling the reconciliation prevents the operator from interfering with user operations during maintenance activities.
+    terminationGracePeriodSeconds : int, default is Undefined, optional
+        TerminationGracePeriodSeconds to be used in the Pod.
     timeZone : str, default is Undefined, optional
         TimeZone sets the default timezone. If not provided, it defaults to SYSTEM and the timezone data is not loaded.
     tls : K8sMariadbComV1alpha1MariaDBSpecTLS, default is Undefined, optional
@@ -168,11 +180,15 @@ schema K8sMariadbComV1alpha1MariaDBSpec:
 
     bootstrapFrom?: K8sMariadbComV1alpha1MariaDBSpecBootstrapFrom
 
+    cleanupPolicy?: "Skip" | "Delete"
+
     command?: [str]
 
     connection?: K8sMariadbComV1alpha1MariaDBSpecConnection
 
     database?: str
+
+    enableServiceLinks?: bool
 
     env?: [K8sMariadbComV1alpha1MariaDBSpecEnvItems0]
 
@@ -190,13 +206,17 @@ schema K8sMariadbComV1alpha1MariaDBSpec:
 
     initContainers?: [K8sMariadbComV1alpha1MariaDBSpecInitContainersItems0]
 
+    lifecycle?: K8sMariadbComV1alpha1MariaDBSpecLifecycle
+
     livenessProbe?: K8sMariadbComV1alpha1MariaDBSpecLivenessProbe
 
-    maxScale?: K8sMariadbComV1alpha1MariaDBSpecMaxScale
+    maintenance?: K8sMariadbComV1alpha1MariaDBSpecMaintenance
 
     maxScaleRef?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleRef
 
     metrics?: K8sMariadbComV1alpha1MariaDBSpecMetrics
+
+    multiCluster?: K8sMariadbComV1alpha1MariaDBSpecMultiCluster
 
     myCnf?: str
 
@@ -215,6 +235,8 @@ schema K8sMariadbComV1alpha1MariaDBSpec:
     podMetadata?: K8sMariadbComV1alpha1MariaDBSpecPodMetadata
 
     podSecurityContext?: K8sMariadbComV1alpha1MariaDBSpecPodSecurityContext
+
+    pointInTimeRecoveryRef?: K8sMariadbComV1alpha1MariaDBSpecPointInTimeRecoveryRef
 
     port?: int = 3306
 
@@ -258,6 +280,8 @@ schema K8sMariadbComV1alpha1MariaDBSpec:
 
     suspend?: bool = False
 
+    terminationGracePeriodSeconds?: int
+
     timeZone?: str
 
     tls?: K8sMariadbComV1alpha1MariaDBSpecTLS
@@ -300,7 +324,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecAffinity:
 
 schema K8sMariadbComV1alpha1MariaDBSpecAffinityNodeAffinity:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeaffinity-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeaffinity-v1-core
 
     Attributes
     ----------
@@ -318,7 +342,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecAffinityNodeAffinity:
 
 schema K8sMariadbComV1alpha1MariaDBSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#preferredschedulingterm-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#preferredschedulingterm-v1-core
 
     Attributes
     ----------
@@ -336,7 +360,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecAffinityNodeAffinityPreferredDuringSchedu
 
 schema K8sMariadbComV1alpha1MariaDBSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorterm-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorterm-v1-core
 
     Attributes
     ----------
@@ -354,7 +378,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecAffinityNodeAffinityPreferredDuringSchedu
 
 schema K8sMariadbComV1alpha1MariaDBSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -377,7 +401,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecAffinityNodeAffinityPreferredDuringSchedu
 
 schema K8sMariadbComV1alpha1MariaDBSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -400,7 +424,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecAffinityNodeAffinityPreferredDuringSchedu
 
 schema K8sMariadbComV1alpha1MariaDBSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselector-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselector-v1-core
 
     Attributes
     ----------
@@ -414,7 +438,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecAffinityNodeAffinityRequiredDuringSchedul
 
 schema K8sMariadbComV1alpha1MariaDBSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorterm-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorterm-v1-core
 
     Attributes
     ----------
@@ -432,7 +456,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecAffinityNodeAffinityRequiredDuringSchedul
 
 schema K8sMariadbComV1alpha1MariaDBSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -455,7 +479,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecAffinityNodeAffinityRequiredDuringSchedul
 
 schema K8sMariadbComV1alpha1MariaDBSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -478,7 +502,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecAffinityNodeAffinityRequiredDuringSchedul
 
 schema K8sMariadbComV1alpha1MariaDBSpecAffinityPodAntiAffinity:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podantiaffinity-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podantiaffinity-v1-core.
 
     Attributes
     ----------
@@ -496,7 +520,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecAffinityPodAntiAffinity:
 
 schema K8sMariadbComV1alpha1MariaDBSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#weightedpodaffinityterm-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#weightedpodaffinityterm-v1-core.
 
     Attributes
     ----------
@@ -514,7 +538,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecAffinityPodAntiAffinityPreferredDuringSch
 
 schema K8sMariadbComV1alpha1MariaDBSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podaffinityterm-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podaffinityterm-v1-core.
 
     Attributes
     ----------
@@ -532,7 +556,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecAffinityPodAntiAffinityPreferredDuringSch
 
 schema K8sMariadbComV1alpha1MariaDBSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselector-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselector-v1-meta
 
     Attributes
     ----------
@@ -550,7 +574,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecAffinityPodAntiAffinityPreferredDuringSch
 
 schema K8sMariadbComV1alpha1MariaDBSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselectorrequirement-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselectorrequirement-v1-meta
 
     Attributes
     ----------
@@ -572,7 +596,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecAffinityPodAntiAffinityPreferredDuringSch
 
 schema K8sMariadbComV1alpha1MariaDBSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podaffinityterm-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podaffinityterm-v1-core.
 
     Attributes
     ----------
@@ -590,7 +614,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecAffinityPodAntiAffinityRequiredDuringSche
 
 schema K8sMariadbComV1alpha1MariaDBSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselector-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselector-v1-meta
 
     Attributes
     ----------
@@ -608,7 +632,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecAffinityPodAntiAffinityRequiredDuringSche
 
 schema K8sMariadbComV1alpha1MariaDBSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselectorrequirement-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselectorrequirement-v1-meta
 
     Attributes
     ----------
@@ -634,8 +658,18 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFrom:
 
     Attributes
     ----------
+    azureBlob : K8sMariadbComV1alpha1MariaDBSpecBootstrapFromAzureBlob, default is Undefined, optional
+        azure blob
+    backupContentType : str, default is Undefined, optional
+        BackupContentType is the backup content type available in the source to bootstrap from.
+        It is inferred based on the BackupRef and VolumeSnapshotRef fields. If inference is not possible, it defaults to Logical.
+        Set this field explicitly when using physical backups from S3 or Volume sources.
     backupRef : K8sMariadbComV1alpha1MariaDBSpecBootstrapFromBackupRef, default is Undefined, optional
         backup ref
+    logLevel : str, default is "info", optional
+        LogLevel to be used in the mariadb-operator container of the restoration Job. It defaults to 'info'.
+    pointInTimeRecoveryRef : K8sMariadbComV1alpha1MariaDBSpecBootstrapFromPointInTimeRecoveryRef, default is Undefined, optional
+        point in time recovery ref
     restoreJob : K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJob, default is Undefined, optional
         restore job
     s3 : K8sMariadbComV1alpha1MariaDBSpecBootstrapFromS3, default is Undefined, optional
@@ -647,10 +681,20 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFrom:
         It is used to determine the closest restoration source in time.
     volume : K8sMariadbComV1alpha1MariaDBSpecBootstrapFromVolume, default is Undefined, optional
         volume
+    volumeSnapshotRef : K8sMariadbComV1alpha1MariaDBSpecBootstrapFromVolumeSnapshotRef, default is Undefined, optional
+        volume snapshot ref
     """
 
 
+    azureBlob?: K8sMariadbComV1alpha1MariaDBSpecBootstrapFromAzureBlob
+
+    backupContentType?: "Logical" | "Physical"
+
     backupRef?: K8sMariadbComV1alpha1MariaDBSpecBootstrapFromBackupRef
+
+    logLevel?: "debug" | "info" | "warn" | "error" | "dpanic" | "panic" | "fatal" = "info"
+
+    pointInTimeRecoveryRef?: K8sMariadbComV1alpha1MariaDBSpecBootstrapFromPointInTimeRecoveryRef
 
     restoreJob?: K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJob
 
@@ -662,10 +706,123 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFrom:
 
     volume?: K8sMariadbComV1alpha1MariaDBSpecBootstrapFromVolume
 
+    volumeSnapshotRef?: K8sMariadbComV1alpha1MariaDBSpecBootstrapFromVolumeSnapshotRef
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromAzureBlob:
+    r"""
+    AzureBlob defines the configuration to restore from Azure Blob compatible storage.
+    This field takes precedence over the Volume source.
+
+    Attributes
+    ----------
+    containerName : str, default is Undefined, required
+        ContainerName is the name of the storage container.
+    prefix : str, default is Undefined, optional
+        Prefix indicates a folder/subfolder in the container. For example: mariadb/ or mariadb/backups. A trailing slash '/' is added if not provided.
+    serviceURL : str, default is Undefined, required
+        ServiceURL is the full URL for connecting to Azure, usually in the form: http(s)://<account>.blob.core.windows.net/.
+    storageAccountKey : K8sMariadbComV1alpha1MariaDBSpecBootstrapFromAzureBlobStorageAccountKey, default is Undefined, optional
+        storage account key
+    storageAccountName : str, default is Undefined, optional
+        StorageAccountName is the name of the storage account. Pairs with StorageAccountKey for static credential authentication
+    tls : K8sMariadbComV1alpha1MariaDBSpecBootstrapFromAzureBlobTLS, default is Undefined, optional
+        tls
+    """
+
+
+    containerName: str
+
+    prefix?: str
+
+    serviceURL: str
+
+    storageAccountKey?: K8sMariadbComV1alpha1MariaDBSpecBootstrapFromAzureBlobStorageAccountKey
+
+    storageAccountName?: str
+
+    tls?: K8sMariadbComV1alpha1MariaDBSpecBootstrapFromAzureBlobTLS
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromAzureBlobStorageAccountKey:
+    r"""
+    StorageAccountKey is a reference to a Secret key containing the Azure Blob Storage Storage account Key. Pairs with StorageAccountKey for static credential authentication
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromAzureBlobTLS:
+    r"""
+    TLS provides the configuration required to establish TLS connections with Azure Blob Storage.
+
+    Attributes
+    ----------
+    caSecretKeyRef : K8sMariadbComV1alpha1MariaDBSpecBootstrapFromAzureBlobTLSCaSecretKeyRef, default is Undefined, optional
+        ca secret key ref
+    enabled : bool, default is Undefined, optional
+        Enabled is a flag to enable TLS.
+    """
+
+
+    caSecretKeyRef?: K8sMariadbComV1alpha1MariaDBSpecBootstrapFromAzureBlobTLSCaSecretKeyRef
+
+    enabled?: bool
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromAzureBlobTLSCaSecretKeyRef:
+    r"""
+    CASecretKeyRef is a reference to a Secret key containing a CA bundle in PEM format used to establish TLS connections with S3.
+    By default, the system trust chain will be used, but you can use this field to add more CAs to the bundle.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    key: str
+
+    name?: str = ""
+
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromBackupRef:
     r"""
-    BackupRef is a reference to a Backup object. It has priority over S3 and Volume.
+    BackupRef is reference to a backup object. If the Kind is not specified, a logical Backup is assumed.
+    This field takes precedence over S3 and Volume sources.
+
+    Attributes
+    ----------
+    kind : str, default is Undefined, optional
+        Kind of the referent.
+    name : str, default is Undefined, optional
+        Name of the referent.
+    """
+
+
+    kind?: str
+
+    name?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromPointInTimeRecoveryRef:
+    r"""
+    PointInTimeRecoveryRef is a reference to a PointInTimeRecovery object.
+    Providing this field implies restoring the PhysicalBackup referenced in the PointInTimeRecovery object and replaying the
+    archived binary logs up to the point-in-time restoration target, defined by the targetRecoveryTime field.
 
     Attributes
     ----------
@@ -679,7 +836,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromBackupRef:
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJob:
     r"""
-    RestoreJob defines additional properties for the Job used to perform the Restore.
+    RestoreJob defines additional properties for the restoration Job.
 
     Attributes
     ----------
@@ -689,8 +846,12 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJob:
         Args to be used in the Container.
     metadata : K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobMetadata, default is Undefined, optional
         metadata
+    nodeSelector : {str:str}, default is Undefined, optional
+        NodeSelector to be used in the Pod.
     resources : K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobResources, default is Undefined, optional
         resources
+    tolerations : [K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobTolerationsItems0], default is Undefined, optional
+        Tolerations to be used in the Pod.
     """
 
 
@@ -700,7 +861,11 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJob:
 
     metadata?: K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobMetadata
 
+    nodeSelector?: {str:str}
+
     resources?: K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobResources
+
+    tolerations?: [K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobTolerationsItems0]
 
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinity:
@@ -728,7 +893,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinity:
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityNodeAffinity:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeaffinity-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeaffinity-v1-core
 
     Attributes
     ----------
@@ -746,7 +911,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityNodeAffini
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#preferredschedulingterm-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#preferredschedulingterm-v1-core
 
     Attributes
     ----------
@@ -764,7 +929,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityNodeAffini
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorterm-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorterm-v1-core
 
     Attributes
     ----------
@@ -782,7 +947,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityNodeAffini
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -805,7 +970,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityNodeAffini
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -828,7 +993,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityNodeAffini
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselector-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselector-v1-core
 
     Attributes
     ----------
@@ -842,7 +1007,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityNodeAffini
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorterm-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorterm-v1-core
 
     Attributes
     ----------
@@ -860,7 +1025,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityNodeAffini
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -883,7 +1048,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityNodeAffini
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -906,7 +1071,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityNodeAffini
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityPodAntiAffinity:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podantiaffinity-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podantiaffinity-v1-core.
 
     Attributes
     ----------
@@ -924,7 +1089,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityPodAntiAff
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#weightedpodaffinityterm-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#weightedpodaffinityterm-v1-core.
 
     Attributes
     ----------
@@ -942,7 +1107,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityPodAntiAff
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podaffinityterm-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podaffinityterm-v1-core.
 
     Attributes
     ----------
@@ -960,7 +1125,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityPodAntiAff
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselector-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselector-v1-meta
 
     Attributes
     ----------
@@ -978,7 +1143,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityPodAntiAff
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselectorrequirement-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselectorrequirement-v1-meta
 
     Attributes
     ----------
@@ -1000,7 +1165,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityPodAntiAff
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podaffinityterm-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podaffinityterm-v1-core.
 
     Attributes
     ----------
@@ -1018,7 +1183,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityPodAntiAff
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselector-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselector-v1-meta
 
     Attributes
     ----------
@@ -1036,7 +1201,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityPodAntiAff
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselectorrequirement-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselectorrequirement-v1-meta
 
     Attributes
     ----------
@@ -1076,7 +1241,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobMetadata:
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobResources:
     r"""
-    Resouces describes the compute resource requirements.
+    Resources describes the compute resource requirements.
 
     Attributes
     ----------
@@ -1097,9 +1262,51 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobResources:
         all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
+schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromRestoreJobTolerationsItems0:
+    r"""
+    The pod this Toleration is attached to tolerates any taint that matches
+    the triple <key,value,effect> using the matching operator <operator>.
+
+    Attributes
+    ----------
+    effect : str, default is Undefined, optional
+        Effect indicates the taint effect to match. Empty means match all taint effects.
+        When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+    key : str, default is Undefined, optional
+        Key is the taint key that the toleration applies to. Empty means match all taint keys.
+        If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+    operator : str, default is Undefined, optional
+        Operator represents a key's relationship to the value.
+        Valid operators are Exists, Equal, Lt, and Gt. Defaults to Equal.
+        Exists is equivalent to wildcard for value, so that a pod can
+        tolerate all taints of a particular category.
+        Lt and Gt perform numeric comparisons (requires feature gate TaintTolerationComparisonOperators).
+    tolerationSeconds : int, default is Undefined, optional
+        TolerationSeconds represents the period of time the toleration (which must be
+        of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default,
+        it is not set, which means tolerate the taint forever (do not evict). Zero and
+        negative values will be treated as 0 (evict immediately) by the system.
+    value : str, default is Undefined, optional
+        Value is the taint value the toleration matches to.
+        If the operator is Exists, the value should be empty, otherwise just a regular string.
+    """
+
+
+    effect?: str
+
+    key?: str
+
+    operator?: str
+
+    tolerationSeconds?: int
+
+    value?: str
+
+
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromS3:
     r"""
-    S3 defines the configuration to restore backups from a S3 compatible storage. It has priority over Volume.
+    S3 defines the configuration to restore backups from a S3 compatible storage.
+    This field takes precedence over the Volume source.
 
     Attributes
     ----------
@@ -1117,6 +1324,8 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromS3:
         secret access key secret key ref
     sessionTokenSecretKeyRef : K8sMariadbComV1alpha1MariaDBSpecBootstrapFromS3SessionTokenSecretKeyRef, default is Undefined, optional
         session token secret key ref
+    ssec : K8sMariadbComV1alpha1MariaDBSpecBootstrapFromS3Ssec, default is Undefined, optional
+        ssec
     tls : K8sMariadbComV1alpha1MariaDBSpecBootstrapFromS3TLS, default is Undefined, optional
         tls
     """
@@ -1135,6 +1344,8 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromS3:
     secretAccessKeySecretKeyRef?: K8sMariadbComV1alpha1MariaDBSpecBootstrapFromS3SecretAccessKeySecretKeyRef
 
     sessionTokenSecretKeyRef?: K8sMariadbComV1alpha1MariaDBSpecBootstrapFromS3SessionTokenSecretKeyRef
+
+    ssec?: K8sMariadbComV1alpha1MariaDBSpecBootstrapFromS3Ssec
 
     tls?: K8sMariadbComV1alpha1MariaDBSpecBootstrapFromS3TLS
 
@@ -1193,6 +1404,41 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromS3SessionTokenSecretKeyRef:
     name?: str = ""
 
 
+schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromS3Ssec:
+    r"""
+    SSEC is a reference to a Secret containing the SSE-C (Server-Side Encryption with Customer-Provided Keys) key.
+    The secret must contain a 32-byte key (256 bits) in the specified key.
+    This enables server-side encryption where you provide and manage the encryption key.
+
+    Attributes
+    ----------
+    customerKeySecretKeyRef : K8sMariadbComV1alpha1MariaDBSpecBootstrapFromS3SsecCustomerKeySecretKeyRef, default is Undefined, required
+        customer key secret key ref
+    """
+
+
+    customerKeySecretKeyRef: K8sMariadbComV1alpha1MariaDBSpecBootstrapFromS3SsecCustomerKeySecretKeyRef
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromS3SsecCustomerKeySecretKeyRef:
+    r"""
+    CustomerKeySecretKeyRef is a reference to a Secret key containing the SSE-C customer-provided encryption key.
+    The key must be a 32-byte (256-bit) key encoded in base64.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromS3TLS:
     r"""
     TLS provides the configuration required to establish TLS connections with S3.
@@ -1232,8 +1478,8 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromS3TLSCaSecretKeyRef:
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromStagingStorage:
     r"""
-    StagingStorage defines the temporary storage used to keep external backups (i.e. S3) while they are being processed.
-    It defaults to an emptyDir volume, meaning that the backups will be temporarily stored in the node where the Restore Job is scheduled.
+    StagingStorage defines the temporary storage used to keep external backups and binary logs (i.e. S3) while they are being processed.
+    It defaults to an emptyDir volume, meaning that the backups will be temporarily stored in the node where the Job is scheduled.
 
     Attributes
     ----------
@@ -1383,7 +1629,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromStagingStorageVolume:
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromStagingStorageVolumeCsi:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#csivolumesource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#csivolumesource-v1-core.
 
     Attributes
     ----------
@@ -1413,7 +1659,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromStagingStorageVolumeCsi:
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromStagingStorageVolumeCsiNodePublishSecretRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#localobjectreference-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
     Attributes
     ----------
@@ -1427,7 +1673,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromStagingStorageVolumeCsiNodeP
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromStagingStorageVolumeEmptyDir:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#emptydirvolumesource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#emptydirvolumesource-v1-core.
 
     Attributes
     ----------
@@ -1449,7 +1695,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromStagingStorageVolumeEmptyDir
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromStagingStorageVolumeHostPath:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#hostpathvolumesource-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#hostpathvolumesource-v1-core
 
     Attributes
     ----------
@@ -1467,7 +1713,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromStagingStorageVolumeHostPath
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromStagingStorageVolumeNfs:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nfsvolumesource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nfsvolumesource-v1-core.
 
     Attributes
     ----------
@@ -1489,7 +1735,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromStagingStorageVolumeNfs:
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromStagingStorageVolumePersistentVolumeClaim:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#persistentvolumeclaimvolumesource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#persistentvolumeclaimvolumesource-v1-core.
 
     Attributes
     ----------
@@ -1537,7 +1783,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromVolume:
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromVolumeCsi:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#csivolumesource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#csivolumesource-v1-core.
 
     Attributes
     ----------
@@ -1567,7 +1813,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromVolumeCsi:
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromVolumeCsiNodePublishSecretRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#localobjectreference-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
     Attributes
     ----------
@@ -1581,7 +1827,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromVolumeCsiNodePublishSecretRe
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromVolumeEmptyDir:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#emptydirvolumesource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#emptydirvolumesource-v1-core.
 
     Attributes
     ----------
@@ -1603,7 +1849,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromVolumeEmptyDir:
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromVolumeHostPath:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#hostpathvolumesource-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#hostpathvolumesource-v1-core
 
     Attributes
     ----------
@@ -1621,7 +1867,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromVolumeHostPath:
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromVolumeNfs:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nfsvolumesource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nfsvolumesource-v1-core.
 
     Attributes
     ----------
@@ -1643,7 +1889,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromVolumeNfs:
 
 schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromVolumePersistentVolumeClaim:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#persistentvolumeclaimvolumesource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#persistentvolumeclaimvolumesource-v1-core.
 
     Attributes
     ----------
@@ -1657,6 +1903,21 @@ schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromVolumePersistentVolumeClaim:
     claimName: str
 
     readOnly?: bool
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecBootstrapFromVolumeSnapshotRef:
+    r"""
+    VolumeSnapshotRef is a reference to a VolumeSnapshot object.
+    This field takes precedence over S3 and Volume sources.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    name?: str = ""
 
 
 schema K8sMariadbComV1alpha1MariaDBSpecConnection:
@@ -1775,7 +2036,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecConnectionSecretTemplateMetadata:
 
 schema K8sMariadbComV1alpha1MariaDBSpecEnvFromItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#envfromsource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#envfromsource-v1-core.
 
     Attributes
     ----------
@@ -1797,7 +2058,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecEnvFromItems0:
 
 schema K8sMariadbComV1alpha1MariaDBSpecEnvFromItems0ConfigMapRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#localobjectreference-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
     Attributes
     ----------
@@ -1811,7 +2072,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecEnvFromItems0ConfigMapRef:
 
 schema K8sMariadbComV1alpha1MariaDBSpecEnvFromItems0SecretRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#localobjectreference-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
     Attributes
     ----------
@@ -1825,7 +2086,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecEnvFromItems0SecretRef:
 
 schema K8sMariadbComV1alpha1MariaDBSpecEnvItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#envvarsource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#envvarsource-v1-core.
 
     Attributes
     ----------
@@ -1847,7 +2108,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecEnvItems0:
 
 schema K8sMariadbComV1alpha1MariaDBSpecEnvItems0ValueFrom:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#envvarsource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#envvarsource-v1-core.
 
     Attributes
     ----------
@@ -1869,7 +2130,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecEnvItems0ValueFrom:
 
 schema K8sMariadbComV1alpha1MariaDBSpecEnvItems0ValueFromConfigMapKeyRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#configmapkeyselector-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#configmapkeyselector-v1-core.
 
     Attributes
     ----------
@@ -1887,7 +2148,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecEnvItems0ValueFromConfigMapKeyRef:
 
 schema K8sMariadbComV1alpha1MariaDBSpecEnvItems0ValueFromFieldRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#objectfieldselector-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#objectfieldselector-v1-core.
 
     Attributes
     ----------
@@ -1905,7 +2166,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecEnvItems0ValueFromFieldRef:
 
 schema K8sMariadbComV1alpha1MariaDBSpecEnvItems0ValueFromSecretKeyRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#secretkeyselector-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#secretkeyselector-v1-core.
 
     Attributes
     ----------
@@ -1938,6 +2199,11 @@ schema K8sMariadbComV1alpha1MariaDBSpecGalera:
     galeraLibPath : str, default is Undefined, optional
         GaleraLibPath is a path inside the MariaDB image to the wsrep provider plugin. It is defaulted if not provided.
         More info: https://galeracluster.com/library/documentation/mysql-wsrep-options.html#wsrep-provider.
+    gtidDomainId : int, default is Undefined, optional
+        GtidDomainID is the domain ID to be used in GTID mode, enabled when the multi-cluster topology is used.
+        For example: if you set this to `0`, the 'wsrep_gtid_domain_id' will be 0, while the replicas (if 3) will have 'gtid_domain_id' 1,2,3.
+        Make sure it has a different value on each the member of a multi-cluster topology.
+        See: https://mariadb.com/docs/galera-cluster/high-availability/using-mariadb-replication-with-mariadb-galera-cluster/configuring-mariadb-replication-between-two-mariadb-galera-clusters
     initContainer : K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainer, default is Undefined, optional
         init container
     initJob : K8sMariadbComV1alpha1MariaDBSpecGaleraInitJob, default is Undefined, optional
@@ -1949,9 +2215,15 @@ schema K8sMariadbComV1alpha1MariaDBSpecGalera:
         More info: https://mariadb.com/kb/en/galera-cluster-system-variables/#wsrep_provider_options.
     recovery : K8sMariadbComV1alpha1MariaDBSpecGaleraRecovery, default is Undefined, optional
         recovery
+    replPasswordSecretKeyRef : K8sMariadbComV1alpha1MariaDBSpecGaleraReplPasswordSecretKeyRef, default is Undefined, optional
+        repl password secret key ref
     replicaThreads : int, default is Undefined, optional
         ReplicaThreads is the number of replica threads used to apply Galera write sets in parallel.
         More info: https://mariadb.com/kb/en/galera-cluster-system-variables/#wsrep_slave_threads.
+    serverId : int, default is Undefined, optional
+        ServerID is the server ID to be used in GTID mode, enabled when the multi-cluster topology is used.
+        Make sure it has a different value on each the member of a multi-cluster topology.
+        See: https://mariadb.com/docs/galera-cluster/high-availability/using-mariadb-replication-with-mariadb-galera-cluster/configuring-mariadb-replication-between-two-mariadb-galera-clusters
     sst : str, default is Undefined, optional
         SST is the Snapshot State Transfer used when new Pods join the cluster.
         More info: https://galeracluster.com/library/documentation/sst.html.
@@ -1968,6 +2240,8 @@ schema K8sMariadbComV1alpha1MariaDBSpecGalera:
 
     galeraLibPath?: str
 
+    gtidDomainId?: int
+
     initContainer?: K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainer
 
     initJob?: K8sMariadbComV1alpha1MariaDBSpecGaleraInitJob
@@ -1978,14 +2252,18 @@ schema K8sMariadbComV1alpha1MariaDBSpecGalera:
 
     recovery?: K8sMariadbComV1alpha1MariaDBSpecGaleraRecovery
 
+    replPasswordSecretKeyRef?: K8sMariadbComV1alpha1MariaDBSpecGaleraReplPasswordSecretKeyRef
+
     replicaThreads?: int
+
+    serverId?: int
 
     sst?: "rsync" | "mariabackup" | "mysqldump"
 
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgent:
     r"""
-    GaleraAgent is a sidecar agent that co-operates with mariadb-operator.
+    Agent is a sidecar agent that co-operates with mariadb-operator.
 
     Attributes
     ----------
@@ -2007,6 +2285,8 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgent:
         ImagePullPolicy is the image pull policy. One of `Always`, `Never` or `IfNotPresent`. If not defined, it defaults to `IfNotPresent`.
     kubernetesAuth : K8sMariadbComV1alpha1MariaDBSpecGaleraAgentKubernetesAuth, default is Undefined, optional
         kubernetes auth
+    lifecycle : K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecycle, default is Undefined, optional
+        lifecycle
     livenessProbe : K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLivenessProbe, default is Undefined, optional
         liveness probe
     port : int, default is Undefined, optional
@@ -2043,6 +2323,8 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgent:
     imagePullPolicy?: "Always" | "Never" | "IfNotPresent"
 
     kubernetesAuth?: K8sMariadbComV1alpha1MariaDBSpecGaleraAgentKubernetesAuth
+
+    lifecycle?: K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecycle
 
     livenessProbe?: K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLivenessProbe
 
@@ -2107,7 +2389,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentBasicAuthPasswordSecretKeyRef:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentEnvFromItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#envfromsource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#envfromsource-v1-core.
 
     Attributes
     ----------
@@ -2129,7 +2411,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentEnvFromItems0:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentEnvFromItems0ConfigMapRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#localobjectreference-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
     Attributes
     ----------
@@ -2143,7 +2425,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentEnvFromItems0ConfigMapRef:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentEnvFromItems0SecretRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#localobjectreference-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
     Attributes
     ----------
@@ -2157,7 +2439,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentEnvFromItems0SecretRef:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentEnvItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#envvarsource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#envvarsource-v1-core.
 
     Attributes
     ----------
@@ -2179,7 +2461,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentEnvItems0:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentEnvItems0ValueFrom:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#envvarsource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#envvarsource-v1-core.
 
     Attributes
     ----------
@@ -2201,7 +2483,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentEnvItems0ValueFrom:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentEnvItems0ValueFromConfigMapKeyRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#configmapkeyselector-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#configmapkeyselector-v1-core.
 
     Attributes
     ----------
@@ -2219,7 +2501,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentEnvItems0ValueFromConfigMapKey
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentEnvItems0ValueFromFieldRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#objectfieldselector-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#objectfieldselector-v1-core.
 
     Attributes
     ----------
@@ -2237,7 +2519,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentEnvItems0ValueFromFieldRef:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentEnvItems0ValueFromSecretKeyRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#secretkeyselector-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#secretkeyselector-v1-core.
 
     Attributes
     ----------
@@ -2270,6 +2552,176 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentKubernetesAuth:
     authDelegatorRoleName?: str
 
     enabled?: bool
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecycle:
+    r"""
+    Lifecycle are actions that the management system should take in response to container lifecycle events.
+
+    Attributes
+    ----------
+    postStart : K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePostStart, default is Undefined, optional
+        post start
+    preStop : K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePreStop, default is Undefined, optional
+        pre stop
+    """
+
+
+    postStart?: K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePostStart
+
+    preStop?: K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePreStop
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePostStart:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#lifecyclehandler-v1-core.
+
+    Attributes
+    ----------
+    exec : K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePostStartExec, default is Undefined, optional
+        exec
+    httpGet : K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePostStartHTTPGet, default is Undefined, optional
+        http get
+    sleep : K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePostStartSleep, default is Undefined, optional
+        sleep
+    """
+
+
+    exec?: K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePostStartExec
+
+    httpGet?: K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePostStartHTTPGet
+
+    sleep?: K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePostStartSleep
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePostStartExec:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
+
+    Attributes
+    ----------
+    command : [str], default is Undefined, optional
+        command
+    """
+
+
+    command?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePostStartHTTPGet:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    path : str, default is Undefined, optional
+        path
+    port : int | str, default is Undefined, required
+        port
+    scheme : str, default is Undefined, optional
+        URIScheme identifies the scheme used for connection to a host for Get actions
+    """
+
+
+    host?: str
+
+    path?: str
+
+    port: int | str
+
+    scheme?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePostStartSleep:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#sleepaction-v1-core
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, optional
+        seconds
+    """
+
+
+    seconds?: int
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePreStop:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#lifecyclehandler-v1-core.
+
+    Attributes
+    ----------
+    exec : K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePreStopExec, default is Undefined, optional
+        exec
+    httpGet : K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePreStopHTTPGet, default is Undefined, optional
+        http get
+    sleep : K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePreStopSleep, default is Undefined, optional
+        sleep
+    """
+
+
+    exec?: K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePreStopExec
+
+    httpGet?: K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePreStopHTTPGet
+
+    sleep?: K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePreStopSleep
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePreStopExec:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
+
+    Attributes
+    ----------
+    command : [str], default is Undefined, optional
+        command
+    """
+
+
+    command?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePreStopHTTPGet:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    path : str, default is Undefined, optional
+        path
+    port : int | str, default is Undefined, required
+        port
+    scheme : str, default is Undefined, optional
+        URIScheme identifies the scheme used for connection to a host for Get actions
+    """
+
+
+    host?: str
+
+    path?: str
+
+    port: int | str
+
+    scheme?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLifecyclePreStopSleep:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#sleepaction-v1-core
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, optional
+        seconds
+    """
+
+
+    seconds?: int
 
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLivenessProbe:
@@ -2316,7 +2768,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLivenessProbe:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLivenessProbeExec:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#execaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
 
     Attributes
     ----------
@@ -2330,7 +2782,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLivenessProbeExec:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLivenessProbeHTTPGet:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#httpgetaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
 
     Attributes
     ----------
@@ -2356,7 +2808,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLivenessProbeHTTPGet:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentLivenessProbeTCPSocket:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#tcpsocketaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#tcpsocketaction-v1-core.
 
     Attributes
     ----------
@@ -2416,7 +2868,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentReadinessProbe:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentReadinessProbeExec:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#execaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
 
     Attributes
     ----------
@@ -2430,7 +2882,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentReadinessProbeExec:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentReadinessProbeHTTPGet:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#httpgetaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
 
     Attributes
     ----------
@@ -2456,7 +2908,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentReadinessProbeHTTPGet:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentReadinessProbeTCPSocket:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#tcpsocketaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#tcpsocketaction-v1-core.
 
     Attributes
     ----------
@@ -2474,7 +2926,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentReadinessProbeTCPSocket:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentResources:
     r"""
-    Resouces describes the compute resource requirements.
+    Resources describes the compute resource requirements.
 
     Attributes
     ----------
@@ -2595,7 +3047,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentStartupProbe:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentStartupProbeExec:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#execaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
 
     Attributes
     ----------
@@ -2609,7 +3061,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentStartupProbeExec:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentStartupProbeHTTPGet:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#httpgetaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
 
     Attributes
     ----------
@@ -2635,7 +3087,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentStartupProbeHTTPGet:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentStartupProbeTCPSocket:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#tcpsocketaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#tcpsocketaction-v1-core.
 
     Attributes
     ----------
@@ -2653,7 +3105,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentStartupProbeTCPSocket:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraAgentVolumeMountsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#volumemount-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#volumemount-v1-core.
 
     Attributes
     ----------
@@ -2838,6 +3290,8 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainer:
         Image name to be used by the MariaDB instances. The supported format is `<image>:<tag>`.
     imagePullPolicy : str, default is Undefined, optional
         ImagePullPolicy is the image pull policy. One of `Always`, `Never` or `IfNotPresent`. If not defined, it defaults to `IfNotPresent`.
+    lifecycle : K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecycle, default is Undefined, optional
+        lifecycle
     livenessProbe : K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLivenessProbe, default is Undefined, optional
         liveness probe
     readinessProbe : K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerReadinessProbe, default is Undefined, optional
@@ -2865,6 +3319,8 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainer:
 
     imagePullPolicy?: "Always" | "Never" | "IfNotPresent"
 
+    lifecycle?: K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecycle
+
     livenessProbe?: K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLivenessProbe
 
     readinessProbe?: K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerReadinessProbe
@@ -2880,7 +3336,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainer:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerEnvFromItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#envfromsource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#envfromsource-v1-core.
 
     Attributes
     ----------
@@ -2902,7 +3358,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerEnvFromItems0:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerEnvFromItems0ConfigMapRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#localobjectreference-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
     Attributes
     ----------
@@ -2916,7 +3372,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerEnvFromItems0ConfigMap
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerEnvFromItems0SecretRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#localobjectreference-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
     Attributes
     ----------
@@ -2930,7 +3386,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerEnvFromItems0SecretRef
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerEnvItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#envvarsource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#envvarsource-v1-core.
 
     Attributes
     ----------
@@ -2952,7 +3408,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerEnvItems0:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerEnvItems0ValueFrom:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#envvarsource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#envvarsource-v1-core.
 
     Attributes
     ----------
@@ -2974,7 +3430,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerEnvItems0ValueFrom:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerEnvItems0ValueFromConfigMapKeyRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#configmapkeyselector-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#configmapkeyselector-v1-core.
 
     Attributes
     ----------
@@ -2992,7 +3448,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerEnvItems0ValueFromConf
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerEnvItems0ValueFromFieldRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#objectfieldselector-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#objectfieldselector-v1-core.
 
     Attributes
     ----------
@@ -3010,7 +3466,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerEnvItems0ValueFromFiel
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerEnvItems0ValueFromSecretKeyRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#secretkeyselector-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#secretkeyselector-v1-core.
 
     Attributes
     ----------
@@ -3024,6 +3480,176 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerEnvItems0ValueFromSecr
     key: str
 
     name?: str = ""
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecycle:
+    r"""
+    Lifecycle are actions that the management system should take in response to container lifecycle events.
+
+    Attributes
+    ----------
+    postStart : K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePostStart, default is Undefined, optional
+        post start
+    preStop : K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePreStop, default is Undefined, optional
+        pre stop
+    """
+
+
+    postStart?: K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePostStart
+
+    preStop?: K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePreStop
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePostStart:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#lifecyclehandler-v1-core.
+
+    Attributes
+    ----------
+    exec : K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePostStartExec, default is Undefined, optional
+        exec
+    httpGet : K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePostStartHTTPGet, default is Undefined, optional
+        http get
+    sleep : K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePostStartSleep, default is Undefined, optional
+        sleep
+    """
+
+
+    exec?: K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePostStartExec
+
+    httpGet?: K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePostStartHTTPGet
+
+    sleep?: K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePostStartSleep
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePostStartExec:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
+
+    Attributes
+    ----------
+    command : [str], default is Undefined, optional
+        command
+    """
+
+
+    command?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePostStartHTTPGet:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    path : str, default is Undefined, optional
+        path
+    port : int | str, default is Undefined, required
+        port
+    scheme : str, default is Undefined, optional
+        URIScheme identifies the scheme used for connection to a host for Get actions
+    """
+
+
+    host?: str
+
+    path?: str
+
+    port: int | str
+
+    scheme?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePostStartSleep:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#sleepaction-v1-core
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, optional
+        seconds
+    """
+
+
+    seconds?: int
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePreStop:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#lifecyclehandler-v1-core.
+
+    Attributes
+    ----------
+    exec : K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePreStopExec, default is Undefined, optional
+        exec
+    httpGet : K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePreStopHTTPGet, default is Undefined, optional
+        http get
+    sleep : K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePreStopSleep, default is Undefined, optional
+        sleep
+    """
+
+
+    exec?: K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePreStopExec
+
+    httpGet?: K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePreStopHTTPGet
+
+    sleep?: K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePreStopSleep
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePreStopExec:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
+
+    Attributes
+    ----------
+    command : [str], default is Undefined, optional
+        command
+    """
+
+
+    command?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePreStopHTTPGet:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    path : str, default is Undefined, optional
+        path
+    port : int | str, default is Undefined, required
+        port
+    scheme : str, default is Undefined, optional
+        URIScheme identifies the scheme used for connection to a host for Get actions
+    """
+
+
+    host?: str
+
+    path?: str
+
+    port: int | str
+
+    scheme?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLifecyclePreStopSleep:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#sleepaction-v1-core
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, optional
+        seconds
+    """
+
+
+    seconds?: int
 
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLivenessProbe:
@@ -3070,7 +3696,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLivenessProbe:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLivenessProbeExec:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#execaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
 
     Attributes
     ----------
@@ -3084,7 +3710,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLivenessProbeExec:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLivenessProbeHTTPGet:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#httpgetaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
 
     Attributes
     ----------
@@ -3110,7 +3736,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLivenessProbeHTTPGet:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerLivenessProbeTCPSocket:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#tcpsocketaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#tcpsocketaction-v1-core.
 
     Attributes
     ----------
@@ -3170,7 +3796,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerReadinessProbe:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerReadinessProbeExec:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#execaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
 
     Attributes
     ----------
@@ -3184,7 +3810,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerReadinessProbeExec:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerReadinessProbeHTTPGet:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#httpgetaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
 
     Attributes
     ----------
@@ -3210,7 +3836,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerReadinessProbeHTTPGet:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerReadinessProbeTCPSocket:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#tcpsocketaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#tcpsocketaction-v1-core.
 
     Attributes
     ----------
@@ -3228,7 +3854,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerReadinessProbeTCPSocke
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerResources:
     r"""
-    Resouces describes the compute resource requirements.
+    Resources describes the compute resource requirements.
 
     Attributes
     ----------
@@ -3349,7 +3975,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerStartupProbe:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerStartupProbeExec:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#execaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
 
     Attributes
     ----------
@@ -3363,7 +3989,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerStartupProbeExec:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerStartupProbeHTTPGet:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#httpgetaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
 
     Attributes
     ----------
@@ -3389,7 +4015,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerStartupProbeHTTPGet:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerStartupProbeTCPSocket:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#tcpsocketaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#tcpsocketaction-v1-core.
 
     Attributes
     ----------
@@ -3407,7 +4033,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerStartupProbeTCPSocket:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitContainerVolumeMountsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#volumemount-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#volumemount-v1-core.
 
     Attributes
     ----------
@@ -3469,7 +4095,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitJobMetadata:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraInitJobResources:
     r"""
-    Resouces describes the compute resource requirements.
+    Resources describes the compute resource requirements.
 
     Attributes
     ----------
@@ -3496,14 +4122,14 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraPrimary:
 
     Attributes
     ----------
-    automaticFailover : bool, default is Undefined, optional
-        AutomaticFailover indicates whether the operator should automatically update PodIndex to perform an automatic primary failover.
+    autoFailover : bool, default is Undefined, optional
+        AutoFailover indicates whether the operator should automatically update PodIndex to perform an automatic primary failover.
     podIndex : int, default is Undefined, optional
         PodIndex is the StatefulSet index of the primary node. The user may change this field to perform a manual switchover.
     """
 
 
-    automaticFailover?: bool
+    autoFailover?: bool
 
     podIndex?: int
 
@@ -3537,8 +4163,8 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraRecovery:
         job
     minClusterSize : int | str, default is Undefined, optional
         MinClusterSize is the minimum number of replicas to consider the cluster healthy. It can be either a number of replicas (1) or a percentage (50%).
-        If Galera consistently reports less replicas than this value for the given 'ClusterHealthyTimeout' interval, a cluster recovery is iniated.
-        It defaults to '1' replica, and it is highly recommendeded to keep this value at '1' in most cases.
+        If Galera consistently reports less replicas than this value for the given 'ClusterHealthyTimeout' interval, a cluster recovery is initiated.
+        It defaults to '1' replica, and it is highly recommended to keep this value at '1' in most cases.
         If set to more than one replica, the cluster recovery process may restart the healthy replicas as well.
     podRecoveryTimeout : str, default is Undefined, optional
         PodRecoveryTimeout is the time limit for recevorying the sequence of a Pod during the cluster recovery.
@@ -3612,7 +4238,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraRecoveryJobMetadata:
 
 schema K8sMariadbComV1alpha1MariaDBSpecGaleraRecoveryJobResources:
     r"""
-    Resouces describes the compute resource requirements.
+    Resources describes the compute resource requirements.
 
     Attributes
     ----------
@@ -3633,9 +4259,33 @@ schema K8sMariadbComV1alpha1MariaDBSpecGaleraRecoveryJobResources:
         all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
+schema K8sMariadbComV1alpha1MariaDBSpecGaleraReplPasswordSecretKeyRef:
+    r"""
+    ReplPasswordSecretKeyRef provides a reference to the Secret to use as password for the replication user.
+    This will be utilized as password of the replication user, when the multi-cluster topology is enabled.
+    By default, a random password will be generated.
+
+    Attributes
+    ----------
+    generate : bool, default is Undefined, optional
+        Generate indicates whether the Secret should be generated if the Secret referenced is not present.
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    generate?: bool = False
+
+    key: str
+
+    name?: str = ""
+
+
 schema K8sMariadbComV1alpha1MariaDBSpecImagePullSecretsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#localobjectreference-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
     Attributes
     ----------
@@ -3709,7 +4359,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecInitContainersItems0:
 
 schema K8sMariadbComV1alpha1MariaDBSpecInitContainersItems0EnvItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#envvarsource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#envvarsource-v1-core.
 
     Attributes
     ----------
@@ -3731,7 +4381,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecInitContainersItems0EnvItems0:
 
 schema K8sMariadbComV1alpha1MariaDBSpecInitContainersItems0EnvItems0ValueFrom:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#envvarsource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#envvarsource-v1-core.
 
     Attributes
     ----------
@@ -3753,7 +4403,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecInitContainersItems0EnvItems0ValueFrom:
 
 schema K8sMariadbComV1alpha1MariaDBSpecInitContainersItems0EnvItems0ValueFromConfigMapKeyRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#configmapkeyselector-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#configmapkeyselector-v1-core.
 
     Attributes
     ----------
@@ -3771,7 +4421,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecInitContainersItems0EnvItems0ValueFromCon
 
 schema K8sMariadbComV1alpha1MariaDBSpecInitContainersItems0EnvItems0ValueFromFieldRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#objectfieldselector-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#objectfieldselector-v1-core.
 
     Attributes
     ----------
@@ -3789,7 +4439,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecInitContainersItems0EnvItems0ValueFromFie
 
 schema K8sMariadbComV1alpha1MariaDBSpecInitContainersItems0EnvItems0ValueFromSecretKeyRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#secretkeyselector-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#secretkeyselector-v1-core.
 
     Attributes
     ----------
@@ -3807,7 +4457,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecInitContainersItems0EnvItems0ValueFromSec
 
 schema K8sMariadbComV1alpha1MariaDBSpecInitContainersItems0Resources:
     r"""
-    Resouces describes the compute resource requirements.
+    Resources describes the compute resource requirements.
 
     Attributes
     ----------
@@ -3830,7 +4480,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecInitContainersItems0Resources:
 
 schema K8sMariadbComV1alpha1MariaDBSpecInitContainersItems0VolumeMountsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#volumemount-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#volumemount-v1-core.
 
     Attributes
     ----------
@@ -3852,6 +4502,176 @@ schema K8sMariadbComV1alpha1MariaDBSpecInitContainersItems0VolumeMountsItems0:
     readOnly?: bool
 
     subPath?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecLifecycle:
+    r"""
+    Lifecycle are actions that the management system should take in response to container lifecycle events.
+
+    Attributes
+    ----------
+    postStart : K8sMariadbComV1alpha1MariaDBSpecLifecyclePostStart, default is Undefined, optional
+        post start
+    preStop : K8sMariadbComV1alpha1MariaDBSpecLifecyclePreStop, default is Undefined, optional
+        pre stop
+    """
+
+
+    postStart?: K8sMariadbComV1alpha1MariaDBSpecLifecyclePostStart
+
+    preStop?: K8sMariadbComV1alpha1MariaDBSpecLifecyclePreStop
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecLifecyclePostStart:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#lifecyclehandler-v1-core.
+
+    Attributes
+    ----------
+    exec : K8sMariadbComV1alpha1MariaDBSpecLifecyclePostStartExec, default is Undefined, optional
+        exec
+    httpGet : K8sMariadbComV1alpha1MariaDBSpecLifecyclePostStartHTTPGet, default is Undefined, optional
+        http get
+    sleep : K8sMariadbComV1alpha1MariaDBSpecLifecyclePostStartSleep, default is Undefined, optional
+        sleep
+    """
+
+
+    exec?: K8sMariadbComV1alpha1MariaDBSpecLifecyclePostStartExec
+
+    httpGet?: K8sMariadbComV1alpha1MariaDBSpecLifecyclePostStartHTTPGet
+
+    sleep?: K8sMariadbComV1alpha1MariaDBSpecLifecyclePostStartSleep
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecLifecyclePostStartExec:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
+
+    Attributes
+    ----------
+    command : [str], default is Undefined, optional
+        command
+    """
+
+
+    command?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecLifecyclePostStartHTTPGet:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    path : str, default is Undefined, optional
+        path
+    port : int | str, default is Undefined, required
+        port
+    scheme : str, default is Undefined, optional
+        URIScheme identifies the scheme used for connection to a host for Get actions
+    """
+
+
+    host?: str
+
+    path?: str
+
+    port: int | str
+
+    scheme?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecLifecyclePostStartSleep:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#sleepaction-v1-core
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, optional
+        seconds
+    """
+
+
+    seconds?: int
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecLifecyclePreStop:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#lifecyclehandler-v1-core.
+
+    Attributes
+    ----------
+    exec : K8sMariadbComV1alpha1MariaDBSpecLifecyclePreStopExec, default is Undefined, optional
+        exec
+    httpGet : K8sMariadbComV1alpha1MariaDBSpecLifecyclePreStopHTTPGet, default is Undefined, optional
+        http get
+    sleep : K8sMariadbComV1alpha1MariaDBSpecLifecyclePreStopSleep, default is Undefined, optional
+        sleep
+    """
+
+
+    exec?: K8sMariadbComV1alpha1MariaDBSpecLifecyclePreStopExec
+
+    httpGet?: K8sMariadbComV1alpha1MariaDBSpecLifecyclePreStopHTTPGet
+
+    sleep?: K8sMariadbComV1alpha1MariaDBSpecLifecyclePreStopSleep
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecLifecyclePreStopExec:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
+
+    Attributes
+    ----------
+    command : [str], default is Undefined, optional
+        command
+    """
+
+
+    command?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecLifecyclePreStopHTTPGet:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    path : str, default is Undefined, optional
+        path
+    port : int | str, default is Undefined, required
+        port
+    scheme : str, default is Undefined, optional
+        URIScheme identifies the scheme used for connection to a host for Get actions
+    """
+
+
+    host?: str
+
+    path?: str
+
+    port: int | str
+
+    scheme?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecLifecyclePreStopSleep:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#sleepaction-v1-core
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, optional
+        seconds
+    """
+
+
+    seconds?: int
 
 
 schema K8sMariadbComV1alpha1MariaDBSpecLivenessProbe:
@@ -3898,7 +4718,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecLivenessProbe:
 
 schema K8sMariadbComV1alpha1MariaDBSpecLivenessProbeExec:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#execaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
 
     Attributes
     ----------
@@ -3912,7 +4732,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecLivenessProbeExec:
 
 schema K8sMariadbComV1alpha1MariaDBSpecLivenessProbeHTTPGet:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#httpgetaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
 
     Attributes
     ----------
@@ -3938,7 +4758,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecLivenessProbeHTTPGet:
 
 schema K8sMariadbComV1alpha1MariaDBSpecLivenessProbeTCPSocket:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#tcpsocketaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#tcpsocketaction-v1-core.
 
     Attributes
     ----------
@@ -3954,1528 +4774,41 @@ schema K8sMariadbComV1alpha1MariaDBSpecLivenessProbeTCPSocket:
     port: int | str
 
 
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScale:
+schema K8sMariadbComV1alpha1MariaDBSpecMaintenance:
     r"""
-    MaxScale is the MaxScale specification that defines the MaxScale resource to be used with the current MariaDB.
-    When enabling this field, MaxScaleRef is automatically set.
+    Maintenance defines different capabilities of the operator to allow for maintenance to be performed on the DB.
+    Not to be confused with `suspend`, maintenance does not interfere with the normal reconciliation of the operator.
 
     Attributes
     ----------
-    admin : K8sMariadbComV1alpha1MariaDBSpecMaxScaleAdmin, default is Undefined, optional
-        admin
-    auth : K8sMariadbComV1alpha1MariaDBSpecMaxScaleAuth, default is Undefined, optional
-        auth
-    config : K8sMariadbComV1alpha1MariaDBSpecMaxScaleConfig, default is Undefined, optional
-        config
-    connection : K8sMariadbComV1alpha1MariaDBSpecMaxScaleConnection, default is Undefined, optional
-        connection
+    cordon : bool, default is Undefined, optional
+        Cordon blocks connections to the resource.
+    drainConnections : bool, default is Undefined, optional
+        DrainConnections determines whether all connections in MariaDB should be drained after `drainGracePeriodSeconds`.
+    drainGracePeriodSeconds : int, default is 30, optional
+        DrainGracePeriodSeconds defines the grace period in seconds before a connection in MariaDB is drained.
     enabled : bool, default is Undefined, optional
-        Enabled is a flag to enable a MaxScale instance to be used with the current MariaDB.
-    guiKubernetesService : K8sMariadbComV1alpha1MariaDBSpecMaxScaleGuiKubernetesService, default is Undefined, optional
-        gui kubernetes service
-    image : str, default is Undefined, optional
-        Image name to be used by the MaxScale instances. The supported format is `<image>:<tag>`.
-        Only MariaDB official images are supported.
-    imagePullPolicy : str, default is Undefined, optional
-        ImagePullPolicy is the image pull policy. One of `Always`, `Never` or `IfNotPresent`. If not defined, it defaults to `IfNotPresent`.
-    kubernetesService : K8sMariadbComV1alpha1MariaDBSpecMaxScaleKubernetesService, default is Undefined, optional
-        kubernetes service
-    metrics : K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetrics, default is Undefined, optional
-        metrics
-    monitor : K8sMariadbComV1alpha1MariaDBSpecMaxScaleMonitor, default is Undefined, optional
-        monitor
-    podDisruptionBudget : K8sMariadbComV1alpha1MariaDBSpecMaxScalePodDisruptionBudget, default is Undefined, optional
-        pod disruption budget
-    replicas : int, default is Undefined, optional
-        Replicas indicates the number of desired instances.
-    requeueInterval : str, default is Undefined, optional
-        RequeueInterval is used to perform requeue reconciliations.
-    services : [K8sMariadbComV1alpha1MariaDBSpecMaxScaleServicesItems0], default is Undefined, optional
-        Services define how the traffic is forwarded to the MariaDB servers.
-    tls : K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLS, default is Undefined, optional
-        tls
-    updateStrategy : K8sMariadbComV1alpha1MariaDBSpecMaxScaleUpdateStrategy, default is Undefined, optional
-        update strategy
+        Enabled turns on maintenance mode
+    readOnly : bool, default is Undefined, optional
+        ReadOnly will allow only read statements to be performed on the resource.
     """
 
 
-    admin?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleAdmin
+    cordon?: bool
 
-    auth?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleAuth
+    drainConnections?: bool
 
-    config?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleConfig
-
-    connection?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleConnection
+    drainGracePeriodSeconds?: int = 30
 
     enabled?: bool
 
-    guiKubernetesService?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleGuiKubernetesService
-
-    image?: str
-
-    imagePullPolicy?: "Always" | "Never" | "IfNotPresent"
-
-    kubernetesService?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleKubernetesService
-
-    metrics?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetrics
-
-    monitor?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleMonitor
-
-    podDisruptionBudget?: K8sMariadbComV1alpha1MariaDBSpecMaxScalePodDisruptionBudget
-
-    replicas?: int
-
-    requeueInterval?: str
-
-    services?: [K8sMariadbComV1alpha1MariaDBSpecMaxScaleServicesItems0]
-
-    tls?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLS
-
-    updateStrategy?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleUpdateStrategy
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleAdmin:
-    r"""
-    Admin configures the admin REST API and GUI.
-
-    Attributes
-    ----------
-    guiEnabled : bool, default is Undefined, optional
-        GuiEnabled indicates whether the admin GUI should be enabled.
-    port : int, default is Undefined, optional
-        Port where the admin REST API and GUI will be exposed.
-    """
-
-
-    guiEnabled?: bool
-
-    port?: int
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleAuth:
-    r"""
-    Auth defines the credentials required for MaxScale to connect to MariaDB.
-
-    Attributes
-    ----------
-    adminPasswordSecretKeyRef : K8sMariadbComV1alpha1MariaDBSpecMaxScaleAuthAdminPasswordSecretKeyRef, default is Undefined, optional
-        admin password secret key ref
-    adminUsername : str, default is Undefined, optional
-        AdminUsername is an admin username to call the admin REST API. It is defaulted if not provided.
-    clientMaxConnections : int, default is Undefined, optional
-        ClientMaxConnections defines the maximum number of connections that the client can establish.
-        If HA is enabled, make sure to increase this value, as more MaxScale replicas implies more connections.
-        It defaults to 30 times the number of MaxScale replicas.
-    clientPasswordSecretKeyRef : K8sMariadbComV1alpha1MariaDBSpecMaxScaleAuthClientPasswordSecretKeyRef, default is Undefined, optional
-        client password secret key ref
-    clientUsername : str, default is Undefined, optional
-        ClientUsername is the user to connect to MaxScale. It is defaulted if not provided.
-    deleteDefaultAdmin : bool, default is Undefined, optional
-        DeleteDefaultAdmin determines whether the default admin user should be deleted after the initial configuration. If not provided, it defaults to true.
-    generate : bool, default is Undefined, optional
-        Generate  defies whether the operator should generate users and grants for MaxScale to work.
-        It only supports MariaDBs specified via spec.mariaDbRef.
-    metricsPasswordSecretKeyRef : K8sMariadbComV1alpha1MariaDBSpecMaxScaleAuthMetricsPasswordSecretKeyRef, default is Undefined, optional
-        metrics password secret key ref
-    metricsUsername : str, default is Undefined, optional
-        MetricsUsername is an metrics username to call the REST API. It is defaulted if metrics are enabled.
-    monitorMaxConnections : int, default is Undefined, optional
-        MonitorMaxConnections defines the maximum number of connections that the monitor can establish.
-        If HA is enabled, make sure to increase this value, as more MaxScale replicas implies more connections.
-        It defaults to 30 times the number of MaxScale replicas.
-    monitorPasswordSecretKeyRef : K8sMariadbComV1alpha1MariaDBSpecMaxScaleAuthMonitorPasswordSecretKeyRef, default is Undefined, optional
-        monitor password secret key ref
-    monitorUsername : str, default is Undefined, optional
-        MonitorUsername is the user used by MaxScale monitor to connect to MariaDB server. It is defaulted if not provided.
-    serverMaxConnections : int, default is Undefined, optional
-        ServerMaxConnections defines the maximum number of connections that the server can establish.
-        If HA is enabled, make sure to increase this value, as more MaxScale replicas implies more connections.
-        It defaults to 30 times the number of MaxScale replicas.
-    serverPasswordSecretKeyRef : K8sMariadbComV1alpha1MariaDBSpecMaxScaleAuthServerPasswordSecretKeyRef, default is Undefined, optional
-        server password secret key ref
-    serverUsername : str, default is Undefined, optional
-        ServerUsername is the user used by MaxScale to connect to MariaDB server. It is defaulted if not provided.
-    syncMaxConnections : int, default is Undefined, optional
-        SyncMaxConnections defines the maximum number of connections that the sync can establish.
-        If HA is enabled, make sure to increase this value, as more MaxScale replicas implies more connections.
-        It defaults to 30 times the number of MaxScale replicas.
-    syncPasswordSecretKeyRef : K8sMariadbComV1alpha1MariaDBSpecMaxScaleAuthSyncPasswordSecretKeyRef, default is Undefined, optional
-        sync password secret key ref
-    syncUsername : str, default is Undefined, optional
-        MonitoSyncUsernamerUsername is the user used by MaxScale config sync to connect to MariaDB server. It is defaulted when HA is enabled.
-    """
-
-
-    adminPasswordSecretKeyRef?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleAuthAdminPasswordSecretKeyRef
-
-    adminUsername?: str
-
-    clientMaxConnections?: int
-
-    clientPasswordSecretKeyRef?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleAuthClientPasswordSecretKeyRef
-
-    clientUsername?: str
-
-    deleteDefaultAdmin?: bool
-
-    generate?: bool
-
-    metricsPasswordSecretKeyRef?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleAuthMetricsPasswordSecretKeyRef
-
-    metricsUsername?: str
-
-    monitorMaxConnections?: int
-
-    monitorPasswordSecretKeyRef?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleAuthMonitorPasswordSecretKeyRef
-
-    monitorUsername?: str
-
-    serverMaxConnections?: int
-
-    serverPasswordSecretKeyRef?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleAuthServerPasswordSecretKeyRef
-
-    serverUsername?: str
-
-    syncMaxConnections?: int
-
-    syncPasswordSecretKeyRef?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleAuthSyncPasswordSecretKeyRef
-
-    syncUsername?: str
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleAuthAdminPasswordSecretKeyRef:
-    r"""
-    AdminPasswordSecretKeyRef is Secret key reference to the admin password to call the admin REST API. It is defaulted if not provided.
-
-    Attributes
-    ----------
-    generate : bool, default is Undefined, optional
-        Generate indicates whether the Secret should be generated if the Secret referenced is not present.
-    key : str, default is Undefined, required
-        key
-    name : str, default is Undefined, optional
-        name
-    """
-
-
-    generate?: bool = False
-
-    key: str
-
-    name?: str = ""
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleAuthClientPasswordSecretKeyRef:
-    r"""
-    ClientPasswordSecretKeyRef is Secret key reference to the password to connect to MaxScale. It is defaulted if not provided.
-    If the referred Secret is labeled with "k8s.mariadb.com/watch", updates may be performed to the Secret in order to update the password.
-
-    Attributes
-    ----------
-    generate : bool, default is Undefined, optional
-        Generate indicates whether the Secret should be generated if the Secret referenced is not present.
-    key : str, default is Undefined, required
-        key
-    name : str, default is Undefined, optional
-        name
-    """
-
-
-    generate?: bool = False
-
-    key: str
-
-    name?: str = ""
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleAuthMetricsPasswordSecretKeyRef:
-    r"""
-    MetricsPasswordSecretKeyRef is Secret key reference to the metrics password to call the admib REST API. It is defaulted if metrics are enabled.
-    If the referred Secret is labeled with "k8s.mariadb.com/watch", updates may be performed to the Secret in order to update the password.
-
-    Attributes
-    ----------
-    generate : bool, default is Undefined, optional
-        Generate indicates whether the Secret should be generated if the Secret referenced is not present.
-    key : str, default is Undefined, required
-        key
-    name : str, default is Undefined, optional
-        name
-    """
-
-
-    generate?: bool = False
-
-    key: str
-
-    name?: str = ""
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleAuthMonitorPasswordSecretKeyRef:
-    r"""
-    MonitorPasswordSecretKeyRef is Secret key reference to the password used by MaxScale monitor to connect to MariaDB server. It is defaulted if not provided.
-    If the referred Secret is labeled with "k8s.mariadb.com/watch", updates may be performed to the Secret in order to update the password.
-
-    Attributes
-    ----------
-    generate : bool, default is Undefined, optional
-        Generate indicates whether the Secret should be generated if the Secret referenced is not present.
-    key : str, default is Undefined, required
-        key
-    name : str, default is Undefined, optional
-        name
-    """
-
-
-    generate?: bool = False
-
-    key: str
-
-    name?: str = ""
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleAuthServerPasswordSecretKeyRef:
-    r"""
-    ServerPasswordSecretKeyRef is Secret key reference to the password used by MaxScale to connect to MariaDB server. It is defaulted if not provided.
-    If the referred Secret is labeled with "k8s.mariadb.com/watch", updates may be performed to the Secret in order to update the password.
-
-    Attributes
-    ----------
-    generate : bool, default is Undefined, optional
-        Generate indicates whether the Secret should be generated if the Secret referenced is not present.
-    key : str, default is Undefined, required
-        key
-    name : str, default is Undefined, optional
-        name
-    """
-
-
-    generate?: bool = False
-
-    key: str
-
-    name?: str = ""
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleAuthSyncPasswordSecretKeyRef:
-    r"""
-    SyncPasswordSecretKeyRef is Secret key reference to the password used by MaxScale config to connect to MariaDB server. It is defaulted when HA is enabled.
-    If the referred Secret is labeled with "k8s.mariadb.com/watch", updates may be performed to the Secret in order to update the password.
-
-    Attributes
-    ----------
-    generate : bool, default is Undefined, optional
-        Generate indicates whether the Secret should be generated if the Secret referenced is not present.
-    key : str, default is Undefined, required
-        key
-    name : str, default is Undefined, optional
-        name
-    """
-
-
-    generate?: bool = False
-
-    key: str
-
-    name?: str = ""
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleConfig:
-    r"""
-    Config defines the MaxScale configuration.
-
-    Attributes
-    ----------
-    params : {str:str}, default is Undefined, optional
-        Params is a key value pair of parameters to be used in the MaxScale static configuration file.
-        Any parameter supported by MaxScale may be specified here. See reference:
-        https://mariadb.com/kb/en/mariadb-maxscale-2308-mariadb-maxscale-configuration-guide/#global-settings.
-    sync : K8sMariadbComV1alpha1MariaDBSpecMaxScaleConfigSync, default is Undefined, optional
-        sync
-    volumeClaimTemplate : K8sMariadbComV1alpha1MariaDBSpecMaxScaleConfigVolumeClaimTemplate, default is Undefined, optional
-        volume claim template
-    """
-
-
-    params?: {str:str}
-
-    sync?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleConfigSync
-
-    volumeClaimTemplate?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleConfigVolumeClaimTemplate
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleConfigSync:
-    r"""
-    Sync defines how to replicate configuration across MaxScale replicas. It is defaulted when HA is enabled.
-
-    Attributes
-    ----------
-    database : str, default is Undefined, optional
-        Database is the MariaDB logical database where the 'maxscale_config' table will be created in order to persist and synchronize config changes. If not provided, it defaults to 'mysql'.
-    interval : str, default is Undefined, optional
-        Interval defines the config synchronization interval. It is defaulted if not provided.
-    timeout : str, default is Undefined, optional
-        Interval defines the config synchronization timeout. It is defaulted if not provided.
-    """
-
-
-    database?: str
-
-    interval?: str
-
-    timeout?: str
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleConfigVolumeClaimTemplate:
-    r"""
-    VolumeClaimTemplate provides a template to define the PVCs for storing MaxScale runtime configuration files. It is defaulted if not provided.
-
-    Attributes
-    ----------
-    accessModes : [str], default is Undefined, optional
-        access modes
-    metadata : K8sMariadbComV1alpha1MariaDBSpecMaxScaleConfigVolumeClaimTemplateMetadata, default is Undefined, optional
-        metadata
-    resources : K8sMariadbComV1alpha1MariaDBSpecMaxScaleConfigVolumeClaimTemplateResources, default is Undefined, optional
-        resources
-    selector : K8sMariadbComV1alpha1MariaDBSpecMaxScaleConfigVolumeClaimTemplateSelector, default is Undefined, optional
-        selector
-    storageClassName : str, default is Undefined, optional
-        storage class name
-    """
-
-
-    accessModes?: [str]
-
-    metadata?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleConfigVolumeClaimTemplateMetadata
-
-    resources?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleConfigVolumeClaimTemplateResources
-
-    selector?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleConfigVolumeClaimTemplateSelector
-
-    storageClassName?: str
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleConfigVolumeClaimTemplateMetadata:
-    r"""
-    Metadata to be added to the PVC metadata.
-
-    Attributes
-    ----------
-    annotations : {str:str}, default is Undefined, optional
-        Annotations to be added to children resources.
-    labels : {str:str}, default is Undefined, optional
-        Labels to be added to children resources.
-    """
-
-
-    annotations?: {str:str}
-
-    labels?: {str:str}
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleConfigVolumeClaimTemplateResources:
-    r"""
-    VolumeResourceRequirements describes the storage resource requirements for a volume.
-
-    Attributes
-    ----------
-    limits : {str:int | str}, default is Undefined, optional
-        Limits describes the maximum amount of compute resources allowed.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
-    requests : {str:int | str}, default is Undefined, optional
-        Requests describes the minimum amount of compute resources required.
-        If Requests is omitted for a container, it defaults to Limits if that is explicitly specified,
-        otherwise to an implementation-defined value. Requests cannot exceed Limits.
-        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
-    """
-
-
-    limits?: {str:int | str}
-
-    requests?: {str:int | str}
-
-
-    check:
-        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleConfigVolumeClaimTemplateSelector:
-    r"""
-    A label selector is a label query over a set of resources. The result of matchLabels and
-    matchExpressions are ANDed. An empty label selector matches all objects. A null
-    label selector matches no objects.
-
-    Attributes
-    ----------
-    matchExpressions : [K8sMariadbComV1alpha1MariaDBSpecMaxScaleConfigVolumeClaimTemplateSelectorMatchExpressionsItems0], default is Undefined, optional
-        matchExpressions is a list of label selector requirements. The requirements are ANDed.
-    matchLabels : {str:str}, default is Undefined, optional
-        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
-        map is equivalent to an element of matchExpressions, whose key field is "key", the
-        operator is "In", and the values array contains only "value". The requirements are ANDed.
-    """
-
-
-    matchExpressions?: [K8sMariadbComV1alpha1MariaDBSpecMaxScaleConfigVolumeClaimTemplateSelectorMatchExpressionsItems0]
-
-    matchLabels?: {str:str}
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleConfigVolumeClaimTemplateSelectorMatchExpressionsItems0:
-    r"""
-    A label selector requirement is a selector that contains values, a key, and an operator that
-    relates the key and values.
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        key is the label key that the selector applies to.
-    operator : str, default is Undefined, required
-        operator represents a key's relationship to a set of values.
-        Valid operators are In, NotIn, Exists and DoesNotExist.
-    values : [str], default is Undefined, optional
-        values is an array of string values. If the operator is In or NotIn,
-        the values array must be non-empty. If the operator is Exists or DoesNotExist,
-        the values array must be empty. This array is replaced during a strategic
-        merge patch.
-    """
-
-
-    key: str
-
-    operator: str
-
-    values?: [str]
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleConnection:
-    r"""
-    Connection provides a template to define the Connection for MaxScale.
-
-    Attributes
-    ----------
-    healthCheck : K8sMariadbComV1alpha1MariaDBSpecMaxScaleConnectionHealthCheck, default is Undefined, optional
-        health check
-    params : {str:str}, default is Undefined, optional
-        Params to be used in the Connection.
-    port : int, default is Undefined, optional
-        Port to connect to. If not provided, it defaults to the MariaDB port or to the first MaxScale listener.
-    secretName : str, default is Undefined, optional
-        SecretName to be used in the Connection.
-    secretTemplate : K8sMariadbComV1alpha1MariaDBSpecMaxScaleConnectionSecretTemplate, default is Undefined, optional
-        secret template
-    serviceName : str, default is Undefined, optional
-        ServiceName to be used in the Connection.
-    """
-
-
-    healthCheck?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleConnectionHealthCheck
-
-    params?: {str:str}
-
-    port?: int
-
-    secretName?: str
-
-    secretTemplate?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleConnectionSecretTemplate
-
-    serviceName?: str
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleConnectionHealthCheck:
-    r"""
-    HealthCheck to be used in the Connection.
-
-    Attributes
-    ----------
-    interval : str, default is Undefined, optional
-        Interval used to perform health checks.
-    retryInterval : str, default is Undefined, optional
-        RetryInterval is the interval used to perform health check retries.
-    """
-
-
-    interval?: str
-
-    retryInterval?: str
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleConnectionSecretTemplate:
-    r"""
-    SecretTemplate to be used in the Connection.
-
-    Attributes
-    ----------
-    databaseKey : str, default is Undefined, optional
-        DatabaseKey to be used in the Secret.
-    format : str, default is Undefined, optional
-        Format to be used in the Secret.
-    hostKey : str, default is Undefined, optional
-        HostKey to be used in the Secret.
-    key : str, default is Undefined, optional
-        Key to be used in the Secret.
-    metadata : K8sMariadbComV1alpha1MariaDBSpecMaxScaleConnectionSecretTemplateMetadata, default is Undefined, optional
-        metadata
-    passwordKey : str, default is Undefined, optional
-        PasswordKey to be used in the Secret.
-    portKey : str, default is Undefined, optional
-        PortKey to be used in the Secret.
-    usernameKey : str, default is Undefined, optional
-        UsernameKey to be used in the Secret.
-    """
-
-
-    databaseKey?: str
-
-    format?: str
-
-    hostKey?: str
-
-    key?: str
-
-    metadata?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleConnectionSecretTemplateMetadata
-
-    passwordKey?: str
-
-    portKey?: str
-
-    usernameKey?: str
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleConnectionSecretTemplateMetadata:
-    r"""
-    Metadata to be added to the Secret object.
-
-    Attributes
-    ----------
-    annotations : {str:str}, default is Undefined, optional
-        Annotations to be added to children resources.
-    labels : {str:str}, default is Undefined, optional
-        Labels to be added to children resources.
-    """
-
-
-    annotations?: {str:str}
-
-    labels?: {str:str}
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleGuiKubernetesService:
-    r"""
-    GuiKubernetesService define a template for a Kubernetes Service object to connect to MaxScale's GUI.
-
-    Attributes
-    ----------
-    allocateLoadBalancerNodePorts : bool, default is Undefined, optional
-        AllocateLoadBalancerNodePorts Service field.
-    externalTrafficPolicy : str, default is Undefined, optional
-        ExternalTrafficPolicy Service field.
-    loadBalancerIP : str, default is Undefined, optional
-        LoadBalancerIP Service field.
-    loadBalancerSourceRanges : [str], default is Undefined, optional
-        LoadBalancerSourceRanges Service field.
-    metadata : K8sMariadbComV1alpha1MariaDBSpecMaxScaleGuiKubernetesServiceMetadata, default is Undefined, optional
-        metadata
-    sessionAffinity : str, default is Undefined, optional
-        SessionAffinity Service field.
-    $type : str, default is "ClusterIP", optional
-        Type is the Service type. One of `ClusterIP`, `NodePort` or `LoadBalancer`. If not defined, it defaults to `ClusterIP`.
-    """
-
-
-    allocateLoadBalancerNodePorts?: bool
-
-    externalTrafficPolicy?: str
-
-    loadBalancerIP?: str
-
-    loadBalancerSourceRanges?: [str]
-
-    metadata?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleGuiKubernetesServiceMetadata
-
-    sessionAffinity?: str
-
-    $type?: "ClusterIP" | "NodePort" | "LoadBalancer" = "ClusterIP"
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleGuiKubernetesServiceMetadata:
-    r"""
-    Metadata to be added to the Service metadata.
-
-    Attributes
-    ----------
-    annotations : {str:str}, default is Undefined, optional
-        Annotations to be added to children resources.
-    labels : {str:str}, default is Undefined, optional
-        Labels to be added to children resources.
-    """
-
-
-    annotations?: {str:str}
-
-    labels?: {str:str}
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleKubernetesService:
-    r"""
-    KubernetesService defines a template for a Kubernetes Service object to connect to MaxScale.
-
-    Attributes
-    ----------
-    allocateLoadBalancerNodePorts : bool, default is Undefined, optional
-        AllocateLoadBalancerNodePorts Service field.
-    externalTrafficPolicy : str, default is Undefined, optional
-        ExternalTrafficPolicy Service field.
-    loadBalancerIP : str, default is Undefined, optional
-        LoadBalancerIP Service field.
-    loadBalancerSourceRanges : [str], default is Undefined, optional
-        LoadBalancerSourceRanges Service field.
-    metadata : K8sMariadbComV1alpha1MariaDBSpecMaxScaleKubernetesServiceMetadata, default is Undefined, optional
-        metadata
-    sessionAffinity : str, default is Undefined, optional
-        SessionAffinity Service field.
-    $type : str, default is "ClusterIP", optional
-        Type is the Service type. One of `ClusterIP`, `NodePort` or `LoadBalancer`. If not defined, it defaults to `ClusterIP`.
-    """
-
-
-    allocateLoadBalancerNodePorts?: bool
-
-    externalTrafficPolicy?: str
-
-    loadBalancerIP?: str
-
-    loadBalancerSourceRanges?: [str]
-
-    metadata?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleKubernetesServiceMetadata
-
-    sessionAffinity?: str
-
-    $type?: "ClusterIP" | "NodePort" | "LoadBalancer" = "ClusterIP"
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleKubernetesServiceMetadata:
-    r"""
-    Metadata to be added to the Service metadata.
-
-    Attributes
-    ----------
-    annotations : {str:str}, default is Undefined, optional
-        Annotations to be added to children resources.
-    labels : {str:str}, default is Undefined, optional
-        Labels to be added to children resources.
-    """
-
-
-    annotations?: {str:str}
-
-    labels?: {str:str}
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetrics:
-    r"""
-    Metrics configures metrics and how to scrape them.
-
-    Attributes
-    ----------
-    enabled : bool, default is Undefined, optional
-        Enabled is a flag to enable Metrics
-    exporter : K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporter, default is Undefined, optional
-        exporter
-    serviceMonitor : K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsServiceMonitor, default is Undefined, optional
-        service monitor
-    """
-
-
-    enabled?: bool
-
-    exporter?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporter
-
-    serviceMonitor?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsServiceMonitor
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporter:
-    r"""
-    Exporter defines the metrics exporter container.
-
-    Attributes
-    ----------
-    affinity : K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinity, default is Undefined, optional
-        affinity
-    args : [str], default is Undefined, optional
-        Args to be used in the Container.
-    image : str, default is Undefined, optional
-        Image name to be used as metrics exporter. The supported format is `<image>:<tag>`.
-        Only mysqld-exporter >= v0.15.0 is supported: https://github.com/prometheus/mysqld_exporter
-    imagePullPolicy : str, default is Undefined, optional
-        ImagePullPolicy is the image pull policy. One of `Always`, `Never` or `IfNotPresent`. If not defined, it defaults to `IfNotPresent`.
-    imagePullSecrets : [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterImagePullSecretsItems0], default is Undefined, optional
-        ImagePullSecrets is the list of pull Secrets to be used to pull the image.
-    nodeSelector : {str:str}, default is Undefined, optional
-        NodeSelector to be used in the Pod.
-    podMetadata : K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterPodMetadata, default is Undefined, optional
-        pod metadata
-    podSecurityContext : K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterPodSecurityContext, default is Undefined, optional
-        pod security context
-    port : int, default is Undefined, optional
-        Port where the exporter will be listening for connections.
-    priorityClassName : str, default is Undefined, optional
-        PriorityClassName to be used in the Pod.
-    resources : K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterResources, default is Undefined, optional
-        resources
-    securityContext : K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterSecurityContext, default is Undefined, optional
-        security context
-    tolerations : [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterTolerationsItems0], default is Undefined, optional
-        Tolerations to be used in the Pod.
-    """
-
-
-    affinity?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinity
-
-    args?: [str]
-
-    image?: str
-
-    imagePullPolicy?: "Always" | "Never" | "IfNotPresent"
-
-    imagePullSecrets?: [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterImagePullSecretsItems0]
-
-    nodeSelector?: {str:str}
-
-    podMetadata?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterPodMetadata
-
-    podSecurityContext?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterPodSecurityContext
-
-    port?: int
-
-    priorityClassName?: str
-
-    resources?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterResources
-
-    securityContext?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterSecurityContext
-
-    tolerations?: [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterTolerationsItems0]
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinity:
-    r"""
-    Affinity to be used in the Pod.
-
-    Attributes
-    ----------
-    antiAffinityEnabled : bool, default is Undefined, optional
-        AntiAffinityEnabled configures PodAntiAffinity so each Pod is scheduled in a different Node, enabling HA.
-        Make sure you have at least as many Nodes available as the replicas to not end up with unscheduled Pods.
-    nodeAffinity : K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinity, default is Undefined, optional
-        node affinity
-    podAntiAffinity : K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinity, default is Undefined, optional
-        pod anti affinity
-    """
-
-
-    antiAffinityEnabled?: bool
-
-    nodeAffinity?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinity
-
-    podAntiAffinity?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinity
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinity:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeaffinity-v1-core
-
-    Attributes
-    ----------
-    preferredDuringSchedulingIgnoredDuringExecution : [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0], default is Undefined, optional
-        preferred during scheduling ignored during execution
-    requiredDuringSchedulingIgnoredDuringExecution : K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution, default is Undefined, optional
-        required during scheduling ignored during execution
-    """
-
-
-    preferredDuringSchedulingIgnoredDuringExecution?: [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0]
-
-    requiredDuringSchedulingIgnoredDuringExecution?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#preferredschedulingterm-v1-core
-
-    Attributes
-    ----------
-    preference : K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference, default is Undefined, required
-        preference
-    weight : int, default is Undefined, required
-        weight
-    """
-
-
-    preference: K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference
-
-    weight: int
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorterm-v1-core
-
-    Attributes
-    ----------
-    matchExpressions : [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0], default is Undefined, optional
-        match expressions
-    matchFields : [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0], default is Undefined, optional
-        match fields
-    """
-
-
-    matchExpressions?: [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0]
-
-    matchFields?: [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0]
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        key
-    operator : str, default is Undefined, required
-        A node selector operator is the set of operators that can be used in
-        a node selector requirement.
-    values : [str], default is Undefined, optional
-        values
-    """
-
-
-    key: str
-
-    operator: str
-
-    values?: [str]
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        key
-    operator : str, default is Undefined, required
-        A node selector operator is the set of operators that can be used in
-        a node selector requirement.
-    values : [str], default is Undefined, optional
-        values
-    """
-
-
-    key: str
-
-    operator: str
-
-    values?: [str]
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselector-v1-core
-
-    Attributes
-    ----------
-    nodeSelectorTerms : [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0], default is Undefined, required
-        node selector terms
-    """
-
-
-    nodeSelectorTerms: [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0]
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorterm-v1-core
-
-    Attributes
-    ----------
-    matchExpressions : [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0], default is Undefined, optional
-        match expressions
-    matchFields : [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0], default is Undefined, optional
-        match fields
-    """
-
-
-    matchExpressions?: [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0]
-
-    matchFields?: [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0]
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        key
-    operator : str, default is Undefined, required
-        A node selector operator is the set of operators that can be used in
-        a node selector requirement.
-    values : [str], default is Undefined, optional
-        values
-    """
-
-
-    key: str
-
-    operator: str
-
-    values?: [str]
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        key
-    operator : str, default is Undefined, required
-        A node selector operator is the set of operators that can be used in
-        a node selector requirement.
-    values : [str], default is Undefined, optional
-        values
-    """
-
-
-    key: str
-
-    operator: str
-
-    values?: [str]
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinity:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podantiaffinity-v1-core.
-
-    Attributes
-    ----------
-    preferredDuringSchedulingIgnoredDuringExecution : [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0], default is Undefined, optional
-        preferred during scheduling ignored during execution
-    requiredDuringSchedulingIgnoredDuringExecution : [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0], default is Undefined, optional
-        required during scheduling ignored during execution
-    """
-
-
-    preferredDuringSchedulingIgnoredDuringExecution?: [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0]
-
-    requiredDuringSchedulingIgnoredDuringExecution?: [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0]
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#weightedpodaffinityterm-v1-core.
-
-    Attributes
-    ----------
-    podAffinityTerm : K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm, default is Undefined, required
-        pod affinity term
-    weight : int, default is Undefined, required
-        weight
-    """
-
-
-    podAffinityTerm: K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm
-
-    weight: int
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podaffinityterm-v1-core.
-
-    Attributes
-    ----------
-    labelSelector : K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector, default is Undefined, optional
-        label selector
-    topologyKey : str, default is Undefined, required
-        topology key
-    """
-
-
-    labelSelector?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
-
-    topologyKey: str
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselector-v1-meta
-
-    Attributes
-    ----------
-    matchExpressions : [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0], default is Undefined, optional
-        match expressions
-    matchLabels : {str:str}, default is Undefined, optional
-        match labels
-    """
-
-
-    matchExpressions?: [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0]
-
-    matchLabels?: {str:str}
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselectorrequirement-v1-meta
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        key
-    operator : str, default is Undefined, required
-        A label selector operator is the set of operators that can be used in a selector requirement.
-    values : [str], default is Undefined, optional
-        values
-    """
-
-
-    key: str
-
-    operator: str
-
-    values?: [str]
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podaffinityterm-v1-core.
-
-    Attributes
-    ----------
-    labelSelector : K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector, default is Undefined, optional
-        label selector
-    topologyKey : str, default is Undefined, required
-        topology key
-    """
-
-
-    labelSelector?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
-
-    topologyKey: str
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselector-v1-meta
-
-    Attributes
-    ----------
-    matchExpressions : [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0], default is Undefined, optional
-        match expressions
-    matchLabels : {str:str}, default is Undefined, optional
-        match labels
-    """
-
-
-    matchExpressions?: [K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0]
-
-    matchLabels?: {str:str}
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselectorrequirement-v1-meta
-
-    Attributes
-    ----------
-    key : str, default is Undefined, required
-        key
-    operator : str, default is Undefined, required
-        A label selector operator is the set of operators that can be used in a selector requirement.
-    values : [str], default is Undefined, optional
-        values
-    """
-
-
-    key: str
-
-    operator: str
-
-    values?: [str]
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterImagePullSecretsItems0:
-    r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#localobjectreference-v1-core.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, optional
-        name
-    """
-
-
-    name?: str = ""
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterPodMetadata:
-    r"""
-    PodMetadata defines extra metadata for the Pod.
-
-    Attributes
-    ----------
-    annotations : {str:str}, default is Undefined, optional
-        Annotations to be added to children resources.
-    labels : {str:str}, default is Undefined, optional
-        Labels to be added to children resources.
-    """
-
-
-    annotations?: {str:str}
-
-    labels?: {str:str}
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterPodSecurityContext:
-    r"""
-    SecurityContext holds pod-level security attributes and common container settings.
-
-    Attributes
-    ----------
-    appArmorProfile : K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterPodSecurityContextAppArmorProfile, default is Undefined, optional
-        app armor profile
-    fsGroup : int, default is Undefined, optional
-        fs group
-    fsGroupChangePolicy : str, default is Undefined, optional
-        PodFSGroupChangePolicy holds policies that will be used for applying fsGroup to a volume
-        when volume is mounted.
-    runAsGroup : int, default is Undefined, optional
-        run as group
-    runAsNonRoot : bool, default is Undefined, optional
-        run as non root
-    runAsUser : int, default is Undefined, optional
-        run as user
-    seLinuxOptions : K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterPodSecurityContextSeLinuxOptions, default is Undefined, optional
-        se linux options
-    seccompProfile : K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterPodSecurityContextSeccompProfile, default is Undefined, optional
-        seccomp profile
-    supplementalGroups : [int], default is Undefined, optional
-        supplemental groups
-    """
-
-
-    appArmorProfile?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterPodSecurityContextAppArmorProfile
-
-    fsGroup?: int
-
-    fsGroupChangePolicy?: str
-
-    runAsGroup?: int
-
-    runAsNonRoot?: bool
-
-    runAsUser?: int
-
-    seLinuxOptions?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterPodSecurityContextSeLinuxOptions
-
-    seccompProfile?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterPodSecurityContextSeccompProfile
-
-    supplementalGroups?: [int]
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterPodSecurityContextAppArmorProfile:
-    r"""
-    AppArmorProfile defines a pod or container's AppArmor settings.
-
-    Attributes
-    ----------
-    localhostProfile : str, default is Undefined, optional
-        localhostProfile indicates a profile loaded on the node that should be used.
-        The profile must be preconfigured on the node to work.
-        Must match the loaded name of the profile.
-        Must be set if and only if type is "Localhost".
-    $type : str, default is Undefined, required
-        type indicates which kind of AppArmor profile will be applied.
-        Valid options are:
-          Localhost - a profile pre-loaded on the node.
-          RuntimeDefault - the container runtime's default profile.
-          Unconfined - no AppArmor enforcement.
-    """
-
-
-    localhostProfile?: str
-
-    $type: str
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterPodSecurityContextSeLinuxOptions:
-    r"""
-    SELinuxOptions are the labels to be applied to the container
-
-    Attributes
-    ----------
-    level : str, default is Undefined, optional
-        Level is SELinux level label that applies to the container.
-    role : str, default is Undefined, optional
-        Role is a SELinux role label that applies to the container.
-    $type : str, default is Undefined, optional
-        Type is a SELinux type label that applies to the container.
-    user : str, default is Undefined, optional
-        User is a SELinux user label that applies to the container.
-    """
-
-
-    level?: str
-
-    role?: str
-
-    $type?: str
-
-    user?: str
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterPodSecurityContextSeccompProfile:
-    r"""
-    SeccompProfile defines a pod/container's seccomp profile settings.
-    Only one profile source may be set.
-
-    Attributes
-    ----------
-    localhostProfile : str, default is Undefined, optional
-        localhostProfile indicates a profile defined in a file on the node should be used.
-        The profile must be preconfigured on the node to work.
-        Must be a descending path, relative to the kubelet's configured seccomp profile location.
-        Must be set if type is "Localhost". Must NOT be set for any other type.
-    $type : str, default is Undefined, required
-        type indicates which kind of seccomp profile will be applied.
-        Valid options are:
-
-        Localhost - a profile defined in a file on the node should be used.
-        RuntimeDefault - the container runtime default profile should be used.
-        Unconfined - no profile should be applied.
-    """
-
-
-    localhostProfile?: str
-
-    $type: str
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterResources:
-    r"""
-    Resouces describes the compute resource requirements.
-
-    Attributes
-    ----------
-    limits : {str:int | str}, default is Undefined, optional
-        ResourceList is a set of (resource name, quantity) pairs.
-    requests : {str:int | str}, default is Undefined, optional
-        ResourceList is a set of (resource name, quantity) pairs.
-    """
-
-
-    limits?: {str:int | str}
-
-    requests?: {str:int | str}
-
-
-    check:
-        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
-        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterSecurityContext:
-    r"""
-    SecurityContext holds container-level security attributes.
-
-    Attributes
-    ----------
-    allowPrivilegeEscalation : bool, default is Undefined, optional
-        allow privilege escalation
-    capabilities : K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterSecurityContextCapabilities, default is Undefined, optional
-        capabilities
-    privileged : bool, default is Undefined, optional
-        privileged
-    readOnlyRootFilesystem : bool, default is Undefined, optional
-        read only root filesystem
-    runAsGroup : int, default is Undefined, optional
-        run as group
-    runAsNonRoot : bool, default is Undefined, optional
-        run as non root
-    runAsUser : int, default is Undefined, optional
-        run as user
-    """
-
-
-    allowPrivilegeEscalation?: bool
-
-    capabilities?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterSecurityContextCapabilities
-
-    privileged?: bool
-
-    readOnlyRootFilesystem?: bool
-
-    runAsGroup?: int
-
-    runAsNonRoot?: bool
-
-    runAsUser?: int
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterSecurityContextCapabilities:
-    r"""
-    Adds and removes POSIX capabilities from running containers.
-
-    Attributes
-    ----------
-    add : [str], default is Undefined, optional
-        Added capabilities
-    drop : [str], default is Undefined, optional
-        Removed capabilities
-    """
-
-
-    add?: [str]
-
-    drop?: [str]
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsExporterTolerationsItems0:
-    r"""
-    The pod this Toleration is attached to tolerates any taint that matches
-    the triple <key,value,effect> using the matching operator <operator>.
-
-    Attributes
-    ----------
-    effect : str, default is Undefined, optional
-        Effect indicates the taint effect to match. Empty means match all taint effects.
-        When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
-    key : str, default is Undefined, optional
-        Key is the taint key that the toleration applies to. Empty means match all taint keys.
-        If the key is empty, operator must be Exists; this combination means to match all values and all keys.
-    operator : str, default is Undefined, optional
-        Operator represents a key's relationship to the value.
-        Valid operators are Exists and Equal. Defaults to Equal.
-        Exists is equivalent to wildcard for value, so that a pod can
-        tolerate all taints of a particular category.
-    tolerationSeconds : int, default is Undefined, optional
-        TolerationSeconds represents the period of time the toleration (which must be
-        of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default,
-        it is not set, which means tolerate the taint forever (do not evict). Zero and
-        negative values will be treated as 0 (evict immediately) by the system.
-    value : str, default is Undefined, optional
-        Value is the taint value the toleration matches to.
-        If the operator is Exists, the value should be empty, otherwise just a regular string.
-    """
-
-
-    effect?: str
-
-    key?: str
-
-    operator?: str
-
-    tolerationSeconds?: int
-
-    value?: str
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMetricsServiceMonitor:
-    r"""
-    ServiceMonitor defines the ServiceMonior object.
-
-    Attributes
-    ----------
-    interval : str, default is Undefined, optional
-        Interval for scraping metrics.
-    jobLabel : str, default is Undefined, optional
-        JobLabel to add to the ServiceMonitor object.
-    prometheusRelease : str, default is Undefined, optional
-        PrometheusRelease is the release label to add to the ServiceMonitor object.
-    scrapeTimeout : str, default is Undefined, optional
-        ScrapeTimeout defines the timeout for scraping metrics.
-    """
-
-
-    interval?: str
-
-    jobLabel?: str
-
-    prometheusRelease?: str
-
-    scrapeTimeout?: str
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleMonitor:
-    r"""
-    Monitor monitors MariaDB server instances.
-
-    Attributes
-    ----------
-    cooperativeMonitoring : str, default is Undefined, optional
-        CooperativeMonitoring enables coordination between multiple MaxScale instances running monitors. It is defaulted when HA is enabled.
-    interval : str, default is Undefined, optional
-        Interval used to monitor MariaDB servers. It is defaulted if not provided.
-    module : str, default is Undefined, optional
-        Module is the module to use to monitor MariaDB servers. It is mandatory when no MariaDB reference is provided.
-    name : str, default is Undefined, optional
-        Name is the identifier of the monitor. It is defaulted if not provided.
-    params : {str:str}, default is Undefined, optional
-        Params defines extra parameters to pass to the monitor.
-        Any parameter supported by MaxScale may be specified here. See reference:
-        https://mariadb.com/kb/en/mariadb-maxscale-2308-common-monitor-parameters/.
-        Monitor specific parameter are also suported:
-        https://mariadb.com/kb/en/mariadb-maxscale-2308-galera-monitor/#galera-monitor-optional-parameters.
-        https://mariadb.com/kb/en/mariadb-maxscale-2308-mariadb-monitor/#configuration.
-    suspend : bool, default is Undefined, optional
-        Suspend indicates whether the current resource should be suspended or not.
-        This can be useful for maintenance, as disabling the reconciliation prevents the operator from interfering with user operations during maintenance activities.
-    """
-
-
-    cooperativeMonitoring?: "majority_of_all" | "majority_of_running"
-
-    interval?: str
-
-    module?: str
-
-    name?: str
-
-    params?: {str:str}
-
-    suspend?: bool = False
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScalePodDisruptionBudget:
-    r"""
-    PodDisruptionBudget defines the budget for replica availability.
-
-    Attributes
-    ----------
-    maxUnavailable : int | str, default is Undefined, optional
-        MaxUnavailable defines the number of maximum unavailable Pods.
-    minAvailable : int | str, default is Undefined, optional
-        MinAvailable defines the number of minimum available Pods.
-    """
-
-
-    maxUnavailable?: int | str
-
-    minAvailable?: int | str
+    readOnly?: bool
 
 
 schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleRef:
     r"""
     MaxScaleRef is a reference to a MaxScale resource to be used with the current MariaDB.
-    Providing this field implies delegating high availability tasks such as primary failover to MaxScale.
+    Providing this reference implies delegating high availability tasks such as primary failover to MaxScale.
 
     Attributes
     ----------
@@ -5489,327 +4822,6 @@ schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleRef:
     name?: str
 
     namespace?: str
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleServicesItems0:
-    r"""
-    Services define how the traffic is forwarded to the MariaDB servers.
-
-    Attributes
-    ----------
-    listener : K8sMariadbComV1alpha1MariaDBSpecMaxScaleServicesItems0Listener, default is Undefined, required
-        listener
-    name : str, default is Undefined, required
-        Name is the identifier of the MaxScale service.
-    params : {str:str}, default is Undefined, optional
-        Params defines extra parameters to pass to the service.
-        Any parameter supported by MaxScale may be specified here. See reference:
-        https://mariadb.com/kb/en/mariadb-maxscale-2308-mariadb-maxscale-configuration-guide/#service_1.
-        Router specific parameter are also suported:
-        https://mariadb.com/kb/en/mariadb-maxscale-2308-readwritesplit/#configuration.
-        https://mariadb.com/kb/en/mariadb-maxscale-2308-readconnroute/#configuration.
-    router : str, default is Undefined, required
-        Router is the type of router to use.
-    suspend : bool, default is Undefined, optional
-        Suspend indicates whether the current resource should be suspended or not.
-        This can be useful for maintenance, as disabling the reconciliation prevents the operator from interfering with user operations during maintenance activities.
-    """
-
-
-    listener: K8sMariadbComV1alpha1MariaDBSpecMaxScaleServicesItems0Listener
-
-    name: str
-
-    params?: {str:str}
-
-    router: "readwritesplit" | "readconnroute"
-
-    suspend?: bool = False
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleServicesItems0Listener:
-    r"""
-    MaxScaleListener defines how the MaxScale server will listen for connections.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, optional
-        Name is the identifier of the listener. It is defaulted if not provided
-    params : {str:str}, default is Undefined, optional
-        Params defines extra parameters to pass to the listener.
-        Any parameter supported by MaxScale may be specified here. See reference:
-        https://mariadb.com/kb/en/mariadb-maxscale-2308-mariadb-maxscale-configuration-guide/#listener_1.
-    port : int, default is Undefined, required
-        Port is the network port where the MaxScale server will listen.
-    $protocol : str, default is Undefined, optional
-        Protocol is the MaxScale protocol to use when communicating with the client. If not provided, it defaults to MariaDBProtocol.
-    suspend : bool, default is Undefined, optional
-        Suspend indicates whether the current resource should be suspended or not.
-        This can be useful for maintenance, as disabling the reconciliation prevents the operator from interfering with user operations during maintenance activities.
-    """
-
-
-    name?: str
-
-    params?: {str:str}
-
-    port: int
-
-    $protocol?: str
-
-    suspend?: bool = False
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLS:
-    r"""
-    TLS defines the PKI to be used with MaxScale.
-
-    Attributes
-    ----------
-    adminCASecretRef : K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSAdminCASecretRef, default is Undefined, optional
-        admin c a secret ref
-    adminCertIssuerRef : K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSAdminCertIssuerRef, default is Undefined, optional
-        admin cert issuer ref
-    adminCertSecretRef : K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSAdminCertSecretRef, default is Undefined, optional
-        admin cert secret ref
-    enabled : bool, default is Undefined, optional
-        Enabled indicates whether TLS is enabled, determining if certificates should be issued and mounted to the MaxScale instance.
-        It is enabled by default when the referred MariaDB instance (via mariaDbRef) has TLS enabled and enforced.
-    listenerCASecretRef : K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSListenerCASecretRef, default is Undefined, optional
-        listener c a secret ref
-    listenerCertIssuerRef : K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSListenerCertIssuerRef, default is Undefined, optional
-        listener cert issuer ref
-    listenerCertSecretRef : K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSListenerCertSecretRef, default is Undefined, optional
-        listener cert secret ref
-    replicationSSLEnabled : bool, default is Undefined, optional
-        ReplicationSSLEnabled specifies whether the replication SSL is enabled. If enabled, the SSL options will be added to the server configuration.
-        It is enabled by default when the referred MariaDB instance (via mariaDbRef) has replication enabled.
-        If the MariaDB servers are manually provided by the user via the 'servers' field, this must be set by the user as well.
-    serverCASecretRef : K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSServerCASecretRef, default is Undefined, optional
-        server c a secret ref
-    serverCertSecretRef : K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSServerCertSecretRef, default is Undefined, optional
-        server cert secret ref
-    verifyPeerCertificate : bool, default is Undefined, optional
-        VerifyPeerCertificate specifies whether the peer certificate's signature should be validated against the CA.
-        It is disabled by default.
-    verifyPeerHost : bool, default is Undefined, optional
-        VerifyPeerHost specifies whether the peer certificate's SANs should match the peer host.
-        It is disabled by default.
-    """
-
-
-    adminCASecretRef?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSAdminCASecretRef
-
-    adminCertIssuerRef?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSAdminCertIssuerRef
-
-    adminCertSecretRef?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSAdminCertSecretRef
-
-    enabled?: bool
-
-    listenerCASecretRef?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSListenerCASecretRef
-
-    listenerCertIssuerRef?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSListenerCertIssuerRef
-
-    listenerCertSecretRef?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSListenerCertSecretRef
-
-    replicationSSLEnabled?: bool
-
-    serverCASecretRef?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSServerCASecretRef
-
-    serverCertSecretRef?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSServerCertSecretRef
-
-    verifyPeerCertificate?: bool
-
-    verifyPeerHost?: bool
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSAdminCASecretRef:
-    r"""
-    AdminCASecretRef is a reference to a Secret containing the admin certificate authority keypair. It is used to establish trust and issue certificates for the MaxScale's administrative REST API and GUI.
-    One of:
-    - Secret containing both the 'ca.crt' and 'ca.key' keys. This allows you to bring your own CA to Kubernetes to issue certificates.
-    - Secret containing only the 'ca.crt' in order to establish trust. In this case, either adminCertSecretRef or adminCertIssuerRef fields must be provided.
-    If not provided, a self-signed CA will be provisioned to issue the server certificate.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, optional
-        name
-    """
-
-
-    name?: str = ""
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSAdminCertIssuerRef:
-    r"""
-    AdminCertIssuerRef is a reference to a cert-manager issuer object used to issue the MaxScale's administrative REST API and GUI certificate. cert-manager must be installed previously in the cluster.
-    It is mutually exclusive with adminCertSecretRef.
-    By default, the Secret field 'ca.crt' provisioned by cert-manager will be added to the trust chain. A custom trust bundle may be specified via adminCASecretRef.
-
-    Attributes
-    ----------
-    group : str, default is Undefined, optional
-        Group of the resource being referred to.
-    kind : str, default is Undefined, optional
-        Kind of the resource being referred to.
-    name : str, default is Undefined, required
-        Name of the resource being referred to.
-    """
-
-
-    group?: str
-
-    kind?: str
-
-    name: str
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSAdminCertSecretRef:
-    r"""
-    AdminCertSecretRef is a reference to a TLS Secret used by the MaxScale's administrative REST API and GUI.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, optional
-        name
-    """
-
-
-    name?: str = ""
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSListenerCASecretRef:
-    r"""
-    ListenerCASecretRef is a reference to a Secret containing the listener certificate authority keypair. It is used to establish trust and issue certificates for the MaxScale's listeners.
-    One of:
-    - Secret containing both the 'ca.crt' and 'ca.key' keys. This allows you to bring your own CA to Kubernetes to issue certificates.
-    - Secret containing only the 'ca.crt' in order to establish trust. In this case, either listenerCertSecretRef or listenerCertIssuerRef fields must be provided.
-    If not provided, a self-signed CA will be provisioned to issue the listener certificate.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, optional
-        name
-    """
-
-
-    name?: str = ""
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSListenerCertIssuerRef:
-    r"""
-    ListenerCertIssuerRef is a reference to a cert-manager issuer object used to issue the MaxScale's listeners certificate. cert-manager must be installed previously in the cluster.
-    It is mutually exclusive with listenerCertSecretRef.
-    By default, the Secret field 'ca.crt' provisioned by cert-manager will be added to the trust chain. A custom trust bundle may be specified via listenerCASecretRef.
-
-    Attributes
-    ----------
-    group : str, default is Undefined, optional
-        Group of the resource being referred to.
-    kind : str, default is Undefined, optional
-        Kind of the resource being referred to.
-    name : str, default is Undefined, required
-        Name of the resource being referred to.
-    """
-
-
-    group?: str
-
-    kind?: str
-
-    name: str
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSListenerCertSecretRef:
-    r"""
-    ListenerCertSecretRef is a reference to a TLS Secret used by the MaxScale's listeners.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, optional
-        name
-    """
-
-
-    name?: str = ""
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSServerCASecretRef:
-    r"""
-    ServerCASecretRef is a reference to a Secret containing the MariaDB server CA certificates. It is used to establish trust with MariaDB servers.
-    The Secret should contain a 'ca.crt' key in order to establish trust.
-    If not provided, and the reference to a MariaDB resource is set (mariaDbRef), it will be defaulted to the referred MariaDB CA bundle.
-
-    Attributes
-    ----------
-    name : str, default is Undefined, optional
-        name
-    """
-
-
-    name?: str = ""
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleTLSServerCertSecretRef:
-    r"""
-    ServerCertSecretRef is a reference to a TLS Secret used by MaxScale to connect to the MariaDB servers.
-    If not provided, and the reference to a MariaDB resource is set (mariaDbRef), it will be defaulted to the referred MariaDB client certificate (clientCertSecretRef).
-
-    Attributes
-    ----------
-    name : str, default is Undefined, optional
-        name
-    """
-
-
-    name?: str = ""
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleUpdateStrategy:
-    r"""
-    UpdateStrategy defines the update strategy for the StatefulSet object.
-
-    Attributes
-    ----------
-    rollingUpdate : K8sMariadbComV1alpha1MariaDBSpecMaxScaleUpdateStrategyRollingUpdate, default is Undefined, optional
-        rolling update
-    $type : str, default is Undefined, optional
-        Type indicates the type of the StatefulSetUpdateStrategy.
-        Default is RollingUpdate.
-    """
-
-
-    rollingUpdate?: K8sMariadbComV1alpha1MariaDBSpecMaxScaleUpdateStrategyRollingUpdate
-
-    $type?: str
-
-
-schema K8sMariadbComV1alpha1MariaDBSpecMaxScaleUpdateStrategyRollingUpdate:
-    r"""
-    RollingUpdate is used to communicate parameters when Type is RollingUpdateStatefulSetStrategyType.
-
-    Attributes
-    ----------
-    maxUnavailable : int | str, default is Undefined, optional
-        The maximum number of pods that can be unavailable during the update.
-        Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%).
-        Absolute number is calculated from percentage by rounding up. This can not be 0.
-        Defaults to 1. This field is alpha-level and is only honored by servers that enable the
-        MaxUnavailableStatefulSet feature. The field applies to all pods in the range 0 to
-        Replicas-1. That means if there is any unavailable pod in the range 0 to Replicas-1, it
-        will be counted towards MaxUnavailable.
-    partition : int, default is Undefined, optional
-        Partition indicates the ordinal at which the StatefulSet should be partitioned
-        for updates. During a rolling update, all pods from ordinal Replicas-1 to
-        Partition are updated. All pods from ordinal Partition-1 to 0 remain untouched.
-        This is helpful in being able to do a canary based deployment. The default value is 0.
-    """
-
-
-    maxUnavailable?: int | str
-
-    partition?: int
 
 
 schema K8sMariadbComV1alpha1MariaDBSpecMetrics:
@@ -5930,7 +4942,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinity:
 
 schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityNodeAffinity:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeaffinity-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeaffinity-v1-core
 
     Attributes
     ----------
@@ -5948,7 +4960,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityNodeAffinity:
 
 schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#preferredschedulingterm-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#preferredschedulingterm-v1-core
 
     Attributes
     ----------
@@ -5966,7 +4978,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityNodeAffinityPrefer
 
 schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorterm-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorterm-v1-core
 
     Attributes
     ----------
@@ -5984,7 +4996,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityNodeAffinityPrefer
 
 schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -6007,7 +5019,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityNodeAffinityPrefer
 
 schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -6030,7 +5042,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityNodeAffinityPrefer
 
 schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselector-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselector-v1-core
 
     Attributes
     ----------
@@ -6044,7 +5056,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityNodeAffinityRequir
 
 schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorterm-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorterm-v1-core
 
     Attributes
     ----------
@@ -6062,7 +5074,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityNodeAffinityRequir
 
 schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -6085,7 +5097,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityNodeAffinityRequir
 
 schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -6108,7 +5120,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityNodeAffinityRequir
 
 schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityPodAntiAffinity:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podantiaffinity-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podantiaffinity-v1-core.
 
     Attributes
     ----------
@@ -6126,7 +5138,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityPodAntiAffinity:
 
 schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#weightedpodaffinityterm-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#weightedpodaffinityterm-v1-core.
 
     Attributes
     ----------
@@ -6144,7 +5156,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityPodAntiAffinityPre
 
 schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podaffinityterm-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podaffinityterm-v1-core.
 
     Attributes
     ----------
@@ -6162,7 +5174,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityPodAntiAffinityPre
 
 schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselector-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselector-v1-meta
 
     Attributes
     ----------
@@ -6180,7 +5192,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityPodAntiAffinityPre
 
 schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselectorrequirement-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselectorrequirement-v1-meta
 
     Attributes
     ----------
@@ -6202,7 +5214,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityPodAntiAffinityPre
 
 schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podaffinityterm-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podaffinityterm-v1-core.
 
     Attributes
     ----------
@@ -6220,7 +5232,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityPodAntiAffinityReq
 
 schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselector-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselector-v1-meta
 
     Attributes
     ----------
@@ -6238,7 +5250,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityPodAntiAffinityReq
 
 schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselectorrequirement-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselectorrequirement-v1-meta
 
     Attributes
     ----------
@@ -6260,7 +5272,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterAffinityPodAntiAffinityReq
 
 schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterImagePullSecretsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#localobjectreference-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
     Attributes
     ----------
@@ -6417,7 +5429,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterPodSecurityContextSeccompP
 
 schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterResources:
     r"""
-    Resouces describes the compute resource requirements.
+    Resources describes the compute resource requirements.
 
     Attributes
     ----------
@@ -6509,9 +5521,10 @@ schema K8sMariadbComV1alpha1MariaDBSpecMetricsExporterTolerationsItems0:
         If the key is empty, operator must be Exists; this combination means to match all values and all keys.
     operator : str, default is Undefined, optional
         Operator represents a key's relationship to the value.
-        Valid operators are Exists and Equal. Defaults to Equal.
+        Valid operators are Exists, Equal, Lt, and Gt. Defaults to Equal.
         Exists is equivalent to wildcard for value, so that a pod can
         tolerate all taints of a particular category.
+        Lt and Gt perform numeric comparisons (requires feature gate TaintTolerationComparisonOperators).
     tolerationSeconds : int, default is Undefined, optional
         TolerationSeconds represents the period of time the toleration (which must be
         of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default,
@@ -6581,6 +5594,65 @@ schema K8sMariadbComV1alpha1MariaDBSpecMetricsServiceMonitor:
     prometheusRelease?: str
 
     scrapeTimeout?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecMultiCluster:
+    r"""
+    MultiCluster configures the multi-cluster topology.
+
+    Attributes
+    ----------
+    enabled : bool, default is Undefined, optional
+        Enabled is a flag to enable the multi-cluster topology.
+    members : [K8sMariadbComV1alpha1MariaDBSpecMultiClusterMembersItems0], default is Undefined, optional
+        Members is the specification of each member of the multi-cluster topology.
+    primary : str, default is Undefined, optional
+        Primary is the name of the primary cluster. It refers to a member in the 'members' field, containing its full specification.
+    """
+
+
+    enabled?: bool
+
+    members?: [K8sMariadbComV1alpha1MariaDBSpecMultiClusterMembersItems0]
+
+    primary?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecMultiClusterMembersItems0:
+    r"""
+    MultiClusterMember defines the configuration for a multi-cluster topology member.
+
+    Attributes
+    ----------
+    externalMariaDbRef : K8sMariadbComV1alpha1MariaDBSpecMultiClusterMembersItems0ExternalMariaDbRef, default is Undefined, optional
+        external maria db ref
+    name : str, default is Undefined, required
+        Name is the identifier of the member.
+    """
+
+
+    externalMariaDbRef?: K8sMariadbComV1alpha1MariaDBSpecMultiClusterMembersItems0ExternalMariaDbRef
+
+    name: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecMultiClusterMembersItems0ExternalMariaDbRef:
+    r"""
+    ExternalMariaDBRef holds a reference to an ExternalMariaDB with connection details to form the multi-cluster topology.
+    These connection details are utilized to setup remote replicas.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    """
+
+
+    name?: str
+
+    namespace?: str
 
 
 schema K8sMariadbComV1alpha1MariaDBSpecMyCnfConfigMapKeyRef:
@@ -6862,6 +5934,21 @@ schema K8sMariadbComV1alpha1MariaDBSpecPodSecurityContextSeccompProfile:
     $type: str
 
 
+schema K8sMariadbComV1alpha1MariaDBSpecPointInTimeRecoveryRef:
+    r"""
+    PointInTimeRecoveryRef is a reference to a PointInTimeRecovery resource to be used with the current MariaDB.
+    Providing this reference implies configuring binary logs in the MariaDB instance and binary log archival in the sidecar agent.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    name?: str = ""
+
+
 schema K8sMariadbComV1alpha1MariaDBSpecPrimaryConnection:
     r"""
     PrimaryConnection defines a template to configure the primary Connection object.
@@ -6987,6 +6074,8 @@ schema K8sMariadbComV1alpha1MariaDBSpecPrimaryService:
         AllocateLoadBalancerNodePorts Service field.
     externalTrafficPolicy : str, default is Undefined, optional
         ExternalTrafficPolicy Service field.
+    loadBalancerClass : str, default is Undefined, optional
+        LoadBalancerClass Service field.
     loadBalancerIP : str, default is Undefined, optional
         LoadBalancerIP Service field.
     loadBalancerSourceRanges : [str], default is Undefined, optional
@@ -7003,6 +6092,8 @@ schema K8sMariadbComV1alpha1MariaDBSpecPrimaryService:
     allocateLoadBalancerNodePorts?: bool
 
     externalTrafficPolicy?: str
+
+    loadBalancerClass?: str
 
     loadBalancerIP?: str
 
@@ -7077,7 +6168,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecReadinessProbe:
 
 schema K8sMariadbComV1alpha1MariaDBSpecReadinessProbeExec:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#execaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
 
     Attributes
     ----------
@@ -7091,7 +6182,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecReadinessProbeExec:
 
 schema K8sMariadbComV1alpha1MariaDBSpecReadinessProbeHTTPGet:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#httpgetaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
 
     Attributes
     ----------
@@ -7117,7 +6208,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecReadinessProbeHTTPGet:
 
 schema K8sMariadbComV1alpha1MariaDBSpecReadinessProbeTCPSocket:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#tcpsocketaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#tcpsocketaction-v1-core.
 
     Attributes
     ----------
@@ -7139,31 +6230,1730 @@ schema K8sMariadbComV1alpha1MariaDBSpecReplication:
 
     Attributes
     ----------
+    agent : K8sMariadbComV1alpha1MariaDBSpecReplicationAgent, default is Undefined, optional
+        agent
     enabled : bool, default is Undefined, optional
-        Enabled is a flag to enable Replication.
+        Enabled is a flag to enable replication.
+    gtidDomainId : int, default is Undefined, optional
+        GtidDomainID is gtid_domain_id for all of the MariaDB nodes.
+        It is immutable.
+        See: https://mariadb.com/docs/server/ha-and-performance/standard-replication/gtid#gtid_domain_id
+    gtidStrictMode : bool, default is Undefined, optional
+        GtidStrictMode determines whether the GTID strict mode is enabled.
+        See: https://mariadb.com/docs/server/ha-and-performance/standard-replication/gtid#gtid_strict_mode.
+        It is enabled by default.
+    initContainer : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainer, default is Undefined, optional
+        init container
     primary : K8sMariadbComV1alpha1MariaDBSpecReplicationPrimary, default is Undefined, optional
         primary
-    probesEnabled : bool, default is Undefined, optional
-        ProbesEnabled indicates to use replication specific liveness and readiness probes.
-        This probes check that the primary can receive queries and that the replica has the replication thread running.
     replica : K8sMariadbComV1alpha1MariaDBSpecReplicationReplica, default is Undefined, optional
         replica
-    syncBinlog : bool, default is Undefined, optional
-        SyncBinlog indicates whether the binary log should be synchronized to the disk after every event.
-        It trades off performance for consistency.
-        See: https://mariadb.com/kb/en/replication-and-binary-log-system-variables/#sync_binlog.
+    semiSyncAckTimeout : str, default is Undefined, optional
+        SemiSyncAckTimeout for the replica to acknowledge transactions to the primary.
+        It requires semi-synchronous replication to be enabled.
+        See: https://mariadb.com/docs/server/ha-and-performance/standard-replication/semisynchronous-replication#rpl_semi_sync_master_timeout
+    semiSyncEnabled : bool, default is Undefined, optional
+        SemiSyncEnabled determines whether semi-synchronous replication is enabled.
+        Semi-synchronous replication requires that at least one replica should have sent an ACK to the primary node
+        before committing the transaction back to the client.
+        See: https://mariadb.com/docs/server/ha-and-performance/standard-replication/semisynchronous-replication
+        It is enabled by default
+    semiSyncWaitPoint : str, default is Undefined, optional
+        SemiSyncWaitPoint determines whether the transaction should wait for an ACK after having synced the binlog (AfterSync)
+        or after having committed to the storage engine (AfterCommit, the default).
+        It requires semi-synchronous replication to be enabled.
+        See: https://mariadb.com/kb/en/semisynchronous-replication/#rpl_semi_sync_master_wait_point.
+    serverIdStartIndex : int, default is Undefined, optional
+        ServerIDStartIndex sets the start index of the MariaDB nodes. Each subsequent replica will increment this by 1.
+        It is immutable.
+        See: https://mariadb.com/docs/server/ha-and-performance/standard-replication/replication-and-binary-log-system-variables#server_id
+    standaloneProbes : bool, default is Undefined, optional
+        StandaloneProbes indicates whether to use the default non-HA startup and liveness probes.
+        It is disabled by default
+    syncBinlog : int, default is Undefined, optional
+        SyncBinlog indicates after how many events the binary log is synchronized to the disk.
+        See: https://mariadb.com/docs/server/ha-and-performance/standard-replication/replication-and-binary-log-system-variables#sync_binlog
+    """
+
+
+    agent?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgent
+
+    enabled?: bool
+
+    gtidDomainId?: int
+
+    gtidStrictMode?: bool
+
+    initContainer?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainer
+
+    primary?: K8sMariadbComV1alpha1MariaDBSpecReplicationPrimary
+
+    replica?: K8sMariadbComV1alpha1MariaDBSpecReplicationReplica
+
+    semiSyncAckTimeout?: str
+
+    semiSyncEnabled?: bool
+
+    semiSyncWaitPoint?: "AfterSync" | "AfterCommit"
+
+    serverIdStartIndex?: int
+
+    standaloneProbes?: bool
+
+    syncBinlog?: int
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgent:
+    r"""
+    Agent is a sidecar agent that runs in the MariaDB Pod and co-operates with mariadb-operator.
+
+    Attributes
+    ----------
+    args : [str], default is Undefined, optional
+        Args to be used in the Container.
+    basicAuth : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentBasicAuth, default is Undefined, optional
+        basic auth
+    command : [str], default is Undefined, optional
+        Command to be used in the Container.
+    env : [K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvItems0], default is Undefined, optional
+        Env represents the environment variables to be injected in a container.
+    envFrom : [K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvFromItems0], default is Undefined, optional
+        EnvFrom represents the references (via ConfigMap and Secrets) to environment variables to be injected in the container.
+    gracefulShutdownTimeout : str, default is Undefined, optional
+        GracefulShutdownTimeout is the time we give to the agent container in order to gracefully terminate in-flight requests.
+    image : str, default is Undefined, optional
+        Image name to be used by the MariaDB instances. The supported format is `<image>:<tag>`.
+    imagePullPolicy : str, default is Undefined, optional
+        ImagePullPolicy is the image pull policy. One of `Always`, `Never` or `IfNotPresent`. If not defined, it defaults to `IfNotPresent`.
+    kubernetesAuth : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentKubernetesAuth, default is Undefined, optional
+        kubernetes auth
+    lifecycle : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecycle, default is Undefined, optional
+        lifecycle
+    livenessProbe : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLivenessProbe, default is Undefined, optional
+        liveness probe
+    port : int, default is Undefined, optional
+        Port where the agent will be listening for API connections.
+    probePort : int, default is Undefined, optional
+        Port where the agent will be listening for probe connections.
+    readinessProbe : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentReadinessProbe, default is Undefined, optional
+        readiness probe
+    resources : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentResources, default is Undefined, optional
+        resources
+    securityContext : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentSecurityContext, default is Undefined, optional
+        security context
+    startupProbe : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentStartupProbe, default is Undefined, optional
+        startup probe
+    volumeMounts : [K8sMariadbComV1alpha1MariaDBSpecReplicationAgentVolumeMountsItems0], default is Undefined, optional
+        VolumeMounts to be used in the Container.
+    """
+
+
+    args?: [str]
+
+    basicAuth?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentBasicAuth
+
+    command?: [str]
+
+    env?: [K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvItems0]
+
+    envFrom?: [K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvFromItems0]
+
+    gracefulShutdownTimeout?: str
+
+    image?: str
+
+    imagePullPolicy?: "Always" | "Never" | "IfNotPresent"
+
+    kubernetesAuth?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentKubernetesAuth
+
+    lifecycle?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecycle
+
+    livenessProbe?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLivenessProbe
+
+    port?: int
+
+    probePort?: int
+
+    readinessProbe?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentReadinessProbe
+
+    resources?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentResources
+
+    securityContext?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentSecurityContext
+
+    startupProbe?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentStartupProbe
+
+    volumeMounts?: [K8sMariadbComV1alpha1MariaDBSpecReplicationAgentVolumeMountsItems0]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentBasicAuth:
+    r"""
+    BasicAuth to be used by the agent container
+
+    Attributes
+    ----------
+    enabled : bool, default is Undefined, optional
+        Enabled is a flag to enable BasicAuth
+    passwordSecretKeyRef : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentBasicAuthPasswordSecretKeyRef, default is Undefined, optional
+        password secret key ref
+    username : str, default is Undefined, optional
+        Username to be used for basic authentication
     """
 
 
     enabled?: bool
 
-    primary?: K8sMariadbComV1alpha1MariaDBSpecReplicationPrimary
+    passwordSecretKeyRef?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentBasicAuthPasswordSecretKeyRef
 
-    probesEnabled?: bool
+    username?: str
 
-    replica?: K8sMariadbComV1alpha1MariaDBSpecReplicationReplica
 
-    syncBinlog?: bool
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentBasicAuthPasswordSecretKeyRef:
+    r"""
+    PasswordSecretKeyRef to be used for basic authentication
+
+    Attributes
+    ----------
+    generate : bool, default is Undefined, optional
+        Generate indicates whether the Secret should be generated if the Secret referenced is not present.
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    generate?: bool = False
+
+    key: str
+
+    name?: str = ""
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvFromItems0:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#envfromsource-v1-core.
+
+    Attributes
+    ----------
+    configMapRef : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvFromItems0ConfigMapRef, default is Undefined, optional
+        config map ref
+    prefix : str, default is Undefined, optional
+        prefix
+    secretRef : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvFromItems0SecretRef, default is Undefined, optional
+        secret ref
+    """
+
+
+    configMapRef?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvFromItems0ConfigMapRef
+
+    prefix?: str
+
+    secretRef?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvFromItems0SecretRef
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvFromItems0ConfigMapRef:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    name?: str = ""
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvFromItems0SecretRef:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    name?: str = ""
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvItems0:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#envvarsource-v1-core.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the environment variable. Must be a C_IDENTIFIER.
+    value : str, default is Undefined, optional
+        value
+    valueFrom : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvItems0ValueFrom, default is Undefined, optional
+        value from
+    """
+
+
+    name: str
+
+    value?: str
+
+    valueFrom?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvItems0ValueFrom
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvItems0ValueFrom:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#envvarsource-v1-core.
+
+    Attributes
+    ----------
+    configMapKeyRef : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvItems0ValueFromConfigMapKeyRef, default is Undefined, optional
+        config map key ref
+    fieldRef : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvItems0ValueFromFieldRef, default is Undefined, optional
+        field ref
+    secretKeyRef : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvItems0ValueFromSecretKeyRef, default is Undefined, optional
+        secret key ref
+    """
+
+
+    configMapKeyRef?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvItems0ValueFromConfigMapKeyRef
+
+    fieldRef?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvItems0ValueFromFieldRef
+
+    secretKeyRef?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvItems0ValueFromSecretKeyRef
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvItems0ValueFromConfigMapKeyRef:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#configmapkeyselector-v1-core.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvItems0ValueFromFieldRef:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#objectfieldselector-v1-core.
+
+    Attributes
+    ----------
+    apiVersion : str, default is Undefined, optional
+        api version
+    fieldPath : str, default is Undefined, required
+        field path
+    """
+
+
+    apiVersion?: str
+
+    fieldPath: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentEnvItems0ValueFromSecretKeyRef:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#secretkeyselector-v1-core.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentKubernetesAuth:
+    r"""
+    KubernetesAuth to be used by the agent container
+
+    Attributes
+    ----------
+    authDelegatorRoleName : str, default is Undefined, optional
+        AuthDelegatorRoleName is the name of the ClusterRoleBinding that is associated with the "system:auth-delegator" ClusterRole.
+        It is necessary for creating TokenReview objects in order for the agent to validate the service account token.
+    enabled : bool, default is Undefined, optional
+        Enabled is a flag to enable KubernetesAuth
+    """
+
+
+    authDelegatorRoleName?: str
+
+    enabled?: bool
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecycle:
+    r"""
+    Lifecycle are actions that the management system should take in response to container lifecycle events.
+
+    Attributes
+    ----------
+    postStart : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePostStart, default is Undefined, optional
+        post start
+    preStop : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePreStop, default is Undefined, optional
+        pre stop
+    """
+
+
+    postStart?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePostStart
+
+    preStop?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePreStop
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePostStart:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#lifecyclehandler-v1-core.
+
+    Attributes
+    ----------
+    exec : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePostStartExec, default is Undefined, optional
+        exec
+    httpGet : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePostStartHTTPGet, default is Undefined, optional
+        http get
+    sleep : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePostStartSleep, default is Undefined, optional
+        sleep
+    """
+
+
+    exec?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePostStartExec
+
+    httpGet?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePostStartHTTPGet
+
+    sleep?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePostStartSleep
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePostStartExec:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
+
+    Attributes
+    ----------
+    command : [str], default is Undefined, optional
+        command
+    """
+
+
+    command?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePostStartHTTPGet:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    path : str, default is Undefined, optional
+        path
+    port : int | str, default is Undefined, required
+        port
+    scheme : str, default is Undefined, optional
+        URIScheme identifies the scheme used for connection to a host for Get actions
+    """
+
+
+    host?: str
+
+    path?: str
+
+    port: int | str
+
+    scheme?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePostStartSleep:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#sleepaction-v1-core
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, optional
+        seconds
+    """
+
+
+    seconds?: int
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePreStop:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#lifecyclehandler-v1-core.
+
+    Attributes
+    ----------
+    exec : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePreStopExec, default is Undefined, optional
+        exec
+    httpGet : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePreStopHTTPGet, default is Undefined, optional
+        http get
+    sleep : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePreStopSleep, default is Undefined, optional
+        sleep
+    """
+
+
+    exec?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePreStopExec
+
+    httpGet?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePreStopHTTPGet
+
+    sleep?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePreStopSleep
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePreStopExec:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
+
+    Attributes
+    ----------
+    command : [str], default is Undefined, optional
+        command
+    """
+
+
+    command?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePreStopHTTPGet:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    path : str, default is Undefined, optional
+        path
+    port : int | str, default is Undefined, required
+        port
+    scheme : str, default is Undefined, optional
+        URIScheme identifies the scheme used for connection to a host for Get actions
+    """
+
+
+    host?: str
+
+    path?: str
+
+    port: int | str
+
+    scheme?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLifecyclePreStopSleep:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#sleepaction-v1-core
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, optional
+        seconds
+    """
+
+
+    seconds?: int
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLivenessProbe:
+    r"""
+    LivenessProbe to be used in the Container.
+
+    Attributes
+    ----------
+    exec : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLivenessProbeExec, default is Undefined, optional
+        exec
+    failureThreshold : int, default is Undefined, optional
+        failure threshold
+    httpGet : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLivenessProbeHTTPGet, default is Undefined, optional
+        http get
+    initialDelaySeconds : int, default is Undefined, optional
+        initial delay seconds
+    periodSeconds : int, default is Undefined, optional
+        period seconds
+    successThreshold : int, default is Undefined, optional
+        success threshold
+    tcpSocket : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLivenessProbeTCPSocket, default is Undefined, optional
+        tcp socket
+    timeoutSeconds : int, default is Undefined, optional
+        timeout seconds
+    """
+
+
+    exec?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLivenessProbeExec
+
+    failureThreshold?: int
+
+    httpGet?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLivenessProbeHTTPGet
+
+    initialDelaySeconds?: int
+
+    periodSeconds?: int
+
+    successThreshold?: int
+
+    tcpSocket?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLivenessProbeTCPSocket
+
+    timeoutSeconds?: int
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLivenessProbeExec:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
+
+    Attributes
+    ----------
+    command : [str], default is Undefined, optional
+        command
+    """
+
+
+    command?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLivenessProbeHTTPGet:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    path : str, default is Undefined, optional
+        path
+    port : int | str, default is Undefined, required
+        port
+    scheme : str, default is Undefined, optional
+        URIScheme identifies the scheme used for connection to a host for Get actions
+    """
+
+
+    host?: str
+
+    path?: str
+
+    port: int | str
+
+    scheme?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentLivenessProbeTCPSocket:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#tcpsocketaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    port : int | str, default is Undefined, required
+        port
+    """
+
+
+    host?: str
+
+    port: int | str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentReadinessProbe:
+    r"""
+    ReadinessProbe to be used in the Container.
+
+    Attributes
+    ----------
+    exec : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentReadinessProbeExec, default is Undefined, optional
+        exec
+    failureThreshold : int, default is Undefined, optional
+        failure threshold
+    httpGet : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentReadinessProbeHTTPGet, default is Undefined, optional
+        http get
+    initialDelaySeconds : int, default is Undefined, optional
+        initial delay seconds
+    periodSeconds : int, default is Undefined, optional
+        period seconds
+    successThreshold : int, default is Undefined, optional
+        success threshold
+    tcpSocket : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentReadinessProbeTCPSocket, default is Undefined, optional
+        tcp socket
+    timeoutSeconds : int, default is Undefined, optional
+        timeout seconds
+    """
+
+
+    exec?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentReadinessProbeExec
+
+    failureThreshold?: int
+
+    httpGet?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentReadinessProbeHTTPGet
+
+    initialDelaySeconds?: int
+
+    periodSeconds?: int
+
+    successThreshold?: int
+
+    tcpSocket?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentReadinessProbeTCPSocket
+
+    timeoutSeconds?: int
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentReadinessProbeExec:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
+
+    Attributes
+    ----------
+    command : [str], default is Undefined, optional
+        command
+    """
+
+
+    command?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentReadinessProbeHTTPGet:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    path : str, default is Undefined, optional
+        path
+    port : int | str, default is Undefined, required
+        port
+    scheme : str, default is Undefined, optional
+        URIScheme identifies the scheme used for connection to a host for Get actions
+    """
+
+
+    host?: str
+
+    path?: str
+
+    port: int | str
+
+    scheme?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentReadinessProbeTCPSocket:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#tcpsocketaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    port : int | str, default is Undefined, required
+        port
+    """
+
+
+    host?: str
+
+    port: int | str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentResources:
+    r"""
+    Resources describes the compute resource requirements.
+
+    Attributes
+    ----------
+    limits : {str:int | str}, default is Undefined, optional
+        ResourceList is a set of (resource name, quantity) pairs.
+    requests : {str:int | str}, default is Undefined, optional
+        ResourceList is a set of (resource name, quantity) pairs.
+    """
+
+
+    limits?: {str:int | str}
+
+    requests?: {str:int | str}
+
+
+    check:
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentSecurityContext:
+    r"""
+    SecurityContext holds security configuration that will be applied to a container.
+
+    Attributes
+    ----------
+    allowPrivilegeEscalation : bool, default is Undefined, optional
+        allow privilege escalation
+    capabilities : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentSecurityContextCapabilities, default is Undefined, optional
+        capabilities
+    privileged : bool, default is Undefined, optional
+        privileged
+    readOnlyRootFilesystem : bool, default is Undefined, optional
+        read only root filesystem
+    runAsGroup : int, default is Undefined, optional
+        run as group
+    runAsNonRoot : bool, default is Undefined, optional
+        run as non root
+    runAsUser : int, default is Undefined, optional
+        run as user
+    """
+
+
+    allowPrivilegeEscalation?: bool
+
+    capabilities?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentSecurityContextCapabilities
+
+    privileged?: bool
+
+    readOnlyRootFilesystem?: bool
+
+    runAsGroup?: int
+
+    runAsNonRoot?: bool
+
+    runAsUser?: int
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentSecurityContextCapabilities:
+    r"""
+    Adds and removes POSIX capabilities from running containers.
+
+    Attributes
+    ----------
+    add : [str], default is Undefined, optional
+        Added capabilities
+    drop : [str], default is Undefined, optional
+        Removed capabilities
+    """
+
+
+    add?: [str]
+
+    drop?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentStartupProbe:
+    r"""
+    StartupProbe to be used in the Container.
+
+    Attributes
+    ----------
+    exec : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentStartupProbeExec, default is Undefined, optional
+        exec
+    failureThreshold : int, default is Undefined, optional
+        failure threshold
+    httpGet : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentStartupProbeHTTPGet, default is Undefined, optional
+        http get
+    initialDelaySeconds : int, default is Undefined, optional
+        initial delay seconds
+    periodSeconds : int, default is Undefined, optional
+        period seconds
+    successThreshold : int, default is Undefined, optional
+        success threshold
+    tcpSocket : K8sMariadbComV1alpha1MariaDBSpecReplicationAgentStartupProbeTCPSocket, default is Undefined, optional
+        tcp socket
+    timeoutSeconds : int, default is Undefined, optional
+        timeout seconds
+    """
+
+
+    exec?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentStartupProbeExec
+
+    failureThreshold?: int
+
+    httpGet?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentStartupProbeHTTPGet
+
+    initialDelaySeconds?: int
+
+    periodSeconds?: int
+
+    successThreshold?: int
+
+    tcpSocket?: K8sMariadbComV1alpha1MariaDBSpecReplicationAgentStartupProbeTCPSocket
+
+    timeoutSeconds?: int
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentStartupProbeExec:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
+
+    Attributes
+    ----------
+    command : [str], default is Undefined, optional
+        command
+    """
+
+
+    command?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentStartupProbeHTTPGet:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    path : str, default is Undefined, optional
+        path
+    port : int | str, default is Undefined, required
+        port
+    scheme : str, default is Undefined, optional
+        URIScheme identifies the scheme used for connection to a host for Get actions
+    """
+
+
+    host?: str
+
+    path?: str
+
+    port: int | str
+
+    scheme?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentStartupProbeTCPSocket:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#tcpsocketaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    port : int | str, default is Undefined, required
+        port
+    """
+
+
+    host?: str
+
+    port: int | str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationAgentVolumeMountsItems0:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#volumemount-v1-core.
+
+    Attributes
+    ----------
+    mountPath : str, default is Undefined, required
+        mount path
+    name : str, default is Undefined, required
+        This must match the Name of a Volume.
+    readOnly : bool, default is Undefined, optional
+        read only
+    subPath : str, default is Undefined, optional
+        sub path
+    """
+
+
+    mountPath: str
+
+    name: str
+
+    readOnly?: bool
+
+    subPath?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainer:
+    r"""
+    InitContainer is an init container that runs in the MariaDB Pod and co-operates with mariadb-operator.
+
+    Attributes
+    ----------
+    args : [str], default is Undefined, optional
+        Args to be used in the Container.
+    command : [str], default is Undefined, optional
+        Command to be used in the Container.
+    env : [K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvItems0], default is Undefined, optional
+        Env represents the environment variables to be injected in a container.
+    envFrom : [K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvFromItems0], default is Undefined, optional
+        EnvFrom represents the references (via ConfigMap and Secrets) to environment variables to be injected in the container.
+    image : str, default is Undefined, required
+        Image name to be used by the MariaDB instances. The supported format is `<image>:<tag>`.
+    imagePullPolicy : str, default is Undefined, optional
+        ImagePullPolicy is the image pull policy. One of `Always`, `Never` or `IfNotPresent`. If not defined, it defaults to `IfNotPresent`.
+    lifecycle : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecycle, default is Undefined, optional
+        lifecycle
+    livenessProbe : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLivenessProbe, default is Undefined, optional
+        liveness probe
+    readinessProbe : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerReadinessProbe, default is Undefined, optional
+        readiness probe
+    resources : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerResources, default is Undefined, optional
+        resources
+    securityContext : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerSecurityContext, default is Undefined, optional
+        security context
+    startupProbe : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerStartupProbe, default is Undefined, optional
+        startup probe
+    volumeMounts : [K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerVolumeMountsItems0], default is Undefined, optional
+        VolumeMounts to be used in the Container.
+    """
+
+
+    args?: [str]
+
+    command?: [str]
+
+    env?: [K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvItems0]
+
+    envFrom?: [K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvFromItems0]
+
+    image: str
+
+    imagePullPolicy?: "Always" | "Never" | "IfNotPresent"
+
+    lifecycle?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecycle
+
+    livenessProbe?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLivenessProbe
+
+    readinessProbe?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerReadinessProbe
+
+    resources?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerResources
+
+    securityContext?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerSecurityContext
+
+    startupProbe?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerStartupProbe
+
+    volumeMounts?: [K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerVolumeMountsItems0]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvFromItems0:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#envfromsource-v1-core.
+
+    Attributes
+    ----------
+    configMapRef : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvFromItems0ConfigMapRef, default is Undefined, optional
+        config map ref
+    prefix : str, default is Undefined, optional
+        prefix
+    secretRef : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvFromItems0SecretRef, default is Undefined, optional
+        secret ref
+    """
+
+
+    configMapRef?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvFromItems0ConfigMapRef
+
+    prefix?: str
+
+    secretRef?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvFromItems0SecretRef
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvFromItems0ConfigMapRef:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    name?: str = ""
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvFromItems0SecretRef:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    name?: str = ""
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvItems0:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#envvarsource-v1-core.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the environment variable. Must be a C_IDENTIFIER.
+    value : str, default is Undefined, optional
+        value
+    valueFrom : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvItems0ValueFrom, default is Undefined, optional
+        value from
+    """
+
+
+    name: str
+
+    value?: str
+
+    valueFrom?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvItems0ValueFrom
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvItems0ValueFrom:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#envvarsource-v1-core.
+
+    Attributes
+    ----------
+    configMapKeyRef : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvItems0ValueFromConfigMapKeyRef, default is Undefined, optional
+        config map key ref
+    fieldRef : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvItems0ValueFromFieldRef, default is Undefined, optional
+        field ref
+    secretKeyRef : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvItems0ValueFromSecretKeyRef, default is Undefined, optional
+        secret key ref
+    """
+
+
+    configMapKeyRef?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvItems0ValueFromConfigMapKeyRef
+
+    fieldRef?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvItems0ValueFromFieldRef
+
+    secretKeyRef?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvItems0ValueFromSecretKeyRef
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvItems0ValueFromConfigMapKeyRef:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#configmapkeyselector-v1-core.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvItems0ValueFromFieldRef:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#objectfieldselector-v1-core.
+
+    Attributes
+    ----------
+    apiVersion : str, default is Undefined, optional
+        api version
+    fieldPath : str, default is Undefined, required
+        field path
+    """
+
+
+    apiVersion?: str
+
+    fieldPath: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerEnvItems0ValueFromSecretKeyRef:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#secretkeyselector-v1-core.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    key: str
+
+    name?: str = ""
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecycle:
+    r"""
+    Lifecycle are actions that the management system should take in response to container lifecycle events.
+
+    Attributes
+    ----------
+    postStart : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePostStart, default is Undefined, optional
+        post start
+    preStop : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePreStop, default is Undefined, optional
+        pre stop
+    """
+
+
+    postStart?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePostStart
+
+    preStop?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePreStop
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePostStart:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#lifecyclehandler-v1-core.
+
+    Attributes
+    ----------
+    exec : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePostStartExec, default is Undefined, optional
+        exec
+    httpGet : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePostStartHTTPGet, default is Undefined, optional
+        http get
+    sleep : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePostStartSleep, default is Undefined, optional
+        sleep
+    """
+
+
+    exec?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePostStartExec
+
+    httpGet?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePostStartHTTPGet
+
+    sleep?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePostStartSleep
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePostStartExec:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
+
+    Attributes
+    ----------
+    command : [str], default is Undefined, optional
+        command
+    """
+
+
+    command?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePostStartHTTPGet:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    path : str, default is Undefined, optional
+        path
+    port : int | str, default is Undefined, required
+        port
+    scheme : str, default is Undefined, optional
+        URIScheme identifies the scheme used for connection to a host for Get actions
+    """
+
+
+    host?: str
+
+    path?: str
+
+    port: int | str
+
+    scheme?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePostStartSleep:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#sleepaction-v1-core
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, optional
+        seconds
+    """
+
+
+    seconds?: int
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePreStop:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#lifecyclehandler-v1-core.
+
+    Attributes
+    ----------
+    exec : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePreStopExec, default is Undefined, optional
+        exec
+    httpGet : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePreStopHTTPGet, default is Undefined, optional
+        http get
+    sleep : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePreStopSleep, default is Undefined, optional
+        sleep
+    """
+
+
+    exec?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePreStopExec
+
+    httpGet?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePreStopHTTPGet
+
+    sleep?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePreStopSleep
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePreStopExec:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
+
+    Attributes
+    ----------
+    command : [str], default is Undefined, optional
+        command
+    """
+
+
+    command?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePreStopHTTPGet:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    path : str, default is Undefined, optional
+        path
+    port : int | str, default is Undefined, required
+        port
+    scheme : str, default is Undefined, optional
+        URIScheme identifies the scheme used for connection to a host for Get actions
+    """
+
+
+    host?: str
+
+    path?: str
+
+    port: int | str
+
+    scheme?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLifecyclePreStopSleep:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#sleepaction-v1-core
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, optional
+        seconds
+    """
+
+
+    seconds?: int
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLivenessProbe:
+    r"""
+    LivenessProbe to be used in the Container.
+
+    Attributes
+    ----------
+    exec : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLivenessProbeExec, default is Undefined, optional
+        exec
+    failureThreshold : int, default is Undefined, optional
+        failure threshold
+    httpGet : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLivenessProbeHTTPGet, default is Undefined, optional
+        http get
+    initialDelaySeconds : int, default is Undefined, optional
+        initial delay seconds
+    periodSeconds : int, default is Undefined, optional
+        period seconds
+    successThreshold : int, default is Undefined, optional
+        success threshold
+    tcpSocket : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLivenessProbeTCPSocket, default is Undefined, optional
+        tcp socket
+    timeoutSeconds : int, default is Undefined, optional
+        timeout seconds
+    """
+
+
+    exec?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLivenessProbeExec
+
+    failureThreshold?: int
+
+    httpGet?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLivenessProbeHTTPGet
+
+    initialDelaySeconds?: int
+
+    periodSeconds?: int
+
+    successThreshold?: int
+
+    tcpSocket?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLivenessProbeTCPSocket
+
+    timeoutSeconds?: int
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLivenessProbeExec:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
+
+    Attributes
+    ----------
+    command : [str], default is Undefined, optional
+        command
+    """
+
+
+    command?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLivenessProbeHTTPGet:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    path : str, default is Undefined, optional
+        path
+    port : int | str, default is Undefined, required
+        port
+    scheme : str, default is Undefined, optional
+        URIScheme identifies the scheme used for connection to a host for Get actions
+    """
+
+
+    host?: str
+
+    path?: str
+
+    port: int | str
+
+    scheme?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerLivenessProbeTCPSocket:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#tcpsocketaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    port : int | str, default is Undefined, required
+        port
+    """
+
+
+    host?: str
+
+    port: int | str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerReadinessProbe:
+    r"""
+    ReadinessProbe to be used in the Container.
+
+    Attributes
+    ----------
+    exec : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerReadinessProbeExec, default is Undefined, optional
+        exec
+    failureThreshold : int, default is Undefined, optional
+        failure threshold
+    httpGet : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerReadinessProbeHTTPGet, default is Undefined, optional
+        http get
+    initialDelaySeconds : int, default is Undefined, optional
+        initial delay seconds
+    periodSeconds : int, default is Undefined, optional
+        period seconds
+    successThreshold : int, default is Undefined, optional
+        success threshold
+    tcpSocket : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerReadinessProbeTCPSocket, default is Undefined, optional
+        tcp socket
+    timeoutSeconds : int, default is Undefined, optional
+        timeout seconds
+    """
+
+
+    exec?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerReadinessProbeExec
+
+    failureThreshold?: int
+
+    httpGet?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerReadinessProbeHTTPGet
+
+    initialDelaySeconds?: int
+
+    periodSeconds?: int
+
+    successThreshold?: int
+
+    tcpSocket?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerReadinessProbeTCPSocket
+
+    timeoutSeconds?: int
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerReadinessProbeExec:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
+
+    Attributes
+    ----------
+    command : [str], default is Undefined, optional
+        command
+    """
+
+
+    command?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerReadinessProbeHTTPGet:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    path : str, default is Undefined, optional
+        path
+    port : int | str, default is Undefined, required
+        port
+    scheme : str, default is Undefined, optional
+        URIScheme identifies the scheme used for connection to a host for Get actions
+    """
+
+
+    host?: str
+
+    path?: str
+
+    port: int | str
+
+    scheme?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerReadinessProbeTCPSocket:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#tcpsocketaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    port : int | str, default is Undefined, required
+        port
+    """
+
+
+    host?: str
+
+    port: int | str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerResources:
+    r"""
+    Resources describes the compute resource requirements.
+
+    Attributes
+    ----------
+    limits : {str:int | str}, default is Undefined, optional
+        ResourceList is a set of (resource name, quantity) pairs.
+    requests : {str:int | str}, default is Undefined, optional
+        ResourceList is a set of (resource name, quantity) pairs.
+    """
+
+
+    limits?: {str:int | str}
+
+    requests?: {str:int | str}
+
+
+    check:
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerSecurityContext:
+    r"""
+    SecurityContext holds security configuration that will be applied to a container.
+
+    Attributes
+    ----------
+    allowPrivilegeEscalation : bool, default is Undefined, optional
+        allow privilege escalation
+    capabilities : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerSecurityContextCapabilities, default is Undefined, optional
+        capabilities
+    privileged : bool, default is Undefined, optional
+        privileged
+    readOnlyRootFilesystem : bool, default is Undefined, optional
+        read only root filesystem
+    runAsGroup : int, default is Undefined, optional
+        run as group
+    runAsNonRoot : bool, default is Undefined, optional
+        run as non root
+    runAsUser : int, default is Undefined, optional
+        run as user
+    """
+
+
+    allowPrivilegeEscalation?: bool
+
+    capabilities?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerSecurityContextCapabilities
+
+    privileged?: bool
+
+    readOnlyRootFilesystem?: bool
+
+    runAsGroup?: int
+
+    runAsNonRoot?: bool
+
+    runAsUser?: int
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerSecurityContextCapabilities:
+    r"""
+    Adds and removes POSIX capabilities from running containers.
+
+    Attributes
+    ----------
+    add : [str], default is Undefined, optional
+        Added capabilities
+    drop : [str], default is Undefined, optional
+        Removed capabilities
+    """
+
+
+    add?: [str]
+
+    drop?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerStartupProbe:
+    r"""
+    StartupProbe to be used in the Container.
+
+    Attributes
+    ----------
+    exec : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerStartupProbeExec, default is Undefined, optional
+        exec
+    failureThreshold : int, default is Undefined, optional
+        failure threshold
+    httpGet : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerStartupProbeHTTPGet, default is Undefined, optional
+        http get
+    initialDelaySeconds : int, default is Undefined, optional
+        initial delay seconds
+    periodSeconds : int, default is Undefined, optional
+        period seconds
+    successThreshold : int, default is Undefined, optional
+        success threshold
+    tcpSocket : K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerStartupProbeTCPSocket, default is Undefined, optional
+        tcp socket
+    timeoutSeconds : int, default is Undefined, optional
+        timeout seconds
+    """
+
+
+    exec?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerStartupProbeExec
+
+    failureThreshold?: int
+
+    httpGet?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerStartupProbeHTTPGet
+
+    initialDelaySeconds?: int
+
+    periodSeconds?: int
+
+    successThreshold?: int
+
+    tcpSocket?: K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerStartupProbeTCPSocket
+
+    timeoutSeconds?: int
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerStartupProbeExec:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
+
+    Attributes
+    ----------
+    command : [str], default is Undefined, optional
+        command
+    """
+
+
+    command?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerStartupProbeHTTPGet:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    path : str, default is Undefined, optional
+        path
+    port : int | str, default is Undefined, required
+        port
+    scheme : str, default is Undefined, optional
+        URIScheme identifies the scheme used for connection to a host for Get actions
+    """
+
+
+    host?: str
+
+    path?: str
+
+    port: int | str
+
+    scheme?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerStartupProbeTCPSocket:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#tcpsocketaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    port : int | str, default is Undefined, required
+        port
+    """
+
+
+    host?: str
+
+    port: int | str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationInitContainerVolumeMountsItems0:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#volumemount-v1-core.
+
+    Attributes
+    ----------
+    mountPath : str, default is Undefined, required
+        mount path
+    name : str, default is Undefined, required
+        This must match the Name of a Volume.
+    readOnly : bool, default is Undefined, optional
+        read only
+    subPath : str, default is Undefined, optional
+        sub path
+    """
+
+
+    mountPath: str
+
+    name: str
+
+    readOnly?: bool
+
+    subPath?: str
 
 
 schema K8sMariadbComV1alpha1MariaDBSpecReplicationPrimary:
@@ -7172,14 +7962,20 @@ schema K8sMariadbComV1alpha1MariaDBSpecReplicationPrimary:
 
     Attributes
     ----------
-    automaticFailover : bool, default is Undefined, optional
-        AutomaticFailover indicates whether the operator should automatically update PodIndex to perform an automatic primary failover.
+    autoFailover : bool, default is Undefined, optional
+        AutoFailover indicates whether the operator should automatically update PodIndex to perform an automatic primary failover.
+        It is enabled by default.
+    autoFailoverDelay : str, default is Undefined, optional
+        AutoFailoverDelay indicates the duration before performing an automatic primary failover.
+        By default, no extra delay is added.
     podIndex : int, default is Undefined, optional
         PodIndex is the StatefulSet index of the primary node. The user may change this field to perform a manual switchover.
     """
 
 
-    automaticFailover?: bool
+    autoFailover?: bool
+
+    autoFailoverDelay?: str
 
     podIndex?: int
 
@@ -7190,40 +7986,584 @@ schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplica:
 
     Attributes
     ----------
-    connectionRetries : int, default is Undefined, optional
-        ConnectionRetries to be used when the replica connects to the primary.
-    connectionTimeout : str, default is Undefined, optional
-        ConnectionTimeout to be used when the replica connects to the primary.
+    bootstrapFrom : K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFrom, default is Undefined, optional
+        bootstrap from
+    connectionRetrySeconds : int, default is Undefined, optional
+        ConnectionRetrySeconds is the number of seconds that the replica will wait between connection retries.
+        See: https://mariadb.com/docs/server/reference/sql-statements/administrative-sql-statements/replication-statements/change-master-to#master_connect_retry.
     gtid : str, default is Undefined, optional
-        Gtid indicates which Global Transaction ID should be used when connecting a replica to the master.
-        See: https://mariadb.com/kb/en/gtid/#using-current_pos-vs-slave_pos.
+        Gtid indicates which Global Transaction ID (GTID) position mode should be used when connecting a replica to the master.
+        By default, CurrentPos is used.
+        See: https://mariadb.com/docs/server/reference/sql-statements/administrative-sql-statements/replication-statements/change-master-to#master_use_gtid.
+    maxLagSeconds : int, default is Undefined, optional
+        MaxLagSeconds is the maximum number of seconds that replicas are allowed to lag behind the primary.
+        If a replica exceeds this threshold, it is marked as not ready and read queries will no longer be forwarded to it.
+        If not provided, it defaults to 0, which means that replicas are not allowed to lag behind the primary (recommended).
+        Lagged replicas will not be taken into account as candidates for the new primary during failover,
+        and they will block other operations, such as switchover and upgrade.
+        This field is not taken into account by MaxScale, you can define the maximum lag as router parameters.
+        See: https://mariadb.com/docs/maxscale/reference/maxscale-routers/maxscale-readwritesplit#max_replication_lag.
+    recovery : K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaRecovery, default is Undefined, optional
+        recovery
     replPasswordSecretKeyRef : K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaReplPasswordSecretKeyRef, default is Undefined, optional
         repl password secret key ref
     syncTimeout : str, default is Undefined, optional
-        SyncTimeout defines the timeout for a replica to be synced with the primary when performing a primary switchover.
-        If the timeout is reached, the replica GTID will be reset and the switchover will continue.
-    waitPoint : str, default is Undefined, optional
-        WaitPoint defines whether the transaction should wait for ACK before committing to the storage engine.
-        More info: https://mariadb.com/kb/en/semisynchronous-replication/#rpl_semi_sync_master_wait_point.
+        SyncTimeout defines the timeout for the synchronization phase during switchover and failover operations.
+        During switchover, all replicas must be synced with the current primary before promoting the new primary.
+        During failover, the new primary must be synced before being promoted as primary. This implies processing all the events in the relay log.
+        When the timeout is reached, the operator restarts the operation from the beginning.
+        It defaults to 10s.
+        See: https://mariadb.com/docs/server/reference/sql-functions/secondary-functions/miscellaneous-functions/master_gtid_wait
     """
 
 
-    connectionRetries?: int
+    bootstrapFrom?: K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFrom
 
-    connectionTimeout?: str
+    connectionRetrySeconds?: int
 
     gtid?: "CurrentPos" | "SlavePos"
+
+    maxLagSeconds?: int
+
+    recovery?: K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaRecovery
 
     replPasswordSecretKeyRef?: K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaReplPasswordSecretKeyRef
 
     syncTimeout?: str
 
-    waitPoint?: "AfterSync" | "AfterCommit"
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFrom:
+    r"""
+    ReplicaBootstrapFrom defines the data sources used to bootstrap new replicas.
+    This will be used as part of the scaling out and recovery operations, when new replicas are created.
+    If not provided, scale out and recovery operations will return an error.
+
+    Attributes
+    ----------
+    physicalBackupTemplateRef : K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromPhysicalBackupTemplateRef, default is Undefined, required
+        physical backup template ref
+    restoreJob : K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJob, default is Undefined, optional
+        restore job
+    """
+
+
+    physicalBackupTemplateRef: K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromPhysicalBackupTemplateRef
+
+    restoreJob?: K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJob
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromPhysicalBackupTemplateRef:
+    r"""
+    PhysicalBackupTemplateRef is a reference to a PhysicalBackup object that will be used as template to create a new PhysicalBackup object
+    used synchronize the data from an up to date replica to the new replica to be bootstrapped.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        name
+    """
+
+
+    name?: str = ""
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJob:
+    r"""
+    RestoreJob defines additional properties for the Job used to perform the restoration.
+
+    Attributes
+    ----------
+    affinity : K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinity, default is Undefined, optional
+        affinity
+    args : [str], default is Undefined, optional
+        Args to be used in the Container.
+    metadata : K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobMetadata, default is Undefined, optional
+        metadata
+    nodeSelector : {str:str}, default is Undefined, optional
+        NodeSelector to be used in the Pod.
+    resources : K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobResources, default is Undefined, optional
+        resources
+    tolerations : [K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobTolerationsItems0], default is Undefined, optional
+        Tolerations to be used in the Pod.
+    """
+
+
+    affinity?: K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinity
+
+    args?: [str]
+
+    metadata?: K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobMetadata
+
+    nodeSelector?: {str:str}
+
+    resources?: K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobResources
+
+    tolerations?: [K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobTolerationsItems0]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinity:
+    r"""
+    Affinity to be used in the Pod.
+
+    Attributes
+    ----------
+    antiAffinityEnabled : bool, default is Undefined, optional
+        AntiAffinityEnabled configures PodAntiAffinity so each Pod is scheduled in a different Node, enabling HA.
+        Make sure you have at least as many Nodes available as the replicas to not end up with unscheduled Pods.
+    nodeAffinity : K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinity, default is Undefined, optional
+        node affinity
+    podAntiAffinity : K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinity, default is Undefined, optional
+        pod anti affinity
+    """
+
+
+    antiAffinityEnabled?: bool
+
+    nodeAffinity?: K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinity
+
+    podAntiAffinity?: K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinity
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinity:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeaffinity-v1-core
+
+    Attributes
+    ----------
+    preferredDuringSchedulingIgnoredDuringExecution : [K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0], default is Undefined, optional
+        preferred during scheduling ignored during execution
+    requiredDuringSchedulingIgnoredDuringExecution : K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution, default is Undefined, optional
+        required during scheduling ignored during execution
+    """
+
+
+    preferredDuringSchedulingIgnoredDuringExecution?: [K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0]
+
+    requiredDuringSchedulingIgnoredDuringExecution?: K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#preferredschedulingterm-v1-core
+
+    Attributes
+    ----------
+    preference : K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference, default is Undefined, required
+        preference
+    weight : int, default is Undefined, required
+        weight
+    """
+
+
+    preference: K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference
+
+    weight: int
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorterm-v1-core
+
+    Attributes
+    ----------
+    matchExpressions : [K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0], default is Undefined, optional
+        match expressions
+    matchFields : [K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0], default is Undefined, optional
+        match fields
+    """
+
+
+    matchExpressions?: [K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0]
+
+    matchFields?: [K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    operator : str, default is Undefined, required
+        A node selector operator is the set of operators that can be used in
+        a node selector requirement.
+    values : [str], default is Undefined, optional
+        values
+    """
+
+
+    key: str
+
+    operator: str
+
+    values?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    operator : str, default is Undefined, required
+        A node selector operator is the set of operators that can be used in
+        a node selector requirement.
+    values : [str], default is Undefined, optional
+        values
+    """
+
+
+    key: str
+
+    operator: str
+
+    values?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselector-v1-core
+
+    Attributes
+    ----------
+    nodeSelectorTerms : [K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0], default is Undefined, required
+        node selector terms
+    """
+
+
+    nodeSelectorTerms: [K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorterm-v1-core
+
+    Attributes
+    ----------
+    matchExpressions : [K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0], default is Undefined, optional
+        match expressions
+    matchFields : [K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0], default is Undefined, optional
+        match fields
+    """
+
+
+    matchExpressions?: [K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0]
+
+    matchFields?: [K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    operator : str, default is Undefined, required
+        A node selector operator is the set of operators that can be used in
+        a node selector requirement.
+    values : [str], default is Undefined, optional
+        values
+    """
+
+
+    key: str
+
+    operator: str
+
+    values?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    operator : str, default is Undefined, required
+        A node selector operator is the set of operators that can be used in
+        a node selector requirement.
+    values : [str], default is Undefined, optional
+        values
+    """
+
+
+    key: str
+
+    operator: str
+
+    values?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinity:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podantiaffinity-v1-core.
+
+    Attributes
+    ----------
+    preferredDuringSchedulingIgnoredDuringExecution : [K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0], default is Undefined, optional
+        preferred during scheduling ignored during execution
+    requiredDuringSchedulingIgnoredDuringExecution : [K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0], default is Undefined, optional
+        required during scheduling ignored during execution
+    """
+
+
+    preferredDuringSchedulingIgnoredDuringExecution?: [K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0]
+
+    requiredDuringSchedulingIgnoredDuringExecution?: [K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#weightedpodaffinityterm-v1-core.
+
+    Attributes
+    ----------
+    podAffinityTerm : K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm, default is Undefined, required
+        pod affinity term
+    weight : int, default is Undefined, required
+        weight
+    """
+
+
+    podAffinityTerm: K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm
+
+    weight: int
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podaffinityterm-v1-core.
+
+    Attributes
+    ----------
+    labelSelector : K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector, default is Undefined, optional
+        label selector
+    topologyKey : str, default is Undefined, required
+        topology key
+    """
+
+
+    labelSelector?: K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector
+
+    topologyKey: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselector-v1-meta
+
+    Attributes
+    ----------
+    matchExpressions : [K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0], default is Undefined, optional
+        match expressions
+    matchLabels : {str:str}, default is Undefined, optional
+        match labels
+    """
+
+
+    matchExpressions?: [K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselectorrequirement-v1-meta
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    operator : str, default is Undefined, required
+        A label selector operator is the set of operators that can be used in a selector requirement.
+    values : [str], default is Undefined, optional
+        values
+    """
+
+
+    key: str
+
+    operator: str
+
+    values?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podaffinityterm-v1-core.
+
+    Attributes
+    ----------
+    labelSelector : K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector, default is Undefined, optional
+        label selector
+    topologyKey : str, default is Undefined, required
+        topology key
+    """
+
+
+    labelSelector?: K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector
+
+    topologyKey: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselector-v1-meta
+
+    Attributes
+    ----------
+    matchExpressions : [K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0], default is Undefined, optional
+        match expressions
+    matchLabels : {str:str}, default is Undefined, optional
+        match labels
+    """
+
+
+    matchExpressions?: [K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselectorrequirement-v1-meta
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key
+    operator : str, default is Undefined, required
+        A label selector operator is the set of operators that can be used in a selector requirement.
+    values : [str], default is Undefined, optional
+        values
+    """
+
+
+    key: str
+
+    operator: str
+
+    values?: [str]
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobMetadata:
+    r"""
+    Metadata defines additional metadata for the bootstrap Jobs.
+
+    Attributes
+    ----------
+    annotations : {str:str}, default is Undefined, optional
+        Annotations to be added to children resources.
+    labels : {str:str}, default is Undefined, optional
+        Labels to be added to children resources.
+    """
+
+
+    annotations?: {str:str}
+
+    labels?: {str:str}
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobResources:
+    r"""
+    Resources describes the compute resource requirements.
+
+    Attributes
+    ----------
+    limits : {str:int | str}, default is Undefined, optional
+        ResourceList is a set of (resource name, quantity) pairs.
+    requests : {str:int | str}, default is Undefined, optional
+        ResourceList is a set of (resource name, quantity) pairs.
+    """
+
+
+    limits?: {str:int | str}
+
+    requests?: {str:int | str}
+
+
+    check:
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaBootstrapFromRestoreJobTolerationsItems0:
+    r"""
+    The pod this Toleration is attached to tolerates any taint that matches
+    the triple <key,value,effect> using the matching operator <operator>.
+
+    Attributes
+    ----------
+    effect : str, default is Undefined, optional
+        Effect indicates the taint effect to match. Empty means match all taint effects.
+        When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
+    key : str, default is Undefined, optional
+        Key is the taint key that the toleration applies to. Empty means match all taint keys.
+        If the key is empty, operator must be Exists; this combination means to match all values and all keys.
+    operator : str, default is Undefined, optional
+        Operator represents a key's relationship to the value.
+        Valid operators are Exists, Equal, Lt, and Gt. Defaults to Equal.
+        Exists is equivalent to wildcard for value, so that a pod can
+        tolerate all taints of a particular category.
+        Lt and Gt perform numeric comparisons (requires feature gate TaintTolerationComparisonOperators).
+    tolerationSeconds : int, default is Undefined, optional
+        TolerationSeconds represents the period of time the toleration (which must be
+        of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default,
+        it is not set, which means tolerate the taint forever (do not evict). Zero and
+        negative values will be treated as 0 (evict immediately) by the system.
+    value : str, default is Undefined, optional
+        Value is the taint value the toleration matches to.
+        If the operator is Exists, the value should be empty, otherwise just a regular string.
+    """
+
+
+    effect?: str
+
+    key?: str
+
+    operator?: str
+
+    tolerationSeconds?: int
+
+    value?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaRecovery:
+    r"""
+    ReplicaRecovery defines how the replicas should be recovered after they enter an error state.
+    This process deletes data from faulty replicas and recreates them using the source defined in the bootstrapFrom field.
+    It is disabled by default, and it requires the bootstrapFrom field to be set.
+
+    Attributes
+    ----------
+    enabled : bool, default is Undefined, required
+        Enabled is a flag to enable replica recovery.
+    errorDurationThreshold : str, default is Undefined, optional
+        ErrorDurationThreshold defines the time duration after which, if a replica continues to report errors,
+        the operator will initiate the recovery process for that replica.
+        This threshold applies only to error codes not identified as recoverable by the operator.
+        Errors identified as recoverable will trigger the recovery process immediately.
+        It defaults to 5 minutes.
+    """
+
+
+    enabled: bool
+
+    errorDurationThreshold?: str
 
 
 schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaReplPasswordSecretKeyRef:
     r"""
     ReplPasswordSecretKeyRef provides a reference to the Secret to use as password for the replication user.
+    By default, a random password will be generated.
 
     Attributes
     ----------
@@ -7245,7 +8585,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecReplicationReplicaReplPasswordSecretKeyRe
 
 schema K8sMariadbComV1alpha1MariaDBSpecResources:
     r"""
-    Resouces describes the compute resource requirements.
+    Resources describes the compute resource requirements.
 
     Attributes
     ----------
@@ -7413,6 +8753,8 @@ schema K8sMariadbComV1alpha1MariaDBSpecSecondaryService:
         AllocateLoadBalancerNodePorts Service field.
     externalTrafficPolicy : str, default is Undefined, optional
         ExternalTrafficPolicy Service field.
+    loadBalancerClass : str, default is Undefined, optional
+        LoadBalancerClass Service field.
     loadBalancerIP : str, default is Undefined, optional
         LoadBalancerIP Service field.
     loadBalancerSourceRanges : [str], default is Undefined, optional
@@ -7429,6 +8771,8 @@ schema K8sMariadbComV1alpha1MariaDBSpecSecondaryService:
     allocateLoadBalancerNodePorts?: bool
 
     externalTrafficPolicy?: str
+
+    loadBalancerClass?: str
 
     loadBalancerIP?: str
 
@@ -7526,6 +8870,8 @@ schema K8sMariadbComV1alpha1MariaDBSpecService:
         AllocateLoadBalancerNodePorts Service field.
     externalTrafficPolicy : str, default is Undefined, optional
         ExternalTrafficPolicy Service field.
+    loadBalancerClass : str, default is Undefined, optional
+        LoadBalancerClass Service field.
     loadBalancerIP : str, default is Undefined, optional
         LoadBalancerIP Service field.
     loadBalancerSourceRanges : [str], default is Undefined, optional
@@ -7542,6 +8888,8 @@ schema K8sMariadbComV1alpha1MariaDBSpecService:
     allocateLoadBalancerNodePorts?: bool
 
     externalTrafficPolicy?: str
+
+    loadBalancerClass?: str
 
     loadBalancerIP?: str
 
@@ -7574,7 +8922,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecServiceMetadata:
 
 schema K8sMariadbComV1alpha1MariaDBSpecServicePortsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#serviceport-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#serviceport-v1-core
 
     Attributes
     ----------
@@ -7634,7 +8982,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecSidecarContainersItems0:
 
 schema K8sMariadbComV1alpha1MariaDBSpecSidecarContainersItems0EnvItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#envvarsource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#envvarsource-v1-core.
 
     Attributes
     ----------
@@ -7656,7 +9004,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecSidecarContainersItems0EnvItems0:
 
 schema K8sMariadbComV1alpha1MariaDBSpecSidecarContainersItems0EnvItems0ValueFrom:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#envvarsource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#envvarsource-v1-core.
 
     Attributes
     ----------
@@ -7678,7 +9026,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecSidecarContainersItems0EnvItems0ValueFrom
 
 schema K8sMariadbComV1alpha1MariaDBSpecSidecarContainersItems0EnvItems0ValueFromConfigMapKeyRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#configmapkeyselector-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#configmapkeyselector-v1-core.
 
     Attributes
     ----------
@@ -7696,7 +9044,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecSidecarContainersItems0EnvItems0ValueFrom
 
 schema K8sMariadbComV1alpha1MariaDBSpecSidecarContainersItems0EnvItems0ValueFromFieldRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#objectfieldselector-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#objectfieldselector-v1-core.
 
     Attributes
     ----------
@@ -7714,7 +9062,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecSidecarContainersItems0EnvItems0ValueFrom
 
 schema K8sMariadbComV1alpha1MariaDBSpecSidecarContainersItems0EnvItems0ValueFromSecretKeyRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#secretkeyselector-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#secretkeyselector-v1-core.
 
     Attributes
     ----------
@@ -7732,7 +9080,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecSidecarContainersItems0EnvItems0ValueFrom
 
 schema K8sMariadbComV1alpha1MariaDBSpecSidecarContainersItems0Resources:
     r"""
-    Resouces describes the compute resource requirements.
+    Resources describes the compute resource requirements.
 
     Attributes
     ----------
@@ -7755,7 +9103,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecSidecarContainersItems0Resources:
 
 schema K8sMariadbComV1alpha1MariaDBSpecSidecarContainersItems0VolumeMountsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#volumemount-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#volumemount-v1-core.
 
     Attributes
     ----------
@@ -7823,7 +9171,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecStartupProbe:
 
 schema K8sMariadbComV1alpha1MariaDBSpecStartupProbeExec:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#execaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
 
     Attributes
     ----------
@@ -7837,7 +9185,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecStartupProbeExec:
 
 schema K8sMariadbComV1alpha1MariaDBSpecStartupProbeHTTPGet:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#httpgetaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
 
     Attributes
     ----------
@@ -7863,7 +9211,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecStartupProbeHTTPGet:
 
 schema K8sMariadbComV1alpha1MariaDBSpecStartupProbeTCPSocket:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#tcpsocketaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#tcpsocketaction-v1-core.
 
     Attributes
     ----------
@@ -7887,6 +9235,8 @@ schema K8sMariadbComV1alpha1MariaDBSpecStorage:
     ----------
     ephemeral : bool, default is Undefined, optional
         Ephemeral indicates whether to use ephemeral storage in the PVCs. It is only compatible with non HA MariaDBs.
+    pvcRetentionPolicy : K8sMariadbComV1alpha1MariaDBSpecStoragePvcRetentionPolicy, default is Undefined, optional
+        pvc retention policy
     resizeInUseVolumes : bool, default is Undefined, optional
         ResizeInUseVolumes indicates whether the PVCs can be resized. The 'StorageClassName' used should have 'allowVolumeExpansion' set to 'true' to allow resizing.
         It defaults to true.
@@ -7905,6 +9255,8 @@ schema K8sMariadbComV1alpha1MariaDBSpecStorage:
 
     ephemeral?: bool
 
+    pvcRetentionPolicy?: K8sMariadbComV1alpha1MariaDBSpecStoragePvcRetentionPolicy
+
     resizeInUseVolumes?: bool
 
     size?: int | str
@@ -7918,6 +9270,29 @@ schema K8sMariadbComV1alpha1MariaDBSpecStorage:
 
     check:
         _regex_match(str(size), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if size
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecStoragePvcRetentionPolicy:
+    r"""
+    PersistentVolumeClaimRetentionPolicy describes the lifecycle of PVCs created from volumeClaimTemplates.
+    By default, all persistent volume claims are created as needed and retained until manually deleted.
+    This policy allows the lifecycle to be altered, for example by deleting PVCs when their statefulset is deleted,
+    or when their pod is scaled down.
+
+    Attributes
+    ----------
+    whenDeleted : str, default is Undefined, optional
+        PersistentVolumeClaimRetentionPolicyType describes the lifecycle of persistent volume claims.
+        Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#statefulsetpersistentvolumeclaimretentionpolicy-v1-apps.
+    whenScaled : str, default is Undefined, optional
+        PersistentVolumeClaimRetentionPolicyType describes the lifecycle of persistent volume claims.
+        Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#statefulsetpersistentvolumeclaimretentionpolicy-v1-apps.
+    """
+
+
+    whenDeleted?: str
+
+    whenScaled?: str
 
 
 schema K8sMariadbComV1alpha1MariaDBSpecStorageVolumeClaimTemplate:
@@ -8068,6 +9443,8 @@ schema K8sMariadbComV1alpha1MariaDBSpecTLS:
         It disabled by default.
     serverCASecretRef : K8sMariadbComV1alpha1MariaDBSpecTLSServerCASecretRef, default is Undefined, optional
         server c a secret ref
+    serverCertAdditionalNames : [str], default is Undefined, optional
+        ServerCertAdditionalNames is a list of additional certificate common names
     serverCertIssuerRef : K8sMariadbComV1alpha1MariaDBSpecTLSServerCertIssuerRef, default is Undefined, optional
         server cert issuer ref
     serverCertSecretRef : K8sMariadbComV1alpha1MariaDBSpecTLSServerCertSecretRef, default is Undefined, optional
@@ -8088,6 +9465,8 @@ schema K8sMariadbComV1alpha1MariaDBSpecTLS:
     required?: bool
 
     serverCASecretRef?: K8sMariadbComV1alpha1MariaDBSpecTLSServerCASecretRef
+
+    serverCertAdditionalNames?: [str]
 
     serverCertIssuerRef?: K8sMariadbComV1alpha1MariaDBSpecTLSServerCertIssuerRef
 
@@ -8121,11 +9500,13 @@ schema K8sMariadbComV1alpha1MariaDBSpecTLSClientCertIssuerRef:
     Attributes
     ----------
     group : str, default is Undefined, optional
-        Group of the resource being referred to.
+        Group of the issuer being referred to.
+        Defaults to 'cert-manager.io'.
     kind : str, default is Undefined, optional
-        Kind of the resource being referred to.
+        Kind of the issuer being referred to.
+        Defaults to 'Issuer'.
     name : str, default is Undefined, required
-        Name of the resource being referred to.
+        Name of the issuer being referred to.
     """
 
 
@@ -8178,11 +9559,13 @@ schema K8sMariadbComV1alpha1MariaDBSpecTLSServerCertIssuerRef:
     Attributes
     ----------
     group : str, default is Undefined, optional
-        Group of the resource being referred to.
+        Group of the issuer being referred to.
+        Defaults to 'cert-manager.io'.
     kind : str, default is Undefined, optional
-        Kind of the resource being referred to.
+        Kind of the issuer being referred to.
+        Defaults to 'Issuer'.
     name : str, default is Undefined, required
-        Name of the resource being referred to.
+        Name of the issuer being referred to.
     """
 
 
@@ -8223,9 +9606,10 @@ schema K8sMariadbComV1alpha1MariaDBSpecTolerationsItems0:
         If the key is empty, operator must be Exists; this combination means to match all values and all keys.
     operator : str, default is Undefined, optional
         Operator represents a key's relationship to the value.
-        Valid operators are Exists and Equal. Defaults to Equal.
+        Valid operators are Exists, Equal, Lt, and Gt. Defaults to Equal.
         Exists is equivalent to wildcard for value, so that a pod can
         tolerate all taints of a particular category.
+        Lt and Gt perform numeric comparisons (requires feature gate TaintTolerationComparisonOperators).
     tolerationSeconds : int, default is Undefined, optional
         TolerationSeconds represents the period of time the toleration (which must be
         of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default,
@@ -8250,7 +9634,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecTolerationsItems0:
 
 schema K8sMariadbComV1alpha1MariaDBSpecTopologySpreadConstraintsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#topologyspreadconstraint-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#topologyspreadconstraint-v1-core.
 
     Attributes
     ----------
@@ -8372,10 +9756,10 @@ schema K8sMariadbComV1alpha1MariaDBSpecUpdateStrategyRollingUpdate:
         The maximum number of pods that can be unavailable during the update.
         Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%).
         Absolute number is calculated from percentage by rounding up. This can not be 0.
-        Defaults to 1. This field is alpha-level and is only honored by servers that enable the
-        MaxUnavailableStatefulSet feature. The field applies to all pods in the range 0 to
+        Defaults to 1. This field is beta-level and is enabled by default. The field applies to all pods in the range 0 to
         Replicas-1. That means if there is any unavailable pod in the range 0 to Replicas-1, it
         will be counted towards MaxUnavailable.
+        This setting might not be effective for the OrderedReady podManagementPolicy. That policy ensures pods are created and become ready one at a time.
     partition : int, default is Undefined, optional
         Partition indicates the ordinal at which the StatefulSet should be partitioned
         for updates. During a rolling update, all pods from ordinal Replicas-1 to
@@ -8391,7 +9775,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecUpdateStrategyRollingUpdate:
 
 schema K8sMariadbComV1alpha1MariaDBSpecVolumeMountsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#volumemount-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#volumemount-v1-core.
 
     Attributes
     ----------
@@ -8417,7 +9801,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecVolumeMountsItems0:
 
 schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#volume-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#volume-v1-core.
 
     Attributes
     ----------
@@ -8427,6 +9811,8 @@ schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0:
         csi
     emptyDir : K8sMariadbComV1alpha1MariaDBSpecVolumesItems0EmptyDir, default is Undefined, optional
         empty dir
+    ephemeral : K8sMariadbComV1alpha1MariaDBSpecVolumesItems0Ephemeral, default is Undefined, optional
+        ephemeral
     hostPath : K8sMariadbComV1alpha1MariaDBSpecVolumesItems0HostPath, default is Undefined, optional
         host path
     name : str, default is Undefined, required
@@ -8446,6 +9832,8 @@ schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0:
 
     emptyDir?: K8sMariadbComV1alpha1MariaDBSpecVolumesItems0EmptyDir
 
+    ephemeral?: K8sMariadbComV1alpha1MariaDBSpecVolumesItems0Ephemeral
+
     hostPath?: K8sMariadbComV1alpha1MariaDBSpecVolumesItems0HostPath
 
     name: str
@@ -8459,7 +9847,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0:
 
 schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0ConfigMap:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#configmapvolumesource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#configmapvolumesource-v1-core.
 
     Attributes
     ----------
@@ -8477,7 +9865,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0ConfigMap:
 
 schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0Csi:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#csivolumesource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#csivolumesource-v1-core.
 
     Attributes
     ----------
@@ -8507,7 +9895,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0Csi:
 
 schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0CsiNodePublishSecretRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#localobjectreference-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
     Attributes
     ----------
@@ -8521,7 +9909,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0CsiNodePublishSecretRef:
 
 schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0EmptyDir:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#emptydirvolumesource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#emptydirvolumesource-v1-core.
 
     Attributes
     ----------
@@ -8541,9 +9929,147 @@ schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0EmptyDir:
         _regex_match(str(sizeLimit), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if sizeLimit
 
 
+schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0Ephemeral:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#ephemeralvolumesource-v1-core.
+
+    Attributes
+    ----------
+    volumeClaimTemplate : K8sMariadbComV1alpha1MariaDBSpecVolumesItems0EphemeralVolumeClaimTemplate, default is Undefined, optional
+        volume claim template
+    """
+
+
+    volumeClaimTemplate?: K8sMariadbComV1alpha1MariaDBSpecVolumesItems0EphemeralVolumeClaimTemplate
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0EphemeralVolumeClaimTemplate:
+    r"""
+    VolumeClaimTemplate defines a template to customize PVC objects.
+
+    Attributes
+    ----------
+    accessModes : [str], default is Undefined, optional
+        access modes
+    metadata : K8sMariadbComV1alpha1MariaDBSpecVolumesItems0EphemeralVolumeClaimTemplateMetadata, default is Undefined, optional
+        metadata
+    resources : K8sMariadbComV1alpha1MariaDBSpecVolumesItems0EphemeralVolumeClaimTemplateResources, default is Undefined, optional
+        resources
+    selector : K8sMariadbComV1alpha1MariaDBSpecVolumesItems0EphemeralVolumeClaimTemplateSelector, default is Undefined, optional
+        selector
+    storageClassName : str, default is Undefined, optional
+        storage class name
+    """
+
+
+    accessModes?: [str]
+
+    metadata?: K8sMariadbComV1alpha1MariaDBSpecVolumesItems0EphemeralVolumeClaimTemplateMetadata
+
+    resources?: K8sMariadbComV1alpha1MariaDBSpecVolumesItems0EphemeralVolumeClaimTemplateResources
+
+    selector?: K8sMariadbComV1alpha1MariaDBSpecVolumesItems0EphemeralVolumeClaimTemplateSelector
+
+    storageClassName?: str
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0EphemeralVolumeClaimTemplateMetadata:
+    r"""
+    Metadata to be added to the PVC metadata.
+
+    Attributes
+    ----------
+    annotations : {str:str}, default is Undefined, optional
+        Annotations to be added to children resources.
+    labels : {str:str}, default is Undefined, optional
+        Labels to be added to children resources.
+    """
+
+
+    annotations?: {str:str}
+
+    labels?: {str:str}
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0EphemeralVolumeClaimTemplateResources:
+    r"""
+    VolumeResourceRequirements describes the storage resource requirements for a volume.
+
+    Attributes
+    ----------
+    limits : {str:int | str}, default is Undefined, optional
+        Limits describes the maximum amount of compute resources allowed.
+        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+    requests : {str:int | str}, default is Undefined, optional
+        Requests describes the minimum amount of compute resources required.
+        If Requests is omitted for a container, it defaults to Limits if that is explicitly specified,
+        otherwise to an implementation-defined value. Requests cannot exceed Limits.
+        More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+    """
+
+
+    limits?: {str:int | str}
+
+    requests?: {str:int | str}
+
+
+    check:
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0EphemeralVolumeClaimTemplateSelector:
+    r"""
+    A label selector is a label query over a set of resources. The result of matchLabels and
+    matchExpressions are ANDed. An empty label selector matches all objects. A null
+    label selector matches no objects.
+
+    Attributes
+    ----------
+    matchExpressions : [K8sMariadbComV1alpha1MariaDBSpecVolumesItems0EphemeralVolumeClaimTemplateSelectorMatchExpressionsItems0], default is Undefined, optional
+        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+    matchLabels : {str:str}, default is Undefined, optional
+        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
+        map is equivalent to an element of matchExpressions, whose key field is "key", the
+        operator is "In", and the values array contains only "value". The requirements are ANDed.
+    """
+
+
+    matchExpressions?: [K8sMariadbComV1alpha1MariaDBSpecVolumesItems0EphemeralVolumeClaimTemplateSelectorMatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0EphemeralVolumeClaimTemplateSelectorMatchExpressionsItems0:
+    r"""
+    A label selector requirement is a selector that contains values, a key, and an operator that
+    relates the key and values.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key is the label key that the selector applies to.
+    operator : str, default is Undefined, required
+        operator represents a key's relationship to a set of values.
+        Valid operators are In, NotIn, Exists and DoesNotExist.
+    values : [str], default is Undefined, optional
+        values is an array of string values. If the operator is In or NotIn,
+        the values array must be non-empty. If the operator is Exists or DoesNotExist,
+        the values array must be empty. This array is replaced during a strategic
+        merge patch.
+    """
+
+
+    key: str
+
+    operator: str
+
+    values?: [str]
+
+
 schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0HostPath:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#hostpathvolumesource-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#hostpathvolumesource-v1-core
 
     Attributes
     ----------
@@ -8561,7 +10087,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0HostPath:
 
 schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0Nfs:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nfsvolumesource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nfsvolumesource-v1-core.
 
     Attributes
     ----------
@@ -8583,7 +10109,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0Nfs:
 
 schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0PersistentVolumeClaim:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#persistentvolumeclaimvolumesource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#persistentvolumeclaimvolumesource-v1-core.
 
     Attributes
     ----------
@@ -8601,7 +10127,7 @@ schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0PersistentVolumeClaim:
 
 schema K8sMariadbComV1alpha1MariaDBSpecVolumesItems0Secret:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#secretvolumesource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#secretvolumesource-v1-core.
 
     Attributes
     ----------
@@ -8625,8 +10151,12 @@ schema K8sMariadbComV1alpha1MariaDBStatus:
     ----------
     conditions : [K8sMariadbComV1alpha1MariaDBStatusConditionsItems0], default is Undefined, optional
         Conditions for the Mariadb object.
+    currentMultiClusterPrimary : str, default is Undefined, optional
+        CurrentMultiClusterPrimary is the current primary cluster name when using the multi-cluster topology.
     currentPrimary : str, default is Undefined, optional
         CurrentPrimary is the primary Pod.
+    currentPrimaryFailingSince : str, default is Undefined, optional
+        CurrentPrimaryFailingSince is the timestamp of the moment when the primary became not ready.
     currentPrimaryPodIndex : int, default is Undefined, optional
         CurrentPrimaryPodIndex is the primary Pod index.
     defaultVersion : str, default is Undefined, optional
@@ -8635,10 +10165,16 @@ schema K8sMariadbComV1alpha1MariaDBStatus:
         of a version tag.
     galeraRecovery : K8sMariadbComV1alpha1MariaDBStatusGaleraRecovery, default is Undefined, optional
         galera recovery
+    pointInTimeRecovery : K8sMariadbComV1alpha1MariaDBStatusPointInTimeRecovery, default is Undefined, optional
+        point in time recovery
     replicas : int, default is Undefined, optional
         Replicas indicates the number of current instances.
-    replicationStatus : {str:str}, default is Undefined, optional
-        ReplicationStatus is the replication current state for each Pod.
+    replication : K8sMariadbComV1alpha1MariaDBStatusReplication, default is Undefined, optional
+        replication
+    rootPasswordHash : str, default is Undefined, optional
+        RootPasswordHash is a hash of the root password. It is used to avoid unnecessary reconciliations.
+    scaleOutInitialIndex : int, default is Undefined, optional
+        ScaleOutInitialIndex is the initial index where the scale out operation started.
     tls : K8sMariadbComV1alpha1MariaDBStatusTLS, default is Undefined, optional
         tls
     """
@@ -8646,7 +10182,11 @@ schema K8sMariadbComV1alpha1MariaDBStatus:
 
     conditions?: [K8sMariadbComV1alpha1MariaDBStatusConditionsItems0]
 
+    currentMultiClusterPrimary?: str
+
     currentPrimary?: str
+
+    currentPrimaryFailingSince?: str
 
     currentPrimaryPodIndex?: int
 
@@ -8654,9 +10194,15 @@ schema K8sMariadbComV1alpha1MariaDBStatus:
 
     galeraRecovery?: K8sMariadbComV1alpha1MariaDBStatusGaleraRecovery
 
+    pointInTimeRecovery?: K8sMariadbComV1alpha1MariaDBStatusPointInTimeRecovery
+
     replicas?: int
 
-    replicationStatus?: {str:str}
+    replication?: K8sMariadbComV1alpha1MariaDBStatusReplication
+
+    rootPasswordHash?: str
+
+    scaleOutInitialIndex?: int
 
     tls?: K8sMariadbComV1alpha1MariaDBStatusTLS
 
@@ -8799,6 +10345,120 @@ schema K8sMariadbComV1alpha1MariaDBStatusGaleraRecoveryStateAnon:
     uuid: str
 
     version: str
+
+
+schema K8sMariadbComV1alpha1MariaDBStatusPointInTimeRecovery:
+    r"""
+    PointInTimeRecovery is the status of the point-in-time-recovery process.
+
+    Attributes
+    ----------
+    lastArchivedBinaryLog : str, default is Undefined, optional
+        LastArchivedBinaryLog is name of the last archived binary log.
+    lastArchivedGtid : str, default is Undefined, optional
+        LastArchivedGtid is the last archived GTID.
+    lastArchivedPosition : int, default is Undefined, optional
+        LastArchivedPosition is the position of last archived binary log event.
+    lastArchivedTime : str, default is Undefined, optional
+        LastArchivedTime is the time of the last archived binary log event.
+    serverId : int, default is Undefined, optional
+        ServerId identifies the server whose binary logs are being archived.
+    storageReadyForArchival : bool, default is Undefined, optional
+        StorageReadyForArchival indicates that the storage is ready for archival, meaning that the sidecar agent can start archiving the binary logs.
+    """
+
+
+    lastArchivedBinaryLog?: str
+
+    lastArchivedGtid?: str
+
+    lastArchivedPosition?: int
+
+    lastArchivedTime?: str
+
+    serverId?: int
+
+    storageReadyForArchival?: bool
+
+
+schema K8sMariadbComV1alpha1MariaDBStatusReplication:
+    r"""
+    Replication is the replication current status per each Pod.
+
+    Attributes
+    ----------
+    gtidStrictModePaused : bool, default is Undefined, optional
+        GtidStrictModePaused indicates that gtid_strict_mode has been temporarily paused.
+    replicaToRecover : str, default is Undefined, optional
+        ReplicaToRecover is the replica that is being recovered by the operator.
+    replicas : {str:K8sMariadbComV1alpha1MariaDBStatusReplicationReplicasAnon}, default is Undefined, optional
+        Replicas is the observed replication status for each replica.
+    roles : {str:str}, default is Undefined, optional
+        Roles is the observed replication roles for each Pod.
+    """
+
+
+    gtidStrictModePaused?: bool
+
+    replicaToRecover?: str
+
+    replicas?: {str:K8sMariadbComV1alpha1MariaDBStatusReplicationReplicasAnon}
+
+    roles?: {str:str}
+
+
+schema K8sMariadbComV1alpha1MariaDBStatusReplicationReplicasAnon:
+    r"""
+    ReplicaStatus is the observed replica status.
+
+    Attributes
+    ----------
+    gtidCurrentPos : str, default is Undefined, optional
+        GtidCurrentPos is the last GTID position executed by the SQL thread.
+    gtidIOPos : str, default is Undefined, optional
+        GtidIOPos is the last GTID position received by the IO thread and written to the relay log.
+    lastErrorTransitionTime : str, default is Undefined, optional
+        LastErrorTransitionTime is the last time the replica transitioned to an error state.
+    lastIOErrno : int, default is Undefined, optional
+        LastIOErrno is the error code returned by the IO thread.
+    lastIOError : str, default is Undefined, optional
+        LastIOErrno is the error message returned by the IO thread.
+    lastSQLErrno : int, default is Undefined, optional
+        LastSQLErrno is the error code returned by the SQL thread.
+    lastSQLError : str, default is Undefined, optional
+        LastSQLError is the error message returned by the SQL thread.
+    secondsBehindMaster : int, default is Undefined, optional
+        SecondsBehindMaster measures the replication lag with the primary.
+    slaveIORunning : bool, default is Undefined, optional
+        SlaveIORunning indicates whether the slave IO thread is running.
+    slaveSQLRunning : bool, default is Undefined, optional
+        SlaveSQLRunning indicates whether the slave SQL thread is running.
+    usingGtid : str, default is Undefined, optional
+        UsingGtid is the GTID position mode (Slave_Pos or Current_Pos)
+    """
+
+
+    gtidCurrentPos?: str
+
+    gtidIOPos?: str
+
+    lastErrorTransitionTime?: str
+
+    lastIOErrno?: int
+
+    lastIOError?: str
+
+    lastSQLErrno?: int
+
+    lastSQLError?: str
+
+    secondsBehindMaster?: int
+
+    slaveIORunning?: bool
+
+    slaveSQLRunning?: bool
+
+    usingGtid?: str
 
 
 schema K8sMariadbComV1alpha1MariaDBStatusTLS:
