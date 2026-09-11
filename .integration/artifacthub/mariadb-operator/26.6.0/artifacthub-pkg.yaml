@@ -1,0 +1,25 @@
+version: 26.6.0
+name: mariadb-operator
+displayName: mariadb-operator
+createdAt: "2026-09-11T07:53:13Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `mariadb-operator` with tag `26.6.0` as dependency
+  ```
+  kcl mod add mariadb-operator:26.6.0
+  ```
+
+  #### Pull `mariadb-operator` with tag `26.6.0` to local
+  ```
+  kcl mod pull mariadb-operator:26.6.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
