@@ -185,7 +185,7 @@ schema K8sMariadbComV1alpha1SQLJobSpecAffinity:
 
 schema K8sMariadbComV1alpha1SQLJobSpecAffinityNodeAffinity:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeaffinity-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeaffinity-v1-core
 
     Attributes
     ----------
@@ -203,7 +203,7 @@ schema K8sMariadbComV1alpha1SQLJobSpecAffinityNodeAffinity:
 
 schema K8sMariadbComV1alpha1SQLJobSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#preferredschedulingterm-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#preferredschedulingterm-v1-core
 
     Attributes
     ----------
@@ -221,7 +221,7 @@ schema K8sMariadbComV1alpha1SQLJobSpecAffinityNodeAffinityPreferredDuringSchedul
 
 schema K8sMariadbComV1alpha1SQLJobSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorterm-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorterm-v1-core
 
     Attributes
     ----------
@@ -239,7 +239,7 @@ schema K8sMariadbComV1alpha1SQLJobSpecAffinityNodeAffinityPreferredDuringSchedul
 
 schema K8sMariadbComV1alpha1SQLJobSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -262,7 +262,7 @@ schema K8sMariadbComV1alpha1SQLJobSpecAffinityNodeAffinityPreferredDuringSchedul
 
 schema K8sMariadbComV1alpha1SQLJobSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -285,7 +285,7 @@ schema K8sMariadbComV1alpha1SQLJobSpecAffinityNodeAffinityPreferredDuringSchedul
 
 schema K8sMariadbComV1alpha1SQLJobSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselector-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselector-v1-core
 
     Attributes
     ----------
@@ -299,7 +299,7 @@ schema K8sMariadbComV1alpha1SQLJobSpecAffinityNodeAffinityRequiredDuringScheduli
 
 schema K8sMariadbComV1alpha1SQLJobSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorterm-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorterm-v1-core
 
     Attributes
     ----------
@@ -317,7 +317,7 @@ schema K8sMariadbComV1alpha1SQLJobSpecAffinityNodeAffinityRequiredDuringScheduli
 
 schema K8sMariadbComV1alpha1SQLJobSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -340,7 +340,7 @@ schema K8sMariadbComV1alpha1SQLJobSpecAffinityNodeAffinityRequiredDuringScheduli
 
 schema K8sMariadbComV1alpha1SQLJobSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -363,7 +363,7 @@ schema K8sMariadbComV1alpha1SQLJobSpecAffinityNodeAffinityRequiredDuringScheduli
 
 schema K8sMariadbComV1alpha1SQLJobSpecAffinityPodAntiAffinity:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podantiaffinity-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podantiaffinity-v1-core.
 
     Attributes
     ----------
@@ -381,7 +381,7 @@ schema K8sMariadbComV1alpha1SQLJobSpecAffinityPodAntiAffinity:
 
 schema K8sMariadbComV1alpha1SQLJobSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#weightedpodaffinityterm-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#weightedpodaffinityterm-v1-core.
 
     Attributes
     ----------
@@ -399,7 +399,7 @@ schema K8sMariadbComV1alpha1SQLJobSpecAffinityPodAntiAffinityPreferredDuringSche
 
 schema K8sMariadbComV1alpha1SQLJobSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podaffinityterm-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podaffinityterm-v1-core.
 
     Attributes
     ----------
@@ -417,7 +417,7 @@ schema K8sMariadbComV1alpha1SQLJobSpecAffinityPodAntiAffinityPreferredDuringSche
 
 schema K8sMariadbComV1alpha1SQLJobSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselector-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselector-v1-meta
 
     Attributes
     ----------
@@ -435,7 +435,7 @@ schema K8sMariadbComV1alpha1SQLJobSpecAffinityPodAntiAffinityPreferredDuringSche
 
 schema K8sMariadbComV1alpha1SQLJobSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselectorrequirement-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselectorrequirement-v1-meta
 
     Attributes
     ----------
@@ -457,7 +457,7 @@ schema K8sMariadbComV1alpha1SQLJobSpecAffinityPodAntiAffinityPreferredDuringSche
 
 schema K8sMariadbComV1alpha1SQLJobSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podaffinityterm-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podaffinityterm-v1-core.
 
     Attributes
     ----------
@@ -475,7 +475,7 @@ schema K8sMariadbComV1alpha1SQLJobSpecAffinityPodAntiAffinityRequiredDuringSched
 
 schema K8sMariadbComV1alpha1SQLJobSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselector-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselector-v1-meta
 
     Attributes
     ----------
@@ -493,7 +493,7 @@ schema K8sMariadbComV1alpha1SQLJobSpecAffinityPodAntiAffinityRequiredDuringSched
 
 schema K8sMariadbComV1alpha1SQLJobSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselectorrequirement-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselectorrequirement-v1-meta
 
     Attributes
     ----------
@@ -515,7 +515,7 @@ schema K8sMariadbComV1alpha1SQLJobSpecAffinityPodAntiAffinityRequiredDuringSched
 
 schema K8sMariadbComV1alpha1SQLJobSpecDependsOnItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#localobjectreference-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
     Attributes
     ----------
@@ -529,7 +529,7 @@ schema K8sMariadbComV1alpha1SQLJobSpecDependsOnItems0:
 
 schema K8sMariadbComV1alpha1SQLJobSpecImagePullSecretsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#localobjectreference-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
     Attributes
     ----------
@@ -565,6 +565,8 @@ schema K8sMariadbComV1alpha1SQLJobSpecMariaDbRef:
 
     Attributes
     ----------
+    kind : str, default is Undefined, optional
+        Kind of the referent.
     name : str, default is Undefined, optional
         name
     namespace : str, default is Undefined, optional
@@ -573,6 +575,8 @@ schema K8sMariadbComV1alpha1SQLJobSpecMariaDbRef:
         WaitForIt indicates whether the controller using this reference should wait for MariaDB to be ready.
     """
 
+
+    kind?: str
 
     name?: str
 
@@ -744,7 +748,7 @@ schema K8sMariadbComV1alpha1SQLJobSpecPodSecurityContextSeccompProfile:
 
 schema K8sMariadbComV1alpha1SQLJobSpecResources:
     r"""
-    Resouces describes the compute resource requirements.
+    Resources describes the compute resource requirements.
 
     Attributes
     ----------
@@ -903,9 +907,10 @@ schema K8sMariadbComV1alpha1SQLJobSpecTolerationsItems0:
         If the key is empty, operator must be Exists; this combination means to match all values and all keys.
     operator : str, default is Undefined, optional
         Operator represents a key's relationship to the value.
-        Valid operators are Exists and Equal. Defaults to Equal.
+        Valid operators are Exists, Equal, Lt, and Gt. Defaults to Equal.
         Exists is equivalent to wildcard for value, so that a pod can
         tolerate all taints of a particular category.
+        Lt and Gt perform numeric comparisons (requires feature gate TaintTolerationComparisonOperators).
     tolerationSeconds : int, default is Undefined, optional
         TolerationSeconds represents the period of time the toleration (which must be
         of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default,

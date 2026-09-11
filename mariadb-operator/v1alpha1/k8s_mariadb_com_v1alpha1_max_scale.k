@@ -57,6 +57,10 @@ schema K8sMariadbComV1alpha1MaxScaleSpec:
         config
     connection : K8sMariadbComV1alpha1MaxScaleSpecConnection, default is Undefined, optional
         connection
+    enableServiceLinks : bool, default is Undefined, optional
+        EnableServiceLinks indicates whether information about services should be injected into pod's
+        environment variables, matching the syntax of Docker links. Defaults to true if not specified.
+        Set to false to disable injection of service link environment variables.
     env : [K8sMariadbComV1alpha1MaxScaleSpecEnvItems0], default is Undefined, optional
         Env represents the environment variables to be injected in a container.
     envFrom : [K8sMariadbComV1alpha1MaxScaleSpecEnvFromItems0], default is Undefined, optional
@@ -74,8 +78,12 @@ schema K8sMariadbComV1alpha1MaxScaleSpec:
         inherit metadata
     kubernetesService : K8sMariadbComV1alpha1MaxScaleSpecKubernetesService, default is Undefined, optional
         kubernetes service
+    lifecycle : K8sMariadbComV1alpha1MaxScaleSpecLifecycle, default is Undefined, optional
+        lifecycle
     livenessProbe : K8sMariadbComV1alpha1MaxScaleSpecLivenessProbe, default is Undefined, optional
         liveness probe
+    maintenance : K8sMariadbComV1alpha1MaxScaleSpecMaintenance, default is Undefined, optional
+        maintenance
     mariaDbRef : K8sMariadbComV1alpha1MaxScaleSpecMariaDbRef, default is Undefined, optional
         maria db ref
     metrics : K8sMariadbComV1alpha1MaxScaleSpecMetrics, default is Undefined, optional
@@ -90,6 +98,9 @@ schema K8sMariadbComV1alpha1MaxScaleSpec:
         pod metadata
     podSecurityContext : K8sMariadbComV1alpha1MaxScaleSpecPodSecurityContext, default is Undefined, optional
         pod security context
+    primaryServer : str, default is Undefined, optional
+        PrimaryServer specifies the desired primary server. Setting this field triggers a switchover operation in MaxScale to the desired server.
+        This option is only valid when using monitors that support switchover, currently limited to the MariaDB monitor.
     priorityClassName : str, default is Undefined, optional
         PriorityClassName to be used in the Pod.
     readinessProbe : K8sMariadbComV1alpha1MaxScaleSpecReadinessProbe, default is Undefined, optional
@@ -140,6 +151,8 @@ schema K8sMariadbComV1alpha1MaxScaleSpec:
 
     connection?: K8sMariadbComV1alpha1MaxScaleSpecConnection
 
+    enableServiceLinks?: bool
+
     env?: [K8sMariadbComV1alpha1MaxScaleSpecEnvItems0]
 
     envFrom?: [K8sMariadbComV1alpha1MaxScaleSpecEnvFromItems0]
@@ -156,7 +169,11 @@ schema K8sMariadbComV1alpha1MaxScaleSpec:
 
     kubernetesService?: K8sMariadbComV1alpha1MaxScaleSpecKubernetesService
 
+    lifecycle?: K8sMariadbComV1alpha1MaxScaleSpecLifecycle
+
     livenessProbe?: K8sMariadbComV1alpha1MaxScaleSpecLivenessProbe
+
+    maintenance?: K8sMariadbComV1alpha1MaxScaleSpecMaintenance
 
     mariaDbRef?: K8sMariadbComV1alpha1MaxScaleSpecMariaDbRef
 
@@ -171,6 +188,8 @@ schema K8sMariadbComV1alpha1MaxScaleSpec:
     podMetadata?: K8sMariadbComV1alpha1MaxScaleSpecPodMetadata
 
     podSecurityContext?: K8sMariadbComV1alpha1MaxScaleSpecPodSecurityContext
+
+    primaryServer?: str
 
     priorityClassName?: str
 
@@ -248,7 +267,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecAffinity:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecAffinityNodeAffinity:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeaffinity-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeaffinity-v1-core
 
     Attributes
     ----------
@@ -266,7 +285,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecAffinityNodeAffinity:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#preferredschedulingterm-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#preferredschedulingterm-v1-core
 
     Attributes
     ----------
@@ -284,7 +303,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecAffinityNodeAffinityPreferredDuringSched
 
 schema K8sMariadbComV1alpha1MaxScaleSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorterm-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorterm-v1-core
 
     Attributes
     ----------
@@ -302,7 +321,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecAffinityNodeAffinityPreferredDuringSched
 
 schema K8sMariadbComV1alpha1MaxScaleSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -325,7 +344,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecAffinityNodeAffinityPreferredDuringSched
 
 schema K8sMariadbComV1alpha1MaxScaleSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -348,7 +367,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecAffinityNodeAffinityPreferredDuringSched
 
 schema K8sMariadbComV1alpha1MaxScaleSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselector-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselector-v1-core
 
     Attributes
     ----------
@@ -362,7 +381,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecAffinityNodeAffinityRequiredDuringSchedu
 
 schema K8sMariadbComV1alpha1MaxScaleSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorterm-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorterm-v1-core
 
     Attributes
     ----------
@@ -380,7 +399,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecAffinityNodeAffinityRequiredDuringSchedu
 
 schema K8sMariadbComV1alpha1MaxScaleSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -403,7 +422,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecAffinityNodeAffinityRequiredDuringSchedu
 
 schema K8sMariadbComV1alpha1MaxScaleSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -426,7 +445,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecAffinityNodeAffinityRequiredDuringSchedu
 
 schema K8sMariadbComV1alpha1MaxScaleSpecAffinityPodAntiAffinity:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podantiaffinity-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podantiaffinity-v1-core.
 
     Attributes
     ----------
@@ -444,7 +463,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecAffinityPodAntiAffinity:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#weightedpodaffinityterm-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#weightedpodaffinityterm-v1-core.
 
     Attributes
     ----------
@@ -462,7 +481,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecAffinityPodAntiAffinityPreferredDuringSc
 
 schema K8sMariadbComV1alpha1MaxScaleSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podaffinityterm-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podaffinityterm-v1-core.
 
     Attributes
     ----------
@@ -480,7 +499,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecAffinityPodAntiAffinityPreferredDuringSc
 
 schema K8sMariadbComV1alpha1MaxScaleSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselector-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselector-v1-meta
 
     Attributes
     ----------
@@ -498,7 +517,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecAffinityPodAntiAffinityPreferredDuringSc
 
 schema K8sMariadbComV1alpha1MaxScaleSpecAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselectorrequirement-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselectorrequirement-v1-meta
 
     Attributes
     ----------
@@ -520,7 +539,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecAffinityPodAntiAffinityPreferredDuringSc
 
 schema K8sMariadbComV1alpha1MaxScaleSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podaffinityterm-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podaffinityterm-v1-core.
 
     Attributes
     ----------
@@ -538,7 +557,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecAffinityPodAntiAffinityRequiredDuringSch
 
 schema K8sMariadbComV1alpha1MaxScaleSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselector-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselector-v1-meta
 
     Attributes
     ----------
@@ -556,7 +575,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecAffinityPodAntiAffinityRequiredDuringSch
 
 schema K8sMariadbComV1alpha1MaxScaleSpecAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselectorrequirement-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselectorrequirement-v1-meta
 
     Attributes
     ----------
@@ -715,7 +734,6 @@ schema K8sMariadbComV1alpha1MaxScaleSpecAuthClientPasswordSecretKeyRef:
 schema K8sMariadbComV1alpha1MaxScaleSpecAuthMetricsPasswordSecretKeyRef:
     r"""
     MetricsPasswordSecretKeyRef is Secret key reference to the metrics password to call the admib REST API. It is defaulted if metrics are enabled.
-    If the referred Secret is labeled with "k8s.mariadb.com/watch", updates may be performed to the Secret in order to update the password.
 
     Attributes
     ----------
@@ -1088,7 +1106,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecConnectionSecretTemplateMetadata:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecEnvFromItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#envfromsource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#envfromsource-v1-core.
 
     Attributes
     ----------
@@ -1110,7 +1128,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecEnvFromItems0:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecEnvFromItems0ConfigMapRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#localobjectreference-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
     Attributes
     ----------
@@ -1124,7 +1142,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecEnvFromItems0ConfigMapRef:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecEnvFromItems0SecretRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#localobjectreference-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
     Attributes
     ----------
@@ -1138,7 +1156,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecEnvFromItems0SecretRef:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecEnvItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#envvarsource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#envvarsource-v1-core.
 
     Attributes
     ----------
@@ -1160,7 +1178,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecEnvItems0:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecEnvItems0ValueFrom:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#envvarsource-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#envvarsource-v1-core.
 
     Attributes
     ----------
@@ -1182,7 +1200,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecEnvItems0ValueFrom:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecEnvItems0ValueFromConfigMapKeyRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#configmapkeyselector-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#configmapkeyselector-v1-core.
 
     Attributes
     ----------
@@ -1200,7 +1218,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecEnvItems0ValueFromConfigMapKeyRef:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecEnvItems0ValueFromFieldRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#objectfieldselector-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#objectfieldselector-v1-core.
 
     Attributes
     ----------
@@ -1218,7 +1236,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecEnvItems0ValueFromFieldRef:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecEnvItems0ValueFromSecretKeyRef:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#secretkeyselector-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#secretkeyselector-v1-core.
 
     Attributes
     ----------
@@ -1244,6 +1262,8 @@ schema K8sMariadbComV1alpha1MaxScaleSpecGuiKubernetesService:
         AllocateLoadBalancerNodePorts Service field.
     externalTrafficPolicy : str, default is Undefined, optional
         ExternalTrafficPolicy Service field.
+    loadBalancerClass : str, default is Undefined, optional
+        LoadBalancerClass Service field.
     loadBalancerIP : str, default is Undefined, optional
         LoadBalancerIP Service field.
     loadBalancerSourceRanges : [str], default is Undefined, optional
@@ -1260,6 +1280,8 @@ schema K8sMariadbComV1alpha1MaxScaleSpecGuiKubernetesService:
     allocateLoadBalancerNodePorts?: bool
 
     externalTrafficPolicy?: str
+
+    loadBalancerClass?: str
 
     loadBalancerIP?: str
 
@@ -1292,7 +1314,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecGuiKubernetesServiceMetadata:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecImagePullSecretsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#localobjectreference-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
     Attributes
     ----------
@@ -1332,6 +1354,8 @@ schema K8sMariadbComV1alpha1MaxScaleSpecKubernetesService:
         AllocateLoadBalancerNodePorts Service field.
     externalTrafficPolicy : str, default is Undefined, optional
         ExternalTrafficPolicy Service field.
+    loadBalancerClass : str, default is Undefined, optional
+        LoadBalancerClass Service field.
     loadBalancerIP : str, default is Undefined, optional
         LoadBalancerIP Service field.
     loadBalancerSourceRanges : [str], default is Undefined, optional
@@ -1348,6 +1372,8 @@ schema K8sMariadbComV1alpha1MaxScaleSpecKubernetesService:
     allocateLoadBalancerNodePorts?: bool
 
     externalTrafficPolicy?: str
+
+    loadBalancerClass?: str
 
     loadBalancerIP?: str
 
@@ -1376,6 +1402,176 @@ schema K8sMariadbComV1alpha1MaxScaleSpecKubernetesServiceMetadata:
     annotations?: {str:str}
 
     labels?: {str:str}
+
+
+schema K8sMariadbComV1alpha1MaxScaleSpecLifecycle:
+    r"""
+    Lifecycle are actions that the management system should take in response to container lifecycle events.
+
+    Attributes
+    ----------
+    postStart : K8sMariadbComV1alpha1MaxScaleSpecLifecyclePostStart, default is Undefined, optional
+        post start
+    preStop : K8sMariadbComV1alpha1MaxScaleSpecLifecyclePreStop, default is Undefined, optional
+        pre stop
+    """
+
+
+    postStart?: K8sMariadbComV1alpha1MaxScaleSpecLifecyclePostStart
+
+    preStop?: K8sMariadbComV1alpha1MaxScaleSpecLifecyclePreStop
+
+
+schema K8sMariadbComV1alpha1MaxScaleSpecLifecyclePostStart:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#lifecyclehandler-v1-core.
+
+    Attributes
+    ----------
+    exec : K8sMariadbComV1alpha1MaxScaleSpecLifecyclePostStartExec, default is Undefined, optional
+        exec
+    httpGet : K8sMariadbComV1alpha1MaxScaleSpecLifecyclePostStartHTTPGet, default is Undefined, optional
+        http get
+    sleep : K8sMariadbComV1alpha1MaxScaleSpecLifecyclePostStartSleep, default is Undefined, optional
+        sleep
+    """
+
+
+    exec?: K8sMariadbComV1alpha1MaxScaleSpecLifecyclePostStartExec
+
+    httpGet?: K8sMariadbComV1alpha1MaxScaleSpecLifecyclePostStartHTTPGet
+
+    sleep?: K8sMariadbComV1alpha1MaxScaleSpecLifecyclePostStartSleep
+
+
+schema K8sMariadbComV1alpha1MaxScaleSpecLifecyclePostStartExec:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
+
+    Attributes
+    ----------
+    command : [str], default is Undefined, optional
+        command
+    """
+
+
+    command?: [str]
+
+
+schema K8sMariadbComV1alpha1MaxScaleSpecLifecyclePostStartHTTPGet:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    path : str, default is Undefined, optional
+        path
+    port : int | str, default is Undefined, required
+        port
+    scheme : str, default is Undefined, optional
+        URIScheme identifies the scheme used for connection to a host for Get actions
+    """
+
+
+    host?: str
+
+    path?: str
+
+    port: int | str
+
+    scheme?: str
+
+
+schema K8sMariadbComV1alpha1MaxScaleSpecLifecyclePostStartSleep:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#sleepaction-v1-core
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, optional
+        seconds
+    """
+
+
+    seconds?: int
+
+
+schema K8sMariadbComV1alpha1MaxScaleSpecLifecyclePreStop:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#lifecyclehandler-v1-core.
+
+    Attributes
+    ----------
+    exec : K8sMariadbComV1alpha1MaxScaleSpecLifecyclePreStopExec, default is Undefined, optional
+        exec
+    httpGet : K8sMariadbComV1alpha1MaxScaleSpecLifecyclePreStopHTTPGet, default is Undefined, optional
+        http get
+    sleep : K8sMariadbComV1alpha1MaxScaleSpecLifecyclePreStopSleep, default is Undefined, optional
+        sleep
+    """
+
+
+    exec?: K8sMariadbComV1alpha1MaxScaleSpecLifecyclePreStopExec
+
+    httpGet?: K8sMariadbComV1alpha1MaxScaleSpecLifecyclePreStopHTTPGet
+
+    sleep?: K8sMariadbComV1alpha1MaxScaleSpecLifecyclePreStopSleep
+
+
+schema K8sMariadbComV1alpha1MaxScaleSpecLifecyclePreStopExec:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
+
+    Attributes
+    ----------
+    command : [str], default is Undefined, optional
+        command
+    """
+
+
+    command?: [str]
+
+
+schema K8sMariadbComV1alpha1MaxScaleSpecLifecyclePreStopHTTPGet:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        host
+    path : str, default is Undefined, optional
+        path
+    port : int | str, default is Undefined, required
+        port
+    scheme : str, default is Undefined, optional
+        URIScheme identifies the scheme used for connection to a host for Get actions
+    """
+
+
+    host?: str
+
+    path?: str
+
+    port: int | str
+
+    scheme?: str
+
+
+schema K8sMariadbComV1alpha1MaxScaleSpecLifecyclePreStopSleep:
+    r"""
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#sleepaction-v1-core
+
+    Attributes
+    ----------
+    seconds : int, default is Undefined, optional
+        seconds
+    """
+
+
+    seconds?: int
 
 
 schema K8sMariadbComV1alpha1MaxScaleSpecLivenessProbe:
@@ -1422,7 +1618,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecLivenessProbe:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecLivenessProbeExec:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#execaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
 
     Attributes
     ----------
@@ -1436,7 +1632,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecLivenessProbeExec:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecLivenessProbeHTTPGet:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#httpgetaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
 
     Attributes
     ----------
@@ -1462,7 +1658,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecLivenessProbeHTTPGet:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecLivenessProbeTCPSocket:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#tcpsocketaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#tcpsocketaction-v1-core.
 
     Attributes
     ----------
@@ -1478,12 +1674,33 @@ schema K8sMariadbComV1alpha1MaxScaleSpecLivenessProbeTCPSocket:
     port: int | str
 
 
+schema K8sMariadbComV1alpha1MaxScaleSpecMaintenance:
+    r"""
+    Maintenance defines different capabilities of the operator to allow for maintenance to be performed on the DB.
+    Not to be confused with `suspend`, maintenance does not interfere with the normal reconciliation of the operator.
+
+    Attributes
+    ----------
+    cordon : bool, default is Undefined, optional
+        Cordon blocks connections to the resource.
+    enabled : bool, default is Undefined, optional
+        Enabled turns on maintenance mode
+    """
+
+
+    cordon?: bool
+
+    enabled?: bool
+
+
 schema K8sMariadbComV1alpha1MaxScaleSpecMariaDbRef:
     r"""
     MariaDBRef is a reference to the MariaDB that MaxScale points to. It is used to initialize the servers field.
 
     Attributes
     ----------
+    kind : str, default is Undefined, optional
+        Kind of the referent.
     name : str, default is Undefined, optional
         name
     namespace : str, default is Undefined, optional
@@ -1492,6 +1709,8 @@ schema K8sMariadbComV1alpha1MaxScaleSpecMariaDbRef:
         WaitForIt indicates whether the controller using this reference should wait for MariaDB to be ready.
     """
 
+
+    kind?: str
 
     name?: str
 
@@ -1610,7 +1829,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinity:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityNodeAffinity:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeaffinity-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeaffinity-v1-core
 
     Attributes
     ----------
@@ -1628,7 +1847,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityNodeAffinity:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#preferredschedulingterm-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#preferredschedulingterm-v1-core
 
     Attributes
     ----------
@@ -1646,7 +1865,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityNodeAffinityPrefe
 
 schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0Preference:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorterm-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorterm-v1-core
 
     Attributes
     ----------
@@ -1664,7 +1883,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityNodeAffinityPrefe
 
 schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -1687,7 +1906,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityNodeAffinityPrefe
 
 schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PreferenceMatchFieldsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -1710,7 +1929,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityNodeAffinityPrefe
 
 schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselector-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselector-v1-core
 
     Attributes
     ----------
@@ -1724,7 +1943,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityNodeAffinityRequi
 
 schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorterm-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorterm-v1-core
 
     Attributes
     ----------
@@ -1742,7 +1961,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityNodeAffinityRequi
 
 schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -1765,7 +1984,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityNodeAffinityRequi
 
 schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsItems0MatchFieldsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#nodeselectorrequirement-v1-core
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#nodeselectorrequirement-v1-core
 
     Attributes
     ----------
@@ -1788,7 +2007,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityNodeAffinityRequi
 
 schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityPodAntiAffinity:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podantiaffinity-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podantiaffinity-v1-core.
 
     Attributes
     ----------
@@ -1806,7 +2025,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityPodAntiAffinity:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#weightedpodaffinityterm-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#weightedpodaffinityterm-v1-core.
 
     Attributes
     ----------
@@ -1824,7 +2043,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityPodAntiAffinityPr
 
 schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTerm:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podaffinityterm-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podaffinityterm-v1-core.
 
     Attributes
     ----------
@@ -1842,7 +2061,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityPodAntiAffinityPr
 
 schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelector:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselector-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselector-v1-meta
 
     Attributes
     ----------
@@ -1860,7 +2079,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityPodAntiAffinityPr
 
 schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionItems0PodAffinityTermLabelSelectorMatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselectorrequirement-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselectorrequirement-v1-meta
 
     Attributes
     ----------
@@ -1882,7 +2101,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityPodAntiAffinityPr
 
 schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#podaffinityterm-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#podaffinityterm-v1-core.
 
     Attributes
     ----------
@@ -1900,7 +2119,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityPodAntiAffinityRe
 
 schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelector:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselector-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselector-v1-meta
 
     Attributes
     ----------
@@ -1918,7 +2137,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityPodAntiAffinityRe
 
 schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionItems0LabelSelectorMatchExpressionsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#labelselectorrequirement-v1-meta
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#labelselectorrequirement-v1-meta
 
     Attributes
     ----------
@@ -1940,7 +2159,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterAffinityPodAntiAffinityRe
 
 schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterImagePullSecretsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#localobjectreference-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#localobjectreference-v1-core.
 
     Attributes
     ----------
@@ -2097,7 +2316,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterPodSecurityContextSeccomp
 
 schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterResources:
     r"""
-    Resouces describes the compute resource requirements.
+    Resources describes the compute resource requirements.
 
     Attributes
     ----------
@@ -2189,9 +2408,10 @@ schema K8sMariadbComV1alpha1MaxScaleSpecMetricsExporterTolerationsItems0:
         If the key is empty, operator must be Exists; this combination means to match all values and all keys.
     operator : str, default is Undefined, optional
         Operator represents a key's relationship to the value.
-        Valid operators are Exists and Equal. Defaults to Equal.
+        Valid operators are Exists, Equal, Lt, and Gt. Defaults to Equal.
         Exists is equivalent to wildcard for value, so that a pod can
         tolerate all taints of a particular category.
+        Lt and Gt perform numeric comparisons (requires feature gate TaintTolerationComparisonOperators).
     tolerationSeconds : int, default is Undefined, optional
         TolerationSeconds represents the period of time the toleration (which must be
         of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default,
@@ -2258,7 +2478,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecMonitor:
         Params defines extra parameters to pass to the monitor.
         Any parameter supported by MaxScale may be specified here. See reference:
         https://mariadb.com/kb/en/mariadb-maxscale-2308-common-monitor-parameters/.
-        Monitor specific parameter are also suported:
+        Monitor specific parameter are also supported:
         https://mariadb.com/kb/en/mariadb-maxscale-2308-galera-monitor/#galera-monitor-optional-parameters.
         https://mariadb.com/kb/en/mariadb-maxscale-2308-mariadb-monitor/#configuration.
     suspend : bool, default is Undefined, optional
@@ -2485,7 +2705,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecReadinessProbe:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecReadinessProbeExec:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#execaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
 
     Attributes
     ----------
@@ -2499,7 +2719,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecReadinessProbeExec:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecReadinessProbeHTTPGet:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#httpgetaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
 
     Attributes
     ----------
@@ -2525,7 +2745,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecReadinessProbeHTTPGet:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecReadinessProbeTCPSocket:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#tcpsocketaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#tcpsocketaction-v1-core.
 
     Attributes
     ----------
@@ -2543,7 +2763,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecReadinessProbeTCPSocket:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecResources:
     r"""
-    Resouces describes the compute resource requirements.
+    Resources describes the compute resource requirements.
 
     Attributes
     ----------
@@ -2670,7 +2890,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecServicesItems0:
         Params defines extra parameters to pass to the service.
         Any parameter supported by MaxScale may be specified here. See reference:
         https://mariadb.com/kb/en/mariadb-maxscale-2308-mariadb-maxscale-configuration-guide/#service_1.
-        Router specific parameter are also suported:
+        Router specific parameter are also supported:
         https://mariadb.com/kb/en/mariadb-maxscale-2308-readwritesplit/#configuration.
         https://mariadb.com/kb/en/mariadb-maxscale-2308-readconnroute/#configuration.
     router : str, default is Undefined, required
@@ -2769,7 +2989,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecStartupProbe:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecStartupProbeExec:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#execaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#execaction-v1-core.
 
     Attributes
     ----------
@@ -2783,7 +3003,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecStartupProbeExec:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecStartupProbeHTTPGet:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#httpgetaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#httpgetaction-v1-core.
 
     Attributes
     ----------
@@ -2809,7 +3029,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecStartupProbeHTTPGet:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecStartupProbeTCPSocket:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#tcpsocketaction-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#tcpsocketaction-v1-core.
 
     Attributes
     ----------
@@ -2915,11 +3135,13 @@ schema K8sMariadbComV1alpha1MaxScaleSpecTLSAdminCertIssuerRef:
     Attributes
     ----------
     group : str, default is Undefined, optional
-        Group of the resource being referred to.
+        Group of the issuer being referred to.
+        Defaults to 'cert-manager.io'.
     kind : str, default is Undefined, optional
-        Kind of the resource being referred to.
+        Kind of the issuer being referred to.
+        Defaults to 'Issuer'.
     name : str, default is Undefined, required
-        Name of the resource being referred to.
+        Name of the issuer being referred to.
     """
 
 
@@ -2971,11 +3193,13 @@ schema K8sMariadbComV1alpha1MaxScaleSpecTLSListenerCertIssuerRef:
     Attributes
     ----------
     group : str, default is Undefined, optional
-        Group of the resource being referred to.
+        Group of the issuer being referred to.
+        Defaults to 'cert-manager.io'.
     kind : str, default is Undefined, optional
-        Kind of the resource being referred to.
+        Kind of the issuer being referred to.
+        Defaults to 'Issuer'.
     name : str, default is Undefined, required
-        Name of the resource being referred to.
+        Name of the issuer being referred to.
     """
 
 
@@ -3046,9 +3270,10 @@ schema K8sMariadbComV1alpha1MaxScaleSpecTolerationsItems0:
         If the key is empty, operator must be Exists; this combination means to match all values and all keys.
     operator : str, default is Undefined, optional
         Operator represents a key's relationship to the value.
-        Valid operators are Exists and Equal. Defaults to Equal.
+        Valid operators are Exists, Equal, Lt, and Gt. Defaults to Equal.
         Exists is equivalent to wildcard for value, so that a pod can
         tolerate all taints of a particular category.
+        Lt and Gt perform numeric comparisons (requires feature gate TaintTolerationComparisonOperators).
     tolerationSeconds : int, default is Undefined, optional
         TolerationSeconds represents the period of time the toleration (which must be
         of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default,
@@ -3073,7 +3298,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecTolerationsItems0:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecTopologySpreadConstraintsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#topologyspreadconstraint-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#topologyspreadconstraint-v1-core.
 
     Attributes
     ----------
@@ -3191,10 +3416,10 @@ schema K8sMariadbComV1alpha1MaxScaleSpecUpdateStrategyRollingUpdate:
         The maximum number of pods that can be unavailable during the update.
         Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%).
         Absolute number is calculated from percentage by rounding up. This can not be 0.
-        Defaults to 1. This field is alpha-level and is only honored by servers that enable the
-        MaxUnavailableStatefulSet feature. The field applies to all pods in the range 0 to
+        Defaults to 1. This field is beta-level and is enabled by default. The field applies to all pods in the range 0 to
         Replicas-1. That means if there is any unavailable pod in the range 0 to Replicas-1, it
         will be counted towards MaxUnavailable.
+        This setting might not be effective for the OrderedReady podManagementPolicy. That policy ensures pods are created and become ready one at a time.
     partition : int, default is Undefined, optional
         Partition indicates the ordinal at which the StatefulSet should be partitioned
         for updates. During a rolling update, all pods from ordinal Replicas-1 to
@@ -3210,7 +3435,7 @@ schema K8sMariadbComV1alpha1MaxScaleSpecUpdateStrategyRollingUpdate:
 
 schema K8sMariadbComV1alpha1MaxScaleSpecVolumeMountsItems0:
     r"""
-    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/#volumemount-v1-core.
+    Refer to the Kubernetes docs: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.36/#volumemount-v1-core.
 
     Attributes
     ----------

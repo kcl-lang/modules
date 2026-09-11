@@ -123,6 +123,8 @@ schema K8sMariadbComV1alpha1ConnectionSpecMariaDbRef:
 
     Attributes
     ----------
+    kind : str, default is Undefined, optional
+        Kind of the referent.
     name : str, default is Undefined, optional
         name
     namespace : str, default is Undefined, optional
@@ -131,6 +133,8 @@ schema K8sMariadbComV1alpha1ConnectionSpecMariaDbRef:
         WaitForIt indicates whether the controller using this reference should wait for MariaDB to be ready.
     """
 
+
+    kind?: str
 
     name?: str
 
