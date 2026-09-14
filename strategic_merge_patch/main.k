@@ -31,7 +31,7 @@ _looper_n_with_param = lambda elements: [any], n: int, func: (any, any, any) -> 
     assert n >= 0
     result = initial
     if n < len(elements):
-        result = _looper_n_with_param(elements, n + 1, func, func(result, elements[n], param))
+        result = _looper_n_with_param(elements, n + 1, func, func(result, elements[n], param), param)
     result
 }
 
