@@ -39,18 +39,18 @@ schema KafkaNodePool:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpec:
     r"""
-    kafka strimzi io v1 kafka node pool spec
+    The specification of the KafkaNodePool.
 
     Attributes
     ----------
     jvmOptions : KafkaStrimziIoV1KafkaNodePoolSpecJvmOptions, default is Undefined, optional
         jvm options
     replicas : int, default is Undefined, required
-        replicas
+        The number of pods in the pool.
     resources : KafkaStrimziIoV1KafkaNodePoolSpecResources, default is Undefined, optional
         resources
     roles : [str], default is Undefined, required
-        roles
+        The roles assigned to the node pool. Supported values are `broker` and `controller`. This property is required.
     storage : KafkaStrimziIoV1KafkaNodePoolSpecStorage, default is Undefined, required
         storage
     template : KafkaStrimziIoV1KafkaNodePoolSpecTemplate, default is Undefined, optional
@@ -77,20 +77,20 @@ schema KafkaStrimziIoV1KafkaNodePoolSpec:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecJvmOptions:
     r"""
-    kafka strimzi io v1 kafka node pool spec jvm options
+    JVM Options for pods.
 
     Attributes
     ----------
     "-XX" : {str:str}, default is Undefined, optional
-        x x
+        A map of -XX options to the JVM.
     "-Xms" : str, default is Undefined, optional
-        xms
+        -Xms option to to the JVM.
     "-Xmx" : str, default is Undefined, optional
-        xmx
+        -Xmx option to to the JVM.
     gcLoggingEnabled : bool, default is Undefined, optional
-        gc logging enabled
+        Specifies whether the Garbage Collection logging is enabled. The default is false.
     javaSystemProperties : [KafkaStrimziIoV1KafkaNodePoolSpecJvmOptionsJavaSystemPropertiesItems0], default is Undefined, optional
-        java system properties
+        A map of additional system properties which will be passed using the `-D` option to the JVM.
     """
 
 
@@ -118,9 +118,9 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecJvmOptionsJavaSystemPropertiesItems0:
     Attributes
     ----------
     name : str, default is Undefined, optional
-        name
+        The system property name.
     value : str, default is Undefined, optional
-        value
+        The system property value.
     """
 
 
@@ -131,7 +131,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecJvmOptionsJavaSystemPropertiesItems0:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecResources:
     r"""
-    kafka strimzi io v1 kafka node pool spec resources
+    CPU and memory resources to reserve.
 
     Attributes
     ----------
@@ -152,8 +152,8 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecResources:
 
 
     check:
-        all _, k in limits { _regex_match(str(k), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if k } if limits
-        all _, k in requests { _regex_match(str(k), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if k } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecResourcesClaimsItems0:
@@ -176,30 +176,30 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecResourcesClaimsItems0:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecStorage:
     r"""
-    kafka strimzi io v1 kafka node pool spec storage
+    Storage configuration (disk). Cannot be updated.
 
     Attributes
     ----------
     class : str, default is Undefined, optional
-        class
+        The storage class to use for dynamic volume allocation.
     deleteClaim : bool, default is Undefined, optional
-        delete claim
+        Specifies whether the persistent volume claim is deleted when a Kafka node is deleted. Optional. Defaults to `false`.
     id : int, default is Undefined, optional
-        id
+        Storage identification number. It is mandatory only for storage volumes defined in a storage of type 'jbod'.
     kraftMetadata : str, default is Undefined, optional
-        kraft metadata
+        Specifies whether this volume should be used for storing KRaft metadata. This property is optional. When set, the only currently supported value is `shared`. At most one volume can have this property set.
     selector : {str:str}, default is Undefined, optional
-        selector
+        Specifies a specific persistent volume to use. It contains key:value pairs representing labels for selecting such a volume.
     size : str, default is Undefined, optional
-        size
+        When `type=persistent-claim`, defines the size of the persistent volume claim, such as 100Gi. Mandatory when `type=persistent-claim`.
     sizeLimit : str, default is Undefined, optional
-        size limit
+        When type=ephemeral, defines the total amount of local storage required for this EmptyDir volume (for example 1Gi).
     $type : str, default is Undefined, required
-        type
+        Storage type, must be either 'ephemeral', 'persistent-claim', or 'jbod'.
     volumeAttributesClass : str, default is Undefined, optional
-        volume attributes class
+        Specifies `VolumeAttributeClass` name for dynamically configuring storage attributes.
     volumes : [KafkaStrimziIoV1KafkaNodePoolSpecStorageVolumesItems0], default is Undefined, optional
-        volumes
+        List of volumes as Storage objects representing the JBOD disks array.
     """
 
 
@@ -236,23 +236,23 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecStorageVolumesItems0:
     Attributes
     ----------
     class : str, default is Undefined, optional
-        class
+        The storage class to use for dynamic volume allocation.
     deleteClaim : bool, default is Undefined, optional
-        delete claim
+        Specifies whether the persistent volume claim is deleted when a Kafka node is deleted. Optional. Defaults to `false`.
     id : int, default is Undefined, optional
-        id
+        Storage identification number. Mandatory for storage volumes defined with a `jbod` storage type configuration.
     kraftMetadata : str, default is Undefined, optional
-        kraft metadata
+        Specifies whether this volume should be used for storing KRaft metadata. This property is optional. When set, the only currently supported value is `shared`. At most one volume can have this property set.
     selector : {str:str}, default is Undefined, optional
-        selector
+        Specifies a specific persistent volume to use. It contains key:value pairs representing labels for selecting such a volume.
     size : str, default is Undefined, optional
-        size
+        When `type=persistent-claim`, defines the size of the persistent volume claim, such as 100Gi. Mandatory when `type=persistent-claim`.
     sizeLimit : str, default is Undefined, optional
-        size limit
+        When type=ephemeral, defines the total amount of local storage required for this EmptyDir volume (for example 1Gi).
     $type : str, default is Undefined, required
-        type
+        Storage type, must be either 'ephemeral' or 'persistent-claim'.
     volumeAttributesClass : str, default is Undefined, optional
-        volume attributes class
+        Specifies `VolumeAttributeClass` name for dynamically configuring storage attributes.
     """
 
 
@@ -282,7 +282,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecStorageVolumesItems0:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplate:
     r"""
-    kafka strimzi io v1 kafka node pool spec template
+    Template for pool resources. The template allows users to specify how the resources belonging to this pool are generated.
 
     Attributes
     ----------
@@ -324,16 +324,16 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplate:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainer:
     r"""
-    kafka strimzi io v1 kafka node pool spec template init container
+    Template for the Kafka init container.
 
     Attributes
     ----------
     env : [KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerEnvItems0], default is Undefined, optional
-        env
+        Environment variables which should be applied to the container.
     securityContext : KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerSecurityContext, default is Undefined, optional
         security context
     volumeMounts : [KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerVolumeMountsItems0], default is Undefined, optional
-        volume mounts
+        Additional volume mounts which should be applied to the container.
     """
 
 
@@ -351,9 +351,9 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerEnvItems0:
     Attributes
     ----------
     name : str, default is Undefined, optional
-        name
+        The environment variable key.
     value : str, default is Undefined, optional
-        value
+        The environment variable value.
     valueFrom : KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -368,7 +368,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerEnvItems0:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerEnvItems0ValueFrom:
     r"""
-    kafka strimzi io v1 kafka node pool spec template init container env items0 value from
+    Reference to the secret or config map property to which the environment variable is set.
 
     Attributes
     ----------
@@ -386,7 +386,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerEnvItems0ValueFrom:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerEnvItems0ValueFromConfigMapKeyRef:
     r"""
-    kafka strimzi io v1 kafka node pool spec template init container env items0 value from config map key ref
+    Reference to a key in a config map.
 
     Attributes
     ----------
@@ -408,7 +408,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerEnvItems0ValueFromC
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerEnvItems0ValueFromSecretKeyRef:
     r"""
-    kafka strimzi io v1 kafka node pool spec template init container env items0 value from secret key ref
+    Reference to a key in a secret.
 
     Attributes
     ----------
@@ -430,7 +430,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerEnvItems0ValueFromS
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerSecurityContext:
     r"""
-    kafka strimzi io v1 kafka node pool spec template init container security context
+    Security context for the container.
 
     Attributes
     ----------
@@ -632,16 +632,16 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplateInitContainerVolumeMountsItems0:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainer:
     r"""
-    kafka strimzi io v1 kafka node pool spec template kafka container
+    Template for the Kafka broker container.
 
     Attributes
     ----------
     env : [KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerEnvItems0], default is Undefined, optional
-        env
+        Environment variables which should be applied to the container.
     securityContext : KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerSecurityContext, default is Undefined, optional
         security context
     volumeMounts : [KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerVolumeMountsItems0], default is Undefined, optional
-        volume mounts
+        Additional volume mounts which should be applied to the container.
     """
 
 
@@ -659,9 +659,9 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerEnvItems0:
     Attributes
     ----------
     name : str, default is Undefined, optional
-        name
+        The environment variable key.
     value : str, default is Undefined, optional
-        value
+        The environment variable value.
     valueFrom : KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -676,7 +676,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerEnvItems0:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerEnvItems0ValueFrom:
     r"""
-    kafka strimzi io v1 kafka node pool spec template kafka container env items0 value from
+    Reference to the secret or config map property to which the environment variable is set.
 
     Attributes
     ----------
@@ -694,7 +694,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerEnvItems0ValueFrom
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerEnvItems0ValueFromConfigMapKeyRef:
     r"""
-    kafka strimzi io v1 kafka node pool spec template kafka container env items0 value from config map key ref
+    Reference to a key in a config map.
 
     Attributes
     ----------
@@ -716,7 +716,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerEnvItems0ValueFrom
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerEnvItems0ValueFromSecretKeyRef:
     r"""
-    kafka strimzi io v1 kafka node pool spec template kafka container env items0 value from secret key ref
+    Reference to a key in a secret.
 
     Attributes
     ----------
@@ -738,7 +738,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerEnvItems0ValueFrom
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerSecurityContext:
     r"""
-    kafka strimzi io v1 kafka node pool spec template kafka container security context
+    Security context for the container.
 
     Attributes
     ----------
@@ -940,7 +940,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplateKafkaContainerVolumeMountsItems0
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePerPodIngress:
     r"""
-    kafka strimzi io v1 kafka node pool spec template per pod ingress
+    Template for Kafka per-pod `Ingress` used for access from outside of Kubernetes.
 
     Attributes
     ----------
@@ -954,14 +954,14 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePerPodIngress:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePerPodIngressMetadata:
     r"""
-    kafka strimzi io v1 kafka node pool spec template per pod ingress metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -972,7 +972,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePerPodIngressMetadata:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePerPodRoute:
     r"""
-    kafka strimzi io v1 kafka node pool spec template per pod route
+    Template for Kafka per-pod `Routes` used for access from outside of OpenShift.
 
     Attributes
     ----------
@@ -986,14 +986,14 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePerPodRoute:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePerPodRouteMetadata:
     r"""
-    kafka strimzi io v1 kafka node pool spec template per pod route metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -1004,7 +1004,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePerPodRouteMetadata:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePerPodService:
     r"""
-    kafka strimzi io v1 kafka node pool spec template per pod service
+    Template for Kafka per-pod `Services` used for access from outside of Kubernetes.
 
     Attributes
     ----------
@@ -1018,14 +1018,14 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePerPodService:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePerPodServiceMetadata:
     r"""
-    kafka strimzi io v1 kafka node pool spec template per pod service metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -1036,7 +1036,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePerPodServiceMetadata:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePersistentVolumeClaim:
     r"""
-    kafka strimzi io v1 kafka node pool spec template persistent volume claim
+    Template for all Kafka `PersistentVolumeClaims`.
 
     Attributes
     ----------
@@ -1050,14 +1050,14 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePersistentVolumeClaim:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePersistentVolumeClaimMetadata:
     r"""
-    kafka strimzi io v1 kafka node pool spec template persistent volume claim metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -1068,7 +1068,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePersistentVolumeClaimMetadata:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePod:
     r"""
-    kafka strimzi io v1 kafka node pool spec template pod
+    Template for Kafka `Pods`.
 
     Attributes
     ----------
@@ -1077,33 +1077,33 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePod:
     dnsConfig : KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodDNSConfig, default is Undefined, optional
         dns config
     dnsPolicy : str, default is Undefined, optional
-        dns policy
+        The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.
     enableServiceLinks : bool, default is Undefined, optional
-        enable service links
+        Indicates whether information about services should be injected into Pod's environment variables.
     hostAliases : [KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodHostAliasesItems0], default is Undefined, optional
-        host aliases
+        The pod's HostAliases. HostAliases is an optional list of hosts and IPs that will be injected into the Pod's hosts file if specified.
     hostUsers : bool, default is Undefined, optional
-        host users
+        Use the host user namespace. Optional. Defaults to `true`. When `true` or not set, the pod runs in the host user namespace. This is required when the pod needs features available only in the host namespace, such as loading kernel modules with `CAP_SYS_MODULE`.When set to `false`, the pod runs in a new user namespace. Setting `false` helps mitigate container breakout vulnerabilities and allows containers to run as `root` without granting `root` privileges on the host. This property is alpha-level in Kubernetes and is supported only by Kubernetes clusters that enable the `UserNamespacesSupport` feature.
     imagePullSecrets : [KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodImagePullSecretsItems0], default is Undefined, optional
-        image pull secrets
+        List of references to secrets in the same namespace to use for pulling any of the images used by this Pod. When the `STRIMZI_IMAGE_PULL_SECRETS` environment variable in Cluster Operator and the `imagePullSecrets` option are specified, only the `imagePullSecrets` variable is used and the `STRIMZI_IMAGE_PULL_SECRETS` variable is ignored.
     metadata : KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodMetadata, default is Undefined, optional
         metadata
     priorityClassName : str, default is Undefined, optional
-        priority class name
+        The name of the priority class used to assign priority to the pods. 
     schedulerName : str, default is Undefined, optional
-        scheduler name
+        The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.
     securityContext : KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodSecurityContext, default is Undefined, optional
         security context
     terminationGracePeriodSeconds : int, default is Undefined, optional
-        termination grace period seconds
+        The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.
     tmpDirSizeLimit : str, default is Undefined, optional
-        tmp dir size limit
+        Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.
     tolerations : [KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTolerationsItems0], default is Undefined, optional
-        tolerations
+        The pod's tolerations.
     topologySpreadConstraints : [KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTopologySpreadConstraintsItems0], default is Undefined, optional
-        topology spread constraints
+        The pod's topology spread constraints.
     volumes : [KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0], default is Undefined, optional
-        volumes
+        Additional volumes that can be mounted to the pod.
     """
 
 
@@ -1147,7 +1147,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePod:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodAffinity:
     r"""
-    kafka strimzi io v1 kafka node pool spec template pod affinity
+    The pod's affinity rules.
 
     Attributes
     ----------
@@ -1871,7 +1871,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodAffinityPodAntiAffinityRequir
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodDNSConfig:
     r"""
-    kafka strimzi io v1 kafka node pool spec template pod DNS config
+    The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.
 
     Attributes
     ----------
@@ -1943,14 +1943,14 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodImagePullSecretsItems0:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodMetadata:
     r"""
-    kafka strimzi io v1 kafka node pool spec template pod metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -1961,7 +1961,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodMetadata:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodSecurityContext:
     r"""
-    kafka strimzi io v1 kafka node pool spec template pod security context
+    Configures pod-level security attributes and common container settings.
 
     Attributes
     ----------
@@ -2129,7 +2129,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodSecurityContextWindowsOptions
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodSet:
     r"""
-    kafka strimzi io v1 kafka node pool spec template pod set
+    Template for Kafka `StrimziPodSet` resource.
 
     Attributes
     ----------
@@ -2143,14 +2143,14 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodSet:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodSetMetadata:
     r"""
-    kafka strimzi io v1 kafka node pool spec template pod set metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -2286,7 +2286,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0:
     image : KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0Image, default is Undefined, optional
         image
     name : str, default is Undefined, optional
-        name
+        Name to use for the volume. Required.
     persistentVolumeClaim : KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0PersistentVolumeClaim, default is Undefined, optional
         persistent volume claim
     secret : KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0Secret, default is Undefined, optional
@@ -2311,7 +2311,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0ConfigMap:
     r"""
-    kafka strimzi io v1 kafka node pool spec template pod volumes items0 config map
+    `ConfigMap` to use to populate the volume.
 
     Attributes
     ----------
@@ -2359,7 +2359,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0ConfigMapItemsIt
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0Csi:
     r"""
-    kafka strimzi io v1 kafka node pool spec template pod volumes items0 csi
+    `CSIVolumeSource` object to use to populate the volume.
 
     Attributes
     ----------
@@ -2403,14 +2403,14 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0CsiNodePublishSe
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0EmptyDir:
     r"""
-    kafka strimzi io v1 kafka node pool spec template pod volumes items0 empty dir
+    `EmptyDir` to use to populate the volume.
 
     Attributes
     ----------
     medium : str, default is Undefined, optional
-        medium
+        Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.
     sizeLimit : str, default is Undefined, optional
-        size limit
+        The total amount of local storage required for this EmptyDir volume (for example 1Gi).
     """
 
 
@@ -2425,7 +2425,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0EmptyDir:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0Image:
     r"""
-    kafka strimzi io v1 kafka node pool spec template pod volumes items0 image
+    `ImageVolumeSource` object to use to populate the volume.
 
     Attributes
     ----------
@@ -2443,7 +2443,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0Image:
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0PersistentVolumeClaim:
     r"""
-    kafka strimzi io v1 kafka node pool spec template pod volumes items0 persistent volume claim
+    `PersistentVolumeClaim` object to use to populate the volume.
 
     Attributes
     ----------
@@ -2461,7 +2461,7 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0PersistentVolume
 
 schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0Secret:
     r"""
-    kafka strimzi io v1 kafka node pool spec template pod volumes items0 secret
+    `Secret` to use to populate the volume.
 
     Attributes
     ----------
@@ -2509,24 +2509,24 @@ schema KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodVolumesItems0SecretItemsItems
 
 schema KafkaStrimziIoV1KafkaNodePoolStatus:
     r"""
-    kafka strimzi io v1 kafka node pool status
+    The status of the KafkaNodePool.
 
     Attributes
     ----------
     clusterId : str, default is Undefined, optional
-        cluster Id
+        Kafka cluster ID.
     conditions : [KafkaStrimziIoV1KafkaNodePoolStatusConditionsItems0], default is Undefined, optional
-        conditions
+        List of status conditions.
     labelSelector : str, default is Undefined, optional
-        label selector
+        Label selector for pods providing this resource.
     nodeIds : [int], default is Undefined, optional
-        node ids
+        Node IDs used by Kafka nodes in this pool.
     observedGeneration : int, default is Undefined, optional
-        observed generation
+        The generation of the CRD that was last reconciled by the operator.
     replicas : int, default is Undefined, optional
-        replicas
+        The current number of pods being used to provide this resource.
     roles : [str], default is Undefined, optional
-        roles
+        The roles currently assigned to this pool.
     """
 
 
@@ -2552,15 +2552,15 @@ schema KafkaStrimziIoV1KafkaNodePoolStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        last transition time
+        Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.
     message : str, default is Undefined, optional
-        message
+        Human-readable message indicating details about the condition's last transition.
     reason : str, default is Undefined, optional
-        reason
+        The reason for the condition's last transition (a single word in CamelCase).
     status : str, default is Undefined, optional
-        status
+        The status of the condition, either True, False or Unknown.
     $type : str, default is Undefined, optional
-        type
+        The unique identifier of a condition, used to distinguish between other conditions in the resource.
     """
 
 

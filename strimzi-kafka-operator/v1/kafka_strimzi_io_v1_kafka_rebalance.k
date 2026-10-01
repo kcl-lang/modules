@@ -37,34 +37,41 @@ schema KafkaRebalance:
 
 schema KafkaStrimziIoV1KafkaRebalanceSpec:
     r"""
-    kafka strimzi io v1 kafka rebalance spec
+    The specification of the Kafka rebalance.
 
     Attributes
     ----------
     brokers : [int], default is Undefined, optional
-        brokers
+        The list of newly added brokers in case of scaling up or the ones to be removed in case of scaling down to use for rebalancing. This list can be used only with rebalancing mode `add-brokers` and `removed-brokers`. It is ignored with `full` mode.
     concurrentIntraBrokerPartitionMovements : int, default is Undefined, optional
-        concurrent intra broker partition movements
+        The upper bound of ongoing partition replica movements between disks within each broker. Default is 2.
     concurrentLeaderMovements : int, default is Undefined, optional
-        concurrent leader movements
+        The upper bound of ongoing partition leadership movements. Default is 1000.
     concurrentPartitionMovementsPerBroker : int, default is Undefined, optional
-        concurrent partition movements per broker
+        The upper bound of ongoing partition replica movements going into/out of each broker. Default is 5.
     excludedTopics : str, default is Undefined, optional
-        excluded topics
+        A regular expression where any matching topics will be excluded from the calculation of optimization proposals. This expression will be parsed by the java.util.regex.Pattern class; for more information on the supported format consult the documentation for that class.
     goals : [str], default is Undefined, optional
-        goals
+        A list of goals, ordered by decreasing priority, to use for generating and executing the rebalance proposal. The supported goals are available at https://github.com/linkedin/cruise-control#goals. If an empty goals list is provided, the goals declared in the default.goals Cruise Control configuration parameter are used.
     mode : str, default is Undefined, optional
-        mode
+        Mode to run the rebalancing. The supported modes are `full`, `add-brokers`, `remove-brokers`.
+        If not specified, the `full` mode is used by default. 
+
+        * `full` mode runs the rebalancing across all the brokers in the cluster.
+        * `add-brokers` mode can be used after scaling up the cluster to move some replicas to the newly added brokers.
+        * `remove-brokers` mode can be used before scaling down the cluster to move replicas out of the brokers to be removed.
+        * `remove-disks` mode can be used to move data across the volumes within the same broker
+        .
     moveReplicasOffVolumes : [KafkaStrimziIoV1KafkaRebalanceSpecMoveReplicasOffVolumesItems0], default is Undefined, optional
-        move replicas off volumes
+        List of brokers and their corresponding volumes from which replicas need to be moved.
     rebalanceDisk : bool, default is Undefined, optional
-        rebalance disk
+        Enables intra-broker disk balancing, which balances disk space utilization between disks on the same broker. Only applies to Kafka deployments that use JBOD storage with multiple disks. When enabled, inter-broker balancing is disabled. Default is false.
     replicaMovementStrategies : [str], default is Undefined, optional
-        replica movement strategies
+        A list of strategy class names used to determine the execution order for the replica movements in the generated optimization proposal. By default BaseReplicaMovementStrategy is used, which will execute the replica movements in the order that they were generated.
     replicationThrottle : int, default is Undefined, optional
-        replication throttle
+        The upper bound, in bytes per second, on the bandwidth used to move replicas. There is no limit by default.
     skipHardGoalCheck : bool, default is Undefined, optional
-        skip hard goal check
+        Whether to allow the hard goals specified in the Kafka CR to be skipped in optimization proposal generation. This can be useful when some of those hard goals are preventing a balance solution being found. Default is false.
     """
 
 
@@ -108,9 +115,9 @@ schema KafkaStrimziIoV1KafkaRebalanceSpecMoveReplicasOffVolumesItems0:
     Attributes
     ----------
     brokerId : int, default is Undefined, optional
-        broker Id
+        ID of the broker that contains the disk from which you want to move the partition replicas.
     volumeIds : [int], default is Undefined, optional
-        volume ids
+        IDs of the disks from which the partition replicas need to be moved.
     """
 
 
@@ -125,20 +132,20 @@ schema KafkaStrimziIoV1KafkaRebalanceSpecMoveReplicasOffVolumesItems0:
 
 schema KafkaStrimziIoV1KafkaRebalanceStatus:
     r"""
-    kafka strimzi io v1 kafka rebalance status
+    The status of the Kafka rebalance.
 
     Attributes
     ----------
     conditions : [KafkaStrimziIoV1KafkaRebalanceStatusConditionsItems0], default is Undefined, optional
-        conditions
+        List of status conditions.
     observedGeneration : int, default is Undefined, optional
-        observed generation
+        The generation of the CRD that was last reconciled by the operator.
     optimizationResult : any, default is Undefined, optional
-        optimization result
+        A JSON object describing the optimization result.
     progress : KafkaStrimziIoV1KafkaRebalanceStatusProgress, default is Undefined, optional
         progress
     sessionId : str, default is Undefined, optional
-        session Id
+        The session identifier for requests to Cruise Control pertaining to this KafkaRebalance resource. This is used by the Kafka Rebalance operator to track the status of ongoing rebalancing operations.
     """
 
 
@@ -160,15 +167,15 @@ schema KafkaStrimziIoV1KafkaRebalanceStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        last transition time
+        Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.
     message : str, default is Undefined, optional
-        message
+        Human-readable message indicating details about the condition's last transition.
     reason : str, default is Undefined, optional
-        reason
+        The reason for the condition's last transition (a single word in CamelCase).
     status : str, default is Undefined, optional
-        status
+        The status of the condition, either True, False or Unknown.
     $type : str, default is Undefined, optional
-        type
+        The unique identifier of a condition, used to distinguish between other conditions in the resource.
     """
 
 
@@ -185,12 +192,12 @@ schema KafkaStrimziIoV1KafkaRebalanceStatusConditionsItems0:
 
 schema KafkaStrimziIoV1KafkaRebalanceStatusProgress:
     r"""
-    kafka strimzi io v1 kafka rebalance status progress
+    A reference to Config Map with the progress information.
 
     Attributes
     ----------
     rebalanceProgressConfigMap : str, default is Undefined, optional
-        rebalance progress config map
+        The name of the `ConfigMap` containing information related to the progress of a partition rebalance.
     """
 
 

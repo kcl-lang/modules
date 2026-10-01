@@ -39,7 +39,7 @@ schema Kafka:
 
 schema KafkaStrimziIoV1KafkaSpec:
     r"""
-    kafka strimzi io v1 kafka spec
+    The specification of the Kafka cluster.
 
     Attributes
     ----------
@@ -56,7 +56,7 @@ schema KafkaStrimziIoV1KafkaSpec:
     kafkaExporter : KafkaStrimziIoV1KafkaSpecKafkaExporter, default is Undefined, optional
         kafka exporter
     maintenanceTimeWindows : [str], default is Undefined, optional
-        maintenance time windows
+        A list of time windows for maintenance tasks (that is, certificates renewal). Each time window is defined by a cron expression.
     """
 
 
@@ -77,20 +77,20 @@ schema KafkaStrimziIoV1KafkaSpec:
 
 schema KafkaStrimziIoV1KafkaSpecClientsCa:
     r"""
-    kafka strimzi io v1 kafka spec clients ca
+    Configuration of the clients certificate authority.
 
     Attributes
     ----------
     certificateExpirationPolicy : str, default is Undefined, optional
-        certificate expiration policy
+        How should CA certificate expiration be handled when `generateCertificateAuthority=true`. The default is for a new CA certificate to be generated reusing the existing private key.
     generateCertificateAuthority : bool, default is Undefined, optional
-        generate certificate authority
+        If true then Certificate Authority certificates will be generated automatically. Otherwise the user will need to provide a Secret with the CA certificate. Default is true.
     generateSecretOwnerReference : bool, default is Undefined, optional
-        generate secret owner reference
+        If `true`, the Cluster and Client CA Secrets are configured with the `ownerReference` set to the `Kafka` resource. If the `Kafka` resource is deleted when `true`, the CA Secrets are also deleted. If `false`, the `ownerReference` is disabled. If the `Kafka` resource is deleted when `false`, the CA Secrets are retained and available for reuse. Default is `true`.
     renewalDays : int, default is Undefined, optional
-        renewal days
+        The number of days in the certificate renewal period. This is the number of days before the a certificate expires during which renewal actions may be performed. When `generateCertificateAuthority` is true, this will cause the generation of a new certificate. When `generateCertificateAuthority` is true, this will cause extra logging at WARN level about the pending certificate expiry. Default is 30.
     validityDays : int, default is Undefined, optional
-        validity days
+        The number of days generated certificates should be valid for. The default is 365.
     """
 
 
@@ -112,20 +112,20 @@ schema KafkaStrimziIoV1KafkaSpecClientsCa:
 
 schema KafkaStrimziIoV1KafkaSpecClusterCa:
     r"""
-    kafka strimzi io v1 kafka spec cluster ca
+    Configuration of the cluster certificate authority.
 
     Attributes
     ----------
     certificateExpirationPolicy : str, default is Undefined, optional
-        certificate expiration policy
+        How should CA certificate expiration be handled when `generateCertificateAuthority=true`. The default is for a new CA certificate to be generated reusing the existing private key.
     generateCertificateAuthority : bool, default is Undefined, optional
-        generate certificate authority
+        If true then Certificate Authority certificates will be generated automatically. Otherwise the user will need to provide a Secret with the CA certificate. Default is true.
     generateSecretOwnerReference : bool, default is Undefined, optional
-        generate secret owner reference
+        If `true`, the Cluster and Client CA Secrets are configured with the `ownerReference` set to the `Kafka` resource. If the `Kafka` resource is deleted when `true`, the CA Secrets are also deleted. If `false`, the `ownerReference` is disabled. If the `Kafka` resource is deleted when `false`, the CA Secrets are retained and available for reuse. Default is `true`.
     renewalDays : int, default is Undefined, optional
-        renewal days
+        The number of days in the certificate renewal period. This is the number of days before the a certificate expires during which renewal actions may be performed. When `generateCertificateAuthority` is true, this will cause the generation of a new certificate. When `generateCertificateAuthority` is true, this will cause extra logging at WARN level about the pending certificate expiry. Default is 30.
     validityDays : int, default is Undefined, optional
-        validity days
+        The number of days generated certificates should be valid for. The default is 365.
     """
 
 
@@ -147,20 +147,20 @@ schema KafkaStrimziIoV1KafkaSpecClusterCa:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControl:
     r"""
-    kafka strimzi io v1 kafka spec cruise control
+    Configuration for Cruise Control deployment. Deploys a Cruise Control instance when specified.
 
     Attributes
     ----------
     apiUsers : KafkaStrimziIoV1KafkaSpecCruiseControlAPIUsers, default is Undefined, optional
         api users
     autoRebalance : [KafkaStrimziIoV1KafkaSpecCruiseControlAutoRebalanceItems0], default is Undefined, optional
-        auto rebalance
+        Auto-rebalancing on scaling related configuration listing the modes, when brokers are added or removed, with the corresponding rebalance template configurations.If this field is set, at least one mode has to be defined.
     brokerCapacity : KafkaStrimziIoV1KafkaSpecCruiseControlBrokerCapacity, default is Undefined, optional
         broker capacity
     config : any, default is Undefined, optional
-        config
+        The Cruise Control configuration. For a full list of configuration options refer to https://github.com/linkedin/cruise-control/wiki/Configurations. Note that properties with the following prefixes cannot be set: bootstrap.servers, client.id, zookeeper., network., security., failed.brokers.zk.path,webserver.http., webserver.api.urlprefix, webserver.session.path, webserver.accesslog., two.step., request.reason.required,metric.reporter.sampler.bootstrap.servers, capacity.config.file, self.healing., ssl., kafka.broker.failure.detection.enable, topic.config.provider.class (with the exception of: ssl.cipher.suites, ssl.protocol, ssl.enabled.protocols, webserver.http.cors.enabled, webserver.http.cors.origin, webserver.http.cors.exposeheaders, webserver.security.enable, webserver.ssl.enable).
     image : str, default is Undefined, optional
-        image
+        The container image used for Cruise Control pods. If no image name is explicitly specified, the image name corresponds to the name specified in the Cluster Operator configuration. If an image name is not defined in the Cluster Operator configuration, a default value is used.
     jvmOptions : KafkaStrimziIoV1KafkaSpecCruiseControlJvmOptions, default is Undefined, optional
         jvm options
     livenessProbe : KafkaStrimziIoV1KafkaSpecCruiseControlLivenessProbe, default is Undefined, optional
@@ -209,12 +209,12 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControl:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlAPIUsers:
     r"""
-    kafka strimzi io v1 kafka spec cruise control API users
+    Configuration of the Cruise Control REST API users.
 
     Attributes
     ----------
     $type : str, default is Undefined, required
-        type
+        Type of the Cruise Control API users configuration. Supported format is: `hashLoginService`.
     valueFrom : KafkaStrimziIoV1KafkaSpecCruiseControlAPIUsersValueFrom, default is Undefined, required
         value from
     """
@@ -227,7 +227,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlAPIUsers:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlAPIUsersValueFrom:
     r"""
-    kafka strimzi io v1 kafka spec cruise control API users value from
+    Secret from which the custom Cruise Control API authentication credentials are read.
 
     Attributes
     ----------
@@ -241,7 +241,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlAPIUsersValueFrom:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlAPIUsersValueFromSecretKeyRef:
     r"""
-    kafka strimzi io v1 kafka spec cruise control API users value from secret key ref
+    Selects a key of a Secret in the resource's namespace.
 
     Attributes
     ----------
@@ -268,7 +268,8 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlAutoRebalanceItems0:
     Attributes
     ----------
     mode : str, default is Undefined, required
-        mode
+        Specifies the mode for automatically rebalancing when brokers are added or removed. Supported modes are `add-brokers` and `remove-brokers`. 
+
     template : KafkaStrimziIoV1KafkaSpecCruiseControlAutoRebalanceItems0Template, default is Undefined, optional
         template
     """
@@ -281,7 +282,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlAutoRebalanceItems0:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlAutoRebalanceItems0Template:
     r"""
-    kafka strimzi io v1 kafka spec cruise control auto rebalance items0 template
+    Reference to the KafkaRebalance custom resource to be used as the configuration template for the auto-rebalancing on scaling when running for the corresponding mode.
 
     Attributes
     ----------
@@ -295,18 +296,18 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlAutoRebalanceItems0Template:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlBrokerCapacity:
     r"""
-    kafka strimzi io v1 kafka spec cruise control broker capacity
+    The Cruise Control `brokerCapacity` configuration.
 
     Attributes
     ----------
     cpu : str, default is Undefined, optional
-        cpu
+        Broker capacity for CPU resource in cores or millicores. For example, 1, 1.500, 1500m. For more information on valid CPU resource units see https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu.
     inboundNetwork : str, default is Undefined, optional
-        inbound network
+        Broker capacity for inbound network throughput in bytes per second. Use an integer value with standard Kubernetes byte units (K, M, G) or their bibyte (power of two) equivalents (Ki, Mi, Gi) per second. For example, 10000KiB/s.
     outboundNetwork : str, default is Undefined, optional
-        outbound network
+        Broker capacity for outbound network throughput in bytes per second. Use an integer value with standard Kubernetes byte units (K, M, G) or their bibyte (power of two) equivalents (Ki, Mi, Gi) per second. For example, 10000KiB/s.
     overrides : [KafkaStrimziIoV1KafkaSpecCruiseControlBrokerCapacityOverridesItems0], default is Undefined, optional
-        overrides
+        Overrides for individual brokers. The `overrides` property lets you specify a different capacity configuration for different brokers.
     """
 
 
@@ -332,13 +333,13 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlBrokerCapacityOverridesItems0:
     Attributes
     ----------
     brokers : [int], default is Undefined, required
-        brokers
+        List of Kafka brokers (broker identifiers).
     cpu : str, default is Undefined, optional
-        cpu
+        Broker capacity for CPU resource in cores or millicores. For example, 1, 1.500, 1500m. For more information on valid CPU resource units see https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu.
     inboundNetwork : str, default is Undefined, optional
-        inbound network
+        Broker capacity for inbound network throughput in bytes per second. Use an integer value with standard Kubernetes byte units (K, M, G) or their bibyte (power of two) equivalents (Ki, Mi, Gi) per second. For example, 10000KiB/s.
     outboundNetwork : str, default is Undefined, optional
-        outbound network
+        Broker capacity for outbound network throughput in bytes per second. Use an integer value with standard Kubernetes byte units (K, M, G) or their bibyte (power of two) equivalents (Ki, Mi, Gi) per second. For example, 10000KiB/s.
     """
 
 
@@ -359,20 +360,20 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlBrokerCapacityOverridesItems0:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlJvmOptions:
     r"""
-    kafka strimzi io v1 kafka spec cruise control jvm options
+    JVM Options for the Cruise Control container.
 
     Attributes
     ----------
     "-XX" : {str:str}, default is Undefined, optional
-        x x
+        A map of -XX options to the JVM.
     "-Xms" : str, default is Undefined, optional
-        xms
+        -Xms option to to the JVM.
     "-Xmx" : str, default is Undefined, optional
-        xmx
+        -Xmx option to to the JVM.
     gcLoggingEnabled : bool, default is Undefined, optional
-        gc logging enabled
+        Specifies whether the Garbage Collection logging is enabled. The default is false.
     javaSystemProperties : [KafkaStrimziIoV1KafkaSpecCruiseControlJvmOptionsJavaSystemPropertiesItems0], default is Undefined, optional
-        java system properties
+        A map of additional system properties which will be passed using the `-D` option to the JVM.
     """
 
 
@@ -400,9 +401,9 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlJvmOptionsJavaSystemPropertiesItems
     Attributes
     ----------
     name : str, default is Undefined, optional
-        name
+        The system property name.
     value : str, default is Undefined, optional
-        value
+        The system property value.
     """
 
 
@@ -413,20 +414,20 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlJvmOptionsJavaSystemPropertiesItems
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlLivenessProbe:
     r"""
-    kafka strimzi io v1 kafka spec cruise control liveness probe
+    Pod liveness checking for the Cruise Control container.
 
     Attributes
     ----------
     failureThreshold : int, default is Undefined, optional
-        failure threshold
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     initialDelaySeconds : int, default is Undefined, optional
-        initial delay seconds
+        The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.
     periodSeconds : int, default is Undefined, optional
-        period seconds
+        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
     successThreshold : int, default is Undefined, optional
-        success threshold
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
     timeoutSeconds : int, default is Undefined, optional
-        timeout seconds
+        The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.
     """
 
 
@@ -451,14 +452,14 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlLivenessProbe:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlLogging:
     r"""
-    kafka strimzi io v1 kafka spec cruise control logging
+    Logging configuration (Log4j 2) for Cruise Control.
 
     Attributes
     ----------
     loggers : {str:str}, default is Undefined, optional
-        loggers
+        A Map from logger name to logger level.
     $type : str, default is Undefined, required
-        type
+        Logging type, must be either 'inline' or 'external'.
     valueFrom : KafkaStrimziIoV1KafkaSpecCruiseControlLoggingValueFrom, default is Undefined, optional
         value from
     """
@@ -473,7 +474,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlLogging:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlLoggingValueFrom:
     r"""
-    kafka strimzi io v1 kafka spec cruise control logging value from
+    `ConfigMap` entry where the logging configuration is stored. 
 
     Attributes
     ----------
@@ -487,7 +488,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlLoggingValueFrom:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlLoggingValueFromConfigMapKeyRef:
     r"""
-    kafka strimzi io v1 kafka spec cruise control logging value from config map key ref
+    Reference to the key in the ConfigMap containing the configuration.
 
     Attributes
     ----------
@@ -509,12 +510,12 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlLoggingValueFromConfigMapKeyRef:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlMetricsConfig:
     r"""
-    kafka strimzi io v1 kafka spec cruise control metrics config
+    Metrics configuration. Only `jmxPrometheusExporter` can be configured, as this component does not support `strimziMetricsReporter`.
 
     Attributes
     ----------
     $type : str, default is Undefined, required
-        type
+        Metrics type. The supported types are `jmxPrometheusExporter` and `strimziMetricsReporter`. Type `jmxPrometheusExporter` uses the Prometheus JMX Exporter to expose Kafka JMX metrics in Prometheus format through an HTTP endpoint. Type `strimziMetricsReporter` uses the Strimzi Metrics Reporter to directly expose Kafka metrics in Prometheus format through an HTTP endpoint.
     valueFrom : KafkaStrimziIoV1KafkaSpecCruiseControlMetricsConfigValueFrom, default is Undefined, optional
         value from
     values : KafkaStrimziIoV1KafkaSpecCruiseControlMetricsConfigValues, default is Undefined, optional
@@ -531,7 +532,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlMetricsConfig:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlMetricsConfigValueFrom:
     r"""
-    kafka strimzi io v1 kafka spec cruise control metrics config value from
+    ConfigMap entry where the Prometheus JMX Exporter configuration is stored.
 
     Attributes
     ----------
@@ -545,7 +546,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlMetricsConfigValueFrom:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlMetricsConfigValueFromConfigMapKeyRef:
     r"""
-    kafka strimzi io v1 kafka spec cruise control metrics config value from config map key ref
+    Reference to the key in the ConfigMap containing the configuration.
 
     Attributes
     ----------
@@ -567,12 +568,12 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlMetricsConfigValueFromConfigMapKeyR
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlMetricsConfigValues:
     r"""
-    kafka strimzi io v1 kafka spec cruise control metrics config values
+    Configuration values for the Strimzi Metrics Reporter.
 
     Attributes
     ----------
     allowList : [str], default is Undefined, optional
-        allow list
+        A list of regex patterns to filter the metrics to collect. Should contain at least one element.
     """
 
 
@@ -581,20 +582,20 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlMetricsConfigValues:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlReadinessProbe:
     r"""
-    kafka strimzi io v1 kafka spec cruise control readiness probe
+    Pod readiness checking for the Cruise Control container.
 
     Attributes
     ----------
     failureThreshold : int, default is Undefined, optional
-        failure threshold
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     initialDelaySeconds : int, default is Undefined, optional
-        initial delay seconds
+        The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.
     periodSeconds : int, default is Undefined, optional
-        period seconds
+        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
     successThreshold : int, default is Undefined, optional
-        success threshold
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
     timeoutSeconds : int, default is Undefined, optional
-        timeout seconds
+        The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.
     """
 
 
@@ -619,7 +620,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlReadinessProbe:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlResources:
     r"""
-    kafka strimzi io v1 kafka spec cruise control resources
+    CPU and memory resources to reserve for the Cruise Control container.
 
     Attributes
     ----------
@@ -640,8 +641,8 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlResources:
 
 
     check:
-        all _, k in limits { _regex_match(str(k), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if k } if limits
-        all _, k in requests { _regex_match(str(k), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if k } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlResourcesClaimsItems0:
@@ -664,7 +665,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlResourcesClaimsItems0:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplate:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template
+    Template to specify how Cruise Control resources, `Deployments` and `Pods`, are generated.
 
     Attributes
     ----------
@@ -698,14 +699,14 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplate:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateAPIService:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template API service
+    Template for Cruise Control API `Service`.
 
     Attributes
     ----------
     ipFamilies : [str], default is Undefined, optional
-        ip families
+        Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6`. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting.
     ipFamilyPolicy : str, default is Undefined, optional
-        ip family policy
+        Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`. `SingleStack` is for a single IP family. `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters. `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters. If unspecified, Kubernetes will choose the default value based on the service type.
     metadata : KafkaStrimziIoV1KafkaSpecCruiseControlTemplateAPIServiceMetadata, default is Undefined, optional
         metadata
     """
@@ -720,14 +721,14 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateAPIService:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateAPIServiceMetadata:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template API service metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -738,16 +739,16 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateAPIServiceMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateCruiseControlContainer:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template cruise control container
+    Template for the Cruise Control container.
 
     Attributes
     ----------
     env : [KafkaStrimziIoV1KafkaSpecCruiseControlTemplateCruiseControlContainerEnvItems0], default is Undefined, optional
-        env
+        Environment variables which should be applied to the container.
     securityContext : KafkaStrimziIoV1KafkaSpecCruiseControlTemplateCruiseControlContainerSecurityContext, default is Undefined, optional
         security context
     volumeMounts : [KafkaStrimziIoV1KafkaSpecCruiseControlTemplateCruiseControlContainerVolumeMountsItems0], default is Undefined, optional
-        volume mounts
+        Additional volume mounts which should be applied to the container.
     """
 
 
@@ -765,9 +766,9 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateCruiseControlContainerEnvIt
     Attributes
     ----------
     name : str, default is Undefined, optional
-        name
+        The environment variable key.
     value : str, default is Undefined, optional
-        value
+        The environment variable value.
     valueFrom : KafkaStrimziIoV1KafkaSpecCruiseControlTemplateCruiseControlContainerEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -782,7 +783,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateCruiseControlContainerEnvIt
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateCruiseControlContainerEnvItems0ValueFrom:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template cruise control container env items0 value from
+    Reference to the secret or config map property to which the environment variable is set.
 
     Attributes
     ----------
@@ -800,7 +801,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateCruiseControlContainerEnvIt
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateCruiseControlContainerEnvItems0ValueFromConfigMapKeyRef:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template cruise control container env items0 value from config map key ref
+    Reference to a key in a config map.
 
     Attributes
     ----------
@@ -822,7 +823,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateCruiseControlContainerEnvIt
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateCruiseControlContainerEnvItems0ValueFromSecretKeyRef:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template cruise control container env items0 value from secret key ref
+    Reference to a key in a secret.
 
     Attributes
     ----------
@@ -844,7 +845,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateCruiseControlContainerEnvIt
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateCruiseControlContainerSecurityContext:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template cruise control container security context
+    Security context for the container.
 
     Attributes
     ----------
@@ -1046,12 +1047,12 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateCruiseControlContainerVolum
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateDeployment:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template deployment
+    Template for Cruise Control `Deployment`.
 
     Attributes
     ----------
     deploymentStrategy : str, default is Undefined, optional
-        deployment strategy
+        Pod replacement strategy for deployment configuration changes. Valid values are `RollingUpdate` and `Recreate`. Defaults to `RollingUpdate`.
     metadata : KafkaStrimziIoV1KafkaSpecCruiseControlTemplateDeploymentMetadata, default is Undefined, optional
         metadata
     """
@@ -1064,14 +1065,14 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateDeployment:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateDeploymentMetadata:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template deployment metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -1082,7 +1083,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateDeploymentMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePod:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template pod
+    Template for Cruise Control `Pods`.
 
     Attributes
     ----------
@@ -1091,33 +1092,33 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePod:
     dnsConfig : KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodDNSConfig, default is Undefined, optional
         dns config
     dnsPolicy : str, default is Undefined, optional
-        dns policy
+        The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.
     enableServiceLinks : bool, default is Undefined, optional
-        enable service links
+        Indicates whether information about services should be injected into Pod's environment variables.
     hostAliases : [KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodHostAliasesItems0], default is Undefined, optional
-        host aliases
+        The pod's HostAliases. HostAliases is an optional list of hosts and IPs that will be injected into the Pod's hosts file if specified.
     hostUsers : bool, default is Undefined, optional
-        host users
+        Use the host user namespace. Optional. Defaults to `true`. When `true` or not set, the pod runs in the host user namespace. This is required when the pod needs features available only in the host namespace, such as loading kernel modules with `CAP_SYS_MODULE`.When set to `false`, the pod runs in a new user namespace. Setting `false` helps mitigate container breakout vulnerabilities and allows containers to run as `root` without granting `root` privileges on the host. This property is alpha-level in Kubernetes and is supported only by Kubernetes clusters that enable the `UserNamespacesSupport` feature.
     imagePullSecrets : [KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodImagePullSecretsItems0], default is Undefined, optional
-        image pull secrets
+        List of references to secrets in the same namespace to use for pulling any of the images used by this Pod. When the `STRIMZI_IMAGE_PULL_SECRETS` environment variable in Cluster Operator and the `imagePullSecrets` option are specified, only the `imagePullSecrets` variable is used and the `STRIMZI_IMAGE_PULL_SECRETS` variable is ignored.
     metadata : KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodMetadata, default is Undefined, optional
         metadata
     priorityClassName : str, default is Undefined, optional
-        priority class name
+        The name of the priority class used to assign priority to the pods. 
     schedulerName : str, default is Undefined, optional
-        scheduler name
+        The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.
     securityContext : KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodSecurityContext, default is Undefined, optional
         security context
     terminationGracePeriodSeconds : int, default is Undefined, optional
-        termination grace period seconds
+        The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.
     tmpDirSizeLimit : str, default is Undefined, optional
-        tmp dir size limit
+        Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.
     tolerations : [KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodTolerationsItems0], default is Undefined, optional
-        tolerations
+        The pod's tolerations.
     topologySpreadConstraints : [KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodTopologySpreadConstraintsItems0], default is Undefined, optional
-        topology spread constraints
+        The pod's topology spread constraints.
     volumes : [KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodVolumesItems0], default is Undefined, optional
-        volumes
+        Additional volumes that can be mounted to the pod.
     """
 
 
@@ -1161,7 +1162,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePod:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodAffinity:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template pod affinity
+    The pod's affinity rules.
 
     Attributes
     ----------
@@ -1885,7 +1886,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodAffinityPodAntiAffinityR
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodDNSConfig:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template pod DNS config
+    The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.
 
     Attributes
     ----------
@@ -1925,12 +1926,12 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodDNSConfigOptionsItems0:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodDisruptionBudget:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template pod disruption budget
+    Template for Cruise Control `PodDisruptionBudget`.
 
     Attributes
     ----------
     maxUnavailable : int, default is Undefined, optional
-        max unavailable
+        Maximum number of unavailable pods to allow automatic Pod eviction. A Pod eviction is allowed when the `maxUnavailable` number of pods or fewer are unavailable after the eviction. Setting this value to 0 prevents all voluntary evictions, so the pods must be evicted manually. Defaults to 1.
     metadata : KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodDisruptionBudgetMetadata, default is Undefined, optional
         metadata
     """
@@ -1947,14 +1948,14 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodDisruptionBudget:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodDisruptionBudgetMetadata:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template pod disruption budget metadata
+    Metadata to apply to the `PodDisruptionBudgetTemplate` resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -1997,14 +1998,14 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodImagePullSecretsItems0:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodMetadata:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template pod metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -2015,7 +2016,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodSecurityContext:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template pod security context
+    Configures pod-level security attributes and common container settings.
 
     Attributes
     ----------
@@ -2308,7 +2309,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodVolumesItems0:
     image : KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodVolumesItems0Image, default is Undefined, optional
         image
     name : str, default is Undefined, optional
-        name
+        Name to use for the volume. Required.
     persistentVolumeClaim : KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodVolumesItems0PersistentVolumeClaim, default is Undefined, optional
         persistent volume claim
     secret : KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodVolumesItems0Secret, default is Undefined, optional
@@ -2333,7 +2334,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodVolumesItems0:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodVolumesItems0ConfigMap:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template pod volumes items0 config map
+    `ConfigMap` to use to populate the volume.
 
     Attributes
     ----------
@@ -2381,7 +2382,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodVolumesItems0ConfigMapIt
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodVolumesItems0Csi:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template pod volumes items0 csi
+    `CSIVolumeSource` object to use to populate the volume.
 
     Attributes
     ----------
@@ -2425,14 +2426,14 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodVolumesItems0CsiNodePubl
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodVolumesItems0EmptyDir:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template pod volumes items0 empty dir
+    `EmptyDir` to use to populate the volume.
 
     Attributes
     ----------
     medium : str, default is Undefined, optional
-        medium
+        Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.
     sizeLimit : str, default is Undefined, optional
-        size limit
+        The total amount of local storage required for this EmptyDir volume (for example 1Gi).
     """
 
 
@@ -2447,7 +2448,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodVolumesItems0EmptyDir:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodVolumesItems0Image:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template pod volumes items0 image
+    `ImageVolumeSource` object to use to populate the volume.
 
     Attributes
     ----------
@@ -2465,7 +2466,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodVolumesItems0Image:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodVolumesItems0PersistentVolumeClaim:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template pod volumes items0 persistent volume claim
+    `PersistentVolumeClaim` object to use to populate the volume.
 
     Attributes
     ----------
@@ -2483,7 +2484,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodVolumesItems0PersistentV
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodVolumesItems0Secret:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template pod volumes items0 secret
+    `Secret` to use to populate the volume.
 
     Attributes
     ----------
@@ -2531,7 +2532,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplatePodVolumesItems0SecretItems
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateServiceAccount:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template service account
+    Template for the Cruise Control service account.
 
     Attributes
     ----------
@@ -2545,14 +2546,14 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateServiceAccount:
 
 schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateServiceAccountMetadata:
     r"""
-    kafka strimzi io v1 kafka spec cruise control template service account metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -2563,7 +2564,7 @@ schema KafkaStrimziIoV1KafkaSpecCruiseControlTemplateServiceAccountMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperator:
     r"""
-    kafka strimzi io v1 kafka spec entity operator
+    Configuration of the Entity Operator.
 
     Attributes
     ----------
@@ -2585,7 +2586,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperator:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplate:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template
+    Template for Entity Operator resources. The template allows users to specify how a `Deployment` and `Pod` is generated.
 
     Attributes
     ----------
@@ -2631,12 +2632,12 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplate:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateDeployment:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template deployment
+    Template for Entity Operator `Deployment`.
 
     Attributes
     ----------
     deploymentStrategy : str, default is Undefined, optional
-        deployment strategy
+        Pod replacement strategy for deployment configuration changes. Valid values are `RollingUpdate` and `Recreate`. Defaults to `RollingUpdate`.
     metadata : KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateDeploymentMetadata, default is Undefined, optional
         metadata
     """
@@ -2649,14 +2650,14 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateDeployment:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateDeploymentMetadata:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template deployment metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -2667,7 +2668,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateDeploymentMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateEntityOperatorRole:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template entity operator role
+    Template for the Entity Operator Role.
 
     Attributes
     ----------
@@ -2681,14 +2682,14 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateEntityOperatorRole:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateEntityOperatorRoleMetadata:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template entity operator role metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -2699,7 +2700,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateEntityOperatorRoleMetadata
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePod:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template pod
+    Template for Entity Operator `Pods`.
 
     Attributes
     ----------
@@ -2708,33 +2709,33 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePod:
     dnsConfig : KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodDNSConfig, default is Undefined, optional
         dns config
     dnsPolicy : str, default is Undefined, optional
-        dns policy
+        The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.
     enableServiceLinks : bool, default is Undefined, optional
-        enable service links
+        Indicates whether information about services should be injected into Pod's environment variables.
     hostAliases : [KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodHostAliasesItems0], default is Undefined, optional
-        host aliases
+        The pod's HostAliases. HostAliases is an optional list of hosts and IPs that will be injected into the Pod's hosts file if specified.
     hostUsers : bool, default is Undefined, optional
-        host users
+        Use the host user namespace. Optional. Defaults to `true`. When `true` or not set, the pod runs in the host user namespace. This is required when the pod needs features available only in the host namespace, such as loading kernel modules with `CAP_SYS_MODULE`.When set to `false`, the pod runs in a new user namespace. Setting `false` helps mitigate container breakout vulnerabilities and allows containers to run as `root` without granting `root` privileges on the host. This property is alpha-level in Kubernetes and is supported only by Kubernetes clusters that enable the `UserNamespacesSupport` feature.
     imagePullSecrets : [KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodImagePullSecretsItems0], default is Undefined, optional
-        image pull secrets
+        List of references to secrets in the same namespace to use for pulling any of the images used by this Pod. When the `STRIMZI_IMAGE_PULL_SECRETS` environment variable in Cluster Operator and the `imagePullSecrets` option are specified, only the `imagePullSecrets` variable is used and the `STRIMZI_IMAGE_PULL_SECRETS` variable is ignored.
     metadata : KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodMetadata, default is Undefined, optional
         metadata
     priorityClassName : str, default is Undefined, optional
-        priority class name
+        The name of the priority class used to assign priority to the pods. 
     schedulerName : str, default is Undefined, optional
-        scheduler name
+        The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.
     securityContext : KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodSecurityContext, default is Undefined, optional
         security context
     terminationGracePeriodSeconds : int, default is Undefined, optional
-        termination grace period seconds
+        The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.
     tmpDirSizeLimit : str, default is Undefined, optional
-        tmp dir size limit
+        Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.
     tolerations : [KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodTolerationsItems0], default is Undefined, optional
-        tolerations
+        The pod's tolerations.
     topologySpreadConstraints : [KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodTopologySpreadConstraintsItems0], default is Undefined, optional
-        topology spread constraints
+        The pod's topology spread constraints.
     volumes : [KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodVolumesItems0], default is Undefined, optional
-        volumes
+        Additional volumes that can be mounted to the pod.
     """
 
 
@@ -2778,7 +2779,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePod:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodAffinity:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template pod affinity
+    The pod's affinity rules.
 
     Attributes
     ----------
@@ -3502,7 +3503,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodAffinityPodAntiAffinity
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodDNSConfig:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template pod DNS config
+    The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.
 
     Attributes
     ----------
@@ -3542,12 +3543,12 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodDNSConfigOptionsItems0:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodDisruptionBudget:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template pod disruption budget
+    Template for the Entity Operator Pod Disruption Budget.
 
     Attributes
     ----------
     maxUnavailable : int, default is Undefined, optional
-        max unavailable
+        Maximum number of unavailable pods to allow automatic Pod eviction. A Pod eviction is allowed when the `maxUnavailable` number of pods or fewer are unavailable after the eviction. Setting this value to 0 prevents all voluntary evictions, so the pods must be evicted manually. Defaults to 1.
     metadata : KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodDisruptionBudgetMetadata, default is Undefined, optional
         metadata
     """
@@ -3564,14 +3565,14 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodDisruptionBudget:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodDisruptionBudgetMetadata:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template pod disruption budget metadata
+    Metadata to apply to the `PodDisruptionBudgetTemplate` resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -3614,14 +3615,14 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodImagePullSecretsItems0:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodMetadata:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template pod metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -3632,7 +3633,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodSecurityContext:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template pod security context
+    Configures pod-level security attributes and common container settings.
 
     Attributes
     ----------
@@ -3925,7 +3926,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodVolumesItems0:
     image : KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodVolumesItems0Image, default is Undefined, optional
         image
     name : str, default is Undefined, optional
-        name
+        Name to use for the volume. Required.
     persistentVolumeClaim : KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodVolumesItems0PersistentVolumeClaim, default is Undefined, optional
         persistent volume claim
     secret : KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodVolumesItems0Secret, default is Undefined, optional
@@ -3950,7 +3951,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodVolumesItems0:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodVolumesItems0ConfigMap:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template pod volumes items0 config map
+    `ConfigMap` to use to populate the volume.
 
     Attributes
     ----------
@@ -3998,7 +3999,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodVolumesItems0ConfigMapI
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodVolumesItems0Csi:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template pod volumes items0 csi
+    `CSIVolumeSource` object to use to populate the volume.
 
     Attributes
     ----------
@@ -4042,14 +4043,14 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodVolumesItems0CsiNodePub
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodVolumesItems0EmptyDir:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template pod volumes items0 empty dir
+    `EmptyDir` to use to populate the volume.
 
     Attributes
     ----------
     medium : str, default is Undefined, optional
-        medium
+        Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.
     sizeLimit : str, default is Undefined, optional
-        size limit
+        The total amount of local storage required for this EmptyDir volume (for example 1Gi).
     """
 
 
@@ -4064,7 +4065,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodVolumesItems0EmptyDir:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodVolumesItems0Image:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template pod volumes items0 image
+    `ImageVolumeSource` object to use to populate the volume.
 
     Attributes
     ----------
@@ -4082,7 +4083,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodVolumesItems0Image:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodVolumesItems0PersistentVolumeClaim:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template pod volumes items0 persistent volume claim
+    `PersistentVolumeClaim` object to use to populate the volume.
 
     Attributes
     ----------
@@ -4100,7 +4101,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodVolumesItems0Persistent
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodVolumesItems0Secret:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template pod volumes items0 secret
+    `Secret` to use to populate the volume.
 
     Attributes
     ----------
@@ -4148,7 +4149,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplatePodVolumesItems0SecretItem
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateServiceAccount:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template service account
+    Template for the Entity Operator service account.
 
     Attributes
     ----------
@@ -4162,14 +4163,14 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateServiceAccount:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateServiceAccountMetadata:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template service account metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -4180,16 +4181,16 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateServiceAccountMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateTopicOperatorContainer:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template topic operator container
+    Template for the Entity Topic Operator container.
 
     Attributes
     ----------
     env : [KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateTopicOperatorContainerEnvItems0], default is Undefined, optional
-        env
+        Environment variables which should be applied to the container.
     securityContext : KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateTopicOperatorContainerSecurityContext, default is Undefined, optional
         security context
     volumeMounts : [KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateTopicOperatorContainerVolumeMountsItems0], default is Undefined, optional
-        volume mounts
+        Additional volume mounts which should be applied to the container.
     """
 
 
@@ -4207,9 +4208,9 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateTopicOperatorContainerEnvI
     Attributes
     ----------
     name : str, default is Undefined, optional
-        name
+        The environment variable key.
     value : str, default is Undefined, optional
-        value
+        The environment variable value.
     valueFrom : KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateTopicOperatorContainerEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -4224,7 +4225,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateTopicOperatorContainerEnvI
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateTopicOperatorContainerEnvItems0ValueFrom:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template topic operator container env items0 value from
+    Reference to the secret or config map property to which the environment variable is set.
 
     Attributes
     ----------
@@ -4242,7 +4243,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateTopicOperatorContainerEnvI
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateTopicOperatorContainerEnvItems0ValueFromConfigMapKeyRef:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template topic operator container env items0 value from config map key ref
+    Reference to a key in a config map.
 
     Attributes
     ----------
@@ -4264,7 +4265,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateTopicOperatorContainerEnvI
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateTopicOperatorContainerEnvItems0ValueFromSecretKeyRef:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template topic operator container env items0 value from secret key ref
+    Reference to a key in a secret.
 
     Attributes
     ----------
@@ -4286,7 +4287,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateTopicOperatorContainerEnvI
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateTopicOperatorContainerSecurityContext:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template topic operator container security context
+    Security context for the container.
 
     Attributes
     ----------
@@ -4488,7 +4489,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateTopicOperatorContainerVolu
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateTopicOperatorRoleBinding:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template topic operator role binding
+    Template for the Entity Topic Operator RoleBinding.
 
     Attributes
     ----------
@@ -4502,14 +4503,14 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateTopicOperatorRoleBinding:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateTopicOperatorRoleBindingMetadata:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template topic operator role binding metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -4520,16 +4521,16 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateTopicOperatorRoleBindingMe
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateUserOperatorContainer:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template user operator container
+    Template for the Entity User Operator container.
 
     Attributes
     ----------
     env : [KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateUserOperatorContainerEnvItems0], default is Undefined, optional
-        env
+        Environment variables which should be applied to the container.
     securityContext : KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateUserOperatorContainerSecurityContext, default is Undefined, optional
         security context
     volumeMounts : [KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateUserOperatorContainerVolumeMountsItems0], default is Undefined, optional
-        volume mounts
+        Additional volume mounts which should be applied to the container.
     """
 
 
@@ -4547,9 +4548,9 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateUserOperatorContainerEnvIt
     Attributes
     ----------
     name : str, default is Undefined, optional
-        name
+        The environment variable key.
     value : str, default is Undefined, optional
-        value
+        The environment variable value.
     valueFrom : KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateUserOperatorContainerEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -4564,7 +4565,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateUserOperatorContainerEnvIt
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateUserOperatorContainerEnvItems0ValueFrom:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template user operator container env items0 value from
+    Reference to the secret or config map property to which the environment variable is set.
 
     Attributes
     ----------
@@ -4582,7 +4583,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateUserOperatorContainerEnvIt
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateUserOperatorContainerEnvItems0ValueFromConfigMapKeyRef:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template user operator container env items0 value from config map key ref
+    Reference to a key in a config map.
 
     Attributes
     ----------
@@ -4604,7 +4605,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateUserOperatorContainerEnvIt
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateUserOperatorContainerEnvItems0ValueFromSecretKeyRef:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template user operator container env items0 value from secret key ref
+    Reference to a key in a secret.
 
     Attributes
     ----------
@@ -4626,7 +4627,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateUserOperatorContainerEnvIt
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateUserOperatorContainerSecurityContext:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template user operator container security context
+    Security context for the container.
 
     Attributes
     ----------
@@ -4828,7 +4829,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateUserOperatorContainerVolum
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateUserOperatorRoleBinding:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template user operator role binding
+    Template for the Entity Topic Operator RoleBinding.
 
     Attributes
     ----------
@@ -4842,14 +4843,14 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateUserOperatorRoleBinding:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateUserOperatorRoleBindingMetadata:
     r"""
-    kafka strimzi io v1 kafka spec entity operator template user operator role binding metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -4860,12 +4861,12 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTemplateUserOperatorRoleBindingMet
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperator:
     r"""
-    kafka strimzi io v1 kafka spec entity operator topic operator
+    Configuration of the Topic Operator.
 
     Attributes
     ----------
     image : str, default is Undefined, optional
-        image
+        The image to use for the Topic Operator.
     jvmOptions : KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorJvmOptions, default is Undefined, optional
         jvm options
     livenessProbe : KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorLivenessProbe, default is Undefined, optional
@@ -4875,13 +4876,13 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperator:
     readinessProbe : KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorReadinessProbe, default is Undefined, optional
         readiness probe
     reconciliationIntervalMs : int, default is Undefined, optional
-        reconciliation interval ms
+        Interval between periodic reconciliations in milliseconds.
     resources : KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorResources, default is Undefined, optional
         resources
     startupProbe : KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorStartupProbe, default is Undefined, optional
         startup probe
     watchedNamespace : str, default is Undefined, optional
-        watched namespace
+        The namespace the Topic Operator should watch.
     """
 
 
@@ -4910,20 +4911,20 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperator:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorJvmOptions:
     r"""
-    kafka strimzi io v1 kafka spec entity operator topic operator jvm options
+    JVM Options for pods.
 
     Attributes
     ----------
     "-XX" : {str:str}, default is Undefined, optional
-        x x
+        A map of -XX options to the JVM.
     "-Xms" : str, default is Undefined, optional
-        xms
+        -Xms option to to the JVM.
     "-Xmx" : str, default is Undefined, optional
-        xmx
+        -Xmx option to to the JVM.
     gcLoggingEnabled : bool, default is Undefined, optional
-        gc logging enabled
+        Specifies whether the Garbage Collection logging is enabled. The default is false.
     javaSystemProperties : [KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorJvmOptionsJavaSystemPropertiesItems0], default is Undefined, optional
-        java system properties
+        A map of additional system properties which will be passed using the `-D` option to the JVM.
     """
 
 
@@ -4951,9 +4952,9 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorJvmOptionsJavaSystemP
     Attributes
     ----------
     name : str, default is Undefined, optional
-        name
+        The system property name.
     value : str, default is Undefined, optional
-        value
+        The system property value.
     """
 
 
@@ -4964,20 +4965,20 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorJvmOptionsJavaSystemP
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorLivenessProbe:
     r"""
-    kafka strimzi io v1 kafka spec entity operator topic operator liveness probe
+    Pod liveness checking.
 
     Attributes
     ----------
     failureThreshold : int, default is Undefined, optional
-        failure threshold
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     initialDelaySeconds : int, default is Undefined, optional
-        initial delay seconds
+        The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.
     periodSeconds : int, default is Undefined, optional
-        period seconds
+        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
     successThreshold : int, default is Undefined, optional
-        success threshold
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
     timeoutSeconds : int, default is Undefined, optional
-        timeout seconds
+        The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.
     """
 
 
@@ -5002,14 +5003,14 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorLivenessProbe:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorLogging:
     r"""
-    kafka strimzi io v1 kafka spec entity operator topic operator logging
+    Logging configuration.
 
     Attributes
     ----------
     loggers : {str:str}, default is Undefined, optional
-        loggers
+        A Map from logger name to logger level.
     $type : str, default is Undefined, required
-        type
+        Logging type, must be either 'inline' or 'external'.
     valueFrom : KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorLoggingValueFrom, default is Undefined, optional
         value from
     """
@@ -5024,7 +5025,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorLogging:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorLoggingValueFrom:
     r"""
-    kafka strimzi io v1 kafka spec entity operator topic operator logging value from
+    `ConfigMap` entry where the logging configuration is stored. 
 
     Attributes
     ----------
@@ -5038,7 +5039,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorLoggingValueFrom:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorLoggingValueFromConfigMapKeyRef:
     r"""
-    kafka strimzi io v1 kafka spec entity operator topic operator logging value from config map key ref
+    Reference to the key in the ConfigMap containing the configuration.
 
     Attributes
     ----------
@@ -5060,20 +5061,20 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorLoggingValueFromConfi
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorReadinessProbe:
     r"""
-    kafka strimzi io v1 kafka spec entity operator topic operator readiness probe
+    Pod readiness checking.
 
     Attributes
     ----------
     failureThreshold : int, default is Undefined, optional
-        failure threshold
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     initialDelaySeconds : int, default is Undefined, optional
-        initial delay seconds
+        The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.
     periodSeconds : int, default is Undefined, optional
-        period seconds
+        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
     successThreshold : int, default is Undefined, optional
-        success threshold
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
     timeoutSeconds : int, default is Undefined, optional
-        timeout seconds
+        The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.
     """
 
 
@@ -5098,7 +5099,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorReadinessProbe:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorResources:
     r"""
-    kafka strimzi io v1 kafka spec entity operator topic operator resources
+    CPU and memory resources to reserve.
 
     Attributes
     ----------
@@ -5119,8 +5120,8 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorResources:
 
 
     check:
-        all _, k in limits { _regex_match(str(k), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if k } if limits
-        all _, k in requests { _regex_match(str(k), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if k } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorResourcesClaimsItems0:
@@ -5143,20 +5144,20 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorResourcesClaimsItems0
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorStartupProbe:
     r"""
-    kafka strimzi io v1 kafka spec entity operator topic operator startup probe
+    Pod startup checking.
 
     Attributes
     ----------
     failureThreshold : int, default is Undefined, optional
-        failure threshold
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     initialDelaySeconds : int, default is Undefined, optional
-        initial delay seconds
+        The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.
     periodSeconds : int, default is Undefined, optional
-        period seconds
+        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
     successThreshold : int, default is Undefined, optional
-        success threshold
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
     timeoutSeconds : int, default is Undefined, optional
-        timeout seconds
+        The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.
     """
 
 
@@ -5181,12 +5182,12 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorTopicOperatorStartupProbe:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperator:
     r"""
-    kafka strimzi io v1 kafka spec entity operator user operator
+    Configuration of the User Operator.
 
     Attributes
     ----------
     image : str, default is Undefined, optional
-        image
+        The image to use for the User Operator.
     jvmOptions : KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorJvmOptions, default is Undefined, optional
         jvm options
     livenessProbe : KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorLivenessProbe, default is Undefined, optional
@@ -5196,13 +5197,13 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperator:
     readinessProbe : KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorReadinessProbe, default is Undefined, optional
         readiness probe
     reconciliationIntervalMs : int, default is Undefined, optional
-        reconciliation interval ms
+        Interval between periodic reconciliations in milliseconds.
     resources : KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorResources, default is Undefined, optional
         resources
     secretPrefix : str, default is Undefined, optional
-        secret prefix
+        The prefix that will be added to the KafkaUser name to be used as the Secret name.
     watchedNamespace : str, default is Undefined, optional
-        watched namespace
+        The namespace the User Operator should watch.
     """
 
 
@@ -5231,20 +5232,20 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperator:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorJvmOptions:
     r"""
-    kafka strimzi io v1 kafka spec entity operator user operator jvm options
+    JVM Options for pods.
 
     Attributes
     ----------
     "-XX" : {str:str}, default is Undefined, optional
-        x x
+        A map of -XX options to the JVM.
     "-Xms" : str, default is Undefined, optional
-        xms
+        -Xms option to to the JVM.
     "-Xmx" : str, default is Undefined, optional
-        xmx
+        -Xmx option to to the JVM.
     gcLoggingEnabled : bool, default is Undefined, optional
-        gc logging enabled
+        Specifies whether the Garbage Collection logging is enabled. The default is false.
     javaSystemProperties : [KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorJvmOptionsJavaSystemPropertiesItems0], default is Undefined, optional
-        java system properties
+        A map of additional system properties which will be passed using the `-D` option to the JVM.
     """
 
 
@@ -5272,9 +5273,9 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorJvmOptionsJavaSystemPr
     Attributes
     ----------
     name : str, default is Undefined, optional
-        name
+        The system property name.
     value : str, default is Undefined, optional
-        value
+        The system property value.
     """
 
 
@@ -5285,20 +5286,20 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorJvmOptionsJavaSystemPr
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorLivenessProbe:
     r"""
-    kafka strimzi io v1 kafka spec entity operator user operator liveness probe
+    Pod liveness checking.
 
     Attributes
     ----------
     failureThreshold : int, default is Undefined, optional
-        failure threshold
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     initialDelaySeconds : int, default is Undefined, optional
-        initial delay seconds
+        The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.
     periodSeconds : int, default is Undefined, optional
-        period seconds
+        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
     successThreshold : int, default is Undefined, optional
-        success threshold
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
     timeoutSeconds : int, default is Undefined, optional
-        timeout seconds
+        The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.
     """
 
 
@@ -5323,14 +5324,14 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorLivenessProbe:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorLogging:
     r"""
-    kafka strimzi io v1 kafka spec entity operator user operator logging
+    Logging configuration.
 
     Attributes
     ----------
     loggers : {str:str}, default is Undefined, optional
-        loggers
+        A Map from logger name to logger level.
     $type : str, default is Undefined, required
-        type
+        Logging type, must be either 'inline' or 'external'.
     valueFrom : KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorLoggingValueFrom, default is Undefined, optional
         value from
     """
@@ -5345,7 +5346,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorLogging:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorLoggingValueFrom:
     r"""
-    kafka strimzi io v1 kafka spec entity operator user operator logging value from
+    `ConfigMap` entry where the logging configuration is stored. 
 
     Attributes
     ----------
@@ -5359,7 +5360,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorLoggingValueFrom:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorLoggingValueFromConfigMapKeyRef:
     r"""
-    kafka strimzi io v1 kafka spec entity operator user operator logging value from config map key ref
+    Reference to the key in the ConfigMap containing the configuration.
 
     Attributes
     ----------
@@ -5381,20 +5382,20 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorLoggingValueFromConfig
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorReadinessProbe:
     r"""
-    kafka strimzi io v1 kafka spec entity operator user operator readiness probe
+    Pod readiness checking.
 
     Attributes
     ----------
     failureThreshold : int, default is Undefined, optional
-        failure threshold
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     initialDelaySeconds : int, default is Undefined, optional
-        initial delay seconds
+        The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.
     periodSeconds : int, default is Undefined, optional
-        period seconds
+        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
     successThreshold : int, default is Undefined, optional
-        success threshold
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
     timeoutSeconds : int, default is Undefined, optional
-        timeout seconds
+        The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.
     """
 
 
@@ -5419,7 +5420,7 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorReadinessProbe:
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorResources:
     r"""
-    kafka strimzi io v1 kafka spec entity operator user operator resources
+    CPU and memory resources to reserve.
 
     Attributes
     ----------
@@ -5440,8 +5441,8 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorResources:
 
 
     check:
-        all _, k in limits { _regex_match(str(k), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if k } if limits
-        all _, k in requests { _regex_match(str(k), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if k } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorResourcesClaimsItems0:
@@ -5464,30 +5465,30 @@ schema KafkaStrimziIoV1KafkaSpecEntityOperatorUserOperatorResourcesClaimsItems0:
 
 schema KafkaStrimziIoV1KafkaSpecKafka:
     r"""
-    kafka strimzi io v1 kafka spec kafka
+    Configuration of the Kafka cluster.
 
     Attributes
     ----------
     authorization : KafkaStrimziIoV1KafkaSpecKafkaAuthorization, default is Undefined, optional
         authorization
     brokerRackInitImage : str, default is Undefined, optional
-        broker rack init image
+        The image of the init container used for initializing the `broker.rack`.
     config : any, default is Undefined, optional
-        config
+        Kafka broker config properties with certain prefixes cannot be set unless it is in the exception list. Consult the documentation for the list of forbidden prefixes and exceptions.
     image : str, default is Undefined, optional
-        image
+        The container image used for Kafka pods. If the property is not set, the default Kafka image version is determined based on the `version` configuration. The image names are specifically mapped to corresponding versions in the Cluster Operator configuration. Changing the Kafka image version does not automatically update the image versions for other components, such as Kafka Exporter. 
     jmxOptions : KafkaStrimziIoV1KafkaSpecKafkaJmxOptions, default is Undefined, optional
         jmx options
     jvmOptions : KafkaStrimziIoV1KafkaSpecKafkaJvmOptions, default is Undefined, optional
         jvm options
     listeners : [KafkaStrimziIoV1KafkaSpecKafkaListenersItems0], default is Undefined, required
-        listeners
+        Configures listeners to provide access to Kafka brokers.
     livenessProbe : KafkaStrimziIoV1KafkaSpecKafkaLivenessProbe, default is Undefined, optional
         liveness probe
     logging : KafkaStrimziIoV1KafkaSpecKafkaLogging, default is Undefined, optional
         logging
     metadataVersion : str, default is Undefined, optional
-        metadata version
+        The KRaft metadata version used by the Kafka cluster. This property is ignored when running in ZooKeeper mode. If the property is not set, it defaults to the metadata version that corresponds to the `version` property.
     metricsConfig : KafkaStrimziIoV1KafkaSpecKafkaMetricsConfig, default is Undefined, optional
         metrics config
     quotas : KafkaStrimziIoV1KafkaSpecKafkaQuotas, default is Undefined, optional
@@ -5501,7 +5502,7 @@ schema KafkaStrimziIoV1KafkaSpecKafka:
     tieredStorage : KafkaStrimziIoV1KafkaSpecKafkaTieredStorage, default is Undefined, optional
         tiered storage
     version : str, default is Undefined, optional
-        version
+        The Kafka broker version. Defaults to the latest version. Consult the user documentation to understand the process required to upgrade or downgrade the version.
     """
 
 
@@ -5546,18 +5547,18 @@ schema KafkaStrimziIoV1KafkaSpecKafka:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaAuthorization:
     r"""
-    kafka strimzi io v1 kafka spec kafka authorization
+    Authorization configuration for Kafka brokers.
 
     Attributes
     ----------
     authorizerClass : str, default is Undefined, optional
-        authorizer class
+        Authorization implementation class, which must be available in classpath.
     superUsers : [str], default is Undefined, optional
-        super users
+        List of super users, which are user principals with unlimited access rights.
     supportsAdminApi : bool, default is Undefined, optional
-        supports admin Api
+        Indicates whether the custom authorizer supports the APIs for managing ACLs using the Kafka Admin API. Defaults to `false`.
     $type : str, default is Undefined, required
-        type
+        Authorization type. Currently, the supported types are `simple` and `custom`. `simple` authorization type uses Kafka's built-in authorizer for authorization. `custom` authorization type uses user-provided implementation for authorization.
     """
 
 
@@ -5572,34 +5573,34 @@ schema KafkaStrimziIoV1KafkaSpecKafkaAuthorization:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporter:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter
+    Configuration of the Kafka Exporter. Kafka Exporter can provide additional metrics, for example lag of consumer group at topic/partition.
 
     Attributes
     ----------
     enableSaramaLogging : bool, default is Undefined, optional
-        enable sarama logging
+        Enable Sarama logging, a Go client library used by the Kafka Exporter.
     groupExcludeRegex : str, default is Undefined, optional
-        group exclude regex
+        Regular expression to specify which consumer groups to exclude.
     groupRegex : str, default is Undefined, optional
-        group regex
+        Regular expression to specify which consumer groups to collect. Default value is `.*`.
     image : str, default is Undefined, optional
-        image
+        The container image used for the Kafka Exporter pods. If no image name is explicitly specified, the image name corresponds to the version specified in the Cluster Operator configuration. If an image name is not defined in the Cluster Operator configuration, a default value is used.
     livenessProbe : KafkaStrimziIoV1KafkaSpecKafkaExporterLivenessProbe, default is Undefined, optional
         liveness probe
     logging : str, default is Undefined, optional
-        logging
+        Only log messages with the given severity or above. Valid levels: [`info`, `debug`, `trace`]. Default log level is `info`.
     readinessProbe : KafkaStrimziIoV1KafkaSpecKafkaExporterReadinessProbe, default is Undefined, optional
         readiness probe
     resources : KafkaStrimziIoV1KafkaSpecKafkaExporterResources, default is Undefined, optional
         resources
     showAllOffsets : bool, default is Undefined, optional
-        show all offsets
+        Whether show the offset/lag for all consumer group, otherwise, only show connected consumer groups.
     template : KafkaStrimziIoV1KafkaSpecKafkaExporterTemplate, default is Undefined, optional
         template
     topicExcludeRegex : str, default is Undefined, optional
-        topic exclude regex
+        Regular expression to specify which topics to exclude.
     topicRegex : str, default is Undefined, optional
-        topic regex
+        Regular expression to specify which topics to collect. Default value is `.*`.
     """
 
 
@@ -5630,20 +5631,20 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporter:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterLivenessProbe:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter liveness probe
+    Pod liveness check.
 
     Attributes
     ----------
     failureThreshold : int, default is Undefined, optional
-        failure threshold
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     initialDelaySeconds : int, default is Undefined, optional
-        initial delay seconds
+        The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.
     periodSeconds : int, default is Undefined, optional
-        period seconds
+        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
     successThreshold : int, default is Undefined, optional
-        success threshold
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
     timeoutSeconds : int, default is Undefined, optional
-        timeout seconds
+        The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.
     """
 
 
@@ -5668,20 +5669,20 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterLivenessProbe:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterReadinessProbe:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter readiness probe
+    Pod readiness check.
 
     Attributes
     ----------
     failureThreshold : int, default is Undefined, optional
-        failure threshold
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     initialDelaySeconds : int, default is Undefined, optional
-        initial delay seconds
+        The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.
     periodSeconds : int, default is Undefined, optional
-        period seconds
+        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
     successThreshold : int, default is Undefined, optional
-        success threshold
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
     timeoutSeconds : int, default is Undefined, optional
-        timeout seconds
+        The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.
     """
 
 
@@ -5706,7 +5707,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterReadinessProbe:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterResources:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter resources
+    CPU and memory resources to reserve.
 
     Attributes
     ----------
@@ -5727,8 +5728,8 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterResources:
 
 
     check:
-        all _, k in limits { _regex_match(str(k), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if k } if limits
-        all _, k in requests { _regex_match(str(k), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if k } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterResourcesClaimsItems0:
@@ -5751,7 +5752,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterResourcesClaimsItems0:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplate:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template
+    Customization of deployment templates and pods.
 
     Attributes
     ----------
@@ -5781,16 +5782,16 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplate:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateContainer:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template container
+    Template for the Kafka Exporter container.
 
     Attributes
     ----------
     env : [KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateContainerEnvItems0], default is Undefined, optional
-        env
+        Environment variables which should be applied to the container.
     securityContext : KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateContainerSecurityContext, default is Undefined, optional
         security context
     volumeMounts : [KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateContainerVolumeMountsItems0], default is Undefined, optional
-        volume mounts
+        Additional volume mounts which should be applied to the container.
     """
 
 
@@ -5808,9 +5809,9 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateContainerEnvItems0:
     Attributes
     ----------
     name : str, default is Undefined, optional
-        name
+        The environment variable key.
     value : str, default is Undefined, optional
-        value
+        The environment variable value.
     valueFrom : KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateContainerEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -5825,7 +5826,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateContainerEnvItems0:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateContainerEnvItems0ValueFrom:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template container env items0 value from
+    Reference to the secret or config map property to which the environment variable is set.
 
     Attributes
     ----------
@@ -5843,7 +5844,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateContainerEnvItems0ValueFrom
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateContainerEnvItems0ValueFromConfigMapKeyRef:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template container env items0 value from config map key ref
+    Reference to a key in a config map.
 
     Attributes
     ----------
@@ -5865,7 +5866,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateContainerEnvItems0ValueFrom
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateContainerEnvItems0ValueFromSecretKeyRef:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template container env items0 value from secret key ref
+    Reference to a key in a secret.
 
     Attributes
     ----------
@@ -5887,7 +5888,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateContainerEnvItems0ValueFrom
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateContainerSecurityContext:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template container security context
+    Security context for the container.
 
     Attributes
     ----------
@@ -6089,12 +6090,12 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateContainerVolumeMountsItems0
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateDeployment:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template deployment
+    Template for Kafka Exporter `Deployment`.
 
     Attributes
     ----------
     deploymentStrategy : str, default is Undefined, optional
-        deployment strategy
+        Pod replacement strategy for deployment configuration changes. Valid values are `RollingUpdate` and `Recreate`. Defaults to `RollingUpdate`.
     metadata : KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateDeploymentMetadata, default is Undefined, optional
         metadata
     """
@@ -6107,14 +6108,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateDeployment:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateDeploymentMetadata:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template deployment metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -6125,7 +6126,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateDeploymentMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePod:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template pod
+    Template for Kafka Exporter `Pods`.
 
     Attributes
     ----------
@@ -6134,33 +6135,33 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePod:
     dnsConfig : KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodDNSConfig, default is Undefined, optional
         dns config
     dnsPolicy : str, default is Undefined, optional
-        dns policy
+        The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.
     enableServiceLinks : bool, default is Undefined, optional
-        enable service links
+        Indicates whether information about services should be injected into Pod's environment variables.
     hostAliases : [KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodHostAliasesItems0], default is Undefined, optional
-        host aliases
+        The pod's HostAliases. HostAliases is an optional list of hosts and IPs that will be injected into the Pod's hosts file if specified.
     hostUsers : bool, default is Undefined, optional
-        host users
+        Use the host user namespace. Optional. Defaults to `true`. When `true` or not set, the pod runs in the host user namespace. This is required when the pod needs features available only in the host namespace, such as loading kernel modules with `CAP_SYS_MODULE`.When set to `false`, the pod runs in a new user namespace. Setting `false` helps mitigate container breakout vulnerabilities and allows containers to run as `root` without granting `root` privileges on the host. This property is alpha-level in Kubernetes and is supported only by Kubernetes clusters that enable the `UserNamespacesSupport` feature.
     imagePullSecrets : [KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodImagePullSecretsItems0], default is Undefined, optional
-        image pull secrets
+        List of references to secrets in the same namespace to use for pulling any of the images used by this Pod. When the `STRIMZI_IMAGE_PULL_SECRETS` environment variable in Cluster Operator and the `imagePullSecrets` option are specified, only the `imagePullSecrets` variable is used and the `STRIMZI_IMAGE_PULL_SECRETS` variable is ignored.
     metadata : KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodMetadata, default is Undefined, optional
         metadata
     priorityClassName : str, default is Undefined, optional
-        priority class name
+        The name of the priority class used to assign priority to the pods. 
     schedulerName : str, default is Undefined, optional
-        scheduler name
+        The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.
     securityContext : KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodSecurityContext, default is Undefined, optional
         security context
     terminationGracePeriodSeconds : int, default is Undefined, optional
-        termination grace period seconds
+        The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.
     tmpDirSizeLimit : str, default is Undefined, optional
-        tmp dir size limit
+        Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.
     tolerations : [KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodTolerationsItems0], default is Undefined, optional
-        tolerations
+        The pod's tolerations.
     topologySpreadConstraints : [KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodTopologySpreadConstraintsItems0], default is Undefined, optional
-        topology spread constraints
+        The pod's topology spread constraints.
     volumes : [KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodVolumesItems0], default is Undefined, optional
-        volumes
+        Additional volumes that can be mounted to the pod.
     """
 
 
@@ -6204,7 +6205,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePod:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodAffinity:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template pod affinity
+    The pod's affinity rules.
 
     Attributes
     ----------
@@ -6928,7 +6929,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodAffinityPodAntiAffinityR
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodDNSConfig:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template pod DNS config
+    The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.
 
     Attributes
     ----------
@@ -6968,12 +6969,12 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodDNSConfigOptionsItems0:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodDisruptionBudget:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template pod disruption budget
+    Template for the Pod Disruption Budget for Kafka Exporter pods.
 
     Attributes
     ----------
     maxUnavailable : int, default is Undefined, optional
-        max unavailable
+        Maximum number of unavailable pods to allow automatic Pod eviction. A Pod eviction is allowed when the `maxUnavailable` number of pods or fewer are unavailable after the eviction. Setting this value to 0 prevents all voluntary evictions, so the pods must be evicted manually. Defaults to 1.
     metadata : KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodDisruptionBudgetMetadata, default is Undefined, optional
         metadata
     """
@@ -6990,14 +6991,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodDisruptionBudget:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodDisruptionBudgetMetadata:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template pod disruption budget metadata
+    Metadata to apply to the `PodDisruptionBudgetTemplate` resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -7040,14 +7041,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodImagePullSecretsItems0:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodMetadata:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template pod metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -7058,7 +7059,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodSecurityContext:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template pod security context
+    Configures pod-level security attributes and common container settings.
 
     Attributes
     ----------
@@ -7351,7 +7352,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodVolumesItems0:
     image : KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodVolumesItems0Image, default is Undefined, optional
         image
     name : str, default is Undefined, optional
-        name
+        Name to use for the volume. Required.
     persistentVolumeClaim : KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodVolumesItems0PersistentVolumeClaim, default is Undefined, optional
         persistent volume claim
     secret : KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodVolumesItems0Secret, default is Undefined, optional
@@ -7376,7 +7377,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodVolumesItems0:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodVolumesItems0ConfigMap:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template pod volumes items0 config map
+    `ConfigMap` to use to populate the volume.
 
     Attributes
     ----------
@@ -7424,7 +7425,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodVolumesItems0ConfigMapIt
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodVolumesItems0Csi:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template pod volumes items0 csi
+    `CSIVolumeSource` object to use to populate the volume.
 
     Attributes
     ----------
@@ -7468,14 +7469,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodVolumesItems0CsiNodePubl
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodVolumesItems0EmptyDir:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template pod volumes items0 empty dir
+    `EmptyDir` to use to populate the volume.
 
     Attributes
     ----------
     medium : str, default is Undefined, optional
-        medium
+        Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.
     sizeLimit : str, default is Undefined, optional
-        size limit
+        The total amount of local storage required for this EmptyDir volume (for example 1Gi).
     """
 
 
@@ -7490,7 +7491,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodVolumesItems0EmptyDir:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodVolumesItems0Image:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template pod volumes items0 image
+    `ImageVolumeSource` object to use to populate the volume.
 
     Attributes
     ----------
@@ -7508,7 +7509,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodVolumesItems0Image:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodVolumesItems0PersistentVolumeClaim:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template pod volumes items0 persistent volume claim
+    `PersistentVolumeClaim` object to use to populate the volume.
 
     Attributes
     ----------
@@ -7526,7 +7527,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodVolumesItems0PersistentV
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodVolumesItems0Secret:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template pod volumes items0 secret
+    `Secret` to use to populate the volume.
 
     Attributes
     ----------
@@ -7574,7 +7575,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplatePodVolumesItems0SecretItems
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateServiceAccount:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template service account
+    Template for the Kafka Exporter service account.
 
     Attributes
     ----------
@@ -7588,14 +7589,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateServiceAccount:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateServiceAccountMetadata:
     r"""
-    kafka strimzi io v1 kafka spec kafka exporter template service account metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -7606,7 +7607,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaExporterTemplateServiceAccountMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaJmxOptions:
     r"""
-    kafka strimzi io v1 kafka spec kafka jmx options
+    JMX Options for Kafka brokers.
 
     Attributes
     ----------
@@ -7620,12 +7621,12 @@ schema KafkaStrimziIoV1KafkaSpecKafkaJmxOptions:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaJmxOptionsAuthentication:
     r"""
-    kafka strimzi io v1 kafka spec kafka jmx options authentication
+    Authentication configuration for connecting to the JMX port.
 
     Attributes
     ----------
     $type : str, default is Undefined, required
-        type
+        Authentication type. Currently the only supported types are `password`.`password` type creates a username and protected port with no TLS.
     """
 
 
@@ -7634,20 +7635,20 @@ schema KafkaStrimziIoV1KafkaSpecKafkaJmxOptionsAuthentication:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaJvmOptions:
     r"""
-    kafka strimzi io v1 kafka spec kafka jvm options
+    JVM Options for pods.
 
     Attributes
     ----------
     "-XX" : {str:str}, default is Undefined, optional
-        x x
+        A map of -XX options to the JVM.
     "-Xms" : str, default is Undefined, optional
-        xms
+        -Xms option to to the JVM.
     "-Xmx" : str, default is Undefined, optional
-        xmx
+        -Xmx option to to the JVM.
     gcLoggingEnabled : bool, default is Undefined, optional
-        gc logging enabled
+        Specifies whether the Garbage Collection logging is enabled. The default is false.
     javaSystemProperties : [KafkaStrimziIoV1KafkaSpecKafkaJvmOptionsJavaSystemPropertiesItems0], default is Undefined, optional
-        java system properties
+        A map of additional system properties which will be passed using the `-D` option to the JVM.
     """
 
 
@@ -7675,9 +7676,9 @@ schema KafkaStrimziIoV1KafkaSpecKafkaJvmOptionsJavaSystemPropertiesItems0:
     Attributes
     ----------
     name : str, default is Undefined, optional
-        name
+        The system property name.
     value : str, default is Undefined, optional
-        value
+        The system property value.
     """
 
 
@@ -7697,15 +7698,23 @@ schema KafkaStrimziIoV1KafkaSpecKafkaListenersItems0:
     configuration : KafkaStrimziIoV1KafkaSpecKafkaListenersItems0Configuration, default is Undefined, optional
         configuration
     name : str, default is Undefined, required
-        name
+        Name of the listener. The name will be used to identify the listener and the related Kubernetes objects. The name has to be unique within given a Kafka cluster. The name can consist of lowercase characters and numbers and be up to 11 characters long.
     networkPolicyPeers : [KafkaStrimziIoV1KafkaSpecKafkaListenersItems0NetworkPolicyPeersItems0], default is Undefined, optional
-        network policy peers
+        List of peers which should be able to connect to this listener. Peers in this list are combined using a logical OR operation. If this field is empty or missing, all connections will be allowed for this listener. If this field is present and contains at least one item, the listener only allows the traffic which matches at least one item in this list.
     port : int, default is Undefined, required
-        port
+        Port number used by the listener inside Kafka. The port number has to be unique within a given Kafka cluster. Allowed port numbers are 9092 and higher with the exception of ports 9404 and 9999, which are already used for Prometheus and JMX. Depending on the listener type, the port number might not be the same as the port number that connects Kafka clients.
     tls : bool, default is Undefined, required
-        tls
+        Enables TLS encryption on the listener. This is a required property. For `route` and `ingress` type listeners, TLS encryption must be always enabled.
     $type : str, default is Undefined, required
-        type
+        Type of the listener. The supported types are as follows: 
+
+        * `internal` type exposes Kafka internally only within the Kubernetes cluster.
+        * `route` type uses OpenShift Routes to expose Kafka.
+        * `loadbalancer` type uses LoadBalancer type services to expose Kafka.
+        * `nodeport` type uses NodePort type services to expose Kafka.
+        * `ingress` (deprecated) type uses Kubernetes Nginx Ingress to expose Kafka with TLS passthrough.
+        * `cluster-ip` type uses a per-broker `ClusterIP` service.
+
     """
 
 
@@ -7721,7 +7730,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaListenersItems0:
 
     tls: bool
 
-    $type: "internal" | "route" | "loadbalancer" | "nodeport" | "ingress" | "cluster-ip"
+    $type: "internal" | "route" | "tlsroute" | "loadbalancer" | "nodeport" | "ingress" | "cluster-ip"
 
 
     check:
@@ -7731,16 +7740,16 @@ schema KafkaStrimziIoV1KafkaSpecKafkaListenersItems0:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaListenersItems0Authentication:
     r"""
-    kafka strimzi io v1 kafka spec kafka listeners items0 authentication
+    Authentication configuration for this listener.
 
     Attributes
     ----------
     listenerConfig : any, default is Undefined, optional
-        listener config
+        Configuration to be used for a specific listener. All values are prefixed with `listener.name.<listener_name>`.
     sasl : bool, default is Undefined, optional
-        sasl
+        Enable or disable SASL on this listener.
     $type : str, default is Undefined, required
-        type
+        Authentication type. `scram-sha-512` type uses SASL SCRAM-SHA-512 Authentication. `tls` type uses TLS Client Authentication. `tls` type is supported only on TLS listeners. `custom` type allows for any authentication type to be used.
     """
 
 
@@ -7753,48 +7762,87 @@ schema KafkaStrimziIoV1KafkaSpecKafkaListenersItems0Authentication:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaListenersItems0Configuration:
     r"""
-    kafka strimzi io v1 kafka spec kafka listeners items0 configuration
+    Additional listener configuration.
 
     Attributes
     ----------
     advertisedHostTemplate : str, default is Undefined, optional
-        advertised host template
+        Configures the template for generating the advertised hostnames of the individual brokers. Valid placeholders that you can use in the template are `{nodeId}` and `{nodePodName}`.
     advertisedPortTemplate : str, default is Undefined, optional
-        advertised port template
+        Configures the template for generating the advertised ports of the individual brokers. It allows to specify a simple mathematics formula that will be used to calculate the port. The only valid placeholder that you can use in the template is `{nodeId}`. Supported operations are `+`, `-`, and `*`. For example, `9000 + {nodeId}` will generate ports `9000`, `9001`, `9002`, and so on for the individual brokers. You can also use a fixed port number in the template, for example `9000`, which will generate the same port for all brokers.
     allocateLoadBalancerNodePorts : bool, default is Undefined, optional
-        allocate load balancer node ports
+        Configures whether to allocate NodePort automatically for the `Service` with type `LoadBalancer`.
+        This is a one to one with the `spec.allocateLoadBalancerNodePorts` configuration in the `Service` type
+        For `loadbalancer` listeners only.
     bootstrap : KafkaStrimziIoV1KafkaSpecKafkaListenersItems0ConfigurationBootstrap, default is Undefined, optional
         bootstrap
     brokerCertChainAndKey : KafkaStrimziIoV1KafkaSpecKafkaListenersItems0ConfigurationBrokerCertChainAndKey, default is Undefined, optional
         broker cert chain and key
     brokers : [KafkaStrimziIoV1KafkaSpecKafkaListenersItems0ConfigurationBrokersItems0], default is Undefined, optional
-        brokers
+        Per-broker configurations.
     class : str, default is Undefined, optional
-        class
+        Configures a specific class for `Ingress` and `LoadBalancer` that defines which controller is used. If not specified, the default controller is used.
+
+        * For an `ingress` listener, the operator uses this property to set the `ingressClassName` property in the `Ingress` resources.
+        * For a `loadbalancer` listener, the operator uses this property to set the `loadBalancerClass` property  in the `Service` resources.
+
+        For `ingress` and `loadbalancer` listeners only.
     createBootstrapService : bool, default is Undefined, optional
-        create bootstrap service
+        Whether to create the bootstrap service or not. The bootstrap service is created by default (if not specified differently). This field can be used with the `loadbalancer` listener.
     externalTrafficPolicy : str, default is Undefined, optional
-        external traffic policy
+        Specifies whether the service routes external traffic to cluster-wide or node-local endpoints:
+
+        * `Cluster` may cause a second hop to another node and obscures the client source IP.
+        * `Local` avoids a second hop for `LoadBalancer` and `Nodeport` type services and preserves the client source IP (when supported by the infrastructure).
+
+        If unspecified, Kubernetes uses `Cluster` as the default. For `loadbalancer` or `nodeport` listeners only.
     finalizers : [str], default is Undefined, optional
-        finalizers
+        A list of finalizers configured for the `LoadBalancer` type services created for this listener. If supported by the platform, the finalizer `service.kubernetes.io/load-balancer-cleanup` to make sure that the external load balancer is deleted together with the service.For more information, see https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#garbage-collecting-load-balancers. For `loadbalancer` listeners only.
     hostTemplate : str, default is Undefined, optional
-        host template
+        Configures the template for generating the hostnames of the individual brokers. Valid placeholders that you can use in the template are `{nodeId}` and `{nodePodName}`.
     ipFamilies : [str], default is Undefined, optional
-        ip families
+        Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6`. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting.
     ipFamilyPolicy : str, default is Undefined, optional
-        ip family policy
+        Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`:
+
+        * `SingleStack` is for a single IP family.
+        * `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters.
+        * `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters.
+
+        If unspecified, Kubernetes will choose the default value based on the service type.
     loadBalancerSourceRanges : [str], default is Undefined, optional
-        load balancer source ranges
+        A list of CIDR ranges (for example `10.0.0.0/8` or `130.211.204.1/32`) from which clients can connect to loadbalancer listeners. If supported by the platform, traffic through the loadbalancer is restricted to the specified CIDR ranges. This field is applicable only for loadbalancer type services and is ignored if the cloud provider does not support the feature. For `loadbalancer` listeners only.
     maxConnectionCreationRate : int, default is Undefined, optional
-        max connection creation rate
+        The maximum connection creation rate we allow in this listener at any time. New connections will be throttled if the limit is reached.
     maxConnections : int, default is Undefined, optional
-        max connections
+        The maximum number of connections we allow for this listener in the broker at any time. New connections are blocked if the limit is reached.
+    parentRefs : [KafkaStrimziIoV1KafkaSpecKafkaListenersItems0ConfigurationParentRefsItems0], default is Undefined, optional
+        For `tlsroute` listeners only.
+        Configures the Gateway API resource or resources that generated `TLSRoute` resources attach to.
+        Typically, this is a `Gateway` resource.
+    perBrokerAnnotationsTemplate : {str:str}, default is Undefined, optional
+        Configures the template used to generate annotations for individual brokers. You can use the `{nodeId}` and `{nodePodName}` placeholders in annotation values. Templating applies only to annotation values.
+    perBrokerLabelsTemplate : {str:str}, default is Undefined, optional
+        Configures the template used to generate labels for individual brokers. You can use the `{nodeId}` and `{nodePodName}` placeholders in label values. Templating applies only to label values.
     preferredNodePortAddressType : str, default is Undefined, optional
-        preferred node port address type
+        Defines which address type should be used as the node address. Available types are: `ExternalDNS`, `ExternalIP`, `InternalDNS`, `InternalIP` and `Hostname`. By default, the addresses are used in the following order (the first one found is used):
+
+        * `ExternalDNS`
+        * `ExternalIP`
+        * `InternalDNS`
+        * `InternalIP`
+        * `Hostname`
+
+        This property is used to select the preferred address type, which is checked first. If no address is found for this address type, the other types are checked in the default order. For `nodeport` listeners only.
     publishNotReadyAddresses : bool, default is Undefined, optional
-        publish not ready addresses
+        Configures whether the service endpoints are considered "ready" even if the Pods themselves are not. Defaults to `false`. This field can not be used with `internal` listeners.
     useServiceDnsDomain : bool, default is Undefined, optional
-        use service Dns domain
+        Configures whether the Kubernetes service DNS domain should be included in the generated addresses.
+
+        * If set to `false`, the generated addresses do not contain the service DNS domain suffix. For example, `my-cluster-kafka-0.my-cluster-kafka-brokers.myproject.svc`.
+        * If set to `true`, the generated addresses contain the service DNS domain suffix. For example, `my-cluster-kafka-0.my-cluster-kafka-brokers.myproject.svc.cluster.local`.
+
+        The default is `.cluster.local`, but this is customizable using the environment variable `KUBERNETES_SERVICE_DNS_DOMAIN`. For `internal` and `cluster-ip` listeners only.
     """
 
 
@@ -7830,6 +7878,12 @@ schema KafkaStrimziIoV1KafkaSpecKafkaListenersItems0Configuration:
 
     maxConnections?: int
 
+    parentRefs?: [KafkaStrimziIoV1KafkaSpecKafkaListenersItems0ConfigurationParentRefsItems0]
+
+    perBrokerAnnotationsTemplate?: {str:str}
+
+    perBrokerLabelsTemplate?: {str:str}
+
     preferredNodePortAddressType?: "ExternalIP" | "ExternalDNS" | "InternalIP" | "InternalDNS" | "Hostname"
 
     publishNotReadyAddresses?: bool
@@ -7839,24 +7893,24 @@ schema KafkaStrimziIoV1KafkaSpecKafkaListenersItems0Configuration:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaListenersItems0ConfigurationBootstrap:
     r"""
-    kafka strimzi io v1 kafka spec kafka listeners items0 configuration bootstrap
+    Bootstrap configuration.
 
     Attributes
     ----------
     alternativeNames : [str], default is Undefined, optional
-        alternative names
+        Additional alternative names for the bootstrap service. The alternative names will be added to the list of subject alternative names of the TLS certificates.
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to `Ingress`, `Route`, or `Service` resources. You can use this property to configure DNS providers such as External DNS. For `loadbalancer`, `nodeport`, `route`, or `ingress` listeners only.
     externalIPs : [str], default is Undefined, optional
-        external i ps
+        External IPs associated to the nodeport service. These IPs are used by clients external to the Kubernetes cluster to access the Kafka brokers. This property is helpful when `nodeport` without `externalIP` is not sufficient. For example on bare-metal Kubernetes clusters that do not support Loadbalancer service types. For `nodeport` listeners only.
     host : str, default is Undefined, optional
-        host
+        Specifies the hostname used for the bootstrap resource. For `route` (optional) or `ingress` (required) listeners only. Ensure the hostname resolves to the Ingress endpoints; no validation is performed by Strimzi.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to `Ingress`, `Route`, or `Service` resources. For `loadbalancer`, `nodeport`, `route`, or `ingress` listeners only.
     loadBalancerIP : str, default is Undefined, optional
-        load balancer IP
+        The loadbalancer is requested with the IP address specified in this property. This feature depends on whether the underlying cloud provider supports specifying the `loadBalancerIP` when a load balancer is created. This property is ignored if the cloud provider does not support the feature. For `loadbalancer` listeners only.
     nodePort : int, default is Undefined, optional
-        node port
+        Node port for the bootstrap service. For `nodeport` listeners only.
     """
 
 
@@ -7877,16 +7931,16 @@ schema KafkaStrimziIoV1KafkaSpecKafkaListenersItems0ConfigurationBootstrap:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaListenersItems0ConfigurationBrokerCertChainAndKey:
     r"""
-    kafka strimzi io v1 kafka spec kafka listeners items0 configuration broker cert chain and key
+    Reference to the `Secret` which holds the certificate and private key pair which will be used for this listener. The certificate can optionally contain the whole chain. This field can be used only with listeners with enabled TLS encryption.
 
     Attributes
     ----------
     certificate : str, default is Undefined, required
-        certificate
+        The name of the file certificate in the Secret.
     key : str, default is Undefined, required
-        key
+        The name of the private key in the secret. The private key must be in unencrypted PKCS #8 format. For more information, see RFC 5208: https://datatracker.ietf.org/doc/html/rfc5208.
     secretName : str, default is Undefined, required
-        secret name
+        The name of the Secret containing the certificate.
     """
 
 
@@ -7904,23 +7958,23 @@ schema KafkaStrimziIoV1KafkaSpecKafkaListenersItems0ConfigurationBrokersItems0:
     Attributes
     ----------
     advertisedHost : str, default is Undefined, optional
-        advertised host
+        The host name used in the brokers' `advertised.listeners`.
     advertisedPort : int, default is Undefined, optional
-        advertised port
+        The port number used in the brokers' `advertised.listeners`.
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations that will be added to the `Ingress` or `Service` resource. You can use this field to configure DNS providers such as External DNS. This field can be used only with `loadbalancer`, `nodeport`, or `ingress` type listeners.
     broker : int, default is Undefined, required
-        broker
+        ID of the kafka broker (broker identifier). Broker IDs start from 0 and correspond to the number of broker replicas.
     externalIPs : [str], default is Undefined, optional
-        external i ps
+        External IPs associated to the nodeport service. These IPs are used by clients external to the Kubernetes cluster to access the Kafka brokers. This field is helpful when `nodeport` without `externalIP` is not sufficient. For example on bare-metal Kubernetes clusters that do not support Loadbalancer service types. This field can only be used with `nodeport` type listener.
     host : str, default is Undefined, optional
-        host
+        The broker host. This field will be used in the Ingress resource or in the Route resource to specify the desired hostname. This field can be used only with `route` (optional) or `ingress` (required) type listeners.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels that will be added to the `Ingress`, `Route`, or `Service` resource. This field can be used only with `loadbalancer`, `nodeport`, `route`, or `ingress` type listeners.
     loadBalancerIP : str, default is Undefined, optional
-        load balancer IP
+        The loadbalancer is requested with the IP address specified in this field. This feature depends on whether the underlying cloud provider supports specifying the `loadBalancerIP` when a load balancer is created. This field is ignored if the cloud provider does not support the feature.This field can be used only with `loadbalancer` type listener.
     nodePort : int, default is Undefined, optional
-        node port
+        Node port for the per-broker service. This field can be used only with `nodeport` type listener.
     """
 
 
@@ -7941,6 +7995,40 @@ schema KafkaStrimziIoV1KafkaSpecKafkaListenersItems0ConfigurationBrokersItems0:
     loadBalancerIP?: str
 
     nodePort?: int
+
+
+schema KafkaStrimziIoV1KafkaSpecKafkaListenersItems0ConfigurationParentRefsItems0:
+    r"""
+    kafka strimzi io v1 kafka spec kafka listeners items0 configuration parent refs items0
+
+    Attributes
+    ----------
+    group : str, default is Undefined, optional
+        group
+    kind : str, default is Undefined, optional
+        kind
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    port : int, default is Undefined, optional
+        port
+    sectionName : str, default is Undefined, optional
+        section name
+    """
+
+
+    group?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+    port?: int
+
+    sectionName?: str
 
 
 schema KafkaStrimziIoV1KafkaSpecKafkaListenersItems0NetworkPolicyPeersItems0:
@@ -8065,20 +8153,20 @@ schema KafkaStrimziIoV1KafkaSpecKafkaListenersItems0NetworkPolicyPeersItems0PodS
 
 schema KafkaStrimziIoV1KafkaSpecKafkaLivenessProbe:
     r"""
-    kafka strimzi io v1 kafka spec kafka liveness probe
+    Pod liveness checking.
 
     Attributes
     ----------
     failureThreshold : int, default is Undefined, optional
-        failure threshold
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     initialDelaySeconds : int, default is Undefined, optional
-        initial delay seconds
+        The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.
     periodSeconds : int, default is Undefined, optional
-        period seconds
+        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
     successThreshold : int, default is Undefined, optional
-        success threshold
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
     timeoutSeconds : int, default is Undefined, optional
-        timeout seconds
+        The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.
     """
 
 
@@ -8103,14 +8191,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaLivenessProbe:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaLogging:
     r"""
-    kafka strimzi io v1 kafka spec kafka logging
+    Logging configuration for Kafka.
 
     Attributes
     ----------
     loggers : {str:str}, default is Undefined, optional
-        loggers
+        A Map from logger name to logger level.
     $type : str, default is Undefined, required
-        type
+        Logging type, must be either 'inline' or 'external'.
     valueFrom : KafkaStrimziIoV1KafkaSpecKafkaLoggingValueFrom, default is Undefined, optional
         value from
     """
@@ -8125,7 +8213,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaLogging:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaLoggingValueFrom:
     r"""
-    kafka strimzi io v1 kafka spec kafka logging value from
+    `ConfigMap` entry where the logging configuration is stored. 
 
     Attributes
     ----------
@@ -8139,7 +8227,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaLoggingValueFrom:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaLoggingValueFromConfigMapKeyRef:
     r"""
-    kafka strimzi io v1 kafka spec kafka logging value from config map key ref
+    Reference to the key in the ConfigMap containing the configuration.
 
     Attributes
     ----------
@@ -8161,12 +8249,12 @@ schema KafkaStrimziIoV1KafkaSpecKafkaLoggingValueFromConfigMapKeyRef:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaMetricsConfig:
     r"""
-    kafka strimzi io v1 kafka spec kafka metrics config
+    Metrics configuration.
 
     Attributes
     ----------
     $type : str, default is Undefined, required
-        type
+        Metrics type. The supported types are `jmxPrometheusExporter` and `strimziMetricsReporter`. Type `jmxPrometheusExporter` uses the Prometheus JMX Exporter to expose Kafka JMX metrics in Prometheus format through an HTTP endpoint. Type `strimziMetricsReporter` uses the Strimzi Metrics Reporter to directly expose Kafka metrics in Prometheus format through an HTTP endpoint.
     valueFrom : KafkaStrimziIoV1KafkaSpecKafkaMetricsConfigValueFrom, default is Undefined, optional
         value from
     values : KafkaStrimziIoV1KafkaSpecKafkaMetricsConfigValues, default is Undefined, optional
@@ -8183,7 +8271,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaMetricsConfig:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaMetricsConfigValueFrom:
     r"""
-    kafka strimzi io v1 kafka spec kafka metrics config value from
+    ConfigMap entry where the Prometheus JMX Exporter configuration is stored.
 
     Attributes
     ----------
@@ -8197,7 +8285,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaMetricsConfigValueFrom:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaMetricsConfigValueFromConfigMapKeyRef:
     r"""
-    kafka strimzi io v1 kafka spec kafka metrics config value from config map key ref
+    Reference to the key in the ConfigMap containing the configuration.
 
     Attributes
     ----------
@@ -8219,12 +8307,12 @@ schema KafkaStrimziIoV1KafkaSpecKafkaMetricsConfigValueFromConfigMapKeyRef:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaMetricsConfigValues:
     r"""
-    kafka strimzi io v1 kafka spec kafka metrics config values
+    Configuration values for the Strimzi Metrics Reporter.
 
     Attributes
     ----------
     allowList : [str], default is Undefined, optional
-        allow list
+        A list of regex patterns to filter the metrics to collect. Should contain at least one element.
     """
 
 
@@ -8233,26 +8321,26 @@ schema KafkaStrimziIoV1KafkaSpecKafkaMetricsConfigValues:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaQuotas:
     r"""
-    kafka strimzi io v1 kafka spec kafka quotas
+    Quotas plugin configuration for Kafka brokers allows setting quotas for disk usage, produce/fetch rates, and more. Supported plugin types include `kafka` (default) and `strimzi`. If not specified, the default `kafka` quotas plugin is used.
 
     Attributes
     ----------
     consumerByteRate : int, default is Undefined, optional
-        consumer byte rate
+        A per-broker byte-rate quota for clients consuming from a broker, independent of their number. If clients consume at maximum speed, the quota is shared equally between all non-excluded consumers. Otherwise, the quota is divided based on each client's consumption rate.
     controllerMutationRate : float, default is Undefined, optional
-        controller mutation rate
+        The default client quota on the rate at which mutations are accepted per second for create topic requests, create partition requests, and delete topic requests, defined for each broker. The mutations rate is measured by the number of partitions created or deleted. Applied on a per-broker basis.
     excludedPrincipals : [str], default is Undefined, optional
-        excluded principals
+        List of principals that are excluded from the quota. The principals have to be prefixed with `User:`, for example `User:my-user;User:CN=my-other-user`.
     minAvailableBytesPerVolume : int, default is Undefined, optional
-        min available bytes per volume
+        Stop message production if the available size (in bytes) of the storage is lower than or equal to this specified value. This condition is mutually exclusive with `minAvailableRatioPerVolume`.
     minAvailableRatioPerVolume : float, default is Undefined, optional
-        min available ratio per volume
+        Stop message production if the percentage of available storage space falls below or equals the specified ratio (set as a decimal representing a percentage). This condition is mutually exclusive with `minAvailableBytesPerVolume`.
     producerByteRate : int, default is Undefined, optional
-        producer byte rate
+        A per-broker byte-rate quota for clients producing to a broker, independent of their number. If clients produce at maximum speed, the quota is shared equally between all non-excluded producers. Otherwise, the quota is divided based on each client's production rate.
     requestPercentage : int, default is Undefined, optional
-        request percentage
+        The default client quota limits the maximum CPU utilization of each client as a percentage of the network and I/O threads of each broker. Applied on a per-broker basis.
     $type : str, default is Undefined, required
-        type
+        Quotas plugin type. Currently, the supported types are `kafka` and `strimzi`. `kafka` quotas type uses Kafka's built-in quotas plugin. `strimzi` quotas type uses Strimzi quotas plugin.
     """
 
 
@@ -8285,16 +8373,16 @@ schema KafkaStrimziIoV1KafkaSpecKafkaQuotas:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaRack:
     r"""
-    kafka strimzi io v1 kafka spec kafka rack
+    Configuration of the `broker.rack` broker config.
 
     Attributes
     ----------
     envVarName : str, default is Undefined, optional
-        env var name
+        The name of the environment variable that defines the rack ID. Its value sets the `broker.rack` configuration for Kafka brokers and the `client.rack` configuration for Kafka Connect or MirrorMaker 2.
     topologyKey : str, default is Undefined, optional
-        topology key
+        A key that matches labels assigned to the Kubernetes cluster nodes. The value of the label is used to set a broker's `broker.rack` config, and the `client.rack` config for Kafka Connect or MirrorMaker 2.
     $type : str, default is Undefined, optional
-        type
+        Specifies the rack awareness type. Supported types are `topology-label` and `environment-variable`. `topology-label` uses a Kubernetes worker node label to set the `broker.rack` configuration for Kafka brokers and the `client.rack` configuration for Kafka Connect and MirrorMaker 2. `environment-variable` uses an environment variable to set the `broker.rack` configuration for Kafka brokers and the `client.rack` configuration for Kafka Connect and MirrorMaker 2. When not specified, `topology-label` type is used by default.
     """
 
 
@@ -8307,20 +8395,20 @@ schema KafkaStrimziIoV1KafkaSpecKafkaRack:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaReadinessProbe:
     r"""
-    kafka strimzi io v1 kafka spec kafka readiness probe
+    Pod readiness checking.
 
     Attributes
     ----------
     failureThreshold : int, default is Undefined, optional
-        failure threshold
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     initialDelaySeconds : int, default is Undefined, optional
-        initial delay seconds
+        The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.
     periodSeconds : int, default is Undefined, optional
-        period seconds
+        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
     successThreshold : int, default is Undefined, optional
-        success threshold
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
     timeoutSeconds : int, default is Undefined, optional
-        timeout seconds
+        The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.
     """
 
 
@@ -8345,7 +8433,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaReadinessProbe:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplate:
     r"""
-    kafka strimzi io v1 kafka spec kafka template
+    Template for Kafka cluster resources. The template allows users to specify how the Kubernetes resources are generated.
 
     Attributes
     ----------
@@ -8427,14 +8515,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplate:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateBootstrapService:
     r"""
-    kafka strimzi io v1 kafka spec kafka template bootstrap service
+    Template for Kafka bootstrap `Service`.
 
     Attributes
     ----------
     ipFamilies : [str], default is Undefined, optional
-        ip families
+        Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6`. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting.
     ipFamilyPolicy : str, default is Undefined, optional
-        ip family policy
+        Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`. `SingleStack` is for a single IP family. `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters. `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters. If unspecified, Kubernetes will choose the default value based on the service type.
     metadata : KafkaStrimziIoV1KafkaSpecKafkaTemplateBootstrapServiceMetadata, default is Undefined, optional
         metadata
     """
@@ -8449,14 +8537,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateBootstrapService:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateBootstrapServiceMetadata:
     r"""
-    kafka strimzi io v1 kafka spec kafka template bootstrap service metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -8467,14 +8555,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateBootstrapServiceMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateBrokersService:
     r"""
-    kafka strimzi io v1 kafka spec kafka template brokers service
+    Template for Kafka broker `Service`.
 
     Attributes
     ----------
     ipFamilies : [str], default is Undefined, optional
-        ip families
+        Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6`. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting.
     ipFamilyPolicy : str, default is Undefined, optional
-        ip family policy
+        Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`. `SingleStack` is for a single IP family. `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters. `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters. If unspecified, Kubernetes will choose the default value based on the service type.
     metadata : KafkaStrimziIoV1KafkaSpecKafkaTemplateBrokersServiceMetadata, default is Undefined, optional
         metadata
     """
@@ -8489,14 +8577,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateBrokersService:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateBrokersServiceMetadata:
     r"""
-    kafka strimzi io v1 kafka spec kafka template brokers service metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -8507,7 +8595,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateBrokersServiceMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateClusterCaCert:
     r"""
-    kafka strimzi io v1 kafka spec kafka template cluster ca cert
+    Template for Secret with Kafka Cluster certificate public key.
 
     Attributes
     ----------
@@ -8521,14 +8609,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateClusterCaCert:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateClusterCaCertMetadata:
     r"""
-    kafka strimzi io v1 kafka spec kafka template cluster ca cert metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -8539,7 +8627,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateClusterCaCertMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateClusterRoleBinding:
     r"""
-    kafka strimzi io v1 kafka spec kafka template cluster role binding
+    Template for the Kafka ClusterRoleBinding.
 
     Attributes
     ----------
@@ -8553,14 +8641,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateClusterRoleBinding:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateClusterRoleBindingMetadata:
     r"""
-    kafka strimzi io v1 kafka spec kafka template cluster role binding metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -8571,7 +8659,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateClusterRoleBindingMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateExternalBootstrapIngress:
     r"""
-    kafka strimzi io v1 kafka spec kafka template external bootstrap ingress
+    Template for Kafka external bootstrap `Ingress`.
 
     Attributes
     ----------
@@ -8585,14 +8673,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateExternalBootstrapIngress:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateExternalBootstrapIngressMetadata:
     r"""
-    kafka strimzi io v1 kafka spec kafka template external bootstrap ingress metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -8603,7 +8691,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateExternalBootstrapIngressMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateExternalBootstrapRoute:
     r"""
-    kafka strimzi io v1 kafka spec kafka template external bootstrap route
+    Template for Kafka external bootstrap `Route`.
 
     Attributes
     ----------
@@ -8617,14 +8705,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateExternalBootstrapRoute:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateExternalBootstrapRouteMetadata:
     r"""
-    kafka strimzi io v1 kafka spec kafka template external bootstrap route metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -8635,7 +8723,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateExternalBootstrapRouteMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateExternalBootstrapService:
     r"""
-    kafka strimzi io v1 kafka spec kafka template external bootstrap service
+    Template for Kafka external bootstrap `Service`.
 
     Attributes
     ----------
@@ -8649,14 +8737,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateExternalBootstrapService:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateExternalBootstrapServiceMetadata:
     r"""
-    kafka strimzi io v1 kafka spec kafka template external bootstrap service metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -8667,16 +8755,16 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateExternalBootstrapServiceMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateInitContainer:
     r"""
-    kafka strimzi io v1 kafka spec kafka template init container
+    Template for the Kafka init container.
 
     Attributes
     ----------
     env : [KafkaStrimziIoV1KafkaSpecKafkaTemplateInitContainerEnvItems0], default is Undefined, optional
-        env
+        Environment variables which should be applied to the container.
     securityContext : KafkaStrimziIoV1KafkaSpecKafkaTemplateInitContainerSecurityContext, default is Undefined, optional
         security context
     volumeMounts : [KafkaStrimziIoV1KafkaSpecKafkaTemplateInitContainerVolumeMountsItems0], default is Undefined, optional
-        volume mounts
+        Additional volume mounts which should be applied to the container.
     """
 
 
@@ -8694,9 +8782,9 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateInitContainerEnvItems0:
     Attributes
     ----------
     name : str, default is Undefined, optional
-        name
+        The environment variable key.
     value : str, default is Undefined, optional
-        value
+        The environment variable value.
     valueFrom : KafkaStrimziIoV1KafkaSpecKafkaTemplateInitContainerEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -8711,7 +8799,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateInitContainerEnvItems0:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateInitContainerEnvItems0ValueFrom:
     r"""
-    kafka strimzi io v1 kafka spec kafka template init container env items0 value from
+    Reference to the secret or config map property to which the environment variable is set.
 
     Attributes
     ----------
@@ -8729,7 +8817,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateInitContainerEnvItems0ValueFrom:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateInitContainerEnvItems0ValueFromConfigMapKeyRef:
     r"""
-    kafka strimzi io v1 kafka spec kafka template init container env items0 value from config map key ref
+    Reference to a key in a config map.
 
     Attributes
     ----------
@@ -8751,7 +8839,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateInitContainerEnvItems0ValueFromConf
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateInitContainerEnvItems0ValueFromSecretKeyRef:
     r"""
-    kafka strimzi io v1 kafka spec kafka template init container env items0 value from secret key ref
+    Reference to a key in a secret.
 
     Attributes
     ----------
@@ -8773,7 +8861,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateInitContainerEnvItems0ValueFromSecr
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateInitContainerSecurityContext:
     r"""
-    kafka strimzi io v1 kafka spec kafka template init container security context
+    Security context for the container.
 
     Attributes
     ----------
@@ -8975,7 +9063,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateInitContainerVolumeMountsItems0:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateJmxSecret:
     r"""
-    kafka strimzi io v1 kafka spec kafka template jmx secret
+    Template for Secret of the Kafka Cluster JMX authentication.
 
     Attributes
     ----------
@@ -8989,14 +9077,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateJmxSecret:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateJmxSecretMetadata:
     r"""
-    kafka strimzi io v1 kafka spec kafka template jmx secret metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -9007,16 +9095,16 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateJmxSecretMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateKafkaContainer:
     r"""
-    kafka strimzi io v1 kafka spec kafka template kafka container
+    Template for the Kafka broker container.
 
     Attributes
     ----------
     env : [KafkaStrimziIoV1KafkaSpecKafkaTemplateKafkaContainerEnvItems0], default is Undefined, optional
-        env
+        Environment variables which should be applied to the container.
     securityContext : KafkaStrimziIoV1KafkaSpecKafkaTemplateKafkaContainerSecurityContext, default is Undefined, optional
         security context
     volumeMounts : [KafkaStrimziIoV1KafkaSpecKafkaTemplateKafkaContainerVolumeMountsItems0], default is Undefined, optional
-        volume mounts
+        Additional volume mounts which should be applied to the container.
     """
 
 
@@ -9034,9 +9122,9 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateKafkaContainerEnvItems0:
     Attributes
     ----------
     name : str, default is Undefined, optional
-        name
+        The environment variable key.
     value : str, default is Undefined, optional
-        value
+        The environment variable value.
     valueFrom : KafkaStrimziIoV1KafkaSpecKafkaTemplateKafkaContainerEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -9051,7 +9139,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateKafkaContainerEnvItems0:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateKafkaContainerEnvItems0ValueFrom:
     r"""
-    kafka strimzi io v1 kafka spec kafka template kafka container env items0 value from
+    Reference to the secret or config map property to which the environment variable is set.
 
     Attributes
     ----------
@@ -9069,7 +9157,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateKafkaContainerEnvItems0ValueFrom:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateKafkaContainerEnvItems0ValueFromConfigMapKeyRef:
     r"""
-    kafka strimzi io v1 kafka spec kafka template kafka container env items0 value from config map key ref
+    Reference to a key in a config map.
 
     Attributes
     ----------
@@ -9091,7 +9179,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateKafkaContainerEnvItems0ValueFromCon
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateKafkaContainerEnvItems0ValueFromSecretKeyRef:
     r"""
-    kafka strimzi io v1 kafka spec kafka template kafka container env items0 value from secret key ref
+    Reference to a key in a secret.
 
     Attributes
     ----------
@@ -9113,7 +9201,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateKafkaContainerEnvItems0ValueFromSec
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateKafkaContainerSecurityContext:
     r"""
-    kafka strimzi io v1 kafka spec kafka template kafka container security context
+    Security context for the container.
 
     Attributes
     ----------
@@ -9315,7 +9403,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateKafkaContainerVolumeMountsItems0:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePerPodIngress:
     r"""
-    kafka strimzi io v1 kafka spec kafka template per pod ingress
+    Template for Kafka per-pod `Ingress` used for access from outside of Kubernetes.
 
     Attributes
     ----------
@@ -9329,14 +9417,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePerPodIngress:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePerPodIngressMetadata:
     r"""
-    kafka strimzi io v1 kafka spec kafka template per pod ingress metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -9347,7 +9435,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePerPodIngressMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePerPodRoute:
     r"""
-    kafka strimzi io v1 kafka spec kafka template per pod route
+    Template for Kafka per-pod `Routes` used for access from outside of OpenShift.
 
     Attributes
     ----------
@@ -9361,14 +9449,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePerPodRoute:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePerPodRouteMetadata:
     r"""
-    kafka strimzi io v1 kafka spec kafka template per pod route metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -9379,7 +9467,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePerPodRouteMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePerPodService:
     r"""
-    kafka strimzi io v1 kafka spec kafka template per pod service
+    Template for Kafka per-pod `Services` used for access from outside of Kubernetes.
 
     Attributes
     ----------
@@ -9393,14 +9481,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePerPodService:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePerPodServiceMetadata:
     r"""
-    kafka strimzi io v1 kafka spec kafka template per pod service metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -9411,7 +9499,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePerPodServiceMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePersistentVolumeClaim:
     r"""
-    kafka strimzi io v1 kafka spec kafka template persistent volume claim
+    Template for all Kafka `PersistentVolumeClaims`.
 
     Attributes
     ----------
@@ -9425,14 +9513,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePersistentVolumeClaim:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePersistentVolumeClaimMetadata:
     r"""
-    kafka strimzi io v1 kafka spec kafka template persistent volume claim metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -9443,7 +9531,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePersistentVolumeClaimMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePod:
     r"""
-    kafka strimzi io v1 kafka spec kafka template pod
+    Template for Kafka `Pods`.
 
     Attributes
     ----------
@@ -9452,33 +9540,33 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePod:
     dnsConfig : KafkaStrimziIoV1KafkaSpecKafkaTemplatePodDNSConfig, default is Undefined, optional
         dns config
     dnsPolicy : str, default is Undefined, optional
-        dns policy
+        The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.
     enableServiceLinks : bool, default is Undefined, optional
-        enable service links
+        Indicates whether information about services should be injected into Pod's environment variables.
     hostAliases : [KafkaStrimziIoV1KafkaSpecKafkaTemplatePodHostAliasesItems0], default is Undefined, optional
-        host aliases
+        The pod's HostAliases. HostAliases is an optional list of hosts and IPs that will be injected into the Pod's hosts file if specified.
     hostUsers : bool, default is Undefined, optional
-        host users
+        Use the host user namespace. Optional. Defaults to `true`. When `true` or not set, the pod runs in the host user namespace. This is required when the pod needs features available only in the host namespace, such as loading kernel modules with `CAP_SYS_MODULE`.When set to `false`, the pod runs in a new user namespace. Setting `false` helps mitigate container breakout vulnerabilities and allows containers to run as `root` without granting `root` privileges on the host. This property is alpha-level in Kubernetes and is supported only by Kubernetes clusters that enable the `UserNamespacesSupport` feature.
     imagePullSecrets : [KafkaStrimziIoV1KafkaSpecKafkaTemplatePodImagePullSecretsItems0], default is Undefined, optional
-        image pull secrets
+        List of references to secrets in the same namespace to use for pulling any of the images used by this Pod. When the `STRIMZI_IMAGE_PULL_SECRETS` environment variable in Cluster Operator and the `imagePullSecrets` option are specified, only the `imagePullSecrets` variable is used and the `STRIMZI_IMAGE_PULL_SECRETS` variable is ignored.
     metadata : KafkaStrimziIoV1KafkaSpecKafkaTemplatePodMetadata, default is Undefined, optional
         metadata
     priorityClassName : str, default is Undefined, optional
-        priority class name
+        The name of the priority class used to assign priority to the pods. 
     schedulerName : str, default is Undefined, optional
-        scheduler name
+        The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.
     securityContext : KafkaStrimziIoV1KafkaSpecKafkaTemplatePodSecurityContext, default is Undefined, optional
         security context
     terminationGracePeriodSeconds : int, default is Undefined, optional
-        termination grace period seconds
+        The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.
     tmpDirSizeLimit : str, default is Undefined, optional
-        tmp dir size limit
+        Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.
     tolerations : [KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTolerationsItems0], default is Undefined, optional
-        tolerations
+        The pod's tolerations.
     topologySpreadConstraints : [KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTopologySpreadConstraintsItems0], default is Undefined, optional
-        topology spread constraints
+        The pod's topology spread constraints.
     volumes : [KafkaStrimziIoV1KafkaSpecKafkaTemplatePodVolumesItems0], default is Undefined, optional
-        volumes
+        Additional volumes that can be mounted to the pod.
     """
 
 
@@ -9522,7 +9610,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePod:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodAffinity:
     r"""
-    kafka strimzi io v1 kafka spec kafka template pod affinity
+    The pod's affinity rules.
 
     Attributes
     ----------
@@ -10246,7 +10334,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodAffinityPodAntiAffinityRequiredD
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodDNSConfig:
     r"""
-    kafka strimzi io v1 kafka spec kafka template pod DNS config
+    The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.
 
     Attributes
     ----------
@@ -10286,12 +10374,12 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodDNSConfigOptionsItems0:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodDisruptionBudget:
     r"""
-    kafka strimzi io v1 kafka spec kafka template pod disruption budget
+    Template for Kafka `PodDisruptionBudget`.
 
     Attributes
     ----------
     maxUnavailable : int, default is Undefined, optional
-        max unavailable
+        Maximum number of unavailable pods to allow automatic Pod eviction. A Pod eviction is allowed when the `maxUnavailable` number of pods or fewer are unavailable after the eviction. Setting this value to 0 prevents all voluntary evictions, so the pods must be evicted manually. Defaults to 1.
     metadata : KafkaStrimziIoV1KafkaSpecKafkaTemplatePodDisruptionBudgetMetadata, default is Undefined, optional
         metadata
     """
@@ -10308,14 +10396,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodDisruptionBudget:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodDisruptionBudgetMetadata:
     r"""
-    kafka strimzi io v1 kafka spec kafka template pod disruption budget metadata
+    Metadata to apply to the `PodDisruptionBudgetTemplate` resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -10358,14 +10446,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodImagePullSecretsItems0:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodMetadata:
     r"""
-    kafka strimzi io v1 kafka spec kafka template pod metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -10376,7 +10464,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodSecurityContext:
     r"""
-    kafka strimzi io v1 kafka spec kafka template pod security context
+    Configures pod-level security attributes and common container settings.
 
     Attributes
     ----------
@@ -10544,7 +10632,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodSecurityContextWindowsOptions:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodSet:
     r"""
-    kafka strimzi io v1 kafka spec kafka template pod set
+    Template for Kafka `StrimziPodSet` resource.
 
     Attributes
     ----------
@@ -10558,14 +10646,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodSet:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodSetMetadata:
     r"""
-    kafka strimzi io v1 kafka spec kafka template pod set metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -10701,7 +10789,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodVolumesItems0:
     image : KafkaStrimziIoV1KafkaSpecKafkaTemplatePodVolumesItems0Image, default is Undefined, optional
         image
     name : str, default is Undefined, optional
-        name
+        Name to use for the volume. Required.
     persistentVolumeClaim : KafkaStrimziIoV1KafkaSpecKafkaTemplatePodVolumesItems0PersistentVolumeClaim, default is Undefined, optional
         persistent volume claim
     secret : KafkaStrimziIoV1KafkaSpecKafkaTemplatePodVolumesItems0Secret, default is Undefined, optional
@@ -10726,7 +10814,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodVolumesItems0:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodVolumesItems0ConfigMap:
     r"""
-    kafka strimzi io v1 kafka spec kafka template pod volumes items0 config map
+    `ConfigMap` to use to populate the volume.
 
     Attributes
     ----------
@@ -10774,7 +10862,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodVolumesItems0ConfigMapItemsItems
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodVolumesItems0Csi:
     r"""
-    kafka strimzi io v1 kafka spec kafka template pod volumes items0 csi
+    `CSIVolumeSource` object to use to populate the volume.
 
     Attributes
     ----------
@@ -10818,14 +10906,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodVolumesItems0CsiNodePublishSecre
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodVolumesItems0EmptyDir:
     r"""
-    kafka strimzi io v1 kafka spec kafka template pod volumes items0 empty dir
+    `EmptyDir` to use to populate the volume.
 
     Attributes
     ----------
     medium : str, default is Undefined, optional
-        medium
+        Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.
     sizeLimit : str, default is Undefined, optional
-        size limit
+        The total amount of local storage required for this EmptyDir volume (for example 1Gi).
     """
 
 
@@ -10840,7 +10928,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodVolumesItems0EmptyDir:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodVolumesItems0Image:
     r"""
-    kafka strimzi io v1 kafka spec kafka template pod volumes items0 image
+    `ImageVolumeSource` object to use to populate the volume.
 
     Attributes
     ----------
@@ -10858,7 +10946,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodVolumesItems0Image:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodVolumesItems0PersistentVolumeClaim:
     r"""
-    kafka strimzi io v1 kafka spec kafka template pod volumes items0 persistent volume claim
+    `PersistentVolumeClaim` object to use to populate the volume.
 
     Attributes
     ----------
@@ -10876,7 +10964,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodVolumesItems0PersistentVolumeCla
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodVolumesItems0Secret:
     r"""
-    kafka strimzi io v1 kafka spec kafka template pod volumes items0 secret
+    `Secret` to use to populate the volume.
 
     Attributes
     ----------
@@ -10924,7 +11012,7 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplatePodVolumesItems0SecretItemsItems0:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateServiceAccount:
     r"""
-    kafka strimzi io v1 kafka spec kafka template service account
+    Template for the Kafka service account.
 
     Attributes
     ----------
@@ -10938,14 +11026,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateServiceAccount:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTemplateServiceAccountMetadata:
     r"""
-    kafka strimzi io v1 kafka spec kafka template service account metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -10956,14 +11044,14 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTemplateServiceAccountMetadata:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTieredStorage:
     r"""
-    kafka strimzi io v1 kafka spec kafka tiered storage
+    Configure the tiered storage feature for Kafka brokers.
 
     Attributes
     ----------
     remoteStorageManager : KafkaStrimziIoV1KafkaSpecKafkaTieredStorageRemoteStorageManager, default is Undefined, optional
         remote storage manager
     $type : str, default is Undefined, required
-        type
+        Storage type, only 'custom' is supported at the moment.
     """
 
 
@@ -10974,16 +11062,16 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTieredStorage:
 
 schema KafkaStrimziIoV1KafkaSpecKafkaTieredStorageRemoteStorageManager:
     r"""
-    kafka strimzi io v1 kafka spec kafka tiered storage remote storage manager
+    Configuration for the Remote Storage Manager.
 
     Attributes
     ----------
     className : str, default is Undefined, optional
-        class name
+        The class name for the `RemoteStorageManager` implementation.
     classPath : str, default is Undefined, optional
-        class path
+        The class path for the `RemoteStorageManager` implementation.
     config : {str:str}, default is Undefined, optional
-        config
+        The additional configuration map for the `RemoteStorageManager` implementation. Keys will be automatically prefixed with `rsm.config.`, and added to Kafka broker configuration.
     """
 
 
@@ -10996,28 +11084,28 @@ schema KafkaStrimziIoV1KafkaSpecKafkaTieredStorageRemoteStorageManager:
 
 schema KafkaStrimziIoV1KafkaStatus:
     r"""
-    kafka strimzi io v1 kafka status
+    The status of the Kafka cluster.
 
     Attributes
     ----------
     autoRebalance : KafkaStrimziIoV1KafkaStatusAutoRebalance, default is Undefined, optional
         auto rebalance
     clusterId : str, default is Undefined, optional
-        cluster Id
+        Kafka cluster Id.
     conditions : [KafkaStrimziIoV1KafkaStatusConditionsItems0], default is Undefined, optional
-        conditions
+        List of status conditions.
     kafkaMetadataVersion : str, default is Undefined, optional
-        kafka metadata version
+        The KRaft metadata.version currently used by the Kafka cluster.
     kafkaNodePools : [KafkaStrimziIoV1KafkaStatusKafkaNodePoolsItems0], default is Undefined, optional
-        kafka node pools
+        List of the KafkaNodePools used by this Kafka cluster.
     kafkaVersion : str, default is Undefined, optional
-        kafka version
+        The version of Kafka currently deployed in the cluster.
     listeners : [KafkaStrimziIoV1KafkaStatusListenersItems0], default is Undefined, optional
-        listeners
+        Addresses of the internal and external listeners.
     observedGeneration : int, default is Undefined, optional
-        observed generation
+        The generation of the CRD that was last reconciled by the operator.
     operatorLastSuccessfulVersion : str, default is Undefined, optional
-        operator last successful version
+        The version of the Strimzi Cluster Operator which performed the last successful reconciliation.
     """
 
 
@@ -11042,16 +11130,24 @@ schema KafkaStrimziIoV1KafkaStatus:
 
 schema KafkaStrimziIoV1KafkaStatusAutoRebalance:
     r"""
-    kafka strimzi io v1 kafka status auto rebalance
+    The status of an auto-rebalancing triggered by a cluster scaling request.
 
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        last transition time
+        The timestamp of the latest auto-rebalancing state update.
     modes : [KafkaStrimziIoV1KafkaStatusAutoRebalanceModesItems0], default is Undefined, optional
-        modes
+        List of modes where an auto-rebalancing operation is either running or queued. 
+        Each mode entry (`add-brokers` or `remove-brokers`) includes one of the following: 
+
+        * Broker IDs for a current auto-rebalance. 
+        * Broker IDs for a queued auto-rebalance (if a previous rebalance is still in progress).
     state : str, default is Undefined, optional
-        state
+        The current state of an auto-rebalancing operation. Possible values are: 
+
+        * `Idle` as the initial state when an auto-rebalancing is requested or as final state when it completes or fails.
+        * `RebalanceOnScaleDown` if an auto-rebalance related to a scale-down operation is running.
+        * `RebalanceOnScaleUp` if an auto-rebalance related to a scale-up operation is running.
     """
 
 
@@ -11069,9 +11165,14 @@ schema KafkaStrimziIoV1KafkaStatusAutoRebalanceModesItems0:
     Attributes
     ----------
     brokers : [int], default is Undefined, optional
-        brokers
+        List of broker IDs involved in an auto-rebalancing operation related to the current mode. 
+        The list contains one of the following: 
+
+        * Broker IDs for a current auto-rebalance. 
+        * Broker IDs for a queued auto-rebalance (if a previous auto-rebalance is still in progress). 
+
     mode : str, default is Undefined, optional
-        mode
+        Mode for which there is an auto-rebalancing operation in progress or queued, when brokers are added or removed. The possible modes are `add-brokers` and `remove-brokers`.
     """
 
 
@@ -11087,15 +11188,15 @@ schema KafkaStrimziIoV1KafkaStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        last transition time
+        Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.
     message : str, default is Undefined, optional
-        message
+        Human-readable message indicating details about the condition's last transition.
     reason : str, default is Undefined, optional
-        reason
+        The reason for the condition's last transition (a single word in CamelCase).
     status : str, default is Undefined, optional
-        status
+        The status of the condition, either True, False or Unknown.
     $type : str, default is Undefined, optional
-        type
+        The unique identifier of a condition, used to distinguish between other conditions in the resource.
     """
 
 
@@ -11117,7 +11218,7 @@ schema KafkaStrimziIoV1KafkaStatusKafkaNodePoolsItems0:
     Attributes
     ----------
     name : str, default is Undefined, optional
-        name
+        The name of the KafkaNodePool used by this Kafka resource.
     """
 
 
@@ -11131,13 +11232,13 @@ schema KafkaStrimziIoV1KafkaStatusListenersItems0:
     Attributes
     ----------
     addresses : [KafkaStrimziIoV1KafkaStatusListenersItems0AddressesItems0], default is Undefined, optional
-        addresses
+        A list of the addresses for this listener.
     bootstrapServers : str, default is Undefined, optional
-        bootstrap servers
+        A comma-separated list of `host:port` pairs for connecting to the Kafka cluster using this listener.
     certificates : [str], default is Undefined, optional
-        certificates
+        A list of TLS certificates which can be used to verify the identity of the server when connecting to the given listener. Set only for `tls` and `external` listeners.
     name : str, default is Undefined, optional
-        name
+        The name of the listener.
     """
 
 
@@ -11157,9 +11258,9 @@ schema KafkaStrimziIoV1KafkaStatusListenersItems0AddressesItems0:
     Attributes
     ----------
     host : str, default is Undefined, optional
-        host
+        The DNS name or IP address of the Kafka bootstrap service.
     port : int, default is Undefined, optional
-        port
+        The port of the Kafka bootstrap service.
     """
 
 
