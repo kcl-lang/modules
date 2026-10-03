@@ -1,7 +1,7 @@
 [package]
 name = "strimzi-kafka-operator"
 edition = "*"
-version = "1.0.1"
+version = "1.1.0"
 description = "KCL package for https://github.com/strimzi/strimzi-kafka-operator CRDs"
 
 [dependencies]

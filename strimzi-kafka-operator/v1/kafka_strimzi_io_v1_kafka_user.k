@@ -76,14 +76,27 @@ schema KafkaStrimziIoV1KafkaUserSpecAuthentication:
     ----------
     password : KafkaStrimziIoV1KafkaUserSpecAuthenticationPassword, default is Undefined, optional
         password
+    renewalDays : int, default is Undefined, optional
+        Number of days before certificate expiration when the user certificate is renewed. Both this property and `validityDays` must be configured together.The value must be greater than 0 and less than `validityDays`.If not configured, the Clients CA configuration is used.
     $type : str, default is Undefined, required
         Authentication type.
+    validityDays : int, default is Undefined, optional
+        Number of days for which the user certificate is valid. Both this property and `renewalDays` must be configured together.The value must be greater than 0 and greater than `renewalDays`.If not configured, the Clients CA configuration is used.
     """
 
 
     password?: KafkaStrimziIoV1KafkaUserSpecAuthenticationPassword
 
+    renewalDays?: int
+
     $type: "tls" | "tls-external" | "scram-sha-512"
+
+    validityDays?: int
+
+
+    check:
+        renewalDays >= 1 if renewalDays not in [None, Undefined]
+        validityDays >= 1 if validityDays not in [None, Undefined]
 
 
 schema KafkaStrimziIoV1KafkaUserSpecAuthenticationPassword:

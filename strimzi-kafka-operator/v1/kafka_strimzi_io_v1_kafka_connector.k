@@ -37,7 +37,7 @@ schema KafkaConnector:
 
 schema KafkaStrimziIoV1KafkaConnectorSpec:
     r"""
-    kafka strimzi io v1 kafka connector spec
+    The specification of the Kafka Connector.
 
     Attributes
     ----------
@@ -46,17 +46,17 @@ schema KafkaStrimziIoV1KafkaConnectorSpec:
     autoRestart : KafkaStrimziIoV1KafkaConnectorSpecAutoRestart, default is Undefined, optional
         auto restart
     class : str, default is Undefined, optional
-        class
+        The Class for the Kafka Connector.
     config : any, default is Undefined, optional
-        config
+        The Kafka Connector configuration. The following properties cannot be set: name, connector.class, tasks.max, connector.plugin.version.
     listOffsets : KafkaStrimziIoV1KafkaConnectorSpecListOffsets, default is Undefined, optional
         list offsets
     state : str, default is Undefined, optional
-        state
+        The state the connector should be in. Defaults to running.
     tasksMax : int, default is Undefined, optional
-        tasks max
+        The maximum number of tasks for the Kafka Connector.
     version : str, default is Undefined, optional
-        version
+        Desired version or version range to respect when starting the Kafka Connector. This is only supported when using Kafka Connect version 4.1.0 and higher.
     """
 
 
@@ -83,7 +83,7 @@ schema KafkaStrimziIoV1KafkaConnectorSpec:
 
 schema KafkaStrimziIoV1KafkaConnectorSpecAlterOffsets:
     r"""
-    kafka strimzi io v1 kafka connector spec alter offsets
+    Configuration for altering offsets.
 
     Attributes
     ----------
@@ -97,7 +97,7 @@ schema KafkaStrimziIoV1KafkaConnectorSpecAlterOffsets:
 
 schema KafkaStrimziIoV1KafkaConnectorSpecAlterOffsetsFromConfigMap:
     r"""
-    kafka strimzi io v1 kafka connector spec alter offsets from config map
+    Reference to the ConfigMap where the new offsets are stored.
 
     Attributes
     ----------
@@ -111,14 +111,14 @@ schema KafkaStrimziIoV1KafkaConnectorSpecAlterOffsetsFromConfigMap:
 
 schema KafkaStrimziIoV1KafkaConnectorSpecAutoRestart:
     r"""
-    kafka strimzi io v1 kafka connector spec auto restart
+    Automatic restart of connector and tasks configuration.
 
     Attributes
     ----------
     enabled : bool, default is Undefined, optional
-        enabled
+        Whether automatic restart for failed connectors and tasks should be enabled or disabled.
     maxRestarts : int, default is Undefined, optional
-        max restarts
+        The maximum number of connector restarts that the operator will try. If the connector remains in a failed state after reaching this limit, it must be restarted manually by the user. Defaults to an unlimited number of restarts.
     """
 
 
@@ -129,7 +129,7 @@ schema KafkaStrimziIoV1KafkaConnectorSpecAutoRestart:
 
 schema KafkaStrimziIoV1KafkaConnectorSpecListOffsets:
     r"""
-    kafka strimzi io v1 kafka connector spec list offsets
+    Configuration for listing offsets.
 
     Attributes
     ----------
@@ -143,7 +143,7 @@ schema KafkaStrimziIoV1KafkaConnectorSpecListOffsets:
 
 schema KafkaStrimziIoV1KafkaConnectorSpecListOffsetsToConfigMap:
     r"""
-    kafka strimzi io v1 kafka connector spec list offsets to config map
+    Reference to the ConfigMap where the list of offsets will be written to.
 
     Attributes
     ----------
@@ -157,22 +157,22 @@ schema KafkaStrimziIoV1KafkaConnectorSpecListOffsetsToConfigMap:
 
 schema KafkaStrimziIoV1KafkaConnectorStatus:
     r"""
-    kafka strimzi io v1 kafka connector status
+    The status of the Kafka Connector.
 
     Attributes
     ----------
     autoRestart : KafkaStrimziIoV1KafkaConnectorStatusAutoRestart, default is Undefined, optional
         auto restart
     conditions : [KafkaStrimziIoV1KafkaConnectorStatusConditionsItems0], default is Undefined, optional
-        conditions
+        List of status conditions.
     connectorStatus : any, default is Undefined, optional
-        connector status
+        The connector status, as reported by the Kafka Connect REST API.
     observedGeneration : int, default is Undefined, optional
-        observed generation
+        The generation of the CRD that was last reconciled by the operator.
     tasksMax : int, default is Undefined, optional
-        tasks max
+        The maximum number of tasks for the Kafka Connector.
     topics : [str], default is Undefined, optional
-        topics
+        The list of topics used by the Kafka Connector.
     """
 
 
@@ -191,16 +191,16 @@ schema KafkaStrimziIoV1KafkaConnectorStatus:
 
 schema KafkaStrimziIoV1KafkaConnectorStatusAutoRestart:
     r"""
-    kafka strimzi io v1 kafka connector status auto restart
+    The auto restart status.
 
     Attributes
     ----------
     connectorName : str, default is Undefined, optional
-        connector name
+        The name of the connector being restarted.
     count : int, default is Undefined, optional
-        count
+        The number of times the connector or task is restarted.
     lastRestartTimestamp : str, default is Undefined, optional
-        last restart timestamp
+        The last time the automatic restart was attempted. The required format is 'yyyy-MM-ddTHH:mm:ssZ' in the UTC time zone.
     """
 
 
@@ -218,15 +218,15 @@ schema KafkaStrimziIoV1KafkaConnectorStatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        last transition time
+        Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.
     message : str, default is Undefined, optional
-        message
+        Human-readable message indicating details about the condition's last transition.
     reason : str, default is Undefined, optional
-        reason
+        The reason for the condition's last transition (a single word in CamelCase).
     status : str, default is Undefined, optional
-        status
+        The status of the condition, either True, False or Unknown.
     $type : str, default is Undefined, optional
-        type
+        The unique identifier of a condition, used to distinguish between other conditions in the resource.
     """
 
 

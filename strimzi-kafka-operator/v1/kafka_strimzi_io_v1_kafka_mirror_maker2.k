@@ -39,14 +39,14 @@ schema KafkaMirrorMaker2:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2Spec:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec
+    The specification of the Kafka MirrorMaker 2 cluster.
 
     Attributes
     ----------
     clientRackInitImage : str, default is Undefined, optional
-        client rack init image
+        The image of the init container used for initializing the `client.rack`.
     image : str, default is Undefined, optional
-        image
+        The container image used for Kafka Connect pods. If no image name is explicitly specified, it is determined based on the `spec.version` configuration. The image names are specifically mapped to corresponding versions in the Cluster Operator configuration.
     jmxOptions : KafkaStrimziIoV1KafkaMirrorMaker2SpecJmxOptions, default is Undefined, optional
         jmx options
     jvmOptions : KafkaStrimziIoV1KafkaMirrorMaker2SpecJvmOptions, default is Undefined, optional
@@ -58,13 +58,13 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2Spec:
     metricsConfig : KafkaStrimziIoV1KafkaMirrorMaker2SpecMetricsConfig, default is Undefined, optional
         metrics config
     mirrors : [KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0], default is Undefined, required
-        mirrors
+        Configuration of the MirrorMaker 2 connectors.
     rack : KafkaStrimziIoV1KafkaMirrorMaker2SpecRack, default is Undefined, optional
         rack
     readinessProbe : KafkaStrimziIoV1KafkaMirrorMaker2SpecReadinessProbe, default is Undefined, optional
         readiness probe
     replicas : int, default is Undefined, required
-        replicas
+        The number of pods in the Kafka Connect group. Required in the `v1` version of the Strimzi API.
     resources : KafkaStrimziIoV1KafkaMirrorMaker2SpecResources, default is Undefined, optional
         resources
     target : KafkaStrimziIoV1KafkaMirrorMaker2SpecTarget, default is Undefined, required
@@ -74,7 +74,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2Spec:
     tracing : KafkaStrimziIoV1KafkaMirrorMaker2SpecTracing, default is Undefined, optional
         tracing
     version : str, default is Undefined, optional
-        version
+        The Kafka Connect version. Defaults to the latest version. Consult the user documentation to understand the process required to upgrade or downgrade the version.
     """
 
 
@@ -113,7 +113,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2Spec:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecJmxOptions:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec jmx options
+    JMX Options.
 
     Attributes
     ----------
@@ -127,12 +127,12 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecJmxOptions:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecJmxOptionsAuthentication:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec jmx options authentication
+    Authentication configuration for connecting to the JMX port.
 
     Attributes
     ----------
     $type : str, default is Undefined, required
-        type
+        Authentication type. Currently the only supported types are `password`.`password` type creates a username and protected port with no TLS.
     """
 
 
@@ -141,20 +141,20 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecJmxOptionsAuthentication:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecJvmOptions:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec jvm options
+    JVM Options for pods.
 
     Attributes
     ----------
     "-XX" : {str:str}, default is Undefined, optional
-        x x
+        A map of -XX options to the JVM.
     "-Xms" : str, default is Undefined, optional
-        xms
+        -Xms option to to the JVM.
     "-Xmx" : str, default is Undefined, optional
-        xmx
+        -Xmx option to to the JVM.
     gcLoggingEnabled : bool, default is Undefined, optional
-        gc logging enabled
+        Specifies whether the Garbage Collection logging is enabled. The default is false.
     javaSystemProperties : [KafkaStrimziIoV1KafkaMirrorMaker2SpecJvmOptionsJavaSystemPropertiesItems0], default is Undefined, optional
-        java system properties
+        A map of additional system properties which will be passed using the `-D` option to the JVM.
     """
 
 
@@ -182,9 +182,9 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecJvmOptionsJavaSystemPropertiesItems0
     Attributes
     ----------
     name : str, default is Undefined, optional
-        name
+        The system property name.
     value : str, default is Undefined, optional
-        value
+        The system property value.
     """
 
 
@@ -195,20 +195,20 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecJvmOptionsJavaSystemPropertiesItems0
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecLivenessProbe:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec liveness probe
+    Pod liveness checking.
 
     Attributes
     ----------
     failureThreshold : int, default is Undefined, optional
-        failure threshold
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     initialDelaySeconds : int, default is Undefined, optional
-        initial delay seconds
+        The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.
     periodSeconds : int, default is Undefined, optional
-        period seconds
+        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
     successThreshold : int, default is Undefined, optional
-        success threshold
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
     timeoutSeconds : int, default is Undefined, optional
-        timeout seconds
+        The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.
     """
 
 
@@ -233,14 +233,14 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecLivenessProbe:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecLogging:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec logging
+    Logging configuration for Kafka Connect.
 
     Attributes
     ----------
     loggers : {str:str}, default is Undefined, optional
-        loggers
+        A Map from logger name to logger level.
     $type : str, default is Undefined, required
-        type
+        Logging type, must be either 'inline' or 'external'.
     valueFrom : KafkaStrimziIoV1KafkaMirrorMaker2SpecLoggingValueFrom, default is Undefined, optional
         value from
     """
@@ -255,7 +255,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecLogging:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecLoggingValueFrom:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec logging value from
+    `ConfigMap` entry where the logging configuration is stored. 
 
     Attributes
     ----------
@@ -269,7 +269,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecLoggingValueFrom:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecLoggingValueFromConfigMapKeyRef:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec logging value from config map key ref
+    Reference to the key in the ConfigMap containing the configuration.
 
     Attributes
     ----------
@@ -291,12 +291,12 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecLoggingValueFromConfigMapKeyRef:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMetricsConfig:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec metrics config
+    Metrics configuration.
 
     Attributes
     ----------
     $type : str, default is Undefined, required
-        type
+        Metrics type. The supported types are `jmxPrometheusExporter` and `strimziMetricsReporter`. Type `jmxPrometheusExporter` uses the Prometheus JMX Exporter to expose Kafka JMX metrics in Prometheus format through an HTTP endpoint. Type `strimziMetricsReporter` uses the Strimzi Metrics Reporter to directly expose Kafka metrics in Prometheus format through an HTTP endpoint.
     valueFrom : KafkaStrimziIoV1KafkaMirrorMaker2SpecMetricsConfigValueFrom, default is Undefined, optional
         value from
     values : KafkaStrimziIoV1KafkaMirrorMaker2SpecMetricsConfigValues, default is Undefined, optional
@@ -313,7 +313,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMetricsConfig:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMetricsConfigValueFrom:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec metrics config value from
+    ConfigMap entry where the Prometheus JMX Exporter configuration is stored.
 
     Attributes
     ----------
@@ -327,7 +327,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMetricsConfigValueFrom:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMetricsConfigValueFromConfigMapKeyRef:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec metrics config value from config map key ref
+    Reference to the key in the ConfigMap containing the configuration.
 
     Attributes
     ----------
@@ -349,12 +349,12 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMetricsConfigValueFromConfigMapKeyRe
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMetricsConfigValues:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec metrics config values
+    Configuration values for the Strimzi Metrics Reporter.
 
     Attributes
     ----------
     allowList : [str], default is Undefined, optional
-        allow list
+        A list of regex patterns to filter the metrics to collect. Should contain at least one element.
     """
 
 
@@ -370,17 +370,17 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0:
     checkpointConnector : KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnector, default is Undefined, optional
         checkpoint connector
     groupsExcludePattern : str, default is Undefined, optional
-        groups exclude pattern
+        A regular expression matching the consumer groups to exclude from mirroring. Comma-separated lists are also supported.
     groupsPattern : str, default is Undefined, optional
-        groups pattern
+        A regular expression matching the consumer groups to be mirrored. Comma-separated lists are also supported.
     source : KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0Source, default is Undefined, required
         source
     sourceConnector : KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnector, default is Undefined, optional
         source connector
     topicsExcludePattern : str, default is Undefined, optional
-        topics exclude pattern
+        A regular expression matching the topics to exclude from mirroring. Comma-separated lists are also supported.
     topicsPattern : str, default is Undefined, optional
-        topics pattern
+        A regular expression matching the topics to be mirrored, for example, "topic1\|topic2\|topic3". Comma-separated lists are also supported.
     """
 
 
@@ -401,7 +401,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnector:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 checkpoint connector
+    The specification of the Kafka MirrorMaker 2 checkpoint connector.
 
     Attributes
     ----------
@@ -410,15 +410,15 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnector:
     autoRestart : KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorAutoRestart, default is Undefined, optional
         auto restart
     config : any, default is Undefined, optional
-        config
+        The Kafka Connector configuration. The following properties cannot be set: name, connector.class, tasks.max, connector.plugin.version.
     listOffsets : KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorListOffsets, default is Undefined, optional
         list offsets
     state : str, default is Undefined, optional
-        state
+        The state the connector should be in. Defaults to running.
     tasksMax : int, default is Undefined, optional
-        tasks max
+        The maximum number of tasks for the Kafka Connector.
     version : str, default is Undefined, optional
-        version
+        Desired version or version range to respect when starting the Kafka Connector. This is only supported when using Kafka Connect version 4.1.0 and higher.
     """
 
 
@@ -443,7 +443,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnector:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorAlterOffsets:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 checkpoint connector alter offsets
+    Configuration for altering offsets.
 
     Attributes
     ----------
@@ -457,7 +457,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorAlte
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorAlterOffsetsFromConfigMap:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 checkpoint connector alter offsets from config map
+    Reference to the ConfigMap where the new offsets are stored.
 
     Attributes
     ----------
@@ -471,14 +471,14 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorAlte
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorAutoRestart:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 checkpoint connector auto restart
+    Automatic restart of connector and tasks configuration.
 
     Attributes
     ----------
     enabled : bool, default is Undefined, optional
-        enabled
+        Whether automatic restart for failed connectors and tasks should be enabled or disabled.
     maxRestarts : int, default is Undefined, optional
-        max restarts
+        The maximum number of connector restarts that the operator will try. If the connector remains in a failed state after reaching this limit, it must be restarted manually by the user. Defaults to an unlimited number of restarts.
     """
 
 
@@ -489,7 +489,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorAuto
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorListOffsets:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 checkpoint connector list offsets
+    Configuration for listing offsets.
 
     Attributes
     ----------
@@ -503,7 +503,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorList
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorListOffsetsToConfigMap:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 checkpoint connector list offsets to config map
+    Reference to the ConfigMap where the list of offsets will be written to.
 
     Attributes
     ----------
@@ -517,18 +517,18 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0CheckpointConnectorList
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0Source:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source
+    The source Apache Kafka cluster. The source Kafka cluster is used by the Kafka MirrorMaker 2 connectors.
 
     Attributes
     ----------
     alias : str, default is Undefined, required
-        alias
+        Alias used to reference the Kafka cluster.
     authentication : KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceAuthentication, default is Undefined, optional
         authentication
     bootstrapServers : str, default is Undefined, required
-        bootstrap servers
+        A comma-separated list of `host:port` pairs for establishing the connection to the Kafka cluster.
     config : any, default is Undefined, optional
-        config
+        The MirrorMaker 2 cluster config. Properties with the following prefixes cannot be set: group.id, config.storage.topic, offset.storage.topic, status.storage.topic, ssl., sasl., security., listeners, plugin.path, rest., bootstrap.servers, consumer.interceptor.classes, producer.interceptor.classes (with the exception of: ssl.endpoint.identification.algorithm, ssl.cipher.suites, ssl.protocol, ssl.enabled.protocols).
     tls : KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceTLS, default is Undefined, optional
         tls
     """
@@ -551,22 +551,22 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0Source:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceAuthentication:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source authentication
+    Authentication configuration for connecting to the cluster.
 
     Attributes
     ----------
     certificateAndKey : KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationCertificateAndKey, default is Undefined, optional
         certificate and key
     config : any, default is Undefined, optional
-        config
+        Configuration for the custom authentication mechanism. Only properties with the `sasl.` and `ssl.keystore.` prefixes are allowed. Specify other options in the regular configuration section of the custom resource.
     passwordSecret : KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationPasswordSecret, default is Undefined, optional
         password secret
     sasl : bool, default is Undefined, optional
-        sasl
+        Enable or disable SASL on this authentication mechanism.
     $type : str, default is Undefined, required
-        type
+        Specifies the authentication type. Supported types are `tls`, `scram-sha-256`, `scram-sha-512`, `plain`, and `custom`. `tls` uses TLS client authentication and is supported only over TLS connections. `scram-sha-256` and `scram-sha-512` use SASL SCRAM-SHA-256 and SASL SCRAM-SHA-512 authentication, respectively. `plain` uses SASL PLAIN authentication. `custom` allows you to configure a custom authentication mechanism.
     username : str, default is Undefined, optional
-        username
+        Username used for the authentication.
     """
 
 
@@ -585,16 +585,16 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceAuthentication:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationCertificateAndKey:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source authentication certificate and key
+    Reference to the `Secret` which holds the certificate and private key pair.
 
     Attributes
     ----------
     certificate : str, default is Undefined, required
-        certificate
+        The name of the file certificate in the Secret.
     key : str, default is Undefined, required
-        key
+        The name of the private key in the secret. The private key must be in unencrypted PKCS #8 format. For more information, see RFC 5208: https://datatracker.ietf.org/doc/html/rfc5208.
     secretName : str, default is Undefined, required
-        secret name
+        The name of the Secret containing the certificate.
     """
 
 
@@ -607,14 +607,14 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationCer
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationPasswordSecret:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source authentication password secret
+    Reference to the `Secret` which holds the password.
 
     Attributes
     ----------
     password : str, default is Undefined, required
-        password
+        The name of the key in the Secret under which the password is stored.
     secretName : str, default is Undefined, required
-        secret name
+        The name of the Secret containing the password.
     """
 
 
@@ -625,7 +625,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceAuthenticationPas
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnector:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source connector
+    The specification of the Kafka MirrorMaker 2 source connector.
 
     Attributes
     ----------
@@ -634,15 +634,15 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnector:
     autoRestart : KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorAutoRestart, default is Undefined, optional
         auto restart
     config : any, default is Undefined, optional
-        config
+        The Kafka Connector configuration. The following properties cannot be set: name, connector.class, tasks.max, connector.plugin.version.
     listOffsets : KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorListOffsets, default is Undefined, optional
         list offsets
     state : str, default is Undefined, optional
-        state
+        The state the connector should be in. Defaults to running.
     tasksMax : int, default is Undefined, optional
-        tasks max
+        The maximum number of tasks for the Kafka Connector.
     version : str, default is Undefined, optional
-        version
+        Desired version or version range to respect when starting the Kafka Connector. This is only supported when using Kafka Connect version 4.1.0 and higher.
     """
 
 
@@ -667,7 +667,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnector:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorAlterOffsets:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source connector alter offsets
+    Configuration for altering offsets.
 
     Attributes
     ----------
@@ -681,7 +681,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorAlterOff
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorAlterOffsetsFromConfigMap:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source connector alter offsets from config map
+    Reference to the ConfigMap where the new offsets are stored.
 
     Attributes
     ----------
@@ -695,14 +695,14 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorAlterOff
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorAutoRestart:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source connector auto restart
+    Automatic restart of connector and tasks configuration.
 
     Attributes
     ----------
     enabled : bool, default is Undefined, optional
-        enabled
+        Whether automatic restart for failed connectors and tasks should be enabled or disabled.
     maxRestarts : int, default is Undefined, optional
-        max restarts
+        The maximum number of connector restarts that the operator will try. If the connector remains in a failed state after reaching this limit, it must be restarted manually by the user. Defaults to an unlimited number of restarts.
     """
 
 
@@ -713,7 +713,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorAutoRest
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorListOffsets:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source connector list offsets
+    Configuration for listing offsets.
 
     Attributes
     ----------
@@ -727,7 +727,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorListOffs
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorListOffsetsToConfigMap:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source connector list offsets to config map
+    Reference to the ConfigMap where the list of offsets will be written to.
 
     Attributes
     ----------
@@ -741,12 +741,12 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceConnectorListOffs
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceTLS:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec mirrors items0 source TLS
+    TLS configuration for connecting MirrorMaker 2 connectors to a cluster.
 
     Attributes
     ----------
     trustedCertificates : [KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceTLSTrustedCertificatesItems0], default is Undefined, optional
-        trusted certificates
+        Trusted certificates for TLS connection.
     """
 
 
@@ -760,11 +760,11 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceTLSTrustedCertifi
     Attributes
     ----------
     certificate : str, default is Undefined, optional
-        certificate
+        The name of the file certificate in the secret.
     pattern : str, default is Undefined, optional
-        pattern
+        Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.
     secretName : str, default is Undefined, required
-        secret name
+        The name of the Secret containing the certificate.
     """
 
 
@@ -777,16 +777,16 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecMirrorsItems0SourceTLSTrustedCertifi
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecRack:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec rack
+    Configuration of the node label which will be used as the `client.rack` consumer configuration.
 
     Attributes
     ----------
     envVarName : str, default is Undefined, optional
-        env var name
+        The name of the environment variable that defines the rack ID. Its value sets the `broker.rack` configuration for Kafka brokers and the `client.rack` configuration for Kafka Connect or MirrorMaker 2.
     topologyKey : str, default is Undefined, optional
-        topology key
+        A key that matches labels assigned to the Kubernetes cluster nodes. The value of the label is used to set a broker's `broker.rack` config, and the `client.rack` config for Kafka Connect or MirrorMaker 2.
     $type : str, default is Undefined, optional
-        type
+        Specifies the rack awareness type. Supported types are `topology-label` and `environment-variable`. `topology-label` uses a Kubernetes worker node label to set the `broker.rack` configuration for Kafka brokers and the `client.rack` configuration for Kafka Connect and MirrorMaker 2. `environment-variable` uses an environment variable to set the `broker.rack` configuration for Kafka brokers and the `client.rack` configuration for Kafka Connect and MirrorMaker 2. When not specified, `topology-label` type is used by default.
     """
 
 
@@ -799,20 +799,20 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecRack:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecReadinessProbe:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec readiness probe
+    Pod readiness checking.
 
     Attributes
     ----------
     failureThreshold : int, default is Undefined, optional
-        failure threshold
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     initialDelaySeconds : int, default is Undefined, optional
-        initial delay seconds
+        The initial delay before first the health is first checked. Default to 15 seconds. Minimum value is 0.
     periodSeconds : int, default is Undefined, optional
-        period seconds
+        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
     successThreshold : int, default is Undefined, optional
-        success threshold
+        Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
     timeoutSeconds : int, default is Undefined, optional
-        timeout seconds
+        The timeout for each attempted health check. Default to 5 seconds. Minimum value is 1.
     """
 
 
@@ -837,7 +837,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecReadinessProbe:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecResources:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec resources
+    The maximum limits for CPU and memory resources and the requested initial resources.
 
     Attributes
     ----------
@@ -858,8 +858,8 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecResources:
 
 
     check:
-        all _, k in limits { _regex_match(str(k), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if k } if limits
-        all _, k in requests { _regex_match(str(k), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if k } if requests
+        all _, limits in limits { _regex_match(str(limits), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if limits } if limits
+        all _, requests in requests { _regex_match(str(requests), r"^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$") if requests } if requests
 
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecResourcesClaimsItems0:
@@ -882,26 +882,26 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecResourcesClaimsItems0:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTarget:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec target
+    The target Apache Kafka cluster. The target Kafka cluster is used by the underlying Kafka Connect framework for its internal topics.
 
     Attributes
     ----------
     alias : str, default is Undefined, required
-        alias
+        Alias used to reference the Kafka cluster.
     authentication : KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetAuthentication, default is Undefined, optional
         authentication
     bootstrapServers : str, default is Undefined, required
-        bootstrap servers
+        A comma-separated list of `host:port` pairs for establishing the connection to the Kafka cluster.
     config : any, default is Undefined, optional
-        config
+        The MirrorMaker 2 cluster config. Properties with the following prefixes cannot be set: group.id, config.storage.topic, offset.storage.topic, status.storage.topic, ssl., sasl., security., listeners, plugin.path, rest., bootstrap.servers, consumer.interceptor.classes, producer.interceptor.classes (with the exception of: ssl.endpoint.identification.algorithm, ssl.cipher.suites, ssl.protocol, ssl.enabled.protocols).
     configStorageTopic : str, default is Undefined, required
-        config storage topic
+        The name of the Kafka topic where connector configurations are stored. Required.
     groupId : str, default is Undefined, required
-        group Id
+        A unique ID that identifies the Connect cluster group. Required.
     offsetStorageTopic : str, default is Undefined, required
-        offset storage topic
+        The name of the Kafka topic where source connector offsets are stored. Required.
     statusStorageTopic : str, default is Undefined, required
-        status storage topic
+        The name of the Kafka topic where connector and task statuses are stored. Required.
     tls : KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetTLS, default is Undefined, optional
         tls
     """
@@ -932,22 +932,22 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTarget:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetAuthentication:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec target authentication
+    Authentication configuration for connecting to the cluster.
 
     Attributes
     ----------
     certificateAndKey : KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetAuthenticationCertificateAndKey, default is Undefined, optional
         certificate and key
     config : any, default is Undefined, optional
-        config
+        Configuration for the custom authentication mechanism. Only properties with the `sasl.` and `ssl.keystore.` prefixes are allowed. Specify other options in the regular configuration section of the custom resource.
     passwordSecret : KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetAuthenticationPasswordSecret, default is Undefined, optional
         password secret
     sasl : bool, default is Undefined, optional
-        sasl
+        Enable or disable SASL on this authentication mechanism.
     $type : str, default is Undefined, required
-        type
+        Specifies the authentication type. Supported types are `tls`, `scram-sha-256`, `scram-sha-512`, `plain`, and `custom`. `tls` uses TLS client authentication and is supported only over TLS connections. `scram-sha-256` and `scram-sha-512` use SASL SCRAM-SHA-256 and SASL SCRAM-SHA-512 authentication, respectively. `plain` uses SASL PLAIN authentication. `custom` allows you to configure a custom authentication mechanism.
     username : str, default is Undefined, optional
-        username
+        Username used for the authentication.
     """
 
 
@@ -966,16 +966,16 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetAuthentication:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetAuthenticationCertificateAndKey:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec target authentication certificate and key
+    Reference to the `Secret` which holds the certificate and private key pair.
 
     Attributes
     ----------
     certificate : str, default is Undefined, required
-        certificate
+        The name of the file certificate in the Secret.
     key : str, default is Undefined, required
-        key
+        The name of the private key in the secret. The private key must be in unencrypted PKCS #8 format. For more information, see RFC 5208: https://datatracker.ietf.org/doc/html/rfc5208.
     secretName : str, default is Undefined, required
-        secret name
+        The name of the Secret containing the certificate.
     """
 
 
@@ -988,14 +988,14 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetAuthenticationCertificateAndKe
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetAuthenticationPasswordSecret:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec target authentication password secret
+    Reference to the `Secret` which holds the password.
 
     Attributes
     ----------
     password : str, default is Undefined, required
-        password
+        The name of the key in the Secret under which the password is stored.
     secretName : str, default is Undefined, required
-        secret name
+        The name of the Secret containing the password.
     """
 
 
@@ -1006,12 +1006,12 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetAuthenticationPasswordSecret:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetTLS:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec target TLS
+    TLS configuration for connecting MirrorMaker 2 connectors to a cluster.
 
     Attributes
     ----------
     trustedCertificates : [KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetTLSTrustedCertificatesItems0], default is Undefined, optional
-        trusted certificates
+        Trusted certificates for TLS connection.
     """
 
 
@@ -1025,11 +1025,11 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetTLSTrustedCertificatesItems0:
     Attributes
     ----------
     certificate : str, default is Undefined, optional
-        certificate
+        The name of the file certificate in the secret.
     pattern : str, default is Undefined, optional
-        pattern
+        Pattern for the certificate files in the secret. Use the link:https://en.wikipedia.org/wiki/Glob_(programming)[_glob syntax_] for the pattern. All files in the secret that match the pattern are used.
     secretName : str, default is Undefined, required
-        secret name
+        The name of the Secret containing the certificate.
     """
 
 
@@ -1042,7 +1042,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTargetTLSTrustedCertificatesItems0:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplate:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template
+    Template for Kafka Connect and Kafka MirrorMaker 2 resources. The template allows users to specify how the `Pods`, `Service`, and other services are generated.
 
     Attributes
     ----------
@@ -1108,14 +1108,14 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplate:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateAPIService:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template API service
+    Template for Kafka Connect API `Service`.
 
     Attributes
     ----------
     ipFamilies : [str], default is Undefined, optional
-        ip families
+        Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6`. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting.
     ipFamilyPolicy : str, default is Undefined, optional
-        ip family policy
+        Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`. `SingleStack` is for a single IP family. `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters. `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters. If unspecified, Kubernetes will choose the default value based on the service type.
     metadata : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateAPIServiceMetadata, default is Undefined, optional
         metadata
     """
@@ -1130,14 +1130,14 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateAPIService:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateAPIServiceMetadata:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template API service metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -1148,14 +1148,14 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateAPIServiceMetadata:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildConfig:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template build config
+    Template for the Kafka Connect BuildConfig used to build new container images. The BuildConfig is used only on OpenShift.
 
     Attributes
     ----------
     metadata : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildConfigMetadata, default is Undefined, optional
         metadata
     pullSecret : str, default is Undefined, optional
-        pull secret
+        Container Registry Secret with the credentials for pulling the base image.
     """
 
 
@@ -1166,14 +1166,14 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildConfig:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildConfigMetadata:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template build config metadata
+    Metadata to apply to the `PodDisruptionBudgetTemplate` resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -1184,16 +1184,16 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildConfigMetadata:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainer:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template build container
+    Template for the Kafka Connect Build container. The build container is used only on Kubernetes.
 
     Attributes
     ----------
     env : [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0], default is Undefined, optional
-        env
+        Environment variables which should be applied to the container.
     securityContext : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerSecurityContext, default is Undefined, optional
         security context
     volumeMounts : [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerVolumeMountsItems0], default is Undefined, optional
-        volume mounts
+        Additional volume mounts which should be applied to the container.
     """
 
 
@@ -1211,9 +1211,9 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0:
     Attributes
     ----------
     name : str, default is Undefined, optional
-        name
+        The environment variable key.
     value : str, default is Undefined, optional
-        value
+        The environment variable value.
     valueFrom : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -1228,7 +1228,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0ValueFrom:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template build container env items0 value from
+    Reference to the secret or config map property to which the environment variable is set.
 
     Attributes
     ----------
@@ -1246,7 +1246,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0Value
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0ValueFromConfigMapKeyRef:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template build container env items0 value from config map key ref
+    Reference to a key in a config map.
 
     Attributes
     ----------
@@ -1268,7 +1268,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0Value
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0ValueFromSecretKeyRef:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template build container env items0 value from secret key ref
+    Reference to a key in a secret.
 
     Attributes
     ----------
@@ -1290,7 +1290,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerEnvItems0Value
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerSecurityContext:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template build container security context
+    Security context for the container.
 
     Attributes
     ----------
@@ -1492,7 +1492,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildContainerVolumeMountsIt
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPod:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template build pod
+    Template for Kafka Connect Build `Pods`. The build pod is used only on Kubernetes.
 
     Attributes
     ----------
@@ -1501,33 +1501,33 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPod:
     dnsConfig : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodDNSConfig, default is Undefined, optional
         dns config
     dnsPolicy : str, default is Undefined, optional
-        dns policy
+        The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.
     enableServiceLinks : bool, default is Undefined, optional
-        enable service links
+        Indicates whether information about services should be injected into Pod's environment variables.
     hostAliases : [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodHostAliasesItems0], default is Undefined, optional
-        host aliases
+        The pod's HostAliases. HostAliases is an optional list of hosts and IPs that will be injected into the Pod's hosts file if specified.
     hostUsers : bool, default is Undefined, optional
-        host users
+        Use the host user namespace. Optional. Defaults to `true`. When `true` or not set, the pod runs in the host user namespace. This is required when the pod needs features available only in the host namespace, such as loading kernel modules with `CAP_SYS_MODULE`.When set to `false`, the pod runs in a new user namespace. Setting `false` helps mitigate container breakout vulnerabilities and allows containers to run as `root` without granting `root` privileges on the host. This property is alpha-level in Kubernetes and is supported only by Kubernetes clusters that enable the `UserNamespacesSupport` feature.
     imagePullSecrets : [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodImagePullSecretsItems0], default is Undefined, optional
-        image pull secrets
+        List of references to secrets in the same namespace to use for pulling any of the images used by this Pod. When the `STRIMZI_IMAGE_PULL_SECRETS` environment variable in Cluster Operator and the `imagePullSecrets` option are specified, only the `imagePullSecrets` variable is used and the `STRIMZI_IMAGE_PULL_SECRETS` variable is ignored.
     metadata : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodMetadata, default is Undefined, optional
         metadata
     priorityClassName : str, default is Undefined, optional
-        priority class name
+        The name of the priority class used to assign priority to the pods. 
     schedulerName : str, default is Undefined, optional
-        scheduler name
+        The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.
     securityContext : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodSecurityContext, default is Undefined, optional
         security context
     terminationGracePeriodSeconds : int, default is Undefined, optional
-        termination grace period seconds
+        The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.
     tmpDirSizeLimit : str, default is Undefined, optional
-        tmp dir size limit
+        Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.
     tolerations : [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodTolerationsItems0], default is Undefined, optional
-        tolerations
+        The pod's tolerations.
     topologySpreadConstraints : [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodTopologySpreadConstraintsItems0], default is Undefined, optional
-        topology spread constraints
+        The pod's topology spread constraints.
     volumes : [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0], default is Undefined, optional
-        volumes
+        Additional volumes that can be mounted to the pod.
     """
 
 
@@ -1571,7 +1571,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPod:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodAffinity:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template build pod affinity
+    The pod's affinity rules.
 
     Attributes
     ----------
@@ -2295,7 +2295,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodAffinityPodAntiAffin
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodDNSConfig:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template build pod DNS config
+    The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.
 
     Attributes
     ----------
@@ -2367,14 +2367,14 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodImagePullSecretsItem
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodMetadata:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template build pod metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -2385,7 +2385,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodMetadata:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodSecurityContext:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template build pod security context
+    Configures pod-level security attributes and common container settings.
 
     Attributes
     ----------
@@ -2678,7 +2678,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0:
     image : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0Image, default is Undefined, optional
         image
     name : str, default is Undefined, optional
-        name
+        Name to use for the volume. Required.
     persistentVolumeClaim : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0PersistentVolumeClaim, default is Undefined, optional
         persistent volume claim
     secret : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0Secret, default is Undefined, optional
@@ -2703,7 +2703,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0ConfigMap:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template build pod volumes items0 config map
+    `ConfigMap` to use to populate the volume.
 
     Attributes
     ----------
@@ -2751,7 +2751,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0ConfigM
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0Csi:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template build pod volumes items0 csi
+    `CSIVolumeSource` object to use to populate the volume.
 
     Attributes
     ----------
@@ -2795,14 +2795,14 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0CsiNode
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0EmptyDir:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template build pod volumes items0 empty dir
+    `EmptyDir` to use to populate the volume.
 
     Attributes
     ----------
     medium : str, default is Undefined, optional
-        medium
+        Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.
     sizeLimit : str, default is Undefined, optional
-        size limit
+        The total amount of local storage required for this EmptyDir volume (for example 1Gi).
     """
 
 
@@ -2817,7 +2817,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0EmptyDi
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0Image:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template build pod volumes items0 image
+    `ImageVolumeSource` object to use to populate the volume.
 
     Attributes
     ----------
@@ -2835,7 +2835,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0Image:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0PersistentVolumeClaim:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template build pod volumes items0 persistent volume claim
+    `PersistentVolumeClaim` object to use to populate the volume.
 
     Attributes
     ----------
@@ -2853,7 +2853,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0Persist
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0Secret:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template build pod volumes items0 secret
+    `Secret` to use to populate the volume.
 
     Attributes
     ----------
@@ -2901,7 +2901,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildPodVolumesItems0SecretI
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildServiceAccount:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template build service account
+    Template for the Kafka Connect Build service account.
 
     Attributes
     ----------
@@ -2915,14 +2915,14 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildServiceAccount:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildServiceAccountMetadata:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template build service account metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -2933,7 +2933,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateBuildServiceAccountMetadata:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateClusterRoleBinding:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template cluster role binding
+    Template for the Kafka Connect ClusterRoleBinding.
 
     Attributes
     ----------
@@ -2947,14 +2947,14 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateClusterRoleBinding:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateClusterRoleBindingMetadata:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template cluster role binding metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -2965,16 +2965,16 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateClusterRoleBindingMetadata:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainer:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template connect container
+    Template for the Kafka Connect container.
 
     Attributes
     ----------
     env : [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0], default is Undefined, optional
-        env
+        Environment variables which should be applied to the container.
     securityContext : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerSecurityContext, default is Undefined, optional
         security context
     volumeMounts : [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerVolumeMountsItems0], default is Undefined, optional
-        volume mounts
+        Additional volume mounts which should be applied to the container.
     """
 
 
@@ -2992,9 +2992,9 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0:
     Attributes
     ----------
     name : str, default is Undefined, optional
-        name
+        The environment variable key.
     value : str, default is Undefined, optional
-        value
+        The environment variable value.
     valueFrom : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -3009,7 +3009,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0ValueFrom:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template connect container env items0 value from
+    Reference to the secret or config map property to which the environment variable is set.
 
     Attributes
     ----------
@@ -3027,7 +3027,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0Val
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0ValueFromConfigMapKeyRef:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template connect container env items0 value from config map key ref
+    Reference to a key in a config map.
 
     Attributes
     ----------
@@ -3049,7 +3049,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0Val
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0ValueFromSecretKeyRef:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template connect container env items0 value from secret key ref
+    Reference to a key in a secret.
 
     Attributes
     ----------
@@ -3071,7 +3071,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerEnvItems0Val
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerSecurityContext:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template connect container security context
+    Security context for the container.
 
     Attributes
     ----------
@@ -3273,14 +3273,14 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateConnectContainerVolumeMounts
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateHeadlessService:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template headless service
+    Template for Kafka Connect headless `Service`.
 
     Attributes
     ----------
     ipFamilies : [str], default is Undefined, optional
-        ip families
+        Specifies the IP Families used by the service. Available options are `IPv4` and `IPv6`. If unspecified, Kubernetes will choose the default value based on the `ipFamilyPolicy` setting.
     ipFamilyPolicy : str, default is Undefined, optional
-        ip family policy
+        Specifies the IP Family Policy used by the service. Available options are `SingleStack`, `PreferDualStack` and `RequireDualStack`. `SingleStack` is for a single IP family. `PreferDualStack` is for two IP families on dual-stack configured clusters or a single IP family on single-stack clusters. `RequireDualStack` fails unless there are two IP families on dual-stack configured clusters. If unspecified, Kubernetes will choose the default value based on the service type.
     metadata : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateHeadlessServiceMetadata, default is Undefined, optional
         metadata
     """
@@ -3295,14 +3295,14 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateHeadlessService:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateHeadlessServiceMetadata:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template headless service metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -3313,16 +3313,16 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateHeadlessServiceMetadata:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainer:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template init container
+    Template for the Kafka init container.
 
     Attributes
     ----------
     env : [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0], default is Undefined, optional
-        env
+        Environment variables which should be applied to the container.
     securityContext : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerSecurityContext, default is Undefined, optional
         security context
     volumeMounts : [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerVolumeMountsItems0], default is Undefined, optional
-        volume mounts
+        Additional volume mounts which should be applied to the container.
     """
 
 
@@ -3340,9 +3340,9 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0:
     Attributes
     ----------
     name : str, default is Undefined, optional
-        name
+        The environment variable key.
     value : str, default is Undefined, optional
-        value
+        The environment variable value.
     valueFrom : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0ValueFrom, default is Undefined, optional
         value from
     """
@@ -3357,7 +3357,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0ValueFrom:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template init container env items0 value from
+    Reference to the secret or config map property to which the environment variable is set.
 
     Attributes
     ----------
@@ -3375,7 +3375,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0ValueF
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0ValueFromConfigMapKeyRef:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template init container env items0 value from config map key ref
+    Reference to a key in a config map.
 
     Attributes
     ----------
@@ -3397,7 +3397,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0ValueF
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0ValueFromSecretKeyRef:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template init container env items0 value from secret key ref
+    Reference to a key in a secret.
 
     Attributes
     ----------
@@ -3419,7 +3419,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerEnvItems0ValueF
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerSecurityContext:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template init container security context
+    Security context for the container.
 
     Attributes
     ----------
@@ -3621,7 +3621,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateInitContainerVolumeMountsIte
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateJmxSecret:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template jmx secret
+    Template for Secret of the Kafka Connect Cluster JMX authentication.
 
     Attributes
     ----------
@@ -3635,14 +3635,14 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateJmxSecret:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateJmxSecretMetadata:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template jmx secret metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -3653,7 +3653,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateJmxSecretMetadata:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePod:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template pod
+    Template for Kafka Connect `Pods`.
 
     Attributes
     ----------
@@ -3662,33 +3662,33 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePod:
     dnsConfig : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodDNSConfig, default is Undefined, optional
         dns config
     dnsPolicy : str, default is Undefined, optional
-        dns policy
+        The pod's DNSPolicy. Defaults to `ClusterFirst`. Valid values are `ClusterFirstWithHostNet`, `ClusterFirst`, `Default` or `None`.
     enableServiceLinks : bool, default is Undefined, optional
-        enable service links
+        Indicates whether information about services should be injected into Pod's environment variables.
     hostAliases : [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodHostAliasesItems0], default is Undefined, optional
-        host aliases
+        The pod's HostAliases. HostAliases is an optional list of hosts and IPs that will be injected into the Pod's hosts file if specified.
     hostUsers : bool, default is Undefined, optional
-        host users
+        Use the host user namespace. Optional. Defaults to `true`. When `true` or not set, the pod runs in the host user namespace. This is required when the pod needs features available only in the host namespace, such as loading kernel modules with `CAP_SYS_MODULE`.When set to `false`, the pod runs in a new user namespace. Setting `false` helps mitigate container breakout vulnerabilities and allows containers to run as `root` without granting `root` privileges on the host. This property is alpha-level in Kubernetes and is supported only by Kubernetes clusters that enable the `UserNamespacesSupport` feature.
     imagePullSecrets : [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodImagePullSecretsItems0], default is Undefined, optional
-        image pull secrets
+        List of references to secrets in the same namespace to use for pulling any of the images used by this Pod. When the `STRIMZI_IMAGE_PULL_SECRETS` environment variable in Cluster Operator and the `imagePullSecrets` option are specified, only the `imagePullSecrets` variable is used and the `STRIMZI_IMAGE_PULL_SECRETS` variable is ignored.
     metadata : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodMetadata, default is Undefined, optional
         metadata
     priorityClassName : str, default is Undefined, optional
-        priority class name
+        The name of the priority class used to assign priority to the pods. 
     schedulerName : str, default is Undefined, optional
-        scheduler name
+        The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.
     securityContext : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodSecurityContext, default is Undefined, optional
         security context
     terminationGracePeriodSeconds : int, default is Undefined, optional
-        termination grace period seconds
+        The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.
     tmpDirSizeLimit : str, default is Undefined, optional
-        tmp dir size limit
+        Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.
     tolerations : [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTolerationsItems0], default is Undefined, optional
-        tolerations
+        The pod's tolerations.
     topologySpreadConstraints : [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTopologySpreadConstraintsItems0], default is Undefined, optional
-        topology spread constraints
+        The pod's topology spread constraints.
     volumes : [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0], default is Undefined, optional
-        volumes
+        Additional volumes that can be mounted to the pod.
     """
 
 
@@ -3732,7 +3732,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePod:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodAffinity:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template pod affinity
+    The pod's affinity rules.
 
     Attributes
     ----------
@@ -4456,7 +4456,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodAffinityPodAntiAffinityRe
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodDNSConfig:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template pod DNS config
+    The pod's DNSConfig. If specified, it will be merged to the generated DNS configuration based on the DNSPolicy.
 
     Attributes
     ----------
@@ -4496,12 +4496,12 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodDNSConfigOptionsItems0:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodDisruptionBudget:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template pod disruption budget
+    Template for Kafka Connect `PodDisruptionBudget`.
 
     Attributes
     ----------
     maxUnavailable : int, default is Undefined, optional
-        max unavailable
+        Maximum number of unavailable pods to allow automatic Pod eviction. A Pod eviction is allowed when the `maxUnavailable` number of pods or fewer are unavailable after the eviction. Setting this value to 0 prevents all voluntary evictions, so the pods must be evicted manually. Defaults to 1.
     metadata : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodDisruptionBudgetMetadata, default is Undefined, optional
         metadata
     """
@@ -4518,14 +4518,14 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodDisruptionBudget:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodDisruptionBudgetMetadata:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template pod disruption budget metadata
+    Metadata to apply to the `PodDisruptionBudgetTemplate` resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -4568,14 +4568,14 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodImagePullSecretsItems0:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodMetadata:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template pod metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -4586,7 +4586,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodMetadata:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodSecurityContext:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template pod security context
+    Configures pod-level security attributes and common container settings.
 
     Attributes
     ----------
@@ -4754,7 +4754,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodSecurityContextWindowsOpt
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodSet:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template pod set
+    Template for Kafka Connect `StrimziPodSet` resource.
 
     Attributes
     ----------
@@ -4768,14 +4768,14 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodSet:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodSetMetadata:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template pod set metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -4911,7 +4911,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0:
     image : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0Image, default is Undefined, optional
         image
     name : str, default is Undefined, optional
-        name
+        Name to use for the volume. Required.
     persistentVolumeClaim : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0PersistentVolumeClaim, default is Undefined, optional
         persistent volume claim
     secret : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0Secret, default is Undefined, optional
@@ -4936,7 +4936,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0ConfigMap:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template pod volumes items0 config map
+    `ConfigMap` to use to populate the volume.
 
     Attributes
     ----------
@@ -4984,7 +4984,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0ConfigMapIte
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0Csi:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template pod volumes items0 csi
+    `CSIVolumeSource` object to use to populate the volume.
 
     Attributes
     ----------
@@ -5028,14 +5028,14 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0CsiNodePubli
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0EmptyDir:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template pod volumes items0 empty dir
+    `EmptyDir` to use to populate the volume.
 
     Attributes
     ----------
     medium : str, default is Undefined, optional
-        medium
+        Medium represents the type of storage medium should back this volume. Valid values are unset or `Memory`. When not set, it will use the node's default medium.
     sizeLimit : str, default is Undefined, optional
-        size limit
+        The total amount of local storage required for this EmptyDir volume (for example 1Gi).
     """
 
 
@@ -5050,7 +5050,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0EmptyDir:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0Image:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template pod volumes items0 image
+    `ImageVolumeSource` object to use to populate the volume.
 
     Attributes
     ----------
@@ -5068,7 +5068,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0Image:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0PersistentVolumeClaim:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template pod volumes items0 persistent volume claim
+    `PersistentVolumeClaim` object to use to populate the volume.
 
     Attributes
     ----------
@@ -5086,7 +5086,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0PersistentVo
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0Secret:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template pod volumes items0 secret
+    `Secret` to use to populate the volume.
 
     Attributes
     ----------
@@ -5134,7 +5134,7 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodVolumesItems0SecretItemsI
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateServiceAccount:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template service account
+    Template for the Kafka Connect service account.
 
     Attributes
     ----------
@@ -5148,14 +5148,14 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateServiceAccount:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateServiceAccountMetadata:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec template service account metadata
+    Metadata applied to the resource.
 
     Attributes
     ----------
     annotations : {str:str}, default is Undefined, optional
-        annotations
+        Annotations added to the Kubernetes resource.
     labels : {str:str}, default is Undefined, optional
-        labels
+        Labels added to the Kubernetes resource.
     """
 
 
@@ -5166,12 +5166,12 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplateServiceAccountMetadata:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTracing:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 spec tracing
+    The configuration of tracing in Kafka Connect.
 
     Attributes
     ----------
     $type : str, default is Undefined, required
-        type
+        Type of the tracing used. Currently the only supported type is `opentelemetry` for OpenTelemetry tracing.
     """
 
 
@@ -5180,26 +5180,26 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTracing:
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2Status:
     r"""
-    kafka strimzi io v1 kafka mirror maker2 status
+    The status of the Kafka MirrorMaker 2 cluster.
 
     Attributes
     ----------
     autoRestartStatuses : [KafkaStrimziIoV1KafkaMirrorMaker2StatusAutoRestartStatusesItems0], default is Undefined, optional
-        auto restart statuses
+        List of MirrorMaker 2 connector auto restart statuses.
     conditions : [KafkaStrimziIoV1KafkaMirrorMaker2StatusConditionsItems0], default is Undefined, optional
-        conditions
+        List of status conditions.
     connectorPlugins : [KafkaStrimziIoV1KafkaMirrorMaker2StatusConnectorPluginsItems0], default is Undefined, optional
-        connector plugins
+        The list of connector plugins available in this Kafka Connect deployment.
     connectors : [any], default is Undefined, optional
-        connectors
+        List of MirrorMaker 2 connector statuses, as reported by the Kafka Connect REST API.
     labelSelector : str, default is Undefined, optional
-        label selector
+        Label selector for pods providing this resource.
     observedGeneration : int, default is Undefined, optional
-        observed generation
+        The generation of the CRD that was last reconciled by the operator.
     replicas : int, default is Undefined, optional
-        replicas
+        The current number of pods being used to provide this resource.
     url : str, default is Undefined, optional
-        url
+        The URL of the REST API endpoint for managing and monitoring Kafka Connect connectors.
     """
 
 
@@ -5227,11 +5227,11 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2StatusAutoRestartStatusesItems0:
     Attributes
     ----------
     connectorName : str, default is Undefined, optional
-        connector name
+        The name of the connector being restarted.
     count : int, default is Undefined, optional
-        count
+        The number of times the connector or task is restarted.
     lastRestartTimestamp : str, default is Undefined, optional
-        last restart timestamp
+        The last time the automatic restart was attempted. The required format is 'yyyy-MM-ddTHH:mm:ssZ' in the UTC time zone.
     """
 
 
@@ -5249,15 +5249,15 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2StatusConditionsItems0:
     Attributes
     ----------
     lastTransitionTime : str, default is Undefined, optional
-        last transition time
+        Last time the condition of a type changed from one status to another. The required format is 'yyyy-MM-ddTHH:mm:ssZ', in the UTC time zone.
     message : str, default is Undefined, optional
-        message
+        Human-readable message indicating details about the condition's last transition.
     reason : str, default is Undefined, optional
-        reason
+        The reason for the condition's last transition (a single word in CamelCase).
     status : str, default is Undefined, optional
-        status
+        The status of the condition, either True, False or Unknown.
     $type : str, default is Undefined, optional
-        type
+        The unique identifier of a condition, used to distinguish between other conditions in the resource.
     """
 
 
@@ -5279,11 +5279,11 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2StatusConnectorPluginsItems0:
     Attributes
     ----------
     class : str, default is Undefined, optional
-        class
+        The class of the connector plugin.
     $type : str, default is Undefined, optional
-        type
+        The type of the connector plugin. The available types are `sink` and `source`.
     version : str, default is Undefined, optional
-        version
+        The version of the connector plugin.
     """
 
 
