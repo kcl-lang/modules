@@ -92,6 +92,10 @@ schema IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecForProvider:
     ----------
     domainId : str, default is Undefined, optional
         The domain to assign the role in.
+    domainIdRef : IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecForProviderDomainIDRef, default is Undefined, optional
+        domain Id ref
+    domainIdSelector : IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecForProviderDomainIDSelector, default is Undefined, optional
+        domain Id selector
     groupId : str, default is Undefined, optional
         The group to assign the role to.
     projectId : str, default is Undefined, optional
@@ -121,6 +125,10 @@ schema IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecForProvider:
 
     domainId?: str
 
+    domainIdRef?: IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecForProviderDomainIDRef
+
+    domainIdSelector?: IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecForProviderDomainIDSelector
+
     groupId?: str
 
     projectId?: str
@@ -142,6 +150,95 @@ schema IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecForProvider:
     userIdRef?: IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecForProviderUserIDRef
 
     userIdSelector?: IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecForProviderUserIDSelector
+
+
+schema IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecForProviderDomainIDRef:
+    r"""
+    Reference to a ProjectV3 in identity to populate domainId.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecForProviderDomainIDRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecForProviderDomainIDRefPolicy
+
+
+schema IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecForProviderDomainIDRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecForProviderDomainIDSelector:
+    r"""
+    Selector for a ProjectV3 in identity to populate domainId.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecForProviderDomainIDSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecForProviderDomainIDSelectorPolicy
+
+
+schema IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecForProviderDomainIDSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
 
 
 schema IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecForProviderProjectIDRef:
@@ -428,6 +525,10 @@ schema IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecInitProvider:
     ----------
     domainId : str, default is Undefined, optional
         The domain to assign the role in.
+    domainIdRef : IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecInitProviderDomainIDRef, default is Undefined, optional
+        domain Id ref
+    domainIdSelector : IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecInitProviderDomainIDSelector, default is Undefined, optional
+        domain Id selector
     groupId : str, default is Undefined, optional
         The group to assign the role to.
     projectId : str, default is Undefined, optional
@@ -457,6 +558,10 @@ schema IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecInitProvider:
 
     domainId?: str
 
+    domainIdRef?: IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecInitProviderDomainIDRef
+
+    domainIdSelector?: IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecInitProviderDomainIDSelector
+
     groupId?: str
 
     projectId?: str
@@ -478,6 +583,95 @@ schema IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecInitProvider:
     userIdRef?: IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecInitProviderUserIDRef
 
     userIdSelector?: IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecInitProviderUserIDSelector
+
+
+schema IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecInitProviderDomainIDRef:
+    r"""
+    Reference to a ProjectV3 in identity to populate domainId.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecInitProviderDomainIDRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecInitProviderDomainIDRefPolicy
+
+
+schema IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecInitProviderDomainIDRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecInitProviderDomainIDSelector:
+    r"""
+    Selector for a ProjectV3 in identity to populate domainId.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecInitProviderDomainIDSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecInitProviderDomainIDSelectorPolicy
+
+
+schema IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecInitProviderDomainIDSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
 
 
 schema IdentityOpenstackCrossplaneIoV1alpha1RoleAssignmentV3SpecInitProviderProjectIDRef:
