@@ -3679,6 +3679,8 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePod:
         The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.
     securityContext : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodSecurityContext, default is Undefined, optional
         security context
+    templatedVolumes : [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0], default is Undefined, optional
+        Additional volumes that can be mounted to the pod. These volumes can use templates to mount different volumes into individual Pods.
     terminationGracePeriodSeconds : int, default is Undefined, optional
         The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.
     tmpDirSizeLimit : str, default is Undefined, optional
@@ -3713,6 +3715,8 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePod:
     schedulerName?: str
 
     securityContext?: KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodSecurityContext
+
+    templatedVolumes?: [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0]
 
     terminationGracePeriodSeconds?: int
 
@@ -4782,6 +4786,146 @@ schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodSetMetadata:
     annotations?: {str:str}
 
     labels?: {str:str}
+
+
+schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0:
+    r"""
+    kafka strimzi io v1 kafka mirror maker2 spec template pod templated volumes items0
+
+    Attributes
+    ----------
+    configMap : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0ConfigMap, default is Undefined, optional
+        config map
+    name : str, default is Undefined, optional
+        Name to use for the volume. Required.
+    persistentVolumeClaim : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0PersistentVolumeClaim, default is Undefined, optional
+        persistent volume claim
+    secret : KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0Secret, default is Undefined, optional
+        secret
+    """
+
+
+    configMap?: KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0ConfigMap
+
+    name?: str
+
+    persistentVolumeClaim?: KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0PersistentVolumeClaim
+
+    secret?: KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0Secret
+
+
+schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0ConfigMap:
+    r"""
+    `ConfigMap` to use to populate the volume. The name of the ConfigMap and the items key and path fields can use placeholders that would be replaced for every individual node. Valid placeholders that you can use in the template are `{nodeId}` and `{nodePodName}`.
+
+    Attributes
+    ----------
+    defaultMode : int, default is Undefined, optional
+        default mode
+    items : [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0ConfigMapItemsItems0], default is Undefined, optional
+        items
+    name : str, default is Undefined, optional
+        name
+    optional : bool, default is Undefined, optional
+        optional
+    """
+
+
+    defaultMode?: int
+
+    items?: [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0ConfigMapItemsItems0]
+
+    name?: str
+
+    optional?: bool
+
+
+schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0ConfigMapItemsItems0:
+    r"""
+    kafka strimzi io v1 kafka mirror maker2 spec template pod templated volumes items0 config map items items0
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        key
+    mode : int, default is Undefined, optional
+        mode
+    path : str, default is Undefined, optional
+        path
+    """
+
+
+    key?: str
+
+    mode?: int
+
+    path?: str
+
+
+schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0PersistentVolumeClaim:
+    r"""
+    `PersistentVolumeClaim` object to use to populate the volume. The name of the Persistent Volume Claim can use placeholders that would be replaced for every individual node. Valid placeholders that you can use in the template are `{nodeId}` and `{nodePodName}`.
+
+    Attributes
+    ----------
+    claimName : str, default is Undefined, optional
+        claim name
+    readOnly : bool, default is Undefined, optional
+        read only
+    """
+
+
+    claimName?: str
+
+    readOnly?: bool
+
+
+schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0Secret:
+    r"""
+    `Secret` to use to populate the volume. The name of the Secret and the items key and path fields can use placeholders that would be replaced for every individual node. Valid placeholders that you can use in the template are `{nodeId}` and `{nodePodName}`.
+
+    Attributes
+    ----------
+    defaultMode : int, default is Undefined, optional
+        default mode
+    items : [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0SecretItemsItems0], default is Undefined, optional
+        items
+    optional : bool, default is Undefined, optional
+        optional
+    secretName : str, default is Undefined, optional
+        secret name
+    """
+
+
+    defaultMode?: int
+
+    items?: [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0SecretItemsItems0]
+
+    optional?: bool
+
+    secretName?: str
+
+
+schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0SecretItemsItems0:
+    r"""
+    kafka strimzi io v1 kafka mirror maker2 spec template pod templated volumes items0 secret items items0
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        key
+    mode : int, default is Undefined, optional
+        mode
+    path : str, default is Undefined, optional
+        path
+    """
+
+
+    key?: str
+
+    mode?: int
+
+    path?: str
 
 
 schema KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTolerationsItems0:

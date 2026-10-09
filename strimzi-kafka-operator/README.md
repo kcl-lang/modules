@@ -148,6 +148,7 @@
   - [KafkaStrimziIoV1KafkaConnectSpecBuildOutput](#kafkastrimziiov1kafkaconnectspecbuildoutput)
   - [KafkaStrimziIoV1KafkaConnectSpecBuildPluginsItems0](#kafkastrimziiov1kafkaconnectspecbuildpluginsitems0)
   - [KafkaStrimziIoV1KafkaConnectSpecBuildPluginsItems0ArtifactsItems0](#kafkastrimziiov1kafkaconnectspecbuildpluginsitems0artifactsitems0)
+  - [KafkaStrimziIoV1KafkaConnectSpecBuildPluginsItems0ArtifactsItems0MirrorsItems0](#kafkastrimziiov1kafkaconnectspecbuildpluginsitems0artifactsitems0mirrorsitems0)
   - [KafkaStrimziIoV1KafkaConnectSpecBuildResources](#kafkastrimziiov1kafkaconnectspecbuildresources)
   - [KafkaStrimziIoV1KafkaConnectSpecBuildResourcesClaimsItems0](#kafkastrimziiov1kafkaconnectspecbuildresourcesclaimsitems0)
   - [KafkaStrimziIoV1KafkaConnectSpecJmxOptions](#kafkastrimziiov1kafkaconnectspecjmxoptions)
@@ -329,6 +330,12 @@
   - [KafkaStrimziIoV1KafkaConnectSpecTemplatePodSecurityContextWindowsOptions](#kafkastrimziiov1kafkaconnectspectemplatepodsecuritycontextwindowsoptions)
   - [KafkaStrimziIoV1KafkaConnectSpecTemplatePodSet](#kafkastrimziiov1kafkaconnectspectemplatepodset)
   - [KafkaStrimziIoV1KafkaConnectSpecTemplatePodSetMetadata](#kafkastrimziiov1kafkaconnectspectemplatepodsetmetadata)
+  - [KafkaStrimziIoV1KafkaConnectSpecTemplatePodTemplatedVolumesItems0](#kafkastrimziiov1kafkaconnectspectemplatepodtemplatedvolumesitems0)
+  - [KafkaStrimziIoV1KafkaConnectSpecTemplatePodTemplatedVolumesItems0ConfigMap](#kafkastrimziiov1kafkaconnectspectemplatepodtemplatedvolumesitems0configmap)
+  - [KafkaStrimziIoV1KafkaConnectSpecTemplatePodTemplatedVolumesItems0ConfigMapItemsItems0](#kafkastrimziiov1kafkaconnectspectemplatepodtemplatedvolumesitems0configmapitemsitems0)
+  - [KafkaStrimziIoV1KafkaConnectSpecTemplatePodTemplatedVolumesItems0PersistentVolumeClaim](#kafkastrimziiov1kafkaconnectspectemplatepodtemplatedvolumesitems0persistentvolumeclaim)
+  - [KafkaStrimziIoV1KafkaConnectSpecTemplatePodTemplatedVolumesItems0Secret](#kafkastrimziiov1kafkaconnectspectemplatepodtemplatedvolumesitems0secret)
+  - [KafkaStrimziIoV1KafkaConnectSpecTemplatePodTemplatedVolumesItems0SecretItemsItems0](#kafkastrimziiov1kafkaconnectspectemplatepodtemplatedvolumesitems0secretitemsitems0)
   - [KafkaStrimziIoV1KafkaConnectSpecTemplatePodTolerationsItems0](#kafkastrimziiov1kafkaconnectspectemplatepodtolerationsitems0)
   - [KafkaStrimziIoV1KafkaConnectSpecTemplatePodTopologySpreadConstraintsItems0](#kafkastrimziiov1kafkaconnectspectemplatepodtopologyspreadconstraintsitems0)
   - [KafkaStrimziIoV1KafkaConnectSpecTemplatePodTopologySpreadConstraintsItems0LabelSelector](#kafkastrimziiov1kafkaconnectspectemplatepodtopologyspreadconstraintsitems0labelselector)
@@ -559,6 +566,12 @@
   - [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodSecurityContextWindowsOptions](#kafkastrimziiov1kafkamirrormaker2spectemplatepodsecuritycontextwindowsoptions)
   - [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodSet](#kafkastrimziiov1kafkamirrormaker2spectemplatepodset)
   - [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodSetMetadata](#kafkastrimziiov1kafkamirrormaker2spectemplatepodsetmetadata)
+  - [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatepodtemplatedvolumesitems0)
+  - [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0ConfigMap](#kafkastrimziiov1kafkamirrormaker2spectemplatepodtemplatedvolumesitems0configmap)
+  - [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0ConfigMapItemsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatepodtemplatedvolumesitems0configmapitemsitems0)
+  - [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0PersistentVolumeClaim](#kafkastrimziiov1kafkamirrormaker2spectemplatepodtemplatedvolumesitems0persistentvolumeclaim)
+  - [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0Secret](#kafkastrimziiov1kafkamirrormaker2spectemplatepodtemplatedvolumesitems0secret)
+  - [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0SecretItemsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatepodtemplatedvolumesitems0secretitemsitems0)
   - [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTolerationsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatepodtolerationsitems0)
   - [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTopologySpreadConstraintsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatepodtopologyspreadconstraintsitems0)
   - [KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTopologySpreadConstraintsItems0LabelSelector](#kafkastrimziiov1kafkamirrormaker2spectemplatepodtopologyspreadconstraintsitems0labelselector)
@@ -668,6 +681,12 @@
   - [KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodSecurityContextWindowsOptions](#kafkastrimziiov1kafkanodepoolspectemplatepodsecuritycontextwindowsoptions)
   - [KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodSet](#kafkastrimziiov1kafkanodepoolspectemplatepodset)
   - [KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodSetMetadata](#kafkastrimziiov1kafkanodepoolspectemplatepodsetmetadata)
+  - [KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTemplatedVolumesItems0](#kafkastrimziiov1kafkanodepoolspectemplatepodtemplatedvolumesitems0)
+  - [KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTemplatedVolumesItems0ConfigMap](#kafkastrimziiov1kafkanodepoolspectemplatepodtemplatedvolumesitems0configmap)
+  - [KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTemplatedVolumesItems0ConfigMapItemsItems0](#kafkastrimziiov1kafkanodepoolspectemplatepodtemplatedvolumesitems0configmapitemsitems0)
+  - [KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTemplatedVolumesItems0PersistentVolumeClaim](#kafkastrimziiov1kafkanodepoolspectemplatepodtemplatedvolumesitems0persistentvolumeclaim)
+  - [KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTemplatedVolumesItems0Secret](#kafkastrimziiov1kafkanodepoolspectemplatepodtemplatedvolumesitems0secret)
+  - [KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTemplatedVolumesItems0SecretItemsItems0](#kafkastrimziiov1kafkanodepoolspectemplatepodtemplatedvolumesitems0secretitemsitems0)
   - [KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTolerationsItems0](#kafkastrimziiov1kafkanodepoolspectemplatepodtolerationsitems0)
   - [KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTopologySpreadConstraintsItems0](#kafkastrimziiov1kafkanodepoolspectemplatepodtopologyspreadconstraintsitems0)
   - [KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTopologySpreadConstraintsItems0LabelSelector](#kafkastrimziiov1kafkanodepoolspectemplatepodtopologyspreadconstraintsitems0labelselector)
@@ -1126,6 +1145,12 @@
   - [KafkaStrimziIoV1KafkaSpecKafkaTemplatePodSecurityContextWindowsOptions](#kafkastrimziiov1kafkaspeckafkatemplatepodsecuritycontextwindowsoptions)
   - [KafkaStrimziIoV1KafkaSpecKafkaTemplatePodSet](#kafkastrimziiov1kafkaspeckafkatemplatepodset)
   - [KafkaStrimziIoV1KafkaSpecKafkaTemplatePodSetMetadata](#kafkastrimziiov1kafkaspeckafkatemplatepodsetmetadata)
+  - [KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTemplatedVolumesItems0](#kafkastrimziiov1kafkaspeckafkatemplatepodtemplatedvolumesitems0)
+  - [KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTemplatedVolumesItems0ConfigMap](#kafkastrimziiov1kafkaspeckafkatemplatepodtemplatedvolumesitems0configmap)
+  - [KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTemplatedVolumesItems0ConfigMapItemsItems0](#kafkastrimziiov1kafkaspeckafkatemplatepodtemplatedvolumesitems0configmapitemsitems0)
+  - [KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTemplatedVolumesItems0PersistentVolumeClaim](#kafkastrimziiov1kafkaspeckafkatemplatepodtemplatedvolumesitems0persistentvolumeclaim)
+  - [KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTemplatedVolumesItems0Secret](#kafkastrimziiov1kafkaspeckafkatemplatepodtemplatedvolumesitems0secret)
+  - [KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTemplatedVolumesItems0SecretItemsItems0](#kafkastrimziiov1kafkaspeckafkatemplatepodtemplatedvolumesitems0secretitemsitems0)
   - [KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTolerationsItems0](#kafkastrimziiov1kafkaspeckafkatemplatepodtolerationsitems0)
   - [KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTopologySpreadConstraintsItems0](#kafkastrimziiov1kafkaspeckafkatemplatepodtopologyspreadconstraintsitems0)
   - [KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTopologySpreadConstraintsItems0LabelSelector](#kafkastrimziiov1kafkaspeckafkatemplatepodtopologyspreadconstraintsitems0labelselector)
@@ -2860,11 +2885,21 @@ kafka strimzi io v1 kafka connect spec build plugins items0 artifacts items0
 |**group**|str|Maven group id. Applicable to the `maven` artifact type only.||
 |**includeScope**|"compile" | "provided" | "runtime" | "test" | "system"|Maven scope for including dependencies for the artifact. Valid values are `compile`, `provided`, `runtime`, `test`, and `system`. When not configured, no scope is set, and all dependencies are included. Applicable to the `maven` artifact type only.||
 |**insecure**|bool|By default, connections using TLS are verified to check they are secure. The server certificate used must be valid, trusted, and contain the server name. By setting this option to `true`, all TLS verification is disabled and the artifact will be downloaded, even when the server is considered insecure.||
+|**mirrors**|[[KafkaStrimziIoV1KafkaConnectSpecBuildPluginsItems0ArtifactsItems0MirrorsItems0](#kafkastrimziiov1kafkaconnectspecbuildpluginsitems0artifactsitems0mirrorsitems0)]|List of Maven mirrors used to download the artifact and its dependencies. All repository requests during the build, including plugin repositories and Maven Central, are redirected to the configured mirror(s). Applicable to the `maven` artifact type only.||
 |**repository**|str|Maven repository to download the artifact from. Applicable to the `maven` artifact type only.||
 |**sha512sum**|str|SHA512 checksum of the artifact. Optional. If specified, the checksum will be verified while building the new container. If not specified, the downloaded artifact will not be verified. Not applicable to the `maven` artifact type.||
 |**type** `required`|"jar" | "tgz" | "zip" | "maven" | "other"|||
 |**url**|str|URL of the artifact which will be downloaded. Strimzi does not do any security scanning of the downloaded artifacts. For security reasons, you should first verify the artifacts manually and configure the checksum verification to make sure the same artifact is used in the automated build. Required for `jar`, `zip`, `tgz` and `other` artifacts. Not applicable to the `maven` artifact type.||
 |**version**|str|Maven version number. Applicable to the `maven` artifact type only.||
+### KafkaStrimziIoV1KafkaConnectSpecBuildPluginsItems0ArtifactsItems0MirrorsItems0
+
+kafka strimzi io v1 kafka connect spec build plugins items0 artifacts items0 mirrors items0
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**url** `required`|str|The URL of the Maven mirror. All repository requests during the build, including plugin repositories and Maven Central, are redirected to this mirror. Applicable to the `maven` artifact type only.||
 ### KafkaStrimziIoV1KafkaConnectSpecBuildResources
 
 CPU and memory resources to reserve for the build.
@@ -4366,6 +4401,7 @@ Template for Kafka Connect `Pods`.
 |**priorityClassName**|str|The name of the priority class used to assign priority to the pods.||
 |**schedulerName**|str|The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.||
 |**securityContext**|[KafkaStrimziIoV1KafkaConnectSpecTemplatePodSecurityContext](#kafkastrimziiov1kafkaconnectspectemplatepodsecuritycontext)|security context||
+|**templatedVolumes**|[[KafkaStrimziIoV1KafkaConnectSpecTemplatePodTemplatedVolumesItems0](#kafkastrimziiov1kafkaconnectspectemplatepodtemplatedvolumesitems0)]|Additional volumes that can be mounted to the pod. These volumes can use templates to mount different volumes into individual Pods.||
 |**terminationGracePeriodSeconds**|int|The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.||
 |**tmpDirSizeLimit**|str|Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.||
 |**tolerations**|[[KafkaStrimziIoV1KafkaConnectSpecTemplatePodTolerationsItems0](#kafkastrimziiov1kafkaconnectspectemplatepodtolerationsitems0)]|The pod's tolerations.||
@@ -4903,6 +4939,74 @@ Metadata applied to the resource.
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
 |**labels**|{str:str}|Labels added to the Kubernetes resource.||
+### KafkaStrimziIoV1KafkaConnectSpecTemplatePodTemplatedVolumesItems0
+
+kafka strimzi io v1 kafka connect spec template pod templated volumes items0
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**configMap**|[KafkaStrimziIoV1KafkaConnectSpecTemplatePodTemplatedVolumesItems0ConfigMap](#kafkastrimziiov1kafkaconnectspectemplatepodtemplatedvolumesitems0configmap)|config map||
+|**name**|str|Name to use for the volume. Required.||
+|**persistentVolumeClaim**|[KafkaStrimziIoV1KafkaConnectSpecTemplatePodTemplatedVolumesItems0PersistentVolumeClaim](#kafkastrimziiov1kafkaconnectspectemplatepodtemplatedvolumesitems0persistentvolumeclaim)|persistent volume claim||
+|**secret**|[KafkaStrimziIoV1KafkaConnectSpecTemplatePodTemplatedVolumesItems0Secret](#kafkastrimziiov1kafkaconnectspectemplatepodtemplatedvolumesitems0secret)|secret||
+### KafkaStrimziIoV1KafkaConnectSpecTemplatePodTemplatedVolumesItems0ConfigMap
+
+`ConfigMap` to use to populate the volume. The name of the ConfigMap and the items key and path fields can use placeholders that would be replaced for every individual node. Valid placeholders that you can use in the template are `{nodeId}` and `{nodePodName}`.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**defaultMode**|int|default mode||
+|**items**|[[KafkaStrimziIoV1KafkaConnectSpecTemplatePodTemplatedVolumesItems0ConfigMapItemsItems0](#kafkastrimziiov1kafkaconnectspectemplatepodtemplatedvolumesitems0configmapitemsitems0)]|items||
+|**name**|str|name||
+|**optional**|bool|optional||
+### KafkaStrimziIoV1KafkaConnectSpecTemplatePodTemplatedVolumesItems0ConfigMapItemsItems0
+
+kafka strimzi io v1 kafka connect spec template pod templated volumes items0 config map items items0
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**key**|str|key||
+|**mode**|int|mode||
+|**path**|str|path||
+### KafkaStrimziIoV1KafkaConnectSpecTemplatePodTemplatedVolumesItems0PersistentVolumeClaim
+
+`PersistentVolumeClaim` object to use to populate the volume. The name of the Persistent Volume Claim can use placeholders that would be replaced for every individual node. Valid placeholders that you can use in the template are `{nodeId}` and `{nodePodName}`.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**claimName**|str|claim name||
+|**readOnly**|bool|read only||
+### KafkaStrimziIoV1KafkaConnectSpecTemplatePodTemplatedVolumesItems0Secret
+
+`Secret` to use to populate the volume. The name of the Secret and the items key and path fields can use placeholders that would be replaced for every individual node. Valid placeholders that you can use in the template are `{nodeId}` and `{nodePodName}`.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**defaultMode**|int|default mode||
+|**items**|[[KafkaStrimziIoV1KafkaConnectSpecTemplatePodTemplatedVolumesItems0SecretItemsItems0](#kafkastrimziiov1kafkaconnectspectemplatepodtemplatedvolumesitems0secretitemsitems0)]|items||
+|**optional**|bool|optional||
+|**secretName**|str|secret name||
+### KafkaStrimziIoV1KafkaConnectSpecTemplatePodTemplatedVolumesItems0SecretItemsItems0
+
+kafka strimzi io v1 kafka connect spec template pod templated volumes items0 secret items items0
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**key**|str|key||
+|**mode**|int|mode||
+|**path**|str|path||
 ### KafkaStrimziIoV1KafkaConnectSpecTemplatePodTolerationsItems0
 
 kafka strimzi io v1 kafka connect spec template pod tolerations items0
@@ -6972,6 +7076,7 @@ Template for Kafka Connect `Pods`.
 |**priorityClassName**|str|The name of the priority class used to assign priority to the pods.||
 |**schedulerName**|str|The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.||
 |**securityContext**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodSecurityContext](#kafkastrimziiov1kafkamirrormaker2spectemplatepodsecuritycontext)|security context||
+|**templatedVolumes**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatepodtemplatedvolumesitems0)]|Additional volumes that can be mounted to the pod. These volumes can use templates to mount different volumes into individual Pods.||
 |**terminationGracePeriodSeconds**|int|The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.||
 |**tmpDirSizeLimit**|str|Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.||
 |**tolerations**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTolerationsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatepodtolerationsitems0)]|The pod's tolerations.||
@@ -7509,6 +7614,74 @@ Metadata applied to the resource.
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
 |**labels**|{str:str}|Labels added to the Kubernetes resource.||
+### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0
+
+kafka strimzi io v1 kafka mirror maker2 spec template pod templated volumes items0
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**configMap**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0ConfigMap](#kafkastrimziiov1kafkamirrormaker2spectemplatepodtemplatedvolumesitems0configmap)|config map||
+|**name**|str|Name to use for the volume. Required.||
+|**persistentVolumeClaim**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0PersistentVolumeClaim](#kafkastrimziiov1kafkamirrormaker2spectemplatepodtemplatedvolumesitems0persistentvolumeclaim)|persistent volume claim||
+|**secret**|[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0Secret](#kafkastrimziiov1kafkamirrormaker2spectemplatepodtemplatedvolumesitems0secret)|secret||
+### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0ConfigMap
+
+`ConfigMap` to use to populate the volume. The name of the ConfigMap and the items key and path fields can use placeholders that would be replaced for every individual node. Valid placeholders that you can use in the template are `{nodeId}` and `{nodePodName}`.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**defaultMode**|int|default mode||
+|**items**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0ConfigMapItemsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatepodtemplatedvolumesitems0configmapitemsitems0)]|items||
+|**name**|str|name||
+|**optional**|bool|optional||
+### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0ConfigMapItemsItems0
+
+kafka strimzi io v1 kafka mirror maker2 spec template pod templated volumes items0 config map items items0
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**key**|str|key||
+|**mode**|int|mode||
+|**path**|str|path||
+### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0PersistentVolumeClaim
+
+`PersistentVolumeClaim` object to use to populate the volume. The name of the Persistent Volume Claim can use placeholders that would be replaced for every individual node. Valid placeholders that you can use in the template are `{nodeId}` and `{nodePodName}`.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**claimName**|str|claim name||
+|**readOnly**|bool|read only||
+### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0Secret
+
+`Secret` to use to populate the volume. The name of the Secret and the items key and path fields can use placeholders that would be replaced for every individual node. Valid placeholders that you can use in the template are `{nodeId}` and `{nodePodName}`.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**defaultMode**|int|default mode||
+|**items**|[[KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0SecretItemsItems0](#kafkastrimziiov1kafkamirrormaker2spectemplatepodtemplatedvolumesitems0secretitemsitems0)]|items||
+|**optional**|bool|optional||
+|**secretName**|str|secret name||
+### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTemplatedVolumesItems0SecretItemsItems0
+
+kafka strimzi io v1 kafka mirror maker2 spec template pod templated volumes items0 secret items items0
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**key**|str|key||
+|**mode**|int|mode||
+|**path**|str|path||
 ### KafkaStrimziIoV1KafkaMirrorMaker2SpecTemplatePodTolerationsItems0
 
 kafka strimzi io v1 kafka mirror maker2 spec template pod tolerations items0
@@ -8241,6 +8414,7 @@ Template for Kafka `Pods`.
 |**priorityClassName**|str|The name of the priority class used to assign priority to the pods.||
 |**schedulerName**|str|The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.||
 |**securityContext**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodSecurityContext](#kafkastrimziiov1kafkanodepoolspectemplatepodsecuritycontext)|security context||
+|**templatedVolumes**|[[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTemplatedVolumesItems0](#kafkastrimziiov1kafkanodepoolspectemplatepodtemplatedvolumesitems0)]|Additional volumes that can be mounted to the pod. These volumes can use templates to mount different volumes into individual Pods.||
 |**terminationGracePeriodSeconds**|int|The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.||
 |**tmpDirSizeLimit**|str|Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.||
 |**tolerations**|[[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTolerationsItems0](#kafkastrimziiov1kafkanodepoolspectemplatepodtolerationsitems0)]|The pod's tolerations.||
@@ -8758,6 +8932,74 @@ Metadata applied to the resource.
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
 |**labels**|{str:str}|Labels added to the Kubernetes resource.||
+### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTemplatedVolumesItems0
+
+kafka strimzi io v1 kafka node pool spec template pod templated volumes items0
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**configMap**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTemplatedVolumesItems0ConfigMap](#kafkastrimziiov1kafkanodepoolspectemplatepodtemplatedvolumesitems0configmap)|config map||
+|**name**|str|Name to use for the volume. Required.||
+|**persistentVolumeClaim**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTemplatedVolumesItems0PersistentVolumeClaim](#kafkastrimziiov1kafkanodepoolspectemplatepodtemplatedvolumesitems0persistentvolumeclaim)|persistent volume claim||
+|**secret**|[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTemplatedVolumesItems0Secret](#kafkastrimziiov1kafkanodepoolspectemplatepodtemplatedvolumesitems0secret)|secret||
+### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTemplatedVolumesItems0ConfigMap
+
+`ConfigMap` to use to populate the volume. The name of the ConfigMap and the items key and path fields can use placeholders that would be replaced for every individual node. Valid placeholders that you can use in the template are `{nodeId}` and `{nodePodName}`.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**defaultMode**|int|default mode||
+|**items**|[[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTemplatedVolumesItems0ConfigMapItemsItems0](#kafkastrimziiov1kafkanodepoolspectemplatepodtemplatedvolumesitems0configmapitemsitems0)]|items||
+|**name**|str|name||
+|**optional**|bool|optional||
+### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTemplatedVolumesItems0ConfigMapItemsItems0
+
+kafka strimzi io v1 kafka node pool spec template pod templated volumes items0 config map items items0
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**key**|str|key||
+|**mode**|int|mode||
+|**path**|str|path||
+### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTemplatedVolumesItems0PersistentVolumeClaim
+
+`PersistentVolumeClaim` object to use to populate the volume. The name of the Persistent Volume Claim can use placeholders that would be replaced for every individual node. Valid placeholders that you can use in the template are `{nodeId}` and `{nodePodName}`.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**claimName**|str|claim name||
+|**readOnly**|bool|read only||
+### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTemplatedVolumesItems0Secret
+
+`Secret` to use to populate the volume. The name of the Secret and the items key and path fields can use placeholders that would be replaced for every individual node. Valid placeholders that you can use in the template are `{nodeId}` and `{nodePodName}`.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**defaultMode**|int|default mode||
+|**items**|[[KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTemplatedVolumesItems0SecretItemsItems0](#kafkastrimziiov1kafkanodepoolspectemplatepodtemplatedvolumesitems0secretitemsitems0)]|items||
+|**optional**|bool|optional||
+|**secretName**|str|secret name||
+### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTemplatedVolumesItems0SecretItemsItems0
+
+kafka strimzi io v1 kafka node pool spec template pod templated volumes items0 secret items items0
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**key**|str|key||
+|**mode**|int|mode||
+|**path**|str|path||
 ### KafkaStrimziIoV1KafkaNodePoolSpecTemplatePodTolerationsItems0
 
 kafka strimzi io v1 kafka node pool spec template pod tolerations items0
@@ -13468,6 +13710,7 @@ Template for Kafka `Pods`.
 |**priorityClassName**|str|The name of the priority class used to assign priority to the pods.||
 |**schedulerName**|str|The name of the scheduler used to dispatch this `Pod`. If not specified, the default scheduler will be used.||
 |**securityContext**|[KafkaStrimziIoV1KafkaSpecKafkaTemplatePodSecurityContext](#kafkastrimziiov1kafkaspeckafkatemplatepodsecuritycontext)|security context||
+|**templatedVolumes**|[[KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTemplatedVolumesItems0](#kafkastrimziiov1kafkaspeckafkatemplatepodtemplatedvolumesitems0)]|Additional volumes that can be mounted to the pod. These volumes can use templates to mount different volumes into individual Pods.||
 |**terminationGracePeriodSeconds**|int|The grace period is the duration in seconds after the processes running in the pod are sent a termination signal, and the time when the processes are forcibly halted with a kill signal. Set this value to longer than the expected cleanup time for your process. Value must be a non-negative integer. A zero value indicates delete immediately. You might need to increase the grace period for very large Kafka clusters, so that the Kafka brokers have enough time to transfer their work to another broker before they are terminated. Defaults to 30 seconds.||
 |**tmpDirSizeLimit**|str|Defines the total amount of pod memory allocated for the temporary `EmptyDir` volume `/tmp`. Specify the allocation in memory units, for example, `100Mi` for 100 mebibytes. Default value is `5Mi`. The `/tmp` volume is backed by pod memory, not disk storage, so avoid setting a high value as it consumes pod memory resources.||
 |**tolerations**|[[KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTolerationsItems0](#kafkastrimziiov1kafkaspeckafkatemplatepodtolerationsitems0)]|The pod's tolerations.||
@@ -14005,6 +14248,74 @@ Metadata applied to the resource.
 | --- | --- | --- | --- |
 |**annotations**|{str:str}|Annotations added to the Kubernetes resource.||
 |**labels**|{str:str}|Labels added to the Kubernetes resource.||
+### KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTemplatedVolumesItems0
+
+kafka strimzi io v1 kafka spec kafka template pod templated volumes items0
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**configMap**|[KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTemplatedVolumesItems0ConfigMap](#kafkastrimziiov1kafkaspeckafkatemplatepodtemplatedvolumesitems0configmap)|config map||
+|**name**|str|Name to use for the volume. Required.||
+|**persistentVolumeClaim**|[KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTemplatedVolumesItems0PersistentVolumeClaim](#kafkastrimziiov1kafkaspeckafkatemplatepodtemplatedvolumesitems0persistentvolumeclaim)|persistent volume claim||
+|**secret**|[KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTemplatedVolumesItems0Secret](#kafkastrimziiov1kafkaspeckafkatemplatepodtemplatedvolumesitems0secret)|secret||
+### KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTemplatedVolumesItems0ConfigMap
+
+`ConfigMap` to use to populate the volume. The name of the ConfigMap and the items key and path fields can use placeholders that would be replaced for every individual node. Valid placeholders that you can use in the template are `{nodeId}` and `{nodePodName}`.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**defaultMode**|int|default mode||
+|**items**|[[KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTemplatedVolumesItems0ConfigMapItemsItems0](#kafkastrimziiov1kafkaspeckafkatemplatepodtemplatedvolumesitems0configmapitemsitems0)]|items||
+|**name**|str|name||
+|**optional**|bool|optional||
+### KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTemplatedVolumesItems0ConfigMapItemsItems0
+
+kafka strimzi io v1 kafka spec kafka template pod templated volumes items0 config map items items0
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**key**|str|key||
+|**mode**|int|mode||
+|**path**|str|path||
+### KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTemplatedVolumesItems0PersistentVolumeClaim
+
+`PersistentVolumeClaim` object to use to populate the volume. The name of the Persistent Volume Claim can use placeholders that would be replaced for every individual node. Valid placeholders that you can use in the template are `{nodeId}` and `{nodePodName}`.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**claimName**|str|claim name||
+|**readOnly**|bool|read only||
+### KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTemplatedVolumesItems0Secret
+
+`Secret` to use to populate the volume. The name of the Secret and the items key and path fields can use placeholders that would be replaced for every individual node. Valid placeholders that you can use in the template are `{nodeId}` and `{nodePodName}`.
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**defaultMode**|int|default mode||
+|**items**|[[KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTemplatedVolumesItems0SecretItemsItems0](#kafkastrimziiov1kafkaspeckafkatemplatepodtemplatedvolumesitems0secretitemsitems0)]|items||
+|**optional**|bool|optional||
+|**secretName**|str|secret name||
+### KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTemplatedVolumesItems0SecretItemsItems0
+
+kafka strimzi io v1 kafka spec kafka template pod templated volumes items0 secret items items0
+
+#### Attributes
+
+| name | type | description | default value |
+| --- | --- | --- | --- |
+|**key**|str|key||
+|**mode**|int|mode||
+|**path**|str|path||
 ### KafkaStrimziIoV1KafkaSpecKafkaTemplatePodTolerationsItems0
 
 kafka strimzi io v1 kafka spec kafka template pod tolerations items0
@@ -14218,6 +14529,7 @@ The status of the Kafka cluster.
 | --- | --- | --- | --- |
 |**autoRebalance**|[KafkaStrimziIoV1KafkaStatusAutoRebalance](#kafkastrimziiov1kafkastatusautorebalance)|auto rebalance||
 |**clusterId**|str|Kafka cluster Id.||
+|**clusterSecurity**|any|The current security configuration of the Kafka cluster.||
 |**conditions**|[[KafkaStrimziIoV1KafkaStatusConditionsItems0](#kafkastrimziiov1kafkastatusconditionsitems0)]|List of status conditions.||
 |**kafkaMetadataVersion**|str|The KRaft metadata.version currently used by the Kafka cluster.||
 |**kafkaNodePools**|[[KafkaStrimziIoV1KafkaStatusKafkaNodePoolsItems0](#kafkastrimziiov1kafkastatuskafkanodepoolsitems0)]|List of the KafkaNodePools used by this Kafka cluster.||
