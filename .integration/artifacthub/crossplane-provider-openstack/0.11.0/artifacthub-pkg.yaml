@@ -1,0 +1,25 @@
+version: 0.11.0
+name: crossplane-provider-openstack
+displayName: crossplane-provider-openstack
+createdAt: "2026-10-09T11:14:13Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `crossplane-provider-openstack` with tag `0.11.0` as dependency
+  ```
+  kcl mod add crossplane-provider-openstack:0.11.0
+  ```
+
+  #### Pull `crossplane-provider-openstack` with tag `0.11.0` to local
+  ```
+  kcl mod pull crossplane-provider-openstack:0.11.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
