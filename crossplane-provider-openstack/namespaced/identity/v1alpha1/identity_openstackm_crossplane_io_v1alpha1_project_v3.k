@@ -80,6 +80,10 @@ schema IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecForProvider:
         A description of the project.
     domainId : str, default is Undefined, optional
         The domain this project belongs to.
+    domainIdRef : IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecForProviderDomainIDRef, default is Undefined, optional
+        domain Id ref
+    domainIdSelector : IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecForProviderDomainIDSelector, default is Undefined, optional
+        domain Id selector
     enabled : bool, default is Undefined, optional
         Whether the project is enabled or disabled. Valid
         values are true and false. Default is true.
@@ -106,6 +110,10 @@ schema IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecForProvider:
 
     domainId?: str
 
+    domainIdRef?: IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecForProviderDomainIDRef
+
+    domainIdSelector?: IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecForProviderDomainIDSelector
+
     enabled?: bool
 
     isDomain?: bool
@@ -117,6 +125,103 @@ schema IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecForProvider:
     region?: str
 
     tags?: [str]
+
+
+schema IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecForProviderDomainIDRef:
+    r"""
+    Reference to a ProjectV3 in identity to populate domainId.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    namespace : str, default is Undefined, optional
+        Namespace of the referenced object
+    policy : IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecForProviderDomainIDRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    namespace?: str
+
+    policy?: IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecForProviderDomainIDRefPolicy
+
+
+schema IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecForProviderDomainIDRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecForProviderDomainIDSelector:
+    r"""
+    Selector for a ProjectV3 in identity to populate domainId.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    namespace : str, default is Undefined, optional
+        Namespace for the selector
+    policy : IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecForProviderDomainIDSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    namespace?: str
+
+    policy?: IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecForProviderDomainIDSelectorPolicy
+
+
+schema IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecForProviderDomainIDSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
 
 
 schema IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecInitProvider:
@@ -138,6 +243,10 @@ schema IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecInitProvider:
         A description of the project.
     domainId : str, default is Undefined, optional
         The domain this project belongs to.
+    domainIdRef : IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecInitProviderDomainIDRef, default is Undefined, optional
+        domain Id ref
+    domainIdSelector : IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecInitProviderDomainIDSelector, default is Undefined, optional
+        domain Id selector
     enabled : bool, default is Undefined, optional
         Whether the project is enabled or disabled. Valid
         values are true and false. Default is true.
@@ -164,6 +273,10 @@ schema IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecInitProvider:
 
     domainId?: str
 
+    domainIdRef?: IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecInitProviderDomainIDRef
+
+    domainIdSelector?: IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecInitProviderDomainIDSelector
+
     enabled?: bool
 
     isDomain?: bool
@@ -175,6 +288,103 @@ schema IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecInitProvider:
     region?: str
 
     tags?: [str]
+
+
+schema IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecInitProviderDomainIDRef:
+    r"""
+    Reference to a ProjectV3 in identity to populate domainId.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    namespace : str, default is Undefined, optional
+        Namespace of the referenced object
+    policy : IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecInitProviderDomainIDRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    namespace?: str
+
+    policy?: IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecInitProviderDomainIDRefPolicy
+
+
+schema IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecInitProviderDomainIDRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecInitProviderDomainIDSelector:
+    r"""
+    Selector for a ProjectV3 in identity to populate domainId.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    namespace : str, default is Undefined, optional
+        Namespace for the selector
+    policy : IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecInitProviderDomainIDSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    namespace?: str
+
+    policy?: IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecInitProviderDomainIDSelectorPolicy
+
+
+schema IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecInitProviderDomainIDSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
 
 
 schema IdentityOpenstackmCrossplaneIoV1alpha1ProjectV3SpecProviderConfigRef:
