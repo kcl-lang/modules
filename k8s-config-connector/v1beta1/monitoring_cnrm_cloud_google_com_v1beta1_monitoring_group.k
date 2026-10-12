@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema MonitoringGroup:
     r"""
-    monitoring cnrm cloud google com v1beta1 monitoring group
+    MonitoringGroup is the Schema for the MonitoringGroup API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema MonitoringGroup:
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringGroupSpec:
     r"""
-    monitoring cnrm cloud google com v1beta1 monitoring group spec
+    MonitoringGroupSpec defines the desired state of MonitoringGroup
 
     Attributes
     ----------
@@ -71,18 +71,16 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringGroupSpec:
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringGroupSpecParentRef:
     r"""
-    monitoring cnrm cloud google com v1beta1 monitoring group spec parent ref
+    MonitoringGroupRef is a reference to a GCP MonitoringGroup.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The name of the group's parent, if it has one. The format is: projects/ For groups with no parent, `parent_name` is the empty string, ``.
-
-        Allowed value: The Google Cloud resource name of a `MonitoringGroup` resource (format: `projects/{{project}}/groups/{{name}}`).
+        A reference to an externally managed MonitoringGroup resource. Should be in the format "projects/{{projectID}}/groups/{{groupID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a MonitoringGroup resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a MonitoringGroup resource.
     """
 
 
@@ -100,13 +98,11 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringGroupSpecProjectRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The project of the group
-
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -119,12 +115,12 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringGroupSpecProjectRef:
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringGroupStatus:
     r"""
-    monitoring cnrm cloud google com v1beta1 monitoring group status
+    MonitoringGroupStatus defines the config connector machine state of MonitoringGroup
 
     Attributes
     ----------
     conditions : [MonitoringCnrmCloudGoogleComV1beta1MonitoringGroupStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

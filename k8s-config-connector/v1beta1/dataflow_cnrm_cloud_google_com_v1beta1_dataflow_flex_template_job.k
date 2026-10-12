@@ -150,7 +150,7 @@ schema DataflowCnrmCloudGoogleComV1beta1DataflowFlexTemplateJobSpecNetworkRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
         The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
@@ -194,11 +194,11 @@ schema DataflowCnrmCloudGoogleComV1beta1DataflowFlexTemplateJobSpecSubnetworkRef
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The ComputeSubnetwork selflink of form "projects/{{project}}/regions/{{region}}/subnetworks/{{name}}", when not managed by Config Connector.
+        A reference to an externally managed ComputeSubnetwork resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/subnetworks/{{subnetworkID}}".
     name : str, default is Undefined, optional
-        The `name` field of a `ComputeSubnetwork` resource.
+        The name of a ComputeSubnetwork resource.
     namespace : str, default is Undefined, optional
-        The `namespace` field of a `ComputeSubnetwork` resource.
+        The namespace of a ComputeSubnetwork resource.
     """
 
 

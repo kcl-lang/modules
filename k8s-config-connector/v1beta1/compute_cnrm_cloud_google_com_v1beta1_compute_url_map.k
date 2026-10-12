@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeURLMap:
     r"""
-    compute cnrm cloud google com v1beta1 compute URL map
+    ComputeURLMap is the Schema for the compute API
 
     Attributes
     ----------
@@ -41,6 +41,8 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpec:
 
     Attributes
     ----------
+    defaultCustomErrorResponsePolicy : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultCustomErrorResponsePolicy, default is Undefined, optional
+        default custom error response policy
     defaultRouteAction : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteAction, default is Undefined, optional
         default route action
     defaultService : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultService, default is Undefined, optional
@@ -48,8 +50,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpec:
     defaultUrlRedirect : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultURLRedirect, default is Undefined, optional
         default Url redirect
     description : str, default is Undefined, optional
-        An optional description of this resource. Provide this property when
-        you create the resource.
+        An optional description of this resource. Provide this property when you create the resource.
     headerAction : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecHeaderAction, default is Undefined, optional
         header action
     hostRule : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecHostRuleItems0], default is Undefined, optional
@@ -61,10 +62,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpec:
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
     test : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecTestItems0], default is Undefined, optional
-        The list of expected URL mappings. Requests to update this UrlMap will
-        succeed only if all of the test cases pass.
+        The list of expected URL mappings. Requests to update this UrlMap will succeed only if all of the test cases pass.
     """
 
+
+    defaultCustomErrorResponsePolicy?: ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultCustomErrorResponsePolicy
 
     defaultRouteAction?: ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteAction
 
@@ -87,12 +89,71 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpec:
     test?: [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecTestItems0]
 
 
+schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultCustomErrorResponsePolicy:
+    r"""
+    compute cnrm cloud google com v1beta1 compute URL map spec default custom error response policy
+
+    Attributes
+    ----------
+    errorResponseRule : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultCustomErrorResponsePolicyErrorResponseRuleItems0], default is Undefined, optional
+        error response rule
+    errorServiceRef : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultCustomErrorResponsePolicyErrorServiceRef, default is Undefined, optional
+        error service ref
+    """
+
+
+    errorResponseRule?: [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultCustomErrorResponsePolicyErrorResponseRuleItems0]
+
+    errorServiceRef?: ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultCustomErrorResponsePolicyErrorServiceRef
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultCustomErrorResponsePolicyErrorResponseRuleItems0:
+    r"""
+    compute cnrm cloud google com v1beta1 compute URL map spec default custom error response policy error response rule items0
+
+    Attributes
+    ----------
+    matchResponseCodes : [str], default is Undefined, optional
+        match response codes
+    overrideResponseCode : int, default is Undefined, optional
+        override response code
+    path : str, default is Undefined, optional
+        path
+    """
+
+
+    matchResponseCodes?: [str]
+
+    overrideResponseCode?: int
+
+    path?: str
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultCustomErrorResponsePolicyErrorServiceRef:
+    r"""
+    The full or partial URL to the BackendBucket resource that contains the custom error content.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        external
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteAction:
     r"""
-    defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
-    Only one of defaultRouteAction or defaultUrlRedirect must be set.
-    URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction.
-    defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+    defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within defaultRouteAction. defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 
     Attributes
     ----------
@@ -109,8 +170,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteAction:
     urlRewrite : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionURLRewrite, default is Undefined, optional
         url rewrite
     weightedBackendServices : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionWeightedBackendServicesItems0], default is Undefined, optional
-        A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number.
-        After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
+        A list of weighted backend services to send traffic to when a route match occurs.
+        The weights determine the fraction of traffic that flows to their corresponding backend service.
+        If all traffic needs to go to a single backend service, there must be one weightedBackendService
+        with weight set to a non 0 number.
+
+        Once a backendService is identified and before forwarding the request to the backend service,
+        advanced routing actions like Url rewrites and header transformations are applied depending on
+        additional settings specified in this HttpRouteAction.
     """
 
 
@@ -131,32 +198,26 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteAction:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionCorsPolicy:
     r"""
-    The specification for allowing client side cross-origin requests. Please see
-    [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/).
+    The specification for allowing client side cross-origin requests. Please see [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/).
 
     Attributes
     ----------
     allowCredentials : bool, default is Undefined, optional
-        In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header.
-        Default is false.
+        In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access- Control-Allow-Credentials header. Defaults to false.
     allowHeaders : [str], default is Undefined, optional
         Specifies the content for the Access-Control-Allow-Headers header.
     allowMethods : [str], default is Undefined, optional
         Specifies the content for the Access-Control-Allow-Methods header.
     allowOriginRegexes : [str], default is Undefined, optional
-        Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
-        please see en.cppreference.com/w/cpp/regex/ecmascript
-        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        Specifies the regular expression patterns that match allowed origins. For regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript An origin is allowed if it matches either allow_origins or allow_origin_regex.
     allowOrigins : [str], default is Undefined, optional
-        Specifies the list of origins that will be allowed to do CORS requests.
-        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either allow_origins or allow_origin_regex.
     disabled : bool, default is Undefined, optional
-        If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+        If true, specifies the CORS policy is disabled. which indicates that the CORS policy is in effect. Defaults to false.
     exposeHeaders : [str], default is Undefined, optional
         Specifies the content for the Access-Control-Expose-Headers header.
     maxAge : int, default is Undefined, optional
-        Specifies how long results of a preflight request can be cached in seconds.
-        This translates to the Access-Control-Max-Age header.
+        Specifies how long the results of a preflight request can be cached. This translates to the content for the Access-Control-Max-Age header.
     """
 
 
@@ -180,10 +241,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionCorsPo
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionFaultInjectionPolicy:
     r"""
     The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
-    As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service.
-    Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
-    timeout and retryPolicy is ignored by clients that are configured with a faultInjectionPolicy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
-    Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: [Routing and traffic management features](https://cloud.google.com/load-balancing/docs/features#routing-traffic-management).
+    As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
+    percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
+    by the Loadbalancer for a percentage of requests.
+
+    timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
 
     Attributes
     ----------
@@ -206,11 +268,9 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionFaultI
     Attributes
     ----------
     httpStatus : int, default is Undefined, optional
-        The HTTP status code used to abort the request.
-        The value must be between 200 and 599 inclusive.
+        The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive.
     percentage : float, default is Undefined, optional
-        The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
-        The value must be between 0.0 and 100.0 inclusive.
+        The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
     """
 
 
@@ -228,8 +288,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionFaultI
     fixedDelay : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionFaultInjectionPolicyDelayFixedDelay, default is Undefined, optional
         fixed delay
     percentage : float, default is Undefined, optional
-        The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
-        The value must be between 0.0 and 100.0 inclusive.
+        The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
     """
 
 
@@ -245,11 +304,9 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionFaultI
     Attributes
     ----------
     nanos : int, default is Undefined, optional
-        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
-        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 'seconds' field and a positive 'nanos' field. Must be from 0 to 999,999,999 inclusive.
     seconds : str, default is Undefined, optional
         Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
-        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
     """
 
 
@@ -260,9 +317,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionFaultI
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionRequestMirrorPolicy:
     r"""
-    Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
-    The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
-    Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+    Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
 
     Attributes
     ----------
@@ -276,21 +331,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionReques
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionRequestMirrorPolicyBackendServiceRef:
     r"""
-    The backend service resource being mirrored to.
-    The backend service configured for a mirroring policy must reference
-    backends that are of the same type as the original backend service
-    matched in the URL map.
-    Serverless NEG backends are not currently supported as a mirrored
-    backend service.
+    Required. The backend service resource being mirrored to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeBackendService` resource.
+        external
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        name
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        namespace
     """
 
 
@@ -308,22 +358,32 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionRetryP
     Attributes
     ----------
     numRetries : int, default is Undefined, optional
-        Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        Specifies the allowed number retries. This number must be > 0.
     perTryTimeout : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionRetryPolicyPerTryTimeout, default is Undefined, optional
         per try timeout
     retryConditions : [str], default is Undefined, optional
-        Specifies one or more conditions when this retry policy applies.
-        Valid values are listed below. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true: cancelled, deadline-exceeded, internal, resource-exhausted, unavailable.
-          - 5xx : retry is attempted if the instance or endpoint responds with any 5xx response code, or if the instance or endpoint does not respond at all. For example, disconnects, reset, read timeout, connection failure, and refused streams.
-          - gateway-error : Similar to 5xx, but only applies to response codes 502, 503 or 504.
-          - connect-failure : a retry is attempted on failures connecting to the instance or endpoint. For example, connection timeouts.
-          - retriable-4xx : a retry is attempted if the instance or endpoint responds with a 4xx response code. The only error that you can retry is error code 409.
-          - refused-stream : a retry is attempted if the instance or endpoint resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
-          - cancelled : a retry is attempted if the gRPC status code in the response header is set to cancelled.
-          - deadline-exceeded : a retry is attempted if the gRPC status code in the response header is set to deadline-exceeded.
-          - internal :  a retry is attempted if the gRPC status code in the response header is set to internal.
-          - resource-exhausted : a retry is attempted if the gRPC status code in the response header is set to resource-exhausted.
-          - unavailable : a retry is attempted if the gRPC status code in the response header is set to unavailable.
+        Specifies one or more conditions when this retry rule applies. Valid values are:
+
+        * 5xx: Loadbalancer will attempt a retry if the backend service responds with
+        any 5xx response code, or if the backend service does not respond at all,
+        example: disconnects, reset, read timeout, connection failure, and refused
+        streams.
+        * gateway-error: Similar to 5xx, but only applies to response codes
+        502, 503 or 504.
+        * connect-failure: Loadbalancer will retry on failures
+        connecting to backend services, for example due to connection timeouts.
+        * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+        Currently the only retriable error supported is 409.
+        * refused-stream: Loadbalancer will retry if the backend service resets the stream with a
+        REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+        * cancelled: Loadbalancer will retry if the gRPC status code in the response
+        header is set to cancelled
+        * deadline-exceeded: Loadbalancer will retry if the
+        gRPC status code in the response header is set to deadline-exceeded
+        * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response
+        header is set to resource-exhausted
+        * unavailable: Loadbalancer will retry if the gRPC status code in
+        the response header is set to unavailable.
     """
 
 
@@ -338,17 +398,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionRetryP
     r"""
     Specifies a non-zero timeout per retry attempt.
 
-    If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-    will use the largest timeout among all backend services associated with the route.
-
     Attributes
     ----------
     nanos : int, default is Undefined, optional
-        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
-        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 'seconds' field and a positive 'nanos' field. Must be from 0 to 999,999,999 inclusive.
     seconds : str, default is Undefined, optional
         Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
-        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
     """
 
 
@@ -359,16 +414,17 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionRetryP
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionTimeout:
     r"""
-    Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as end-of-stream) up until the response has been processed. Timeout includes all retries.
-    If not specified, this field uses the largest timeout among all backend services associated with the route.
-    Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+    Specifies the timeout for the selected route. Timeout is computed from the time the request has been
+    fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
+
+    If not specified, will use the largest timeout among all backend services associated with the route.
 
     Attributes
     ----------
     nanos : int, default is Undefined, optional
-        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 'seconds' field and a positive 'nanos' field. Must be from 0 to 999,999,999 inclusive.
     seconds : str, default is Undefined, optional
-        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
     """
 
 
@@ -379,18 +435,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionTimeou
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionURLRewrite:
     r"""
-    The spec to modify the URL of the request, before forwarding the request to the matched service.
-    urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers.
-    Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+    The spec to modify the URL of the request, prior to forwarding the request to the matched service.
 
     Attributes
     ----------
     hostRewrite : str, default is Undefined, optional
-        Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
-        The value must be from 1 to 255 characters.
+        Prior to forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be between 1 and 255 characters.
     pathPrefixRewrite : str, default is Undefined, optional
-        Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.
-        The value must be from 1 to 1024 characters.
+        Prior to forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be between 1 and 1024 characters.
     """
 
 
@@ -410,9 +462,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionWeight
     headerAction : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionWeightedBackendServicesItems0HeaderAction, default is Undefined, optional
         header action
     weight : int, default is Undefined, optional
-        Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) .
-        The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backend service, subsequent requests are sent to the same backend service as determined by the backend service's session affinity policy.
-        The value must be from 0 to 1000.
+        Specifies the fraction of traffic sent to backendService, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backendService, subsequent requests will be sent to the same backendService as determined by the BackendService's session affinity policy. The value must be between 0 and 1000.
     """
 
 
@@ -425,19 +475,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionWeight
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionWeightedBackendServicesItems0BackendServiceRef:
     r"""
-    The default backend service resource.
-    Before forwarding the request to backendService, the loadbalancer
-    applies any relevant headerActions specified as part of this
-    backendServiceWeight.
+    Required. The default backend service resource. Before forwarding the request to backendService, the loadbalancer applies any relevant headerActions specified as part of this backendServiceWeight.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeBackendService` resource.
+        external
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        name
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        namespace
     """
 
 
@@ -450,21 +497,18 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionWeight
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionWeightedBackendServicesItems0HeaderAction:
     r"""
-    Specifies changes to request and response headers that need to take effect for the selected backendService.
-    headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
-    headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
-    Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+    Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
 
     Attributes
     ----------
     requestHeadersToAdd : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionWeightedBackendServicesItems0HeaderActionRequestHeadersToAddItems0], default is Undefined, optional
-        Headers to add to a matching request before forwarding the request to the backendService.
+        request headers to add
     requestHeadersToRemove : [str], default is Undefined, optional
-        A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
+        request headers to remove
     responseHeadersToAdd : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionWeightedBackendServicesItems0HeaderActionResponseHeadersToAddItems0], default is Undefined, optional
-        Headers to add the response before sending the response back to the client.
+        response headers to add
     responseHeadersToRemove : [str], default is Undefined, optional
-        A list of header names for headers that need to be removed from the response before sending the response back to the client.
+        response headers to remove
     """
 
 
@@ -489,7 +533,6 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionWeight
         The value of the header to add.
     replace : bool, default is Undefined, optional
         If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
-        The default value is false.
     """
 
 
@@ -512,7 +555,6 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionWeight
         The value of the header to add.
     replace : bool, default is Undefined, optional
         If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
-        The default value is false.
     """
 
 
@@ -525,20 +567,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultRouteActionWeight
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultService:
     r"""
-    The defaultService resource to which traffic is directed if none of
-    the hostRules match.
-    For the Global URL Map, it should be a reference to the backend
-    service or backend bucket.
-    For the Regional URL Map, it should be a reference to the backend
-    service.
-    If defaultRouteAction is additionally specified, advanced routing
-    actions like URL Rewrites, etc. take effect prior to sending the
-    request to the backend. However, if defaultService is specified,
-    defaultRouteAction cannot contain any weightedBackendServices.
-    Conversely, if routeAction specifies any weightedBackendServices,
-    service must not be specified. Only one of defaultService,
-    defaultUrlRedirect or defaultRouteAction.weightedBackendService
-    must be set.
+    The defaultService resource to which traffic is directed if none of the hostRules match. For the Global URL Map, it should be a reference to the backend service or backend bucket. For the Regional URL Map, it should be a reference to the backend service. If defaultRouteAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of defaultService, defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
 
     Attributes
     ----------
@@ -561,11 +590,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultServiceBackendBuc
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeBackendBucket` resource.
+        external
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        name
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        namespace
     """
 
 
@@ -583,11 +612,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultServiceBackendSer
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeBackendService` resource.
+        external
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        name
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        namespace
     """
 
 
@@ -600,32 +629,18 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultServiceBackendSer
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultURLRedirect:
     r"""
-    When none of the specified hostRules match, the request is redirected to a URL specified
-    by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-    defaultRouteAction must not be set.
+    When none of the specified hostRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set.
 
     Attributes
     ----------
     hostRedirect : str, default is Undefined, optional
-        The host that will be used in the redirect response instead of the one that was
-        supplied in the request. The value must be between 1 and 255 characters.
+        The host that will be used in the redirect response instead of the one that was supplied in the request. The value must be between 1 and 255 characters.
     httpsRedirect : bool, default is Undefined, optional
-        If set to true, the URL scheme in the redirected request is set to https. If set to
-        false, the URL scheme of the redirected request will remain the same as that of the
-        request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
-        true for TargetHttpsProxy is not permitted. The default is set to false.
+        If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
     pathRedirect : str, default is Undefined, optional
-        The path that will be used in the redirect response instead of the one that was
-        supplied in the request. pathRedirect cannot be supplied together with
-        prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
-        original request will be used for the redirect. The value must be between 1 and 1024
-        characters.
+        The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
     prefixRedirect : str, default is Undefined, optional
-        The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
-        retaining the remaining portion of the URL before redirecting the request.
-        prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
-        neither. If neither is supplied, the path of the original request will be used for
-        the redirect. The value must be between 1 and 1024 characters.
+        The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
     redirectResponseCode : str, default is Undefined, optional
         The HTTP Status code to use for this RedirectAction. Supported values are:
 
@@ -641,10 +656,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultURLRedirect:
         * PERMANENT_REDIRECT, which corresponds to 308. In this case,
         the request method will be retained. Possible values: ["FOUND", "MOVED_PERMANENTLY_DEFAULT", "PERMANENT_REDIRECT", "SEE_OTHER", "TEMPORARY_REDIRECT"].
     stripQuery : bool, default is Undefined, required
-        If set to true, any accompanying query portion of the original URL is removed prior
-        to redirecting the request. If set to false, the query portion of the original URL is
-        retained.
-         This field is required to ensure an empty block is not set. The normal default value is false.
+        If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. This field is required to ensure an empty block is not set. The normal default value is false.
     """
 
 
@@ -663,23 +675,18 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecDefaultURLRedirect:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecHeaderAction:
     r"""
-    Specifies changes to request and response headers that need to take effect for
-    the selected backendService. The headerAction specified here take effect after
-    headerAction specified under pathMatcher.
+    Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction specified here take effect after headerAction specified under pathMatcher.
 
     Attributes
     ----------
     requestHeadersToAdd : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecHeaderActionRequestHeadersToAddItems0], default is Undefined, optional
-        Headers to add to a matching request prior to forwarding the request to the
-        backendService.
+        Headers to add to a matching request prior to forwarding the request to the backendService.
     requestHeadersToRemove : [str], default is Undefined, optional
-        A list of header names for headers that need to be removed from the request
-        prior to forwarding the request to the backendService.
+        A list of header names for headers that need to be removed from the request prior to forwarding the request to the backendService.
     responseHeadersToAdd : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecHeaderActionResponseHeadersToAddItems0], default is Undefined, optional
         Headers to add the response prior to sending the response back to the client.
     responseHeadersToRemove : [str], default is Undefined, optional
-        A list of header names for headers that need to be removed from the response
-        prior to sending the response back to the client.
+        A list of header names for headers that need to be removed from the response prior to sending the response back to the client.
     """
 
 
@@ -703,9 +710,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecHeaderActionRequestHeade
     headerValue : str, default is Undefined, required
         The value of the header to add.
     replace : bool, default is Undefined, required
-        If false, headerValue is appended to any values that already exist for the
-        header. If true, headerValue is set for the header, discarding any values that
-        were set for that header.
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
     """
 
 
@@ -727,9 +732,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecHeaderActionResponseHead
     headerValue : str, default is Undefined, required
         The value of the header to add.
     replace : bool, default is Undefined, required
-        If false, headerValue is appended to any values that already exist for the
-        header. If true, headerValue is set for the header, discarding any values that
-        were set for that header.
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
     """
 
 
@@ -747,16 +750,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecHostRuleItems0:
     Attributes
     ----------
     description : str, default is Undefined, optional
-        An optional description of this HostRule. Provide this property
-        when you create the resource.
+        An optional description of this HostRule. Provide this property when you create the resource.
     hosts : [str], default is Undefined, required
-        The list of host patterns to match. They must be valid
-        hostnames, except * will match any string of ([a-z0-9-.]*). In
-        that case, * must be the first character and must be followed in
-        the pattern by either - or ..
+        The list of host patterns to match. They must be valid hostnames, except * will match any string of ([a-z0-9-.]*). In that case, * must be the first character and must be followed in the pattern by either - or ..
     pathMatcher : str, default is Undefined, required
-        The name of the PathMatcher to use to match the path portion of
-        the URL if the hostRule matches the URL's host portion.
+        The name of the PathMatcher to use to match the path portion of the URL if the hostRule matches the URL's host portion.
     """
 
 
@@ -773,6 +771,8 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0:
 
     Attributes
     ----------
+    defaultCustomErrorResponsePolicy : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultCustomErrorResponsePolicy, default is Undefined, optional
+        default custom error response policy
     defaultRouteAction : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteAction, default is Undefined, optional
         default route action
     defaultService : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultService, default is Undefined, optional
@@ -786,21 +786,13 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0:
     name : str, default is Undefined, required
         The name to which this PathMatcher is referred by the HostRule.
     pathRule : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0], default is Undefined, optional
-        The list of path rules. Use this list instead of routeRules when routing based
-        on simple path matching is all that's required. The order by which path rules
-        are specified does not matter. Matches are always done on the longest-path-first
-        basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/*
-        irrespective of the order in which those paths appear in this list. Within a
-        given pathMatcher, only one of pathRules or routeRules must be set.
+        The list of path rules. Use this list instead of routeRules when routing based on simple path matching is all that's required. The order by which path rules are specified does not matter. Matches are always done on the longest-path-first basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/* irrespective of the order in which those paths appear in this list. Within a given pathMatcher, only one of pathRules or routeRules must be set.
     routeRules : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0], default is Undefined, optional
-        The list of ordered HTTP route rules. Use this list instead of pathRules when
-        advanced route matching and routing actions are desired. The order of specifying
-        routeRules matters: the first rule that matches will cause its specified routing
-        action to take effect. Within a given pathMatcher, only one of pathRules or
-        routeRules must be set. routeRules are not supported in UrlMaps intended for
-        External load balancers.
+        The list of ordered HTTP route rules. Use this list instead of pathRules when advanced route matching and routing actions are desired. The order of specifying routeRules matters: the first rule that matches will cause its specified routing action to take effect. Within a given pathMatcher, only one of pathRules or routeRules must be set. routeRules are not supported in UrlMaps intended for External load balancers.
     """
 
+
+    defaultCustomErrorResponsePolicy?: ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultCustomErrorResponsePolicy
 
     defaultRouteAction?: ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteAction
 
@@ -817,6 +809,68 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0:
     pathRule?: [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0]
 
     routeRules?: [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0]
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultCustomErrorResponsePolicy:
+    r"""
+    compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 default custom error response policy
+
+    Attributes
+    ----------
+    errorResponseRule : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultCustomErrorResponsePolicyErrorResponseRuleItems0], default is Undefined, optional
+        error response rule
+    errorServiceRef : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultCustomErrorResponsePolicyErrorServiceRef, default is Undefined, optional
+        error service ref
+    """
+
+
+    errorResponseRule?: [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultCustomErrorResponsePolicyErrorResponseRuleItems0]
+
+    errorServiceRef?: ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultCustomErrorResponsePolicyErrorServiceRef
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultCustomErrorResponsePolicyErrorResponseRuleItems0:
+    r"""
+    compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 default custom error response policy error response rule items0
+
+    Attributes
+    ----------
+    matchResponseCodes : [str], default is Undefined, optional
+        match response codes
+    overrideResponseCode : int, default is Undefined, optional
+        override response code
+    path : str, default is Undefined, optional
+        path
+    """
+
+
+    matchResponseCodes?: [str]
+
+    overrideResponseCode?: int
+
+    path?: str
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultCustomErrorResponsePolicyErrorServiceRef:
+    r"""
+    The full or partial URL to the BackendBucket resource that contains the custom error content.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        external
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteAction:
@@ -843,14 +897,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
     urlRewrite : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionURLRewrite, default is Undefined, optional
         url rewrite
     weightedBackendServices : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionWeightedBackendServicesItems0], default is Undefined, optional
-        A list of weighted backend services to send traffic to when a route match occurs.
-        The weights determine the fraction of traffic that flows to their corresponding backend service.
-        If all traffic needs to go to a single backend service, there must be one weightedBackendService
-        with weight set to a non 0 number.
-
-        Once a backendService is identified and before forwarding the request to the backend service,
-        advanced routing actions like Url rewrites and header transformations are applied depending on
-        additional settings specified in this HttpRouteAction.
+        A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one  weightedBackendService with weight set to a non 0 number. Once a backendService is identified and before forwarding the request to the backend service, advanced routing actions like Url rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
     """
 
 
@@ -871,32 +918,26 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionCorsPolicy:
     r"""
-    The specification for allowing client side cross-origin requests. Please see
-    [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/).
+    The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing.
 
     Attributes
     ----------
     allowCredentials : bool, default is Undefined, optional
-        In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
-        This translates to the Access-Control-Allow-Credentials header.
+        In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access- Control-Allow-Credentials header. Defaults to false.
     allowHeaders : [str], default is Undefined, optional
         Specifies the content for the Access-Control-Allow-Headers header.
     allowMethods : [str], default is Undefined, optional
         Specifies the content for the Access-Control-Allow-Methods header.
     allowOriginRegexes : [str], default is Undefined, optional
-        Specifies the regular expression patterns that match allowed origins. For regular expression grammar
-        please see en.cppreference.com/w/cpp/regex/ecmascript
-        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        Specifies the regular expression patterns that match allowed origins. For regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript An origin is allowed if it matches either allow_origins or allow_origin_regex.
     allowOrigins : [str], default is Undefined, optional
-        Specifies the list of origins that will be allowed to do CORS requests.
-        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either allow_origins or allow_origin_regex.
     disabled : bool, default is Undefined, optional
-        If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+        If true, specifies the CORS policy is disabled. which indicates that the CORS policy is in effect. Defaults to false.
     exposeHeaders : [str], default is Undefined, optional
         Specifies the content for the Access-Control-Expose-Headers header.
     maxAge : int, default is Undefined, optional
-        Specifies how long results of a preflight request can be cached in seconds.
-        This translates to the Access-Control-Max-Age header.
+        Specifies how long the results of a preflight request can be cached. This translates to the content for the Access-Control-Max-Age header.
     """
 
 
@@ -919,12 +960,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionFaultInjectionPolicy:
     r"""
-    The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
-    As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
-    percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
-    by the Loadbalancer for a percentage of requests.
-
-    timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+    The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy.
 
     Attributes
     ----------
@@ -947,11 +983,9 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
     Attributes
     ----------
     httpStatus : int, default is Undefined, optional
-        The HTTP status code used to abort the request.
-        The value must be between 200 and 599 inclusive.
+        The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive.
     percentage : float, default is Undefined, optional
-        The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
-        The value must be between 0.0 and 100.0 inclusive.
+        The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
     """
 
 
@@ -969,8 +1003,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
     fixedDelay : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionFaultInjectionPolicyDelayFixedDelay, default is Undefined, optional
         fixed delay
     percentage : float, default is Undefined, optional
-        The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
-        The value must be between 0.0 and 100.0 inclusive.
+        The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
     """
 
 
@@ -986,11 +1019,9 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
     Attributes
     ----------
     nanos : int, default is Undefined, optional
-        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
-        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 'seconds' field and a positive 'nanos' field. Must be from 0 to 999,999,999 inclusive.
     seconds : str, default is Undefined, optional
         Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
-        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
     """
 
 
@@ -1001,9 +1032,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionRequestMirrorPolicy:
     r"""
-    Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
-    Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
-    the host / authority header is suffixed with -shadow.
+    Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
 
     Attributes
     ----------
@@ -1017,16 +1046,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionRequestMirrorPolicyBackendServiceRef:
     r"""
-    Required. The backend service resource being mirrored to.
+    compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 default route action request mirror policy backend service ref
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeBackendService` resource.
+        external
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        name
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        namespace
     """
 
 
@@ -1044,26 +1073,32 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
     Attributes
     ----------
     numRetries : int, default is Undefined, optional
-        Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        Specifies the allowed number retries. This number must be > 0.
     perTryTimeout : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionRetryPolicyPerTryTimeout, default is Undefined, optional
         per try timeout
     retryConditions : [str], default is Undefined, optional
-        Specfies one or more conditions when this retry rule applies. Valid values are:
+        Specifies one or more conditions when this retry rule applies. Valid values are:
 
-        * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
-          or if the backend service does not respond at all, example: disconnects, reset, read timeout,
-        * connection failure, and refused streams.
-        * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
-        * connect-failure: Loadbalancer will retry on failures connecting to backend services,
-          for example due to connection timeouts.
+        * 5xx: Loadbalancer will attempt a retry if the backend service responds with
+        any 5xx response code, or if the backend service does not respond at all,
+        example: disconnects, reset, read timeout, connection failure, and refused
+        streams.
+        * gateway-error: Similar to 5xx, but only applies to response codes
+        502, 503 or 504.
+        * connect-failure: Loadbalancer will retry on failures
+        connecting to backend services, for example due to connection timeouts.
         * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
-          Currently the only retriable error supported is 409.
-        * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
-          This reset type indicates that it is safe to retry.
-        * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
-        * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
-        * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
-        * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable.
+        Currently the only retriable error supported is 409.
+        * refused-stream: Loadbalancer will retry if the backend service resets the stream with a
+        REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+        * cancelled: Loadbalancer will retry if the gRPC status code in the response
+        header is set to cancelled
+        * deadline-exceeded: Loadbalancer will retry if the
+        gRPC status code in the response header is set to deadline-exceeded
+        * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response
+        header is set to resource-exhausted
+        * unavailable: Loadbalancer will retry if the gRPC status code in
+        the response header is set to unavailable.
     """
 
 
@@ -1078,17 +1113,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
     r"""
     Specifies a non-zero timeout per retry attempt.
 
-    If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-    will use the largest timeout among all backend services associated with the route.
-
     Attributes
     ----------
     nanos : int, default is Undefined, optional
-        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
-        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 'seconds' field and a positive 'nanos' field. Must be from 0 to 999,999,999 inclusive.
     seconds : str, default is Undefined, optional
         Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
-        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
     """
 
 
@@ -1099,19 +1129,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionTimeout:
     r"""
-    Specifies the timeout for the selected route. Timeout is computed from the time the request has been
-    fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
-
-    If not specified, will use the largest timeout among all backend services associated with the route.
+    Specifies the timeout for the selected route. Timeout is computed from the time the request is has been fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries. If not specified, the default value is 15 seconds.
 
     Attributes
     ----------
     nanos : int, default is Undefined, optional
-        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
-        with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 'seconds' field and a positive 'nanos' field. Must be from 0 to 999,999,999 inclusive.
     seconds : str, default is Undefined, optional
         Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
-        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
     """
 
 
@@ -1127,15 +1152,9 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
     Attributes
     ----------
     hostRewrite : str, default is Undefined, optional
-        Prior to forwarding the request to the selected service, the request's host header is replaced
-        with contents of hostRewrite.
-
-        The value must be between 1 and 255 characters.
+        Prior to forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be between 1 and 255 characters.
     pathPrefixRewrite : str, default is Undefined, optional
-        Prior to forwarding the request to the selected backend service, the matching portion of the
-        request's path is replaced by pathPrefixRewrite.
-
-        The value must be between 1 and 1024 characters.
+        Prior to forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be between 1 and 1024 characters.
     """
 
 
@@ -1155,14 +1174,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
     headerAction : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionWeightedBackendServicesItems0HeaderAction, default is Undefined, optional
         header action
     weight : int, default is Undefined, optional
-        Specifies the fraction of traffic sent to backendService, computed as
-        weight / (sum of all weightedBackendService weights in routeAction) .
-
-        The selection of a backend service is determined only for new traffic. Once a user's request
-        has been directed to a backendService, subsequent requests will be sent to the same backendService
-        as determined by the BackendService's session affinity policy.
-
-        The value must be between 0 and 1000.
+        Specifies the fraction of traffic sent to backendService, computed as weight / (sum of all weightedBackendService weights in routeAction) . The selection of a backend service is determined only for new traffic. Once a user's request has been directed to a backendService, subsequent requests will be sent to the same backendService as determined by the BackendService's session affinity policy. The value must be between 0 and 1000.
     """
 
 
@@ -1175,19 +1187,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionWeightedBackendServicesItems0BackendServiceRef:
     r"""
-    The default backend service resource.
-    Before forwarding the request to backendService, the loadbalancer
-    applies any relevant headerActions specified as part of this
-    backendServiceWeight.
+    Required. The default backend service resource. Before forwarding the request to backendService, the loadbalancer applies any relevant headerActions specified as part of this backendServiceWeight.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeBackendService` resource.
+        external
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        name
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        namespace
     """
 
 
@@ -1200,24 +1209,18 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionWeightedBackendServicesItems0HeaderAction:
     r"""
-    Specifies changes to request and response headers that need to take effect for
-    the selected backendService.
-
-    headerAction specified here take effect before headerAction in the enclosing
-    HttpRouteRule, PathMatcher and UrlMap.
+    Specifies changes to request and response headers that need to take effect for the selected backendService. headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
 
     Attributes
     ----------
     requestHeadersToAdd : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionWeightedBackendServicesItems0HeaderActionRequestHeadersToAddItems0], default is Undefined, optional
-        Headers to add to a matching request prior to forwarding the request to the backendService.
+        request headers to add
     requestHeadersToRemove : [str], default is Undefined, optional
-        A list of header names for headers that need to be removed from the request prior to
-        forwarding the request to the backendService.
+        request headers to remove
     responseHeadersToAdd : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultRouteActionWeightedBackendServicesItems0HeaderActionResponseHeadersToAddItems0], default is Undefined, optional
-        Headers to add the response prior to sending the response back to the client.
+        response headers to add
     responseHeadersToRemove : [str], default is Undefined, optional
-        A list of header names for headers that need to be removed from the response prior to sending the
-        response back to the client.
+        response headers to remove
     """
 
 
@@ -1237,12 +1240,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
     Attributes
     ----------
     headerName : str, default is Undefined, optional
-        The name of the header to add.
+        The name of the header.
     headerValue : str, default is Undefined, optional
         The value of the header to add.
     replace : bool, default is Undefined, optional
-        If false, headerValue is appended to any values that already exist for the header.
-        If true, headerValue is set for the header, discarding any values that were set for that header.
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
     """
 
 
@@ -1260,12 +1262,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
     Attributes
     ----------
     headerName : str, default is Undefined, optional
-        The name of the header to add.
+        The name of the header.
     headerValue : str, default is Undefined, optional
         The value of the header to add.
     replace : bool, default is Undefined, optional
-        If false, headerValue is appended to any values that already exist for the header.
-        If true, headerValue is set for the header, discarding any values that were set for that header.
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
     """
 
 
@@ -1278,12 +1279,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultService:
     r"""
-    The default service to use if none of the pathRules defined by this
-    PathMatcher is matched by the URL's path portion.
-    For the Global URL Map, it should be a reference to the backend
-    service or backend bucket.
-    For the Regional URL Map, it should be a reference to the backend
-    service.
+    The default service to use if none of the pathRules defined by this PathMatcher is matched by the URL's path portion. For the Global URL Map, it should be a reference to the backend service or backend bucket. For the Regional URL Map, it should be a reference to the backend service.
 
     Attributes
     ----------
@@ -1306,11 +1302,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeBackendBucket` resource.
+        external
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        name
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        namespace
     """
 
 
@@ -1328,11 +1324,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeBackendService` resource.
+        external
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        name
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        namespace
     """
 
 
@@ -1345,32 +1341,18 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0DefaultURLRedirect:
     r"""
-    When none of the specified hostRules match, the request is redirected to a URL specified
-    by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
-    defaultRouteAction must not be set.
+    When none of the specified hostRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set.
 
     Attributes
     ----------
     hostRedirect : str, default is Undefined, optional
-        The host that will be used in the redirect response instead of the one that was
-        supplied in the request. The value must be between 1 and 255 characters.
+        The host that will be used in the redirect response instead of the one that was supplied in the request. The value must be between 1 and 255 characters.
     httpsRedirect : bool, default is Undefined, optional
-        If set to true, the URL scheme in the redirected request is set to https. If set to
-        false, the URL scheme of the redirected request will remain the same as that of the
-        request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
-        true for TargetHttpsProxy is not permitted. The default is set to false.
+        If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
     pathRedirect : str, default is Undefined, optional
-        The path that will be used in the redirect response instead of the one that was
-        supplied in the request. pathRedirect cannot be supplied together with
-        prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
-        original request will be used for the redirect. The value must be between 1 and 1024
-        characters.
+        The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
     prefixRedirect : str, default is Undefined, optional
-        The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
-        retaining the remaining portion of the URL before redirecting the request.
-        prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
-        neither. If neither is supplied, the path of the original request will be used for
-        the redirect. The value must be between 1 and 1024 characters.
+        The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
     redirectResponseCode : str, default is Undefined, optional
         The HTTP Status code to use for this RedirectAction. Supported values are:
 
@@ -1386,10 +1368,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
         * PERMANENT_REDIRECT, which corresponds to 308. In this case,
         the request method will be retained. Possible values: ["FOUND", "MOVED_PERMANENTLY_DEFAULT", "PERMANENT_REDIRECT", "SEE_OTHER", "TEMPORARY_REDIRECT"].
     stripQuery : bool, default is Undefined, required
-        If set to true, any accompanying query portion of the original URL is removed prior
-        to redirecting the request. If set to false, the query portion of the original URL is
-        retained.
-         This field is required to ensure an empty block is not set. The normal default value is false.
+        If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. This field is required to ensure an empty block is not set. The normal default value is false.
     """
 
 
@@ -1408,23 +1387,18 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0Default
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0HeaderAction:
     r"""
-    Specifies changes to request and response headers that need to take effect for
-    the selected backendService. HeaderAction specified here are applied after the
-    matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap.
+    Specifies changes to request and response headers that need to take effect for the selected backendService. HeaderAction specified here are applied after the matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap.
 
     Attributes
     ----------
     requestHeadersToAdd : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0HeaderActionRequestHeadersToAddItems0], default is Undefined, optional
-        Headers to add to a matching request prior to forwarding the request to the
-        backendService.
+        Headers to add to a matching request prior to forwarding the request to the backendService.
     requestHeadersToRemove : [str], default is Undefined, optional
-        A list of header names for headers that need to be removed from the request
-        prior to forwarding the request to the backendService.
+        A list of header names for headers that need to be removed from the request prior to forwarding the request to the backendService.
     responseHeadersToAdd : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0HeaderActionResponseHeadersToAddItems0], default is Undefined, optional
         Headers to add the response prior to sending the response back to the client.
     responseHeadersToRemove : [str], default is Undefined, optional
-        A list of header names for headers that need to be removed from the response
-        prior to sending the response back to the client.
+        A list of header names for headers that need to be removed from the response prior to sending the response back to the client.
     """
 
 
@@ -1448,9 +1422,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0HeaderA
     headerValue : str, default is Undefined, required
         The value of the header to add.
     replace : bool, default is Undefined, required
-        If false, headerValue is appended to any values that already exist for the
-        header. If true, headerValue is set for the header, discarding any values that
-        were set for that header.
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
     """
 
 
@@ -1472,9 +1444,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0HeaderA
     headerValue : str, default is Undefined, required
         The value of the header to add.
     replace : bool, default is Undefined, required
-        If false, headerValue is appended to any values that already exist for the
-        header. If true, headerValue is set for the header, discarding any values that
-        were set for that header.
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
     """
 
 
@@ -1492,10 +1462,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
     Attributes
     ----------
     paths : [str], default is Undefined, required
-        The list of path patterns to match. Each must start with / and the only place a
-        \* is allowed is at the end following a /. The string fed to the path matcher
-        does not include any text after the first ? or #, and those chars are not
-        allowed here.
+        The list of path patterns to match. Each must start with / and the only place a \* is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.
     routeAction : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteAction, default is Undefined, optional
         route action
     service : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0Service, default is Undefined, optional
@@ -1516,12 +1483,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteAction:
     r"""
-    In response to a matching path, the load balancer performs advanced routing
-    actions like URL rewrites, header transformations, etc. prior to forwarding the
-    request to the selected backend. If routeAction specifies any
-    weightedBackendServices, service must not be set. Conversely if service is set,
-    routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-    or urlRedirect must be set.
+    In response to a matching path, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any  weightedBackendServices. Only one of routeAction or urlRedirect must be set.
 
     Attributes
     ----------
@@ -1538,14 +1500,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
     urlRewrite : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionURLRewrite, default is Undefined, optional
         url rewrite
     weightedBackendServices : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionWeightedBackendServicesItems0], default is Undefined, optional
-        A list of weighted backend services to send traffic to when a route match
-        occurs. The weights determine the fraction of traffic that flows to their
-        corresponding backend service. If all traffic needs to go to a single backend
-        service, there must be one  weightedBackendService with weight set to a non 0
-        number. Once a backendService is identified and before forwarding the request to
-        the backend service, advanced routing actions like Url rewrites and header
-        transformations are applied depending on additional settings specified in this
-        HttpRouteAction.
+        A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one  weightedBackendService with weight set to a non 0 number. Once a backendService is identified and before forwarding the request to the backend service, advanced routing actions like Url rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
     """
 
 
@@ -1566,33 +1521,26 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionCorsPolicy:
     r"""
-    The specification for allowing client side cross-origin requests. Please see W3C
-    Recommendation for Cross Origin Resource Sharing.
+    The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing.
 
     Attributes
     ----------
     allowCredentials : bool, default is Undefined, optional
-        In response to a preflight request, setting this to true indicates that the
-        actual request can include user credentials. This translates to the Access-
-        Control-Allow-Credentials header. Defaults to false.
+        allow credentials
     allowHeaders : [str], default is Undefined, optional
-        Specifies the content for the Access-Control-Allow-Headers header.
+        allow headers
     allowMethods : [str], default is Undefined, optional
-        Specifies the content for the Access-Control-Allow-Methods header.
+        allow methods
     allowOriginRegexes : [str], default is Undefined, optional
-        Specifies the regular expression patterns that match allowed origins. For
-        regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
-        An origin is allowed if it matches either allow_origins or allow_origin_regex.
+        allow origin regexes
     allowOrigins : [str], default is Undefined, optional
-        Specifies the list of origins that will be allowed to do CORS requests. An
-        origin is allowed if it matches either allow_origins or allow_origin_regex.
+        allow origins
     disabled : bool, default is Undefined, required
-        If true, specifies the CORS policy is disabled.
+        disabled
     exposeHeaders : [str], default is Undefined, optional
-        Specifies the content for the Access-Control-Expose-Headers header.
+        expose headers
     maxAge : int, default is Undefined, optional
-        Specifies how long the results of a preflight request can be cached. This
-        translates to the content for the Access-Control-Max-Age header.
+        max age
     """
 
 
@@ -1615,13 +1563,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionFaultInjectionPolicy:
     r"""
-    The specification for fault injection introduced into traffic to test the
-    resiliency of clients to backend service failure. As part of fault injection,
-    when clients send requests to a backend service, delays can be introduced by
-    Loadbalancer on a percentage of requests before sending those request to the
-    backend service. Similarly requests from clients can be aborted by the
-    Loadbalancer for a percentage of requests. timeout and retry_policy will be
-    ignored by clients that are configured with a fault_injection_policy.
+    The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy.
 
     Attributes
     ----------
@@ -1639,18 +1581,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionFaultInjectionPolicyAbort:
     r"""
-    The specification for how client requests are aborted as part of fault
-    injection.
+    compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 path rule items0 route action fault injection policy abort
 
     Attributes
     ----------
     httpStatus : int, default is Undefined, required
-        The HTTP status code used to abort the request. The value must be between 200
-        and 599 inclusive.
+        http status
     percentage : float, default is Undefined, required
-        The percentage of traffic (connections/operations/requests) which will be
-        aborted as part of fault injection. The value must be between 0.0 and 100.0
-        inclusive.
+        percentage
     """
 
 
@@ -1661,17 +1599,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionFaultInjectionPolicyDelay:
     r"""
-    The specification for how client requests are delayed as part of fault
-    injection, before being sent to a backend service.
+    compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 path rule items0 route action fault injection policy delay
 
     Attributes
     ----------
     fixedDelay : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionFaultInjectionPolicyDelayFixedDelay, default is Undefined, required
         fixed delay
     percentage : float, default is Undefined, required
-        The percentage of traffic (connections/operations/requests) on which delay will
-        be introduced as part of fault injection. The value must be between 0.0 and
-        100.0 inclusive.
+        percentage
     """
 
 
@@ -1682,17 +1617,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionFaultInjectionPolicyDelayFixedDelay:
     r"""
-    Specifies the value of the fixed delay interval.
+    compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 path rule items0 route action fault injection policy delay fixed delay
 
     Attributes
     ----------
     nanos : int, default is Undefined, optional
-        Span of time that's a fraction of a second at nanosecond resolution. Durations
-        less than one second are represented with a 0 'seconds' field and a positive
-        'nanos' field. Must be from 0 to 999,999,999 inclusive.
+        nanos
     seconds : str, default is Undefined, required
-        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-        inclusive.
+        seconds
     """
 
 
@@ -1703,10 +1635,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionRequestMirrorPolicy:
     r"""
-    Specifies the policy on how requests intended for the route's backends are
-    shadowed to a separate mirrored backend service. Loadbalancer does not wait for
-    responses from the shadow service. Prior to sending traffic to the shadow
-    service, the host / authority header is suffixed with -shadow.
+    Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
 
     Attributes
     ----------
@@ -1720,16 +1649,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionRequestMirrorPolicyBackendServiceRef:
     r"""
-    Required. The backend service resource being mirrored to.
+    compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 path rule items0 route action request mirror policy backend service ref
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeBackendService` resource.
+        external
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        name
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        namespace
     """
 
 
@@ -1747,32 +1676,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
     Attributes
     ----------
     numRetries : int, default is Undefined, optional
-        Specifies the allowed number retries. This number must be > 0.
+        num retries
     perTryTimeout : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionRetryPolicyPerTryTimeout, default is Undefined, optional
         per try timeout
     retryConditions : [str], default is Undefined, optional
-        Specifies one or more conditions when this retry rule applies. Valid values are:
-
-        - 5xx: Loadbalancer will attempt a retry if the backend service responds with
-        any 5xx response code, or if the backend service does not respond at all,
-        example: disconnects, reset, read timeout, connection failure, and refused
-        streams.
-        - gateway-error: Similar to 5xx, but only applies to response codes
-        502, 503 or 504.
-        - connect-failure: Loadbalancer will retry on failures
-        connecting to backend services, for example due to connection timeouts.
-        - retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
-        Currently the only retriable error supported is 409.
-        - refused-stream: Loadbalancer will retry if the backend service resets the stream with a
-        REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
-        - cancelled: Loadbalancer will retry if the gRPC status code in the response
-        header is set to cancelled
-        - deadline-exceeded: Loadbalancer will retry if the
-        gRPC status code in the response header is set to deadline-exceeded
-        - resource-exhausted: Loadbalancer will retry if the gRPC status code in the response
-        header is set to resource-exhausted
-        - unavailable: Loadbalancer will retry if
-        the gRPC status code in the response header is set to unavailable.
+        retry conditions
     """
 
 
@@ -1785,17 +1693,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionRetryPolicyPerTryTimeout:
     r"""
-    Specifies a non-zero timeout per retry attempt.
+    compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 path rule items0 route action retry policy per try timeout
 
     Attributes
     ----------
     nanos : int, default is Undefined, optional
-        Span of time that's a fraction of a second at nanosecond resolution. Durations
-        less than one second are represented with a 0 'seconds' field and a positive
-        'nanos' field. Must be from 0 to 999,999,999 inclusive.
+        nanos
     seconds : str, default is Undefined, required
-        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-        inclusive.
+        seconds
     """
 
 
@@ -1806,20 +1711,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionTimeout:
     r"""
-    Specifies the timeout for the selected route. Timeout is computed from the time
-    the request is has been fully processed (i.e. end-of-stream) up until the
-    response has been completely processed. Timeout includes all retries. If not
-    specified, the default value is 15 seconds.
+    Specifies the timeout for the selected route. Timeout is computed from the time the request is has been fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries. If not specified, the default value is 15 seconds.
 
     Attributes
     ----------
     nanos : int, default is Undefined, optional
-        Span of time that's a fraction of a second at nanosecond resolution. Durations
-        less than one second are represented with a 0 'seconds' field and a positive
-        'nanos' field. Must be from 0 to 999,999,999 inclusive.
+        nanos
     seconds : str, default is Undefined, required
-        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-        inclusive.
+        seconds
     """
 
 
@@ -1830,19 +1729,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionURLRewrite:
     r"""
-    The spec to modify the URL of the request, prior to forwarding the request to
-    the matched service.
+    The spec to modify the URL of the request, prior to forwarding the request to the matched service.
 
     Attributes
     ----------
     hostRewrite : str, default is Undefined, optional
-        Prior to forwarding the request to the selected service, the request's host
-        header is replaced with contents of hostRewrite. The value must be between 1 and
-        255 characters.
+        Prior to forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be between 1 and 255 characters.
     pathPrefixRewrite : str, default is Undefined, optional
-        Prior to forwarding the request to the selected backend service, the matching
-        portion of the request's path is replaced by pathPrefixRewrite. The value must
-        be between 1 and 1024 characters.
+        Prior to forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be between 1 and 1024 characters.
     """
 
 
@@ -1862,12 +1756,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
     headerAction : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionWeightedBackendServicesItems0HeaderAction, default is Undefined, optional
         header action
     weight : int, default is Undefined, required
-        Specifies the fraction of traffic sent to backendService, computed as weight /
-        (sum of all weightedBackendService weights in routeAction) . The selection of a
-        backend service is determined only for new traffic. Once a user's request has
-        been directed to a backendService, subsequent requests will be sent to the same
-        backendService as determined by the BackendService's session affinity policy.
-        The value must be between 0 and 1000.
+        weight
     """
 
 
@@ -1880,18 +1769,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionWeightedBackendServicesItems0BackendServiceRef:
     r"""
-    Required. The default backend service resource. Before forwarding
-    the request to backendService, the loadbalancer applies any relevant
-    headerActions specified as part of this backendServiceWeight.
+    compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 path rule items0 route action weighted backend services items0 backend service ref
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeBackendService` resource.
+        external
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        name
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        namespace
     """
 
 
@@ -1904,23 +1791,18 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionWeightedBackendServicesItems0HeaderAction:
     r"""
-    Specifies changes to request and response headers that need to take effect for
-    the selected backendService. headerAction specified here take effect before
-    headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+    compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 path rule items0 route action weighted backend services items0 header action
 
     Attributes
     ----------
     requestHeadersToAdd : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionWeightedBackendServicesItems0HeaderActionRequestHeadersToAddItems0], default is Undefined, optional
-        Headers to add to a matching request prior to forwarding the request to the
-        backendService.
+        Headers to add to a matching request prior to forwarding the request to the backendService.
     requestHeadersToRemove : [str], default is Undefined, optional
-        A list of header names for headers that need to be removed from the request
-        prior to forwarding the request to the backendService.
+        A list of header names for headers that need to be removed from the request prior to forwarding the request to the backendService.
     responseHeadersToAdd : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0RouteActionWeightedBackendServicesItems0HeaderActionResponseHeadersToAddItems0], default is Undefined, optional
         Headers to add the response prior to sending the response back to the client.
     responseHeadersToRemove : [str], default is Undefined, optional
-        A list of header names for headers that need to be removed from the response
-        prior to sending the response back to the client.
+        A list of header names for headers that need to be removed from the response prior to sending the response back to the client.
     """
 
 
@@ -1944,9 +1826,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
     headerValue : str, default is Undefined, required
         The value of the header to add.
     replace : bool, default is Undefined, required
-        If false, headerValue is appended to any values that already exist for the
-        header. If true, headerValue is set for the header, discarding any values that
-        were set for that header.
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
     """
 
 
@@ -1968,9 +1848,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
     headerValue : str, default is Undefined, required
         The value of the header to add.
     replace : bool, default is Undefined, required
-        If false, headerValue is appended to any values that already exist for the
-        header. If true, headerValue is set for the header, discarding any values that
-        were set for that header.
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
     """
 
 
@@ -1983,19 +1861,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0Service:
     r"""
-    The backend service to which traffic is directed if this rule is
-    matched.
-    For the Global URL Map, it should be a reference to the backend
-    service or backend bucket.
-    For the Regional URL Map, it should be a reference to the backend
-    service.
-    If routeAction is additionally specified, advanced routing actions
-    like URL Rewrites, etc. take effect prior to sending the request to
-    the backend. However, if service is specified, routeAction cannot
-    contain any weightedBackendServices. Conversely, if routeAction
-    specifies any weightedBackendServices, service must not be
-    specified. Only one of urlRedirect, service or
-    routeAction.weightedBackendService must be set.
+    The backend service to which traffic is directed if this rule is matched. For the Global URL Map, it should be a reference to the backend service or backend bucket. For the Regional URL Map, it should be a reference to the backend service. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
 
     Attributes
     ----------
@@ -2018,11 +1884,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeBackendBucket` resource.
+        external
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        name
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        namespace
     """
 
 
@@ -2040,11 +1906,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeBackendService` resource.
+        external
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        name
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        namespace
     """
 
 
@@ -2057,35 +1923,18 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRuleItems0URLRedirect:
     r"""
-    When a path pattern is matched, the request is redirected to a URL specified
-    by urlRedirect. If urlRedirect is specified, service or routeAction must not
-    be set.
+    When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set.
 
     Attributes
     ----------
     hostRedirect : str, default is Undefined, optional
-        The host that will be used in the redirect response instead of the one
-        that was supplied in the request. The value must be between 1 and 255
-        characters.
+        The host that will be used in the redirect response instead of the one that was supplied in the request. The value must be between 1 and 255 characters.
     httpsRedirect : bool, default is Undefined, optional
-        If set to true, the URL scheme in the redirected request is set to https.
-        If set to false, the URL scheme of the redirected request will remain the
-        same as that of the request. This must only be set for UrlMaps used in
-        TargetHttpProxys. Setting this true for TargetHttpsProxy is not
-        permitted. The default is set to false.
+        If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
     pathRedirect : str, default is Undefined, optional
-        The path that will be used in the redirect response instead of the one
-        that was supplied in the request. pathRedirect cannot be supplied
-        together with prefixRedirect. Supply one alone or neither. If neither is
-        supplied, the path of the original request will be used for the redirect.
-        The value must be between 1 and 1024 characters.
+        The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
     prefixRedirect : str, default is Undefined, optional
-        The prefix that replaces the prefixMatch specified in the
-        HttpRouteRuleMatch, retaining the remaining portion of the URL before
-        redirecting the request. prefixRedirect cannot be supplied together with
-        pathRedirect. Supply one alone or neither. If neither is supplied, the
-        path of the original request will be used for the redirect. The value
-        must be between 1 and 1024 characters.
+        The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
     redirectResponseCode : str, default is Undefined, optional
         The HTTP Status code to use for this RedirectAction. Supported values are:
 
@@ -2101,10 +1950,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0PathRul
         * PERMANENT_REDIRECT, which corresponds to 308. In this case,
         the request method will be retained. Possible values: ["FOUND", "MOVED_PERMANENTLY_DEFAULT", "PERMANENT_REDIRECT", "SEE_OTHER", "TEMPORARY_REDIRECT"].
     stripQuery : bool, default is Undefined, required
-        If set to true, any accompanying query portion of the original URL is removed
-        prior to redirecting the request. If set to false, the query portion of the
-        original URL is retained.
-         This field is required to ensure an empty block is not set. The normal default value is false.
+        If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. This field is required to ensure an empty block is not set. The normal default value is false.
     """
 
 
@@ -2150,13 +1996,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
     routeAction : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteAction, default is Undefined, optional
         route action
     service : str, default is Undefined, optional
-        The region backend service resource to which traffic is
-        directed if this rule is matched. If routeAction is additionally specified,
-        advanced routing actions like URL Rewrites, etc. take effect prior to sending
-        the request to the backend. However, if service is specified, routeAction cannot
-        contain any weightedBackendService s. Conversely, if routeAction specifies any
-        weightedBackendServices, service must not be specified. Only one of urlRedirect,
-        service or routeAction.weightedBackendService must be set.
+        The region backend service resource to which traffic is directed if this rule is matched. If routeAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendService s. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
     urlRedirect : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0URLRedirect, default is Undefined, optional
         url redirect
     """
@@ -2177,24 +2017,18 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0HeaderAction:
     r"""
-    Specifies changes to request and response headers that need to take effect for
-    the selected backendService. The headerAction specified here are applied before
-    the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
-    outeAction.weightedBackendService.backendServiceWeightAction[].headerAction.
+    Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction specified here are applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r outeAction.weightedBackendService.backendServiceWeightAction[].headerAction.
 
     Attributes
     ----------
     requestHeadersToAdd : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0HeaderActionRequestHeadersToAddItems0], default is Undefined, optional
-        Headers to add to a matching request prior to forwarding the request to the
-        backendService.
+        Headers to add to a matching request prior to forwarding the request to the backendService.
     requestHeadersToRemove : [str], default is Undefined, optional
-        A list of header names for headers that need to be removed from the request
-        prior to forwarding the request to the backendService.
+        A list of header names for headers that need to be removed from the request prior to forwarding the request to the backendService.
     responseHeadersToAdd : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0HeaderActionResponseHeadersToAddItems0], default is Undefined, optional
         Headers to add the response prior to sending the response back to the client.
     responseHeadersToRemove : [str], default is Undefined, optional
-        A list of header names for headers that need to be removed from the response
-        prior to sending the response back to the client.
+        A list of header names for headers that need to be removed from the response prior to sending the response back to the client.
     """
 
 
@@ -2218,9 +2052,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
     headerValue : str, default is Undefined, required
         The value of the header to add.
     replace : bool, default is Undefined, required
-        If false, headerValue is appended to any values that already exist for the
-        header. If true, headerValue is set for the header, discarding any values that
-        were set for that header.
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
     """
 
 
@@ -2242,9 +2074,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
     headerValue : str, default is Undefined, required
         The value of the header to add.
     replace : bool, default is Undefined, required
-        If false, headerValue is appended to any values that already exist for the
-        header. If true, headerValue is set for the header, discarding any values that
-        were set for that header.
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
     """
 
 
@@ -2262,29 +2092,13 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
     Attributes
     ----------
     fullPathMatch : str, default is Undefined, optional
-        For satisfying the matchRule condition, the path of the request must exactly
-        match the value specified in fullPathMatch after removing any query parameters
-        and anchor that may be part of the original URL. FullPathMatch must be between 1
-        and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
-        be specified.
+        For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. FullPathMatch must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
     headerMatches : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0MatchRulesItems0HeaderMatchesItems0], default is Undefined, optional
-        Specifies a list of header match criteria, all of which must match corresponding
-        headers in the request.
+        Specifies a list of header match criteria, all of which must match corresponding headers in the request.
     ignoreCase : bool, default is Undefined, optional
-        Specifies that prefixMatch and fullPathMatch matches are case sensitive.
-        Defaults to false.
+        Specifies that prefixMatch and fullPathMatch matches are case sensitive. Defaults to false.
     metadataFilters : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0MatchRulesItems0MetadataFiltersItems0], default is Undefined, optional
-        Opaque filter criteria used by Loadbalancer to restrict routing configuration to
-        a limited set xDS compliant clients. In their xDS requests to Loadbalancer, xDS
-        clients present node metadata. If a match takes place, the relevant routing
-        configuration is made available to those proxies. For each metadataFilter in
-        this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the
-        filterLabels must match the corresponding label provided in the metadata. If its
-        filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match
-        with corresponding labels in the provided metadata. metadataFilters specified
-        here can be overrides those specified in ForwardingRule that refers to this
-        UrlMap. metadataFilters only applies to Loadbalancers that have their
-        loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        Opaque filter criteria used by Loadbalancer to restrict routing configuration to a limited set xDS compliant clients. In their xDS requests to Loadbalancer, xDS clients present node metadata. If a match takes place, the relevant routing configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels in the provided metadata. metadataFilters specified here can be overrides those specified in ForwardingRule that refers to this UrlMap. metadataFilters only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
     pathTemplateMatch : str, default is Undefined, optional
         For satisfying the matchRule condition, the path of the request
         must match the wildcard pattern specified in pathTemplateMatch
@@ -2296,19 +2110,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
         have at most 5 wildcard operators and at most 5 variable
         captures in total.
     prefixMatch : str, default is Undefined, optional
-        For satisfying the matchRule condition, the request's path must begin with the
-        specified prefixMatch. prefixMatch must begin with a /. The value must be
-        between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
-        regexMatch must be specified.
+        For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /. The value must be between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
     queryParameterMatches : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0MatchRulesItems0QueryParameterMatchesItems0], default is Undefined, optional
-        Specifies a list of query parameter match criteria, all of which must match
-        corresponding query parameters in the request.
+        Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request.
     regexMatch : str, default is Undefined, optional
-        For satisfying the matchRule condition, the path of the request must satisfy the
-        regular expression specified in regexMatch after removing any query parameters
-        and anchor supplied with the original URL. For regular expression grammar please
-        see en.cppreference.com/w/cpp/regex/ecmascript  Only one of prefixMatch,
-        fullPathMatch or regexMatch must be specified.
+        For satisfying the matchRule condition, the path of the request must satisfy the regular expression specified in regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
     """
 
 
@@ -2336,38 +2142,21 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
     Attributes
     ----------
     exactMatch : str, default is Undefined, optional
-        The value should exactly match contents of exactMatch. Only one of exactMatch,
-        prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
+        The value should exactly match contents of exactMatch. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
     headerName : str, default is Undefined, required
-        The name of the HTTP header to match. For matching against the HTTP request's
-        authority, use a headerMatch with the header name ":authority". For matching a
-        request's method, use the headerName ":method".
+        The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method".
     invertMatch : bool, default is Undefined, optional
-        If set to false, the headerMatch is considered a match if the match criteria
-        above are met. If set to true, the headerMatch is considered a match if the
-        match criteria above are NOT met. Defaults to false.
+        If set to false, the headerMatch is considered a match if the match criteria above are met. If set to true, the headerMatch is considered a match if the match criteria above are NOT met. Defaults to false.
     prefixMatch : str, default is Undefined, optional
-        The value of the header must start with the contents of prefixMatch. Only one of
-        exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
-        must be set.
+        The value of the header must start with the contents of prefixMatch. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
     presentMatch : bool, default is Undefined, optional
-        A header with the contents of headerName must exist. The match takes place
-        whether or not the request's header has a value or not. Only one of exactMatch,
-        prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
+        A header with the contents of headerName must exist. The match takes place whether or not the request's header has a value or not. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
     rangeMatch : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0MatchRulesItems0HeaderMatchesItems0RangeMatch, default is Undefined, optional
         range match
     regexMatch : str, default is Undefined, optional
-        The value of the header must match the regular expression specified in
-        regexMatch. For regular expression grammar, please see:
-        en.cppreference.com/w/cpp/regex/ecmascript  For matching against a port
-        specified in the HTTP request, use a headerMatch with headerName set to PORT and
-        a regular expression that satisfies the RFC2616 Host header's port specifier.
-        Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
-        rangeMatch must be set.
+        The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: en.cppreference.com/w/cpp/regex/ecmascript  For matching against a port specified in the HTTP request, use a headerMatch with headerName set to PORT and a regular expression that satisfies the RFC2616 Host header's port specifier. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
     suffixMatch : str, default is Undefined, optional
-        The value of the header must end with the contents of suffixMatch. Only one of
-        exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
-        must be set.
+        The value of the header must end with the contents of suffixMatch. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
     """
 
 
@@ -2423,9 +2212,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
     Attributes
     ----------
     filterLabels : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0MatchRulesItems0MetadataFiltersItems0FilterLabelsItems0], default is Undefined, required
-        The list of label value pairs that must match labels in the provided metadata
-        based on filterMatchCriteria  This list must not be empty and can have at the
-        most 64 entries.
+        The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria  This list must not be empty and can have at the most 64 entries.
     filterMatchCriteria : str, default is Undefined, required
         Specifies how individual filterLabel matches within the list of filterLabels
         contribute towards the overall metadataFilter match. Supported values are:
@@ -2449,11 +2236,9 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
     Attributes
     ----------
     name : str, default is Undefined, required
-        Name of metadata label. The name can have a maximum length of 1024 characters
-        and must be at least 1 character long.
+        Name of metadata label. The name can have a maximum length of 1024 characters and must be at least 1 character long.
     value : str, default is Undefined, required
-        The value of the label must match the specified value. value can have a maximum
-        length of 1024 characters.
+        The value of the label must match the specified value. value can have a maximum length of 1024 characters.
     """
 
 
@@ -2469,21 +2254,13 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
     Attributes
     ----------
     exactMatch : str, default is Undefined, optional
-        The queryParameterMatch matches if the value of the parameter exactly matches
-        the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
-        must be set.
+        The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch must be set.
     name : str, default is Undefined, required
-        The name of the query parameter to match. The query parameter must exist in the
-        request, in the absence of which the request match fails.
+        The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
     presentMatch : bool, default is Undefined, optional
-        Specifies that the queryParameterMatch matches if the request contains the query
-        parameter, irrespective of whether the parameter has a value or not. Only one of
-        presentMatch, exactMatch and regexMatch must be set.
+        Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not. Only one of presentMatch, exactMatch and regexMatch must be set.
     regexMatch : str, default is Undefined, optional
-        The queryParameterMatch matches if the value of the parameter matches the
-        regular expression specified by regexMatch. For the regular expression grammar,
-        please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
-        exactMatch and regexMatch must be set.
+        The queryParameterMatch matches if the value of the parameter matches the regular expression specified by regexMatch. For the regular expression grammar, please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch, exactMatch and regexMatch must be set.
     """
 
 
@@ -2498,12 +2275,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteAction:
     r"""
-    In response to a matching matchRule, the load balancer performs advanced routing
-    actions like URL rewrites, header transformations, etc. prior to forwarding the
-    request to the selected backend. If  routeAction specifies any
-    weightedBackendServices, service must not be set. Conversely if service is set,
-    routeAction cannot contain any  weightedBackendServices. Only one of routeAction
-    or urlRedirect must be set.
+    In response to a matching matchRule, the load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If  routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any  weightedBackendServices. Only one of routeAction or urlRedirect must be set.
 
     Attributes
     ----------
@@ -2520,14 +2292,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
     urlRewrite : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionURLRewrite, default is Undefined, optional
         url rewrite
     weightedBackendServices : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionWeightedBackendServicesItems0], default is Undefined, optional
-        A list of weighted backend services to send traffic to when a route match
-        occurs. The weights determine the fraction of traffic that flows to their
-        corresponding backend service. If all traffic needs to go to a single backend
-        service, there must be one  weightedBackendService with weight set to a non 0
-        number. Once a backendService is identified and before forwarding the request to
-        the backend service, advanced routing actions like Url rewrites and header
-        transformations are applied depending on additional settings specified in this
-        HttpRouteAction.
+        A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one  weightedBackendService with weight set to a non 0 number. Once a backendService is identified and before forwarding the request to the backend service, advanced routing actions like Url rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
     """
 
 
@@ -2548,34 +2313,26 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionCorsPolicy:
     r"""
-    The specification for allowing client side cross-origin requests. Please see W3C
-    Recommendation for Cross Origin Resource Sharing.
+    The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing.
 
     Attributes
     ----------
     allowCredentials : bool, default is Undefined, optional
-        In response to a preflight request, setting this to true indicates that the
-        actual request can include user credentials. This translates to the Access-
-        Control-Allow-Credentials header. Defaults to false.
+        In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access- Control-Allow-Credentials header. Defaults to false.
     allowHeaders : [str], default is Undefined, optional
         Specifies the content for the Access-Control-Allow-Headers header.
     allowMethods : [str], default is Undefined, optional
         Specifies the content for the Access-Control-Allow-Methods header.
     allowOriginRegexes : [str], default is Undefined, optional
-        Specifies the regular expression patterns that match allowed origins. For
-        regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
-        An origin is allowed if it matches either allow_origins or allow_origin_regex.
+        Specifies the regular expression patterns that match allowed origins. For regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript An origin is allowed if it matches either allow_origins or allow_origin_regex.
     allowOrigins : [str], default is Undefined, optional
-        Specifies the list of origins that will be allowed to do CORS requests. An
-        origin is allowed if it matches either allow_origins or allow_origin_regex.
+        Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either allow_origins or allow_origin_regex.
     disabled : bool, default is Undefined, optional
-        If true, specifies the CORS policy is disabled.
-        which indicates that the CORS policy is in effect. Defaults to false.
+        If true, specifies the CORS policy is disabled. which indicates that the CORS policy is in effect. Defaults to false.
     exposeHeaders : [str], default is Undefined, optional
         Specifies the content for the Access-Control-Expose-Headers header.
     maxAge : int, default is Undefined, optional
-        Specifies how long the results of a preflight request can be cached. This
-        translates to the content for the Access-Control-Max-Age header.
+        Specifies how long the results of a preflight request can be cached. This translates to the content for the Access-Control-Max-Age header.
     """
 
 
@@ -2598,13 +2355,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionFaultInjectionPolicy:
     r"""
-    The specification for fault injection introduced into traffic to test the
-    resiliency of clients to backend service failure. As part of fault injection,
-    when clients send requests to a backend service, delays can be introduced by
-    Loadbalancer on a percentage of requests before sending those request to the
-    backend service. Similarly requests from clients can be aborted by the
-    Loadbalancer for a percentage of requests. timeout and retry_policy will be
-    ignored by clients that are configured with a fault_injection_policy.
+    The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the Loadbalancer for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy.
 
     Attributes
     ----------
@@ -2622,18 +2373,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionFaultInjectionPolicyAbort:
     r"""
-    The specification for how client requests are aborted as part of fault
-    injection.
+    compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 route rules items0 route action fault injection policy abort
 
     Attributes
     ----------
     httpStatus : int, default is Undefined, optional
-        The HTTP status code used to abort the request. The value must be between 200
-        and 599 inclusive.
+        The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive.
     percentage : float, default is Undefined, optional
-        The percentage of traffic (connections/operations/requests) which will be
-        aborted as part of fault injection. The value must be between 0.0 and 100.0
-        inclusive.
+        The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection. The value must be between 0.0 and 100.0 inclusive.
     """
 
 
@@ -2644,17 +2391,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionFaultInjectionPolicyDelay:
     r"""
-    The specification for how client requests are delayed as part of fault
-    injection, before being sent to a backend service.
+    compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 route rules items0 route action fault injection policy delay
 
     Attributes
     ----------
     fixedDelay : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionFaultInjectionPolicyDelayFixedDelay, default is Undefined, optional
         fixed delay
     percentage : float, default is Undefined, optional
-        The percentage of traffic (connections/operations/requests) on which delay will
-        be introduced as part of fault injection. The value must be between 0.0 and
-        100.0 inclusive.
+        percentage
     """
 
 
@@ -2665,17 +2409,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionFaultInjectionPolicyDelayFixedDelay:
     r"""
-    Specifies the value of the fixed delay interval.
+    compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 route rules items0 route action fault injection policy delay fixed delay
 
     Attributes
     ----------
     nanos : int, default is Undefined, optional
-        Span of time that's a fraction of a second at nanosecond resolution. Durations
-        less than one second are represented with a 0 'seconds' field and a positive
-        'nanos' field. Must be from 0 to 999,999,999 inclusive.
+        nanos
     seconds : str, default is Undefined, required
-        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-        inclusive.
+        seconds
     """
 
 
@@ -2686,10 +2427,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionRequestMirrorPolicy:
     r"""
-    Specifies the policy on how requests intended for the route's backends are
-    shadowed to a separate mirrored backend service. Loadbalancer does not wait for
-    responses from the shadow service. Prior to sending traffic to the shadow
-    service, the host / authority header is suffixed with -shadow.
+    Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
 
     Attributes
     ----------
@@ -2703,16 +2441,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionRequestMirrorPolicyBackendServiceRef:
     r"""
-    Required. The backend service resource being mirrored to.
+    compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 route rules items0 route action request mirror policy backend service ref
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeBackendService` resource.
+        external
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        name
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        namespace
     """
 
 
@@ -2730,32 +2468,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
     Attributes
     ----------
     numRetries : int, default is Undefined, required
-        Specifies the allowed number retries. This number must be > 0.
+        num retries
     perTryTimeout : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionRetryPolicyPerTryTimeout, default is Undefined, optional
         per try timeout
     retryConditions : [str], default is Undefined, optional
-        Specifies one or more conditions when this retry rule applies. Valid values are:
-
-        * 5xx: Loadbalancer will attempt a retry if the backend service responds with
-          any 5xx response code, or if the backend service does not respond at all,
-          example: disconnects, reset, read timeout, connection failure, and refused
-          streams.
-        * gateway-error: Similar to 5xx, but only applies to response codes
-          502, 503 or 504.
-        * connect-failure: Loadbalancer will retry on failures
-          connecting to backend services, for example due to connection timeouts.
-        * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
-          Currently the only retriable error supported is 409.
-        * refused-stream: Loadbalancer will retry if the backend service resets the stream with a
-          REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
-        * cancelled: Loadbalancer will retry if the gRPC status code in the response
-          header is set to cancelled
-        * deadline-exceeded: Loadbalancer will retry if the
-          gRPC status code in the response header is set to deadline-exceeded
-        * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response
-          header is set to resource-exhausted
-        * unavailable: Loadbalancer will retry if the gRPC status code in
-          the response header is set to unavailable.
+        retry conditions
     """
 
 
@@ -2768,17 +2485,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionRetryPolicyPerTryTimeout:
     r"""
-    Specifies a non-zero timeout per retry attempt.
+    compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 route rules items0 route action retry policy per try timeout
 
     Attributes
     ----------
     nanos : int, default is Undefined, optional
-        Span of time that's a fraction of a second at nanosecond resolution. Durations
-        less than one second are represented with a 0 'seconds' field and a positive
-        'nanos' field. Must be from 0 to 999,999,999 inclusive.
+        nanos
     seconds : str, default is Undefined, required
-        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-        inclusive.
+        seconds
     """
 
 
@@ -2789,20 +2503,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionTimeout:
     r"""
-    Specifies the timeout for the selected route. Timeout is computed from the time
-    the request is has been fully processed (i.e. end-of-stream) up until the
-    response has been completely processed. Timeout includes all retries. If not
-    specified, the default value is 15 seconds.
+    Specifies the timeout for the selected route. Timeout is computed from the time the request is has been fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries. If not specified, the default value is 15 seconds.
 
     Attributes
     ----------
     nanos : int, default is Undefined, optional
-        Span of time that's a fraction of a second at nanosecond resolution. Durations
-        less than one second are represented with a 0 'seconds' field and a positive
-        'nanos' field. Must be from 0 to 999,999,999 inclusive.
+        nanos
     seconds : str, default is Undefined, required
-        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-        inclusive.
+        seconds
     """
 
 
@@ -2813,19 +2521,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionURLRewrite:
     r"""
-    The spec to modify the URL of the request, prior to forwarding the request to
-    the matched service.
+    The spec to modify the URL of the request, prior to forwarding the request to the matched service.
 
     Attributes
     ----------
     hostRewrite : str, default is Undefined, optional
-        Prior to forwarding the request to the selected service, the request's host
-        header is replaced with contents of hostRewrite. The value must be between 1 and
-        255 characters.
+        Prior to forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be between 1 and 255 characters.
     pathPrefixRewrite : str, default is Undefined, optional
-        Prior to forwarding the request to the selected backend service, the matching
-        portion of the request's path is replaced by pathPrefixRewrite. The value must
-        be between 1 and 1024 characters.
+        Prior to forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite. The value must be between 1 and 1024 characters.
     pathTemplateRewrite : str, default is Undefined, optional
         Prior to forwarding the request to the selected origin, if the
         request matched a pathTemplateMatch, the matching portion of the
@@ -2862,12 +2565,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
     headerAction : ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionWeightedBackendServicesItems0HeaderAction, default is Undefined, optional
         header action
     weight : int, default is Undefined, required
-        Specifies the fraction of traffic sent to backendService, computed as weight /
-        (sum of all weightedBackendService weights in routeAction) . The selection of a
-        backend service is determined only for new traffic. Once a user's request has
-        been directed to a backendService, subsequent requests will be sent to the same
-        backendService as determined by the BackendService's session affinity policy.
-        The value must be between 0 and 1000.
+        weight
     """
 
 
@@ -2880,18 +2578,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionWeightedBackendServicesItems0BackendServiceRef:
     r"""
-    Required. The default backend service resource. Before forwarding
-    the request to backendService, the loadbalancer applies any relevant
-    headerActions specified as part of this backendServiceWeight.
+    compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 route rules items0 route action weighted backend services items0 backend service ref
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeBackendService` resource.
+        external
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        name
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        namespace
     """
 
 
@@ -2904,23 +2600,18 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionWeightedBackendServicesItems0HeaderAction:
     r"""
-    Specifies changes to request and response headers that need to take effect for
-    the selected backendService. headerAction specified here take effect before
-    headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
+    compute cnrm cloud google com v1beta1 compute URL map spec path matcher items0 route rules items0 route action weighted backend services items0 header action
 
     Attributes
     ----------
     requestHeadersToAdd : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionWeightedBackendServicesItems0HeaderActionRequestHeadersToAddItems0], default is Undefined, optional
-        Headers to add to a matching request prior to forwarding the request to the
-        backendService.
+        Headers to add to a matching request prior to forwarding the request to the backendService.
     requestHeadersToRemove : [str], default is Undefined, optional
-        A list of header names for headers that need to be removed from the request
-        prior to forwarding the request to the backendService.
+        A list of header names for headers that need to be removed from the request prior to forwarding the request to the backendService.
     responseHeadersToAdd : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0RouteActionWeightedBackendServicesItems0HeaderActionResponseHeadersToAddItems0], default is Undefined, optional
         Headers to add the response prior to sending the response back to the client.
     responseHeadersToRemove : [str], default is Undefined, optional
-        A list of header names for headers that need to be removed from the response
-        prior to sending the response back to the client.
+        A list of header names for headers that need to be removed from the response prior to sending the response back to the client.
     """
 
 
@@ -2944,9 +2635,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
     headerValue : str, default is Undefined, required
         The value of the header to add.
     replace : bool, default is Undefined, required
-        If false, headerValue is appended to any values that already exist for the
-        header. If true, headerValue is set for the header, discarding any values that
-        were set for that header.
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
     """
 
 
@@ -2968,9 +2657,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
     headerValue : str, default is Undefined, required
         The value of the header to add.
     replace : bool, default is Undefined, required
-        If false, headerValue is appended to any values that already exist for the
-        header. If true, headerValue is set for the header, discarding any values that
-        were set for that header.
+        If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
     """
 
 
@@ -2983,35 +2670,18 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRulesItems0URLRedirect:
     r"""
-    When this rule is matched, the request is redirected to a URL specified by
-    urlRedirect. If urlRedirect is specified, service or routeAction must not be
-    set.
+    When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set.
 
     Attributes
     ----------
     hostRedirect : str, default is Undefined, optional
-        The host that will be used in the redirect response instead of the one
-        that was supplied in the request. The value must be between 1 and 255
-        characters.
+        The host that will be used in the redirect response instead of the one that was supplied in the request. The value must be between 1 and 255 characters.
     httpsRedirect : bool, default is Undefined, optional
-        If set to true, the URL scheme in the redirected request is set to https.
-        If set to false, the URL scheme of the redirected request will remain the
-        same as that of the request. This must only be set for UrlMaps used in
-        TargetHttpProxys. Setting this true for TargetHttpsProxy is not
-        permitted. The default is set to false.
+        If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this true for TargetHttpsProxy is not permitted. The default is set to false.
     pathRedirect : str, default is Undefined, optional
-        The path that will be used in the redirect response instead of the one
-        that was supplied in the request. pathRedirect cannot be supplied
-        together with prefixRedirect. Supply one alone or neither. If neither is
-        supplied, the path of the original request will be used for the redirect.
-        The value must be between 1 and 1024 characters.
+        The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect cannot be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
     prefixRedirect : str, default is Undefined, optional
-        The prefix that replaces the prefixMatch specified in the
-        HttpRouteRuleMatch, retaining the remaining portion of the URL before
-        redirecting the request. prefixRedirect cannot be supplied together with
-        pathRedirect. Supply one alone or neither. If neither is supplied, the
-        path of the original request will be used for the redirect. The value
-        must be between 1 and 1024 characters.
+        The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch, retaining the remaining portion of the URL before redirecting the request. prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect. The value must be between 1 and 1024 characters.
     redirectResponseCode : str, default is Undefined, optional
         The HTTP Status code to use for this RedirectAction. Supported values are:
 
@@ -3027,9 +2697,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecPathMatcherItems0RouteRu
         * PERMANENT_REDIRECT, which corresponds to 308. In this case,
         the request method will be retained. Possible values: ["FOUND", "MOVED_PERMANENTLY_DEFAULT", "PERMANENT_REDIRECT", "SEE_OTHER", "TEMPORARY_REDIRECT"].
     stripQuery : bool, default is Undefined, optional
-        If set to true, any accompanying query portion of the original URL is
-        removed prior to redirecting the request. If set to false, the query
-        portion of the original URL is retained. The default value is false.
+        If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. The default value is false.
     """
 
 
@@ -3054,6 +2722,10 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecTestItems0:
     ----------
     description : str, default is Undefined, optional
         Description of this test case.
+    expectedOutputURL : str, default is Undefined, optional
+        The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters.
+    expectedRedirectResponseCode : int, default is Undefined, optional
+        For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response.
     host : str, default is Undefined, required
         Host portion of the URL.
     path : str, default is Undefined, required
@@ -3065,6 +2737,10 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecTestItems0:
 
     description?: str
 
+    expectedOutputURL?: str
+
+    expectedRedirectResponseCode?: int
+
     host: str
 
     path: str
@@ -3074,11 +2750,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecTestItems0:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecTestItems0Service:
     r"""
-    The backend service resource that should be matched by this test.
-    For the Global URL Map, it should be a reference to the backend
-    service or backend bucket.
-    For the Regional URL Map, it should be a reference to the backend
-    service.
+    The backend service resource that should be matched by this test. For the Global URL Map, it should be a reference to the backend service or backend bucket. For the Regional URL Map, it should be a reference to the backend service.
 
     Attributes
     ----------
@@ -3101,11 +2773,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecTestItems0ServiceBackend
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeBackendBucket` resource.
+        external
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        name
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        namespace
     """
 
 
@@ -3123,11 +2795,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapSpecTestItems0ServiceBackend
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeBackendService` resource.
+        external
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        name
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        namespace
     """
 
 
@@ -3145,12 +2817,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeURLMapStatus:
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeURLMapStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeURLMap's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
     fingerprint : str, default is Undefined, optional
-        Fingerprint of this resource. This field is used internally during
-        updates of this resource.
+        Fingerprint of this resource. This field is used internally during updates of this resource.
     mapId : int, default is Undefined, optional
         The unique identifier for the resource.
     observedGeneration : int, default is Undefined, optional

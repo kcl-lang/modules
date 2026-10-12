@@ -5,67 +5,67 @@ Editing this file might prove futile when you re-run the KCL auto-gen generate c
 import k8s.apimachinery.pkg.apis.meta.v1
 
 
-schema DeployCustomTargetType:
+schema CloudDeployCustomTargetType:
     r"""
-    DeployCustomTargetType is the Schema for the DeployCustomTargetType API
+    CloudDeployCustomTargetType is the Schema for the CloudDeployCustomTargetType API
 
     Attributes
     ----------
     apiVersion : str, default is "clouddeploy.cnrm.cloud.google.com/v1alpha1", required
         APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-    kind : str, default is "DeployCustomTargetType", required
+    kind : str, default is "CloudDeployCustomTargetType", required
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpec, default is Undefined, required
+    spec : ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpec, default is Undefined, required
         spec
-    status : ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeStatus, default is Undefined, optional
+    status : ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeStatus, default is Undefined, optional
         status
     """
 
 
     apiVersion: "clouddeploy.cnrm.cloud.google.com/v1alpha1" = "clouddeploy.cnrm.cloud.google.com/v1alpha1"
 
-    kind: "DeployCustomTargetType" = "DeployCustomTargetType"
+    kind: "CloudDeployCustomTargetType" = "CloudDeployCustomTargetType"
 
     metadata?: v1.ObjectMeta
 
-    spec: ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpec
+    spec: ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpec
 
-    status?: ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeStatus
+    status?: ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeStatus
 
 
-schema ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpec:
+schema ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpec:
     r"""
-    CustomTargetTypeSpec defines the desired state of DeployCustomTargetType
+    CustomTargetTypeSpec defines the desired state of CloudDeployCustomTargetType
 
     Attributes
     ----------
-    customActions : ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActions, default is Undefined, optional
+    customActions : ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpecCustomActions, default is Undefined, optional
         custom actions
     description : str, default is Undefined, optional
         Optional. Description of the `CustomTargetType`. Max length is 255 characters.
     location : str, default is Undefined, required
         location
-    projectRef : ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecProjectRef, default is Undefined, required
+    projectRef : ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional
-        The DeployCustomTargetType name. If not given, the metadata.name will be used.
+        The CloudDeployCustomTargetType name. If not given, the metadata.name will be used.
     """
 
 
-    customActions?: ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActions
+    customActions?: ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpecCustomActions
 
     description?: str
 
     location: str
 
-    projectRef: ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecProjectRef
+    projectRef: ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpecProjectRef
 
     resourceID?: str
 
 
-schema ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActions:
+schema ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpecCustomActions:
     r"""
     Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
 
@@ -73,7 +73,7 @@ schema ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActi
     ----------
     deployAction : str, default is Undefined, optional
         Required. The Skaffold custom action responsible for deploy operations.
-    includeSkaffoldModules : [ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0], default is Undefined, optional
+    includeSkaffoldModules : [ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0], default is Undefined, optional
         Optional. List of Skaffold modules Cloud Deploy will include in the Skaffold Config as required before performing diagnose.
     renderAction : str, default is Undefined, optional
         Optional. The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy will perform the render operations via `skaffold render`.
@@ -82,38 +82,38 @@ schema ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActi
 
     deployAction?: str
 
-    includeSkaffoldModules?: [ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0]
+    includeSkaffoldModules?: [ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0]
 
     renderAction?: str
 
 
-schema ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0:
+schema ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0:
     r"""
-    clouddeploy cnrm cloud google com v1alpha1 deploy custom target type spec custom actions include skaffold modules items0
+    clouddeploy cnrm cloud google com v1alpha1 cloud deploy custom target type spec custom actions include skaffold modules items0
 
     Attributes
     ----------
     configs : [str], default is Undefined, optional
         Optional. The Skaffold Config modules to use from the specified source.
-    git : ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0Git, default is Undefined, optional
+    git : ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0Git, default is Undefined, optional
         git
-    googleCloudBuildRepo : ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0GoogleCloudBuildRepo, default is Undefined, optional
+    googleCloudBuildRepo : ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0GoogleCloudBuildRepo, default is Undefined, optional
         google cloud build repo
-    googleCloudStorage : ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0GoogleCloudStorage, default is Undefined, optional
+    googleCloudStorage : ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0GoogleCloudStorage, default is Undefined, optional
         google cloud storage
     """
 
 
     configs?: [str]
 
-    git?: ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0Git
+    git?: ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0Git
 
-    googleCloudBuildRepo?: ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0GoogleCloudBuildRepo
+    googleCloudBuildRepo?: ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0GoogleCloudBuildRepo
 
-    googleCloudStorage?: ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0GoogleCloudStorage
+    googleCloudStorage?: ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0GoogleCloudStorage
 
 
-schema ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0Git:
+schema ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0Git:
     r"""
     Optional. Remote git repository containing the Skaffold Config modules.
 
@@ -135,7 +135,7 @@ schema ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActi
     repo?: str
 
 
-schema ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0GoogleCloudBuildRepo:
+schema ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0GoogleCloudBuildRepo:
     r"""
     Optional. Cloud Build V2 repository containing the Skaffold Config modules.
 
@@ -145,7 +145,7 @@ schema ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActi
         Optional. Relative path from the repository root to the Skaffold Config file.
     ref : str, default is Undefined, optional
         Optional. Branch or tag to use when cloning the repository.
-    repositoryRef : ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0GoogleCloudBuildRepoRepositoryRef, default is Undefined, optional
+    repositoryRef : ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0GoogleCloudBuildRepoRepositoryRef, default is Undefined, optional
         repository ref
     """
 
@@ -154,10 +154,10 @@ schema ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActi
 
     ref?: str
 
-    repositoryRef?: ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0GoogleCloudBuildRepoRepositoryRef
+    repositoryRef?: ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0GoogleCloudBuildRepoRepositoryRef
 
 
-schema ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0GoogleCloudBuildRepoRepositoryRef:
+schema ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0GoogleCloudBuildRepoRepositoryRef:
     r"""
     Required. Name of the Cloud Build V2 RepositoryRef. Format is projects/{project}/locations/{location}/connections/{connection}/repositories/{repository}.
 
@@ -179,7 +179,7 @@ schema ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActi
     namespace?: str
 
 
-schema ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0GoogleCloudStorage:
+schema ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpecCustomActionsIncludeSkaffoldModulesItems0GoogleCloudStorage:
     r"""
     Optional. Cloud Storage bucket containing the Skaffold Config modules.
 
@@ -197,7 +197,7 @@ schema ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecCustomActi
     source?: str
 
 
-schema ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecProjectRef:
+schema ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeSpecProjectRef:
     r"""
     The project that this resource belongs to.
 
@@ -223,35 +223,35 @@ schema ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeSpecProjectRef
     namespace?: str
 
 
-schema ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeStatus:
+schema ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeStatus:
     r"""
-    CustomTargetTypeStatus defines the config connector machine state of DeployCustomTargetType
+    CustomTargetTypeStatus defines the config connector machine state of CloudDeployCustomTargetType
 
     Attributes
     ----------
-    conditions : [ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeStatusConditionsItems0], default is Undefined, optional
+    conditions : [ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeStatusConditionsItems0], default is Undefined, optional
         Conditions represent the latest available observations of the object's current state.
     externalRef : str, default is Undefined, optional
-        A unique specifier for the DeployCustomTargetType resource in GCP.
+        A unique specifier for the CloudDeployCustomTargetType resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
-    observedState : ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeStatusObservedState, default is Undefined, optional
+    observedState : ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeStatusObservedState, default is Undefined, optional
         observed state
     """
 
 
-    conditions?: [ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeStatusConditionsItems0]
+    conditions?: [ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeStatusConditionsItems0]
 
     externalRef?: str
 
     observedGeneration?: int
 
-    observedState?: ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeStatusObservedState
+    observedState?: ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeStatusObservedState
 
 
-schema ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeStatusConditionsItems0:
+schema ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeStatusConditionsItems0:
     r"""
-    clouddeploy cnrm cloud google com v1alpha1 deploy custom target type status conditions items0
+    clouddeploy cnrm cloud google com v1alpha1 cloud deploy custom target type status conditions items0
 
     Attributes
     ----------
@@ -279,7 +279,7 @@ schema ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeStatusConditio
     $type?: str
 
 
-schema ClouddeployCnrmCloudGoogleComV1alpha1DeployCustomTargetTypeStatusObservedState:
+schema ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployCustomTargetTypeStatusObservedState:
     r"""
     ObservedState is the state of the resource as most recently observed in GCP.
 

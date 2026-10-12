@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema CloudBuildTrigger:
     r"""
-    cloudbuild cnrm cloud google com v1beta1 cloud build trigger
+    CloudBuildTrigger is the Schema for the CloudBuildTrigger API
 
     Attributes
     ----------
@@ -17,7 +17,7 @@ schema CloudBuildTrigger:
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpec, default is Undefined, optional
+    spec : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpec, default is Undefined, required
         spec
     status : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerStatus, default is Undefined, optional
         status
@@ -30,7 +30,7 @@ schema CloudBuildTrigger:
 
     metadata?: v1.ObjectMeta
 
-    spec?: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpec
+    spec: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpec
 
     status?: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerStatus
 
@@ -52,9 +52,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpec:
     disabled : bool, default is Undefined, optional
         Whether the trigger is disabled or not. If true, the trigger will never result in a build.
     filename : str, default is Undefined, optional
-        Path, from the source root, to a file whose contents is used for the template.
-        Either a filename or build template must be provided. Set this only when using trigger_template or github.
-        When using Pub/Sub, Webhook or Manual set the file name using git_file_source instead.
+        Path, from the source root, to a file whose contents is used for the template. Either a filename or build template must be provided. Set this only when using trigger_template or github. When using Pub/Sub, Webhook or Manual set the file name using git_file_source instead.
     $filter : str, default is Undefined, optional
         A Common Expression Language string. Used only with Pub/Sub and Webhook.
     gitFileSource : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGitFileSource, default is Undefined, optional
@@ -72,9 +70,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpec:
         of the ignored_file globs. If the change has no files that are outside
         of the ignoredFiles globs, then we do not trigger a build.
     includeBuildLogs : str, default is Undefined, optional
-        Build logs will be sent back to GitHub as part of the checkrun
-        result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
-        INCLUDE_BUILD_LOGS_WITH_STATUS Possible values: ["INCLUDE_BUILD_LOGS_UNSPECIFIED", "INCLUDE_BUILD_LOGS_WITH_STATUS"].
+        Build logs will be sent back to GitHub as part of the checkrun result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or INCLUDE_BUILD_LOGS_WITH_STATUS Possible values: ["INCLUDE_BUILD_LOGS_UNSPECIFIED", "INCLUDE_BUILD_LOGS_WITH_STATUS"].
     includedFiles : [str], default is Undefined, optional
         ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
         extended with support for '**'.
@@ -87,7 +83,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpec:
         and includedFiles is not empty, then we make sure that at least one of
         those files matches a includedFiles glob. If not, then we do not trigger
         a build.
-    location : str, default is Undefined, optional
+    location : str, default is Undefined, required
         Immutable. The location of the Cloud Build trigger. If not specified, "global" is used. More info: cloud.google.com/build/docs/locations.
     pubsubConfig : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecPubsubConfig, default is Undefined, optional
         pubsub config
@@ -132,7 +128,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpec:
 
     includedFiles?: [str]
 
-    location?: str
+    location: str
 
     pubsubConfig?: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecPubsubConfig
 
@@ -153,15 +149,12 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpec:
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecApprovalConfig:
     r"""
-    Configuration for manual approval to start a build invocation of this BuildTrigger.
-    Builds created by this trigger will require approval before they execute.
-    Any user with a Cloud Build Approver role for the project can approve a build.
+    Configuration for manual approval to start a build invocation of this BuildTrigger. Builds created by this trigger will require approval before they execute. Any user with a Cloud Build Approver role for the project can approve a build.
 
     Attributes
     ----------
     approvalRequired : bool, default is Undefined, optional
-        Whether or not approval is needed. If this is set on a build, it will become pending when run,
-        and will need to be explicitly approved to start.
+        Whether or not approval is needed. If this is set on a build, it will become pending when run, and will need to be explicitly approved to start.
     """
 
 
@@ -174,29 +167,28 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBitbucketServerTr
 
     Attributes
     ----------
-    bitbucketServerConfigResourceRef : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBitbucketServerTriggerConfigBitbucketServerConfigResourceRef, default is Undefined, required
+    bitbucketServerConfigResourceRef : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBitbucketServerTriggerConfigBitbucketServerConfigResourceRef, default is Undefined, optional
         bitbucket server config resource ref
-    projectKey : str, default is Undefined, required
+    projectKey : str, default is Undefined, optional
         Key of the project that the repo is in. For example: The key for https://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
     pullRequest : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBitbucketServerTriggerConfigPullRequest, default is Undefined, optional
         pull request
     push : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBitbucketServerTriggerConfigPush, default is Undefined, optional
         push
-    repoSlug : str, default is Undefined, required
-        Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL.
-        For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in https://mybitbucket.server/projects/TEST/repos/test-repo.
+    repoSlug : str, default is Undefined, optional
+        Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL. For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in https://mybitbucket.server/projects/TEST/repos/test-repo.
     """
 
 
-    bitbucketServerConfigResourceRef: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBitbucketServerTriggerConfigBitbucketServerConfigResourceRef
+    bitbucketServerConfigResourceRef?: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBitbucketServerTriggerConfigBitbucketServerConfigResourceRef
 
-    projectKey: str
+    projectKey?: str
 
     pullRequest?: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBitbucketServerTriggerConfigPullRequest
 
     push?: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBitbucketServerTriggerConfigPush
 
-    repoSlug: str
+    repoSlug?: str
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBitbucketServerTriggerConfigBitbucketServerConfigResourceRef:
@@ -230,9 +222,8 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBitbucketServerTr
 
     Attributes
     ----------
-    branch : str, default is Undefined, required
-        Regex of branches to match.
-        The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax.
+    branch : str, default is Undefined, optional
+        Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax.
     commentControl : str, default is Undefined, optional
         Configure builds to run whether a repository owner or collaborator need to comment /gcbrun. Possible values: ["COMMENTS_DISABLED", "COMMENTS_ENABLED", "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"].
     invertRegex : bool, default is Undefined, optional
@@ -240,7 +231,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBitbucketServerTr
     """
 
 
-    branch: str
+    branch?: str
 
     commentControl?: str
 
@@ -280,35 +271,25 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuild:
     availableSecrets : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildAvailableSecrets, default is Undefined, optional
         available secrets
     images : [str], default is Undefined, optional
-        A list of images to be pushed upon the successful completion of all build steps.
-        The images are pushed using the builder service account's credentials.
-        The digests of the pushed images will be stored in the Build resource's results field.
-        If any of the images fail to be pushed, the build status is marked FAILURE.
+        A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the Build resource's results field. If any of the images fail to be pushed, the build status is marked FAILURE.
     logsBucketRef : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildLogsBucketRef, default is Undefined, optional
         logs bucket ref
     options : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildOptions, default is Undefined, optional
         options
     queueTtl : str, default is Undefined, optional
-        TTL in queue for this build. If provided and the build is enqueued longer than this value,
-        the build will expire and the build status will be EXPIRED.
-        The TTL starts ticking from createTime.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be EXPIRED. The TTL starts ticking from createTime. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
     secret : [CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSecretItems0], default is Undefined, optional
         Secrets to decrypt using Cloud Key Management Service.
     source : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSource, default is Undefined, optional
         source
-    step : [CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildStepItems0], default is Undefined, required
+    step : [CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildStepItems0], default is Undefined, optional
         The operations to be performed on the workspace.
     substitutions : {str:str}, default is Undefined, optional
         Substitutions data for Build resource.
     tags : [str], default is Undefined, optional
         Tags for annotation of a Build. These are not docker tags.
     timeout : str, default is Undefined, optional
-        Amount of time that this build should be allowed to run, to second granularity.
-        If this amount of time elapses, work on the build will cease and the build status will be TIMEOUT.
-        This timeout must be equal to or greater than the sum of the timeouts for build steps within the build.
-        The expected format is the number of seconds followed by s.
-        Default time is ten minutes (600s).
+        Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be TIMEOUT. This timeout must be equal to or greater than the sum of the timeouts for build steps within the build. The expected format is the number of seconds followed by s. Default time is ten minutes (600s).
     """
 
 
@@ -328,7 +309,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuild:
 
     source?: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSource
 
-    step: [CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildStepItems0]
+    step?: [CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildStepItems0]
 
     substitutions?: {str:str}
 
@@ -395,7 +376,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildArtifactsObj
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildArtifactsObjectsTimingItems0:
     r"""
-    cloudbuild cnrm cloud google com v1beta1 cloud build trigger spec build artifacts objects timing items0
+    Output only. Stores timing information for pushing all artifact objects.
 
     Attributes
     ----------
@@ -423,32 +404,30 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildAvailableSec
 
     Attributes
     ----------
-    secretManager : [CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildAvailableSecretsSecretManagerItems0], default is Undefined, required
+    secretManager : [CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildAvailableSecretsSecretManagerItems0], default is Undefined, optional
         Pairs a secret environment variable with a SecretVersion in Secret Manager.
     """
 
 
-    secretManager: [CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildAvailableSecretsSecretManagerItems0]
+    secretManager?: [CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildAvailableSecretsSecretManagerItems0]
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildAvailableSecretsSecretManagerItems0:
     r"""
-    cloudbuild cnrm cloud google com v1beta1 cloud build trigger spec build available secrets secret manager items0
+    Pairs a secret environment variable with a SecretVersion in Secret Manager.
 
     Attributes
     ----------
-    env : str, default is Undefined, required
-        Environment variable name to associate with the secret. Secret environment
-        variables must be unique across all of a build's secrets, and must be used
-        by at least one build step.
-    versionRef : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildAvailableSecretsSecretManagerItems0VersionRef, default is Undefined, required
+    env : str, default is Undefined, optional
+        Environment variable name to associate with the secret. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step.
+    versionRef : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildAvailableSecretsSecretManagerItems0VersionRef, default is Undefined, optional
         version ref
     """
 
 
-    env: str
+    env?: str
 
-    versionRef: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildAvailableSecretsSecretManagerItems0VersionRef
+    versionRef?: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildAvailableSecretsSecretManagerItems0VersionRef
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildAvailableSecretsSecretManagerItems0VersionRef:
@@ -475,8 +454,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildAvailableSec
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildLogsBucketRef:
     r"""
-    Google Cloud Storage bucket where logs should be written. Logs file
-    names will be of the format ${logsBucket}/log-${build_id}.txt.
+    Google Cloud Storage bucket where logs should be written. Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
 
     Attributes
     ----------
@@ -503,11 +481,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildOptions:
     Attributes
     ----------
     diskSizeGb : int, default is Undefined, optional
-        Requested disk size for the VM that runs the build. Note that this is NOT "disk free";
-        some of the space will be used by the operating system and build utilities.
-        Also note that this is the minimum disk size that will be allocated for the build --
-        the build may run with a larger disk than requested. At present, the maximum disk size
-        is 1000GB; builds that request more than the maximum are rejected with an error.
+        Requested disk size for the VM that runs the build. Note that this is NOT "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.
     dynamicSubstitutions : bool, default is Undefined, optional
         Option to specify whether or not to apply bash style string operations to the substitutions.
 
@@ -527,9 +501,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildOptions:
     requestedVerifyOption : str, default is Undefined, optional
         Requested verifiability options. Possible values: ["NOT_VERIFIED", "VERIFIED"].
     secretEnv : [str], default is Undefined, optional
-        A list of global environment variables, which are encrypted using a Cloud Key Management
-        Service crypto key. These values must be specified in the build's Secret. These variables
-        will be available to all build steps in this build.
+        A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's Secret. These variables will be available to all build steps in this build.
     sourceProvenanceHash : [str], default is Undefined, optional
         Requested hash for SourceProvenance. Possible values: ["NONE", "SHA256", "MD5"].
     substitutionOption : str, default is Undefined, optional
@@ -580,7 +552,14 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildOptions:
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildOptionsVolumesItems0:
     r"""
-    cloudbuild cnrm cloud google com v1beta1 cloud build trigger spec build options volumes items0
+    Global list of volumes to mount for ALL build steps
+
+    Each volume is created as an empty volume prior to starting the build process.
+    Upon completion of the build, volumes and their contents are discarded. Global
+    volume names and paths cannot conflict with the volumes defined a build step.
+
+    Using a global volume in a build with only one step is not valid as it is indicative
+    of a build request with an incorrect configuration.
 
     Attributes
     ----------
@@ -604,21 +583,18 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildOptionsVolum
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSecretItems0:
     r"""
-    cloudbuild cnrm cloud google com v1beta1 cloud build trigger spec build secret items0
+    Secrets to decrypt using Cloud Key Management Service.
 
     Attributes
     ----------
-    kmsKeyRef : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSecretItems0KmsKeyRef, default is Undefined, required
+    kmsKeyRef : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSecretItems0KmsKeyRef, default is Undefined, optional
         kms key ref
     secretEnv : {str:str}, default is Undefined, optional
-        Map of environment variable name to its encrypted value.
-        Secret environment variables must be unique across all of a build's secrets,
-        and must be used by at least one build step. Values can be at most 64 KB in size.
-        There can be at most 100 secret values across all of a build's secrets.
+        Map of environment variable name to its encrypted value. Secret environment variables must be unique across all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size. There can be at most 100 secret values across all of a build's secrets.
     """
 
 
-    kmsKeyRef: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSecretItems0KmsKeyRef
+    kmsKeyRef?: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSecretItems0KmsKeyRef
 
     secretEnv?: {str:str}
 
@@ -672,28 +648,21 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceRepoSo
     Attributes
     ----------
     branchName : str, default is Undefined, optional
-        Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-        The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-        described at https://github.com/google/re2/wiki/Syntax.
+        Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax.
     commitSha : str, default is Undefined, optional
         Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
     dir : str, default is Undefined, optional
-        Directory, relative to the source root, in which to run the build.
-        This must be a relative path. If a step's dir is specified and is an absolute path,
-        this value is ignored for that step's execution.
+        Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's dir is specified and is an absolute path, this value is ignored for that step's execution.
     invertRegex : bool, default is Undefined, optional
         Only trigger a build if the revision regex does NOT match the revision regex.
     projectId : str, default is Undefined, optional
-        ID of the project that owns the Cloud Source Repository.
-        If omitted, the project ID requesting the build is assumed.
-    repoRef : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceRepoSourceRepoRef, default is Undefined, required
+        ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
+    repoRef : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceRepoSourceRepoRef, default is Undefined, optional
         repo ref
     substitutions : {str:str}, default is Undefined, optional
         Substitutions to use in a triggered build. Should only be used with triggers.run.
     tagName : str, default is Undefined, optional
-        Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-        The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-        described at https://github.com/google/re2/wiki/Syntax.
+        Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax.
     """
 
 
@@ -707,7 +676,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceRepoSo
 
     projectId?: str
 
-    repoRef: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceRepoSourceRepoRef
+    repoRef?: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceRepoSourceRepoRef
 
     substitutions?: {str:str}
 
@@ -716,8 +685,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceRepoSo
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceRepoSourceRepoRef:
     r"""
-    The desired Cloud Source Repository. If omitted, "default" is
-    assumed.
+    The desired Cloud Source Repository. If omitted, "default" is assumed.
 
     Attributes
     ----------
@@ -743,22 +711,20 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceStorag
 
     Attributes
     ----------
-    bucketRef : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceStorageSourceBucketRef, default is Undefined, required
+    bucketRef : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceStorageSourceBucketRef, default is Undefined, optional
         bucket ref
     generation : str, default is Undefined, optional
-        Google Cloud Storage generation for the object.
-        If the generation is omitted, the latest generation will be used.
-    object : str, default is Undefined, required
-        Google Cloud Storage object containing the source.
-        This object must be a gzipped archive file (.tar.gz) containing source to build.
+        Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+    object : str, default is Undefined, optional
+        Google Cloud Storage object containing the source. This object must be a gzipped archive file (.tar.gz) containing source to build.
     """
 
 
-    bucketRef: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceStorageSourceBucketRef
+    bucketRef?: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceStorageSourceBucketRef
 
     generation?: str
 
-    object: str
+    object?: str
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceStorageSourceBucketRef:
@@ -785,7 +751,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildSourceStorag
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildStepItems0:
     r"""
-    cloudbuild cnrm cloud google com v1beta1 cloud build trigger spec build step items0
+    The operations to be performed on the workspace.
 
     Attributes
     ----------
@@ -821,9 +787,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildStepItems0:
         which specifies an absolute path, the 'RepoSource' 'dir' is ignored
         for the step's execution.
     entrypoint : str, default is Undefined, optional
-        Entrypoint to be used instead of the build step image's
-        default entrypoint.
-        If unset, the image's default entrypoint is used.
+        Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used.
     env : [str], default is Undefined, optional
         A list of environment variable definitions to be used when
         running a step.
@@ -831,9 +795,8 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildStepItems0:
         The elements are of the form "KEY=VALUE" for the environment variable
         "KEY" being given the value "VALUE".
     id : str, default is Undefined, optional
-        Unique identifier for this build step, used in 'wait_for' to
-        reference this build step as a dependency.
-    name : str, default is Undefined, required
+        Unique identifier for this build step, used in 'wait_for' to reference this build step as a dependency.
+    name : str, default is Undefined, optional
         The name of the container image that will run this particular build step.
 
         If the image is available in the host's Docker daemon's cache, it will be
@@ -851,21 +814,13 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildStepItems0:
         host's Docker daemon's cache and is available to use as the name for a
         later build step.
     script : str, default is Undefined, optional
-        A shell script to be executed in the step.
-        When script is provided, the user cannot specify the entrypoint or args.
+        A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
     secretEnv : [str], default is Undefined, optional
-        A list of environment variables which are encrypted using
-        a Cloud Key
-        Management Service crypto key. These values must be specified in
-        the build's 'Secret'.
+        A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's 'Secret'.
     timeout : str, default is Undefined, optional
-        Time limit for executing this build step. If not defined,
-        the step has no
-        time limit and will be allowed to continue to run until either it
-        completes or the build itself times out.
+        Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out.
     timing : str, default is Undefined, optional
-        Output only. Stores timing information for executing this
-        build step.
+        Output only. Stores timing information for executing this build step.
     volumes : [CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildStepItems0VolumesItems0], default is Undefined, optional
         List of volumes to mount into the build step.
 
@@ -899,7 +854,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildStepItems0:
 
     id?: str
 
-    name: str
+    name?: str
 
     script?: str
 
@@ -916,16 +871,23 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildStepItems0:
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildStepItems0VolumesItems0:
     r"""
-    cloudbuild cnrm cloud google com v1beta1 cloud build trigger spec build step items0 volumes items0
+    List of volumes to mount into the build step.
+
+    Each volume is created as an empty volume prior to execution of the
+    build step. Upon completion of the build, volumes and their contents
+    are discarded.
+
+    Using a named volume in only one step is not valid as it is
+    indicative of a build request with an incorrect configuration.
 
     Attributes
     ----------
-    name : str, default is Undefined, required
+    name : str, default is Undefined, optional
         Name of the volume to mount.
 
         Volume names must be unique per build step and must be valid names for
         Docker volumes. Each named volume must be used by at least two build steps.
-    path : str, default is Undefined, required
+    path : str, default is Undefined, optional
         Path at which to mount the volume.
 
         Paths must be absolute and cannot conflict with other volume paths on
@@ -933,9 +895,9 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecBuildStepItems0Vo
     """
 
 
-    name: str
+    name?: str
 
-    path: str
+    path?: str
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGitFileSource:
@@ -948,20 +910,16 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGitFileSource:
         bitbucket server config ref
     githubEnterpriseConfigRef : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGitFileSourceGithubEnterpriseConfigRef, default is Undefined, optional
         github enterprise config ref
-    path : str, default is Undefined, required
+    path : str, default is Undefined, optional
         The path of the file, with the repo root as the root of the path.
-    repoType : str, default is Undefined, required
-        The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-        Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER Possible values: ["UNKNOWN", "CLOUD_SOURCE_REPOSITORIES", "GITHUB", "BITBUCKET_SERVER"].
+    repoType : str, default is Undefined, optional
+        The type of the repo, since it may not be explicit from the repo field (e.g from a URL). Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER Possible values: ["UNKNOWN", "CLOUD_SOURCE_REPOSITORIES", "GITHUB", "BITBUCKET_SERVER"].
     repositoryRef : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGitFileSourceRepositoryRef, default is Undefined, optional
         repository ref
     revision : str, default is Undefined, optional
-        The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
-        filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
-        If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+        The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
     uri : str, default is Undefined, optional
-        The URI of the repo (optional). If unspecified, the repo from which the trigger
-        invocation originated is assumed to be the repo from which to read the specified path.
+        The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
     """
 
 
@@ -969,9 +927,9 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGitFileSource:
 
     githubEnterpriseConfigRef?: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGitFileSourceGithubEnterpriseConfigRef
 
-    path: str
+    path?: str
 
-    repoType: str
+    repoType?: str
 
     repositoryRef?: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGitFileSourceRepositoryRef
 
@@ -1066,11 +1024,9 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGithub:
     enterpriseConfigResourceNameRef : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGithubEnterpriseConfigResourceNameRef, default is Undefined, optional
         enterprise config resource name ref
     name : str, default is Undefined, optional
-        Name of the repository. For example: The name for
-        https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
+        Name of the repository. For example: The name for https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
     owner : str, default is Undefined, optional
-        Owner of the repository. For example: The owner for
-        https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
+        Owner of the repository. For example: The owner for https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
     pullRequest : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGithubPullRequest, default is Undefined, optional
         pull request
     push : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGithubPush, default is Undefined, optional
@@ -1120,7 +1076,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGithubPullRequest
 
     Attributes
     ----------
-    branch : str, default is Undefined, required
+    branch : str, default is Undefined, optional
         Regex of branches to match.
     commentControl : str, default is Undefined, optional
         Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator. Possible values: ["COMMENTS_DISABLED", "COMMENTS_ENABLED", "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"].
@@ -1129,7 +1085,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecGithubPullRequest
     """
 
 
-    branch: str
+    branch?: str
 
     commentControl?: str
 
@@ -1170,11 +1126,10 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecPubsubConfig:
     serviceAccountRef : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecPubsubConfigServiceAccountRef, default is Undefined, optional
         service account ref
     state : str, default is Undefined, optional
-        Potential issues with the underlying Pub/Sub subscription configuration.
-        Only populated on get requests.
+        Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
     subscription : str, default is Undefined, optional
         Output only. Name of the subscription.
-    topicRef : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecPubsubConfigTopicRef, default is Undefined, required
+    topicRef : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecPubsubConfigTopicRef, default is Undefined, optional
         topic ref
     """
 
@@ -1185,7 +1140,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecPubsubConfig:
 
     subscription?: str
 
-    topicRef: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecPubsubConfigTopicRef
+    topicRef?: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecPubsubConfigTopicRef
 
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecPubsubConfigServiceAccountRef:
@@ -1212,8 +1167,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecPubsubConfigServi
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecPubsubConfigTopicRef:
     r"""
-    The name of the topic from which this subscription
-    is receiving messages.
+    The name of the topic from which this subscription is receiving messages.
 
     Attributes
     ----------
@@ -1352,11 +1306,10 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecSourceToBuild:
         bitbucket server config ref
     githubEnterpriseConfigRef : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecSourceToBuildGithubEnterpriseConfigRef, default is Undefined, optional
         github enterprise config ref
-    ref : str, default is Undefined, required
+    ref : str, default is Undefined, optional
         The branch or tag to use. Must start with "refs/" (required).
-    repoType : str, default is Undefined, required
-        The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
-        Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER Possible values: ["UNKNOWN", "CLOUD_SOURCE_REPOSITORIES", "GITHUB", "BITBUCKET_SERVER"].
+    repoType : str, default is Undefined, optional
+        The type of the repo, since it may not be explicit from the repo field (e.g from a URL). Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER Possible values: ["UNKNOWN", "CLOUD_SOURCE_REPOSITORIES", "GITHUB", "BITBUCKET_SERVER"].
     repositoryRef : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecSourceToBuildRepositoryRef, default is Undefined, optional
         repository ref
     uri : str, default is Undefined, optional
@@ -1368,9 +1321,9 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecSourceToBuild:
 
     githubEnterpriseConfigRef?: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecSourceToBuildGithubEnterpriseConfigRef
 
-    ref: str
+    ref?: str
 
-    repoType: str
+    repoType?: str
 
     repositoryRef?: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecSourceToBuildRepositoryRef
 
@@ -1465,8 +1418,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecTriggerTemplate:
     Attributes
     ----------
     branchName : str, default is Undefined, optional
-        Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-        This field is a regular expression.
+        Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided. This field is a regular expression.
     commitSha : str, default is Undefined, optional
         Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
     dir : str, default is Undefined, optional
@@ -1480,8 +1432,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecTriggerTemplate:
     repoRef : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecTriggerTemplateRepoRef, default is Undefined, optional
         repo ref
     tagName : str, default is Undefined, optional
-        Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
-        This field is a regular expression.
+        Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided. This field is a regular expression.
     """
 
 
@@ -1500,8 +1451,7 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecTriggerTemplate:
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecTriggerTemplateRepoRef:
     r"""
-    The Cloud Source Repository to build. If omitted, the repo with
-    name "default" is assumed.
+    The Cloud Source Repository to build. If omitted, the repo with name "default" is assumed.
 
     Attributes
     ----------
@@ -1530,15 +1480,14 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecWebhookConfig:
 
     Attributes
     ----------
-    secretRef : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecWebhookConfigSecretRef, default is Undefined, required
+    secretRef : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecWebhookConfigSecretRef, default is Undefined, optional
         secret ref
     state : str, default is Undefined, optional
-        Potential issues with the underlying Pub/Sub subscription configuration.
-        Only populated on get requests.
+        Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
     """
 
 
-    secretRef: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecWebhookConfigSecretRef
+    secretRef?: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecWebhookConfigSecretRef
 
     state?: str
 
@@ -1567,16 +1516,20 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerSpecWebhookConfigSecr
 
 schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerStatus:
     r"""
-    cloudbuild cnrm cloud google com v1beta1 cloud build trigger status
+    CloudBuildTriggerStatus defines the config connector machine state of CloudBuildTrigger
 
     Attributes
     ----------
     conditions : [CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state. Conditions represent the latest available observation of the resource's current state.
     createTime : str, default is Undefined, optional
         Time when the trigger was created.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the CloudBuildTrigger resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerStatusObservedState, default is Undefined, optional
+        observed state
     triggerId : str, default is Undefined, optional
         The unique identifier for the trigger.
     """
@@ -1586,7 +1539,11 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerStatus:
 
     createTime?: str
 
+    externalRef?: str
+
     observedGeneration?: int
+
+    observedState?: CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerStatusObservedState
 
     triggerId?: str
 
@@ -1619,5 +1576,23 @@ schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerStatusConditionsItems
     status?: str
 
     $type?: str
+
+
+schema CloudbuildCnrmCloudGoogleComV1beta1CloudBuildTriggerStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    createTime : str, default is Undefined, optional
+        Output only. Time when the trigger was created.
+    id : str, default is Undefined, optional
+        Output only. Unique identifier of the trigger.
+    """
+
+
+    createTime?: str
+
+    id?: str
 
 

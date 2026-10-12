@@ -101,6 +101,19 @@ schema DiscoveryengineCnrmCloudGoogleComV1alpha1DiscoveryEngineEngineSpecChatEng
     ----------
     agentCreationConfig : DiscoveryengineCnrmCloudGoogleComV1alpha1DiscoveryEngineEngineSpecChatEngineConfigAgentCreationConfig, default is Undefined, optional
         agent creation config
+    allowCrossRegion : bool, default is Undefined, optional
+        Optional. If the flag set to true, we allow the agent and engine are in
+         different locations, otherwise the agent and engine are required to be in
+         the same location. The flag is set to false by default.
+
+         Note that the `allow_cross_region` are one-time consumed by and
+         passed to
+         [EngineService.CreateEngine][google.cloud.discoveryengine.v1.EngineService.CreateEngine].
+         It means they cannot be retrieved using
+         [EngineService.GetEngine][google.cloud.discoveryengine.v1.EngineService.GetEngine]
+         or
+         [EngineService.ListEngines][google.cloud.discoveryengine.v1.EngineService.ListEngines]
+         API after engine creation.
     dialogflowAgentToLink : str, default is Undefined, optional
         The resource name of an exist Dialogflow agent to link to this Chat
          Engine. Customers can either provide `agent_creation_config` to create
@@ -121,6 +134,8 @@ schema DiscoveryengineCnrmCloudGoogleComV1alpha1DiscoveryEngineEngineSpecChatEng
 
 
     agentCreationConfig?: DiscoveryengineCnrmCloudGoogleComV1alpha1DiscoveryEngineEngineSpecChatEngineConfigAgentCreationConfig
+
+    allowCrossRegion?: bool
 
     dialogflowAgentToLink?: str
 
@@ -175,7 +190,7 @@ schema DiscoveryengineCnrmCloudGoogleComV1alpha1DiscoveryEngineEngineSpecCommonC
 
 schema DiscoveryengineCnrmCloudGoogleComV1alpha1DiscoveryEngineEngineSpecDataStoreRefsItems0:
     r"""
-    DiscoveryEngineDataStoreRef defines the resource reference to DiscoveryEngineDataStore, which "External" field holds the GCP identifier for the KRM object.
+    DiscoveryEngineDataStoreRef is a reference to a DiscoveryEngineDataStore.
 
     Attributes
     ----------

@@ -93,7 +93,7 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpecDataBoostIsolation
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableAppProfileSpecInstanceRef:
     r"""
-    InstanceRef defines the resource reference to BigtableInstance, which "External" field holds the GCP identifier for the KRM object.
+    InstanceRef is a reference to a BigtableInstance.
 
     Attributes
     ----------

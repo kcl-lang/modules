@@ -42,25 +42,21 @@ schema CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolSpec:
     Attributes
     ----------
     displayName : str, default is Undefined, optional
-        display name
+        A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
     location : str, default is Undefined, required
         location
-    name : str, default is Undefined, optional
-        name
     privatePoolV1Config : CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolSpecPrivatePoolV1Config, default is Undefined, required
         private pool v1 config
     projectRef : CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolSpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional
-        resource ID
+        The GCP resource identifier. If not given, the metadata.name will be used.
     """
 
 
     displayName?: str
 
     location: str
-
-    name?: str
 
     privatePoolV1Config: CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolSpecPrivatePoolV1Config
 
@@ -71,7 +67,7 @@ schema CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolSpec:
 
 schema CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolSpecPrivatePoolV1Config:
     r"""
-    cloudbuild cnrm cloud google com v1alpha1 cloud build worker pool spec private pool v1 config
+    Legacy Private Pool configuration.
 
     Attributes
     ----------
@@ -89,15 +85,15 @@ schema CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolSpecPrivatePoolV1
 
 schema CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolSpecPrivatePoolV1ConfigNetworkConfig:
     r"""
-    cloudbuild cnrm cloud google com v1alpha1 cloud build worker pool spec private pool v1 config network config
+    Network configuration for the pool.
 
     Attributes
     ----------
     egressOption : str, default is Undefined, optional
-        egress option
+        Option to configure network egress for the workers.
     peeredNetworkIPRange : str, default is Undefined, optional
-        peered network IP range
-    peeredNetworkRef : CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolSpecPrivatePoolV1ConfigNetworkConfigPeeredNetworkRef, default is Undefined, required
+        Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+    peeredNetworkRef : CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolSpecPrivatePoolV1ConfigNetworkConfigPeeredNetworkRef, default is Undefined, optional
         peered network ref
     """
 
@@ -106,17 +102,17 @@ schema CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolSpecPrivatePoolV1
 
     peeredNetworkIPRange?: str
 
-    peeredNetworkRef: CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolSpecPrivatePoolV1ConfigNetworkConfigPeeredNetworkRef
+    peeredNetworkRef?: CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolSpecPrivatePoolV1ConfigNetworkConfigPeeredNetworkRef
 
 
 schema CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolSpecPrivatePoolV1ConfigNetworkConfigPeeredNetworkRef:
     r"""
-    cloudbuild cnrm cloud google com v1alpha1 cloud build worker pool spec private pool v1 config network config peered network ref
+    Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
         The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
@@ -133,14 +129,14 @@ schema CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolSpecPrivatePoolV1
 
 schema CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolSpecPrivatePoolV1ConfigWorkerConfig:
     r"""
-    cloudbuild cnrm cloud google com v1alpha1 cloud build worker pool spec private pool v1 config worker config
+    Machine configuration for the workers in the pool.
 
     Attributes
     ----------
     diskSizeGb : int, default is Undefined, optional
-        disk size gb
+        Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 2000. If `0` is specified, Cloud Build will use a standard disk size.
     machineType : str, default is Undefined, optional
-        machine type
+        Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will use a sensible default.
     """
 
 
@@ -183,6 +179,8 @@ schema CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolStatus:
     ----------
     conditions : [CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolStatusConditionsItems0], default is Undefined, optional
         Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique Config Connector specifier for the resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     observedState : CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolStatusObservedState, default is Undefined, optional
@@ -191,6 +189,8 @@ schema CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolStatus:
 
 
     conditions?: [CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolStatusConditionsItems0]
+
+    externalRef?: str
 
     observedGeneration?: int
 
@@ -235,36 +235,40 @@ schema CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolStatusObservedSta
     ----------
     createTime : str, default is Undefined, optional
         The creation timestamp of the workerpool.
+    etag : str, default is Undefined, optional
+        The Checksum computed by the server, using weak indicator.
     networkConfig : CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolStatusObservedStateNetworkConfig, default is Undefined, optional
         network config
     updateTime : str, default is Undefined, optional
         The last update timestamp of the workerpool.
-    workerConfig : CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolStatusObservedStateWorkerConfig, default is Undefined, optional
+    workerConfig : CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolStatusObservedStateWorkerConfig, default is Undefined, required
         worker config
     """
 
 
     createTime?: str
 
+    etag?: str
+
     networkConfig?: CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolStatusObservedStateNetworkConfig
 
     updateTime?: str
 
-    workerConfig?: CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolStatusObservedStateWorkerConfig
+    workerConfig: CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolStatusObservedStateWorkerConfig
 
 
 schema CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolStatusObservedStateNetworkConfig:
     r"""
-    cloudbuild cnrm cloud google com v1alpha1 cloud build worker pool status observed state network config
+    Network configuration for the pool.
 
     Attributes
     ----------
     egressOption : str, default is Undefined, optional
-        egress option
+        Option to configure network egress for the workers.
     peeredNetwork : str, default is Undefined, optional
-        peered network
+        Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network.
     peeredNetworkIPRange : str, default is Undefined, optional
-        peered network IP range
+        Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
     """
 
 
@@ -277,14 +281,14 @@ schema CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolStatusObservedSta
 
 schema CloudbuildCnrmCloudGoogleComV1alpha1CloudBuildWorkerPoolStatusObservedStateWorkerConfig:
     r"""
-    cloudbuild cnrm cloud google com v1alpha1 cloud build worker pool status observed state worker config
+    Machine configuration for the workers in the pool.
 
     Attributes
     ----------
     diskSizeGb : int, default is Undefined, optional
-        disk size gb
+        Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 2000. If `0` is specified, Cloud Build will use a standard disk size.
     machineType : str, default is Undefined, optional
-        machine type
+        Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will use a sensible default.
     """
 
 

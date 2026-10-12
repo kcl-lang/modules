@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeVPNTunnel:
     r"""
-    compute cnrm cloud google com v1beta1 compute v p n tunnel
+    ComputeVPNTunnel is the Schema for the ComputeVPNTunnel API
 
     Attributes
     ----------
@@ -37,21 +37,16 @@ schema ComputeVPNTunnel:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute v p n tunnel spec
+    ComputeVPNTunnelSpec defines the desired state of ComputeVPNTunnel
 
     Attributes
     ----------
     description : str, default is Undefined, optional
         Immutable. An optional description of this resource.
     ikeVersion : int, default is Undefined, optional
-        Immutable. IKE protocol version to use when establishing the VPN tunnel with
-        peer VPN gateway.
-        Acceptable IKE versions are 1 or 2. Default version is 2.
+        Immutable. IKE protocol version to use when establishing the VPN tunnel with peer VPN gateway. Acceptable IKE versions are 1 or 2. Default version is 2.
     localTrafficSelector : [str], default is Undefined, optional
-        Immutable. Local traffic selector to use when establishing the VPN tunnel with
-        peer VPN gateway. The value should be a CIDR formatted string,
-        for example '192.168.0.0/16'. The ranges should be disjoint.
-        Only IPv4 is supported.
+        Immutable. Local traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
     peerExternalGatewayInterface : int, default is Undefined, optional
         Immutable. The interface ID of the external VPN gateway to which this VPN tunnel is connected.
     peerExternalGatewayRef : ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecPeerExternalGatewayRef, default is Undefined, optional
@@ -63,10 +58,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpec:
     region : str, default is Undefined, required
         Immutable. The region where the tunnel is located. If unset, is set to the region of 'target_vpn_gateway'.
     remoteTrafficSelector : [str], default is Undefined, optional
-        Immutable. Remote traffic selector to use when establishing the VPN tunnel with
-        peer VPN gateway. The value should be a CIDR formatted string,
-        for example '192.168.0.0/16'. The ranges should be disjoint.
-        Only IPv4 is supported.
+        Immutable. Remote traffic selector to use when establishing the VPN tunnel with peer VPN gateway. The value should be a CIDR formatted string, for example '192.168.0.0/16'. The ranges should be disjoint. Only IPv4 is supported.
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
     routerRef : ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecRouterRef, default is Undefined, optional
@@ -115,17 +107,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpec:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecPeerExternalGatewayRef:
     r"""
-    The peer side external VPN gateway to which this VPN tunnel
-    is connected.
+    The peer side external VPN gateway to which this VPN tunnel is connected.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeExternalVPNGateway` resource.
+        A reference to an externally managed ComputeExternalVPNGateway resource. Should be in the format "projects/{{projectID}}/global/externalVpnGateways/{{externalVPNGatewayID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeExternalVPNGateway resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeExternalVPNGateway resource.
     """
 
 
@@ -138,18 +129,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecPeerExternalGatewayRe
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecPeerGCPGatewayRef:
     r"""
-    The peer side HA GCP VPN gateway to which this VPN tunnel is
-    connected. If provided, the VPN tunnel will automatically use the
-    same VPN gateway interface ID in the peer GCP VPN gateway.
+    The peer side HA GCP VPN gateway to which this VPN tunnel is connected. If provided, the VPN tunnel will automatically use the same VPN gateway interface ID in the peer GCP VPN gateway.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeVPNGateway` resource.
+        A reference to an externally managed ComputeVPNGateway resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/vpnGateways/{{vpnGatewayID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeVPNGateway resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeVPNGateway resource.
     """
 
 
@@ -167,11 +156,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecRouterRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeRouter` resource.
+        A reference to an externally managed ComputeRouter resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/routers/{{routerID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeRouter resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeRouter resource.
     """
 
 
@@ -184,8 +173,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecRouterRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecSharedSecret:
     r"""
-    Immutable. Shared secret used to set the secure session between the Cloud VPN
-    gateway and the peer VPN gateway.
+    Immutable. Shared secret used to set the secure session between the Cloud VPN gateway and the peer VPN gateway.
 
     Attributes
     ----------
@@ -235,17 +223,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecSharedSecretValueFrom
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecTargetVPNGatewayRef:
     r"""
-    The ComputeTargetVPNGateway with which this VPN tunnel is
-    associated.
+    The ComputeTargetVPNGateway with which this VPN tunnel is associated.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeTargetVPNGateway` resource.
+        The ComputeTargetVPNGateway selflink in the form "projects/{{project}}/regions/{{region}}/targetVpnGateways/{{name}}" when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `ComputeTargetVPNGateway` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `ComputeTargetVPNGateway` resource.
     """
 
 
@@ -258,18 +245,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecTargetVPNGatewayRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecVpnGatewayRef:
     r"""
-    The ComputeVPNGateway with which this VPN tunnel is associated.
-    This must be used if a High Availability VPN gateway resource is
-    created.
+    The ComputeVPNGateway with which this VPN tunnel is associated. This must be used if a High Availability VPN gateway resource is created.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeVPNGateway` resource.
+        A reference to an externally managed ComputeVPNGateway resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/vpnGateways/{{vpnGatewayID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeVPNGateway resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeVPNGateway resource.
     """
 
 
@@ -282,19 +267,18 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelSpecVpnGatewayRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute v p n tunnel status
+    ComputeVPNTunnelStatus defines the config connector machine state of ComputeVPNTunnel
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeVPNTunnelStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeVPNTunnel's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
     detailedStatus : str, default is Undefined, optional
         Detailed status message for the VPN tunnel.
     labelFingerprint : str, default is Undefined, optional
-        The fingerprint used for optimistic locking of this resource.  Used
-        internally during updates.
+        The fingerprint used for optimistic locking of this resource.  Used internally during updates.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     selfLink : str, default is Undefined, optional

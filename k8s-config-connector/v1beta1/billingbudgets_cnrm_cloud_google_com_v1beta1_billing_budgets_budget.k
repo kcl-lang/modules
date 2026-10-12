@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema BillingBudgetsBudget:
     r"""
-    billingbudgets cnrm cloud google com v1beta1 billing budgets budget
+    BillingBudgetsBudget is the Schema for the BillingBudgetsBudget API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema BillingBudgetsBudget:
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpec:
     r"""
-    billingbudgets cnrm cloud google com v1beta1 billing budgets budget spec
+    BillingBudgetsBudgetSpec defines the desired state of BillingBudgetsBudget
 
     Attributes
     ----------
@@ -52,7 +52,7 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpec:
     displayName : str, default is Undefined, optional
         User data for display name in UI. The name must be less than or equal to 60 characters.
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
+        The BillingBudgetsBudget name. If not given, the metadata.name will be used.
     thresholdRules : [BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecThresholdRulesItems0], default is Undefined, optional
         Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
     """
@@ -101,16 +101,16 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecAllUpdates
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecAllUpdatesRuleMonitoringNotificationChannelsItems0:
     r"""
-    billingbudgets cnrm cloud google com v1beta1 billing budgets budget spec all updates rule monitoring notification channels items0
+    MonitoringNotificationChannelRef is a reference to a MonitoringNotificationChannel.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The Google Cloud resource name of a `MonitoringNotificationChannel` resource (format: `projects/{{project}}/notificationChannels/{{name}}`).
+        A reference to an externally managed MonitoringNotificationChannel resource. Should be in the format "projects/{{projectID}}/notificationChannels/{{channelID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a MonitoringNotificationChannel resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a MonitoringNotificationChannel resource.
     """
 
 
@@ -123,18 +123,16 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecAllUpdates
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecAllUpdatesRulePubsubTopicRef:
     r"""
-    billingbudgets cnrm cloud google com v1beta1 billing budgets budget spec all updates rule pubsub topic ref
+    PubSubTopicRef is a reference to a PubSubTopic.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Optional. The name of the Pub/Sub topic where budget related messages will be published, in the form `projects/{project_id}/topics/{topic_id}`. Updates are sent at regular intervals to the topic. The topic needs to be created before the budget is created; see https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications for more details. Caller is expected to have `pubsub.topics.setIamPolicy` permission on the topic when it's set for a budget, otherwise, the API call will fail with PERMISSION_DENIED. See https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#permissions_required_for_this_task for more details on Pub/Sub roles and permissions.
-
-        Allowed value: The Google Cloud resource name of a `PubSubTopic` resource (format: `projects/{{project}}/topics/{{name}}`).
+        A reference to an externally managed PubSubTopic resource. Should be in the format "projects/{{projectID}}/topics/{{topicID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a PubSubTopic resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a PubSubTopic resource.
     """
 
 
@@ -192,14 +190,11 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecBillingAcc
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The billing account of the resource
-
-        Allowed value: The Google Cloud resource name of a Google Cloud Billing Account (format: `billingAccounts/{{name}}`).
+        The 'name' field of a billing account, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        [WARNING] BillingAccount not yet supported in Config Connector, use 'external' field to reference existing resources.
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The 'name' field of a 'BillingAccount' resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The 'namespace' field of a 'BillingAccount' resource.
     """
 
 
@@ -330,16 +325,16 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecBudgetFilt
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecBudgetFilterProjectsItems0:
     r"""
-    billingbudgets cnrm cloud google com v1beta1 billing budgets budget spec budget filter projects items0
+    ProjectRef is a reference to a GCP Project.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -352,17 +347,16 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecBudgetFilt
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecBudgetFilterSubaccountsItems0:
     r"""
-    billingbudgets cnrm cloud google com v1beta1 billing budgets budget spec budget filter subaccounts items0
+    BillingAccountRef is a reference to a GCP BillingAccount.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        external
+        The 'name' field of a billing account, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        [WARNING] CloudBillingBillingAccount not yet supported in Config Connector, use 'external' field to reference existing resources.
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The 'name' field of a 'BillingAccount' resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The 'namespace' field of a 'BillingAccount' resource.
     """
 
 
@@ -393,12 +387,12 @@ schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetSpecThresholdR
 
 schema BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetStatus:
     r"""
-    billingbudgets cnrm cloud google com v1beta1 billing budgets budget status
+    BillingBudgetsBudgetStatus defines the config connector machine state of BillingBudgetsBudget
 
     Attributes
     ----------
     conditions : [BillingbudgetsCnrmCloudGoogleComV1beta1BillingBudgetsBudgetStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     etag : str, default is Undefined, optional
         Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
     observedGeneration : int, default is Undefined, optional

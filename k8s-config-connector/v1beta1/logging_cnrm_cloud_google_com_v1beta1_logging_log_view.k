@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema LoggingLogView:
     r"""
-    logging cnrm cloud google com v1beta1 logging log view
+    LoggingLogView is the Schema for the LoggingLogView API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema LoggingLogView:
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewSpec:
     r"""
-    logging cnrm cloud google com v1beta1 logging log view spec
+    LoggingLogViewSpec defines the desired state of LoggingLogView
 
     Attributes
     ----------
@@ -88,12 +88,11 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewSpecBillingAccountRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The Google Cloud resource name of a Google Cloud Billing Account (format: `billingAccounts/{{name}}`).
+        The 'name' field of a billing account, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        [WARNING] BillingAccount not yet supported in Config Connector, use 'external' field to reference existing resources.
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The 'name' field of a 'BillingAccount' resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The 'namespace' field of a 'BillingAccount' resource.
     """
 
 
@@ -111,17 +110,19 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewSpecBucketRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The bucket of the resource
-
-        Allowed value: The Google Cloud resource name of a `LoggingLogBucket` resource (format: `{{parent}}/locations/{{location}}/buckets/{{name}}`).
+        A reference to an externally managed LoggingLogBucket resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/buckets/{{bucketID}}".
+    kind : str, default is Undefined, optional
+        The kind of the LoggingLogBucket resource.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a LoggingLogBucket resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a LoggingLogBucket resource.
     """
 
 
     external?: str
+
+    kind?: str
 
     name?: str
 
@@ -135,11 +136,11 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewSpecFolderRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The Google Cloud resource name of a `Folder` resource (format: `folders/{{name}}`).
+        The 'name' field of a folder, when not managed by Config Connector. The recommended format is "folders/{folderID}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The 'name' field of a 'Folder' resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The 'namespace' field of a 'Folder' resource.
     """
 
 
@@ -157,12 +158,11 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewSpecOrganizationRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The Google Cloud resource name of a Google Cloud Organization (format: `organizations/{{name}}`).
+        The 'name' field of an organization, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        [WARNING] Organization not yet supported in Config Connector, use 'external' field to reference existing resources.
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The 'name' field of an 'Organization' resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The 'namespace' field of an 'Organization' resource.
     """
 
 
@@ -180,11 +180,11 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewSpecProjectRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -197,12 +197,12 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewSpecProjectRef:
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogViewStatus:
     r"""
-    logging cnrm cloud google com v1beta1 logging log view status
+    LoggingLogViewStatus defines the config connector machine state of LoggingLogView
 
     Attributes
     ----------
     conditions : [LoggingCnrmCloudGoogleComV1beta1LoggingLogViewStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the LoggingLogView's current state.
     createTime : str, default is Undefined, optional
         Output only. The creation timestamp of the view.
     observedGeneration : int, default is Undefined, optional

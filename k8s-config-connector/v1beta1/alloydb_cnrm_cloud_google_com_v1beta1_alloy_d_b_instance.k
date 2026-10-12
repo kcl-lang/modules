@@ -117,11 +117,11 @@ schema AlloydbCnrmCloudGoogleComV1beta1AlloyDBInstanceSpecClusterRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        If provided must be in the format `projects/[projectId]/locations/[location]/clusters/[clusterId]`.
+        A reference to an externally managed AlloyDBCluster resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/clusters/{{clusterID}}".
     name : str, default is Undefined, optional
-        The `metadata.name` field of a `AlloyDBCluster` resource.
+        The name of an AlloyDBCluster resource.
     namespace : str, default is Undefined, optional
-        The `metadata.namespace` field of a `AlloyDBCluster` resource.
+        The namespace of an AlloyDBCluster resource.
     """
 
 

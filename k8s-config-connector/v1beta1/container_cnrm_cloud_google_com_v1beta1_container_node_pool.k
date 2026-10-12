@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ContainerNodePool:
     r"""
-    container cnrm cloud google com v1beta1 container node pool
+    ContainerNodePool is the Schema for the ContainerNodePool API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ContainerNodePool:
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpec:
     r"""
-    container cnrm cloud google com v1beta1 container node pool spec
+    ContainerNodePoolSpec defines the desired state of ContainerNodePool
 
     Attributes
     ----------
@@ -46,13 +46,13 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpec:
     clusterRef : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecClusterRef, default is Undefined, required
         cluster ref
     initialNodeCount : int, default is Undefined, optional
-        Immutable. The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone. Changing this will force recreation of the resource.
+        The initial node count for the pool. You must ensure that your Compute Engine resource quota is sufficient for this number of instances. You must also have available firewall and routes quota.
     location : str, default is Undefined, required
         Immutable. The location (region or zone) of the cluster.
     management : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecManagement, default is Undefined, optional
         management
     maxPodsPerNode : int, default is Undefined, optional
-        Immutable. The maximum number of pods per node in this node pool. Note that this does not work on node pools which are "route-based" - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
+        The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
     namePrefix : str, default is Undefined, optional
         Immutable. Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
     networkConfig : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfig, default is Undefined, optional
@@ -60,17 +60,19 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpec:
     nodeConfig : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfig, default is Undefined, optional
         node config
     nodeCount : int, default is Undefined, optional
-        The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
+        The node count of the pool.
     nodeLocations : [str], default is Undefined, optional
-        The list of zones in which the node pool's nodes should be located. Nodes must be in the region of their regional cluster or in the same region as their cluster's zone for zonal clusters. If unspecified, the cluster-level node_locations will be used.
+        The list of Google Compute Engine zones in which the NodePool's nodes should be located.
     placementPolicy : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecPlacementPolicy, default is Undefined, optional
         placement policy
+    queuedProvisioning : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecQueuedProvisioning, default is Undefined, optional
+        queued provisioning
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
     upgradeSettings : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecUpgradeSettings, default is Undefined, optional
         upgrade settings
     version : str, default is Undefined, optional
-        version
+        The version of Kubernetes running on this NodePool's nodes.
     """
 
 
@@ -98,6 +100,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpec:
 
     placementPolicy?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecPlacementPolicy
 
+    queuedProvisioning?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecQueuedProvisioning
+
     resourceID?: str
 
     upgradeSettings?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecUpgradeSettings
@@ -107,20 +111,20 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpec:
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecAutoscaling:
     r"""
-    Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage. To disable autoscaling, set minNodeCount and maxNodeCount to 0.
+    Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
 
     Attributes
     ----------
     locationPolicy : str, default is Undefined, optional
-        Location policy specifies the algorithm used when scaling-up the node pool. "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones. "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations, and reduces preemption risk for Spot VMs.
+        Location policy used when scaling up a nodepool.
     maxNodeCount : int, default is Undefined, optional
-        Maximum number of nodes per zone in the node pool. Must be >= min_node_count. Cannot be used with total limits.
+        Maximum number of nodes for one location in the node pool. Must be >= min_node_count. There has to be enough quota to scale up the cluster.
     minNodeCount : int, default is Undefined, optional
-        Minimum number of nodes per zone in the node pool. Must be >=0 and <= max_node_count. Cannot be used with total limits.
+        Minimum number of nodes for one location in the node pool. Must be greater than or equal to 0 and less than or equal to max_node_count.
     totalMaxNodeCount : int, default is Undefined, optional
-        Maximum number of all nodes in the node pool. Must be >= total_min_node_count. Cannot be used with per zone limits.
+        Maximum number of nodes in the node pool. Must be greater than or equal to total_min_node_count. There has to be enough quota to scale up the cluster. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
     totalMinNodeCount : int, default is Undefined, optional
-        Minimum number of all nodes in the node pool. Must be >=0 and <= total_max_node_count. Cannot be used with per zone limits.
+        Minimum number of nodes in the node pool. Must be greater than or equal to 0 and less than or equal to total_max_node_count. The total_*_node_count fields are mutually exclusive with the *_node_count fields.
     """
 
 
@@ -137,16 +141,16 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecAutoscaling:
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecClusterRef:
     r"""
-    container cnrm cloud google com v1beta1 container node pool spec cluster ref
+    The GKE cluster this node pool belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `ContainerCluster` resource.
+        The GKE cluster. Valid formats: `projects/{projectID}/locations/{location}/clusters/{clusterID}` `projects/{projectID}/zones/{zone}/clusters/{clusterID}`
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the project resource. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names */
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        Namespace of the project resource. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/ */
     """
 
 
@@ -159,14 +163,14 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecClusterRef:
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecManagement:
     r"""
-    Node management configuration, wherein auto-repair and auto-upgrade is configured.
+    NodeManagement configuration for this NodePool.
 
     Attributes
     ----------
     autoRepair : bool, default is Undefined, optional
-        Whether the nodes will be automatically repaired.
+        A flag that specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
     autoUpgrade : bool, default is Undefined, optional
-        Whether the nodes will be automatically upgraded.
+        A flag that specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
     """
 
 
@@ -182,19 +186,21 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfig:
     Attributes
     ----------
     additionalNodeNetworkConfigs : [ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigAdditionalNodeNetworkConfigsItems0], default is Undefined, optional
-        Immutable. We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
+        We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
     additionalPodNetworkConfigs : [ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigAdditionalPodNetworkConfigsItems0], default is Undefined, optional
-        Immutable. We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
+        We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
     createPodRange : bool, default is Undefined, optional
-        Immutable. Whether to create a new range for pod IPs in this node pool. Defaults are provided for pod_range and pod_ipv4_cidr_block if they are not specified.
+        Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
     enablePrivateNodes : bool, default is Undefined, optional
-        Whether nodes have internal IP addresses only.
+        Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from [Cluster.NetworkConfig.default_enable_private_nodes].
     podCidrOverprovisionConfig : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigPodCidrOverprovisionConfig, default is Undefined, optional
         pod cidr overprovision config
     podIpv4CidrBlock : str, default is Undefined, optional
-        Immutable. The IP address range for pod IPs in this node pool. Only applicable if create_pod_range is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+        The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
     podRange : str, default is Undefined, optional
-        Immutable. The ID of the secondary range for pod IPs. If create_pod_range is true, this ID is used for the new range. If create_pod_range is false, uses an existing secondary range with this ID.
+        The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
+    subnetworkRef : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigSubnetworkRef, default is Undefined, optional
+        subnetwork ref
     """
 
 
@@ -211,6 +217,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfig:
     podIpv4CidrBlock?: str
 
     podRange?: str
+
+    subnetworkRef?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigSubnetworkRef
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigAdditionalNodeNetworkConfigsItems0:
@@ -233,16 +241,16 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigAddit
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigAdditionalNodeNetworkConfigsItems0NetworkRef:
     r"""
-    Immutable. Name of the VPC where the additional interface belongs.
+    ComputeNetworkRef is a reference to a GCP ComputeNetwork.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -255,16 +263,16 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigAddit
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigAdditionalNodeNetworkConfigsItems0SubnetworkRef:
     r"""
-    Immutable. Name of the subnetwork where the additional interface belongs.
+    ComputeSubnetworkRef is a reference to a GCP ComputeSubnetwork.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeSubnetwork` resource.
+        A reference to an externally managed ComputeSubnetwork resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/subnetworks/{{subnetworkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeSubnetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeSubnetwork resource.
     """
 
 
@@ -282,9 +290,9 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigAddit
     Attributes
     ----------
     maxPodsPerNode : int, default is Undefined, optional
-        Immutable. The maximum number of pods per node which use this pod network.
+        The maximum number of pods per node which use this pod network.
     secondaryPodRange : str, default is Undefined, optional
-        Immutable. The name of the secondary range on the subnet which provides IP address for this pod range.
+        The name of the secondary range on the subnet which provides IP address for this pod range.
     subnetworkRef : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigAdditionalPodNetworkConfigsItems0SubnetworkRef, default is Undefined, optional
         subnetwork ref
     """
@@ -299,16 +307,16 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigAddit
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigAdditionalPodNetworkConfigsItems0SubnetworkRef:
     r"""
-    Immutable. Name of the subnetwork where the additional pod network belongs.
+    ComputeSubnetworkRef is a reference to a GCP ComputeSubnetwork.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeSubnetwork` resource.
+        A reference to an externally managed ComputeSubnetwork resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/subnetworks/{{subnetworkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeSubnetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeSubnetwork resource.
     """
 
 
@@ -321,7 +329,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigAddit
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigPodCidrOverprovisionConfig:
     r"""
-    Immutable. Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited.
+    [PRIVATE FIELD] Pod CIDR size overprovisioning config for the nodepool. Pod CIDR size per node depends on max_pods_per_node. By default, the value of max_pods_per_node is rounded off to next power of 2 and we then double that to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example: max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
 
     Attributes
     ----------
@@ -333,9 +341,31 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigPodCi
     disabled: bool
 
 
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNetworkConfigSubnetworkRef:
+    r"""
+    ComputeSubnetworkRef is a reference to a GCP ComputeSubnetwork.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed ComputeSubnetwork resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/subnetworks/{{subnetworkID}}".
+    name : str, default is Undefined, optional
+        The name of a ComputeSubnetwork resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a ComputeSubnetwork resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfig:
     r"""
-    Immutable. The configuration of the nodepool.
+    The node configuration of the pool.
 
     Attributes
     ----------
@@ -345,6 +375,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfig:
         boot disk k m s crypto key ref
     confidentialNodes : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigConfidentialNodes, default is Undefined, optional
         confidential nodes
+    containerdConfig : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfig, default is Undefined, optional
+        containerd config
     diskSizeGb : int, default is Undefined, optional
         Immutable. Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
     diskType : str, default is Undefined, optional
@@ -368,7 +400,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfig:
     kubeletConfig : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigKubeletConfig, default is Undefined, optional
         kubelet config
     labels : {str:str}, default is Undefined, optional
-        The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node.
+        Immutable. The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node.
     linuxNodeConfig : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLinuxNodeConfig, default is Undefined, optional
         linux node config
     localNvmeSsdBlockConfig : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLocalNvmeSsdBlockConfig, default is Undefined, optional
@@ -393,6 +425,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfig:
         reservation affinity
     resourceLabels : {str:str}, default is Undefined, optional
         The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
+    resourceManagerTags : {str:str}, default is Undefined, optional
+        The resource manager tags (a map of key/value pairs) to be applied to GKE nodes. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
     sandboxConfig : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigSandboxConfig, default is Undefined, optional
         sandbox config
     serviceAccountRef : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigServiceAccountRef, default is Undefined, optional
@@ -407,6 +441,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfig:
         The list of instance tags applied to all nodes.
     taint : [ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigTaintItems0], default is Undefined, optional
         List of Kubernetes taints to be applied to each node.
+    windowsNodeConfig : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigWindowsNodeConfig, default is Undefined, optional
+        windows node config
     workloadMetadataConfig : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigWorkloadMetadataConfig, default is Undefined, optional
         workload metadata config
     """
@@ -417,6 +453,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfig:
     bootDiskKMSCryptoKeyRef?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigBootDiskKMSCryptoKeyRef
 
     confidentialNodes?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigConfidentialNodes
+
+    containerdConfig?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfig
 
     diskSizeGb?: int
 
@@ -466,6 +504,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfig:
 
     resourceLabels?: {str:str}
 
+    resourceManagerTags?: {str:str}
+
     sandboxConfig?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigSandboxConfig
 
     serviceAccountRef?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigServiceAccountRef
@@ -479,6 +519,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfig:
     tags?: [str]
 
     taint?: [ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigTaintItems0]
+
+    windowsNodeConfig?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigWindowsNodeConfig
 
     workloadMetadataConfig?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigWorkloadMetadataConfig
 
@@ -503,16 +545,16 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigAdvanced
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigBootDiskKMSCryptoKeyRef:
     r"""
-    container cnrm cloud google com v1beta1 container node pool spec node config boot disk k m s crypto key ref
+    Immutable. Cryptographic key used to encrypt the boot disk.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `KMSCryptoKey` resource.
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` of a `KMSCryptoKey` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` of a `KMSCryptoKey` resource.
     """
 
 
@@ -529,12 +571,324 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigConfiden
 
     Attributes
     ----------
+    confidentialInstanceType : str, default is Undefined, optional
+        Immutable. Defines the type of technology used by the confidential node.
     enabled : bool, default is Undefined, required
         Immutable. Whether Confidential Nodes feature is enabled for all nodes in this pool.
     """
 
 
+    confidentialInstanceType?: str
+
     enabled: bool
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfig:
+    r"""
+    Parameters for containerd customization.
+
+    Attributes
+    ----------
+    privateRegistryAccessConfig : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigPrivateRegistryAccessConfig, default is Undefined, optional
+        private registry access config
+    registryHosts : [ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0], default is Undefined, optional
+        Configures containerd registry host configuration. Each registryHosts entry represents a hosts.toml file.
+    writableCgroups : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigWritableCgroups, default is Undefined, optional
+        writable cgroups
+    """
+
+
+    privateRegistryAccessConfig?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigPrivateRegistryAccessConfig
+
+    registryHosts?: [ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0]
+
+    writableCgroups?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigWritableCgroups
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigPrivateRegistryAccessConfig:
+    r"""
+    Parameters for private container registries configuration.
+
+    Attributes
+    ----------
+    certificateAuthorityDomainConfig : [ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigItems0], default is Undefined, optional
+        Private registry access configuration.
+    enabled : bool, default is Undefined, optional
+        Private registry access is enabled.
+    """
+
+
+    certificateAuthorityDomainConfig?: [ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigItems0]
+
+    enabled?: bool
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigItems0:
+    r"""
+    container cnrm cloud google com v1beta1 container node pool spec node config containerd config private registry access config certificate authority domain config items0
+
+    Attributes
+    ----------
+    fqdns : [str], default is Undefined, optional
+        List of fully qualified domain names (FQDN). Specifying port is supported. Wildcards are NOT supported.
+    gcpSecretManagerCertificateConfig : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigItems0GcpSecretManagerCertificateConfig, default is Undefined, optional
+        gcp secret manager certificate config
+    """
+
+
+    fqdns?: [str]
+
+    gcpSecretManagerCertificateConfig?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigItems0GcpSecretManagerCertificateConfig
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigItems0GcpSecretManagerCertificateConfig:
+    r"""
+    Google Secret Manager (GCP) certificate configuration.
+
+    Attributes
+    ----------
+    secretRef : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigItems0GcpSecretManagerCertificateConfigSecretRef, default is Undefined, optional
+        secret ref
+    """
+
+
+    secretRef?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigItems0GcpSecretManagerCertificateConfigSecretRef
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigItems0GcpSecretManagerCertificateConfigSecretRef:
+    r"""
+    SecretRef is a reference to a SecretManagerSecretVersion resource.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+         If provided must be in the format `projects/*/secrets/*/versions/*`.
+    name : str, default is Undefined, optional
+        The `name` field of a `SecretManagerSecretVersion` resource.
+    namespace : str, default is Undefined, optional
+        The `metadata.namespace` field of a `SecretManagerSecretVersion` resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0:
+    r"""
+    container cnrm cloud google com v1beta1 container node pool spec node config containerd config registry hosts items0
+
+    Attributes
+    ----------
+    hosts : [ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0], default is Undefined, optional
+        Configures a list of host-specific configurations for the server.
+    server : str, default is Undefined, optional
+        Defines the host name of the registry server.
+    """
+
+
+    hosts?: [ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0]
+
+    server?: str
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0:
+    r"""
+    container cnrm cloud google com v1beta1 container node pool spec node config containerd config registry hosts items0 hosts items0
+
+    Attributes
+    ----------
+    ca : [ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0CaItems0], default is Undefined, optional
+        Configures the registry host certificate.
+    capabilities : [str], default is Undefined, optional
+        Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+    client : [ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0ClientItems0], default is Undefined, optional
+        Configures the registry host client certificate and key.
+    dialTimeout : str, default is Undefined, optional
+        Specifies the maximum duration allowed for a connection attempt to complete.
+    header : [ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0HeaderItems0], default is Undefined, optional
+        Configures the registry host headers.
+    host : str, default is Undefined, optional
+        Configures the registry host/mirror.
+    overridePath : bool, default is Undefined, optional
+        Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+    """
+
+
+    ca?: [ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0CaItems0]
+
+    capabilities?: [str]
+
+    client?: [ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0ClientItems0]
+
+    dialTimeout?: str
+
+    header?: [ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0HeaderItems0]
+
+    host?: str
+
+    overridePath?: bool
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0CaItems0:
+    r"""
+    container cnrm cloud google com v1beta1 container node pool spec node config containerd config registry hosts items0 hosts items0 ca items0
+
+    Attributes
+    ----------
+    secretRef : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0CaItems0SecretRef, default is Undefined, optional
+        secret ref
+    """
+
+
+    secretRef?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0CaItems0SecretRef
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0CaItems0SecretRef:
+    r"""
+    Reference to SecretManagerSecretVersion for the CA certificate.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+         If provided must be in the format `projects/*/secrets/*/versions/*`.
+    name : str, default is Undefined, optional
+        The `name` field of a `SecretManagerSecretVersion` resource.
+    namespace : str, default is Undefined, optional
+        The `metadata.namespace` field of a `SecretManagerSecretVersion` resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0ClientItems0:
+    r"""
+    container cnrm cloud google com v1beta1 container node pool spec node config containerd config registry hosts items0 hosts items0 client items0
+
+    Attributes
+    ----------
+    cert : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0ClientItems0Cert, default is Undefined, optional
+        cert
+    key : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0ClientItems0Key, default is Undefined, optional
+        key
+    """
+
+
+    cert?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0ClientItems0Cert
+
+    key?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0ClientItems0Key
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0ClientItems0Cert:
+    r"""
+    Configures the client certificate.
+
+    Attributes
+    ----------
+    secretRef : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0ClientItems0CertSecretRef, default is Undefined, optional
+        secret ref
+    """
+
+
+    secretRef?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0ClientItems0CertSecretRef
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0ClientItems0CertSecretRef:
+    r"""
+    Reference to SecretManagerSecretVersion for the client certificate.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+         If provided must be in the format `projects/*/secrets/*/versions/*`.
+    name : str, default is Undefined, optional
+        The `name` field of a `SecretManagerSecretVersion` resource.
+    namespace : str, default is Undefined, optional
+        The `metadata.namespace` field of a `SecretManagerSecretVersion` resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0ClientItems0Key:
+    r"""
+    Configures the client private key.
+
+    Attributes
+    ----------
+    secretRef : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0ClientItems0KeySecretRef, default is Undefined, optional
+        secret ref
+    """
+
+
+    secretRef?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0ClientItems0KeySecretRef
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0ClientItems0KeySecretRef:
+    r"""
+    Reference to SecretManagerSecretVersion for the client key.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+         If provided must be in the format `projects/*/secrets/*/versions/*`.
+    name : str, default is Undefined, optional
+        The `name` field of a `SecretManagerSecretVersion` resource.
+    namespace : str, default is Undefined, optional
+        The `metadata.namespace` field of a `SecretManagerSecretVersion` resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigRegistryHostsItems0HostsItems0HeaderItems0:
+    r"""
+    container cnrm cloud google com v1beta1 container node pool spec node config containerd config registry hosts items0 hosts items0 header items0
+
+    Attributes
+    ----------
+    key : str, default is Undefined, optional
+        Configures the header key.
+    value : [str], default is Undefined, optional
+        Configures the header value.
+    """
+
+
+    key?: str
+
+    value?: [str]
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigContainerdConfigWritableCgroups:
+    r"""
+    Parameters for writable cgroups configuration.
+
+    Attributes
+    ----------
+    enabled : bool, default is Undefined, optional
+        Whether writable cgroups are enabled.
+    """
+
+
+    enabled?: bool
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigEphemeralStorageConfig:
@@ -557,10 +911,14 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigEphemera
 
     Attributes
     ----------
+    dataCacheCount : int, default is Undefined, optional
+        Immutable. Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
     localSsdCount : int, default is Undefined, required
         Immutable. Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
     """
 
+
+    dataCacheCount?: int
 
     localSsdCount: int
 
@@ -586,7 +944,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigGcfsConf
     Attributes
     ----------
     enabled : bool, default is Undefined, required
-        Immutable. Whether or not GCFS is enabled.
+        Whether or not GCFS is enabled.
     """
 
 
@@ -695,6 +1053,14 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigKubeletC
         Set the CPU CFS quota period value 'cpu.cfs_period_us'.
     cpuManagerPolicy : str, default is Undefined, required
         Control the CPU management policy on the node.
+    imageGcHighThresholdPercent : int, default is Undefined, optional
+        Percent of disk usage after which image garbage collection is always run.
+    imageGcLowThresholdPercent : int, default is Undefined, optional
+        Percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
+    imageMaximumGcAge : str, default is Undefined, optional
+        Maximum age an image can be unused before it is garbage collected.
+    imageMinimumGcAge : str, default is Undefined, optional
+        Minimum age for an unused image before it is garbage collected.
     podPidsLimit : int, default is Undefined, optional
         Controls the maximum number of processes allowed to run in a pod.
     """
@@ -705,6 +1071,14 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigKubeletC
     cpuCfsQuotaPeriod?: str
 
     cpuManagerPolicy: str
+
+    imageGcHighThresholdPercent?: int
+
+    imageGcLowThresholdPercent?: int
+
+    imageMaximumGcAge?: str
+
+    imageMinimumGcAge?: str
 
     podPidsLimit?: int
 
@@ -717,6 +1091,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLinuxNod
     ----------
     cgroupMode : str, default is Undefined, optional
         cgroupMode specifies the cgroup mode to be used on the node.
+    swapConfig : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLinuxNodeConfigSwapConfig, default is Undefined, optional
+        swap config
     sysctls : {str:str}, default is Undefined, optional
         The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
     """
@@ -724,7 +1100,103 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLinuxNod
 
     cgroupMode?: str
 
+    swapConfig?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLinuxNodeConfigSwapConfig
+
     sysctls?: {str:str}
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLinuxNodeConfigSwapConfig:
+    r"""
+    SwapConfig specifies the swap configuration on the nodes.
+
+    Attributes
+    ----------
+    bootDiskProfile : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile, default is Undefined, optional
+        boot disk profile
+    dedicatedLocalSsdProfile : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile, default is Undefined, optional
+        dedicated local ssd profile
+    enabled : bool, default is Undefined, optional
+        Whether swap is enabled.
+    encryptionConfig : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig, default is Undefined, optional
+        encryption config
+    ephemeralLocalSsdProfile : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile, default is Undefined, optional
+        ephemeral local ssd profile
+    """
+
+
+    bootDiskProfile?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile
+
+    dedicatedLocalSsdProfile?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile
+
+    enabled?: bool
+
+    encryptionConfig?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig
+
+    ephemeralLocalSsdProfile?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile:
+    r"""
+    BootDiskProfile specifies the configuration for swap on the node's boot disk.
+
+    Attributes
+    ----------
+    swapSizeGib : int, default is Undefined, optional
+        Swap size in GiB.
+    swapSizePercent : int, default is Undefined, optional
+        Swap size as a percentage of the boot disk size.
+    """
+
+
+    swapSizeGib?: int
+
+    swapSizePercent?: int
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile:
+    r"""
+    DedicatedLocalSsdProfile specifies the configuration for swap on dedicated local NVMe SSDs.
+
+    Attributes
+    ----------
+    diskCount : int, default is Undefined, optional
+        The number of physical local NVMe SSD disks to attach.
+    """
+
+
+    diskCount?: int
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig:
+    r"""
+    EncryptionConfig specifies the encryption configuration for swap.
+
+    Attributes
+    ----------
+    disabled : bool, default is Undefined, optional
+        If true, swap space will not be encrypted.
+    """
+
+
+    disabled?: bool
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile:
+    r"""
+    EphemeralLocalSsdProfile specifies the configuration for swap on ephemeral local SSDs.
+
+    Attributes
+    ----------
+    swapSizeGib : int, default is Undefined, optional
+        Swap size in GiB.
+    swapSizePercent : int, default is Undefined, optional
+        Swap size as a percentage of the ephemeral local SSD capacity.
+    """
+
+
+    swapSizeGib?: int
+
+    swapSizePercent?: int
 
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLocalNvmeSsdBlockConfig:
@@ -743,18 +1215,16 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigLocalNvm
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigNodeGroupRef:
     r"""
-    Immutable. Setting this field will assign instances
-    of this pool to run on the specified node group. This is useful
-    for running workloads on sole tenant nodes.
+    Immutable. Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `ComputeNodeGroup` resource.
+        A reference to an externally managed ComputeNodeGroup resource. Should be in the format "projects/{{projectID}}/zones/{{zone}}/nodeGroups/{{nodeGroupID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNodeGroup resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNodeGroup resource.
     """
 
 
@@ -808,7 +1278,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigServiceA
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `email` field of an `IAMServiceAccount` resource.
+        The `email` field of an `IAMServiceAccount` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -899,6 +1369,20 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigTaintIte
     value: str
 
 
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigWindowsNodeConfig:
+    r"""
+    Parameters that can be configured on Windows nodes.
+
+    Attributes
+    ----------
+    osVersion : str, default is Undefined, optional
+        Operating system version of the Windows nodes.
+    """
+
+
+    osVersion?: str
+
+
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigWorkloadMetadataConfig:
     r"""
     The workload metadata configuration for this node.
@@ -919,16 +1403,16 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecNodeConfigWorkload
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecPlacementPolicy:
     r"""
-    Immutable. Specifies the node placement policy.
+    Specifies the node placement policy.
 
     Attributes
     ----------
     policyNameRef : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecPlacementPolicyPolicyNameRef, default is Undefined, optional
         policy name ref
     tpuTopology : str, default is Undefined, optional
-        TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies.
+        Optional. TPU placement topology for pod slice node pool.
     $type : str, default is Undefined, required
-        Type defines the type of placement policy.
+        The type of placement.
     """
 
 
@@ -941,16 +1425,16 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecPlacementPolicy:
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecPlacementPolicyPolicyNameRef:
     r"""
-    Immutable. If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
+    If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeResourcePolicy` resource.
+        A reference to an externally managed ComputeResourcePolicy resource. Should be in the format "projects/{project}/regions/{region}/resourcePolicies/{resourcePolicy}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeResourcePolicy resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeResourcePolicy resource.
     """
 
 
@@ -961,20 +1445,34 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecPlacementPolicyPol
     namespace?: str
 
 
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecQueuedProvisioning:
+    r"""
+    Immutable. Specifies the configuration of queued provisioning.
+
+    Attributes
+    ----------
+    enabled : bool, default is Undefined, optional
+        Immutable. Denotes that this node pool is QRM specific, meaning nodes can be only obtained through queuing via the Cluster Autoscaler ProvisioningRequest API.
+    """
+
+
+    enabled?: bool
+
+
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecUpgradeSettings:
     r"""
-    Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
+    Upgrade settings control disruption and speed of the upgrade.
 
     Attributes
     ----------
     blueGreenSettings : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecUpgradeSettingsBlueGreenSettings, default is Undefined, optional
         blue green settings
     maxSurge : int, default is Undefined, optional
-        The number of additional nodes that can be added to the node pool during an upgrade. Increasing max_surge raises the number of nodes that can be upgraded simultaneously. Can be set to 0 or greater.
+        The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
     maxUnavailable : int, default is Undefined, optional
-        The number of nodes that can be simultaneously unavailable during an upgrade. Increasing max_unavailable raises the number of nodes that can be upgraded in parallel. Can be set to 0 or greater.
+        The maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready.
     strategy : str, default is Undefined, optional
-        Update strategy for the given nodepool.
+        Update strategy of the node pool.
     """
 
 
@@ -989,7 +1487,7 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecUpgradeSettings:
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecUpgradeSettingsBlueGreenSettings:
     r"""
-    Settings for BlueGreen node pool upgrade.
+    Settings for blue-green upgrade strategy.
 
     Attributes
     ----------
@@ -1007,16 +1505,16 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecUpgradeSettingsBlu
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy:
     r"""
-    Standard rollout policy is the default policy for blue-green.
+    Standard policy for the blue-green upgrade.
 
     Attributes
     ----------
     batchNodeCount : int, default is Undefined, optional
         Number of blue nodes to drain in a batch.
     batchPercentage : float, default is Undefined, optional
-        Percentage of the blue pool nodes to drain in a batch.
+        Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
     batchSoakDuration : str, default is Undefined, optional
-        Soak time after each batch gets drained.
+        Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
     """
 
 
@@ -1029,12 +1527,14 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolSpecUpgradeSettingsBlu
 
 schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolStatus:
     r"""
-    container cnrm cloud google com v1beta1 container node pool status
+    ContainerNodePoolStatus defines the config connector machine state of ContainerNodePool
 
     Attributes
     ----------
     conditions : [ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ContainerNodePool's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the ContainerNodePool resource in GCP.
     instanceGroupUrls : [str], default is Undefined, optional
         The resource URLs of the managed instance groups associated with this node pool.
     managedInstanceGroupUrls : [str], default is Undefined, optional
@@ -1049,6 +1549,8 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolStatus:
 
 
     conditions?: [ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolStatusConditionsItems0]
+
+    externalRef?: str
 
     instanceGroupUrls?: [str]
 
@@ -1097,11 +1599,51 @@ schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolStatusObservedState:
 
     Attributes
     ----------
+    nodeConfig : ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolStatusObservedStateNodeConfig, default is Undefined, optional
+        node config
     version : str, default is Undefined, optional
         version
     """
 
 
+    nodeConfig?: ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolStatusObservedStateNodeConfig
+
     version?: str
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolStatusObservedStateNodeConfig:
+    r"""
+    The observed node config of the GKE node pool.
+
+    Attributes
+    ----------
+    taint : [ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolStatusObservedStateNodeConfigTaintItems0], default is Undefined, optional
+        List of Kubernetes taints to be applied to each node.
+    """
+
+
+    taint?: [ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolStatusObservedStateNodeConfigTaintItems0]
+
+
+schema ContainerCnrmCloudGoogleComV1beta1ContainerNodePoolStatusObservedStateNodeConfigTaintItems0:
+    r"""
+    container cnrm cloud google com v1beta1 container node pool status observed state node config taint items0
+
+    Attributes
+    ----------
+    effect : str, default is Undefined, required
+        Effect for taint.
+    key : str, default is Undefined, required
+        Key for taint.
+    value : str, default is Undefined, required
+        Value for taint.
+    """
+
+
+    effect: str
+
+    key: str
+
+    value: str
 
 

@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema KMSCryptoKey:
     r"""
-    kms cnrm cloud google com v1beta1 k m s crypto key
+    KMSCryptoKey is the Schema for the KMSCryptoKey API
 
     Attributes
     ----------
@@ -37,32 +37,24 @@ schema KMSCryptoKey:
 
 schema KmsCnrmCloudGoogleComV1beta1KMSCryptoKeySpec:
     r"""
-    kms cnrm cloud google com v1beta1 k m s crypto key spec
+    KMSCryptoKeySpec defines the desired state of KMSCryptoKey
 
     Attributes
     ----------
     destroyScheduledDuration : str, default is Undefined, optional
-        Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
-        If not specified at creation time, the default duration is 24 hours.
+        Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
     importOnly : bool, default is Undefined, optional
         Immutable. Whether this key may contain imported versions only.
     keyRingRef : KmsCnrmCloudGoogleComV1beta1KMSCryptoKeySpecKeyRingRef, default is Undefined, required
         key ring ref
     purpose : str, default is Undefined, optional
-        Immutable. The immutable purpose of this CryptoKey. See the
-        [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
-        for possible inputs.
-        Default value is "ENCRYPT_DECRYPT".
+        Immutable. The immutable purpose of this CryptoKey. See the [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose) for possible inputs. Default value is "ENCRYPT_DECRYPT".
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
     rotationPeriod : str, default is Undefined, optional
-        Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
-        The first rotation will take place after the specified period. The rotation period has
-        the format of a decimal number with up to 9 fractional digits, followed by the
-        letter 's' (seconds). It must be greater than a day (ie, 86400).
+        Every time this period passes, generate a new CryptoKeyVersion and set it as the primary. The first rotation will take place after the specified period. The rotation period has the format of a decimal number with up to 9 fractional digits, followed by the letter 's' (seconds). It must be greater than a day (ie, 86400).
     skipInitialVersionCreation : bool, default is Undefined, optional
-        Immutable. If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-        You must use the 'google_kms_key_ring_import_job' resource to import the CryptoKeyVersion.
+        Immutable. If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must use the 'google_kms_key_ring_import_job' resource to import the CryptoKeyVersion.
     versionTemplate : KmsCnrmCloudGoogleComV1beta1KMSCryptoKeySpecVersionTemplate, default is Undefined, optional
         version template
     """
@@ -92,11 +84,11 @@ schema KmsCnrmCloudGoogleComV1beta1KMSCryptoKeySpecKeyRingRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `KMSKeyRing` resource.
+        A reference to an externally managed KMSKeyRing resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/keyRings/{{keyRingID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a KMSKeyRing resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a KMSKeyRing resource.
     """
 
 
@@ -114,8 +106,7 @@ schema KmsCnrmCloudGoogleComV1beta1KMSCryptoKeySpecVersionTemplate:
     Attributes
     ----------
     algorithm : str, default is Undefined, required
-        The algorithm to use when creating a version based on this template.
-        See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
+        The algorithm to use when creating a version based on this template. See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
     protectionLevel : str, default is Undefined, optional
         Immutable. The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
     """
@@ -128,12 +119,12 @@ schema KmsCnrmCloudGoogleComV1beta1KMSCryptoKeySpecVersionTemplate:
 
 schema KmsCnrmCloudGoogleComV1beta1KMSCryptoKeyStatus:
     r"""
-    kms cnrm cloud google com v1beta1 k m s crypto key status
+    KMSCryptoKeyStatus defines the config connector machine state of KMSCryptoKey
 
     Attributes
     ----------
     conditions : [KmsCnrmCloudGoogleComV1beta1KMSCryptoKeyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     selfLink : str, default is Undefined, optional

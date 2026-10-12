@@ -41,16 +41,24 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSAutokeyConfigSpec:
 
     Attributes
     ----------
-    folderRef : KmsCnrmCloudGoogleComV1alpha1KMSAutokeyConfigSpecFolderRef, default is Undefined, required
+    folderRef : KmsCnrmCloudGoogleComV1alpha1KMSAutokeyConfigSpecFolderRef, default is Undefined, optional
         folder ref
     keyProject : KmsCnrmCloudGoogleComV1alpha1KMSAutokeyConfigSpecKeyProject, default is Undefined, optional
         key project
+    keyProjectResolutionMode : str, default is Undefined, optional
+        key project resolution mode
+    projectRef : KmsCnrmCloudGoogleComV1alpha1KMSAutokeyConfigSpecProjectRef, default is Undefined, optional
+        project ref
     """
 
 
-    folderRef: KmsCnrmCloudGoogleComV1alpha1KMSAutokeyConfigSpecFolderRef
+    folderRef?: KmsCnrmCloudGoogleComV1alpha1KMSAutokeyConfigSpecFolderRef
 
     keyProject?: KmsCnrmCloudGoogleComV1alpha1KMSAutokeyConfigSpecKeyProject
+
+    keyProjectResolutionMode?: str
+
+    projectRef?: KmsCnrmCloudGoogleComV1alpha1KMSAutokeyConfigSpecProjectRef
 
 
 schema KmsCnrmCloudGoogleComV1alpha1KMSAutokeyConfigSpecFolderRef:
@@ -78,6 +86,32 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSAutokeyConfigSpecFolderRef:
 schema KmsCnrmCloudGoogleComV1alpha1KMSAutokeyConfigSpecKeyProject:
     r"""
     The Project that this resource belongs to.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
+    name : str, default is Undefined, optional
+        The `name` field of a `Project` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `Project` resource.
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema KmsCnrmCloudGoogleComV1alpha1KMSAutokeyConfigSpecProjectRef:
+    r"""
+    Immutable. The project that this resource belongs to.
 
     Attributes
     ----------

@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeSnapshot:
     r"""
-    compute cnrm cloud google com v1beta1 compute snapshot
+    ComputeSnapshot is the Schema for the ComputeSnapshot API
 
     Attributes
     ----------
@@ -37,17 +37,12 @@ schema ComputeSnapshot:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute snapshot spec
+    ComputeSnapshotSpec defines the desired state of ComputeSnapshot
 
     Attributes
     ----------
     chainName : str, default is Undefined, optional
-        Immutable. Creates the new snapshot in the snapshot chain labeled with the
-        specified name. The chain name must be 1-63 characters long and
-        comply with RFC1035. This is an uncommon option only for advanced
-        service owners who needs to create separate snapshot chains, for
-        example, for chargeback tracking.  When you describe your snapshot
-        resource, this field is visible only if it has a non-empty value.
+        Immutable. Creates the new snapshot in the snapshot chain labeled with the specified name. The chain name must be 1-63 characters long and comply with RFC1035. This is an uncommon option only for advanced service owners who needs to create separate snapshot chains, for example, for chargeback tracking.  When you describe your snapshot resource, this field is visible only if it has a non-empty value.
     description : str, default is Undefined, optional
         Immutable. An optional description of this resource.
     resourceID : str, default is Undefined, optional
@@ -107,8 +102,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSnapshotEncryptionKey:
     rawKey : ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSnapshotEncryptionKeyRawKey, default is Undefined, optional
         raw key
     sha256 : str, default is Undefined, optional
-        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
-        encryption key that protects this resource.
+        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
     """
 
 
@@ -128,11 +122,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSnapshotEncryptionKeyK
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `KMSCryptoKey` resource.
+        A reference to an externally managed KMSCryptoKey resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptokey}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a KMSCryptoKey resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a KMSCryptoKey resource.
     """
 
 
@@ -145,13 +139,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSnapshotEncryptionKeyK
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSnapshotEncryptionKeyKmsKeyServiceAccountRef:
     r"""
-    The service account used for the encryption request for the given KMS key.
-    If absent, the Compute Engine Service Agent service account is used.
+    The service account used for the encryption request for the given KMS key. If absent, the Compute Engine Service Agent service account is used.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `email` field of an `IAMServiceAccount` resource.
+        The `email` field of an `IAMServiceAccount` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -168,8 +161,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSnapshotEncryptionKeyK
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSnapshotEncryptionKeyRawKey:
     r"""
-    Immutable. Specifies a 256-bit customer-supplied encryption key, encoded in
-    RFC 4648 base64 to either encrypt or decrypt this resource.
+    Immutable. Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
 
     Attributes
     ----------
@@ -219,9 +211,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSnapshotEncryptionKeyR
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSourceDiskEncryptionKey:
     r"""
-    Immutable. The customer-supplied encryption key of the source snapshot. Required
-    if the source snapshot is protected by a customer-supplied encryption
-    key.
+    Immutable. The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
 
     Attributes
     ----------
@@ -239,13 +229,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSourceDiskEncryptionKe
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSourceDiskEncryptionKeyKmsKeyServiceAccountRef:
     r"""
-    The service account used for the encryption request for the given KMS key.
-    If absent, the Compute Engine Service Agent service account is used.
+    The service account used for the encryption request for the given KMS key. If absent, the Compute Engine Service Agent service account is used.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `email` field of an `IAMServiceAccount` resource.
+        The `email` field of an `IAMServiceAccount` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -262,8 +251,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSourceDiskEncryptionKe
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSourceDiskEncryptionKeyRawKey:
     r"""
-    Immutable. Specifies a 256-bit customer-supplied encryption key, encoded in
-    RFC 4648 base64 to either encrypt or decrypt this resource.
+    Immutable. Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
 
     Attributes
     ----------
@@ -318,11 +306,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSourceDiskRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `ComputeDisk` resource.
+        A reference to an externally managed ComputeDisk resource. Should be in the format "projects/{{projectID}}/zones/{{zone}}/disks/{{diskID}}" or "projects/{{projectID}}/regions/{{region}}/disks/{{diskID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeDisk resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeDisk resource.
     """
 
 
@@ -335,24 +323,20 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotSpecSourceDiskRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute snapshot status
+    ComputeSnapshotStatus defines the config connector machine state of ComputeSnapshot
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeSnapshot's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
     diskSizeGb : int, default is Undefined, optional
         Size of the snapshot, specified in GB.
     labelFingerprint : str, default is Undefined, optional
-        The fingerprint used for optimistic locking of this resource. Used
-        internally during updates.
+        The fingerprint used for optimistic locking of this resource. Used internally during updates.
     licenses : [str], default is Undefined, optional
-        A list of public visible licenses that apply to this snapshot. This
-        can be because the original image had licenses attached (such as a
-        Windows image).  snapshotEncryptionKey nested object Encrypts the
-        snapshot using a customer-supplied encryption key.
+        A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses attached (such as a Windows image).  snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied encryption key.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     selfLink : str, default is Undefined, optional
@@ -360,9 +344,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSnapshotStatus:
     snapshotId : int, default is Undefined, optional
         The unique identifier for the resource.
     storageBytes : int, default is Undefined, optional
-        A size of the storage used by the snapshot. As snapshots share
-        storage, this number is expected to change with snapshot
-        creation/deletion.
+        A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot creation/deletion.
     """
 
 

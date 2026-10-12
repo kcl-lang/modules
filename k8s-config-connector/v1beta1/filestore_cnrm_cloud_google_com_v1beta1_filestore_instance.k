@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema FilestoreInstance:
     r"""
-    filestore cnrm cloud google com v1beta1 filestore instance
+    FilestoreInstance is the Schema for the FilestoreInstance API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema FilestoreInstance:
 
 schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceSpec:
     r"""
-    filestore cnrm cloud google com v1beta1 filestore instance spec
+    FilestoreInstanceSpec defines the desired state of FilestoreInstance
 
     Attributes
     ----------
@@ -136,13 +136,11 @@ schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceSpecFileSharesItems0So
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
-
-        Allowed value: The Google Cloud resource name of a `FilestoreBackup` resource (format: `projects/{{project}}/locations/{{location}}/backups/{{name}}`).
+        A reference to an externally managed FilestoreBackup resource. Allowed value: string of the format `projects/{{project}}/locations/{{location}}/backups/{{value}}`, where {{value}} is the `name` field of a `FilestoreBackup` resource.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a FilestoreBackup resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a FilestoreBackup resource.
     """
 
 
@@ -186,13 +184,11 @@ schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceSpecNetworksItems0Netw
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected.
-
-        Allowed value: The Google Cloud resource name of a `ComputeNetwork` resource (format: `projects/{{project}}/global/networks/{{name}}`).
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -210,13 +206,11 @@ schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceSpecProjectRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The project for the resource
-
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -229,16 +223,18 @@ schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceSpecProjectRef:
 
 schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceStatus:
     r"""
-    filestore cnrm cloud google com v1beta1 filestore instance status
+    FilestoreInstanceStatus defines the config connector machine state of FilestoreInstance
 
     Attributes
     ----------
     conditions : [FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the FilestoreInstance's current state.
     createTime : str, default is Undefined, optional
         Output only. The time when the instance was created.
     etag : str, default is Undefined, optional
         Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the FilestoreInstance resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     state : str, default is Undefined, optional
@@ -253,6 +249,8 @@ schema FilestoreCnrmCloudGoogleComV1beta1FilestoreInstanceStatus:
     createTime?: str
 
     etag?: str
+
+    externalRef?: str
 
     observedGeneration?: int
 

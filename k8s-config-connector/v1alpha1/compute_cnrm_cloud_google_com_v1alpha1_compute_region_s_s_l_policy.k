@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeRegionSSLPolicy:
     r"""
-    compute cnrm cloud google com v1alpha1 compute region s s l policy
+    ComputeRegionSSLPolicy is the Schema for the ComputeRegionSSLPolicy API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeRegionSSLPolicy:
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionSSLPolicySpec:
     r"""
-    compute cnrm cloud google com v1alpha1 compute region s s l policy spec
+    ComputeRegionSSLPolicySpec defines the desired state of ComputeRegionSSLPolicy
 
     Attributes
     ----------
@@ -53,8 +53,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionSSLPolicySpec:
     description : str, default is Undefined, optional
         Immutable. An optional description of this resource.
     minTlsVersion : str, default is Undefined, optional
-        The minimum version of SSL protocol that can be used by the clients
-        to establish a connection with the load balancer. Default value: "TLS_1_0" Possible values: ["TLS_1_0", "TLS_1_1", "TLS_1_2"].
+        The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. Default value: "TLS_1_0" Possible values: ["TLS_1_0", "TLS_1_1", "TLS_1_2"].
     profile : str, default is Undefined, optional
         Profile specifies the set of SSL features that can be used by the
         load balancer when negotiating SSL with clients. If using 'CUSTOM',
@@ -95,11 +94,11 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionSSLPolicySpecProjectRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -112,19 +111,18 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionSSLPolicySpecProjectRef:
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionSSLPolicyStatus:
     r"""
-    compute cnrm cloud google com v1alpha1 compute region s s l policy status
+    ComputeRegionSSLPolicyStatus defines the config connector machine state of ComputeRegionSSLPolicy
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1alpha1ComputeRegionSSLPolicyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeRegionSSLPolicy's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
     enabledFeatures : [str], default is Undefined, optional
         The list of features enabled in the SSL policy.
     fingerprint : str, default is Undefined, optional
-        Fingerprint of this resource. A hash of the contents stored in this
-        object. This field is used in optimistic locking.
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     selfLink : str, default is Undefined, optional

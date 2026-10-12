@@ -44,7 +44,7 @@ schema ConfigdeliveryCnrmCloudGoogleComV1alpha1ConfigDeliveryResourceBundleSpec:
     description : str, default is Undefined, optional
         Optional. Human readable description of the `ResourceBundle`.
     location : str, default is Undefined, required
-        location
+        The location that this resource belongs to.
     projectRef : ConfigdeliveryCnrmCloudGoogleComV1alpha1ConfigDeliveryResourceBundleSpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional

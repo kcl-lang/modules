@@ -90,7 +90,7 @@ schema StorageCnrmCloudGoogleComV1alpha1StorageFolderSpecStoragebucketRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        A reference to an externally-managed StorageBucket resource.
+        A reference to an externally managed StorageBucket resource. Should be in the format "projects/{{projectID}}/buckets/{{bucketID}}".
     name : str, default is Undefined, optional
         The name of a StorageBucket resource.
     namespace : str, default is Undefined, optional

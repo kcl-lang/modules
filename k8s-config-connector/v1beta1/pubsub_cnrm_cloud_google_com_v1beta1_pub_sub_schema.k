@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema PubSubSchema:
     r"""
-    pubsub cnrm cloud google com v1beta1 pub sub schema
+    PubSubSchema is the Schema for the PubSubSchema API
 
     Attributes
     ----------
@@ -37,20 +37,18 @@ schema PubSubSchema:
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubSchemaSpec:
     r"""
-    pubsub cnrm cloud google com v1beta1 pub sub schema spec
+    PubSubSchemaSpec defines the desired state of PubSubSchema
 
     Attributes
     ----------
     definition : str, default is Undefined, optional
-        The definition of the schema.
-        This should contain a string representing the full definition of the schema
-        that is a valid schema definition of the type specified in type.
+        The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
     projectRef : PubsubCnrmCloudGoogleComV1beta1PubSubSchemaSpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The PubSubSchema name. If not given, the metadata.name will be used.
     $type : str, default is Undefined, optional
-        The type of the schema definition Default value: "TYPE_UNSPECIFIED" Possible values: ["TYPE_UNSPECIFIED", "PROTOCOL_BUFFER", "AVRO"].
+        The type of the schema definition.
     """
 
 
@@ -70,11 +68,11 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubSchemaSpecProjectRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -87,12 +85,12 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubSchemaSpecProjectRef:
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubSchemaStatus:
     r"""
-    pubsub cnrm cloud google com v1beta1 pub sub schema status
+    PubSubSchemaStatus defines the config connector machine state of PubSubSchema
 
     Attributes
     ----------
     conditions : [PubsubCnrmCloudGoogleComV1beta1PubSubSchemaStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

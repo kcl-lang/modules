@@ -48,7 +48,7 @@ schema ApphubCnrmCloudGoogleComV1alpha1AppHubApplicationSpec:
     displayName : str, default is Undefined, optional
         Optional. User-defined name for the Application. Can have a maximum length of 63 characters.
     location : str, default is Undefined, optional
-        Required. The location of the application.
+        Required. Defines the parent path of the resource.
     projectRef : ApphubCnrmCloudGoogleComV1alpha1AppHubApplicationSpecProjectRef, default is Undefined, optional
         project ref
     resourceID : str, default is Undefined, optional
@@ -187,7 +187,7 @@ schema ApphubCnrmCloudGoogleComV1alpha1AppHubApplicationSpecAttributesOperatorOw
 
 schema ApphubCnrmCloudGoogleComV1alpha1AppHubApplicationSpecProjectRef:
     r"""
-    Required. The host project of the application.
+    Required. The host project of the resource.
 
     Attributes
     ----------
@@ -234,7 +234,7 @@ schema ApphubCnrmCloudGoogleComV1alpha1AppHubApplicationStatus:
     conditions : [ApphubCnrmCloudGoogleComV1alpha1AppHubApplicationStatusConditionsItems0], default is Undefined, optional
         Conditions represent the latest available observations of the object's current state.
     externalRef : str, default is Undefined, optional
-        A unique specifier for the AppHubApplication resource in Google Cloud.
+        A unique specifier for the AppHubApplication resource in Google Cloud .
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     observedState : ApphubCnrmCloudGoogleComV1alpha1AppHubApplicationStatusObservedState, default is Undefined, optional

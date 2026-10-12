@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeBackendServiceSignedURLKey:
     r"""
-    compute cnrm cloud google com v1alpha1 compute backend service signed URL key
+    ComputeBackendServiceSignedURLKey is the Schema for the ComputeBackendServiceSignedURLKey API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeBackendServiceSignedURLKey:
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeySpec:
     r"""
-    compute cnrm cloud google com v1alpha1 compute backend service signed URL key spec
+    ComputeBackendServiceSignedURLKeySpec defines the desired state of ComputeBackendServiceSignedURLKey
 
     Attributes
     ----------
@@ -63,16 +63,16 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeySpec:
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeySpecBackendServiceRef:
     r"""
-    compute cnrm cloud google com v1alpha1 compute backend service signed URL key spec backend service ref
+    ComputeBackendServiceRef is a reference to a ComputeBackendService.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `ComputeBackendService` resource.
+        The value of an externally managed ComputeBackendService resource.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeBackendService resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeBackendService resource.
     """
 
 
@@ -85,8 +85,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeySpecBac
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeySpecKeyValue:
     r"""
-    Immutable. 128-bit key value used for signing the URL. The key value must be a
-    valid RFC 4648 Section 5 base64url encoded string.
+    Immutable. 128-bit key value used for signing the URL. The key value must be a valid RFC 4648 Section 5 base64url encoded string.
 
     Attributes
     ----------
@@ -141,11 +140,11 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeySpecPro
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -158,12 +157,12 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeySpecPro
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeyStatus:
     r"""
-    compute cnrm cloud google com v1alpha1 compute backend service signed URL key status
+    ComputeBackendServiceSignedURLKeyStatus defines the config connector machine state of ComputeBackendServiceSignedURLKey
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1alpha1ComputeBackendServiceSignedURLKeyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeBackendServiceSignedURLKey's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

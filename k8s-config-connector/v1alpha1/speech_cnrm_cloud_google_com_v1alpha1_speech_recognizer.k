@@ -247,151 +247,33 @@ schema SpeechCnrmCloudGoogleComV1alpha1SpeechRecognizerStatusObservedStateDefaul
 
     Attributes
     ----------
-    adaptation : SpeechCnrmCloudGoogleComV1alpha1SpeechRecognizerStatusObservedStateDefaultRecognitionConfigAdaptation, default is Undefined, optional
-        adaptation
+    languageCodes : [str], default is Undefined, optional
+        Optional. The language of the supplied audio as a
+         [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
+         Language tags are normalized to BCP-47 before they are used eg "en-us"
+         becomes "en-US".
+
+         Supported languages for each model are listed in the [Table of Supported
+         Models](https://cloud.google.com/speech-to-text/v2/docs/speech-to-text-supported-languages).
+
+         If additional languages are provided, recognition result will contain
+         recognition in the most likely language detected. The recognition result
+         will include the language tag of the language detected in the audio.
+    model : str, default is Undefined, optional
+        Optional. Which model to use for recognition requests. Select the model
+         best suited to your domain to get best results.
+
+         Guidance for choosing which model to use can be found in the [Transcription
+         Models
+         Documentation](https://cloud.google.com/speech-to-text/v2/docs/transcription-model)
+         and the models supported in each region can be found in the [Table Of
+         Supported
+         Models](https://cloud.google.com/speech-to-text/v2/docs/speech-to-text-supported-languages).
     """
 
 
-    adaptation?: SpeechCnrmCloudGoogleComV1alpha1SpeechRecognizerStatusObservedStateDefaultRecognitionConfigAdaptation
+    languageCodes?: [str]
 
-
-schema SpeechCnrmCloudGoogleComV1alpha1SpeechRecognizerStatusObservedStateDefaultRecognitionConfigAdaptation:
-    r"""
-    Speech adaptation context that weights recognizer predictions for specific words and phrases.
-
-    Attributes
-    ----------
-    customClasses : [SpeechCnrmCloudGoogleComV1alpha1SpeechRecognizerStatusObservedStateDefaultRecognitionConfigAdaptationCustomClassesItems0], default is Undefined, optional
-        A list of inline CustomClasses. Existing CustomClass resources can be referenced directly in a PhraseSet.
-    phraseSets : [SpeechCnrmCloudGoogleComV1alpha1SpeechRecognizerStatusObservedStateDefaultRecognitionConfigAdaptationPhraseSetsItems0], default is Undefined, optional
-        A list of inline or referenced PhraseSets.
-    """
-
-
-    customClasses?: [SpeechCnrmCloudGoogleComV1alpha1SpeechRecognizerStatusObservedStateDefaultRecognitionConfigAdaptationCustomClassesItems0]
-
-    phraseSets?: [SpeechCnrmCloudGoogleComV1alpha1SpeechRecognizerStatusObservedStateDefaultRecognitionConfigAdaptationPhraseSetsItems0]
-
-
-schema SpeechCnrmCloudGoogleComV1alpha1SpeechRecognizerStatusObservedStateDefaultRecognitionConfigAdaptationCustomClassesItems0:
-    r"""
-    speech cnrm cloud google com v1alpha1 speech recognizer status observed state default recognition config adaptation custom classes items0
-
-    Attributes
-    ----------
-    createTime : str, default is Undefined, optional
-        Output only. Creation time.
-    deleteTime : str, default is Undefined, optional
-        Output only. The time at which this resource was requested for deletion.
-    etag : str, default is Undefined, optional
-        Output only. This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding.
-    expireTime : str, default is Undefined, optional
-        Output only. The time at which this resource will be purged.
-    kmsKeyName : str, default is Undefined, optional
-        Output only. The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the CustomClass is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-    kmsKeyVersionName : str, default is Undefined, optional
-        Output only. The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which the CustomClass is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
-    name : str, default is Undefined, optional
-        Output only. Identifier. The resource name of the CustomClass. Format: `projects/{project}/locations/{location}/customClasses/{custom_class}`.
-    reconciling : bool, default is Undefined, optional
-        Output only. Whether or not this CustomClass is in the process of being updated.
-    state : str, default is Undefined, optional
-        Output only. The CustomClass lifecycle state.
-    uid : str, default is Undefined, optional
-        Output only. System-assigned unique identifier for the CustomClass.
-    updateTime : str, default is Undefined, optional
-        Output only. The most recent time this resource was modified.
-    """
-
-
-    createTime?: str
-
-    deleteTime?: str
-
-    etag?: str
-
-    expireTime?: str
-
-    kmsKeyName?: str
-
-    kmsKeyVersionName?: str
-
-    name?: str
-
-    reconciling?: bool
-
-    state?: str
-
-    uid?: str
-
-    updateTime?: str
-
-
-schema SpeechCnrmCloudGoogleComV1alpha1SpeechRecognizerStatusObservedStateDefaultRecognitionConfigAdaptationPhraseSetsItems0:
-    r"""
-    speech cnrm cloud google com v1alpha1 speech recognizer status observed state default recognition config adaptation phrase sets items0
-
-    Attributes
-    ----------
-    inlinePhraseSet : SpeechCnrmCloudGoogleComV1alpha1SpeechRecognizerStatusObservedStateDefaultRecognitionConfigAdaptationPhraseSetsItems0InlinePhraseSet, default is Undefined, optional
-        inline phrase set
-    """
-
-
-    inlinePhraseSet?: SpeechCnrmCloudGoogleComV1alpha1SpeechRecognizerStatusObservedStateDefaultRecognitionConfigAdaptationPhraseSetsItems0InlinePhraseSet
-
-
-schema SpeechCnrmCloudGoogleComV1alpha1SpeechRecognizerStatusObservedStateDefaultRecognitionConfigAdaptationPhraseSetsItems0InlinePhraseSet:
-    r"""
-    An inline defined PhraseSet.
-
-    Attributes
-    ----------
-    createTime : str, default is Undefined, optional
-        Output only. Creation time.
-    deleteTime : str, default is Undefined, optional
-        Output only. The time at which this resource was requested for deletion.
-    etag : str, default is Undefined, optional
-        Output only. This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding.
-    expireTime : str, default is Undefined, optional
-        Output only. The time at which this resource will be purged.
-    kmsKeyName : str, default is Undefined, optional
-        Output only. The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-    kmsKeyVersionName : str, default is Undefined, optional
-        Output only. The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.
-    name : str, default is Undefined, optional
-        Output only. Identifier. The resource name of the PhraseSet. Format: `projects/{project}/locations/{location}/phraseSets/{phrase_set}`.
-    reconciling : bool, default is Undefined, optional
-        Output only. Whether or not this PhraseSet is in the process of being updated.
-    state : str, default is Undefined, optional
-        Output only. The PhraseSet lifecycle state.
-    uid : str, default is Undefined, optional
-        Output only. System-assigned unique identifier for the PhraseSet.
-    updateTime : str, default is Undefined, optional
-        Output only. The most recent time this resource was modified.
-    """
-
-
-    createTime?: str
-
-    deleteTime?: str
-
-    etag?: str
-
-    expireTime?: str
-
-    kmsKeyName?: str
-
-    kmsKeyVersionName?: str
-
-    name?: str
-
-    reconciling?: bool
-
-    state?: str
-
-    uid?: str
-
-    updateTime?: str
+    model?: str
 
 

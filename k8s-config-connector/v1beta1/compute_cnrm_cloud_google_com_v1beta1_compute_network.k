@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeNetwork:
     r"""
-    compute cnrm cloud google com v1beta1 compute network
+    ComputeNetwork is the Schema for the ComputeNetwork API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeNetwork:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute network spec
+    ComputeNetworkSpec defines the desired state of ComputeNetwork
 
     Attributes
     ----------
@@ -49,36 +49,23 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkSpec:
         When set to 'false', the network is created in "custom subnet mode" so
         the user can explicitly connect subnetwork resources.
     deleteDefaultRoutesOnCreate : bool, default is Undefined, optional
-        If set to 'true', default routes ('0.0.0.0/0') will be deleted
-        immediately after network creation. Defaults to 'false'.
+        If set to 'true', default routes ('0.0.0.0/0') will be deleted immediately after network creation. Defaults to 'false'.
     description : str, default is Undefined, optional
-        Immutable. An optional description of this resource. The resource must be
-        recreated to modify this field.
+        Immutable. An optional description of this resource. The resource must be recreated to modify this field.
     enableUlaInternalIpv6 : bool, default is Undefined, optional
-        Enable ULA internal ipv6 on this network. Enabling this feature will assign
-        a /48 from google defined ULA prefix fd20::/20.
+        Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20.
     internalIpv6Range : str, default is Undefined, optional
-        Immutable. When enabling ula internal ipv6, caller optionally can specify the /48 range
-        they want from the google defined ULA prefix fd20::/20. The input must be a
-        valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will
-        fail if the speficied /48 is already in used by another resource.
-        If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
+        Immutable. When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
     mtu : int, default is Undefined, optional
-        Immutable. Maximum Transmission Unit in bytes. The default value is 1460 bytes.
-        The minimum value for this field is 1300 and the maximum value is 8896 bytes (jumbo frames).
-        Note that packets larger than 1500 bytes (standard Ethernet) can be subject to TCP-MSS clamping or dropped
-        with an ICMP 'Fragmentation-Needed' message if the packets are routed to the Internet or other VPCs
-        with varying MTUs.
+        Immutable. Maximum Transmission Unit in bytes. The default value is 1460 bytes. The minimum value for this field is 1300 and the maximum value is 8896 bytes (jumbo frames). Note that packets larger than 1500 bytes (standard Ethernet) can be subject to TCP-MSS clamping or dropped with an ICMP 'Fragmentation-Needed' message if the packets are routed to the Internet or other VPCs with varying MTUs.
     networkFirewallPolicyEnforcementOrder : str, default is Undefined, optional
         Set the order that Firewall Rules and Firewall Policies are evaluated. Default value: "AFTER_CLASSIC_FIREWALL" Possible values: ["BEFORE_CLASSIC_FIREWALL", "AFTER_CLASSIC_FIREWALL"].
+    networkProfile : str, default is Undefined, optional
+        Immutable. A full or partial URL of the network profile to apply to this network. This field can be set only at resource creation time.
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The ComputeNetwork name. If not given, the metadata.name will be used.
     routingMode : str, default is Undefined, optional
-        The network-wide routing mode to use. If set to 'REGIONAL', this
-        network's cloud routers will only advertise routes with subnetworks
-        of this network in the same region as the router. If set to 'GLOBAL',
-        this network's cloud routers will advertise routes with all
-        subnetworks of this network, across regions. Possible values: ["REGIONAL", "GLOBAL"].
+        The network-wide routing mode to use. If set to 'REGIONAL', this network's cloud routers will only advertise routes with subnetworks of this network in the same region as the router. If set to 'GLOBAL', this network's cloud routers will advertise routes with all subnetworks of this network, across regions. Possible values: ["REGIONAL", "GLOBAL"].
     """
 
 
@@ -96,6 +83,8 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkSpec:
 
     networkFirewallPolicyEnforcementOrder?: str
 
+    networkProfile?: str
+
     resourceID?: str
 
     routingMode?: str
@@ -103,19 +92,18 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkSpec:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute network status
+    ComputeNetworkStatus defines the config connector machine state of ComputeNetwork
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeNetworkStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     gatewayIpv4 : str, default is Undefined, optional
-        The gateway address for default routing out of the network. This value
-        is selected by GCP.
+        The gateway address for default routing out of the network. This value is selected by GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     selfLink : str, default is Undefined, optional
-        self link
+        The self link of the ComputeNetwork.
     """
 
 

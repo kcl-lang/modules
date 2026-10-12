@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeNetworkFirewallPolicy:
     r"""
-    compute cnrm cloud google com v1beta1 compute network firewall policy
+    ComputeNetworkFirewallPolicy is the Schema for the ComputeNetworkFirewallPolicy API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeNetworkFirewallPolicy:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkFirewallPolicySpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute network firewall policy spec
+    ComputeNetworkFirewallPolicySpec defines the desired state of ComputeNetworkFirewallPolicy
 
     Attributes
     ----------
@@ -46,7 +46,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkFirewallPolicySpec:
     projectRef : ComputeCnrmCloudGoogleComV1beta1ComputeNetworkFirewallPolicySpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The ComputeNetworkFirewallPolicy name. If not given, the metadata.name will be used.
     """
 
 
@@ -64,11 +64,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkFirewallPolicySpecProjectRe
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -81,12 +81,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkFirewallPolicySpecProjectRe
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkFirewallPolicyStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute network firewall policy status
+    ComputeNetworkFirewallPolicyStatus defines the config connector machine state of ComputeNetworkFirewallPolicy
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeNetworkFirewallPolicyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeNetworkFirewallPolicy's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
     fingerprint : str, default is Undefined, optional

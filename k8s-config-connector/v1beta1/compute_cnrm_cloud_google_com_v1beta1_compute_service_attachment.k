@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeServiceAttachment:
     r"""
-    compute cnrm cloud google com v1beta1 compute service attachment
+    ComputeServiceAttachment is the Schema for the ComputeServiceAttachment API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeServiceAttachment:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute service attachment spec
+    ComputeServiceAttachmentSpec defines the desired state of ComputeServiceAttachment
 
     Attributes
     ----------
@@ -105,18 +105,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpecConsumerAccep
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpecConsumerAcceptListsItems0ProjectRef:
     r"""
-    compute cnrm cloud google com v1beta1 compute service attachment spec consumer accept lists items0 project ref
+    ProjectRef is a reference to a GCP Project.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The project id or number for the project to set the limit for.
-
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -129,16 +127,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpecConsumerAccep
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpecConsumerRejectListsItems0:
     r"""
-    compute cnrm cloud google com v1beta1 compute service attachment spec consumer reject lists items0
+    ProjectRef is a reference to a GCP Project.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -151,16 +149,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpecConsumerRejec
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpecNatSubnetsItems0:
     r"""
-    compute cnrm cloud google com v1beta1 compute service attachment spec nat subnets items0
+    ComputeSubnetworkRef is a reference to a GCP ComputeSubnetwork.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeSubnetwork` resource.
+        A reference to an externally managed ComputeSubnetwork resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/subnetworks/{{subnetworkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeSubnetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeSubnetwork resource.
     """
 
 
@@ -178,13 +176,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpecProjectRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The project for the resource
-
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -202,13 +198,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpecTargetService
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The URL of a service serving the endpoint identified by this service attachment.
-
-        Allowed value: The `selfLink` field of a `ComputeForwardingRule` resource.
+        The ComputeForwardingRule selflink in the form "projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}" when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name field of a ComputeForwardingRule resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace field of a ComputeForwardingRule resource.
     """
 
 
@@ -221,12 +215,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentSpecTargetService
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute service attachment status
+    ComputeServiceAttachmentStatus defines the config connector machine state of ComputeServiceAttachment
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeServiceAttachment's current state.
     connectedEndpoints : [ComputeCnrmCloudGoogleComV1beta1ComputeServiceAttachmentStatusConnectedEndpointsItems0], default is Undefined, optional
         An array of connections for all the consumers connected to this service attachment.
     fingerprint : str, default is Undefined, optional

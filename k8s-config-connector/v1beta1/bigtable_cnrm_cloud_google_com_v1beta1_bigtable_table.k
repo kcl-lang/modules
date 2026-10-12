@@ -41,6 +41,8 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableTableSpec:
 
     Attributes
     ----------
+    automatedBackupPolicy : BigtableCnrmCloudGoogleComV1beta1BigtableTableSpecAutomatedBackupPolicy, default is Undefined, optional
+        automated backup policy
     changeStreamRetention : str, default is Undefined, optional
         Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days..
     columnFamily : [BigtableCnrmCloudGoogleComV1beta1BigtableTableSpecColumnFamilyItems0], default is Undefined, optional
@@ -64,6 +66,8 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableTableSpec:
     """
 
 
+    automatedBackupPolicy?: BigtableCnrmCloudGoogleComV1beta1BigtableTableSpecAutomatedBackupPolicy
+
     changeStreamRetention?: str
 
     columnFamily?: [BigtableCnrmCloudGoogleComV1beta1BigtableTableSpecColumnFamilyItems0]
@@ -75,6 +79,28 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableTableSpec:
     resourceID?: str
 
     splitKeys?: [str]
+
+
+schema BigtableCnrmCloudGoogleComV1beta1BigtableTableSpecAutomatedBackupPolicy:
+    r"""
+    If specified, automated backups are enabled for this table. Otherwise, automated backups are disabled.
+
+    Attributes
+    ----------
+    frequency : str, default is Undefined, optional
+        How frequently automated backups should occur. The only supported value at this time is 24 hours. An undefined frequency is treated as 24 hours.
+    locations : [str], default is Undefined, optional
+        Optional. A list of Cloud Bigtable zones where automated backups are allowed to be created. If empty, automated backups will be created in all zones of the instance. Locations are in the format `projects/{project}/locations/{zone}`. This field can only set for tables in Enterprise Plus instances.
+    retentionPeriod : str, default is Undefined, optional
+        Required. How long the automated backups should be retained. Values must be at least 3 days and at most 90 days.
+    """
+
+
+    frequency?: str
+
+    locations?: [str]
+
+    retentionPeriod?: str
 
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableTableSpecColumnFamilyItems0:

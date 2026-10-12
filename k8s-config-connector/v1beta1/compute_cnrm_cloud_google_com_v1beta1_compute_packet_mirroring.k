@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputePacketMirroring:
     r"""
-    compute cnrm cloud google com v1beta1 compute packet mirroring
+    ComputePacketMirroring is the Schema for the ComputePacketMirroring API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputePacketMirroring:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute packet mirroring spec
+    ComputePacketMirroringSpec defines the desired state of ComputePacketMirroring
 
     Attributes
     ----------
@@ -101,18 +101,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecCollectorIlb:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecCollectorIlbURLRef:
     r"""
-    compute cnrm cloud google com v1beta1 compute packet mirroring spec collector ilb URL ref
+    The Forwarding Rule resource of type `loadBalancingScheme=INTERNAL` that will be used as collector for mirrored traffic. The specified forwarding rule must have `isMirroringCollector` set to true.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Resource URL to the forwarding rule representing the ILB configured as destination of the mirrored traffic.
-
-        Allowed value: The `selfLink` field of a `ComputeForwardingRule` resource.
+        A reference to an externally managed ComputeForwardingRule resource. Should be in the format "projects/{{projectID}}/global/forwardingRules/{{forwardingRuleID}}" or "projects/{{projectID}}/regions/{{region}}/forwardingRules/{{forwardingRuleID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeForwardingRule resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeForwardingRule resource.
     """
 
 
@@ -187,18 +185,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecMirroredResourc
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecMirroredResourcesInstancesItems0URLRef:
     r"""
-    compute cnrm cloud google com v1beta1 compute packet mirroring spec mirrored resources instances items0 URL ref
+    InstanceRef is a reference to a ComputeInstance.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Resource URL to the virtual machine instance which is being mirrored.
-
-        Allowed value: The `selfLink` field of a `ComputeInstance` resource.
+        A reference to an externally managed ComputeInstance resource. Should be in the format "projects/{{projectID}}/zones/{{zone}}/instances/{{instanceID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeInstance resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeInstance resource.
     """
 
 
@@ -234,13 +230,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecMirroredResourc
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Resource URL to the subnetwork for which traffic from/to all VM instances will be mirrored.
-
-        Allowed value: The `selfLink` field of a `ComputeSubnetwork` resource.
+        A reference to an externally managed ComputeSubnetwork resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/subnetworks/{{subnetworkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeSubnetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeSubnetwork resource.
     """
 
 
@@ -272,13 +266,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecNetworkURLRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        URL of the network resource.
-
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -296,13 +288,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecProjectRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The project for the resource
-
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -315,14 +305,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringSpecProjectRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute packet mirroring status
+    ComputePacketMirroringStatus defines the config connector machine state of ComputePacketMirroring
 
     Attributes
     ----------
     collectorIlb : ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringStatusCollectorIlb, default is Undefined, optional
         collector ilb
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputePacketMirroring's current state.
     id : int, default is Undefined, optional
         Output only. The unique identifier for the resource. This identifier is defined by the server.
     network : ComputeCnrmCloudGoogleComV1beta1ComputePacketMirroringStatusNetwork, default is Undefined, optional

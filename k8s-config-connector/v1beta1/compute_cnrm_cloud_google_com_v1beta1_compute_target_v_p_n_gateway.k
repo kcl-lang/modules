@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeTargetVPNGateway:
     r"""
-    compute cnrm cloud google com v1beta1 compute target v p n gateway
+    ComputeTargetVPNGateway is the Schema for the ComputeTargetVPNGateway API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeTargetVPNGateway:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetVPNGatewaySpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute target v p n gateway spec
+    ComputeTargetVPNGatewaySpec defines the desired state of ComputeTargetVPNGateway
 
     Attributes
     ----------
@@ -68,11 +68,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetVPNGatewaySpecNetworkRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -85,12 +85,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetVPNGatewaySpecNetworkRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetVPNGatewayStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute target v p n gateway status
+    ComputeTargetVPNGatewayStatus defines the config connector machine state of ComputeTargetVPNGateway
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeTargetVPNGatewayStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
     gatewayId : int, default is Undefined, optional

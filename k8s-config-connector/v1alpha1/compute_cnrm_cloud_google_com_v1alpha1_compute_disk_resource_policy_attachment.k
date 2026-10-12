@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeDiskResourcePolicyAttachment:
     r"""
-    compute cnrm cloud google com v1alpha1 compute disk resource policy attachment
+    ComputeDiskResourcePolicyAttachment is the Schema for the ComputeDiskResourcePolicyAttachment API
 
     Attributes
     ----------
@@ -63,16 +63,16 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeDiskResourcePolicyAttachmentSpec:
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeDiskResourcePolicyAttachmentSpecDiskRef:
     r"""
-    compute cnrm cloud google com v1alpha1 compute disk resource policy attachment spec disk ref
+    ComputeDiskRef is a reference to a ComputeDisk.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `ComputeDisk` resource.
+        A reference to an externally managed ComputeDisk resource. Should be in the format "projects/{{projectID}}/zones/{{zone}}/disks/{{diskID}}" or "projects/{{projectID}}/regions/{{region}}/disks/{{diskID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeDisk resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeDisk resource.
     """
 
 
@@ -90,11 +90,11 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeDiskResourcePolicyAttachmentSpecP
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -112,7 +112,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeDiskResourcePolicyAttachmentStatu
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1alpha1ComputeDiskResourcePolicyAttachmentStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeDiskResourcePolicyAttachment's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

@@ -51,6 +51,8 @@ schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerDNSAuthoriza
         project ref
     resourceID : str, default is Undefined, optional
         Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+    $type : str, default is Undefined, optional
+        Immutable. Optional. The type of DNS Authorization. If not specified, "FIXED_RECORD" is used. Possible values: FIXED_RECORD, PER_PROJECT_RECORD.
     """
 
 
@@ -63,6 +65,8 @@ schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerDNSAuthoriza
     projectRef: CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerDNSAuthorizationSpecProjectRef
 
     resourceID?: str
+
+    $type?: str
 
 
 schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerDNSAuthorizationSpecProjectRef:

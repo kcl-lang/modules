@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema DNSResponsePolicy:
     r"""
-    dns cnrm cloud google com v1alpha1 DNS response policy
+    DNSResponsePolicy is the Schema for the dns API
 
     Attributes
     ----------
@@ -72,9 +72,7 @@ schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicySpecGkeClustersItems0:
     Attributes
     ----------
     gkeClusterName : str, default is Undefined, required
-        The resource name of the cluster to bind this ManagedZone to.
-        This should be specified in the format like
-        'projects/*/locations/*/clusters/*'.
+        The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like 'projects/* /locations/* /clusters/*'.
     """
 
 
@@ -88,9 +86,7 @@ schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicySpecNetworksItems0:
     Attributes
     ----------
     networkUrl : str, default is Undefined, required
-        The fully qualified URL of the VPC network to bind to.
-        This should be formatted like
-        'https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}'.
+        The fully qualified URL of the VPC network to bind to. This should be formatted like 'https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}'.
     """
 
 
@@ -104,11 +100,11 @@ schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicySpecProjectRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -126,7 +122,7 @@ schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicyStatus:
     Attributes
     ----------
     conditions : [DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the DNSResponsePolicy's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

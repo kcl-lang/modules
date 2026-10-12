@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema DNSRecordSet:
     r"""
-    dns cnrm cloud google com v1beta1 DNS record set
+    DNSRecordSet is the Schema for the dns API
 
     Attributes
     ----------
@@ -75,16 +75,16 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpec:
 
 schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecManagedZoneRef:
     r"""
-    DNS cnrm cloud google com v1beta1 DNS record set spec managed zone ref
+    DNSManagedZoneRef is a reference to a DNSManagedZone.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `DNSManagedZone` resource.
+        A reference to an externally managed DNSManagedZone resource. Should be in the format "projects/{{projectID}}/managedZones/{{zone_number}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a DNSManagedZone resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a DNSManagedZone resource.
     """
 
 
@@ -105,6 +105,8 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicy:
         Specifies whether to enable fencing for geo queries.
     geo : [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0], default is Undefined, optional
         The configuration for Geo location based routing policy.
+    healthCheckRef : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyHealthCheckRef, default is Undefined, optional
+        health check ref
     primaryBackup : DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackup, default is Undefined, optional
         primary backup
     wrr : [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0], default is Undefined, optional
@@ -115,6 +117,8 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicy:
     enableGeoFencing?: bool
 
     geo?: [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0]
+
+    healthCheckRef?: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyHealthCheckRef
 
     primaryBackup?: DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackup
 
@@ -149,12 +153,16 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthC
 
     Attributes
     ----------
-    internalLoadBalancers : [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0], default is Undefined, required
+    externalEndpoints : [str], default is Undefined, optional
+        The Internet IP addresses to be health checked.
+    internalLoadBalancers : [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0], default is Undefined, optional
         The list of internal load balancers to health check.
     """
 
 
-    internalLoadBalancers: [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0]
+    externalEndpoints?: [str]
+
+    internalLoadBalancers?: [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0]
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0:
@@ -197,16 +205,16 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthC
 
 schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0IPAddressRef:
     r"""
-    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy geo items0 health checked targets internal load balancers items0 IP address ref
+    ComputeAddressRef is a reference to a GCP ComputeAddress.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `address` field of a `ComputeAddress` resource.
+        A reference to an externally managed ComputeAddress resource. Should be in the format "projects/{{projectID}}/global/addresses/{{addressID}}" or "projects/{{projectID}}/regions/{{region}}/addresses/{{addressID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeAddress resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeAddress resource.
     """
 
 
@@ -219,16 +227,16 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthC
 
 schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0NetworkRef:
     r"""
-    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy geo items0 health checked targets internal load balancers items0 network ref
+    ComputeNetworkRef is a reference to a GCP ComputeNetwork.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -241,16 +249,16 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthC
 
 schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0ProjectRef:
     r"""
-    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy geo items0 health checked targets internal load balancers items0 project ref
+    ProjectRef is a reference to a GCP Project.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -268,11 +276,11 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0HealthC
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `location` field of a `ComputeForwardingRule` resource.
+        The compute region name, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of a ComputeRegion object.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        Namespace of a ComputeRegion object
     """
 
 
@@ -303,6 +311,28 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyGeoItems0Rrdatas
     external?: str
 
     kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyHealthCheckRef:
+    r"""
+    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy health check ref
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The compute health check name, when not managed by Config Connector.
+    name : str, default is Undefined, optional
+        Name of a ComputeHealthCheck object.
+    namespace : str, default is Undefined, optional
+        Namespace of a ComputeHealthCheck object
+    """
+
+
+    external?: str
 
     name?: str
 
@@ -363,12 +393,16 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBac
 
     Attributes
     ----------
-    internalLoadBalancers : [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0], default is Undefined, required
+    externalEndpoints : [str], default is Undefined, optional
+        The Internet IP addresses to be health checked.
+    internalLoadBalancers : [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0], default is Undefined, optional
         The list of internal load balancers to health check.
     """
 
 
-    internalLoadBalancers: [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0]
+    externalEndpoints?: [str]
+
+    internalLoadBalancers?: [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0]
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0:
@@ -411,16 +445,16 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBac
 
 schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0IPAddressRef:
     r"""
-    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy primary backup backup geo items0 health checked targets internal load balancers items0 IP address ref
+    ComputeAddressRef is a reference to a GCP ComputeAddress.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `address` field of a `ComputeAddress` resource.
+        A reference to an externally managed ComputeAddress resource. Should be in the format "projects/{{projectID}}/global/addresses/{{addressID}}" or "projects/{{projectID}}/regions/{{region}}/addresses/{{addressID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeAddress resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeAddress resource.
     """
 
 
@@ -433,16 +467,16 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBac
 
 schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0NetworkRef:
     r"""
-    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy primary backup backup geo items0 health checked targets internal load balancers items0 network ref
+    ComputeNetworkRef is a reference to a GCP ComputeNetwork.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -455,16 +489,16 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBac
 
 schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBackupGeoItems0HealthCheckedTargetsInternalLoadBalancersItems0ProjectRef:
     r"""
-    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy primary backup backup geo items0 health checked targets internal load balancers items0 project ref
+    ProjectRef is a reference to a GCP Project.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -482,11 +516,11 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBac
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `location` field of a `ComputeForwardingRule` resource.
+        The compute region name, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of a ComputeRegion object.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        Namespace of a ComputeRegion object
     """
 
 
@@ -505,6 +539,8 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBac
     ----------
     external : str, default is Undefined, optional
         Allowed value: The `address` field of a `ComputeAddress` resource.
+    kind : str, default is Undefined, optional
+        Kind of the referent. Allowed values: ComputeAddress
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -513,6 +549,8 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupBac
 
 
     external?: str
+
+    kind?: str
 
     name?: str
 
@@ -525,12 +563,16 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPri
 
     Attributes
     ----------
-    internalLoadBalancers : [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0], default is Undefined, required
+    externalEndpoints : [str], default is Undefined, optional
+        The Internet IP addresses to be health checked.
+    internalLoadBalancers : [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0], default is Undefined, optional
         The list of internal load balancers to health check.
     """
 
 
-    internalLoadBalancers: [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0]
+    externalEndpoints?: [str]
+
+    internalLoadBalancers?: [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0]
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0:
@@ -573,16 +615,16 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPri
 
 schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0IPAddressRef:
     r"""
-    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy primary backup primary internal load balancers items0 IP address ref
+    ComputeAddressRef is a reference to a GCP ComputeAddress.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `address` field of a `ComputeAddress` resource.
+        A reference to an externally managed ComputeAddress resource. Should be in the format "projects/{{projectID}}/global/addresses/{{addressID}}" or "projects/{{projectID}}/regions/{{region}}/addresses/{{addressID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeAddress resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeAddress resource.
     """
 
 
@@ -595,16 +637,16 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPri
 
 schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0NetworkRef:
     r"""
-    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy primary backup primary internal load balancers items0 network ref
+    ComputeNetworkRef is a reference to a GCP ComputeNetwork.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -617,16 +659,16 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPri
 
 schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancersItems0ProjectRef:
     r"""
-    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy primary backup primary internal load balancers items0 project ref
+    ProjectRef is a reference to a GCP Project.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -644,11 +686,11 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyPrimaryBackupPri
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `location` field of a `ComputeForwardingRule` resource.
+        The compute region name, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of a ComputeRegion object.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        Namespace of a ComputeRegion object
     """
 
 
@@ -687,12 +729,16 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthC
 
     Attributes
     ----------
-    internalLoadBalancers : [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0], default is Undefined, required
+    externalEndpoints : [str], default is Undefined, optional
+        The Internet IP addresses to be health checked.
+    internalLoadBalancers : [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0], default is Undefined, optional
         The list of internal load balancers to health check.
     """
 
 
-    internalLoadBalancers: [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0]
+    externalEndpoints?: [str]
+
+    internalLoadBalancers?: [DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0]
 
 
 schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0:
@@ -735,16 +781,16 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthC
 
 schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0IPAddressRef:
     r"""
-    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy wrr items0 health checked targets internal load balancers items0 IP address ref
+    ComputeAddressRef is a reference to a GCP ComputeAddress.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `address` field of a `ComputeAddress` resource.
+        A reference to an externally managed ComputeAddress resource. Should be in the format "projects/{{projectID}}/global/addresses/{{addressID}}" or "projects/{{projectID}}/regions/{{region}}/addresses/{{addressID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeAddress resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeAddress resource.
     """
 
 
@@ -757,16 +803,16 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthC
 
 schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0NetworkRef:
     r"""
-    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy wrr items0 health checked targets internal load balancers items0 network ref
+    ComputeNetworkRef is a reference to a GCP ComputeNetwork.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -779,16 +825,16 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthC
 
 schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthCheckedTargetsInternalLoadBalancersItems0ProjectRef:
     r"""
-    DNS cnrm cloud google com v1beta1 DNS record set spec routing policy wrr items0 health checked targets internal load balancers items0 project ref
+    ProjectRef is a reference to a GCP Project.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -806,11 +852,11 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetSpecRoutingPolicyWrrItems0HealthC
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `location` field of a `ComputeForwardingRule` resource.
+        The compute region name, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of a ComputeRegion object.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        Namespace of a ComputeRegion object
     """
 
 
@@ -880,7 +926,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSRecordSetStatus:
     Attributes
     ----------
     conditions : [DNSCnrmCloudGoogleComV1beta1DNSRecordSetStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the DNSRecordSet's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

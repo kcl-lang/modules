@@ -46,7 +46,7 @@ schema EssentialcontactsCnrmCloudGoogleComV1beta1EssentialContactsContactSpec:
     folderRef : EssentialcontactsCnrmCloudGoogleComV1beta1EssentialContactsContactSpecFolderRef, default is Undefined, optional
         folder ref
     languageTag : str, default is Undefined, required
-        Required. The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
+        Required. The preferred language for notifications, as an ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
     notificationCategorySubscriptions : [str], default is Undefined, required
         Required. The categories of notifications that the contact will receive communications for.
     organizationRef : EssentialcontactsCnrmCloudGoogleComV1beta1EssentialContactsContactSpecOrganizationRef, default is Undefined, optional
@@ -54,7 +54,7 @@ schema EssentialcontactsCnrmCloudGoogleComV1beta1EssentialContactsContactSpec:
     projectRef : EssentialcontactsCnrmCloudGoogleComV1beta1EssentialContactsContactSpecProjectRef, default is Undefined, optional
         project ref
     resourceID : str, default is Undefined, optional
-        The EssentialContactsContact name. If not given, the metadata.name will be used.
+        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
     """
 
 
@@ -75,7 +75,7 @@ schema EssentialcontactsCnrmCloudGoogleComV1beta1EssentialContactsContactSpec:
 
 schema EssentialcontactsCnrmCloudGoogleComV1beta1EssentialContactsContactSpecFolderRef:
     r"""
-    FolderRef represents the Folder that this resource belongs to.
+    The Folder that contains this resource.
 
     Attributes
     ----------

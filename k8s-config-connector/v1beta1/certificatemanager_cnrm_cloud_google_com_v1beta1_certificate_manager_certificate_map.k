@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema CertificateManagerCertificateMap:
     r"""
-    certificatemanager cnrm cloud google com v1beta1 certificate manager certificate map
+    CertificateManagerCertificateMap is the Schema for the CertificateManagerCertificateMap API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema CertificateManagerCertificateMap:
 
 schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateMapSpec:
     r"""
-    certificatemanager cnrm cloud google com v1beta1 certificate manager certificate map spec
+    CertificateManagerCertificateMapSpec defines the desired state of CertificateManagerCertificateMap
 
     Attributes
     ----------
@@ -46,7 +46,7 @@ schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateM
     projectRef : CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateMapSpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The CertificateManagerCertificateMap name. If not given, the metadata.name will be used.
     """
 
 
@@ -64,11 +64,11 @@ schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateM
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -81,24 +81,20 @@ schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateM
 
 schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateMapStatus:
     r"""
-    certificatemanager cnrm cloud google com v1beta1 certificate manager certificate map status
+    CertificateManagerCertificateMapStatus defines the config connector machine state of CertificateManagerCertificateMap
 
     Attributes
     ----------
     conditions : [CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateMapStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     createTime : str, default is Undefined, optional
-        Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
-        accurate to nanoseconds with up to nine fractional digits.
-        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        Output only. The creation timestamp of a Certificate Map.
     gclbTargets : [CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateMapStatusGclbTargetsItems0], default is Undefined, optional
-        A list of target proxies that use this Certificate Map.
+        Output only. A list of GCLB targets which use this Certificate Map.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     updateTime : str, default is Undefined, optional
-        Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
-        accurate to nanoseconds with up to nine fractional digits.
-        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        Output only. The update timestamp of a Certificate Map.
     """
 
 
@@ -145,20 +141,16 @@ schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateM
 
 schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateMapStatusGclbTargetsItems0:
     r"""
-    certificatemanager cnrm cloud google com v1beta1 certificate manager certificate map status gclb targets items0
+    CertificateMap_GclbTargetObservedState defines the GclbTargets
 
     Attributes
     ----------
     ipConfigs : [CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateMapStatusGclbTargetsItems0IPConfigsItems0], default is Undefined, optional
-        An IP configuration where this Certificate Map is serving.
+        IP configurations for this Target Stage.
     targetHttpsProxy : str, default is Undefined, optional
-        Proxy name must be in the format projects/*/locations/*/targetHttpsProxies/*.
-        This field is part of a union field 'target_proxy': Only one of 'targetHttpsProxy' or
-        'targetSslProxy' may be set.
+        A HTTPS proxy serving as GCLB target.
     targetSslProxy : str, default is Undefined, optional
-        Proxy name must be in the format projects/*/locations/*/targetSslProxies/*.
-        This field is part of a union field 'target_proxy': Only one of 'targetHttpsProxy' or
-        'targetSslProxy' may be set.
+        A SSL proxy serving as GCLB target.
     """
 
 
@@ -171,14 +163,14 @@ schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateM
 
 schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateMapStatusGclbTargetsItems0IPConfigsItems0:
     r"""
-    certificatemanager cnrm cloud google com v1beta1 certificate manager certificate map status gclb targets items0 IP configs items0
+    CertificateMap_GclbTarget_IPConfigObservedState defines the IpConfigs
 
     Attributes
     ----------
     ipAddress : str, default is Undefined, optional
         An external IP address.
     ports : [int], default is Undefined, optional
-        A list of ports.
+        Ports.
     """
 
 

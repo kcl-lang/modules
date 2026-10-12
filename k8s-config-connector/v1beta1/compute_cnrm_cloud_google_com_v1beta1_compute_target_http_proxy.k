@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeTargetHTTPProxy:
     r"""
-    compute cnrm cloud google com v1beta1 compute target HTTP proxy
+    ComputeTargetHTTPProxy is the Schema for the ComputeTargetHTTPProxy API
 
     Attributes
     ----------
@@ -44,17 +44,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPProxySpec:
     description : str, default is Undefined, optional
         Immutable. An optional description of this resource.
     httpKeepAliveTimeoutSec : int, default is Undefined, optional
-        Immutable. Specifies how long to keep a connection open, after completing a response,
-        while there is no matching traffic (in seconds). If an HTTP keepalive is
-        not specified, a default value (610 seconds) will be used. For Global
-        external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
-        the maximum allowed value is 1200 seconds. For Global external HTTP(S)
-        load balancer (classic), this option is not available publicly.
+        Immutable. Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keepalive is not specified, a default value (610 seconds) will be used. For Global external HTTP(S) load balancer, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For Global external HTTP(S) load balancer (classic), this option is not available publicly.
     location : str, default is Undefined, required
         Location represents the geographical location of the ComputeTargetHTTPProxy. Specify a region name or "global" for global resources. Reference: GCP definition of regions/zones (https://cloud.google.com/compute/docs/regions-zones/)
     proxyBind : bool, default is Undefined, optional
-        Immutable. This field only applies when the forwarding rule that references
-        this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        Immutable. This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
     urlMapRef : ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPProxySpecURLMapRef, default is Undefined, required
@@ -77,17 +71,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPProxySpec:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPProxySpecURLMapRef:
     r"""
-    A reference to the ComputeURLMap resource that defines the mapping
-    from URL to the BackendService.
+    A reference to the ComputeURLMap resource that defines the mapping from URL to the BackendService.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeURLMap` resource.
+        A reference to an externally managed ComputeURLMap resource. Should be in the format "projects/{{projectID}}/global/urlMaps/{{urlMapID}}" or "projects/{{projectID}}/regions/{{region}}/urlMaps/{{urlMapID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeURLMap resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeURLMap resource.
     """
 
 
@@ -100,12 +93,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPProxySpecURLMapRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPProxyStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute target HTTP proxy status
+    ComputeTargetHTTPProxyStatus defines the config connector machine state of ComputeTargetHTTPProxy
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPProxyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
     observedGeneration : int, default is Undefined, optional

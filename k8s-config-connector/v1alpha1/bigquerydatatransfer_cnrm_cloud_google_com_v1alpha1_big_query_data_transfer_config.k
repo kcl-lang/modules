@@ -64,7 +64,7 @@ schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigS
     pubSubTopicRef : BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecPubSubTopicRef, default is Undefined, optional
         pub sub topic ref
     resourceID : str, default is Undefined, optional
-        The BigQueryDataTransferConfig name. If not given, the metadata.name will be used.
+        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
     schedule : str, default is Undefined, optional
         Data transfer schedule.
          If the data source does not support a custom schedule, this should be
@@ -81,6 +81,8 @@ schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigS
          data source; refer to the documentation for your data source.
     scheduleOptions : BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecScheduleOptions, default is Undefined, optional
         schedule options
+    scheduleOptionsV2 : BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecScheduleOptionsV2, default is Undefined, optional
+        schedule options v2
     serviceAccountRef : BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecServiceAccountRef, default is Undefined, optional
         service account ref
     """
@@ -113,6 +115,8 @@ schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigS
     schedule?: str
 
     scheduleOptions?: BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecScheduleOptions
+
+    scheduleOptionsV2?: BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecScheduleOptionsV2
 
     serviceAccountRef?: BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecServiceAccountRef
 
@@ -259,6 +263,98 @@ schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigS
     startTime?: str
 
 
+schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecScheduleOptionsV2:
+    r"""
+    Options customizing different types of data transfer schedule. This field replaces "schedule" and "schedule_options" fields. ScheduleOptionsV2 cannot be used together with ScheduleOptions/Schedule.
+
+    Attributes
+    ----------
+    eventDrivenSchedule : BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecScheduleOptionsV2EventDrivenSchedule, default is Undefined, optional
+        event driven schedule
+    manualSchedule : any, default is Undefined, optional
+        Manual transfer schedule. If set, the transfer run will not be auto-scheduled by the system, unless the client invokes StartManualTransferRuns.  This is equivalent to disable_auto_scheduling = true.
+    timeBasedSchedule : BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecScheduleOptionsV2TimeBasedSchedule, default is Undefined, optional
+        time based schedule
+    """
+
+
+    eventDrivenSchedule?: BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecScheduleOptionsV2EventDrivenSchedule
+
+    manualSchedule?: any
+
+    timeBasedSchedule?: BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecScheduleOptionsV2TimeBasedSchedule
+
+
+schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecScheduleOptionsV2EventDrivenSchedule:
+    r"""
+    Event driven transfer schedule options. If set, the transfer will be scheduled upon events arrial.
+
+    Attributes
+    ----------
+    pubSubSubscriptionRef : BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecScheduleOptionsV2EventDrivenSchedulePubSubSubscriptionRef, default is Undefined, optional
+        pub sub subscription ref
+    """
+
+
+    pubSubSubscriptionRef?: BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecScheduleOptionsV2EventDrivenSchedulePubSubSubscriptionRef
+
+
+schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecScheduleOptionsV2EventDrivenSchedulePubSubSubscriptionRef:
+    r"""
+    Pub/Sub subscription used to receive events. Only Google Cloud Storage data source support this option.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed PubSubSubscription resource. Should be in the format "projects/{{projectID}}/subscriptions/{{subscriptionID}}".
+    name : str, default is Undefined, optional
+        The name of a PubSubSubscription resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a PubSubSubscription resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecScheduleOptionsV2TimeBasedSchedule:
+    r"""
+    Time based transfer schedule options. This is the default schedule option.
+
+    Attributes
+    ----------
+    endTime : str, default is Undefined, optional
+        Defines time to stop scheduling transfer runs. A transfer run cannot be scheduled at or after the end time. The end time can be changed at any moment.
+    schedule : str, default is Undefined, optional
+        Data transfer schedule.
+         If the data source does not support a custom schedule, this should be
+         empty. If it is empty, the default value for the data source will be used.
+         The specified times are in UTC.
+         Examples of valid format:
+         `1st,3rd monday of month 15:30`,
+         `every wed,fri of jan,jun 13:15`, and
+         `first sunday of quarter 00:00`.
+         See more explanation about the format here:
+         https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
+
+         NOTE: The minimum interval time between recurring transfers depends on the
+         data source; refer to the documentation for your data source.
+    startTime : str, default is Undefined, optional
+        Specifies time to start scheduling transfer runs. The first run will be scheduled at or after the start time according to a recurrence pattern defined in the schedule string. The start time can be changed at any moment.
+    """
+
+
+    endTime?: str
+
+    schedule?: str
+
+    startTime?: str
+
+
 schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigSpecServiceAccountRef:
     r"""
     Service account email. If this field is set, the transfer config will be created with this service account's credentials. It requires that the requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating a transfer config. For the latest list of data sources, please refer to https://cloud.google.com/bigquery/docs/use-service-accounts.
@@ -345,6 +441,8 @@ schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigS
     ----------
     datasetRegion : str, default is Undefined, optional
         Output only. Region in which BigQuery dataset is located.
+    error : BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigStatusObservedStateError, default is Undefined, optional
+        error
     name : str, default is Undefined, optional
         Identifier. The resource name of the transfer config. Transfer config names have the form either `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
     nextRunTime : str, default is Undefined, optional
@@ -362,6 +460,8 @@ schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigS
 
     datasetRegion?: str
 
+    error?: BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigStatusObservedStateError
+
     name?: str
 
     nextRunTime?: str
@@ -373,6 +473,24 @@ schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigS
     updateTime?: str
 
     userID?: int
+
+
+schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigStatusObservedStateError:
+    r"""
+    Output only. Error code with detailed information about reason of the latest config failure.
+
+    Attributes
+    ----------
+    code : int, default is Undefined, optional
+        The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code].
+    message : str, default is Undefined, optional
+        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the [google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client.
+    """
+
+
+    code?: int
+
+    message?: str
 
 
 schema BigquerydatatransferCnrmCloudGoogleComV1alpha1BigQueryDataTransferConfigStatusObservedStateOwnerInfo:

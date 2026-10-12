@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeInstanceGroupManager:
     r"""
-    compute cnrm cloud google com v1beta1 compute instance group manager
+    ComputeInstanceGroupManager is the Schema for the ComputeInstanceGroupManager API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeInstanceGroupManager:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute instance group manager spec
+    ComputeInstanceGroupManagerSpec defines the desired state of ComputeInstanceGroupManager
 
     Attributes
     ----------
@@ -232,13 +232,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerSpecProjectRef
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The project for the resource
-
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -526,7 +524,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerStatus:
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeInstanceGroupManager's current state.
     creationTimestamp : str, default is Undefined, optional
         The creation timestamp for this managed instance group in \[RFC3339\](https://www.ietf.org/rfc/rfc3339.txt) text format.
     currentActions : ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupManagerStatusCurrentActions, default is Undefined, optional

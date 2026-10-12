@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema LoggingLogBucket:
     r"""
-    logging cnrm cloud google com v1beta1 logging log bucket
+    LoggingLogBucket is the Schema for the LoggingLogBucket API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema LoggingLogBucket:
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketSpec:
     r"""
-    logging cnrm cloud google com v1beta1 logging log bucket spec
+    LoggingLogBucketSpec defines the desired state of LoggingLogBucket
 
     Attributes
     ----------
@@ -46,7 +46,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketSpec:
     description : str, default is Undefined, optional
         Describes this bucket.
     enableAnalytics : bool, default is Undefined, optional
-         Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the Log Analytics page using SQL queries. Cannot be disabled once enabled.
+        Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the Log Analytics page using SQL queries. Cannot be disabled once enabled.
     folderRef : LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketSpecFolderRef, default is Undefined, optional
         folder ref
     location : str, default is Undefined, required
@@ -92,12 +92,11 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketSpecBillingAccountRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The Google Cloud resource name of a Google Cloud Billing Account (format: `billingAccounts/{{name}}`).
+        The 'name' field of a billing account, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        [WARNING] BillingAccount not yet supported in Config Connector, use 'external' field to reference existing resources.
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The 'name' field of a 'BillingAccount' resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The 'namespace' field of a 'BillingAccount' resource.
     """
 
 
@@ -115,11 +114,11 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketSpecFolderRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The Google Cloud resource name of a `Folder` resource (format: `folders/{{name}}`).
+        The 'name' field of a folder, when not managed by Config Connector. The recommended format is "folders/{folderID}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The 'name' field of a 'Folder' resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The 'namespace' field of a 'Folder' resource.
     """
 
 
@@ -137,12 +136,11 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketSpecOrganizationRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The Google Cloud resource name of a Google Cloud Organization (format: `organizations/{{name}}`).
+        The 'name' field of an organization, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        [WARNING] Organization not yet supported in Config Connector, use 'external' field to reference existing resources.
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The 'name' field of an 'Organization' resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The 'namespace' field of an 'Organization' resource.
     """
 
 
@@ -160,11 +158,11 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketSpecProjectRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -177,12 +175,12 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketSpecProjectRef:
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketStatus:
     r"""
-    logging cnrm cloud google com v1beta1 logging log bucket status
+    LoggingLogBucketStatus defines the config connector machine state of LoggingLogBucket
 
     Attributes
     ----------
     conditions : [LoggingCnrmCloudGoogleComV1beta1LoggingLogBucketStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the LoggingLogBucket's current state.
     createTime : str, default is Undefined, optional
         Output only. The creation timestamp of the bucket. This is not set for any of the default buckets.
     lifecycleState : str, default is Undefined, optional

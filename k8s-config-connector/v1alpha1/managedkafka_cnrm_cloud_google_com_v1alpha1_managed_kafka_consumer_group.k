@@ -63,7 +63,7 @@ schema ManagedkafkaCnrmCloudGoogleComV1alpha1ManagedKafkaConsumerGroupSpec:
 
 schema ManagedkafkaCnrmCloudGoogleComV1alpha1ManagedKafkaConsumerGroupSpecClusterRef:
     r"""
-    ClusterRef defines the resource reference to ManagedKafkaCluster, which "External" field holds the GCP identifier for the KRM object.
+    ClusterRef is a reference to a ManagedKafkaCluster.
 
     Attributes
     ----------

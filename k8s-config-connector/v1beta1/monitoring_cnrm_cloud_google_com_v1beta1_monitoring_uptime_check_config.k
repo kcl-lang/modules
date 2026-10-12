@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema MonitoringUptimeCheckConfig:
     r"""
-    monitoring cnrm cloud google com v1beta1 monitoring uptime check config
+    MonitoringUptimeCheckConfig is the Schema for the MonitoringUptimeCheckConfig API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema MonitoringUptimeCheckConfig:
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpec:
     r"""
-    monitoring cnrm cloud google com v1beta1 monitoring uptime check config spec
+    MonitoringUptimeCheckConfigSpec defines the desired state of MonitoringUptimeCheckConfig
 
     Attributes
     ----------
@@ -96,9 +96,9 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecContent
     Attributes
     ----------
     content : str, default is Undefined, required
-        content
+        String, regex or JSON content to match. Maximum 1024 bytes. An empty `content` string indicates no content matching is to be performed.
     matcher : str, default is Undefined, optional
-         Possible values: CONTENT_MATCHER_OPTION_UNSPECIFIED, CONTAINS_STRING, NOT_CONTAINS_STRING, MATCHES_REGEX, NOT_MATCHES_REGEX
+        The type of content matcher that will be applied to the server output, compared to the `content` string when the check is run.
     """
 
 
@@ -118,7 +118,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecHTTPChe
     body : str, default is Undefined, optional
         The request body associated with the HTTP POST request. If `content_type` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `request_method` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note: As with all `bytes` fields JSON representations are base64 encoded. e.g.: "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
     contentType : str, default is Undefined, optional
-        Immutable. The content type to use for the check.  Possible values: TYPE_UNSPECIFIED, URL_ENCODED
+        Immutable. The content type to use for the check. Possible values: TYPE_UNSPECIFIED, URL_ENCODED
     headers : {str:str}, default is Undefined, optional
         The list of headers to send as part of the Uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
     maskHeaders : bool, default is Undefined, optional
@@ -159,14 +159,14 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecHTTPChe
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecHTTPCheckAuthInfo:
     r"""
-    The authentication information. Optional when creating an HTTP check; defaults to empty.
+    The authentication information. Optional when creating an HTTP check; defaults to empty. Do not set both `auth_method` and `auth_info`.
 
     Attributes
     ----------
     password : MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecHTTPCheckAuthInfoPassword, default is Undefined, required
         password
     username : str, default is Undefined, required
-        username
+        The username to use when authenticating with the HTTP server.
     """
 
 
@@ -177,7 +177,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecHTTPChe
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecHTTPCheckAuthInfoPassword:
     r"""
-    monitoring cnrm cloud google com v1beta1 monitoring uptime check config spec HTTP check auth info password
+    The password to use when authenticating with the HTTP server.
 
     Attributes
     ----------
@@ -250,13 +250,11 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecProject
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The project for this uptime check config.
-
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -287,18 +285,16 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecResourc
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecResourceGroupGroupRef:
     r"""
-    Immutable.
+    Immutable. The group resource associated with the configuration.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The group of resources being monitored. Should be only the `[GROUP_ID]`, and not the full-path `projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]`.
-
-        Allowed value: The Google Cloud resource name of a `MonitoringGroup` resource (format: `projects/{{project}}/groups/{{name}}`).
+        A reference to an externally managed MonitoringGroup resource. Should be in the format "projects/{{projectID}}/groups/{{groupID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a MonitoringGroup resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a MonitoringGroup resource.
     """
 
 
@@ -325,12 +321,12 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigSpecTCPChec
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigStatus:
     r"""
-    monitoring cnrm cloud google com v1beta1 monitoring uptime check config status
+    MonitoringUptimeCheckConfigStatus defines the config connector machine state of MonitoringUptimeCheckConfig
 
     Attributes
     ----------
     conditions : [MonitoringCnrmCloudGoogleComV1beta1MonitoringUptimeCheckConfigStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

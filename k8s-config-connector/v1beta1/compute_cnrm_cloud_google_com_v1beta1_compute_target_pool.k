@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeTargetPool:
     r"""
-    compute cnrm cloud google com v1beta1 compute target pool
+    ComputeTargetPool is the Schema for the ComputeTargetPool API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeTargetPool:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute target pool spec
+    ComputeTargetPoolSpec defines the desired state of ComputeTargetPool
 
     Attributes
     ----------
@@ -88,7 +88,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolSpecBackupTargetPoolRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeTargetPool` resource.
+        The external name of the referenced resource
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -124,7 +124,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolSpecHealthChecksItems0HT
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeHTTPHealthCheck` resource.
+        The external name of the referenced resource
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -146,7 +146,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolSpecInstancesItems0:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeInstance` resource.
+        The external name of the referenced resource
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -168,7 +168,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolSpecSecurityPolicyRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeSecurityPolicy` resource.
+        The external name of the referenced resource
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -185,12 +185,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolSpecSecurityPolicyRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute target pool status
+    ComputeTargetPoolStatus defines the config connector machine state of ComputeTargetPool
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeTargetPoolStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeTargetPool's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     selfLink : str, default is Undefined, optional

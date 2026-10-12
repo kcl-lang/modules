@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeNetworkPeering:
     r"""
-    compute cnrm cloud google com v1beta1 compute network peering
+    ComputeNetworkPeering is the Schema for the compute API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeNetworkPeering:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkPeeringSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute network peering spec
+    ComputeNetworkPeeringSpec defines the desired state of ComputeNetworkPeering
 
     Attributes
     ----------
@@ -79,16 +79,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkPeeringSpec:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkPeeringSpecNetworkRef:
     r"""
-    compute cnrm cloud google com v1beta1 compute network peering spec network ref
+    ComputeNetworkRef is a reference to a GCP ComputeNetwork.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -101,16 +101,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkPeeringSpecNetworkRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkPeeringSpecPeerNetworkRef:
     r"""
-    compute cnrm cloud google com v1beta1 compute network peering spec peer network ref
+    ComputeNetworkRef is a reference to a GCP ComputeNetwork.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -123,12 +123,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkPeeringSpecPeerNetworkRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkPeeringStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute network peering status
+    ComputeNetworkPeeringStatus defines the config connector machine state of ComputeNetworkPeering
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeNetworkPeeringStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeNetworkPeering's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     state : str, default is Undefined, optional

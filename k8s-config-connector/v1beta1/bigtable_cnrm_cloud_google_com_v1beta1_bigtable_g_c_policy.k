@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema BigtableGCPolicy:
     r"""
-    bigtable cnrm cloud google com v1beta1 bigtable g c policy
+    BigtableGCPolicy is the Schema for the BigtableGCPolicy API
 
     Attributes
     ----------
@@ -37,16 +37,14 @@ schema BigtableGCPolicy:
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableGCPolicySpec:
     r"""
-    bigtable cnrm cloud google com v1beta1 bigtable g c policy spec
+    BigtableGCPolicySpec defines the desired state of BigtableGCPolicy
 
     Attributes
     ----------
     columnFamily : str, default is Undefined, required
         Immutable. The name of the column family.
     deletionPolicy : str, default is Undefined, optional
-        The deletion policy for the GC policy. Setting ABANDON allows the resource
-        				to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted
-        				in a replicated instance. Possible values are: "ABANDON".
+        The deletion policy for the GC policy. Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance. Possible values are: "ABANDON".
     gcRules : str, default is Undefined, optional
         Serialized JSON string for garbage collection policy. Conflicts with "mode", "max_age" and "max_version".
     instanceRef : BigtableCnrmCloudGoogleComV1beta1BigtableGCPolicySpecInstanceRef, default is Undefined, required
@@ -86,11 +84,11 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableGCPolicySpecInstanceRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `BigtableInstance` resource.
+        A reference to an externally managed BigtableInstance resource.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a BigtableInstance resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a BigtableInstance resource.
     """
 
 
@@ -140,11 +138,11 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableGCPolicySpecTableRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `BigtableTable` resource.
+        A reference to an externally managed BigtableTable resource.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a BigtableInstance resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a BigtableInstance resource.
     """
 
 
@@ -157,12 +155,12 @@ schema BigtableCnrmCloudGoogleComV1beta1BigtableGCPolicySpecTableRef:
 
 schema BigtableCnrmCloudGoogleComV1beta1BigtableGCPolicyStatus:
     r"""
-    bigtable cnrm cloud google com v1beta1 bigtable g c policy status
+    BigtableGCPolicyStatus defines the config connector machine state of BigtableGCPolicy
 
     Attributes
     ----------
     conditions : [BigtableCnrmCloudGoogleComV1beta1BigtableGCPolicyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

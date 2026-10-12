@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeSharedVPCServiceProject:
     r"""
-    compute cnrm cloud google com v1beta1 compute shared v p c service project
+    ComputeSharedVPCServiceProject is the Schema for the compute API
 
     Attributes
     ----------
@@ -42,8 +42,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSharedVPCServiceProjectSpec:
     Attributes
     ----------
     deletionPolicy : str, default is Undefined, optional
-        The deletion policy for the shared VPC service. Setting ABANDON allows the resource
-        				to be abandoned rather than deleted. Possible values are: "ABANDON".
+        The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
     projectRef : ComputeCnrmCloudGoogleComV1beta1ComputeSharedVPCServiceProjectSpecProjectRef, default is Undefined, required
         project ref
     """
@@ -56,16 +55,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSharedVPCServiceProjectSpec:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSharedVPCServiceProjectSpecProjectRef:
     r"""
-    compute cnrm cloud google com v1beta1 compute shared v p c service project spec project ref
+    ProjectRef is a reference to a GCP Project.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -83,7 +82,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSharedVPCServiceProjectStatus:
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeSharedVPCServiceProjectStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeSharedVPCServiceProject's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

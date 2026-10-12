@@ -318,7 +318,7 @@ schema AssetCnrmCloudGoogleComV1beta1AssetSavedQuerySpecContentIamPolicyAnalysis
 
 schema AssetCnrmCloudGoogleComV1beta1AssetSavedQuerySpecFolderRef:
     r"""
-    FolderRef represents the Folder that this resource belongs to.
+    The Folder that contains this resource.
 
     Attributes
     ----------

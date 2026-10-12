@@ -42,34 +42,25 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxySpec:
     Attributes
     ----------
     certificateManagerCertificates : [ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxySpecCertificateManagerCertificatesItems0], default is Undefined, optional
-        certificate manager certificates
+        URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer. Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED. sslCertificates and certificateManagerCertificates fields cannot be defined together.
     certificateMapRef : ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxySpecCertificateMapRef, default is Undefined, optional
         certificate map ref
     description : str, default is Undefined, optional
         Immutable. An optional description of this resource.
     httpKeepAliveTimeoutSec : int, default is Undefined, optional
-        Immutable. Specifies how long to keep a connection open, after completing a response,
-        while there is no matching traffic (in seconds). If an HTTP keepalive is
-        not specified, a default value (610 seconds) will be used. For Global
-        external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
-        the maximum allowed value is 1200 seconds. For Global external HTTP(S)
-        load balancer (classic), this option is not available publicly.
+        Immutable. Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keepalive is not specified, a default value (610 seconds) will be used. For Global external HTTP(S) load balancer, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For Global external HTTP(S) load balancer (classic), this option is not available publicly.
     location : str, default is Undefined, required
         Location represents the geographical location of the ComputeTargetHTTPSProxy. Specify a region name or "global" for global resources. Reference: GCP definition of regions/zones (https://cloud.google.com/compute/docs/regions-zones/)
     proxyBind : bool, default is Undefined, optional
-        Immutable. This field only applies when the forwarding rule that references
-        this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        Immutable. This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
     quicOverride : str, default is Undefined, optional
-        Specifies the QUIC override policy for this resource. This determines
-        whether the load balancer will attempt to negotiate QUIC with clients
-        or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
-        specified, Google manages whether QUIC is used. Default value: "NONE" Possible values: ["NONE", "ENABLE", "DISABLE"].
+        Specifies the QUIC override policy for this resource. This determines whether the load balancer will attempt to negotiate QUIC with clients or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is specified, Google manages whether QUIC is used. Default value: "NONE" Possible values: ["NONE", "ENABLE", "DISABLE"].
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
     serverTlsPolicyRef : ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxySpecServerTLSPolicyRef, default is Undefined, optional
         server Tls policy ref
     sslCertificates : [ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxySpecSslCertificatesItems0], default is Undefined, optional
-        ssl certificates
+        A list of ComputeSSLCertificate resources that are used to authenticate connections between users and the load balancer. At least one SSL certificate must be specified.
     sslPolicyRef : ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxySpecSslPolicyRef, default is Undefined, optional
         ssl policy ref
     urlMapRef : ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxySpecURLMapRef, default is Undefined, required
@@ -104,18 +95,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxySpec:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxySpecCertificateManagerCertificatesItems0:
     r"""
-    URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
-    Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
-    sslCertificates and certificateManagerCertificates fields cannot be defined together.
+    CertificateManagerCertificateRef is a reference to a CertificateManagerCertificate.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `projects/{{project}}/locations/global/certificates/{{value}}`, where {{value}} is the `name` field of a `CertificateManagerCertificate` resource.
+        A reference to an externally managed CertificateManagerCertificate resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/certificates/{{certificateID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a CertificateManagerCertificate resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a CertificateManagerCertificate resource.
     """
 
 
@@ -128,21 +117,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxySpecCertificateMan
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxySpecCertificateMapRef:
     r"""
-    A reference to the CertificateMap resource uri that identifies a
-    certificate map associated with the given target proxy. This field
-    can only be set for global target proxies. This field is only supported
-    for EXTERNAL and EXTERNAL_MANAGED load balancing schemes.
-    For INTERNAL_MANAGED, use certificateManagerCertificates instead.
-    sslCertificates and certificateMap fields cannot be defined together.
+    A reference to the CertificateMap resource uri that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. This field is only supported for EXTERNAL and EXTERNAL_MANAGED load balancing schemes. For INTERNAL_MANAGED, use certificateManagerCertificates instead. sslCertificates and certificateMap fields cannot be defined together.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `//certificatemanager.googleapis.com/projects/{{project}}/locations/global/certificateMaps/{{value}}`, where {{value}} is the `name` field of a `CertificateManagerCertificateMap` resource.
+        A reference to an externally managed CertificateManagerCertificateMap resource. Should be in the format "projects/{{projectID}}/locations/global/certificateMaps/{{certificateMapID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a CertificateManagerCertificateMap resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a CertificateManagerCertificateMap resource.
     """
 
 
@@ -155,24 +139,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxySpecCertificateMap
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxySpecServerTLSPolicyRef:
     r"""
-    Immutable. A URL referring to a networksecurity.ServerTlsPolicy
-    resource that describes how the proxy should authenticate inbound
-    traffic. serverTlsPolicy only applies to a global TargetHttpsProxy
-    attached to globalForwardingRules with the loadBalancingScheme
-    set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.
-    For details which ServerTlsPolicy resources are accepted with
-    INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
-    loadBalancingScheme consult ServerTlsPolicy documentation.
-    If left blank, communications are not encrypted.
+    Immutable. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED. For details which ServerTlsPolicy resources are accepted with INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED loadBalancingScheme consult ServerTlsPolicy documentation. If left blank, communications are not encrypted.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
         Allowed value: string of the format `projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{value}}`, where {{value}} is the `name` field of a `NetworkSecurityServerTLSPolicy` resource.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a NetworkSecurityServerTLSPolicy resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a NetworkSecurityServerTLSPolicy resource.
     """
 
 
@@ -185,18 +161,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxySpecServerTLSPolic
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxySpecSslCertificatesItems0:
     r"""
-    A list of ComputeSSLCertificate resources that are used to
-    authenticate connections between users and the load balancer. At
-    least one SSL certificate must be specified.
+    A reference to a ComputeSSLCertificate resource.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeSSLCertificate` resource.
+        Allowed value: string of the format `projects/{{project}}/global/sslCertificates/{{value}}` or `projects/{{project}}/regions/{{region}}/sslCertificates/{{value}}`, where {{value}} is the `name` field of a `ComputeSSLCertificate` resource.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeSSLCertificate resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeSSLCertificate resource.
     """
 
 
@@ -209,19 +183,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxySpecSslCertificate
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxySpecSslPolicyRef:
     r"""
-    A reference to the ComputeSSLPolicy resource that will be
-    associated with the ComputeTargetHTTPSProxy resource. If not set,
-    the ComputeTargetHTTPSProxy resource will not have any SSL policy
-    configured.
+    A reference to the ComputeSSLPolicy resource that will be associated with the ComputeTargetHTTPSProxy resource. If not set, the ComputeTargetHTTPSProxy resource will not have any SSL policy configured.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeSSLPolicy` resource.
+        A reference to an externally managed ComputeSSLPolicy resource. Should be in the format "projects/{{projectID}}/global/sslPolicies/{{sslPolicyID}}" or "projects/{{projectID}}/regions/{{region}}/sslPolicies/{{sslPolicyID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeSSLPolicy resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeSSLPolicy resource.
     """
 
 
@@ -234,17 +205,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxySpecSslPolicyRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxySpecURLMapRef:
     r"""
-    A reference to the ComputeURLMap resource that defines the mapping
-    from URL to the BackendService.
+    A reference to the ComputeURLMap resource that defines the mapping from URL to the BackendService.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeURLMap` resource.
+        A reference to an externally managed ComputeURLMap resource. Should be in the format "projects/{{projectID}}/global/urlMaps/{{urlMapID}}" or "projects/{{projectID}}/regions/{{region}}/urlMaps/{{urlMapID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeURLMap resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeURLMap resource.
     """
 
 
@@ -257,20 +227,24 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxySpecURLMapRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxyStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute target HTTPS proxy status
+    ComputeTargetHTTPSProxyStatus defines the config connector machine state of ComputeTargetHTTPSProxy
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the ComputeTargetHTTPSProxy resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxyStatusObservedState, default is Undefined, optional
+        observed state
     proxyId : int, default is Undefined, optional
         The unique identifier for the resource.
     selfLink : str, default is Undefined, optional
-        self link
+        The SelfLink for the resource.
     """
 
 
@@ -278,7 +252,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxyStatus:
 
     creationTimestamp?: str
 
+    externalRef?: str
+
     observedGeneration?: int
+
+    observedState?: ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxyStatusObservedState
 
     proxyId?: int
 
@@ -313,5 +291,19 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxyStatusConditionsIt
     status?: str
 
     $type?: str
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetHTTPSProxyStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    fingerprint : str, default is Undefined, optional
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+    """
+
+
+    fingerprint?: str
 
 

@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema DataprocAutoscalingPolicy:
     r"""
-    dataproc cnrm cloud google com v1beta1 dataproc autoscaling policy
+    DataprocAutoscalingPolicy is the Schema for the DataprocAutoscalingPolicy API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema DataprocAutoscalingPolicy:
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpec:
     r"""
-    dataproc cnrm cloud google com v1beta1 dataproc autoscaling policy spec
+    DataprocAutoscalingPolicySpec defines the desired state of DataprocAutoscalingPolicy
 
     Attributes
     ----------
@@ -71,12 +71,15 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpec:
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpecBasicAlgorithm:
     r"""
-    dataproc cnrm cloud google com v1beta1 dataproc autoscaling policy spec basic algorithm
+    Immutable. Required. YARN autoscaling configuration.
 
     Attributes
     ----------
     cooldownPeriod : str, default is Undefined, optional
-        Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed. Bounds: . Default: 2m.
+        Optional. Duration between scaling events. A scaling period starts after
+         the update operation from the previous event has completed.
+
+         Bounds: [2m, 1d]. Default: 2m.
     yarnConfig : DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpecBasicAlgorithmYarnConfig, default is Undefined, required
         yarn config
     """
@@ -94,15 +97,50 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpecBasicAlgori
     Attributes
     ----------
     gracefulDecommissionTimeout : str, default is Undefined, required
-        Required. Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.
+        Required. Timeout for YARN graceful decommissioning of Node Managers.
+         Specifies the duration to wait for jobs to complete before forcefully
+         removing workers (and potentially interrupting jobs). Only applicable to
+         downscaling operations.
+
+         Bounds: [0s, 1d].
     scaleDownFactor : float, default is Undefined, required
-        Required. Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See .
+        Required. Fraction of average YARN pending memory in the last cooldown
+         period for which to remove workers. A scale-down factor of 1 will result in
+         scaling down so that there is no available memory remaining after the
+         update (more aggressive scaling). A scale-down factor of 0 disables
+         removing workers, which can be beneficial for autoscaling a single job.
+         See [How autoscaling
+         works](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works)
+         for more information.
+
+         Bounds: [0.0, 1.0].
     scaleDownMinWorkerFraction : float, default is Undefined, optional
-        Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change. Bounds: . Default: 0.0.
+        Optional. Minimum scale-down threshold as a fraction of total cluster size
+         before scaling occurs. For example, in a 20-worker cluster, a threshold of
+         0.1 means the autoscaler must recommend at least a 2 worker scale-down for
+         the cluster to scale. A threshold of 0 means the autoscaler will scale down
+         on any recommended change.
+
+         Bounds: [0.0, 1.0]. Default: 0.0.
     scaleUpFactor : float, default is Undefined, required
-        Required. Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See .
+        Required. Fraction of average YARN pending memory in the last cooldown
+         period for which to add workers. A scale-up factor of 1.0 will result in
+         scaling up so that there is no pending memory remaining after the update
+         (more aggressive scaling). A scale-up factor closer to 0 will result in a
+         smaller magnitude of scaling up (less aggressive scaling). See [How
+         autoscaling
+         works](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works)
+         for more information.
+
+         Bounds: [0.0, 1.0].
     scaleUpMinWorkerFraction : float, default is Undefined, optional
-        Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change. Bounds: . Default: 0.0.
+        Optional. Minimum scale-up threshold as a fraction of total cluster size
+         before scaling occurs. For example, in a 20-worker cluster, a threshold of
+         0.1 means the autoscaler must recommend at least a 2-worker scale-up for
+         the cluster to scale. A threshold of 0 means the autoscaler will scale up
+         on any recommended change.
+
+         Bounds: [0.0, 1.0]. Default: 0.0.
     """
 
 
@@ -124,13 +162,11 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpecProjectRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The project for the resource
-
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -143,16 +179,41 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpecProjectRef:
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpecSecondaryWorkerConfig:
     r"""
-    Optional. Describes how the autoscaler will operate for secondary workers.
+    Immutable. Optional. Describes how the autoscaler will operate for secondary workers.
 
     Attributes
     ----------
     maxInstances : int, default is Undefined, optional
-        Optional. Maximum number of instances for this group. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set. Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
+        Required. Maximum number of instances for this group. Required for primary
+         workers. Note that by default, clusters will not use secondary workers.
+         Required for secondary workers if the minimum secondary instances is set.
+
+         Primary workers - Bounds: [min_instances, ).
+         Secondary workers - Bounds: [min_instances, ). Default: 0.
     minInstances : int, default is Undefined, optional
-        Optional. Minimum number of instances for this group. Primary workers - Bounds: . Default: 0.
+        Optional. Minimum number of instances for this group.
+
+         Primary workers - Bounds: [2, max_instances]. Default: 2.
+         Secondary workers - Bounds: [0, max_instances]. Default: 0.
     weight : int, default is Undefined, optional
-        Optional. Weight for the instance group, which is used to determine the fraction of total workers in the cluster from this instance group. For example, if primary workers have weight 2, and secondary workers have weight 1, the cluster will have approximately 2 primary workers for each secondary worker. The cluster may not reach the specified balance if constrained by min/max bounds or other autoscaling settings. For example, if `max_instances` for secondary workers is 0, then only primary workers will be added. The cluster can also be out of balance when created. If weight is not set on any instance group, the cluster will default to equal weight for all groups: the cluster will attempt to maintain an equal number of workers in each group within the configured size bounds for each group. If weight is set for one group only, the cluster will default to zero weight on the unset group. For example if weight is set only on primary workers, the cluster will use primary workers only and no secondary workers.
+        Optional. Weight for the instance group, which is used to determine the
+         fraction of total workers in the cluster from this instance group.
+         For example, if primary workers have weight 2, and secondary workers have
+         weight 1, the cluster will have approximately 2 primary workers for each
+         secondary worker.
+
+         The cluster may not reach the specified balance if constrained
+         by min/max bounds or other autoscaling settings. For example, if
+         `max_instances` for secondary workers is 0, then only primary workers will
+         be added. The cluster can also be out of balance when created.
+
+         If weight is not set on any instance group, the cluster will default to
+         equal weight for all groups: the cluster will attempt to maintain an equal
+         number of workers in each group within the configured size bounds for each
+         group. If weight is set for one group only, the cluster will default to
+         zero weight on the unset group. For example if weight is set only on
+         primary workers, the cluster will use primary workers only and no
+         secondary workers.
     """
 
 
@@ -165,16 +226,41 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpecSecondaryWo
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpecWorkerConfig:
     r"""
-    Required. Describes how the autoscaler will operate for primary workers.
+    Immutable. Required. Describes how the autoscaler will operate for primary workers.
 
     Attributes
     ----------
     maxInstances : int, default is Undefined, required
-        Required. Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set. Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
+        Required. Maximum number of instances for this group. Required for primary
+         workers. Note that by default, clusters will not use secondary workers.
+         Required for secondary workers if the minimum secondary instances is set.
+
+         Primary workers - Bounds: [min_instances, ).
+         Secondary workers - Bounds: [min_instances, ). Default: 0.
     minInstances : int, default is Undefined, optional
-        Optional. Minimum number of instances for this group. Primary workers - Bounds: . Default: 0.
+        Optional. Minimum number of instances for this group.
+
+         Primary workers - Bounds: [2, max_instances]. Default: 2.
+         Secondary workers - Bounds: [0, max_instances]. Default: 0.
     weight : int, default is Undefined, optional
-        Optional. Weight for the instance group, which is used to determine the fraction of total workers in the cluster from this instance group. For example, if primary workers have weight 2, and secondary workers have weight 1, the cluster will have approximately 2 primary workers for each secondary worker. The cluster may not reach the specified balance if constrained by min/max bounds or other autoscaling settings. For example, if `max_instances` for secondary workers is 0, then only primary workers will be added. The cluster can also be out of balance when created. If weight is not set on any instance group, the cluster will default to equal weight for all groups: the cluster will attempt to maintain an equal number of workers in each group within the configured size bounds for each group. If weight is set for one group only, the cluster will default to zero weight on the unset group. For example if weight is set only on primary workers, the cluster will use primary workers only and no secondary workers.
+        Optional. Weight for the instance group, which is used to determine the
+         fraction of total workers in the cluster from this instance group.
+         For example, if primary workers have weight 2, and secondary workers have
+         weight 1, the cluster will have approximately 2 primary workers for each
+         secondary worker.
+
+         The cluster may not reach the specified balance if constrained
+         by min/max bounds or other autoscaling settings. For example, if
+         `max_instances` for secondary workers is 0, then only primary workers will
+         be added. The cluster can also be out of balance when created.
+
+         If weight is not set on any instance group, the cluster will default to
+         equal weight for all groups: the cluster will attempt to maintain an equal
+         number of workers in each group within the configured size bounds for each
+         group. If weight is set for one group only, the cluster will default to
+         zero weight on the unset group. For example if weight is set only on
+         primary workers, the cluster will use primary workers only and no
+         secondary workers.
     """
 
 
@@ -187,18 +273,22 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicySpecWorkerConfi
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicyStatus:
     r"""
-    dataproc cnrm cloud google com v1beta1 dataproc autoscaling policy status
+    DataprocAutoscalingPolicyStatus defines the config connector machine state of DataprocAutoscalingPolicy
 
     Attributes
     ----------
     conditions : [DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the DataprocAutoscalingPolicy resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """
 
 
     conditions?: [DataprocCnrmCloudGoogleComV1beta1DataprocAutoscalingPolicyStatusConditionsItems0]
+
+    externalRef?: str
 
     observedGeneration?: int
 

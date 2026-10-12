@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeProjectMetadata:
     r"""
-    compute cnrm cloud google com v1beta1 compute project metadata
+    ComputeProjectMetadata is the Schema for the ComputeProjectMetadata API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeProjectMetadata:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeProjectMetadataSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute project metadata spec
+    ComputeProjectMetadataSpec defines the desired state of ComputeProjectMetadata
 
     Attributes
     ----------
@@ -51,12 +51,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeProjectMetadataSpec:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeProjectMetadataStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute project metadata status
+    ComputeProjectMetadataStatus defines the config connector machine state of ComputeProjectMetadata
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeProjectMetadataStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

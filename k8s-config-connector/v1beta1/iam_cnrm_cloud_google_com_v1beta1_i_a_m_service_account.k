@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema IAMServiceAccount:
     r"""
-    iam cnrm cloud google com v1beta1 i a m service account
+    IAMServiceAccount is the Schema for the IAMServiceAccount API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema IAMServiceAccount:
 
 schema IamCnrmCloudGoogleComV1beta1IAMServiceAccountSpec:
     r"""
-    iam cnrm cloud google com v1beta1 i a m service account spec
+    IAMServiceAccountSpec defines the desired state of IAMServiceAccount
 
     Attributes
     ----------
@@ -63,14 +63,16 @@ schema IamCnrmCloudGoogleComV1beta1IAMServiceAccountSpec:
 
 schema IamCnrmCloudGoogleComV1beta1IAMServiceAccountStatus:
     r"""
-    iam cnrm cloud google com v1beta1 i a m service account status
+    IAMServiceAccountStatus defines the config connector machine state of IAMServiceAccount
 
     Attributes
     ----------
     conditions : [IamCnrmCloudGoogleComV1beta1IAMServiceAccountStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the IAMServiceAccount's current state.
     email : str, default is Undefined, optional
         The e-mail address of the service account. This value should be referenced from any google_iam_policy data sources that would grant the service account privileges.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the IAMServiceAccount resource in GCP.
     member : str, default is Undefined, optional
         The Identity of the service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
     name : str, default is Undefined, optional
@@ -85,6 +87,8 @@ schema IamCnrmCloudGoogleComV1beta1IAMServiceAccountStatus:
     conditions?: [IamCnrmCloudGoogleComV1beta1IAMServiceAccountStatusConditionsItems0]
 
     email?: str
+
+    externalRef?: str
 
     member?: str
 

@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema Service:
     r"""
-    serviceusage cnrm cloud google com v1beta1 service
+    Service is the Schema for the Service API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema Service:
 
 schema ServiceusageCnrmCloudGoogleComV1beta1ServiceSpec:
     r"""
-    serviceusage cnrm cloud google com v1beta1 service spec
+    ServiceSpec defines the desired state of Service
 
     Attributes
     ----------
@@ -60,11 +60,11 @@ schema ServiceusageCnrmCloudGoogleComV1beta1ServiceSpecProjectRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -77,12 +77,12 @@ schema ServiceusageCnrmCloudGoogleComV1beta1ServiceSpecProjectRef:
 
 schema ServiceusageCnrmCloudGoogleComV1beta1ServiceStatus:
     r"""
-    serviceusage cnrm cloud google com v1beta1 service status
+    ServiceStatus defines the config connector machine state of Service
 
     Attributes
     ----------
     conditions : [ServiceusageCnrmCloudGoogleComV1beta1ServiceStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeRoute:
     r"""
-    compute cnrm cloud google com v1beta1 compute route
+    ComputeRoute is the Schema for the ComputeRoute API
 
     Attributes
     ----------
@@ -37,26 +37,18 @@ schema ComputeRoute:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouteSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute route spec
+    ComputeRouteSpec defines the desired state of ComputeRoute
 
     Attributes
     ----------
     description : str, default is Undefined, optional
-        Immutable. An optional description of this resource. Provide this property
-        when you create the resource.
+        Immutable. An optional description of this resource. Provide this property when you create the resource.
     destRange : str, default is Undefined, required
-        Immutable. The destination range of outgoing packets that this route applies to.
-        Only IPv4 is supported.
+        Immutable. The destination range of outgoing packets that this route applies to. Only IPv4 is supported.
     networkRef : ComputeCnrmCloudGoogleComV1beta1ComputeRouteSpecNetworkRef, default is Undefined, required
         network ref
     nextHopGateway : str, default is Undefined, optional
-        Immutable. URL to a gateway that should handle matching packets.
-        Currently, you can only specify the internet gateway, using a full or
-        partial valid URL:
-        * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
-        * 'projects/project/global/gateways/default-internet-gateway'
-        * 'global/gateways/default-internet-gateway'
-        * The string 'default-internet-gateway'.
+        Immutable. URL to a gateway that should handle matching packets. Currently, you can only specify the internet gateway, using a full or partial valid URL: * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway' * 'projects/project/global/gateways/default-internet-gateway' * 'global/gateways/default-internet-gateway' * The string 'default-internet-gateway'.
     nextHopILBRef : ComputeCnrmCloudGoogleComV1beta1ComputeRouteSpecNextHopILBRef, default is Undefined, optional
         next hop i l b ref
     nextHopInstanceRef : ComputeCnrmCloudGoogleComV1beta1ComputeRouteSpecNextHopInstanceRef, default is Undefined, optional
@@ -110,11 +102,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouteSpecNetworkRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -127,18 +119,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouteSpecNetworkRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouteSpecNextHopILBRef:
     r"""
-    A forwarding rule of type loadBalancingScheme=INTERNAL that should
-    handle matching packets.  Note that this can only be used when the
-    destinationRange is a public (non-RFC 1918) IP CIDR range.
+    A forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets.  Note that this can only be used when the destinationRange is a public (non-RFC 1918) IP CIDR range.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeForwardingRule` resource.
+        A reference to an externally managed ComputeForwardingRule resource. Should be in the format "projects/{{projectID}}/global/forwardingRules/{{forwardingRuleID}}" or "projects/{{projectID}}/regions/{{region}}/forwardingRules/{{forwardingRuleID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeForwardingRule resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeForwardingRule resource.
     """
 
 
@@ -156,11 +146,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouteSpecNextHopInstanceRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeInstance` resource.
+        A reference to an externally managed ComputeInstance resource. Should be in the format "projects/{{projectID}}/zones/{{zone}}/instances/{{instanceID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeInstance resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeInstance resource.
     """
 
 
@@ -195,12 +185,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouteSpecNextHopVPNTunnelRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouteStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute route status
+    ComputeRouteStatus defines the config connector machine state of ComputeRoute
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeRouteStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     nextHopNetwork : str, default is Undefined, optional
         URL to a Network that should handle matching packets.
     observedGeneration : int, default is Undefined, optional

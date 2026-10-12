@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeBackendBucket:
     r"""
-    compute cnrm cloud google com v1beta1 compute backend bucket
+    ComputeBackendBucket is the Schema for the ComputeBackendBucket API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeBackendBucket:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute backend bucket spec
+    ComputeBackendBucketSpec defines the desired state of ComputeBackendBucket
 
     Attributes
     ----------
@@ -50,8 +50,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketSpec:
     customResponseHeaders : [str], default is Undefined, optional
         Headers that the HTTP/S load balancer should add to proxied responses.
     description : str, default is Undefined, optional
-        An optional textual description of the resource; provided by the
-        client when the resource is created.
+        An optional textual description of the resource; provided by the client when the resource is created.
     edgeSecurityPolicy : str, default is Undefined, optional
         The security policy associated with this backend bucket.
     enableCdn : bool, default is Undefined, optional
@@ -85,11 +84,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketSpecBucketRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `StorageBucket` resource.
+        A reference to an externally managed StorageBucket resource. Should be in the format "projects/{{projectID}}/buckets/{{bucketID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a StorageBucket resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a StorageBucket resource.
     """
 
 
@@ -111,33 +110,23 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketSpecCdnPolicy:
     cacheKeyPolicy : ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketSpecCdnPolicyCacheKeyPolicy, default is Undefined, optional
         cache key policy
     cacheMode : str, default is Undefined, optional
-        Specifies the cache setting for all responses from this backend.
-        The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC Possible values: ["USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", "CACHE_ALL_STATIC"].
+        Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC.
     clientTtl : int, default is Undefined, optional
         Specifies the maximum allowed TTL for cached content served by this origin.
     defaultTtl : int, default is Undefined, optional
-        Specifies the default TTL for cached content served by this origin for responses
-        that do not have an existing valid TTL (max-age or s-max-age).
+        Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-maxage).
     maxTtl : int, default is Undefined, optional
         Specifies the maximum allowed TTL for cached content served by this origin.
     negativeCaching : bool, default is Undefined, optional
         Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
     negativeCachingPolicy : [ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketSpecCdnPolicyNegativeCachingPolicyItems0], default is Undefined, optional
         Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
-        Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
     requestCoalescing : bool, default is Undefined, optional
         If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
     serveWhileStale : int, default is Undefined, optional
         Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
     signedUrlCacheMaxAgeSec : int, default is Undefined, optional
-        Maximum number of seconds the response to a signed URL request will
-        be considered fresh. After this time period,
-        the response will be revalidated before being served.
-        When serving responses to signed URL requests,
-        Cloud CDN will internally behave as though
-        all responses from this backend had a "Cache-Control: public,
-        max-age=[TTL]" header, regardless of any existing Cache-Control
-        header. The actual headers served in responses will not be altered.
+        Maximum number of seconds the response to a signed URL request will be considered fresh.
     """
 
 
@@ -185,12 +174,9 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketSpecCdnPolicyCacheKey
     Attributes
     ----------
     includeHttpHeaders : [str], default is Undefined, optional
-        Allows HTTP request headers (by name) to be used in the
-        cache key.
+        Allows HTTP request headers (by name) to be used in the cache key.
     queryStringWhitelist : [str], default is Undefined, optional
         Names of query string parameters to include in cache keys.
-        Default parameters are always included. '&' and '=' will
-        be percent encoded and not treated as delimiters.
     """
 
 
@@ -206,11 +192,9 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketSpecCdnPolicyNegative
     Attributes
     ----------
     code : int, default is Undefined, optional
-        The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
-        can be specified as values, and you cannot specify a status code more than once.
+        The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501 can be specified as values, and you cannot specify a status code more than once.
     ttl : int, default is Undefined, optional
-        The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
-        (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+        The TTL (in seconds) for which to cache responses with the corresponding status code.
     """
 
 
@@ -221,18 +205,18 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketSpecCdnPolicyNegative
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute backend bucket status
+    ComputeBackendBucketStatus defines the config connector machine state of ComputeBackendBucket
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeBackendBucketStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     selfLink : str, default is Undefined, optional
-        self link
+        Server-defined URL for the resource.
     """
 
 

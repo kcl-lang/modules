@@ -356,9 +356,9 @@ schema ArtifactregistryCnrmCloudGoogleComV1beta1ArtifactRegistryRepositorySpecVi
     external : str, default is Undefined, optional
         A reference to an externally managed ArtifactRegistryRepository resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/repositories/{{repositoryID}}".
     name : str, default is Undefined, optional
-        The name of a ArtifactRegistryRepository resource.
+        The name of an ArtifactRegistryRepository resource.
     namespace : str, default is Undefined, optional
-        The namespace of a ArtifactRegistryRepository resource.
+        The namespace of an ArtifactRegistryRepository resource.
     """
 
 

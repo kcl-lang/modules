@@ -242,7 +242,7 @@ schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupRestorePlanSpecRestoreConfigC
     Attributes
     ----------
     resourceGroup : str, default is Undefined, optional
-        Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
+        Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group.
     resourceKind : str, default is Undefined, optional
         Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc.
     """
@@ -260,7 +260,7 @@ schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupRestorePlanSpecRestoreConfigC
     Attributes
     ----------
     resourceGroup : str, default is Undefined, optional
-        Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
+        Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group.
     resourceKind : str, default is Undefined, optional
         Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc.
     """
@@ -278,7 +278,7 @@ schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupRestorePlanSpecRestoreConfigE
     Attributes
     ----------
     namespaces : [str], default is Undefined, optional
-        Optional. A list of Kubernetes Namespaces
+        Optional. A list of Kubernetes Namespaces.
     """
 
 
@@ -324,7 +324,7 @@ schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupRestorePlanSpecRestoreConfigR
     Attributes
     ----------
     resourceGroup : str, default is Undefined, optional
-        Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
+        Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group.
     resourceKind : str, default is Undefined, optional
         Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc.
     """
@@ -342,7 +342,7 @@ schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupRestorePlanSpecRestoreConfigR
     Attributes
     ----------
     resourceGroup : str, default is Undefined, optional
-        Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
+        Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group.
     resourceKind : str, default is Undefined, optional
         Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc.
     """
@@ -392,7 +392,7 @@ schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupRestorePlanSpecRestoreConfigS
     Attributes
     ----------
     namespaces : [str], default is Undefined, optional
-        Optional. A list of Kubernetes Namespaces
+        Optional. A list of Kubernetes Namespaces.
     """
 
 
@@ -436,7 +436,7 @@ schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupRestorePlanSpecRestoreConfigS
     Attributes
     ----------
     resourceGroup : str, default is Undefined, optional
-        Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
+        Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group.
     resourceKind : str, default is Undefined, optional
         Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc.
     """
@@ -524,7 +524,7 @@ schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupRestorePlanSpecRestoreConfigT
     Attributes
     ----------
     resourceGroup : str, default is Undefined, optional
-        Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
+        Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group.
     resourceKind : str, default is Undefined, optional
         Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc.
     """

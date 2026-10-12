@@ -62,7 +62,7 @@ schema TagsCnrmCloudGoogleComV1beta1TagsTagKeySpec:
 
          Purpose data cannot be changed once set.
     resourceID : str, default is Undefined, optional
-        The TagsTagKey name. If not given, the metadata.name will be used.
+        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
     shortName : str, default is Undefined, required
         Required. Immutable. The user friendly name for a TagKey. The short name
          should be unique for TagKeys within the same tag namespace.

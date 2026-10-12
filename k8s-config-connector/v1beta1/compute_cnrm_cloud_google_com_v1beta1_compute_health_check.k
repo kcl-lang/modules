@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeHealthCheck:
     r"""
-    compute cnrm cloud google com v1beta1 compute health check
+    ComputeHealthCheck is the Schema for the ComputeHealthCheck API
 
     Attributes
     ----------
@@ -37,21 +37,18 @@ schema ComputeHealthCheck:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute health check spec
+    ComputeHealthCheckSpec defines the desired state of ComputeHealthCheck
 
     Attributes
     ----------
     checkIntervalSec : int, default is Undefined, optional
-        How often (in seconds) to send a health check. The default value is 5
-        seconds.
+        How often (in seconds) to send a health check. The default value is 5 seconds.
     description : str, default is Undefined, optional
-        An optional description of this resource. Provide this property when
-        you create the resource.
+        An optional description of this resource. Provide this property when you create the resource.
     grpcHealthCheck : ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecGrpcHealthCheck, default is Undefined, optional
         grpc health check
     healthyThreshold : int, default is Undefined, optional
-        A so-far unhealthy instance will be marked healthy after this many
-        consecutive successes. The default value is 2.
+        A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
     http2HealthCheck : ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecHttp2HealthCheck, default is Undefined, optional
         http2 health check
     httpHealthCheck : ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecHTTPHealthCheck, default is Undefined, optional
@@ -64,17 +61,32 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpec:
         log config
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+    sourceRegions : [str], default is Undefined, optional
+        The list of cloud regions from which health checks are performed. If
+        any regions are specified, then exactly 3 regions should be specified.
+        The region names must be valid names of Google Cloud regions. This can
+        only be set for global health check. If this list is non-empty, then
+        there are restrictions on what other health check fields are supported
+        and what other resources can use this health check:
+
+        * SSL, HTTP2, and GRPC protocols are not supported.
+
+        * The TCP request field is not supported.
+
+        * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
+
+        * The checkIntervalSec field must be at least 30.
+
+        * The health check cannot be used with BackendService nor with managed
+        instance group auto-healing.
     sslHealthCheck : ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecSslHealthCheck, default is Undefined, optional
         ssl health check
     tcpHealthCheck : ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecTCPHealthCheck, default is Undefined, optional
         tcp health check
     timeoutSec : int, default is Undefined, optional
-        How long (in seconds) to wait before claiming failure.
-        The default value is 5 seconds.  It is invalid for timeoutSec to have
-        greater value than checkIntervalSec.
+        How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
     unhealthyThreshold : int, default is Undefined, optional
-        A so-far healthy instance will be marked unhealthy after this many
-        consecutive failures. The default value is 2.
+        A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
     """
 
 
@@ -98,6 +110,8 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpec:
 
     resourceID?: str
 
+    sourceRegions?: [str]
+
     sslHealthCheck?: ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecSslHealthCheck
 
     tcpHealthCheck?: ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecTCPHealthCheck
@@ -109,38 +123,18 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpec:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecGrpcHealthCheck:
     r"""
-    A nested object resource.
+    compute cnrm cloud google com v1beta1 compute health check spec grpc health check
 
     Attributes
     ----------
     grpcServiceName : str, default is Undefined, optional
-        The gRPC service name for the health check.
-        The value of grpcServiceName has the following meanings by convention:
-          - Empty serviceName means the overall status of all services at the backend.
-          - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
-        The grpcServiceName can only be ASCII.
+        The gRPC service name for the health check. The value of grpcServiceName has the following meanings by convention: - Empty serviceName means the overall status of all services at the backend. - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service. The grpcServiceName can only be ASCII.
     port : int, default is Undefined, optional
-        The port number for the health check request.
-        Must be specified if portName and portSpecification are not set
-        or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        The port number for the health check request. Must be specified if portName and portSpecification are not set or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
     portName : str, default is Undefined, optional
-        Port name as defined in InstanceGroup#NamedPort#name. If both port and
-        port_name are defined, port takes precedence.
+        Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
     portSpecification : str, default is Undefined, optional
-        Specifies how port is selected for health checking, can be one of the
-        following values:
-
-          * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
-
-          * 'USE_NAMED_PORT': The 'portName' is used for health checking.
-
-          * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
-          network endpoint is used for health checking. For other backends, the
-          port or named port specified in the Backend Service is used for health
-          checking.
-
-        If not specified, gRPC health check follows behavior specified in 'port' and
-        'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"].
+        Specifies how port is selected for health checking, can be one of the following values: * 'USE_FIXED_PORT': The port number in 'port' is used for health checking. * 'USE_NAMED_PORT': The 'portName' is used for health checking. * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, gRPC health check follows behavior specified in 'port' and 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"].
     """
 
 
@@ -155,45 +149,24 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecGrpcHealthCheck:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecHTTPHealthCheck:
     r"""
-    A nested object resource.
+    compute cnrm cloud google com v1beta1 compute health check spec HTTP health check
 
     Attributes
     ----------
     host : str, default is Undefined, optional
-        The value of the host header in the HTTP health check request.
-        If left empty (default value), the public IP on behalf of which this health
-        check is performed will be used.
+        The value of the host header in the HTTP health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
     port : int, default is Undefined, optional
-        The TCP port number for the HTTP health check request.
-        The default value is 80.
+        The TCP port number for the HTTP health check request. The default value is 80.
     portName : str, default is Undefined, optional
-        Port name as defined in InstanceGroup#NamedPort#name. If both port and
-        port_name are defined, port takes precedence.
+        Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
     portSpecification : str, default is Undefined, optional
-        Specifies how port is selected for health checking, can be one of the
-        following values:
-
-          * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
-
-          * 'USE_NAMED_PORT': The 'portName' is used for health checking.
-
-          * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
-          network endpoint is used for health checking. For other backends, the
-          port or named port specified in the Backend Service is used for health
-          checking.
-
-        If not specified, HTTP health check follows behavior specified in 'port' and
-        'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"].
+        Specifies how port is selected for health checking, can be one of the following values: * 'USE_FIXED_PORT': The port number in 'port' is used for health checking. * 'USE_NAMED_PORT': The 'portName' is used for health checking. * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP health check follows behavior specified in 'port' and 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"].
     proxyHeader : str, default is Undefined, optional
-        Specifies the type of proxy header to append before sending data to the
-        backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"].
+        Specifies the type of proxy header to append before sending data to the backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"].
     requestPath : str, default is Undefined, optional
-        The request path of the HTTP health check request.
-        The default value is /.
+        The request path of the HTTP health check request. The default value is /.
     response : str, default is Undefined, optional
-        The bytes to match against the beginning of the response data. If left empty
-        (the default value), any response will indicate health. The response data
-        can only be ASCII.
+        The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
     """
 
 
@@ -214,45 +187,24 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecHTTPHealthCheck:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecHTTPSHealthCheck:
     r"""
-    A nested object resource.
+    compute cnrm cloud google com v1beta1 compute health check spec HTTPS health check
 
     Attributes
     ----------
     host : str, default is Undefined, optional
-        The value of the host header in the HTTPS health check request.
-        If left empty (default value), the public IP on behalf of which this health
-        check is performed will be used.
+        The value of the host header in the HTTPS health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
     port : int, default is Undefined, optional
-        The TCP port number for the HTTPS health check request.
-        The default value is 443.
+        The TCP port number for the HTTPS health check request. The default value is 443.
     portName : str, default is Undefined, optional
-        Port name as defined in InstanceGroup#NamedPort#name. If both port and
-        port_name are defined, port takes precedence.
+        Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
     portSpecification : str, default is Undefined, optional
-        Specifies how port is selected for health checking, can be one of the
-        following values:
-
-          * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
-
-          * 'USE_NAMED_PORT': The 'portName' is used for health checking.
-
-          * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
-          network endpoint is used for health checking. For other backends, the
-          port or named port specified in the Backend Service is used for health
-          checking.
-
-        If not specified, HTTPS health check follows behavior specified in 'port' and
-        'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"].
+        Specifies how port is selected for health checking, can be one of the following values: * 'USE_FIXED_PORT': The port number in 'port' is used for health checking. * 'USE_NAMED_PORT': The 'portName' is used for health checking. * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTPS health check follows behavior specified in 'port' and 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"].
     proxyHeader : str, default is Undefined, optional
-        Specifies the type of proxy header to append before sending data to the
-        backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"].
+        Specifies the type of proxy header to append before sending data to the backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"].
     requestPath : str, default is Undefined, optional
-        The request path of the HTTPS health check request.
-        The default value is /.
+        The request path of the HTTPS health check request. The default value is /.
     response : str, default is Undefined, optional
-        The bytes to match against the beginning of the response data. If left empty
-        (the default value), any response will indicate health. The response data
-        can only be ASCII.
+        The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
     """
 
 
@@ -273,45 +225,24 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecHTTPSHealthCheck:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecHttp2HealthCheck:
     r"""
-    A nested object resource.
+    compute cnrm cloud google com v1beta1 compute health check spec http2 health check
 
     Attributes
     ----------
     host : str, default is Undefined, optional
-        The value of the host header in the HTTP2 health check request.
-        If left empty (default value), the public IP on behalf of which this health
-        check is performed will be used.
+        The value of the host header in the HTTP2 health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
     port : int, default is Undefined, optional
-        The TCP port number for the HTTP2 health check request.
-        The default value is 443.
+        The TCP port number for the HTTP2 health check request. The default value is 443.
     portName : str, default is Undefined, optional
-        Port name as defined in InstanceGroup#NamedPort#name. If both port and
-        port_name are defined, port takes precedence.
+        Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
     portSpecification : str, default is Undefined, optional
-        Specifies how port is selected for health checking, can be one of the
-        following values:
-
-          * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
-
-          * 'USE_NAMED_PORT': The 'portName' is used for health checking.
-
-          * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
-          network endpoint is used for health checking. For other backends, the
-          port or named port specified in the Backend Service is used for health
-          checking.
-
-        If not specified, HTTP2 health check follows behavior specified in 'port' and
-        'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"].
+        Specifies how port is selected for health checking, can be one of the following values: * 'USE_FIXED_PORT': The port number in 'port' is used for health checking. * 'USE_NAMED_PORT': The 'portName' is used for health checking. * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, HTTP2 health check follows behavior specified in 'port' and 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"].
     proxyHeader : str, default is Undefined, optional
-        Specifies the type of proxy header to append before sending data to the
-        backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"].
+        Specifies the type of proxy header to append before sending data to the backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"].
     requestPath : str, default is Undefined, optional
-        The request path of the HTTP2 health check request.
-        The default value is /.
+        The request path of the HTTP2 health check request. The default value is /.
     response : str, default is Undefined, optional
-        The bytes to match against the beginning of the response data. If left empty
-        (the default value), any response will indicate health. The response data
-        can only be ASCII.
+        The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
     """
 
 
@@ -337,8 +268,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecLogConfig:
     Attributes
     ----------
     enable : bool, default is Undefined, optional
-        Indicates whether or not to export logs. This is false by default,
-        which means no health check logging will be done.
+        Indicates whether or not to export logs. This is false by default, which means no health check logging will be done.
     """
 
 
@@ -347,43 +277,22 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecLogConfig:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecSslHealthCheck:
     r"""
-    A nested object resource.
+    compute cnrm cloud google com v1beta1 compute health check spec ssl health check
 
     Attributes
     ----------
     port : int, default is Undefined, optional
-        The TCP port number for the SSL health check request.
-        The default value is 443.
+        The TCP port number for the SSL health check request. The default value is 443.
     portName : str, default is Undefined, optional
-        Port name as defined in InstanceGroup#NamedPort#name. If both port and
-        port_name are defined, port takes precedence.
+        Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
     portSpecification : str, default is Undefined, optional
-        Specifies how port is selected for health checking, can be one of the
-        following values:
-
-          * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
-
-          * 'USE_NAMED_PORT': The 'portName' is used for health checking.
-
-          * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
-          network endpoint is used for health checking. For other backends, the
-          port or named port specified in the Backend Service is used for health
-          checking.
-
-        If not specified, SSL health check follows behavior specified in 'port' and
-        'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"].
+        Specifies how port is selected for health checking, can be one of the following values: * 'USE_FIXED_PORT': The port number in 'port' is used for health checking. * 'USE_NAMED_PORT': The 'portName' is used for health checking. * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, SSL health check follows behavior specified in 'port' and 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"].
     proxyHeader : str, default is Undefined, optional
-        Specifies the type of proxy header to append before sending data to the
-        backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"].
+        Specifies the type of proxy header to append before sending data to the backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"].
     request : str, default is Undefined, optional
-        The application data to send once the SSL connection has been
-        established (default value is empty). If both request and response are
-        empty, the connection establishment alone will indicate health. The request
-        data can only be ASCII.
+        The application data to send once the SSL connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
     response : str, default is Undefined, optional
-        The bytes to match against the beginning of the response data. If left empty
-        (the default value), any response will indicate health. The response data
-        can only be ASCII.
+        The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
     """
 
 
@@ -402,43 +311,22 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecSslHealthCheck:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecTCPHealthCheck:
     r"""
-    A nested object resource.
+    compute cnrm cloud google com v1beta1 compute health check spec TCP health check
 
     Attributes
     ----------
     port : int, default is Undefined, optional
-        The TCP port number for the TCP health check request.
-        The default value is 443.
+        The TCP port number for the TCP health check request. The default value is 443.
     portName : str, default is Undefined, optional
-        Port name as defined in InstanceGroup#NamedPort#name. If both port and
-        port_name are defined, port takes precedence.
+        Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port takes precedence.
     portSpecification : str, default is Undefined, optional
-        Specifies how port is selected for health checking, can be one of the
-        following values:
-
-          * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
-
-          * 'USE_NAMED_PORT': The 'portName' is used for health checking.
-
-          * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
-          network endpoint is used for health checking. For other backends, the
-          port or named port specified in the Backend Service is used for health
-          checking.
-
-        If not specified, TCP health check follows behavior specified in 'port' and
-        'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"].
+        Specifies how port is selected for health checking, can be one of the following values: * 'USE_FIXED_PORT': The port number in 'port' is used for health checking. * 'USE_NAMED_PORT': The 'portName' is used for health checking. * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, TCP health check follows behavior specified in 'port' and 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"].
     proxyHeader : str, default is Undefined, optional
-        Specifies the type of proxy header to append before sending data to the
-        backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"].
+        Specifies the type of proxy header to append before sending data to the backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"].
     request : str, default is Undefined, optional
-        The application data to send once the TCP connection has been
-        established (default value is empty). If both request and response are
-        empty, the connection establishment alone will indicate health. The request
-        data can only be ASCII.
+        The application data to send once the TCP connection has been established (default value is empty). If both request and response are empty, the connection establishment alone will indicate health. The request data can only be ASCII.
     response : str, default is Undefined, optional
-        The bytes to match against the beginning of the response data. If left empty
-        (the default value), any response will indicate health. The response data
-        can only be ASCII.
+        The bytes to match against the beginning of the response data. If left empty (the default value), any response will indicate health. The response data can only be ASCII.
     """
 
 
@@ -457,18 +345,18 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckSpecTCPHealthCheck:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute health check status
+    ComputeHealthCheckStatus defines the config connector machine state of ComputeHealthCheck
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeHealthCheckStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeHealthCheck's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     selfLink : str, default is Undefined, optional
-        self link
+        Server-defined URL for the resource.
     $type : str, default is Undefined, optional
         The type of the health check. One of HTTP, HTTPS, TCP, or SSL.
     """

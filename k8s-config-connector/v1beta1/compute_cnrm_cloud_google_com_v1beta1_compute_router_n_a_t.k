@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeRouterNAT:
     r"""
-    compute cnrm cloud google com v1beta1 compute router n a t
+    ComputeRouterNAT is the Schema for the compute API
 
     Attributes
     ----------
@@ -37,12 +37,12 @@ schema ComputeRouterNAT:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute router n a t spec
+    ComputeRouterNATSpec defines the desired state of ComputeRouterNAT
 
     Attributes
     ----------
     drainNatIps : [ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecDrainNatIpsItems0], default is Undefined, optional
-        drain nat ips
+        A list of IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT.
     enableDynamicPortAllocation : bool, default is Undefined, optional
         Enable Dynamic Port Allocation.
         If minPortsPerVm is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
@@ -52,23 +52,21 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpec:
 
         Mutually exclusive with enableEndpointIndependentMapping.
     enableEndpointIndependentMapping : bool, default is Undefined, optional
-        Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
-        see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+    endpointTypes : [str], default is Undefined, optional
+        Immutable. Specifies the endpoint Types supported by the NAT Gateway. Supported values include: 'ENDPOINT_TYPE_VM', 'ENDPOINT_TYPE_SWG', 'ENDPOINT_TYPE_MANAGED_PROXY_LB'.
     icmpIdleTimeoutSec : int, default is Undefined, optional
         Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
     logConfig : ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecLogConfig, default is Undefined, optional
         log config
     maxPortsPerVm : int, default is Undefined, optional
-        Maximum number of ports allocated to a VM from this NAT.
-        This field can only be set when enableDynamicPortAllocation is enabled.
+        Maximum number of ports allocated to a VM from this NAT. This field can only be set when enableDynamicPortAllocation is enabled.
     minPortsPerVm : int, default is Undefined, optional
         Minimum number of ports allocated to a VM from this NAT.
-    natIpAllocateOption : str, default is Undefined, required
-        How external IPs should be allocated for this NAT. Valid values are
-        'AUTO_ONLY' for only allowing NAT IPs allocated by Google Cloud
-        Platform, or 'MANUAL_ONLY' for only user-allocated NAT IP addresses. Possible values: ["MANUAL_ONLY", "AUTO_ONLY"].
+    natIpAllocateOption : str, default is Undefined, optional
+        How external IPs should be allocated for this NAT. Valid values are 'AUTO_ONLY' for only allowing NAT IPs allocated by Google Cloud Platform, or 'MANUAL_ONLY' for only user-allocated NAT IP addresses. Possible values: ["MANUAL_ONLY", "AUTO_ONLY"].
     natIps : [ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecNatIpsItems0], default is Undefined, optional
-        nat ips
+        NAT IPs. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
     region : str, default is Undefined, required
         Immutable. Region where the router and NAT reside.
     resourceID : str, default is Undefined, optional
@@ -78,28 +76,17 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpec:
     rules : [ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0], default is Undefined, optional
         A list of rules associated with this NAT.
     sourceSubnetworkIpRangesToNat : str, default is Undefined, required
-        How NAT should be configured per Subnetwork.
-        If 'ALL_SUBNETWORKS_ALL_IP_RANGES', all of the
-        IP ranges in every Subnetwork are allowed to Nat.
-        If 'ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES', all of the primary IP
-        ranges in every Subnetwork are allowed to Nat.
-        'LIST_OF_SUBNETWORKS': A list of Subnetworks are allowed to Nat
-        (specified in the field subnetwork below). Note that if this field
-        contains ALL_SUBNETWORKS_ALL_IP_RANGES or
-        ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
-        other RouterNat section in any Router for this network in this region. Possible values: ["ALL_SUBNETWORKS_ALL_IP_RANGES", "ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES", "LIST_OF_SUBNETWORKS"].
+        How NAT should be configured per Subnetwork. If 'ALL_SUBNETWORKS_ALL_IP_RANGES', all of the IP ranges in every Subnetwork are allowed to Nat. If 'ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES', all of the primary IP ranges in every Subnetwork are allowed to Nat. 'LIST_OF_SUBNETWORKS': A list of Subnetworks are allowed to Nat (specified in the field subnetwork below). Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other RouterNat section in any Router for this network in this region. Possible values: ["ALL_SUBNETWORKS_ALL_IP_RANGES", "ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES", "LIST_OF_SUBNETWORKS"].
     subnetwork : [ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecSubnetworkItems0], default is Undefined, optional
-        One or more subnetwork NAT configurations. Only used if
-        'source_subnetwork_ip_ranges_to_nat' is set to 'LIST_OF_SUBNETWORKS'.
+        One or more subnetwork NAT configurations. Only used if 'source_subnetwork_ip_ranges_to_nat' is set to 'LIST_OF_SUBNETWORKS'.
     tcpEstablishedIdleTimeoutSec : int, default is Undefined, optional
-        Timeout (in seconds) for TCP established connections.
-        Defaults to 1200s if not set.
+        Timeout (in seconds) for TCP established connections. Defaults to 1200s if not set.
     tcpTimeWaitTimeoutSec : int, default is Undefined, optional
-        Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
-        Defaults to 120s if not set.
+        Timeout (in seconds) for TCP connections that are in TIME_WAIT state. Defaults to 120s if not set.
     tcpTransitoryIdleTimeoutSec : int, default is Undefined, optional
-        Timeout (in seconds) for TCP transitory connections.
-        Defaults to 30s if not set.
+        Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
+    $type : str, default is Undefined, optional
+        Immutable. Indicates whether this NAT is used for public IP translation or private IP translation. Possible values: ["PUBLIC", "PRIVATE"].
     udpIdleTimeoutSec : int, default is Undefined, optional
         Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
     """
@@ -111,6 +98,8 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpec:
 
     enableEndpointIndependentMapping?: bool
 
+    endpointTypes?: [str]
+
     icmpIdleTimeoutSec?: int
 
     logConfig?: ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecLogConfig
@@ -119,7 +108,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpec:
 
     minPortsPerVm?: int
 
-    natIpAllocateOption: str
+    natIpAllocateOption?: str
 
     natIps?: [ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecNatIpsItems0]
 
@@ -141,22 +130,23 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpec:
 
     tcpTransitoryIdleTimeoutSec?: int
 
+    $type?: str
+
     udpIdleTimeoutSec?: int
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecDrainNatIpsItems0:
     r"""
-    A list of IP resources to be drained. These IPs must be valid
-    static external IPs that have been assigned to the NAT.
+    ComputeAddressRef is a reference to a GCP ComputeAddress.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeAddress` resource.
+        A reference to an externally managed ComputeAddress resource. Should be in the format "projects/{{projectID}}/global/addresses/{{addressID}}" or "projects/{{projectID}}/regions/{{region}}/addresses/{{addressID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeAddress resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeAddress resource.
     """
 
 
@@ -187,16 +177,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecLogConfig:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecNatIpsItems0:
     r"""
-    NAT IPs. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+    ComputeAddressRef is a reference to a GCP ComputeAddress.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeAddress` resource.
+        A reference to an externally managed ComputeAddress resource. Should be in the format "projects/{{projectID}}/global/addresses/{{addressID}}" or "projects/{{projectID}}/regions/{{region}}/addresses/{{addressID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeAddress resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeAddress resource.
     """
 
 
@@ -214,11 +204,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRouterRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `ComputeRouter` resource.
+        A reference to an externally managed ComputeRouter resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/routers/{{routerID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeRouter resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeRouter resource.
     """
 
 
@@ -253,8 +243,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0:
 
         "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'".
     ruleNumber : int, default is Undefined, required
-        An integer uniquely identifying a rule in the list.
-        The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+        An integer uniquely identifying a rule in the list. The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
     """
 
 
@@ -274,31 +263,59 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0Action:
     Attributes
     ----------
     sourceNatActiveIpsRefs : [ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0ActionSourceNatActiveIpsRefsItems0], default is Undefined, optional
-        source nat active ips refs
+        A list of URLs of the IP resources used for this NAT rule. These IP addresses must be valid static external IP addresses assigned to the project. This field is used for public NAT.
+    sourceNatActiveRangesRefs : [ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0ActionSourceNatActiveRangesRefsItems0], default is Undefined, optional
+        A list of references to ComputeSubnetwork resources. Rules configured with these rules translate source IPs to the IP ranges of these subnetworks. This field is used for private NAT.
     sourceNatDrainIpsRefs : [ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0ActionSourceNatDrainIpsRefsItems0], default is Undefined, optional
-        source nat drain ips refs
+        A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT rule only. This field is used for public NAT.
+    sourceNatDrainRangesRefs : [ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0ActionSourceNatDrainRangesRefsItems0], default is Undefined, optional
+        A list of references to ComputeSubnetwork resources. These IP ranges will be drained. This field is used for private NAT.
     """
 
 
     sourceNatActiveIpsRefs?: [ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0ActionSourceNatActiveIpsRefsItems0]
 
+    sourceNatActiveRangesRefs?: [ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0ActionSourceNatActiveRangesRefsItems0]
+
     sourceNatDrainIpsRefs?: [ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0ActionSourceNatDrainIpsRefsItems0]
+
+    sourceNatDrainRangesRefs?: [ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0ActionSourceNatDrainRangesRefsItems0]
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0ActionSourceNatActiveIpsRefsItems0:
     r"""
-    A list of URLs of the IP resources used for this NAT rule. These IP
-    addresses must be valid static external IP addresses assigned to the
-    project. This field is used for public NAT.
+    ComputeAddressRef is a reference to a GCP ComputeAddress.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeAddress` resource.
+        A reference to an externally managed ComputeAddress resource. Should be in the format "projects/{{projectID}}/global/addresses/{{addressID}}" or "projects/{{projectID}}/regions/{{region}}/addresses/{{addressID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeAddress resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeAddress resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0ActionSourceNatActiveRangesRefsItems0:
+    r"""
+    ComputeSubnetworkRef is a reference to a GCP ComputeSubnetwork.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed ComputeSubnetwork resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/subnetworks/{{subnetworkID}}".
+    name : str, default is Undefined, optional
+        The name of a ComputeSubnetwork resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a ComputeSubnetwork resource.
     """
 
 
@@ -311,19 +328,38 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0ActionSour
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0ActionSourceNatDrainIpsRefsItems0:
     r"""
-    A list of URLs of the IP resources to be drained. These IPs must be
-    valid static external IPs that have been assigned to the NAT. These
-    IPs should be used for updating/patching a NAT rule only. This field
-    is used for public NAT.
+    ComputeAddressRef is a reference to a GCP ComputeAddress.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeAddress` resource.
+        A reference to an externally managed ComputeAddress resource. Should be in the format "projects/{{projectID}}/global/addresses/{{addressID}}" or "projects/{{projectID}}/regions/{{region}}/addresses/{{addressID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeAddress resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeAddress resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecRulesItems0ActionSourceNatDrainRangesRefsItems0:
+    r"""
+    ComputeSubnetworkRef is a reference to a GCP ComputeSubnetwork.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed ComputeSubnetwork resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/subnetworks/{{subnetworkID}}".
+    name : str, default is Undefined, optional
+        The name of a ComputeSubnetwork resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a ComputeSubnetwork resource.
     """
 
 
@@ -341,15 +377,9 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecSubnetworkItems0:
     Attributes
     ----------
     secondaryIpRangeNames : [str], default is Undefined, optional
-        List of the secondary ranges of the subnetwork that are allowed
-        to use NAT. This can be populated only if
-        'LIST_OF_SECONDARY_IP_RANGES' is one of the values in
-        sourceIpRangesToNat.
+        List of the secondary ranges of the subnetwork that are allowed to use NAT. This can be populated only if 'LIST_OF_SECONDARY_IP_RANGES' is one of the values in sourceIpRangesToNat.
     sourceIpRangesToNat : [str], default is Undefined, required
-        List of options for which source IPs in the subnetwork
-        should have NAT enabled. Supported values include:
-        'ALL_IP_RANGES', 'LIST_OF_SECONDARY_IP_RANGES',
-        'PRIMARY_IP_RANGE'.
+        List of options for which source IPs in the subnetwork should have NAT enabled. Supported values include: 'ALL_IP_RANGES', 'LIST_OF_SECONDARY_IP_RANGES', 'PRIMARY_IP_RANGE'.
     subnetworkRef : ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecSubnetworkItems0SubnetworkRef, default is Undefined, required
         subnetwork ref
     """
@@ -369,11 +399,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecSubnetworkItems0Subne
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeSubnetwork` resource.
+        A reference to an externally managed ComputeSubnetwork resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/subnetworks/{{subnetworkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeSubnetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeSubnetwork resource.
     """
 
 
@@ -386,12 +416,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATSpecSubnetworkItems0Subne
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute router n a t status
+    ComputeRouterNATStatus defines the config connector machine state of ComputeRouterNAT
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeRouterNATStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeRouterNAT's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

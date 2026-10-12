@@ -403,20 +403,38 @@ schema ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployDeployPolicySpecSelectors
 
     Attributes
     ----------
-    id : str, default is Undefined, optional
-        Optional. ID of the `Target`. The value of this field could be one of the
-         following:
-
-         * The last segment of a target name
-         * "*", all targets in a location
     labels : {str:str}, default is Undefined, optional
         Target labels.
+    targetRef : ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployDeployPolicySpecSelectorsItems0TargetTargetRef, default is Undefined, optional
+        target ref
     """
 
 
-    id?: str
-
     labels?: {str:str}
+
+    targetRef?: ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployDeployPolicySpecSelectorsItems0TargetTargetRef
+
+
+schema ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployDeployPolicySpecSelectorsItems0TargetTargetRef:
+    r"""
+    Optional. The Target to which the rule applies.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed CloudDeployTarget resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/targets/{{targetID}}".
+    name : str, default is Undefined, optional
+        The name of a CloudDeployTarget resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a CloudDeployTarget resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
 
 
 schema ClouddeployCnrmCloudGoogleComV1alpha1CloudDeployDeployPolicyStatus:

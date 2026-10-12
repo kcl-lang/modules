@@ -67,6 +67,8 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLinkSpecLoggingLogBucketRef:
     ----------
     external : str, default is Undefined, optional
         A reference to an externally managed LoggingLogBucket resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/buckets/{{bucketID}}".
+    kind : str, default is Undefined, optional
+        The kind of the LoggingLogBucket resource.
     name : str, default is Undefined, optional
         The name of a LoggingLogBucket resource.
     namespace : str, default is Undefined, optional
@@ -75,6 +77,8 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLinkSpecLoggingLogBucketRef:
 
 
     external?: str
+
+    kind?: str
 
     name?: str
 

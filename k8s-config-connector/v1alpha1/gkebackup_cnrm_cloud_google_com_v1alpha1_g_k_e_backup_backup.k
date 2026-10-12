@@ -366,7 +366,7 @@ schema GkebackupCnrmCloudGoogleComV1alpha1GKEBackupBackupStatusObservedStateSele
     Attributes
     ----------
     namespaces : [str], default is Undefined, optional
-        Optional. A list of Kubernetes Namespaces
+        Optional. A list of Kubernetes Namespaces.
     """
 
 

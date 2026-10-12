@@ -115,7 +115,7 @@ schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpec:
 
 schema BigqueryCnrmCloudGoogleComV1beta1BigQueryTableSpecDatasetRef:
     r"""
-    DatasetRef defines the resource reference to BigQueryDataset, which "External" field holds the GCP identifier for the KRM object.
+    DatasetRef is a reference to a BigQueryDataset.
 
     Attributes
     ----------

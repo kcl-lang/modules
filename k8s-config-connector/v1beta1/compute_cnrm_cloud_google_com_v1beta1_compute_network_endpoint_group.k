@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeNetworkEndpointGroup:
     r"""
-    compute cnrm cloud google com v1beta1 compute network endpoint group
+    ComputeNetworkEndpointGroup is the Schema for the ComputeNetworkEndpointGroup API
 
     Attributes
     ----------
@@ -37,16 +37,14 @@ schema ComputeNetworkEndpointGroup:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkEndpointGroupSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute network endpoint group spec
+    ComputeNetworkEndpointGroupSpec defines the desired state of ComputeNetworkEndpointGroup
 
     Attributes
     ----------
     defaultPort : int, default is Undefined, optional
-        Immutable. The default port used if the port number is not specified in the
-        network endpoint.
+        Immutable. The default port used if the port number is not specified in the network endpoint.
     description : str, default is Undefined, optional
-        Immutable. An optional description of this resource. Provide this property when
-        you create the resource.
+        Immutable. An optional description of this resource. Provide this property when you create the resource.
     location : str, default is Undefined, required
         Location represents the geographical location of the ComputeNetworkEndpointGroup. Specify a zone name. Reference: GCP definition of regions/zones (https://cloud.google.com/compute/docs/regions-zones/)
     networkEndpointType : str, default is Undefined, optional
@@ -85,17 +83,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkEndpointGroupSpec:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkEndpointGroupSpecNetworkRef:
     r"""
-    The network to which all network endpoints in the NEG belong. Uses
-    "default" project network if unspecified.
+    The network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -113,11 +110,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkEndpointGroupSpecSubnetwork
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeSubnetwork` resource.
+        A reference to an externally managed ComputeSubnetwork resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/subnetworks/{{subnetworkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeSubnetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeSubnetwork resource.
     """
 
 
@@ -130,12 +127,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkEndpointGroupSpecSubnetwork
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNetworkEndpointGroupStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute network endpoint group status
+    ComputeNetworkEndpointGroupStatus defines the config connector machine state of ComputeNetworkEndpointGroup
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeNetworkEndpointGroupStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeNetworkEndpointGroup's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     selfLink : str, default is Undefined, optional

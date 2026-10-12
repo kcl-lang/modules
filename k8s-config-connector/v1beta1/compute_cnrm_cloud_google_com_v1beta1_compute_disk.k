@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeDisk:
     r"""
-    compute cnrm cloud google com v1beta1 compute disk
+    ComputeDisk is the Schema for the compute API
 
     Attributes
     ----------
@@ -37,23 +37,20 @@ schema ComputeDisk:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute disk spec
+    ComputeDiskSpec defines the desired state of ComputeDisk
 
     Attributes
     ----------
     asyncPrimaryDisk : ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecAsyncPrimaryDisk, default is Undefined, optional
         async primary disk
     description : str, default is Undefined, optional
-        Immutable. An optional description of this resource. Provide this property when
-        you create the resource.
+        Immutable. An optional description of this resource. Provide this property when you create the resource.
     diskEncryptionKey : ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKey, default is Undefined, optional
         disk encryption key
     enableConfidentialCompute : bool, default is Undefined, optional
-        Immutable. Whether this disk is using confidential compute mode.
-        Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
+        Immutable. Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
     guestOsFeatures : [ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecGuestOsFeaturesItems0], default is Undefined, optional
-        Immutable. A list of features to enable on the guest operating system.
-        Applicable only for bootable disks.
+        Immutable. A list of features to enable on the guest operating system. Applicable only for bootable disks.
     imageRef : ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecImageRef, default is Undefined, optional
         image ref
     interface : str, default is Undefined, optional
@@ -65,21 +62,13 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpec:
     multiWriter : bool, default is Undefined, optional
         Immutable. Indicates whether or not the disk can be read/write attached to more than one instance.
     physicalBlockSizeBytes : int, default is Undefined, optional
-        Immutable. Physical block size of the persistent disk, in bytes. If not present
-        in a request, a default value is used. Currently supported sizes
-        are 4096 and 16384, other sizes may be added in the future.
-        If an unsupported value is requested, the error message will list
-        the supported values for the caller's project.
+        Immutable. Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. Currently supported sizes are 4096 and 16384, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.
     projectRef : ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecProjectRef, default is Undefined, optional
         project ref
     provisionedIops : int, default is Undefined, optional
-        Indicates how many IOPS must be provisioned for the disk.
-        Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
-        allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it.
+        Indicates how many IOPS must be provisioned for the disk. Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it.
     provisionedThroughput : int, default is Undefined, optional
-        Indicates how much Throughput must be provisioned for the disk.
-        Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
-        allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it.
+        Indicates how much Throughput must be provisioned for the disk. Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it.
     replicaZones : [str], default is Undefined, optional
         Immutable. URLs of the zones where the disk should be replicated to.
     resourceID : str, default is Undefined, optional
@@ -107,8 +96,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpec:
     sourceSnapshotEncryptionKey : ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceSnapshotEncryptionKey, default is Undefined, optional
         source snapshot encryption key
     $type : str, default is Undefined, optional
-        Immutable. URL of the disk type resource describing which disk type to use to
-        create the disk. Provide this when creating the disk.
+        Immutable. URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk.
     """
 
 
@@ -180,11 +168,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecAsyncPrimaryDiskDiskRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeDisk` resource.
+        A reference to an externally managed ComputeDisk resource. Should be in the format "projects/{{projectID}}/zones/{{zone}}/disks/{{diskID}}" or "projects/{{projectID}}/regions/{{region}}/disks/{{diskID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeDisk resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeDisk resource.
     """
 
 
@@ -221,8 +209,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKey:
     rsaEncryptedKey : ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyRsaEncryptedKey, default is Undefined, optional
         rsa encrypted key
     sha256 : str, default is Undefined, optional
-        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
-        encryption key that protects this resource.
+        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
     """
 
 
@@ -239,21 +226,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKey:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyKmsKeyRef:
     r"""
-    The encryption key used to encrypt the disk. Your project's Compute
-    Engine System service account
-    ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com')
-    must have 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this
-    feature. See
-    https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+    The encryption key used to encrypt the disk. Your project's Compute Engine System service account ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature. See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `KMSCryptoKey` resource.
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` of a `KMSCryptoKey` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` of a `KMSCryptoKey` resource.
     """
 
 
@@ -266,13 +248,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyKmsKeyRef
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyKmsKeyServiceAccountRef:
     r"""
-    The service account used for the encryption request for the given KMS key.
-    If absent, the Compute Engine Service Agent service account is used.
+    The service account used for the encryption request for the given KMS key. If absent, the Compute Engine Service Agent service account is used.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `email` field of an `IAMServiceAccount` resource.
+        The `email` field of an `IAMServiceAccount` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -289,8 +270,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyKmsKeySer
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyRawKey:
     r"""
-    Immutable. Specifies a 256-bit customer-supplied encryption key, encoded in
-    RFC 4648 base64 to either encrypt or decrypt this resource.
+    Immutable. Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
 
     Attributes
     ----------
@@ -340,9 +320,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyRawKeyVal
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecDiskEncryptionKeyRsaEncryptedKey:
     r"""
-    Immutable. Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
-    customer-supplied encryption key to either encrypt or decrypt
-    this resource. You can provide either the rawKey or the rsaEncryptedKey.
+    Immutable. Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. You can provide either the rawKey or the rsaEncryptedKey.
 
     Attributes
     ----------
@@ -411,11 +389,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecImageRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeImage` resource.
+        A reference to an externally managed ComputeImage resource. Should be in the format "projects/{{project}}/global/images/{{name}}" or "projects/{{project}}/global/images/family/{{family}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeImage resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeImage resource.
     """
 
 
@@ -433,11 +411,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecProjectRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -450,17 +428,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecProjectRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecResourcePoliciesItems0:
     r"""
-    Resource policies applied to this disk for automatic snapshot creations.
-    This field only applies for zonal compute disk resources.
+    ComputeResourcePolicyRef is a reference to a ComputeResourcePolicy.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeResourcePolicy` resource.
+        A reference to an externally managed ComputeResourcePolicy resource. Should be in the format "projects/{project}/regions/{region}/resourcePolicies/{resourcePolicy}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeResourcePolicy resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeResourcePolicy resource.
     """
 
 
@@ -478,11 +455,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSnapshotRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeSnapshot` resource.
+        A reference to an externally managed ComputeSnapshot resource. Should be in the format "projects/{{projectID}}/global/snapshots/{{snapshotID}}" or "projects/{{projectID}}/regions/{{region}}/snapshots/{{snapshotID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeSnapshot resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeSnapshot resource.
     """
 
 
@@ -500,11 +477,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceDiskRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeDisk` resource.
+        A reference to an externally managed ComputeDisk resource. Should be in the format "projects/{{projectID}}/zones/{{zone}}/disks/{{diskID}}" or "projects/{{projectID}}/regions/{{region}}/disks/{{diskID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeDisk resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeDisk resource.
     """
 
 
@@ -517,8 +494,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceDiskRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceImageEncryptionKey:
     r"""
-    Immutable. The customer-supplied encryption key of the source image. Required if
-    the source image is protected by a customer-supplied encryption key.
+    Immutable. The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
 
     Attributes
     ----------
@@ -527,11 +503,9 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceImageEncryptionKey:
     kmsKeyServiceAccountRef : ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceImageEncryptionKeyKmsKeyServiceAccountRef, default is Undefined, optional
         kms key service account ref
     rawKey : str, default is Undefined, optional
-        Immutable. Specifies a 256-bit customer-supplied encryption key, encoded in
-        RFC 4648 base64 to either encrypt or decrypt this resource.
+        Immutable. Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
     sha256 : str, default is Undefined, optional
-        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
-        encryption key that protects this resource.
+        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
     """
 
 
@@ -546,21 +520,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceImageEncryptionKey:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceImageEncryptionKeyKmsKeyRef:
     r"""
-    The encryption key used to encrypt the disk. Your project's Compute
-    Engine System service account
-    ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com')
-    must have 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this
-    feature. See
-    https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+    The encryption key used to encrypt the disk. Your project's Compute Engine System service account ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature. See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `KMSCryptoKey` resource.
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` of a `KMSCryptoKey` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` of a `KMSCryptoKey` resource.
     """
 
 
@@ -573,13 +542,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceImageEncryptionKeyKm
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceImageEncryptionKeyKmsKeyServiceAccountRef:
     r"""
-    The service account used for the encryption request for the given KMS key.
-    If absent, the Compute Engine Service Agent service account is used.
+    The service account used for the encryption request for the given KMS key. If absent, the Compute Engine Service Agent service account is used.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `email` field of an `IAMServiceAccount` resource.
+        The `email` field of an `IAMServiceAccount` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -596,9 +564,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceImageEncryptionKeyKm
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceSnapshotEncryptionKey:
     r"""
-    Immutable. The customer-supplied encryption key of the source snapshot. Required
-    if the source snapshot is protected by a customer-supplied encryption
-    key.
+    Immutable. The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
 
     Attributes
     ----------
@@ -607,11 +573,9 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceSnapshotEncryptionKe
     kmsKeyServiceAccountRef : ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceSnapshotEncryptionKeyKmsKeyServiceAccountRef, default is Undefined, optional
         kms key service account ref
     rawKey : str, default is Undefined, optional
-        Immutable. Specifies a 256-bit customer-supplied encryption key, encoded in
-        RFC 4648 base64 to either encrypt or decrypt this resource.
+        Immutable. Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
     sha256 : str, default is Undefined, optional
-        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
-        encryption key that protects this resource.
+        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
     """
 
 
@@ -626,21 +590,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceSnapshotEncryptionKe
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceSnapshotEncryptionKeyKmsKeyRef:
     r"""
-    The encryption key used to encrypt the disk. Your project's Compute
-    Engine System service account
-    ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com')
-    must have 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this
-    feature. See
-    https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+    The encryption key used to encrypt the disk. Your project's Compute Engine System service account ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature. See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `KMSCryptoKey` resource.
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` of a `KMSCryptoKey` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` of a `KMSCryptoKey` resource.
     """
 
 
@@ -653,13 +612,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceSnapshotEncryptionKe
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceSnapshotEncryptionKeyKmsKeyServiceAccountRef:
     r"""
-    The service account used for the encryption request for the given KMS key.
-    If absent, the Compute Engine Service Agent service account is used.
+    The service account used for the encryption request for the given KMS key. If absent, the Compute Engine Service Agent service account is used.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `email` field of an `IAMServiceAccount` resource.
+        The `email` field of an `IAMServiceAccount` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -676,17 +634,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskSpecSourceSnapshotEncryptionKe
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute disk status
+    ComputeDiskStatus defines the config connector machine state of ComputeDisk
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeDiskStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeDisk's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
     labelFingerprint : str, default is Undefined, optional
-        The fingerprint used for optimistic locking of this resource.  Used
-        internally during updates.
+        The fingerprint used for optimistic locking of this resource.  Used internally during updates.
     lastAttachTimestamp : str, default is Undefined, optional
         Last attach timestamp in RFC3339 text format.
     lastDetachTimestamp : str, default is Undefined, optional
@@ -696,25 +653,13 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeDiskStatus:
     selfLink : str, default is Undefined, optional
         self link
     sourceDiskId : str, default is Undefined, optional
-        The ID value of the disk used to create this image. This value may
-        be used to determine whether the image was taken from the current
-        or a previous instance of a given disk name.
+        The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given disk name.
     sourceImageId : str, default is Undefined, optional
-        The ID value of the image used to create this disk. This value
-        identifies the exact image that was used to create this persistent
-        disk. For example, if you created the persistent disk from an image
-        that was later deleted and recreated under the same name, the source
-        image ID would identify the exact version of the image that was used.
+        The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
     sourceSnapshotId : str, default is Undefined, optional
-        The unique ID of the snapshot used to create this disk. This value
-        identifies the exact snapshot that was used to create this persistent
-        disk. For example, if you created the persistent disk from a snapshot
-        that was later deleted and recreated under the same name, the source
-        snapshot ID would identify the exact version of the snapshot that was
-        used.
+        The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
     users : [str], default is Undefined, optional
-        Links to the users of the disk (attached instances) in form:
-        project/zones/zone/instances/instance.
+        Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance.
     """
 
 

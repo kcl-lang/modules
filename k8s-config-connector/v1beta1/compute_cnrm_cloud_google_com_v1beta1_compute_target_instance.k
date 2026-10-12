@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeTargetInstance:
     r"""
-    compute cnrm cloud google com v1beta1 compute target instance
+    ComputeTargetInstance is the Schema for the compute API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeTargetInstance:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetInstanceSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute target instance spec
+    ComputeTargetInstanceSpec defines the desired state of ComputeTargetInstance
 
     Attributes
     ----------
@@ -46,8 +46,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetInstanceSpec:
     instanceRef : ComputeCnrmCloudGoogleComV1beta1ComputeTargetInstanceSpecInstanceRef, default is Undefined, required
         instance ref
     natPolicy : str, default is Undefined, optional
-        Immutable. NAT option controlling how IPs are NAT'ed to the instance.
-        Currently only NO_NAT (default value) is supported. Default value: "NO_NAT" Possible values: ["NO_NAT"].
+        Immutable. NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported. Default value: "NO_NAT" Possible values: ["NO_NAT"].
     networkRef : ComputeCnrmCloudGoogleComV1beta1ComputeTargetInstanceSpecNetworkRef, default is Undefined, optional
         network ref
     resourceID : str, default is Undefined, optional
@@ -81,11 +80,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetInstanceSpecInstanceRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeInstance` resource.
+        A reference to an externally managed ComputeInstance resource. Should be in the format "projects/{{projectID}}/zones/{{zone}}/instances/{{instanceID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeInstance resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeInstance resource.
     """
 
 
@@ -98,18 +97,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetInstanceSpecInstanceRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetInstanceSpecNetworkRef:
     r"""
-    The network this target instance uses to forward
-    traffic. If not specified, the traffic will be forwarded to the network
-    that the default network interface belongs to.
+    The network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -127,11 +124,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetInstanceSpecSecurityPolicyRe
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeSecurityPolicy` resource.
+        A reference to an externally managed ComputeSecurityPolicy resource. Should be in the format "projects/{{projectID}}/global/securityPolicies/{{name}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeSecurityPolicy resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeSecurityPolicy resource.
     """
 
 
@@ -144,12 +141,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetInstanceSpecSecurityPolicyRe
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetInstanceStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute target instance status
+    ComputeTargetInstanceStatus defines the config connector machine state of ComputeTargetInstance
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeTargetInstanceStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeTargetInstance's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
     observedGeneration : int, default is Undefined, optional

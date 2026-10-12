@@ -57,6 +57,8 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpec:
         Immutable. The region the instance will sit in. Note, Cloud SQL is not available in all regions. A valid region must be provided to use this resource. If a region is not provided in the resource definition, the provider region will be used instead, but this will be an apply-time error for instances if the provider region is not supported with Cloud SQL. If you choose not to provide the region argument for this resource, make sure you understand this.
     replicaConfiguration : SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecReplicaConfiguration, default is Undefined, optional
         replica configuration
+    replicationCluster : SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecReplicationCluster, default is Undefined, optional
+        replication cluster
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
     rootPassword : SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecRootPassword, default is Undefined, optional
@@ -81,6 +83,8 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpec:
     region?: str
 
     replicaConfiguration?: SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecReplicaConfiguration
+
+    replicationCluster?: SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecReplicationCluster
 
     resourceID?: str
 
@@ -301,6 +305,42 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecReplicaConfigurationPasswordVa
     key: str
 
     name: str
+
+
+schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecReplicationCluster:
+    r"""
+    The configuration for the replication cluster.
+
+    Attributes
+    ----------
+    failoverDrReplicaRef : SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecReplicationClusterFailoverDrReplicaRef, default is Undefined, optional
+        failover dr replica ref
+    """
+
+
+    failoverDrReplicaRef?: SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecReplicationClusterFailoverDrReplicaRef
+
+
+schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecReplicationClusterFailoverDrReplicaRef:
+    r"""
+    Optional. If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. A DR replica is an optional configuration for Enterprise Plus edition instances. If the instance is a read replica, then the field is not set. Set this field to a replica name to designate a DR replica for a primary instance. Remove the replica name to remove the DR replica designation.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The SQLInstance selfLink, when not managed by Config Connector.
+    name : str, default is Undefined, optional
+        The `name` field of a `SQLInstance` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `SQLInstance` resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecRootPassword:
@@ -679,12 +719,12 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsIPConfigurationAuthori
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsIPConfigurationPrivateNetworkRef:
     r"""
-    SQL cnrm cloud google com v1beta1 SQL instance spec settings IP configuration private network ref
+    ComputeNetworkRef is a reference to a GCP ComputeNetwork.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
         The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
@@ -854,7 +894,7 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceSpecSettingsSQLServerAuditConfigBu
     Attributes
     ----------
     external : str, default is Undefined, optional
-        A reference to an externally-managed StorageBucket resource.
+        A reference to an externally managed StorageBucket resource. Should be in the format "projects/{{projectID}}/buckets/{{bucketID}}".
     name : str, default is Undefined, optional
         The name of a StorageBucket resource.
     namespace : str, default is Undefined, optional
@@ -891,6 +931,8 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceStatus:
         ip address
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : SQLCnrmCloudGoogleComV1beta1SQLInstanceStatusObservedState, default is Undefined, optional
+        observed state
     privateIpAddress : str, default is Undefined, optional
         private Ip address
     pscServiceAttachmentLink : str, default is Undefined, optional
@@ -921,6 +963,8 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceStatus:
     ipAddress?: [SQLCnrmCloudGoogleComV1beta1SQLInstanceStatusIPAddressItems0]
 
     observedGeneration?: int
+
+    observedState?: SQLCnrmCloudGoogleComV1beta1SQLInstanceStatusObservedState
 
     privateIpAddress?: str
 
@@ -985,6 +1029,38 @@ schema SQLCnrmCloudGoogleComV1beta1SQLInstanceStatusIPAddressItems0:
     timeToRetire?: str
 
     $type?: str
+
+
+schema SQLCnrmCloudGoogleComV1beta1SQLInstanceStatusObservedState:
+    r"""
+    The observed state of the resource.
+
+    Attributes
+    ----------
+    replicationCluster : SQLCnrmCloudGoogleComV1beta1SQLInstanceStatusObservedStateReplicationCluster, default is Undefined, optional
+        replication cluster
+    """
+
+
+    replicationCluster?: SQLCnrmCloudGoogleComV1beta1SQLInstanceStatusObservedStateReplicationCluster
+
+
+schema SQLCnrmCloudGoogleComV1beta1SQLInstanceStatusObservedStateReplicationCluster:
+    r"""
+    The configuration for the replication cluster.
+
+    Attributes
+    ----------
+    drReplica : bool, default is Undefined, optional
+        Output only. Read-only field that indicates whether the replica is a DR replica. This field is not set if the instance is a primary instance.
+    psaWriteEndpoint : str, default is Undefined, optional
+        Output only. If set, it indicates this instance has a private service access (PSA) dns endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, the dns should be pointing to this instance. After Switchover or Replica failover, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance does not yet have a replica, or had a DR replica that was deleted.
+    """
+
+
+    drReplica?: bool
+
+    psaWriteEndpoint?: str
 
 
 schema SQLCnrmCloudGoogleComV1beta1SQLInstanceStatusServerCaCert:

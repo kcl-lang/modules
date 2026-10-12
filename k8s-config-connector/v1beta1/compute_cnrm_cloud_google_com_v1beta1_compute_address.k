@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeAddress:
     r"""
-    compute cnrm cloud google com v1beta1 compute address
+    ComputeAddress is the Schema for the ComputeAddress API
 
     Attributes
     ----------
@@ -37,33 +37,28 @@ schema ComputeAddress:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute address spec
+    ComputeAddressSpec defines the desired state of ComputeAddress
 
     Attributes
     ----------
     address : str, default is Undefined, optional
-        Immutable. The static external IP address represented by this resource.
-        The IP address must be inside the specified subnetwork,
-        if any. Set by the API if undefined.
+        Immutable. The static external IP address represented by this resource. The IP address must be inside the specified subnetwork, if any. Set by the API if undefined.
     addressType : str, default is Undefined, optional
-        Immutable. The type of address to reserve.
-        Note: if you set this argument's value as 'INTERNAL' you need to leave the 'network_tier' argument unset in that resource block. Default value: "EXTERNAL" Possible values: ["INTERNAL", "EXTERNAL"].
+        Immutable. The type of address to reserve. Note: if you set this argument's value as 'INTERNAL' you need to leave the 'network_tier' argument unset in that resource block. Default value: "EXTERNAL" Possible values: ["INTERNAL", "EXTERNAL"].
     description : str, default is Undefined, optional
         Immutable. An optional description of this resource.
+    ipCollectionRef : ComputeCnrmCloudGoogleComV1beta1ComputeAddressSpecIPCollectionRef, default is Undefined, optional
+        ip collection ref
     ipVersion : str, default is Undefined, optional
         Immutable. The IP Version that will be used by this address. The default value is 'IPV4'. Possible values: ["IPV4", "IPV6"].
     ipv6EndpointType : str, default is Undefined, optional
-        Immutable. The endpoint type of this address, which should be VM or NETLB. This is
-        used for deciding which type of endpoint this address can be used after
-        the external IPv6 address reservation. Possible values: ["VM", "NETLB"].
+        Immutable. The endpoint type of this address, which should be VM or NETLB. This is used for deciding which type of endpoint this address can be used after the external IPv6 address reservation. Possible values: ["VM", "NETLB"].
     location : str, default is Undefined, required
         Location represents the geographical location of the ComputeAddress. Specify a region name or "global" for global resources. Reference: GCP definition of regions/zones (https://cloud.google.com/compute/docs/regions-zones/)
     networkRef : ComputeCnrmCloudGoogleComV1beta1ComputeAddressSpecNetworkRef, default is Undefined, optional
         network ref
     networkTier : str, default is Undefined, optional
-        Immutable. The networking tier used for configuring this address. If this field is not
-        specified, it is assumed to be PREMIUM.
-        This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview). Possible values: ["PREMIUM", "STANDARD"].
+        Immutable. The networking tier used for configuring this address. If this field is not specified, it is assumed to be PREMIUM. This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview). Possible values: ["PREMIUM", "STANDARD"].
     prefixLength : int, default is Undefined, optional
         Immutable. The prefix length if the resource represents an IP range.
     purpose : str, default is Undefined, optional
@@ -85,7 +80,6 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressSpec:
         configure Private Service Connect. Only global internal addresses can use
         this purpose.
 
-
         This should only be set when using an Internal address.
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
@@ -99,6 +93,8 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressSpec:
     addressType?: str
 
     description?: str
+
+    ipCollectionRef?: ComputeCnrmCloudGoogleComV1beta1ComputeAddressSpecIPCollectionRef
 
     ipVersion?: str
 
@@ -119,22 +115,44 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressSpec:
     subnetworkRef?: ComputeCnrmCloudGoogleComV1beta1ComputeAddressSpecSubnetworkRef
 
 
-schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressSpecNetworkRef:
+schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressSpecIPCollectionRef:
     r"""
-    The network in which to reserve the address. If global, the address
-    must be within the RFC1918 IP space. The network cannot be deleted
-    if there are any reserved IP ranges referring to it. This field can
-    only be used with INTERNAL type with the VPC_PEERING and
-    IPSEC_INTERCONNECT purposes.
+    Immutable. The PublicDelegatedPrefix IP collection from which to
+    reserve the address. Only external IPv4 addresses can use this.
+
+    Warning: Since ComputePublicDelegatedPrefix is not yet supported as a Config Connector resource,
+    only the 'external' field of this reference can be used.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputePublicDelegatedPrefix resource. Should be in the format "projects/{{projectID}}/global/publicDelegatedPrefixes/{{publicDelegatedPrefixID}}" or "projects/{{projectID}}/regions/{{region}}/publicDelegatedPrefixes/{{publicDelegatedPrefixID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputePublicDelegatedPrefix resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputePublicDelegatedPrefix resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressSpecNetworkRef:
+    r"""
+    The network in which to reserve the address. If global, the address must be within the RFC1918 IP space. The network cannot be deleted if there are any reserved IP ranges referring to it. This field can only be used with INTERNAL type with the VPC_PEERING and IPSEC_INTERCONNECT purposes.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
+    name : str, default is Undefined, optional
+        The name of a ComputeNetwork resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -147,19 +165,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressSpecNetworkRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressSpecSubnetworkRef:
     r"""
-    The subnetwork in which to reserve the address. If an IP address is
-    specified, it must be within the subnetwork's IP range.  This field
-    can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER
-    purposes.
+    The subnetwork in which to reserve the address. If an IP address is specified, it must be within the subnetwork's IP range.  This field can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER purposes.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeSubnetwork` resource.
+        A reference to an externally managed ComputeSubnetwork resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/subnetworks/{{subnetworkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeSubnetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeSubnetwork resource.
     """
 
 
@@ -172,17 +187,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressSpecSubnetworkRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute address status
+    ComputeAddressStatus defines the config connector machine state of ComputeAddress
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeAddressStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
     labelFingerprint : str, default is Undefined, optional
-        The fingerprint used for optimistic locking of this resource.  Used
-        internally during updates.
+        The fingerprint used for optimistic locking of this resource. Used internally during updates.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     observedState : ComputeCnrmCloudGoogleComV1beta1ComputeAddressStatusObservedState, default is Undefined, optional
@@ -241,14 +255,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressStatusConditionsItems0:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeAddressStatusObservedState:
     r"""
-    The observed state of the underlying GCP resource.
+    ObservedState is the state of the resource as most recently observed in GCP.
 
     Attributes
     ----------
     address : str, default is Undefined, optional
-        Immutable. The static external IP address represented by this resource.
-        The IP address must be inside the specified subnetwork,
-        if any. Set by the API if undefined.
+        Immutable. The static external IP address represented by this resource. The IP address must be inside the specified subnetwork, if any. Set by the API if undefined.
     """
 
 

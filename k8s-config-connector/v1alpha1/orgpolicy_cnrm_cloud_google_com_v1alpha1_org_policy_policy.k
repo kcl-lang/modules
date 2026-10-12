@@ -117,8 +117,8 @@ schema OrgpolicyCnrmCloudGoogleComV1alpha1OrgPolicyPolicySpecDryRunSpecRulesItem
         Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
     enforce : bool, default is Undefined, optional
         If `true`, then the policy is enforced. If `false`, then any configuration is acceptable. This field can be set only in policies for boolean constraints.
-    parameters : any, default is Undefined, optional
-        Optional. Required for managed constraints if parameters are defined. Passes parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { "allowedLocations" : ["us-east1", "us-west1"], "allowAll" : true }
+    parameters : OrgpolicyCnrmCloudGoogleComV1alpha1OrgPolicyPolicySpecDryRunSpecRulesItems0Parameters, default is Undefined, optional
+        parameters
     values : OrgpolicyCnrmCloudGoogleComV1alpha1OrgPolicyPolicySpecDryRunSpecRulesItems0Values, default is Undefined, optional
         values
     """
@@ -132,7 +132,7 @@ schema OrgpolicyCnrmCloudGoogleComV1alpha1OrgPolicyPolicySpecDryRunSpecRulesItem
 
     enforce?: bool
 
-    parameters?: any
+    parameters?: OrgpolicyCnrmCloudGoogleComV1alpha1OrgPolicyPolicySpecDryRunSpecRulesItems0Parameters
 
     values?: OrgpolicyCnrmCloudGoogleComV1alpha1OrgPolicyPolicySpecDryRunSpecRulesItems0Values
 
@@ -161,6 +161,117 @@ schema OrgpolicyCnrmCloudGoogleComV1alpha1OrgPolicyPolicySpecDryRunSpecRulesItem
     location?: str
 
     title?: str
+
+
+schema OrgpolicyCnrmCloudGoogleComV1alpha1OrgPolicyPolicySpecDryRunSpecRulesItems0Parameters:
+    r"""
+    Optional. Required for managed constraints if parameters are defined.
+     Passes parameter values when policy enforcement is enabled. Each
+     field corresponds to a known managed-constraint parameter key; the
+     value type matches the type defined in the constraint definition.
+     For example, the essentialcontacts.managed.allowedContactDomains
+     managed constraint takes:
+
+         parameters:
+           allowedDomains:
+             - "@example.com"
+
+    Attributes
+    ----------
+    allowAnyGKEPath : bool, default is Undefined, optional
+        When true, any Google Kubernetes Engine resource path is permitted.
+    allowPaths : [str], default is Undefined, optional
+        Resource paths that are explicitly allowed by the managed constraint.
+    allowedAWSAccountIDs : [str], default is Undefined, optional
+        AWS account IDs that are allowed by the managed constraint.
+    allowedDataSources : [str], default is Undefined, optional
+        Data sources that are allowed by the managed constraint.
+    allowedDomains : [str], default is Undefined, optional
+        Contact domains that are allowed by the managed constraint (for example, email domains permitted by essentialcontacts.managed.allowedContactDomains).
+    allowedEgressFQDNs : [str], default is Undefined, optional
+        Fully qualified domain names that are allowed for egress traffic.
+    allowedEncryptions : [str], default is Undefined, optional
+        Encryption types or modes that are allowed by the managed constraint.
+    allowedMemberSubjects : [str], default is Undefined, optional
+        Member subjects (for example, users or service accounts) that are allowed.
+    allowedParents : [str], default is Undefined, optional
+        Parent resources (organizations, folders, or projects) that are allowed.
+    allowedPreviewFeatures : [str], default is Undefined, optional
+        Preview features that are allowed by the managed constraint.
+    allowedPrincipalSets : [str], default is Undefined, optional
+        Principal sets that are allowed by the managed constraint.
+    allowedProviders : [str], default is Undefined, optional
+        Providers that are allowed by the managed constraint.
+    allowedRetentionDurationSeconds : int, default is Undefined, optional
+        Retention durations (in seconds) that are allowed by the managed constraint.
+    allowedRetentionPeriods : [str], default is Undefined, optional
+        Retention periods that are allowed by the managed constraint.
+    allowedSchemes : [str], default is Undefined, optional
+        URI schemes that are allowed by the managed constraint.
+    allowedServiceList : [str], default is Undefined, optional
+        Services that are allowed by the managed constraint (service list form).
+    allowedServices : [str], default is Undefined, optional
+        Services that are allowed by the managed constraint.
+    defaultAWSProvider : str, default is Undefined, optional
+        Default AWS provider used when no explicit provider is specified.
+    defaultXMLServiceProvider : str, default is Undefined, optional
+        Default XML service provider used when no explicit provider is specified.
+    deniedEditions : [str], default is Undefined, optional
+        Editions that are denied by the managed constraint.
+    enforcedProjects : [str], default is Undefined, optional
+        Projects where the managed constraint is enforced.
+    minimumDestroyScheduleDurationInDays : int, default is Undefined, optional
+        Minimum destroy schedule duration, in days, required by the managed constraint.
+    nonFIPSMachineTypes : [str], default is Undefined, optional
+        Compute Engine machine types that are not FIPS-compliant but are allowed.
+    """
+
+
+    allowAnyGKEPath?: bool
+
+    allowPaths?: [str]
+
+    allowedAWSAccountIDs?: [str]
+
+    allowedDataSources?: [str]
+
+    allowedDomains?: [str]
+
+    allowedEgressFQDNs?: [str]
+
+    allowedEncryptions?: [str]
+
+    allowedMemberSubjects?: [str]
+
+    allowedParents?: [str]
+
+    allowedPreviewFeatures?: [str]
+
+    allowedPrincipalSets?: [str]
+
+    allowedProviders?: [str]
+
+    allowedRetentionDurationSeconds?: int
+
+    allowedRetentionPeriods?: [str]
+
+    allowedSchemes?: [str]
+
+    allowedServiceList?: [str]
+
+    allowedServices?: [str]
+
+    defaultAWSProvider?: str
+
+    defaultXMLServiceProvider?: str
+
+    deniedEditions?: [str]
+
+    enforcedProjects?: [str]
+
+    minimumDestroyScheduleDurationInDays?: int
+
+    nonFIPSMachineTypes?: [str]
 
 
 schema OrgpolicyCnrmCloudGoogleComV1alpha1OrgPolicyPolicySpecDryRunSpecRulesItems0Values:
@@ -291,8 +402,8 @@ schema OrgpolicyCnrmCloudGoogleComV1alpha1OrgPolicyPolicySpecSpecRulesItems0:
         Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
     enforce : bool, default is Undefined, optional
         If `true`, then the policy is enforced. If `false`, then any configuration is acceptable. This field can be set only in policies for boolean constraints.
-    parameters : any, default is Undefined, optional
-        Optional. Required for managed constraints if parameters are defined. Passes parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { "allowedLocations" : ["us-east1", "us-west1"], "allowAll" : true }
+    parameters : OrgpolicyCnrmCloudGoogleComV1alpha1OrgPolicyPolicySpecSpecRulesItems0Parameters, default is Undefined, optional
+        parameters
     values : OrgpolicyCnrmCloudGoogleComV1alpha1OrgPolicyPolicySpecSpecRulesItems0Values, default is Undefined, optional
         values
     """
@@ -306,7 +417,7 @@ schema OrgpolicyCnrmCloudGoogleComV1alpha1OrgPolicyPolicySpecSpecRulesItems0:
 
     enforce?: bool
 
-    parameters?: any
+    parameters?: OrgpolicyCnrmCloudGoogleComV1alpha1OrgPolicyPolicySpecSpecRulesItems0Parameters
 
     values?: OrgpolicyCnrmCloudGoogleComV1alpha1OrgPolicyPolicySpecSpecRulesItems0Values
 
@@ -335,6 +446,117 @@ schema OrgpolicyCnrmCloudGoogleComV1alpha1OrgPolicyPolicySpecSpecRulesItems0Cond
     location?: str
 
     title?: str
+
+
+schema OrgpolicyCnrmCloudGoogleComV1alpha1OrgPolicyPolicySpecSpecRulesItems0Parameters:
+    r"""
+    Optional. Required for managed constraints if parameters are defined.
+     Passes parameter values when policy enforcement is enabled. Each
+     field corresponds to a known managed-constraint parameter key; the
+     value type matches the type defined in the constraint definition.
+     For example, the essentialcontacts.managed.allowedContactDomains
+     managed constraint takes:
+
+         parameters:
+           allowedDomains:
+             - "@example.com"
+
+    Attributes
+    ----------
+    allowAnyGKEPath : bool, default is Undefined, optional
+        When true, any Google Kubernetes Engine resource path is permitted.
+    allowPaths : [str], default is Undefined, optional
+        Resource paths that are explicitly allowed by the managed constraint.
+    allowedAWSAccountIDs : [str], default is Undefined, optional
+        AWS account IDs that are allowed by the managed constraint.
+    allowedDataSources : [str], default is Undefined, optional
+        Data sources that are allowed by the managed constraint.
+    allowedDomains : [str], default is Undefined, optional
+        Contact domains that are allowed by the managed constraint (for example, email domains permitted by essentialcontacts.managed.allowedContactDomains).
+    allowedEgressFQDNs : [str], default is Undefined, optional
+        Fully qualified domain names that are allowed for egress traffic.
+    allowedEncryptions : [str], default is Undefined, optional
+        Encryption types or modes that are allowed by the managed constraint.
+    allowedMemberSubjects : [str], default is Undefined, optional
+        Member subjects (for example, users or service accounts) that are allowed.
+    allowedParents : [str], default is Undefined, optional
+        Parent resources (organizations, folders, or projects) that are allowed.
+    allowedPreviewFeatures : [str], default is Undefined, optional
+        Preview features that are allowed by the managed constraint.
+    allowedPrincipalSets : [str], default is Undefined, optional
+        Principal sets that are allowed by the managed constraint.
+    allowedProviders : [str], default is Undefined, optional
+        Providers that are allowed by the managed constraint.
+    allowedRetentionDurationSeconds : int, default is Undefined, optional
+        Retention durations (in seconds) that are allowed by the managed constraint.
+    allowedRetentionPeriods : [str], default is Undefined, optional
+        Retention periods that are allowed by the managed constraint.
+    allowedSchemes : [str], default is Undefined, optional
+        URI schemes that are allowed by the managed constraint.
+    allowedServiceList : [str], default is Undefined, optional
+        Services that are allowed by the managed constraint (service list form).
+    allowedServices : [str], default is Undefined, optional
+        Services that are allowed by the managed constraint.
+    defaultAWSProvider : str, default is Undefined, optional
+        Default AWS provider used when no explicit provider is specified.
+    defaultXMLServiceProvider : str, default is Undefined, optional
+        Default XML service provider used when no explicit provider is specified.
+    deniedEditions : [str], default is Undefined, optional
+        Editions that are denied by the managed constraint.
+    enforcedProjects : [str], default is Undefined, optional
+        Projects where the managed constraint is enforced.
+    minimumDestroyScheduleDurationInDays : int, default is Undefined, optional
+        Minimum destroy schedule duration, in days, required by the managed constraint.
+    nonFIPSMachineTypes : [str], default is Undefined, optional
+        Compute Engine machine types that are not FIPS-compliant but are allowed.
+    """
+
+
+    allowAnyGKEPath?: bool
+
+    allowPaths?: [str]
+
+    allowedAWSAccountIDs?: [str]
+
+    allowedDataSources?: [str]
+
+    allowedDomains?: [str]
+
+    allowedEgressFQDNs?: [str]
+
+    allowedEncryptions?: [str]
+
+    allowedMemberSubjects?: [str]
+
+    allowedParents?: [str]
+
+    allowedPreviewFeatures?: [str]
+
+    allowedPrincipalSets?: [str]
+
+    allowedProviders?: [str]
+
+    allowedRetentionDurationSeconds?: int
+
+    allowedRetentionPeriods?: [str]
+
+    allowedSchemes?: [str]
+
+    allowedServiceList?: [str]
+
+    allowedServices?: [str]
+
+    defaultAWSProvider?: str
+
+    defaultXMLServiceProvider?: str
+
+    deniedEditions?: [str]
+
+    enforcedProjects?: [str]
+
+    minimumDestroyScheduleDurationInDays?: int
+
+    nonFIPSMachineTypes?: [str]
 
 
 schema OrgpolicyCnrmCloudGoogleComV1alpha1OrgPolicyPolicySpecSpecRulesItems0Values:

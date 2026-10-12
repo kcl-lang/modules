@@ -339,7 +339,7 @@ schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDatabaseTableSpe
 
 schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecDatabaseTableSpecDatabaseViewSpec:
     r"""
-    Spec what aplies to tables that are actually views. Not set for "real" tables.
+    Spec what applies to tables that are actually views. Not set for "real" tables.
 
     Attributes
     ----------
@@ -549,11 +549,11 @@ schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecGcsFilesetSpec:
 
     Attributes
     ----------
-    filePatterns : [str], default is Undefined, required
+    filePatterns : [str], default is Undefined, optional
         Required. Patterns to identify a set of files in Google Cloud Storage.
 
          For more information, see [Wildcard Names]
-         (https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames).
+         (https://cloud.google.com/storage/docs/wildcards).
 
          Note: Currently, bucket wildcards are not supported.
 
@@ -582,7 +582,7 @@ schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecGcsFilesetSpec:
     """
 
 
-    filePatterns: [str]
+    filePatterns?: [str]
 
 
 schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecLookerSystemSpec:
@@ -880,12 +880,12 @@ schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecSchemaColumnsIte
 
     Attributes
     ----------
-    $type : str, default is Undefined, required
+    $type : str, default is Undefined, optional
         Required. The type of a field element. See [ColumnSchema.type][google.cloud.datacatalog.v1.ColumnSchema.type].
     """
 
 
-    $type: str
+    $type?: str
 
 
 schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntrySpecServiceSpec:
@@ -1441,7 +1441,7 @@ schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateF
     Attributes
     ----------
     storageType : str, default is Undefined, optional
-        Output only. Type of underelaying storage for the FeatureOnlineStore.
+        Output only. Type of underlying storage for the FeatureOnlineStore.
     """
 
 
@@ -1468,12 +1468,50 @@ schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateG
 
     Attributes
     ----------
-    filePath : str, default is Undefined, required
+    filePath : str, default is Undefined, optional
         Required. Full file path. Example: `gs://bucket_name/a/b.txt`.
+    gcsTimestamps : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateGcsFilesetSpecSampleGCSFileSpecsItems0GcsTimestamps, default is Undefined, optional
+        gcs timestamps
+    sizeBytes : int, default is Undefined, optional
+        Output only. File size in bytes.
     """
 
 
-    filePath: str
+    filePath?: str
+
+    gcsTimestamps?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateGcsFilesetSpecSampleGCSFileSpecsItems0GcsTimestamps
+
+    sizeBytes?: int
+
+
+schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStateGcsFilesetSpecSampleGCSFileSpecsItems0GcsTimestamps:
+    r"""
+    Output only. Creation, modification, and expiration timestamps of a Cloud Storage file.
+
+    Attributes
+    ----------
+    createTime : str, default is Undefined, optional
+        Creation timestamp of the resource within the given system.
+    expireTime : str, default is Undefined, optional
+        Output only. Expiration timestamp of the resource within the given system.
+
+         Currently only applicable to BigQuery resources.
+    updateTime : str, default is Undefined, optional
+        Timestamp of the last modification of the resource or its metadata within
+         a given system.
+
+         Note: Depending on the source system, not every modification updates this
+         timestamp.
+         For example, BigQuery timestamps every metadata modification but not data
+         or permission changes.
+    """
+
+
+    createTime?: str
+
+    expireTime?: str
+
+    updateTime?: str
 
 
 schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogEntryStatusObservedStatePersonalDetails:

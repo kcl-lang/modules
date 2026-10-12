@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeSSLCertificate:
     r"""
-    compute cnrm cloud google com v1beta1 compute s s l certificate
+    ComputeSSLCertificate is the Schema for the ComputeSSLCertificate API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeSSLCertificate:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute s s l certificate spec
+    ComputeSSLCertificateSpec defines the desired state of ComputeSSLCertificate
 
     Attributes
     ----------
@@ -67,9 +67,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateSpec:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateSpecCertificate:
     r"""
-    Immutable. The certificate in PEM format.
-    The certificate chain must be no greater than 5 certs long.
-    The chain must include at least one intermediate cert.
+    Immutable. The certificate in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at least one intermediate cert.
 
     Attributes
     ----------
@@ -169,14 +167,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateSpecPrivateKeyValueF
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute s s l certificate status
+    ComputeSSLCertificateStatus defines the config connector machine state of ComputeSSLCertificate
 
     Attributes
     ----------
     certificateId : int, default is Undefined, optional
         The unique identifier for the resource.
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeSSLCertificateStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeSSLCertificate's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
     expireTime : str, default is Undefined, optional

@@ -116,11 +116,11 @@ schema SecuresourcemanagerCnrmCloudGoogleComV1alpha1SecureSourceManagerInstanceS
     Attributes
     ----------
     external : str, default is Undefined, optional
-        A reference to an externally managed PrivateCACAPool. Should be in the format `projects/{project_id}/locations/{region}/caPools/{caPool}`.
+        A reference to an externally managed PrivateCACAPool resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/caPools/{{caPoolID}}".
     name : str, default is Undefined, optional
-        The `name` of a `PrivateCACAPool` resource.
+        The name of a PrivateCACAPool resource.
     namespace : str, default is Undefined, optional
-        The `namespace` of a `PrivateCACAPool` resource.
+        The namespace of a PrivateCACAPool resource.
     """
 
 
@@ -254,7 +254,7 @@ schema SecuresourcemanagerCnrmCloudGoogleComV1alpha1SecureSourceManagerInstanceS
     Attributes
     ----------
     api : str, default is Undefined, optional
-        Output only. API hostname. This is the hostname to use for **Host: Data Plane** endpoints.
+        Output only. API hostname.
     gitHTTP : str, default is Undefined, optional
         Output only. Git HTTP hostname.
     gitSSH : str, default is Undefined, optional

@@ -53,7 +53,7 @@ schema ComposerCnrmCloudGoogleComV1beta1ComposerEnvironmentSpec:
          * Both keys and values are additionally constrained to be <= 128 bytes in
          size.
     location : str, default is Undefined, required
-        Immutable. The name of the location where the Environment will be created. Required.
+        The location that this resource belongs to.
     projectRef : ComposerCnrmCloudGoogleComV1beta1ComposerEnvironmentSpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional
@@ -467,7 +467,7 @@ schema ComposerCnrmCloudGoogleComV1beta1ComposerEnvironmentSpecConfigNodeConfigC
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed ComputeNetworkAttachment resource in the form "projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}".
+        A reference to an externally managed ComputeNetworkAttachment resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/networkAttachments/{{networkattachmentID}}".
     name : str, default is Undefined, optional
         The name of a ComputeNetworkAttachment resource.
     namespace : str, default is Undefined, optional
@@ -572,7 +572,7 @@ schema ComposerCnrmCloudGoogleComV1beta1ComposerEnvironmentSpecConfigNodeConfigN
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
         The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
@@ -624,11 +624,11 @@ schema ComposerCnrmCloudGoogleComV1beta1ComposerEnvironmentSpecConfigNodeConfigS
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The ComputeSubnetwork selflink of form "projects/{{project}}/regions/{{region}}/subnetworks/{{name}}", when not managed by Config Connector.
+        A reference to an externally managed ComputeSubnetwork resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/subnetworks/{{subnetworkID}}".
     name : str, default is Undefined, optional
-        The `name` field of a `ComputeSubnetwork` resource.
+        The name of a ComputeSubnetwork resource.
     namespace : str, default is Undefined, optional
-        The `namespace` field of a `ComputeSubnetwork` resource.
+        The namespace of a ComputeSubnetwork resource.
     """
 
 
@@ -712,11 +712,11 @@ schema ComposerCnrmCloudGoogleComV1beta1ComposerEnvironmentSpecConfigPrivateEnvi
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The ComputeSubnetwork selflink of form "projects/{{project}}/regions/{{region}}/subnetworks/{{name}}", when not managed by Config Connector.
+        A reference to an externally managed ComputeSubnetwork resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/subnetworks/{{subnetworkID}}".
     name : str, default is Undefined, optional
-        The `name` field of a `ComputeSubnetwork` resource.
+        The name of a ComputeSubnetwork resource.
     namespace : str, default is Undefined, optional
-        The `namespace` field of a `ComputeSubnetwork` resource.
+        The namespace of a ComputeSubnetwork resource.
     """
 
 
@@ -1157,7 +1157,7 @@ schema ComposerCnrmCloudGoogleComV1beta1ComposerEnvironmentSpecConfigWorkloadsCo
 
 schema ComposerCnrmCloudGoogleComV1beta1ComposerEnvironmentSpecProjectRef:
     r"""
-    Immutable. The Project that this resource belongs to.
+    The Project that this resource belongs to.
 
     Attributes
     ----------
@@ -1202,7 +1202,7 @@ schema ComposerCnrmCloudGoogleComV1beta1ComposerEnvironmentSpecStorageConfigBuck
     Attributes
     ----------
     external : str, default is Undefined, optional
-        A reference to an externally-managed StorageBucket resource.
+        A reference to an externally managed StorageBucket resource. Should be in the format "projects/{{projectID}}/buckets/{{bucketID}}".
     name : str, default is Undefined, optional
         The name of a StorageBucket resource.
     namespace : str, default is Undefined, optional

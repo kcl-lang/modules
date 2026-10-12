@@ -92,11 +92,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleSpecFirewallPoli
     Attributes
     ----------
     external : str, default is Undefined, optional
-        A reference to an externally managed ComputeFirewallPolicy resource. Should be in the format `locations/global/firewallPolicies/{{firewallPolicyID}}`.
+        A reference to an externally managed ComputeFirewallPolicy resource. Should be in the format "locations/global/firewallPolicies/{{firewallPolicyID}}".
     name : str, default is Undefined, optional
-        The `name` field of a `ComputeFirewallPolicy` resource.
+        The name of a ComputeFirewallPolicy resource.
     namespace : str, default is Undefined, optional
-        The `namespace` field of a `ComputeFirewallPolicy` resource.
+        The namespace of a ComputeFirewallPolicy resource.
     """
 
 
@@ -181,12 +181,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleSpecMatchLayer4C
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyRuleSpecTargetResourcesItems0:
     r"""
-    compute cnrm cloud google com v1beta1 compute firewall policy rule spec target resources items0
+    ComputeNetworkRef is a reference to a GCP ComputeNetwork.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
         The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional

@@ -43,6 +43,10 @@ schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpec:
     ----------
     authorizationMode : str, default is Undefined, optional
         Optional. Immutable. Authorization mode of the instance.
+    automatedBackupConfig : MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecAutomatedBackupConfig, default is Undefined, optional
+        automated backup config
+    crossInstanceReplicationConfig : MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecCrossInstanceReplicationConfig, default is Undefined, optional
+        cross instance replication config
     deletionProtectionEnabled : bool, default is Undefined, optional
         Optional. If set to true deletion of the instance will fail.
     endpoints : [MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecEndpointsItems0], default is Undefined, optional
@@ -51,10 +55,16 @@ schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpec:
         Optional. User-provided engine configurations for the instance.
     engineVersion : str, default is Undefined, optional
         Optional. Immutable. Engine version of the instance.
+    kmsKeyRef : MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecKmsKeyRef, default is Undefined, optional
+        kms key ref
     labels : {str:str}, default is Undefined, optional
         Optional. Labels to represent user-provided metadata.
     location : str, default is Undefined, required
         Immutable.
+    maintenancePolicy : MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecMaintenancePolicy, default is Undefined, optional
+        maintenance policy
+    maintenanceVersion : str, default is Undefined, optional
+        Optional. The maintenance version of the instance.
     mode : str, default is Undefined, optional
         Optional. The mode config for the instance.
     nodeType : str, default is Undefined, optional
@@ -78,6 +88,10 @@ schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpec:
 
     authorizationMode?: str
 
+    automatedBackupConfig?: MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecAutomatedBackupConfig
+
+    crossInstanceReplicationConfig?: MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecCrossInstanceReplicationConfig
+
     deletionProtectionEnabled?: bool
 
     endpoints?: [MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecEndpointsItems0]
@@ -86,9 +100,15 @@ schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpec:
 
     engineVersion?: str
 
+    kmsKeyRef?: MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecKmsKeyRef
+
     labels?: {str:str}
 
     location: str
+
+    maintenancePolicy?: MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecMaintenancePolicy
+
+    maintenanceVersion?: str
 
     mode?: str
 
@@ -107,6 +127,168 @@ schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpec:
     transitEncryptionMode?: str
 
     zoneDistributionConfig?: MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecZoneDistributionConfig
+
+
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecAutomatedBackupConfig:
+    r"""
+    Optional. The automated backup config for the instance.
+
+    Attributes
+    ----------
+    automatedBackupMode : str, default is Undefined, optional
+        Optional. The automated backup mode. If the mode is disabled, the other fields will be ignored.
+    fixedFrequencySchedule : MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecAutomatedBackupConfigFixedFrequencySchedule, default is Undefined, optional
+        fixed frequency schedule
+    retention : str, default is Undefined, optional
+        Optional. How long to keep automated backups before the backups are deleted. The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+    """
+
+
+    automatedBackupMode?: str
+
+    fixedFrequencySchedule?: MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecAutomatedBackupConfigFixedFrequencySchedule
+
+    retention?: str
+
+
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecAutomatedBackupConfigFixedFrequencySchedule:
+    r"""
+    Optional. Trigger automated backups at a fixed frequency.
+
+    Attributes
+    ----------
+    startTime : MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecAutomatedBackupConfigFixedFrequencyScheduleStartTime, default is Undefined, optional
+        start time
+    """
+
+
+    startTime?: MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecAutomatedBackupConfigFixedFrequencyScheduleStartTime
+
+
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecAutomatedBackupConfigFixedFrequencyScheduleStartTime:
+    r"""
+    Required. The start time of every automated backup in UTC. It must be set to the start of an hour. This field is required.
+
+    Attributes
+    ----------
+    hours : int, default is Undefined, optional
+        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    minutes : int, default is Undefined, optional
+        Minutes of hour of day. Must be from 0 to 59.
+    nanos : int, default is Undefined, optional
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    seconds : int, default is Undefined, optional
+        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
+
+
+    hours?: int
+
+    minutes?: int
+
+    nanos?: int
+
+    seconds?: int
+
+
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecCrossInstanceReplicationConfig:
+    r"""
+    Optional. The cross instance replication config for the instance.
+
+    Attributes
+    ----------
+    instanceRole : str, default is Undefined, optional
+        Required. The role of the instance in cross instance replication.
+    primaryInstance : MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecCrossInstanceReplicationConfigPrimaryInstance, default is Undefined, optional
+        primary instance
+    secondaryInstances : [MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecCrossInstanceReplicationConfigSecondaryInstancesItems0], default is Undefined, optional
+        Optional. List of secondary instances that are replicating from this
+         primary instance.
+
+         This field is only set for a primary instance.
+    """
+
+
+    instanceRole?: str
+
+    primaryInstance?: MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecCrossInstanceReplicationConfigPrimaryInstance
+
+    secondaryInstances?: [MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecCrossInstanceReplicationConfigSecondaryInstancesItems0]
+
+
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecCrossInstanceReplicationConfigPrimaryInstance:
+    r"""
+    Optional. Details of the primary instance that is used as the replication
+     source for this secondary instance.
+
+     This field is only set for a secondary instance.
+
+    Attributes
+    ----------
+    instanceRef : MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecCrossInstanceReplicationConfigPrimaryInstanceInstanceRef, default is Undefined, optional
+        instance ref
+    """
+
+
+    instanceRef?: MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecCrossInstanceReplicationConfigPrimaryInstanceInstanceRef
+
+
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecCrossInstanceReplicationConfigPrimaryInstanceInstanceRef:
+    r"""
+    Optional. The full resource path of the remote instance.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed MemorystoreInstance resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/instances/{{instanceID}}".
+    name : str, default is Undefined, optional
+        The name of a MemorystoreInstance resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a MemorystoreInstance resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecCrossInstanceReplicationConfigSecondaryInstancesItems0:
+    r"""
+    memorystore cnrm cloud google com v1beta1 memorystore instance spec cross instance replication config secondary instances items0
+
+    Attributes
+    ----------
+    instanceRef : MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecCrossInstanceReplicationConfigSecondaryInstancesItems0InstanceRef, default is Undefined, optional
+        instance ref
+    """
+
+
+    instanceRef?: MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecCrossInstanceReplicationConfigSecondaryInstancesItems0InstanceRef
+
+
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecCrossInstanceReplicationConfigSecondaryInstancesItems0InstanceRef:
+    r"""
+    Optional. The full resource path of the remote instance.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed MemorystoreInstance resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/instances/{{instanceID}}".
+    name : str, default is Undefined, optional
+        The name of a MemorystoreInstance resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a MemorystoreInstance resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
 
 
 schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecEndpointsItems0:
@@ -162,7 +344,7 @@ schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecEndpointsItems
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
         The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
@@ -201,6 +383,86 @@ schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecEndpointsItems
     name?: str
 
     namespace?: str
+
+
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecKmsKeyRef:
+    r"""
+    Optional. The KMS key reference for the instance.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
+    name : str, default is Undefined, optional
+        The `name` of a `KMSCryptoKey` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` of a `KMSCryptoKey` resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecMaintenancePolicy:
+    r"""
+    Optional. The maintenance policy for the instance.
+
+    Attributes
+    ----------
+    weeklyMaintenanceWindow : [MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecMaintenancePolicyWeeklyMaintenanceWindowItems0], default is Undefined, optional
+        Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_window is expected to be one.
+    """
+
+
+    weeklyMaintenanceWindow?: [MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecMaintenancePolicyWeeklyMaintenanceWindowItems0]
+
+
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecMaintenancePolicyWeeklyMaintenanceWindowItems0:
+    r"""
+    memorystore cnrm cloud google com v1beta1 memorystore instance spec maintenance policy weekly maintenance window items0
+
+    Attributes
+    ----------
+    day : str, default is Undefined, optional
+        Optional. Allows to define schedule that runs specified day of the week.
+    startTime : MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecMaintenancePolicyWeeklyMaintenanceWindowItems0StartTime, default is Undefined, optional
+        start time
+    """
+
+
+    day?: str
+
+    startTime?: MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecMaintenancePolicyWeeklyMaintenanceWindowItems0StartTime
+
+
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecMaintenancePolicyWeeklyMaintenanceWindowItems0StartTime:
+    r"""
+    Optional. Start time of the window in UTC.
+
+    Attributes
+    ----------
+    hours : int, default is Undefined, optional
+        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    minutes : int, default is Undefined, optional
+        Minutes of hour of day. Must be from 0 to 59.
+    nanos : int, default is Undefined, optional
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    seconds : int, default is Undefined, optional
+        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
+
+
+    hours?: int
+
+    minutes?: int
+
+    nanos?: int
+
+    seconds?: int
 
 
 schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceSpecPersistenceConfig:
@@ -363,12 +625,26 @@ schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStat
 
     Attributes
     ----------
+    availableMaintenanceVersions : [str], default is Undefined, optional
+        Output only. The list of available maintenance versions for the instance.
     createTime : str, default is Undefined, optional
         Output only. Creation timestamp of the instance.
+    crossInstanceReplicationConfig : MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateCrossInstanceReplicationConfig, default is Undefined, optional
+        cross instance replication config
+    effectiveMaintenanceVersion : str, default is Undefined, optional
+        Output only. The current version of the maintenance schedule.
+    encryptionInfo : MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateEncryptionInfo, default is Undefined, optional
+        encryption info
     endpoints : [MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateEndpointsItems0], default is Undefined, optional
         Optional. Endpoints for the instance.
+    maintenancePolicy : MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateMaintenancePolicy, default is Undefined, optional
+        maintenance policy
+    maintenanceSchedule : MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateMaintenanceSchedule, default is Undefined, optional
+        maintenance schedule
     nodeConfig : MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateNodeConfig, default is Undefined, optional
         node config
+    pscAttachmentDetails : [MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStatePscAttachmentDetailsItems0], default is Undefined, optional
+        Output only. List of PSC connections for the instance.
     state : str, default is Undefined, optional
         Output only. Current state of the instance.
     stateInfo : MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateStateInfo, default is Undefined, optional
@@ -380,11 +656,25 @@ schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStat
     """
 
 
+    availableMaintenanceVersions?: [str]
+
     createTime?: str
+
+    crossInstanceReplicationConfig?: MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateCrossInstanceReplicationConfig
+
+    effectiveMaintenanceVersion?: str
+
+    encryptionInfo?: MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateEncryptionInfo
 
     endpoints?: [MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateEndpointsItems0]
 
+    maintenancePolicy?: MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateMaintenancePolicy
+
+    maintenanceSchedule?: MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateMaintenanceSchedule
+
     nodeConfig?: MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateNodeConfig
+
+    pscAttachmentDetails?: [MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStatePscAttachmentDetailsItems0]
 
     state?: str
 
@@ -393,6 +683,154 @@ schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStat
     uid?: str
 
     updateTime?: str
+
+
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateCrossInstanceReplicationConfig:
+    r"""
+    Optional. The cross instance replication config for the instance.
+
+    Attributes
+    ----------
+    membership : MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateCrossInstanceReplicationConfigMembership, default is Undefined, optional
+        membership
+    primaryInstance : MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateCrossInstanceReplicationConfigPrimaryInstance, default is Undefined, optional
+        primary instance
+    secondaryInstances : [MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateCrossInstanceReplicationConfigSecondaryInstancesItems0], default is Undefined, optional
+        Optional. List of secondary instances that are replicating from this
+         primary instance.
+
+         This field is only set for a primary instance.
+    updateTime : str, default is Undefined, optional
+        Output only. The last time cross instance replication config was updated.
+    """
+
+
+    membership?: MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateCrossInstanceReplicationConfigMembership
+
+    primaryInstance?: MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateCrossInstanceReplicationConfigPrimaryInstance
+
+    secondaryInstances?: [MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateCrossInstanceReplicationConfigSecondaryInstancesItems0]
+
+    updateTime?: str
+
+
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateCrossInstanceReplicationConfigMembership:
+    r"""
+    Output only. An output only view of all the member instances participating in the cross instance replication. This view will be provided by every member instance irrespective of its instance role(primary or secondary).
+
+    Attributes
+    ----------
+    primaryInstance : MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateCrossInstanceReplicationConfigMembershipPrimaryInstance, default is Undefined, optional
+        primary instance
+    secondaryInstances : [MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateCrossInstanceReplicationConfigMembershipSecondaryInstancesItems0], default is Undefined, optional
+        Output only. The list of secondary instances replicating from the primary instance.
+    """
+
+
+    primaryInstance?: MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateCrossInstanceReplicationConfigMembershipPrimaryInstance
+
+    secondaryInstances?: [MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateCrossInstanceReplicationConfigMembershipSecondaryInstancesItems0]
+
+
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateCrossInstanceReplicationConfigMembershipPrimaryInstance:
+    r"""
+    Output only. The primary instance that acts as the source of replication for the secondary instances.
+
+    Attributes
+    ----------
+    instance : str, default is Undefined, optional
+        Optional. The full resource path of the remote instance.
+    uid : str, default is Undefined, optional
+        Output only. The unique identifier of the remote instance.
+    """
+
+
+    instance?: str
+
+    uid?: str
+
+
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateCrossInstanceReplicationConfigMembershipSecondaryInstancesItems0:
+    r"""
+    memorystore cnrm cloud google com v1beta1 memorystore instance status observed state cross instance replication config membership secondary instances items0
+
+    Attributes
+    ----------
+    instance : str, default is Undefined, optional
+        Optional. The full resource path of the remote instance.
+    uid : str, default is Undefined, optional
+        Output only. The unique identifier of the remote instance.
+    """
+
+
+    instance?: str
+
+    uid?: str
+
+
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateCrossInstanceReplicationConfigPrimaryInstance:
+    r"""
+    Optional. Details of the primary instance that is used as the replication
+     source for this secondary instance.
+
+     This field is only set for a secondary instance.
+
+    Attributes
+    ----------
+    instance : str, default is Undefined, optional
+        Optional. The full resource path of the remote instance.
+    uid : str, default is Undefined, optional
+        Output only. The unique identifier of the remote instance.
+    """
+
+
+    instance?: str
+
+    uid?: str
+
+
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateCrossInstanceReplicationConfigSecondaryInstancesItems0:
+    r"""
+    memorystore cnrm cloud google com v1beta1 memorystore instance status observed state cross instance replication config secondary instances items0
+
+    Attributes
+    ----------
+    instance : str, default is Undefined, optional
+        Optional. The full resource path of the remote instance.
+    uid : str, default is Undefined, optional
+        Output only. The unique identifier of the remote instance.
+    """
+
+
+    instance?: str
+
+    uid?: str
+
+
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateEncryptionInfo:
+    r"""
+    Output only. Encryption information for the instance.
+
+    Attributes
+    ----------
+    encryptionType : str, default is Undefined, optional
+        Output only. Type of encryption.
+    kmsKeyPrimaryState : str, default is Undefined, optional
+        Output only. The state of the primary KMS key.
+    kmsKeyVersions : [str], default is Undefined, optional
+        Output only. KMS key versions that are being used to protect the instance.
+    lastUpdateTime : str, default is Undefined, optional
+        Output only. Latest update timestamp of the encryption info.
+    """
+
+
+    encryptionType?: str
+
+    kmsKeyPrimaryState?: str
+
+    kmsKeyVersions?: [str]
+
+    lastUpdateTime?: str
 
 
 schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateEndpointsItems0:
@@ -461,6 +899,42 @@ schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStat
     serviceAttachment?: str
 
 
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateMaintenancePolicy:
+    r"""
+    Output only. User-defined weekly maintenance windows in which space is reserved for maintenance.
+
+    Attributes
+    ----------
+    createTime : str, default is Undefined, optional
+        Output only. The time when the policy was created.
+    updateTime : str, default is Undefined, optional
+        Output only. The time when the policy was updated.
+    """
+
+
+    createTime?: str
+
+    updateTime?: str
+
+
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateMaintenanceSchedule:
+    r"""
+    Output only. Upcoming maintenance schedule.
+
+    Attributes
+    ----------
+    endTime : str, default is Undefined, optional
+        Output only. The end time of any upcoming scheduled maintenance for this instance.
+    startTime : str, default is Undefined, optional
+        Output only. The start time of any upcoming scheduled maintenance for this instance.
+    """
+
+
+    endTime?: str
+
+    startTime?: str
+
+
 schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateNodeConfig:
     r"""
     Output only. Configuration of individual nodes of the instance.
@@ -475,17 +949,53 @@ schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStat
     sizeGB?: float
 
 
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStatePscAttachmentDetailsItems0:
+    r"""
+    memorystore cnrm cloud google com v1beta1 memorystore instance status observed state psc attachment details items0
+
+    Attributes
+    ----------
+    connectionType : str, default is Undefined, optional
+        Output only. Type of Psc endpoint.
+    serviceAttachment : str, default is Undefined, optional
+        Output only. Service attachment URI which your self-created PscConnection should use as target.
+    """
+
+
+    connectionType?: str
+
+    serviceAttachment?: str
+
+
 schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateStateInfo:
     r"""
     Output only. Additional information about the state of the instance.
 
     Attributes
     ----------
-    updateInfo : any, default is Undefined, optional
-        Output only. Describes ongoing update when instance state is UPDATING.
+    updateInfo : MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateStateInfoUpdateInfo, default is Undefined, optional
+        update info
     """
 
 
-    updateInfo?: any
+    updateInfo?: MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateStateInfoUpdateInfo
+
+
+schema MemorystoreCnrmCloudGoogleComV1beta1MemorystoreInstanceStatusObservedStateStateInfoUpdateInfo:
+    r"""
+    Output only. Describes ongoing update when instance state is UPDATING.
+
+    Attributes
+    ----------
+    targetReplicaCount : int, default is Undefined, optional
+        Output only. Target number of replica nodes per shard for the instance.
+    targetShardCount : int, default is Undefined, optional
+        Output only. Target number of shards for the instance.
+    """
+
+
+    targetReplicaCount?: int
+
+    targetShardCount?: int
 
 

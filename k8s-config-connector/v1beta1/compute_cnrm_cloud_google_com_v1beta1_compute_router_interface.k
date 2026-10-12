@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeRouterInterface:
     r"""
-    compute cnrm cloud google com v1beta1 compute router interface
+    ComputeRouterInterface is the Schema for the ComputeRouterInterface API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeRouterInterface:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute router interface spec
+    ComputeRouterInterfaceSpec defines the desired state of ComputeRouterInterface
 
     Attributes
     ----------
@@ -83,7 +83,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpec:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecInterconnectAttachmentRef:
     r"""
-    compute cnrm cloud google com v1beta1 compute router interface spec interconnect attachment ref
+    The InterconnectAttachment this interface belongs to.
 
     Attributes
     ----------
@@ -105,16 +105,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecInterconnectAtt
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecPrivateIPAddressRef:
     r"""
-    compute cnrm cloud google com v1beta1 compute router interface spec private IP address ref
+    The private IP address assigned to this interface.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `address` field of a `ComputeAddress` resource.
+        A reference to an externally managed ComputeAddress resource. Should be in the format "projects/{{projectID}}/global/addresses/{{addressID}}" or "projects/{{projectID}}/regions/{{region}}/addresses/{{addressID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeAddress resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeAddress resource.
     """
 
 
@@ -132,11 +132,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecRedundantInterf
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `ComputeRouterInterface` resource.
+        A reference to an externally managed ComputeRouterInterface resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/routers/{{routerID}}/interfaces/{{interfaceID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeRouterInterface resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeRouterInterface resource.
     """
 
 
@@ -149,16 +149,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecRedundantInterf
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecRouterRef:
     r"""
-    compute cnrm cloud google com v1beta1 compute router interface spec router ref
+    The router this interface belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `ComputeRouter` resource.
+        A reference to an externally managed ComputeRouter resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/routers/{{routerID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeRouter resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeRouter resource.
     """
 
 
@@ -171,16 +171,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecRouterRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecSubnetworkRef:
     r"""
-    compute cnrm cloud google com v1beta1 compute router interface spec subnetwork ref
+    The subnetwork this interface belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeSubnetwork` resource.
+        A reference to an externally managed ComputeSubnetwork resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/subnetworks/{{subnetworkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeSubnetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeSubnetwork resource.
     """
 
 
@@ -193,7 +193,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecSubnetworkRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecVpnTunnelRef:
     r"""
-    compute cnrm cloud google com v1beta1 compute router interface spec vpn tunnel ref
+    The VPNTunnel this interface belongs to.
 
     Attributes
     ----------
@@ -215,12 +215,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceSpecVpnTunnelRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute router interface status
+    ComputeRouterInterfaceStatus defines the config connector machine state of ComputeRouterInterface
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeRouterInterfaceStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

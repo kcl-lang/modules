@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeFirewallPolicyAssociation:
     r"""
-    compute cnrm cloud google com v1beta1 compute firewall policy association
+    ComputeFirewallPolicyAssociation is the Schema for the ComputeFirewallPolicyAssociation API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeFirewallPolicyAssociation:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyAssociationSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute firewall policy association spec
+    ComputeFirewallPolicyAssociationSpec defines the desired state of ComputeFirewallPolicyAssociation
 
     Attributes
     ----------
@@ -72,8 +72,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyAssociationSpecAttac
     kind : str, default is Undefined, optional
         Kind of the referent. Allowed values: Folder
     name : str, default is Undefined, optional
-        [WARNING] Organization not yet supported in Config Connector, use 'external' field to reference existing resources.
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        [WARNING] Organization not yet supported in Config Connector, use 'external' field to reference existing resources. Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
         Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
     """
@@ -95,13 +94,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyAssociationSpecFirew
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The firewall policy ID of the association.
-
-        Allowed value: The Google Cloud resource name of a `ComputeFirewallPolicy` resource (format: `locations/global/firewallPolicies/{{name}}`).
+        A reference to an externally managed ComputeFirewallPolicy resource. Should be in the format "locations/global/firewallPolicies/{{firewallPolicyID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeFirewallPolicy resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeFirewallPolicy resource.
     """
 
 
@@ -114,12 +111,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyAssociationSpecFirew
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyAssociationStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute firewall policy association status
+    ComputeFirewallPolicyAssociationStatus defines the config connector machine state of ComputeFirewallPolicyAssociation
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyAssociationStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     shortName : str, default is Undefined, optional

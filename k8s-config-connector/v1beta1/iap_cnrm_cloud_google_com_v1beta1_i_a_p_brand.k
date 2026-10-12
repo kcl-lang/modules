@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema IAPBrand:
     r"""
-    iap cnrm cloud google com v1beta1 i a p brand
+    IAPBrand is the Schema for the IAPBrand API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema IAPBrand:
 
 schema IapCnrmCloudGoogleComV1beta1IAPBrandSpec:
     r"""
-    iap cnrm cloud google com v1beta1 i a p brand spec
+    IAPBrandSpec defines the desired state of IAPBrand
 
     Attributes
     ----------
@@ -59,12 +59,12 @@ schema IapCnrmCloudGoogleComV1beta1IAPBrandSpec:
 
 schema IapCnrmCloudGoogleComV1beta1IAPBrandStatus:
     r"""
-    iap cnrm cloud google com v1beta1 i a p brand status
+    IAPBrandStatus defines the config connector machine state of IAPBrand
 
     Attributes
     ----------
     conditions : [IapCnrmCloudGoogleComV1beta1IAPBrandStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     orgInternalOnly : bool, default is Undefined, optional

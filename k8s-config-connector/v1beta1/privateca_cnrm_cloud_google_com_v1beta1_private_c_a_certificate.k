@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema PrivateCACertificate:
     r"""
-    privateca cnrm cloud google com v1beta1 private c a certificate
+    PrivateCACertificate is the Schema for the PrivateCACertificate API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema PrivateCACertificate:
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpec:
     r"""
-    privateca cnrm cloud google com v1beta1 private c a certificate spec
+    PrivateCACertificateSpec defines the desired state of PrivateCACertificate
 
     Attributes
     ----------
@@ -50,17 +50,17 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpec:
     config : PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfig, default is Undefined, optional
         config
     lifetime : str, default is Undefined, required
-        Immutable. Required. Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
+        Immutable. Required. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
     location : str, default is Undefined, required
-        Immutable. The location for the resource
+        Immutable. The location for the resource.
     pemCsr : str, default is Undefined, optional
-        Immutable. Immutable. A pem-encoded X.509 certificate signing request (CSR).
+        Immutable. Optional. A pem-encoded X.509 certificate signing request (CSR).
     projectRef : PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
     subjectMode : str, default is Undefined, optional
-        Immutable. Immutable. Specifies how the Certificate's identity fields are to be decided. If this is omitted, the `DEFAULT` subject mode will be used. Possible values: SUBJECT_REQUEST_MODE_UNSPECIFIED, DEFAULT, REFLECTED_SPIFFE
+        Immutable. Optional. Specifies how the Certificate's identity fields are to be decided.
     """
 
 
@@ -87,18 +87,16 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpec:
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecCaPoolRef:
     r"""
-    Immutable.
+    Immutable. Required. The PrivateCACAPool that includes this Certificate.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The ca_pool for the resource
-
-        Allowed value: The Google Cloud resource name of a `PrivateCACAPool` resource (format: `projects/{{project}}/locations/{{location}}/caPools/{{name}}`).
+        A reference to an externally managed PrivateCACAPool resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/caPools/{{caPoolID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a PrivateCACAPool resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a PrivateCACAPool resource.
     """
 
 
@@ -111,18 +109,16 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecCaPoolRef:
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecCertificateAuthorityRef:
     r"""
-    Immutable.
+    Immutable. Optional. The PrivateCACertificateAuthority that issued this Certificate.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The certificate authority for the resource
-
-        Allowed value: The Google Cloud resource name of a `PrivateCACertificateAuthority` resource (format: `projects/{{project}}/locations/{{location}}/caPools/{{ca_pool}}/certificateAuthorities/{{name}}`).
+        A reference to an externally managed PrivateCACertificateAuthority resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/caPools/{{caPool}}/certificateAuthorities/{{certificateAuthorityID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a PrivateCACertificateAuthority resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a PrivateCACertificateAuthority resource.
     """
 
 
@@ -135,18 +131,16 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecCertificateAuth
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecCertificateTemplateRef:
     r"""
-    Immutable.
+    Immutable. Optional. The PrivateCACertificateTemplate used to issue this Certificate.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Immutable. The resource name for a CertificateTemplate used to issue this certificate, in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified, the caller must have the necessary permission to use this template. If this is omitted, no template will be used. This template must be in the same location as the Certificate.
-
-        Allowed value: The `selfLink` field of a `PrivateCACertificateTemplate` resource.
+        A reference to an externally managed PrivateCACertificateTemplate resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/certificateTemplates/{{certificateTemplateID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a PrivateCACertificateTemplate resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a PrivateCACertificateTemplate resource.
     """
 
 
@@ -159,7 +153,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecCertificateTemp
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfig:
     r"""
-    Immutable. Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
+    Immutable. Optional. A description of the certificate and key that does not require X.509 or ASN.1.
 
     Attributes
     ----------
@@ -181,7 +175,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfig:
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigPublicKey:
     r"""
-    Immutable. Optional. The public key that corresponds to this config. This is, for example, used when issuing Certificates, but not when creating a self-signed CertificateAuthority or CertificateAuthority CSR.
+    Immutable. Optional. The public key that corresponds to this config.
 
     Attributes
     ----------
@@ -222,21 +216,21 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigSubjectCo
     Attributes
     ----------
     commonName : str, default is Undefined, optional
-        Immutable. The "common name" of the subject.
+        The "common name" of the subject.
     countryCode : str, default is Undefined, optional
-        Immutable. The country code of the subject.
+        The country code of the subject.
     locality : str, default is Undefined, optional
-        Immutable. The locality or city of the subject.
+        The locality or city of the subject.
     organization : str, default is Undefined, optional
-        Immutable. The organization of the subject.
+        The organization of the subject.
     organizationalUnit : str, default is Undefined, optional
-        Immutable. The organizational_unit of the subject.
+        The organizational_unit of the subject.
     postalCode : str, default is Undefined, optional
-        Immutable. The postal code of the subject.
+        The postal code of the subject.
     province : str, default is Undefined, optional
-        Immutable. The province, territory, or regional state of the subject.
+        The province, territory, or regional state of the subject.
     streetAddress : str, default is Undefined, optional
-        Immutable. The street address of the subject.
+        The street address of the subject.
     """
 
 
@@ -264,13 +258,13 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigSubjectCo
     Attributes
     ----------
     dnsNames : [str], default is Undefined, optional
-        Immutable. Contains only valid, fully-qualified host names.
+        Immutable. Optional. Contains only valid, fully-qualified host names.
     emailAddresses : [str], default is Undefined, optional
-        Immutable. Contains only valid RFC 2822 E-mail addresses.
+        Immutable. Optional. Contains only valid RFC 2822 E-mail addresses.
     ipAddresses : [str], default is Undefined, optional
-        Immutable. Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+        Immutable. Optional. Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
     uris : [str], default is Undefined, optional
-        Immutable. Contains only valid RFC 3986 URIs.
+        Immutable. Optional. Contains only valid RFC 3986 URIs.
     """
 
 
@@ -320,7 +314,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509Confi
     Attributes
     ----------
     critical : bool, default is Undefined, optional
-        Immutable. Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+        Immutable. Optional. Indicates whether or not this extension is critical.
     objectId : PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509ConfigAdditionalExtensionsItems0ObjectID, default is Undefined, required
         object Id
     value : str, default is Undefined, required
@@ -358,7 +352,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509Confi
     isCa : bool, default is Undefined, optional
         Immutable. Optional. When true, the "CA" in Basic Constraints extension will be set to true.
     maxIssuerPathLength : int, default is Undefined, optional
-        Immutable. Optional. Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of subordinate CA certificates that are allowed. If this value is less than 0, the request will fail.
+        Immutable. Optional. Refers to the "path length constraint" in Basic Constraints extension.
     nonCa : bool, default is Undefined, optional
         Immutable. Optional. When true, the "CA" in Basic Constraints extension will be set to false. If both `is_ca` and `non_ca` are unset, the extension will be omitted from the CA certificate.
     zeroMaxIssuerPathLength : bool, default is Undefined, optional
@@ -386,7 +380,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509Confi
     extendedKeyUsage : PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509ConfigKeyUsageExtendedKeyUsage, default is Undefined, optional
         extended key usage
     unknownExtendedKeyUsages : [PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509ConfigKeyUsageUnknownExtendedKeyUsagesItems0], default is Undefined, optional
-        Immutable. Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+        Immutable. Optional. Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
     """
 
 
@@ -399,28 +393,28 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509Confi
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509ConfigKeyUsageBaseKeyUsage:
     r"""
-    Immutable. Describes high-level ways in which a key may be used.
+    Immutable. Optional. Describes high-level ways in which a key may be used.
 
     Attributes
     ----------
     certSign : bool, default is Undefined, optional
-        Immutable. The key may be used to sign certificates.
+        Immutable. Optional. The key may be used to sign certificates.
     contentCommitment : bool, default is Undefined, optional
-        Immutable. The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+        Immutable. Optional. The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
     crlSign : bool, default is Undefined, optional
-        Immutable. The key may be used sign certificate revocation lists.
+        Immutable. Optional. The key may be used sign certificate revocation lists.
     dataEncipherment : bool, default is Undefined, optional
-        Immutable. The key may be used to encipher data.
+        Immutable. Optional. The key may be used to encipher data.
     decipherOnly : bool, default is Undefined, optional
-        Immutable. The key may be used to decipher only.
+        Immutable. Optional. The key may be used to decipher only.
     digitalSignature : bool, default is Undefined, optional
-        Immutable. The key may be used for digital signatures.
+        Immutable. Optional. The key may be used for digital signatures.
     encipherOnly : bool, default is Undefined, optional
-        Immutable. The key may be used to encipher only.
+        Immutable. Optional. The key may be used to encipher only.
     keyAgreement : bool, default is Undefined, optional
-        Immutable. The key may be used in a key agreement protocol.
+        Immutable. Optional. The key may be used in a key agreement protocol.
     keyEncipherment : bool, default is Undefined, optional
-        Immutable. The key may be used to encipher other keys.
+        Immutable. Optional. The key may be used to encipher other keys.
     """
 
 
@@ -445,22 +439,22 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509Confi
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509ConfigKeyUsageExtendedKeyUsage:
     r"""
-    Immutable. Detailed scenarios in which a key may be used.
+    Immutable. Optional. Detailed scenarios in which a key may be used.
 
     Attributes
     ----------
     clientAuth : bool, default is Undefined, optional
-        Immutable. Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+        Immutable. Optional. Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
     codeSigning : bool, default is Undefined, optional
-        Immutable. Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+        Immutable. Optional. Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
     emailProtection : bool, default is Undefined, optional
-        Immutable. Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+        Immutable. Optional. Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
     ocspSigning : bool, default is Undefined, optional
-        Immutable. Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+        Immutable. Optional. Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
     serverAuth : bool, default is Undefined, optional
-        Immutable. Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+        Immutable. Optional. Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
     timeStamping : bool, default is Undefined, optional
-        Immutable. Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+        Immutable. Optional. Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
     """
 
 
@@ -507,18 +501,16 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecConfigX509Confi
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecProjectRef:
     r"""
-    Immutable. The Project that this resource belongs to.
+    Immutable. Required. The Project that this resource belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The project for the resource
-
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -531,14 +523,14 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateSpecProjectRef:
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatus:
     r"""
-    privateca cnrm cloud google com v1beta1 private c a certificate status
+    PrivateCACertificateStatus defines the config connector machine state of PrivateCACertificate
 
     Attributes
     ----------
     certificateDescription : PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescription, default is Undefined, optional
         certificate description
     conditions : [PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the PrivateCACertificate's current state.
     createTime : str, default is Undefined, optional
         Output only. The time at which this Certificate was created.
     issuerCertificateAuthority : str, default is Undefined, optional
@@ -582,13 +574,13 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
     Attributes
     ----------
     aiaIssuingCertificateUrls : [str], default is Undefined, optional
-        Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
+        Optional. Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
     authorityKeyId : PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionAuthorityKeyID, default is Undefined, optional
         authority key Id
     certFingerprint : PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionCertFingerprint, default is Undefined, optional
         cert fingerprint
     crlDistributionPoints : [str], default is Undefined, optional
-        Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+        Optional. Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13.
     publicKey : PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionPublicKey, default is Undefined, optional
         public key
     subjectDescription : PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionSubjectDescription, default is Undefined, optional
@@ -619,7 +611,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionAuthorityKeyID:
     r"""
-    Identifies the subject_key_id of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+    Optional. Identifies the subject_key_id of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1.
 
     Attributes
     ----------
@@ -633,12 +625,12 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionCertFingerprint:
     r"""
-    The hash of the x.509 certificate.
+    Optional. The hash of the x.509 certificate.
 
     Attributes
     ----------
     sha256Hash : str, default is Undefined, optional
-        The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
+        Optional. The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
     """
 
 
@@ -647,14 +639,14 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionPublicKey:
     r"""
-    The public key that corresponds to an issued certificate.
+    Optional. The public key that corresponds to an issued certificate.
 
     Attributes
     ----------
     format : str, default is Undefined, optional
-        Required. The format of the public key. Possible values: KEY_FORMAT_UNSPECIFIED, PEM
+        Optional. The format of the public key. Possible values: KEY_FORMAT_UNSPECIFIED, PEM.
     key : str, default is Undefined, optional
-        Required. A public key. The padding and encoding must match with the `KeyFormat` value specified for the `format` field.
+        Optional. A public key. The padding and encoding must match with the `KeyFormat` value specified for the `format` field.
     """
 
 
@@ -665,18 +657,18 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionSubjectDescription:
     r"""
-    Describes some of the values in a certificate that are related to the subject and lifetime.
+    Optional. Describes some of the values in a certificate that are related to the subject and lifetime.
 
     Attributes
     ----------
     hexSerialNumber : str, default is Undefined, optional
-        The serial number encoded in lowercase hexadecimal.
+        Optional. The serial number encoded in lowercase hexadecimal.
     lifetime : str, default is Undefined, optional
-        For convenience, the actual lifetime of an issued certificate.
+        Optional. For convenience, the actual lifetime of an issued certificate.
     notAfterTime : str, default is Undefined, optional
-        The time after which the certificate is expired. Per RFC 5280, the validity period for a certificate is the period of time from not_before_time through not_after_time, inclusive. Corresponds to 'not_before_time' + 'lifetime' - 1 second.
+        Optional. The time after which the certificate is expired. Per RFC 5280, the validity period for a certificate is the period of time from not_before_time through not_after_time, inclusive. Corresponds to 'not_before_time' + 'lifetime' - 1 second.
     notBeforeTime : str, default is Undefined, optional
-        The time at which the certificate becomes valid.
+        Optional. The time at which the certificate becomes valid.
     subject : PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionSubjectDescriptionSubject, default is Undefined, optional
         subject
     subjectAltName : PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionSubjectDescriptionSubjectAltName, default is Undefined, optional
@@ -699,26 +691,26 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionSubjectDescriptionSubject:
     r"""
-    Contains distinguished name fields such as the common name, location and / organization.
+    Optional. Contains distinguished name fields such as the common name, location and / organization.
 
     Attributes
     ----------
     commonName : str, default is Undefined, optional
-        The "common name" of the subject.
+        Optional. The "common name" of the subject.
     countryCode : str, default is Undefined, optional
-        The country code of the subject.
+        Optional. The country code of the subject.
     locality : str, default is Undefined, optional
-        The locality or city of the subject.
+        Optional. The locality or city of the subject.
     organization : str, default is Undefined, optional
-        The organization of the subject.
+        Optional. The organization of the subject.
     organizationalUnit : str, default is Undefined, optional
-        The organizational_unit of the subject.
+        Optional. The organizational_unit of the subject.
     postalCode : str, default is Undefined, optional
-        The postal code of the subject.
+        Optional. The postal code of the subject.
     province : str, default is Undefined, optional
-        The province, territory, or regional state of the subject.
+        Optional. The province, territory, or regional state of the subject.
     streetAddress : str, default is Undefined, optional
-        The street address of the subject.
+        Optional. The street address of the subject.
     """
 
 
@@ -741,20 +733,20 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionSubjectDescriptionSubjectAltName:
     r"""
-    The subject alternative name fields.
+    Optional. The subject alternative name fields.
 
     Attributes
     ----------
     customSans : [PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSansItems0], default is Undefined, optional
-        Contains additional subject alternative name values.
+        Optional. Contains additional subject alternative name values.
     dnsNames : [str], default is Undefined, optional
-        Contains only valid, fully-qualified host names.
+        Optional. Contains only valid, fully-qualified host names.
     emailAddresses : [str], default is Undefined, optional
-        Contains only valid RFC 2822 E-mail addresses.
+        Optional. Contains only valid RFC 2822 E-mail addresses.
     ipAddresses : [str], default is Undefined, optional
-        Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+        Optional. Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
     uris : [str], default is Undefined, optional
-        Contains only valid RFC 3986 URIs.
+        Optional. Contains only valid RFC 3986 URIs.
     """
 
 
@@ -776,11 +768,11 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
     Attributes
     ----------
     critical : bool, default is Undefined, optional
-        Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+        Optional. Indicates whether or not this extension is critical.
     objectId : PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSansItems0ObjectID, default is Undefined, optional
         object Id
     value : str, default is Undefined, optional
-        Required. The value of this X.509 extension.
+        Optional. The value of this X.509 extension.
     """
 
 
@@ -793,12 +785,12 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSansItems0ObjectID:
     r"""
-    Required. The OID for this X.509 extension.
+    Optional. The OID for this X.509 extension.
 
     Attributes
     ----------
     objectIdPath : [int], default is Undefined, optional
-        Required. The parts of an OID path. The most significant parts of the path come first.
+        Optional. The parts of an OID path. The most significant parts of the path come first.
     """
 
 
@@ -807,7 +799,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionSubjectKeyID:
     r"""
-    Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+    Optional. Provides a means of identifying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
 
     Attributes
     ----------
@@ -821,7 +813,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionX509Description:
     r"""
-    Describes some of the technical X.509 fields in a certificate.
+    Optional. Describes some of the technical X.509 fields in a certificate.
 
     Attributes
     ----------
@@ -856,11 +848,11 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
     Attributes
     ----------
     critical : bool, default is Undefined, optional
-        Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+        Optional. Indicates whether or not this extension is critical.
     objectId : PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionX509DescriptionAdditionalExtensionsItems0ObjectID, default is Undefined, optional
         object Id
     value : str, default is Undefined, optional
-        Required. The value of this X.509 extension.
+        Optional. The value of this X.509 extension.
     """
 
 
@@ -873,12 +865,12 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionX509DescriptionAdditionalExtensionsItems0ObjectID:
     r"""
-    Required. The OID for this X.509 extension.
+    Optional. The OID for this X.509 extension.
 
     Attributes
     ----------
     objectIdPath : [int], default is Undefined, optional
-        Required. The parts of an OID path. The most significant parts of the path come first.
+        Optional. The parts of an OID path. The most significant parts of the path come first.
     """
 
 
@@ -914,7 +906,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
     extendedKeyUsage : PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage, default is Undefined, optional
         extended key usage
     unknownExtendedKeyUsages : [PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsagesItems0], default is Undefined, optional
-        Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+        Optional. Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
     """
 
 
@@ -927,28 +919,28 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage:
     r"""
-    Describes high-level ways in which a key may be used.
+    Optional. Describes high-level ways in which a key may be used.
 
     Attributes
     ----------
     certSign : bool, default is Undefined, optional
-        The key may be used to sign certificates.
+        Optional. The key may be used to sign certificates.
     contentCommitment : bool, default is Undefined, optional
-        The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+        Optional. The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
     crlSign : bool, default is Undefined, optional
-        The key may be used sign certificate revocation lists.
+        Optional. The key may be used sign certificate revocation lists.
     dataEncipherment : bool, default is Undefined, optional
-        The key may be used to encipher data.
+        Optional. The key may be used to encipher data.
     decipherOnly : bool, default is Undefined, optional
-        The key may be used to decipher only.
+        Optional. The key may be used to decipher only.
     digitalSignature : bool, default is Undefined, optional
-        The key may be used for digital signatures.
+        Optional. The key may be used for digital signatures.
     encipherOnly : bool, default is Undefined, optional
-        The key may be used to encipher only.
+        Optional. The key may be used to encipher only.
     keyAgreement : bool, default is Undefined, optional
-        The key may be used in a key agreement protocol.
+        Optional. The key may be used in a key agreement protocol.
     keyEncipherment : bool, default is Undefined, optional
-        The key may be used to encipher other keys.
+        Optional. The key may be used to encipher other keys.
     """
 
 
@@ -973,22 +965,22 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage:
     r"""
-    Detailed scenarios in which a key may be used.
+    Optional. Detailed scenarios in which a key may be used.
 
     Attributes
     ----------
     clientAuth : bool, default is Undefined, optional
-        Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+        Optional. Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
     codeSigning : bool, default is Undefined, optional
-        Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+        Optional. Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
     emailProtection : bool, default is Undefined, optional
-        Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+        Optional. Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
     ocspSigning : bool, default is Undefined, optional
-        Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+        Optional. Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
     serverAuth : bool, default is Undefined, optional
-        Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+        Optional. Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
     timeStamping : bool, default is Undefined, optional
-        Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+        Optional. Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
     """
 
 
@@ -1012,7 +1004,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
     Attributes
     ----------
     objectIdPath : [int], default is Undefined, optional
-        Required. The parts of an OID path. The most significant parts of the path come first.
+        Optional. The parts of an OID path. The most significant parts of the path come first.
     """
 
 
@@ -1026,7 +1018,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusCertificateDe
     Attributes
     ----------
     objectIdPath : [int], default is Undefined, optional
-        Required. The parts of an OID path. The most significant parts of the path come first.
+        Optional. The parts of an OID path. The most significant parts of the path come first.
     """
 
 
@@ -1070,9 +1062,9 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateStatusRevocationDet
     Attributes
     ----------
     revocationState : str, default is Undefined, optional
-        Indicates why a Certificate was revoked. Possible values: REVOCATION_REASON_UNSPECIFIED, KEY_COMPROMISE, CERTIFICATE_AUTHORITY_COMPROMISE, AFFILIATION_CHANGED, SUPERSEDED, CESSATION_OF_OPERATION, CERTIFICATE_HOLD, PRIVILEGE_WITHDRAWN, ATTRIBUTE_AUTHORITY_COMPROMISE
+        Optional. Indicates why a Certificate was revoked. Possible values: REVOCATION_REASON_UNSPECIFIED, KEY_COMPROMISE, CERTIFICATE_AUTHORITY_COMPROMISE, AFFILIATION_CHANGED, SUPERSEDED, CESSATION_OF_OPERATION, CERTIFICATE_HOLD, PRIVILEGE_WITHDRAWN, ATTRIBUTE_AUTHORITY_COMPROMISE
     revocationTime : str, default is Undefined, optional
-        The time at which this Certificate was revoked.
+        Optional. The time at which this Certificate was revoked.
     """
 
 

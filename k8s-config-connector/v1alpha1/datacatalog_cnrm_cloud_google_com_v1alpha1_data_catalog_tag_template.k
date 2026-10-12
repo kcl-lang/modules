@@ -96,6 +96,9 @@ schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsAnon
         If true, this field is required. Defaults to false.
     name : str, default is Undefined, optional
         Identifier. The resource name of the tag template field in URL format.
+         Example:
+
+         `projects/{PROJECT_ID}/locations/{LOCATION}/tagTemplates/{TAG_TEMPLATE}/fields/{FIELD}`
 
          Note: The tag template field itself might not be stored in the location
          specified in its name.
@@ -110,7 +113,7 @@ schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsAnon
          For example, a higher value can indicate a more important field.
          The value can be negative. Multiple fields can have the same order and
          field orders within a tag don't have to be sequential.
-    $type : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsAnonType, default is Undefined, required
+    $type : DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsAnonType, default is Undefined, optional
         type
     """
 
@@ -125,7 +128,7 @@ schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsAnon
 
     order?: int
 
-    $type: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsAnonType
+    $type?: DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsAnonType
 
 
 schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsAnonType:
@@ -174,7 +177,7 @@ schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsAnon
 
     Attributes
     ----------
-    displayName : str, default is Undefined, required
+    displayName : str, default is Undefined, optional
         Required. The display name of the enum value. Must not be an empty
          string.
 
@@ -184,7 +187,7 @@ schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecFieldsAnon
     """
 
 
-    displayName: str
+    displayName?: str
 
 
 schema DatacatalogCnrmCloudGoogleComV1alpha1DataCatalogTagTemplateSpecProjectRef:

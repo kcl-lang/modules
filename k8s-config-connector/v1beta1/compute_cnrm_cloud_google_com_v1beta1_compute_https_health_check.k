@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeHTTPSHealthCheck:
     r"""
-    compute cnrm cloud google com v1beta1 compute HTTPS health check
+    ComputeHTTPSHealthCheck is the Schema for the ComputeHTTPSHealthCheck API
 
     Attributes
     ----------
@@ -37,38 +37,28 @@ schema ComputeHTTPSHealthCheck:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHTTPSHealthCheckSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute HTTPS health check spec
+    ComputeHTTPSHealthCheckSpec defines the desired state of ComputeHTTPSHealthCheck
 
     Attributes
     ----------
     checkIntervalSec : int, default is Undefined, optional
-        How often (in seconds) to send a health check. The default value is 5
-        seconds.
+        How often (in seconds) to send a health check. The default value is 5 seconds.
     description : str, default is Undefined, optional
-        An optional description of this resource. Provide this property when
-        you create the resource.
+        An optional description of this resource. Provide this property when you create the resource.
     healthyThreshold : int, default is Undefined, optional
-        A so-far unhealthy instance will be marked healthy after this many
-        consecutive successes. The default value is 2.
+        A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
     host : str, default is Undefined, optional
-        The value of the host header in the HTTPS health check request. If
-        left empty (default value), the public IP on behalf of which this
-        health check is performed will be used.
+        The value of the host header in the HTTPS health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
     port : int, default is Undefined, optional
-        The TCP port number for the HTTPS health check request.
-        The default value is 443.
+        The TCP port number for the HTTPS health check request. The default value is 443.
     requestPath : str, default is Undefined, optional
-        The request path of the HTTPS health check request.
-        The default value is /.
+        The request path of the HTTPS health check request. The default value is /.
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
     timeoutSec : int, default is Undefined, optional
-        How long (in seconds) to wait before claiming failure.
-        The default value is 5 seconds.  It is invalid for timeoutSec to have
-        greater value than checkIntervalSec.
+        How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
     unhealthyThreshold : int, default is Undefined, optional
-        A so-far healthy instance will be marked unhealthy after this many
-        consecutive failures. The default value is 2.
+        A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
     """
 
 
@@ -93,12 +83,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeHTTPSHealthCheckSpec:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeHTTPSHealthCheckStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute HTTPS health check status
+    ComputeHTTPSHealthCheckStatus defines the config connector machine state of ComputeHTTPSHealthCheck
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeHTTPSHealthCheckStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
     observedGeneration : int, default is Undefined, optional

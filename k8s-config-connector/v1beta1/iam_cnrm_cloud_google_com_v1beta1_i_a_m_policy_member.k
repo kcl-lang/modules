@@ -125,7 +125,7 @@ schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecMemberFrom:
 
 schema IamCnrmCloudGoogleComV1beta1IAMPolicyMemberSpecMemberFromBigQueryConnectionConnectionRef:
     r"""
-    BigQueryConnectionConnection whose service account is to be bound to the role. Use the Type field to specify the connection type. For "spark" connetion, the service account is in `status.observedState.spark.serviceAccountID`. For "cloudSQL" connection, the service account is in `status.observedState.cloudSQL.serviceAccountID`. For "cloudResource" connection, the service account is in `status.observedState.cloudResource.serviceAccountID`.
+    BigQueryConnectionConnection whose service account is to be bound to the role. Use the Type field to specify the connection type. For "spark" connection, the service account is in `status.observedState.spark.serviceAccountID`. For "cloudSQL" connection, the service account is in `status.observedState.cloudSQL.serviceAccountID`. For "cloudResource" connection, the service account is in `status.observedState.cloudResource.serviceAccountID`.
 
     Attributes
     ----------

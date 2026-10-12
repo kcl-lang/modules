@@ -64,7 +64,7 @@ schema BigquerydatatransferCnrmCloudGoogleComV1beta1BigQueryDataTransferConfigSp
     pubSubTopicRef : BigquerydatatransferCnrmCloudGoogleComV1beta1BigQueryDataTransferConfigSpecPubSubTopicRef, default is Undefined, optional
         pub sub topic ref
     resourceID : str, default is Undefined, optional
-        The BigQueryDataTransferConfig name. If not given, the metadata.name will be used.
+        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
     schedule : str, default is Undefined, optional
         Data transfer schedule.
          If the data source does not support a custom schedule, this should be

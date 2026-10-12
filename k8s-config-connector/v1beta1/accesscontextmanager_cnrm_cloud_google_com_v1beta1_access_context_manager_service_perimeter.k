@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema AccessContextManagerServicePerimeter:
     r"""
-    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter
+    AccessContextManagerServicePerimeter is the Schema for the AccessContextManagerServicePerimeter API
 
     Attributes
     ----------
@@ -37,15 +37,14 @@ schema AccessContextManagerServicePerimeter:
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpec:
     r"""
-    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec
+    AccessContextManagerServicePerimeterSpec defines the desired state of AccessContextManagerServicePerimeter
 
     Attributes
     ----------
     accessPolicyRef : AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecAccessPolicyRef, default is Undefined, required
         access policy ref
     description : str, default is Undefined, optional
-        Description of the ServicePerimeter and its use. Does not affect
-        behavior.
+        Description of the ServicePerimeter and its use. Does not affect behavior.
     perimeterType : str, default is Undefined, optional
         Immutable. Specifies the type of the Perimeter. There are two types: regular and
         bridge. Regular Service Perimeter contains resources, access levels,
@@ -72,15 +71,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
     title : str, default is Undefined, required
         Human readable title. Must be unique within the Policy.
     useExplicitDryRunSpec : bool, default is Undefined, optional
-        Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
-        for all Service Perimeters, and that spec is identical to the status for those
-        Service Perimeters. When this flag is set, it inhibits the generation of the
-        implicit spec, thereby allowing the user to explicitly provide a
-        configuration ("spec") to use in a dry-run version of the Service Perimeter.
-        This allows the user to test changes to the enforced config ("status") without
-        actually enforcing them. This testing is done through analyzing the differences
-        between currently enforced and suggested restrictions. useExplicitDryRunSpec must
-        bet set to True if any of the fields in the spec are set to non-default values.
+        Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists for all Service Perimeters, and that spec is identical to the status for those Service Perimeters. When this flag is set, it inhibits the generation of the implicit spec, thereby allowing the user to explicitly provide a configuration ("spec") to use in a dry-run version of the Service Perimeter. This allows the user to test changes to the enforced config ("status") without actually enforcing them. This testing is done through analyzing the differences between currently enforced and suggested restrictions. useExplicitDryRunSpec must bet set to True if any of the fields in the spec are set to non-default values.
     """
 
 
@@ -103,17 +94,16 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecAccessPolicyRef:
     r"""
-    The AccessContextManagerAccessPolicy this
-    AccessContextManagerServicePerimeter lives in.
+    The AccessContextManagerAccessPolicy this AccessContextManagerServicePerimeter lives in.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `accessPolicies/{{value}}`, where {{value}} is the `name` field of an `AccessContextManagerAccessPolicy` resource.
+        A reference to an externally managed AccessContextManagerAccessPolicy resource. As per https://docs.cloud.google.com/asset-inventory/docs/asset-names Should be in the format "accessPolicies/{{accesspolicyID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of an AccessContextManagerAccessPolicy resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of an AccessContextManagerAccessPolicy resource.
     """
 
 
@@ -126,33 +116,20 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpec:
     r"""
-    Proposed (or dry run) ServicePerimeter configuration.
-    This configuration allows to specify and test ServicePerimeter configuration
-    without enforcing actual access restrictions. Only allowed to be set when
-    the 'useExplicitDryRunSpec' flag is set.
+    Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the 'useExplicitDryRunSpec' flag is set.
 
     Attributes
     ----------
     accessLevels : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecAccessLevelsItems0], default is Undefined, optional
-        access levels
+        (Optional) A list of AccessLevel resource names that allow resources within the ServicePerimeter to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel is a syntax error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via GCP calls with request origins within the perimeter. For Service Perimeter Bridge, must be empty.
     egressPolicies : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecEgressPoliciesItems0], default is Undefined, optional
-        List of EgressPolicies to apply to the perimeter. A perimeter may
-        have multiple EgressPolicies, each of which is evaluated separately.
-        Access is granted if any EgressPolicy grants it. Must be empty for
-        a perimeter bridge.
+        List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
     ingressPolicies : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0], default is Undefined, optional
-        List of 'IngressPolicies' to apply to the perimeter. A perimeter may
-        have multiple 'IngressPolicies', each of which is evaluated
-        separately. Access is granted if any 'Ingress Policy' grants it.
-        Must be empty for a perimeter bridge.
+        List of 'IngressPolicies' to apply to the perimeter. A perimeter may have multiple 'IngressPolicies', each of which is evaluated separately. Access is granted if any 'Ingress Policy' grants it. Must be empty for a perimeter bridge.
     resources : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecResourcesItems0], default is Undefined, optional
-        resources
+        (Optional) A list of GCP resources that are inside of the service perimeter. Currently only projects are allowed.
     restrictedServices : [str], default is Undefined, optional
-        GCP services that are subject to the Service Perimeter
-        restrictions. Must contain a list of services. For example, if
-        'storage.googleapis.com' is specified, access to the storage
-        buckets inside the perimeter must meet the perimeter's access
-        restrictions.
+        GCP services that are subject to the Service Perimeter restrictions. Must contain a list of services. For example, if 'storage.googleapis.com' is specified, access to the storage buckets inside the perimeter must meet the perimeter's access restrictions.
     vpcAccessibleServices : AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecVpcAccessibleServices, default is Undefined, optional
         vpc accessible services
     """
@@ -173,22 +150,16 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecAccessLevelsItems0:
     r"""
-    (Optional) A list of AccessLevel resource names that allow resources within
-    the ServicePerimeter to be accessed from the internet. AccessLevels listed
-    must be in the same policy as this ServicePerimeter.
-    Referencing a nonexistent AccessLevel is a syntax error. If no
-    AccessLevel names are listed, resources within the perimeter can
-    only be accessed via GCP calls with request origins within the
-    perimeter. For Service Perimeter Bridge, must be empty.
+    AccessLevelRef is a reference to an AccessLevel resource.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `{{parent}}/accessLevels/{{value}}`, where {{value}} is the `name` field of an `AccessContextManagerAccessLevel` resource.
+        A reference to an externally managed AccessLevel resource. Should be in the format "accessPolicies/{{accessPolicyID}}/accessLevels/{{accessLevel}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of an AccessLevel resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of an AccessLevel resource.
     """
 
 
@@ -224,11 +195,9 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
     Attributes
     ----------
     identities : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecEgressPoliciesItems0EgressFromIdentitiesItems0], default is Undefined, optional
-        identities
+        (Optional) A list of identities that are allowed access through this EgressPolicy. Should be in the format of email address. The email address should represent individual user or service account only.
     identityType : str, default is Undefined, optional
-        Specifies the type of identities that are allowed access to outside the
-        perimeter. If left unspecified, then members of 'identities' field will
-        be allowed access. Possible values: ["IDENTITY_TYPE_UNSPECIFIED", "ANY_IDENTITY", "ANY_USER_ACCOUNT", "ANY_SERVICE_ACCOUNT"].
+        Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of 'identities' field will be allowed access. Possible values: ["IDENTITY_TYPE_UNSPECIFIED", "ANY_IDENTITY", "ANY_USER_ACCOUNT", "ANY_SERVICE_ACCOUNT"].
     """
 
 
@@ -239,16 +208,14 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecEgressPoliciesItems0EgressFromIdentitiesItems0:
     r"""
-    (Optional) A list of identities that are allowed access through this
-    EgressPolicy. Should be in the format of email address. The email
-    address should represent individual user or service account only.
+    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec spec egress policies items0 egress from identities items0
 
     Attributes
     ----------
     serviceAccountRef : AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecEgressPoliciesItems0EgressFromIdentitiesItems0ServiceAccountRef, default is Undefined, optional
         service account ref
     user : str, default is Undefined, optional
-        user
+        A user identity, should represent individual user or service account only.
     """
 
 
@@ -259,12 +226,12 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecEgressPoliciesItems0EgressFromIdentitiesItems0ServiceAccountRef:
     r"""
-    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec spec egress policies items0 egress from identities items0 service account ref
+    A reference to an IAMServiceAccount resource.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `serviceAccount:{{value}}`, where {{value}} is the `email` field of an `IAMServiceAccount` resource.
+        The `email` field of an `IAMServiceAccount` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -281,20 +248,16 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecEgressPoliciesItems0EgressTo:
     r"""
-    Defines the conditions on the 'ApiOperation' and destination resources that
-    cause this 'EgressPolicy' to apply.
+    Defines the conditions on the 'ApiOperation' and destination resources that cause this 'EgressPolicy' to apply.
 
     Attributes
     ----------
     externalResources : [str], default is Undefined, optional
-        A list of external resources that are allowed to be accessed. A request
-        matches if it contains an external resource in this list (Example:
-        s3://bucket/path). Currently '*' is not allowed.
+        A list of external resources that are allowed to be accessed. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
     operations : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecEgressPoliciesItems0EgressToOperationsItems0], default is Undefined, optional
-        A list of 'ApiOperations' that this egress rule applies to. A request matches
-        if it contains an operation/service in this list.
+        A list of 'ApiOperations' that this egress rule applies to. A request matches if it contains an operation/service in this list.
     resources : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecEgressPoliciesItems0EgressToResourcesItems0], default is Undefined, optional
-        resources
+        (Optional) A list of resources, currently only projects in the form "projects/{project_number}". A request matches if it contains a resource in this list.
     """
 
 
@@ -312,14 +275,9 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
     Attributes
     ----------
     methodSelectors : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecEgressPoliciesItems0EgressToOperationsItems0MethodSelectorsItems0], default is Undefined, optional
-        API methods or permissions to allow. Method or permission must belong
-        to the service specified by 'serviceName' field. A single MethodSelector
-        entry with '*' specified for the 'method' field will allow all methods
-        AND permissions for the service specified in 'serviceName'.
+        API methods or permissions to allow. Method or permission must belong to the service specified by 'serviceName' field. A single MethodSelector entry with '*' specified for the 'method' field will allow all methods AND permissions for the service specified in 'serviceName'.
     serviceName : str, default is Undefined, optional
-        The name of the API whose methods or permissions the 'IngressPolicy' or
-        'EgressPolicy' want to allow. A single 'ApiOperation' with serviceName
-        field set to '*' will allow all methods AND permissions for all services.
+        The name of the API whose methods or permissions the 'IngressPolicy' or 'EgressPolicy' want to allow. A single 'ApiOperation' with serviceName field set to '*' will allow all methods AND permissions for all services.
     """
 
 
@@ -335,12 +293,9 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
     Attributes
     ----------
     method : str, default is Undefined, optional
-        Value for 'method' should be a valid method name for the corresponding
-        'serviceName' in 'ApiOperation'. If '*' used as value for method,
-        then ALL methods and permissions are allowed.
+        Value for 'method' should be a valid method name for the corresponding 'serviceName' in 'ApiOperation'. If '*' used as value for method, then ALL methods and permissions are allowed.
     permission : str, default is Undefined, optional
-        Value for permission should be a valid Cloud IAM permission for the
-        corresponding 'serviceName' in 'ApiOperation'.
+        Value for permission should be a valid Cloud IAM permission for the corresponding 'serviceName' in 'ApiOperation'.
     """
 
 
@@ -351,9 +306,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecEgressPoliciesItems0EgressToResourcesItems0:
     r"""
-    (Optional) A list of resources, currently only projects in the form
-    "projects/{project_number}". A request
-    matches if it contains a resource in this list.
+    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec spec egress policies items0 egress to resources items0
 
     Attributes
     ----------
@@ -367,7 +320,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecEgressPoliciesItems0EgressToResourcesItems0ProjectRef:
     r"""
-    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec spec egress policies items0 egress to resources items0 project ref
+    (Optional) A list of resources, currently only projects in the form "projects/{project_number}". A request matches if it contains a resource in this list.
 
     Attributes
     ----------
@@ -407,17 +360,14 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressFrom:
     r"""
-    Defines the conditions on the source of a request causing this 'IngressPolicy'
-    to apply.
+    Defines the conditions on the source of a request causing this 'IngressPolicy' to apply.
 
     Attributes
     ----------
     identities : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressFromIdentitiesItems0], default is Undefined, optional
-        identities
+        (Optional) A list of identities that are allowed access through this ingress policy. Should be in the format of email address. The email address should represent individual user or service account only.
     identityType : str, default is Undefined, optional
-        Specifies the type of identities that are allowed access from outside the
-        perimeter. If left unspecified, then members of 'identities' field will be
-        allowed access. Possible values: ["IDENTITY_TYPE_UNSPECIFIED", "ANY_IDENTITY", "ANY_USER_ACCOUNT", "ANY_SERVICE_ACCOUNT"].
+        Specifies the type of identities that are allowed access from outside the perimeter. If left unspecified, then members of 'identities' field will be allowed access. Possible values: ["IDENTITY_TYPE_UNSPECIFIED", "ANY_IDENTITY", "ANY_USER_ACCOUNT", "ANY_SERVICE_ACCOUNT"].
     sources : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressFromSourcesItems0], default is Undefined, optional
         Sources that this 'IngressPolicy' authorizes access from.
     """
@@ -432,16 +382,14 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressFromIdentitiesItems0:
     r"""
-    (Optional) A list of identities that are allowed access through this
-    ingress policy. Should be in the format of email address. The email
-    address should represent individual user or service account only.
+    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec spec ingress policies items0 ingress from identities items0
 
     Attributes
     ----------
     serviceAccountRef : AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressFromIdentitiesItems0ServiceAccountRef, default is Undefined, optional
         service account ref
     user : str, default is Undefined, optional
-        user
+        A user identity, should represent individual user or service account only.
     """
 
 
@@ -452,12 +400,12 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressFromIdentitiesItems0ServiceAccountRef:
     r"""
-    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec spec ingress policies items0 ingress from identities items0 service account ref
+    A reference to an IAMServiceAccount resource.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `serviceAccount:{{value}}`, where {{value}} is the `email` field of an `IAMServiceAccount` resource.
+        The `email` field of an `IAMServiceAccount` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -492,22 +440,16 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressFromSourcesItems0AccessLevelRef:
     r"""
-    An AccessLevel resource name that allow resources within the
-    ServicePerimeters to be accessed from the internet. AccessLevels
-    listed must be in the same policy as this ServicePerimeter.
-    Referencing a nonexistent AccessLevel will cause an error. If no
-    AccessLevel names are listed, resources within the perimeter can
-    only be accessed via Google Cloud calls with request origins within
-    the perimeter.
+    (Optional) A reference to an AccessLevel resource that is allowed to ingress the perimeter.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `{{parent}}/accessLevels/{{value}}`, where {{value}} is the `name` field of an `AccessContextManagerAccessLevel` resource.
+        A reference to an externally managed AccessLevel resource. Should be in the format "accessPolicies/{{accessPolicyID}}/accessLevels/{{accessLevel}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of an AccessLevel resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of an AccessLevel resource.
     """
 
 
@@ -520,11 +462,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressFromSourcesItems0ProjectRef:
     r"""
-    (Optional) A Google Cloud resource that is allowed to ingress the
-    perimeter. Requests from these resources will be allowed to access
-    perimeter data. Currently only projects are allowed. Format
-    "projects/{project_number}" The project may be in any Google Cloud
-    organization, not just the organization that the perimeter is defined in.
+    (Optional) A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format "projects/{project_number}" The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in.
 
     Attributes
     ----------
@@ -546,16 +484,14 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressTo:
     r"""
-    Defines the conditions on the 'ApiOperation' and request destination that cause
-    this 'IngressPolicy' to apply.
+    Defines the conditions on the 'ApiOperation' and request destination that cause this 'IngressPolicy' to apply.
 
     Attributes
     ----------
     operations : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressToOperationsItems0], default is Undefined, optional
-        A list of 'ApiOperations' the sources specified in corresponding 'IngressFrom'
-        are allowed to perform in this 'ServicePerimeter'.
+        A list of 'ApiOperations' the sources specified in corresponding 'IngressFrom' are allowed to perform in this 'ServicePerimeter'.
     resources : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressToResourcesItems0], default is Undefined, optional
-        resources
+        A list of resources, currently only projects in the form "projects/{project_number}", protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. A request matches if it contains a resource in this list.
     """
 
 
@@ -571,14 +507,9 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
     Attributes
     ----------
     methodSelectors : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressToOperationsItems0MethodSelectorsItems0], default is Undefined, optional
-        API methods or permissions to allow. Method or permission must belong to
-        the service specified by serviceName field. A single 'MethodSelector' entry
-        with '*' specified for the method field will allow all methods AND
-        permissions for the service specified in 'serviceName'.
+        API methods or permissions to allow. Method or permission must belong to the service specified by 'serviceName' field. A single MethodSelector entry with '*' specified for the 'method' field will allow all methods AND permissions for the service specified in 'serviceName'.
     serviceName : str, default is Undefined, optional
-        The name of the API whose methods or permissions the 'IngressPolicy' or
-        'EgressPolicy' want to allow. A single 'ApiOperation' with 'serviceName'
-        field set to '*' will allow all methods AND permissions for all services.
+        The name of the API whose methods or permissions the 'IngressPolicy' or 'EgressPolicy' want to allow. A single 'ApiOperation' with serviceName field set to '*' will allow all methods AND permissions for all services.
     """
 
 
@@ -594,12 +525,9 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
     Attributes
     ----------
     method : str, default is Undefined, optional
-        Value for method should be a valid method name for the corresponding
-        serviceName in 'ApiOperation'. If '*' used as value for 'method', then
-        ALL methods and permissions are allowed.
+        Value for 'method' should be a valid method name for the corresponding 'serviceName' in 'ApiOperation'. If '*' used as value for method, then ALL methods and permissions are allowed.
     permission : str, default is Undefined, optional
-        Value for permission should be a valid Cloud IAM permission for the
-        corresponding 'serviceName' in 'ApiOperation'.
+        Value for permission should be a valid Cloud IAM permission for the corresponding 'serviceName' in 'ApiOperation'.
     """
 
 
@@ -610,11 +538,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressToResourcesItems0:
     r"""
-    A list of resources, currently only projects in the form
-    "projects/{project_number}", protected by this ServicePerimeter
-    that are allowed to be accessed by sources defined in the
-    corresponding IngressFrom. A request matches if it contains a
-    resource in this list.
+    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec spec ingress policies items0 ingress to resources items0
 
     Attributes
     ----------
@@ -628,7 +552,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecIngressPoliciesItems0IngressToResourcesItems0ProjectRef:
     r"""
-    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec spec ingress policies items0 ingress to resources items0 project ref
+    A list of resources, currently only projects in the form "projects/{project_number}", protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. A request matches if it contains a resource in this list.
 
     Attributes
     ----------
@@ -650,8 +574,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecResourcesItems0:
     r"""
-    (Optional) A list of GCP resources that are inside of the service perimeter.
-    Currently only projects are allowed.
+    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec spec resources items0
 
     Attributes
     ----------
@@ -665,7 +588,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecResourcesItems0ProjectRef:
     r"""
-    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec spec resources items0 project ref
+    (Optional) A list of GCP resources that are inside of the service perimeter. Currently only projects are allowed.
 
     Attributes
     ----------
@@ -687,17 +610,14 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecSpecVpcAccessibleServices:
     r"""
-    Specifies how APIs are allowed to communicate within the Service
-    Perimeter.
+    Specifies how APIs are allowed to communicate within the Service Perimeter.
 
     Attributes
     ----------
     allowedServices : [str], default is Undefined, optional
-        The list of APIs usable within the Service Perimeter.
-        Must be empty unless 'enableRestriction' is True.
+        The list of APIs usable within the Service Perimeter. Must be empty unless 'enableRestriction' is True.
     enableRestriction : bool, default is Undefined, optional
-        Whether to restrict API calls within the Service Perimeter to the
-        list of APIs specified in 'allowedServices'.
+        Whether to restrict API calls within the Service Perimeter to the list of APIs specified in 'allowedServices'.
     """
 
 
@@ -708,32 +628,20 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatus:
     r"""
-    ServicePerimeter configuration. Specifies sets of resources,
-    restricted services and access levels that determine
-    perimeter content and boundaries.
+    ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine perimeter content and boundaries.
 
     Attributes
     ----------
     accessLevels : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusAccessLevelsItems0], default is Undefined, optional
-        access levels
+        (Optional) A list of AccessLevel resource names that allow resources within the ServicePerimeter to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel is a syntax error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via GCP calls with request origins within the perimeter. For Service Perimeter Bridge, must be empty.
     egressPolicies : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusEgressPoliciesItems0], default is Undefined, optional
-        List of EgressPolicies to apply to the perimeter. A perimeter may
-        have multiple EgressPolicies, each of which is evaluated separately.
-        Access is granted if any EgressPolicy grants it. Must be empty for
-        a perimeter bridge.
+        List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
     ingressPolicies : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0], default is Undefined, optional
-        List of 'IngressPolicies' to apply to the perimeter. A perimeter may
-        have multiple 'IngressPolicies', each of which is evaluated
-        separately. Access is granted if any 'Ingress Policy' grants it.
-        Must be empty for a perimeter bridge.
+        List of 'IngressPolicies' to apply to the perimeter. A perimeter may have multiple 'IngressPolicies', each of which is evaluated separately. Access is granted if any 'Ingress Policy' grants it. Must be empty for a perimeter bridge.
     resources : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusResourcesItems0], default is Undefined, optional
-        resources
+        (Optional) A list of GCP resources that are inside of the service perimeter. Currently only projects are allowed.
     restrictedServices : [str], default is Undefined, optional
-        GCP services that are subject to the Service Perimeter
-        restrictions. Must contain a list of services. For example, if
-        'storage.googleapis.com' is specified, access to the storage
-        buckets inside the perimeter must meet the perimeter's access
-        restrictions.
+        GCP services that are subject to the Service Perimeter restrictions. Must contain a list of services. For example, if 'storage.googleapis.com' is specified, access to the storage buckets inside the perimeter must meet the perimeter's access restrictions.
     vpcAccessibleServices : AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusVpcAccessibleServices, default is Undefined, optional
         vpc accessible services
     """
@@ -754,22 +662,16 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusAccessLevelsItems0:
     r"""
-    (Optional) A list of AccessLevel resource names that allow resources within
-    the ServicePerimeter to be accessed from the internet. AccessLevels listed
-    must be in the same policy as this ServicePerimeter.
-    Referencing a nonexistent AccessLevel is a syntax error. If no
-    AccessLevel names are listed, resources within the perimeter can
-    only be accessed via GCP calls with request origins within the
-    perimeter. For Service Perimeter Bridge, must be empty.
+    AccessLevelRef is a reference to an AccessLevel resource.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `{{parent}}/accessLevels/{{value}}`, where {{value}} is the `name` field of an `AccessContextManagerAccessLevel` resource.
+        A reference to an externally managed AccessLevel resource. Should be in the format "accessPolicies/{{accessPolicyID}}/accessLevels/{{accessLevel}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of an AccessLevel resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of an AccessLevel resource.
     """
 
 
@@ -805,11 +707,9 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
     Attributes
     ----------
     identities : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusEgressPoliciesItems0EgressFromIdentitiesItems0], default is Undefined, optional
-        identities
+        (Optional) A list of identities that are allowed access through this EgressPolicy. Should be in the format of email address. The email address should represent individual user or service account only.
     identityType : str, default is Undefined, optional
-        Specifies the type of identities that are allowed access to outside the
-        perimeter. If left unspecified, then members of 'identities' field will
-        be allowed access. Possible values: ["IDENTITY_TYPE_UNSPECIFIED", "ANY_IDENTITY", "ANY_USER_ACCOUNT", "ANY_SERVICE_ACCOUNT"].
+        Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of 'identities' field will be allowed access. Possible values: ["IDENTITY_TYPE_UNSPECIFIED", "ANY_IDENTITY", "ANY_USER_ACCOUNT", "ANY_SERVICE_ACCOUNT"].
     """
 
 
@@ -820,16 +720,14 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusEgressPoliciesItems0EgressFromIdentitiesItems0:
     r"""
-    (Optional) A list of identities that are allowed access through this
-    EgressPolicy. Should be in the format of email address. The email
-    address should represent individual user or service account only.
+    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec status egress policies items0 egress from identities items0
 
     Attributes
     ----------
     serviceAccountRef : AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusEgressPoliciesItems0EgressFromIdentitiesItems0ServiceAccountRef, default is Undefined, optional
         service account ref
     user : str, default is Undefined, optional
-        user
+        A user identity, should represent individual user or service account only.
     """
 
 
@@ -840,12 +738,12 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusEgressPoliciesItems0EgressFromIdentitiesItems0ServiceAccountRef:
     r"""
-    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec status egress policies items0 egress from identities items0 service account ref
+    A reference to an IAMServiceAccount resource.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `serviceAccount:{{value}}`, where {{value}} is the `email` field of an `IAMServiceAccount` resource.
+        The `email` field of an `IAMServiceAccount` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -862,20 +760,16 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusEgressPoliciesItems0EgressTo:
     r"""
-    Defines the conditions on the 'ApiOperation' and destination resources that
-    cause this 'EgressPolicy' to apply.
+    Defines the conditions on the 'ApiOperation' and destination resources that cause this 'EgressPolicy' to apply.
 
     Attributes
     ----------
     externalResources : [str], default is Undefined, optional
-        A list of external resources that are allowed to be accessed. A request
-        matches if it contains an external resource in this list (Example:
-        s3://bucket/path). Currently '*' is not allowed.
+        A list of external resources that are allowed to be accessed. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
     operations : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusEgressPoliciesItems0EgressToOperationsItems0], default is Undefined, optional
-        A list of 'ApiOperations' that this egress rule applies to. A request matches
-        if it contains an operation/service in this list.
+        A list of 'ApiOperations' that this egress rule applies to. A request matches if it contains an operation/service in this list.
     resources : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusEgressPoliciesItems0EgressToResourcesItems0], default is Undefined, optional
-        resources
+        (Optional) A list of resources, currently only projects in the form "projects/{project_number}". A request matches if it contains a resource in this list.
     """
 
 
@@ -893,14 +787,9 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
     Attributes
     ----------
     methodSelectors : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusEgressPoliciesItems0EgressToOperationsItems0MethodSelectorsItems0], default is Undefined, optional
-        API methods or permissions to allow. Method or permission must belong
-        to the service specified by 'serviceName' field. A single MethodSelector
-        entry with '*' specified for the 'method' field will allow all methods
-        AND permissions for the service specified in 'serviceName'.
+        API methods or permissions to allow. Method or permission must belong to the service specified by 'serviceName' field. A single MethodSelector entry with '*' specified for the 'method' field will allow all methods AND permissions for the service specified in 'serviceName'.
     serviceName : str, default is Undefined, optional
-        The name of the API whose methods or permissions the 'IngressPolicy' or
-        'EgressPolicy' want to allow. A single 'ApiOperation' with serviceName
-        field set to '*' will allow all methods AND permissions for all services.
+        The name of the API whose methods or permissions the 'IngressPolicy' or 'EgressPolicy' want to allow. A single 'ApiOperation' with serviceName field set to '*' will allow all methods AND permissions for all services.
     """
 
 
@@ -916,12 +805,9 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
     Attributes
     ----------
     method : str, default is Undefined, optional
-        Value for 'method' should be a valid method name for the corresponding
-        'serviceName' in 'ApiOperation'. If '*' used as value for method,
-        then ALL methods and permissions are allowed.
+        Value for 'method' should be a valid method name for the corresponding 'serviceName' in 'ApiOperation'. If '*' used as value for method, then ALL methods and permissions are allowed.
     permission : str, default is Undefined, optional
-        Value for permission should be a valid Cloud IAM permission for the
-        corresponding 'serviceName' in 'ApiOperation'.
+        Value for permission should be a valid Cloud IAM permission for the corresponding 'serviceName' in 'ApiOperation'.
     """
 
 
@@ -932,9 +818,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusEgressPoliciesItems0EgressToResourcesItems0:
     r"""
-    (Optional) A list of resources, currently only projects in the form
-    "projects/{project_number}". A request
-    matches if it contains a resource in this list.
+    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec status egress policies items0 egress to resources items0
 
     Attributes
     ----------
@@ -948,7 +832,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusEgressPoliciesItems0EgressToResourcesItems0ProjectRef:
     r"""
-    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec status egress policies items0 egress to resources items0 project ref
+    (Optional) A list of resources, currently only projects in the form "projects/{project_number}". A request matches if it contains a resource in this list.
 
     Attributes
     ----------
@@ -988,17 +872,14 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressFrom:
     r"""
-    Defines the conditions on the source of a request causing this 'IngressPolicy'
-    to apply.
+    Defines the conditions on the source of a request causing this 'IngressPolicy' to apply.
 
     Attributes
     ----------
     identities : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressFromIdentitiesItems0], default is Undefined, optional
-        identities
+        (Optional) A list of identities that are allowed access through this ingress policy. Should be in the format of email address. The email address should represent individual user or service account only.
     identityType : str, default is Undefined, optional
-        Specifies the type of identities that are allowed access from outside the
-        perimeter. If left unspecified, then members of 'identities' field will be
-        allowed access. Possible values: ["IDENTITY_TYPE_UNSPECIFIED", "ANY_IDENTITY", "ANY_USER_ACCOUNT", "ANY_SERVICE_ACCOUNT"].
+        Specifies the type of identities that are allowed access from outside the perimeter. If left unspecified, then members of 'identities' field will be allowed access. Possible values: ["IDENTITY_TYPE_UNSPECIFIED", "ANY_IDENTITY", "ANY_USER_ACCOUNT", "ANY_SERVICE_ACCOUNT"].
     sources : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressFromSourcesItems0], default is Undefined, optional
         Sources that this 'IngressPolicy' authorizes access from.
     """
@@ -1013,16 +894,14 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressFromIdentitiesItems0:
     r"""
-    (Optional) A list of identities that are allowed access through this
-    EgressPolicy. Should be in the format of email address. The email
-    address should represent individual user or service account only.
+    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec status ingress policies items0 ingress from identities items0
 
     Attributes
     ----------
     serviceAccountRef : AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressFromIdentitiesItems0ServiceAccountRef, default is Undefined, optional
         service account ref
     user : str, default is Undefined, optional
-        user
+        A user identity, should represent individual user or service account only.
     """
 
 
@@ -1033,12 +912,12 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressFromIdentitiesItems0ServiceAccountRef:
     r"""
-    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec status ingress policies items0 ingress from identities items0 service account ref
+    A reference to an IAMServiceAccount resource.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `serviceAccount:{{value}}`, where {{value}} is the `email` field of an `IAMServiceAccount` resource.
+        The `email` field of an `IAMServiceAccount` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -1073,22 +952,16 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressFromSourcesItems0AccessLevelRef:
     r"""
-    An AccessLevel resource name that allow resources within the
-    ServicePerimeters to be accessed from the internet. AccessLevels
-    listed must be in the same policy as this ServicePerimeter.
-    Referencing a nonexistent AccessLevel will cause an error. If no
-    AccessLevel names are listed, resources within the perimeter can
-    only be accessed via Google Cloud calls with request origins within
-    the perimeter.
+    (Optional) A reference to an AccessLevel resource that is allowed to ingress the perimeter.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `{{parent}}/accessLevels/{{value}}`, where {{value}} is the `name` field of an `AccessContextManagerAccessLevel` resource.
+        A reference to an externally managed AccessLevel resource. Should be in the format "accessPolicies/{{accessPolicyID}}/accessLevels/{{accessLevel}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of an AccessLevel resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of an AccessLevel resource.
     """
 
 
@@ -1101,11 +974,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressFromSourcesItems0ProjectRef:
     r"""
-    (Optional) A Google Cloud resource that is allowed to ingress the
-    perimeter. Requests from these resources will be allowed to access
-    perimeter data. Currently only projects are allowed. Format
-    "projects/{project_number}" The project may be in any Google Cloud
-    organization, not just the organization that the perimeter is defined in.
+    (Optional) A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format "projects/{project_number}" The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in.
 
     Attributes
     ----------
@@ -1127,16 +996,14 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressTo:
     r"""
-    Defines the conditions on the 'ApiOperation' and request destination that cause
-    this 'IngressPolicy' to apply.
+    Defines the conditions on the 'ApiOperation' and request destination that cause this 'IngressPolicy' to apply.
 
     Attributes
     ----------
     operations : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressToOperationsItems0], default is Undefined, optional
-        A list of 'ApiOperations' the sources specified in corresponding 'IngressFrom'
-        are allowed to perform in this 'ServicePerimeter'.
+        A list of 'ApiOperations' the sources specified in corresponding 'IngressFrom' are allowed to perform in this 'ServicePerimeter'.
     resources : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressToResourcesItems0], default is Undefined, optional
-        resources
+        A list of resources, currently only projects in the form "projects/{project_number}", protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. A request matches if it contains a resource in this list.
     """
 
 
@@ -1152,14 +1019,9 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
     Attributes
     ----------
     methodSelectors : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressToOperationsItems0MethodSelectorsItems0], default is Undefined, optional
-        API methods or permissions to allow. Method or permission must belong to
-        the service specified by serviceName field. A single 'MethodSelector' entry
-        with '*' specified for the method field will allow all methods AND
-        permissions for the service specified in 'serviceName'.
+        API methods or permissions to allow. Method or permission must belong to the service specified by 'serviceName' field. A single MethodSelector entry with '*' specified for the 'method' field will allow all methods AND permissions for the service specified in 'serviceName'.
     serviceName : str, default is Undefined, optional
-        The name of the API whose methods or permissions the 'IngressPolicy' or
-        'EgressPolicy' want to allow. A single 'ApiOperation' with 'serviceName'
-        field set to '*' will allow all methods AND permissions for all services.
+        The name of the API whose methods or permissions the 'IngressPolicy' or 'EgressPolicy' want to allow. A single 'ApiOperation' with serviceName field set to '*' will allow all methods AND permissions for all services.
     """
 
 
@@ -1175,12 +1037,9 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
     Attributes
     ----------
     method : str, default is Undefined, optional
-        Value for method should be a valid method name for the corresponding
-        serviceName in 'ApiOperation'. If '*' used as value for 'method', then
-        ALL methods and permissions are allowed.
+        Value for 'method' should be a valid method name for the corresponding 'serviceName' in 'ApiOperation'. If '*' used as value for method, then ALL methods and permissions are allowed.
     permission : str, default is Undefined, optional
-        Value for permission should be a valid Cloud IAM permission for the
-        corresponding 'serviceName' in 'ApiOperation'.
+        Value for permission should be a valid Cloud IAM permission for the corresponding 'serviceName' in 'ApiOperation'.
     """
 
 
@@ -1191,11 +1050,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressToResourcesItems0:
     r"""
-    A list of resources, currently only projects in the form
-    "projects/{project_number}", protected by this ServicePerimeter
-    that are allowed to be accessed by sources defined in the
-    corresponding IngressFrom. A request matches if it contains a
-    resource in this list.
+    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec status ingress policies items0 ingress to resources items0
 
     Attributes
     ----------
@@ -1209,7 +1064,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusIngressPoliciesItems0IngressToResourcesItems0ProjectRef:
     r"""
-    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec status ingress policies items0 ingress to resources items0 project ref
+    A list of resources, currently only projects in the form "projects/{project_number}", protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. A request matches if it contains a resource in this list.
 
     Attributes
     ----------
@@ -1231,8 +1086,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusResourcesItems0:
     r"""
-    (Optional) A list of GCP resources that are inside of the service perimeter.
-    Currently only projects are allowed.
+    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec status resources items0
 
     Attributes
     ----------
@@ -1246,7 +1100,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusResourcesItems0ProjectRef:
     r"""
-    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter spec status resources items0 project ref
+    (Optional) A list of GCP resources that are inside of the service perimeter. Currently only projects are allowed.
 
     Attributes
     ----------
@@ -1268,17 +1122,14 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterSpecStatusVpcAccessibleServices:
     r"""
-    Specifies how APIs are allowed to communicate within the Service
-    Perimeter.
+    Specifies how APIs are allowed to communicate within the Service Perimeter.
 
     Attributes
     ----------
     allowedServices : [str], default is Undefined, optional
-        The list of APIs usable within the Service Perimeter.
-        Must be empty unless 'enableRestriction' is True.
+        The list of APIs usable within the Service Perimeter. Must be empty unless 'enableRestriction' is True.
     enableRestriction : bool, default is Undefined, optional
-        Whether to restrict API calls within the Service Perimeter to the
-        list of APIs specified in 'allowedServices'.
+        Whether to restrict API calls within the Service Perimeter to the list of APIs specified in 'allowedServices'.
     """
 
 
@@ -1289,14 +1140,16 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterStatus:
     r"""
-    accesscontextmanager cnrm cloud google com v1beta1 access context manager service perimeter status
+    AccessContextManagerServicePerimeterStatus defines the config connector machine state of AccessContextManagerServicePerimeter
 
     Attributes
     ----------
     conditions : [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     createTime : str, default is Undefined, optional
         Time the AccessPolicy was created in UTC.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the AccessContextManagerServicePerimeter resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     updateTime : str, default is Undefined, optional
@@ -1307,6 +1160,8 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServiceP
     conditions?: [AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerServicePerimeterStatusConditionsItems0]
 
     createTime?: str
+
+    externalRef?: str
 
     observedGeneration?: int
 

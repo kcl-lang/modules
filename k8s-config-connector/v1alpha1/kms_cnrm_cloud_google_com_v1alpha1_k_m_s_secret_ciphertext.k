@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema KMSSecretCiphertext:
     r"""
-    kms cnrm cloud google com v1alpha1 k m s secret ciphertext
+    KMSSecretCiphertext is the Schema for the kms API
 
     Attributes
     ----------
@@ -44,8 +44,7 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSSecretCiphertextSpec:
     additionalAuthenticatedData : KmsCnrmCloudGoogleComV1alpha1KMSSecretCiphertextSpecAdditionalAuthenticatedData, default is Undefined, optional
         additional authenticated data
     cryptoKey : str, default is Undefined, required
-        Immutable. The full name of the CryptoKey that will be used to encrypt the provided plaintext.
-        Format: ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}''.
+        Immutable. The full name of the CryptoKey that will be used to encrypt the provided plaintext. Format: 'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'.
     plaintext : KmsCnrmCloudGoogleComV1alpha1KMSSecretCiphertextSpecPlaintext, default is Undefined, required
         plaintext
     resourceID : str, default is Undefined, optional
@@ -171,7 +170,7 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSSecretCiphertextStatus:
     ciphertext : str, default is Undefined, optional
         Contains the result of encrypting the provided plaintext, encoded in base64.
     conditions : [KmsCnrmCloudGoogleComV1alpha1KMSSecretCiphertextStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the KMSSecretCiphertext's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

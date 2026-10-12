@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeImage:
     r"""
-    compute cnrm cloud google com v1beta1 compute image
+    ComputeImage is the Schema for the compute API
 
     Attributes
     ----------
@@ -37,26 +37,20 @@ schema ComputeImage:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute image spec
+    ComputeImageSpec defines the desired state of ComputeImage
 
     Attributes
     ----------
     description : str, default is Undefined, optional
-        Immutable. An optional description of this resource. Provide this property when
-        you create the resource.
+        Immutable. An optional description of this resource. Provide this property when you create the resource.
     diskRef : ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecDiskRef, default is Undefined, optional
         disk ref
     diskSizeGb : int, default is Undefined, optional
         Immutable. Size of the image when restored onto a persistent disk (in GB).
     family : str, default is Undefined, optional
-        Immutable. The name of the image family to which this image belongs. You can
-        create disks by specifying an image family instead of a specific
-        image name. The image family always returns its latest image that is
-        not deprecated. The name of the image family must comply with
-        RFC1035.
+        Immutable. The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
     guestOsFeatures : [ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecGuestOsFeaturesItems0], default is Undefined, optional
-        Immutable. A list of features to enable on the guest operating system.
-        Applicable only for bootable images.
+        Immutable. A list of features to enable on the guest operating system. Applicable only for bootable images.
     imageEncryptionKey : ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecImageEncryptionKey, default is Undefined, optional
         image encryption key
     licenses : [str], default is Undefined, optional
@@ -70,9 +64,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpec:
     sourceSnapshotRef : ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecSourceSnapshotRef, default is Undefined, optional
         source snapshot ref
     storageLocations : [str], default is Undefined, optional
-        Immutable. Cloud Storage bucket storage location of the image
-        (regional or multi-regional).
-        Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images.
+        Immutable. Cloud Storage bucket storage location of the image (regional or multi-regional). Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images.
     """
 
 
@@ -103,18 +95,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpec:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecDiskRef:
     r"""
-    The source disk to create this image based on.
-    You must provide either this property or the
-    rawDisk.source property but not both to create an image.
+    The source disk to create this image based on. You must provide either this property or the rawDisk.source property but not both to create an image.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeDisk` resource.
+        A reference to an externally managed ComputeDisk resource. Should be in the format "projects/{{projectID}}/zones/{{zone}}/disks/{{diskID}}" or "projects/{{projectID}}/regions/{{region}}/disks/{{diskID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeDisk resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeDisk resource.
     """
 
 
@@ -163,17 +153,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecImageEncryptionKey:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecImageEncryptionKeyKmsKeySelfLinkRef:
     r"""
-    The self link of the encryption key that is stored in Google Cloud
-    KMS.
+    The self link of the encryption key that is stored in Google Cloud KMS.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `KMSCryptoKey` resource.
+        A reference to an externally managed KMSCryptoKey resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptokey}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a KMSCryptoKey resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a KMSCryptoKey resource.
     """
 
 
@@ -186,14 +175,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecImageEncryptionKeyKmsKeyS
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecImageEncryptionKeyKmsKeyServiceAccountRef:
     r"""
-    The service account being used for the encryption request for the
-    given KMS key. If absent, the Compute Engine default service account
-    is used.
+    The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `email` field of an `IAMServiceAccount` resource.
+        The `email` field of an `IAMServiceAccount` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -215,17 +202,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecRawDisk:
     Attributes
     ----------
     containerType : str, default is Undefined, optional
-        Immutable. The format used to encode and transmit the block device, which
-        should be TAR. This is just a container and transmission format
-        and not a runtime format. Provided by the client when the disk
-        image is created. Default value: "TAR" Possible values: ["TAR"].
+        Immutable. The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created. Default value: "TAR" Possible values: ["TAR"].
     sha1 : str, default is Undefined, optional
-        Immutable. An optional SHA1 checksum of the disk image before unpackaging.
-        This is provided by the client when the disk image is created.
+        Immutable. An optional SHA1 checksum of the disk image before unpackaging. This is provided by the client when the disk image is created.
     source : str, default is Undefined, required
-        Immutable. The full Google Cloud Storage URL where disk storage is stored
-        You must provide either this property or the sourceDisk property
-        but not both.
+        Immutable. The full Google Cloud Storage URL where disk storage is stored You must provide either this property or the sourceDisk property but not both.
     """
 
 
@@ -243,11 +224,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecSourceImageRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeImage` resource.
+        A reference to an externally managed ComputeImage resource. Should be in the format "projects/{{project}}/global/images/{{name}}" or "projects/{{project}}/global/images/family/{{family}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeImage resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeImage resource.
     """
 
 
@@ -265,11 +246,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecSourceSnapshotRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeSnapshot` resource.
+        A reference to an externally managed ComputeSnapshot resource. Should be in the format "projects/{{projectID}}/global/snapshots/{{snapshotID}}" or "projects/{{projectID}}/regions/{{region}}/snapshots/{{snapshotID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeSnapshot resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeSnapshot resource.
     """
 
 
@@ -282,20 +263,18 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeImageSpecSourceSnapshotRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeImageStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute image status
+    ComputeImageStatus defines the config connector machine state of ComputeImage
 
     Attributes
     ----------
     archiveSizeBytes : int, default is Undefined, optional
-        Size of the image tar.gz archive stored in Google Cloud Storage (in
-        bytes).
+        Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeImageStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeImage's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
     labelFingerprint : str, default is Undefined, optional
-        The fingerprint used for optimistic locking of this resource. Used
-        internally during updates.
+        The fingerprint used for optimistic locking of this resource. Used internally during updates.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     selfLink : str, default is Undefined, optional

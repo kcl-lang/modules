@@ -251,7 +251,7 @@ schema NotebooksCnrmCloudGoogleComV1alpha1NotebookInstanceSpecNetworkRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
         The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
@@ -381,11 +381,11 @@ schema NotebooksCnrmCloudGoogleComV1alpha1NotebookInstanceSpecSubnetRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The ComputeSubnetwork selflink of form "projects/{{project}}/regions/{{region}}/subnetworks/{{name}}", when not managed by Config Connector.
+        A reference to an externally managed ComputeSubnetwork resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/subnetworks/{{subnetworkID}}".
     name : str, default is Undefined, optional
-        The `name` field of a `ComputeSubnetwork` resource.
+        The name of a ComputeSubnetwork resource.
     namespace : str, default is Undefined, optional
-        The `namespace` field of a `ComputeSubnetwork` resource.
+        The namespace of a ComputeSubnetwork resource.
     """
 
 
@@ -536,8 +536,6 @@ schema NotebooksCnrmCloudGoogleComV1alpha1NotebookInstanceStatusObservedState:
         Output only. Email address of entity that sent original CreateInstance request.
     disks : [NotebooksCnrmCloudGoogleComV1alpha1NotebookInstanceStatusObservedStateDisksItems0], default is Undefined, optional
         Output only. Attached disks to notebook instance.
-    name : str, default is Undefined, optional
-        Output only. The name of this notebook instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
     proxyURI : str, default is Undefined, optional
         Output only. The proxy endpoint that is used to access the Jupyter notebook.
     state : str, default is Undefined, optional
@@ -552,8 +550,6 @@ schema NotebooksCnrmCloudGoogleComV1alpha1NotebookInstanceStatusObservedState:
     creator?: str
 
     disks?: [NotebooksCnrmCloudGoogleComV1alpha1NotebookInstanceStatusObservedStateDisksItems0]
-
-    name?: str
 
     proxyURI?: str
 

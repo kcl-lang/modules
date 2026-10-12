@@ -43,10 +43,18 @@ schema RedisCnrmCloudGoogleComV1alpha1RedisClusterSpec:
     ----------
     authorizationMode : str, default is Undefined, optional
         Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
+    automatedBackupConfig : RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecAutomatedBackupConfig, default is Undefined, optional
+        automated backup config
+    crossClusterReplicationConfig : RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecCrossClusterReplicationConfig, default is Undefined, optional
+        cross cluster replication config
     deletionProtectionEnabled : bool, default is Undefined, optional
         Optional. The delete operation will fail when the value is set to true.
+    kmsKeyRef : RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecKmsKeyRef, default is Undefined, optional
+        kms key ref
     location : str, default is Undefined, required
         Immutable. Location of the resource.
+    maintenancePolicy : RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecMaintenancePolicy, default is Undefined, optional
+        maintenance policy
     nodeType : str, default is Undefined, optional
         Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a redis node.
     persistenceConfig : RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecPersistenceConfig, default is Undefined, optional
@@ -72,9 +80,17 @@ schema RedisCnrmCloudGoogleComV1alpha1RedisClusterSpec:
 
     authorizationMode?: str
 
+    automatedBackupConfig?: RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecAutomatedBackupConfig
+
+    crossClusterReplicationConfig?: RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecCrossClusterReplicationConfig
+
     deletionProtectionEnabled?: bool
 
+    kmsKeyRef?: RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecKmsKeyRef
+
     location: str
+
+    maintenancePolicy?: RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecMaintenancePolicy
 
     nodeType?: str
 
@@ -95,6 +111,247 @@ schema RedisCnrmCloudGoogleComV1alpha1RedisClusterSpec:
     transitEncryptionMode?: str
 
     zoneDistributionConfig?: RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecZoneDistributionConfig
+
+
+schema RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecAutomatedBackupConfig:
+    r"""
+    Optional. The automated backup config for the cluster.
+
+    Attributes
+    ----------
+    automatedBackupMode : str, default is Undefined, optional
+        Optional. The automated backup mode. If the mode is disabled, the other fields will be ignored.
+    fixedFrequencySchedule : RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecAutomatedBackupConfigFixedFrequencySchedule, default is Undefined, optional
+        fixed frequency schedule
+    retention : str, default is Undefined, optional
+        Optional. How long to keep automated backups before the backups are deleted. The value should be between 1 day and 365 days. If not specified, the default value is 35 days.
+    """
+
+
+    automatedBackupMode?: str
+
+    fixedFrequencySchedule?: RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecAutomatedBackupConfigFixedFrequencySchedule
+
+    retention?: str
+
+
+schema RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecAutomatedBackupConfigFixedFrequencySchedule:
+    r"""
+    Optional. Trigger automated backups at a fixed frequency.
+
+    Attributes
+    ----------
+    startTime : RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecAutomatedBackupConfigFixedFrequencyScheduleStartTime, default is Undefined, optional
+        start time
+    """
+
+
+    startTime?: RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecAutomatedBackupConfigFixedFrequencyScheduleStartTime
+
+
+schema RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecAutomatedBackupConfigFixedFrequencyScheduleStartTime:
+    r"""
+    Required. The start time of every automated backup in UTC. It must be set to the start of an hour. This field is required.
+
+    Attributes
+    ----------
+    hours : int, default is Undefined, optional
+        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    minutes : int, default is Undefined, optional
+        Minutes of hour of day. Must be from 0 to 59.
+    nanos : int, default is Undefined, optional
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    seconds : int, default is Undefined, optional
+        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
+
+
+    hours?: int
+
+    minutes?: int
+
+    nanos?: int
+
+    seconds?: int
+
+
+schema RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecCrossClusterReplicationConfig:
+    r"""
+    Optional. Cross cluster replication config.
+
+    Attributes
+    ----------
+    clusterRole : str, default is Undefined, optional
+        The role of the cluster in cross cluster replication.
+    primaryCluster : RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecCrossClusterReplicationConfigPrimaryCluster, default is Undefined, optional
+        primary cluster
+    secondaryClusters : [RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecCrossClusterReplicationConfigSecondaryClustersItems0], default is Undefined, optional
+        List of secondary clusters that are replicating from this primary cluster.
+
+         This field is only set for a primary cluster.
+    """
+
+
+    clusterRole?: str
+
+    primaryCluster?: RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecCrossClusterReplicationConfigPrimaryCluster
+
+    secondaryClusters?: [RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecCrossClusterReplicationConfigSecondaryClustersItems0]
+
+
+schema RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecCrossClusterReplicationConfigPrimaryCluster:
+    r"""
+    Details of the primary cluster that is used as the replication source for
+     this secondary cluster.
+
+     This field is only set for a secondary cluster.
+
+    Attributes
+    ----------
+    clusterRef : RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecCrossClusterReplicationConfigPrimaryClusterClusterRef, default is Undefined, optional
+        cluster ref
+    """
+
+
+    clusterRef?: RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecCrossClusterReplicationConfigPrimaryClusterClusterRef
+
+
+schema RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecCrossClusterReplicationConfigPrimaryClusterClusterRef:
+    r"""
+    The full resource path of the remote cluster in the format: projects/<project>/locations/<region>/clusters/<cluster-id>
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed RedisCluster resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/clusters/{{clusterID}}".
+    name : str, default is Undefined, optional
+        The name of a RedisCluster resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a RedisCluster resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecCrossClusterReplicationConfigSecondaryClustersItems0:
+    r"""
+    redis cnrm cloud google com v1alpha1 redis cluster spec cross cluster replication config secondary clusters items0
+
+    Attributes
+    ----------
+    clusterRef : RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecCrossClusterReplicationConfigSecondaryClustersItems0ClusterRef, default is Undefined, optional
+        cluster ref
+    """
+
+
+    clusterRef?: RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecCrossClusterReplicationConfigSecondaryClustersItems0ClusterRef
+
+
+schema RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecCrossClusterReplicationConfigSecondaryClustersItems0ClusterRef:
+    r"""
+    The full resource path of the remote cluster in the format: projects/<project>/locations/<region>/clusters/<cluster-id>
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed RedisCluster resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/clusters/{{clusterID}}".
+    name : str, default is Undefined, optional
+        The name of a RedisCluster resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a RedisCluster resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecKmsKeyRef:
+    r"""
+    Optional. The KMS key name to encrypt data at rest.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
+    name : str, default is Undefined, optional
+        The `name` of a `KMSCryptoKey` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` of a `KMSCryptoKey` resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecMaintenancePolicy:
+    r"""
+    Optional. ClusterMaintenancePolicy determines when to allow or deny updates.
+
+    Attributes
+    ----------
+    weeklyMaintenanceWindow : [RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecMaintenancePolicyWeeklyMaintenanceWindowItems0], default is Undefined, optional
+        Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_maintenance_window is expected to be one.
+    """
+
+
+    weeklyMaintenanceWindow?: [RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecMaintenancePolicyWeeklyMaintenanceWindowItems0]
+
+
+schema RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecMaintenancePolicyWeeklyMaintenanceWindowItems0:
+    r"""
+    redis cnrm cloud google com v1alpha1 redis cluster spec maintenance policy weekly maintenance window items0
+
+    Attributes
+    ----------
+    day : str, default is Undefined, optional
+        Allows to define schedule that runs specified day of the week.
+    startTime : RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecMaintenancePolicyWeeklyMaintenanceWindowItems0StartTime, default is Undefined, optional
+        start time
+    """
+
+
+    day?: str
+
+    startTime?: RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecMaintenancePolicyWeeklyMaintenanceWindowItems0StartTime
+
+
+schema RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecMaintenancePolicyWeeklyMaintenanceWindowItems0StartTime:
+    r"""
+    Start time of the window in UTC.
+
+    Attributes
+    ----------
+    hours : int, default is Undefined, optional
+        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+    minutes : int, default is Undefined, optional
+        Minutes of hour of day. Must be from 0 to 59.
+    nanos : int, default is Undefined, optional
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+    seconds : int, default is Undefined, optional
+        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+    """
+
+
+    hours?: int
+
+    minutes?: int
+
+    nanos?: int
+
+    seconds?: int
 
 
 schema RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecPersistenceConfig:
@@ -198,7 +455,7 @@ schema RedisCnrmCloudGoogleComV1alpha1RedisClusterSpecPscConfigsItems0NetworkRef
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
         The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
@@ -295,12 +552,22 @@ schema RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedState:
     ----------
     createTime : str, default is Undefined, optional
         Output only. The timestamp associated with the cluster creation request.
+    crossClusterReplicationConfig : RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateCrossClusterReplicationConfig, default is Undefined, optional
+        cross cluster replication config
     discoveryEndpoints : [RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateDiscoveryEndpointsItems0], default is Undefined, optional
         Output only. Endpoints created on each given network, for Redis clients to connect to the cluster. Currently only one discovery endpoint is supported.
+    encryptionInfo : RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateEncryptionInfo, default is Undefined, optional
+        encryption info
+    maintenancePolicy : RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateMaintenancePolicy, default is Undefined, optional
+        maintenance policy
+    maintenanceSchedule : RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateMaintenanceSchedule, default is Undefined, optional
+        maintenance schedule
     preciseSizeGb : float, default is Undefined, optional
         Output only. Precise value of redis memory size in GB for the entire cluster.
     pscConnections : [RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStatePscConnectionsItems0], default is Undefined, optional
         Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
+    pscServiceAttachments : [RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStatePscServiceAttachmentsItems0], default is Undefined, optional
+        Output only. Service attachment details to configure Psc connections.
     sizeGb : int, default is Undefined, optional
         Output only. Redis memory size in GB for the entire cluster rounded up to the next integer.
     state : str, default is Undefined, optional
@@ -314,17 +581,157 @@ schema RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedState:
 
     createTime?: str
 
+    crossClusterReplicationConfig?: RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateCrossClusterReplicationConfig
+
     discoveryEndpoints?: [RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateDiscoveryEndpointsItems0]
+
+    encryptionInfo?: RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateEncryptionInfo
+
+    maintenancePolicy?: RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateMaintenancePolicy
+
+    maintenanceSchedule?: RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateMaintenanceSchedule
 
     preciseSizeGb?: float
 
     pscConnections?: [RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStatePscConnectionsItems0]
+
+    pscServiceAttachments?: [RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStatePscServiceAttachmentsItems0]
 
     sizeGb?: int
 
     state?: str
 
     stateInfo?: RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateStateInfo
+
+    uid?: str
+
+
+schema RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateCrossClusterReplicationConfig:
+    r"""
+    Output only. Cross cluster replication config.
+
+    Attributes
+    ----------
+    membership : RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateCrossClusterReplicationConfigMembership, default is Undefined, optional
+        membership
+    primaryCluster : RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateCrossClusterReplicationConfigPrimaryCluster, default is Undefined, optional
+        primary cluster
+    secondaryClusters : [RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateCrossClusterReplicationConfigSecondaryClustersItems0], default is Undefined, optional
+        List of secondary clusters that are replicating from this primary cluster.
+
+         This field is only set for a primary cluster.
+    updateTime : str, default is Undefined, optional
+        Output only. The last time cross cluster replication config was updated.
+    """
+
+
+    membership?: RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateCrossClusterReplicationConfigMembership
+
+    primaryCluster?: RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateCrossClusterReplicationConfigPrimaryCluster
+
+    secondaryClusters?: [RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateCrossClusterReplicationConfigSecondaryClustersItems0]
+
+    updateTime?: str
+
+
+schema RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateCrossClusterReplicationConfigMembership:
+    r"""
+    Output only. An output only view of all the member clusters participating
+     in the cross cluster replication. This view will be provided by every
+     member cluster irrespective of its cluster role(primary or secondary).
+
+     A primary cluster can provide information about all the secondary clusters
+     replicating from it. However, a secondary cluster only knows about the
+     primary cluster from which it is replicating. However, for scenarios, where
+     the primary cluster is unavailable(e.g. regional outage), a GetCluster
+     request can be sent to any other member cluster and this field will list
+     all the member clusters participating in cross cluster replication.
+
+    Attributes
+    ----------
+    primaryCluster : RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateCrossClusterReplicationConfigMembershipPrimaryCluster, default is Undefined, optional
+        primary cluster
+    secondaryClusters : [RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateCrossClusterReplicationConfigMembershipSecondaryClustersItems0], default is Undefined, optional
+        Output only. The list of secondary clusters replicating from the primary cluster.
+    """
+
+
+    primaryCluster?: RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateCrossClusterReplicationConfigMembershipPrimaryCluster
+
+    secondaryClusters?: [RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateCrossClusterReplicationConfigMembershipSecondaryClustersItems0]
+
+
+schema RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateCrossClusterReplicationConfigMembershipPrimaryCluster:
+    r"""
+    Output only. The primary cluster that acts as the source of replication for the secondary clusters.
+
+    Attributes
+    ----------
+    cluster : str, default is Undefined, optional
+        The full resource path of the remote cluster in the format: projects/<project>/locations/<region>/clusters/<cluster-id>
+    uid : str, default is Undefined, optional
+        Output only. The unique identifier of the remote cluster.
+    """
+
+
+    cluster?: str
+
+    uid?: str
+
+
+schema RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateCrossClusterReplicationConfigMembershipSecondaryClustersItems0:
+    r"""
+    redis cnrm cloud google com v1alpha1 redis cluster status observed state cross cluster replication config membership secondary clusters items0
+
+    Attributes
+    ----------
+    cluster : str, default is Undefined, optional
+        The full resource path of the remote cluster in the format: projects/<project>/locations/<region>/clusters/<cluster-id>
+    uid : str, default is Undefined, optional
+        Output only. The unique identifier of the remote cluster.
+    """
+
+
+    cluster?: str
+
+    uid?: str
+
+
+schema RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateCrossClusterReplicationConfigPrimaryCluster:
+    r"""
+    Details of the primary cluster that is used as the replication source for
+     this secondary cluster.
+
+     This field is only set for a secondary cluster.
+
+    Attributes
+    ----------
+    cluster : str, default is Undefined, optional
+        The full resource path of the remote cluster in the format: projects/<project>/locations/<region>/clusters/<cluster-id>
+    uid : str, default is Undefined, optional
+        Output only. The unique identifier of the remote cluster.
+    """
+
+
+    cluster?: str
+
+    uid?: str
+
+
+schema RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateCrossClusterReplicationConfigSecondaryClustersItems0:
+    r"""
+    redis cnrm cloud google com v1alpha1 redis cluster status observed state cross cluster replication config secondary clusters items0
+
+    Attributes
+    ----------
+    cluster : str, default is Undefined, optional
+        The full resource path of the remote cluster in the format: projects/<project>/locations/<region>/clusters/<cluster-id>
+    uid : str, default is Undefined, optional
+        Output only. The unique identifier of the remote cluster.
+    """
+
+
+    cluster?: str
 
     uid?: str
 
@@ -365,6 +772,68 @@ schema RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateDiscoveryEn
     network?: str
 
 
+schema RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateEncryptionInfo:
+    r"""
+    Output only. Encryption information for the client to retrieve.
+
+    Attributes
+    ----------
+    encryptionType : str, default is Undefined, optional
+        Output only. Type of encryption.
+    kmsKeyPrimaryState : str, default is Undefined, optional
+        Output only. The state of the primary version of the KMS key perceived by the system. This field is not populated in backups.
+    kmsKeyVersions : [str], default is Undefined, optional
+        Output only. KMS key versions that are being used to protect the data at-rest.
+    lastUpdateTime : str, default is Undefined, optional
+        Output only. The most recent time when the encryption info was updated.
+    """
+
+
+    encryptionType?: str
+
+    kmsKeyPrimaryState?: str
+
+    kmsKeyVersions?: [str]
+
+    lastUpdateTime?: str
+
+
+schema RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateMaintenancePolicy:
+    r"""
+    Optional. ClusterMaintenancePolicy determines when to allow or deny updates.
+
+    Attributes
+    ----------
+    createTime : str, default is Undefined, optional
+        Output only. The time when the policy was created i.e. Maintenance Window or Deny Period was assigned.
+    updateTime : str, default is Undefined, optional
+        Output only. The time when the policy was updated i.e. Maintenance Window or Deny Period was updated.
+    """
+
+
+    createTime?: str
+
+    updateTime?: str
+
+
+schema RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateMaintenanceSchedule:
+    r"""
+    Output only. ClusterMaintenanceSchedule Output only Published maintenance schedule.
+
+    Attributes
+    ----------
+    endTime : str, default is Undefined, optional
+        Output only. The end time of any upcoming scheduled maintenance for this instance.
+    startTime : str, default is Undefined, optional
+        Output only. The start time of any upcoming scheduled maintenance for this instance.
+    """
+
+
+    endTime?: str
+
+    startTime?: str
+
+
 schema RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStatePscConnectionsItems0:
     r"""
     redis cnrm cloud google com v1alpha1 redis cluster status observed state psc connections items0
@@ -372,15 +841,17 @@ schema RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStatePscConnecti
     Attributes
     ----------
     address : str, default is Undefined, optional
-        Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+        Required. The IP allocated on the consumer network for the PSC forwarding rule.
     forwardingRule : str, default is Undefined, optional
-        Output only. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
+        Required. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
     network : str, default is Undefined, optional
-        The consumer network where the IP address resides, in the form of projects/{project_id}/global/networks/{network_id}.
+        Required. The consumer network where the IP address resides, in the form of projects/{project_id}/global/networks/{network_id}.
     projectID : str, default is Undefined, optional
-        Output only. The consumer project_id where the forwarding rule is created from.
+        Optional. Project ID of the consumer project where the forwarding rule is created in.
     pscConnectionID : str, default is Undefined, optional
-        Output only. The PSC connection id of the forwarding rule connected to the service attachment.
+        Required. The PSC connection id of the forwarding rule connected to the service attachment.
+    serviceAttachment : str, default is Undefined, optional
+        Required. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
     """
 
 
@@ -393,6 +864,26 @@ schema RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStatePscConnecti
     projectID?: str
 
     pscConnectionID?: str
+
+    serviceAttachment?: str
+
+
+schema RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStatePscServiceAttachmentsItems0:
+    r"""
+    redis cnrm cloud google com v1alpha1 redis cluster status observed state psc service attachments items0
+
+    Attributes
+    ----------
+    connectionType : str, default is Undefined, optional
+        Output only. Type of a PSC connection targeting this service attachment.
+    serviceAttachment : str, default is Undefined, optional
+        Output only. Service attachment URI which your self-created PscConnection should use as target
+    """
+
+
+    connectionType?: str
+
+    serviceAttachment?: str
 
 
 schema RedisCnrmCloudGoogleComV1alpha1RedisClusterStatusObservedStateStateInfo:

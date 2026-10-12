@@ -76,7 +76,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageAnywhereCacheSpecBucketRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        A reference to an externally-managed StorageBucket resource.
+        A reference to an externally managed StorageBucket resource. Should be in the format "projects/{{projectID}}/buckets/{{bucketID}}".
     name : str, default is Undefined, optional
         The name of a StorageBucket resource.
     namespace : str, default is Undefined, optional
@@ -156,7 +156,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageAnywhereCacheStatusObservedState:
     createTime : str, default is Undefined, optional
         Output only. Time when Anywhere cache instance is allocated.
     pendingUpdate : bool, default is Undefined, optional
-        Output only. True if there is an active update operation against this cache instance. Subsequential update requests will be rejected if this field is true. Output only.
+        Output only. True if there is an active update operation against this cache instance. Subsequent update requests will be rejected if this field is true. Output only.
     state : str, default is Undefined, optional
         Output only. Cache state including "running", "creating", "disabled" and "paused".
     updateTime : str, default is Undefined, optional

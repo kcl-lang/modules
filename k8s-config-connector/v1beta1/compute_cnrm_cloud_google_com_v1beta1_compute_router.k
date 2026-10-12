@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeRouter:
     r"""
-    compute cnrm cloud google com v1beta1 compute router
+    ComputeRouter is the Schema for the compute API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeRouter:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute router spec
+    ComputeRouterSpec defines the desired state of ComputeRouter
 
     Attributes
     ----------
@@ -46,8 +46,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterSpec:
     description : str, default is Undefined, optional
         An optional description of this resource.
     encryptedInterconnectRouter : bool, default is Undefined, optional
-        Immutable. Indicates if a router is dedicated for use with encrypted VLAN
-        attachments (interconnectAttachments).
+        Immutable. Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments).
     networkRef : ComputeCnrmCloudGoogleComV1beta1ComputeRouterSpecNetworkRef, default is Undefined, required
         network ref
     region : str, default is Undefined, required
@@ -87,16 +86,9 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterSpecBgp:
 
         This enum field has the one valid value: ALL_SUBNETS.
     advertisedIpRanges : [ComputeCnrmCloudGoogleComV1beta1ComputeRouterSpecBgpAdvertisedIPRangesItems0], default is Undefined, optional
-        User-specified list of individual IP ranges to advertise in
-        custom mode. This field can only be populated if advertiseMode
-        is CUSTOM and is advertised to all peers of the router. These IP
-        ranges will be advertised in addition to any specified groups.
-        Leave this field blank to advertise no custom IP ranges.
+        User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if advertiseMode is CUSTOM and is advertised to all peers of the router. These IP ranges will be advertised in addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
     asn : int, default is Undefined, required
-        Local BGP Autonomous System Number (ASN). Must be an RFC6996
-        private ASN, either 16-bit or 32-bit. The value will be fixed for
-        this router resource. All VPN tunnels that link to this router
-        will have the same local ASN.
+        Local BGP Autonomous System Number (ASN). Must be an RFC6996 private ASN, either 16-bit or 32-bit. The value will be fixed for this router resource. All VPN tunnels that link to this router will have the same local ASN.
     keepaliveInterval : int, default is Undefined, optional
         The interval in seconds between BGP keepalive messages that are sent
         to the peer. Hold time is three times the interval at which keepalive
@@ -131,8 +123,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterSpecBgpAdvertisedIPRangesIte
     description : str, default is Undefined, optional
         User-specified description for the IP range.
     range : str, default is Undefined, required
-        The IP range to advertise. The value must be a
-        CIDR-formatted string.
+        The IP range to advertise. The value must be a CIDR-formatted string.
     """
 
 
@@ -148,11 +139,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterSpecNetworkRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -165,12 +156,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterSpecNetworkRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeRouterStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute router status
+    ComputeRouterStatus defines the config connector machine state of ComputeRouter
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeRouterStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeRouter's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
     observedGeneration : int, default is Undefined, optional

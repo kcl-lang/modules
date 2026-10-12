@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeTargetSSLProxy:
     r"""
-    compute cnrm cloud google com v1beta1 compute target s s l proxy
+    ComputeTargetSSLProxy is the Schema for the compute API
 
     Attributes
     ----------
@@ -48,8 +48,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxySpec:
     description : str, default is Undefined, optional
         Immutable. An optional description of this resource.
     proxyHeader : str, default is Undefined, optional
-        Specifies the type of proxy header to append before sending data to
-        the backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"].
+        Specifies the type of proxy header to append before sending data to the backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"].
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
     sslCertificates : [ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxySpecSslCertificatesItems0], default is Undefined, optional
@@ -81,11 +80,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxySpecBackendServiceRe
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeBackendService` resource.
+        The value of an externally managed ComputeBackendService resource.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeBackendService resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeBackendService resource.
     """
 
 
@@ -98,19 +97,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxySpecBackendServiceRe
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxySpecCertificateMapRef:
     r"""
-    A reference to the CertificateMap resource uri that identifies a
-    certificate map associated with the given target proxy. This
-    field can only be set for global target proxies. Accepted format is
-    '//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}'.
+    A reference to the CertificateMap resource uri that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. Accepted format is '//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}'.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `CertificateManagerCertificateMap` resource.
+        A reference to an externally managed CertificateManagerCertificateMap resource. Should be in the format "projects/{{projectID}}/locations/global/certificateMaps/{{certificateMapID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a CertificateManagerCertificateMap resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a CertificateManagerCertificateMap resource.
     """
 
 
@@ -123,18 +119,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxySpecCertificateMapRe
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxySpecSslCertificatesItems0:
     r"""
-    A list of ComputeSSLCertificate resources that are used to
-    authenticate connections between users and the load balancer.
-    Currently, exactly one SSL certificate must be specified.
+    A reference to a ComputeSSLCertificate resource.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeSSLCertificate` resource.
+        Allowed value: string of the format `projects/{{project}}/global/sslCertificates/{{value}}` or `projects/{{project}}/regions/{{region}}/sslCertificates/{{value}}`, where {{value}} is the `name` field of a `ComputeSSLCertificate` resource.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeSSLCertificate resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeSSLCertificate resource.
     """
 
 
@@ -147,19 +141,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxySpecSslCertificatesI
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxySpecSslPolicyRef:
     r"""
-    A reference to the ComputeSSLPolicy resource that will be
-    associated with the TargetSslProxy resource. If not set, the
-    ComputeTargetSSLProxy resource will not have any SSL policy
-    configured.
+    A reference to the ComputeSSLPolicy resource that will be associated with the TargetSslProxy resource. If not set, the ComputeTargetSSLProxy resource will not have any SSL policy configured.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeSSLPolicy` resource.
+        A reference to an externally managed ComputeSSLPolicy resource. Should be in the format "projects/{{projectID}}/global/sslPolicies/{{sslPolicyID}}" or "projects/{{projectID}}/regions/{{region}}/sslPolicies/{{sslPolicyID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeSSLPolicy resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeSSLPolicy resource.
     """
 
 
@@ -177,7 +168,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxyStatus:
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeTargetSSLProxyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeTargetSSLProxy's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
     observedGeneration : int, default is Undefined, optional

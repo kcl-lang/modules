@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema OSConfigOSPolicyAssignment:
     r"""
-    osconfig cnrm cloud google com v1beta1 o s config o s policy assignment
+    OSConfigOSPolicyAssignment is the Schema for the OSConfigOSPolicyAssignment API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema OSConfigOSPolicyAssignment:
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpec:
     r"""
-    osconfig cnrm cloud google com v1beta1 o s config o s policy assignment spec
+    OSConfigOSPolicyAssignmentSpec defines the desired state of OSConfigOSPolicyAssignment
 
     Attributes
     ----------
@@ -86,11 +86,20 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecInstanceFi
     $all : bool, default is Undefined, optional
         Target all VMs in the project. If true, no other criteria is permitted.
     exclusionLabels : [OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecInstanceFilterExclusionLabelsItems0], default is Undefined, optional
-        List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
+        List of label sets used for VM exclusion.
+
+         If the list has more than one label set, the VM is excluded if any
+         of the label sets are applicable for the VM.
     inclusionLabels : [OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecInstanceFilterInclusionLabelsItems0], default is Undefined, optional
-        List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
+        List of label sets used for VM inclusion.
+
+         If the list has more than one `LabelSet`, the VM is included if any
+         of the label sets are applicable for the VM.
     inventories : [OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecInstanceFilterInventoriesItems0], default is Undefined, optional
-        List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+        List of inventories to select VMs.
+
+         A VM is selected if its inventory data matches at least one of the
+         following inventories.
     """
 
 
@@ -140,7 +149,13 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecInstanceFi
     osShortName : str, default is Undefined, required
         Required. The OS short name
     osVersion : str, default is Undefined, optional
-        The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+        The OS version
+
+         Prefix matches are supported if asterisk(*) is provided as the
+         last character. For example, to match all versions with a major
+         version of `7`, specify the following value for this field `7.*`
+
+         An empty string matches all OS versions.
     """
 
 
@@ -160,11 +175,24 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
     description : str, default is Undefined, optional
         Policy description. Length of the description is limited to 1024 characters.
     id : str, default is Undefined, required
-        Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
+        Required. The id of the OS policy with the following restrictions:
+
+         * Must contain only lowercase letters, numbers, and hyphens.
+         * Must start with a letter.
+         * Must be between 1-63 characters.
+         * Must end with a number or a letter.
+         * Must be unique within the assignment.
     mode : str, default is Undefined, required
         Required. Policy mode Possible values: MODE_UNSPECIFIED, VALIDATION, ENFORCEMENT
     resourceGroups : [OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0], default is Undefined, required
-        Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
+        Required. List of resource groups for the policy.
+         For a particular VM, resource groups are evaluated in the order specified
+         and the first resource group that is applicable is selected and the rest
+         are ignored.
+
+         If none of the resource groups are applicable for a VM, the VM is
+         considered to be non-compliant w.r.t this policy. This behavior can be
+         toggled by the flag `allow_no_resource_group_match`
     """
 
 
@@ -186,7 +214,19 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
     Attributes
     ----------
     inventoryFilters : [OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0InventoryFiltersItems0], default is Undefined, optional
-        List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
+        List of inventory filters for the resource group.
+
+         The resources in this resource group are applied to the target VM if it
+         satisfies at least one of the following inventory filters.
+
+         For example, to apply this resource group to VMs running either `RHEL` or
+         `CentOS` operating systems, specify 2 items for the list with following
+         values:
+         inventory_filters[0].os_short_name='rhel' and
+         inventory_filters[1].os_short_name='centos'
+
+         If the list is empty, this resource group will be applied to the target
+         VM unconditionally.
     resources : [OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0], default is Undefined, required
         Required. List of resources configured for this resource group. The resources are executed in the exact order specified here.
     """
@@ -206,7 +246,13 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
     osShortName : str, default is Undefined, required
         Required. The OS short name
     osVersion : str, default is Undefined, optional
-        The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+        The OS version
+
+         Prefix matches are supported if asterisk(*) is provided as the
+         last character. For example, to match all versions with a major
+         version of `7`, specify the following value for this field `7.*`
+
+         An empty string matches all OS versions.
     """
 
 
@@ -226,7 +272,13 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
     file : OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0File, default is Undefined, optional
         file
     id : str, default is Undefined, required
-        Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
+        Required. The id of the resource with the following restrictions:
+
+         * Must contain only lowercase letters, numbers, and hyphens.
+         * Must start with a letter.
+         * Must be between 1-63 characters.
+         * Must end with a number or a letter.
+         * Must be unique within the OS policy.
     pkg : OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0Pkg, default is Undefined, optional
         pkg
     repository : OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0Repository, default is Undefined, optional
@@ -300,7 +352,11 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
     Attributes
     ----------
     allowInsecure : bool, default is Undefined, optional
-        Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+        Defaults to false. When false, files are subject to validations
+         based on the file type:
+
+         Remote: A checksum must be specified.
+         Cloud Storage: An object generation number must be specified.
     gcs : OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0ExecEnforceFileGcs, default is Undefined, optional
         gcs
     localPath : str, default is Undefined, optional
@@ -396,7 +452,11 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
     Attributes
     ----------
     allowInsecure : bool, default is Undefined, optional
-        Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+        Defaults to false. When false, files are subject to validations
+         based on the file type:
+
+         Remote: A checksum must be specified.
+         Cloud Storage: An object generation number must be specified.
     gcs : OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0ExecValidateFileGcs, default is Undefined, optional
         gcs
     localPath : str, default is Undefined, optional
@@ -468,7 +528,19 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
     path : str, default is Undefined, required
         Required. The absolute path of the file within the VM.
     permissions : str, default is Undefined, optional
-        Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+        Consists of three octal digits which represent, in
+         order, the permissions of the owner, group, and other users for the
+         file (similarly to the numeric mode used in the linux chmod
+         utility). Each digit represents a three bit number with the 4 bit
+         corresponding to the read permissions, the 2 bit corresponds to the
+         write bit, and the one bit corresponds to the execute permission.
+         Default behavior is 755.
+
+         Below are some examples of permissions and their associated values:
+         read, write, and execute: 7
+         read and execute: 5
+         read and write: 6
+         read only: 4
     state : str, default is Undefined, required
         Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
     """
@@ -492,7 +564,11 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
     Attributes
     ----------
     allowInsecure : bool, default is Undefined, optional
-        Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+        Defaults to false. When false, files are subject to validations
+         based on the file type:
+
+         Remote: A checksum must be specified.
+         Cloud Storage: An object generation number must be specified.
     gcs : OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0FileFileGcs, default is Undefined, optional
         gcs
     localPath : str, default is Undefined, optional
@@ -632,7 +708,11 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
     Attributes
     ----------
     allowInsecure : bool, default is Undefined, optional
-        Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+        Defaults to false. When false, files are subject to validations
+         based on the file type:
+
+         Remote: A checksum must be specified.
+         Cloud Storage: An object generation number must be specified.
     gcs : OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0PkgDebSourceGcs, default is Undefined, optional
         gcs
     localPath : str, default is Undefined, optional
@@ -730,7 +810,11 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
     Attributes
     ----------
     allowInsecure : bool, default is Undefined, optional
-        Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+        Defaults to false. When false, files are subject to validations
+         based on the file type:
+
+         Remote: A checksum must be specified.
+         Cloud Storage: An object generation number must be specified.
     gcs : OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0PkgMsiSourceGcs, default is Undefined, optional
         gcs
     localPath : str, default is Undefined, optional
@@ -814,7 +898,11 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
     Attributes
     ----------
     allowInsecure : bool, default is Undefined, optional
-        Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+        Defaults to false. When false, files are subject to validations
+         based on the file type:
+
+         Remote: A checksum must be specified.
+         Cloud Storage: An object generation number must be specified.
     gcs : OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPoliciesItems0ResourceGroupsItems0ResourcesItems0PkgRpmSourceGcs, default is Undefined, optional
         gcs
     localPath : str, default is Undefined, optional
@@ -988,7 +1076,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecOsPolicies
     gpgKeys : [str], default is Undefined, optional
         URIs of GPG keys.
     id : str, default is Undefined, required
-        Required. A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
+        Required. A one word, unique name for this repository. This is  the `repo id` in the yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
     """
 
 
@@ -1089,14 +1177,14 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentSpecRolloutDis
 
 schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentStatus:
     r"""
-    osconfig cnrm cloud google com v1beta1 o s config o s policy assignment status
+    OSConfigOSPolicyAssignmentStatus defines the config connector machine state of OSConfigOSPolicyAssignment
 
     Attributes
     ----------
     baseline : bool, default is Undefined, optional
         Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
     conditions : [OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     deleted : bool, default is Undefined, optional
         Output only. Indicates that this revision deletes the OS policy assignment.
     etag : str, default is Undefined, optional
@@ -1108,7 +1196,7 @@ schema OsconfigCnrmCloudGoogleComV1beta1OSConfigOSPolicyAssignmentStatus:
     revisionCreateTime : str, default is Undefined, optional
         Output only. The timestamp that the revision was created.
     revisionId : str, default is Undefined, optional
-        Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
+        Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for an OS policy assignment
     rolloutState : str, default is Undefined, optional
         Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
     uid : str, default is Undefined, optional

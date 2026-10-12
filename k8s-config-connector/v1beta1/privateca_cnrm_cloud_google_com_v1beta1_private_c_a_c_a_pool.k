@@ -398,7 +398,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACAPoolSpecIssuancePolicyIdenti
     allowSubjectAltNamesPassthrough : bool, default is Undefined, optional
         Required. If this is true, the [SubjectAltNames][google.cloud.security.privateca.v1.SubjectAltNames] extension may be copied from a certificate request into the signed certificate. Otherwise, the requested [SubjectAltNames][google.cloud.security.privateca.v1.SubjectAltNames] will be discarded.
     allowSubjectPassthrough : bool, default is Undefined, optional
-        Required. If this is true, the [Subject][google.cloud.security.privateca.v1.Subject] field may be copied from a certificate request into the signed certificate. Otherwise, the requested [Subject][google.cloud.security.privateca.v1.Subject] will be discarded.
+        Required. If this is true, the [Subject][google.cloud.security.privateca.v1.Subject] field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
     celExpression : PrivatecaCnrmCloudGoogleComV1beta1PrivateCACAPoolSpecIssuancePolicyIdentityConstraintsCelExpression, default is Undefined, optional
         cel expression
     """
@@ -521,12 +521,16 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACAPoolStatus:
     ----------
     conditions : [PrivatecaCnrmCloudGoogleComV1beta1PrivateCACAPoolStatusConditionsItems0], default is Undefined, optional
         Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the PrivateCACAPool resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """
 
 
     conditions?: [PrivatecaCnrmCloudGoogleComV1beta1PrivateCACAPoolStatusConditionsItems0]
+
+    externalRef?: str
 
     observedGeneration?: int
 

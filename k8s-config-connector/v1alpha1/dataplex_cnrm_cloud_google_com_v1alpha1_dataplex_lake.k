@@ -46,7 +46,7 @@ schema DataplexCnrmCloudGoogleComV1alpha1DataplexLakeSpec:
     displayName : str, default is Undefined, optional
         Optional. User friendly display name.
     location : str, default is Undefined, required
-        location
+        The location that this resource belongs to.
     metastore : DataplexCnrmCloudGoogleComV1alpha1DataplexLakeSpecMetastore, default is Undefined, optional
         metastore
     projectRef : DataplexCnrmCloudGoogleComV1alpha1DataplexLakeSpecProjectRef, default is Undefined, required

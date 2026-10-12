@@ -42,7 +42,7 @@ schema BigquerybiglakeCnrmCloudGoogleComV1alpha1BigLakeCatalogSpec:
     Attributes
     ----------
     location : str, default is Undefined, required
-        location
+        The location that this resource belongs to.
     projectRef : BigquerybiglakeCnrmCloudGoogleComV1alpha1BigLakeCatalogSpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional

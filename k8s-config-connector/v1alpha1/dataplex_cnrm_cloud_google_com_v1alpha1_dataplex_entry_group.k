@@ -46,7 +46,7 @@ schema DataplexCnrmCloudGoogleComV1alpha1DataplexEntryGroupSpec:
     displayName : str, default is Undefined, optional
         Optional. User friendly display name.
     location : str, default is Undefined, required
-        location
+        The location that this resource belongs to.
     projectRef : DataplexCnrmCloudGoogleComV1alpha1DataplexEntryGroupSpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional

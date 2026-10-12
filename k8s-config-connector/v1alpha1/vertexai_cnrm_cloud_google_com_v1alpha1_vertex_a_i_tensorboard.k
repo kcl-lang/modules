@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema VertexAITensorboard:
     r"""
-    vertexai cnrm cloud google com v1alpha1 vertex a i tensorboard
+    VertexAITensorboard is the Schema for the VertexAITensorboard API
 
     Attributes
     ----------
@@ -37,22 +37,24 @@ schema VertexAITensorboard:
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardSpec:
     r"""
-    vertexai cnrm cloud google com v1alpha1 vertex a i tensorboard spec
+    VertexAITensorboardSpec defines the desired state of VertexAITensorboard
 
     Attributes
     ----------
     description : str, default is Undefined, optional
         Description of this Tensorboard.
     displayName : str, default is Undefined, required
-        User provided name of this Tensorboard.
+        Required. User provided name of this Tensorboard.
     encryptionSpec : VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardSpecEncryptionSpec, default is Undefined, optional
         encryption spec
+    isDefault : bool, default is Undefined, optional
+        Used to indicate if the TensorBoard instance is the default one. Each project & region can have at most one default TensorBoard instance. Creation of a default TensorBoard instance and updating an existing TensorBoard instance to be default will mark all other TensorBoard instances (if any) as non default.
     projectRef : VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardSpecProjectRef, default is Undefined, required
         project ref
     region : str, default is Undefined, required
-        Immutable. The region of the tensorboard. eg us-central1.
+        The region of this resource.
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
+        The VertexAITensorboard ID (which is server-generated). If not given, Config Connector will create a new Tensorboard. If given, Config Connector will acquire the existing Tensorboard with this ID.
     """
 
 
@@ -61,6 +63,8 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardSpec:
     displayName: str
 
     encryptionSpec?: VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardSpecEncryptionSpec
+
+    isDefault?: bool
 
     projectRef: VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardSpecProjectRef
 
@@ -71,31 +75,30 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardSpec:
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardSpecEncryptionSpec:
     r"""
-    Immutable. Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
+    Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
 
     Attributes
     ----------
-    kmsKeyName : str, default is Undefined, required
-        Immutable. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
-        Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+    kmsKeyRef : VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardSpecEncryptionSpecKmsKeyRef, default is Undefined, required
+        kms key ref
     """
 
 
-    kmsKeyName: str
+    kmsKeyRef: VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardSpecEncryptionSpecKmsKeyRef
 
 
-schema VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardSpecProjectRef:
+schema VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardSpecEncryptionSpecKmsKeyRef:
     r"""
-    The project that this resource belongs to.
+    Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. The key needs to be in the same region as where the compute resource is created.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` of a `KMSCryptoKey` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` of a `KMSCryptoKey` resource.
     """
 
 
@@ -106,42 +109,56 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardSpecProjectRef:
     namespace?: str
 
 
-schema VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardStatus:
+schema VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardSpecProjectRef:
     r"""
-    vertexai cnrm cloud google com v1alpha1 vertex a i tensorboard status
+    The project that this resource belongs to.
 
     Attributes
     ----------
-    blobStoragePathPrefix : str, default is Undefined, optional
-        Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a '/'.
-    conditions : [VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
-    createTime : str, default is Undefined, optional
-        The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+    external : str, default is Undefined, optional
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
     name : str, default is Undefined, optional
-        Name of the Tensorboard.
-    observedGeneration : int, default is Undefined, optional
-        ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
-    runCount : str, default is Undefined, optional
-        The number of Runs stored in this Tensorboard.
-    updateTime : str, default is Undefined, optional
-        The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        The `name` field of a `Project` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `Project` resource.
     """
 
 
-    blobStoragePathPrefix?: str
+    external?: str
 
-    conditions?: [VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardStatusConditionsItems0]
-
-    createTime?: str
+    kind?: str
 
     name?: str
 
+    namespace?: str
+
+
+schema VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardStatus:
+    r"""
+    VertexAITensorboardStatus defines the config connector machine state of VertexAITensorboard
+
+    Attributes
+    ----------
+    conditions : [VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardStatusConditionsItems0], default is Undefined, optional
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the VertexAITensorboard resource in GCP.
+    observedGeneration : int, default is Undefined, optional
+        ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardStatusObservedState, default is Undefined, optional
+        observed state
+    """
+
+
+    conditions?: [VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardStatusConditionsItems0]
+
+    externalRef?: str
+
     observedGeneration?: int
 
-    runCount?: str
-
-    updateTime?: str
+    observedState?: VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardStatusObservedState
 
 
 schema VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardStatusConditionsItems0:
@@ -172,5 +189,43 @@ schema VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardStatusConditionsItem
     status?: str
 
     $type?: str
+
+
+schema VertexaiCnrmCloudGoogleComV1alpha1VertexAITensorboardStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    blobStoragePathPrefix : str, default is Undefined, optional
+        Output only. Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a '/'.
+    createTime : str, default is Undefined, optional
+        Output only. Timestamp when this Tensorboard was created.
+    name : str, default is Undefined, optional
+        Output only. Name of the Tensorboard. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
+    runCount : int, default is Undefined, optional
+        Output only. The number of Runs stored in this Tensorboard.
+    satisfiesPzi : bool, default is Undefined, optional
+        Output only. Reserved for future use.
+    satisfiesPzs : bool, default is Undefined, optional
+        Output only. Reserved for future use.
+    updateTime : str, default is Undefined, optional
+        Output only. Timestamp when this Tensorboard was last updated.
+    """
+
+
+    blobStoragePathPrefix?: str
+
+    createTime?: str
+
+    name?: str
+
+    runCount?: int
+
+    satisfiesPzi?: bool
+
+    satisfiesPzs?: bool
+
+    updateTime?: str
 
 

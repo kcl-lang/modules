@@ -77,7 +77,7 @@ schema BigtableCnrmCloudGoogleComV1alpha1BigtableAuthorizedViewSpecSubsetView:
 
 schema BigtableCnrmCloudGoogleComV1alpha1BigtableAuthorizedViewSpecTableRef:
     r"""
-    TableRef defines the resource reference to BigtableTable, which "External" field holds the GCP identifier for the KRM object.
+    TableRef is a reference to a BigtableTable.
 
     Attributes
     ----------
