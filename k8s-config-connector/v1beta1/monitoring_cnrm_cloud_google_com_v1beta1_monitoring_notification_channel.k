@@ -50,7 +50,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpec:
     labels : {str:str}, default is Undefined, optional
         Configuration fields that define the channel and its behavior. The permissible and required labels are specified in the NotificationChannelDescriptor.labels of the NotificationChannelDescriptor corresponding to the type field.
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The service-generated name of theresource. Used for acquisition only. Leave unset to create a new resource.
+        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
     sensitiveLabels : MonitoringCnrmCloudGoogleComV1beta1MonitoringNotificationChannelSpecSensitiveLabels, default is Undefined, optional
         sensitive labels
     $type : str, default is Undefined, required

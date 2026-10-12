@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeRegionPerInstanceConfig:
     r"""
-    compute cnrm cloud google com v1alpha1 compute region per instance config
+    ComputeRegionPerInstanceConfig is the Schema for the ComputeRegionPerInstanceConfig API
 
     Attributes
     ----------
@@ -37,24 +37,14 @@ schema ComputeRegionPerInstanceConfig:
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpec:
     r"""
-    compute cnrm cloud google com v1alpha1 compute region per instance config spec
+    ComputeRegionPerInstanceConfigSpec defines the desired state of ComputeRegionPerInstanceConfig
 
     Attributes
     ----------
     minimalAction : str, default is Undefined, optional
-        The minimal action to perform on the instance during an update.
-        Default is 'NONE'. Possible values are:
-        * REPLACE
-        * RESTART
-        * REFRESH
-        * NONE.
+        The minimal action to perform on the instance during an update. Default is 'NONE'. Possible values are: * REPLACE * RESTART * REFRESH * NONE.
     mostDisruptiveAllowedAction : str, default is Undefined, optional
-        The most disruptive action to perform on the instance during an update.
-        Default is 'REPLACE'. Possible values are:
-        * REPLACE
-        * RESTART
-        * REFRESH
-        * NONE.
+        The most disruptive action to perform on the instance during an update. Default is 'REPLACE'. Possible values are: * REPLACE * RESTART * REFRESH * NONE.
     preservedState : ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecPreservedState, default is Undefined, optional
         preserved state
     projectRef : ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecProjectRef, default is Undefined, required
@@ -64,9 +54,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpec:
     regionInstanceGroupManagerRef : ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecRegionInstanceGroupManagerRef, default is Undefined, required
         region instance group manager ref
     removeInstanceStateOnDestroy : bool, default is Undefined, optional
-        When true, deleting this config will immediately remove any specified state from the underlying instance.
-        When false, deleting this config will *not* immediately remove any state from the underlying instance.
-        State will be removed on the next instance recreation or update.
+        When true, deleting this config will immediately remove any specified state from the underlying instance. When false, deleting this config will *not* immediately remove any state from the underlying instance. State will be removed on the next instance recreation or update.
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
     """
@@ -122,18 +110,13 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecPreser
     Attributes
     ----------
     deleteRule : str, default is Undefined, optional
-        A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
-        The available options are 'NEVER' and 'ON_PERMANENT_INSTANCE_DELETION'.
-        'NEVER' - detach the disk when the VM is deleted, but do not delete the disk.
-        'ON_PERMANENT_INSTANCE_DELETION' will delete the stateful disk when the VM is permanently
-        deleted from the instance group. Default value: "NEVER" Possible values: ["NEVER", "ON_PERMANENT_INSTANCE_DELETION"].
+        A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are 'NEVER' and 'ON_PERMANENT_INSTANCE_DELETION'. 'NEVER' - detach the disk when the VM is deleted, but do not delete the disk. 'ON_PERMANENT_INSTANCE_DELETION' will delete the stateful disk when the VM is permanently deleted from the instance group. Default value: "NEVER" Possible values: ["NEVER", "ON_PERMANENT_INSTANCE_DELETION"].
     deviceName : str, default is Undefined, required
         A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
     mode : str, default is Undefined, optional
         The mode of the disk. Default value: "READ_WRITE" Possible values: ["READ_ONLY", "READ_WRITE"].
     source : str, default is Undefined, required
-        The URI of an existing persistent disk to attach under the specified device-name in the format
-        'projects/project-id/zones/zone/disks/disk-name'.
+        The URI of an existing persistent disk to attach under the specified device-name in the format 'projects/project-id/zones/zone/disks/disk-name'.
     """
 
 
@@ -225,11 +208,11 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecProjec
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -247,11 +230,11 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecRegion
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `ComputeRegionInstanceGroupManager` resource.
+        The external representation of the referent.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of the referent.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of the referent.
     """
 
 
@@ -264,12 +247,12 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigSpecRegion
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigStatus:
     r"""
-    compute cnrm cloud google com v1alpha1 compute region per instance config status
+    ComputeRegionPerInstanceConfigStatus defines the config connector machine state of ComputeRegionPerInstanceConfig
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1alpha1ComputeRegionPerInstanceConfigStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeRegionPerInstanceConfig's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

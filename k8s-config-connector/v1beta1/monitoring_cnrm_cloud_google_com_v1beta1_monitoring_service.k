@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema MonitoringService:
     r"""
-    monitoring cnrm cloud google com v1beta1 monitoring service
+    MonitoringService is the Schema for the MonitoringService API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema MonitoringService:
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceSpec:
     r"""
-    monitoring cnrm cloud google com v1beta1 monitoring service spec
+    MonitoringServiceSpec defines the desired state of MonitoringService
 
     Attributes
     ----------
@@ -68,13 +68,11 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceSpecProjectRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The project for the resource
-
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -101,12 +99,12 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceSpecTelemetry:
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceStatus:
     r"""
-    monitoring cnrm cloud google com v1beta1 monitoring service status
+    MonitoringServiceStatus defines the config connector machine state of MonitoringService
 
     Attributes
     ----------
     conditions : [MonitoringCnrmCloudGoogleComV1beta1MonitoringServiceStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

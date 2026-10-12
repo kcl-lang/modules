@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema KMSCryptoKeyVersion:
     r"""
-    kms cnrm cloud google com v1alpha1 k m s crypto key version
+    KMSCryptoKeyVersion is the Schema for the kms API
 
     Attributes
     ----------
@@ -37,13 +37,12 @@ schema KMSCryptoKeyVersion:
 
 schema KmsCnrmCloudGoogleComV1alpha1KMSCryptoKeyVersionSpec:
     r"""
-    kms cnrm cloud google com v1alpha1 k m s crypto key version spec
+    KMSCryptoKeyVersionSpec defines the desired state of KMSCryptoKeyVersion
 
     Attributes
     ----------
     cryptoKey : str, default is Undefined, required
-        Immutable. The name of the cryptoKey associated with the CryptoKeyVersions.
-        Format: ''projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}''.
+        Immutable. The name of the cryptoKey associated with the CryptoKeyVersions. Format: ''projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}''.
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
     state : str, default is Undefined, optional
@@ -67,10 +66,9 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSCryptoKeyVersionStatus:
     algorithm : str, default is Undefined, optional
         The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
     attestation : [KmsCnrmCloudGoogleComV1alpha1KMSCryptoKeyVersionStatusAttestationItems0], default is Undefined, optional
-        Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
-        Only provided for key versions with protectionLevel HSM.
+        Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protectionLevel HSM.
     conditions : [KmsCnrmCloudGoogleComV1alpha1KMSCryptoKeyVersionStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the KMSCryptoKeyVersion's current state.
     generateTime : str, default is Undefined, optional
         The time this CryptoKeyVersion key material was generated.
     name : str, default is Undefined, optional

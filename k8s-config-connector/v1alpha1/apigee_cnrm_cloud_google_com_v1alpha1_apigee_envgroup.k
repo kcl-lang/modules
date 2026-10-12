@@ -59,16 +59,16 @@ schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeEnvgroupSpec:
 
 schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeEnvgroupSpecOrganizationRef:
     r"""
-    ApigeeOrganizationRef is a reference to a ApigeeOrganization resource.
+    ApigeeOrganizationRef is a reference to an ApigeeOrganization resource.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
         A reference to an externally managed ApigeeOrganization resource. Should be in the format "organizations/{{organizationID}}".
     name : str, default is Undefined, optional
-        The name of a ApigeeOrganization resource.
+        The name of an ApigeeOrganization resource.
     namespace : str, default is Undefined, optional
-        The namespace of a ApigeeOrganization resource.
+        The namespace of an ApigeeOrganization resource.
     """
 
 

@@ -62,7 +62,7 @@ schema PrivilegedaccessmanagerCnrmCloudGoogleComV1alpha1PrivilegedAccessManagerE
     requesterJustificationConfig : PrivilegedaccessmanagerCnrmCloudGoogleComV1alpha1PrivilegedAccessManagerEntitlementSpecRequesterJustificationConfig, default is Undefined, required
         requester justification config
     resourceID : str, default is Undefined, optional
-        The PrivilegedAccessManagerEntitlement name. If not given, the 'metadata.name' will be used.
+        Immutable. The PrivilegedAccessManagerEntitlement name. If not given, the 'metadata.name' will be used.
     """
 
 

@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeFirewallPolicy:
     r"""
-    compute cnrm cloud google com v1beta1 compute firewall policy
+    ComputeFirewallPolicy is the Schema for the ComputeFirewallPolicy API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeFirewallPolicy:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicySpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute firewall policy spec
+    ComputeFirewallPolicySpec defines the desired state of ComputeFirewallPolicy
 
     Attributes
     ----------
@@ -72,11 +72,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicySpecFolderRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The Google Cloud resource name of a `Folder` resource (format: `folders/{{name}}`).
+        The 'name' field of a folder, when not managed by Config Connector. The recommended format is "folders/{folderID}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The 'name' field of a 'Folder' resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The 'namespace' field of a 'Folder' resource.
     """
 
 
@@ -94,12 +94,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicySpecOrganizationRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The Google Cloud resource name of a Google Cloud Organization (format: `organizations/{{name}}`).
+        The 'name' field of an organization, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        [WARNING] Organization not yet supported in Config Connector, use 'external' field to reference existing resources.
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The 'name' field of an 'Organization' resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The 'namespace' field of an 'Organization' resource.
     """
 
 
@@ -112,12 +111,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicySpecOrganizationRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute firewall policy status
+    ComputeFirewallPolicyStatus defines the config connector machine state of ComputeFirewallPolicy
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeFirewallPolicyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
     fingerprint : str, default is Undefined, optional

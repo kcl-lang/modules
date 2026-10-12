@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema BigQueryReservationCapacityCommitment:
     r"""
-    bigqueryreservation cnrm cloud google com v1alpha1 big query reservation capacity commitment
+    BigQueryReservationCapacityCommitment is the Schema for the BigQueryReservationCapacityCommitment API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema BigQueryReservationCapacityCommitment:
 
 schema BigqueryreservationCnrmCloudGoogleComV1alpha1BigQueryReservationCapacityCommitmentSpec:
     r"""
-    bigqueryreservation cnrm cloud google com v1alpha1 big query reservation capacity commitment spec
+    BigQueryReservationCapacityCommitmentSpec defines the desired state of BigQueryReservationCapacityCommitment
 
     Attributes
     ----------
@@ -46,8 +46,7 @@ schema BigqueryreservationCnrmCloudGoogleComV1alpha1BigQueryReservationCapacityC
     enforceSingleAdminProjectPerOrg : str, default is Undefined, optional
         Immutable. If true, fail the request if another project in the organization has a capacity commitment.
     location : str, default is Undefined, required
-        Immutable. The geographic location where the transfer config should reside.
-        Examples: US, EU, asia-northeast1. The default value is US.
+        The location of this resource.
     plan : str, default is Undefined, required
         Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan.
     projectRef : BigqueryreservationCnrmCloudGoogleComV1alpha1BigQueryReservationCapacityCommitmentSpecProjectRef, default is Undefined, required
@@ -55,7 +54,7 @@ schema BigqueryreservationCnrmCloudGoogleComV1alpha1BigQueryReservationCapacityC
     renewalPlan : str, default is Undefined, optional
         The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The capacityCommitmentId of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The BigQueryReservationCapacityCommitment name. If not given, the metadata.name will be used.
     slotCount : int, default is Undefined, required
         Immutable. Number of slots in this commitment.
     """
@@ -85,11 +84,11 @@ schema BigqueryreservationCnrmCloudGoogleComV1alpha1BigQueryReservationCapacityC
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -102,7 +101,7 @@ schema BigqueryreservationCnrmCloudGoogleComV1alpha1BigQueryReservationCapacityC
 
 schema BigqueryreservationCnrmCloudGoogleComV1alpha1BigQueryReservationCapacityCommitmentStatus:
     r"""
-    bigqueryreservation cnrm cloud google com v1alpha1 big query reservation capacity commitment status
+    BigQueryReservationCapacityCommitmentStatus defines the config connector machine state of BigQueryReservationCapacityCommitment
 
     Attributes
     ----------
@@ -111,7 +110,7 @@ schema BigqueryreservationCnrmCloudGoogleComV1alpha1BigQueryReservationCapacityC
     commitmentStartTime : str, default is Undefined, optional
         The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
     conditions : [BigqueryreservationCnrmCloudGoogleComV1alpha1BigQueryReservationCapacityCommitmentStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the BigQueryReservationCapacityCommitment's current state.
     name : str, default is Undefined, optional
         The resource name of the capacity commitment, e.g., projects/myproject/locations/US/capacityCommitments/123.
     observedGeneration : int, default is Undefined, optional

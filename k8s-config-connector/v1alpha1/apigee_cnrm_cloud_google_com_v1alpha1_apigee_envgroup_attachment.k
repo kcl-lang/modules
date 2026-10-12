@@ -66,9 +66,9 @@ schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeEnvgroupAttachmentSpecEnvgroupRef:
     external : str, default is Undefined, optional
         A reference to an externally managed ApigeeEnvgroup resource. Should be in the format "organizations/{{organizationID}}/envgroups/{{envgroupID}}".
     name : str, default is Undefined, optional
-        The name of a ApigeeEnvgroup resource.
+        The name of an ApigeeEnvgroup resource.
     namespace : str, default is Undefined, optional
-        The namespace of a ApigeeEnvgroup resource.
+        The namespace of an ApigeeEnvgroup resource.
     """
 
 
@@ -88,9 +88,9 @@ schema ApigeeCnrmCloudGoogleComV1alpha1ApigeeEnvgroupAttachmentSpecEnvironmentRe
     external : str, default is Undefined, optional
         A reference to an externally managed ApigeeEnvironment resource. Should be in the format "organizations/{{organizationID}}/environments/{{environmentID}}".
     name : str, default is Undefined, optional
-        The name of a ApigeeEnvironment resource.
+        The name of an ApigeeEnvironment resource.
     namespace : str, default is Undefined, optional
-        The namespace of a ApigeeEnvironment resource.
+        The namespace of an ApigeeEnvironment resource.
     """
 
 

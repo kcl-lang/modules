@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeInstanceGroup:
     r"""
-    compute cnrm cloud google com v1beta1 compute instance group
+    ComputeInstanceGroup is the Schema for the ComputeInstanceGroup API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeInstanceGroup:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute instance group spec
+    ComputeInstanceGroupSpec defines the desired state of ComputeInstanceGroup
 
     Attributes
     ----------
@@ -71,16 +71,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupSpec:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupSpecInstancesItems0:
     r"""
-    compute cnrm cloud google com v1beta1 compute instance group spec instances items0
+    InstanceRef is a reference to a ComputeInstance.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeInstance` resource.
+        A reference to an externally managed ComputeInstance resource. Should be in the format "projects/{{projectID}}/zones/{{zone}}/instances/{{instanceID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeInstance resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeInstance resource.
     """
 
 
@@ -111,16 +111,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupSpecNamedPortItems0:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupSpecNetworkRef:
     r"""
-    compute cnrm cloud google com v1beta1 compute instance group spec network ref
+    ComputeNetworkRef is a reference to a GCP ComputeNetwork.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -133,12 +133,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupSpecNetworkRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute instance group status
+    ComputeInstanceGroupStatus defines the config connector machine state of ComputeInstanceGroup
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeInstanceGroupStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     selfLink : str, default is Undefined, optional

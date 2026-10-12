@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeMachineImage:
     r"""
-    compute cnrm cloud google com v1alpha1 compute machine image
+    ComputeMachineImage is the Schema for the computemachineimages API
 
     Attributes
     ----------
@@ -37,15 +37,14 @@ schema ComputeMachineImage:
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeMachineImageSpec:
     r"""
-    compute cnrm cloud google com v1alpha1 compute machine image spec
+    ComputeMachineImageSpec defines the desired state of ComputeMachineImage
 
     Attributes
     ----------
     description : str, default is Undefined, optional
         Immutable. A text description of the resource.
     guestFlush : bool, default is Undefined, optional
-        Immutable. Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
-        Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        Immutable. Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
     machineImageEncryptionKey : ComputeCnrmCloudGoogleComV1alpha1ComputeMachineImageSpecMachineImageEncryptionKey, default is Undefined, optional
         machine image encryption key
     projectRef : ComputeCnrmCloudGoogleComV1alpha1ComputeMachineImageSpecProjectRef, default is Undefined, required
@@ -74,23 +73,16 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeMachineImageSpecMachineImageEncry
     r"""
     Immutable. Encrypts the machine image using a customer-supplied encryption key.
 
-    After you encrypt a machine image with a customer-supplied key, you must
-    provide the same key if you use the machine image later (e.g. to create a
-    instance from the image).
-
     Attributes
     ----------
     kmsKeyName : str, default is Undefined, optional
         Immutable. The name of the encryption key that is stored in Google Cloud KMS.
     kmsKeyServiceAccount : str, default is Undefined, optional
-        Immutable. The service account used for the encryption request for the given KMS key.
-        If absent, the Compute Engine Service Agent service account is used.
+        Immutable. The service account used for the encryption request for the given KMS key. If absent, the Compute Engine Service Agent service account is used.
     rawKey : str, default is Undefined, optional
-        Immutable. Specifies a 256-bit customer-supplied encryption key, encoded in
-        RFC 4648 base64 to either encrypt or decrypt this resource.
+        Immutable. Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource.
     sha256 : str, default is Undefined, optional
-        The RFC 4648 base64 encoded SHA-256 hash of the
-        customer-supplied encryption key that protects this resource.
+        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
     """
 
 
@@ -110,11 +102,11 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeMachineImageSpecProjectRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -127,16 +119,16 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeMachineImageSpecProjectRef:
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeMachineImageSpecSourceInstanceRef:
     r"""
-    compute cnrm cloud google com v1alpha1 compute machine image spec source instance ref
+    The source instance used to create the machine image.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeInstance` resource.
+        A reference to an externally managed ComputeInstance resource. Should be in the format "projects/{{projectID}}/zones/{{zone}}/instances/{{instanceID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeInstance resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeInstance resource.
     """
 
 
@@ -149,16 +141,16 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeMachineImageSpecSourceInstanceRef
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeMachineImageStatus:
     r"""
-    compute cnrm cloud google com v1alpha1 compute machine image status
+    ComputeMachineImageStatus defines the config connector machine state of ComputeMachineImage
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1alpha1ComputeMachineImageStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     selfLink : str, default is Undefined, optional
-        self link
+        Server-defined URL for the resource.
     storageLocations : [str], default is Undefined, optional
         The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
     """

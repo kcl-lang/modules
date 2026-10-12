@@ -103,12 +103,12 @@ schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListing
 
 schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListingSpecDataExchangeRef:
     r"""
-    BigQueryAnalyticsHubDataExchangeRef defines the resource reference to BigQueryAnalyticsHubDataExchange, which "External" field holds the GCP identifier for the KRM object.
+    BigQueryAnalyticsHubDataExchangeRef is a reference to a BigQueryAnalyticsHubDataExchange.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        A reference to an externally managed BigQueryAnalyticsHubDataExchange resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/dataexchanges/{{dataexchangeID}}".
+        A reference to an externally managed BigQueryAnalyticsHubDataExchange resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/dataExchanges/{{dataExchangeID}}".
     name : str, default is Undefined, optional
         The name of a BigQueryAnalyticsHubDataExchange resource.
     namespace : str, default is Undefined, optional
@@ -286,7 +286,7 @@ schema BigqueryanalyticshubCnrmCloudGoogleComV1alpha1BigQueryAnalyticsHubListing
     Attributes
     ----------
     external : str, default is Undefined, optional
-        A reference to an externally-managed BigQueryTable resource. Should be in the format "projects/{{projectID}}/datasets/{{datasetsID}}/tables/{{tableID}}".
+        A reference to an externally-managed BigQueryTable resource. Should be in the format "projects/{{projectID}}/datasets/{{datasetID}}/tables/{{tableID}}".
     name : str, default is Undefined, optional
         The name of a BigQueryTable resource.
     namespace : str, default is Undefined, optional

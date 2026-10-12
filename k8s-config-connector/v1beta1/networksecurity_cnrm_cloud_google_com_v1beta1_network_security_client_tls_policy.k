@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema NetworkSecurityClientTLSPolicy:
     r"""
-    networksecurity cnrm cloud google com v1beta1 network security client TLS policy
+    NetworkSecurityClientTLSPolicy is the Schema for the NetworkSecurityClientTLSPolicy API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema NetworkSecurityClientTLSPolicy:
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpec:
     r"""
-    networksecurity cnrm cloud google com v1beta1 network security client TLS policy spec
+    NetworkSecurityClientTLSPolicySpec defines the desired state of NetworkSecurityClientTLSPolicy
 
     Attributes
     ----------
@@ -46,13 +46,13 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpe
     description : str, default is Undefined, optional
         Optional. Free-text description of the resource.
     location : str, default is Undefined, required
-        Immutable. The location for the resource
+        The location of this resource.
     projectRef : NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpecProjectRef, default is Undefined, optional
         project ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The NetworkSecurityClientTLSPolicy name. If not given, the metadata.name will be used.
     serverValidationCa : [NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpecServerValidationCaItems0], default is Undefined, optional
-        Required. Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate.
+        Optional. Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
     sni : str, default is Undefined, optional
         Optional. Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
     """
@@ -93,7 +93,7 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpe
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpecClientCertificateCertificateProviderInstance:
     r"""
-    The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
+    Optional. The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
 
     Attributes
     ----------
@@ -107,12 +107,12 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpe
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpecClientCertificateGrpcEndpoint:
     r"""
-    gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+    Optional. gRPC specific configuration to access the gRPC server to obtain the cert and private key.
 
     Attributes
     ----------
     targetUri : str, default is Undefined, required
-        Required. The target URI of the gRPC endpoint. Only UDS path is supported, and should start with “unix:”.
+        Required. The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
     """
 
 
@@ -121,22 +121,24 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpe
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpecProjectRef:
     r"""
-    Immutable. The Project that this resource belongs to.
+    The project that this resource belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The project for the resource
-
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
     external?: str
+
+    kind?: str
 
     name?: str
 
@@ -163,7 +165,7 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpe
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpecServerValidationCaItems0CertificateProviderInstance:
     r"""
-    The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
+    Optional. The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
 
     Attributes
     ----------
@@ -177,12 +179,12 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpe
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpecServerValidationCaItems0GrpcEndpoint:
     r"""
-    gRPC specific configuration to access the gRPC server to obtain the CA certificate.
+    Optional. gRPC specific configuration to access the gRPC server to obtain the CA certificate.
 
     Attributes
     ----------
     targetUri : str, default is Undefined, required
-        Required. The target URI of the gRPC endpoint. Only UDS path is supported, and should start with “unix:”.
+        Required. The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
     """
 
 
@@ -191,12 +193,12 @@ schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicySpe
 
 schema NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicyStatus:
     r"""
-    networksecurity cnrm cloud google com v1beta1 network security client TLS policy status
+    NetworkSecurityClientTLSPolicyStatus defines the config connector machine state of NetworkSecurityClientTLSPolicy
 
     Attributes
     ----------
     conditions : [NetworksecurityCnrmCloudGoogleComV1beta1NetworkSecurityClientTLSPolicyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     createTime : str, default is Undefined, optional
         Output only. The timestamp when the resource was created.
     observedGeneration : int, default is Undefined, optional

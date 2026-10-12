@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeNetworkEndpoint:
     r"""
-    compute cnrm cloud google com v1alpha1 compute network endpoint
+    ComputeNetworkEndpoint is the Schema for the ComputeNetworkEndpoint API
 
     Attributes
     ----------
@@ -37,16 +37,14 @@ schema ComputeNetworkEndpoint:
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointSpec:
     r"""
-    compute cnrm cloud google com v1alpha1 compute network endpoint spec
+    ComputeNetworkEndpointSpec defines the desired state of ComputeNetworkEndpoint
 
     Attributes
     ----------
     instanceRef : ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointSpecInstanceRef, default is Undefined, optional
         instance ref
     ipAddress : str, default is Undefined, required
-        Immutable. IPv4 address of network endpoint. The IP address must belong
-        to a VM in GCE (either the primary IP or as part of an aliased IP
-        range).
+        Immutable. IPv4 address of network endpoint. The IP address must belong to a VM in Compute Engine (either the primary IP or as part of an aliased IP range).
     networkEndpointGroupRef : ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointSpecNetworkEndpointGroupRef, default is Undefined, required
         network endpoint group ref
     projectRef : ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointSpecProjectRef, default is Undefined, required
@@ -73,16 +71,16 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointSpec:
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointSpecInstanceRef:
     r"""
-    compute cnrm cloud google com v1alpha1 compute network endpoint spec instance ref
+    InstanceRef is a reference to a ComputeInstance.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `ComputeInstance` resource.
+        A reference to an externally managed ComputeInstance resource. Should be in the format "projects/{{projectID}}/zones/{{zone}}/instances/{{instanceID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeInstance resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeInstance resource.
     """
 
 
@@ -95,16 +93,16 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointSpecInstanceRef:
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointSpecNetworkEndpointGroupRef:
     r"""
-    compute cnrm cloud google com v1alpha1 compute network endpoint spec network endpoint group ref
+    The network endpoint group to which this network endpoint belongs.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `ComputeNetworkEndpointGroup` resource.
+        A reference to an externally managed ComputeNetworkEndpointGroup resource. Should be in the format "projects/{project}/zones/{zone}/networkEndpointGroups/{networkEndpointGroup}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetworkEndpointGroup resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetworkEndpointGroup resource.
     """
 
 
@@ -122,11 +120,11 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointSpecProjectRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -139,12 +137,12 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointSpecProjectRef:
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointStatus:
     r"""
-    compute cnrm cloud google com v1alpha1 compute network endpoint status
+    ComputeNetworkEndpointStatus defines the config connector machine state of ComputeNetworkEndpoint
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEndpointStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

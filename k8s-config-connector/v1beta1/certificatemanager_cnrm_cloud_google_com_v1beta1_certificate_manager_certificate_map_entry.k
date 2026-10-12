@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema CertificateManagerCertificateMapEntry:
     r"""
-    certificatemanager cnrm cloud google com v1beta1 certificate manager certificate map entry
+    CertificateManagerCertificateMapEntry is the Schema for the CertificateManagerCertificateMapEntry API
 
     Attributes
     ----------
@@ -37,18 +37,16 @@ schema CertificateManagerCertificateMapEntry:
 
 schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateMapEntrySpec:
     r"""
-    certificatemanager cnrm cloud google com v1beta1 certificate manager certificate map entry spec
+    CertificateManagerCertificateMapEntrySpec defines the desired state of CertificateManagerCertificateMapEntry
 
     Attributes
     ----------
     certificatesRefs : [CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateMapEntrySpecCertificatesRefsItems0], default is Undefined, required
-        certificates refs
+        Immutable. A list of references to CertificateManagerCertificate resources that will be associated with this map entry.
     description : str, default is Undefined, optional
         A human-readable description of the resource.
     hostname : str, default is Undefined, optional
-        Immutable. A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
-        for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
-        selecting a proper certificate.
+        Immutable. A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
     mapRef : CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateMapEntrySpecMapRef, default is Undefined, required
         map ref
     matcher : str, default is Undefined, optional
@@ -77,18 +75,16 @@ schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateM
 
 schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateMapEntrySpecCertificatesRefsItems0:
     r"""
-    A set of Certificates defines for the given hostname.
-    There can be defined up to fifteen certificates in each Certificate Map Entry.
-    Each certificate must match pattern projects/*/locations/*/certificates/*.
+    CertificateManagerCertificateRef is a reference to a CertificateManagerCertificate.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `projects/{{project}}/locations/{{location}}/certificates/{{value}}`, where {{value}} is the `name` field of a `CertificateManagerCertificate` resource.
+        A reference to an externally managed CertificateManagerCertificate resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/certificates/{{certificateID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a CertificateManagerCertificate resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a CertificateManagerCertificate resource.
     """
 
 
@@ -106,11 +102,11 @@ schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateM
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `CertificateManagerCertificateMap` resource.
+        A reference to an externally managed CertificateManagerCertificateMap resource. Should be in the format "projects/{{projectID}}/locations/global/certificateMaps/{{certificateMapID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a CertificateManagerCertificateMap resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a CertificateManagerCertificateMap resource.
     """
 
 
@@ -128,11 +124,11 @@ schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateM
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -145,24 +141,20 @@ schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateM
 
 schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateMapEntryStatus:
     r"""
-    certificatemanager cnrm cloud google com v1beta1 certificate manager certificate map entry status
+    CertificateManagerCertificateMapEntryStatus defines the config connector machine state of CertificateManagerCertificateMapEntry
 
     Attributes
     ----------
     conditions : [CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateMapEntryStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the CertificateManagerCertificateMapEntry's current state.
     createTime : str, default is Undefined, optional
-        Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
-        with nanosecond resolution and up to nine fractional digits.
-        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     state : str, default is Undefined, optional
         A serving state of this Certificate Map Entry.
     updateTime : str, default is Undefined, optional
-        Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
-        with nanosecond resolution and up to nine fractional digits.
-        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
 
 

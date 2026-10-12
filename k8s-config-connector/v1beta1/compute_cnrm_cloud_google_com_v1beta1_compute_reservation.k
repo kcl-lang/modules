@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeReservation:
     r"""
-    compute cnrm cloud google com v1beta1 compute reservation
+    ComputeReservation is the Schema for the ComputeReservation API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeReservation:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute reservation spec
+    ComputeReservationSpec defines the desired state of ComputeReservation
 
     Attributes
     ----------
@@ -45,12 +45,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpec:
         Immutable. An optional description of this resource.
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+    shareSettings : ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecShareSettings, default is Undefined, optional
+        share settings
     specificReservation : ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecSpecificReservation, default is Undefined, required
         specific reservation
     specificReservationRequired : bool, default is Undefined, optional
-        Immutable. When set to true, only VMs that target this reservation by name can
-        consume this reservation. Otherwise, it can be consumed by VMs with
-        affinity for any reservation. Defaults to false.
+        Immutable. When set to true, only VMs that target this reservation by name can consume this reservation. Otherwise, it can be consumed by VMs with affinity for any reservation. Defaults to false.
     zone : str, default is Undefined, required
         Immutable. The zone where the reservation is made.
     """
@@ -60,11 +60,119 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpec:
 
     resourceID?: str
 
+    shareSettings?: ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecShareSettings
+
     specificReservation: ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecSpecificReservation
 
     specificReservationRequired?: bool
 
     zone: str
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecShareSettings:
+    r"""
+    The share setting for reservations and sole tenancy node groups.
+
+    Attributes
+    ----------
+    projectMap : [ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecShareSettingsProjectMapItems0], default is Undefined, optional
+        A map of key(i.e. project or other shared resources) and associated project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+    shareType : str, default is Undefined, optional
+        Immutable. Type of sharing for this shared-reservation Check the ShareType enum for the list of possible values.
+    """
+
+
+    projectMap?: [ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecShareSettingsProjectMapItems0]
+
+    shareType?: str
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecShareSettingsProjectMapItems0:
+    r"""
+    compute cnrm cloud google com v1beta1 compute reservation spec share settings project map items0
+
+    Attributes
+    ----------
+    keyRef : ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecShareSettingsProjectMapItems0KeyRef, default is Undefined, required
+        key ref
+    value : ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecShareSettingsProjectMapItems0Value, default is Undefined, optional
+        value
+    """
+
+
+    keyRef: ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecShareSettingsProjectMapItems0KeyRef
+
+    value?: ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecShareSettingsProjectMapItems0Value
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecShareSettingsProjectMapItems0KeyRef:
+    r"""
+    The resource reference that defaults to Project if Kind is not specified.
+
+    Attributes
+    ----------
+    apiVersion : str, default is Undefined, optional
+        APIVersion of the referenced resource
+    external : str, default is Undefined, optional
+        The external name of the referenced resource
+    kind : str, default is Undefined, optional
+        Kind of the referenced resource
+    name : str, default is Undefined, optional
+        name
+    namespace : str, default is Undefined, optional
+        namespace
+    """
+
+
+    apiVersion?: str
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecShareSettingsProjectMapItems0Value:
+    r"""
+    compute cnrm cloud google com v1beta1 compute reservation spec share settings project map items0 value
+
+    Attributes
+    ----------
+    projectIDRef : ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecShareSettingsProjectMapItems0ValueProjectIDRef, default is Undefined, optional
+        project ID ref
+    """
+
+
+    projectIDRef?: ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecShareSettingsProjectMapItems0ValueProjectIDRef
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecShareSettingsProjectMapItems0ValueProjectIDRef:
+    r"""
+    The project ID, should be same as the key of this project config in the parent map.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
+    name : str, default is Undefined, optional
+        The `name` field of a `Project` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `Project` resource.
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecSpecificReservation:
@@ -76,7 +184,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecSpecificReservation
     count : int, default is Undefined, required
         The number of resources that are allocated.
     inUseCount : int, default is Undefined, optional
-        How many instances are in use.
+        Output only. Setting this field has no effect. How many instances are in use.
     instanceProperties : ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecSpecificReservationInstanceProperties, default is Undefined, required
         instance properties
     """
@@ -98,15 +206,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecSpecificReservation
     guestAccelerators : [ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecSpecificReservationInstancePropertiesGuestAcceleratorsItems0], default is Undefined, optional
         Immutable. Guest accelerator type and count.
     localSsds : [ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecSpecificReservationInstancePropertiesLocalSsdsItems0], default is Undefined, optional
-        Immutable. The amount of local ssd to reserve with each instance. This
-        reserves disks of type 'local-ssd'.
+        Immutable. The amount of local ssd to reserve with each instance. This reserves disks of type 'local-ssd'.
     machineType : str, default is Undefined, required
         Immutable. The name of the machine type to reserve.
     minCpuPlatform : str, default is Undefined, optional
-        Immutable. The minimum CPU platform for the reservation. For example,
-        '"Intel Skylake"'. See
-        the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
-        for information on available CPU platforms.
+        Immutable. The minimum CPU platform for the reservation. For example, '"Intel Skylake"'. See the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones) for information on available CPU platforms.
     """
 
 
@@ -126,14 +230,9 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecSpecificReservation
     Attributes
     ----------
     acceleratorCount : int, default is Undefined, required
-        Immutable. The number of the guest accelerator cards exposed to
-        this instance.
+        Immutable. The number of the guest accelerator cards exposed to this instance.
     acceleratorType : str, default is Undefined, required
-        Immutable. The full or partial URL of the accelerator type to
-        attach to this instance. For example:
-        'projects/my-project/zones/us-central1-c/acceleratorTypes/nvidia-tesla-p100'
-
-        If you are creating an instance template, specify only the accelerator name.
+        Immutable. The full or partial URL of the accelerator type to attach to this instance. For example: 'projects/my-project/zones/us-central1-c/acceleratorTypes/nvidia-tesla-p100' If you are creating an instance template, specify only the accelerator name.
     """
 
 
@@ -162,21 +261,22 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationSpecSpecificReservation
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute reservation status
+    ComputeReservationStatus defines the config connector machine state of ComputeReservation
 
     Attributes
     ----------
     commitment : str, default is Undefined, optional
-        Full or partial URL to a parent commitment. This field displays for
-        reservations that are tied to a commitment.
+        Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeReservationStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the ComputeReservation resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     selfLink : str, default is Undefined, optional
-        self link
+        Server-defined URL for the resource.
     status : str, default is Undefined, optional
         The status of the reservation.
     """
@@ -187,6 +287,8 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeReservationStatus:
     conditions?: [ComputeCnrmCloudGoogleComV1beta1ComputeReservationStatusConditionsItems0]
 
     creationTimestamp?: str
+
+    externalRef?: str
 
     observedGeneration?: int
 

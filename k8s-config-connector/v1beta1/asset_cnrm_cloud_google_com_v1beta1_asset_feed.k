@@ -180,7 +180,7 @@ schema AssetCnrmCloudGoogleComV1beta1AssetFeedSpecFeedOutputConfigPubsubDestinat
 
 schema AssetCnrmCloudGoogleComV1beta1AssetFeedSpecFolderRef:
     r"""
-    FolderRef represents the Folder that this resource belongs to.
+    The Folder that contains this resource.
 
     Attributes
     ----------

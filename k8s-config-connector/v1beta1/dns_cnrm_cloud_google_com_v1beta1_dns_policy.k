@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema DNSPolicy:
     r"""
-    dns cnrm cloud google com v1beta1 DNS policy
+    DNSPolicy is the Schema for the dns API
 
     Attributes
     ----------
@@ -46,13 +46,9 @@ schema DNSCnrmCloudGoogleComV1beta1DNSPolicySpec:
     description : str, default is Undefined, optional
         A textual description field. Defaults to 'Managed by Config Connector'.
     enableInboundForwarding : bool, default is Undefined, optional
-        Allows networks bound to this policy to receive DNS queries sent
-        by VMs or applications over VPN connections. When enabled, a
-        virtual IP address will be allocated from each of the sub-networks
-        that are bound to this policy.
+        Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.
     enableLogging : bool, default is Undefined, optional
-        Controls whether logging is enabled for the networks bound to this policy.
-        Defaults to no logging if not set.
+        Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
     networks : [DNSCnrmCloudGoogleComV1beta1DNSPolicySpecNetworksItems0], default is Undefined, optional
         List of network names specifying networks to which this policy is applied.
     resourceID : str, default is Undefined, optional
@@ -75,16 +71,12 @@ schema DNSCnrmCloudGoogleComV1beta1DNSPolicySpec:
 
 schema DNSCnrmCloudGoogleComV1beta1DNSPolicySpecAlternativeNameServerConfig:
     r"""
-    Sets an alternative name server for the associated networks.
-    When specified, all DNS queries are forwarded to a name server that you choose.
-    Names such as .internal are not available when an alternative name server is specified.
+    Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
 
     Attributes
     ----------
     targetNameServers : [DNSCnrmCloudGoogleComV1beta1DNSPolicySpecAlternativeNameServerConfigTargetNameServersItems0], default is Undefined, required
-        Sets an alternative name server for the associated networks. When specified,
-        all DNS queries are forwarded to a name server that you choose. Names such as .internal
-        are not available when an alternative name server is specified.
+        Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
     """
 
 
@@ -98,9 +90,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSPolicySpecAlternativeNameServerConfigTarge
     Attributes
     ----------
     forwardingPath : str, default is Undefined, optional
-        Forwarding path for this TargetNameServer. If unset or 'default' Cloud DNS will make forwarding
-        decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
-        to the Internet. When set to 'private', Cloud DNS will always send queries through VPC for this target Possible values: ["default", "private"].
+        Forwarding path for this TargetNameServer. If unset or 'default' Cloud DNS will make forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go to the Internet. When set to 'private', Cloud DNS will always send queries through VPC for this target Possible values: ["default", "private"].
     ipv4Address : str, default is Undefined, required
         IPv4 address to forward to.
     """
@@ -132,11 +122,11 @@ schema DNSCnrmCloudGoogleComV1beta1DNSPolicySpecNetworksItems0NetworkRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -154,7 +144,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSPolicyStatus:
     Attributes
     ----------
     conditions : [DNSCnrmCloudGoogleComV1beta1DNSPolicyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the DNSPolicy's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

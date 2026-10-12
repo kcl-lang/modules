@@ -179,7 +179,7 @@ schema DataplexCnrmCloudGoogleComV1alpha1DataplexTaskSpecExecutionSpecServiceAcc
 
 schema DataplexCnrmCloudGoogleComV1alpha1DataplexTaskSpecLakeRef:
     r"""
-    LakeRef defines the resource reference to DataplexLake, which "External" field holds the GCP identifier for the KRM object.
+    LakeRef is a reference to a DataplexLake.
 
     Attributes
     ----------

@@ -43,6 +43,12 @@ schema IamCnrmCloudGoogleComV1alpha1IAMDenyPolicySpec:
     ----------
     displayName : str, default is Undefined, optional
         A user-specified description of the `Policy`. This value can be up to 63 characters.
+    folderRef : IamCnrmCloudGoogleComV1alpha1IAMDenyPolicySpecFolderRef, default is Undefined, optional
+        folder ref
+    organizationRef : IamCnrmCloudGoogleComV1alpha1IAMDenyPolicySpecOrganizationRef, default is Undefined, optional
+        organization ref
+    projectRef : IamCnrmCloudGoogleComV1alpha1IAMDenyPolicySpecProjectRef, default is Undefined, optional
+        project ref
     resourceID : str, default is Undefined, optional
         The IAMDenyPolicy name. If not given, the metadata.name will be used.
     rules : [IamCnrmCloudGoogleComV1alpha1IAMDenyPolicySpecRulesItems0], default is Undefined, optional
@@ -52,9 +58,77 @@ schema IamCnrmCloudGoogleComV1alpha1IAMDenyPolicySpec:
 
     displayName?: str
 
+    folderRef?: IamCnrmCloudGoogleComV1alpha1IAMDenyPolicySpecFolderRef
+
+    organizationRef?: IamCnrmCloudGoogleComV1alpha1IAMDenyPolicySpecOrganizationRef
+
+    projectRef?: IamCnrmCloudGoogleComV1alpha1IAMDenyPolicySpecProjectRef
+
     resourceID?: str
 
     rules?: [IamCnrmCloudGoogleComV1alpha1IAMDenyPolicySpecRulesItems0]
+
+
+schema IamCnrmCloudGoogleComV1alpha1IAMDenyPolicySpecFolderRef:
+    r"""
+    The folder that this resource belongs to.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The 'name' field of a folder, when not managed by Config Connector. This field must be set when 'name' field is not set.
+    name : str, default is Undefined, optional
+        The 'name' field of a 'Folder' resource. This field must be set when 'external' field is not set.
+    namespace : str, default is Undefined, optional
+        The 'namespace' field of a 'Folder' resource. If unset, the namespace is defaulted to the namespace of the referencer resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema IamCnrmCloudGoogleComV1alpha1IAMDenyPolicySpecOrganizationRef:
+    r"""
+    The organization that this resource belongs to.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, required
+        The 'name' field of an organization, when not managed by Config Connector.
+    """
+
+
+    external: str
+
+
+schema IamCnrmCloudGoogleComV1alpha1IAMDenyPolicySpecProjectRef:
+    r"""
+    The project that this resource belongs to.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        The `projectID` field of a project, when not managed by Config Connector.
+    kind : str, default is Undefined, optional
+        The kind of the Project resource; optional but must be `Project` if provided.
+    name : str, default is Undefined, optional
+        The `name` field of a `Project` resource.
+    namespace : str, default is Undefined, optional
+        The `namespace` field of a `Project` resource.
+    """
+
+
+    external?: str
+
+    kind?: str
+
+    name?: str
+
+    namespace?: str
 
 
 schema IamCnrmCloudGoogleComV1alpha1IAMDenyPolicySpecRulesItems0:

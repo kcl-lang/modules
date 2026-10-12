@@ -48,7 +48,7 @@ schema DataplexCnrmCloudGoogleComV1alpha1DataplexEntryTypeSpec:
     displayName : str, default is Undefined, optional
         Optional. User friendly display name.
     location : str, default is Undefined, required
-        location
+        The location that this resource belongs to.
     platform : str, default is Undefined, optional
         Optional. The platform that Entries of this type belongs to.
     projectRef : DataplexCnrmCloudGoogleComV1alpha1DataplexEntryTypeSpecProjectRef, default is Undefined, required
@@ -147,10 +147,18 @@ schema DataplexCnrmCloudGoogleComV1alpha1DataplexEntryTypeSpecRequiredAspectsIte
     ----------
     external : str, default is Undefined, optional
         A reference to an externally managed DataplexAspectType resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/aspectTypes/{{aspecttypeID}}".
+    name : str, default is Undefined, optional
+        The name of a DataplexAspectType resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a DataplexAspectType resource.
     """
 
 
     external?: str
+
+    name?: str
+
+    namespace?: str
 
 
 schema DataplexCnrmCloudGoogleComV1alpha1DataplexEntryTypeStatus:

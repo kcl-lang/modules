@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ServiceDirectoryNamespace:
     r"""
-    servicedirectory cnrm cloud google com v1beta1 service directory namespace
+    ServiceDirectoryNamespace is the Schema for the ServiceDirectoryNamespace API
 
     Attributes
     ----------
@@ -37,14 +37,12 @@ schema ServiceDirectoryNamespace:
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryNamespaceSpec:
     r"""
-    servicedirectory cnrm cloud google com v1beta1 service directory namespace spec
+    ServiceDirectoryNamespaceSpec defines the desired state of ServiceDirectoryNamespace
 
     Attributes
     ----------
     location : str, default is Undefined, required
-        Immutable. The location for the Namespace.
-        A full list of valid locations can be found by running
-        'gcloud beta service-directory locations list'.
+        Immutable. The location for the Namespace. A full list of valid locations can be found by running 'gcloud beta service-directory locations list'.
     projectRef : ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryNamespaceSpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional
@@ -66,11 +64,11 @@ schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryNamespaceSpecPro
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -83,15 +81,14 @@ schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryNamespaceSpecPro
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryNamespaceStatus:
     r"""
-    servicedirectory cnrm cloud google com v1beta1 service directory namespace status
+    ServiceDirectoryNamespaceStatus defines the config connector machine state of ServiceDirectoryNamespace
 
     Attributes
     ----------
     conditions : [ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryNamespaceStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     name : str, default is Undefined, optional
-        The resource name for the namespace
-        in the format 'projects/*/locations/*/namespaces/*'.
+        The resource name for the namespace in the format 'projects/*/locations/*/namespaces/*'.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

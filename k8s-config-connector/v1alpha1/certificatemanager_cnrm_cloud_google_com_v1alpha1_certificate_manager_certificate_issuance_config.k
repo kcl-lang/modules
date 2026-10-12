@@ -41,8 +41,8 @@ schema CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificate
 
     Attributes
     ----------
-    certificateAuthorityConfigRef : CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificateIssuanceConfigSpecCertificateAuthorityConfigRef, default is Undefined, optional
-        certificate authority config ref
+    certificateAuthorityConfig : CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificateIssuanceConfigSpecCertificateAuthorityConfig, default is Undefined, optional
+        certificate authority config
     description : str, default is Undefined, optional
         One or more paragraphs of text description of a CertificateIssuanceConfig.
     keyAlgorithm : str, default is Undefined, optional
@@ -50,7 +50,7 @@ schema CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificate
     lifetime : str, default is Undefined, optional
         Required. Workload certificate lifetime requested.
     location : str, default is Undefined, required
-        location
+        The location that this resource belongs to.
     projectRef : CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificateIssuanceConfigSpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional
@@ -60,7 +60,7 @@ schema CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificate
     """
 
 
-    certificateAuthorityConfigRef?: CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificateIssuanceConfigSpecCertificateAuthorityConfigRef
+    certificateAuthorityConfig?: CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificateIssuanceConfigSpecCertificateAuthorityConfig
 
     description?: str
 
@@ -77,46 +77,46 @@ schema CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificate
     rotationWindowPercentage?: int
 
 
-schema CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificateIssuanceConfigSpecCertificateAuthorityConfigRef:
+schema CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificateIssuanceConfigSpecCertificateAuthorityConfig:
     r"""
     Required. The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
 
     Attributes
     ----------
-    certificateAuthorityServiceConfig : CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificateIssuanceConfigSpecCertificateAuthorityConfigRefCertificateAuthorityServiceConfig, default is Undefined, optional
+    certificateAuthorityServiceConfig : CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificateIssuanceConfigSpecCertificateAuthorityConfigCertificateAuthorityServiceConfig, default is Undefined, optional
         certificate authority service config
     """
 
 
-    certificateAuthorityServiceConfig?: CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificateIssuanceConfigSpecCertificateAuthorityConfigRefCertificateAuthorityServiceConfig
+    certificateAuthorityServiceConfig?: CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificateIssuanceConfigSpecCertificateAuthorityConfigCertificateAuthorityServiceConfig
 
 
-schema CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificateIssuanceConfigSpecCertificateAuthorityConfigRefCertificateAuthorityServiceConfig:
+schema CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificateIssuanceConfigSpecCertificateAuthorityConfigCertificateAuthorityServiceConfig:
     r"""
     Defines a CertificateAuthorityServiceConfig.
 
     Attributes
     ----------
-    caPoolRef : CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificateIssuanceConfigSpecCertificateAuthorityConfigRefCertificateAuthorityServiceConfigCaPoolRef, default is Undefined, optional
+    caPoolRef : CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificateIssuanceConfigSpecCertificateAuthorityConfigCertificateAuthorityServiceConfigCaPoolRef, default is Undefined, optional
         ca pool ref
     """
 
 
-    caPoolRef?: CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificateIssuanceConfigSpecCertificateAuthorityConfigRefCertificateAuthorityServiceConfigCaPoolRef
+    caPoolRef?: CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificateIssuanceConfigSpecCertificateAuthorityConfigCertificateAuthorityServiceConfigCaPoolRef
 
 
-schema CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificateIssuanceConfigSpecCertificateAuthorityConfigRefCertificateAuthorityServiceConfigCaPoolRef:
+schema CertificatemanagerCnrmCloudGoogleComV1alpha1CertificateManagerCertificateIssuanceConfigSpecCertificateAuthorityConfigCertificateAuthorityServiceConfigCaPoolRef:
     r"""
     Required. A CA pool resource used to issue a certificate. The CA pool string has a relative resource path following the form "projects/{project}/locations/{location}/caPools/{ca_pool}".
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        A reference to an externally managed PrivateCACAPool. Should be in the format `projects/{project_id}/locations/{region}/caPools/{caPool}`.
+        A reference to an externally managed PrivateCACAPool resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/caPools/{{caPoolID}}".
     name : str, default is Undefined, optional
-        The `name` of a `PrivateCACAPool` resource.
+        The name of a PrivateCACAPool resource.
     namespace : str, default is Undefined, optional
-        The `namespace` of a `PrivateCACAPool` resource.
+        The namespace of a PrivateCACAPool resource.
     """
 
 

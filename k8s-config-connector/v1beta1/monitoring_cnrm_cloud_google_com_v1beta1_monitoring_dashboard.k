@@ -200,7 +200,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
+        A reference to an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
     name : str, default is Undefined, optional
         The name of a MonitoringAlertPolicy resource.
     namespace : str, default is Undefined, optional
@@ -315,12 +315,12 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutCol
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecColumnLayoutColumnsItems0WidgetsItems0IncidentListPolicyRefsItems0:
     r"""
-    MonitoringAlertPolicyRef defines the resource reference to MonitoringAlertPolicy, which "External" field holds the GCP identifier for the KRM object.
+    MonitoringAlertPolicyRef is a reference to a MonitoringAlertPolicy.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
+        A reference to an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
     name : str, default is Undefined, optional
         The name of a MonitoringAlertPolicy resource.
     namespace : str, default is Undefined, optional
@@ -2162,7 +2162,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
+        A reference to an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
     name : str, default is Undefined, optional
         The name of a MonitoringAlertPolicy resource.
     namespace : str, default is Undefined, optional
@@ -2277,12 +2277,12 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidge
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecGridLayoutWidgetsItems0IncidentListPolicyRefsItems0:
     r"""
-    MonitoringAlertPolicyRef defines the resource reference to MonitoringAlertPolicy, which "External" field holds the GCP identifier for the KRM object.
+    MonitoringAlertPolicyRef is a reference to a MonitoringAlertPolicy.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
+        A reference to an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
     name : str, default is Undefined, optional
         The name of a MonitoringAlertPolicy resource.
     namespace : str, default is Undefined, optional
@@ -4128,7 +4128,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
+        A reference to an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
     name : str, default is Undefined, optional
         The name of a MonitoringAlertPolicy resource.
     namespace : str, default is Undefined, optional
@@ -4243,12 +4243,12 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTil
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecMosaicLayoutTilesItems0WidgetIncidentListPolicyRefsItems0:
     r"""
-    MonitoringAlertPolicyRef defines the resource reference to MonitoringAlertPolicy, which "External" field holds the GCP identifier for the KRM object.
+    MonitoringAlertPolicyRef is a reference to a MonitoringAlertPolicy.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
+        A reference to an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
     name : str, default is Undefined, optional
         The name of a MonitoringAlertPolicy resource.
     namespace : str, default is Undefined, optional
@@ -6104,7 +6104,7 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
+        A reference to an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
     name : str, default is Undefined, optional
         The name of a MonitoringAlertPolicy resource.
     namespace : str, default is Undefined, optional
@@ -6219,12 +6219,12 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsIt
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringDashboardSpecRowLayoutRowsItems0WidgetsItems0IncidentListPolicyRefsItems0:
     r"""
-    MonitoringAlertPolicyRef defines the resource reference to MonitoringAlertPolicy, which "External" field holds the GCP identifier for the KRM object.
+    MonitoringAlertPolicyRef is a reference to a MonitoringAlertPolicy.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
+        A reference to an externally managed MonitoringAlertPolicy resource. Should be in the format "projects/{{projectID}}/alertPolicies/{{alertPolicyID}}".
     name : str, default is Undefined, optional
         The name of a MonitoringAlertPolicy resource.
     namespace : str, default is Undefined, optional

@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ServiceDirectoryService:
     r"""
-    servicedirectory cnrm cloud google com v1beta1 service directory service
+    ServiceDirectoryService is the Schema for the ServiceDirectoryService API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ServiceDirectoryService:
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryServiceSpec:
     r"""
-    servicedirectory cnrm cloud google com v1beta1 service directory service spec
+    ServiceDirectoryServiceSpec defines the desired state of ServiceDirectoryService
 
     Attributes
     ----------
@@ -60,11 +60,11 @@ schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryServiceSpecNames
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `ServiceDirectoryNamespace` resource.
+        A reference to an externally managed ServiceDirectoryNamespace resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/namespaces/{{namespaceID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ServiceDirectoryNamespace resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ServiceDirectoryNamespace resource.
     """
 
 
@@ -77,15 +77,14 @@ schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryServiceSpecNames
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryServiceStatus:
     r"""
-    servicedirectory cnrm cloud google com v1beta1 service directory service status
+    ServiceDirectoryServiceStatus defines the config connector machine state of ServiceDirectoryService
 
     Attributes
     ----------
     conditions : [ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryServiceStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     name : str, default is Undefined, optional
-        The resource name for the service in the
-        format 'projects/*/locations/*/namespaces/*/services/*'.
+        The resource name for the service in the format 'projects/*/locations/*/namespaces/*/services/*'.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

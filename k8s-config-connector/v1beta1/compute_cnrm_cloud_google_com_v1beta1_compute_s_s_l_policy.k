@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeSSLPolicy:
     r"""
-    compute cnrm cloud google com v1beta1 compute s s l policy
+    ComputeSSLPolicy is the Schema for the ComputeSSLPolicy API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeSSLPolicy:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLPolicySpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute s s l policy spec
+    ComputeSSLPolicySpec defines the desired state of ComputeSSLPolicy
 
     Attributes
     ----------
@@ -55,8 +55,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLPolicySpec:
     description : str, default is Undefined, optional
         Immutable. An optional description of this resource.
     minTlsVersion : str, default is Undefined, optional
-        The minimum version of SSL protocol that can be used by the clients
-        to establish a connection with the load balancer. Default value: "TLS_1_0" Possible values: ["TLS_1_0", "TLS_1_1", "TLS_1_2"].
+        The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. Default value: "TLS_1_0" Possible values: ["TLS_1_0", "TLS_1_1", "TLS_1_2"].
     profile : str, default is Undefined, optional
         Profile specifies the set of SSL features that can be used by the
         load balancer when negotiating SSL with clients. If using 'CUSTOM',
@@ -84,19 +83,18 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLPolicySpec:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSSLPolicyStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute s s l policy status
+    ComputeSSLPolicyStatus defines the config connector machine state of ComputeSSLPolicy
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeSSLPolicyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
     enabledFeatures : [str], default is Undefined, optional
         The list of features enabled in the SSL policy.
     fingerprint : str, default is Undefined, optional
-        Fingerprint of this resource. A hash of the contents stored in this
-        object. This field is used in optimistic locking.
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     selfLink : str, default is Undefined, optional

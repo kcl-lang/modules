@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema LoggingLogSink:
     r"""
-    logging cnrm cloud google com v1beta1 logging log sink
+    LoggingLogSink is the Schema for the LoggingLogSink API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema LoggingLogSink:
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpec:
     r"""
-    logging cnrm cloud google com v1beta1 logging log sink spec
+    LoggingLogSinkSpec defines the desired state of LoggingLogSink
 
     Attributes
     ----------
@@ -95,7 +95,7 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpec:
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecBigqueryOptions:
     r"""
-    Options that affect sinks exporting data to BigQuery.
+    logging cnrm cloud google com v1beta1 logging log sink spec bigquery options
 
     Attributes
     ----------
@@ -135,16 +135,16 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecDestination:
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecDestinationBigQueryDatasetRef:
     r"""
-    logging cnrm cloud google com v1beta1 logging log sink spec destination big query dataset ref
+    DatasetRef is a reference to a BigQueryDataset.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `bigquery.googleapis.com/projects/{{project}}/datasets/{{value}}`, where {{value}} is the `name` field of a `BigQueryDataset` resource.
+        A reference to an externally-managed BigQueryDataset resource. Should be in the format "projects/{{projectID}}/datasets/{{datasetID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a BigQueryDataset resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a BigQueryDataset resource.
     """
 
 
@@ -157,20 +157,24 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecDestinationBigQueryData
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecDestinationLoggingLogBucketRef:
     r"""
-    Only `external` field is supported to configure the reference.
+    LoggingLogBucketRef is a reference to a LoggingLogBucket.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `logging.googleapis.com/projects/{{project}}/locations/{{location}}/buckets/{{value}}`, where {{value}} is the `name` field of a `LoggingLogBucket` resource.
+        A reference to an externally managed LoggingLogBucket resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/buckets/{{bucketID}}".
+    kind : str, default is Undefined, optional
+        The kind of the LoggingLogBucket resource.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a LoggingLogBucket resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a LoggingLogBucket resource.
     """
 
 
     external?: str
+
+    kind?: str
 
     name?: str
 
@@ -179,16 +183,16 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecDestinationLoggingLogBu
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecDestinationPubSubTopicRef:
     r"""
-    logging cnrm cloud google com v1beta1 logging log sink spec destination pub sub topic ref
+    PubSubTopicRef is a reference to a PubSubTopic.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `pubsub.googleapis.com/projects/{{project}}/topics/{{value}}`, where {{value}} is the `name` field of a `PubSubTopic` resource.
+        A reference to an externally managed PubSubTopic resource. Should be in the format "projects/{{projectID}}/topics/{{topicID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a PubSubTopic resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a PubSubTopic resource.
     """
 
 
@@ -201,16 +205,16 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecDestinationPubSubTopicR
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecDestinationStorageBucketRef:
     r"""
-    logging cnrm cloud google com v1beta1 logging log sink spec destination storage bucket ref
+    StorageBucketRef is a reference to a GCP StorageBucket.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `storage.googleapis.com/{{value}}`, where {{value}} is the `name` field of a `StorageBucket` resource.
+        A reference to an externally managed StorageBucket resource. Should be in the format "projects/{{projectID}}/buckets/{{bucketID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a StorageBucket resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a StorageBucket resource.
     """
 
 
@@ -249,17 +253,16 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecExclusionsItems0:
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecFolderRef:
     r"""
-    The folder in which to create the sink. Only one of projectRef,
-    folderRef, or organizationRef may be specified.
+    Immutable. The folder in which to create the sink. Only one of projectRef, folderRef, or organizationRef may be specified.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `folderId` field of a `Folder` resource.
+        The 'name' field of a folder, when not managed by Config Connector. The recommended format is "folders/{folderID}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The 'name' field of a 'Folder' resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The 'namespace' field of a 'Folder' resource.
     """
 
 
@@ -272,17 +275,16 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecFolderRef:
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecOrganizationRef:
     r"""
-    The organization in which to create the sink. Only one of projectRef,
-    folderRef, or organizationRef may be specified.
+    Immutable. The organization in which to create the sink. Only one of projectRef, folderRef, or organizationRef may be specified.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of an `Organization` resource.
+        The 'name' field of an organization, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The 'name' field of an 'Organization' resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The 'namespace' field of an 'Organization' resource.
     """
 
 
@@ -295,17 +297,16 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecOrganizationRef:
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecProjectRef:
     r"""
-    The project in which to create the sink. Only one of projectRef,
-    folderRef, or organizationRef may be specified.
+    Immutable. The project in which to create the sink. Only one of projectRef, folderRef, or organizationRef may be specified.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -318,12 +319,12 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkSpecProjectRef:
 
 schema LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkStatus:
     r"""
-    logging cnrm cloud google com v1beta1 logging log sink status
+    LoggingLogSinkStatus defines the config connector machine state of LoggingLogSink
 
     Attributes
     ----------
     conditions : [LoggingCnrmCloudGoogleComV1beta1LoggingLogSinkStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     writerIdentity : str, default is Undefined, optional

@@ -48,7 +48,7 @@ schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionSpec:
     isSecretDataBase64 : bool, default is Undefined, optional
         DEPRECATED. You do not need to set this field in direct reconciler mode.
     resourceID : str, default is Undefined, optional
-        The SecretVersion number. If given, Config Connector acquires the resource from the Secret Manager service. If not given, Config Connector adds a new secret version to the GCP service, and you can find out the version number from `status.observedState.version`
+        The service-generated SecretVersion number. If given, Config Connector acquires the resource from the Secret Manager service. If not given, Config Connector adds a new secret version to the GCP service, and you can find out the version number from `status.observedState.version`
     secretData : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionSpecSecretData, default is Undefined, optional
         secret data
     secretRef : SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretVersionSpecSecretRef, default is Undefined, optional

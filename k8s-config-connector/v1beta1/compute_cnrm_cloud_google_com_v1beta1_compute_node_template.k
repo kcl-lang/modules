@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeNodeTemplate:
     r"""
-    compute cnrm cloud google com v1beta1 compute node template
+    ComputeNodeTemplate is the Schema for the ComputeNodeTemplate API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeNodeTemplate:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeTemplateSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute node template spec
+    ComputeNodeTemplateSpec defines the desired state of ComputeNodeTemplate
 
     Attributes
     ----------
@@ -46,13 +46,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeTemplateSpec:
     description : str, default is Undefined, optional
         Immutable. An optional textual description of the resource.
     nodeType : str, default is Undefined, optional
-        Immutable. Node type to use for nodes group that are created from this template.
-        Only one of nodeTypeFlexibility and nodeType can be specified.
+        Immutable. Node type to use for nodes group that are created from this template. Only one of nodeTypeFlexibility and nodeType can be specified.
     nodeTypeFlexibility : ComputeCnrmCloudGoogleComV1beta1ComputeNodeTemplateSpecNodeTypeFlexibility, default is Undefined, optional
         node type flexibility
     region : str, default is Undefined, required
         Immutable. Region where nodes using the node template will be created.
-        If it is not provided, the provider region is used.
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
     serverBinding : ComputeCnrmCloudGoogleComV1beta1ComputeNodeTemplateSpecServerBinding, default is Undefined, optional
@@ -77,10 +75,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeTemplateSpec:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeTemplateSpecNodeTypeFlexibility:
     r"""
-    Immutable. Flexible properties for the desired node type. Node groups that
-    use this node template will create nodes of a type that matches
-    these properties. Only one of nodeTypeFlexibility and nodeType can
-    be specified.
+    Immutable. Flexible properties for the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. Only one of nodeTypeFlexibility and nodeType can be specified.
 
     Attributes
     ----------
@@ -102,8 +97,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeTemplateSpecNodeTypeFlexibilit
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeTemplateSpecServerBinding:
     r"""
-    Immutable. The server binding policy for nodes using this template. Determines
-    where the nodes should restart following a maintenance event.
+    Immutable. The server binding policy for nodes using this template. Determines where the nodes should restart following a maintenance event.
 
     Attributes
     ----------
@@ -128,24 +122,28 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeTemplateSpecServerBinding:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeTemplateStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute node template status
+    ComputeNodeTemplateStatus defines the config connector machine state of ComputeNodeTemplate
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeNodeTemplateStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the ComputeNodeTemplate resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     selfLink : str, default is Undefined, optional
-        self link
+        Server-defined URL for the resource.
     """
 
 
     conditions?: [ComputeCnrmCloudGoogleComV1beta1ComputeNodeTemplateStatusConditionsItems0]
 
     creationTimestamp?: str
+
+    externalRef?: str
 
     observedGeneration?: int
 

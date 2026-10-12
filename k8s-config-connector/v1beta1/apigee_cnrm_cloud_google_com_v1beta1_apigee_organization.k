@@ -56,7 +56,7 @@ schema ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationSpec:
     properties : {str:str}, default is Undefined, optional
         Properties defined in the Apigee organization profile.
     resourceID : str, default is Undefined, optional
-        The ApigeeOrganization name. If not given, the metadata.name will be used.
+        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
     runtimeDatabaseEncryptionKeyRef : ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationSpecRuntimeDatabaseEncryptionKeyRef, default is Undefined, optional
         runtime database encryption key ref
     runtimeType : str, default is Undefined, required
@@ -138,7 +138,7 @@ schema ApigeeCnrmCloudGoogleComV1beta1ApigeeOrganizationSpecAuthorizedNetworkRef
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
         The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional

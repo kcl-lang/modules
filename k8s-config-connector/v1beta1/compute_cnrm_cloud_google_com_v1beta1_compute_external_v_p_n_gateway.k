@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeExternalVPNGateway:
     r"""
-    compute cnrm cloud google com v1beta1 compute external v p n gateway
+    ComputeExternalVPNGateway is the Schema for the ComputeExternalVPNGateway API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeExternalVPNGateway:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeExternalVPNGatewaySpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute external v p n gateway spec
+    ComputeExternalVPNGatewaySpec defines the desired state of ComputeExternalVPNGateway
 
     Attributes
     ----------
@@ -46,7 +46,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeExternalVPNGatewaySpec:
     interface : [ComputeCnrmCloudGoogleComV1beta1ComputeExternalVPNGatewaySpecInterfaceItems0], default is Undefined, optional
         Immutable. A list of interfaces on this external VPN gateway.
     redundancyType : str, default is Undefined, optional
-        Immutable. Indicates the redundancy type of this external VPN gateway Possible values: ["FOUR_IPS_REDUNDANCY", "SINGLE_IP_INTERNALLY_REDUNDANT", "TWO_IPS_REDUNDANCY"].
+        Immutable. Indicates the redundancy type of this external VPN gateway. Possible values: ["FOUR_IPS_REDUNDANCY", "SINGLE_IP_INTERNALLY_REDUNDANT", "TWO_IPS_REDUNDANCY"].
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
     """
@@ -68,16 +68,9 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeExternalVPNGatewaySpecInterfaceIte
     Attributes
     ----------
     id : int, default is Undefined, optional
-        Immutable. The numeric ID for this interface. Allowed values are based on the redundancy type
-        of this external VPN gateway
-        * '0 - SINGLE_IP_INTERNALLY_REDUNDANT'
-        * '0, 1 - TWO_IPS_REDUNDANCY'
-        * '0, 1, 2, 3 - FOUR_IPS_REDUNDANCY'.
+        Immutable. The numeric ID for this interface. Allowed values are based on the redundancy type of this external VPN gateway * '0 - SINGLE_IP_INTERNALLY_REDUNDANT' * '0, 1 - TWO_IPS_REDUNDANCY' * '0, 1, 2, 3 - FOUR_IPS_REDUNDANCY'.
     ipAddress : str, default is Undefined, optional
-        Immutable. IP address of the interface in the external VPN gateway.
-        Only IPv4 is supported. This IP address can be either from
-        your on-premise gateway or another Cloud provider's VPN gateway,
-        it cannot be an IP address from Google Compute Engine.
+        Immutable. IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
     """
 
 
@@ -88,19 +81,18 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeExternalVPNGatewaySpecInterfaceIte
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeExternalVPNGatewayStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute external v p n gateway status
+    ComputeExternalVPNGatewayStatus defines the config connector machine state of ComputeExternalVPNGateway
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeExternalVPNGatewayStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     labelFingerprint : str, default is Undefined, optional
-        The fingerprint used for optimistic locking of this resource.  Used
-        internally during updates.
+        The fingerprint used for optimistic locking of this resource. Used internally during updates.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     selfLink : str, default is Undefined, optional
-        self link
+        The self link of the ComputeExternalVPNGateway.
     """
 
 

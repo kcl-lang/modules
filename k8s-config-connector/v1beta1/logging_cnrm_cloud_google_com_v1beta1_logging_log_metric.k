@@ -172,13 +172,13 @@ schema LoggingCnrmCloudGoogleComV1beta1LoggingLogMetricSpecLoggingLogBucketRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The external name of the referenced resource
+        A reference to an externally managed LoggingLogBucket resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/buckets/{{bucketID}}".
     kind : str, default is Undefined, optional
-        Kind of the referent.
+        The kind of the LoggingLogBucket resource.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a LoggingLogBucket resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a LoggingLogBucket resource.
     """
 
 

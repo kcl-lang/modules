@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema IAMServiceAccountKey:
     r"""
-    iam cnrm cloud google com v1beta1 i a m service account key
+    IAMServiceAccountKey is the Schema for the IAMServiceAccountKey API
 
     Attributes
     ----------
@@ -37,18 +37,18 @@ schema IAMServiceAccountKey:
 
 schema IamCnrmCloudGoogleComV1beta1IAMServiceAccountKeySpec:
     r"""
-    iam cnrm cloud google com v1beta1 i a m service account key spec
+    IAMServiceAccountKeySpec defines the desired state of IAMServiceAccountKey
 
     Attributes
     ----------
     keyAlgorithm : str, default is Undefined, optional
         Immutable. The algorithm used to generate the key, used only on create. KEY_ALG_RSA_2048 is the default algorithm. Valid values are: "KEY_ALG_RSA_1024", "KEY_ALG_RSA_2048".
     privateKeyType : str, default is Undefined, optional
-        Immutable.
+        Immutable. The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
     publicKeyData : str, default is Undefined, optional
         Immutable. A field that allows clients to upload their own public key. If set, use this public key data to create a service account key for given service account. Please note, the expected format for this field is a base64 encoded X509_PEM.
     publicKeyType : str, default is Undefined, optional
-        Immutable.
+        Immutable. The output format for the public key. TYPE_NONE is the default for public key output.
     serviceAccountRef : IamCnrmCloudGoogleComV1beta1IAMServiceAccountKeySpecServiceAccountRef, default is Undefined, required
         service account ref
     """
@@ -67,12 +67,12 @@ schema IamCnrmCloudGoogleComV1beta1IAMServiceAccountKeySpec:
 
 schema IamCnrmCloudGoogleComV1beta1IAMServiceAccountKeySpecServiceAccountRef:
     r"""
-    iam cnrm cloud google com v1beta1 i a m service account key spec service account ref
+    Immutable. The Service Account to create a key for.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `email` field of an `IAMServiceAccount` resource.
+        The `email` field of an `IAMServiceAccount` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -89,12 +89,12 @@ schema IamCnrmCloudGoogleComV1beta1IAMServiceAccountKeySpecServiceAccountRef:
 
 schema IamCnrmCloudGoogleComV1beta1IAMServiceAccountKeyStatus:
     r"""
-    iam cnrm cloud google com v1beta1 i a m service account key status
+    IAMServiceAccountKeyStatus defines the config connector machine state of IAMServiceAccountKey
 
     Attributes
     ----------
     conditions : [IamCnrmCloudGoogleComV1beta1IAMServiceAccountKeyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     name : str, default is Undefined, optional
         Immutable. The name used for this key pair.
     observedGeneration : int, default is Undefined, optional

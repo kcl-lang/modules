@@ -427,8 +427,8 @@ schema DataprocCnrmCloudGoogleComV1alpha1DataprocNodeGroupStatusObservedStateNod
         Output only. List of references to Compute Engine instances.
     isPreemptible : bool, default is Undefined, optional
         Output only. Specifies that this instance group contains preemptible instances.
-    managedGroupConfig : any, default is Undefined, optional
-        Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+    managedGroupConfig : DataprocCnrmCloudGoogleComV1alpha1DataprocNodeGroupStatusObservedStateNodeGroupConfigManagedGroupConfig, default is Undefined, optional
+        managed group config
     """
 
 
@@ -440,7 +440,7 @@ schema DataprocCnrmCloudGoogleComV1alpha1DataprocNodeGroupStatusObservedStateNod
 
     isPreemptible?: bool
 
-    managedGroupConfig?: any
+    managedGroupConfig?: DataprocCnrmCloudGoogleComV1alpha1DataprocNodeGroupStatusObservedStateNodeGroupConfigManagedGroupConfig
 
 
 schema DataprocCnrmCloudGoogleComV1alpha1DataprocNodeGroupStatusObservedStateNodeGroupConfigInstanceFlexibilityPolicy:
@@ -449,12 +449,30 @@ schema DataprocCnrmCloudGoogleComV1alpha1DataprocNodeGroupStatusObservedStateNod
 
     Attributes
     ----------
-    instanceSelectionResults : [any], default is Undefined, optional
+    instanceSelectionResults : [DataprocCnrmCloudGoogleComV1alpha1DataprocNodeGroupStatusObservedStateNodeGroupConfigInstanceFlexibilityPolicyInstanceSelectionResultsItems0], default is Undefined, optional
         Output only. A list of instance selection results in the group.
     """
 
 
-    instanceSelectionResults?: [any]
+    instanceSelectionResults?: [DataprocCnrmCloudGoogleComV1alpha1DataprocNodeGroupStatusObservedStateNodeGroupConfigInstanceFlexibilityPolicyInstanceSelectionResultsItems0]
+
+
+schema DataprocCnrmCloudGoogleComV1alpha1DataprocNodeGroupStatusObservedStateNodeGroupConfigInstanceFlexibilityPolicyInstanceSelectionResultsItems0:
+    r"""
+    dataproc cnrm cloud google com v1alpha1 dataproc node group status observed state node group config instance flexibility policy instance selection results items0
+
+    Attributes
+    ----------
+    machineType : str, default is Undefined, optional
+        Output only. Full machine-type names, e.g. "n1-standard-16".
+    vmCount : int, default is Undefined, optional
+        Output only. Number of VM provisioned with the machine_type.
+    """
+
+
+    machineType?: str
+
+    vmCount?: int
 
 
 schema DataprocCnrmCloudGoogleComV1alpha1DataprocNodeGroupStatusObservedStateNodeGroupConfigInstanceReferencesItems0:
@@ -481,5 +499,27 @@ schema DataprocCnrmCloudGoogleComV1alpha1DataprocNodeGroupStatusObservedStateNod
     publicEciesKey?: str
 
     publicKey?: str
+
+
+schema DataprocCnrmCloudGoogleComV1alpha1DataprocNodeGroupStatusObservedStateNodeGroupConfigManagedGroupConfig:
+    r"""
+    Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+
+    Attributes
+    ----------
+    instanceGroupManagerName : str, default is Undefined, optional
+        Output only. The name of the Instance Group Manager for this group.
+    instanceGroupManagerURI : str, default is Undefined, optional
+        Output only. The partial URI to the instance group manager for this group. E.g. projects/my-project/regions/us-central1/instanceGroupManagers/my-igm.
+    instanceTemplateName : str, default is Undefined, optional
+        Output only. The name of the Instance Template used for the Managed Instance Group.
+    """
+
+
+    instanceGroupManagerName?: str
+
+    instanceGroupManagerURI?: str
+
+    instanceTemplateName?: str
 
 

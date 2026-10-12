@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema PrivateCACertificateTemplate:
     r"""
-    privateca cnrm cloud google com v1beta1 private c a certificate template
+    PrivateCACertificateTemplate is the Schema for the PrivateCACertificateTemplate API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema PrivateCACertificateTemplate:
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpec:
     r"""
-    privateca cnrm cloud google com v1beta1 private c a certificate template spec
+    PrivateCACertificateTemplateSpec defines the desired state of PrivateCACertificateTemplate
 
     Attributes
     ----------
@@ -46,7 +46,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpec:
     identityConstraints : PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecIdentityConstraints, default is Undefined, optional
         identity constraints
     location : str, default is Undefined, required
-        Immutable. The location for the resource
+        The location of this resource.
     passthroughExtensions : PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPassthroughExtensions, default is Undefined, optional
         passthrough extensions
     predefinedValues : PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPredefinedValues, default is Undefined, optional
@@ -54,7 +54,7 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpec:
     projectRef : PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The PrivateCACertificateTemplate name. If not given, the metadata.name will be used.
     """
 
 
@@ -369,18 +369,16 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecPredefi
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecProjectRef:
     r"""
-    Immutable. The Project that this resource belongs to.
+    The project that this resource belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The project for the resource
-
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -393,12 +391,12 @@ schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateSpecProject
 
 schema PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateStatus:
     r"""
-    privateca cnrm cloud google com v1beta1 private c a certificate template status
+    PrivateCACertificateTemplateStatus defines the config connector machine state of PrivateCACertificateTemplate
 
     Attributes
     ----------
     conditions : [PrivatecaCnrmCloudGoogleComV1beta1PrivateCACertificateTemplateStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     createTime : str, default is Undefined, optional
         Output only. The time at which this CertificateTemplate was created.
     observedGeneration : int, default is Undefined, optional

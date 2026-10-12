@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema MonitoringMonitoredProject:
     r"""
-    monitoring cnrm cloud google com v1beta1 monitoring monitored project
+    MonitoringMonitoredProject is the Schema for the monitoring API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema MonitoringMonitoredProject:
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringMonitoredProjectSpec:
     r"""
-    monitoring cnrm cloud google com v1beta1 monitoring monitored project spec
+    MonitoringMonitoredProjectSpec defines the desired state of MonitoringMonitoredProject
 
     Attributes
     ----------
@@ -55,12 +55,12 @@ schema MonitoringCnrmCloudGoogleComV1beta1MonitoringMonitoredProjectSpec:
 
 schema MonitoringCnrmCloudGoogleComV1beta1MonitoringMonitoredProjectStatus:
     r"""
-    monitoring cnrm cloud google com v1beta1 monitoring monitored project status
+    MonitoringMonitoredProjectStatus defines the config connector machine state of MonitoringMonitoredProject
 
     Attributes
     ----------
     conditions : [MonitoringCnrmCloudGoogleComV1beta1MonitoringMonitoredProjectStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the MonitoringMonitoredProject's current state.
     createTime : str, default is Undefined, optional
         Output only. The time when this `MonitoredProject` was created.
     observedGeneration : int, default is Undefined, optional

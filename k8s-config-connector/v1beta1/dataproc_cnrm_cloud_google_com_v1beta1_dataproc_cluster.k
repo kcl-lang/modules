@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema DataprocCluster:
     r"""
-    dataproc cnrm cloud google com v1beta1 dataproc cluster
+    DataprocCluster is the Schema for the dataproc API
 
     Attributes
     ----------
@@ -67,7 +67,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpec:
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfig:
     r"""
-    Immutable. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+    The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
 
     Attributes
     ----------
@@ -82,7 +82,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfig:
     gceClusterConfig : DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfig, default is Undefined, optional
         gce cluster config
     initializationActions : [DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigInitializationActionsItems0], default is Undefined, optional
-        Immutable. Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi
+        Immutable. Optional. Commands to run on each node after the cluster is configured.
     lifecycleConfig : DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigLifecycleConfig, default is Undefined, optional
         lifecycle config
     masterConfig : DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigMasterConfig, default is Undefined, optional
@@ -156,13 +156,11 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigAutoscalingConf
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Optional. The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]` * `projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]` Note that the policy must be in the same project and Dataproc region.
-
-        Allowed value: The Google Cloud resource name of a `DataprocAutoscalingPolicy` resource (format: `projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{name}}`).
+        A reference to an externally managed DataprocAutoscalingPolicy resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/autoscalingPolicies/{{policyID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a DataprocAutoscalingPolicy resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a DataprocAutoscalingPolicy resource.
     """
 
 
@@ -194,7 +192,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigDataprocMetricC
     Attributes
     ----------
     metricOverrides : [str], default is Undefined, optional
-        Immutable. Optional. Specify one or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course (for the `SPARK` metric source, any [Spark metric] (https://spark.apache.org/docs/latest/monitoring.html#metrics) can be specified). Provide metrics in the following format: `METRIC_SOURCE:INSTANCE:GROUP:METRIC` Use camelcase as appropriate. Examples: ``` yarn:ResourceManager:QueueMetrics:AppsCompleted spark:driver:DAGScheduler:job.allJobs sparkHistoryServer:JVM:Memory:NonHeapMemoryUsage.committed hiveserver2:JVM:Memory:NonHeapMemoryUsage.used ``` Notes: * Only the specified overridden metrics will be collected for the metric source. For example, if one or more `spark:executive` metrics are listed as metric overrides, other `SPARK` metrics will not be collected. The collection of the default metrics for other OSS metric sources is unaffected. For example, if both `SPARK` andd `YARN` metric sources are enabled, and overrides are provided for Spark metrics only, all default YARN metrics will be collected.
+        Immutable. Optional. Specify one or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course (for the `SPARK` metric source, any [Spark metric] (https://spark.apache.org/docs/latest/monitoring.html#metrics) can be specified). Provide metrics in the following format: `METRIC_SOURCE:INSTANCE:GROUP:METRIC` Use camelcase as appropriate. Examples: ``` yarn:ResourceManager:QueueMetrics:AppsCompleted spark:driver:DAGScheduler:job.allJobs sparkHistoryServer:JVM:Memory:NonHeapMemoryUsage.committed hiveserver2:JVM:Memory:NonHeapMemoryUsage.used ``` Notes: * Only the specified overridden metrics will be collected for the metric source. For example, if one or more `spark:executive` metrics are listed as metric overrides, other `SPARK` metrics will not be collected. The collection of the default metrics for other OSS metric sources is unaffected. For example, if both `SPARK` and `YARN` metric sources are enabled, and overrides are provided for Spark metrics only, all default YARN metrics will be collected.
     metricSource : str, default is Undefined, required
         Immutable. Required. Default metrics are collected unless `metricOverrides` are specified for the metric source (see [Available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) for more information). Possible values: METRIC_SOURCE_UNSPECIFIED, MONITORING_AGENT_DEFAULTS, HDFS, SPARK, YARN, SPARK_HISTORY_SERVER, HIVESERVER2
     """
@@ -207,7 +205,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigDataprocMetricC
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigEncryptionConfig:
     r"""
-    Immutable. Optional. Encryption settings for the cluster.
+    Immutable. Optional. Encryption config for the cluster.
 
     Attributes
     ----------
@@ -226,13 +224,11 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigEncryptionConfi
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
-
-        Allowed value: The `selfLink` field of a `KMSCryptoKey` resource.
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` of a `KMSCryptoKey` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` of a `KMSCryptoKey` resource.
     """
 
 
@@ -245,7 +241,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigEncryptionConfi
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigEndpointConfig:
     r"""
-    Immutable. Optional. Port/endpoint configuration for this cluster
+    Immutable. Optional. Port access config for the cluster.
 
     Attributes
     ----------
@@ -259,7 +255,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigEndpointConfig:
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfig:
     r"""
-    Immutable. Optional. The shared Compute Engine config settings for all instances in a cluster.
+    Immutable. Optional. Compute Engine config settings for a cluster.
 
     Attributes
     ----------
@@ -340,13 +336,11 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfi
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see [Using Subnetworks](https://cloud.google.com/compute/docs/subnetworks) for more information). A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` * `default`
-
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -378,13 +372,11 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfi
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Required. The URI of a sole-tenant [node group resource](https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on. A full URL, partial URI, or node group name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1` * `projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1` * `node-group-1`
-
-        Allowed value: The `selfLink` field of a `ComputeNodeGroup` resource.
+        A reference to an externally managed ContainerNodePool resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/clusters/{{clusterID}}/nodePools/{{nodePoolID}}" or "projects/{{projectID}}/zones/{{zone}}/clusters/{{clusterID}}/nodePools/{{nodePoolID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ContainerNodePool resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ContainerNodePool resource.
     """
 
 
@@ -424,9 +416,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfi
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Optional. The [Dataproc service account](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_dataproc) (also see [VM Data Plane identity](https://cloud.google.com/dataproc/docs/concepts/iam/dataproc-principals#vm_service_account_data_plane_identity)) used by Dataproc cluster VM instances to access Google Cloud Platform services. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
-
-        Allowed value: The `email` field of an `IAMServiceAccount` resource.
+        The `email` field of an `IAMServiceAccount` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -470,13 +460,11 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigGceClusterConfi
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0` * `projects/[project_id]/regions/us-east1/subnetworks/sub0` * `sub0`
-
-        Allowed value: The `selfLink` field of a `ComputeSubnetwork` resource.
+        A reference to an externally managed ComputeSubnetwork resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/subnetworks/{{subnetworkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeSubnetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeSubnetwork resource.
     """
 
 
@@ -507,7 +495,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigInitializationA
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigLifecycleConfig:
     r"""
-    Immutable. Optional. Lifecycle setting for the cluster.
+    Immutable. Optional. Lifecycle config for the cluster.
 
     Attributes
     ----------
@@ -572,9 +560,9 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigMasterConfigAcc
     Attributes
     ----------
     acceleratorCount : int, default is Undefined, optional
-        Immutable. The number of the accelerator cards of this type exposed to this instance.
+        Immutable. The number of accelerator cards exposed to an instance.
     acceleratorType : str, default is Undefined, optional
-        Immutable. Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80` * `projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80` * `nvidia-tesla-k80` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+        Immutable. The accelerator type resource namename (see GPUs on Compute Engine).
     """
 
 
@@ -616,13 +604,11 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigMasterConfigIma
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]` * `projects/[project_id]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]` * `projects/[project_id]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
-
-        Allowed value: The `selfLink` field of a `ComputeImage` resource.
+        A reference to an externally managed ComputeImage resource. Should be in the format "projects/{{project}}/global/images/{{name}}" or "projects/{{project}}/global/images/family/{{family}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeImage resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeImage resource.
     """
 
 
@@ -635,7 +621,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigMasterConfigIma
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigMetastoreConfig:
     r"""
-    Immutable. Optional. Metastore configuration.
+    Immutable. Optional. Metastore config for the cluster.
 
     Attributes
     ----------
@@ -654,12 +640,11 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigMetastoreConfig
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/[project_id]/locations/[dataproc_region]/services/[service-name]`
+        A reference to an externally managed DataprocMetastoreService resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/services/{{serviceID}}".
     name : str, default is Undefined, optional
-        [WARNING] DataprocMetastoreService not yet supported in Config Connector, use 'external' field to reference existing resources.
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a DataprocMetastoreService resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a DataprocMetastoreService resource.
     """
 
 
@@ -672,7 +657,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigMetastoreConfig
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorkerConfig:
     r"""
-    Immutable. Optional. The Compute Engine config settings for additional worker instances in a cluster.
+    Immutable. Optional. The Compute Engine config settings for secondary worker instances in a cluster.
 
     Attributes
     ----------
@@ -682,6 +667,8 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorker
         disk config
     imageRef : DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorkerConfigImageRef, default is Undefined, optional
         image ref
+    instanceFlexibilityPolicy : DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorkerConfigInstanceFlexibilityPolicy, default is Undefined, optional
+        instance flexibility policy
     machineType : str, default is Undefined, optional
         Immutable. Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
     minCpuPlatform : str, default is Undefined, optional
@@ -699,6 +686,8 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorker
 
     imageRef?: DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorkerConfigImageRef
 
+    instanceFlexibilityPolicy?: DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorkerConfigInstanceFlexibilityPolicy
+
     machineType?: str
 
     minCpuPlatform?: str
@@ -715,9 +704,9 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorker
     Attributes
     ----------
     acceleratorCount : int, default is Undefined, optional
-        Immutable. The number of the accelerator cards of this type exposed to this instance.
+        Immutable. The number of accelerator cards exposed to an instance.
     acceleratorType : str, default is Undefined, optional
-        Immutable. Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80` * `projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80` * `nvidia-tesla-k80` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+        Immutable. The accelerator type resource namename (see GPUs on Compute Engine).
     """
 
 
@@ -759,13 +748,11 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorker
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]` * `projects/[project_id]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]` * `projects/[project_id]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
-
-        Allowed value: The `selfLink` field of a `ComputeImage` resource.
+        A reference to an externally managed ComputeImage resource. Should be in the format "projects/{{project}}/global/images/{{name}}" or "projects/{{project}}/global/images/family/{{family}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeImage resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeImage resource.
     """
 
 
@@ -776,9 +763,63 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorker
     namespace?: str
 
 
+schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorkerConfigInstanceFlexibilityPolicy:
+    r"""
+    Optional. Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+
+    Attributes
+    ----------
+    instanceSelectionList : [DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListItems0], default is Undefined, optional
+        Optional. List of instance selection options that the group will use when creating new VMs.
+    provisioningModelMix : DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix, default is Undefined, optional
+        provisioning model mix
+    """
+
+
+    instanceSelectionList?: [DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListItems0]
+
+    provisioningModelMix?: DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix
+
+
+schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListItems0:
+    r"""
+    dataproc cnrm cloud google com v1beta1 dataproc cluster spec config secondary worker config instance flexibility policy instance selection list items0
+
+    Attributes
+    ----------
+    machineTypes : [str], default is Undefined, optional
+        Optional. Full machine-type names, e.g. "n1-standard-16".
+    rank : int, default is Undefined, optional
+        Optional. Preference of this instance selection. Lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
+    """
+
+
+    machineTypes?: [str]
+
+    rank?: int
+
+
+schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecondaryWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix:
+    r"""
+    Optional. Defines how the Group selects the provisioning model to ensure required reliability.
+
+    Attributes
+    ----------
+    standardCapacityBase : int, default is Undefined, optional
+        Optional. The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need. Dataproc will create only standard VMs until it reaches standard_capacity_base, then it will start using standard_capacity_percent_above_base to mix Spot with Standard VMs. eg. If 15 instances are requested and standard_capacity_base is 5, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances.
+    standardCapacityPercentAboveBase : int, default is Undefined, optional
+        Optional. The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs. The percentage applies only to the capacity above standard_capacity_base. eg. If 15 instances are requested and standard_capacity_base is 5 and standard_capacity_percent_above_base is 30, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances. The mix will be 30% standard and 70% spot.
+    """
+
+
+    standardCapacityBase?: int
+
+    standardCapacityPercentAboveBase?: int
+
+
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecurityConfig:
     r"""
-    Immutable. Optional. Security settings for the cluster.
+    Immutable. Optional. Security config for the cluster.
 
     Attributes
     ----------
@@ -796,12 +837,12 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecurityConfig:
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecurityConfigIdentityConfig:
     r"""
-    Immutable. Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.
+    Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.
 
     Attributes
     ----------
     userServiceAccountMapping : {str:str}, default is Undefined, required
-        Immutable. Required. Map of user to service account.
+        Required. Map of user to service account.
     """
 
 
@@ -885,13 +926,11 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecurityConfigK
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Optional. The uri of the KMS key used to encrypt various sensitive files.
-
-        Allowed value: The `selfLink` field of a `KMSCryptoKey` resource.
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` of a `KMSCryptoKey` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` of a `KMSCryptoKey` resource.
     """
 
 
@@ -904,7 +943,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSecurityConfigK
 
 schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigSoftwareConfig:
     r"""
-    Immutable. Optional. The config settings for software inside the cluster.
+    Immutable. Optional. Software config for the cluster.
 
     Attributes
     ----------
@@ -931,13 +970,11 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigStagingBucketRe
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see [Dataproc staging bucket](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). **This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.**
-
-        Allowed value: The Google Cloud resource name of a `StorageBucket` resource (format: `{{name}}`).
+        A reference to an externally managed StorageBucket resource. Should be in the format "projects/{{projectID}}/buckets/{{bucketID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a StorageBucket resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a StorageBucket resource.
     """
 
 
@@ -955,13 +992,11 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigTempBucketRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket. **This field requires a Cloud Storage bucket name, not a URI to a Cloud Storage bucket.**
-
-        Allowed value: The Google Cloud resource name of a `StorageBucket` resource (format: `{{name}}`).
+        A reference to an externally managed StorageBucket resource. Should be in the format "projects/{{projectID}}/buckets/{{bucketID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a StorageBucket resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a StorageBucket resource.
     """
 
 
@@ -1017,9 +1052,9 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigWorkerConfigAcc
     Attributes
     ----------
     acceleratorCount : int, default is Undefined, optional
-        Immutable. The number of the accelerator cards of this type exposed to this instance.
+        Immutable. The number of accelerator cards exposed to an instance.
     acceleratorType : str, default is Undefined, optional
-        Immutable. Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80` * `projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80` * `nvidia-tesla-k80` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
+        Immutable. The accelerator type resource namename (see GPUs on Compute Engine).
     """
 
 
@@ -1061,13 +1096,11 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecConfigWorkerConfigIma
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]` * `projects/[project_id]/global/images/[image-id]` * `image-id` Image family examples. Dataproc will use the most recent image from the family: * `https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]` * `projects/[project_id]/global/images/family/[custom-image-family-name]` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
-
-        Allowed value: The `selfLink` field of a `ComputeImage` resource.
+        A reference to an externally managed ComputeImage resource. Should be in the format "projects/{{project}}/global/images/{{name}}" or "projects/{{project}}/global/images/family/{{family}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeImage resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeImage resource.
     """
 
 
@@ -1085,13 +1118,11 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecProjectRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Required. The Google Cloud Platform project ID that the cluster belongs to.
-
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -1163,12 +1194,11 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigA
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/[project_id]/locations/[dataproc_region]/services/[service-name]`
+        A reference to an externally managed DataprocMetastoreService resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/services/{{serviceID}}".
     name : str, default is Undefined, optional
-        [WARNING] DataprocMetastoreService not yet supported in Config Connector, use 'external' field to reference existing resources.
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a DataprocMetastoreService resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a DataprocMetastoreService resource.
     """
 
 
@@ -1200,13 +1230,11 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigA
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Optional. Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload. Example: * `projects/[project_id]/regions/[region]/clusters/[cluster_name]`
-
-        Allowed value: The `selfLink` field of a `DataprocCluster` resource.
+        A reference to an externally managed DataprocCluster resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/clusters/{{clusterName}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a DataprocCluster resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a DataprocCluster resource.
     """
 
 
@@ -1264,13 +1292,11 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigK
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Optional. A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster (the GKE cluster can be zonal or regional). Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
-
-        Allowed value: The `selfLink` field of a `ContainerCluster` resource.
+        The GKE cluster. Valid formats: `projects/{projectID}/locations/{location}/clusters/{clusterID}` `projects/{projectID}/zones/{zone}/clusters/{clusterID}`
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the project resource. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names */
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        Namespace of the project resource. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/ */
     """
 
 
@@ -1352,7 +1378,7 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigK
     accelerators : [DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetItems0NodePoolConfigConfigAcceleratorsItems0], default is Undefined, optional
         Immutable. Optional. A list of [hardware accelerators](https://cloud.google.com/compute/docs/gpus) to attach to each node.
     bootDiskKmsKey : str, default is Undefined, optional
-        Immutable. Optional. The [Customer Managed Encryption Key (CMEK)] (https://cloud.google.com/kubernetes-engine/docs/how-to/using-cmek) used to encrypt the boot disk attached to each node in the node pool. Specify the key using the following format: `projects/KEY_PROJECT_ID/locations/LOCATION/keyRings/RING_NAME/cryptoKeys/KEY_NAME`.
+        Immutable. Optional. The [Customer Managed Encryption Key (CMEK)] (https://cloud.google.com/kubernetes-engine/docs/how-to/using-cmek) used to encrypt the boot disk attached to each node in the node pool.
     ephemeralStorageConfig : DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetItems0NodePoolConfigConfigEphemeralStorageConfig, default is Undefined, optional
         ephemeral storage config
     localSsdCount : int, default is Undefined, optional
@@ -1428,13 +1454,11 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigK
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Required. The target GKE node pool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{node_pool}'
-
-        Allowed value: The `selfLink` field of a `ContainerNodePool` resource.
+        A reference to an externally managed ContainerNodePool resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/clusters/{{clusterID}}/nodePools/{{nodePoolID}}" or "projects/{{projectID}}/zones/{{zone}}/clusters/{{clusterID}}/nodePools/{{nodePoolID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ContainerNodePool resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ContainerNodePool resource.
     """
 
 
@@ -1470,13 +1494,11 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterSpecVirtualClusterConfigS
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see [Dataproc staging and temp buckets](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). **This field requires a Cloud Storage bucket name, not a `gs://...` URI to a Cloud Storage bucket.**
-
-        Allowed value: The Google Cloud resource name of a `StorageBucket` resource (format: `{{name}}`).
+        A reference to an externally managed StorageBucket resource. Should be in the format "projects/{{projectID}}/buckets/{{bucketID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a StorageBucket resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a StorageBucket resource.
     """
 
 
@@ -1496,9 +1518,11 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatus:
     clusterUuid : str, default is Undefined, optional
         Output only. A cluster UUID (Unique Universal Identifier). Dataproc generates this value when it creates the cluster.
     conditions : [DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the DataprocCluster's current state.
     config : DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfig, default is Undefined, optional
         config
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the DataprocCluster resource in GCP.
     metrics : DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusMetrics, default is Undefined, optional
         metrics
     observedGeneration : int, default is Undefined, optional
@@ -1515,6 +1539,8 @@ schema DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatus:
     conditions?: [DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConditionsItems0]
 
     config?: DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusConfig
+
+    externalRef?: str
 
     metrics?: DataprocCnrmCloudGoogleComV1beta1DataprocClusterStatusMetrics
 

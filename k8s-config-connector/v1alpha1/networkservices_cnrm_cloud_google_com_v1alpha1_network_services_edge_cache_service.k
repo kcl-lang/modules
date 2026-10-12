@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema NetworkServicesEdgeCacheService:
     r"""
-    networkservices cnrm cloud google com v1alpha1 network services edge cache service
+    NetworkServicesEdgeCacheService is the Schema for the networkservices API
 
     Attributes
     ----------
@@ -127,11 +127,11 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -175,18 +175,18 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
         When multiple hosts are specified, hosts are matched in the following priority:
 
-          1. Exact domain names: ''www.foo.com''.
-          2. Suffix domain wildcards: ''*.foo.com'' or ''*-bar.foo.com''.
-          3. Prefix domain wildcards: ''foo.*'' or ''foo-*''.
-          4. Special wildcard ''*'' matching any domain.
+        1. Exact domain names: ''www.foo.com''.
+        2. Suffix domain wildcards: ''*.foo.com'' or ''*-bar.foo.com''.
+        3. Prefix domain wildcards: ''foo.*'' or ''foo-*''.
+        4. Special wildcard ''*'' matching any domain.
 
-          Notes:
+        Notes:
 
-            The wildcard will not match the empty string. e.g. ''*-bar.foo.com'' will match ''baz-bar.foo.com'' but not ''-bar.foo.com''. The longest wildcards match first. Only a single host in the entire service can match on ''*''. A domain must be unique across all configured hosts within a service.
+        The wildcard will not match the empty string. e.g. ''*-bar.foo.com'' will match ''baz-bar.foo.com'' but not ''-bar.foo.com''. The longest wildcards match first. Only a single host in the entire service can match on ''*''. A domain must be unique across all configured hosts within a service.
 
-            Hosts are matched against the HTTP Host header, or for HTTP/2 and HTTP/3, the ":authority" header, from the incoming request.
+        Hosts are matched against the HTTP Host header, or for HTTP/2 and HTTP/3, the ":authority" header, from the incoming request.
 
-            You may specify up to 10 hosts.
+        You may specify up to 10 hosts.
     pathMatcher : str, default is Undefined, required
         The name of the pathMatcher associated with this hostRule.
     """
@@ -232,8 +232,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
     headerAction : NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0HeaderAction, default is Undefined, optional
         header action
     matchRule : [NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0MatchRuleItems0], default is Undefined, required
-        The list of criteria for matching attributes of a request to this routeRule. This list has OR semantics: the request matches this routeRule when any of the matchRules are satisfied. However predicates
-        within a given matchRule have AND semantics. All predicates within a matchRule must match for the request to match the rule.
+        The list of criteria for matching attributes of a request to this routeRule. This list has OR semantics: the request matches this routeRule when any of the matchRules are satisfied. However predicates within a given matchRule have AND semantics. All predicates within a matchRule must match for the request to match the rule.
     origin : str, default is Undefined, optional
         The Origin resource that requests to this route should fetch from when a matching response is not in cache. Origins can be defined as short names ("my-origin") or fully-qualified resource URLs - e.g. "networkservices.googleapis.com/projects/my-project/global/edgecacheorigins/my-origin"
 
@@ -247,6 +246,8 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
         to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
     routeAction : NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0RouteAction, default is Undefined, optional
         route action
+    routeMethods : NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0RouteMethods, default is Undefined, optional
+        route methods
     urlRedirect : NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0URLRedirect, default is Undefined, optional
         url redirect
     """
@@ -263,6 +264,8 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
     priority: str
 
     routeAction?: NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0RouteAction
+
+    routeMethods?: NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0RouteMethods
 
     urlRedirect?: NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0URLRedirect
 
@@ -422,8 +425,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
     headerName : str, default is Undefined, required
         The header name to match on.
     invertMatch : bool, default is Undefined, optional
-        If set to false (default), the headerMatch is considered a match if the match criteria above are met.
-        If set to true, the headerMatch is considered a match if the match criteria above are NOT met.
+        If set to false (default), the headerMatch is considered a match if the match criteria above are met. If set to true, the headerMatch is considered a match if the match criteria above are NOT met.
     prefixMatch : str, default is Undefined, optional
         The value of the header must start with the contents of prefixMatch.
     presentMatch : bool, default is Undefined, optional
@@ -476,6 +478,10 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
     ----------
     cdnPolicy : NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0RouteActionCdnPolicy, default is Undefined, optional
         cdn policy
+    compressionMode : str, default is Undefined, optional
+        Setting the compression mode to automatic enables dynamic compression for every eligible response.
+
+        When dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency. Possible values: ["DISABLED", "AUTOMATIC"]
     corsPolicy : NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0RouteActionCorsPolicy, default is Undefined, optional
         cors policy
     urlRewrite : NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0RouteActionURLRewrite, default is Undefined, optional
@@ -484,6 +490,8 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
 
     cdnPolicy?: NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0RouteActionCdnPolicy
+
+    compressionMode?: str
 
     corsPolicy?: NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0RouteActionCorsPolicy
 
@@ -625,17 +633,17 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
         Only the following parameters may be copied:
 
-          * 'PathGlobs'
-          * 'paths'
-          * 'acl'
-          * 'URLPrefix'
-          * 'IPRanges'
-          * 'SessionID'
-          * 'id'
-          * 'Data'
-          * 'data'
-          * 'payload'
-          * 'Headers'
+        * 'PathGlobs'
+        * 'paths'
+        * 'acl'
+        * 'URLPrefix'
+        * 'IPRanges'
+        * 'SessionID'
+        * 'id'
+        * 'Data'
+        * 'data'
+        * 'payload'
+        * 'Headers'
 
         You may specify up to 6 parameters to copy.  A given parameter is be copied only if the parameter exists in the verified token.  Parameter names are matched exactly as specified.  The order of the parameters does not matter.  Duplicates are not allowed.
 
@@ -645,8 +653,8 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
 
         The following are both valid paths to an EdgeCacheKeyset resource:
 
-          * 'projects/project/locations/global/edgeCacheKeysets/yourKeyset'
-          * 'yourKeyset'
+        * 'projects/project/locations/global/edgeCacheKeysets/yourKeyset'
+        * 'yourKeyset'
 
         This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
     tokenQueryParameter : str, default is Undefined, optional
@@ -709,13 +717,13 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
         Names of Cookies to include in cache keys.  The cookie name and cookie value of each cookie named will be used as part of the cache key.
 
         Cookie names:
-          - must be valid RFC 6265 "cookie-name" tokens
-          - are case sensitive
-          - cannot start with "Edge-Cache-" (case insensitive)
+        - must be valid RFC 6265 "cookie-name" tokens
+        - are case sensitive
+        - cannot start with "Edge-Cache-" (case insensitive)
 
-          Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+        Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
 
-          You may specify up to three cookie names.
+        You may specify up to three cookie names.
     includedHeaderNames : [str], default is Undefined, optional
         Names of HTTP request headers to include in cache keys. The value of the header field will be used as part of the cache key.
 
@@ -857,6 +865,22 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
     pathTemplateRewrite?: str
 
 
+schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0RouteMethods:
+    r"""
+    Allow overriding the set of methods that are allowed for this route. When not set, Media CDN allows only "GET", "HEAD", and "OPTIONS".
+
+    Attributes
+    ----------
+    allowedMethods : [str], default is Undefined, optional
+        The non-empty set of HTTP methods that are allowed for this route.
+
+        Any combination of "GET", "HEAD", "OPTIONS", "PUT", "POST", "DELETE", and "PATCH".
+    """
+
+
+    allowedMethods?: [str]
+
+
 schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceSpecRoutingPathMatcherItems0RouteRuleItems0URLRedirect:
     r"""
     The URL redirect configuration for requests that match this route.
@@ -914,7 +938,7 @@ schema NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceS
     Attributes
     ----------
     conditions : [NetworkservicesCnrmCloudGoogleComV1alpha1NetworkServicesEdgeCacheServiceStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the NetworkServicesEdgeCacheService's current state.
     ipv4Addresses : [str], default is Undefined, optional
         The IPv4 addresses associated with this service. Addresses are static for the lifetime of the service.
     ipv6Addresses : [str], default is Undefined, optional

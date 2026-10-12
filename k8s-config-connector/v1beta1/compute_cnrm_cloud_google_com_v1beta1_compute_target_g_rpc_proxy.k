@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeTargetGRPCProxy:
     r"""
-    compute cnrm cloud google com v1beta1 compute target g RPC proxy
+    ComputeTargetGRPCProxy is the Schema for the ComputeTargetGRPCProxy API
 
     Attributes
     ----------
@@ -37,27 +37,18 @@ schema ComputeTargetGRPCProxy:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetGRPCProxySpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute target g RPC proxy spec
+    ComputeTargetGRPCProxySpec defines the desired state of ComputeTargetGRPCProxy
 
     Attributes
     ----------
     description : str, default is Undefined, optional
-        An optional description of this resource.
+        Immutable. An optional description of this resource.
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The ComputeTargetGRPCProxy name. If not given, the metadata.name will be used.
     urlMapRef : ComputeCnrmCloudGoogleComV1beta1ComputeTargetGRPCProxySpecURLMapRef, default is Undefined, optional
         url map ref
     validateForProxyless : bool, default is Undefined, optional
-        Immutable. If true, indicates that the BackendServices referenced by
-        the urlMap may be accessed by gRPC applications without using
-        a sidecar proxy. This will enable configuration checks on urlMap
-        and its referenced BackendServices to not allow unsupported features.
-        A gRPC application must use "xds:///" scheme in the target URI
-        of the service it is connecting to. If false, indicates that the
-        BackendServices referenced by the urlMap will be accessed by gRPC
-        applications via a sidecar proxy. In this case, a gRPC application
-        must not use "xds:///" scheme in the target URI of the service
-        it is connecting to.
+        Immutable. If true, indicates that the BackendServices referenced by the urlMap may be accessed by gRPC applications without using a sidecar proxy. This will enable configuration checks on urlMap and its referenced BackendServices to not allow unsupported features. A gRPC application must use "xds:///" scheme in the target URI of the service it is connecting to. If false, indicates that the BackendServices referenced by the urlMap will be accessed by gRPC applications via a sidecar proxy. In this case, a gRPC application must not use "xds:///" scheme in the target URI of the service it is connecting to.
     """
 
 
@@ -72,17 +63,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetGRPCProxySpec:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetGRPCProxySpecURLMapRef:
     r"""
-    The UrlMap resource that defines the mapping from URL to the BackendService.
-    The protocol field in the BackendService must be set to GRPC.
+    The UrlMap resource that defines the mapping from URL to the BackendService. The protocol field in the BackendService must be set to GRPC.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeURLMap` resource.
+        A reference to an externally managed ComputeURLMap resource. Should be in the format "projects/{{projectID}}/global/urlMaps/{{urlMapID}}" or "projects/{{projectID}}/regions/{{region}}/urlMaps/{{urlMapID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeURLMap resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeURLMap resource.
     """
 
 
@@ -95,26 +85,20 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetGRPCProxySpecURLMapRef:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeTargetGRPCProxyStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute target g RPC proxy status
+    ComputeTargetGRPCProxyStatus defines the config connector machine state of ComputeTargetGRPCProxy
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeTargetGRPCProxyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
     fingerprint : str, default is Undefined, optional
-        Fingerprint of this resource. A hash of the contents stored in
-        this object. This field is used in optimistic locking. This field
-        will be ignored when inserting a TargetGrpcProxy. An up-to-date
-        fingerprint must be provided in order to patch/update the
-        TargetGrpcProxy; otherwise, the request will fail with error
-        412 conditionNotMet. To see the latest fingerprint, make a get()
-        request to retrieve the TargetGrpcProxy. A base64-encoded string.
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a TargetGrpcProxy. An up-to-date fingerprint must be provided in order to patch/update the TargetGrpcProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the TargetGrpcProxy. A base64-encoded string.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     selfLink : str, default is Undefined, optional
-        self link
+        Server-defined URL for the resource.
     selfLinkWithId : str, default is Undefined, optional
         Server-defined URL with id for the resource.
     """

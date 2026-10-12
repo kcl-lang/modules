@@ -239,7 +239,7 @@ schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityT
     Attributes
     ----------
     external : str, default is Undefined, optional
-        A reference to an externally managed ComputeInstance resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/instances/{{instanceID}}".
+        A reference to an externally managed ComputeInstance resource. Should be in the format "projects/{{projectID}}/zones/{{zone}}/instances/{{instanceID}}".
     name : str, default is Undefined, optional
         The name of a ComputeInstance resource.
     namespace : str, default is Undefined, optional
@@ -261,7 +261,7 @@ schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityT
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
         The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
@@ -552,7 +552,7 @@ schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityT
     Attributes
     ----------
     external : str, default is Undefined, optional
-        A reference to an externally managed ComputeInstance resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/instances/{{instanceID}}".
+        A reference to an externally managed ComputeInstance resource. Should be in the format "projects/{{projectID}}/zones/{{zone}}/instances/{{instanceID}}".
     name : str, default is Undefined, optional
         The name of a ComputeInstance resource.
     namespace : str, default is Undefined, optional
@@ -574,7 +574,7 @@ schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityT
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
         The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
@@ -906,8 +906,6 @@ schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityT
     ----------
     code : int, default is Undefined, optional
         The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code].
-    details : [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetailsErrorDetailsItems0], default is Undefined, optional
-        A list of messages that carry the error details.  There is a common set of message types for APIs to use.
     message : str, default is Undefined, optional
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the [google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client.
     """
@@ -915,53 +913,7 @@ schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityT
 
     code?: int
 
-    details?: [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetailsErrorDetailsItems0]
-
     message?: str
-
-
-schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetailsErrorDetailsItems0:
-    r"""
-    networkmanagement cnrm cloud google com v1alpha1 network management connectivity test status observed state probing details error details items0
-
-    Attributes
-    ----------
-    typeURL : str, default is Undefined, optional
-        A URL/resource name that uniquely identifies the type of the serialized
-         protocol buffer message. This string must contain at least
-         one "/" character. The last segment of the URL's path must represent
-         the fully qualified name of the type (as in
-         `path/google.protobuf.Duration`). The name should be in a canonical form
-         (e.g., leading "." is not accepted).
-
-         In practice, teams usually precompile into the binary all types that they
-         expect it to use in the context of Any. However, for URLs which use the
-         scheme `http`, `https`, or no scheme, one can optionally set up a type
-         server that maps type URLs to message definitions as follows:
-
-         * If no scheme is provided, `https` is assumed.
-         * An HTTP GET on the URL must yield a [google.protobuf.Type][]
-           value in binary format, or produce an error.
-         * Applications are allowed to cache lookup results based on the
-           URL, or have them precompiled into a binary to avoid any
-           lookup. Therefore, binary compatibility needs to be preserved
-           on changes to types. (Use versioned type names to manage
-           breaking changes.)
-
-         Note: this functionality is not currently available in the official
-         protobuf release, and it is not used for type URLs beginning with
-         type.googleapis.com.
-
-         Schemes other than `http`, `https` (or the empty scheme) might be
-         used with implementation specific semantics.
-    value : str, default is Undefined, optional
-        Must be a valid serialized protocol buffer of the above specified type.
-    """
-
-
-    typeURL?: str
-
-    value?: str
 
 
 schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateProbingDetailsProbingLatency:
@@ -1030,8 +982,6 @@ schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityT
     ----------
     code : int, default is Undefined, optional
         The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code].
-    details : [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsErrorDetailsItems0], default is Undefined, optional
-        A list of messages that carry the error details.  There is a common set of message types for APIs to use.
     message : str, default is Undefined, optional
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the [google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client.
     """
@@ -1039,53 +989,7 @@ schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityT
 
     code?: int
 
-    details?: [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsErrorDetailsItems0]
-
     message?: str
-
-
-schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsErrorDetailsItems0:
-    r"""
-    networkmanagement cnrm cloud google com v1alpha1 network management connectivity test status observed state reachability details error details items0
-
-    Attributes
-    ----------
-    typeURL : str, default is Undefined, optional
-        A URL/resource name that uniquely identifies the type of the serialized
-         protocol buffer message. This string must contain at least
-         one "/" character. The last segment of the URL's path must represent
-         the fully qualified name of the type (as in
-         `path/google.protobuf.Duration`). The name should be in a canonical form
-         (e.g., leading "." is not accepted).
-
-         In practice, teams usually precompile into the binary all types that they
-         expect it to use in the context of Any. However, for URLs which use the
-         scheme `http`, `https`, or no scheme, one can optionally set up a type
-         server that maps type URLs to message definitions as follows:
-
-         * If no scheme is provided, `https` is assumed.
-         * An HTTP GET on the URL must yield a [google.protobuf.Type][]
-           value in binary format, or produce an error.
-         * Applications are allowed to cache lookup results based on the
-           URL, or have them precompiled into a binary to avoid any
-           lookup. Therefore, binary compatibility needs to be preserved
-           on changes to types. (Use versioned type names to manage
-           breaking changes.)
-
-         Note: this functionality is not currently available in the official
-         protobuf release, and it is not used for type URLs beginning with
-         type.googleapis.com.
-
-         Schemes other than `http`, `https` (or the empty scheme) might be
-         used with implementation specific semantics.
-    value : str, default is Undefined, optional
-        Must be a valid serialized protocol buffer of the above specified type.
-    """
-
-
-    typeURL?: str
-
-    value?: str
 
 
 schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReachabilityDetailsTracesItems0:
@@ -2329,8 +2233,6 @@ schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityT
     ----------
     code : int, default is Undefined, optional
         The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code].
-    details : [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsErrorDetailsItems0], default is Undefined, optional
-        A list of messages that carry the error details.  There is a common set of message types for APIs to use.
     message : str, default is Undefined, optional
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the [google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client.
     """
@@ -2338,53 +2240,7 @@ schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityT
 
     code?: int
 
-    details?: [NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsErrorDetailsItems0]
-
     message?: str
-
-
-schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsErrorDetailsItems0:
-    r"""
-    networkmanagement cnrm cloud google com v1alpha1 network management connectivity test status observed state return reachability details error details items0
-
-    Attributes
-    ----------
-    typeURL : str, default is Undefined, optional
-        A URL/resource name that uniquely identifies the type of the serialized
-         protocol buffer message. This string must contain at least
-         one "/" character. The last segment of the URL's path must represent
-         the fully qualified name of the type (as in
-         `path/google.protobuf.Duration`). The name should be in a canonical form
-         (e.g., leading "." is not accepted).
-
-         In practice, teams usually precompile into the binary all types that they
-         expect it to use in the context of Any. However, for URLs which use the
-         scheme `http`, `https`, or no scheme, one can optionally set up a type
-         server that maps type URLs to message definitions as follows:
-
-         * If no scheme is provided, `https` is assumed.
-         * An HTTP GET on the URL must yield a [google.protobuf.Type][]
-           value in binary format, or produce an error.
-         * Applications are allowed to cache lookup results based on the
-           URL, or have them precompiled into a binary to avoid any
-           lookup. Therefore, binary compatibility needs to be preserved
-           on changes to types. (Use versioned type names to manage
-           breaking changes.)
-
-         Note: this functionality is not currently available in the official
-         protobuf release, and it is not used for type URLs beginning with
-         type.googleapis.com.
-
-         Schemes other than `http`, `https` (or the empty scheme) might be
-         used with implementation specific semantics.
-    value : str, default is Undefined, optional
-        Must be a valid serialized protocol buffer of the above specified type.
-    """
-
-
-    typeURL?: str
-
-    value?: str
 
 
 schema NetworkmanagementCnrmCloudGoogleComV1alpha1NetworkManagementConnectivityTestStatusObservedStateReturnReachabilityDetailsTracesItems0:

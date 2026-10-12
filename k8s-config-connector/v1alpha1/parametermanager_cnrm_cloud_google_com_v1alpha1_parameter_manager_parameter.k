@@ -46,7 +46,7 @@ schema ParametermanagerCnrmCloudGoogleComV1alpha1ParameterManagerParameterSpec:
     kmsKeyRef : ParametermanagerCnrmCloudGoogleComV1alpha1ParameterManagerParameterSpecKmsKeyRef, default is Undefined, optional
         kms key ref
     location : str, default is Undefined, required
-        location
+        The location that this resource belongs to.
     projectRef : ParametermanagerCnrmCloudGoogleComV1alpha1ParameterManagerParameterSpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional

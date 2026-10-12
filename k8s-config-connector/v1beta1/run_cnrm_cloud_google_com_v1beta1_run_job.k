@@ -651,8 +651,12 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0:
         cloud Sql instance
     emptyDir : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0EmptyDir, default is Undefined, optional
         empty dir
+    gcs : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0Gcs, default is Undefined, optional
+        gcs
     name : str, default is Undefined, optional
         Required. Volume's name.
+    nfs : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0Nfs, default is Undefined, optional
+        nfs
     secret : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0Secret, default is Undefined, optional
         secret
     """
@@ -662,7 +666,11 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0:
 
     emptyDir?: RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0EmptyDir
 
+    gcs?: RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0Gcs
+
     name?: str
+
+    nfs?: RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0Nfs
 
     secret?: RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0Secret
 
@@ -719,6 +727,72 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0EmptyD
     medium?: str
 
     sizeLimit?: str
+
+
+schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0Gcs:
+    r"""
+    Persistent storage backed by a Google Cloud Storage bucket.
+
+    Attributes
+    ----------
+    bucketRef : RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0GcsBucketRef, default is Undefined, optional
+        bucket ref
+    mountOptions : [str], default is Undefined, optional
+        A list of additional flags to pass to the gcsfuse CLI. Options should be specified without the leading "--".
+    readOnly : bool, default is Undefined, optional
+        If true, the volume will be mounted as read only for all mounts.
+    """
+
+
+    bucketRef?: RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0GcsBucketRef
+
+    mountOptions?: [str]
+
+    readOnly?: bool
+
+
+schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0GcsBucketRef:
+    r"""
+    Cloud Storage Bucket name.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed StorageBucket resource. Should be in the format "projects/{{projectID}}/buckets/{{bucketID}}".
+    name : str, default is Undefined, optional
+        The name of a StorageBucket resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a StorageBucket resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0Nfs:
+    r"""
+    For Nfs Volumes, contains the path to the nfs Volume
+
+    Attributes
+    ----------
+    path : str, default is Undefined, optional
+        Path that is exported by the NFS server.
+    readOnly : bool, default is Undefined, optional
+        If true, the volume will be mounted as read only for all mounts.
+    server : str, default is Undefined, optional
+        Hostname or IP address of the NFS server
+    """
+
+
+    path?: str
+
+    readOnly?: bool
+
+    server?: str
 
 
 schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVolumesItems0Secret:
@@ -911,7 +985,7 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVpcAccessNetworkInt
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
         The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
@@ -933,11 +1007,11 @@ schema RunCnrmCloudGoogleComV1beta1RunJobSpecTemplateTemplateVpcAccessNetworkInt
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The ComputeSubnetwork selflink of form "projects/{{project}}/regions/{{region}}/subnetworks/{{name}}", when not managed by Config Connector.
+        A reference to an externally managed ComputeSubnetwork resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/subnetworks/{{subnetworkID}}".
     name : str, default is Undefined, optional
-        The `name` field of a `ComputeSubnetwork` resource.
+        The name of a ComputeSubnetwork resource.
     namespace : str, default is Undefined, optional
-        The `namespace` field of a `ComputeSubnetwork` resource.
+        The namespace of a ComputeSubnetwork resource.
     """
 
 

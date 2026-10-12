@@ -42,7 +42,7 @@ schema ApphubCnrmCloudGoogleComV1alpha1AppHubDiscoveredServiceSpec:
     Attributes
     ----------
     location : str, default is Undefined, optional
-        Required. The location of the application.
+        Required. The location of the resource.
     projectRef : ApphubCnrmCloudGoogleComV1alpha1AppHubDiscoveredServiceSpecProjectRef, default is Undefined, optional
         project ref
     resourceID : str, default is Undefined, optional
@@ -59,7 +59,7 @@ schema ApphubCnrmCloudGoogleComV1alpha1AppHubDiscoveredServiceSpec:
 
 schema ApphubCnrmCloudGoogleComV1alpha1AppHubDiscoveredServiceSpecProjectRef:
     r"""
-    Required. The host project of the application.
+    Required. The host project of the resource.
 
     Attributes
     ----------

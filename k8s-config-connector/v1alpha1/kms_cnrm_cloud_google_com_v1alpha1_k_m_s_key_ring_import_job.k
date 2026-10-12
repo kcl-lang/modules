@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema KMSKeyRingImportJob:
     r"""
-    kms cnrm cloud google com v1alpha1 k m s key ring import job
+    KMSKeyRingImportJob is the Schema for the kms API
 
     Attributes
     ----------
@@ -46,11 +46,9 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSKeyRingImportJobSpec:
     importMethod : str, default is Undefined, required
         Immutable. The wrapping method to be used for incoming key material. Possible values: ["RSA_OAEP_3072_SHA1_AES_256", "RSA_OAEP_4096_SHA1_AES_256"].
     keyRing : str, default is Undefined, required
-        Immutable. The KeyRing that this import job belongs to.
-        Format: ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}''.
+        Immutable. The KeyRing that this import job belongs to. Format: ''projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}''.
     protectionLevel : str, default is Undefined, required
-        Immutable. The protection level of the ImportJob. This must match the protectionLevel of the
-        versionTemplate on the CryptoKey you attempt to import into. Possible values: ["SOFTWARE", "HSM", "EXTERNAL"].
+        Immutable. The protection level of the ImportJob. This must match the protectionLevel of the versionTemplate on the CryptoKey you attempt to import into. Possible values: ["SOFTWARE", "HSM", "EXTERNAL"].
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
     """
@@ -74,14 +72,11 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSKeyRingImportJobStatus:
     Attributes
     ----------
     attestation : [KmsCnrmCloudGoogleComV1alpha1KMSKeyRingImportJobStatusAttestationItems0], default is Undefined, optional
-        Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
-        Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
-        Only present if the chosen ImportMethod is one with a protection level of HSM.
+        Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen ImportMethod is one with a protection level of HSM.
     conditions : [KmsCnrmCloudGoogleComV1alpha1KMSKeyRingImportJobStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the KMSKeyRingImportJob's current state.
     expireTime : str, default is Undefined, optional
-        The time at which this resource is scheduled for expiration and can no longer be used.
-        This is in RFC3339 text format.
+        The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
     name : str, default is Undefined, optional
         The resource name for this ImportJob in the format projects/*/locations/*/keyRings/*/importJobs/*.
     observedGeneration : int, default is Undefined, optional
@@ -115,8 +110,7 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSKeyRingImportJobStatusAttestationItems0:
     Attributes
     ----------
     content : str, default is Undefined, optional
-        The attestation data provided by the HSM when the key operation was performed.
-        A base64-encoded string.
+        The attestation data provided by the HSM when the key operation was performed. A base64-encoded string.
     format : str, default is Undefined, optional
         The format of the attestation data.
     """
@@ -164,8 +158,7 @@ schema KmsCnrmCloudGoogleComV1alpha1KMSKeyRingImportJobStatusPublicKeyItems0:
     Attributes
     ----------
     pem : str, default is Undefined, optional
-        The public key, encoded in PEM format. For more information, see the RFC 7468 sections
-        for General Considerations and Textual Encoding of Subject Public Key Info.
+        The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
     """
 
 

@@ -116,16 +116,24 @@ schema DocumentaiCnrmCloudGoogleComV1beta1DocumentAIProcessorVersionSpecKmsKeyVe
     Attributes
     ----------
     external : str, default is Undefined, optional
-        A reference to an externally managed cryptoKeyVersion. Should be in the format `projects/{{kms_project_id}}/locations/{{region}}/keyRings/{{key_ring_id}}/cryptoKeys/{{key}}/cryptoKeyVersions/{{version}}`.
+        A reference to an externally managed KMSCryptoKeyVersion resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptokey}}/cryptoKeyVersions/{{cryptokeyversion}}".
+    name : str, default is Undefined, optional
+        The name of a KMSCryptoKeyVersion resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a KMSCryptoKeyVersion resource.
     """
 
 
     external?: str
 
+    name?: str
+
+    namespace?: str
+
 
 schema DocumentaiCnrmCloudGoogleComV1beta1DocumentAIProcessorVersionSpecProcessorRef:
     r"""
-    ProcessorRef defines the resource reference to DocumentAIProcessor, which "External" field holds the GCP identifier for the KRM object.
+    ProcessorRef is a reference to a DocumentAIProcessor.
 
     Attributes
     ----------

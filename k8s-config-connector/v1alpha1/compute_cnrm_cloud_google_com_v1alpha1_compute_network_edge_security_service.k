@@ -102,7 +102,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeNetworkEdgeSecurityServiceSpecSec
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed ComputeSecurityPolicy resource
+        A reference to an externally managed ComputeSecurityPolicy resource. Should be in the format "projects/{{projectID}}/global/securityPolicies/{{name}}".
     name : str, default is Undefined, optional
         The name of a ComputeSecurityPolicy resource.
     namespace : str, default is Undefined, optional

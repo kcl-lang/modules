@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeOrganizationSecurityPolicy:
     r"""
-    compute cnrm cloud google com v1alpha1 compute organization security policy
+    ComputeOrganizationSecurityPolicy is the Schema for the compute API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeOrganizationSecurityPolicy:
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeOrganizationSecurityPolicySpec:
     r"""
-    compute cnrm cloud google com v1alpha1 compute organization security policy spec
+    ComputeOrganizationSecurityPolicySpec defines the desired state of ComputeOrganizationSecurityPolicy
 
     Attributes
     ----------
@@ -46,14 +46,11 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeOrganizationSecurityPolicySpec:
     displayName : str, default is Undefined, required
         Immutable. A textual name of the security policy.
     parent : str, default is Undefined, required
-        Immutable. The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
-        Format: organizations/{organization_id} or folders/{folder_id}.
+        Immutable. The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy. Format: organizations/{organization_id} or folders/{folder_id}.
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The policyId of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
     $type : str, default is Undefined, optional
-        Immutable. The type indicates the intended use of the security policy.
-        For organization security policies, the only supported type
-        is "FIREWALL". Default value: "FIREWALL" Possible values: ["FIREWALL"].
+        Immutable. The type indicates the intended use of the security policy. For organization security policies, the only supported type is "FIREWALL". Default value: "FIREWALL" Possible values: ["FIREWALL"].
     """
 
 
@@ -70,15 +67,14 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeOrganizationSecurityPolicySpec:
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeOrganizationSecurityPolicyStatus:
     r"""
-    compute cnrm cloud google com v1alpha1 compute organization security policy status
+    ComputeOrganizationSecurityPolicyStatus defines the config connector machine state of ComputeOrganizationSecurityPolicy
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1alpha1ComputeOrganizationSecurityPolicyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeOrganizationSecurityPolicy's current state.
     fingerprint : str, default is Undefined, optional
-        Fingerprint of this resource. This field is used internally during
-        updates of this resource.
+        Fingerprint of this resource. This field is used internally during updates of this resource.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     policyId : str, default is Undefined, optional

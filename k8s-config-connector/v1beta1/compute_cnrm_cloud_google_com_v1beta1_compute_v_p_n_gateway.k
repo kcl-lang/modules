@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeVPNGateway:
     r"""
-    compute cnrm cloud google com v1beta1 compute v p n gateway
+    ComputeVPNGateway is the Schema for the ComputeVPNGateway API
 
     Attributes
     ----------
@@ -50,8 +50,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNGatewaySpec:
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
     stackType : str, default is Undefined, optional
-        Immutable. The stack type for this VPN gateway to identify the IP protocols that are enabled.
-        If not specified, IPV4_ONLY will be used. Default value: "IPV4_ONLY" Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
+        Immutable. The stack type for this VPN gateway to identify the IP protocols that are enabled. If not specified, IPV4_ONLY will be used. Default value: "IPV4_ONLY" Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
     vpnInterfaces : [ComputeCnrmCloudGoogleComV1beta1ComputeVPNGatewaySpecVpnInterfacesItems0], default is Undefined, optional
         Immutable. A list of interfaces on this VPN gateway.
     """
@@ -77,11 +76,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNGatewaySpecNetworkRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -116,15 +115,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNGatewaySpecVpnInterfacesItems0:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeVPNGatewaySpecVpnInterfacesItems0InterconnectAttachmentRef:
     r"""
-    Immutable. When this value is present, the VPN Gateway will be used
-    for IPsec-encrypted Cloud Interconnect; all Egress or Ingress
-    traffic for this VPN Gateway interface will go through the specified
-    interconnect attachment resource. Not currently available publicly.
+    Immutable. When this value is present, the VPN Gateway will be used for IPsec-encrypted Cloud Interconnect; all Egress or Ingress traffic for this VPN Gateway interface will go through the specified interconnect attachment resource. Not currently available publicly.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeInterconnectAttachment` resource.
+        Allowed value: The `name` field of a `ComputeInterconnectAttachment` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional

@@ -74,9 +74,9 @@ schema ApigeeCnrmCloudGoogleComV1beta1ApigeeEnvironmentSpecApigeeOrganizationRef
     external : str, default is Undefined, optional
         A reference to an externally managed ApigeeOrganization resource. Should be in the format "organizations/{{organizationID}}".
     name : str, default is Undefined, optional
-        The name of a ApigeeOrganization resource.
+        The name of an ApigeeOrganization resource.
     namespace : str, default is Undefined, optional
-        The namespace of a ApigeeOrganization resource.
+        The namespace of an ApigeeOrganization resource.
     """
 
 

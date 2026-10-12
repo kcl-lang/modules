@@ -323,16 +323,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecIPAddress:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecIPAddressAddressRef:
     r"""
-    compute cnrm cloud google com v1beta1 compute forwarding rule spec IP address address ref
+    ComputeAddressRef is a reference to a GCP ComputeAddress.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The ComputeAddress selflink in the form "projects/{{project}}/regions/{{region}}/addresses/{{name}}" when not managed by Config Connector.
+        A reference to an externally managed ComputeAddress resource. Should be in the format "projects/{{projectID}}/global/addresses/{{addressID}}" or "projects/{{projectID}}/regions/{{region}}/addresses/{{addressID}}".
     name : str, default is Undefined, optional
-        The `name` field of a `ComputeAddress` resource.
+        The name of a ComputeAddress resource.
     namespace : str, default is Undefined, optional
-        The `namespace` field of a `ComputeAddress` resource.
+        The namespace of a ComputeAddress resource.
     """
 
 
@@ -395,7 +395,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecNetworkRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
         The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
@@ -441,11 +441,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecSubnetworkRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The ComputeSubnetwork selflink of form "projects/{{project}}/regions/{{region}}/subnetworks/{{name}}", when not managed by Config Connector.
+        A reference to an externally managed ComputeSubnetwork resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/subnetworks/{{subnetworkID}}".
     name : str, default is Undefined, optional
-        The `name` field of a `ComputeSubnetwork` resource.
+        The name of a ComputeSubnetwork resource.
     namespace : str, default is Undefined, optional
-        The `namespace` field of a `ComputeSubnetwork` resource.
+        The namespace of a ComputeSubnetwork resource.
     """
 
 
@@ -464,6 +464,10 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTarget:
     ----------
     googleAPIsBundle : str, default is Undefined, optional
         google a p is bundle
+    memorystoreInstanceServiceAttachment : ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetMemorystoreInstanceServiceAttachment, default is Undefined, optional
+        memorystore instance service attachment
+    redisClusterServiceAttachment : ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetRedisClusterServiceAttachment, default is Undefined, optional
+        redis cluster service attachment
     serviceAttachmentRef : ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetServiceAttachmentRef, default is Undefined, optional
         service attachment ref
     targetGRPCProxyRef : ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetTargetGRPCProxyRef, default is Undefined, optional
@@ -483,6 +487,10 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTarget:
 
     googleAPIsBundle?: str
 
+    memorystoreInstanceServiceAttachment?: ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetMemorystoreInstanceServiceAttachment
+
+    redisClusterServiceAttachment?: ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetRedisClusterServiceAttachment
+
     serviceAttachmentRef?: ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetServiceAttachmentRef
 
     targetGRPCProxyRef?: ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetTargetGRPCProxyRef
@@ -496,6 +504,86 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTarget:
     targetTCPProxyRef?: ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetTargetTCPProxyRef
 
     targetVPNGatewayRef?: ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetTargetVPNGatewayRef
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetMemorystoreInstanceServiceAttachment:
+    r"""
+    Target a serviceAttachment for a Memorystore for Valkey instance.
+
+    Attributes
+    ----------
+    connectionType : str, default is Undefined, optional
+        The connection type of the serviceAttachment. A memorystore instance has multiple serviceAttachments, each with a different connection type. Use connectionType to control which serviceAttachment to target. The empty value matches a serviceAttachment with an empty connectionType.
+    memorystoreInstanceRef : ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetMemorystoreInstanceServiceAttachmentMemorystoreInstanceRef, default is Undefined, required
+        memorystore instance ref
+    """
+
+
+    connectionType?: str
+
+    memorystoreInstanceRef: ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetMemorystoreInstanceServiceAttachmentMemorystoreInstanceRef
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetMemorystoreInstanceServiceAttachmentMemorystoreInstanceRef:
+    r"""
+    A reference to a MemorystoreInstance resource.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed MemorystoreInstance resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/instances/{{instanceID}}".
+    name : str, default is Undefined, optional
+        The name of a MemorystoreInstance resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a MemorystoreInstance resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetRedisClusterServiceAttachment:
+    r"""
+    Target a serviceAttachment for a Redis Cluster.
+
+    Attributes
+    ----------
+    connectionType : str, default is Undefined, optional
+        The connection type of the serviceAttachment. A redis cluster has multiple serviceAttachments, each with a different connection type. Use connectionType to control which serviceAttachment to target. The empty value matches a serviceAttachment with an empty connectionType.
+    redisClusterRef : ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetRedisClusterServiceAttachmentRedisClusterRef, default is Undefined, required
+        redis cluster ref
+    """
+
+
+    connectionType?: str
+
+    redisClusterRef: ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetRedisClusterServiceAttachmentRedisClusterRef
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetRedisClusterServiceAttachmentRedisClusterRef:
+    r"""
+    A reference to a RedisCluster resource.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed RedisCluster resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/clusters/{{clusterID}}".
+    name : str, default is Undefined, optional
+        The name of a RedisCluster resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a RedisCluster resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleSpecTargetServiceAttachmentRef:
@@ -678,6 +766,8 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleStatus:
         self link
     serviceName : str, default is Undefined, optional
         The internal fully qualified service name for this Forwarding Rule. This field is only used for INTERNAL load balancing.
+    target : str, default is Undefined, optional
+        The target resource to receive the matched traffic.
     """
 
 
@@ -700,6 +790,8 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleStatus:
     selfLink?: str
 
     serviceName?: str
+
+    target?: str
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeForwardingRuleStatusConditionsItems0:

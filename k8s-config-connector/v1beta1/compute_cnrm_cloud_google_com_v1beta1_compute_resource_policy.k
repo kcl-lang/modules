@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeResourcePolicy:
     r"""
-    compute cnrm cloud google com v1beta1 compute resource policy
+    ComputeResourcePolicy is the Schema for the ComputeResourcePolicy API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeResourcePolicy:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute resource policy spec
+    ComputeResourcePolicySpec defines the desired state of ComputeResourcePolicy
 
     Attributes
     ----------
@@ -94,19 +94,13 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecGroupPlacementPo
     Attributes
     ----------
     availabilityDomainCount : int, default is Undefined, optional
-        Immutable. The number of availability domains instances will be spread across. If two instances are in different
-        availability domain, they will not be put in the same low latency network.
+        Immutable. The number of availability domains instances will be spread across. If two instances are in different availability domain, they will not be put in the same low latency network.
     collocation : str, default is Undefined, optional
-        Immutable. Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
-        Specify 'COLLOCATED' to enable collocation. Can only be specified with 'vm_count'. If compute instances are created
-        with a COLLOCATED policy, then exactly 'vm_count' instances must be created at the same time with the resource policy
-        attached. Possible values: ["COLLOCATED"].
+        Immutable. Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network. Specify 'COLLOCATED' to enable collocation. Can only be specified with 'vm_count'. If compute instances are created with a COLLOCATED policy, then exactly 'vm_count' instances must be created at the same time with the resource policy attached. Possible values: ["COLLOCATED"].
     maxDistance : int, default is Undefined, optional
         Immutable. Specifies the number of max logical switches.
     vmCount : int, default is Undefined, optional
-        Immutable. Number of VMs in this placement group. Google does not recommend that you use this field
-        unless you use a compact policy and you want your policy to work only if it contains this
-        exact number of VMs.
+        Immutable. Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
     """
 
 
@@ -130,8 +124,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecInstanceSchedule
     startTime : str, default is Undefined, optional
         Immutable. The start time of the schedule. The timestamp is an RFC3339 string.
     timeZone : str, default is Undefined, required
-        Immutable. Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
-        from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        Immutable. Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
     vmStartSchedule : ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecInstanceSchedulePolicyVMStartSchedule, default is Undefined, optional
         vm start schedule
     vmStopSchedule : ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecInstanceSchedulePolicyVMStopSchedule, default is Undefined, optional
@@ -209,8 +202,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecSnapshotSchedule
     maxRetentionDays : int, default is Undefined, required
         Immutable. Maximum age of the snapshot that is allowed to be kept.
     onSourceDiskDelete : str, default is Undefined, optional
-        Immutable. Specifies the behavior to apply to scheduled snapshots when
-        the source disk is deleted. Default value: "KEEP_AUTO_SNAPSHOTS" Possible values: ["KEEP_AUTO_SNAPSHOTS", "APPLY_RETENTION_POLICY"].
+        Immutable. Specifies the behavior to apply to scheduled snapshots when the source disk is deleted. Default value: "KEEP_AUTO_SNAPSHOTS" Possible values: ["KEEP_AUTO_SNAPSHOTS", "APPLY_RETENTION_POLICY"].
     """
 
 
@@ -250,9 +242,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecSnapshotSchedule
     daysInCycle : int, default is Undefined, required
         Immutable. Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
     startTime : str, default is Undefined, required
-        Immutable. This must be in UTC format that resolves to one of
-        00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example,
-        both 13:00-5 and 08:00 are valid.
+        Immutable. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
     """
 
 
@@ -270,10 +260,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecSnapshotSchedule
     hoursInCycle : int, default is Undefined, required
         Immutable. The number of hours between snapshots.
     startTime : str, default is Undefined, required
-        Immutable. Time within the window to start the operations.
-        It must be in an hourly format "HH:MM",
-        where HH : [00-23] and MM : [00] GMT.
-        eg: 21:00.
+        Immutable. Time within the window to start the operations. It must be in an hourly format "HH:MM", where HH : [00-23] and MM : [00] GMT. eg: 21:00.
     """
 
 
@@ -305,8 +292,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecSnapshotSchedule
     day : str, default is Undefined, required
         Immutable. The day of the week to create the snapshot. e.g. MONDAY Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"].
     startTime : str, default is Undefined, required
-        Immutable. Time within the window to start the operations.
-        It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+        Immutable. Time within the window to start the operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
     """
 
 
@@ -322,16 +308,13 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecSnapshotSchedule
     Attributes
     ----------
     chainName : str, default is Undefined, optional
-        Immutable. Creates the new snapshot in the snapshot chain labeled with the
-        specified name. The chain name must be 1-63 characters long and comply
-        with RFC1035.
+        Immutable. Chain name that the snapshot is created in.
     guestFlush : bool, default is Undefined, optional
         Immutable. Whether to perform a 'guest aware' snapshot.
     labels : {str:str}, default is Undefined, optional
         Immutable. A set of key-value pairs.
     storageLocations : [str], default is Undefined, optional
-        Immutable. Cloud Storage bucket location to store the auto snapshot
-        (regional or multi-regional).
+        Immutable. Cloud Storage bucket location to store the auto snapshot (regional or multi-regional).
     """
 
 
@@ -346,22 +329,30 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicySpecSnapshotSchedule
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicyStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute resource policy status
+    ComputeResourcePolicyStatus defines the config connector machine state of ComputeResourcePolicy
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the ComputeResourcePolicy resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicyStatusObservedState, default is Undefined, optional
+        observed state
     selfLink : str, default is Undefined, optional
-        self link
+        The server-defined URL of this resource.
     """
 
 
     conditions?: [ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicyStatusConditionsItems0]
 
+    externalRef?: str
+
     observedGeneration?: int
+
+    observedState?: ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicyStatusObservedState
 
     selfLink?: str
 
@@ -394,5 +385,27 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicyStatusConditionsItem
     status?: str
 
     $type?: str
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeResourcePolicyStatusObservedState:
+    r"""
+    ObservedState is the state of the resource as most recently observed in GCP.
+
+    Attributes
+    ----------
+    creationTimestamp : str, default is Undefined, optional
+        [Output Only] Creation timestamp in RFC3339 text format.
+    id : int, default is Undefined, optional
+        [Output Only] The unique identifier for the resource. This identifier is defined by the server.
+    status : str, default is Undefined, optional
+        [Output Only] The status of resource policy creation.
+    """
+
+
+    creationTimestamp?: str
+
+    id?: int
+
+    status?: str
 
 

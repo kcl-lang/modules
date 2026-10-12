@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema NetworkServicesHTTPRoute:
     r"""
-    networkservices cnrm cloud google com v1beta1 network services HTTP route
+    NetworkServicesHTTPRoute is the Schema for the NetworkServicesHTTPRoute API
 
     Attributes
     ----------
@@ -48,7 +48,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpec:
     hostnames : [str], default is Undefined, required
         Required. Hostnames define a set of hosts that should match against the HTTP host header to select a HttpRoute to process the request. Hostname is the fully qualified domain name of a network host, as defined by RFC 1123 with the exception that ip addresses are not allowed. Wildcard hosts are supported as "*" (no prefix or suffix allowed).
     location : str, default is Undefined, required
-        Immutable. The location for the resource
+        Immutable. The location of this resource.
     meshes : [NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecMeshesItems0], default is Undefined, optional
         meshes
     projectRef : NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecProjectRef, default is Undefined, required
@@ -79,16 +79,16 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpec:
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecGatewaysItems0:
     r"""
-    networkservices cnrm cloud google com v1beta1 network services HTTP route spec gateways items0
+    NetworkServicesGatewayRef is a reference to a GCP NetworkServicesGateway.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `NetworkServicesGateway` resource.
+        A reference to an externally managed NetworkServicesGateway resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/gateways/{{gatewayID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a NetworkServicesGateway resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a NetworkServicesGateway resource.
     """
 
 
@@ -101,16 +101,16 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecGatew
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecMeshesItems0:
     r"""
-    networkservices cnrm cloud google com v1beta1 network services HTTP route spec meshes items0
+    NetworkServicesMeshRef is a reference to a NetworkServicesMesh.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `NetworkServicesMesh` resource.
+        A reference to an externally managed NetworkServicesMesh resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/meshes/{{meshID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a NetworkServicesMesh resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a NetworkServicesMesh resource.
     """
 
 
@@ -128,13 +128,11 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecProje
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The project for the resource
-
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -280,13 +278,11 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRules
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The URL of a BackendService to route traffic to.
-
-        Allowed value: The Google Cloud resource name of a `ComputeBackendService` resource (format: `projects/{{project}}/global/backendServices/{{name}}`).
+        The value of an externally managed ComputeBackendService resource.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeBackendService resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeBackendService resource.
     """
 
 
@@ -450,13 +446,11 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteSpecRules
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The URL of a BackendService to route traffic to.
-
-        Allowed value: The Google Cloud resource name of a `ComputeBackendService` resource (format: `projects/{{project}}/global/backendServices/{{name}}`).
+        The value of an externally managed ComputeBackendService resource.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeBackendService resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeBackendService resource.
     """
 
 
@@ -656,7 +650,7 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteStatus:
     Attributes
     ----------
     conditions : [NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesHTTPRouteStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     createTime : str, default is Undefined, optional
         Output only. The timestamp when the resource was created.
     observedGeneration : int, default is Undefined, optional

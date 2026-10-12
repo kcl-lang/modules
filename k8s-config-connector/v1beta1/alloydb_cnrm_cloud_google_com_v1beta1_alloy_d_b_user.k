@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema AlloyDBUser:
     r"""
-    alloydb cnrm cloud google com v1beta1 alloy d b user
+    AlloyDBUser is the Schema for the AlloyDBUser API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema AlloyDBUser:
 
 schema AlloydbCnrmCloudGoogleComV1beta1AlloyDBUserSpec:
     r"""
-    alloydb cnrm cloud google com v1beta1 alloy d b user spec
+    AlloyDBUserSpec defines the desired state of AlloyDBUser
 
     Attributes
     ----------
@@ -67,16 +67,16 @@ schema AlloydbCnrmCloudGoogleComV1beta1AlloyDBUserSpec:
 
 schema AlloydbCnrmCloudGoogleComV1beta1AlloyDBUserSpecClusterRef:
     r"""
-    alloydb cnrm cloud google com v1beta1 alloy d b user spec cluster ref
+    Immutable.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of an `AlloyDBCluster` resource.
+        A reference to an externally managed AlloyDBCluster resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/clusters/{{clusterID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of an AlloyDBCluster resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of an AlloyDBCluster resource.
     """
 
 
@@ -139,12 +139,12 @@ schema AlloydbCnrmCloudGoogleComV1beta1AlloyDBUserSpecPasswordValueFromSecretKey
 
 schema AlloydbCnrmCloudGoogleComV1beta1AlloyDBUserStatus:
     r"""
-    alloydb cnrm cloud google com v1beta1 alloy d b user status
+    AlloyDBUserStatus defines the config connector machine state of AlloyDBUser
 
     Attributes
     ----------
     conditions : [AlloydbCnrmCloudGoogleComV1beta1AlloyDBUserStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     name : str, default is Undefined, optional
         Name of the resource in the form of projects/{project}/locations/{location}/clusters/{cluster}/users/{user}.
     observedGeneration : int, default is Undefined, optional

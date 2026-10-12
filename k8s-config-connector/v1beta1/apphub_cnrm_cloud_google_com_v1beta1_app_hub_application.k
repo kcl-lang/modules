@@ -48,7 +48,7 @@ schema ApphubCnrmCloudGoogleComV1beta1AppHubApplicationSpec:
     displayName : str, default is Undefined, optional
         Optional. User-defined name for the Application. Can have a maximum length of 63 characters.
     location : str, default is Undefined, optional
-        Required. The location of the application.
+        Required. Defines the parent path of the resource.
     projectRef : ApphubCnrmCloudGoogleComV1beta1AppHubApplicationSpecProjectRef, default is Undefined, optional
         project ref
     resourceID : str, default is Undefined, optional
@@ -187,7 +187,7 @@ schema ApphubCnrmCloudGoogleComV1beta1AppHubApplicationSpecAttributesOperatorOwn
 
 schema ApphubCnrmCloudGoogleComV1beta1AppHubApplicationSpecProjectRef:
     r"""
-    Required. The host project of the application.
+    Required. The host project of the resource.
 
     Attributes
     ----------

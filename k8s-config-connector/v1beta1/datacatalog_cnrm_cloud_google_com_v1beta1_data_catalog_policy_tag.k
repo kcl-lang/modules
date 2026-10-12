@@ -42,7 +42,7 @@ schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogPolicyTagSpec:
     Attributes
     ----------
     description : str, default is Undefined, optional
-        Description of this policy tag. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description. If not set, defaults to an empty description.
+        Description of this policy tag. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.
     displayName : str, default is Undefined, required
         User defined name of this policy tag. It must: be unique within the parent taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
     parentPolicyTagRef : DatacatalogCnrmCloudGoogleComV1beta1DataCatalogPolicyTagSpecParentPolicyTagRef, default is Undefined, optional
@@ -67,7 +67,7 @@ schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogPolicyTagSpec:
 
 schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogPolicyTagSpecParentPolicyTagRef:
     r"""
-    PolicyTagRef defines the resource reference to DataCatalogPolicyTag, which "External" field holds the GCP identifier for the KRM object.
+    PolicyTagRef is a reference to a DataCatalogPolicyTag.
 
     Attributes
     ----------
@@ -89,7 +89,7 @@ schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogPolicyTagSpecParentPolicyT
 
 schema DatacatalogCnrmCloudGoogleComV1beta1DataCatalogPolicyTagSpecTaxonomyRef:
     r"""
-    TaxonomyRef defines the resource reference to DataCatalogTaxonomy, which "External" field holds the GCP identifier for the KRM object.
+    TaxonomyRef is a reference to a DataCatalogTaxonomy.
 
     Attributes
     ----------

@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema PubSubTopic:
     r"""
-    pubsub cnrm cloud google com v1beta1 pub sub topic
+    PubSubTopic is the Schema for the PubSubTopic API
 
     Attributes
     ----------
@@ -37,20 +37,14 @@ schema PubSubTopic:
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicSpec:
     r"""
-    pubsub cnrm cloud google com v1beta1 pub sub topic spec
+    PubSubTopicSpec defines the desired state of PubSubTopic
 
     Attributes
     ----------
     kmsKeyRef : PubsubCnrmCloudGoogleComV1beta1PubSubTopicSpecKmsKeyRef, default is Undefined, optional
         kms key ref
     messageRetentionDuration : str, default is Undefined, optional
-        Indicates the minimum duration to retain a message after it is published
-        to the topic. If this field is set, messages published to the topic in
-        the last messageRetentionDuration are always available to subscribers.
-        For instance, it allows any attached subscription to seek to a timestamp
-        that is up to messageRetentionDuration in the past. If this field is not
-        set, message retention is controlled by settings on individual subscriptions.
-        Cannot be more than 31 days or less than 10 minutes.
+        Indicates the minimum duration to retain a message after it is published to the topic. If this field is set, messages published to the topic in the last messageRetentionDuration are always available to subscribers. For instance, it allows any attached subscription to seek to a timestamp that is up to messageRetentionDuration in the past. If this field is not set, message retention is controlled by settings on individual subscriptions. Cannot be more than 31 days or less than 10 minutes.
     messageStoragePolicy : PubsubCnrmCloudGoogleComV1beta1PubSubTopicSpecMessageStoragePolicy, default is Undefined, optional
         message storage policy
     resourceID : str, default is Undefined, optional
@@ -73,11 +67,7 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicSpec:
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicSpecKmsKeyRef:
     r"""
-    The KMSCryptoKey to be used to protect access to messages published
-    on this topic. Your project's Pub/Sub service account
-    ('service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com')
-    must have 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this
-    feature.
+    The KMSCryptoKey to be used to protect access to messages published on this topic. Your project's Pub/Sub service account ('service-{{PROJECT_NUMBER}}@gcp-sa-pubsub.iam.gserviceaccount.com') must have 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
 
     Attributes
     ----------
@@ -99,23 +89,20 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicSpecKmsKeyRef:
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicSpecMessageStoragePolicy:
     r"""
-    Policy constraining the set of Google Cloud Platform regions where
-    messages published to the topic may be stored. If not present, then no
-    constraints are in effect.
+    Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
 
     Attributes
     ----------
     allowedPersistenceRegions : [str], default is Undefined, required
-        A list of IDs of GCP regions where messages that are published to
-        the topic may be persisted in storage. Messages published by
-        publishers running in non-allowed GCP regions (or running outside
-        of GCP altogether) will be routed for storage in one of the
-        allowed regions. An empty list means that no regions are allowed,
-        and is not a valid configuration.
+        A list of IDs of GCP regions where messages that are published to the topic may be persisted in storage. Messages published by publishers running in non-allowed GCP regions (or running outside of GCP altogether) will be routed for storage in one of the allowed regions. An empty list means that no regions are allowed, and is not a valid configuration.
+    enforceInTransit : bool, default is Undefined, optional
+        Optional. If true, `allowed_persistence_regions` is also used to enforce in-transit guarantees for messages. That is, Pub/Sub will fail Publish operations on this topic and subscribe operations on any subscription attached to this topic in any region that is not in `allowed_persistence_regions`.
     """
 
 
     allowedPersistenceRegions: [str]
+
+    enforceInTransit?: bool
 
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicSpecSchemaSettings:
@@ -138,16 +125,16 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicSpecSchemaSettings:
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicSpecSchemaSettingsSchemaRef:
     r"""
-    pubsub cnrm cloud google com v1beta1 pub sub topic spec schema settings schema ref
+    PubSubSchemaRef is a reference to a PubSubSchema.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `projects/{{project}}/schemas/{{value}}`, where {{value}} is the `name` field of a `PubSubSchema` resource.
+        A reference to an externally managed PubSubSchema resource. Should be in the format "projects/{{projectID}}/schemas/{{schemaID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a PubSubSchema resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a PubSubSchema resource.
     """
 
 
@@ -160,12 +147,12 @@ schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicSpecSchemaSettingsSchemaRef:
 
 schema PubsubCnrmCloudGoogleComV1beta1PubSubTopicStatus:
     r"""
-    pubsub cnrm cloud google com v1beta1 pub sub topic status
+    PubSubTopicStatus defines the config connector machine state of PubSubTopic
 
     Attributes
     ----------
     conditions : [PubsubCnrmCloudGoogleComV1beta1PubSubTopicStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

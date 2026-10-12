@@ -350,7 +350,7 @@ schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecTopicsItems0
 
 schema SecretmanagerCnrmCloudGoogleComV1beta1SecretManagerSecretSpecTopicsItems0TopicRef:
     r"""
-    PubSubTopicRef defines the resource reference to PubSubTopic, which "External" field holds the GCP identifier for the KRM object.
+    PubSubTopicRef is a reference to a PubSubTopic.
 
     Attributes
     ----------

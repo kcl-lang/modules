@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema APIKeysKey:
     r"""
-    APIKeysKey is the Schema for the APIKeys Key resource.
+    APIKeysKey is the Schema for the APIKeysKey API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema APIKeysKey:
 
 schema ApikeysCnrmCloudGoogleComV1alpha1APIKeysKeySpec:
     r"""
-    apikeys cnrm cloud google com v1alpha1 API keys key spec
+    APIKeysKeySpec defines the desired state of APIKeysKey
 
     Attributes
     ----------
@@ -125,14 +125,14 @@ schema ApikeysCnrmCloudGoogleComV1alpha1APIKeysKeySpecRestrictionsAPITargetsItem
     ----------
     methods : [str], default is Undefined, optional
         Optional. List of one or more methods that can be called. If empty, all methods for the service are allowed. A wildcard (*) can be used as the last symbol. Valid examples: `google.cloud.translate.v2.TranslateService.GetSupportedLanguage` `TranslateText` `Get*` `translate.googleapis.com.Get*`
-    service : str, default is Undefined, required
+    service : str, default is Undefined, optional
         The service for this restriction. It should be the canonical service name, for example: `translate.googleapis.com`. You can use [`gcloud services list`](/sdk/gcloud/reference/services/list) to get a list of services that are enabled in the project.
     """
 
 
     methods?: [str]
 
-    service: str
+    service?: str
 
 
 schema ApikeysCnrmCloudGoogleComV1alpha1APIKeysKeySpecRestrictionsAndroidKeyRestrictions:
@@ -141,12 +141,12 @@ schema ApikeysCnrmCloudGoogleComV1alpha1APIKeysKeySpecRestrictionsAndroidKeyRest
 
     Attributes
     ----------
-    allowedApplications : [ApikeysCnrmCloudGoogleComV1alpha1APIKeysKeySpecRestrictionsAndroidKeyRestrictionsAllowedApplicationsItems0], default is Undefined, required
+    allowedApplications : [ApikeysCnrmCloudGoogleComV1alpha1APIKeysKeySpecRestrictionsAndroidKeyRestrictionsAllowedApplicationsItems0], default is Undefined, optional
         A list of Android applications that are allowed to make API calls with this key.
     """
 
 
-    allowedApplications: [ApikeysCnrmCloudGoogleComV1alpha1APIKeysKeySpecRestrictionsAndroidKeyRestrictionsAllowedApplicationsItems0]
+    allowedApplications?: [ApikeysCnrmCloudGoogleComV1alpha1APIKeysKeySpecRestrictionsAndroidKeyRestrictionsAllowedApplicationsItems0]
 
 
 schema ApikeysCnrmCloudGoogleComV1alpha1APIKeysKeySpecRestrictionsAndroidKeyRestrictionsAllowedApplicationsItems0:
@@ -155,16 +155,16 @@ schema ApikeysCnrmCloudGoogleComV1alpha1APIKeysKeySpecRestrictionsAndroidKeyRest
 
     Attributes
     ----------
-    packageName : str, default is Undefined, required
+    packageName : str, default is Undefined, optional
         The package name of the application.
-    sha1Fingerprint : str, default is Undefined, required
+    sha1Fingerprint : str, default is Undefined, optional
         The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
     """
 
 
-    packageName: str
+    packageName?: str
 
-    sha1Fingerprint: str
+    sha1Fingerprint?: str
 
 
 schema ApikeysCnrmCloudGoogleComV1alpha1APIKeysKeySpecRestrictionsBrowserKeyRestrictions:
@@ -173,12 +173,12 @@ schema ApikeysCnrmCloudGoogleComV1alpha1APIKeysKeySpecRestrictionsBrowserKeyRest
 
     Attributes
     ----------
-    allowedReferrers : [str], default is Undefined, required
+    allowedReferrers : [str], default is Undefined, optional
         A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
     """
 
 
-    allowedReferrers: [str]
+    allowedReferrers?: [str]
 
 
 schema ApikeysCnrmCloudGoogleComV1alpha1APIKeysKeySpecRestrictionsIosKeyRestrictions:
@@ -187,12 +187,12 @@ schema ApikeysCnrmCloudGoogleComV1alpha1APIKeysKeySpecRestrictionsIosKeyRestrict
 
     Attributes
     ----------
-    allowedBundleIds : [str], default is Undefined, required
+    allowedBundleIds : [str], default is Undefined, optional
         A list of bundle IDs that are allowed when making API calls with this key.
     """
 
 
-    allowedBundleIds: [str]
+    allowedBundleIds?: [str]
 
 
 schema ApikeysCnrmCloudGoogleComV1alpha1APIKeysKeySpecRestrictionsServerKeyRestrictions:
@@ -201,22 +201,24 @@ schema ApikeysCnrmCloudGoogleComV1alpha1APIKeysKeySpecRestrictionsServerKeyRestr
 
     Attributes
     ----------
-    allowedIps : [str], default is Undefined, required
+    allowedIps : [str], default is Undefined, optional
         A list of the caller IP addresses that are allowed to make API calls with this key.
     """
 
 
-    allowedIps: [str]
+    allowedIps?: [str]
 
 
 schema ApikeysCnrmCloudGoogleComV1alpha1APIKeysKeyStatus:
     r"""
-    apikeys cnrm cloud google com v1alpha1 API keys key status
+    APIKeysKeyStatus defines the config connector machine state of APIKeysKey
 
     Attributes
     ----------
     conditions : [ApikeysCnrmCloudGoogleComV1alpha1APIKeysKeyStatusConditionsItems0], default is Undefined, optional
         Conditions represent the latest available observations of the object's current state.
+    externalRef : str, default is Undefined, optional
+        A unique specifier for the APIKeysKey resource in GCP.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     observedState : ApikeysCnrmCloudGoogleComV1alpha1APIKeysKeyStatusObservedState, default is Undefined, optional
@@ -225,6 +227,8 @@ schema ApikeysCnrmCloudGoogleComV1alpha1APIKeysKeyStatus:
 
 
     conditions?: [ApikeysCnrmCloudGoogleComV1alpha1APIKeysKeyStatusConditionsItems0]
+
+    externalRef?: str
 
     observedGeneration?: int
 

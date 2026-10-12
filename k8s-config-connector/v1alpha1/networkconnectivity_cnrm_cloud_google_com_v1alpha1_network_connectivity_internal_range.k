@@ -41,6 +41,8 @@ schema NetworkconnectivityCnrmCloudGoogleComV1alpha1NetworkConnectivityInternalR
 
     Attributes
     ----------
+    allocationOptions : NetworkconnectivityCnrmCloudGoogleComV1alpha1NetworkConnectivityInternalRangeSpecAllocationOptions, default is Undefined, optional
+        allocation options
     description : str, default is Undefined, optional
         A description of this resource.
     ipCIDRRange : str, default is Undefined, optional
@@ -70,6 +72,8 @@ schema NetworkconnectivityCnrmCloudGoogleComV1alpha1NetworkConnectivityInternalR
     """
 
 
+    allocationOptions?: NetworkconnectivityCnrmCloudGoogleComV1alpha1NetworkConnectivityInternalRangeSpecAllocationOptions
+
     description?: str
 
     ipCIDRRange?: str
@@ -97,6 +101,24 @@ schema NetworkconnectivityCnrmCloudGoogleComV1alpha1NetworkConnectivityInternalR
     usage?: str
 
 
+schema NetworkconnectivityCnrmCloudGoogleComV1alpha1NetworkConnectivityInternalRangeSpecAllocationOptions:
+    r"""
+    Optional. Range auto-allocation options, may be set only when auto-allocation is selected by not setting ip_cidr_range (and setting prefix_length).
+
+    Attributes
+    ----------
+    allocationStrategy : str, default is Undefined, optional
+        Optional. Allocation strategy. Not setting this field when the allocation is requested means an implementation defined strategy is used.
+    firstAvailableRangesLookupSize : int, default is Undefined, optional
+        Optional. This field must be set only when allocation_strategy is set to RANDOM_FIRST_N_AVAILABLE. The value should be the maximum expected parallelism of range creation requests issued to the same space of peered networks.
+    """
+
+
+    allocationStrategy?: str
+
+    firstAvailableRangesLookupSize?: int
+
+
 schema NetworkconnectivityCnrmCloudGoogleComV1alpha1NetworkConnectivityInternalRangeSpecMigration:
     r"""
     Optional. Must be present if usage is set to FOR_MIGRATION. This field is for internal use.
@@ -106,7 +128,7 @@ schema NetworkconnectivityCnrmCloudGoogleComV1alpha1NetworkConnectivityInternalR
     source : str, default is Undefined, optional
         Immutable. Resource path as an URI of the source resource, for example a subnet. The project for the source resource should match the project for the InternalRange. An example: /projects/{project}/regions/{region}/subnetworks/{subnet}
     target : str, default is Undefined, optional
-        Immutable. Resource path of the target resource. The target project can be different, as in the cases when migrating to peer networks. The resource For example: /projects/{project}/regions/{region}/subnetworks/{subnet}
+        Immutable. Resource path of the target resource. The target project can be different, as in the cases when migrating to peer networks. For example: /projects/{project}/regions/{region}/subnetworks/{subnet}
     """
 
 
@@ -122,7 +144,7 @@ schema NetworkconnectivityCnrmCloudGoogleComV1alpha1NetworkConnectivityInternalR
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
         The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional

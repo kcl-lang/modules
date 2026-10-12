@@ -78,9 +78,9 @@ schema AlloydbCnrmCloudGoogleComV1beta1AlloyDBBackupSpecClusterNameRef:
     external : str, default is Undefined, optional
         A reference to an externally managed AlloyDBCluster resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/clusters/{{clusterID}}".
     name : str, default is Undefined, optional
-        The name of a AlloyDBCluster resource.
+        The name of an AlloyDBCluster resource.
     namespace : str, default is Undefined, optional
-        The namespace of a AlloyDBCluster resource.
+        The namespace of an AlloyDBCluster resource.
     """
 
 

@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeInstance:
     r"""
-    compute cnrm cloud google com v1beta1 compute instance
+    ComputeInstance is the Schema for the ComputeInstance API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeInstance:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute instance spec
+    ComputeInstanceSpec defines the desired state of ComputeInstance
 
     Attributes
     ----------
@@ -270,7 +270,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecAttachedDiskItems0KmsK
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `KMSCryptoKey` resource.
+        The external name of the referenced resource
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -292,7 +292,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecAttachedDiskItems0Sour
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeDisk` resource.
+        The external name of the referenced resource
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -436,7 +436,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecBootDiskInitializePara
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeImage` resource.
+        The external name of the referenced resource
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -458,7 +458,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecBootDiskKmsKeyRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `KMSCryptoKey` resource.
+        The external name of the referenced resource
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -480,7 +480,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecBootDiskSourceDiskRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeDisk` resource.
+        The external name of the referenced resource
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -534,7 +534,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecInstanceTemplateRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeInstanceTemplate` resource.
+        The external name of the referenced resource
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -666,7 +666,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `address` field of a `ComputeAddress` resource.
+        The external name of the referenced resource
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -736,9 +736,9 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `address` field of a `ComputeAddress` resource.
+        The external name of the referenced resource
     kind : str, default is Undefined, optional
-        Kind of the referent. Allowed values: ComputeAddress
+        Kind of the referent.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -762,7 +762,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        The external name of the referenced resource
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -784,7 +784,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecNetworkInterfaceItems0
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeSubnetwork` resource.
+        The external name of the referenced resource
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -870,7 +870,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecResourcePoliciesItems0
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeResourcePolicy` resource.
+        The external name of the referenced resource
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -937,21 +937,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecScheduling:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecSchedulingLocalSsdRecoveryTimeout:
     r"""
-    Immutable. Specifies the maximum amount of time a Local Ssd Vm should wait while
-      recovery of the Local Ssd state is attempted. Its value should be in
-      between 0 and 168 hours with hour granularity and the default value being 1
-      hour.
+    Immutable. Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour.
 
     Attributes
     ----------
     nanos : int, default is Undefined, optional
-        Immutable. Span of time that's a fraction of a second at nanosecond
-        resolution. Durations less than one second are represented
-        with a 0 seconds field and a positive nanos field. Must
-        be from 0 to 999,999,999 inclusive.
+        Immutable. Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
     seconds : int, default is Undefined, required
-        Immutable. Span of time at a resolution of a second.
-        Must be from 0 to 315,576,000,000 inclusive.
+        Immutable. Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
     """
 
 
@@ -967,13 +960,9 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecSchedulingMaxRunDurati
     Attributes
     ----------
     nanos : int, default is Undefined, optional
-        Immutable. Span of time that's a fraction of a second at nanosecond
-        resolution. Durations less than one second are represented
-        with a 0 seconds field and a positive nanos field. Must
-        be from 0 to 999,999,999 inclusive.
+        Immutable. Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
     seconds : int, default is Undefined, required
-        Immutable. Span of time at a resolution of a second.
-        Must be from 0 to 315,576,000,000 inclusive.
+        Immutable. Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
     """
 
 
@@ -1039,7 +1028,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecServiceAccountServiceA
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `email` field of an `IAMServiceAccount` resource.
+        The external name of the referenced resource
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -1078,19 +1067,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceSpecShieldedInstanceConfig
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeInstanceStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute instance status
+    ComputeInstanceStatus defines the config connector machine state of ComputeInstance
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeInstanceStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the ComputeInstance's current state.
     cpuPlatform : str, default is Undefined, optional
         The CPU platform used by this instance.
     currentStatus : str, default is Undefined, optional
-
-        					Current status of the instance.
-        					This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
-        					For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
+        Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
     instanceId : str, default is Undefined, optional
         The server-assigned unique identifier of this instance.
     labelFingerprint : str, default is Undefined, optional

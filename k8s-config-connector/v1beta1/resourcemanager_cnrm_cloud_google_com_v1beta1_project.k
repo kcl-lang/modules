@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema Project:
     r"""
-    resourcemanager cnrm cloud google com v1beta1 project
+    Project is the Schema for the Project API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema Project:
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ProjectSpec:
     r"""
-    resourcemanager cnrm cloud google com v1beta1 project spec
+    ProjectSpec defines the desired state of Project
 
     Attributes
     ----------
@@ -67,16 +67,16 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ProjectSpec:
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ProjectSpecBillingAccountRef:
     r"""
-    resourcemanager cnrm cloud google com v1beta1 project spec billing account ref
+    The billing account of the project.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `BillingAccount` resource.
+        A reference to an externally managed BillingAccount resource. Should be in the format "billingAccounts/{billingAccountID}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a BillingAccount resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a BillingAccount resource.
     """
 
 
@@ -89,18 +89,16 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ProjectSpecBillingAccountRef:
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ProjectSpecFolderRef:
     r"""
-    The folder that this resource belongs to. Changing this forces the
-    resource to be migrated to the newly specified folder. Only one of
-    folderRef or organizationRef may be specified.
+    The folder that this resource belongs to. Changing this forces the resource to be migrated to the newly specified folder. Only one of folderRef or organizationRef may be specified.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `folderId` field of a `Folder` resource.
+        The 'name' field of a folder, when not managed by Config Connector. This field must be set when 'name' field is not set.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The 'name' field of a 'Folder' resource. This field must be set when 'external' field is not set.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The 'namespace' field of a 'Folder' resource. If unset, the namespace is defaulted to the namespace of the referencer resource.
     """
 
 
@@ -113,19 +111,16 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ProjectSpecFolderRef:
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ProjectSpecOrganizationRef:
     r"""
-    The organization that this resource belongs to. Changing this
-    forces the resource to be migrated to the newly specified
-    organization. Only one of folderRef or organizationRef may be
-    specified.
+    The organization that this resource belongs to. Changing this forces the resource to be migrated to the newly specified organization. Only one of folderRef or organizationRef may be specified.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of an `Organization` resource.
+        The 'name' field of an organization, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The 'name' field of an 'Organization' resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The 'namespace' field of an 'Organization' resource.
     """
 
 
@@ -138,12 +133,12 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1ProjectSpecOrganizationRef:
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1ProjectStatus:
     r"""
-    resourcemanager cnrm cloud google com v1beta1 project status
+    ProjectStatus defines the config connector machine state of Project
 
     Attributes
     ----------
     conditions : [ResourcemanagerCnrmCloudGoogleComV1beta1ProjectStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     number : str, default is Undefined, optional
         The numeric identifier of the project.
     observedGeneration : int, default is Undefined, optional

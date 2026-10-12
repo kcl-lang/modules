@@ -43,8 +43,8 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSubnetworkSpec:
     ----------
     description : str, default is Undefined, optional
         Immutable. An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
-    ipCidrRange : str, default is Undefined, required
-        The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported.
+    ipCidrRange : str, default is Undefined, optional
+        The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. Field is optional when 'reservedInternalRangeRef' is defined, otherwise required.
     ipv6AccessType : str, default is Undefined, optional
         The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path. Possible values: ["EXTERNAL", "INTERNAL"].
     logConfig : ComputeCnrmCloudGoogleComV1beta1ComputeSubnetworkSpecLogConfig, default is Undefined, optional
@@ -59,6 +59,8 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSubnetworkSpec:
         Immutable. The purpose of the resource. This field can be either 'PRIVATE_RFC_1918', 'REGIONAL_MANAGED_PROXY', 'GLOBAL_MANAGED_PROXY', or 'PRIVATE_SERVICE_CONNECT'. A subnet with purpose set to 'REGIONAL_MANAGED_PROXY' is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A subnetwork in a given region with purpose set to 'GLOBAL_MANAGED_PROXY' is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers. A subnetwork with purpose set to 'PRIVATE_SERVICE_CONNECT' reserves the subnet for hosting a Private Service Connect published service. Note that 'REGIONAL_MANAGED_PROXY' is the preferred setting for all regional Envoy load balancers. If unspecified, the purpose defaults to 'PRIVATE_RFC_1918'.
     region : str, default is Undefined, required
         Immutable. The GCP region for this subnetwork.
+    reservedInternalRangeRef : ComputeCnrmCloudGoogleComV1beta1ComputeSubnetworkSpecReservedInternalRangeRef, default is Undefined, optional
+        reserved internal range ref
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
     role : str, default is Undefined, optional
@@ -72,7 +74,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSubnetworkSpec:
 
     description?: str
 
-    ipCidrRange: str
+    ipCidrRange?: str
 
     ipv6AccessType?: str
 
@@ -87,6 +89,8 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSubnetworkSpec:
     purpose?: str
 
     region: str
+
+    reservedInternalRangeRef?: ComputeCnrmCloudGoogleComV1beta1ComputeSubnetworkSpecReservedInternalRangeRef
 
     resourceID?: str
 
@@ -134,11 +138,33 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSubnetworkSpecNetworkRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
         The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
         The namespace of a ComputeNetwork resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeSubnetworkSpecReservedInternalRangeRef:
+    r"""
+    Immutable. The reference to the reserved internal range.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed NetworkConnectivityInternalRange resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/internalRanges/{{internalrangeID}}".
+    name : str, default is Undefined, optional
+        The name field of a NetworkConnectivityInternalRange resource.
+    namespace : str, default is Undefined, optional
+        The namespace field of a NetworkConnectivityInternalRange resource.
     """
 
 
@@ -155,16 +181,42 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSubnetworkSpecSecondaryIPRangeItem
 
     Attributes
     ----------
-    ipCidrRange : str, default is Undefined, required
-        The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. The range can be any range listed in the Valid ranges list.
+    ipCidrRange : str, default is Undefined, optional
+        The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. Field is optional when 'reservedInternalRangeRef' is defined, otherwise required. The range can be any range listed in the Valid ranges list.
     rangeName : str, default is Undefined, required
         The name associated with this subnetwork secondary range, used when adding an alias IP range to a VM instance. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the subnetwork.
+    reservedInternalRangeRef : ComputeCnrmCloudGoogleComV1beta1ComputeSubnetworkSpecSecondaryIPRangeItems0ReservedInternalRangeRef, default is Undefined, optional
+        reserved internal range ref
     """
 
 
-    ipCidrRange: str
+    ipCidrRange?: str
 
     rangeName: str
+
+    reservedInternalRangeRef?: ComputeCnrmCloudGoogleComV1beta1ComputeSubnetworkSpecSecondaryIPRangeItems0ReservedInternalRangeRef
+
+
+schema ComputeCnrmCloudGoogleComV1beta1ComputeSubnetworkSpecSecondaryIPRangeItems0ReservedInternalRangeRef:
+    r"""
+    The reference to the reserved internal range.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed NetworkConnectivityInternalRange resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/internalRanges/{{internalrangeID}}".
+    name : str, default is Undefined, optional
+        The name field of a NetworkConnectivityInternalRange resource.
+    namespace : str, default is Undefined, optional
+        The namespace field of a NetworkConnectivityInternalRange resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSubnetworkStatus:

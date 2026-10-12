@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema CertificateManagerCertificate:
     r"""
-    certificatemanager cnrm cloud google com v1beta1 certificate manager certificate
+    CertificateManagerCertificate is the Schema for the CertificateManagerCertificate API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema CertificateManagerCertificate:
 
 schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateSpec:
     r"""
-    certificatemanager cnrm cloud google com v1beta1 certificate manager certificate spec
+    CertificateManagerCertificateSpec defines the desired state of CertificateManagerCertificate
 
     Attributes
     ----------
@@ -84,20 +84,16 @@ schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateS
 
 schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateSpecManaged:
     r"""
-    Immutable. Configuration and state of a Managed Certificate.
-    Certificate Manager provisions and renews Managed Certificates
-    automatically, for as long as it's authorized to do so.
+    Immutable. Configuration and state of a Managed Certificate. Certificate Manager provisions and renews Managed Certificates automatically, for as long as it's authorized to do so.
 
     Attributes
     ----------
     authorizationAttemptInfo : [CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateSpecManagedAuthorizationAttemptInfoItems0], default is Undefined, optional
-        Detailed state of the latest authorization attempt for each domain
-        specified for this Managed Certificate.
+        Detailed state of the latest authorization attempt for each domain specified for this Managed Certificate.
     dnsAuthorizationsRefs : [CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateSpecManagedDNSAuthorizationsRefsItems0], default is Undefined, optional
-        dns authorizations refs
+        Immutable. Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specified, but not both.
     domains : [str], default is Undefined, optional
-        Immutable. The domains for which a managed SSL certificate will be generated.
-        Wildcard domains are only supported with DNS challenge resolution.
+        Immutable. The domains for which a managed SSL certificate will be generated. Wildcard domains are only supported with DNS challenge resolution.
     issuanceConfigRef : CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateSpecManagedIssuanceConfigRef, default is Undefined, optional
         issuance config ref
     provisioningIssue : [CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateSpecManagedProvisioningIssueItems0], default is Undefined, optional
@@ -127,9 +123,7 @@ schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateS
     Attributes
     ----------
     details : str, default is Undefined, optional
-        Human readable explanation for reaching the state. Provided to help
-        address the configuration issues.
-        Not guaranteed to be stable. For programmatic access use 'failure_reason' field.
+        Human readable explanation for reaching the state. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use 'failure_reason' field.
     domain : str, default is Undefined, optional
         Domain name of the authorization attempt.
     failureReason : str, default is Undefined, optional
@@ -150,16 +144,16 @@ schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateS
 
 schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateSpecManagedDNSAuthorizationsRefsItems0:
     r"""
-    Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specified, but not both.
+    CertificateManagerDNSAuthorizationRef is a reference to a GCP CertificateManagerDNSAuthorization.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `projects/{{project}}/locations/global/dnsAuthorizations/{{value}}`, where {{value}} is the `name` field of a `CertificateManagerDNSAuthorization` resource.
+        A reference to an externally managed CertificateManagerDNSAuthorization resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/dnsAuthorizations/{{dnsAuthorizationID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a CertificateManagerDNSAuthorization resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a CertificateManagerDNSAuthorization resource.
     """
 
 
@@ -174,18 +168,18 @@ schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateS
     r"""
     Only the `external` field is supported to configure the reference.
 
-    Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
+    Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/{{project}}/locations/{{location}}/certificateIssuanceConfigs/{{name}}.
     If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
     Either issuanceConfig or dnsAuthorizations should be specified, but not both.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: string of the format `projects/{{project}}/locations/{{location}}/certificateIssuanceConfigs/{{name}}`, where {{value}} is the `name` field of a `CertificateManagerCertificateIssuanceConfig` resource.
+        A reference to an externally managed CertificateManagerCertificateIssuanceConfig resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/certificateIssuanceConfigs/{{certificateIssuanceConfigID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a CertificateManagerCertificateIssuanceConfig resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a CertificateManagerCertificateIssuanceConfig resource.
     """
 
 
@@ -203,9 +197,7 @@ schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateS
     Attributes
     ----------
     details : str, default is Undefined, optional
-        Human readable explanation about the issue. Provided to help address
-        the configuration issues.
-        Not guaranteed to be stable. For programmatic access use 'reason' field.
+        Human readable explanation about the issue. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use 'reason' field.
     reason : str, default is Undefined, optional
         Reason for provisioning failures.
     """
@@ -223,11 +215,11 @@ schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateS
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -240,9 +232,7 @@ schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateS
 
 schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateSpecSelfManaged:
     r"""
-    Immutable. Certificate data for a SelfManaged Certificate.
-    SelfManaged Certificates are uploaded by the user. Updating such
-    certificates before they expire remains the user's responsibility.
+    Immutable. Certificate data for a SelfManaged Certificate. SelfManaged Certificates are uploaded by the user. Updating such certificates before they expire remains the user's responsibility.
 
     Attributes
     ----------
@@ -427,15 +417,19 @@ schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateS
     Attributes
     ----------
     conditions : [CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the CertificateManagerCertificate's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
+    observedState : CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateStatusObservedState, default is Undefined, optional
+        observed state
     """
 
 
     conditions?: [CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateStatusConditionsItems0]
 
     observedGeneration?: int
+
+    observedState?: CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateStatusObservedState
 
 
 schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateStatusConditionsItems0:
@@ -466,5 +460,85 @@ schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateS
     status?: str
 
     $type?: str
+
+
+schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateStatusObservedState:
+    r"""
+    The observed state of the underlying GCP resource.
+
+    Attributes
+    ----------
+    managed : CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateStatusObservedStateManaged, default is Undefined, optional
+        managed
+    """
+
+
+    managed?: CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateStatusObservedStateManaged
+
+
+schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateStatusObservedStateManaged:
+    r"""
+    Immutable. Configuration and state of a Managed Certificate. Certificate Manager provisions and renews Managed Certificates automatically, for as long as it's authorized to do so.
+
+    Attributes
+    ----------
+    authorizationAttemptInfo : [CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateStatusObservedStateManagedAuthorizationAttemptInfoItems0], default is Undefined, optional
+        Detailed state of the latest authorization attempt for each domain specified for this Managed Certificate.
+    provisioningIssue : [CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateStatusObservedStateManagedProvisioningIssueItems0], default is Undefined, optional
+        Information about issues with provisioning this Managed Certificate.
+    state : str, default is Undefined, optional
+        A state of this Managed Certificate.
+    """
+
+
+    authorizationAttemptInfo?: [CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateStatusObservedStateManagedAuthorizationAttemptInfoItems0]
+
+    provisioningIssue?: [CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateStatusObservedStateManagedProvisioningIssueItems0]
+
+    state?: str
+
+
+schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateStatusObservedStateManagedAuthorizationAttemptInfoItems0:
+    r"""
+    certificatemanager cnrm cloud google com v1beta1 certificate manager certificate status observed state managed authorization attempt info items0
+
+    Attributes
+    ----------
+    details : str, default is Undefined, optional
+        Human readable explanation for reaching the state. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use 'failure_reason' field.
+    domain : str, default is Undefined, optional
+        Domain name of the authorization attempt.
+    failureReason : str, default is Undefined, optional
+        Reason for failure of the authorization attempt for the domain.
+    state : str, default is Undefined, optional
+        State of the domain for managed certificate issuance.
+    """
+
+
+    details?: str
+
+    domain?: str
+
+    failureReason?: str
+
+    state?: str
+
+
+schema CertificatemanagerCnrmCloudGoogleComV1beta1CertificateManagerCertificateStatusObservedStateManagedProvisioningIssueItems0:
+    r"""
+    certificatemanager cnrm cloud google com v1beta1 certificate manager certificate status observed state managed provisioning issue items0
+
+    Attributes
+    ----------
+    details : str, default is Undefined, optional
+        Human readable explanation about the issue. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use 'reason' field.
+    reason : str, default is Undefined, optional
+        Reason for provisioning failures.
+    """
+
+
+    details?: str
+
+    reason?: str
 
 

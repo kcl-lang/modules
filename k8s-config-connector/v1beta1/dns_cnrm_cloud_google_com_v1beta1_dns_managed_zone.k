@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema DNSManagedZone:
     r"""
-    dns cnrm cloud google com v1beta1 DNS managed zone
+    DNSManagedZone is the Schema for the dns API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema DNSManagedZone:
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpec:
     r"""
-    DNS cnrm cloud google com v1beta1 DNS managed zone spec
+    DNSManagedZoneSpec defines the desired state of DNSManagedZone
 
     Attributes
     ----------
@@ -58,14 +58,11 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpec:
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
     reverseLookup : bool, default is Undefined, optional
-        Immutable. Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
-        lookup queries using automatically configured records for VPC resources. This only applies
-        to networks listed under 'private_visibility_config'.
+        Immutable. Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under 'private_visibility_config'.
     serviceDirectoryConfig : DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecServiceDirectoryConfig, default is Undefined, optional
         service directory config
     visibility : str, default is Undefined, optional
-        Immutable. The zone's visibility: public zones are exposed to the Internet,
-        while private zones are visible only to Virtual Private Cloud resources. Default value: "public" Possible values: ["private", "public"].
+        Immutable. The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources. Default value: "public" Possible values: ["private", "public"].
     """
 
 
@@ -113,15 +110,11 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecDnssecConfig:
     Attributes
     ----------
     defaultKeySpecs : [DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecDnssecConfigDefaultKeySpecsItems0], default is Undefined, optional
-        Specifies parameters that will be used for generating initial DnsKeys
-        for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
-        you must also provide one for the other.
-        default_key_specs can only be updated when the state is 'off'.
+        Specifies parameters that will be used for generating initial DnsKeys for this ManagedZone. If you provide a spec for keySigning or zoneSigning, you must also provide one for the other. default_key_specs can only be updated when the state is 'off'.
     kind : str, default is Undefined, optional
         Identifies what kind of resource this is.
     nonExistence : str, default is Undefined, optional
-        Specifies the mechanism used to provide authenticated denial-of-existence responses.
-        non_existence can only be updated when the state is 'off'. Possible values: ["nsec", "nsec3"].
+        Specifies the mechanism used to provide authenticated denial-of-existence responses. non_existence can only be updated when the state is 'off'. Possible values: ["nsec", "nsec3"].
     state : str, default is Undefined, optional
         Specifies whether DNSSEC is enabled, and what mode it is in Possible values: ["off", "on", "transfer"].
     """
@@ -147,12 +140,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecDnssecConfigDefaultKeySpecs
     keyLength : int, default is Undefined, optional
         Length of the keys in bits.
     keyType : str, default is Undefined, optional
-        Specifies whether this is a key signing key (KSK) or a zone
-        signing key (ZSK). Key signing keys have the Secure Entry
-        Point flag set and, when active, will only be used to sign
-        resource record sets of type DNSKEY. Zone signing keys do
-        not have the Secure Entry Point flag set and will be used
-        to sign all other types of resource record sets. Possible values: ["keySigning", "zoneSigning"].
+        Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, will only be used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and will be used to sign all other types of resource record sets. Possible values: ["keySigning", "zoneSigning"].
     kind : str, default is Undefined, optional
         Identifies what kind of resource this is.
     """
@@ -169,16 +157,12 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecDnssecConfigDefaultKeySpecs
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecForwardingConfig:
     r"""
-    The presence for this field indicates that outbound forwarding is enabled
-    for this zone. The value of this field contains the set of destinations
-    to forward to.
+    The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to.
 
     Attributes
     ----------
     targetNameServers : [DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecForwardingConfigTargetNameServersItems0], default is Undefined, required
-        List of target name servers to forward to. Cloud DNS will
-        select the best available name server if more than
-        one target is given.
+        List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given.
     """
 
 
@@ -192,9 +176,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecForwardingConfigTargetNameS
     Attributes
     ----------
     forwardingPath : str, default is Undefined, optional
-        Forwarding path for this TargetNameServer. If unset or 'default' Cloud DNS will make forwarding
-        decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
-        to the Internet. When set to 'private', Cloud DNS will always send queries through VPC for this target Possible values: ["default", "private"].
+        Forwarding path for this TargetNameServer. If unset or 'default' Cloud DNS will make forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go to the Internet. When set to 'private', Cloud DNS will always send queries through VPC for this target Possible values: ["default", "private"].
     ipv4Address : str, default is Undefined, required
         IPv4 address of a target name server.
     """
@@ -207,8 +189,7 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecForwardingConfigTargetNameS
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPeeringConfig:
     r"""
-    The presence of this field indicates that DNS Peering is enabled for this
-    zone. The value of this field contains the network to peer with.
+    The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with.
 
     Attributes
     ----------
@@ -241,11 +222,11 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPeeringConfigTargetNetworkN
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -258,15 +239,14 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPeeringConfigTargetNetworkN
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPrivateVisibilityConfig:
     r"""
-    For privately visible zones, the set of Virtual Private Cloud
-    resources that the zone is visible from. At least one of 'gke_clusters' or 'networks' must be specified.
+    For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from. At least one of 'gke_clusters' or 'networks' must be specified.
 
     Attributes
     ----------
     gkeClusters : [DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPrivateVisibilityConfigGkeClustersItems0], default is Undefined, optional
         The list of Google Kubernetes Engine clusters that can see this zone.
     networks : [DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPrivateVisibilityConfigNetworksItems0], default is Undefined, optional
-        networks
+        The list of VPC networks that can see this zone.
     """
 
 
@@ -291,18 +271,16 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPrivateVisibilityConfigGkeC
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPrivateVisibilityConfigGkeClustersItems0GkeClusterNameRef:
     r"""
-    The resource name of the cluster to bind this ManagedZone to.
-    This should be specified in the format like
-    'projects/*/locations/*/clusters/*'.
+    The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like 'projects/*/locations/*/clusters/*'.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ContainerCluster` resource.
+        The GKE cluster. Valid formats: `projects/{projectID}/locations/{location}/clusters/{clusterID}` `projects/{projectID}/zones/{zone}/clusters/{clusterID}`
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the project resource. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names */
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        Namespace of the project resource. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/ */
     """
 
 
@@ -334,11 +312,11 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecPrivateVisibilityConfigNetw
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -365,16 +343,12 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecServiceDirectoryConfig:
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecServiceDirectoryConfigNamespace:
     r"""
-    The namespace associated with the zone.
+    Contains information about the namespace associated with the zone.
 
     Attributes
     ----------
     namespaceUrl : str, default is Undefined, required
-        The fully qualified or partial URL of the service directory namespace that should be
-        associated with the zone. This should be formatted like
-        'https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace_id}'
-        or simply 'projects/{project}/locations/{location}/namespaces/{namespace_id}'
-        Ignored for 'public' visibility zones.
+        The fully qualified or partial URL of the service directory namespace that should be associated with the zone. This should be formatted like 'https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace_id}' or simply 'projects/{project}/locations/{location}/namespaces/{namespace_id}' Ignored for 'public' visibility zones.
     """
 
 
@@ -383,20 +357,18 @@ schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneSpecServiceDirectoryConfigNames
 
 schema DNSCnrmCloudGoogleComV1beta1DNSManagedZoneStatus:
     r"""
-    DNS cnrm cloud google com v1beta1 DNS managed zone status
+    DNSManagedZoneStatus defines the config connector machine state of DNSManagedZone
 
     Attributes
     ----------
     conditions : [DNSCnrmCloudGoogleComV1beta1DNSManagedZoneStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the DNSManagedZone's current state.
     creationTime : str, default is Undefined, optional
-        The time that this resource was created on the server.
-        This is in RFC3339 text format.
+        The time that this resource was created on the server. This is in RFC3339 text format.
     managedZoneId : int, default is Undefined, optional
         Unique identifier for the resource; defined by the server.
     nameServers : [str], default is Undefined, optional
-        Delegate your managed_zone to these virtual name servers;
-        defined by the server.
+        Delegate your managed_zone to these virtual name servers; defined by the server.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

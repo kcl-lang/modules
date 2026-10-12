@@ -78,9 +78,9 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLe
     external : str, default is Undefined, optional
         A reference to an externally managed AccessContextManagerAccessPolicy resource. As per https://docs.cloud.google.com/asset-inventory/docs/asset-names Should be in the format "accessPolicies/{{accesspolicyID}}".
     name : str, default is Undefined, optional
-        The name of a AccessContextManagerAccessPolicy resource.
+        The name of an AccessContextManagerAccessPolicy resource.
     namespace : str, default is Undefined, optional
-        The namespace of a AccessContextManagerAccessPolicy resource.
+        The namespace of an AccessContextManagerAccessPolicy resource.
     """
 
 
@@ -241,16 +241,16 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLe
 
 schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessLevelSpecBasicConditionsItems0RequiredAccessLevelsItems0:
     r"""
-    AccessLevelRef is a reference to a AccessLevel resource.
+    AccessLevelRef is a reference to an AccessLevel resource.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
         A reference to an externally managed AccessLevel resource. Should be in the format "accessPolicies/{{accessPolicyID}}/accessLevels/{{accessLevel}}".
     name : str, default is Undefined, optional
-        The name of a AccessLevel resource.
+        The name of an AccessLevel resource.
     namespace : str, default is Undefined, optional
-        The namespace of a AccessLevel resource.
+        The namespace of an AccessLevel resource.
     """
 
 

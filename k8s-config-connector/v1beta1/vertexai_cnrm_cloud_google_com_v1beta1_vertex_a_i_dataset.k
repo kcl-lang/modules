@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema VertexAIDataset:
     r"""
-    vertexai cnrm cloud google com v1beta1 vertex a i dataset
+    VertexAIDataset is the Schema for the VertexAIDataset API
 
     Attributes
     ----------
@@ -37,12 +37,12 @@ schema VertexAIDataset:
 
 schema VertexaiCnrmCloudGoogleComV1beta1VertexAIDatasetSpec:
     r"""
-    vertexai cnrm cloud google com v1beta1 vertex a i dataset spec
+    VertexAIDatasetSpec defines the desired state of VertexAIDataset
 
     Attributes
     ----------
     displayName : str, default is Undefined, required
-        The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
+        The user-defined name of the Dataset. The name can be up to 128 characters long and can consist of any UTF-8 characters.
     encryptionSpec : VertexaiCnrmCloudGoogleComV1beta1VertexAIDatasetSpecEncryptionSpec, default is Undefined, optional
         encryption spec
     metadataSchemaUri : str, default is Undefined, required
@@ -85,18 +85,16 @@ schema VertexaiCnrmCloudGoogleComV1beta1VertexAIDatasetSpecEncryptionSpec:
 
 schema VertexaiCnrmCloudGoogleComV1beta1VertexAIDatasetSpecEncryptionSpecKmsKeyNameRef:
     r"""
-    Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
-    Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key.
-    The key needs to be in the same region as where the compute resource is created.
+    Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `KMSCryptoKey` resource.
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` of a `KMSCryptoKey` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` of a `KMSCryptoKey` resource.
     """
 
 
@@ -114,11 +112,11 @@ schema VertexaiCnrmCloudGoogleComV1beta1VertexAIDatasetSpecProjectRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -131,12 +129,12 @@ schema VertexaiCnrmCloudGoogleComV1beta1VertexAIDatasetSpecProjectRef:
 
 schema VertexaiCnrmCloudGoogleComV1beta1VertexAIDatasetStatus:
     r"""
-    vertexai cnrm cloud google com v1beta1 vertex a i dataset status
+    VertexAIDatasetStatus defines the config connector machine state of VertexAIDataset
 
     Attributes
     ----------
     conditions : [VertexaiCnrmCloudGoogleComV1beta1VertexAIDatasetStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     observedState : VertexaiCnrmCloudGoogleComV1beta1VertexAIDatasetStatusObservedState, default is Undefined, optional
@@ -183,14 +181,14 @@ schema VertexaiCnrmCloudGoogleComV1beta1VertexAIDatasetStatusConditionsItems0:
 
 schema VertexaiCnrmCloudGoogleComV1beta1VertexAIDatasetStatusObservedState:
     r"""
-    The observed state of the underlying GCP resource.
+    ObservedState is the state of the resource as most recently observed in GCP.
 
     Attributes
     ----------
     createTime : str, default is Undefined, optional
-        The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        Output only. Timestamp when this Dataset was created.
     name : str, default is Undefined, optional
-        The resource name of the Dataset. This value is set by Google.
+        Output only. The resource name of the Dataset instance.
     """
 
 

@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema Folder:
     r"""
-    resourcemanager cnrm cloud google com v1beta1 folder
+    Folder is the Schema for the Folder API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema Folder:
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1FolderSpec:
     r"""
-    resourcemanager cnrm cloud google com v1beta1 folder spec
+    FolderSpec defines the desired state of Folder
 
     Attributes
     ----------
@@ -63,18 +63,16 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1FolderSpec:
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1FolderSpecFolderRef:
     r"""
-    The folder that this resource belongs to. Changing this forces the
-    resource to be migrated to the newly specified folder. Only one of
-    folderRef or organizationRef may be specified.
+    The folder that this resource belongs to. Changing this forces the resource to be migrated to the newly specified folder. Only one of folderRef or organizationRef may be specified.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `folderId` field of a `Folder` resource.
+        The 'name' field of a folder, when not managed by Config Connector. This field must be set when 'name' field is not set.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The 'name' field of a 'Folder' resource. This field must be set when 'external' field is not set.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The 'namespace' field of a 'Folder' resource. If unset, the namespace is defaulted to the namespace of the referencer resource.
     """
 
 
@@ -87,19 +85,16 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1FolderSpecFolderRef:
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1FolderSpecOrganizationRef:
     r"""
-    The organization that this resource belongs to. Changing this
-    forces the resource to be migrated to the newly specified
-    organization. Only one of folderRef or organizationRef may be
-    specified.
+    The organization that this resource belongs to. Changing this forces the resource to be migrated to the newly specified organization. Only one of folderRef or organizationRef may be specified.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of an `Organization` resource.
+        The 'name' field of an organization, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The 'name' field of an 'Organization' resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The 'namespace' field of an 'Organization' resource.
     """
 
 
@@ -112,12 +107,12 @@ schema ResourcemanagerCnrmCloudGoogleComV1beta1FolderSpecOrganizationRef:
 
 schema ResourcemanagerCnrmCloudGoogleComV1beta1FolderStatus:
     r"""
-    resourcemanager cnrm cloud google com v1beta1 folder status
+    FolderStatus defines the config connector machine state of Folder
 
     Attributes
     ----------
     conditions : [ResourcemanagerCnrmCloudGoogleComV1beta1FolderStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     createTime : str, default is Undefined, optional
         Timestamp when the Folder was created. Assigned by the server. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
     folderId : str, default is Undefined, optional

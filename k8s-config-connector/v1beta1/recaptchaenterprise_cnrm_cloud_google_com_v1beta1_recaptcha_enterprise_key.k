@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema RecaptchaEnterpriseKey:
     r"""
-    recaptchaenterprise cnrm cloud google com v1beta1 recaptcha enterprise key
+    RecaptchaEnterpriseKey is the Schema for the RecaptchaEnterpriseKey API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema RecaptchaEnterpriseKey:
 
 schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpec:
     r"""
-    recaptchaenterprise cnrm cloud google com v1beta1 recaptcha enterprise key spec
+    RecaptchaEnterpriseKeySpec defines the desired state of RecaptchaEnterpriseKey
 
     Attributes
     ----------
@@ -50,7 +50,7 @@ schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpec:
     projectRef : RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecProjectRef, default is Undefined, required
         project ref
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
+        The RecaptchaEnterpriseKey name. If not given, the metadata.name will be used.
     testingOptions : RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecTestingOptions, default is Undefined, optional
         testing options
     wafSettings : RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecWafSettings, default is Undefined, optional
@@ -115,18 +115,16 @@ schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecIos
 
 schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecProjectRef:
     r"""
-    Immutable. The Project that this resource belongs to.
+    The project that this resource belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The project for the resource
-
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -205,12 +203,12 @@ schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeySpecWeb
 
 schema RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeyStatus:
     r"""
-    recaptchaenterprise cnrm cloud google com v1beta1 recaptcha enterprise key status
+    RecaptchaEnterpriseKeyStatus defines the config connector machine state of RecaptchaEnterpriseKey
 
     Attributes
     ----------
     conditions : [RecaptchaenterpriseCnrmCloudGoogleComV1beta1RecaptchaEnterpriseKeyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     createTime : str, default is Undefined, optional
         The timestamp corresponding to the creation of this Key.
     observedGeneration : int, default is Undefined, optional

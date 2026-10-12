@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeNodeGroup:
     r"""
-    compute cnrm cloud google com v1beta1 compute node group
+    ComputeNodeGroup is the Schema for the ComputeNodeGroup API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeNodeGroup:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpec:
     r"""
-    compute cnrm cloud google com v1beta1 compute node group spec
+    ComputeNodeGroupSpec defines the desired state of ComputeNodeGroup
 
     Attributes
     ----------
@@ -87,24 +87,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpec:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpecAutoscalingPolicy:
     r"""
-    Immutable. If you use sole-tenant nodes for your workloads, you can use the node
-    group autoscaler to automatically manage the sizes of your node groups.
+    Immutable. If you use sole-tenant nodes for your workloads, you can use the node group autoscaler to automatically manage the sizes of your node groups.
 
     Attributes
     ----------
     maxNodes : int, default is Undefined, optional
-        Immutable. Maximum size of the node group. Set to a value less than or equal
-        to 100 and greater than or equal to min-nodes.
+        Immutable. Maximum size of the node group. Set to a value less than or equal to 100 and greater than or equal to min-nodes.
     minNodes : int, default is Undefined, optional
-        Immutable. Minimum size of the node group. Must be less
-        than or equal to max-nodes. The default value is 0.
+        Immutable. Minimum size of the node group. Must be less than or equal to max-nodes. The default value is 0.
     mode : str, default is Undefined, optional
-        Immutable. The autoscaling mode. Set to one of the following:
-          - OFF: Disables the autoscaler.
-          - ON: Enables scaling in and scaling out.
-          - ONLY_SCALE_OUT: Enables only scaling out.
-          You must use this mode if your node groups are configured to
-          restart their hosted VMs on minimal servers. Possible values: ["OFF", "ON", "ONLY_SCALE_OUT"].
+        Immutable. The autoscaling mode. Set to one of the following: - OFF: Disables the autoscaler. - ON: Enables scaling in and scaling out. - ONLY_SCALE_OUT: Enables only scaling out. You must use this mode if your node groups are configured to restart their hosted VMs on minimal servers. Possible values: ["OFF", "ON", "ONLY_SCALE_OUT"].
     """
 
 
@@ -136,11 +128,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpecNodeTemplateRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNodeTemplate` resource.
+        A reference to an externally managed ComputeNodeTemplate resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/nodeTemplates/{{nodeTemplateID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNodeTemplate resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNodeTemplate resource.
     """
 
 
@@ -194,11 +186,11 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpecShareSettingsProjectM
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -211,17 +203,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpecShareSettingsProjectM
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpecShareSettingsProjectMapItems0ProjectIDRef:
     r"""
-    The project id/number should be the same as the key of this project
-    config in the project map.
+    The project id/number should be the same as the key of this project config in the project map.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -234,12 +225,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupSpecShareSettingsProjectM
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute node group status
+    ComputeNodeGroupStatus defines the config connector machine state of ComputeNodeGroup
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeNodeGroupStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
     observedGeneration : int, default is Undefined, optional

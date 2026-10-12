@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema DNSResponsePolicyRule:
     r"""
-    dns cnrm cloud google com v1alpha1 DNS response policy rule
+    DNSResponsePolicyRule is the Schema for the dns API
 
     Attributes
     ----------
@@ -71,8 +71,7 @@ schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicyRuleSpec:
 
 schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicyRuleSpecLocalData:
     r"""
-    Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
-    in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
+    Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
 
     Attributes
     ----------
@@ -95,8 +94,7 @@ schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicyRuleSpecLocalDataLocalDatas
     rrdatas : [str], default is Undefined, optional
         As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
     ttl : int, default is Undefined, optional
-        Number of seconds that this ResourceRecordSet can be cached by
-        resolvers.
+        Number of seconds that this ResourceRecordSet can be cached by resolvers.
     $type : str, default is Undefined, required
         One of valid DNS resource types. Possible values: ["A", "AAAA", "CAA", "CNAME", "DNSKEY", "DS", "HTTPS", "IPSECVPNKEY", "MX", "NAPTR", "NS", "PTR", "SOA", "SPF", "SRV", "SSHFP", "SVCB", "TLSA", "TXT"].
     """
@@ -118,11 +116,11 @@ schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicyRuleSpecProjectRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -140,7 +138,7 @@ schema DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicyRuleStatus:
     Attributes
     ----------
     conditions : [DNSCnrmCloudGoogleComV1alpha1DNSResponsePolicyRuleStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the DNSResponsePolicyRule's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

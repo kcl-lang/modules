@@ -80,7 +80,7 @@ schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpec:
     resourceID : str, default is Undefined, optional
         The AIPlatformModel name. If not given, the metadata.name will be used.
     versionAliases : [str], default is Undefined, optional
-        User provided version aliases so that a model version can be referenced via alias (i.e. `projects/{project}/locations/{location}/models/{model_id}@{version_alias}` instead of auto-generated version id (i.e. `projects/{project}/locations/{location}/models/{model_id}@{version_id})`. The format is [a-z][a-zA-Z0-9-]{0,126}[a-z0-9] to distinguish from version_id. A default version alias will be created for the first version of the model, and there must be exactly one default version alias for a model.
+        User provided version aliases so that a model version can be referenced via alias (i.e. `projects/PROJECT/locations/LOCATION/models/MODEL_ID@VERSION_ALIAS` instead of auto-generated version id (i.e. `projects/PROJECT/locations/LOCATION/models/MODEL_ID@VERSION_ID`). The format is [a-z][a-zA-Z0-9-]{0,126}[a-z0-9] to distinguish from version_id. A default version alias will be created for the first version of the model, and there must be exactly one default version alias for a model.
     versionDescription : str, default is Undefined, optional
         The description of this version.
     """
@@ -163,10 +163,18 @@ schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecBaseModelSourceMod
     ----------
     publicModelName : str, default is Undefined, optional
         Required. The model garden source model resource name.
+    skipHfModelCache : bool, default is Undefined, optional
+        Optional. Whether to avoid pulling the model from the HF cache.
+    versionID : str, default is Undefined, optional
+        Optional. The model garden source model version ID.
     """
 
 
     publicModelName?: str
+
+    skipHfModelCache?: bool
+
+    versionID?: str
 
 
 schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpec:
@@ -340,6 +348,17 @@ schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpec:
          You can use the URI to one of Vertex AI's [pre-built container images for
          prediction](https://cloud.google.com/vertex-ai/docs/predictions/pre-built-containers)
          in this field.
+    invokeRoutePrefix : str, default is Undefined, optional
+        Immutable. Invoke route prefix for the custom container. "/*" is the only
+         supported value right now. By setting this field, any non-root route on
+         this model will be accessible with invoke http call eg: "/invoke/foo/bar",
+         however the [PredictionService.Invoke] RPC is not supported yet.
+
+         Only one of `predict_route` or `invoke_route_prefix` can be set, and we
+         default to using `predict_route` if this field is not set. If this field
+         is set, the Model can only be deployed to dedicated endpoint.
+    livenessProbe : AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecLivenessProbe, default is Undefined, optional
+        liveness probe
     ports : [AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecPortsItems0], default is Undefined, optional
         Immutable. List of ports to expose from the container. Vertex AI sends any
          prediction requests that it receives to the first port on this list. Vertex
@@ -416,6 +435,10 @@ schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpec:
 
     imageURI?: str
 
+    invokeRoutePrefix?: str
+
+    livenessProbe?: AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecLivenessProbe
+
     ports?: [AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecPortsItems0]
 
     predictRoute?: str
@@ -465,11 +488,32 @@ schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecHealt
     ----------
     exec : AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecHealthProbeExec, default is Undefined, optional
         exec
+    failureThreshold : int, default is Undefined, optional
+        Number of consecutive failures before the probe is considered failed.
+         Defaults to 3. Minimum value is 1.
+
+         Maps to Kubernetes probe argument 'failureThreshold'.
+    grpc : AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecHealthProbeGrpc, default is Undefined, optional
+        grpc
+    httpGet : AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecHealthProbeHTTPGet, default is Undefined, optional
+        http get
+    initialDelaySeconds : int, default is Undefined, optional
+        Number of seconds to wait before starting the probe. Defaults to 0.
+         Minimum value is 0.
+
+         Maps to Kubernetes probe argument 'initialDelaySeconds'.
     periodSeconds : int, default is Undefined, optional
         How often (in seconds) to perform the probe. Default to 10 seconds.
          Minimum value is 1. Must be less than timeout_seconds.
 
          Maps to Kubernetes probe argument 'periodSeconds'.
+    successThreshold : int, default is Undefined, optional
+        Number of consecutive successes before the probe is considered successful.
+         Defaults to 1. Minimum value is 1.
+
+         Maps to Kubernetes probe argument 'successThreshold'.
+    tcpSocket : AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecHealthProbeTCPSocket, default is Undefined, optional
+        tcp socket
     timeoutSeconds : int, default is Undefined, optional
         Number of seconds after which the probe times out. Defaults to 1 second.
          Minimum value is 1. Must be greater or equal to period_seconds.
@@ -480,7 +524,19 @@ schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecHealt
 
     exec?: AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecHealthProbeExec
 
+    failureThreshold?: int
+
+    grpc?: AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecHealthProbeGrpc
+
+    httpGet?: AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecHealthProbeHTTPGet
+
+    initialDelaySeconds?: int
+
     periodSeconds?: int
+
+    successThreshold?: int
+
+    tcpSocket?: AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecHealthProbeTCPSocket
 
     timeoutSeconds?: int
 
@@ -497,6 +553,257 @@ schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecHealt
 
 
     command?: [str]
+
+
+schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecHealthProbeGrpc:
+    r"""
+    GrpcAction probes the health of a container by sending a gRPC request.
+
+    Attributes
+    ----------
+    port : int, default is Undefined, optional
+        Port number of the gRPC service. Number must be in the range 1 to 65535.
+    service : str, default is Undefined, optional
+        Service is the name of the service to place in the gRPC
+         HealthCheckRequest (see
+         https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+
+         If this is not specified, the default behavior is defined by gRPC.
+    """
+
+
+    port?: int
+
+    service?: str
+
+
+schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecHealthProbeHTTPGet:
+    r"""
+    HttpGetAction probes the health of a container by sending an HTTP GET request.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        Host name to connect to, defaults to the model serving container's IP. You probably want to set "Host" in httpHeaders instead.
+    httpHeaders : [AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecHealthProbeHTTPGetHTTPHeadersItems0], default is Undefined, optional
+        Custom headers to set in the request. HTTP allows repeated headers.
+    path : str, default is Undefined, optional
+        Path to access on the HTTP server.
+    port : int, default is Undefined, optional
+        Number of the port to access on the container. Number must be in the range 1 to 65535.
+    scheme : str, default is Undefined, optional
+        Scheme to use for connecting to the host. Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+    """
+
+
+    host?: str
+
+    httpHeaders?: [AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecHealthProbeHTTPGetHTTPHeadersItems0]
+
+    path?: str
+
+    port?: int
+
+    scheme?: str
+
+
+schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecHealthProbeHTTPGetHTTPHeadersItems0:
+    r"""
+    aiplatform cnrm cloud google com v1alpha1 a i platform model spec container spec health probe HTTP get HTTP headers items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.
+    value : str, default is Undefined, optional
+        The header field value
+    """
+
+
+    name?: str
+
+    value?: str
+
+
+schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecHealthProbeTCPSocket:
+    r"""
+    TcpSocketAction probes the health of a container by opening a TCP socket connection.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        Optional: Host name to connect to, defaults to the model serving container's IP.
+    port : int, default is Undefined, optional
+        Number of the port to access on the container. Number must be in the range 1 to 65535.
+    """
+
+
+    host?: str
+
+    port?: int
+
+
+schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecLivenessProbe:
+    r"""
+    Immutable. Specification for Kubernetes liveness probe.
+
+    Attributes
+    ----------
+    exec : AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecLivenessProbeExec, default is Undefined, optional
+        exec
+    failureThreshold : int, default is Undefined, optional
+        Number of consecutive failures before the probe is considered failed.
+         Defaults to 3. Minimum value is 1.
+
+         Maps to Kubernetes probe argument 'failureThreshold'.
+    grpc : AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecLivenessProbeGrpc, default is Undefined, optional
+        grpc
+    httpGet : AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecLivenessProbeHTTPGet, default is Undefined, optional
+        http get
+    initialDelaySeconds : int, default is Undefined, optional
+        Number of seconds to wait before starting the probe. Defaults to 0.
+         Minimum value is 0.
+
+         Maps to Kubernetes probe argument 'initialDelaySeconds'.
+    periodSeconds : int, default is Undefined, optional
+        How often (in seconds) to perform the probe. Default to 10 seconds.
+         Minimum value is 1. Must be less than timeout_seconds.
+
+         Maps to Kubernetes probe argument 'periodSeconds'.
+    successThreshold : int, default is Undefined, optional
+        Number of consecutive successes before the probe is considered successful.
+         Defaults to 1. Minimum value is 1.
+
+         Maps to Kubernetes probe argument 'successThreshold'.
+    tcpSocket : AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecLivenessProbeTCPSocket, default is Undefined, optional
+        tcp socket
+    timeoutSeconds : int, default is Undefined, optional
+        Number of seconds after which the probe times out. Defaults to 1 second.
+         Minimum value is 1. Must be greater or equal to period_seconds.
+
+         Maps to Kubernetes probe argument 'timeoutSeconds'.
+    """
+
+
+    exec?: AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecLivenessProbeExec
+
+    failureThreshold?: int
+
+    grpc?: AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecLivenessProbeGrpc
+
+    httpGet?: AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecLivenessProbeHTTPGet
+
+    initialDelaySeconds?: int
+
+    periodSeconds?: int
+
+    successThreshold?: int
+
+    tcpSocket?: AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecLivenessProbeTCPSocket
+
+    timeoutSeconds?: int
+
+
+schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecLivenessProbeExec:
+    r"""
+    ExecAction probes the health of a container by executing a command.
+
+    Attributes
+    ----------
+    command : [str], default is Undefined, optional
+        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+    """
+
+
+    command?: [str]
+
+
+schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecLivenessProbeGrpc:
+    r"""
+    GrpcAction probes the health of a container by sending a gRPC request.
+
+    Attributes
+    ----------
+    port : int, default is Undefined, optional
+        Port number of the gRPC service. Number must be in the range 1 to 65535.
+    service : str, default is Undefined, optional
+        Service is the name of the service to place in the gRPC
+         HealthCheckRequest (see
+         https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+
+         If this is not specified, the default behavior is defined by gRPC.
+    """
+
+
+    port?: int
+
+    service?: str
+
+
+schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecLivenessProbeHTTPGet:
+    r"""
+    HttpGetAction probes the health of a container by sending an HTTP GET request.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        Host name to connect to, defaults to the model serving container's IP. You probably want to set "Host" in httpHeaders instead.
+    httpHeaders : [AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecLivenessProbeHTTPGetHTTPHeadersItems0], default is Undefined, optional
+        Custom headers to set in the request. HTTP allows repeated headers.
+    path : str, default is Undefined, optional
+        Path to access on the HTTP server.
+    port : int, default is Undefined, optional
+        Number of the port to access on the container. Number must be in the range 1 to 65535.
+    scheme : str, default is Undefined, optional
+        Scheme to use for connecting to the host. Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+    """
+
+
+    host?: str
+
+    httpHeaders?: [AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecLivenessProbeHTTPGetHTTPHeadersItems0]
+
+    path?: str
+
+    port?: int
+
+    scheme?: str
+
+
+schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecLivenessProbeHTTPGetHTTPHeadersItems0:
+    r"""
+    aiplatform cnrm cloud google com v1alpha1 a i platform model spec container spec liveness probe HTTP get HTTP headers items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.
+    value : str, default is Undefined, optional
+        The header field value
+    """
+
+
+    name?: str
+
+    value?: str
+
+
+schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecLivenessProbeTCPSocket:
+    r"""
+    TcpSocketAction probes the health of a container by opening a TCP socket connection.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        Optional: Host name to connect to, defaults to the model serving container's IP.
+    port : int, default is Undefined, optional
+        Number of the port to access on the container. Number must be in the range 1 to 65535.
+    """
+
+
+    host?: str
+
+    port?: int
 
 
 schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecPortsItems0:
@@ -521,11 +828,32 @@ schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecStart
     ----------
     exec : AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecStartupProbeExec, default is Undefined, optional
         exec
+    failureThreshold : int, default is Undefined, optional
+        Number of consecutive failures before the probe is considered failed.
+         Defaults to 3. Minimum value is 1.
+
+         Maps to Kubernetes probe argument 'failureThreshold'.
+    grpc : AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecStartupProbeGrpc, default is Undefined, optional
+        grpc
+    httpGet : AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecStartupProbeHTTPGet, default is Undefined, optional
+        http get
+    initialDelaySeconds : int, default is Undefined, optional
+        Number of seconds to wait before starting the probe. Defaults to 0.
+         Minimum value is 0.
+
+         Maps to Kubernetes probe argument 'initialDelaySeconds'.
     periodSeconds : int, default is Undefined, optional
         How often (in seconds) to perform the probe. Default to 10 seconds.
          Minimum value is 1. Must be less than timeout_seconds.
 
          Maps to Kubernetes probe argument 'periodSeconds'.
+    successThreshold : int, default is Undefined, optional
+        Number of consecutive successes before the probe is considered successful.
+         Defaults to 1. Minimum value is 1.
+
+         Maps to Kubernetes probe argument 'successThreshold'.
+    tcpSocket : AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecStartupProbeTCPSocket, default is Undefined, optional
+        tcp socket
     timeoutSeconds : int, default is Undefined, optional
         Number of seconds after which the probe times out. Defaults to 1 second.
          Minimum value is 1. Must be greater or equal to period_seconds.
@@ -536,7 +864,19 @@ schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecStart
 
     exec?: AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecStartupProbeExec
 
+    failureThreshold?: int
+
+    grpc?: AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecStartupProbeGrpc
+
+    httpGet?: AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecStartupProbeHTTPGet
+
+    initialDelaySeconds?: int
+
     periodSeconds?: int
+
+    successThreshold?: int
+
+    tcpSocket?: AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecStartupProbeTCPSocket
 
     timeoutSeconds?: int
 
@@ -553,6 +893,94 @@ schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecStart
 
 
     command?: [str]
+
+
+schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecStartupProbeGrpc:
+    r"""
+    GrpcAction probes the health of a container by sending a gRPC request.
+
+    Attributes
+    ----------
+    port : int, default is Undefined, optional
+        Port number of the gRPC service. Number must be in the range 1 to 65535.
+    service : str, default is Undefined, optional
+        Service is the name of the service to place in the gRPC
+         HealthCheckRequest (see
+         https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+
+         If this is not specified, the default behavior is defined by gRPC.
+    """
+
+
+    port?: int
+
+    service?: str
+
+
+schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecStartupProbeHTTPGet:
+    r"""
+    HttpGetAction probes the health of a container by sending an HTTP GET request.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        Host name to connect to, defaults to the model serving container's IP. You probably want to set "Host" in httpHeaders instead.
+    httpHeaders : [AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecStartupProbeHTTPGetHTTPHeadersItems0], default is Undefined, optional
+        Custom headers to set in the request. HTTP allows repeated headers.
+    path : str, default is Undefined, optional
+        Path to access on the HTTP server.
+    port : int, default is Undefined, optional
+        Number of the port to access on the container. Number must be in the range 1 to 65535.
+    scheme : str, default is Undefined, optional
+        Scheme to use for connecting to the host. Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
+    """
+
+
+    host?: str
+
+    httpHeaders?: [AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecStartupProbeHTTPGetHTTPHeadersItems0]
+
+    path?: str
+
+    port?: int
+
+    scheme?: str
+
+
+schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecStartupProbeHTTPGetHTTPHeadersItems0:
+    r"""
+    aiplatform cnrm cloud google com v1alpha1 a i platform model spec container spec startup probe HTTP get HTTP headers items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, optional
+        The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.
+    value : str, default is Undefined, optional
+        The header field value
+    """
+
+
+    name?: str
+
+    value?: str
+
+
+schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecContainerSpecStartupProbeTCPSocket:
+    r"""
+    TcpSocketAction probes the health of a container by opening a TCP socket connection.
+
+    Attributes
+    ----------
+    host : str, default is Undefined, optional
+        Optional: Host name to connect to, defaults to the model serving container's IP.
+    port : int, default is Undefined, optional
+        Number of the port to access on the container. Number must be in the range 1 to 65535.
+    """
+
+
+    host?: str
+
+    port?: int
 
 
 schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecDataStats:
@@ -598,12 +1026,34 @@ schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecEncryptionSpec:
 
     Attributes
     ----------
-    kmsKeyName : str, default is Undefined, optional
-        Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+    kmsKeyRef : AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecEncryptionSpecKmsKeyRef, default is Undefined, optional
+        kms key ref
     """
 
 
-    kmsKeyName?: str
+    kmsKeyRef?: AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecEncryptionSpecKmsKeyRef
+
+
+schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecEncryptionSpecKmsKeyRef:
+    r"""
+    Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed KMSCryptoKey resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptokey}}".
+    name : str, default is Undefined, optional
+        The name of a KMSCryptoKey resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a KMSCryptoKey resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
 
 
 schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecExplanationSpec:
@@ -804,7 +1254,7 @@ schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecExplanationSpecMet
         Represents a double value.
     stringValue : str, default is Undefined, optional
         Represents a string value.
-    structValue : {str:str}, default is Undefined, optional
+    structValue : any, default is Undefined, optional
         Represents a structured value.
     """
 
@@ -817,7 +1267,7 @@ schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecExplanationSpecMet
 
     stringValue?: str
 
-    structValue?: {str:str}
+    structValue?: any
 
 
 schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecExplanationSpecMetadataInputsAnonFeatureValueDomain:
@@ -860,7 +1310,7 @@ schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecExplanationSpecMet
         Represents a double value.
     stringValue : str, default is Undefined, optional
         Represents a string value.
-    structValue : {str:str}, default is Undefined, optional
+    structValue : any, default is Undefined, optional
         Represents a structured value.
     """
 
@@ -873,7 +1323,7 @@ schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecExplanationSpecMet
 
     stringValue?: str
 
-    structValue?: {str:str}
+    structValue?: any
 
 
 schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecExplanationSpecMetadataInputsAnonVisualization:
@@ -977,7 +1427,7 @@ schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecExplanationSpecMet
         Represents a double value.
     stringValue : str, default is Undefined, optional
         Represents a string value.
-    structValue : {str:str}, default is Undefined, optional
+    structValue : any, default is Undefined, optional
         Represents a structured value.
     """
 
@@ -990,7 +1440,7 @@ schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecExplanationSpecMet
 
     stringValue?: str
 
-    structValue?: {str:str}
+    structValue?: any
 
 
 schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecExplanationSpecParameters:
@@ -1074,7 +1524,7 @@ schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecExplanationSpecPar
     Attributes
     ----------
     uris : [str], default is Undefined, optional
-        Required. Google Cloud Storage URI(-s) to the input file(s). May contain wildcards. For more information on wildcards, see https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames.
+        Required. Google Cloud Storage URI(-s) to the input file(s). May contain wildcards. For more information on wildcards, see https://cloud.google.com/storage/docs/wildcards.
     """
 
 
@@ -1095,7 +1545,7 @@ schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecExplanationSpecPar
         Represents a double value.
     stringValue : str, default is Undefined, optional
         Represents a string value.
-    structValue : {str:str}, default is Undefined, optional
+    structValue : any, default is Undefined, optional
         Represents a structured value.
     """
 
@@ -1108,7 +1558,7 @@ schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecExplanationSpecPar
 
     stringValue?: str
 
-    structValue?: {str:str}
+    structValue?: any
 
 
 schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecExplanationSpecParametersExamplesPresets:
@@ -1400,7 +1850,7 @@ schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecMetadata:
         Represents a double value.
     stringValue : str, default is Undefined, optional
         Represents a string value.
-    structValue : {str:str}, default is Undefined, optional
+    structValue : any, default is Undefined, optional
         Represents a structured value.
     """
 
@@ -1413,7 +1863,7 @@ schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecMetadata:
 
     stringValue?: str
 
-    structValue?: {str:str}
+    structValue?: any
 
 
 schema AiplatformCnrmCloudGoogleComV1alpha1AIPlatformModelSpecPredictSchemata:

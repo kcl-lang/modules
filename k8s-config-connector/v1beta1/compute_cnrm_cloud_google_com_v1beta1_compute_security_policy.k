@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeSecurityPolicy:
     r"""
-    compute cnrm cloud google com v1beta1 compute security policy
+    ComputeSecurityPolicy is the Schema for the ComputeSecurityPolicy API
 
     Attributes
     ----------
@@ -17,7 +17,7 @@ schema ComputeSecurityPolicy:
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpec, default is Undefined, optional
+    spec : ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpec, default is Undefined, required
         spec
     status : ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicyStatus, default is Undefined, optional
         status
@@ -30,7 +30,7 @@ schema ComputeSecurityPolicy:
 
     metadata?: v1.ObjectMeta
 
-    spec?: ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpec
+    spec: ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpec
 
     status?: ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicyStatus
 
@@ -46,15 +46,17 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpec:
     advancedOptionsConfig : ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecAdvancedOptionsConfig, default is Undefined, optional
         advanced options config
     description : str, default is Undefined, optional
-        An optional description of this security policy. Max size is 2048.
+        description
     recaptchaOptionsConfig : ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRecaptchaOptionsConfig, default is Undefined, optional
         recaptcha options config
+    region : str, default is Undefined, optional
+        Region represents the geographical location of the ComputeSecurityPolicy. Specify a region name or "global" for global resources.
     resourceID : str, default is Undefined, optional
-        Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
+        The ComputeSecurityPolicy name. If not given, the metadata.name will be used.
     $rule : [ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0], default is Undefined, optional
-        The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+        rule
     $type : str, default is Undefined, optional
-        The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
+        type
     """
 
 
@@ -66,6 +68,8 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpec:
 
     recaptchaOptionsConfig?: ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRecaptchaOptionsConfig
 
+    region?: str
+
     resourceID?: str
 
     $rule?: [ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0]
@@ -75,7 +79,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpec:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecAdaptiveProtectionConfig:
     r"""
-    Adaptive Protection Config of this security policy.
+    compute cnrm cloud google com v1beta1 compute security policy spec adaptive protection config
 
     Attributes
     ----------
@@ -93,7 +97,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecAdaptiveProtecti
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecAdaptiveProtectionConfigAutoDeployConfig:
     r"""
-    Auto Deploy Config of this security policy.
+    Auto Deploy Config of this security policy
 
     Attributes
     ----------
@@ -119,7 +123,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecAdaptiveProtecti
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecAdaptiveProtectionConfigLayer7DdosDefenseConfig:
     r"""
-    Layer 7 DDoS Defense Config of this security policy.
+    Layer 7 DDoS Defense Config of this security policy
 
     Attributes
     ----------
@@ -137,16 +141,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecAdaptiveProtecti
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecAdvancedOptionsConfig:
     r"""
-    Advanced Options Config of this security policy.
+    compute cnrm cloud google com v1beta1 compute security policy spec advanced options config
 
     Attributes
     ----------
     jsonCustomConfig : ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecAdvancedOptionsConfigJSONCustomConfig, default is Undefined, optional
         json custom config
     jsonParsing : str, default is Undefined, optional
-        JSON body parsing. Supported values include: "DISABLED", "STANDARD".
+        Check the JsonParsing enum for the list of possible values.
     logLevel : str, default is Undefined, optional
-        Logging level. Supported values include: "NORMAL", "VERBOSE".
+        Check the LogLevel enum for the list of possible values.
     userIpRequestHeaders : [str], default is Undefined, optional
         An optional list of case-insensitive request header names to use for resolving the callers client IP address.
     """
@@ -163,12 +167,12 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecAdvancedOptionsC
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecAdvancedOptionsConfigJSONCustomConfig:
     r"""
-    Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.
+    Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
 
     Attributes
     ----------
     contentTypes : [str], default is Undefined, required
-        A list of custom Content-Type header values to apply the JSON parsing.
+        A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.
     """
 
 
@@ -177,7 +181,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecAdvancedOptionsC
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRecaptchaOptionsConfig:
     r"""
-    reCAPTCHA configuration options to be applied for the security policy.
+    compute cnrm cloud google com v1beta1 compute security policy spec recaptcha options config
 
     Attributes
     ----------
@@ -191,21 +195,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRecaptchaOptions
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRecaptchaOptionsConfigRedirectSiteKeyRef:
     r"""
-    A field to supply a reCAPTCHA site key to be used for all the rules
-    using the redirect action with the type of GOOGLE_RECAPTCHA under
-    the security policy. The specified site key needs to be created from
-    the reCAPTCHA API. The user is responsible for the validity of the
-    specified site key. If not specified, a Google-managed site key is
-    used.
+    RecaptchaEnterpriseKeyRef is a reference to a GCP RecaptchaEnterpriseKey.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `RecaptchaEnterpriseKey` resource.
+        A reference to an externally managed RecaptchaEnterpriseKey resource. Should be in the format "projects/{{projectID}}/keys/{{keyID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a RecaptchaEnterpriseKey resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a RecaptchaEnterpriseKey resource.
     """
 
 
@@ -223,9 +222,9 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0:
     Attributes
     ----------
     action : str, default is Undefined, required
-        Action to take when match matches the request.
+        The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
     description : str, default is Undefined, optional
-        An optional description of this rule. Max size is 64.
+        An optional description of this resource. Provide this property when you create the resource.
     headerAction : ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0HeaderAction, default is Undefined, optional
         header action
     match : ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Match, default is Undefined, required
@@ -233,9 +232,9 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0:
     preconfiguredWafConfig : ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0PreconfiguredWafConfig, default is Undefined, optional
         preconfigured waf config
     preview : bool, default is Undefined, optional
-        When set to true, the action specified above is not enforced. Stackdriver logs for requests that trigger a preview action are annotated as such.
+        If set to true, the specified action is not enforced.
     priority : int, default is Undefined, required
-        An unique positive integer indicating the priority of evaluation for a rule. Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
+        An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
     rateLimitOptions : ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RateLimitOptions, default is Undefined, optional
         rate limit options
     redirectOptions : ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RedirectOptions, default is Undefined, optional
@@ -264,16 +263,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0:
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0HeaderAction:
     r"""
-    Additional actions that are performed on headers.
+    Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 
     Attributes
     ----------
-    requestHeadersToAdds : [ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0HeaderActionRequestHeadersToAddsItems0], default is Undefined, required
+    requestHeadersToAdds : [ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0HeaderActionRequestHeadersToAddsItems0], default is Undefined, optional
         The list of request headers to add or overwrite if they're already present.
     """
 
 
-    requestHeadersToAdds: [ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0HeaderActionRequestHeadersToAddsItems0]
+    requestHeadersToAdds?: [ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0HeaderActionRequestHeadersToAddsItems0]
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0HeaderActionRequestHeadersToAddsItems0:
@@ -282,21 +281,21 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Header
 
     Attributes
     ----------
-    headerName : str, default is Undefined, required
+    headerName : str, default is Undefined, optional
         The name of the header to set.
     headerValue : str, default is Undefined, optional
         The value to set the named header to.
     """
 
 
-    headerName: str
+    headerName?: str
 
     headerValue?: str
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Match:
     r"""
-    A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding action is enforced.
+    A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 
     Attributes
     ----------
@@ -305,7 +304,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Match:
     expr : ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0MatchExpr, default is Undefined, optional
         expr
     versionedExpr : str, default is Undefined, optional
-        Predefined rule expression. If this field is specified, config must also be specified. Available options:   SRC_IPS_V1: Must specify the corresponding src_ip_ranges field in config.
+        Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config. Check the VersionedExpr enum for the list of possible values.
     """
 
 
@@ -323,7 +322,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0MatchC
     Attributes
     ----------
     srcIpRanges : [str], default is Undefined, required
-        Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of '*' matches all IPs (can be used to override the default behavior).
+        CIDR IP address range. Maximum number of src_ip_ranges allowed is 10.
     """
 
 
@@ -332,16 +331,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0MatchC
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0MatchExpr:
     r"""
-    User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+    User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies.
 
     Attributes
     ----------
-    expression : str, default is Undefined, required
-        Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
+    expression : str, default is Undefined, optional
+        Textual representation of an expression in Common Expression Language syntax.
     """
 
 
-    expression: str
+    expression?: str
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0PreconfiguredWafConfig:
@@ -351,7 +350,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Precon
     Attributes
     ----------
     exclusion : [ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0PreconfiguredWafConfigExclusionItems0], default is Undefined, optional
-        An exclusion to apply during preconfigured WAF evaluation.
+        A list of exclusions to apply during preconfigured WAF evaluation.
     """
 
 
@@ -365,16 +364,16 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Precon
     Attributes
     ----------
     requestCookie : [ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0PreconfiguredWafConfigExclusionItems0RequestCookieItems0], default is Undefined, optional
-        Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
+        A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
     requestHeader : [ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0PreconfiguredWafConfigExclusionItems0RequestHeaderItems0], default is Undefined, optional
-        Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
+        A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
     requestQueryParam : [ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0PreconfiguredWafConfigExclusionItems0RequestQueryParamItems0], default is Undefined, optional
-        Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.  Note that the parameter can be in the query string or in the POST body.
+        A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
     requestUri : [ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0PreconfiguredWafConfigExclusionItems0RequestURIItems0], default is Undefined, optional
-        Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+        A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
     targetRuleIds : [str], default is Undefined, optional
         A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
-    targetRuleSet : str, default is Undefined, required
+    targetRuleSet : str, default is Undefined, optional
         Target WAF rule set to apply the preconfigured WAF exclusion.
     """
 
@@ -389,7 +388,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Precon
 
     targetRuleIds?: [str]
 
-    targetRuleSet: str
+    targetRuleSet?: str
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0PreconfiguredWafConfigExclusionItems0RequestCookieItems0:
@@ -398,14 +397,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Precon
 
     Attributes
     ----------
-    operator : str, default is Undefined, required
-        You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+    operator : str, default is Undefined, optional
+        The match operator for the field. Check the Op enum for the list of possible values.
     value : str, default is Undefined, optional
-        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        The value of the field.
     """
 
 
-    operator: str
+    operator?: str
 
     value?: str
 
@@ -416,14 +415,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Precon
 
     Attributes
     ----------
-    operator : str, default is Undefined, required
-        You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+    operator : str, default is Undefined, optional
+        The match operator for the field. Check the Op enum for the list of possible values.
     value : str, default is Undefined, optional
-        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        The value of the field.
     """
 
 
-    operator: str
+    operator?: str
 
     value?: str
 
@@ -434,14 +433,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Precon
 
     Attributes
     ----------
-    operator : str, default is Undefined, required
-        You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+    operator : str, default is Undefined, optional
+        The match operator for the field. Check the Op enum for the list of possible values.
     value : str, default is Undefined, optional
-        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        The value of the field.
     """
 
 
-    operator: str
+    operator?: str
 
     value?: str
 
@@ -452,21 +451,21 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Precon
 
     Attributes
     ----------
-    operator : str, default is Undefined, required
-        You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.
+    operator : str, default is Undefined, optional
+        The match operator for the field. Check the Op enum for the list of possible values.
     value : str, default is Undefined, optional
-        A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
+        The value of the field.
     """
 
 
-    operator: str
+    operator?: str
 
     value?: str
 
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RateLimitOptions:
     r"""
-    Rate limit threshold for this security policy. Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+    Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
 
     Attributes
     ----------
@@ -477,13 +476,13 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RateLi
     conformAction : str, default is Undefined, required
         Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
     enforceOnKey : str, default is Undefined, optional
-        Determines the key to enforce the rateLimitThreshold on.
+        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. Check the EnforceOnKey enum for the list of possible values.
     enforceOnKeyConfigs : [ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RateLimitOptionsEnforceOnKeyConfigsItems0], default is Undefined, optional
-        Enforce On Key Config of this security policy.
+        If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
     enforceOnKeyName : str, default is Undefined, optional
         Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
     exceedAction : str, default is Undefined, required
-        Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+        Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below. The `redirect` action is only supported in Global Security Policies of type CLOUD_ARMOR.
     exceedRedirectOptions : ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RateLimitOptionsExceedRedirectOptions, default is Undefined, optional
         exceed redirect options
     rateLimitThreshold : ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RateLimitOptionsRateLimitThreshold, default is Undefined, required
@@ -512,7 +511,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RateLi
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RateLimitOptionsBanThreshold:
     r"""
-    Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
+    Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
 
     Attributes
     ----------
@@ -537,7 +536,7 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RateLi
     enforceOnKeyName : str, default is Undefined, optional
         Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
     enforceOnKeyType : str, default is Undefined, optional
-        Determines the key to enforce the rate_limit_threshold on.
+        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. - TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. - USER_IP: The IP address of the originating client, which is resolved based on "userIpRequestHeaders" configured with the security policy. If there is no "userIpRequestHeaders" configuration or an IP address cannot be resolved from it, the key type defaults to IP. - TLS_JA4_FINGERPRINT: JA4 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL. Check the EnforceOnKeyType enum for the list of possible values.
     """
 
 
@@ -548,14 +547,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RateLi
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RateLimitOptionsExceedRedirectOptions:
     r"""
-    Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+    Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 
     Attributes
     ----------
     target : str, default is Undefined, optional
         Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
     $type : str, default is Undefined, required
-        Type of the redirect action.
+        Type of the redirect action. Possible values are: - GOOGLE_RECAPTCHA: redirect to reCAPTCHA for manual challenge assessment. - EXTERNAL_302: redirect to a different URL via a 302 response. Check the Type enum for the list of possible values.
     """
 
 
@@ -584,14 +583,14 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RateLi
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0RedirectOptions:
     r"""
-    Parameters defining the redirect action. Cannot be specified for any other actions.
+    Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
 
     Attributes
     ----------
     target : str, default is Undefined, optional
         Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
     $type : str, default is Undefined, required
-        Type of the redirect action. Available options: EXTERNAL_302: Must specify the corresponding target field in config. GOOGLE_RECAPTCHA: Cannot specify target field in config.
+        Type of the redirect action. Possible values are: - GOOGLE_RECAPTCHA: redirect to reCAPTCHA for manual challenge assessment. - EXTERNAL_302: redirect to a different URL via a 302 response. Check the Type enum for the list of possible values.
     """
 
 
@@ -602,18 +601,18 @@ schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicySpecRuleItems0Redire
 
 schema ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicyStatus:
     r"""
-    compute cnrm cloud google com v1beta1 compute security policy status
+    ComputeSecurityPolicyStatus defines the config connector machine state of ComputeSecurityPolicy
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1beta1ComputeSecurityPolicyStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     fingerprint : str, default is Undefined, optional
-        Fingerprint of this resource.
+        fingerprint
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     selfLink : str, default is Undefined, optional
-        The URI of the created resource.
+        self link
     """
 
 

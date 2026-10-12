@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ComputeAutoscaler:
     r"""
-    compute cnrm cloud google com v1alpha1 compute autoscaler
+    ComputeAutoscaler is the Schema for the ComputeAutoscaler API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ComputeAutoscaler:
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpec:
     r"""
-    compute cnrm cloud google com v1alpha1 compute autoscaler spec
+    ComputeAutoscalerSpec defines the desired state of ComputeAutoscaler
 
     Attributes
     ----------
@@ -96,17 +96,11 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicy:
     loadBalancingUtilization : ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyLoadBalancingUtilization, default is Undefined, optional
         load balancing utilization
     maxReplicas : int, default is Undefined, required
-        The maximum number of instances that the autoscaler can scale up
-        to. This is required when creating or updating an autoscaler. The
-        maximum number of replicas should not be lower than minimal number
-        of replicas.
+        The maximum number of instances that the autoscaler can scale up to. This is required when creating or updating an autoscaler. The maximum number of replicas should not be lower than minimal number of replicas.
     metric : [ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyMetricItems0], default is Undefined, optional
         Configuration parameters of autoscaling based on a custom metric.
     minReplicas : int, default is Undefined, required
-        The minimum number of replicas that the autoscaler can scale down
-        to. This cannot be less than 0. If not provided, autoscaler will
-        choose a default value depending on maximum number of instances
-        allowed.
+        The minimum number of replicas that the autoscaler can scale down to. This cannot be less than 0. If not provided, autoscaler will choose a default value depending on maximum number of instances allowed.
     mode : str, default is Undefined, optional
         Defines operating mode for this policy.
     scaleDownControl : ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyScaleDownControl, default is Undefined, optional
@@ -141,9 +135,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicy:
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyCPUUtilization:
     r"""
-    Defines the CPU utilization policy that allows the autoscaler to
-    scale based on the average CPU utilization of a managed instance
-    group.
+    Defines the CPU utilization policy that allows the autoscaler to scale based on the average CPU utilization of a managed instance group.
 
     Attributes
     ----------
@@ -182,9 +174,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyLo
     Attributes
     ----------
     target : float, default is Undefined, required
-        Fraction of backend capacity utilization (set in HTTP(s) load
-        balancing configuration) that autoscaler should maintain. Must
-        be a positive float value. If not defined, the default is 0.8.
+        Fraction of backend capacity utilization (set in HTTP(s) load balancing configuration) that autoscaler should maintain. Must be a positive float value. If not defined, the default is 0.8.
     """
 
 
@@ -263,8 +253,7 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyMe
         The autoscaler will work to keep this value constant for each
         of the instances.
     $type : str, default is Undefined, optional
-        Defines how target utilization value is expressed for a
-        Stackdriver Monitoring metric. Possible values: ["GAUGE", "DELTA_PER_SECOND", "DELTA_PER_MINUTE"].
+        Defines how target utilization value is expressed for a Stackdriver Monitoring metric. Possible values: ["GAUGE", "DELTA_PER_SECOND", "DELTA_PER_MINUTE"].
     """
 
 
@@ -281,16 +270,14 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyMe
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyScaleDownControl:
     r"""
-    Defines scale down controls to reduce the risk of response latency
-    and outages due to abrupt scale-in events.
+    Defines scale down controls to reduce the risk of response latency and outages due to abrupt scale-in events.
 
     Attributes
     ----------
     maxScaledDownReplicas : ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyScaleDownControlMaxScaledDownReplicas, default is Undefined, optional
         max scaled down replicas
     timeWindowSec : int, default is Undefined, optional
-        How long back autoscaling should look when computing recommendations
-        to include directives regarding slower scale down, as described above.
+        How long back autoscaling should look when computing recommendations to include directives regarding slower scale down, as described above.
     """
 
 
@@ -306,11 +293,9 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicySc
     Attributes
     ----------
     fixed : int, default is Undefined, optional
-        Specifies a fixed number of VM instances. This must be a positive
-        integer.
+        Specifies a fixed number of VM instances. This must be a positive integer.
     percent : int, default is Undefined, optional
-        Specifies a percentage of instances between 0 to 100%, inclusive.
-        For example, specify 80 for 80%.
+        Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
     """
 
 
@@ -321,16 +306,14 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicySc
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyScaleInControl:
     r"""
-    Defines scale in controls to reduce the risk of response latency
-    and outages due to abrupt scale-in events.
+    Defines scale in controls to reduce the risk of response latency and outages due to abrupt scale-in events.
 
     Attributes
     ----------
     maxScaledInReplicas : ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicyScaleInControlMaxScaledInReplicas, default is Undefined, optional
         max scaled in replicas
     timeWindowSec : int, default is Undefined, optional
-        How long back autoscaling should look when computing recommendations
-        to include directives regarding slower scale down, as described above.
+        How long back autoscaling should look when computing recommendations to include directives regarding slower scale down, as described above.
     """
 
 
@@ -346,11 +329,9 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecAutoscalingPolicySc
     Attributes
     ----------
     fixed : int, default is Undefined, optional
-        Specifies a fixed number of VM instances. This must be a positive
-        integer.
+        Specifies a fixed number of VM instances. This must be a positive integer.
     percent : int, default is Undefined, optional
-        Specifies a percentage of instances between 0 to 100%, inclusive.
-        For example, specify 80 for 80%.
+        Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
     """
 
 
@@ -404,11 +385,11 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecProjectRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `Project` resource.
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -443,12 +424,12 @@ schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerSpecTargetRef:
 
 schema ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerStatus:
     r"""
-    compute cnrm cloud google com v1alpha1 compute autoscaler status
+    ComputeAutoscalerStatus defines the config connector machine state of ComputeAutoscaler
 
     Attributes
     ----------
     conditions : [ComputeCnrmCloudGoogleComV1alpha1ComputeAutoscalerStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     creationTimestamp : str, default is Undefined, optional
         Creation timestamp in RFC3339 text format.
     observedGeneration : int, default is Undefined, optional

@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema StorageBucket:
     r"""
-    storage cnrm cloud google com v1beta1 storage bucket
+    StorageBucket is the Schema for the StorageBucket API
 
     Attributes
     ----------
@@ -37,15 +37,14 @@ schema StorageBucket:
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpec:
     r"""
-    storage cnrm cloud google com v1beta1 storage bucket spec
+    StorageBucketSpec defines the desired state of StorageBucket
 
     Attributes
     ----------
     autoclass : StorageCnrmCloudGoogleComV1beta1StorageBucketSpecAutoclass, default is Undefined, optional
         autoclass
     bucketPolicyOnly : bool, default is Undefined, optional
-        DEPRECATED. Please use the `uniformBucketLevelAccess` field as this field has been renamed by Google. The `uniformBucketLevelAccess` field will supersede this field.
-        Enables Bucket PolicyOnly access to a bucket.
+        DEPRECATED. Please use the `uniformBucketLevelAccess` field as this field has been renamed by Google. The `uniformBucketLevelAccess` field will supersede this field. Enables Bucket PolicyOnly access to a bucket.
     cors : [StorageCnrmCloudGoogleComV1beta1StorageBucketSpecCorsItems0], default is Undefined, optional
         The bucket's Cross-Origin Resource Sharing (CORS) configuration.
     customPlacementConfig : StorageCnrmCloudGoogleComV1beta1StorageBucketSpecCustomPlacementConfig, default is Undefined, optional
@@ -54,6 +53,8 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpec:
         Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
     encryption : StorageCnrmCloudGoogleComV1beta1StorageBucketSpecEncryption, default is Undefined, optional
         encryption
+    ipFilter : StorageCnrmCloudGoogleComV1beta1StorageBucketSpecIPFilter, default is Undefined, optional
+        ip filter
     lifecycleRule : [StorageCnrmCloudGoogleComV1beta1StorageBucketSpecLifecycleRuleItems0], default is Undefined, optional
         The bucket's Lifecycle Rules configuration.
     location : str, default is "US", optional
@@ -93,6 +94,8 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpec:
 
     encryption?: StorageCnrmCloudGoogleComV1beta1StorageBucketSpecEncryption
 
+    ipFilter?: StorageCnrmCloudGoogleComV1beta1StorageBucketSpecIPFilter
+
     lifecycleRule?: [StorageCnrmCloudGoogleComV1beta1StorageBucketSpecLifecycleRuleItems0]
 
     location?: str = "US"
@@ -126,10 +129,14 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecAutoclass:
     ----------
     enabled : bool, default is Undefined, required
         While set to true, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+    terminalStorageClass : str, default is Undefined, optional
+        The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: NEARLINE, ARCHIVE.
     """
 
 
     enabled: bool
+
+    terminalStorageClass?: str
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecCorsItems0:
@@ -188,16 +195,100 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecEncryption:
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecEncryptionKmsKeyRef:
     r"""
-    storage cnrm cloud google com v1beta1 storage bucket spec encryption kms key ref
+    A reference to the KMS Crypto Key that will be used to encrypt objects inserted into this bucket.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `KMSCryptoKey` resource.
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` of a `KMSCryptoKey` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` of a `KMSCryptoKey` resource.
+    """
+
+
+    external?: str
+
+    name?: str
+
+    namespace?: str
+
+
+schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecIPFilter:
+    r"""
+    The bucket IP filtering configuration.
+
+    Attributes
+    ----------
+    allowAllServiceAgentAccess : bool, default is Undefined, optional
+        Whether to allow all service agents to access the bucket regardless of the IP filter configuration.
+    allowCrossOrgVpcs : bool, default is Undefined, optional
+        Whether to allow cross-org VPCs in the bucket's IP filter configuration.
+    mode : str, default is Undefined, required
+        The mode of the IP filter. Valid values are 'Enabled' and 'Disabled'.
+    publicNetworkSource : StorageCnrmCloudGoogleComV1beta1StorageBucketSpecIPFilterPublicNetworkSource, default is Undefined, optional
+        public network source
+    vpcNetworkSources : [StorageCnrmCloudGoogleComV1beta1StorageBucketSpecIPFilterVpcNetworkSourcesItems0], default is Undefined, optional
+        The list of VPC networks that can access the bucket.
+    """
+
+
+    allowAllServiceAgentAccess?: bool
+
+    allowCrossOrgVpcs?: bool
+
+    mode: str
+
+    publicNetworkSource?: StorageCnrmCloudGoogleComV1beta1StorageBucketSpecIPFilterPublicNetworkSource
+
+    vpcNetworkSources?: [StorageCnrmCloudGoogleComV1beta1StorageBucketSpecIPFilterVpcNetworkSourcesItems0]
+
+
+schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecIPFilterPublicNetworkSource:
+    r"""
+    The public network IP address ranges that can access the bucket and its data.
+
+    Attributes
+    ----------
+    allowedIpCidrRanges : [str], default is Undefined, required
+        The list of public IPv4, IPv6 cidr ranges that are allowed to access the bucket.
+    """
+
+
+    allowedIpCidrRanges: [str]
+
+
+schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecIPFilterVpcNetworkSourcesItems0:
+    r"""
+    storage cnrm cloud google com v1beta1 storage bucket spec IP filter vpc network sources items0
+
+    Attributes
+    ----------
+    allowedIpCidrRanges : [str], default is Undefined, required
+        The list of public or private IPv4 and IPv6 CIDR ranges that can access the bucket.
+    networkRef : StorageCnrmCloudGoogleComV1beta1StorageBucketSpecIPFilterVpcNetworkSourcesItems0NetworkRef, default is Undefined, required
+        network ref
+    """
+
+
+    allowedIpCidrRanges: [str]
+
+    networkRef: StorageCnrmCloudGoogleComV1beta1StorageBucketSpecIPFilterVpcNetworkSourcesItems0NetworkRef
+
+
+schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecIPFilterVpcNetworkSourcesItems0NetworkRef:
+    r"""
+    The VPC network that can access the bucket.
+
+    Attributes
+    ----------
+    external : str, default is Undefined, optional
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
+    name : str, default is Undefined, optional
+        The name of a ComputeNetwork resource.
+    namespace : str, default is Undefined, optional
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -259,8 +350,7 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecLifecycleRuleItems0Condi
     daysSinceCustomTime : int, default is Undefined, optional
         Number of days elapsed since the user-specified timestamp set on an object.
     daysSinceNoncurrentTime : int, default is Undefined, optional
-        Number of days elapsed since the noncurrent timestamp of an object. This
-        										condition is relevant only for versioned objects.
+        Number of days elapsed since the noncurrent timestamp of an object. This condition is relevant only for versioned objects.
     matchesPrefix : [str], default is Undefined, optional
         One or more matching name prefixes to satisfy this condition.
     matchesStorageClass : [str], default is Undefined, optional
@@ -383,12 +473,12 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketSpecWebsite:
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketStatus:
     r"""
-    storage cnrm cloud google com v1beta1 storage bucket status
+    StorageBucketStatus defines the config connector machine state of StorageBucket
 
     Attributes
     ----------
     conditions : [StorageCnrmCloudGoogleComV1beta1StorageBucketStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     observedState : StorageCnrmCloudGoogleComV1beta1StorageBucketStatusObservedState, default is Undefined, optional
@@ -443,16 +533,20 @@ schema StorageCnrmCloudGoogleComV1beta1StorageBucketStatusConditionsItems0:
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketStatusObservedState:
     r"""
-    The observed state of the underlying GCP resource.
+    ObservedState is the state of the resource as most recently observed in GCP.
 
     Attributes
     ----------
     softDeletePolicy : StorageCnrmCloudGoogleComV1beta1StorageBucketStatusObservedStateSoftDeletePolicy, default is Undefined, optional
         soft delete policy
+    storageClass : str, default is Undefined, optional
+        The Storage Class of the bucket as observed in GCP.
     """
 
 
     softDeletePolicy?: StorageCnrmCloudGoogleComV1beta1StorageBucketStatusObservedStateSoftDeletePolicy
+
+    storageClass?: str
 
 
 schema StorageCnrmCloudGoogleComV1beta1StorageBucketStatusObservedStateSoftDeletePolicy:

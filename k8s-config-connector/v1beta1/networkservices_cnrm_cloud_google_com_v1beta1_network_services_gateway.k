@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema NetworkServicesGateway:
     r"""
-    networkservices cnrm cloud google com v1beta1 network services gateway
+    NetworkServicesGateway is the Schema for the NetworkServicesGateway API
 
     Attributes
     ----------
@@ -37,16 +37,21 @@ schema NetworkServicesGateway:
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGatewaySpec:
     r"""
-    networkservices cnrm cloud google com v1beta1 network services gateway spec
+    NetworkServicesGatewaySpec defines the desired state of NetworkServicesGateway
 
     Attributes
     ----------
     addresses : [str], default is Undefined, optional
-        One or more addresses with ports in format of ":" that the Gateway must receive traffic on. The proxy binds to the ports specified. IP address can be anything that is allowed by the underlying infrastructure (auto-allocation, static IP, BYOIP).
+        Optional. Zero or one IPv4 or IPv6 address on which the Gateway will
+         receive the traffic. When no address is provided, an IP from the subnetwork
+         is allocated
+
+         This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+         Gateways of type 'OPEN_MESH' listen on 0.0.0.0 for IPv4 and :: for IPv6.
     description : str, default is Undefined, optional
         Optional. A free-text description of the resource. Max length 1024 characters.
     location : str, default is Undefined, required
-        Immutable. The location for the resource
+        Immutable. The location for the resource.
     ports : [int], default is Undefined, required
         Required. One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
     projectRef : NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGatewaySpecProjectRef, default is Undefined, required
@@ -88,13 +93,11 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGatewaySpecProject
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The project for the resource
-
-        Allowed value: The Google Cloud resource name of a `Project` resource (format: `projects/{{name}}`).
+        The `projectID` field of a project, when not managed by Config Connector.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` field of a `Project` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` field of a `Project` resource.
     """
 
 
@@ -107,18 +110,16 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGatewaySpecProject
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGatewaySpecServerTLSPolicyRef:
     r"""
-    networkservices cnrm cloud google com v1beta1 network services gateway spec server TLS policy ref
+    Optional. A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Optional. A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
-
-        Allowed value: The Google Cloud resource name of a `NetworkSecurityServerTLSPolicy` resource (format: `projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}`).
+        Allowed value: string of the format `projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{value}}`, where {{value}} is the `name` field of a `NetworkSecurityServerTLSPolicy` resource.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a NetworkSecurityServerTLSPolicy resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a NetworkSecurityServerTLSPolicy resource.
     """
 
 
@@ -131,12 +132,12 @@ schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGatewaySpecServerT
 
 schema NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGatewayStatus:
     r"""
-    networkservices cnrm cloud google com v1beta1 network services gateway status
+    NetworkServicesGatewayStatus defines the config connector machine state of NetworkServicesGateway
 
     Attributes
     ----------
     conditions : [NetworkservicesCnrmCloudGoogleComV1beta1NetworkServicesGatewayStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     createTime : str, default is Undefined, optional
         Output only. The timestamp when the resource was created.
     observedGeneration : int, default is Undefined, optional

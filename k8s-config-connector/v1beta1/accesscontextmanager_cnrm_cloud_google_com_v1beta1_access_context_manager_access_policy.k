@@ -42,7 +42,7 @@ schema AccesscontextmanagerCnrmCloudGoogleComV1beta1AccessContextManagerAccessPo
     Attributes
     ----------
     resourceID : str, default is Undefined, optional
-        The AccessContextManagerAccessPolicy name. If not given, the metadata.name will be used.
+        Immutable. Optional. The service-generated name of the resource. Used for acquisition only. Leave unset to create a new resource.
     title : str, default is Undefined, required
         Required. Human readable title. Does not affect behavior.
     """

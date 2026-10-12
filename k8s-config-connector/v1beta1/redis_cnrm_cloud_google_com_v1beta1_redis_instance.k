@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema RedisInstance:
     r"""
-    redis cnrm cloud google com v1beta1 redis instance
+    RedisInstance is the Schema for the RedisInstance API
 
     Attributes
     ----------
@@ -42,14 +42,9 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpec:
     Attributes
     ----------
     alternativeLocationId : str, default is Undefined, optional
-        Immutable. Only applicable to STANDARD_HA tier which protects the instance
-        against zonal failures by provisioning it across two zones.
-        If provided, it must be a different zone from the one provided in
-        [locationId].
+        Immutable. Only applicable to STANDARD_HA tier which protects the instance against zonal failures by provisioning it across two zones. If provided, it must be a different zone from the one provided in [locationId].
     authEnabled : bool, default is Undefined, optional
-        Optional. Indicates whether OSS Redis AUTH is enabled for the
-        instance. If set to "true" AUTH is enabled on the instance.
-        Default value is "false" meaning AUTH is disabled.
+        Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the instance. Default value is "false" meaning AUTH is disabled.
     authString : str, default is Undefined, optional
         Output only. AUTH String set on the instance. This field will only be populated if auth_enabled is true.
     authorizedNetworkRef : RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecAuthorizedNetworkRef, default is Undefined, optional
@@ -61,54 +56,31 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpec:
     displayName : str, default is Undefined, optional
         An arbitrary and optional user-provided name for the instance.
     locationId : str, default is Undefined, optional
-        Immutable. The zone where the instance will be provisioned. If not provided,
-        the service will choose a zone for the instance. For STANDARD_HA tier,
-        instances will be created across two zones for protection against
-        zonal failures. If [alternativeLocationId] is also provided, it must
-        be different from [locationId].
+        Immutable. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If [alternativeLocationId] is also provided, it must be different from [locationId].
     maintenancePolicy : RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecMaintenancePolicy, default is Undefined, optional
         maintenance policy
     maintenanceSchedule : [RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecMaintenanceScheduleItems0], default is Undefined, optional
-        Upcoming maintenance schedule.
+        Output only. Date and time of upcoming maintenance events which have been scheduled.
     memorySizeGb : int, default is Undefined, required
         Redis memory size in GiB.
     persistenceConfig : RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecPersistenceConfig, default is Undefined, optional
         persistence config
     readReplicasMode : str, default is Undefined, optional
-        Optional. Read replica mode. Can only be specified when trying to create the instance.
-        If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
-        - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
-        instance cannot scale up or down the number of replicas.
-        - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
-        can scale up and down the number of replicas. Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"].
+        Optional. Read replica mode. Can only be specified when trying to create the instance. If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED. - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the instance cannot scale up or down the number of replicas. - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance can scale up and down the number of replicas. Possible values: ["READ_REPLICAS_DISABLED", "READ_REPLICAS_ENABLED"].
     redisConfigs : {str:str}, default is Undefined, optional
-        Redis configuration parameters, according to http://redis.io/topics/config.
-        Please check Memorystore documentation for the list of supported parameters:
-        https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs.
+        Redis configuration parameters, according to http://redis.io/topics/config. Please check Memorystore documentation for the list of supported parameters: https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs.
     redisVersion : str, default is Undefined, optional
-        The version of Redis software. If not provided, latest supported
-        version will be used. Please check the API documentation linked
-        at the top for the latest valid values.
+        The version of Redis software. If not provided, latest supported version will be used. Please check the API documentation linked at the top for the latest valid values.
     region : str, default is Undefined, required
         Immutable. The name of the Redis region of the instance.
     replicaCount : int, default is Undefined, optional
-        Optional. The number of replica nodes. The valid range for the Standard Tier with
-        read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled
-        for a Standard Tier instance, the only valid value is 1 and the default is 1.
-        The valid value for basic tier is 0 and the default is also 0.
+        Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default is 1. The valid value for basic tier is 0 and the default is also 0.
     reservedIpRange : str, default is Undefined, optional
-        Immutable. The CIDR range of internal addresses that are reserved for this
-        instance. If not provided, the service will choose an unused /29
-        block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
-        unique and non-overlapping with existing subnets in an authorized
-        network.
+        Immutable. The CIDR range of internal addresses that are reserved for this instance. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be unique and non-overlapping with existing subnets in an authorized network.
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The name of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
     secondaryIpRange : str, default is Undefined, optional
-        Optional. Additional IP range for node placement. Required when enabling read replicas on
-        an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
-        "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
-        range associated with the private service access connection, or "auto".
+        Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address range associated with the private service access connection, or "auto".
     tier : str, default is Undefined, optional
         Immutable. The service tier of the instance. Must be one of these values:
 
@@ -168,17 +140,16 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpec:
 
 schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecAuthorizedNetworkRef:
     r"""
-    The network to which the instance is connected. If left
-    unspecified, the default network will be used.
+    The network to which the instance is connected. If left unspecified, the default network will be used.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -191,9 +162,7 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecAuthorizedNetworkRef:
 
 schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecCustomerManagedKeyRef:
     r"""
-    Immutable. Optional. The KMS key reference that you want to use to
-    encrypt the data at rest for this Redis instance. If this is
-    provided, CMEK is enabled.
+    Immutable. Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis instance. If this is provided, CMEK is enabled.
 
     Attributes
     ----------
@@ -220,21 +189,13 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecMaintenancePolicy:
     Attributes
     ----------
     createTime : str, default is Undefined, optional
-        Output only. The time when the policy was created.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits.
+        Output only. The time when the policy was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
     description : str, default is Undefined, optional
-        Optional. Description of what this policy is for.
-        Create/Update methods return INVALID_ARGUMENT if the
-        length is greater than 512.
+        Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
     updateTime : str, default is Undefined, optional
-        Output only. The time when the policy was last updated.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits.
+        Output only. The time when the policy was last updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
     weeklyMaintenanceWindow : [RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecMaintenancePolicyWeeklyMaintenanceWindowItems0], default is Undefined, optional
-        Optional. Maintenance window that is applied to resources covered by this policy.
-        Minimum 1. For the current version, the maximum number
-        of weekly_window is expected to be one.
+        Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_window is expected to be one.
     """
 
 
@@ -265,10 +226,7 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecMaintenancePolicyWeeklyMai
         - SATURDAY: Saturday
         - SUNDAY: Sunday Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"].
     duration : str, default is Undefined, optional
-        Output only. Duration of the maintenance window.
-        The current window is fixed at 1 hour.
-        A duration in seconds with up to nine fractional digits,
-        terminated by 's'. Example: "3.5s".
+        Output only. Duration of the maintenance window. The current window is fixed at 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
     startTime : RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecMaintenancePolicyWeeklyMaintenanceWindowItems0StartTime, default is Undefined, required
         start time
     """
@@ -288,15 +246,13 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecMaintenancePolicyWeeklyMai
     Attributes
     ----------
     hours : int, default is Undefined, optional
-        Hours of day in 24 hour format. Should be from 0 to 23.
-        An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
     minutes : int, default is Undefined, optional
         Minutes of hour of day. Must be from 0 to 59.
     nanos : int, default is Undefined, optional
         Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
     seconds : int, default is Undefined, optional
-        Seconds of minutes of the time. Must normally be from 0 to 59.
-        An API may allow the value 60 if it allows leap-seconds.
+        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
     """
 
 
@@ -316,18 +272,11 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecMaintenanceScheduleItems0:
     Attributes
     ----------
     endTime : str, default is Undefined, optional
-        Output only. The end time of any upcoming scheduled maintenance for this instance.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits.
+        Output only. The end time of any upcoming scheduled maintenance for this instance. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
     scheduleDeadlineTime : str, default is Undefined, optional
-        Output only. The deadline that the maintenance schedule start time
-        can not go beyond, including reschedule.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits.
+        Output only. The deadline that the maintenance schedule start time can not go beyond, including reschedule. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
     startTime : str, default is Undefined, optional
-        Output only. The start time of any upcoming scheduled maintenance for this instance.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits.
+        Output only. The start time of any upcoming scheduled maintenance for this instance. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
     """
 
 
@@ -350,10 +299,7 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecPersistenceConfig:
         - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
         - RDB: RDB based Persistence is enabled. Possible values: ["DISABLED", "RDB"].
     rdbNextSnapshotTime : str, default is Undefined, optional
-        Output only. The next time that a snapshot attempt is scheduled to occur.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-        to nine fractional digits.
-        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        Output only. The next time that a snapshot attempt is scheduled to occur. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     rdbSnapshotPeriod : str, default is Undefined, optional
         Optional. Available snapshot periods for scheduling.
 
@@ -362,12 +308,7 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceSpecPersistenceConfig:
         - TWELVE_HOURS:	Snapshot every 12 hours.
         - TWENTY_FOUR_HOURS:	Snapshot every 24 hours. Possible values: ["ONE_HOUR", "SIX_HOURS", "TWELVE_HOURS", "TWENTY_FOUR_HOURS"].
     rdbSnapshotStartTime : str, default is Undefined, optional
-        Optional. Date and time that the first snapshot was/will be attempted,
-        and to which future snapshots will be aligned. If not provided,
-        the current time will be used.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution
-        and up to nine fractional digits.
-        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        Optional. Date and time that the first snapshot was/will be attempted, and to which future snapshots will be aligned. If not provided, the current time will be used. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
 
 
@@ -387,21 +328,15 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceStatus:
     Attributes
     ----------
     conditions : [RedisCnrmCloudGoogleComV1beta1RedisInstanceStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the RedisInstance's current state.
     createTime : str, default is Undefined, optional
-        The time the instance was created in RFC3339 UTC "Zulu" format,
-        accurate to nanoseconds.
+        The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
     currentLocationId : str, default is Undefined, optional
-        The current zone where the Redis endpoint is placed.
-        For Basic Tier instances, this will always be the same as the
-        [locationId] provided by the user at creation time. For Standard Tier
-        instances, this can be either [locationId] or [alternativeLocationId]
-        and can change after a failover event.
+        The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or [alternativeLocationId] and can change after a failover event.
     host : str, default is Undefined, optional
-        Hostname or IP address of the exposed Redis endpoint used by clients
-        to connect to the service.
+        Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
     maintenanceSchedule : [RedisCnrmCloudGoogleComV1beta1RedisInstanceStatusMaintenanceScheduleItems0], default is Undefined, optional
-        Upcoming maintenance schedule.
+        Output only. Date and time of upcoming maintenance events which have been scheduled.
     nodes : [RedisCnrmCloudGoogleComV1beta1RedisInstanceStatusNodesItems0], default is Undefined, optional
         Output only. Info per node.
     observedGeneration : int, default is Undefined, optional
@@ -409,19 +344,13 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceStatus:
     observedState : RedisCnrmCloudGoogleComV1beta1RedisInstanceStatusObservedState, default is Undefined, optional
         observed state
     persistenceIamIdentity : str, default is Undefined, optional
-        Output only. Cloud IAM identity used by import / export operations
-        to transfer data to/from Cloud Storage. Format is "serviceAccount:".
-        The value may change over time for a given instance so should be
-        checked before each import/export operation.
+        Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export operation.
     port : int, default is Undefined, optional
         The port number of the exposed Redis endpoint.
     readEndpoint : str, default is Undefined, optional
-        Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
-        Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
-        will exhibit some lag behind the primary. Write requests must target 'host'.
+        Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write requests must target 'host'.
     readEndpointPort : int, default is Undefined, optional
-        Output only. The port number of the exposed readonly redis endpoint. Standard tier only.
-        Write requests should target 'port'.
+        Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target 'port'.
     serverCaCerts : [RedisCnrmCloudGoogleComV1beta1RedisInstanceStatusServerCaCertsItems0], default is Undefined, optional
         List of server CA certificates for the instance.
     """
@@ -491,18 +420,11 @@ schema RedisCnrmCloudGoogleComV1beta1RedisInstanceStatusMaintenanceScheduleItems
     Attributes
     ----------
     endTime : str, default is Undefined, optional
-        Output only. The end time of any upcoming scheduled maintenance for this instance.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits.
+        Output only. The end time of any upcoming scheduled maintenance for this instance. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
     scheduleDeadlineTime : str, default is Undefined, optional
-        Output only. The deadline that the maintenance schedule start time
-        can not go beyond, including reschedule.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits.
+        Output only. The deadline that the maintenance schedule start time can not go beyond, including reschedule. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
     startTime : str, default is Undefined, optional
-        Output only. The start time of any upcoming scheduled maintenance for this instance.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits.
+        Output only. The start time of any upcoming scheduled maintenance for this instance. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
     """
 
 

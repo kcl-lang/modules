@@ -42,7 +42,7 @@ schema ApphubCnrmCloudGoogleComV1alpha1AppHubDiscoveredWorkloadSpec:
     Attributes
     ----------
     location : str, default is Undefined, optional
-        Required. The location of the application.
+        Required. The location of the resource.
     projectRef : ApphubCnrmCloudGoogleComV1alpha1AppHubDiscoveredWorkloadSpecProjectRef, default is Undefined, optional
         project ref
     resourceID : str, default is Undefined, optional
@@ -59,7 +59,7 @@ schema ApphubCnrmCloudGoogleComV1alpha1AppHubDiscoveredWorkloadSpec:
 
 schema ApphubCnrmCloudGoogleComV1alpha1AppHubDiscoveredWorkloadSpecProjectRef:
     r"""
-    Required. The host project of the application.
+    Required. The host project of the resource.
 
     Attributes
     ----------
@@ -164,11 +164,11 @@ schema ApphubCnrmCloudGoogleComV1alpha1AppHubDiscoveredWorkloadStatusObservedSta
     Attributes
     ----------
     gcpProject : str, default is Undefined, optional
-        Output only. The service project identifier that the underlying cloud resource resides in. Empty for non cloud resources.
+        Output only. The service project identifier that the underlying cloud resource resides in. Empty for non-cloud resources.
     location : str, default is Undefined, optional
-        Output only. The location that the underlying compute resource resides in (e.g us-west1).
+        Output only. The location that the underlying compute resource resides in (for example, us-west1).
     zone : str, default is Undefined, optional
-        Output only. The location that the underlying compute resource resides in if it is zonal (e.g us-west1-a).
+        Output only. The location that the underlying compute resource resides in if it is zonal (for example, us-west1-a).
     """
 
 

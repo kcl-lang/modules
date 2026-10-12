@@ -63,16 +63,16 @@ schema KmsCnrmCloudGoogleComV1beta1KMSImportJobSpec:
 
 schema KmsCnrmCloudGoogleComV1beta1KMSImportJobSpecKmsKeyRingRef:
     r"""
-    KMSKeyRingRef defines the resource reference to KMSKeyRing, which "External" field holds the GCP identifier for the KRM object.
+    KMSKeyRingRef is a reference to a KMSKeyRing.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        A reference to an externally managed KMSKeyRing. Should be in the format `projects/{{projectId}}/locations/{{location}}/keyRings/{{keyRingId}}`.
+        A reference to an externally managed KMSKeyRing resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/keyRings/{{keyRingID}}".
     name : str, default is Undefined, optional
-        The `name` of a `KMSKeyRing` resource.
+        The name of a KMSKeyRing resource.
     namespace : str, default is Undefined, optional
-        The `namespace` of a `KMSKeyRing` resource.
+        The namespace of a KMSKeyRing resource.
     """
 
 

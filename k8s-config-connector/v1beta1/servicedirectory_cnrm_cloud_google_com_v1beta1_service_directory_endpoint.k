@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema ServiceDirectoryEndpoint:
     r"""
-    servicedirectory cnrm cloud google com v1beta1 service directory endpoint
+    ServiceDirectoryEndpoint is the Schema for the ServiceDirectoryEndpoint API
 
     Attributes
     ----------
@@ -37,7 +37,7 @@ schema ServiceDirectoryEndpoint:
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointSpec:
     r"""
-    servicedirectory cnrm cloud google com v1beta1 service directory endpoint spec
+    ServiceDirectoryEndpointSpec defines the desired state of ServiceDirectoryEndpoint
 
     Attributes
     ----------
@@ -46,8 +46,7 @@ schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointSpec:
     networkRef : ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointSpecNetworkRef, default is Undefined, optional
         network ref
     port : int, default is Undefined, optional
-        Port that the endpoint is running on, must be in the
-        range of [0, 65535]. If unspecified, the default is 0.
+        Optional. Port that the endpoint is running on, must be in the range of [0, 65535]. If unspecified, the default is 0.
     resourceID : str, default is Undefined, optional
         Immutable. Optional. The endpointId of the resource. Used for creation and acquisition. When unset, the value of `metadata.name` is used as the default.
     serviceRef : ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointSpecServiceRef, default is Undefined, required
@@ -68,16 +67,16 @@ schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointSpec:
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointSpecAddressRef:
     r"""
-    servicedirectory cnrm cloud google com v1beta1 service directory endpoint spec address ref
+    Optional. The ComputeAddress resource whose IP address this endpoint uses.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `address` field of a `ComputeAddress` resource.
+        A reference to an externally managed ComputeAddress resource. Should be in the format "projects/{{projectID}}/global/addresses/{{addressID}}" or "projects/{{projectID}}/regions/{{region}}/addresses/{{addressID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeAddress resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeAddress resource.
     """
 
 
@@ -90,23 +89,16 @@ schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointSpecAddr
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointSpecNetworkRef:
     r"""
-    Only the `external` field is supported to configure the reference.
-
-    Immutable. The Google Compute Engine network (VPC) of the endpoint in the format
-    projects/<project number>/locations/global/networks/*.
-
-    The project must be specified by project number (project id is rejected). Incorrectly formatted networks are
-    rejected, but no other validation is performed on this field (ex. network or project existence,
-    reachability, or permissions).
+    Optional. The ComputeNetwork resource representing the GCE network of this endpoint.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -119,16 +111,16 @@ schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointSpecNetw
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointSpecServiceRef:
     r"""
-    The ServiceDirectoryService that this endpoint belongs to.
+    Required. The ServiceDirectoryService that this endpoint belongs to.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `name` field of a `ServiceDirectoryService` resource.
+        A reference to an externally managed ServiceDirectoryService resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/namespaces/{{namespaceID}}/services/{{serviceID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ServiceDirectoryService resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ServiceDirectoryService resource.
     """
 
 
@@ -141,15 +133,14 @@ schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointSpecServ
 
 schema ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointStatus:
     r"""
-    servicedirectory cnrm cloud google com v1beta1 service directory endpoint status
+    ServiceDirectoryEndpointStatus defines the config connector machine state of ServiceDirectoryEndpoint
 
     Attributes
     ----------
     conditions : [ServicedirectoryCnrmCloudGoogleComV1beta1ServiceDirectoryEndpointStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the object's current state.
     name : str, default is Undefined, optional
-        The resource name for the endpoint in the format
-        'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
+        The resource name for the endpoint in the format 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
     observedGeneration : int, default is Undefined, optional
         ObservedGeneration is the generation of the resource that was most recently observed by the Config Connector controller. If this is equal to metadata.generation, then that means that the current reported status reflects the most recent desired state of the resource.
     """

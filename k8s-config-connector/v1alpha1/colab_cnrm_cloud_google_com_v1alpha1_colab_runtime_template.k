@@ -212,6 +212,21 @@ schema ColabCnrmCloudGoogleComV1alpha1ColabRuntimeTemplateSpecMachineSpec:
         The number of accelerators to attach to the machine.
     acceleratorType : str, default is Undefined, optional
         Immutable. The type of accelerator(s) that may be attached to the machine as per [accelerator_count][google.cloud.aiplatform.v1beta1.MachineSpec.accelerator_count].
+    gpuPartitionSize : str, default is Undefined, optional
+        Optional. Immutable. The Nvidia GPU partition size.
+
+         When specified, the requested accelerators will be partitioned into
+         smaller GPU partitions. For example, if the request is for 8 units of
+         NVIDIA A100 GPUs, and gpu_partition_size="1g.10gb", the service will
+         create 8 * 7 = 56 partitioned MIG instances.
+
+         The partition size must be a value supported by the requested accelerator.
+         Refer to
+         [Nvidia GPU
+         Partitioning](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus-multi#multi-instance_gpu_partitions)
+         for the available partition sizes.
+
+         If set, the accelerator_count should be set to 1.
     machineType : str, default is Undefined, optional
         Immutable. The type of the machine.
 
@@ -226,6 +241,8 @@ schema ColabCnrmCloudGoogleComV1alpha1ColabRuntimeTemplateSpecMachineSpec:
          [BatchPredictionJob][google.cloud.aiplatform.v1beta1.BatchPredictionJob] or
          as part of [WorkerPoolSpec][google.cloud.aiplatform.v1beta1.WorkerPoolSpec]
          this field is required.
+    multihostGpuNodeCount : int, default is Undefined, optional
+        Optional. Immutable. The number of nodes per replica for multihost GPU deployments.
     reservationAffinity : ColabCnrmCloudGoogleComV1alpha1ColabRuntimeTemplateSpecMachineSpecReservationAffinity, default is Undefined, optional
         reservation affinity
     tpuTopology : str, default is Undefined, optional
@@ -237,7 +254,11 @@ schema ColabCnrmCloudGoogleComV1alpha1ColabRuntimeTemplateSpecMachineSpec:
 
     acceleratorType?: str
 
+    gpuPartitionSize?: str
+
     machineType?: str
+
+    multihostGpuNodeCount?: int
 
     reservationAffinity?: ColabCnrmCloudGoogleComV1alpha1ColabRuntimeTemplateSpecMachineSpecReservationAffinity
 
@@ -295,7 +316,7 @@ schema ColabCnrmCloudGoogleComV1alpha1ColabRuntimeTemplateSpecNetworkSpecNetwork
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
         The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
@@ -317,11 +338,11 @@ schema ColabCnrmCloudGoogleComV1alpha1ColabRuntimeTemplateSpecNetworkSpecSubnetw
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The ComputeSubnetwork selflink of form "projects/{{project}}/regions/{{region}}/subnetworks/{{name}}", when not managed by Config Connector.
+        A reference to an externally managed ComputeSubnetwork resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/subnetworks/{{subnetworkID}}".
     name : str, default is Undefined, optional
-        The `name` field of a `ComputeSubnetwork` resource.
+        The name of a ComputeSubnetwork resource.
     namespace : str, default is Undefined, optional
-        The `namespace` field of a `ComputeSubnetwork` resource.
+        The namespace of a ComputeSubnetwork resource.
     """
 
 

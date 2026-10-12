@@ -529,7 +529,7 @@ schema AlloydbCnrmCloudGoogleComV1beta1AlloyDBClusterSpecNetworkConfigNetworkRef
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
         The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
@@ -551,7 +551,7 @@ schema AlloydbCnrmCloudGoogleComV1beta1AlloyDBClusterSpecNetworkRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The value of an externally managed ComputeNetwork resource. Should be in the format "https://www.googleapis.com/compute/{{version}}/projects/{{projectId}}/global/networks/{{networkId}}" or "projects/{{projectId}}/global/networks/{{networkId}}"
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
         The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
@@ -613,11 +613,11 @@ schema AlloydbCnrmCloudGoogleComV1beta1AlloyDBClusterSpecRestoreBackupSourceBack
     Attributes
     ----------
     external : str, default is Undefined, optional
-        If provided must be in the format `projects/[projectId]/locations/[location]/backups/[backupId]`.
+        A reference to an externally managed AlloyDBBackup resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/backups/{{backupID}}".
     name : str, default is Undefined, optional
-        The `metadata.name` field of a `AlloyDBBackup` resource.
+        The name of an AlloyDBBackup resource.
     namespace : str, default is Undefined, optional
-        The `metadata.namespace` field of a `AlloyDBBackup` resource.
+        The namespace of an AlloyDBBackup resource.
     """
 
 
@@ -655,9 +655,9 @@ schema AlloydbCnrmCloudGoogleComV1beta1AlloyDBClusterSpecRestoreContinuousBackup
     external : str, default is Undefined, optional
         A reference to an externally managed AlloyDBCluster resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/clusters/{{clusterID}}".
     name : str, default is Undefined, optional
-        The name of a AlloyDBCluster resource.
+        The name of an AlloyDBCluster resource.
     namespace : str, default is Undefined, optional
-        The namespace of a AlloyDBCluster resource.
+        The namespace of an AlloyDBCluster resource.
     """
 
 
@@ -691,9 +691,9 @@ schema AlloydbCnrmCloudGoogleComV1beta1AlloyDBClusterSpecSecondaryConfigPrimaryC
     external : str, default is Undefined, optional
         A reference to an externally managed AlloyDBCluster resource. Should be in the format "projects/{{projectID}}/locations/{{location}}/clusters/{{clusterID}}".
     name : str, default is Undefined, optional
-        The name of a AlloyDBCluster resource.
+        The name of an AlloyDBCluster resource.
     namespace : str, default is Undefined, optional
-        The namespace of a AlloyDBCluster resource.
+        The namespace of an AlloyDBCluster resource.
     """
 
 

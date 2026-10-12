@@ -63,7 +63,7 @@ schema BigtableCnrmCloudGoogleComV1alpha1BigtableMaterializedViewSpec:
 
 schema BigtableCnrmCloudGoogleComV1alpha1BigtableMaterializedViewSpecInstanceRef:
     r"""
-    InstanceRef defines the resource reference to BigtableInstance, which "External" field holds the GCP identifier for the KRM object.
+    InstanceRef is a reference to a BigtableInstance.
 
     Attributes
     ----------

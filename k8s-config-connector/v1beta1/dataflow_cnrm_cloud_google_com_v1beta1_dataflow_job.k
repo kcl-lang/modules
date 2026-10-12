@@ -7,7 +7,7 @@ import k8s.apimachinery.pkg.apis.meta.v1
 
 schema DataflowJob:
     r"""
-    dataflow cnrm cloud google com v1beta1 dataflow job
+    DataflowJob is the Schema for the dataflow API
 
     Attributes
     ----------
@@ -17,7 +17,7 @@ schema DataflowJob:
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : DataflowCnrmCloudGoogleComV1beta1DataflowJobSpec, default is Undefined, required
+    spec : DataflowCnrmCloudGoogleComV1beta1DataflowJobSpec, default is Undefined, optional
         spec
     status : DataflowCnrmCloudGoogleComV1beta1DataflowJobStatus, default is Undefined, optional
         status
@@ -30,14 +30,14 @@ schema DataflowJob:
 
     metadata?: v1.ObjectMeta
 
-    spec: DataflowCnrmCloudGoogleComV1beta1DataflowJobSpec
+    spec?: DataflowCnrmCloudGoogleComV1beta1DataflowJobSpec
 
     status?: DataflowCnrmCloudGoogleComV1beta1DataflowJobStatus
 
 
 schema DataflowCnrmCloudGoogleComV1beta1DataflowJobSpec:
     r"""
-    dataflow cnrm cloud google com v1beta1 dataflow job spec
+    DataflowJobSpec defines the desired state of DataflowJob
 
     Attributes
     ----------
@@ -116,11 +116,11 @@ schema DataflowCnrmCloudGoogleComV1beta1DataflowJobSpecKmsKeyRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `KMSCryptoKey` resource.
+        A reference to an externally managed KMSCryptoKey. Should be in the format `projects/[kms_project_id]/locations/[region]/keyRings/[key_ring_id]/cryptoKeys/[key]`.
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The `name` of a `KMSCryptoKey` resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The `namespace` of a `KMSCryptoKey` resource.
     """
 
 
@@ -133,16 +133,16 @@ schema DataflowCnrmCloudGoogleComV1beta1DataflowJobSpecKmsKeyRef:
 
 schema DataflowCnrmCloudGoogleComV1beta1DataflowJobSpecNetworkRef:
     r"""
-    dataflow cnrm cloud google com v1beta1 dataflow job spec network ref
+    ComputeNetworkRef is a reference to a GCP ComputeNetwork.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeNetwork` resource.
+        A reference to an externally managed ComputeNetwork resource. Should be in the format "projects/{{projectID}}/global/networks/{{networkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeNetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeNetwork resource.
     """
 
 
@@ -160,7 +160,7 @@ schema DataflowCnrmCloudGoogleComV1beta1DataflowJobSpecServiceAccountRef:
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `email` field of an `IAMServiceAccount` resource.
+        The `email` field of an `IAMServiceAccount` resource.
     name : str, default is Undefined, optional
         Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
     namespace : str, default is Undefined, optional
@@ -177,16 +177,16 @@ schema DataflowCnrmCloudGoogleComV1beta1DataflowJobSpecServiceAccountRef:
 
 schema DataflowCnrmCloudGoogleComV1beta1DataflowJobSpecSubnetworkRef:
     r"""
-    dataflow cnrm cloud google com v1beta1 dataflow job spec subnetwork ref
+    ComputeSubnetworkRef is a reference to a GCP ComputeSubnetwork.
 
     Attributes
     ----------
     external : str, default is Undefined, optional
-        Allowed value: The `selfLink` field of a `ComputeSubnetwork` resource.
+        A reference to an externally managed ComputeSubnetwork resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/subnetworks/{{subnetworkID}}".
     name : str, default is Undefined, optional
-        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        The name of a ComputeSubnetwork resource.
     namespace : str, default is Undefined, optional
-        Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+        The namespace of a ComputeSubnetwork resource.
     """
 
 
@@ -199,12 +199,12 @@ schema DataflowCnrmCloudGoogleComV1beta1DataflowJobSpecSubnetworkRef:
 
 schema DataflowCnrmCloudGoogleComV1beta1DataflowJobStatus:
     r"""
-    dataflow cnrm cloud google com v1beta1 dataflow job status
+    DataflowJobStatus defines the config connector machine state of DataflowJob
 
     Attributes
     ----------
     conditions : [DataflowCnrmCloudGoogleComV1beta1DataflowJobStatusConditionsItems0], default is Undefined, optional
-        Conditions represent the latest available observation of the resource's current state.
+        Conditions represent the latest available observations of the DataflowJob's current state.
     jobId : str, default is Undefined, optional
         The unique ID of this job.
     observedGeneration : int, default is Undefined, optional

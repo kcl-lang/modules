@@ -152,11 +152,11 @@ schema ManagedkafkaCnrmCloudGoogleComV1alpha1ManagedKafkaClusterSpecGcpConfigAcc
     Attributes
     ----------
     external : str, default is Undefined, optional
-        The ComputeSubnetwork selflink of form "projects/{{project}}/regions/{{region}}/subnetworks/{{name}}", when not managed by Config Connector.
+        A reference to an externally managed ComputeSubnetwork resource. Should be in the format "projects/{{projectID}}/regions/{{region}}/subnetworks/{{subnetworkID}}".
     name : str, default is Undefined, optional
-        The `name` field of a `ComputeSubnetwork` resource.
+        The name of a ComputeSubnetwork resource.
     namespace : str, default is Undefined, optional
-        The `namespace` field of a `ComputeSubnetwork` resource.
+        The namespace of a ComputeSubnetwork resource.
     """
 
 
