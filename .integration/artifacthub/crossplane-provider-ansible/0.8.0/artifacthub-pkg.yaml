@@ -1,0 +1,25 @@
+version: 0.8.0
+name: crossplane-provider-ansible
+displayName: crossplane-provider-ansible
+createdAt: "2026-10-13T01:41:31Z"
+description: This is a KCL package
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `crossplane-provider-ansible` with tag `0.8.0` as dependency
+  ```
+  kcl mod add crossplane-provider-ansible:0.8.0
+  ```
+
+  #### Pull `crossplane-provider-ansible` with tag `0.8.0` to local
+  ```
+  kcl mod pull crossplane-provider-ansible:0.8.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
