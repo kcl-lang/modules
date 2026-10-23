@@ -1,0 +1,25 @@
+version: v26.7.0
+name: nvidia-network-operator
+displayName: nvidia-network-operator
+createdAt: "2026-10-23T12:50:33Z"
+description: KCL package for https://github.com/Mellanox/network-operator CRDs
+links:
+- name: KCL homepage
+  url: https://kcl-lang.io/
+- name: KCL repo
+  url: https://github.com/kcl-lang/kcl
+install: |
+  #### Add `nvidia-network-operator` with tag `v26.7.0` as dependency
+  ```
+  kcl mod add nvidia-network-operator:v26.7.0
+  ```
+
+  #### Pull `nvidia-network-operator` with tag `v26.7.0` to local
+  ```
+  kcl mod pull nvidia-network-operator:v26.7.0
+  ```
+maintainers:
+- name: kcl-lang.io
+  email: kcl-lang.io@domainsbyproxy.com
+provider:
+  name: kcl-lang.io
