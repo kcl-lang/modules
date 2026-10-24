@@ -27,6 +27,18 @@ jobs:
 
     runs-on: ubuntu-latest
     name: Update Package Info on AH
+
+    # `packages: write` lets the job push to ghcr.io with GITHUB_TOKEN.
+    # GITHUB_TOKEN publishes the package in the scope of this repository,
+    # so it inherits this repository's (public) visibility and is linked to
+    # it — see the "Publish Package" workflow for the longer rationale.
+    #
+    # `contents: write` is needed by the "Commit and push changes" step
+    # below, which pushes the regenerated artifacthub-pkg.yaml files.
+    permissions:
+      contents: write
+      packages: write
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -56,12 +68,22 @@ jobs:
       # `OCI_REG_PLAIN_HTTP=on` is set — and that flag also forces the
       # registry to plain HTTP, which breaks HTTPS-only registries like
       # ghcr.io. See issue #378.
+      #
+      # GITHUB_TOKEN is used instead of secrets.DEPLOY_ACCESS_TOKEN: the
+      # installation token of this repository publishes the package in the
+      # scope of this repository, so the package inherits this repository's
+      # (public) visibility and is linked to it. A personal access token
+      # publishes an organization-scoped package instead, which is not
+      # linked to any repository and whose visibility follows the
+      # organization-level default package visibility — which is not
+      # public, so such a package cannot be pulled anonymously even though
+      # the push itself succeeds.
       - name: Login to ghcr.io
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ secrets.DEPLOY_ACCESS_NAME }}
-          password: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
+          username: x-access-token
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       # Capture the actual push outcome via a step output instead of
       # `continue-on-error` + `steps.<id>.conclusion`. With
