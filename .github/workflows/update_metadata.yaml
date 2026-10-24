@@ -32,6 +32,22 @@ jobs:
 
     runs-on: ubuntu-latest
     name: Update Package Info on AH
+
+    # `packages: write` lets the job push to ghcr.io with GITHUB_TOKEN.
+    # GITHUB_TOKEN is used instead of a personal access token so that the
+    # package is published in the scope of this repository: a
+    # repository-scoped package inherits the visibility of the repository it
+    # is published from, so a module published here is public because this
+    # repository is public — regardless of the organization-level default
+    # package visibility. It is also linked to this repository, which is
+    # what makes it show up under the repository's "Packages" tab.
+    #
+    # `contents: write` is needed by the "Commit and push changes" step
+    # below, which pushes the regenerated artifacthub-pkg.yaml files.
+    permissions:
+      contents: write
+      packages: write
+
     steps:
 
       - name: Install kcl
@@ -75,10 +91,23 @@ jobs:
       #
       # ORAS's credential lookup uses the hostname as the key (e.g.
       # `ghcr.io`) and matches it against the auths map.
+      #
+      # GITHUB_TOKEN is used instead of secrets.DEPLOY_ACCESS_TOKEN: the
+      # installation token of this repository publishes the package in the
+      # scope of this repository, so the package inherits this repository's
+      # (public) visibility and is linked to it. A personal access token
+      # publishes an organization-scoped package instead, which is not
+      # linked to any repository and whose visibility follows the
+      # organization-level default package visibility — which is not
+      # public, so such a package cannot be pulled anonymously even though
+      # the push itself succeeds.
       - name: Configure registry credentials
+        env:
+          GHCR_USERNAME: x-access-token
+          GHCR_TOKEN: ${{ github.token }}
         run: |
           mkdir -p "$HOME/.docker" "$HOME/.kpm/config"
-          GHCR_AUTH=$(printf '%s:%s' "${{ secrets.DEPLOY_ACCESS_NAME }}" "${{ secrets.DEPLOY_ACCESS_TOKEN }}" | base64 -w0)
+          GHCR_AUTH=$(printf '%s:%s' "$GHCR_USERNAME" "$GHCR_TOKEN" | base64 -w0)
 
           # ORAS reads this.
           cat > "$HOME/.docker/config.json" <<EOF
