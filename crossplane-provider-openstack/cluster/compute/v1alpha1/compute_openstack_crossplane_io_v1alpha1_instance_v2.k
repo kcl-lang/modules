@@ -321,6 +321,14 @@ schema ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecForProviderBlockDeviceI
         must be local and only one swap disk per server and the size of the swap disk
         must be less than or equal to the swap size of the flavor. Changing this
         creates a new server.
+    imageName : str, default is Undefined, optional
+        The name of the
+        desired image for the server. Changing this rebuilds the existing server.
+        In a block device the name is resolved to the image ID before the server is created, so the image does not need to exist as a managed resource. Can only be used with source_type "image" and conflicts with uuid. Supports boot-from-volume with destination_type "volume". For destination_type "local", a top-level image_id or image_name is also required; this block-device field alone is not sufficient for local-disk boot. Changing this creates a new server.
+    imageNameRef : ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecForProviderBlockDeviceItems0ImageNameRef, default is Undefined, optional
+        image name ref
+    imageNameSelector : ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecForProviderBlockDeviceItems0ImageNameSelector, default is Undefined, optional
+        image name selector
     multiattach : bool, default is Undefined, optional
         Enable the attachment of multiattach-capable
         volumes.
@@ -360,6 +368,12 @@ schema ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecForProviderBlockDeviceI
 
     guestFormat?: str
 
+    imageName?: str
+
+    imageNameRef?: ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecForProviderBlockDeviceItems0ImageNameRef
+
+    imageNameSelector?: ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecForProviderBlockDeviceItems0ImageNameSelector
+
     multiattach?: bool
 
     sourceType?: str
@@ -373,6 +387,95 @@ schema ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecForProviderBlockDeviceI
     volumeSize?: float
 
     volumeType?: str
+
+
+schema ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecForProviderBlockDeviceItems0ImageNameRef:
+    r"""
+    Reference to a ImageV2 in images to populate imageName.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecForProviderBlockDeviceItems0ImageNameRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecForProviderBlockDeviceItems0ImageNameRefPolicy
+
+
+schema ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecForProviderBlockDeviceItems0ImageNameRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecForProviderBlockDeviceItems0ImageNameSelector:
+    r"""
+    Selector for a ImageV2 in images to populate imageName.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecForProviderBlockDeviceItems0ImageNameSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecForProviderBlockDeviceItems0ImageNameSelectorPolicy
+
+
+schema ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecForProviderBlockDeviceItems0ImageNameSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
 
 
 schema ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecForProviderBlockDeviceItems0UUIDRef:
@@ -1208,6 +1311,14 @@ schema ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecInitProviderBlockDevice
         must be local and only one swap disk per server and the size of the swap disk
         must be less than or equal to the swap size of the flavor. Changing this
         creates a new server.
+    imageName : str, default is Undefined, optional
+        The name of the
+        desired image for the server. Changing this rebuilds the existing server.
+        In a block device the name is resolved to the image ID before the server is created, so the image does not need to exist as a managed resource. Can only be used with source_type "image" and conflicts with uuid. Supports boot-from-volume with destination_type "volume". For destination_type "local", a top-level image_id or image_name is also required; this block-device field alone is not sufficient for local-disk boot. Changing this creates a new server.
+    imageNameRef : ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecInitProviderBlockDeviceItems0ImageNameRef, default is Undefined, optional
+        image name ref
+    imageNameSelector : ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecInitProviderBlockDeviceItems0ImageNameSelector, default is Undefined, optional
+        image name selector
     multiattach : bool, default is Undefined, optional
         Enable the attachment of multiattach-capable
         volumes.
@@ -1247,6 +1358,12 @@ schema ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecInitProviderBlockDevice
 
     guestFormat?: str
 
+    imageName?: str
+
+    imageNameRef?: ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecInitProviderBlockDeviceItems0ImageNameRef
+
+    imageNameSelector?: ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecInitProviderBlockDeviceItems0ImageNameSelector
+
     multiattach?: bool
 
     sourceType?: str
@@ -1260,6 +1377,95 @@ schema ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecInitProviderBlockDevice
     volumeSize?: float
 
     volumeType?: str
+
+
+schema ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecInitProviderBlockDeviceItems0ImageNameRef:
+    r"""
+    Reference to a ImageV2 in images to populate imageName.
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name of the referenced object.
+    policy : ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecInitProviderBlockDeviceItems0ImageNameRefPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    name: str
+
+    policy?: ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecInitProviderBlockDeviceItems0ImageNameRefPolicy
+
+
+schema ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecInitProviderBlockDeviceItems0ImageNameRefPolicy:
+    r"""
+    Policies for referencing.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
+
+
+schema ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecInitProviderBlockDeviceItems0ImageNameSelector:
+    r"""
+    Selector for a ImageV2 in images to populate imageName.
+
+    Attributes
+    ----------
+    matchControllerRef : bool, default is Undefined, optional
+        MatchControllerRef ensures an object with the same controller reference
+        as the selecting object is selected.
+    matchLabels : {str:str}, default is Undefined, optional
+        MatchLabels ensures an object with matching labels is selected.
+    policy : ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecInitProviderBlockDeviceItems0ImageNameSelectorPolicy, default is Undefined, optional
+        policy
+    """
+
+
+    matchControllerRef?: bool
+
+    matchLabels?: {str:str}
+
+    policy?: ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecInitProviderBlockDeviceItems0ImageNameSelectorPolicy
+
+
+schema ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecInitProviderBlockDeviceItems0ImageNameSelectorPolicy:
+    r"""
+    Policies for selection.
+
+    Attributes
+    ----------
+    resolution : str, default is "Required", optional
+        Resolution specifies whether resolution of this reference is required.
+        The default is 'Required', which means the reconcile will fail if the
+        reference cannot be resolved. 'Optional' means this reference will be
+        a no-op if it cannot be resolved.
+    resolve : str, default is Undefined, optional
+        Resolve specifies when this reference should be resolved. The default
+        is 'IfNotPresent', which will attempt to resolve the reference only when
+        the corresponding field is not present. Use 'Always' to resolve the
+        reference on every reconcile.
+    """
+
+
+    resolution?: "Required" | "Optional" = "Required"
+
+    resolve?: "Always" | "IfNotPresent"
 
 
 schema ComputeOpenstackCrossplaneIoV1alpha1InstanceV2SpecInitProviderBlockDeviceItems0UUIDRef:
@@ -2153,6 +2359,10 @@ schema ComputeOpenstackCrossplaneIoV1alpha1InstanceV2StatusAtProviderBlockDevice
         must be local and only one swap disk per server and the size of the swap disk
         must be less than or equal to the swap size of the flavor. Changing this
         creates a new server.
+    imageName : str, default is Undefined, optional
+        The name of the
+        desired image for the server. Changing this rebuilds the existing server.
+        In a block device the name is resolved to the image ID before the server is created, so the image does not need to exist as a managed resource. Can only be used with source_type "image" and conflicts with uuid. Supports boot-from-volume with destination_type "volume". For destination_type "local", a top-level image_id or image_name is also required; this block-device field alone is not sufficient for local-disk boot. Changing this creates a new server.
     multiattach : bool, default is Undefined, optional
         Enable the attachment of multiattach-capable
         volumes.
@@ -2187,6 +2397,8 @@ schema ComputeOpenstackCrossplaneIoV1alpha1InstanceV2StatusAtProviderBlockDevice
     diskBus?: str
 
     guestFormat?: str
+
+    imageName?: str
 
     multiattach?: bool
 
