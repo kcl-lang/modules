@@ -92,19 +92,22 @@ jobs:
       # ORAS's credential lookup uses the hostname as the key (e.g.
       # `ghcr.io`) and matches it against the auths map.
       #
-      # GITHUB_TOKEN is used instead of secrets.DEPLOY_ACCESS_TOKEN: the
-      # installation token of this repository publishes the package in the
-      # scope of this repository, so the package inherits this repository's
-      # (public) visibility and is linked to it. A personal access token
-      # publishes an organization-scoped package instead, which is not
-      # linked to any repository and whose visibility follows the
-      # organization-level default package visibility — which is not
-      # public, so such a package cannot be pulled anonymously even though
-      # the push itself succeeds.
+      # The personal access token publishes the package. The job's
+      # GITHUB_TOKEN can only write packages that are linked to this
+      # repository, and the packages published before the switch to
+      # GITHUB_TOKEN (#417) are organization-scoped and unlinked, so
+      # pushing a new version to them with GITHUB_TOKEN is denied with
+      # "403 denied: permission_denied: write_package".
+      #
+      # A package published with the personal access token is
+      # organization-scoped, so its visibility follows the
+      # organization-level default package visibility. scripts/
+      # push_pkg_from.sh checks that the published version is anonymously
+      # pullable and fails the job when it is not.
       - name: Configure registry credentials
         env:
-          GHCR_USERNAME: x-access-token
-          GHCR_TOKEN: ${{ github.token }}
+          GHCR_USERNAME: ${{ secrets.DEPLOY_ACCESS_NAME }}
+          GHCR_TOKEN: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
         run: |
           mkdir -p "$HOME/.docker" "$HOME/.kpm/config"
           GHCR_AUTH=$(printf '%s:%s' "$GHCR_USERNAME" "$GHCR_TOKEN" | base64 -w0)
@@ -138,14 +141,25 @@ jobs:
       - name: Publish to ghcr.io
         id: publish-ghcr
         if: steps.changed-files.outputs.all_changed_files != ''
+        env:
+          DEPLOY_ACCESS_NAME: ${{ secrets.DEPLOY_ACCESS_NAME }}
+          DEPLOY_ACCESS_TOKEN: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
         run: |
           ghcr_ok="false"
           if echo "${{ steps.changed-files.outputs.all_changed_files }}" | grep -q 'kcl.mod'; then
             for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+              # Only a kcl.mod describes a package. push_pkg_from.sh exits 0
+              # for every other file, so without this filter the changed
+              # .k files would report a successful publish even when the
+              # package itself failed to push.
+              case "$file" in
+                kcl.mod|*/kcl.mod) ;;
+                *) continue ;;
+              esac
               if ./scripts/push_pkg_from.sh "$file"; then
                 ghcr_ok="true"
               else
-                echo "::warning::ghcr.io push failed for $file (see log above)"
+                echo "::error::ghcr.io push failed for $file (see log above)"
               fi
             done
           fi
@@ -169,8 +183,13 @@ jobs:
 
       # Inherits KPM_REG/KPM_REPO from the workflow env above, so the OCI
       # manifest main.go reads back is the one this run just pushed.
+      #
+      # Only runs when the publish succeeded: main.go reads the manifest
+      # back from the registry, and for a package that was never pushed
+      # that read fails with "<pkg>:<version>: not found", which hides the
+      # real cause behind the publish failure.
       - name: Update artifacthub-pkg.yaml
-        if: always()
+        if: steps.publish-ghcr.outputs.ghcr_ok == 'true'
         run: |
           if echo "${{ steps.changed-files.outputs.all_changed_files }}" | grep -q 'kcl.mod'; then
             for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
@@ -182,7 +201,7 @@ jobs:
           fi
 
       - name: Commit and push changes
-        if: always()
+        if: steps.publish-ghcr.outputs.ghcr_ok == 'true'
         run: |
           if echo "${{ steps.changed-files.outputs.all_changed_files }}" | grep -q 'kcl.mod'; then
             git config --global user.name 'GitHub Action'

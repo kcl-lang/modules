@@ -69,21 +69,18 @@ jobs:
       # registry to plain HTTP, which breaks HTTPS-only registries like
       # ghcr.io. See issue #378.
       #
-      # GITHUB_TOKEN is used instead of secrets.DEPLOY_ACCESS_TOKEN: the
-      # installation token of this repository publishes the package in the
-      # scope of this repository, so the package inherits this repository's
-      # (public) visibility and is linked to it. A personal access token
-      # publishes an organization-scoped package instead, which is not
-      # linked to any repository and whose visibility follows the
-      # organization-level default package visibility — which is not
-      # public, so such a package cannot be pulled anonymously even though
-      # the push itself succeeds.
+      # The personal access token publishes the package. The job's
+      # GITHUB_TOKEN can only write packages that are linked to this
+      # repository, and the packages published before the switch to
+      # GITHUB_TOKEN (#417) are organization-scoped and unlinked, so
+      # pushing a new version to them with GITHUB_TOKEN is denied with
+      # "403 denied: permission_denied: write_package".
       - name: Login to ghcr.io
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: x-access-token
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ secrets.DEPLOY_ACCESS_NAME }}
+          password: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
 
       # Capture the actual push outcome via a step output instead of
       # `continue-on-error` + `steps.<id>.conclusion`. With

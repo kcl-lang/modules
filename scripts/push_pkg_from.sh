@@ -2,14 +2,22 @@
 #
 # Publish a KCL module to the container registry.
 #
-# The package is published with the job's GITHUB_TOKEN rather than the
-# personal access token the workflow configures. A package published with
-# a personal access token is scoped to the organization instead of the
-# repository: it is not linked to any repository and its visibility
-# follows the organization-level default package visibility, so it can
-# end up not publicly pullable even though the push itself succeeds. A
-# package published with GITHUB_TOKEN is scoped to this repository and
-# inherits its (public) visibility.
+# The personal access token publishes into the organization scope: it can
+# write every package under ghcr.io/kcl-lang, but the package it creates
+# is not linked to a repository and its visibility follows the
+# organization-level default package visibility.
+#
+# The job's GITHUB_TOKEN publishes into the repository scope: the package
+# is linked to this repository and inherits its (public) visibility. It can
+# however only write packages that are already linked to this repository,
+# and the packages published before the switch to GITHUB_TOKEN (#417) are
+# organization-scoped and unlinked — pushing a new version to them with
+# GITHUB_TOKEN is denied with
+# "403 denied: permission_denied: write_package".
+#
+# The personal access token is therefore tried first, because it is the
+# only credential that can write the existing packages. The GITHUB_TOKEN
+# stays as a fallback for the packages the token cannot reach.
 #
 # The job's token is read from the local git config, where
 # actions/checkout persists it, because the workflow file cannot hand
@@ -65,6 +73,16 @@ PKG_VERSION=$(awk '
     }
 ' "$KCL_MOD_FILE_PATH")
 
+# The personal access token, when the workflow provides one. It is the only
+# credential that can write the packages that are not linked to this
+# repository, so it is tried first.
+#
+# The workflows name the credential either DEPLOY_ACCESS_NAME /
+# DEPLOY_ACCESS_TOKEN or REG_USER / REG_TOKEN (the latter is what
+# repush_not_exist.sh probes the registry with), so both are accepted.
+PAT_NAME="${DEPLOY_ACCESS_NAME:-${REG_USER:-kcl-lang}}"
+PAT_TOKEN="${DEPLOY_ACCESS_TOKEN:-${REG_TOKEN:-}}"
+
 # The token the job runs with. Prefer an explicitly provided one, fall
 # back to the credential actions/checkout persisted in the local git
 # config ("AUTHORIZATION: basic base64(x-access-token:<token>)").
@@ -78,24 +96,50 @@ if [ -z "$JOB_TOKEN" ]; then
   JOB_TOKEN=$(printf '%s' "$BASIC" | base64 -d 2>/dev/null | cut -d: -f2-)
 fi
 
-if [ -n "$JOB_TOKEN" ]; then
+# write_credentials <username> <password>
+#   Points both credential stores at the registry:
+#   * `~/.docker/config.json` (the file ORAS reads by default)
+#   * `~/.kpm/config/config.json` (the file kpm's own store reads)
+write_credentials() {
   mkdir -p "$HOME/.docker" "$HOME/.kpm/config"
-  GHCR_AUTH=$(printf '%s:%s' "x-access-token" "$JOB_TOKEN" | base64 -w0)
+  local auth
+  auth=$(printf '%s:%s' "$1" "$2" | base64 -w0)
   cat > "$HOME/.docker/config.json" <<EOF
 {
   "auths": {
-    "${REGISTRY}": { "auth": "${GHCR_AUTH}" }
+    "${REGISTRY}": { "auth": "${auth}" }
   }
 }
 EOF
   cp "$HOME/.docker/config.json" "$HOME/.kpm/config/config.json"
-  echo "info: publishing with the job's GITHUB_TOKEN"
-else
-  echo "warning: the job's GITHUB_TOKEN was not found, publishing with the credentials the workflow configured"
-fi
+}
+
+# publish <username> <password> <label>
+#   Publishes the package with the given credential.
+publish() {
+  write_credentials "$1" "$2"
+  echo "info: publishing with $3"
+  kcl mod push
+}
 
 cd $PKG_PATH
-if ! kcl mod push; then
+
+published="false"
+if [ -n "$PAT_TOKEN" ]; then
+  if publish "$PAT_NAME" "$PAT_TOKEN" "the personal access token"; then
+    published="true"
+  else
+    echo "warning: the personal access token could not publish ${PKG_NAME}:${PKG_VERSION}" >&2
+  fi
+fi
+
+if [ "$published" != "true" ] && [ -n "$JOB_TOKEN" ]; then
+  if publish "x-access-token" "$JOB_TOKEN" "the job's GITHUB_TOKEN"; then
+    published="true"
+  fi
+fi
+
+if [ "$published" != "true" ]; then
   echo "error: kcl mod push failed for ${PKG_NAME}:${PKG_VERSION}" >&2
   exit 1
 fi
@@ -156,7 +200,8 @@ for attempt in 1 2 3; do
 done
 
 echo "error: ${PKG_NAME}:${PKG_VERSION} is not publicly pullable — the package is not visible to anonymous users" >&2
-echo "error: publishing with GITHUB_TOKEN makes the package repository-scoped and publicly visible;" >&2
-echo "error: publishing with a personal access token makes it organization-scoped, where the" >&2
-echo "error: visibility follows the organization default instead." >&2
+echo "error: the package was published, but anonymous users cannot pull it." >&2
+echo "error: a package published with the GITHUB_TOKEN is repository-scoped and inherits the" >&2
+echo "error: visibility of this repository, a package published with a personal access token is" >&2
+echo "error: organization-scoped and its visibility follows the organization default instead." >&2
 exit 1
