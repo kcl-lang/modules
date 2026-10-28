@@ -47,19 +47,16 @@ jobs:
       # and that flag also forces plain-HTTP transport, which does not
       # work against HTTPS-only registries like ghcr.io.
       #
-      # GITHUB_TOKEN is used instead of secrets.DEPLOY_ACCESS_TOKEN: the
-      # installation token of this repository publishes the package in the
-      # scope of this repository, so the package inherits this repository's
-      # (public) visibility and is linked to it. A personal access token
-      # publishes an organization-scoped package instead, which is not
-      # linked to any repository and whose visibility follows the
-      # organization-level default package visibility — which is not
-      # public, so such a package cannot be pulled anonymously even though
-      # the push itself succeeds.
+      # The personal access token publishes the package. The job's
+      # GITHUB_TOKEN can only write packages that are linked to this
+      # repository, and the packages published before the switch to
+      # GITHUB_TOKEN (#417) are organization-scoped and unlinked, so
+      # pushing a new version to them with GITHUB_TOKEN is denied with
+      # "403 denied: permission_denied: write_package".
       - name: Configure registry credentials
         env:
-          GHCR_USERNAME: x-access-token
-          GHCR_TOKEN: ${{ github.token }}
+          GHCR_USERNAME: ${{ secrets.DEPLOY_ACCESS_NAME }}
+          GHCR_TOKEN: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
         run: |
           mkdir -p "$HOME/.docker" "$HOME/.kpm/config"
           GHCR_AUTH=$(printf '%s:%s' "$GHCR_USERNAME" "$GHCR_TOKEN" | base64 -w0)
@@ -87,8 +84,8 @@ jobs:
           # flags it, and kpm's push then rejects the repush with
           # "package version already exists" (observed for gitlab-ci,
           # gke.secret-sync and enkinex-odcs on the first run).
-          REG_USER: x-access-token
-          REG_TOKEN: ${{ github.token }}
+          REG_USER: ${{ secrets.DEPLOY_ACCESS_NAME }}
+          REG_TOKEN: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
         run: ./scripts/repush_not_exist.sh
 
       - name: Annotate summary with run metadata
