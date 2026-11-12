@@ -34,7 +34,7 @@ schema ReferenceGrant:
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : GatewayNetworkingK8sIoV1beta1ReferenceGrantSpec, default is Undefined, optional
+    spec : GatewayNetworkingK8sIoV1beta1ReferenceGrantSpec, default is Undefined, required
         spec
     """
 
@@ -45,7 +45,7 @@ schema ReferenceGrant:
 
     metadata?: v1.ObjectMeta
 
-    spec?: GatewayNetworkingK8sIoV1beta1ReferenceGrantSpec
+    spec: GatewayNetworkingK8sIoV1beta1ReferenceGrantSpec
 
 
 schema GatewayNetworkingK8sIoV1beta1ReferenceGrantSpec:
@@ -174,7 +174,7 @@ schema GatewayNetworkingK8sIoV1beta1ReferenceGrantSpecToItems0:
         len(kind) <= 63
         len(kind) >= 1
         _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
-        len(name) <= 253 if name
-        len(name) >= 1 if name
+        len(name) <= 253 if name not in [None, Undefined]
+        len(name) >= 1 if name not in [None, Undefined]
 
 

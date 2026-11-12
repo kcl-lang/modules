@@ -54,7 +54,7 @@ schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpec:
         ServiceImport, or any implementation-specific backendRef) are the only
         valid API target references.
 
-        Currently, a TargetRef can not be scoped to a specific port on a
+        Currently, a TargetRef cannot be scoped to a specific port on a
         Service.
     """
 
@@ -189,6 +189,8 @@ schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecRetryConstraintMi
 
 schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecSessionPersistence:
     r"""
+    Deprecated: use the Backend resource for session persistence (GEP-4894).
+
     SessionPersistence defines and configures session persistence
     for the backend.
 
@@ -202,24 +204,13 @@ schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecSessionPersistenc
         session becomes invalid.
 
         Support: Extended
-    cookieConfig : GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecSessionPersistenceCookieConfig, default is Undefined, optional
-        cookie config
-    idleTimeout : str, default is Undefined, optional
-        IdleTimeout defines the idle timeout of the persistent session.
-        Once the session has been idle for more than the specified
-        IdleTimeout duration, the session becomes invalid.
-
-        Support: Extended
-    sessionName : str, default is Undefined, optional
-        SessionName defines the name of the persistent session token
-        which may be reflected in the cookie or the header. Users
-        should avoid reusing session names to prevent unintended
-        consequences, such as rejection or unpredictable behavior.
-
-        Support: Implementation-specific
+    cookie : GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecSessionPersistenceCookie, default is Undefined, optional
+        cookie
+    header : GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecSessionPersistenceHeader, default is Undefined, optional
+        header
     $type : str, default is "Cookie", optional
         Type defines the type of session persistence such as through
-        the use a header or cookie. Defaults to cookie based session
+        the use of a header or cookie. Defaults to cookie based session
         persistence.
 
         Support: Core for "Cookie" type
@@ -230,24 +221,29 @@ schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecSessionPersistenc
 
     absoluteTimeout?: str
 
-    cookieConfig?: GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecSessionPersistenceCookieConfig
+    cookie?: GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecSessionPersistenceCookie
 
-    idleTimeout?: str
-
-    sessionName?: str
+    header?: GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecSessionPersistenceHeader
 
     $type?: "Cookie" | "Header" = "Cookie"
 
 
     check:
         _regex_match(str(absoluteTimeout), r"^([0-9]{1,5}(h|m|s|ms)){1,4}$") if absoluteTimeout
-        _regex_match(str(idleTimeout), r"^([0-9]{1,5}(h|m|s|ms)){1,4}$") if idleTimeout
-        len(sessionName) <= 128 if sessionName
 
 
-schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecSessionPersistenceCookieConfig:
+        # cookie must be nil if type is not Cookie
+        (not ((cookie != None)) or (type == "Cookie"))
+        # cookie must be specified for Cookie type
+        ((type != "Cookie") or (cookie != None))
+        # header must be nil if type is not Header
+        (not ((header != None)) or (type == "Header"))
+        # header must be specified for Header type
+        ((type != "Header") or (header != None))
+
+schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecSessionPersistenceCookie:
     r"""
-    CookieConfig provides configuration settings that are specific
+    Cookie provides configuration settings that are specific
     to cookie-based session persistence.
 
     Support: Core
@@ -274,10 +270,62 @@ schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecSessionPersistenc
         Support: Core for "Session" type
 
         Support: Extended for "Permanent" type
+    name : str, default is Undefined, optional
+        Name defines the name of the cookie used for session persistence.
+        If not specified, a unique cookie name SHOULD be generated.
+        Users should avoid reusing cookie names to prevent unintended
+        consequences, such as rejection or unpredictable behavior.
+
+
+        Support: Extended
+    path : str, default is "/", optional
+        Path defines the cookie Path attribute. When not specified,
+        implementations MUST default the cookie path to "/".
+
+
+        Support: Extended
     """
 
 
     lifetimeType?: "Permanent" | "Session" = "Session"
+
+    name?: str
+
+    path?: str = "/"
+
+
+    check:
+        len(name) <= 256 if name not in [None, Undefined]
+        len(name) >= 1 if name not in [None, Undefined]
+        _regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$") if name
+        len(path) <= 1024 if path not in [None, Undefined]
+
+
+schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecSessionPersistenceHeader:
+    r"""
+    Header provides configuration settings that are specific
+    to header-based session persistence.
+
+    Support: Extended
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        Name defines the name of the header used for session persistence.
+        The client must include this header in subsequent requests to
+        maintain the session.
+
+        Support: Core
+    """
+
+
+    name: str
+
+
+    check:
+        len(name) <= 256
+        len(name) >= 1
+        _regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$")
 
 
 schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicySpecTargetRefsItems0:
@@ -399,7 +447,7 @@ schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicyStatusAncestorsItems0
     ----------
     ancestorRef : GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicyStatusAncestorsItems0AncestorRef, default is Undefined, required
         ancestor ref
-    conditions : [GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicyStatusAncestorsItems0ConditionsItems0], default is Undefined, optional
+    conditions : [GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicyStatusAncestorsItems0ConditionsItems0], default is Undefined, required
         Conditions describes the status of the Policy with respect to the given Ancestor.
     controllerName : str, default is Undefined, required
         ControllerName is a domain/path string that indicates the name of the
@@ -420,14 +468,14 @@ schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicyStatusAncestorsItems0
 
     ancestorRef: GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicyStatusAncestorsItems0AncestorRef
 
-    conditions?: [GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicyStatusAncestorsItems0ConditionsItems0]
+    conditions: [GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicyStatusAncestorsItems0ConditionsItems0]
 
     controllerName: str
 
 
     check:
-        len(conditions) >= 1 if conditions
-        len(conditions) <= 8 if conditions
+        len(conditions) >= 1
+        len(conditions) <= 8
         len(controllerName) <= 253
         len(controllerName) >= 1
         _regex_match(str(controllerName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$")
@@ -556,20 +604,20 @@ schema GatewayNetworkingxK8sIoV1alpha1XBackendTrafficPolicyStatusAncestorsItems0
 
 
     check:
-        len(group) <= 253 if group
+        len(group) <= 253 if group not in [None, Undefined]
         _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63 if kind
-        len(kind) >= 1 if kind
+        len(kind) <= 63 if kind not in [None, Undefined]
+        len(kind) >= 1 if kind not in [None, Undefined]
         _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
         _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
-        len(sectionName) <= 253 if sectionName
-        len(sectionName) >= 1 if sectionName
+        len(sectionName) <= 253 if sectionName not in [None, Undefined]
+        len(sectionName) >= 1 if sectionName not in [None, Undefined]
         _regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
 
 
