@@ -27,6 +27,9 @@ schema GatewayClass:
 
     GatewayClass is a Cluster level resource.
 
+    A GatewayClass name SHOULD be compliant with RFC 1035, consisting of a maximum of 63 lower case alphanumeric
+    characters or hyphens ('-'), and MUST start and end with an alphanumeric character.
+
     Attributes
     ----------
     apiVersion : str, default is "gateway.networking.k8s.io/v1", required
@@ -86,7 +89,7 @@ schema GatewayNetworkingK8sIoV1GatewayClassSpec:
         len(controllerName) <= 253
         len(controllerName) >= 1
         _regex_match(str(controllerName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$")
-        len(description) <= 64 if description
+        len(description) <= 64 if description not in [None, Undefined]
 
 
 schema GatewayNetworkingK8sIoV1GatewayClassSpecParametersRef:
@@ -142,8 +145,8 @@ schema GatewayNetworkingK8sIoV1GatewayClassSpecParametersRef:
         _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
         _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
 
 
@@ -156,20 +159,26 @@ schema GatewayNetworkingK8sIoV1GatewayClassStatus:
 
     Attributes
     ----------
-    conditions : [GatewayNetworkingK8sIoV1GatewayClassStatusConditionsItems0], default is [{"reason": "Pending", "status": "Unknown", "type": "Accepted", "lastTransitionTime": "1970-01-01T00:00:00Z", "message": "Waiting for controller"}], optional
+    conditions : [GatewayNetworkingK8sIoV1GatewayClassStatusConditionsItems0], default is [{"lastTransitionTime": "1970-01-01T00:00:00Z", "message": "Waiting for controller", "reason": "Pending", "status": "Unknown", "type": "Accepted"}], optional
         Conditions is the current status from the controller for
         this GatewayClass.
 
         Controllers should prefer to publish conditions using values
         of GatewayClassConditionType for the type of each Condition.
+    supportedFeatures : [GatewayNetworkingK8sIoV1GatewayClassStatusSupportedFeaturesItems0], default is Undefined, optional
+        SupportedFeatures is the set of features the GatewayClass support.
+        It MUST be sorted in ascending alphabetical order by the Name key.
     """
 
 
-    conditions?: [GatewayNetworkingK8sIoV1GatewayClassStatusConditionsItems0] = [{"reason": "Pending", "status": "Unknown", "type": "Accepted", "lastTransitionTime": "1970-01-01T00:00:00Z", "message": "Waiting for controller"}]
+    conditions?: [GatewayNetworkingK8sIoV1GatewayClassStatusConditionsItems0] = [{"lastTransitionTime": "1970-01-01T00:00:00Z", "message": "Waiting for controller", "reason": "Pending", "status": "Unknown", "type": "Accepted"}]
+
+    supportedFeatures?: [GatewayNetworkingK8sIoV1GatewayClassStatusSupportedFeaturesItems0]
 
 
     check:
         len(conditions) <= 8 if conditions
+        len(supportedFeatures) <= 64 if supportedFeatures
 
 
 schema GatewayNetworkingK8sIoV1GatewayClassStatusConditionsItems0:
@@ -222,5 +231,20 @@ schema GatewayNetworkingK8sIoV1GatewayClassStatusConditionsItems0:
         _regex_match(str(reason), r"^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$")
         len($type) <= 316
         _regex_match(str($type), r"^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$")
+
+
+schema GatewayNetworkingK8sIoV1GatewayClassStatusSupportedFeaturesItems0:
+    r"""
+    gateway networking k8s io v1 gateway class status supported features items0
+
+    Attributes
+    ----------
+    name : str, default is Undefined, required
+        FeatureName is used to describe distinct features that are covered by
+        conformance tests.
+    """
+
+
+    name: str
 
 

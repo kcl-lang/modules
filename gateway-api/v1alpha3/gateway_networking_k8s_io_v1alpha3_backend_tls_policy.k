@@ -57,8 +57,6 @@ schema GatewayNetworkingK8sIoV1alpha3BackendTLSPolicySpec:
         Support: Implementation-specific
     targetRefs : [GatewayNetworkingK8sIoV1alpha3BackendTLSPolicySpecTargetRefsItems0], default is Undefined, required
         TargetRefs identifies an API object to apply the policy to.
-        Only Services have Extended support. Implementations MAY support
-        additional objects, with Implementation Specific support.
         Note that this config applies to the entire referenced resource
         by default, but this default may change in the future to provide
         a more granular application of the policy.
@@ -71,9 +69,50 @@ schema GatewayNetworkingK8sIoV1alpha3BackendTLSPolicySpec:
           be unique across all targetRef entries in the BackendTLSPolicy.
         * They select different sectionNames in the same target.
 
-        Support: Extended for Kubernetes Service
+        When more than one BackendTLSPolicy selects the same target and
+        sectionName, implementations MUST determine precedence using the
+        following criteria, continuing on ties:
 
-        Support: Implementation-specific for any other resource
+        * The older policy by creation timestamp takes precedence. For
+          example, a policy with a creation timestamp of "2021-07-15
+          01:02:03" MUST be given precedence over a policy with a
+          creation timestamp of "2021-07-15 01:02:04".
+        * The policy appearing first in alphabetical order by {namespace}/{name}.
+          For example, a policy named `foo/bar` is given precedence over a
+          policy named `foo/baz`.
+
+        For any BackendTLSPolicy that does not take precedence, the
+        implementation MUST ensure the `Accepted` Condition is set to
+        `status: False`, with Reason `Conflicted`.
+
+        Implementations SHOULD NOT support more than one targetRef at this
+        time. Although the API technically allows for this, the current guidance
+        for conflict resolution and status handling is lacking. Until that can be
+        clarified in a future release, the safest approach is to support a single
+        targetRef.
+
+        Support Levels:
+
+        * Extended: Kubernetes Service referenced by backendRefs used on a Route.
+          - HTTPRoute, GRPCRoute, TLSRoute with termination
+          - Filters that needs a backend of type Service, like Mirror and External Authorization
+
+        * Implementation-Specific: Implementations MAY use BackendTLSPolicy for:
+          - Services not referenced by any Route (e.g., infrastructure services)
+          - Service mesh workload-to-service communication
+          - Other resource types beyond Service
+
+        Implementations SHOULD aim to ensure that BackendTLSPolicy behavior is consistent,
+        even outside of the extended HTTPRoute -(backendRef) -> Service path.
+        They SHOULD clearly document how BackendTLSPolicy is interpreted in these
+        scenarios, including:
+          - Which resources beyond Service are supported
+          - How the policy is discovered and applied
+          - Any implementation-specific semantics or restrictions
+
+        Note that this config applies to the entire referenced resource
+        by default, but this default may change in the future to provide
+        a more granular application of the policy.
     validation : GatewayNetworkingK8sIoV1alpha3BackendTLSPolicySpecValidation, default is Undefined, required
         validation
     """
@@ -87,8 +126,8 @@ schema GatewayNetworkingK8sIoV1alpha3BackendTLSPolicySpec:
 
 
     check:
-        all _, options in options { len(options) <= 4096 if options not in [None, Undefined] } if options
-        all _, options in options { len(options) >= 0 if options not in [None, Undefined] } if options
+        all _, k in options { len(k) <= 4096 if k not in [None, Undefined] } if options
+        all _, k in options { len(k) >= 0 if k not in [None, Undefined] } if options
         len(targetRefs) >= 1
         len(targetRefs) <= 16
 
@@ -119,6 +158,7 @@ schema GatewayNetworkingK8sIoV1alpha3BackendTLSPolicySpecTargetRefsItems0:
         resources, SectionName is interpreted as the following:
 
         * Gateway: Listener name
+        * ListenerSet: Listener name
         * HTTPRoute: HTTPRouteRule name
         * Service: Port name
 
@@ -145,8 +185,8 @@ schema GatewayNetworkingK8sIoV1alpha3BackendTLSPolicySpecTargetRefsItems0:
         _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
         len(name) <= 253
         len(name) >= 1
-        len(sectionName) <= 253 if sectionName
-        len(sectionName) >= 1 if sectionName
+        len(sectionName) <= 253 if sectionName not in [None, Undefined]
+        len(sectionName) >= 1 if sectionName not in [None, Undefined]
         _regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
 
 
@@ -166,8 +206,39 @@ schema GatewayNetworkingK8sIoV1alpha3BackendTLSPolicySpecValidation:
         not both. If CACertificateRefs is empty or unspecified, the configuration for
         WellKnownCACertificates MUST be honored instead if supported by the implementation.
 
-        References to a resource in a different namespace are invalid for the
-        moment, although we will revisit this in the future.
+        A CACertificateRef is invalid if:
+
+        * It refers to a resource that cannot be resolved (e.g., the referenced resource
+          does not exist) or is misconfigured (e.g., a ConfigMap does not contain a key
+          named `ca.crt`). In this case, the Reason must be set to `InvalidCACertificateRef`
+          and the Message of the Condition must indicate which reference is invalid and why.
+
+        * It refers to an unknown or unsupported kind of resource. In this case, the Reason
+          must be set to `InvalidKind` and the Message of the Condition must explain which
+          kind of resource is unknown or unsupported.
+
+        * It refers to a resource in another namespace. This may change in future
+          spec updates.
+
+        Implementations MAY choose to perform further validation of the certificate
+        content (e.g., checking expiry or enforcing specific formats). In such cases,
+        an implementation-specific Reason and Message must be set for the invalid reference.
+
+        In all cases, the implementation MUST ensure the `ResolvedRefs` Condition on
+        the BackendTLSPolicy is set to `status: False`, with a Reason and Message
+        that indicate the cause of the error. Connections using an invalid
+        CACertificateRef MUST fail, and the client MUST receive an HTTP 5xx error
+        response. If ALL CACertificateRefs are invalid, the implementation MUST also
+        ensure the `Accepted` Condition on the BackendTLSPolicy is set to
+        `status: False`, with a Reason `NoValidCACertificate`.
+
+
+        References to cluster-scoped resources (such as ClusterTrustBundle)
+        are supported: the implementation resolves the scope based on the kind.
+        A single CACertificateRef to a ClusterTrustBundle uses the cluster-scoped
+        resource by name. A reference to a namespaced resource (such as ConfigMap
+        or Secret) uses the local namespace.
+
 
         A single CACertificateRef to a Kubernetes ConfigMap kind has "Core" support.
         Implementations MAY choose to support attaching multiple certificates to
@@ -176,16 +247,22 @@ schema GatewayNetworkingK8sIoV1alpha3BackendTLSPolicySpecValidation:
         Support: Core - An optional single reference to a Kubernetes ConfigMap,
         with the CA certificate in a key named `ca.crt`.
 
-        Support: Implementation-specific (More than one reference, or other kinds
-        of resources).
+
+        Support: Extended - A single reference to a ClusterTrustBundle (certificates.k8s.io).
+
+
+        Support: Implementation-specific - More than one reference, other kinds
+        of resources, or a single reference that includes multiple certificates.
     hostname : str, default is Undefined, required
         Hostname is used for two purposes in the connection between Gateways and
         backends:
 
         1. Hostname MUST be used as the SNI to connect to the backend (RFC 6066).
-        2. Hostname MUST be used for authentication and MUST match the certificate served by the matching backend, unless SubjectAltNames is specified.
-           authentication and MUST match the certificate served by the matching
-           backend.
+        2. Hostname MUST be used for authentication and MUST match the certificate
+           served by the matching backend, unless SubjectAltNames is specified.
+        3. If SubjectAltNames are specified, Hostname can be used for certificate selection
+           but MUST NOT be used for authentication. If you want to use the value
+           of the Hostname field for authentication, you MUST add it to the SubjectAltNames list.
 
         Support: Core
     subjectAltNames : [GatewayNetworkingK8sIoV1alpha3BackendTLSPolicySpecValidationSubjectAltNamesItems0], default is Undefined, optional
@@ -195,15 +272,23 @@ schema GatewayNetworkingK8sIoV1alpha3BackendTLSPolicySpecValidation:
 
         Support: Extended
     wellKnownCACertificates : str, default is Undefined, optional
-        WellKnownCACertificates specifies whether system CA certificates may be used in
-        the TLS handshake between the gateway and backend pod.
+        WellKnownCACertificates specifies whether a well-known set of CA certificates
+        may be used in the TLS handshake between the gateway and backend pod.
 
         If WellKnownCACertificates is unspecified or empty (""), then CACertificateRefs
         must be specified with at least one entry for a valid configuration. Only one of
-        CACertificateRefs or WellKnownCACertificates may be specified, not both. If an
-        implementation does not support the WellKnownCACertificates field or the value
-        supplied is not supported, the Status Conditions on the Policy MUST be
-        updated to include an Accepted: False Condition with Reason: Invalid.
+        CACertificateRefs or WellKnownCACertificates may be specified, not both.
+        If an implementation does not support the WellKnownCACertificates field, or
+        the supplied value is not recognized, the implementation MUST ensure the
+        `Accepted` Condition on the BackendTLSPolicy is set to `status: False`, with
+        a Reason `Invalid`.
+
+        Valid values include:
+        * "System" - indicates that well-known system CA certificates should be used.
+
+        Implementations MAY define their own sets of CA certificates. Such definitions
+        MUST use an implementation-specific, prefixed name, such as
+        `mycompany.com/my-custom-ca-certificates`.
 
         Support: Implementation-specific
     """
@@ -215,15 +300,19 @@ schema GatewayNetworkingK8sIoV1alpha3BackendTLSPolicySpecValidation:
 
     subjectAltNames?: [GatewayNetworkingK8sIoV1alpha3BackendTLSPolicySpecValidationSubjectAltNamesItems0]
 
-    wellKnownCACertificates?: "System"
+    wellKnownCACertificates?: str
 
 
     check:
+        len(caCertificateRefs) >= 1 if caCertificateRefs
         len(caCertificateRefs) <= 8 if caCertificateRefs
         len(hostname) <= 253
         len(hostname) >= 1
         _regex_match(str(hostname), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
         len(subjectAltNames) <= 5 if subjectAltNames
+        len(wellKnownCACertificates) <= 253 if wellKnownCACertificates not in [None, Undefined]
+        len(wellKnownCACertificates) >= 1 if wellKnownCACertificates not in [None, Undefined]
+        _regex_match(str(wellKnownCACertificates), r"^(System|([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/([A-Za-z0-9][-A-Za-z0-9_.]{0,61})?[A-Za-z0-9]))$") if wellKnownCACertificates
 
 
 schema GatewayNetworkingK8sIoV1alpha3BackendTLSPolicySpecValidationCaCertificateRefsItems0:
@@ -299,13 +388,22 @@ schema GatewayNetworkingK8sIoV1alpha3BackendTLSPolicySpecValidationSubjectAltNam
 
 
     check:
-        len(hostname) <= 253 if hostname
-        len(hostname) >= 1 if hostname
+        len(hostname) <= 253 if hostname not in [None, Undefined]
+        len(hostname) >= 1 if hostname not in [None, Undefined]
         _regex_match(str(hostname), r"^(\*\.)?[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if hostname
-        len(uri) <= 253 if uri
-        len(uri) >= 1 if uri
+        len(uri) <= 253 if uri not in [None, Undefined]
+        len(uri) >= 1 if uri not in [None, Undefined]
         _regex_match(str(uri), r"^(([^:/?#]+):)(//([^/?#]*))([^?#]*)(\?([^#]*))?(#(.*))?") if uri
 
+
+        # SubjectAltName element must contain Hostname, if Type is set to Hostname
+        not (((type == "Hostname") and (not ((hostname != None)) or (hostname == ""))))
+        # SubjectAltName element must not contain Hostname, if Type is not set to Hostname
+        not ((((type != "Hostname") and (hostname != None)) and (hostname != "")))
+        # SubjectAltName element must contain URI, if Type is set to URI
+        not (((type == "URI") and (not ((uri != None)) or (uri == ""))))
+        # SubjectAltName element must not contain URI, if Type is not set to URI
+        not ((((type != "URI") and (uri != None)) and (uri != "")))
 
 schema GatewayNetworkingK8sIoV1alpha3BackendTLSPolicyStatus:
     r"""
@@ -390,7 +488,7 @@ schema GatewayNetworkingK8sIoV1alpha3BackendTLSPolicyStatusAncestorsItems0:
     ----------
     ancestorRef : GatewayNetworkingK8sIoV1alpha3BackendTLSPolicyStatusAncestorsItems0AncestorRef, default is Undefined, required
         ancestor ref
-    conditions : [GatewayNetworkingK8sIoV1alpha3BackendTLSPolicyStatusAncestorsItems0ConditionsItems0], default is Undefined, optional
+    conditions : [GatewayNetworkingK8sIoV1alpha3BackendTLSPolicyStatusAncestorsItems0ConditionsItems0], default is Undefined, required
         Conditions describes the status of the Policy with respect to the given Ancestor.
     controllerName : str, default is Undefined, required
         ControllerName is a domain/path string that indicates the name of the
@@ -411,14 +509,14 @@ schema GatewayNetworkingK8sIoV1alpha3BackendTLSPolicyStatusAncestorsItems0:
 
     ancestorRef: GatewayNetworkingK8sIoV1alpha3BackendTLSPolicyStatusAncestorsItems0AncestorRef
 
-    conditions?: [GatewayNetworkingK8sIoV1alpha3BackendTLSPolicyStatusAncestorsItems0ConditionsItems0]
+    conditions: [GatewayNetworkingK8sIoV1alpha3BackendTLSPolicyStatusAncestorsItems0ConditionsItems0]
 
     controllerName: str
 
 
     check:
-        len(conditions) >= 1 if conditions
-        len(conditions) <= 8 if conditions
+        len(conditions) >= 1
+        len(conditions) <= 8
         len(controllerName) <= 253
         len(controllerName) >= 1
         _regex_match(str(controllerName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$")
@@ -547,20 +645,20 @@ schema GatewayNetworkingK8sIoV1alpha3BackendTLSPolicyStatusAncestorsItems0Ancest
 
 
     check:
-        len(group) <= 253 if group
+        len(group) <= 253 if group not in [None, Undefined]
         _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63 if kind
-        len(kind) >= 1 if kind
+        len(kind) <= 63 if kind not in [None, Undefined]
+        len(kind) >= 1 if kind not in [None, Undefined]
         _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
         _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
-        len(sectionName) <= 253 if sectionName
-        len(sectionName) >= 1 if sectionName
+        len(sectionName) <= 253 if sectionName not in [None, Undefined]
+        len(sectionName) >= 1 if sectionName not in [None, Undefined]
         _regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
 
 

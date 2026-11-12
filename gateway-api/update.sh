@@ -4,7 +4,7 @@ set -o errexit
 set -o nounset
 set -eoux pipefail
 
-VERSION="v1.3.0"
+VERSION="v1.7.0"
 
 rm -rf v*
 git clone https://github.com/kubernetes-sigs/gateway-api.git -b ${VERSION} --depth=1

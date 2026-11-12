@@ -96,8 +96,16 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpec:
         * Characters in a matching non-wildcard hostname.
         * Characters in a matching hostname.
 
-        If ties exist across multiple Routes, the matching precedence rules for
-        HTTPRouteMatches takes over.
+        When multiple HTTPRoutes attach to the same Listener and yield identical
+        Listener/Route intersected hostnames, implementations SHOULD evaluate
+        precedence using the original hostnames configured on the Route, not the
+        calculated Listener/Route hostname intersection.
+
+        Resolving Route precedence using original Route hostname specificity is an
+        Extended feature. Implementations that support this behavior SHOULD claim
+        support for the `GatewayRouteHostnameIntersectionPrecedence` feature.
+        Implementations that do not support this feature MAY evaluate precedence
+        using the calculated Listener/Route hostname intersection.
 
         Support: Core
     parentRefs : [GatewayNetworkingK8sIoV1HTTPRouteSpecParentRefsItems0], default is Undefined, optional
@@ -151,7 +159,7 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpec:
         allowed by something in the namespace they are referring to. For example,
         Gateway has the AllowedRoutes field, and ReferenceGrant provides a
         generic way to enable other kinds of cross-namespace reference.
-    rules : [GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0], default is [{"matches": [{"path": {"type": "PathPrefix", "value": "/"}}]}], optional
+    rules : [GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0], default is [{"matches": [{"path": {"value": "/", "type": "PathPrefix"}}]}], optional
         Rules are a list of HTTP matchers, filters and actions.
     """
 
@@ -165,10 +173,11 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpec:
 
     check:
         len(hostnames) <= 16 if hostnames
-        all hostnames in hostnames { len(hostnames) <= 253 if hostnames not in [None, Undefined] } if hostnames
-        all hostnames in hostnames { len(hostnames) >= 1 if hostnames not in [None, Undefined] } if hostnames
-        all hostnames in hostnames { _regex_match(str(hostnames), r"^(\*\.)?[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if hostnames } if hostnames
+        all i in hostnames { len(i) <= 253 if i not in [None, Undefined] } if hostnames
+        all i in hostnames { len(i) >= 1 if i not in [None, Undefined] } if hostnames
+        all i in hostnames { _regex_match(str(i), r"^(\*\.)?[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if i } if hostnames
         len(parentRefs) <= 32 if parentRefs
+        len(rules) >= 1 if rules
         len(rules) <= 16 if rules
 
 
@@ -287,20 +296,20 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecParentRefsItems0:
 
 
     check:
-        len(group) <= 253 if group
+        len(group) <= 253 if group not in [None, Undefined]
         _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63 if kind
-        len(kind) >= 1 if kind
+        len(kind) <= 63 if kind not in [None, Undefined]
+        len(kind) >= 1 if kind not in [None, Undefined]
         _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
         _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
-        len(sectionName) <= 253 if sectionName
-        len(sectionName) >= 1 if sectionName
+        len(sectionName) <= 253 if sectionName not in [None, Undefined]
+        len(sectionName) >= 1 if sectionName not in [None, Undefined]
         _regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
 
 
@@ -385,7 +394,7 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0:
         this configuration error.
 
         Support: Core
-    matches : [GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0MatchesItems0], default is [{"path": {"value": "/", "type": "PathPrefix"}}], optional
+    matches : [GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0MatchesItems0], default is [{"path": {"type": "PathPrefix", "value": "/"}}], optional
         Matches define conditions used for matching the rule against incoming
         HTTP requests. Each match is independent, i.e. this rule will be matched
         if **any** one of the matches is satisfied.
@@ -442,6 +451,12 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0:
 
         When no rules matching a request have been successfully attached to the
         parent a request is coming from, a HTTP 404 status code MUST be returned.
+    name : str, default is Undefined, optional
+        Name is the name of the route rule. This name MUST be unique within a Route if it is set.
+
+        Support: Extended
+    retry : GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0Retry, default is Undefined, optional
+        retry
     timeouts : GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0Timeouts, default is Undefined, optional
         timeouts
     """
@@ -453,6 +468,10 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0:
 
     matches?: [GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0MatchesItems0] = [{"path": {"type": "PathPrefix", "value": "/"}}]
 
+    name?: str
+
+    retry?: GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0Retry
+
     timeouts?: GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0Timeouts
 
 
@@ -460,6 +479,9 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0:
         len(backendRefs) <= 16 if backendRefs
         len(filters) <= 16 if filters
         len(matches) <= 64 if matches
+        len(name) <= 253 if name not in [None, Undefined]
+        len(name) >= 1 if name not in [None, Undefined]
+        _regex_match(str(name), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if name
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0:
@@ -549,15 +571,15 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0:
 
     check:
         len(filters) <= 16 if filters
-        len(group) <= 253 if group
+        len(group) <= 253 if group not in [None, Undefined]
         _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63 if kind
-        len(kind) >= 1 if kind
+        len(kind) <= 63 if kind not in [None, Undefined]
+        len(kind) >= 1 if kind not in [None, Undefined]
         _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
         _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
@@ -576,6 +598,8 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
 
     Attributes
     ----------
+    cors : GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0Cors, default is Undefined, optional
+        cors
     extensionRef : GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0ExtensionRef, default is Undefined, optional
         extension ref
     requestHeaderModifier : GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0RequestHeaderModifier, default is Undefined, optional
@@ -624,6 +648,8 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
     """
 
 
+    cors?: GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0Cors
+
     extensionRef?: GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0ExtensionRef
 
     requestHeaderModifier?: GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0RequestHeaderModifier
@@ -634,9 +660,285 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
 
     responseHeaderModifier?: GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0ResponseHeaderModifier
 
-    $type: "RequestHeaderModifier" | "ResponseHeaderModifier" | "RequestMirror" | "RequestRedirect" | "URLRewrite" | "ExtensionRef"
+    $type: "RequestHeaderModifier" | "ResponseHeaderModifier" | "RequestMirror" | "RequestRedirect" | "URLRewrite" | "ExtensionRef" | "CORS"
 
     urlRewrite?: GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0URLRewrite
+
+
+    check:
+
+
+        # filter.cors must be nil if the filter.type is not CORS
+        not (((cors != None) and (type != "CORS")))
+        # filter.cors must be specified for CORS filter.type
+        not ((not ((cors != None)) and (type == "CORS")))
+        # filter.requestHeaderModifier must be nil if the filter.type is not RequestHeaderModifier
+        not (((requestHeaderModifier != None) and (type != "RequestHeaderModifier")))
+        # filter.requestHeaderModifier must be specified for RequestHeaderModifier filter.type
+        not ((not ((requestHeaderModifier != None)) and (type == "RequestHeaderModifier")))
+        # filter.responseHeaderModifier must be nil if the filter.type is not ResponseHeaderModifier
+        not (((responseHeaderModifier != None) and (type != "ResponseHeaderModifier")))
+        # filter.responseHeaderModifier must be specified for ResponseHeaderModifier filter.type
+        not ((not ((responseHeaderModifier != None)) and (type == "ResponseHeaderModifier")))
+        # filter.requestMirror must be nil if the filter.type is not RequestMirror
+        not (((requestMirror != None) and (type != "RequestMirror")))
+        # filter.requestMirror must be specified for RequestMirror filter.type
+        not ((not ((requestMirror != None)) and (type == "RequestMirror")))
+        # filter.requestRedirect must be nil if the filter.type is not RequestRedirect
+        not (((requestRedirect != None) and (type != "RequestRedirect")))
+        # filter.requestRedirect must be specified for RequestRedirect filter.type
+        not ((not ((requestRedirect != None)) and (type == "RequestRedirect")))
+        # filter.urlRewrite must be nil if the filter.type is not URLRewrite
+        not (((urlRewrite != None) and (type != "URLRewrite")))
+        # filter.urlRewrite must be specified for URLRewrite filter.type
+        not ((not ((urlRewrite != None)) and (type == "URLRewrite")))
+        # filter.extensionRef must be nil if the filter.type is not ExtensionRef
+        not (((extensionRef != None) and (type != "ExtensionRef")))
+        # filter.extensionRef must be specified for ExtensionRef filter.type
+        not ((not ((extensionRef != None)) and (type == "ExtensionRef")))
+
+schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0Cors:
+    r"""
+    CORS defines a schema for a filter that responds to the
+    cross-origin request based on HTTP response header.
+
+    Support: Extended
+
+    Attributes
+    ----------
+    allowCredentials : bool, default is Undefined, optional
+        AllowCredentials indicates whether the actual cross-origin request allows
+        to include credentials.
+
+        When set to true, the gateway will include the `Access-Control-Allow-Credentials`
+        response header with value true (case-sensitive).
+
+        When set to false or omitted the gateway will omit the header
+        `Access-Control-Allow-Credentials` entirely (this is the standard CORS
+        behavior).
+
+        Support: Extended
+    allowHeaders : [str], default is Undefined, optional
+        AllowHeaders indicates which HTTP request headers are supported for
+        accessing the requested resource.
+
+        Header names are not case-sensitive.
+
+        Multiple header names in the value of the `Access-Control-Allow-Headers`
+        response header are separated by a comma (",").
+
+        When the `allowHeaders` field is configured with one or more headers, the
+        gateway must return the `Access-Control-Allow-Headers` response header
+        which value is present in the `allowHeaders` field.
+
+        If any header name in the `Access-Control-Request-Headers` request header
+        is not included in the list of header names specified by the response
+        header `Access-Control-Allow-Headers`, it will present an error on the
+        client side.
+
+        If any header name in the `Access-Control-Allow-Headers` response header
+        does not recognize by the client, it will also occur an error on the
+        client side.
+
+        A wildcard indicates that the requests with all HTTP headers are allowed.
+
+        If the configuration contains the wildcard `*` in `allowHeaders` and
+        `allowCredentials` is set to `false`, the `Access-Control-Allow-Headers`
+        response header may either contain the wildcard `*` or echo the value
+        of the `Access-Control-Request-Headers` request header.
+
+        If the configuration contains the wildcard `*` in `allowHeaders` and
+        `allowCredentials` is set to `true`, the gateway must not return `*`
+        in the `Access-Control-Allow-Headers` response header. Instead, it must
+        return one or more header names matching the value of the
+        `Access-Control-Request-Headers` request header.
+        If the `Access-Control-Request-Headers` header is not present in the
+        request, the gateway must omit the `Access-Control-Allow-Headers`
+        response header.
+
+        Support: Extended
+    allowMethods : [str], default is Undefined, optional
+        AllowMethods indicates which HTTP methods are supported for accessing the
+        requested resource.
+
+        Valid values are any method defined by RFC9110, along with the special
+        value `*`, which represents all HTTP methods are allowed.
+
+        Method names are case-sensitive, so these values are also case-sensitive.
+        (See https://www.rfc-editor.org/rfc/rfc2616#section-5.1.1)
+
+        Multiple method names in the value of the `Access-Control-Allow-Methods`
+        response header are separated by a comma (",").
+
+        A CORS-safelisted method is a method that is `GET`, `HEAD`, or `POST`.
+        (See https://fetch.spec.whatwg.org/#cors-safelisted-method) The
+        CORS-safelisted methods are always allowed, regardless of whether they
+        are specified in the `allowMethods` field.
+
+        When the `allowMethods` field is configured with one or more methods, the
+        gateway must return the `Access-Control-Allow-Methods` response header
+        which value is present in the `allowMethods` field.
+
+        If the HTTP method of the `Access-Control-Request-Method` request header
+        is not included in the list of methods specified by the response header
+        `Access-Control-Allow-Methods`, it will present an error on the client
+        side.
+
+        If the configuration contains the wildcard `*` in `allowMethods` and
+        `allowCredentials` is set to `false`, the `Access-Control-Allow-Methods`
+        response header may either contain the wildcard `*` or echo the value
+        of the `Access-Control-Request-Method` request header.
+
+        If the configuration contains the wildcard `*` in `allowMethods` and
+        `allowCredentials` is set to `true`, the gateway must not return `*`
+        in the `Access-Control-Allow-Methods` response header. Instead, it must
+        return a single HTTP method matching the value of the
+        `Access-Control-Request-Method` request header.
+        If the `Access-Control-Request-Method` header is not present in the request,
+        the gateway must omit the `Access-Control-Allow-Methods` response header.
+
+        Support: Extended
+    allowOrigins : [str], default is Undefined, optional
+        AllowOrigins indicates whether the response can be shared with requested
+        resource from the given `Origin`.
+
+        The `Origin` consists of a scheme and a host, with an optional port, and
+        takes the form `<scheme>://<host>(:<port>)`.
+
+        Valid values for scheme are: `http` and `https`.
+
+        Valid values for port are any integer between 1 and 65535 (the list of
+        available TCP/UDP ports). Note that, if not included, port `80` is
+        assumed for `http` scheme origins, and port `443` is assumed for `https`
+        origins. This may affect origin matching.
+
+        The host part of the origin may contain the wildcard character `*`. These
+        wildcard characters behave as follows:
+
+        * `*` is a greedy match to the _left_, including any number of
+          DNS labels to the left of its position. This also means that
+          `*` will include any number of period `.` characters to the
+          left of its position.
+        * A wildcard by itself matches all hosts.
+
+        An origin value that includes _only_ the `*` character indicates requests
+        from all `Origin`s are allowed.
+
+        When the `allowOrigins` field is configured with multiple origins, it
+        means the server supports clients from multiple origins. If the request
+        `Origin` matches the configured allowed origins, the gateway must return
+        the given `Origin` and sets value of the header
+        `Access-Control-Allow-Origin` same as the `Origin` header provided by the
+        client.
+
+        The status code of a successful response to a "preflight" request is
+        always an OK status (i.e., 204 or 200).
+
+        If the request `Origin` does not match the configured allowed origins,
+        the gateway returns 204/200 response but doesn't set the relevant
+        cross-origin response headers. Alternatively, the gateway responds with
+        403 status to the "preflight" request is denied, coupled with omitting
+        the CORS headers. The cross-origin request fails on the client side.
+        Therefore, the client doesn't attempt the actual cross-origin request.
+
+        Conversely, if the request `Origin` matches one of the configured
+        allowed origins, the gateway sets the response header
+        `Access-Control-Allow-Origin` to the same value as the `Origin`
+        header provided by the client.
+
+        If the configuration contains the wildcard `*` in `allowOrigins` and
+        `allowCredentials` is set to `false`, the `Access-Control-Allow-Origin`
+        response header may either contain the wildcard `*` or echo the value
+        of the `Origin` request header.
+
+        If the configuration contains the wildcard `*` in `allowOrigins` and
+        `allowCredentials` is set to `true`, the gateway must not return `*`
+        in the `Access-Control-Allow-Origin` response header. Instead, it must
+        return a single origin matching the value of the `Origin` request header.
+
+        Support: Extended
+    exposeHeaders : [str], default is Undefined, optional
+        ExposeHeaders indicates which HTTP response headers can be exposed
+        to client-side scripts in response to a cross-origin request.
+
+        A CORS-safelisted response header is an HTTP header in a CORS response
+        that it is considered safe to expose to the client scripts.
+        The CORS-safelisted response headers include the following headers:
+        `Cache-Control`
+        `Content-Language`
+        `Content-Length`
+        `Content-Type`
+        `Expires`
+        `Last-Modified`
+        `Pragma`
+        (See https://fetch.spec.whatwg.org/#cors-safelisted-response-header-name)
+        The CORS-safelisted response headers are exposed to client by default.
+
+        When an HTTP header name is specified using the `exposeHeaders` field,
+        this additional header will be exposed as part of the response to the
+        client.
+
+        Header names are not case-sensitive.
+
+        Multiple header names in the value of the `Access-Control-Expose-Headers`
+        response header are separated by a comma (",").
+
+        A wildcard indicates that the responses with all HTTP headers are exposed
+        to clients.
+
+        If the configuration contains the wildcard `*` in `exposeHeaders` and
+        `allowCredentials` is set to `false`, the `Access-Control-Expose-Headers`
+        response header can contain the wildcard `*`.
+
+        If the configuration contains the wildcard `*` in `exposeHeaders` and
+        `allowCredentials` is set to `true`, the gateway cannot use the `*`
+        in the `Access-Control-Expose-Headers` response header.
+
+        Support: Extended
+    maxAge : int, default is 5, optional
+        MaxAge indicates the duration (in seconds) for the client to cache the
+        results of a "preflight" request.
+
+        The information provided by the `Access-Control-Allow-Methods` and
+        `Access-Control-Allow-Headers` response headers can be cached by the
+        client until the time specified by `Access-Control-Max-Age` elapses.
+
+        The default value of `Access-Control-Max-Age` response header is 5
+        (seconds).
+
+        When the `MaxAge` field is unspecified, the gateway sets the response
+        header "Access-Control-Max-Age: 5" by default.
+    """
+
+
+    allowCredentials?: bool
+
+    allowHeaders?: [str]
+
+    allowMethods?: [str]
+
+    allowOrigins?: [str]
+
+    exposeHeaders?: [str]
+
+    maxAge?: int = 5
+
+
+    check:
+        len(allowHeaders) <= 64 if allowHeaders
+        all i in allowHeaders { len(i) <= 256 if i not in [None, Undefined] } if allowHeaders
+        all i in allowHeaders { len(i) >= 1 if i not in [None, Undefined] } if allowHeaders
+        all i in allowHeaders { _regex_match(str(i), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$") if i } if allowHeaders
+        len(allowMethods) <= 9 if allowMethods
+        len(allowOrigins) <= 64 if allowOrigins
+        all i in allowOrigins { len(i) <= 253 if i not in [None, Undefined] } if allowOrigins
+        all i in allowOrigins { len(i) >= 1 if i not in [None, Undefined] } if allowOrigins
+        all i in allowOrigins { _regex_match(str(i), r"(^\*$)|(^(http(s)?):\/\/(((\*\.)?([a-zA-Z0-9\-]+\.)*[a-zA-Z0-9-]+|\*)(:([0-9]{1,5}))?)$)") if i } if allowOrigins
+        len(exposeHeaders) <= 64 if exposeHeaders
+        all i in exposeHeaders { len(i) <= 256 if i not in [None, Undefined] } if exposeHeaders
+        all i in exposeHeaders { len(i) >= 1 if i not in [None, Undefined] } if exposeHeaders
+        all i in exposeHeaders { _regex_match(str(i), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$") if i } if exposeHeaders
+        maxAge >= 1 if maxAge not in [None, Undefined]
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0ExtensionRef:
@@ -861,6 +1163,9 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
         percent >= 0 if percent not in [None, Undefined]
 
 
+        # Only one of percent or fraction may be specified in HTTPRequestMirrorFilter
+        not (((percent != None) and (fraction != None)))
+
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0RequestMirrorBackendRef:
     r"""
     BackendRef references a resource where mirrored requests are sent.
@@ -886,6 +1191,10 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
     Support: Extended for Kubernetes Service
 
     Support: Implementation-specific for any other resource
+
+    If the backend service requires TLS, use BackendTLSPolicy to tell the
+    implementation to supply the TLS details to be used to connect to that
+    backend.
 
     Attributes
     ----------
@@ -940,15 +1249,15 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
 
 
     check:
-        len(group) <= 253 if group
+        len(group) <= 253 if group not in [None, Undefined]
         _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63 if kind
-        len(kind) >= 1 if kind
+        len(kind) <= 63 if kind not in [None, Undefined]
+        len(kind) >= 1 if kind not in [None, Undefined]
         _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
         _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
@@ -980,6 +1289,9 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
         denominator >= 1 if denominator not in [None, Undefined]
         numerator >= 0
 
+
+        # numerator must be less than or equal to denominator
+        (numerator <= denominator)
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0RequestRedirect:
     r"""
@@ -1046,7 +1358,7 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
         Accepted Condition for the Route to `status: False`, with a
         Reason of `UnsupportedValue`.
 
-        Support: Core
+        Support: statusCode 301 and 302 are Core; all others are Extended.
     """
 
 
@@ -1058,12 +1370,12 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
 
     scheme?: "http" | "https"
 
-    statusCode?: 301 | 302 = 302
+    statusCode?: 301 | 302 | 303 | 307 | 308 = 302
 
 
     check:
-        len(hostname) <= 253 if hostname
-        len(hostname) >= 1 if hostname
+        len(hostname) <= 253 if hostname not in [None, Undefined]
+        len(hostname) >= 1 if hostname not in [None, Undefined]
         _regex_match(str(hostname), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if hostname
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
@@ -1120,8 +1432,8 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
 
 
     check:
-        len(replaceFullPath) <= 1024 if replaceFullPath
-        len(replacePrefixMatch) <= 1024 if replacePrefixMatch
+        len(replaceFullPath) <= 1024 if replaceFullPath not in [None, Undefined]
+        len(replacePrefixMatch) <= 1024 if replacePrefixMatch not in [None, Undefined]
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersItems0ResponseHeaderModifier:
@@ -1290,8 +1602,8 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
 
 
     check:
-        len(hostname) <= 253 if hostname
-        len(hostname) >= 1 if hostname
+        len(hostname) <= 253 if hostname not in [None, Undefined]
+        len(hostname) >= 1 if hostname not in [None, Undefined]
         _regex_match(str(hostname), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if hostname
 
 
@@ -1344,8 +1656,8 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0BackendRefsItems0FiltersI
 
 
     check:
-        len(replaceFullPath) <= 1024 if replaceFullPath
-        len(replacePrefixMatch) <= 1024 if replacePrefixMatch
+        len(replaceFullPath) <= 1024 if replaceFullPath not in [None, Undefined]
+        len(replacePrefixMatch) <= 1024 if replacePrefixMatch not in [None, Undefined]
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0:
@@ -1359,6 +1671,8 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0:
 
     Attributes
     ----------
+    cors : GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0Cors, default is Undefined, optional
+        cors
     extensionRef : GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0ExtensionRef, default is Undefined, optional
         extension ref
     requestHeaderModifier : GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestHeaderModifier, default is Undefined, optional
@@ -1407,6 +1721,8 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0:
     """
 
 
+    cors?: GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0Cors
+
     extensionRef?: GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0ExtensionRef
 
     requestHeaderModifier?: GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestHeaderModifier
@@ -1417,9 +1733,285 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0:
 
     responseHeaderModifier?: GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0ResponseHeaderModifier
 
-    $type: "RequestHeaderModifier" | "ResponseHeaderModifier" | "RequestMirror" | "RequestRedirect" | "URLRewrite" | "ExtensionRef"
+    $type: "RequestHeaderModifier" | "ResponseHeaderModifier" | "RequestMirror" | "RequestRedirect" | "URLRewrite" | "ExtensionRef" | "CORS"
 
     urlRewrite?: GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0URLRewrite
+
+
+    check:
+
+
+        # filter.cors must be nil if the filter.type is not CORS
+        not (((cors != None) and (type != "CORS")))
+        # filter.cors must be specified for CORS filter.type
+        not ((not ((cors != None)) and (type == "CORS")))
+        # filter.requestHeaderModifier must be nil if the filter.type is not RequestHeaderModifier
+        not (((requestHeaderModifier != None) and (type != "RequestHeaderModifier")))
+        # filter.requestHeaderModifier must be specified for RequestHeaderModifier filter.type
+        not ((not ((requestHeaderModifier != None)) and (type == "RequestHeaderModifier")))
+        # filter.responseHeaderModifier must be nil if the filter.type is not ResponseHeaderModifier
+        not (((responseHeaderModifier != None) and (type != "ResponseHeaderModifier")))
+        # filter.responseHeaderModifier must be specified for ResponseHeaderModifier filter.type
+        not ((not ((responseHeaderModifier != None)) and (type == "ResponseHeaderModifier")))
+        # filter.requestMirror must be nil if the filter.type is not RequestMirror
+        not (((requestMirror != None) and (type != "RequestMirror")))
+        # filter.requestMirror must be specified for RequestMirror filter.type
+        not ((not ((requestMirror != None)) and (type == "RequestMirror")))
+        # filter.requestRedirect must be nil if the filter.type is not RequestRedirect
+        not (((requestRedirect != None) and (type != "RequestRedirect")))
+        # filter.requestRedirect must be specified for RequestRedirect filter.type
+        not ((not ((requestRedirect != None)) and (type == "RequestRedirect")))
+        # filter.urlRewrite must be nil if the filter.type is not URLRewrite
+        not (((urlRewrite != None) and (type != "URLRewrite")))
+        # filter.urlRewrite must be specified for URLRewrite filter.type
+        not ((not ((urlRewrite != None)) and (type == "URLRewrite")))
+        # filter.extensionRef must be nil if the filter.type is not ExtensionRef
+        not (((extensionRef != None) and (type != "ExtensionRef")))
+        # filter.extensionRef must be specified for ExtensionRef filter.type
+        not ((not ((extensionRef != None)) and (type == "ExtensionRef")))
+
+schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0Cors:
+    r"""
+    CORS defines a schema for a filter that responds to the
+    cross-origin request based on HTTP response header.
+
+    Support: Extended
+
+    Attributes
+    ----------
+    allowCredentials : bool, default is Undefined, optional
+        AllowCredentials indicates whether the actual cross-origin request allows
+        to include credentials.
+
+        When set to true, the gateway will include the `Access-Control-Allow-Credentials`
+        response header with value true (case-sensitive).
+
+        When set to false or omitted the gateway will omit the header
+        `Access-Control-Allow-Credentials` entirely (this is the standard CORS
+        behavior).
+
+        Support: Extended
+    allowHeaders : [str], default is Undefined, optional
+        AllowHeaders indicates which HTTP request headers are supported for
+        accessing the requested resource.
+
+        Header names are not case-sensitive.
+
+        Multiple header names in the value of the `Access-Control-Allow-Headers`
+        response header are separated by a comma (",").
+
+        When the `allowHeaders` field is configured with one or more headers, the
+        gateway must return the `Access-Control-Allow-Headers` response header
+        which value is present in the `allowHeaders` field.
+
+        If any header name in the `Access-Control-Request-Headers` request header
+        is not included in the list of header names specified by the response
+        header `Access-Control-Allow-Headers`, it will present an error on the
+        client side.
+
+        If any header name in the `Access-Control-Allow-Headers` response header
+        does not recognize by the client, it will also occur an error on the
+        client side.
+
+        A wildcard indicates that the requests with all HTTP headers are allowed.
+
+        If the configuration contains the wildcard `*` in `allowHeaders` and
+        `allowCredentials` is set to `false`, the `Access-Control-Allow-Headers`
+        response header may either contain the wildcard `*` or echo the value
+        of the `Access-Control-Request-Headers` request header.
+
+        If the configuration contains the wildcard `*` in `allowHeaders` and
+        `allowCredentials` is set to `true`, the gateway must not return `*`
+        in the `Access-Control-Allow-Headers` response header. Instead, it must
+        return one or more header names matching the value of the
+        `Access-Control-Request-Headers` request header.
+        If the `Access-Control-Request-Headers` header is not present in the
+        request, the gateway must omit the `Access-Control-Allow-Headers`
+        response header.
+
+        Support: Extended
+    allowMethods : [str], default is Undefined, optional
+        AllowMethods indicates which HTTP methods are supported for accessing the
+        requested resource.
+
+        Valid values are any method defined by RFC9110, along with the special
+        value `*`, which represents all HTTP methods are allowed.
+
+        Method names are case-sensitive, so these values are also case-sensitive.
+        (See https://www.rfc-editor.org/rfc/rfc2616#section-5.1.1)
+
+        Multiple method names in the value of the `Access-Control-Allow-Methods`
+        response header are separated by a comma (",").
+
+        A CORS-safelisted method is a method that is `GET`, `HEAD`, or `POST`.
+        (See https://fetch.spec.whatwg.org/#cors-safelisted-method) The
+        CORS-safelisted methods are always allowed, regardless of whether they
+        are specified in the `allowMethods` field.
+
+        When the `allowMethods` field is configured with one or more methods, the
+        gateway must return the `Access-Control-Allow-Methods` response header
+        which value is present in the `allowMethods` field.
+
+        If the HTTP method of the `Access-Control-Request-Method` request header
+        is not included in the list of methods specified by the response header
+        `Access-Control-Allow-Methods`, it will present an error on the client
+        side.
+
+        If the configuration contains the wildcard `*` in `allowMethods` and
+        `allowCredentials` is set to `false`, the `Access-Control-Allow-Methods`
+        response header may either contain the wildcard `*` or echo the value
+        of the `Access-Control-Request-Method` request header.
+
+        If the configuration contains the wildcard `*` in `allowMethods` and
+        `allowCredentials` is set to `true`, the gateway must not return `*`
+        in the `Access-Control-Allow-Methods` response header. Instead, it must
+        return a single HTTP method matching the value of the
+        `Access-Control-Request-Method` request header.
+        If the `Access-Control-Request-Method` header is not present in the request,
+        the gateway must omit the `Access-Control-Allow-Methods` response header.
+
+        Support: Extended
+    allowOrigins : [str], default is Undefined, optional
+        AllowOrigins indicates whether the response can be shared with requested
+        resource from the given `Origin`.
+
+        The `Origin` consists of a scheme and a host, with an optional port, and
+        takes the form `<scheme>://<host>(:<port>)`.
+
+        Valid values for scheme are: `http` and `https`.
+
+        Valid values for port are any integer between 1 and 65535 (the list of
+        available TCP/UDP ports). Note that, if not included, port `80` is
+        assumed for `http` scheme origins, and port `443` is assumed for `https`
+        origins. This may affect origin matching.
+
+        The host part of the origin may contain the wildcard character `*`. These
+        wildcard characters behave as follows:
+
+        * `*` is a greedy match to the _left_, including any number of
+          DNS labels to the left of its position. This also means that
+          `*` will include any number of period `.` characters to the
+          left of its position.
+        * A wildcard by itself matches all hosts.
+
+        An origin value that includes _only_ the `*` character indicates requests
+        from all `Origin`s are allowed.
+
+        When the `allowOrigins` field is configured with multiple origins, it
+        means the server supports clients from multiple origins. If the request
+        `Origin` matches the configured allowed origins, the gateway must return
+        the given `Origin` and sets value of the header
+        `Access-Control-Allow-Origin` same as the `Origin` header provided by the
+        client.
+
+        The status code of a successful response to a "preflight" request is
+        always an OK status (i.e., 204 or 200).
+
+        If the request `Origin` does not match the configured allowed origins,
+        the gateway returns 204/200 response but doesn't set the relevant
+        cross-origin response headers. Alternatively, the gateway responds with
+        403 status to the "preflight" request is denied, coupled with omitting
+        the CORS headers. The cross-origin request fails on the client side.
+        Therefore, the client doesn't attempt the actual cross-origin request.
+
+        Conversely, if the request `Origin` matches one of the configured
+        allowed origins, the gateway sets the response header
+        `Access-Control-Allow-Origin` to the same value as the `Origin`
+        header provided by the client.
+
+        If the configuration contains the wildcard `*` in `allowOrigins` and
+        `allowCredentials` is set to `false`, the `Access-Control-Allow-Origin`
+        response header may either contain the wildcard `*` or echo the value
+        of the `Origin` request header.
+
+        If the configuration contains the wildcard `*` in `allowOrigins` and
+        `allowCredentials` is set to `true`, the gateway must not return `*`
+        in the `Access-Control-Allow-Origin` response header. Instead, it must
+        return a single origin matching the value of the `Origin` request header.
+
+        Support: Extended
+    exposeHeaders : [str], default is Undefined, optional
+        ExposeHeaders indicates which HTTP response headers can be exposed
+        to client-side scripts in response to a cross-origin request.
+
+        A CORS-safelisted response header is an HTTP header in a CORS response
+        that it is considered safe to expose to the client scripts.
+        The CORS-safelisted response headers include the following headers:
+        `Cache-Control`
+        `Content-Language`
+        `Content-Length`
+        `Content-Type`
+        `Expires`
+        `Last-Modified`
+        `Pragma`
+        (See https://fetch.spec.whatwg.org/#cors-safelisted-response-header-name)
+        The CORS-safelisted response headers are exposed to client by default.
+
+        When an HTTP header name is specified using the `exposeHeaders` field,
+        this additional header will be exposed as part of the response to the
+        client.
+
+        Header names are not case-sensitive.
+
+        Multiple header names in the value of the `Access-Control-Expose-Headers`
+        response header are separated by a comma (",").
+
+        A wildcard indicates that the responses with all HTTP headers are exposed
+        to clients.
+
+        If the configuration contains the wildcard `*` in `exposeHeaders` and
+        `allowCredentials` is set to `false`, the `Access-Control-Expose-Headers`
+        response header can contain the wildcard `*`.
+
+        If the configuration contains the wildcard `*` in `exposeHeaders` and
+        `allowCredentials` is set to `true`, the gateway cannot use the `*`
+        in the `Access-Control-Expose-Headers` response header.
+
+        Support: Extended
+    maxAge : int, default is 5, optional
+        MaxAge indicates the duration (in seconds) for the client to cache the
+        results of a "preflight" request.
+
+        The information provided by the `Access-Control-Allow-Methods` and
+        `Access-Control-Allow-Headers` response headers can be cached by the
+        client until the time specified by `Access-Control-Max-Age` elapses.
+
+        The default value of `Access-Control-Max-Age` response header is 5
+        (seconds).
+
+        When the `MaxAge` field is unspecified, the gateway sets the response
+        header "Access-Control-Max-Age: 5" by default.
+    """
+
+
+    allowCredentials?: bool
+
+    allowHeaders?: [str]
+
+    allowMethods?: [str]
+
+    allowOrigins?: [str]
+
+    exposeHeaders?: [str]
+
+    maxAge?: int = 5
+
+
+    check:
+        len(allowHeaders) <= 64 if allowHeaders
+        all i in allowHeaders { len(i) <= 256 if i not in [None, Undefined] } if allowHeaders
+        all i in allowHeaders { len(i) >= 1 if i not in [None, Undefined] } if allowHeaders
+        all i in allowHeaders { _regex_match(str(i), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$") if i } if allowHeaders
+        len(allowMethods) <= 9 if allowMethods
+        len(allowOrigins) <= 64 if allowOrigins
+        all i in allowOrigins { len(i) <= 253 if i not in [None, Undefined] } if allowOrigins
+        all i in allowOrigins { len(i) >= 1 if i not in [None, Undefined] } if allowOrigins
+        all i in allowOrigins { _regex_match(str(i), r"(^\*$)|(^(http(s)?):\/\/(((\*\.)?([a-zA-Z0-9\-]+\.)*[a-zA-Z0-9-]+|\*)(:([0-9]{1,5}))?)$)") if i } if allowOrigins
+        len(exposeHeaders) <= 64 if exposeHeaders
+        all i in exposeHeaders { len(i) <= 256 if i not in [None, Undefined] } if exposeHeaders
+        all i in exposeHeaders { len(i) >= 1 if i not in [None, Undefined] } if exposeHeaders
+        all i in exposeHeaders { _regex_match(str(i), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$") if i } if exposeHeaders
+        maxAge >= 1 if maxAge not in [None, Undefined]
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0ExtensionRef:
@@ -1644,6 +2236,9 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestMirro
         percent >= 0 if percent not in [None, Undefined]
 
 
+        # Only one of percent or fraction may be specified in HTTPRequestMirrorFilter
+        not (((percent != None) and (fraction != None)))
+
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestMirrorBackendRef:
     r"""
     BackendRef references a resource where mirrored requests are sent.
@@ -1669,6 +2264,10 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestMirro
     Support: Extended for Kubernetes Service
 
     Support: Implementation-specific for any other resource
+
+    If the backend service requires TLS, use BackendTLSPolicy to tell the
+    implementation to supply the TLS details to be used to connect to that
+    backend.
 
     Attributes
     ----------
@@ -1723,15 +2322,15 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestMirro
 
 
     check:
-        len(group) <= 253 if group
+        len(group) <= 253 if group not in [None, Undefined]
         _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63 if kind
-        len(kind) >= 1 if kind
+        len(kind) <= 63 if kind not in [None, Undefined]
+        len(kind) >= 1 if kind not in [None, Undefined]
         _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
         _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
@@ -1763,6 +2362,9 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestMirro
         denominator >= 1 if denominator not in [None, Undefined]
         numerator >= 0
 
+
+        # numerator must be less than or equal to denominator
+        (numerator <= denominator)
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestRedirect:
     r"""
@@ -1829,7 +2431,7 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestRedir
         Accepted Condition for the Route to `status: False`, with a
         Reason of `UnsupportedValue`.
 
-        Support: Core
+        Support: statusCode 301 and 302 are Core; all others are Extended.
     """
 
 
@@ -1841,12 +2443,12 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestRedir
 
     scheme?: "http" | "https"
 
-    statusCode?: 301 | 302 = 302
+    statusCode?: 301 | 302 | 303 | 307 | 308 = 302
 
 
     check:
-        len(hostname) <= 253 if hostname
-        len(hostname) >= 1 if hostname
+        len(hostname) <= 253 if hostname not in [None, Undefined]
+        len(hostname) >= 1 if hostname not in [None, Undefined]
         _regex_match(str(hostname), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if hostname
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
@@ -1903,8 +2505,8 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0RequestRedir
 
 
     check:
-        len(replaceFullPath) <= 1024 if replaceFullPath
-        len(replacePrefixMatch) <= 1024 if replacePrefixMatch
+        len(replaceFullPath) <= 1024 if replaceFullPath not in [None, Undefined]
+        len(replacePrefixMatch) <= 1024 if replacePrefixMatch not in [None, Undefined]
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0ResponseHeaderModifier:
@@ -2073,8 +2675,8 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0URLRewrite:
 
 
     check:
-        len(hostname) <= 253 if hostname
-        len(hostname) >= 1 if hostname
+        len(hostname) <= 253 if hostname not in [None, Undefined]
+        len(hostname) >= 1 if hostname not in [None, Undefined]
         _regex_match(str(hostname), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if hostname
 
 
@@ -2127,8 +2729,8 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0FiltersItems0URLRewritePa
 
 
     check:
-        len(replaceFullPath) <= 1024 if replaceFullPath
-        len(replacePrefixMatch) <= 1024 if replacePrefixMatch
+        len(replaceFullPath) <= 1024 if replaceFullPath not in [None, Undefined]
+        len(replacePrefixMatch) <= 1024 if replacePrefixMatch not in [None, Undefined]
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0MatchesItems0:
@@ -2265,7 +2867,7 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0MatchesItems0Path:
 
 
     check:
-        len(value) <= 1024 if value
+        len(value) <= 1024 if value not in [None, Undefined]
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0MatchesItems0QueryParamsItems0:
@@ -2322,6 +2924,92 @@ schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0MatchesItems0QueryParamsI
         _regex_match(str(name), r"^[A-Za-z0-9!#$%&'*+\-.^_\x60|~]+$")
         len(value) <= 1024
         len(value) >= 1
+
+
+schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0Retry:
+    r"""
+    Retry defines the configuration for when to retry an HTTP request.
+
+    A request is retried when attempts is greater than 0 and the backend did
+    not process it. This is the case when the connection could not be
+    established, or when the backend explicitly rejected the request, either
+    before processing it or with one of the configured status codes.
+
+    Support: Extended
+
+    Attributes
+    ----------
+    attempts : int, default is 1, optional
+        Attempts specifies the maximum number of times an individual request
+        from the Gateway to a backend should be retried in addition to the
+        initial request.
+
+        If the maximum number of retries has been attempted without a successful
+        response from the backend, the Gateway MUST return an error.
+
+        An explicit zero value MUST disable retries.
+
+        Support: Extended
+    backoff : str, default is Undefined, optional
+        Backoff specifies the base interval for a backoff strategy between
+        retry attempts and is represented in Gateway API Duration formatting.
+        The duration a Gateway waits before a retry attempt is determined
+        by the base interval and the implementation's retry strategy.
+
+        Implementations MAY add random jitter and MAY cap the delay at an
+        implementation-defined maximum, which SHOULD NOT be less than the base
+        interval. The precise backoff curve and jitter calculation are
+        implementation-specific and not exposed in the Gateway API specification.
+        Implementations typically apply exponential backoff with jitter to
+        mitigate thundering-herd issues.
+
+        If a Request timeout (`rules[].timeouts.request`) is configured on the
+        route, the entire duration of the initial request and any retry attempts
+        MUST not exceed the Request timeout duration. If any retry attempts are
+        still in progress when the Request timeout duration has been reached,
+        these SHOULD be canceled if possible and the Gateway MUST immediately
+        return a timeout error.
+
+        If a BackendRequest timeout (`rules[].timeouts.backendRequest`) is
+        configured on the route, any retry attempts which reach the configured
+        BackendRequest timeout duration without a response SHOULD be canceled if
+        possible and the Gateway SHOULD schedule the next retry attempt according
+        to the configured backoff.
+
+        If a BackendRequest timeout is _not_ configured on the route, retry
+        attempts MAY time out after an implementation default duration, or MAY
+        remain pending until a configured Request timeout or implementation
+        default duration for total request time is reached.
+
+        When this field is unspecified, the backoff strategy and base interval
+        are implementation-specific.
+
+        Implementations which retry immediately with no backoff MUST NOT advertise
+        support for this field and MUST set the Accepted Condition for the Route
+        to `status: False` with a Reason of `UnsupportedValue` when this field is
+        set.
+
+        Support: Implementation-specific
+    codes : [int], default is Undefined, optional
+        Codes defines the HTTP response status codes for which a backend request
+        should be retried.
+
+        Support: Extended
+    """
+
+
+    attempts?: int = 1
+
+    backoff?: str
+
+    codes?: [int]
+
+
+    check:
+        attempts >= 0 if attempts not in [None, Undefined]
+        _regex_match(str(backoff), r"^([0-9]{1,5}(h|m|s|ms)){1,4}$") if backoff
+        all i in codes { i <= 599 if i not in [None, Undefined] } if codes
+        all i in codes { i >= 400 if i not in [None, Undefined] } if codes
 
 
 schema GatewayNetworkingK8sIoV1HTTPRouteSpecRulesItems0Timeouts:
@@ -2426,7 +3114,7 @@ schema GatewayNetworkingK8sIoV1HTTPRouteStatusParentsItems0:
 
     Attributes
     ----------
-    conditions : [GatewayNetworkingK8sIoV1HTTPRouteStatusParentsItems0ConditionsItems0], default is Undefined, optional
+    conditions : [GatewayNetworkingK8sIoV1HTTPRouteStatusParentsItems0ConditionsItems0], default is Undefined, required
         Conditions describes the status of the route with respect to the Gateway.
         Note that the route's availability is also subject to the Gateway's own
         status conditions and listener status.
@@ -2445,7 +3133,7 @@ schema GatewayNetworkingK8sIoV1HTTPRouteStatusParentsItems0:
 
         * The Route refers to a nonexistent parent.
         * The Route is of a type that the controller does not support.
-        * The Route is in a namespace the controller does not have access to.
+        * The Route is in a namespace to which the controller does not have access.
     controllerName : str, default is Undefined, required
         ControllerName is a domain/path string that indicates the name of the
         controller that wrote this status. This corresponds with the
@@ -2465,7 +3153,7 @@ schema GatewayNetworkingK8sIoV1HTTPRouteStatusParentsItems0:
     """
 
 
-    conditions?: [GatewayNetworkingK8sIoV1HTTPRouteStatusParentsItems0ConditionsItems0]
+    conditions: [GatewayNetworkingK8sIoV1HTTPRouteStatusParentsItems0ConditionsItems0]
 
     controllerName: str
 
@@ -2473,8 +3161,8 @@ schema GatewayNetworkingK8sIoV1HTTPRouteStatusParentsItems0:
 
 
     check:
-        len(conditions) >= 1 if conditions
-        len(conditions) <= 8 if conditions
+        len(conditions) >= 1
+        len(conditions) <= 8
         len(controllerName) <= 253
         len(controllerName) >= 1
         _regex_match(str(controllerName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$")
@@ -2637,20 +3325,20 @@ schema GatewayNetworkingK8sIoV1HTTPRouteStatusParentsItems0ParentRef:
 
 
     check:
-        len(group) <= 253 if group
+        len(group) <= 253 if group not in [None, Undefined]
         _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63 if kind
-        len(kind) >= 1 if kind
+        len(kind) <= 63 if kind not in [None, Undefined]
+        len(kind) >= 1 if kind not in [None, Undefined]
         _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
         _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
-        len(sectionName) <= 253 if sectionName
-        len(sectionName) >= 1 if sectionName
+        len(sectionName) <= 253 if sectionName not in [None, Undefined]
+        len(sectionName) >= 1 if sectionName not in [None, Undefined]
         _regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
 
 

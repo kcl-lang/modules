@@ -13,9 +13,6 @@ schema TLSRoute:
     to match against TLS-specific metadata. This allows more flexibility
     in matching streams for a given TLS listener.
 
-    If you need to forward traffic to a single target for a TLS listener, you
-    could choose to use a TCPRoute with a TLS listener.
-
     Attributes
     ----------
     apiVersion : str, default is "gateway.networking.k8s.io/v1alpha2", required
@@ -146,6 +143,19 @@ schema GatewayNetworkingK8sIoV1alpha2TLSRouteSpec:
         ParentRef of the Route.
     rules : [GatewayNetworkingK8sIoV1alpha2TLSRouteSpecRulesItems0], default is Undefined, required
         Rules are a list of TLS matchers and actions.
+    useDefaultGateways : str, default is Undefined, optional
+        UseDefaultGateways indicates the default Gateway scope to use for this
+        Route. If unset (the default) or set to None, the Route will not be
+        attached to any default Gateway; if set, it will be attached to any
+        default Gateway supporting the named scope, subject to the usual rules
+        about which Routes a Gateway is allowed to claim.
+
+        Think carefully before using this functionality! The set of default
+        Gateways supporting the requested scope can change over time without
+        any notice to the Route author, and in many situations it will not be
+        appropriate to request a default Gateway for a given Route -- for
+        example, a Route with specific security requirements should almost
+        certainly not use a default Gateway.
     """
 
 
@@ -155,12 +165,14 @@ schema GatewayNetworkingK8sIoV1alpha2TLSRouteSpec:
 
     rules: [GatewayNetworkingK8sIoV1alpha2TLSRouteSpecRulesItems0]
 
+    useDefaultGateways?: "All" | "None"
+
 
     check:
-        len(hostnames) <= 16 if hostnames
-        all hostnames in hostnames { len(hostnames) <= 253 if hostnames not in [None, Undefined] } if hostnames
-        all hostnames in hostnames { len(hostnames) >= 1 if hostnames not in [None, Undefined] } if hostnames
-        all hostnames in hostnames { _regex_match(str(hostnames), r"^(\*\.)?[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if hostnames } if hostnames
+        len(hostnames) <= 1024 if hostnames
+        all i in hostnames { len(i) <= 253 if i not in [None, Undefined] } if hostnames
+        all i in hostnames { len(i) >= 1 if i not in [None, Undefined] } if hostnames
+        all i in hostnames { _regex_match(str(i), r"^(\*\.)?[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if i } if hostnames
         len(parentRefs) <= 32 if parentRefs
         len(rules) >= 1
         len(rules) <= 16
@@ -299,20 +311,20 @@ schema GatewayNetworkingK8sIoV1alpha2TLSRouteSpecParentRefsItems0:
 
 
     check:
-        len(group) <= 253 if group
+        len(group) <= 253 if group not in [None, Undefined]
         _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63 if kind
-        len(kind) >= 1 if kind
+        len(kind) <= 63 if kind not in [None, Undefined]
+        len(kind) >= 1 if kind not in [None, Undefined]
         _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
         _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
-        len(sectionName) <= 253 if sectionName
-        len(sectionName) >= 1 if sectionName
+        len(sectionName) <= 253 if sectionName not in [None, Undefined]
+        len(sectionName) >= 1 if sectionName not in [None, Undefined]
         _regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
 
 
@@ -322,16 +334,18 @@ schema GatewayNetworkingK8sIoV1alpha2TLSRouteSpecRulesItems0:
 
     Attributes
     ----------
-    backendRefs : [GatewayNetworkingK8sIoV1alpha2TLSRouteSpecRulesItems0BackendRefsItems0], default is Undefined, optional
+    backendRefs : [GatewayNetworkingK8sIoV1alpha2TLSRouteSpecRulesItems0BackendRefsItems0], default is Undefined, required
         BackendRefs defines the backend(s) where matching requests should be
         sent. If unspecified or invalid (refers to a nonexistent resource or
         a Service with no endpoints), the rule performs no forwarding; if no
         filters are specified that would result in a response being sent, the
         underlying implementation must actively reject request attempts to this
-        backend, by rejecting the connection or returning a 500 status code.
-        Request rejections must respect weight; if an invalid backend is
-        requested to have 80% of requests, then 80% of requests must be rejected
-        instead.
+        backend, by rejecting the connection. Request rejections must respect
+        weight; if an invalid backend is requested to have 80% of requests, then
+        80% of requests must be rejected instead.
+
+        When a TLSRoute is attached to a listener in Terminate mode, a BackendTLSPolicy
+        can be used to enable re-encryption of the traffic to the backends.
 
         Support: Core for Kubernetes Service
 
@@ -340,23 +354,23 @@ schema GatewayNetworkingK8sIoV1alpha2TLSRouteSpecRulesItems0:
         Support: Implementation-specific for any other resource
 
         Support for weight: Extended
+
+        Support for BackendTLSPolicy: Extended
     name : str, default is Undefined, optional
         Name is the name of the route rule. This name MUST be unique within a Route if it is set.
-
-        Support: Extended
     """
 
 
-    backendRefs?: [GatewayNetworkingK8sIoV1alpha2TLSRouteSpecRulesItems0BackendRefsItems0]
+    backendRefs: [GatewayNetworkingK8sIoV1alpha2TLSRouteSpecRulesItems0BackendRefsItems0]
 
     name?: str
 
 
     check:
-        len(backendRefs) >= 1 if backendRefs
-        len(backendRefs) <= 16 if backendRefs
-        len(name) <= 253 if name
-        len(name) >= 1 if name
+        len(backendRefs) >= 1
+        len(backendRefs) <= 16
+        len(name) <= 253 if name not in [None, Undefined]
+        len(name) >= 1 if name not in [None, Undefined]
         _regex_match(str(name), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if name
 
 
@@ -459,15 +473,15 @@ schema GatewayNetworkingK8sIoV1alpha2TLSRouteSpecRulesItems0BackendRefsItems0:
 
 
     check:
-        len(group) <= 253 if group
+        len(group) <= 253 if group not in [None, Undefined]
         _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63 if kind
-        len(kind) >= 1 if kind
+        len(kind) <= 63 if kind not in [None, Undefined]
+        len(kind) >= 1 if kind not in [None, Undefined]
         _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
         _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
@@ -513,7 +527,7 @@ schema GatewayNetworkingK8sIoV1alpha2TLSRouteStatusParentsItems0:
 
     Attributes
     ----------
-    conditions : [GatewayNetworkingK8sIoV1alpha2TLSRouteStatusParentsItems0ConditionsItems0], default is Undefined, optional
+    conditions : [GatewayNetworkingK8sIoV1alpha2TLSRouteStatusParentsItems0ConditionsItems0], default is Undefined, required
         Conditions describes the status of the route with respect to the Gateway.
         Note that the route's availability is also subject to the Gateway's own
         status conditions and listener status.
@@ -532,7 +546,7 @@ schema GatewayNetworkingK8sIoV1alpha2TLSRouteStatusParentsItems0:
 
         * The Route refers to a nonexistent parent.
         * The Route is of a type that the controller does not support.
-        * The Route is in a namespace the controller does not have access to.
+        * The Route is in a namespace to which the controller does not have access.
     controllerName : str, default is Undefined, required
         ControllerName is a domain/path string that indicates the name of the
         controller that wrote this status. This corresponds with the
@@ -552,7 +566,7 @@ schema GatewayNetworkingK8sIoV1alpha2TLSRouteStatusParentsItems0:
     """
 
 
-    conditions?: [GatewayNetworkingK8sIoV1alpha2TLSRouteStatusParentsItems0ConditionsItems0]
+    conditions: [GatewayNetworkingK8sIoV1alpha2TLSRouteStatusParentsItems0ConditionsItems0]
 
     controllerName: str
 
@@ -560,8 +574,8 @@ schema GatewayNetworkingK8sIoV1alpha2TLSRouteStatusParentsItems0:
 
 
     check:
-        len(conditions) >= 1 if conditions
-        len(conditions) <= 8 if conditions
+        len(conditions) >= 1
+        len(conditions) <= 8
         len(controllerName) <= 253
         len(controllerName) >= 1
         _regex_match(str(controllerName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$")
@@ -742,20 +756,20 @@ schema GatewayNetworkingK8sIoV1alpha2TLSRouteStatusParentsItems0ParentRef:
 
 
     check:
-        len(group) <= 253 if group
+        len(group) <= 253 if group not in [None, Undefined]
         _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63 if kind
-        len(kind) >= 1 if kind
+        len(kind) <= 63 if kind not in [None, Undefined]
+        len(kind) >= 1 if kind not in [None, Undefined]
         _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
         _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
-        len(sectionName) <= 253 if sectionName
-        len(sectionName) >= 1 if sectionName
+        len(sectionName) <= 253 if sectionName not in [None, Undefined]
+        len(sectionName) >= 1 if sectionName not in [None, Undefined]
         _regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
 
 

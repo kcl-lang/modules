@@ -109,12 +109,27 @@ schema GatewayNetworkingK8sIoV1alpha2UDPRouteSpec:
         ParentRef of the Route.
     rules : [GatewayNetworkingK8sIoV1alpha2UDPRouteSpecRulesItems0], default is Undefined, required
         Rules are a list of UDP matchers and actions.
+    useDefaultGateways : str, default is Undefined, optional
+        UseDefaultGateways indicates the default Gateway scope to use for this
+        Route. If unset (the default) or set to None, the Route will not be
+        attached to any default Gateway; if set, it will be attached to any
+        default Gateway supporting the named scope, subject to the usual rules
+        about which Routes a Gateway is allowed to claim.
+
+        Think carefully before using this functionality! The set of default
+        Gateways supporting the requested scope can change over time without
+        any notice to the Route author, and in many situations it will not be
+        appropriate to request a default Gateway for a given Route -- for
+        example, a Route with specific security requirements should almost
+        certainly not use a default Gateway.
     """
 
 
     parentRefs?: [GatewayNetworkingK8sIoV1alpha2UDPRouteSpecParentRefsItems0]
 
     rules: [GatewayNetworkingK8sIoV1alpha2UDPRouteSpecRulesItems0]
+
+    useDefaultGateways?: "All" | "None"
 
 
     check:
@@ -256,20 +271,20 @@ schema GatewayNetworkingK8sIoV1alpha2UDPRouteSpecParentRefsItems0:
 
 
     check:
-        len(group) <= 253 if group
+        len(group) <= 253 if group not in [None, Undefined]
         _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63 if kind
-        len(kind) >= 1 if kind
+        len(kind) <= 63 if kind not in [None, Undefined]
+        len(kind) >= 1 if kind not in [None, Undefined]
         _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
         _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
-        len(sectionName) <= 253 if sectionName
-        len(sectionName) >= 1 if sectionName
+        len(sectionName) <= 253 if sectionName not in [None, Undefined]
+        len(sectionName) >= 1 if sectionName not in [None, Undefined]
         _regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
 
 
@@ -279,7 +294,7 @@ schema GatewayNetworkingK8sIoV1alpha2UDPRouteSpecRulesItems0:
 
     Attributes
     ----------
-    backendRefs : [GatewayNetworkingK8sIoV1alpha2UDPRouteSpecRulesItems0BackendRefsItems0], default is Undefined, optional
+    backendRefs : [GatewayNetworkingK8sIoV1alpha2UDPRouteSpecRulesItems0BackendRefsItems0], default is Undefined, required
         BackendRefs defines the backend(s) where matching requests should be
         sent. If unspecified or invalid (refers to a nonexistent resource or a
         Service with no endpoints), the underlying implementation MUST actively
@@ -287,30 +302,22 @@ schema GatewayNetworkingK8sIoV1alpha2UDPRouteSpecRulesItems0:
         respect weight; if an invalid backend is requested to have 80% of
         the packets, then 80% of packets must be dropped instead.
 
-        Support: Core for Kubernetes Service
-
-        Support: Extended for Kubernetes ServiceImport
-
-        Support: Implementation-specific for any other resource
-
-        Support for weight: Extended
+        Support: Extended for Kubernetes Service
     name : str, default is Undefined, optional
         Name is the name of the route rule. This name MUST be unique within a Route if it is set.
-
-        Support: Extended
     """
 
 
-    backendRefs?: [GatewayNetworkingK8sIoV1alpha2UDPRouteSpecRulesItems0BackendRefsItems0]
+    backendRefs: [GatewayNetworkingK8sIoV1alpha2UDPRouteSpecRulesItems0BackendRefsItems0]
 
     name?: str
 
 
     check:
-        len(backendRefs) >= 1 if backendRefs
-        len(backendRefs) <= 16 if backendRefs
-        len(name) <= 253 if name
-        len(name) >= 1 if name
+        len(backendRefs) >= 1
+        len(backendRefs) <= 16
+        len(name) <= 253 if name not in [None, Undefined]
+        len(name) >= 1 if name not in [None, Undefined]
         _regex_match(str(name), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if name
 
 
@@ -413,15 +420,15 @@ schema GatewayNetworkingK8sIoV1alpha2UDPRouteSpecRulesItems0BackendRefsItems0:
 
 
     check:
-        len(group) <= 253 if group
+        len(group) <= 253 if group not in [None, Undefined]
         _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63 if kind
-        len(kind) >= 1 if kind
+        len(kind) <= 63 if kind not in [None, Undefined]
+        len(kind) >= 1 if kind not in [None, Undefined]
         _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
         _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
@@ -467,7 +474,7 @@ schema GatewayNetworkingK8sIoV1alpha2UDPRouteStatusParentsItems0:
 
     Attributes
     ----------
-    conditions : [GatewayNetworkingK8sIoV1alpha2UDPRouteStatusParentsItems0ConditionsItems0], default is Undefined, optional
+    conditions : [GatewayNetworkingK8sIoV1alpha2UDPRouteStatusParentsItems0ConditionsItems0], default is Undefined, required
         Conditions describes the status of the route with respect to the Gateway.
         Note that the route's availability is also subject to the Gateway's own
         status conditions and listener status.
@@ -486,7 +493,7 @@ schema GatewayNetworkingK8sIoV1alpha2UDPRouteStatusParentsItems0:
 
         * The Route refers to a nonexistent parent.
         * The Route is of a type that the controller does not support.
-        * The Route is in a namespace the controller does not have access to.
+        * The Route is in a namespace to which the controller does not have access.
     controllerName : str, default is Undefined, required
         ControllerName is a domain/path string that indicates the name of the
         controller that wrote this status. This corresponds with the
@@ -506,7 +513,7 @@ schema GatewayNetworkingK8sIoV1alpha2UDPRouteStatusParentsItems0:
     """
 
 
-    conditions?: [GatewayNetworkingK8sIoV1alpha2UDPRouteStatusParentsItems0ConditionsItems0]
+    conditions: [GatewayNetworkingK8sIoV1alpha2UDPRouteStatusParentsItems0ConditionsItems0]
 
     controllerName: str
 
@@ -514,8 +521,8 @@ schema GatewayNetworkingK8sIoV1alpha2UDPRouteStatusParentsItems0:
 
 
     check:
-        len(conditions) >= 1 if conditions
-        len(conditions) <= 8 if conditions
+        len(conditions) >= 1
+        len(conditions) <= 8
         len(controllerName) <= 253
         len(controllerName) >= 1
         _regex_match(str(controllerName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$")
@@ -696,20 +703,20 @@ schema GatewayNetworkingK8sIoV1alpha2UDPRouteStatusParentsItems0ParentRef:
 
 
     check:
-        len(group) <= 253 if group
+        len(group) <= 253 if group not in [None, Undefined]
         _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63 if kind
-        len(kind) >= 1 if kind
+        len(kind) <= 63 if kind not in [None, Undefined]
+        len(kind) >= 1 if kind not in [None, Undefined]
         _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
         _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
-        len(sectionName) <= 253 if sectionName
-        len(sectionName) >= 1 if sectionName
+        len(sectionName) <= 253 if sectionName not in [None, Undefined]
+        len(sectionName) >= 1 if sectionName not in [None, Undefined]
         _regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
 
 

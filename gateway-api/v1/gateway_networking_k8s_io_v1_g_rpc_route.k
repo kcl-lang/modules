@@ -45,7 +45,7 @@ schema GRPCRoute:
         Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
     metadata : v1.ObjectMeta, default is Undefined, optional
         metadata
-    spec : GatewayNetworkingK8sIoV1GRPCRouteSpec, default is Undefined, optional
+    spec : GatewayNetworkingK8sIoV1GRPCRouteSpec, default is Undefined, required
         spec
     status : GatewayNetworkingK8sIoV1GRPCRouteStatus, default is Undefined, optional
         status
@@ -58,7 +58,7 @@ schema GRPCRoute:
 
     metadata?: v1.ObjectMeta
 
-    spec?: GatewayNetworkingK8sIoV1GRPCRouteSpec
+    spec: GatewayNetworkingK8sIoV1GRPCRouteSpec
 
     status?: GatewayNetworkingK8sIoV1GRPCRouteStatus
 
@@ -106,11 +106,30 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpec:
         the implementation. The implementation MUST raise an 'Accepted' Condition
         with a status of `False` in the corresponding RouteParentStatus.
 
+        In the event that multiple GRPCRoutes specify intersecting hostnames (e.g.
+        overlapping wildcard matching and exact matching hostnames), precedence must
+        be given to rules from the GRPCRoute with the largest number of:
+
+        * Characters in a matching non-wildcard hostname.
+        * Characters in a matching hostname.
+
+        When multiple GRPCRoutes attach to the same Listener and yield identical
+        Listener/Route intersected hostnames, implementations SHOULD evaluate
+        precedence using the original hostnames configured on the Route, not the
+        calculated Listener/Route hostname intersection.
+
+        Resolving Route precedence using original Route hostname specificity is an
+        Extended feature. Implementations that support this behavior SHOULD claim
+        support for the `GatewayRouteHostnameIntersectionPrecedence` feature.
+        Implementations that do not support this feature MAY evaluate precedence
+        using the calculated Listener/Route hostname intersection.
+
         If a Route (A) of type HTTPRoute or GRPCRoute is attached to a
         Listener and that listener already has another Route (B) of the other
         type attached and the intersection of the hostnames of A and B is
-        non-empty, then the implementation MUST accept exactly one of these two
-        routes, determined by the following criteria, in order:
+        non-empty, then the implementation MAY reject one of the two routes.
+        An implementation that does so MUST accept exactly one of them,
+        determined by the following criteria, in order:
 
         * The oldest Route based on creation timestamp.
         * The Route appearing first in alphabetical order by
@@ -185,9 +204,9 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpec:
 
     check:
         len(hostnames) <= 16 if hostnames
-        all hostnames in hostnames { len(hostnames) <= 253 if hostnames not in [None, Undefined] } if hostnames
-        all hostnames in hostnames { len(hostnames) >= 1 if hostnames not in [None, Undefined] } if hostnames
-        all hostnames in hostnames { _regex_match(str(hostnames), r"^(\*\.)?[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if hostnames } if hostnames
+        all i in hostnames { len(i) <= 253 if i not in [None, Undefined] } if hostnames
+        all i in hostnames { len(i) >= 1 if i not in [None, Undefined] } if hostnames
+        all i in hostnames { _regex_match(str(i), r"^(\*\.)?[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if i } if hostnames
         len(parentRefs) <= 32 if parentRefs
         len(rules) <= 16 if rules
 
@@ -307,20 +326,20 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecParentRefsItems0:
 
 
     check:
-        len(group) <= 253 if group
+        len(group) <= 253 if group not in [None, Undefined]
         _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63 if kind
-        len(kind) >= 1 if kind
+        len(kind) <= 63 if kind not in [None, Undefined]
+        len(kind) >= 1 if kind not in [None, Undefined]
         _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
         _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
-        len(sectionName) <= 253 if sectionName
-        len(sectionName) >= 1 if sectionName
+        len(sectionName) <= 253 if sectionName not in [None, Undefined]
+        len(sectionName) >= 1 if sectionName not in [None, Undefined]
         _regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
 
 
@@ -436,6 +455,10 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0:
         If ties still exist within the Route that has been given precedence,
         matching precedence MUST be granted to the first matching rule meeting
         the above criteria.
+    name : str, default is Undefined, optional
+        Name is the name of the route rule. This name MUST be unique within a Route if it is set.
+
+        Support: Extended
     """
 
 
@@ -445,11 +468,16 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0:
 
     matches?: [GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0MatchesItems0]
 
+    name?: str
+
 
     check:
         len(backendRefs) <= 16 if backendRefs
         len(filters) <= 16 if filters
         len(matches) <= 64 if matches
+        len(name) <= 253 if name not in [None, Undefined]
+        len(name) >= 1 if name not in [None, Undefined]
+        _regex_match(str(name), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if name
 
 
 schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0:
@@ -539,15 +567,15 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0:
 
     check:
         len(filters) <= 16 if filters
-        len(group) <= 253 if group
+        len(group) <= 253 if group not in [None, Undefined]
         _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63 if kind
-        len(kind) >= 1 if kind
+        len(kind) <= 63 if kind not in [None, Undefined]
+        len(kind) >= 1 if kind not in [None, Undefined]
         _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
         _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
@@ -612,6 +640,26 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
 
     $type: "ResponseHeaderModifier" | "RequestHeaderModifier" | "RequestMirror" | "ExtensionRef"
 
+
+    check:
+
+
+        # filter.requestHeaderModifier must be nil if the filter.type is not RequestHeaderModifier
+        not (((requestHeaderModifier != None) and (type != "RequestHeaderModifier")))
+        # filter.requestHeaderModifier must be specified for RequestHeaderModifier filter.type
+        not ((not ((requestHeaderModifier != None)) and (type == "RequestHeaderModifier")))
+        # filter.responseHeaderModifier must be nil if the filter.type is not ResponseHeaderModifier
+        not (((responseHeaderModifier != None) and (type != "ResponseHeaderModifier")))
+        # filter.responseHeaderModifier must be specified for ResponseHeaderModifier filter.type
+        not ((not ((responseHeaderModifier != None)) and (type == "ResponseHeaderModifier")))
+        # filter.requestMirror must be nil if the filter.type is not RequestMirror
+        not (((requestMirror != None) and (type != "RequestMirror")))
+        # filter.requestMirror must be specified for RequestMirror filter.type
+        not ((not ((requestMirror != None)) and (type == "RequestMirror")))
+        # filter.extensionRef must be nil if the filter.type is not ExtensionRef
+        not (((extensionRef != None) and (type != "ExtensionRef")))
+        # filter.extensionRef must be specified for ExtensionRef filter.type
+        not ((not ((extensionRef != None)) and (type == "ExtensionRef")))
 
 schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersItems0ExtensionRef:
     r"""
@@ -835,6 +883,9 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
         percent >= 0 if percent not in [None, Undefined]
 
 
+        # Only one of percent or fraction may be specified in HTTPRequestMirrorFilter
+        not (((percent != None) and (fraction != None)))
+
 schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersItems0RequestMirrorBackendRef:
     r"""
     BackendRef references a resource where mirrored requests are sent.
@@ -860,6 +911,10 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
     Support: Extended for Kubernetes Service
 
     Support: Implementation-specific for any other resource
+
+    If the backend service requires TLS, use BackendTLSPolicy to tell the
+    implementation to supply the TLS details to be used to connect to that
+    backend.
 
     Attributes
     ----------
@@ -914,15 +969,15 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
 
 
     check:
-        len(group) <= 253 if group
+        len(group) <= 253 if group not in [None, Undefined]
         _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63 if kind
-        len(kind) >= 1 if kind
+        len(kind) <= 63 if kind not in [None, Undefined]
+        len(kind) >= 1 if kind not in [None, Undefined]
         _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
         _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
@@ -954,6 +1009,9 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersI
         denominator >= 1 if denominator not in [None, Undefined]
         numerator >= 0
 
+
+        # numerator must be less than or equal to denominator
+        (numerator <= denominator)
 
 schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0BackendRefsItems0FiltersItems0ResponseHeaderModifier:
     r"""
@@ -1154,6 +1212,26 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0:
 
     $type: "ResponseHeaderModifier" | "RequestHeaderModifier" | "RequestMirror" | "ExtensionRef"
 
+
+    check:
+
+
+        # filter.requestHeaderModifier must be nil if the filter.type is not RequestHeaderModifier
+        not (((requestHeaderModifier != None) and (type != "RequestHeaderModifier")))
+        # filter.requestHeaderModifier must be specified for RequestHeaderModifier filter.type
+        not ((not ((requestHeaderModifier != None)) and (type == "RequestHeaderModifier")))
+        # filter.responseHeaderModifier must be nil if the filter.type is not ResponseHeaderModifier
+        not (((responseHeaderModifier != None) and (type != "ResponseHeaderModifier")))
+        # filter.responseHeaderModifier must be specified for ResponseHeaderModifier filter.type
+        not ((not ((responseHeaderModifier != None)) and (type == "ResponseHeaderModifier")))
+        # filter.requestMirror must be nil if the filter.type is not RequestMirror
+        not (((requestMirror != None) and (type != "RequestMirror")))
+        # filter.requestMirror must be specified for RequestMirror filter.type
+        not ((not ((requestMirror != None)) and (type == "RequestMirror")))
+        # filter.extensionRef must be nil if the filter.type is not ExtensionRef
+        not (((extensionRef != None) and (type != "ExtensionRef")))
+        # filter.extensionRef must be specified for ExtensionRef filter.type
+        not ((not ((extensionRef != None)) and (type == "ExtensionRef")))
 
 schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0ExtensionRef:
     r"""
@@ -1377,6 +1455,9 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestMirro
         percent >= 0 if percent not in [None, Undefined]
 
 
+        # Only one of percent or fraction may be specified in HTTPRequestMirrorFilter
+        not (((percent != None) and (fraction != None)))
+
 schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestMirrorBackendRef:
     r"""
     BackendRef references a resource where mirrored requests are sent.
@@ -1402,6 +1483,10 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestMirro
     Support: Extended for Kubernetes Service
 
     Support: Implementation-specific for any other resource
+
+    If the backend service requires TLS, use BackendTLSPolicy to tell the
+    implementation to supply the TLS details to be used to connect to that
+    backend.
 
     Attributes
     ----------
@@ -1456,15 +1541,15 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestMirro
 
 
     check:
-        len(group) <= 253 if group
+        len(group) <= 253 if group not in [None, Undefined]
         _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63 if kind
-        len(kind) >= 1 if kind
+        len(kind) <= 63 if kind not in [None, Undefined]
+        len(kind) >= 1 if kind not in [None, Undefined]
         _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
         _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
@@ -1496,6 +1581,9 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0RequestMirro
         denominator >= 1 if denominator not in [None, Undefined]
         numerator >= 0
 
+
+        # numerator must be less than or equal to denominator
+        (numerator <= denominator)
 
 schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0FiltersItems0ResponseHeaderModifier:
     r"""
@@ -1653,8 +1741,8 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0MatchesItems0:
       - method:
         type: Exact
         service: "foo"
-        headers:
-      - name: "version"
+      - headers:
+        name: "version"
         value "v1"
 
     ```
@@ -1751,8 +1839,8 @@ schema GatewayNetworkingK8sIoV1GRPCRouteSpecRulesItems0MatchesItems0Method:
 
 
     check:
-        len(method) <= 1024 if method
-        len(service) <= 1024 if service
+        len(method) <= 1024 if method not in [None, Undefined]
+        len(service) <= 1024 if service not in [None, Undefined]
 
 
 schema GatewayNetworkingK8sIoV1GRPCRouteStatus:
@@ -1793,7 +1881,7 @@ schema GatewayNetworkingK8sIoV1GRPCRouteStatusParentsItems0:
 
     Attributes
     ----------
-    conditions : [GatewayNetworkingK8sIoV1GRPCRouteStatusParentsItems0ConditionsItems0], default is Undefined, optional
+    conditions : [GatewayNetworkingK8sIoV1GRPCRouteStatusParentsItems0ConditionsItems0], default is Undefined, required
         Conditions describes the status of the route with respect to the Gateway.
         Note that the route's availability is also subject to the Gateway's own
         status conditions and listener status.
@@ -1812,7 +1900,7 @@ schema GatewayNetworkingK8sIoV1GRPCRouteStatusParentsItems0:
 
         * The Route refers to a nonexistent parent.
         * The Route is of a type that the controller does not support.
-        * The Route is in a namespace the controller does not have access to.
+        * The Route is in a namespace to which the controller does not have access.
     controllerName : str, default is Undefined, required
         ControllerName is a domain/path string that indicates the name of the
         controller that wrote this status. This corresponds with the
@@ -1832,7 +1920,7 @@ schema GatewayNetworkingK8sIoV1GRPCRouteStatusParentsItems0:
     """
 
 
-    conditions?: [GatewayNetworkingK8sIoV1GRPCRouteStatusParentsItems0ConditionsItems0]
+    conditions: [GatewayNetworkingK8sIoV1GRPCRouteStatusParentsItems0ConditionsItems0]
 
     controllerName: str
 
@@ -1840,8 +1928,8 @@ schema GatewayNetworkingK8sIoV1GRPCRouteStatusParentsItems0:
 
 
     check:
-        len(conditions) >= 1 if conditions
-        len(conditions) <= 8 if conditions
+        len(conditions) >= 1
+        len(conditions) <= 8
         len(controllerName) <= 253
         len(controllerName) >= 1
         _regex_match(str(controllerName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$")
@@ -2004,20 +2092,20 @@ schema GatewayNetworkingK8sIoV1GRPCRouteStatusParentsItems0ParentRef:
 
 
     check:
-        len(group) <= 253 if group
+        len(group) <= 253 if group not in [None, Undefined]
         _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63 if kind
-        len(kind) >= 1 if kind
+        len(kind) <= 63 if kind not in [None, Undefined]
+        len(kind) >= 1 if kind not in [None, Undefined]
         _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
         _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
         port <= 65535 if port not in [None, Undefined]
         port >= 1 if port not in [None, Undefined]
-        len(sectionName) <= 253 if sectionName
-        len(sectionName) >= 1 if sectionName
+        len(sectionName) <= 253 if sectionName not in [None, Undefined]
+        len(sectionName) >= 1 if sectionName not in [None, Undefined]
         _regex_match(str(sectionName), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if sectionName
 
 

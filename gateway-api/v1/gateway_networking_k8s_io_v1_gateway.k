@@ -11,6 +11,8 @@ schema Gateway:
     r"""
     Gateway represents an instance of a service-traffic handling infrastructure
     by binding Listeners to a set of IP addresses.
+    A Gateway name SHOULD be compliant with RFC 1035, consisting of a maximum of 63 lower case alphanumeric
+    characters or hyphens ('-'), and MUST start and end with an alphanumeric character.
 
     Attributes
     ----------
@@ -48,7 +50,7 @@ schema GatewayNetworkingK8sIoV1GatewaySpec:
         Addresses requested for this Gateway. This is optional and behavior can
         depend on the implementation. If a value is set in the spec and the
         requested address is invalid or unavailable, the implementation MUST
-        indicate this in the associated entry in GatewayStatus.Addresses.
+        indicate this in an associated entry in GatewayStatus.Conditions.
 
         The Addresses field represents a request for the address(es) on the
         "outside of the Gateway", that traffic bound for this Gateway will use.
@@ -65,6 +67,8 @@ schema GatewayNetworkingK8sIoV1GatewaySpec:
         GatewayStatus.Addresses.
 
         Support: Extended
+    allowedListeners : GatewayNetworkingK8sIoV1GatewaySpecAllowedListeners, default is Undefined, optional
+        allowed listeners
     gatewayClassName : str, default is Undefined, required
         GatewayClassName used for this Gateway. This is the name of a
         GatewayClass resource.
@@ -200,6 +204,12 @@ schema GatewayNetworkingK8sIoV1GatewaySpec:
         request to "foo.example.com" SHOULD only be routed using routes attached
         to the "foo.example.com" Listener (and not the "*.example.com" Listener).
 
+        If traffic to a Gateway does not match any Listener's hostname (or if
+        the Listener does not specify a hostname and the request does not match
+        any attached Route), the request MUST be rejected. The specific mechanism
+        for rejection depends on the protocol: HTTP returns a 404 status code,
+        while gRPC returns an Unimplemented status code.
+
         This concept is known as "Listener Isolation", and it is an Extended feature
         of Gateway API. Implementations that do not support Listener Isolation MUST
         clearly document this, and MUST NOT claim support for the
@@ -232,16 +242,22 @@ schema GatewayNetworkingK8sIoV1GatewaySpec:
         In a future release the MinItems=1 requirement MAY be dropped.
 
         Support: Core
+    tls : GatewayNetworkingK8sIoV1GatewaySpecTLS, default is Undefined, optional
+        tls
     """
 
 
     addresses?: [GatewayNetworkingK8sIoV1GatewaySpecAddressesItems0]
+
+    allowedListeners?: GatewayNetworkingK8sIoV1GatewaySpecAllowedListeners
 
     gatewayClassName: str
 
     infrastructure?: GatewayNetworkingK8sIoV1GatewaySpecInfrastructure
 
     listeners: [GatewayNetworkingK8sIoV1GatewaySpecListenersItems0]
+
+    tls?: GatewayNetworkingK8sIoV1GatewaySpecTLS
 
 
     check:
@@ -277,10 +293,101 @@ schema GatewayNetworkingK8sIoV1GatewaySpecAddressesItems0:
 
 
     check:
-        len($type) <= 253 if $type
-        len($type) >= 1 if $type
+        len($type) <= 253 if $type not in [None, Undefined]
+        len($type) >= 1 if $type not in [None, Undefined]
         _regex_match(str($type), r"^Hostname|IPAddress|NamedAddress|[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$") if $type
-        len(value) <= 253 if value
+        len(value) <= 253 if value not in [None, Undefined]
+
+
+schema GatewayNetworkingK8sIoV1GatewaySpecAllowedListeners:
+    r"""
+    AllowedListeners defines which ListenerSets can be attached to this Gateway.
+    The default value is to allow no ListenerSets.
+
+    Attributes
+    ----------
+    namespaces : GatewayNetworkingK8sIoV1GatewaySpecAllowedListenersNamespaces, default is Undefined, optional
+        namespaces
+    """
+
+
+    namespaces?: GatewayNetworkingK8sIoV1GatewaySpecAllowedListenersNamespaces
+
+
+schema GatewayNetworkingK8sIoV1GatewaySpecAllowedListenersNamespaces:
+    r"""
+    Namespaces defines which namespaces ListenerSets can be attached to this Gateway.
+    The default value is to allow no ListenerSets.
+
+    Attributes
+    ----------
+    from : str, default is "None", optional
+        From indicates where ListenerSets can attach to this Gateway. Possible
+        values are:
+
+        * Same: Only ListenerSets in the same namespace may be attached to this Gateway.
+        * Selector: ListenerSets in namespaces selected by the selector may be attached to this Gateway.
+        * All: ListenerSets in all namespaces may be attached to this Gateway.
+        * None: Only listeners defined in the Gateway's spec are allowed
+
+        The default value None
+    selector : GatewayNetworkingK8sIoV1GatewaySpecAllowedListenersNamespacesSelector, default is Undefined, optional
+        selector
+    """
+
+
+    from?: "All" | "Selector" | "Same" | "None" = "None"
+
+    selector?: GatewayNetworkingK8sIoV1GatewaySpecAllowedListenersNamespacesSelector
+
+
+schema GatewayNetworkingK8sIoV1GatewaySpecAllowedListenersNamespacesSelector:
+    r"""
+    Selector must be specified when From is set to "Selector". In that case,
+    only ListenerSets in Namespaces matching this Selector will be selected by this
+    Gateway. This field is ignored for other values of "From".
+
+    Attributes
+    ----------
+    matchExpressions : [GatewayNetworkingK8sIoV1GatewaySpecAllowedListenersNamespacesSelectorMatchExpressionsItems0], default is Undefined, optional
+        matchExpressions is a list of label selector requirements. The requirements are ANDed.
+    matchLabels : {str:str}, default is Undefined, optional
+        matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels
+        map is equivalent to an element of matchExpressions, whose key field is "key", the
+        operator is "In", and the values array contains only "value". The requirements are ANDed.
+    """
+
+
+    matchExpressions?: [GatewayNetworkingK8sIoV1GatewaySpecAllowedListenersNamespacesSelectorMatchExpressionsItems0]
+
+    matchLabels?: {str:str}
+
+
+schema GatewayNetworkingK8sIoV1GatewaySpecAllowedListenersNamespacesSelectorMatchExpressionsItems0:
+    r"""
+    A label selector requirement is a selector that contains values, a key, and an operator that
+    relates the key and values.
+
+    Attributes
+    ----------
+    key : str, default is Undefined, required
+        key is the label key that the selector applies to.
+    operator : str, default is Undefined, required
+        operator represents a key's relationship to a set of values.
+        Valid operators are In, NotIn, Exists and DoesNotExist.
+    values : [str], default is Undefined, optional
+        values is an array of string values. If the operator is In or NotIn,
+        the values array must be non-empty. If the operator is Exists or DoesNotExist,
+        the values array must be empty. This array is replaced during a strategic
+        merge patch.
+    """
+
+
+    key: str
+
+    operator: str
+
+    values?: [str]
 
 
 schema GatewayNetworkingK8sIoV1GatewaySpecInfrastructure:
@@ -325,11 +432,11 @@ schema GatewayNetworkingK8sIoV1GatewaySpecInfrastructure:
 
 
     check:
-        all _, annotations in annotations { len(annotations) <= 4096 if annotations not in [None, Undefined] } if annotations
-        all _, annotations in annotations { len(annotations) >= 0 if annotations not in [None, Undefined] } if annotations
-        all _, labels in labels { len(labels) <= 63 if labels not in [None, Undefined] } if labels
-        all _, labels in labels { len(labels) >= 0 if labels not in [None, Undefined] } if labels
-        all _, labels in labels { _regex_match(str(labels), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if labels } if labels
+        all _, k in annotations { len(k) <= 4096 if k not in [None, Undefined] } if annotations
+        all _, k in annotations { len(k) >= 0 if k not in [None, Undefined] } if annotations
+        all _, k in labels { len(k) <= 63 if k not in [None, Undefined] } if labels
+        all _, k in labels { len(k) >= 0 if k not in [None, Undefined] } if labels
+        all _, k in labels { _regex_match(str(k), r"^(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?$") if k } if labels
 
 
 schema GatewayNetworkingK8sIoV1GatewaySpecInfrastructureParametersRef:
@@ -420,7 +527,7 @@ schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0:
           the Gateway SHOULD return a 421.
         * If the current Listener (selected by SNI matching during ClientHello)
           does not match the Host:
-            * If another Listener does match the Host the Gateway SHOULD return a
+            * If another Listener does match the Host, the Gateway SHOULD return a
               421.
             * If no other Listener matches the Host, the Gateway MUST return a
               404.
@@ -469,8 +576,8 @@ schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0:
 
 
     check:
-        len(hostname) <= 253 if hostname
-        len(hostname) >= 1 if hostname
+        len(hostname) <= 253 if hostname not in [None, Undefined]
+        len(hostname) >= 1 if hostname not in [None, Undefined]
         _regex_match(str(hostname), r"^(\*\.)?[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if hostname
         len(name) <= 253
         len(name) >= 1
@@ -556,7 +663,7 @@ schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0AllowedRoutesKindsItems
 
 
     check:
-        len(group) <= 253 if group
+        len(group) <= 253 if group not in [None, Undefined]
         _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
         len(kind) <= 63
         len(kind) >= 1
@@ -649,7 +756,7 @@ schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0TLS:
     the Protocol field is "HTTPS" or "TLS". It is invalid to set this field
     if the Protocol field is "HTTP", "TCP", or "UDP".
 
-    The association of SNIs to Certificate defined in GatewayTLSConfig is
+    The association of SNIs to Certificate defined in ListenerTLSConfig is
     defined based on the Hostname field for this listener.
 
     The GatewayClass MUST use the longest matching SNI out of all
@@ -721,8 +828,8 @@ schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0TLS:
 
     check:
         len(certificateRefs) <= 64 if certificateRefs
-        all _, options in options { len(options) <= 4096 if options not in [None, Undefined] } if options
-        all _, options in options { len(options) >= 0 if options not in [None, Undefined] } if options
+        all _, k in options { len(k) <= 4096 if k not in [None, Undefined] } if options
+        all _, k in options { len(k) >= 0 if k not in [None, Undefined] } if options
 
 
 schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0TLSCertificateRefsItems0:
@@ -769,15 +876,500 @@ schema GatewayNetworkingK8sIoV1GatewaySpecListenersItems0TLSCertificateRefsItems
 
 
     check:
-        len(group) <= 253 if group
+        len(group) <= 253 if group not in [None, Undefined]
         _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
-        len(kind) <= 63 if kind
-        len(kind) >= 1 if kind
+        len(kind) <= 63 if kind not in [None, Undefined]
+        len(kind) >= 1 if kind not in [None, Undefined]
         _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
         len(name) <= 253
         len(name) >= 1
-        len(namespace) <= 63 if namespace
-        len(namespace) >= 1 if namespace
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
+        _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
+
+
+schema GatewayNetworkingK8sIoV1GatewaySpecTLS:
+    r"""
+    TLS specifies frontend and backend tls configuration for entire gateway.
+
+    Support: Extended
+
+    Attributes
+    ----------
+    backend : GatewayNetworkingK8sIoV1GatewaySpecTLSBackend, default is Undefined, optional
+        backend
+    frontend : GatewayNetworkingK8sIoV1GatewaySpecTLSFrontend, default is Undefined, optional
+        frontend
+    """
+
+
+    backend?: GatewayNetworkingK8sIoV1GatewaySpecTLSBackend
+
+    frontend?: GatewayNetworkingK8sIoV1GatewaySpecTLSFrontend
+
+
+schema GatewayNetworkingK8sIoV1GatewaySpecTLSBackend:
+    r"""
+    Backend describes TLS configuration for gateway when connecting
+    to backends.
+
+    Note that this contains only details for the Gateway as a TLS client,
+    and does _not_ imply behavior about how to choose which backend should
+    get a TLS connection. That is determined by the presence of a BackendTLSPolicy.
+
+    Support: Core
+
+    Attributes
+    ----------
+    clientCertificateRef : GatewayNetworkingK8sIoV1GatewaySpecTLSBackendClientCertificateRef, default is Undefined, optional
+        client certificate ref
+    """
+
+
+    clientCertificateRef?: GatewayNetworkingK8sIoV1GatewaySpecTLSBackendClientCertificateRef
+
+
+schema GatewayNetworkingK8sIoV1GatewaySpecTLSBackendClientCertificateRef:
+    r"""
+    ClientCertificateRef references an object that contains a client certificate
+    and its associated private key. It can reference standard Kubernetes resources,
+    i.e., Secret, or implementation-specific custom resources.
+
+    A ClientCertificateRef is considered invalid if:
+
+    * It refers to a resource that cannot be resolved (e.g., the referenced resource
+      does not exist) or is misconfigured (e.g., a Secret does not contain the keys
+      named `tls.crt` and `tls.key`). In this case, the `ResolvedRefs` condition
+      on the Gateway MUST be set to False with the Reason `InvalidClientCertificateRef`
+      and the Message of the Condition MUST indicate why the reference is invalid.
+
+    * It refers to a resource in another namespace UNLESS there is a ReferenceGrant
+      in the target namespace that allows the certificate to be attached.
+      If a ReferenceGrant does not allow this reference, the `ResolvedRefs` condition
+      on the Gateway MUST be set to False with the Reason `RefNotPermitted`.
+
+    Implementations MAY choose to perform further validation of the certificate
+    content (e.g., checking expiry or enforcing specific formats). In such cases,
+    an implementation-specific Reason and Message MUST be set.
+
+    Support: Core - Reference to a Kubernetes TLS Secret (with the type `kubernetes.io/tls`).
+    Support: Implementation-specific - Other resource kinds or Secrets with a
+    different type (e.g., `Opaque`).
+
+    Attributes
+    ----------
+    group : str, default is Undefined, optional
+        Group is the group of the referent. For example, "gateway.networking.k8s.io".
+        When unspecified or empty string, core API group is inferred.
+    kind : str, default is "Secret", optional
+        Kind is kind of the referent. For example "Secret".
+    name : str, default is Undefined, required
+        Name is the name of the referent.
+    namespace : str, default is Undefined, optional
+        Namespace is the namespace of the referenced object. When unspecified, the local
+        namespace is inferred.
+
+        Note that when a namespace different than the local namespace is specified,
+        a ReferenceGrant object is required in the referent namespace to allow that
+        namespace's owner to accept the reference. See the ReferenceGrant
+        documentation for details.
+
+        Support: Core
+    """
+
+
+    group?: str = ""
+
+    kind?: str = "Secret"
+
+    name: str
+
+    namespace?: str
+
+
+    check:
+        len(group) <= 253 if group not in [None, Undefined]
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
+        len(kind) <= 63 if kind not in [None, Undefined]
+        len(kind) >= 1 if kind not in [None, Undefined]
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$") if kind
+        len(name) <= 253
+        len(name) >= 1
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
+        _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
+
+
+schema GatewayNetworkingK8sIoV1GatewaySpecTLSFrontend:
+    r"""
+    Frontend describes TLS config when client connects to Gateway.
+    Support: Core
+
+    Attributes
+    ----------
+    default : GatewayNetworkingK8sIoV1GatewaySpecTLSFrontendDefault, default is Undefined, required
+        default
+    perPort : [GatewayNetworkingK8sIoV1GatewaySpecTLSFrontendPerPortItems0], default is Undefined, optional
+        PerPort specifies tls configuration assigned per port.
+        Per port configuration is optional. Once set this configuration overrides
+        the default configuration for all Listeners handling HTTPS traffic
+        that match this port.
+        Each override port requires a unique TLS configuration.
+
+        support: Core
+    """
+
+
+    default: GatewayNetworkingK8sIoV1GatewaySpecTLSFrontendDefault
+
+    perPort?: [GatewayNetworkingK8sIoV1GatewaySpecTLSFrontendPerPortItems0]
+
+
+    check:
+        len(perPort) <= 64 if perPort
+
+
+schema GatewayNetworkingK8sIoV1GatewaySpecTLSFrontendDefault:
+    r"""
+    Default specifies the default client certificate validation configuration
+    for all Listeners handling HTTPS traffic, unless a per-port configuration
+    is defined.
+
+    support: Core
+
+    Attributes
+    ----------
+    validation : GatewayNetworkingK8sIoV1GatewaySpecTLSFrontendDefaultValidation, default is Undefined, optional
+        validation
+    """
+
+
+    validation?: GatewayNetworkingK8sIoV1GatewaySpecTLSFrontendDefaultValidation
+
+
+schema GatewayNetworkingK8sIoV1GatewaySpecTLSFrontendDefaultValidation:
+    r"""
+    Validation holds configuration information for validating the frontend (client).
+    Setting this field will result in mutual authentication when connecting to the gateway.
+    In browsers this may result in a dialog appearing
+    that requests a user to specify the client certificate.
+    The maximum depth of a certificate chain accepted in verification is Implementation specific.
+
+    Support: Core
+
+    Attributes
+    ----------
+    caCertificateRefs : [GatewayNetworkingK8sIoV1GatewaySpecTLSFrontendDefaultValidationCaCertificateRefsItems0], default is Undefined, required
+        CACertificateRefs contains one or more references to Kubernetes
+        objects that contain a PEM-encoded TLS CA certificate bundle, which
+        is used as a trust anchor to validate the certificates presented by
+        the client.
+
+        A CACertificateRef is invalid if:
+
+        * It refers to a resource that cannot be resolved (e.g., the
+          referenced resource does not exist) or is misconfigured (e.g., a
+          ConfigMap does not contain a key named `ca.crt`). In this case, the
+          Reason on all matching HTTPS listeners must be set to `InvalidCACertificateRef`
+          and the Message of the Condition must indicate which reference is invalid and why.
+
+        * It refers to an unknown or unsupported kind of resource. In this
+          case, the Reason on all matching HTTPS listeners must be set to
+          `InvalidCACertificateKind` and the Message of the Condition must explain
+          which kind of resource is unknown or unsupported.
+
+        * It refers to a resource in another namespace UNLESS there is a
+          ReferenceGrant in the target namespace that allows the CA
+          certificate to be attached. If a ReferenceGrant does not allow this
+          reference, the `ResolvedRefs` on all matching HTTPS listeners condition
+          MUST be set with the Reason `RefNotPermitted`.
+
+        Implementations MAY choose to perform further validation of the
+        certificate content (e.g., checking expiry or enforcing specific formats).
+        In such cases, an implementation-specific Reason and Message MUST be set.
+
+        In all cases, the implementation MUST ensure that the `ResolvedRefs`
+        condition is set to `status: False` on all targeted listeners (i.e.,
+        listeners serving HTTPS on a matching port). The condition MUST
+        include a Reason and Message that indicate the cause of the error. If
+        ALL CACertificateRefs are invalid, the implementation MUST also ensure
+        the `Accepted` condition on the listener is set to `status: False`, with
+        the Reason `NoValidCACertificate`.
+        Implementations MAY choose to support attaching multiple CA certificates
+        to a listener, but this behavior is implementation-specific.
+
+        Support: Core - A single reference to a Kubernetes ConfigMap, with the
+        CA certificate in a key named `ca.crt`.
+
+        Support: Implementation-specific - More than one reference, other kinds
+        of resources, or a single reference that includes multiple certificates.
+    mode : str, default is "AllowValidOnly", optional
+        FrontendValidationMode defines the mode for validating the client certificate.
+        There are two possible modes:
+
+        - AllowValidOnly: In this mode, the gateway will accept connections only if
+          the client presents a valid certificate. This certificate must successfully
+          pass validation against the CA certificates specified in `CACertificateRefs`.
+        - AllowInsecureFallback: In this mode, the gateway will accept connections
+          even if the client certificate is not presented or fails verification.
+
+          This approach delegates client authorization to the backend and introduce
+          a significant security risk. It should be used in testing environments or
+          on a temporary basis in non-testing environments.
+
+        Defaults to AllowValidOnly.
+
+        Support: Core
+    """
+
+
+    caCertificateRefs: [GatewayNetworkingK8sIoV1GatewaySpecTLSFrontendDefaultValidationCaCertificateRefsItems0]
+
+    mode?: "AllowValidOnly" | "AllowInsecureFallback" = "AllowValidOnly"
+
+
+    check:
+        len(caCertificateRefs) >= 1
+        len(caCertificateRefs) <= 16
+
+
+schema GatewayNetworkingK8sIoV1GatewaySpecTLSFrontendDefaultValidationCaCertificateRefsItems0:
+    r"""
+    ObjectReference identifies an API object including its namespace.
+
+    The API object must be valid in the cluster; the Group and Kind must
+    be registered in the cluster for this reference to be valid.
+
+    References to objects with invalid Group and Kind are not valid, and must
+    be rejected by the implementation, with appropriate Conditions set
+    on the containing object.
+
+    Attributes
+    ----------
+    group : str, default is Undefined, required
+        Group is the group of the referent. For example, "gateway.networking.k8s.io".
+        When set to the empty string, core API group is inferred.
+    kind : str, default is Undefined, required
+        Kind is kind of the referent. For example "ConfigMap" or "Service".
+    name : str, default is Undefined, required
+        Name is the name of the referent.
+    namespace : str, default is Undefined, optional
+        Namespace is the namespace of the referenced object. When unspecified, the local
+        namespace is inferred.
+
+        Note that when a namespace different than the local namespace is specified,
+        a ReferenceGrant object is required in the referent namespace to allow that
+        namespace's owner to accept the reference. See the ReferenceGrant
+        documentation for details.
+
+        Support: Core
+    """
+
+
+    group: str
+
+    kind: str
+
+    name: str
+
+    namespace?: str
+
+
+    check:
+        len(group) <= 253
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
+        len(kind) <= 63
+        len(kind) >= 1
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
+        len(name) <= 253
+        len(name) >= 1
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
+        _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
+
+
+schema GatewayNetworkingK8sIoV1GatewaySpecTLSFrontendPerPortItems0:
+    r"""
+    gateway networking k8s io v1 gateway spec TLS frontend per port items0
+
+    Attributes
+    ----------
+    port : int, default is Undefined, required
+        The Port indicates the Port Number to which the TLS configuration will be
+        applied. This configuration will be applied to all Listeners handling HTTPS
+        traffic that match this port.
+
+        Support: Core
+    tls : GatewayNetworkingK8sIoV1GatewaySpecTLSFrontendPerPortItems0TLS, default is Undefined, required
+        tls
+    """
+
+
+    port: int
+
+    tls: GatewayNetworkingK8sIoV1GatewaySpecTLSFrontendPerPortItems0TLS
+
+
+    check:
+        port <= 65535
+        port >= 1
+
+
+schema GatewayNetworkingK8sIoV1GatewaySpecTLSFrontendPerPortItems0TLS:
+    r"""
+    TLS store the configuration that will be applied to all Listeners handling
+    HTTPS traffic and matching given port.
+
+    Support: Core
+
+    Attributes
+    ----------
+    validation : GatewayNetworkingK8sIoV1GatewaySpecTLSFrontendPerPortItems0TLSValidation, default is Undefined, optional
+        validation
+    """
+
+
+    validation?: GatewayNetworkingK8sIoV1GatewaySpecTLSFrontendPerPortItems0TLSValidation
+
+
+schema GatewayNetworkingK8sIoV1GatewaySpecTLSFrontendPerPortItems0TLSValidation:
+    r"""
+    Validation holds configuration information for validating the frontend (client).
+    Setting this field will result in mutual authentication when connecting to the gateway.
+    In browsers this may result in a dialog appearing
+    that requests a user to specify the client certificate.
+    The maximum depth of a certificate chain accepted in verification is Implementation specific.
+
+    Support: Core
+
+    Attributes
+    ----------
+    caCertificateRefs : [GatewayNetworkingK8sIoV1GatewaySpecTLSFrontendPerPortItems0TLSValidationCaCertificateRefsItems0], default is Undefined, required
+        CACertificateRefs contains one or more references to Kubernetes
+        objects that contain a PEM-encoded TLS CA certificate bundle, which
+        is used as a trust anchor to validate the certificates presented by
+        the client.
+
+        A CACertificateRef is invalid if:
+
+        * It refers to a resource that cannot be resolved (e.g., the
+          referenced resource does not exist) or is misconfigured (e.g., a
+          ConfigMap does not contain a key named `ca.crt`). In this case, the
+          Reason on all matching HTTPS listeners must be set to `InvalidCACertificateRef`
+          and the Message of the Condition must indicate which reference is invalid and why.
+
+        * It refers to an unknown or unsupported kind of resource. In this
+          case, the Reason on all matching HTTPS listeners must be set to
+          `InvalidCACertificateKind` and the Message of the Condition must explain
+          which kind of resource is unknown or unsupported.
+
+        * It refers to a resource in another namespace UNLESS there is a
+          ReferenceGrant in the target namespace that allows the CA
+          certificate to be attached. If a ReferenceGrant does not allow this
+          reference, the `ResolvedRefs` on all matching HTTPS listeners condition
+          MUST be set with the Reason `RefNotPermitted`.
+
+        Implementations MAY choose to perform further validation of the
+        certificate content (e.g., checking expiry or enforcing specific formats).
+        In such cases, an implementation-specific Reason and Message MUST be set.
+
+        In all cases, the implementation MUST ensure that the `ResolvedRefs`
+        condition is set to `status: False` on all targeted listeners (i.e.,
+        listeners serving HTTPS on a matching port). The condition MUST
+        include a Reason and Message that indicate the cause of the error. If
+        ALL CACertificateRefs are invalid, the implementation MUST also ensure
+        the `Accepted` condition on the listener is set to `status: False`, with
+        the Reason `NoValidCACertificate`.
+        Implementations MAY choose to support attaching multiple CA certificates
+        to a listener, but this behavior is implementation-specific.
+
+        Support: Core - A single reference to a Kubernetes ConfigMap, with the
+        CA certificate in a key named `ca.crt`.
+
+        Support: Implementation-specific - More than one reference, other kinds
+        of resources, or a single reference that includes multiple certificates.
+    mode : str, default is "AllowValidOnly", optional
+        FrontendValidationMode defines the mode for validating the client certificate.
+        There are two possible modes:
+
+        - AllowValidOnly: In this mode, the gateway will accept connections only if
+          the client presents a valid certificate. This certificate must successfully
+          pass validation against the CA certificates specified in `CACertificateRefs`.
+        - AllowInsecureFallback: In this mode, the gateway will accept connections
+          even if the client certificate is not presented or fails verification.
+
+          This approach delegates client authorization to the backend and introduce
+          a significant security risk. It should be used in testing environments or
+          on a temporary basis in non-testing environments.
+
+        Defaults to AllowValidOnly.
+
+        Support: Core
+    """
+
+
+    caCertificateRefs: [GatewayNetworkingK8sIoV1GatewaySpecTLSFrontendPerPortItems0TLSValidationCaCertificateRefsItems0]
+
+    mode?: "AllowValidOnly" | "AllowInsecureFallback" = "AllowValidOnly"
+
+
+    check:
+        len(caCertificateRefs) >= 1
+        len(caCertificateRefs) <= 16
+
+
+schema GatewayNetworkingK8sIoV1GatewaySpecTLSFrontendPerPortItems0TLSValidationCaCertificateRefsItems0:
+    r"""
+    ObjectReference identifies an API object including its namespace.
+
+    The API object must be valid in the cluster; the Group and Kind must
+    be registered in the cluster for this reference to be valid.
+
+    References to objects with invalid Group and Kind are not valid, and must
+    be rejected by the implementation, with appropriate Conditions set
+    on the containing object.
+
+    Attributes
+    ----------
+    group : str, default is Undefined, required
+        Group is the group of the referent. For example, "gateway.networking.k8s.io".
+        When set to the empty string, core API group is inferred.
+    kind : str, default is Undefined, required
+        Kind is kind of the referent. For example "ConfigMap" or "Service".
+    name : str, default is Undefined, required
+        Name is the name of the referent.
+    namespace : str, default is Undefined, optional
+        Namespace is the namespace of the referenced object. When unspecified, the local
+        namespace is inferred.
+
+        Note that when a namespace different than the local namespace is specified,
+        a ReferenceGrant object is required in the referent namespace to allow that
+        namespace's owner to accept the reference. See the ReferenceGrant
+        documentation for details.
+
+        Support: Core
+    """
+
+
+    group: str
+
+    kind: str
+
+    name: str
+
+    namespace?: str
+
+
+    check:
+        len(group) <= 253
+        _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
+        len(kind) <= 63
+        len(kind) >= 1
+        _regex_match(str(kind), r"^[a-zA-Z]([-a-zA-Z0-9]*[a-zA-Z0-9])?$")
+        len(name) <= 253
+        len(name) >= 1
+        len(namespace) <= 63 if namespace not in [None, Undefined]
+        len(namespace) >= 1 if namespace not in [None, Undefined]
         _regex_match(str(namespace), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?$") if namespace
 
 
@@ -797,7 +1389,18 @@ schema GatewayNetworkingK8sIoV1GatewayStatus:
           * no addresses are specified, all addresses are dynamically assigned
           * a combination of specified and dynamic addresses are assigned
           * a specified address was unusable (e.g. already in use)
-    conditions : [GatewayNetworkingK8sIoV1GatewayStatusConditionsItems0], default is [{"lastTransitionTime": "1970-01-01T00:00:00Z", "message": "Waiting for controller", "reason": "Pending", "status": "Unknown", "type": "Accepted"}, {"lastTransitionTime": "1970-01-01T00:00:00Z", "message": "Waiting for controller", "reason": "Pending", "status": "Unknown", "type": "Programmed"}], optional
+    attachedListenerSets : int, default is Undefined, optional
+        AttachedListenerSets represents the total number of ListenerSets that have been
+        successfully attached to this Gateway.
+
+        A ListenerSet is successfully attached to a Gateway when all the following conditions are met:
+        - The ListenerSet is selected by the Gateway's AllowedListeners field
+        - The ListenerSet has a valid ParentRef selecting the Gateway
+        - The ListenerSet's status has the condition "Accepted: true"
+
+        Uses for this field include troubleshooting AttachedListenerSets attachment and
+        measuring blast radius/impact of changes to a Gateway.
+    conditions : [GatewayNetworkingK8sIoV1GatewayStatusConditionsItems0], default is [{"lastTransitionTime": "1970-01-01T00:00:00Z", "message": "Waiting for controller", "reason": "Pending", "status": "Unknown", "type": "Accepted"}, {"type": "Programmed", "lastTransitionTime": "1970-01-01T00:00:00Z", "message": "Waiting for controller", "reason": "Pending", "status": "Unknown"}], optional
         Conditions describe the current conditions of the Gateway.
 
         Implementations should prefer to express Gateway conditions
@@ -810,6 +1413,7 @@ schema GatewayNetworkingK8sIoV1GatewayStatus:
         * "Accepted"
         * "Programmed"
         * "Ready"
+        * "AddressesAssigned"
     listeners : [GatewayNetworkingK8sIoV1GatewayStatusListenersItems0], default is Undefined, optional
         Listeners provide status for each unique listener port defined in the Spec.
     """
@@ -817,7 +1421,9 @@ schema GatewayNetworkingK8sIoV1GatewayStatus:
 
     addresses?: [GatewayNetworkingK8sIoV1GatewayStatusAddressesItems0]
 
-    conditions?: [GatewayNetworkingK8sIoV1GatewayStatusConditionsItems0] = [{"lastTransitionTime": "1970-01-01T00:00:00Z", "message": "Waiting for controller", "reason": "Pending", "status": "Unknown", "type": "Accepted"}, {"reason": "Pending", "status": "Unknown", "type": "Programmed", "lastTransitionTime": "1970-01-01T00:00:00Z", "message": "Waiting for controller"}]
+    attachedListenerSets?: int
+
+    conditions?: [GatewayNetworkingK8sIoV1GatewayStatusConditionsItems0] = [{"lastTransitionTime": "1970-01-01T00:00:00Z", "message": "Waiting for controller", "reason": "Pending", "status": "Unknown", "type": "Accepted"}, {"message": "Waiting for controller", "reason": "Pending", "status": "Unknown", "type": "Programmed", "lastTransitionTime": "1970-01-01T00:00:00Z"}]
 
     listeners?: [GatewayNetworkingK8sIoV1GatewayStatusListenersItems0]
 
@@ -850,8 +1456,8 @@ schema GatewayNetworkingK8sIoV1GatewayStatusAddressesItems0:
 
 
     check:
-        len($type) <= 253 if $type
-        len($type) >= 1 if $type
+        len($type) <= 253 if $type not in [None, Undefined]
+        len($type) >= 1 if $type not in [None, Undefined]
         _regex_match(str($type), r"^Hostname|IPAddress|NamedAddress|[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*\/[A-Za-z0-9\/\-._~%!$&'()*+,;=:]+$") if $type
         len(value) <= 253
         len(value) >= 1
@@ -928,8 +1534,11 @@ schema GatewayNetworkingK8sIoV1GatewayStatusListenersItems0:
         attachment semantics can be found in the documentation on the various
         Route kinds ParentRefs fields). Listener or Route status does not impact
         successful attachment, i.e. the AttachedRoutes field count MUST be set
-        for Listeners with condition Accepted: false and MUST count successfully
-        attached Routes that may themselves have Accepted: false conditions.
+        for Listeners, even if the Accepted condition of an individual Listener is set
+        to "False". The AttachedRoutes number represents the number of Routes with
+        the Accepted condition set to "True" that have been attached to this Listener.
+        Routes with any other value for the Accepted condition MUST NOT be included
+        in this count.
 
         Uses for this field include troubleshooting Route attachment and
         measuring blast radius/impact of changes to a Listener.
@@ -937,9 +1546,9 @@ schema GatewayNetworkingK8sIoV1GatewayStatusListenersItems0:
         Conditions describe the current condition of this listener.
     name : str, default is Undefined, required
         Name is the name of the Listener that this status corresponds to.
-    supportedKinds : [GatewayNetworkingK8sIoV1GatewayStatusListenersItems0SupportedKindsItems0], default is Undefined, required
+    supportedKinds : [GatewayNetworkingK8sIoV1GatewayStatusListenersItems0SupportedKindsItems0], default is Undefined, optional
         SupportedKinds is the list indicating the Kinds supported by this
-        listener. This MUST represent the kinds an implementation supports for
+        listener. This MUST represent the kinds supported by an implementation for
         that Listener configuration.
 
         If kinds are specified in Spec that are not supported, they MUST NOT
@@ -956,7 +1565,7 @@ schema GatewayNetworkingK8sIoV1GatewayStatusListenersItems0:
 
     name: str
 
-    supportedKinds: [GatewayNetworkingK8sIoV1GatewayStatusListenersItems0SupportedKindsItems0]
+    supportedKinds?: [GatewayNetworkingK8sIoV1GatewayStatusListenersItems0SupportedKindsItems0]
 
 
     check:
@@ -964,7 +1573,7 @@ schema GatewayNetworkingK8sIoV1GatewayStatusListenersItems0:
         len(name) <= 253
         len(name) >= 1
         _regex_match(str(name), r"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$")
-        len(supportedKinds) <= 8
+        len(supportedKinds) <= 8 if supportedKinds
 
 
 schema GatewayNetworkingK8sIoV1GatewayStatusListenersItems0ConditionsItems0:
@@ -1038,7 +1647,7 @@ schema GatewayNetworkingK8sIoV1GatewayStatusListenersItems0SupportedKindsItems0:
 
 
     check:
-        len(group) <= 253 if group
+        len(group) <= 253 if group not in [None, Undefined]
         _regex_match(str(group), r"^$|^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$") if group
         len(kind) <= 63
         len(kind) >= 1
